@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Check, ChevronDown, Clipboard, LockKeyhole, Minus, RotateCcw, Sparkles, UsersRound } from 'lucide-react'
+import { HOLY_HEALING_BUILD } from './data/builds'
 import { branchNames, branchTaglines, DATA_SOURCES, talents, type Talent } from './data/talents'
 import { branchPoints, canIncrement, decodeBuild, decrementTalent, encodeBuild, incrementTalent, totalPoints, type Branch, type Build } from './lib/build'
 import { track } from './lib/analytics'
@@ -134,6 +135,17 @@ export default function App() {
     setBuild((current) => incrementTalent(current, talent, talents))
   }
 
+  const loadExampleBuild = () => {
+    setBuild({ ...HOLY_HEALING_BUILD.build })
+    setBranch('holy')
+    setCopied(false)
+    window.history.replaceState({}, '', '/paladin#planner')
+    track('example_build_load', {
+      build_id: HOLY_HEALING_BUILD.id,
+      allocation: HOLY_HEALING_BUILD.allocation,
+    })
+  }
+
   return (
     <main>
       <header className="nav shell">
@@ -196,6 +208,12 @@ export default function App() {
       <section className="planner-section" id="planner" ref={toolRef}>
         <div className="shell">
           <div className="section-heading centered"><div className="eyebrow">Interactive Build Planner</div><h2>Build Your Paladin</h2><p>Choose a path, spend your points, and shape a build worth sharing.</p></div>
+          <aside className="example-build-card" aria-label="Example Paladin build">
+            <div className="example-build-icon"><Sparkles size={20} /></div>
+            <div><span>Example build</span><h3>{HOLY_HEALING_BUILD.name}</h3><p>{HOLY_HEALING_BUILD.description}</p></div>
+            <strong>{HOLY_HEALING_BUILD.allocation}<small>Holy / Protection / Retribution</small></strong>
+            <button type="button" onClick={loadExampleBuild}>Load Build</button>
+          </aside>
           <div className="planner-tabs" role="tablist">{branches.map((item) => <button key={item} role="tab" aria-selected={branch === item} className={branch === item ? 'active' : ''} onClick={() => { setBranch(item); track('spec_select', { branch: item }) }}><img src={branchIcons[item]} alt="" /><span>{branchNames[item]}<small>{branchPoints(build, item, talents)} points</small></span></button>)}</div>
           <div className="planner-grid">
             <div className="tree-card">
