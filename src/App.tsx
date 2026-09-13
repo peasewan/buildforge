@@ -80,6 +80,21 @@ export default function App() {
     localStorage.setItem('wow-forever-paladin-build', encodeBuild(build))
   }, [build])
 
+  useEffect(() => {
+    const node = toolRef.current
+    if (!node || typeof IntersectionObserver === 'undefined') return
+    let sent = false
+    const observer = new IntersectionObserver((entries) => {
+      if (!sent && entries.some((entry) => entry.isIntersecting)) {
+        sent = true
+        track('view_planner')
+        observer.disconnect()
+      }
+    }, { threshold: 0.15 })
+    observer.observe(node)
+    return () => observer.disconnect()
+  }, [])
+
   const openTool = (nextBranch?: Branch) => {
     if (nextBranch) {
       setBranch(nextBranch)
@@ -94,8 +109,10 @@ export default function App() {
     const path = `/build?id=${code}`
     window.history.replaceState({}, '', path)
     const shareUrl = `${window.location.origin}${path}`
+    let didCopy = false
     try {
       await navigator.clipboard.writeText(shareUrl)
+      didCopy = true
     } catch {
       const field = document.createElement('textarea')
       field.value = shareUrl
@@ -104,9 +121,10 @@ export default function App() {
       field.style.opacity = '0'
       document.body.appendChild(field)
       field.select()
-      document.execCommand('copy')
+      didCopy = document.execCommand('copy')
       field.remove()
     }
+    if (didCopy) track('build_shared', { points })
     setCopied(true)
     window.setTimeout(() => setCopied(false), 1800)
   }
