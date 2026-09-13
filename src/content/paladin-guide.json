@@ -1,0 +1,52 @@
+{
+  "eyebrow": "WoW Forever Class Guide",
+  "title": "WoW Forever Paladin Talent Guide & Build Planner",
+  "dek": "Understand the three Paladin talent paths, compare their roles, and turn an idea into a shareable build before you spend a point in game.",
+  "sections": [
+    {
+      "id": "what-is-wow-forever",
+      "heading": "What is World of Warcraft: Forever?",
+      "paragraphs": [
+        "World of Warcraft: Forever is Blizzard’s return to a reimagined version of original Azeroth. The announced experience keeps the recognizable world and class identities of early World of Warcraft while adding new discoveries, abilities, race and class combinations, and updated talents. Blizzard has announced a global launch for November 4, 2026, with access included through an active World of Warcraft subscription or Game Time.",
+        "That combination of familiar foundations and new class decisions is why talent planning matters before launch. A player may recognize the shape of a Classic talent tree while still encountering changed positions, revised effects, or new choices. This page explains how to use the available Paladin information without treating an evolving preview as a finished rulebook. For release details, see Blizzard’s official World of Warcraft: Forever announcement."
+      ]
+    },
+    {
+      "id": "paladin-talents",
+      "heading": "How Paladin talents shape a build",
+      "paragraphs": [
+        "A Paladin is a hybrid class built around armor, weapons, healing, blessings, and the power of the Light. Talent points let a player emphasize one part of that identity or combine useful choices from several trees. The three paths are Holy, Protection, and Retribution. Each tree supports a different role, but a build does not have to spend every point in a single specialization.",
+        "The BuildForgeTools Talent Calculator follows the familiar tier structure: spending enough points in a tree opens deeper rows, while some talents also require a specific earlier choice. The Build Planner keeps the total visible, prevents invalid selections, and records the result in a shareable URL. It is useful for comparing ideas, discussing a setup with friends, and returning to a draft later."
+      ]
+    },
+    {
+      "id": "holy-paladin",
+      "heading": "Holy Paladin",
+      "paragraphs": [
+        "Holy Paladin talents focus the class toward healing, spell support, and efficient use of the Light. A Holy build can strengthen the tools used to keep an ally alive and improve the consistency of supportive casting. Players considering a healing role can use the planner to see how many points a deeper Holy choice requires and what room remains for utility in another tree. The calculator describes the path; it does not claim that one arrangement is the best build."
+      ]
+    },
+    {
+      "id": "protection-paladin",
+      "heading": "Protection Paladin",
+      "paragraphs": [
+        "Protection Paladin talents develop the defensive side of the class. The tree is associated with shields, durability, threat, and tools that help a Paladin hold enemies while protecting a group. A Protection build may invest heavily in the defensive tree or borrow accessible support from Holy or Retribution. Plotting those points first makes prerequisites and trade-offs easier to understand than working from a text list alone."
+      ]
+    },
+    {
+      "id": "retribution-paladin",
+      "heading": "Retribution Paladin",
+      "paragraphs": [
+        "Retribution Paladin talents emphasize weapon combat, judgments, and offensive holy power. The path suits players who want their Paladin to pressure enemies directly while retaining the class’s broader utility. In the Build Planner, players can test a deep Retribution route, compare it with a mixed build, and immediately see the effect on the 51-point total. Sharing the finished URL gives another player the exact same allocation to review."
+      ]
+    },
+    {
+      "id": "using-the-planner",
+      "heading": "Using the Talent Calculator and Build Planner",
+      "paragraphs": [
+        "Open the Paladin Talent Calculator, choose a specialization tab, and click an available node to add a rank. Locked nodes show that more points or a prerequisite are needed. The summary panel lists every selected talent and lets you remove ranks, reset the build, or copy a build link. The current draft is also stored in the browser, so an unfinished idea is available when you return on the same device.",
+        "WoW Forever information is still developing, and preview material can change. BuildForgeTools labels the talent dataset as a community preview and lists the references used to organize it. Unconfirmed values should be checked against current in-game information as beta and launch updates arrive. The goal is a fast, transparent planning surface: understand the three Paladin directions, create a legal point allocation, and share the result without an account."
+      ]
+    }
+  ]
+}

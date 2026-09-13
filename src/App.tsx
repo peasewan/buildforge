@@ -109,7 +109,7 @@ export default function App() {
     const path = `/build?id=${code}`
     window.history.replaceState({}, '', path)
     const shareUrl = `${window.location.origin}${path}`
-    let didCopy = false
+    let didCopy: boolean
     try {
       await navigator.clipboard.writeText(shareUrl)
       didCopy = true
@@ -137,8 +137,8 @@ export default function App() {
   return (
     <main>
       <header className="nav shell">
-        <a className="brand" href="#top"><img src="/images/icons/paladin-shield.png" alt="" /><span>BUILD</span><b>FORGE</b></a>
-        <nav aria-label="Primary navigation"><a href="#planner">Talent Calculator</a><a href="#planner">Builds</a><a href="#data">Data</a></nav>
+        <a className="brand" href="/paladin#top"><img src="/images/icons/paladin-shield.png" alt="" /><span>BUILD</span><b>FORGE</b></a>
+        <nav aria-label="Primary navigation"><a href="/paladin#planner">Talent Calculator</a><a href="/wow-forever-paladin-talents">Paladin Guide</a><a href="/paladin#data">Data</a></nav>
         <button className="nav-cta" onClick={() => openTool()}>Open Planner</button>
       </header>
 
@@ -223,7 +223,7 @@ export default function App() {
 
       <section className="seo-continuation" aria-label="More about the BuildForge talent calculator"><div className="shell"><p>BuildForge keeps every action visible and reversible. A locked node shows that the current branch needs more points or a completed prerequisite. An illuminated node shows a rank already chosen. The summary lists those choices by specialization and lets you remove a rank without hunting for its position in the tree. Because the URL contains only talent identifiers and ranks, it stays compact enough to paste into a chat, forum, or build discussion.</p><p>The first version focuses on a dependable planning loop rather than extra account features. It opens quickly, works without registration, and saves the latest local setup automatically. Players can test a Holy core with Protection support, compare a Retribution route, or clear everything and begin again. The structure is ready for new class trees later, while the Paladin calculator remains a clear standalone page for search visitors who want to build immediately.</p></div></section>
 
-      <footer><div className="shell"><a className="brand" href="#top"><img src="/images/icons/paladin-shield.png" alt="" /><span>BUILD</span><b>FORGE</b></a><p>WoW Forever Talent Tools</p><nav><a href="#planner">Talent Calculator</a><a href="#planner">Builds</a><a href="#data">Data Sources</a></nav><small>Community-made planning tool. Not affiliated with Blizzard Entertainment.</small></div></footer>
+      <footer><div className="shell"><a className="brand" href="/paladin#top"><img src="/images/icons/paladin-shield.png" alt="" /><span>BUILD</span><b>FORGE</b></a><p>WoW Forever Talent Tools</p><nav><a href="/paladin#planner">Talent Calculator</a><a href="/wow-forever-paladin-talents">Paladin Guide</a><a href="/paladin#data">Data Sources</a></nav><small>Community-made planning tool. Not affiliated with Blizzard Entertainment.</small></div></footer>
     </main>
   )
 }

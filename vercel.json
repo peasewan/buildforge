@@ -1,3 +1,10 @@
 {
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+  "redirects": [
+    { "source": "/", "destination": "/paladin", "permanent": true }
+  ],
+  "rewrites": [
+    { "source": "/paladin", "destination": "/paladin/index.html" },
+    { "source": "/build", "destination": "/paladin/index.html" },
+    { "source": "/wow-forever-paladin-talents", "destination": "/wow-forever-paladin-talents/index.html" }
+  ]
 }
