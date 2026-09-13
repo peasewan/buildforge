@@ -30,10 +30,13 @@ function TalentTree({ branch, build, onAdd, onRemove }: { branch: Branch; build:
     <div className="tree-stage" aria-label={`${branchNames[branch]} talent tree`}>
       <div className="tree-watermark">{branchNames[branch]}</div>
       <svg className="tree-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-        {branchTalents.slice(2).map((talent, index) => {
-          const previous = branchTalents[Math.max(0, index)]
-          return <line key={talent.id} x1={previous.x} y1={previous.y + 5} x2={talent.x} y2={talent.y - 5} />
-        })}
+        {branchTalents.flatMap((talent) =>
+          (talent.prerequisite ?? []).map((requiredId) => {
+            const prerequisite = talents.find((candidate) => candidate.id === requiredId)
+            if (!prerequisite) return null
+            return <line key={`${talent.id}-${requiredId}`} x1={prerequisite.x} y1={prerequisite.y} x2={talent.x} y2={talent.y} />
+          })
+        )}
       </svg>
       {branchTalents.map((talent) => {
         const rank = build[talent.id] ?? 0
@@ -54,7 +57,7 @@ function TalentTree({ branch, build, onAdd, onRemove }: { branch: Branch; build:
             <div className="talent-tip" id={`tip-${talent.id}`}>
               <strong>{talent.name}</strong>
               <span>{talent.description}</span>
-              <em>{talent.status === 'community' ? 'Community reported' : 'Needs verification'}</em>
+              <em>Preview data — pending verification</em>
             </div>
           </div>
         )
@@ -118,10 +121,11 @@ export default function App() {
         <div className="shell hero-grid">
           <div className="hero-copy">
             <div className="eyebrow"><Sparkles size={14} /> Paladin Talent Tool</div>
-            <h1>WoW Forever<br /><span>Paladin Talent</span><br />Calculator</h1>
+            <h1>WoW Forever<br /><span>Paladin Talent</span><br />Preview</h1>
             <p className="lead">Interactive talent tree planner for Holy, Protection, and Retribution Paladins.</p>
+            <p className="hero-disclaimer">Community-built planning tool — not affiliated with Blizzard Entertainment.</p>
             <p className="hero-actions-copy">Preview talents. <span /> Create builds. <span /> Share your setup.</p>
-            <div className="button-row"><button className="button primary" onClick={() => openTool()}>Create Paladin Build</button><button className="button secondary" onClick={() => openTool('holy')}>View Talents <ChevronDown size={16} /></button></div>
+            <div className="button-row"><button className="button primary" onClick={() => openTool()}>Open Talent Calculator</button><button className="button secondary" onClick={() => openTool('holy')}>View Talents <ChevronDown size={16} /></button></div>
           </div>
           <aside className="hud-card">
             <div className="hud-top"><span>Talent Preview</span><i>Live</i></div>
@@ -142,7 +146,8 @@ export default function App() {
 
       <section className="spec-section" aria-label="Choose your specialization">
         <div className="shell">
-          <h2>WoW Forever Paladin Talent Calculator</h2>
+          <h2>WoW Forever Paladin Talent Preview</h2>
+          <p className="spec-note">Talent data is currently in community preview — we're validating against Classic references.</p>
           <p className="spec-cta">Choose your specialization:</p>
           <div className="spec-choices">
             {branches.map((item) => (
@@ -182,7 +187,7 @@ export default function App() {
 
       <section className="benefits shell" id="about"><div className="section-heading centered"><div className="eyebrow">Built by BuildForge</div><h2>One Place to Plan, Refine, and Share</h2></div><div className="benefit-grid"><article><img src="/images/icons/shield.png" alt="" /><span>01</span><h3>Plan Your Build</h3><p>Try different talent paths before committing.</p></article><article><img src="/images/icons/hammer.png" alt="" /><span>02</span><h3>Share Builds</h3><p>Create and share your Paladin setup.</p></article><article><img src="/images/icons/paladin-shield.png" alt="" /><span>03</span><h3>Community Driven</h3><p>Improve talent data together.</p></article></div></section>
 
-      <section className="seo-section"><div className="shell seo-grid"><div><div className="eyebrow">The tool, explained</div><h2>WoW Forever Paladin Talent Calculator</h2></div><div className="seo-copy"><p>The <strong>wow forever paladin talent calculator</strong> is a focused planning space for players who want to explore a Paladin setup before they commit points in game. Start by choosing Holy, Protection, or Retribution, then select any available talent node. Each click adds one rank, updates the total immediately, and unlocks deeper rows when the branch has enough points. Selected talents are kept in the summary beside the tree, so the shape of the build stays easy to read while you experiment.</p><p>This first release is designed around the simple actions players repeat most: opening the tree, testing a path, changing a few ranks, and sending the result to someone else. The point counter tracks progress toward the 51 point limit. If a later talent depends on an earlier one, the interface keeps that dependency visible and prevents an invalid allocation. Removing a required rank also clears talents that can no longer stay active, keeping every shared setup consistent.</p><p>When your <strong>wow forever paladin build</strong> is ready, the Copy Build Link button turns the selected ranks into a compact URL. Anyone opening that link sees the same choices without creating an account. The current build is also stored in the browser as you work, making it easier to return and continue after closing the page. Reset clears the planner when you want to start a completely different idea.</p><p>Talent information for a new game or a newly discovered ruleset can change quickly. For that reason, the data language on this site separates confirmed information, community reports, and details that still need verification. The preview tree currently uses community-reported names and flags details that require another source. It does not invent missing effects or present uncertain rank values as fact. As more reliable captures and player research become available, individual entries can move to a stronger evidence state.</p><p>The goal of this tool is to make <strong>wow forever talents</strong> quick to inspect and easy to discuss. It is a planner and preview, rather than a leveling guide, damage simulator, or promise that one configuration is best. Use it to compare paths, preserve an idea, or give another player a precise starting point for a conversation. Future versions can add complete class trees and richer source notes while keeping the same fast, shareable workflow.</p></div></div></section>
+      <section className="seo-section"><div className="shell seo-grid"><div><div className="eyebrow">The tool, explained</div><h2>WoW Forever Paladin Talent Preview</h2></div><div className="seo-copy"><p>The <strong>wow forever paladin talent calculator</strong> is a focused planning space for players who want to explore a Paladin setup before they commit points in game. Start by choosing Holy, Protection, or Retribution, then select any available talent node. Each click adds one rank, updates the total immediately, and unlocks deeper rows when the branch has enough points. Selected talents are kept in the summary beside the tree, so the shape of the build stays easy to read while you experiment.</p><p>This first release is designed around the simple actions players repeat most: opening the tree, testing a path, changing a few ranks, and sending the result to someone else. The point counter tracks progress toward the 51 point limit. If a later talent depends on an earlier one, the interface keeps that dependency visible and prevents an invalid allocation. Removing a required rank also clears talents that can no longer stay active, keeping every shared setup consistent.</p><p>When your <strong>wow forever paladin build</strong> is ready, the Copy Build Link button turns the selected ranks into a compact URL. Anyone opening that link sees the same choices without creating an account. The current build is also stored in the browser as you work, making it easier to return and continue after closing the page. Reset clears the planner when you want to start a completely different idea.</p><p>Talent information for a new game or a newly discovered ruleset can change quickly. For that reason, the data language on this site separates confirmed information, community reports, and details that still need verification. The preview tree currently uses community-reported names and flags details that require another source. It does not invent missing effects or present uncertain rank values as fact. As more reliable captures and player research become available, individual entries can move to a stronger evidence state.</p><p>The goal of this tool is to make <strong>wow forever talents</strong> quick to inspect and easy to discuss. It is a planner and preview, rather than a leveling guide, damage simulator, or promise that one configuration is best. Use it to compare paths, preserve an idea, or give another player a precise starting point for a conversation. Future versions can add complete class trees and richer source notes while keeping the same fast, shareable workflow.</p></div></div></section>
 
       <section className="seo-continuation" aria-label="More about the BuildForge talent calculator"><div className="shell"><p>BuildForge keeps every action visible and reversible. A locked node shows that the current branch needs more points or a completed prerequisite. An illuminated node shows a rank already chosen. The summary lists those choices by specialization and lets you remove a rank without hunting for its position in the tree. Because the URL contains only talent identifiers and ranks, it stays compact enough to paste into a chat, forum, or build discussion.</p><p>The first version focuses on a dependable planning loop rather than extra account features. It opens quickly, works without registration, and saves the latest local setup automatically. Players can test a Holy core with Protection support, compare a Retribution route, or clear everything and begin again. The structure is ready for new class trees later, while the Paladin calculator remains a clear standalone page for search visitors who want to build immediately.</p></div></section>
 

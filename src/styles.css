@@ -26,6 +26,7 @@ h1, h2 { font-family: Cinzel, serif; margin: 0; font-weight: 600; letter-spacing
 h1 { font-size: clamp(38px, 4.2vw, 60px); line-height: 1.05; text-shadow: 0 4px 30px rgba(0,0,0,.55); }
 h1 span { color: var(--light); background: linear-gradient(180deg, #fff7d7, #d9a441); background-clip: text; -webkit-text-fill-color: transparent; }
 .lead { font-family: Cinzel, serif; font-size: 18px; line-height: 1.6; color: #d8d5cf; max-width: 520px; margin: 27px 0 10px; }
+.hero-disclaimer { color: #6c7380; font-size: 12px; margin: 14px 0 0; }
 .hero-actions-copy { color: #8e949e; font-size: 13px; display: flex; align-items: center; gap: 11px; }
 .hero-actions-copy span { width: 3px; height: 3px; border-radius: 50%; background: #b58b3b; }
 .button-row { display: flex; gap: 14px; margin-top: 34px; }
@@ -70,6 +71,7 @@ h1 span { color: var(--light); background: linear-gradient(180deg, #fff7d7, #d9a
 .planner-section { padding: 112px 0 120px; scroll-margin-top: 10px; background: radial-gradient(circle at 50% 20%, rgba(217,164,65,.06), transparent 35%); }
 .spec-section { padding: 64px 0 30px; text-align: center; }
 .spec-section h2 { font-size: clamp(30px, 3.4vw, 44px); color: #e9ddc1; }
+.spec-note { color: #7b828d; font-size: 12px; margin: 12px 0 0; }
 .spec-cta { color: #898f99; font-size: 14px; margin: 18px 0 28px; }
 .spec-choices { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 860px; margin: 0 auto; }
 .spec-choice { display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 26px 18px; background: linear-gradient(145deg, #12161e, #0c0f14); border: 1px solid rgba(255,255,255,.08); border-radius: 12px; cursor: pointer; transition: .2s ease; }

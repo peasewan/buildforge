@@ -5,13 +5,12 @@ export type Build = Record<string, number>
 export interface TalentDefinition {
   id: string
   branch: Branch
-  tier: number
   maxRank: number
-  requires?: string
+  requiredTreePoints: number
+  prerequisite?: string[]
 }
 
 export const MAX_TALENT_POINTS = 51
-export const POINTS_PER_TIER = 5
 
 export function totalPoints(build: Build): number {
   return Object.values(build).reduce((sum, rank) => sum + Math.max(0, rank), 0)
@@ -35,11 +34,13 @@ export function canIncrement(
   const currentRank = build[talent.id] ?? 0
   if (currentRank >= talent.maxRank || totalPoints(build) >= MAX_TALENT_POINTS) return false
 
-  if (branchPoints(build, talent.branch, talents) < talent.tier * POINTS_PER_TIER) return false
+  if (branchPoints(build, talent.branch, talents) < talent.requiredTreePoints) return false
 
-  if (talent.requires) {
-    const prerequisite = talents.find((candidate) => candidate.id === talent.requires)
-    if (!prerequisite || (build[prerequisite.id] ?? 0) < prerequisite.maxRank) return false
+  if (talent.prerequisite) {
+    for (const requiredId of talent.prerequisite) {
+      const prerequisite = talents.find((candidate) => candidate.id === requiredId)
+      if (!prerequisite || (build[prerequisite.id] ?? 0) < prerequisite.maxRank) return false
+    }
   }
 
   return true
@@ -56,12 +57,14 @@ export function incrementTalent(
 
 function remainsValid(build: Build, talent: TalentDefinition, talents: TalentDefinition[]): boolean {
   if (!(build[talent.id] > 0)) return true
-  if (branchPoints(build, talent.branch, talents) < talent.tier * POINTS_PER_TIER + build[talent.id]) {
+  if (branchPoints(build, talent.branch, talents) < talent.requiredTreePoints + build[talent.id]) {
     return false
   }
-  if (!talent.requires) return true
-  const prerequisite = talents.find((candidate) => candidate.id === talent.requires)
-  return Boolean(prerequisite && (build[prerequisite.id] ?? 0) >= prerequisite.maxRank)
+  if (!talent.prerequisite || talent.prerequisite.length === 0) return true
+  return talent.prerequisite.every((requiredId) => {
+    const prerequisite = talents.find((candidate) => candidate.id === requiredId)
+    return Boolean(prerequisite && (build[prerequisite.id] ?? 0) >= prerequisite.maxRank)
+  })
 }
 
 export function decrementTalent(

@@ -10,10 +10,10 @@ import {
 } from './build'
 
 const talents: TalentDefinition[] = [
-  { id: 'root', branch: 'holy', tier: 0, maxRank: 5 },
-  { id: 'focus', branch: 'holy', tier: 1, maxRank: 3 },
-  { id: 'crown', branch: 'holy', tier: 2, maxRank: 1, requires: 'focus' },
-  { id: 'guard', branch: 'protection', tier: 0, maxRank: 5 },
+  { id: 'root', branch: 'holy', requiredTreePoints: 0, maxRank: 5 },
+  { id: 'focus', branch: 'holy', requiredTreePoints: 5, maxRank: 3 },
+  { id: 'crown', branch: 'holy', requiredTreePoints: 10, maxRank: 1, prerequisite: ['focus'] },
+  { id: 'guard', branch: 'protection', requiredTreePoints: 0, maxRank: 5 },
 ]
 
 describe('talent allocation', () => {
@@ -49,8 +49,8 @@ describe('share codes', () => {
 
   it('preserves talent ids that contain hyphens', () => {
     const hyphenatedTalents: TalentDefinition[] = [
-      { id: 'divine-strength', branch: 'holy', tier: 0, maxRank: 5 },
-      { id: 'healing-light', branch: 'holy', tier: 1, maxRank: 5 },
+      { id: 'divine-strength', branch: 'holy', requiredTreePoints: 0, maxRank: 5 },
+      { id: 'healing-light', branch: 'holy', requiredTreePoints: 5, maxRank: 5 },
     ]
     const code = encodeBuild({ 'divine-strength': 5, 'healing-light': 1 })
 
