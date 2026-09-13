@@ -2,11 +2,11 @@ import { ArrowRight, Calculator, Check, Shield, Sparkles } from 'lucide-react'
 import buildContent from './content/holy-healing-build.json'
 import { HOLY_HEALING_BUILD } from './data/builds'
 import { branchNames, talents } from './data/talents'
-import { branchPoints, encodeBuild, type Branch } from './lib/build'
+import { branchPoints, type Branch } from './lib/build'
 import { track } from './lib/analytics'
 
 const branches: Branch[] = ['holy', 'protection', 'retribution']
-const buildHref = `/build?id=${encodeBuild(HOLY_HEALING_BUILD.build)}`
+const buildHref = buildContent.plannerPath
 
 const selectedByBranch = branches.map((branch) => ({
   branch,
@@ -23,7 +23,7 @@ export default function BuildPage() {
     <main className="build-page">
       <header className="guide-nav shell">
         <a className="brand" href="/paladin"><img src="/images/icons/paladin-shield.png" alt="" /><span>BUILD</span><b>FORGE</b></a>
-        <nav aria-label="Build navigation"><a href="/paladin">Talent Calculator</a><a href="/wow-forever-paladin-talents">Paladin Guide</a><a href="#talent-allocation">Selected Talents</a></nav>
+        <nav aria-label="Build navigation"><a href="/paladin">Talent Calculator</a><a href="/wow-forever-paladin-talents">Paladin Talents</a><a href="#talent-allocation">Selected Talents</a></nav>
         <OpenBuildLink placement="header">Open Build</OpenBuildLink>
       </header>
 
@@ -43,7 +43,7 @@ export default function BuildPage() {
             <span>Talent allocation</span>
             <strong>{HOLY_HEALING_BUILD.allocation}</strong>
             <div>{selectedByBranch.map(({ branch, points }) => <p key={branch}><img src={branch === 'holy' ? '/images/icons/holy-strike.png' : branch === 'protection' ? '/images/icons/shield.png' : '/images/icons/hammer.png'} alt="" /><span>{branchNames[branch]}</span><b>{points}</b></p>)}</div>
-            <footer><Check size={15} /> 51 of 51 points allocated</footer>
+            <div className="build-allocation-status"><Check size={15} /> 51 of 51 points allocated</div>
           </aside>
         </div>
       </section>
@@ -67,7 +67,7 @@ export default function BuildPage() {
         <div className="guide-final-cta"><img src="/images/icons/paladin-shield.png" alt="" /><div><span>Ready to customize it?</span><h2>Open the complete 31/20/0 build.</h2></div><OpenBuildLink placement="footer">Open Build <ArrowRight size={15} /></OpenBuildLink></div>
       </article>
 
-      <footer><div className="shell"><a className="brand" href="/paladin"><img src="/images/icons/paladin-shield.png" alt="" /><span>BUILD</span><b>FORGE</b></a><p>WoW Forever Talent Tools</p><nav><a href="/paladin">Talent Calculator</a><a href="/wow-forever-paladin-build">Paladin Build</a><a href="/wow-forever-paladin-talents">Paladin Guide</a></nav><small>Community-made planning tool. Not affiliated with Blizzard Entertainment.</small></div></footer>
+      <footer><div className="shell"><a className="brand" href="/paladin"><img src="/images/icons/paladin-shield.png" alt="" /><span>BUILD</span><b>FORGE</b></a><p>WoW Forever Talent Tools</p><nav><a href="/paladin">Talent Calculator</a><a href="/wow-forever-paladin-build">Paladin Build</a><a href="/wow-forever-paladin-talents">Paladin Talents</a></nav><small>Community-made planning tool. Not affiliated with Blizzard Entertainment.</small></div></footer>
     </main>
   )
 }

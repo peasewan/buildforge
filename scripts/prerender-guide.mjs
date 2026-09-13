@@ -64,8 +64,10 @@ const buildPrerendered = `<main class="build-page build-prerender">
     <h1>${escapeHtml(build.title)}</h1>
     <p>${escapeHtml(build.dek)}</p>
     <p><strong>Talent allocation: 31/20/0 — 31 Holy, 20 Protection, 0 Retribution.</strong></p>
+    <h2>Selected talents</h2>
+    <ul>${build.selectedTalents.map((talent) => `<li>${escapeHtml(talent)}</li>`).join('')}</ul>
     ${buildSections}
-    <p><a href="/build">Open and edit this WoW Forever Paladin build</a></p>
+    <p><a href="${escapeHtml(build.plannerPath)}">Open and edit this WoW Forever Paladin build</a></p>
   </article>
 </main>`
 

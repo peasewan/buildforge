@@ -1,7 +1,7 @@
 {
   "eyebrow": "WoW Forever Class Guide",
-  "title": "WoW Forever Paladin Talent Guide & Build Planner",
-  "dek": "Understand the three Paladin talent paths, compare their roles, and turn an idea into a shareable build before you spend a point in game.",
+  "title": "WoW Forever Paladin Talents Guide",
+  "dek": "Explore every WoW Forever Paladin talent path, compare Holy, Protection, and Retribution, and turn an idea into a shareable 51-point build.",
   "sections": [
     {
       "id": "what-is-wow-forever",
@@ -15,7 +15,7 @@
       "id": "paladin-talents",
       "heading": "How Paladin talents shape a build",
       "paragraphs": [
-        "A Paladin is a hybrid class built around armor, weapons, healing, blessings, and the power of the Light. Talent points let a player emphasize one part of that identity or combine useful choices from several trees. The three paths are Holy, Protection, and Retribution. Each tree supports a different role, but a build does not have to spend every point in a single specialization.",
+        "Each WoW Forever Paladin talent develops part of a hybrid class built around armor, weapons, healing, blessings, and the power of the Light. Talent points let a player emphasize one part of that identity or combine useful choices from several trees. The three paths are Holy, Protection, and Retribution. Each tree supports a different role, but a build does not have to spend every point in a single specialization.",
         "The BuildForgeTools Talent Calculator follows the familiar tier structure: spending enough points in a tree opens deeper rows, while some talents also require a specific earlier choice. The Build Planner keeps the total visible, prevents invalid selections, and records the result in a shareable URL. It is useful for comparing ideas, discussing a setup with friends, and returning to a draft later."
       ]
     },

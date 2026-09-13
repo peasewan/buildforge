@@ -5,6 +5,7 @@ describe('public page routing', () => {
   it('serves the calculator for the canonical tool path and shared builds', () => {
     expect(pageForPath('/paladin')).toMatchObject({
       kind: 'planner',
+      title: 'WoW Forever Paladin Talent Calculator | BuildForgeTools',
       canonical: 'https://buildforgetools.com/paladin',
     })
     expect(pageForPath('/build')).toMatchObject({
@@ -16,8 +17,8 @@ describe('public page routing', () => {
   it('serves the guide with its own canonical metadata', () => {
     expect(pageForPath('/wow-forever-paladin-talents/')).toEqual({
       kind: 'guide',
-      title: 'WoW Forever Paladin Talent Guide & Build Planner | BuildForgeTools',
-      description: 'Learn how Holy, Protection, and Retribution Paladin talents work in WoW Forever, then plan and share a build with the BuildForgeTools calculator.',
+      title: 'WoW Forever Paladin Talents Guide | BuildForgeTools',
+      description: 'Explore every WoW Forever Paladin talent path for Holy, Protection, and Retribution, then open the talent calculator to create a 51-point build.',
       canonical: 'https://buildforgetools.com/wow-forever-paladin-talents',
     })
   })

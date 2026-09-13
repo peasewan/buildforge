@@ -7,15 +7,15 @@ export interface PageDefinition {
 
 const plannerPage: PageDefinition = {
   kind: 'planner',
-  title: 'BuildForgeTools — WoW Forever Paladin Talent Preview',
-  description: 'BuildForgeTools is a free WoW Forever Paladin talent preview and build planner — plan, preview, and share Holy, Protection, and Retribution builds.',
+  title: 'WoW Forever Paladin Talent Calculator | BuildForgeTools',
+  description: 'Use the WoW Forever Paladin Talent Calculator to plan all 51 points. Explore Holy, Protection, and Retribution in this free WoW Forever talents calculator.',
   canonical: 'https://buildforgetools.com/paladin',
 }
 
 const guidePage: PageDefinition = {
   kind: 'guide',
-  title: 'WoW Forever Paladin Talent Guide & Build Planner | BuildForgeTools',
-  description: 'Learn how Holy, Protection, and Retribution Paladin talents work in WoW Forever, then plan and share a build with the BuildForgeTools calculator.',
+  title: 'WoW Forever Paladin Talents Guide | BuildForgeTools',
+  description: 'Explore every WoW Forever Paladin talent path for Holy, Protection, and Retribution, then open the talent calculator to create a 51-point build.',
   canonical: 'https://buildforgetools.com/wow-forever-paladin-talents',
 }
 
