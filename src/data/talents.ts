@@ -40,7 +40,7 @@ const BRANCH_ICON: Record<Branch, string> = {
   retribution: '/images/icons/hammer.png',
 }
 
-const PLACEHOLDER_DESCRIPTION = 'Classic 1.12 talent — effect values pending verification.'
+const PLACEHOLDER_DESCRIPTION = 'Classic 1.12 talent — community preview.'
 
 type RawTalent = {
   id: string

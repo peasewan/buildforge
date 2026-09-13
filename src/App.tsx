@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Check, ChevronDown, Clipboard, LockKeyhole, Minus, RotateCcw, Sparkles, UsersRound } from 'lucide-react'
-import { branchNames, branchTaglines, talents, type Talent } from './data/talents'
+import { branchNames, branchTaglines, DATA_SOURCES, talents, type Talent } from './data/talents'
 import { branchPoints, canIncrement, decodeBuild, decrementTalent, encodeBuild, incrementTalent, totalPoints, type Branch, type Build } from './lib/build'
 
 const branches: Branch[] = ['holy', 'protection', 'retribution']
@@ -57,7 +57,7 @@ function TalentTree({ branch, build, onAdd, onRemove }: { branch: Branch; build:
             <div className="talent-tip" id={`tip-${talent.id}`}>
               <strong>{talent.name}</strong>
               <span>{talent.description}</span>
-              <em>{talent.status === 'community' ? 'Community preview data' : 'Pending verification'} · Source: {talent.source.join(', ')}</em>
+              <em>Community preview · Source: {talent.source.join(', ')}</em>
             </div>
           </div>
         )
@@ -147,7 +147,11 @@ export default function App() {
       <section className="spec-section" aria-label="Choose your specialization">
         <div className="shell">
           <h2>WoW Forever Paladin Talent Preview</h2>
-          <p className="spec-note">Talent data is currently in community preview — we're validating against Classic references.</p>
+          <div className="data-card" role="note">
+            <div className="data-card-title">Talent Data</div>
+            <p className="data-card-line"><span>✓</span> Classic references used — {DATA_SOURCES.join(', ')}</p>
+            <p className="data-card-progress">Community verification in progress</p>
+          </div>
           <p className="spec-cta">Choose your specialization:</p>
           <div className="spec-choices">
             {branches.map((item) => (
