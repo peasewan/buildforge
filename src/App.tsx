@@ -164,7 +164,7 @@ export default function App() {
             <div className="eyebrow"><Sparkles size={14} /> Paladin Talent Tool</div>
             <h1>WoW Forever<br /><span>Paladin Talent</span><br />Calculator</h1>
             <p className="lead">Interactive talent tree planner for Holy, Protection, and Retribution Paladins.</p>
-            <p className="hero-disclaimer">Community-built planning tool — not affiliated with Blizzard Entertainment.</p>
+            <p className="hero-disclaimer">Community preview tool for planning Paladin builds. Talent data is being verified from Classic references.</p>
             <p className="hero-actions-copy">Preview talents. <span /> Create builds. <span /> Share your setup.</p>
             <div className="button-row"><button className="button primary" onClick={() => openTool()}>Open Talent Calculator</button><button className="button secondary" onClick={() => openTool('holy')}>View Talents <ChevronDown size={16} /></button></div>
           </div>
