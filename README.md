@@ -2,6 +2,8 @@
 
 BuildForge is a visual WoW Forever Paladin talent planner for Holy, Protection, and Retribution builds.
 
+> **Community preview.** This is a community-built preview tool — talent data is being verified against Classic references (ClassicDB, Warcraft Tavern, Wowisclassic) and is not presented as a complete or authoritative database.
+
 ## Run locally
 
 ```bash

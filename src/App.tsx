@@ -57,7 +57,7 @@ function TalentTree({ branch, build, onAdd, onRemove }: { branch: Branch; build:
             <div className="talent-tip" id={`tip-${talent.id}`}>
               <strong>{talent.name}</strong>
               <span>{talent.description}</span>
-              <em>Preview data — pending verification</em>
+              <em>{talent.status === 'community' ? 'Community preview data' : 'Pending verification'} · Source: {talent.source.join(', ')}</em>
             </div>
           </div>
         )

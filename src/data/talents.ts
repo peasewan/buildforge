@@ -8,7 +8,7 @@ import type { Branch, TalentDefinition } from '../lib/build'
 // Protection and Retribution are complete first passes (with descriptions). Holy
 // is a complete structure with placeholder descriptions, pending its revision.
 export const DATA_VERSION = 'classic_1.12'
-export const DATA_SOURCE = 'classic-calculator-cross-check'
+export const DATA_SOURCES: string[] = ['ClassicDB', 'Warcraft Tavern', 'Wowisclassic']
 
 export type DataStatus = 'community' | 'unverified'
 
@@ -19,7 +19,7 @@ export interface Talent extends TalentDefinition {
   status: DataStatus
   x: number
   y: number
-  source: string
+  source: string[]
 }
 
 export const branchNames: Record<Branch, string> = {
@@ -120,7 +120,7 @@ function toTalents(branch: Branch, raw: RawTalent[]): Talent[] {
     description: talent.description ?? PLACEHOLDER_DESCRIPTION,
     x: COLUMN_X[talent.x],
     y: TIER_Y[talent.y],
-    source: DATA_SOURCE,
+    source: DATA_SOURCES,
   }))
 }
 
