@@ -52,7 +52,7 @@ export default function GuidePage() {
             </section>
           ))}
           <aside className="guide-note"><strong>Community preview</strong><p>Talent information is organized from community research and Classic references. Check current in-game tooltips before treating a value as final.</p></aside>
-          <div className="guide-final-cta"><img src="/images/icons/paladin-shield.png" alt="" /><div><span>Ready to test a build?</span><h2>Plan all 51 points in the Paladin calculator.</h2></div><a className="button primary" href="/paladin" onClick={() => track('guide_cta_click', { placement: 'footer' })}>Start Building <ArrowRight size={15} /></a></div>
+          <div className="guide-final-cta"><img src="/images/icons/paladin-shield.png" alt="" /><div><span>Ready to test a build?</span><h2>Plan all 51 points in the Paladin calculator.</h2></div><a className="button primary" href="/paladin" onClick={() => track('guide_cta_click', { placement: 'footer' })}>Create your WoW Forever Paladin build <ArrowRight size={15} /></a></div>
         </article>
       </div>
 
