@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { Check, ChevronDown, Clipboard, LockKeyhole, Minus, RotateCcw, Sparkles, UsersRound } from 'lucide-react'
 import { branchNames, branchTaglines, DATA_SOURCES, talents, type Talent } from './data/talents'
 import { branchPoints, canIncrement, decodeBuild, decrementTalent, encodeBuild, incrementTalent, totalPoints, type Branch, type Build } from './lib/build'
+import { track } from './lib/analytics'
 
 const branches: Branch[] = ['holy', 'protection', 'retribution']
 
@@ -80,11 +81,15 @@ export default function App() {
   }, [build])
 
   const openTool = (nextBranch?: Branch) => {
-    if (nextBranch) setBranch(nextBranch)
+    if (nextBranch) {
+      setBranch(nextBranch)
+      track('spec_select', { branch: nextBranch })
+    }
     toolRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
 
   const copyBuild = async () => {
+    track('build_copy', { points })
     const code = encodeBuild(build)
     const path = `/build?id=${code}`
     window.history.replaceState({}, '', path)
@@ -104,6 +109,11 @@ export default function App() {
     }
     setCopied(true)
     window.setTimeout(() => setCopied(false), 1800)
+  }
+
+  const addTalent = (talent: Talent) => {
+    track('talent_click', { talent_id: talent.id, branch: talent.branch })
+    setBuild((current) => incrementTalent(current, talent, talents))
   }
 
   return (
@@ -168,11 +178,11 @@ export default function App() {
       <section className="planner-section" id="planner" ref={toolRef}>
         <div className="shell">
           <div className="section-heading centered"><div className="eyebrow">Interactive Build Planner</div><h2>Build Your Paladin</h2><p>Choose a path, spend your points, and shape a build worth sharing.</p></div>
-          <div className="planner-tabs" role="tablist">{branches.map((item) => <button key={item} role="tab" aria-selected={branch === item} className={branch === item ? 'active' : ''} onClick={() => setBranch(item)}><img src={branchIcons[item]} alt="" /><span>{branchNames[item]}<small>{branchPoints(build, item, talents)} points</small></span></button>)}</div>
+          <div className="planner-tabs" role="tablist">{branches.map((item) => <button key={item} role="tab" aria-selected={branch === item} className={branch === item ? 'active' : ''} onClick={() => { setBranch(item); track('spec_select', { branch: item }) }}><img src={branchIcons[item]} alt="" /><span>{branchNames[item]}<small>{branchPoints(build, item, talents)} points</small></span></button>)}</div>
           <div className="planner-grid">
             <div className="tree-card">
               <div className="panel-heading"><div><span>{branchNames[branch]} Specialization</span><h3>{branchTaglines[branch]}</h3></div><div className="legend"><i className="dot available" /> Available <i className="dot chosen" /> Selected</div></div>
-              <TalentTree branch={branch} build={build} onAdd={(talent) => setBuild((current) => incrementTalent(current, talent, talents))} onRemove={(talent) => setBuild((current) => decrementTalent(current, talent, talents))} />
+              <TalentTree branch={branch} build={build} onAdd={addTalent} onRemove={(talent) => setBuild((current) => decrementTalent(current, talent, talents))} />
               <p className="tree-hint">Click a talent to add a rank. Use the small minus button to remove one.</p>
             </div>
             <aside className="summary-card">
