@@ -1,6 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App'
+import FeedbackWidget from './FeedbackWidget'
 import GuidePage from './GuidePage'
 import { pageForPath } from './lib/routes'
 import './styles.css'
@@ -16,5 +17,6 @@ document.querySelector<HTMLMetaElement>('meta[property="og:url"]')?.setAttribute
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     {page.kind === 'guide' ? <GuidePage /> : <App />}
+    <FeedbackWidget />
   </StrictMode>,
 )
