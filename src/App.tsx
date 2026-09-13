@@ -190,7 +190,7 @@ export default function App() {
           <h2>WoW Forever Paladin Talents</h2>
           <div className="data-card" role="note">
             <div className="data-card-title">Talent Data</div>
-            <p className="data-card-line"><span>✓</span> 52 demo talent nodes transcribed — {DATA_SOURCES.join(', ')}</p>
+            <p className="data-card-line"><span>✓</span> {talents.length} demo talent nodes transcribed — {DATA_SOURCES.join(', ')}</p>
             <p className="data-card-progress">Community verification in progress</p>
           </div>
           <p className="spec-cta">Choose your specialization:</p>

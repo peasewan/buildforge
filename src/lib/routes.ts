@@ -8,7 +8,7 @@ export interface PageDefinition {
 
 const plannerPage: PageDefinition = {
   kind: 'planner',
-  title: 'WoW Forever Paladin Talent Calculator | BuildForgeTools',
+  title: 'WoW Forever Paladin Talent Preview | BuildForgeTools',
   description: 'Use the WoW Forever Paladin Talent Calculator to explore the WoW Forever Paladin talent tree, plan all 51 points, and share Holy, Protection, or Retribution builds.',
   canonical: 'https://buildforgetools.com/paladin',
 }
