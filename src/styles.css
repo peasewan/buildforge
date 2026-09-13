@@ -101,7 +101,7 @@ h1 span { color: var(--light); background: linear-gradient(180deg, #fff7d7, #d9a
 .panel-heading h3 { color: #777e89; font-size: 11px; font-weight: 400; margin: 6px 0 0; }
 .legend { font-size: 9px; color: #737a84; display: flex; align-items: center; gap: 6px; }
 .dot { width: 6px; height: 6px; border-radius: 50%; margin-left: 8px; }.dot.available { border: 1px solid #b18438; }.dot.chosen { background: #ffd36b; box-shadow: 0 0 6px #ffd36b; }
-.tree-stage { height: 650px; max-width: 650px; margin: 0 auto; position: relative; background: radial-gradient(circle at 48% 50%, rgba(217,164,65,.06), transparent 40%), linear-gradient(90deg, transparent 24.8%, rgba(255,255,255,.02) 25%, transparent 25.2%, transparent 49.8%, rgba(255,255,255,.02) 50%, transparent 50.2%, transparent 74.8%, rgba(255,255,255,.02) 75%, transparent 75.2%); }
+.tree-stage { height: 650px; max-width: 650px; margin: 0 auto; position: relative; background: radial-gradient(circle at 48% 50%, rgba(217,164,65,.06), transparent 40%), linear-gradient(90deg, transparent 12.3%, rgba(255,255,255,.02) 12.5%, transparent 12.7%, transparent 37.3%, rgba(255,255,255,.02) 37.5%, transparent 37.7%, transparent 62.3%, rgba(255,255,255,.02) 62.5%, transparent 62.7%, transparent 87.3%, rgba(255,255,255,.02) 87.5%, transparent 87.7%); }
 .tree-watermark { position: absolute; inset: 45% 0 auto; text-align: center; font: 700 58px Cinzel, serif; color: rgba(255,255,255,.018); letter-spacing: .2em; text-transform: uppercase; }
 .tree-lines { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
 .tree-lines line { stroke: rgba(189,141,55,.38); stroke-width: .32; vector-effect: non-scaling-stroke; filter: drop-shadow(0 0 3px rgba(217,164,65,.3)); }

@@ -2,7 +2,7 @@
 
 BuildForge is a visual WoW Forever Paladin talent planner for Holy, Protection, and Retribution builds.
 
-> **Community preview.** This is a community-built preview tool — talent data is being verified against Classic references (ClassicDB, Warcraft Tavern, Wowisclassic) and is not presented as a complete or authoritative database.
+> **Community preview.** The planner currently contains 52 Paladin talent nodes transcribed from public WoW Forever demo recordings (Holy 18, Protection 16, Retribution 18). Values may change before launch and are not presented as a final authoritative database.
 
 ## Run locally
 
@@ -19,4 +19,4 @@ npm test
 npm run build
 ```
 
-Talent names in this first preview are marked as community reported or needing verification. The interface does not present unverified rank effects as confirmed data.
+Talent names and effects in this preview are marked as community reported. Classic comparisons are used as a secondary reference; the interface does not present demo values as final release data.
