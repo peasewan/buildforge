@@ -21,4 +21,13 @@ describe('public page routing', () => {
       canonical: 'https://buildforgetools.com/wow-forever-paladin-talents',
     })
   })
+
+  it('serves the Holy healing build as its own indexable page', () => {
+    expect(pageForPath('/wow-forever-paladin-build/')).toEqual({
+      kind: 'build-guide',
+      title: 'WoW Forever Paladin Build – Holy Healing 31/20/0 | BuildForgeTools',
+      description: 'Open a community-preview WoW Forever Holy Paladin healing build with a 31/20/0 talent allocation, then edit and share it in the BuildForge planner.',
+      canonical: 'https://buildforgetools.com/wow-forever-paladin-build',
+    })
+  })
 })

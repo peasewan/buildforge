@@ -2,6 +2,7 @@ import type { Build } from '../lib/build'
 
 export interface ExampleBuild {
   id: string
+  slug: string
   name: string
   allocation: string
   description: string
@@ -10,6 +11,7 @@ export interface ExampleBuild {
 
 export const HOLY_HEALING_BUILD: ExampleBuild = {
   id: 'holy-healing-31-20-0',
+  slug: 'wow-forever-paladin-build',
   name: 'Holy Paladin Healing Build',
   allocation: '31/20/0',
   description: "A healing-focused preview with Holy Shock, Light's Vigil, and early Protection utility.",

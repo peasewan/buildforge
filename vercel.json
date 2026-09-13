@@ -5,6 +5,7 @@
   "rewrites": [
     { "source": "/paladin", "destination": "/paladin/index.html" },
     { "source": "/build", "destination": "/paladin/index.html" },
+    { "source": "/wow-forever-paladin-build", "destination": "/wow-forever-paladin-build/index.html" },
     { "source": "/wow-forever-paladin-talents", "destination": "/wow-forever-paladin-talents/index.html" }
   ]
 }

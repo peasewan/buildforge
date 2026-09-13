@@ -22,4 +22,12 @@ describe('example builds', () => {
       branchPoints(allocated, 'retribution', talents),
     ]).toEqual([31, 20, 0])
   })
+
+  it('gives the example build a stable public page slug', () => {
+    const publicBuild = HOLY_HEALING_BUILD as typeof HOLY_HEALING_BUILD & { slug?: string }
+
+    expect(publicBuild.slug).toBe('wow-forever-paladin-build')
+    expect(HOLY_HEALING_BUILD.name).toBe('Holy Paladin Healing Build')
+    expect(HOLY_HEALING_BUILD.allocation).toBe('31/20/0')
+  })
 })

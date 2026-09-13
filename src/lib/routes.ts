@@ -1,5 +1,5 @@
 export interface PageDefinition {
-  kind: 'planner' | 'guide'
+  kind: 'planner' | 'guide' | 'build-guide'
   title: string
   description: string
   canonical: string
@@ -19,7 +19,16 @@ const guidePage: PageDefinition = {
   canonical: 'https://buildforgetools.com/wow-forever-paladin-talents',
 }
 
+const holyHealingBuildPage: PageDefinition = {
+  kind: 'build-guide',
+  title: 'WoW Forever Paladin Build – Holy Healing 31/20/0 | BuildForgeTools',
+  description: 'Open a community-preview WoW Forever Holy Paladin healing build with a 31/20/0 talent allocation, then edit and share it in the BuildForge planner.',
+  canonical: 'https://buildforgetools.com/wow-forever-paladin-build',
+}
+
 export function pageForPath(pathname: string): PageDefinition {
   const normalized = pathname.replace(/\/+$/, '') || '/'
-  return normalized === '/wow-forever-paladin-talents' ? guidePage : plannerPage
+  if (normalized === '/wow-forever-paladin-talents') return guidePage
+  if (normalized === '/wow-forever-paladin-build') return holyHealingBuildPage
+  return plannerPage
 }

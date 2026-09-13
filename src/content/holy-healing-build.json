@@ -1,0 +1,40 @@
+{
+  "eyebrow": "Community Preview Build",
+  "title": "WoW Forever Paladin Build – Holy Healing 31/20/0",
+  "dek": "Open a complete 51-point Holy Paladin healing build, inspect every selected talent, and continue editing it in the BuildForge Talent Calculator.",
+  "updated": "September 13, 2026",
+  "sections": [
+    {
+      "id": "build-overview",
+      "heading": "Holy Paladin Healing Build Overview",
+      "paragraphs": [
+        "This WoW Forever Paladin build spends 31 points in Holy and 20 points in Protection, with no points in Retribution. It is a community-preview setup built from the talent information currently visible in public WoW Forever demonstrations. The allocation reaches Holy Shock and Light’s Vigil in the Holy tree, then uses the remaining points on early Protection talents. It is presented as a practical starting point for testing the new tree, not as a final claim about the strongest healing build.",
+        "The page and calculator use the same saved build data. The 31/20/0 summary, individual ranks, and 51-point total therefore stay aligned. Select Open This Build to load the exact setup in the interactive planner. From there, every rank can be removed or replaced, and the resulting configuration can be copied as a shareable BuildForge link. No account is required."
+      ]
+    },
+    {
+      "id": "holy-talents",
+      "heading": "What the 31 Holy Points Include",
+      "paragraphs": [
+        "The Holy side starts with Divine Strength and Divine Intellect before moving through healing and spell-support talents. Healing Light, Spiritual Focus, Reverence, and Purifying Power form the middle of the allocation. Four points go into Illumination, while Holy Shock and Light’s Vigil each receive their single available rank. The build also includes Improved Seals and Unyielding Faith as part of the route through the preview tree.",
+        "Light’s Vigil is the final selected Holy talent in this setup and is one of the distinctive talents shown in current WoW Forever material. Its displayed effect may still change before release. BuildForge labels the underlying entries as community preview data so players can distinguish a useful transcription from final in-game confirmation. The calculator tooltip for each node includes its current source status."
+      ]
+    },
+    {
+      "id": "protection-talents",
+      "heading": "Why the Build Uses 20 Protection Points",
+      "paragraphs": [
+        "After reaching 31 points in Holy, this example places 20 points into the early Protection tree. Toughness and Redoubt receive five ranks each, followed by three points in Precision, two in Guardian’s Favor, and five in Anticipation. This creates a clear Holy-first hybrid for players who want to inspect healing talents alongside defensive utility in one complete allocation.",
+        "The 20 Protection points are an example path rather than a performance ranking. WoW Forever talent values, encounters, gear, and class tuning are still developing, so the value of a particular hybrid cannot be established from tree screenshots alone. Treat the setup as a reproducible preview for discussion and experimentation. If new verified information changes a prerequisite or rank limit, the planner data and this public build can be updated together."
+      ]
+    },
+    {
+      "id": "edit-and-share",
+      "heading": "Edit and Share This WoW Forever Paladin Build",
+      "paragraphs": [
+        "Open the build in the Talent Calculator to see the selected nodes illuminated across the Holy and Protection tabs. The summary panel lists each chosen talent and its rank. Removing a prerequisite also clears talents that can no longer remain active, which keeps edited builds valid. The point counter shows how many of the available 51 points remain as you compare alternatives.",
+        "When the allocation is ready, Copy Build Link creates a compact URL containing the selected talent identifiers and ranks. Anyone opening that URL receives the same configuration and can continue editing it. This makes the page useful as both an indexable WoW Forever Paladin build example and a starting point for community conversations while the talent system is still being documented."
+      ]
+    }
+  ]
+}

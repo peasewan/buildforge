@@ -10,6 +10,7 @@ export default defineConfig({
         main: resolve(import.meta.dirname, 'index.html'),
         paladin: resolve(import.meta.dirname, 'paladin/index.html'),
         guide: resolve(import.meta.dirname, 'wow-forever-paladin-talents/index.html'),
+        buildGuide: resolve(import.meta.dirname, 'wow-forever-paladin-build/index.html'),
       },
     },
   },
