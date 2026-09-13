@@ -17,7 +17,7 @@ document.querySelector<HTMLMetaElement>('meta[property="og:url"]')?.setAttribute
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    {page.kind === 'guide' ? <GuidePage /> : page.kind === 'build-guide' ? <BuildPage /> : <App />}
+    {page.kind === 'guide' ? <GuidePage /> : page.kind === 'build-guide' ? <BuildPage buildId={page.buildId} /> : <App />}
     <FeedbackWidget />
   </StrictMode>,
 )

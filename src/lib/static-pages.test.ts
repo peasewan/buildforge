@@ -13,6 +13,8 @@ describe('crawlable page templates', () => {
     ['/paladin', 'paladin/index.html'],
     ['/wow-forever-paladin-talents', 'wow-forever-paladin-talents/index.html'],
     ['/wow-forever-paladin-build', 'wow-forever-paladin-build/index.html'],
+    ['/wow-forever-protection-paladin-build', 'wow-forever-protection-paladin-build/index.html'],
+    ['/wow-forever-retribution-paladin-build', 'wow-forever-retribution-paladin-build/index.html'],
   ])('keeps static metadata aligned for %s', (pathname, filename) => {
     const template = readFileSync(`${process.cwd()}/${filename}`, 'utf8')
     const document = new DOMParser().parseFromString(template, 'text/html')

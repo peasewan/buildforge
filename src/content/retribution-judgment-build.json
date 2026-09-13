@@ -1,0 +1,65 @@
+{
+  "eyebrow": "Community Preview Build",
+  "title": "WoW Forever Retribution Paladin Build – Judgment 0/20/31",
+  "dek": "Open a complete 51-point WoW Forever Retribution Paladin build, inspect its offensive talent path, and continue editing it in the BuildForge Talent Calculator.",
+  "updated": "September 13, 2026",
+  "spec": "Retribution",
+  "heroHeading": "WoW Forever Retribution Paladin Build (0/20/31)",
+  "allocationSummary": "0 Holy, 20 Protection, 31 Retribution",
+  "footerHeading": "Open the complete 0/20/31 build.",
+  "plannerPath": "/build?id=anticipation.5~benediction.5~conviction.5~crusade.2~deflection.5~guardian_s_favor.2~holy_conduit.2~improved_judgement.2~precision.3~pursuit_of_justice.2~redoubt.5~sacred_arbiter.1~sanctified_judgement.3~seal_of_command.1~toughness.5~twist_of_light.1~two_handed_weapon_specialization.1~vengeance.1",
+  "selectedTalents": [
+    "Toughness 5/5",
+    "Redoubt 5/5",
+    "Precision 3/3",
+    "Guardian's Favor 2/2",
+    "Anticipation 5/5",
+    "Deflection 5/5",
+    "Benediction 5/5",
+    "Improved Judgement 2/2",
+    "Holy Conduit 2/2",
+    "Conviction 5/5",
+    "Sanctified Judgement 3/3",
+    "Seal of Command 1/1",
+    "Pursuit of Justice 2/2",
+    "Sacred Arbiter 1/1",
+    "Crusade 2/2",
+    "Two-Handed Weapon Specialization 1/3",
+    "Vengeance 1/3",
+    "Twist of Light 1/1"
+  ],
+  "sections": [
+    {
+      "id": "build-overview",
+      "heading": "WoW Forever Retribution Paladin Build Overview",
+      "paragraphs": [
+        "This WoW Forever Retribution Paladin build spends 31 points in Retribution and 20 points in Protection, with no points in Holy. The offensive path reaches Twist of Light and includes talents connected with Judgement, Seal of Command, critical strikes, movement, and weapon damage. The secondary points form an accessible defensive base. It is a complete example for testing and discussion, not a performance ranking or a final best-build recommendation.",
+        "The page is connected to the same allocation used by the BuildForge calculator. Selecting Open This Build loads all 51 points and reveals the 0/20/31 split in the summary. Every rank can then be removed or reassigned within the tree rules. After an edit, Copy Build Link produces a new URL that another player can open without registering for an account."
+      ]
+    },
+    {
+      "id": "retribution-talents",
+      "heading": "What the 31 Retribution Points Include",
+      "paragraphs": [
+        "The Retribution route begins with Deflection and Benediction before adding Improved Judgement, Holy Conduit, and Conviction. Sanctified Judgement, Seal of Command, and Pursuit of Justice continue the path through the middle rows. Sacred Arbiter and Crusade add more offensive choices, followed by one rank each in Two-Handed Weapon Specialization and Vengeance before the allocation reaches Twist of Light.",
+        "Twist of Light is the deepest selected talent in this example and one of the new entries shown in the WoW Forever community transcription. Its wording and surrounding path may change before launch. The planner records the currently documented structure and labels the information as Community Preview, allowing players to inspect a concrete tree without presenting uncertain values as confirmed live-game facts."
+      ]
+    },
+    {
+      "id": "protection-support",
+      "heading": "Why the Build Adds 20 Protection Points",
+      "paragraphs": [
+        "The secondary allocation uses Toughness, Redoubt, Precision, Guardian’s Favor, and Anticipation for exactly 20 Protection points. These talents provide a simple cross-tree route and keep the example focused on a deep Retribution identity. Their presence also makes it easy to compare offensive progression with early defensive utility inside one finished 51-point configuration.",
+        "This split should be treated as a starting point for experimentation. Encounters, itemization, talent tuning, and verified player testing will determine which secondary choices are valuable in practice. Visitors can replace the Protection points with another legal branch, compare the result, and share both links with a group. The calculator supplies the structure and totals while leaving performance conclusions open."
+      ]
+    },
+    {
+      "id": "edit-and-share",
+      "heading": "Edit and Share This Retribution Paladin Build",
+      "paragraphs": [
+        "Opening the build takes the visitor directly to the interactive planner with Retribution as the dominant 31-point branch. The selected talents list shows every active rank, and the branch counters preserve the exact 0/20/31 allocation. If a prerequisite is removed, dependent talents are cleared automatically so an edited share link does not retain an invalid path.",
+        "Use Copy Build Link after testing a different combination. The generated address stores talent identifiers and ranks, giving another player the same setup to inspect and modify. Combined with the visible source status, this page offers a practical WoW Forever Retribution Paladin build reference while remaining transparent about the early and changeable nature of the talent data."
+      ]
+    }
+  ]
+}

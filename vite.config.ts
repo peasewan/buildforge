@@ -11,6 +11,8 @@ export default defineConfig({
         paladin: resolve(import.meta.dirname, 'paladin/index.html'),
         guide: resolve(import.meta.dirname, 'wow-forever-paladin-talents/index.html'),
         buildGuide: resolve(import.meta.dirname, 'wow-forever-paladin-build/index.html'),
+        protectionBuild: resolve(import.meta.dirname, 'wow-forever-protection-paladin-build/index.html'),
+        retributionBuild: resolve(import.meta.dirname, 'wow-forever-retribution-paladin-build/index.html'),
       },
     },
   },

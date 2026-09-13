@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Check, ChevronDown, Clipboard, LockKeyhole, Minus, RotateCcw, Sparkles, UsersRound } from 'lucide-react'
-import { HOLY_HEALING_BUILD } from './data/builds'
+import { EXAMPLE_BUILDS, type ExampleBuild } from './data/builds'
 import { branchNames, branchTaglines, DATA_SOURCES, talents, type Talent } from './data/talents'
 import { branchPoints, canIncrement, decodeBuild, decrementTalent, encodeBuild, incrementTalent, totalPoints, type Branch, type Build } from './lib/build'
 import { track } from './lib/analytics'
@@ -135,14 +135,15 @@ export default function App() {
     setBuild((current) => incrementTalent(current, talent, talents))
   }
 
-  const loadExampleBuild = () => {
-    setBuild({ ...HOLY_HEALING_BUILD.build })
-    setBranch('holy')
+  const loadExampleBuild = (example: ExampleBuild) => {
+    const dominantBranch = branches.reduce((best, candidate) => branchPoints(example.build, candidate, talents) > branchPoints(example.build, best, talents) ? candidate : best, 'holy')
+    setBuild({ ...example.build })
+    setBranch(dominantBranch)
     setCopied(false)
     window.history.replaceState({}, '', '/paladin#planner')
     track('example_build_load', {
-      build_id: HOLY_HEALING_BUILD.id,
-      allocation: HOLY_HEALING_BUILD.allocation,
+      build_id: example.id,
+      allocation: example.allocation,
     })
   }
 
@@ -208,12 +209,17 @@ export default function App() {
       <section className="planner-section" id="planner" ref={toolRef}>
         <div className="shell">
           <div className="section-heading centered"><div className="eyebrow">Interactive Build Planner</div><h2>WoW Forever Paladin Talent Tree</h2><p>Choose Holy, Protection, or Retribution, spend all 51 points, and shape a build worth sharing.</p></div>
-          <aside className="example-build-card" aria-label="Example Paladin build">
-            <div className="example-build-icon"><Sparkles size={20} /></div>
-            <div><span>Example build</span><h3><a href="/wow-forever-paladin-build">{HOLY_HEALING_BUILD.name}</a></h3><p>{HOLY_HEALING_BUILD.description}</p></div>
-            <strong>{HOLY_HEALING_BUILD.allocation}<small>Holy / Protection / Retribution</small></strong>
-            <button type="button" onClick={loadExampleBuild}>Load Build</button>
-          </aside>
+          <section className="popular-builds" aria-label="Popular Paladin builds">
+            <div className="popular-builds-heading"><div><span>Community preview examples</span><h2>Popular Paladin Builds</h2></div><p>Open a complete build page or load all 51 points into the calculator.</p></div>
+            <div className="popular-build-grid">{EXAMPLE_BUILDS.map((example, index) => (
+              <article className="example-build-card" key={example.id}>
+                <div className="example-build-icon"><img src={index === 0 ? branchIcons.holy : index === 1 ? branchIcons.protection : branchIcons.retribution} alt="" /></div>
+                <div><span>Example build</span><h3><a href={`/${example.slug}`}>{example.name}</a></h3><p>{example.description}</p></div>
+                <strong>{example.allocation}<small>Holy / Protection / Retribution</small></strong>
+                <button type="button" onClick={() => loadExampleBuild(example)}>Load Build</button>
+              </article>
+            ))}</div>
+          </section>
           <div className="planner-tabs" role="tablist">{branches.map((item) => <button key={item} role="tab" aria-selected={branch === item} className={branch === item ? 'active' : ''} onClick={() => { setBranch(item); track('spec_select', { branch: item }) }}><img src={branchIcons[item]} alt="" /><span>{branchNames[item]}<small>{branchPoints(build, item, talents)} points</small></span></button>)}</div>
           <div className="planner-grid">
             <div className="tree-card">

@@ -1,21 +1,26 @@
 import { describe, expect, it } from 'vitest'
-import content from './holy-healing-build.json'
-import { HOLY_HEALING_BUILD } from '../data/builds'
+import holyContent from './holy-healing-build.json'
+import protectionContent from './protection-shield-build.json'
+import retributionContent from './retribution-judgment-build.json'
+import { HOLY_HEALING_BUILD, PROTECTION_SHIELD_BUILD, RETRIBUTION_JUDGMENT_BUILD } from '../data/builds'
 import { decodeBuild } from '../lib/build'
 import { talents } from '../data/talents'
 
-describe('prerendered Holy healing build content', () => {
-  it('contains the exact interactive build and every selected talent', () => {
-    const prerender = content as typeof content & { plannerPath?: string; selectedTalents?: string[] }
+const pages = [
+  [holyContent, HOLY_HEALING_BUILD],
+  [protectionContent, PROTECTION_SHIELD_BUILD],
+  [retributionContent, RETRIBUTION_JUDGMENT_BUILD],
+] as const
 
-    expect(prerender.plannerPath).toBeTypeOf('string')
-    if (!prerender.plannerPath) return
-    expect(prerender.plannerPath).toMatch(/^\/build\?id=/)
-    const encoded = new URLSearchParams(prerender.plannerPath?.split('?')[1]).get('id') ?? ''
-    expect(decodeBuild(encoded, talents)).toEqual(HOLY_HEALING_BUILD.build)
-    expect(prerender.selectedTalents).toHaveLength(16)
-    expect(prerender.selectedTalents).toContain('Holy Shock 1/1')
-    expect(prerender.selectedTalents).toContain("Light's Vigil 1/1")
-    expect(prerender.selectedTalents).toContain('Anticipation 5/5')
+describe('prerendered build content', () => {
+  it.each(pages)('contains the exact interactive build and every selected talent for $1.name', (content, example) => {
+    expect(content.plannerPath).toMatch(/^\/build\?id=/)
+    const encoded = new URLSearchParams(content.plannerPath.split('?')[1]).get('id') ?? ''
+    expect(decodeBuild(encoded, talents)).toEqual(example.build)
+
+    const expectedTalents = talents
+      .filter((talent) => (example.build[talent.id] ?? 0) > 0)
+      .map((talent) => `${talent.name} ${example.build[talent.id]}/${talent.maxRank}`)
+    expect(content.selectedTalents).toEqual(expectedTalents)
   })
 })
