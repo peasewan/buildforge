@@ -5,6 +5,14 @@ import { branchPoints, canIncrement, decodeBuild, decrementTalent, encodeBuild, 
 
 const branches: Branch[] = ['holy', 'protection', 'retribution']
 
+const branchIcons: Record<Branch, string> = {
+  holy: '/images/icons/holy-strike.png',
+  protection: '/images/icons/shield.png',
+  retribution: '/images/icons/hammer.png',
+}
+
+const branchMax = (branch: Branch) => talents.filter((talent) => talent.branch === branch).reduce((sum, talent) => sum + talent.maxRank, 0)
+
 function initialBuild(): Build {
   const params = new URLSearchParams(window.location.search)
   const shared = params.get('id')
@@ -99,7 +107,7 @@ export default function App() {
     <main>
       <header className="nav shell">
         <a className="brand" href="#top"><img src="/images/icons/paladin-shield.png" alt="" /><span>BUILD</span><b>FORGE</b></a>
-        <nav aria-label="Primary navigation"><a href="#planner">Calculator</a><a href="#data">Data</a><a href="#about">About</a></nav>
+        <nav aria-label="Primary navigation"><a href="#planner">Talent Calculator</a><a href="#planner">Builds</a><a href="#data">Data</a></nav>
         <button className="nav-cta" onClick={() => openTool()}>Open Planner</button>
       </header>
 
@@ -111,24 +119,47 @@ export default function App() {
           <div className="hero-copy">
             <div className="eyebrow"><Sparkles size={14} /> Paladin Talent Tool</div>
             <h1>WoW Forever<br /><span>Paladin Talent</span><br />Calculator</h1>
-            <p className="lead">Plan your Holy, Protection, and Retribution builds.</p>
+            <p className="lead">Interactive talent tree planner for Holy, Protection, and Retribution Paladins.</p>
             <p className="hero-actions-copy">Preview talents. <span /> Create builds. <span /> Share your setup.</p>
-            <div className="button-row"><button className="button primary" onClick={() => openTool()}>Start Building</button><button className="button secondary" onClick={() => openTool('holy')}>View Talents <ChevronDown size={16} /></button></div>
+            <div className="button-row"><button className="button primary" onClick={() => openTool()}>Create Paladin Build</button><button className="button secondary" onClick={() => openTool('holy')}>View Talents <ChevronDown size={16} /></button></div>
           </div>
           <aside className="hud-card">
             <div className="hud-top"><span>Talent Preview</span><i>Live</i></div>
             <div className="hud-tabs">{branches.map((item) => <button key={item} onClick={() => openTool(item)} className={item === branch ? 'active' : ''}>{branchNames[item]}</button>)}</div>
             <div className="hud-emblem"><div className="emblem-rings" /><img src="/images/icons/paladin-shield.png" alt="Paladin shield emblem" /></div>
             <div className="hud-points"><span>Talent Points</span><strong>{points} <small>/ 51</small></strong></div>
+            <div className="hud-branches">{branches.map((item) => (
+              <div className="hud-branch" key={item}>
+                <span>{branchNames[item]}</span>
+                <b>{branchPoints(build, item, talents)}<small>/{branchMax(item)}</small></b>
+              </div>
+            ))}</div>
             <div className="hud-status"><i /> {points ? 'Build in progress' : 'Ready to build'}</div>
+            <div className="hud-perks"><span>3 Talent Trees</span><span>51 Points Available</span><span>Shareable Builds</span></div>
           </aside>
+        </div>
+      </section>
+
+      <section className="spec-section" aria-label="Choose your specialization">
+        <div className="shell">
+          <h2>WoW Forever Paladin Talent Calculator</h2>
+          <p className="spec-cta">Choose your specialization:</p>
+          <div className="spec-choices">
+            {branches.map((item) => (
+              <button key={item} className="spec-choice" onClick={() => openTool(item)}>
+                <img src={branchIcons[item]} alt="" />
+                <span>{branchNames[item]}</span>
+                <small>{branchTaglines[item]}</small>
+              </button>
+            ))}
+          </div>
         </div>
       </section>
 
       <section className="planner-section" id="planner" ref={toolRef}>
         <div className="shell">
           <div className="section-heading centered"><div className="eyebrow">Interactive Build Planner</div><h2>Build Your Paladin</h2><p>Choose a path, spend your points, and shape a build worth sharing.</p></div>
-          <div className="planner-tabs" role="tablist">{branches.map((item) => <button key={item} role="tab" aria-selected={branch === item} className={branch === item ? 'active' : ''} onClick={() => setBranch(item)}><img src={item === 'protection' ? '/images/icons/shield.png' : item === 'retribution' ? '/images/icons/hammer.png' : '/images/icons/holy-strike.png'} alt="" /><span>{branchNames[item]}<small>{branchPoints(build, item, talents)} points</small></span></button>)}</div>
+          <div className="planner-tabs" role="tablist">{branches.map((item) => <button key={item} role="tab" aria-selected={branch === item} className={branch === item ? 'active' : ''} onClick={() => setBranch(item)}><img src={branchIcons[item]} alt="" /><span>{branchNames[item]}<small>{branchPoints(build, item, talents)} points</small></span></button>)}</div>
           <div className="planner-grid">
             <div className="tree-card">
               <div className="panel-heading"><div><span>{branchNames[branch]} Specialization</span><h3>{branchTaglines[branch]}</h3></div><div className="legend"><i className="dot available" /> Available <i className="dot chosen" /> Selected</div></div>
