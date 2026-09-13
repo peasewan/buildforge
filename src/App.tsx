@@ -207,7 +207,7 @@ export default function App() {
 
       <section className="planner-section" id="planner" ref={toolRef}>
         <div className="shell">
-          <div className="section-heading centered"><div className="eyebrow">Interactive Build Planner</div><h2>Build Your Paladin</h2><p>Choose a path, spend your points, and shape a build worth sharing.</p></div>
+          <div className="section-heading centered"><div className="eyebrow">Interactive Build Planner</div><h2>WoW Forever Paladin Talent Tree</h2><p>Choose Holy, Protection, or Retribution, spend all 51 points, and shape a build worth sharing.</p></div>
           <aside className="example-build-card" aria-label="Example Paladin build">
             <div className="example-build-icon"><Sparkles size={20} /></div>
             <div><span>Example build</span><h3><a href="/wow-forever-paladin-build">{HOLY_HEALING_BUILD.name}</a></h3><p>{HOLY_HEALING_BUILD.description}</p></div>

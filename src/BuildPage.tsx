@@ -34,7 +34,7 @@ export default function BuildPage() {
           <div className="build-hero-copy">
             <div className="eyebrow"><Sparkles size={14} /> {buildContent.eyebrow}</div>
             <h1>WoW Forever<br /><span>Paladin Build</span></h1>
-            <h2>Holy Healing · 31/20/0</h2>
+            <h2>WoW Forever Holy Paladin Build (31/20/0)</h2>
             <p>{buildContent.dek}</p>
             <div className="build-actions"><OpenBuildLink placement="hero"><Calculator size={16} /> Open This Build</OpenBuildLink><a className="text-link" href="#talent-allocation">View selected talents <ArrowRight size={15} /></a></div>
             <small>Updated {buildContent.updated} · Community preview data</small>
