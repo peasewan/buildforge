@@ -10,6 +10,9 @@ import { pageForPath } from './lib/routes'
 import './styles.css'
 
 const page = pageForPath(window.location.pathname)
+const robots = document.querySelector<HTMLMetaElement>('meta[name="robots"]') ?? document.head.appendChild(document.createElement('meta'))
+robots.setAttribute('name', 'robots')
+robots.setAttribute('content', page.robots)
 document.title = page.title
 document.querySelector<HTMLMetaElement>('meta[name="description"]')?.setAttribute('content', page.description)
 document.querySelector<HTMLLinkElement>('link[rel="canonical"]')?.setAttribute('href', page.canonical)

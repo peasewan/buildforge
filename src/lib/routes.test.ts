@@ -12,7 +12,9 @@ describe('public page routing', () => {
     expect(pageForPath('/build')).toMatchObject({
       kind: 'planner',
       canonical: 'https://buildforgetools.com/paladin',
+      robots: 'noindex, follow',
     })
+    expect(pageForPath('/paladin').robots).toBe('index, follow')
   })
 
   it('serves the guide with its own canonical metadata', () => {
@@ -21,6 +23,7 @@ describe('public page routing', () => {
       title: 'WoW Forever Paladin Talent Guide & Build Planner | BuildForgeTools',
       description: 'Explore every WoW Forever Paladin talent path for Holy, Protection, and Retribution, then open the talent calculator to create a 51-point build.',
       canonical: 'https://buildforgetools.com/wow-forever-paladin-talents',
+      robots: 'index, follow',
     })
   })
 
@@ -31,6 +34,7 @@ describe('public page routing', () => {
       title: 'WoW Forever Paladin Build – Holy Healing 31/20/0 | BuildForgeTools',
       description: 'Open a community-preview WoW Forever Holy Paladin build with a 31/20/0 healing talent allocation, then edit and share it in the BuildForge planner.',
       canonical: 'https://buildforgetools.com/wow-forever-paladin-build',
+      robots: 'index, follow',
     })
   })
 
@@ -56,6 +60,7 @@ describe('public page routing', () => {
       title: 'WoW Forever Paladin Builds & Talent Calculator | BuildForgeTools',
       description: 'Explore WoW Forever Paladin builds for Holy, Protection, and Retribution. Plan talents, customize builds, and share your setup with BuildForgeTools.',
       canonical: 'https://buildforgetools.com/wow-forever-paladin-builds',
+      robots: 'index, follow',
     })
   })
 })

@@ -6,6 +6,7 @@ export interface PageDefinition {
   title: string
   description: string
   canonical: string
+  robots: 'index, follow' | 'noindex, follow'
   buildId?: ExampleBuildId
   landingPageId?: BuildLandingPageId
 }
@@ -15,6 +16,7 @@ const plannerPage: PageDefinition = {
   title: 'WoW Forever Paladin Talent Preview | BuildForgeTools',
   description: 'Use the WoW Forever Paladin Talent Calculator to explore the WoW Forever Paladin talent tree, plan all 51 points, and share Holy, Protection, or Retribution builds.',
   canonical: 'https://buildforgetools.com/paladin',
+  robots: 'index, follow',
 }
 
 const guidePage: PageDefinition = {
@@ -22,6 +24,7 @@ const guidePage: PageDefinition = {
   title: 'WoW Forever Paladin Talent Guide & Build Planner | BuildForgeTools',
   description: 'Explore every WoW Forever Paladin talent path for Holy, Protection, and Retribution, then open the talent calculator to create a 51-point build.',
   canonical: 'https://buildforgetools.com/wow-forever-paladin-talents',
+  robots: 'index, follow',
 }
 
 const holyHealingBuildPage: PageDefinition = {
@@ -30,6 +33,7 @@ const holyHealingBuildPage: PageDefinition = {
   title: 'WoW Forever Paladin Build – Holy Healing 31/20/0 | BuildForgeTools',
   description: 'Open a community-preview WoW Forever Holy Paladin build with a 31/20/0 healing talent allocation, then edit and share it in the BuildForge planner.',
   canonical: 'https://buildforgetools.com/wow-forever-paladin-build',
+  robots: 'index, follow',
 }
 
 const protectionBuildPage: PageDefinition = {
@@ -38,6 +42,7 @@ const protectionBuildPage: PageDefinition = {
   title: 'WoW Forever Protection Paladin Build | BuildForgeTools',
   description: 'Open a community-preview WoW Forever Protection Paladin build with a complete 20/31/0 allocation, then edit and share it in the BuildForge planner.',
   canonical: 'https://buildforgetools.com/wow-forever-protection-paladin-build',
+  robots: 'index, follow',
 }
 
 const retributionBuildPage: PageDefinition = {
@@ -46,6 +51,7 @@ const retributionBuildPage: PageDefinition = {
   title: 'WoW Forever Retribution Paladin Build | BuildForgeTools',
   description: 'Open a community-preview WoW Forever Retribution Paladin build with a complete 0/20/31 allocation, then edit and share it in the BuildForge planner.',
   canonical: 'https://buildforgetools.com/wow-forever-retribution-paladin-build',
+  robots: 'index, follow',
 }
 
 const buildsHubPage: PageDefinition = {
@@ -53,10 +59,12 @@ const buildsHubPage: PageDefinition = {
   title: 'WoW Forever Paladin Builds & Talent Calculator | BuildForgeTools',
   description: 'Explore WoW Forever Paladin builds for Holy, Protection, and Retribution. Plan talents, customize builds, and share your setup with BuildForgeTools.',
   canonical: 'https://buildforgetools.com/wow-forever-paladin-builds',
+  robots: 'index, follow',
 }
 
 export function pageForPath(pathname: string): PageDefinition {
   const normalized = pathname.replace(/\/+$/, '') || '/'
+  if (normalized === '/build') return { ...plannerPage, robots: 'noindex, follow' }
   if (normalized === '/wow-forever-paladin-builds') return buildsHubPage
   const landing = BUILD_LANDING_PAGES.find((page) => normalized === `/${page.slug}`)
   if (landing) return {
@@ -65,6 +73,7 @@ export function pageForPath(pathname: string): PageDefinition {
     title: landing.metaTitle,
     description: landing.description,
     canonical: `https://buildforgetools.com/${landing.slug}`,
+    robots: 'index, follow',
   }
   if (normalized === '/wow-forever-paladin-talents') return guidePage
   if (normalized === '/wow-forever-paladin-build') return holyHealingBuildPage

@@ -3,6 +3,14 @@
     { "source": "/", "destination": "/paladin", "permanent": true },
     { "source": "/wow-forever-holy-paladin-build", "destination": "/wow-forever-paladin-build", "permanent": true }
   ],
+  "headers": [
+    {
+      "source": "/build",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex, follow" }
+      ]
+    }
+  ],
   "rewrites": [
     { "source": "/paladin", "destination": "/paladin/index.html" },
     { "source": "/build", "destination": "/paladin/index.html" },
