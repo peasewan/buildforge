@@ -5,6 +5,7 @@ import { BUILD_LANDING_PAGES } from './data/buildLandingPages'
 import BuildCard, { type BuildCardIcon } from './BuildCard'
 import { branchNames, branchTaglines, DATA_SOURCES, talents, type Talent } from './data/talents'
 import { branchPoints, canIncrement, decodeBuild, decrementTalent, encodeBuild, incrementTalent, totalPoints, type Branch, type Build } from './lib/build'
+import { claimBuildCompletion, loadClaimedBuildCompletions, saveClaimedBuildCompletions } from './lib/buildCompletion'
 import { track } from './lib/analytics'
 
 const branches: Branch[] = ['holy', 'protection', 'retribution']
@@ -75,6 +76,8 @@ export default function App() {
   const [build, setBuild] = useState<Build>(initialBuild)
   const [copied, setCopied] = useState(false)
   const toolRef = useRef<HTMLElement>(null)
+  const completedBuildsRef = useRef<Set<string> | null>(null)
+  if (completedBuildsRef.current === null) completedBuildsRef.current = loadClaimedBuildCompletions()
   const points = totalPoints(build)
   const selected = useMemo(() => talents.filter((talent) => (build[talent.id] ?? 0) > 0), [build])
   const currentBranch = branches.reduce((best, candidate) => branchPoints(build, candidate, talents) > branchPoints(build, best, talents) ? candidate : best, branch)
@@ -134,7 +137,17 @@ export default function App() {
 
   const addTalent = (talent: Talent) => {
     track('talent_click', { talent_id: talent.id, branch: talent.branch })
-    setBuild((current) => incrementTalent(current, talent, talents))
+    const nextBuild = incrementTalent(build, talent, talents)
+    if (claimBuildCompletion(build, nextBuild, completedBuildsRef.current!)) {
+      saveClaimedBuildCompletions(completedBuildsRef.current!)
+      const dominantBranch = branches.reduce((best, candidate) => branchPoints(nextBuild, candidate, talents) > branchPoints(nextBuild, best, talents) ? candidate : best, talent.branch)
+      track('build_complete', {
+        points: 51,
+        branch: dominantBranch,
+        selected_talents: Object.keys(nextBuild).length,
+      })
+    }
+    setBuild(nextBuild)
   }
 
   const loadExampleBuild = (example: ExampleBuild) => {
