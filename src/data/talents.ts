@@ -11,16 +11,46 @@ export const DATA_SOURCES: string[] = [
   "Warcraft Wiki Classic comparison",
 ];
 
-export type DataStatus = "community" | "unverified";
+export type ChangeType = "classic_unchanged" | "moved" | "updated" | "new";
+export type VerificationStatus =
+  | "official_confirmed"
+  | "demo_verified"
+  | "community_correlated"
+  | "estimated"
+  | "needs_review";
+
+export type TalentSourceType =
+  | "official"
+  | "demo_recording"
+  | "community_transcription"
+  | "classic_reference";
+
+export interface TalentSource {
+  type: TalentSourceType;
+  label: string;
+  url?: string;
+  locator?: string;
+}
+
+export interface TalentVerification {
+  name: VerificationStatus;
+  maxRank: VerificationStatus;
+  tier: VerificationStatus;
+  description: VerificationStatus;
+  prerequisite: VerificationStatus;
+}
 
 export interface Talent extends TalentDefinition {
   name: string;
   description: string;
   icon: string;
-  status: DataStatus;
+  dataVersion: typeof DATA_VERSION;
+  changeType: ChangeType;
+  verificationStatus: VerificationStatus;
+  verification: TalentVerification;
   x: number;
   y: number;
-  source: string[];
+  sources: TalentSource[];
 }
 
 export const branchNames: Record<Branch, string> = {
@@ -66,6 +96,36 @@ const TIER_Y: Record<number, number> = {
   5: 78,
   6: 92,
 };
+
+const OFFICIAL_DEEP_DIVE_URL =
+  "https://worldofwarcraft.blizzard.com/en-us/news/24303313/world-of-warcraft-forever-deep-dive-panel-recap";
+const COMMUNITY_TRANSCRIPTION_URL = "https://talentsforever.com/";
+const CLASSIC_REFERENCE_URL =
+  "https://warcraft.wiki.gg/wiki/Paladin_talents_(Classic)";
+
+// Blizzard's Forever Deep Dive names these talents and describes their broad
+// mechanics. Exact ranks, positions, tooltip values, and arrows remain sourced
+// from the public demo transcription until Blizzard publishes the full trees.
+const OFFICIALLY_NAMED_TALENTS = new Set([
+  "improved_holy_strike",
+  "voice_of_truth",
+  "reverence",
+  "infusion_of_light",
+  "holy_shock",
+  "consecrated_ground",
+  "light_s_vigil",
+  "improved_seal_of_fury",
+  "shield_specialization",
+  "swift_judgement",
+  "templar_s_bulwark",
+  "reckoning",
+  "iron_creed",
+  "vindication",
+  "sacred_arbiter",
+  "champion_of_the_light",
+  "instrument_of_law",
+  "twist_of_light",
+]);
 
 const holy: RawTalent[] = [
   {
@@ -692,23 +752,65 @@ const retribution: RawTalent[] = [
 ];
 
 function toTalents(branch: Branch, raw: RawTalent[]): Talent[] {
-  return raw.map((talent) => ({
-    id: talent.id,
-    name: talent.name,
-    branch,
-    maxRank: talent.rank,
-    requiredTreePoints: talent.requiredTreePoints,
-    prerequisite: talent.prerequisite.length ? talent.prerequisite : undefined,
-    icon: BRANCH_ICON[branch],
-    status: "community",
-    description: talent.description,
-    x: COLUMN_X[talent.x],
-    y: TIER_Y[talent.y],
-    source:
-      talent.review === "classic"
-        ? ["WoW Forever demo transcription", "Warcraft Wiki Classic comparison"]
-        : ["WoW Forever demo transcription"],
-  }));
+  return raw.map((talent) => {
+    const officiallyNamed = OFFICIALLY_NAMED_TALENTS.has(talent.id);
+    const sources: TalentSource[] = [
+      {
+        type: "demo_recording",
+        label: "WoW Forever public demo",
+        locator: `${branchNames[branch]} talent tree`,
+      },
+      {
+        type: "community_transcription",
+        label: "Talents Forever transcription",
+        url: COMMUNITY_TRANSCRIPTION_URL,
+      },
+    ];
+
+    if (officiallyNamed) {
+      sources.unshift({
+        type: "official",
+        label: "Blizzard WoW Forever Deep Dive",
+        url: OFFICIAL_DEEP_DIVE_URL,
+        locator: "A Closer Look at Paladins",
+      });
+    }
+
+    if (talent.review === "classic") {
+      sources.push({
+        type: "classic_reference",
+        label: "Warcraft Wiki Classic comparison",
+        url: CLASSIC_REFERENCE_URL,
+      });
+    }
+
+    return {
+      id: talent.id,
+      name: talent.name,
+      branch,
+      maxRank: talent.rank,
+      requiredTreePoints: talent.requiredTreePoints,
+      prerequisite: talent.prerequisite.length
+        ? talent.prerequisite
+        : undefined,
+      icon: BRANCH_ICON[branch],
+      dataVersion: DATA_VERSION,
+      changeType:
+        talent.review === "classic" ? "classic_unchanged" : talent.review,
+      verificationStatus: "demo_verified",
+      verification: {
+        name: officiallyNamed ? "official_confirmed" : "demo_verified",
+        maxRank: "demo_verified",
+        tier: "demo_verified",
+        description: "demo_verified",
+        prerequisite: "demo_verified",
+      },
+      description: talent.description,
+      x: COLUMN_X[talent.x],
+      y: TIER_Y[talent.y],
+      sources,
+    };
+  });
 }
 
 export const talents: Talent[] = [
@@ -716,3 +818,10 @@ export const talents: Talent[] = [
   ...toTalents("protection", protection),
   ...toTalents("retribution", retribution),
 ];
+
+export function talentEvidenceLabel(talent: Talent): string {
+  if (talent.verification.name === "official_confirmed") {
+    return "Officially confirmed name · Demo-verified details";
+  }
+  return "Demo-verified community transcription";
+}

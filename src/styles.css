@@ -126,8 +126,8 @@ h1 span { color: var(--light); background: linear-gradient(180deg, #fff7d7, #d9a
 .lock-icon { position: absolute; left: 50%; top: 50%; translate: -50% -50%; color: #777e87; filter: drop-shadow(0 1px 2px #000); }
 .rank-minus { position: absolute; left: -12px; bottom: -4px; width: 24px; height: 24px; padding: 0; border-radius: 50%; border: 1px solid rgba(255,255,255,.14); background: #171b22; display: grid; place-items: center; cursor: pointer; z-index: 3; }
 .talent-tip { position: absolute; pointer-events: none; opacity: 0; width: 220px; left: 82px; top: -7px; padding: 12px; background: #07090d; border: 1px solid rgba(217,164,65,.3); border-radius: 8px; box-shadow: 0 12px 30px rgba(0,0,0,.6); transition: opacity .15s; z-index: 20; }
-.talent-position:hover .talent-tip, .talent-node:focus + .rank-minus + .talent-tip, .talent-node:focus + .talent-tip { opacity: 1; }
-.talent-tip strong, .talent-tip span, .talent-tip em { display: block; }.talent-tip strong { font: 600 12px Cinzel, serif; color: #f1d589; }.talent-tip span { color: #9298a2; font-size: 10px; line-height: 1.5; margin: 6px 0; }.talent-tip em { font-size: 9px; color: #b79049; font-style: normal; }
+.talent-position:hover .talent-tip, .talent-node:focus + .rank-minus + .talent-tip, .talent-node:focus + .talent-tip { opacity: 1; pointer-events: auto; }
+.talent-tip strong, .talent-tip > span, .talent-tip em, .talent-tip em > span { display: block; }.talent-tip strong { font: 600 12px Cinzel, serif; color: #f1d589; }.talent-tip > span { color: #9298a2; font-size: 10px; line-height: 1.5; margin: 6px 0; }.talent-tip em { font-size: 9px; color: #b79049; font-style: normal; }.talent-tip em > span { margin-top: 5px; }.talent-tip .talent-sources > span { display: inline; margin: 0; }.talent-tip a { color: #d9b45d; text-decoration: underline; text-underline-offset: 2px; }
 .tree-hint { text-align: center; color: #5e6570; font-size: 10px; margin: 0; }
 .summary-card { padding: 22px; position: sticky; top: 20px; }
 .summary-title { border-bottom: 1px solid rgba(255,255,255,.07); padding-bottom: 17px; }

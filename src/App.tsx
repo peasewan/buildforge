@@ -3,7 +3,7 @@ import { Check, ChevronDown, Clipboard, LockKeyhole, Minus, RotateCcw, Sparkles,
 import { EXAMPLE_BUILDS, type ExampleBuild } from './data/builds'
 import { BUILD_LANDING_PAGES } from './data/buildLandingPages'
 import BuildCard, { type BuildCardIcon } from './BuildCard'
-import { branchNames, branchTaglines, DATA_SOURCES, talents, type Talent } from './data/talents'
+import { branchNames, branchTaglines, DATA_SOURCES, talentEvidenceLabel, talents, type Talent } from './data/talents'
 import { branchPoints, canIncrement, decodeBuild, decrementTalent, encodeBuild, incrementTalent, totalPoints, type Branch, type Build } from './lib/build'
 import { claimBuildCompletion, loadClaimedBuildCompletions, saveClaimedBuildCompletions } from './lib/buildCompletion'
 import { track } from './lib/analytics'
@@ -62,7 +62,24 @@ export function TalentTree({ branch, build, onAdd, onRemove }: { branch: Branch;
             <div className="talent-tip" id={`tip-${talent.id}`}>
               <strong>{talent.name}</strong>
               <span>{talent.description}</span>
-              <em>Community preview · Source: {talent.source.join(', ')}</em>
+              <em>
+                <span>{talentEvidenceLabel(talent)}</span>
+                <span className="talent-sources">
+                  Sources:{' '}
+                  {talent.sources.map((source, index) => (
+                    <span key={`${talent.id}-${source.type}`}>
+                      {index > 0 && ', '}
+                      {source.url ? (
+                        <a href={source.url} target="_blank" rel="noreferrer">
+                          {source.label}
+                        </a>
+                      ) : (
+                        source.label
+                      )}
+                    </span>
+                  ))}
+                </span>
+              </em>
             </div>
           </div>
         )

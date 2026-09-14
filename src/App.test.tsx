@@ -37,4 +37,13 @@ describe('Paladin talent calculator page', () => {
     }
     expect(document.querySelector('a[href="/wow-forever-paladin-builds"]')).toBeTruthy()
   })
+
+  it('shows field-aware evidence for officially announced talents', () => {
+    render(<App />)
+
+    expect(screen.getByText("Light's Vigil")).toBeTruthy()
+    expect(screen.getAllByText('Officially confirmed name · Demo-verified details').length).toBeGreaterThan(0)
+    const source = screen.getAllByRole('link', { name: 'Blizzard WoW Forever Deep Dive' })[0]
+    expect(source.getAttribute('href')).toContain('worldofwarcraft.blizzard.com')
+  })
 })
