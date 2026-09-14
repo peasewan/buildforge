@@ -49,4 +49,13 @@ describe('public page routing', () => {
   ])('serves %s through the reusable landing template', (pathname, landingPageId, title) => {
     expect(pageForPath(pathname)).toMatchObject({ kind: 'build-landing', landingPageId, title })
   })
+
+  it('serves the Paladin builds topic hub with independent metadata', () => {
+    expect(pageForPath('/wow-forever-paladin-builds/')).toEqual({
+      kind: 'build-hub',
+      title: 'WoW Forever Paladin Builds & Talent Calculator | BuildForgeTools',
+      description: 'Explore WoW Forever Paladin builds for Holy, Protection, and Retribution. Plan talents, customize builds, and share your setup with BuildForgeTools.',
+      canonical: 'https://buildforgetools.com/wow-forever-paladin-builds',
+    })
+  })
 })

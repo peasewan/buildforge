@@ -1,6 +1,7 @@
 {
   "redirects": [
-    { "source": "/", "destination": "/paladin", "permanent": true }
+    { "source": "/", "destination": "/paladin", "permanent": true },
+    { "source": "/wow-forever-holy-paladin-build", "destination": "/wow-forever-paladin-build", "permanent": true }
   ],
   "rewrites": [
     { "source": "/paladin", "destination": "/paladin/index.html" },
@@ -12,6 +13,7 @@
     { "source": "/wow-forever-paladin-pvp-build", "destination": "/wow-forever-paladin-pvp-build/index.html" },
     { "source": "/wow-forever-paladin-raid-build", "destination": "/wow-forever-paladin-raid-build/index.html" },
     { "source": "/wow-forever-protection-paladin-dungeon-build", "destination": "/wow-forever-protection-paladin-dungeon-build/index.html" },
+    { "source": "/wow-forever-paladin-builds", "destination": "/wow-forever-paladin-builds/index.html" },
     { "source": "/wow-forever-paladin-talents", "destination": "/wow-forever-paladin-talents/index.html" }
   ]
 }

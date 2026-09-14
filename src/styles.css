@@ -289,3 +289,60 @@ footer { padding: 42px 0; border-top: 1px solid rgba(217,164,65,.15); background
 .landing-prerender p, .landing-prerender li { color: #9aa0aa; line-height: 1.8; }
 @media (max-width: 1000px) { .build-topic-grid { grid-template-columns: 1fr 1fr; }.landing-hero-grid { grid-template-columns: 1fr; gap: 35px; padding-top: 120px; padding-bottom: 65px; }.landing-summary-card { width: min(100%, 430px); }.landing-card-grid { grid-template-columns: 1fr; }.landing-bullets { grid-template-columns: 1fr; gap: 30px; }.landing-related-grid { grid-template-columns: 1fr; } }
 @media (max-width: 600px) { .build-topic-grid { grid-template-columns: 1fr; }.landing-page .guide-nav > .button { display: none; }.landing-hero { min-height: 850px; }.landing-hero-art { background-position: 64% center; opacity: .5; }.landing-hero-shade { background: linear-gradient(180deg, rgba(7,9,13,.25), #090b10 82%); }.landing-hero-grid { padding-top: 92px; }.landing-hero-copy h1 { font-size: 39px; }.landing-hero-copy > p { font-size: 15px; }.landing-content { padding-top: 78px; padding-bottom: 85px; }.landing-content-section { margin-bottom: 75px; }.landing-step-grid article { grid-template-columns: 42px 1fr; padding: 19px 17px; gap: 12px; }.landing-tree-card { padding: 10px 5px; margin-inline: -5px; }.landing-tree-card .tree-stage { height: 610px; }.landing-final-cta { grid-template-columns: 54px 1fr; padding: 20px; }.landing-final-cta img { width: 52px; height: 52px; }.landing-final-cta .button { grid-column: 1 / -1; }.landing-prerender h1 { font-size: 38px; } }
+
+/* Paladin build topic hub */
+.hub-page { min-height: 100vh; background: #090b10; }
+.hub-page .guide-nav > .button { min-height: 38px; padding-inline: 17px; }
+.hub-hero { position: relative; min-height: 620px; display: grid; place-items: center; overflow: hidden; border-bottom: 1px solid rgba(217,164,65,.16); background: radial-gradient(circle at 50% 45%, rgba(217,164,65,.09), transparent 32%), linear-gradient(180deg, #0d1016, #090b10); }
+.hub-hero:before, .hub-hero:after { content: ''; position: absolute; inset: 13% 12%; border: 1px solid rgba(217,164,65,.06); transform: rotate(45deg); pointer-events: none; }
+.hub-hero:after { inset: 23% 23%; border-color: rgba(217,164,65,.09); }
+.hub-glow { position: absolute; width: 460px; height: 460px; border-radius: 50%; background: radial-gradient(circle, rgba(217,164,65,.09), transparent 68%); filter: blur(5px); }
+.hub-hero-inner { position: relative; z-index: 1; padding-top: 72px; text-align: center; }
+.hub-hero-inner > img { width: 72px; height: 72px; margin-bottom: 14px; object-fit: contain; filter: drop-shadow(0 0 24px rgba(217,164,65,.3)); }
+.hub-hero-inner .eyebrow { display: flex; justify-content: center; margin-bottom: 17px; }
+.hub-hero-inner h1 { color: #fff1c8; font-size: clamp(44px, 6vw, 76px); }
+.hub-hero-inner p { margin: 22px 0 30px; color: #9ca2ac; font: 500 17px/1.75 Cinzel, serif; }
+.hub-hero-inner .button { width: fit-content; margin-inline: auto; }
+.hub-section { padding-top: 105px; padding-bottom: 110px; }
+.hub-section-heading { max-width: 760px; margin-bottom: 43px; }
+.hub-section-heading .eyebrow { margin-bottom: 14px; }
+.hub-section-heading h2, .hub-data h2, .hub-resources h2 { color: #f0e6d0; font-size: clamp(31px, 4vw, 46px); }
+.hub-section-heading p { max-width: 650px; margin: 17px 0 0; color: #858c97; font-size: 14px; line-height: 1.8; }
+.hub-spec-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.hub-spec-grid > a { min-height: 285px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 28px; border: 1px solid rgba(217,164,65,.18); border-radius: 13px; background: radial-gradient(circle at 50% 30%, rgba(217,164,65,.08), transparent 38%), linear-gradient(145deg, #121720, #0b0e13); text-align: center; transition: transform .2s ease, border-color .2s ease; }
+.hub-spec-grid > a:hover { transform: translateY(-4px); border-color: rgba(217,164,65,.5); }
+.hub-spec-grid i { display: grid; place-items: center; width: 68px; height: 68px; border: 1px solid rgba(217,164,65,.25); border-radius: 50%; color: #e1b653; background: rgba(217,164,65,.06); }
+.hub-spec-grid h3 { margin: 23px 0 8px; color: #f0dfb5; font: 600 25px Cinzel, serif; }
+.hub-spec-grid p { margin: 0; color: #858d98; font-size: 13px; }
+.hub-spec-grid span { display: inline-flex; align-items: center; gap: 7px; margin-top: 27px; color: #d6af54; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; }
+.hub-popular { padding: 105px 0 115px; border-block: 1px solid rgba(217,164,65,.1); background: #0c0f14; }
+.hub-build-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 13px; }
+.hub-build-grid article { min-height: 330px; display: flex; flex-direction: column; padding: 23px; border: 1px solid rgba(255,255,255,.08); border-radius: 11px; background: linear-gradient(145deg, #131821, #0c1016); }
+.hub-build-grid article > header { display: flex; align-items: center; gap: 10px; color: #a58f59; font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: .14em; }
+.hub-build-grid article > header i { color: #d9a441; }
+.hub-build-grid h3 { min-height: 64px; margin: 23px 0 19px; color: #e9ddbf; font: 600 17px/1.4 Cinzel, serif; }
+.hub-build-grid dl { display: grid; gap: 13px; margin: 0 0 23px; }
+.hub-build-grid dl > div { padding-top: 12px; border-top: 1px solid rgba(255,255,255,.06); }
+.hub-build-grid dt { margin-bottom: 5px; color: #666e79; font-size: 8px; text-transform: uppercase; letter-spacing: .13em; }
+.hub-build-grid dd { margin: 0; color: #aeb3bc; font-size: 12px; }
+.hub-build-grid article > a { display: inline-flex; align-items: center; gap: 7px; margin-top: auto; color: #ddb758; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; }
+.hub-tool { display: flex; align-items: center; justify-content: space-between; gap: 55px; margin-top: 110px; margin-bottom: 110px; padding: 52px 58px; border: 1px solid rgba(217,164,65,.3); border-radius: 15px; background: radial-gradient(circle at 12% 50%, rgba(217,164,65,.13), transparent 35%), #11151d; }
+.hub-tool h2 { color: #f3e6c6; font-size: clamp(30px, 4vw, 45px); }
+.hub-tool p { margin: 18px 0 0; color: #8c939e; font-size: 14px; line-height: 1.8; }
+.hub-tool .button { max-width: 420px; min-height: 58px; text-align: center; }
+.hub-data { display: grid; grid-template-columns: .8fr 1.2fr; gap: 90px; padding-top: 100px; padding-bottom: 105px; border-top: 1px solid rgba(255,255,255,.07); }
+.hub-data p { margin: 0 0 18px; color: #959ca6; font-size: 14px; line-height: 1.9; }
+.hub-data a { display: inline-flex; align-items: center; gap: 7px; color: #d9b45d; font-size: 12px; }
+.hub-resources { padding-top: 20px; padding-bottom: 120px; }
+.hub-resources h2 { margin-bottom: 32px; }
+.hub-resources nav { display: grid; border-top: 1px solid rgba(255,255,255,.08); }
+.hub-resources nav a { display: flex; justify-content: space-between; align-items: center; padding: 18px 4px; border-bottom: 1px solid rgba(255,255,255,.08); color: #b3b7be; font: 500 14px Cinzel, serif; }
+.hub-resources nav a:hover { color: #f0d890; }
+.hub-resources nav svg { color: #b58e38; }
+.hub-prerender { min-height: 100vh; padding: 100px 24px; }
+.hub-prerender article { max-width: 780px; margin: 0 auto; }
+.hub-prerender h1 { font-size: 48px; }
+.hub-prerender h2 { margin-top: 45px; }
+.hub-prerender p, .hub-prerender li { color: #9aa0aa; line-height: 1.8; }
+@media (max-width: 1000px) { .hub-build-grid { grid-template-columns: 1fr 1fr; }.hub-tool { align-items: flex-start; flex-direction: column; }.hub-data { grid-template-columns: 1fr; gap: 30px; } }
+@media (max-width: 700px) { .hub-page .guide-nav > .button { display: none; }.hub-hero { min-height: 620px; }.hub-hero-inner { padding-top: 70px; }.hub-hero-inner h1 { font-size: 43px; }.hub-hero-inner p { font-size: 14px; }.hub-spec-grid, .hub-build-grid { grid-template-columns: 1fr; }.hub-section, .hub-popular { padding-block: 78px; }.hub-spec-grid > a { min-height: 235px; }.hub-tool { margin-top: 75px; margin-bottom: 75px; padding: 29px 22px; }.hub-tool .button { width: 100%; padding: 12px 15px; }.hub-data { padding-block: 75px; }.hub-resources { padding-bottom: 85px; }.hub-prerender h1 { font-size: 38px; } }

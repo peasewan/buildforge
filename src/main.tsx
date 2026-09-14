@@ -5,6 +5,7 @@ import BuildPage from './BuildPage'
 import BuildLandingPage from './BuildLandingPage'
 import FeedbackWidget from './FeedbackWidget'
 import GuidePage from './GuidePage'
+import PaladinBuildsHub from './PaladinBuildsHub'
 import { pageForPath } from './lib/routes'
 import './styles.css'
 
@@ -18,7 +19,7 @@ document.querySelector<HTMLMetaElement>('meta[property="og:url"]')?.setAttribute
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    {page.kind === 'guide' ? <GuidePage /> : page.kind === 'build-guide' ? <BuildPage buildId={page.buildId} /> : page.kind === 'build-landing' ? <BuildLandingPage pageId={page.landingPageId!} /> : <App />}
+    {page.kind === 'guide' ? <GuidePage /> : page.kind === 'build-guide' ? <BuildPage buildId={page.buildId} /> : page.kind === 'build-landing' ? <BuildLandingPage pageId={page.landingPageId!} /> : page.kind === 'build-hub' ? <PaladinBuildsHub /> : <App />}
     <FeedbackWidget />
   </StrictMode>,
 )

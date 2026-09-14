@@ -10,6 +10,7 @@ describe('Paladin talent calculator page', () => {
 
     const primaryHeading = document.querySelector('.hero-copy h1')
     expect(primaryHeading?.textContent).toBe('WoW ForeverPaladin TalentCalculator')
+    expect(screen.getByText('Build Paladin talent trees for Holy, Protection, and Retribution.')).toBeTruthy()
     expect(screen.getByRole('heading', { level: 2, name: 'WoW Forever Paladin Talent Tree' })).toBeTruthy()
   })
 

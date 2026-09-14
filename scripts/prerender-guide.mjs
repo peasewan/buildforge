@@ -89,7 +89,7 @@ const plannerPrerendered = `<main class="planner-prerender">
   <article>
     <p>Paladin Talent Tool</p>
     <h1>WoW Forever Paladin Talent Calculator</h1>
-    <p>Plan all 51 points across Holy, Protection, and Retribution. Preview talent ranks, create a legal build, and share the exact setup without an account.</p>
+    <p>Build Paladin talent trees for Holy, Protection, and Retribution. Plan all 51 points, preview talent ranks, create a legal build, and share the exact setup without an account.</p>
     <section>
       <h2>WoW Forever Paladin Talent Tree</h2>
       <p>The interactive talent tree shows 52 community-transcribed preview nodes across all three Paladin specializations. Choose a branch, spend points, and see deeper rows unlock as the allocation becomes valid.</p>

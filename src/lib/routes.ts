@@ -2,7 +2,7 @@ import type { ExampleBuildId } from '../data/builds'
 import { BUILD_LANDING_PAGES, type BuildLandingPageId } from '../data/buildLandingPages'
 
 export interface PageDefinition {
-  kind: 'planner' | 'guide' | 'build-guide' | 'build-landing'
+  kind: 'planner' | 'guide' | 'build-guide' | 'build-landing' | 'build-hub'
   title: string
   description: string
   canonical: string
@@ -48,8 +48,16 @@ const retributionBuildPage: PageDefinition = {
   canonical: 'https://buildforgetools.com/wow-forever-retribution-paladin-build',
 }
 
+const buildsHubPage: PageDefinition = {
+  kind: 'build-hub',
+  title: 'WoW Forever Paladin Builds & Talent Calculator | BuildForgeTools',
+  description: 'Explore WoW Forever Paladin builds for Holy, Protection, and Retribution. Plan talents, customize builds, and share your setup with BuildForgeTools.',
+  canonical: 'https://buildforgetools.com/wow-forever-paladin-builds',
+}
+
 export function pageForPath(pathname: string): PageDefinition {
   const normalized = pathname.replace(/\/+$/, '') || '/'
+  if (normalized === '/wow-forever-paladin-builds') return buildsHubPage
   const landing = BUILD_LANDING_PAGES.find((page) => normalized === `/${page.slug}`)
   if (landing) return {
     kind: 'build-landing',
