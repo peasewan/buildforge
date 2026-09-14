@@ -98,6 +98,6 @@ export const EXAMPLE_BUILDS = [
 
 export type ExampleBuildId = (typeof EXAMPLE_BUILDS)[number]['id']
 
-export function exampleBuildById(id: string): ExampleBuild {
+export function exampleBuildById(id: ExampleBuildId): ExampleBuild {
   return EXAMPLE_BUILDS.find((build) => build.id === id) ?? HOLY_HEALING_BUILD
 }

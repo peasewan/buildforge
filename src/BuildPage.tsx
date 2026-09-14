@@ -2,7 +2,7 @@ import { ArrowRight, Calculator, Check, Shield, Sparkles } from 'lucide-react'
 import holyContent from './content/holy-healing-build.json'
 import protectionContent from './content/protection-shield-build.json'
 import retributionContent from './content/retribution-judgment-build.json'
-import { EXAMPLE_BUILDS, HOLY_HEALING_BUILD, type ExampleBuild } from './data/builds'
+import { exampleBuildById, HOLY_HEALING_BUILD, type ExampleBuild, type ExampleBuildId } from './data/builds'
 import { branchNames, talents } from './data/talents'
 import { branchPoints, type Branch } from './lib/build'
 import { track } from './lib/analytics'
@@ -22,7 +22,7 @@ interface BuildContent {
   sections: { id: string; heading: string; paragraphs: string[] }[]
 }
 
-const contentByBuildId: Record<string, BuildContent> = {
+const contentByBuildId: Record<ExampleBuildId, BuildContent> = {
   [HOLY_HEALING_BUILD.id]: holyContent,
   'protection-shield-20-31-0': protectionContent,
   'retribution-judgment-0-20-31': retributionContent,
@@ -38,9 +38,9 @@ function OpenBuildLink({ build, href, placement, children }: { build: ExampleBui
   return <a className="button primary" href={href} onClick={() => track('build_page_open_planner', { build_id: build.id, placement })}>{children}</a>
 }
 
-export default function BuildPage({ buildId = HOLY_HEALING_BUILD.id }: { buildId?: string }) {
-  const build = EXAMPLE_BUILDS.find((candidate) => candidate.id === buildId) ?? HOLY_HEALING_BUILD
-  const buildContent = contentByBuildId[build.id] ?? holyContent
+export default function BuildPage({ buildId = HOLY_HEALING_BUILD.id }: { buildId?: ExampleBuildId }) {
+  const build = exampleBuildById(buildId)
+  const buildContent = contentByBuildId[buildId]
   const selectedByBranch = branches.map((branch) => ({
     branch,
     points: branchPoints(build.build, branch, talents),

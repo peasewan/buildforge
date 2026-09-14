@@ -1,9 +1,11 @@
+import type { ExampleBuildId } from '../data/builds'
+
 export interface PageDefinition {
   kind: 'planner' | 'guide' | 'build-guide'
   title: string
   description: string
   canonical: string
-  buildId?: string
+  buildId?: ExampleBuildId
 }
 
 const plannerPage: PageDefinition = {
