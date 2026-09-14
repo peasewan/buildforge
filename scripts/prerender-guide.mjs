@@ -104,6 +104,13 @@ const plannerPrerendered = `<main class="planner-prerender">
       <li><a href="/wow-forever-protection-paladin-build">Protection Paladin Shield Build — 20/31/0</a></li>
       <li><a href="/wow-forever-retribution-paladin-build">Retribution Paladin Judgment Build — 0/20/31</a></li>
     </ul>
+    <h2>Explore Paladin Builds</h2>
+    <ul>
+      <li><a href="/wow-forever-paladin-leveling-build">WoW Forever Paladin Leveling Build</a></li>
+      <li><a href="/wow-forever-paladin-pvp-build">WoW Forever Paladin PvP Build</a></li>
+      <li><a href="/wow-forever-paladin-raid-build">WoW Forever Paladin Raid Build</a></li>
+      <li><a href="/wow-forever-protection-paladin-dungeon-build">WoW Forever Protection Paladin Dungeon Tank Build</a></li>
+    </ul>
     <p><a href="/wow-forever-paladin-talents">Read the WoW Forever Paladin talent guide</a></p>
   </article>
 </main>`

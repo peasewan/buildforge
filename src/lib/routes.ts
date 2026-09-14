@@ -1,11 +1,13 @@
 import type { ExampleBuildId } from '../data/builds'
+import { BUILD_LANDING_PAGES, type BuildLandingPageId } from '../data/buildLandingPages'
 
 export interface PageDefinition {
-  kind: 'planner' | 'guide' | 'build-guide'
+  kind: 'planner' | 'guide' | 'build-guide' | 'build-landing'
   title: string
   description: string
   canonical: string
   buildId?: ExampleBuildId
+  landingPageId?: BuildLandingPageId
 }
 
 const plannerPage: PageDefinition = {
@@ -48,6 +50,14 @@ const retributionBuildPage: PageDefinition = {
 
 export function pageForPath(pathname: string): PageDefinition {
   const normalized = pathname.replace(/\/+$/, '') || '/'
+  const landing = BUILD_LANDING_PAGES.find((page) => normalized === `/${page.slug}`)
+  if (landing) return {
+    kind: 'build-landing',
+    landingPageId: landing.id,
+    title: landing.metaTitle,
+    description: landing.description,
+    canonical: `https://buildforgetools.com/${landing.slug}`,
+  }
   if (normalized === '/wow-forever-paladin-talents') return guidePage
   if (normalized === '/wow-forever-paladin-build') return holyHealingBuildPage
   if (normalized === '/wow-forever-protection-paladin-build') return protectionBuildPage

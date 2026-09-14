@@ -2,6 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App'
 import BuildPage from './BuildPage'
+import BuildLandingPage from './BuildLandingPage'
 import FeedbackWidget from './FeedbackWidget'
 import GuidePage from './GuidePage'
 import { pageForPath } from './lib/routes'
@@ -17,7 +18,7 @@ document.querySelector<HTMLMetaElement>('meta[property="og:url"]')?.setAttribute
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    {page.kind === 'guide' ? <GuidePage /> : page.kind === 'build-guide' ? <BuildPage buildId={page.buildId} /> : <App />}
+    {page.kind === 'guide' ? <GuidePage /> : page.kind === 'build-guide' ? <BuildPage buildId={page.buildId} /> : page.kind === 'build-landing' ? <BuildLandingPage pageId={page.landingPageId!} /> : <App />}
     <FeedbackWidget />
   </StrictMode>,
 )

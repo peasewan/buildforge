@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Check, ChevronDown, Clipboard, LockKeyhole, Minus, RotateCcw, Sparkles, UsersRound } from 'lucide-react'
 import { EXAMPLE_BUILDS, type ExampleBuild } from './data/builds'
+import { BUILD_LANDING_PAGES } from './data/buildLandingPages'
 import { branchNames, branchTaglines, DATA_SOURCES, talents, type Talent } from './data/talents'
 import { branchPoints, canIncrement, decodeBuild, decrementTalent, encodeBuild, incrementTalent, totalPoints, type Branch, type Build } from './lib/build'
 import { track } from './lib/analytics'
@@ -26,7 +27,7 @@ function initialBuild(): Build {
   }
 }
 
-function TalentTree({ branch, build, onAdd, onRemove }: { branch: Branch; build: Build; onAdd: (talent: Talent) => void; onRemove: (talent: Talent) => void }) {
+export function TalentTree({ branch, build, onAdd, onRemove }: { branch: Branch; build: Build; onAdd?: (talent: Talent) => void; onRemove?: (talent: Talent) => void }) {
   const branchTalents = talents.filter((talent) => talent.branch === branch)
   return (
     <div className="tree-stage" aria-label={`${branchNames[branch]} talent tree`}>
@@ -47,7 +48,7 @@ function TalentTree({ branch, build, onAdd, onRemove }: { branch: Branch; build:
           <div className="talent-position" style={{ left: `${talent.x}%`, top: `${talent.y}%` }} key={talent.id}>
             <button
               className={`talent-node ${rank ? 'selected' : ''} ${unlocked ? '' : 'locked'}`}
-              onClick={() => onAdd(talent)}
+              onClick={() => onAdd?.(talent)}
               aria-label={`${talent.name}, rank ${rank} of ${talent.maxRank}${unlocked ? '' : ', locked'}`}
               aria-describedby={`tip-${talent.id}`}
             >
@@ -55,7 +56,7 @@ function TalentTree({ branch, build, onAdd, onRemove }: { branch: Branch; build:
               {!unlocked && <LockKeyhole size={17} className="lock-icon" />}
               <span className="rank">{rank}/{talent.maxRank}</span>
             </button>
-            {rank > 0 && <button className="rank-minus" onClick={() => onRemove(talent)} aria-label={`Remove one rank from ${talent.name}`}><Minus size={12} /></button>}
+            {rank > 0 && onRemove && <button className="rank-minus" onClick={() => onRemove(talent)} aria-label={`Remove one rank from ${talent.name}`}><Minus size={12} /></button>}
             <div className="talent-tip" id={`tip-${talent.id}`}>
               <strong>{talent.name}</strong>
               <span>{talent.description}</span>
@@ -219,6 +220,10 @@ export default function App() {
                 <button type="button" onClick={() => loadExampleBuild(example)}>Load Build</button>
               </article>
             ))}</div>
+          </section>
+          <section className="build-topic-section" aria-label="Explore Paladin builds">
+            <div className="popular-builds-heading"><div><span>More ways to play</span><h2>Explore Paladin Builds</h2></div><p>Plan around leveling, PvP, raids, or Protection dungeon tanking.</p></div>
+            <div className="build-topic-grid">{BUILD_LANDING_PAGES.map((page) => <a href={`/${page.slug}`} key={page.id}><span>{page.eyebrow}</span><h3>{page.title.replace('WoW Forever ', '')}</h3><p>{page.subtitle}</p><b>View build →</b></a>)}</div>
           </section>
           <div className="planner-tabs" role="tablist">{branches.map((item) => <button key={item} role="tab" aria-selected={branch === item} className={branch === item ? 'active' : ''} onClick={() => { setBranch(item); track('spec_select', { branch: item }) }}><img src={branchIcons[item]} alt="" /><span>{branchNames[item]}<small>{branchPoints(build, item, talents)} points</small></span></button>)}</div>
           <div className="planner-grid">

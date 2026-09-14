@@ -40,4 +40,13 @@ describe('public page routing', () => {
   ])('serves %s as an indexable example build', (pathname, buildId, title) => {
     expect(pageForPath(pathname)).toMatchObject({ kind: 'build-guide', buildId, title })
   })
+
+  it.each([
+    ['/wow-forever-paladin-leveling-build/', 'leveling', 'WoW Forever Paladin Leveling Build | BuildForgeTools'],
+    ['/wow-forever-paladin-pvp-build/', 'pvp', 'WoW Forever Paladin PvP Build | BuildForgeTools'],
+    ['/wow-forever-paladin-raid-build/', 'raid', 'WoW Forever Paladin Raid Build | BuildForgeTools'],
+    ['/wow-forever-protection-paladin-dungeon-build/', 'protection-dungeon', 'WoW Forever Protection Paladin Dungeon Tank Build | BuildForgeTools'],
+  ])('serves %s through the reusable landing template', (pathname, landingPageId, title) => {
+    expect(pageForPath(pathname)).toMatchObject({ kind: 'build-landing', landingPageId, title })
+  })
 })

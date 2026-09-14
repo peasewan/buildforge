@@ -21,4 +21,18 @@ describe('Paladin talent calculator page', () => {
     expect(screen.getByRole('link', { name: /Protection Paladin Shield Build/ }).getAttribute('href')).toBe('/wow-forever-protection-paladin-build')
     expect(screen.getByRole('link', { name: /Retribution Paladin Judgment Build/ }).getAttribute('href')).toBe('/wow-forever-retribution-paladin-build')
   })
+
+  it('links the four content-focused build pages', () => {
+    render(<App />)
+
+    expect(screen.getByRole('heading', { level: 2, name: 'Explore Paladin Builds' })).toBeTruthy()
+    for (const href of [
+      '/wow-forever-paladin-leveling-build',
+      '/wow-forever-paladin-pvp-build',
+      '/wow-forever-paladin-raid-build',
+      '/wow-forever-protection-paladin-dungeon-build',
+    ]) {
+      expect(document.querySelector(`a[href="${href}"]`)).toBeTruthy()
+    }
+  })
 })
