@@ -36,7 +36,7 @@ const prerendered = `<main class="guide-page guide-prerender">
     <h1>${escapeHtml(guide.title)}</h1>
     <p>${escapeHtml(guide.dek)}</p>
     ${sections}
-    <p><a href="/paladin">Open the WoW Forever Paladin Talent Calculator</a></p>
+    <p><a href="/paladin">Open the WoW Forever Paladin Talent Calculator</a> · <a href="/wow-forever-paladin-builds">Explore all WoW Forever Paladin builds</a></p>
   </article>
 </main>`
 
@@ -72,7 +72,7 @@ for (const [contentFile, outputFile] of buildTargets) {
       <h2>Selected talents</h2>
       <ul>${build.selectedTalents.map((talent) => `<li>${escapeHtml(talent)}</li>`).join('')}</ul>
       ${buildSections}
-      <p><a href="${escapeHtml(build.plannerPath)}">Open and edit this WoW Forever ${escapeHtml(build.spec)} Paladin build</a></p>
+      <p><a href="${escapeHtml(build.plannerPath)}">Open and edit this WoW Forever ${escapeHtml(build.spec)} Paladin build</a> · <a href="/wow-forever-paladin-builds">Explore all Paladin builds</a></p>
     </article>
   </main>`
 
@@ -112,6 +112,7 @@ const plannerPrerendered = `<main class="planner-prerender">
       <li><a href="/wow-forever-protection-paladin-dungeon-build">WoW Forever Protection Paladin Dungeon Tank Build</a></li>
     </ul>
     <p><a href="/wow-forever-paladin-talents">Read the WoW Forever Paladin talent guide</a></p>
+    <p><a href="/wow-forever-paladin-builds">Explore the WoW Forever Paladin builds hub</a></p>
   </article>
 </main>`
 

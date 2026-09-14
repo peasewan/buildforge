@@ -11,6 +11,7 @@ describe('Build landing page template', () => {
     expect(screen.getByRole('heading', { level: 1, name: 'WoW Forever Paladin Leveling Build' })).toBeTruthy()
     expect(screen.getByText('New Players')).toBeTruthy()
     expect(screen.getByRole('heading', { level: 2, name: 'Recommended Leveling Path' })).toBeTruthy()
+    expect(document.querySelector('a[href="/wow-forever-paladin-builds"]')).toBeTruthy()
   })
 
   it('reuses the Protection talent tree on the dungeon page', () => {

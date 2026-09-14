@@ -35,5 +35,6 @@ describe('Paladin talent calculator page', () => {
     ]) {
       expect(document.querySelector(`a[href="${href}"]`)).toBeTruthy()
     }
+    expect(document.querySelector('a[href="/wow-forever-paladin-builds"]')).toBeTruthy()
   })
 })

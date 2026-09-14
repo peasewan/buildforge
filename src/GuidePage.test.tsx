@@ -7,5 +7,6 @@ describe('Paladin talents guide', () => {
     render(<GuidePage />)
 
     expect(screen.getByRole('heading', { level: 1, name: 'WoW Forever Paladin Talent Guide & Build Planner' })).toBeTruthy()
+    expect(document.querySelector('a[href="/wow-forever-paladin-builds"]')).toBeTruthy()
   })
 })

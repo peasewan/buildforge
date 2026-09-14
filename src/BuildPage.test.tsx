@@ -19,6 +19,7 @@ describe('Holy healing build page', () => {
     const primaryHeading = document.querySelector('.build-hero-copy h1')
     expect(primaryHeading?.textContent).toBe('WoW ForeverPaladin Build')
     expect(screen.getByRole('heading', { level: 2, name: 'WoW Forever Holy Paladin Build (31/20/0)' })).toBeTruthy()
+    expect(document.querySelector('a[href="/wow-forever-paladin-builds"]')).toBeTruthy()
   })
 
   it.each([

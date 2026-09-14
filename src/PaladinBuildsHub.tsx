@@ -1,4 +1,5 @@
-import { ArrowRight, Calculator, Heart, Shield, Sparkles, Swords } from 'lucide-react'
+import { ArrowRight, Calculator, Shield, Sparkles, Swords } from 'lucide-react'
+import BuildCard, { type BuildCardIcon } from './BuildCard'
 import { track } from './lib/analytics'
 
 const specializations = [
@@ -8,10 +9,10 @@ const specializations = [
 ]
 
 const popularBuilds = [
-  { type: 'Protection', title: 'Protection Paladin Dungeon Tank Build', role: 'Dungeon Tank', focus: 'Defensive', href: '/wow-forever-protection-paladin-dungeon-build', icon: <Shield size={23} /> },
-  { type: 'Leveling', title: 'Paladin Leveling Build', role: 'Solo Progression', focus: 'Efficient leveling', href: '/wow-forever-paladin-leveling-build', icon: <Swords size={23} /> },
-  { type: 'PvP', title: 'Paladin PvP Build', role: 'Player Combat', focus: 'Utility & Survival', href: '/wow-forever-paladin-pvp-build', icon: <Sparkles size={23} /> },
-  { type: 'Raid', title: 'Paladin Raid Build', role: 'Group Content', focus: 'Support', href: '/wow-forever-paladin-raid-build', icon: <Heart size={23} /> },
+  { type: 'Protection', title: 'Protection Paladin Dungeon Tank Build', role: 'Dungeon Tank', focus: 'Defensive', href: '/wow-forever-protection-paladin-dungeon-build', icon: 'protection' },
+  { type: 'Leveling', title: 'Paladin Leveling Build', role: 'Solo Progression', focus: 'Efficient leveling', href: '/wow-forever-paladin-leveling-build', icon: 'leveling' },
+  { type: 'PvP', title: 'Paladin PvP Build', role: 'Player Combat', focus: 'Utility & Survival', href: '/wow-forever-paladin-pvp-build', icon: 'pvp' },
+  { type: 'Raid', title: 'Paladin Raid Build', role: 'Group Content', focus: 'Support', href: '/wow-forever-paladin-raid-build', icon: 'raid' },
 ]
 
 const resources = [
@@ -53,7 +54,7 @@ export default function PaladinBuildsHub() {
 
       <section className="hub-popular" id="popular-builds"><div className="shell">
         <header className="hub-section-heading"><div className="eyebrow">Community Preview</div><h2>Popular Paladin Builds</h2><p>Browse build pages organized around the content and playstyle players are preparing for.</p></header>
-        <div className="hub-build-grid">{popularBuilds.map((build) => <article key={build.type}><header><i>{build.icon}</i><span>{build.type}</span></header><h3>{build.title}</h3><dl><div><dt>Role</dt><dd>{build.role}</dd></div><div><dt>Focus</dt><dd>{build.focus}</dd></div></dl><HubLink href={build.href} placement={`popular-${build.type.toLowerCase()}`}>Open Build <ArrowRight size={15} /></HubLink></article>)}</div>
+        <div className="hub-build-grid">{popularBuilds.map((build) => <BuildCard key={build.type} eyebrow={build.type} title={build.title} role={build.role} focus={build.focus} href={build.href} icon={build.icon as BuildCardIcon} onOpen={() => track('paladin_hub_click', { placement: `popular-${build.type.toLowerCase()}`, destination: build.href })} />)}</div>
       </div></section>
 
       <section className="hub-tool shell">

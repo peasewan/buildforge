@@ -230,6 +230,15 @@ footer { padding: 42px 0; border-top: 1px solid rgba(217,164,65,.15); background
 .build-topic-grid h3 { margin: 11px 0 9px; color: #e9dfc8; font: 600 15px/1.35 Cinzel, serif; }
 .build-topic-grid p { margin: 0; color: #7f8691; font-size: 11px; line-height: 1.65; }
 .build-topic-grid b { display: block; margin-top: 17px; color: #d9b665; font-size: 10px; text-transform: uppercase; letter-spacing: .09em; }
+.build-topic-grid .build-card.compact { min-height: 190px; display: flex; flex-direction: column; padding: 20px; border: 1px solid rgba(217,164,65,.16); border-radius: 10px; background: linear-gradient(145deg, rgba(20,24,32,.9), rgba(10,13,18,.92)); transition: transform .2s ease, border-color .2s ease; }
+.build-topic-grid .build-card.compact:hover { transform: translateY(-3px); border-color: rgba(217,164,65,.45); }
+.build-topic-grid .build-card.compact header { display: flex; align-items: center; gap: 8px; color: #9d8958; }
+.build-topic-grid .build-card.compact header i { display: grid; place-items: center; color: #d9a441; }
+.build-topic-grid .build-card.compact header span { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: .13em; }
+.build-topic-grid .build-card.compact h3 { margin: 11px 0 9px; color: #e9dfc8; font: 600 15px/1.35 Cinzel, serif; }
+.build-topic-grid .build-card.compact p { margin: 0 0 17px; color: #7f8691; font-size: 11px; line-height: 1.65; }
+.build-topic-grid .build-card.compact > a { display: inline-flex; align-items: center; gap: 6px; margin-top: auto; color: #d9b665; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .09em; }
+.topic-hub-link { width: fit-content; display: flex; align-items: center; gap: 7px; margin: 20px auto 0; color: #d9b45d; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .11em; }
 .landing-page { min-height: 100vh; background: #090b10; }
 .landing-page .guide-nav > .button { min-height: 38px; padding-inline: 17px; }
 .landing-hero { position: relative; min-height: 720px; display: grid; align-items: center; overflow: hidden; border-bottom: 1px solid rgba(217,164,65,.18); }
