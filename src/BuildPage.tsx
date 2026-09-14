@@ -47,6 +47,7 @@ export default function BuildPage({ buildId = HOLY_HEALING_BUILD.id }: { buildId
     talents: talents.filter((talent) => talent.branch === branch && (build.build[talent.id] ?? 0) > 0),
   }))
   const heroTitle = build.id === HOLY_HEALING_BUILD.id ? 'Paladin Build' : `${buildContent.spec} Paladin Build`
+  const isProtection = build.id === 'protection-shield-20-31-0'
 
   return (
     <main className="build-page">
@@ -92,6 +93,7 @@ export default function BuildPage({ buildId = HOLY_HEALING_BUILD.id }: { buildId
 
       <article className="build-copy shell">
         {buildContent.sections.map((section) => <section id={section.id} key={section.id}><h2>{section.heading}</h2>{section.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</section>)}
+        {isProtection && <section className="protection-build-more"><h2>Explore More Protection Builds</h2><p>Compare tank paths, Protection talents, and content-focused setups from the Protection Paladin topic hub.</p><a href="/wow-forever-protection-paladin-builds">Protection Paladin Builds Hub <ArrowRight size={15} /></a></section>}
         <aside className="guide-note"><strong>Community preview</strong><p>This build uses publicly demonstrated WoW Forever talent information. Verify current in-game tooltips before treating any value as final.</p></aside>
         <div className="guide-final-cta"><img src="/images/icons/paladin-shield.png" alt="" /><div><span>Ready to customize it?</span><h2>{buildContent.footerHeading}</h2></div><OpenBuildLink build={build} href={buildContent.plannerPath} placement="footer">Open Build <ArrowRight size={15} /></OpenBuildLink></div>
         <p className="build-calc-anchor">{calculatorCta[build.id].prompt} <a href="/paladin">{calculatorCta[build.id].anchor} <ArrowRight size={14} /></a></p>

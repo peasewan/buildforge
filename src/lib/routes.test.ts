@@ -63,4 +63,19 @@ describe('public page routing', () => {
       robots: 'index, follow',
     })
   })
+
+  it('serves the Protection hub and talent guide with independent metadata', () => {
+    expect(pageForPath('/wow-forever-protection-paladin-builds/')).toMatchObject({
+      kind: 'protection-hub',
+      title: 'WoW Forever Protection Paladin Builds | Tank Talent Planner',
+      canonical: 'https://buildforgetools.com/wow-forever-protection-paladin-builds',
+      robots: 'index, follow',
+    })
+    expect(pageForPath('/wow-forever-protection-paladin-talents/')).toMatchObject({
+      kind: 'protection-talents',
+      title: 'WoW Forever Protection Paladin Talents | Talent Tree',
+      canonical: 'https://buildforgetools.com/wow-forever-protection-paladin-talents',
+      robots: 'index, follow',
+    })
+  })
 })

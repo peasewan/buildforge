@@ -2,7 +2,7 @@ import type { ExampleBuildId } from '../data/builds'
 import { BUILD_LANDING_PAGES, type BuildLandingPageId } from '../data/buildLandingPages'
 
 export interface PageDefinition {
-  kind: 'planner' | 'guide' | 'build-guide' | 'build-landing' | 'build-hub'
+  kind: 'planner' | 'guide' | 'build-guide' | 'build-landing' | 'build-hub' | 'protection-hub' | 'protection-talents'
   title: string
   description: string
   canonical: string
@@ -62,10 +62,28 @@ const buildsHubPage: PageDefinition = {
   robots: 'index, follow',
 }
 
+const protectionBuildsHubPage: PageDefinition = {
+  kind: 'protection-hub',
+  title: 'WoW Forever Protection Paladin Builds | Tank Talent Planner',
+  description: 'Explore WoW Forever Protection Paladin tank builds, leveling paths, dungeon setups, and talents in the BuildForgeTools planner.',
+  canonical: 'https://buildforgetools.com/wow-forever-protection-paladin-builds',
+  robots: 'index, follow',
+}
+
+const protectionTalentsPage: PageDefinition = {
+  kind: 'protection-talents',
+  title: 'WoW Forever Protection Paladin Talents | Talent Tree',
+  description: 'Explore the WoW Forever Protection Paladin talent tree, review key tank talents, and create a custom build in the talent calculator.',
+  canonical: 'https://buildforgetools.com/wow-forever-protection-paladin-talents',
+  robots: 'index, follow',
+}
+
 export function pageForPath(pathname: string): PageDefinition {
   const normalized = pathname.replace(/\/+$/, '') || '/'
   if (normalized === '/build') return { ...plannerPage, robots: 'noindex, follow' }
   if (normalized === '/wow-forever-paladin-builds') return buildsHubPage
+  if (normalized === '/wow-forever-protection-paladin-builds') return protectionBuildsHubPage
+  if (normalized === '/wow-forever-protection-paladin-talents') return protectionTalentsPage
   const landing = BUILD_LANDING_PAGES.find((page) => normalized === `/${page.slug}`)
   if (landing) return {
     kind: 'build-landing',

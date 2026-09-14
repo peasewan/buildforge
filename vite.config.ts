@@ -18,6 +18,8 @@ export default defineConfig({
         raidBuild: resolve(import.meta.dirname, 'wow-forever-paladin-raid-build/index.html'),
         protectionDungeonBuild: resolve(import.meta.dirname, 'wow-forever-protection-paladin-dungeon-build/index.html'),
         paladinBuildsHub: resolve(import.meta.dirname, 'wow-forever-paladin-builds/index.html'),
+        protectionBuildsHub: resolve(import.meta.dirname, 'wow-forever-protection-paladin-builds/index.html'),
+        protectionTalents: resolve(import.meta.dirname, 'wow-forever-protection-paladin-talents/index.html'),
       },
     },
   },

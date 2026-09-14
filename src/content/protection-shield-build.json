@@ -59,6 +59,15 @@
         "Open the build to move directly from this explanation into the interactive Protection talent tree. The selected talents panel lists every active rank, while the three branch counters show the complete 20/31/0 split. Removing a prerequisite also clears any dependent node that can no longer stay active, which keeps shared links consistent with the current planner rules.",
         "Copy Build Link turns the edited allocation into a compact URL. Another player can open that URL, review exactly the same ranks, and continue changing the build. This makes the page useful for discussing a WoW Forever Protection Paladin build before the talent dataset is final, while the Community Preview label keeps the limits of the available evidence visible."
       ]
+    },
+    {
+      "id": "protection-talent-overview",
+      "heading": "Protection Paladin Talent Overview",
+      "paragraphs": [
+        "Protection Paladin talents shape the defensive core of this WoW Forever tank build. The early Protection rows establish armor, blocking, accuracy, and baseline survivability before later choices add threat support and stronger shield interaction. In the current 20/31/0 example, Toughness and Redoubt form the opening foundation, while Precision, Guardian’s Favor, and Anticipation complete the points needed to reach the middle of the tree. These talents make the route easy to inspect as a coherent defensive path, although their exact in-game value should still be checked against current WoW Forever tooltips.",
+        "The middle and lower rows connect that foundation to the dungeon build identity. Improved Righteous Fury represents threat-focused planning, Shield Specialization supports blocking, and Sacred Duty adds another defensive choice before the path reaches Templar’s Bulwark and Holy Shield. The Talent Calculator enforces the visible tree-point requirements and prerequisites, so removing a required rank also removes deeper selections that can no longer remain active. This lets players test alternate Protection Paladin talents without producing an invalid shared setup.",
+        "A Protection Paladin dungeon build may prioritize different utility or support choices as encounters, party needs, and verified talent data become clearer. This page therefore presents one complete tank build as a starting point rather than a fixed best build. Open the Talent Calculator to compare the 31-point Protection core, move the 20 supporting Holy points, or create a different legal route. Every edited configuration can be copied as a share link, making it easier to discuss talent choices while the community continues to verify the WoW Forever Protection tree."
+      ]
     }
   ]
 }

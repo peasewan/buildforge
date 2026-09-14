@@ -4,7 +4,7 @@ import { track } from './lib/analytics'
 
 const specializations = [
   { name: 'Holy', role: 'Raid Healing', href: '/wow-forever-holy-paladin-build', icon: <Sparkles size={34} /> },
-  { name: 'Protection', role: 'Dungeon Tank', href: '/wow-forever-protection-paladin-build', icon: <Shield size={34} /> },
+  { name: 'Protection', role: 'Dungeon Tank', href: '/wow-forever-protection-paladin-builds', icon: <Shield size={34} /> },
   { name: 'Retribution', role: 'DPS Builds', href: '/wow-forever-retribution-paladin-build', icon: <Swords size={34} /> },
 ]
 

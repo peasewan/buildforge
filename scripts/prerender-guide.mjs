@@ -53,8 +53,8 @@ for (const [contentFile, outputFile] of buildTargets) {
     .join(' ')
     .match(/[A-Za-z0-9’'-]+/g)?.length ?? 0
 
-  if (buildWords < 450 || buildWords > 750) {
-    throw new Error(`${build.spec} build page must contain 450–750 words; found ${buildWords}.`)
+  if (buildWords < 450 || buildWords > 950) {
+    throw new Error(`${build.spec} build page must contain 450–950 words; found ${buildWords}.`)
   }
 
   const buildSections = build.sections.map((section) => `
@@ -72,7 +72,7 @@ for (const [contentFile, outputFile] of buildTargets) {
       <h2>Selected talents</h2>
       <ul>${build.selectedTalents.map((talent) => `<li>${escapeHtml(talent)}</li>`).join('')}</ul>
       ${buildSections}
-      <p><a href="${escapeHtml(build.plannerPath)}">Open and edit this WoW Forever ${escapeHtml(build.spec)} Paladin build</a> · <a href="/wow-forever-paladin-builds">Explore all Paladin builds</a></p>
+      <p><a href="${escapeHtml(build.plannerPath)}">Open and edit this WoW Forever ${escapeHtml(build.spec)} Paladin build</a> · <a href="/wow-forever-paladin-builds">Explore all Paladin builds</a>${build.spec === 'Protection' ? ' · <a href="/wow-forever-protection-paladin-builds">Explore more Protection builds</a>' : ''}</p>
     </article>
   </main>`
 

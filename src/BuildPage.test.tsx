@@ -31,4 +31,12 @@ describe('Holy healing build page', () => {
     expect(screen.getByRole('heading', { level: 2, name: heading })).toBeTruthy()
     expect(screen.getByLabelText('Build allocation').textContent).toContain(allocation)
   })
+
+  it('adds a Protection talent overview and links back to the Protection hub', () => {
+    render(<BuildPage buildId="protection-shield-20-31-0" />)
+
+    expect(screen.getByRole('heading', { level: 2, name: 'Protection Paladin Talent Overview' })).toBeTruthy()
+    expect(screen.getByRole('heading', { level: 2, name: 'Explore More Protection Builds' })).toBeTruthy()
+    expect(document.querySelector('a[href="/wow-forever-protection-paladin-builds"]')).toBeTruthy()
+  })
 })

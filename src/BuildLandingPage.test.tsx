@@ -20,5 +20,6 @@ describe('Build landing page template', () => {
     expect(screen.getByRole('heading', { level: 1, name: 'WoW Forever Protection Paladin Dungeon Tank Build' })).toBeTruthy()
     expect(screen.getByLabelText('Protection talent tree')).toBeTruthy()
     expect(screen.getByRole('link', { name: /Edit this build/ }).getAttribute('href')).toMatch(/^\/build\?id=/)
+    expect(document.querySelector('a[href="/wow-forever-protection-paladin-builds"]')).toBeTruthy()
   })
 })
