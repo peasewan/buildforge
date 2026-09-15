@@ -34,7 +34,7 @@
       "id": "build-overview",
       "heading": "WoW Forever Retribution Paladin Leveling Build Overview",
       "paragraphs": [
-        "This WoW Forever Retribution Paladin leveling build spends 31 points in Retribution and 20 points in Holy, with no points in Protection. The offensive path reaches Twist of Light while the early Holy points provide a light support base for steadier solo progression. It is a community-preview example for players who want a damage-focused route while questing, not a final ranking or a promise that this allocation is the fastest leveling build.",
+        "This WoW Forever Retribution Paladin leveling build spends 31 points in Retribution and 20 points in Holy, with no points in Protection. The offensive path reaches Twist of Light while the early Holy points provide a light support base for steadier solo progression. It is a community-preview example for players who want a damage-focused route while questing.",
         "The page and calculator share one saved allocation, so the 20/0/31 summary, individual ranks, and 51-point total stay aligned. Selecting Open This Build loads the exact setup in the interactive planner. Every rank can then be removed or moved, and the resulting configuration can be copied as a shareable link without an account."
       ]
     },
@@ -51,7 +51,7 @@
       "heading": "Why the Build Adds 20 Holy Support Points",
       "paragraphs": [
         "Instead of a Protection secondary, this leveling preview places its 20 remaining points into the early Holy rows: Divine Strength, Divine Intellect, Healing Light, Spiritual Focus, Improved Seals, and Unyielding Faith. The result is a Retribution-first route with a light support base, which keeps the build focused on solo damage while leaving a few familiar Paladin tools available during longer questing sessions.",
-        "The 20 Holy points are a starting point rather than a prescription. Players who prefer more survivability can trade them for early Protection talents, and the calculator will immediately show the changed branch totals. Because WoW Forever talent values, encounters, and tuning are still developing, treat this split as a reproducible example for comparison instead of a fixed best route."
+        "The 20 Holy points are a starting point rather than a prescription. Players who prefer more survivability can trade them for early Protection talents, and the calculator will immediately show the changed branch totals."
       ]
     },
     {
@@ -59,7 +59,7 @@
       "heading": "Edit and Share This Retribution Leveling Build",
       "paragraphs": [
         "Opening the build takes the visitor directly to the interactive planner with Retribution as the dominant 31-point branch. The selected talents list shows every active rank, and the branch counters preserve the exact 20/0/31 allocation. If a prerequisite is removed, dependent talents are cleared automatically so a shared link never retains an invalid path.",
-        "Use Copy Build Link after testing a different combination. The generated address stores talent identifiers and ranks, giving another player the same setup to inspect and modify. Combined with the visible Community Preview label, this page offers a practical WoW Forever Retribution Paladin leveling reference while staying transparent about the early and changeable nature of the talent data."
+        "Use Copy Build Link after testing a different combination. The generated address stores talent identifiers and ranks, giving another player the same setup to inspect and modify. Combined with the visible Community Preview label, this page offers a practical WoW Forever Retribution Paladin leveling reference."
       ]
     }
   ]
