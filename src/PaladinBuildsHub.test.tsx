@@ -9,7 +9,7 @@ describe('Paladin builds hub', () => {
     render(<PaladinBuildsHub />)
 
     expect(screen.getByRole('heading', { level: 1, name: 'WoW Forever Paladin Builds & Talent Calculator' })).toBeTruthy()
-    expect(document.querySelector('a[href="/wow-forever-holy-paladin-build"]')).toBeTruthy()
+    expect(document.querySelector('a[href="/wow-forever-paladin-build"]')).toBeTruthy()
     expect(document.querySelector('a[href="/wow-forever-protection-paladin-builds"]')).toBeTruthy()
     expect(document.querySelector('a[href="/wow-forever-retribution-paladin-build"]')).toBeTruthy()
     expect(document.querySelector('a[href="/paladin"]')).toBeTruthy()
