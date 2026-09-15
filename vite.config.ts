@@ -21,6 +21,7 @@ export default defineConfig({
         paladinBuildsHub: resolve(import.meta.dirname, 'wow-forever-paladin-builds/index.html'),
         protectionBuildsHub: resolve(import.meta.dirname, 'wow-forever-protection-paladin-builds/index.html'),
         protectionTalents: resolve(import.meta.dirname, 'wow-forever-protection-paladin-talents/index.html'),
+        betaChanges: resolve(import.meta.dirname, 'wow-forever-paladin-beta-talent-changes/index.html'),
       },
     },
   },

@@ -2,7 +2,7 @@ import type { ExampleBuildId } from '../data/builds'
 import { BUILD_LANDING_PAGES, type BuildLandingPageId } from '../data/buildLandingPages'
 
 export interface PageDefinition {
-  kind: 'planner' | 'guide' | 'build-guide' | 'build-landing' | 'build-hub' | 'protection-hub' | 'protection-talents'
+  kind: 'planner' | 'guide' | 'build-guide' | 'build-landing' | 'build-hub' | 'protection-hub' | 'protection-talents' | 'beta-changes'
   title: string
   description: string
   canonical: string
@@ -87,12 +87,21 @@ const protectionTalentsPage: PageDefinition = {
   robots: 'index, follow',
 }
 
+const betaChangesPage: PageDefinition = {
+  kind: 'beta-changes',
+  title: 'WoW Forever Paladin Beta Talent Changes | BuildForgeTools',
+  description: 'Track every WoW Forever Paladin talent change discovered in the Beta, compared against the current community preview.',
+  canonical: 'https://buildforgetools.com/wow-forever-paladin-beta-talent-changes',
+  robots: 'noindex, follow',
+}
+
 export function pageForPath(pathname: string): PageDefinition {
   const normalized = pathname.replace(/\/+$/, '') || '/'
   if (normalized === '/build') return { ...plannerPage, robots: 'noindex, follow' }
   if (normalized === '/wow-forever-paladin-builds') return buildsHubPage
   if (normalized === '/wow-forever-protection-paladin-builds') return protectionBuildsHubPage
   if (normalized === '/wow-forever-protection-paladin-talents') return protectionTalentsPage
+  if (normalized === '/wow-forever-paladin-beta-talent-changes') return betaChangesPage
   const landing = BUILD_LANDING_PAGES.find((page) => normalized === `/${page.slug}`)
   if (landing) return {
     kind: 'build-landing',

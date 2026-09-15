@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "tsc -b && vite build && node scripts/prerender-guide.mjs",
     "test": "vitest run",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "talents:diff": "tsx scripts/talents-diff.ts",
+    "talents:validate": "tsx scripts/talents-validate.ts"
   },
   "dependencies": {
     "@vercel/blob": "^2.8.0",
@@ -29,6 +31,7 @@
     "eslint-plugin-react-refresh": "latest",
     "globals": "latest",
     "jsdom": "latest",
+    "tsx": "^4.23.13",
     "typescript": "latest",
     "typescript-eslint": "latest",
     "vitest": "latest"
