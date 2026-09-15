@@ -20,6 +20,7 @@ const resources = [
   ['Holy Paladin Build', '/wow-forever-paladin-build'],
   ['Protection Paladin Build', '/wow-forever-protection-paladin-build'],
   ['Retribution Paladin Build', '/wow-forever-retribution-paladin-build'],
+  ['Retribution Leveling Build', '/wow-forever-retribution-paladin-leveling-build'],
   ['Paladin Leveling Build', '/wow-forever-paladin-leveling-build'],
 ]
 

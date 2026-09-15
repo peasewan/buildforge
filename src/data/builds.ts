@@ -90,10 +90,40 @@ export const RETRIBUTION_JUDGMENT_BUILD: ExampleBuild = {
   },
 }
 
+export const RETRIBUTION_LEVELING_BUILD: ExampleBuild = {
+  id: 'retribution-leveling-20-0-31',
+  slug: 'wow-forever-retribution-paladin-leveling-build',
+  name: 'Retribution Paladin Leveling Build',
+  allocation: '20/0/31',
+  description: 'A solo-leveling Retribution preview that reaches Twist of Light with early Holy support.',
+  build: {
+    divine_strength: 5,
+    divine_intellect: 5,
+    healing_light: 3,
+    spiritual_focus: 2,
+    improved_seals: 3,
+    unyielding_faith: 2,
+    deflection: 5,
+    benediction: 5,
+    improved_judgement: 2,
+    holy_conduit: 2,
+    conviction: 5,
+    sanctified_judgement: 3,
+    seal_of_command: 1,
+    pursuit_of_justice: 2,
+    sacred_arbiter: 1,
+    crusade: 2,
+    two_handed_weapon_specialization: 1,
+    vengeance: 1,
+    twist_of_light: 1,
+  },
+}
+
 export const EXAMPLE_BUILDS = [
   HOLY_HEALING_BUILD,
   PROTECTION_SHIELD_BUILD,
   RETRIBUTION_JUDGMENT_BUILD,
+  RETRIBUTION_LEVELING_BUILD,
 ] as const
 
 export type ExampleBuildId = (typeof EXAMPLE_BUILDS)[number]['id']

@@ -41,6 +41,7 @@ describe('public page routing', () => {
   it.each([
     ['/wow-forever-protection-paladin-build/', 'protection-shield-20-31-0', 'WoW Forever Protection Paladin Build | BuildForgeTools'],
     ['/wow-forever-retribution-paladin-build/', 'retribution-judgment-0-20-31', 'WoW Forever Retribution Paladin Build | BuildForgeTools'],
+    ['/wow-forever-retribution-paladin-leveling-build/', 'retribution-leveling-20-0-31', 'WoW Forever Retribution Paladin Leveling Build | BuildForgeTools'],
   ])('serves %s as an indexable example build', (pathname, buildId, title) => {
     expect(pageForPath(pathname)).toMatchObject({ kind: 'build-guide', buildId, title })
   })

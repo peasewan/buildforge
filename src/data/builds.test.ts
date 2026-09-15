@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { branchPoints, incrementTalent, totalPoints, type Build } from '../lib/build'
-import { EXAMPLE_BUILDS, HOLY_HEALING_BUILD, PROTECTION_SHIELD_BUILD, RETRIBUTION_JUDGMENT_BUILD } from './builds'
+import { EXAMPLE_BUILDS, HOLY_HEALING_BUILD, PROTECTION_SHIELD_BUILD, RETRIBUTION_JUDGMENT_BUILD, RETRIBUTION_LEVELING_BUILD } from './builds'
 import { talents } from './talents'
 
 describe('example builds', () => {
@@ -8,6 +8,7 @@ describe('example builds', () => {
     [HOLY_HEALING_BUILD, [31, 20, 0]],
     [PROTECTION_SHIELD_BUILD, [20, 31, 0]],
     [RETRIBUTION_JUDGMENT_BUILD, [0, 20, 31]],
+    [RETRIBUTION_LEVELING_BUILD, [20, 0, 31]],
   ] as const)('provides a legal 51-point $name', (example, expectedAllocation) => {
     let allocated: Build = {}
 
@@ -37,6 +38,7 @@ describe('example builds', () => {
       'wow-forever-paladin-build',
       'wow-forever-protection-paladin-build',
       'wow-forever-retribution-paladin-build',
+      'wow-forever-retribution-paladin-leveling-build',
     ])
   })
 })

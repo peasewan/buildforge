@@ -13,6 +13,7 @@ export default defineConfig({
         buildGuide: resolve(import.meta.dirname, 'wow-forever-paladin-build/index.html'),
         protectionBuild: resolve(import.meta.dirname, 'wow-forever-protection-paladin-build/index.html'),
         retributionBuild: resolve(import.meta.dirname, 'wow-forever-retribution-paladin-build/index.html'),
+        retributionLevelingBuild: resolve(import.meta.dirname, 'wow-forever-retribution-paladin-leveling-build/index.html'),
         levelingBuild: resolve(import.meta.dirname, 'wow-forever-paladin-leveling-build/index.html'),
         pvpBuild: resolve(import.meta.dirname, 'wow-forever-paladin-pvp-build/index.html'),
         raidBuild: resolve(import.meta.dirname, 'wow-forever-paladin-raid-build/index.html'),

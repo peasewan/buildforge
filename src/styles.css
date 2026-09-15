@@ -88,7 +88,7 @@ h1 span { color: var(--light); background: linear-gradient(180deg, #fff7d7, #d9a
 .centered { text-align: center; }
 .popular-builds { margin-top: 36px; }
 .popular-builds-heading { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 18px; }.popular-builds-heading span { color: #a98d50; font-size: 8px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; }.popular-builds-heading h2 { margin: 5px 0 0; color: #eee1c0; font-size: 22px; }.popular-builds-heading p { max-width: 380px; margin: 0; color: #737b86; font-size: 10px; line-height: 1.6; text-align: right; }
-.popular-build-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 13px; }
+.popular-build-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 13px; }
 .example-build-card { width: 100%; padding: 16px 18px; display: grid; grid-template-columns: 46px minmax(0, 1fr); align-items: center; gap: 14px; border: 1px solid rgba(217,164,65,.24); border-radius: 11px; background: linear-gradient(135deg, rgba(217,164,65,.09), rgba(14,17,23,.9) 46%); box-shadow: 0 16px 38px rgba(0,0,0,.18); }
 .example-build-icon { width: 42px; height: 42px; display: grid; place-items: center; border: 1px solid rgba(217,164,65,.35); border-radius: 50%; background: rgba(217,164,65,.08); color: #edc769; }.example-build-icon img { width: 30px; height: 30px; object-fit: contain; }
 .example-build-card > div:nth-child(2) > span { color: #a98d50; font-size: 8px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; }
