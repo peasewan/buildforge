@@ -54,6 +54,15 @@ const retributionBuildPage: PageDefinition = {
   robots: 'index, follow',
 }
 
+const retributionLevelingBuildPage: PageDefinition = {
+  kind: 'build-guide',
+  buildId: 'retribution-leveling-20-0-31',
+  title: 'WoW Forever Retribution Paladin Leveling Build | BuildForgeTools',
+  description: 'Open a community-preview WoW Forever Retribution Paladin leveling build with a complete 20/0/31 allocation, then edit and share it in the BuildForge planner.',
+  canonical: 'https://buildforgetools.com/wow-forever-retribution-paladin-leveling-build',
+  robots: 'index, follow',
+}
+
 const buildsHubPage: PageDefinition = {
   kind: 'build-hub',
   title: 'WoW Forever Paladin Builds & Talent Calculator | BuildForgeTools',
@@ -97,5 +106,6 @@ export function pageForPath(pathname: string): PageDefinition {
   if (normalized === '/wow-forever-paladin-build') return holyHealingBuildPage
   if (normalized === '/wow-forever-protection-paladin-build') return protectionBuildPage
   if (normalized === '/wow-forever-retribution-paladin-build') return retributionBuildPage
+  if (normalized === '/wow-forever-retribution-paladin-leveling-build') return retributionLevelingBuildPage
   return plannerPage
 }

@@ -2,6 +2,7 @@ import { ArrowRight, Calculator, Check, Shield, Sparkles } from 'lucide-react'
 import holyContent from './content/holy-healing-build.json'
 import protectionContent from './content/protection-shield-build.json'
 import retributionContent from './content/retribution-judgment-build.json'
+import retributionLevelingContent from './content/retribution-leveling-build.json'
 import { exampleBuildById, HOLY_HEALING_BUILD, type ExampleBuild, type ExampleBuildId } from './data/builds'
 import { branchNames, talents } from './data/talents'
 import { branchPoints, type Branch } from './lib/build'
@@ -26,12 +27,14 @@ const contentByBuildId: Record<ExampleBuildId, BuildContent> = {
   [HOLY_HEALING_BUILD.id]: holyContent,
   'protection-shield-20-31-0': protectionContent,
   'retribution-judgment-0-20-31': retributionContent,
+  'retribution-leveling-20-0-31': retributionLevelingContent,
 }
 
 const calculatorCta: Record<string, { prompt: string; anchor: string }> = {
   [HOLY_HEALING_BUILD.id]: { prompt: 'Want to start a build from scratch?', anchor: 'Open the WoW Forever Paladin Talent Calculator' },
   'protection-shield-20-31-0': { prompt: 'Want to customize this build?', anchor: 'Open the Paladin Talent Calculator' },
   'retribution-judgment-0-20-31': { prompt: 'Prefer a different Retribution route?', anchor: 'Customize this Retribution build' },
+  'retribution-leveling-20-0-31': { prompt: 'Prefer a different Retribution route?', anchor: 'Customize this Retribution leveling build' },
 }
 
 function OpenBuildLink({ build, href, placement, children }: { build: ExampleBuild; href: string; placement: string; children: React.ReactNode }) {

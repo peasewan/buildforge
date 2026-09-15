@@ -68,6 +68,14 @@
         "The middle and lower rows connect that foundation to the dungeon build identity. Improved Righteous Fury represents threat-focused planning, Shield Specialization supports blocking, and Sacred Duty adds another defensive choice before the path reaches Templar’s Bulwark and Holy Shield. The Talent Calculator enforces the visible tree-point requirements and prerequisites, so removing a required rank also removes deeper selections that can no longer remain active. This lets players test alternate Protection Paladin talents without producing an invalid shared setup.",
         "A Protection Paladin dungeon build may prioritize different utility or support choices as encounters, party needs, and verified talent data become clearer. This page therefore presents one complete tank build as a starting point rather than a fixed best build. Open the Talent Calculator to compare the 31-point Protection core, move the 20 supporting Holy points, or create a different legal route. Every edited configuration can be copied as a share link, making it easier to discuss talent choices while the community continues to verify the WoW Forever Protection tree."
       ]
+    },
+    {
+      "id": "protection-leveling",
+      "heading": "Using This Build for Solo Leveling",
+      "paragraphs": [
+        "The same 20/31/0 allocation also works as a dependable Protection leveling route. Toughness and Redoubt form a durable opening, while Precision and Anticipation add accuracy and defense that make ordinary questing more forgiving. The 20 Holy support points provide a modest self-healing base without pulling the build away from its defensive identity.",
+        "Players leveling as Protection can load this build and adjust the Holy points as new rows unlock. The Talent Calculator enforces every prerequisite and keeps the branch counters accurate, so an edited route stays legal while the full 51-point total stays visible. Treat each rank as community preview data until the current WoW Forever client confirms the values."
+      ]
     }
   ]
 }

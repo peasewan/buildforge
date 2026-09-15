@@ -6,6 +6,7 @@ const buildTargets = [
   ['../src/content/holy-healing-build.json', '../dist/wow-forever-paladin-build/index.html'],
   ['../src/content/protection-shield-build.json', '../dist/wow-forever-protection-paladin-build/index.html'],
   ['../src/content/retribution-judgment-build.json', '../dist/wow-forever-retribution-paladin-build/index.html'],
+  ['../src/content/retribution-leveling-build.json', '../dist/wow-forever-retribution-paladin-leveling-build/index.html'],
 ]
 const plannerOutputPath = new URL('../dist/paladin/index.html', import.meta.url)
 
@@ -103,6 +104,7 @@ const plannerPrerendered = `<main class="planner-prerender">
       <li><a href="/wow-forever-paladin-build">Holy Paladin Healing Build — 31/20/0</a></li>
       <li><a href="/wow-forever-protection-paladin-build">Protection Paladin Shield Build — 20/31/0</a></li>
       <li><a href="/wow-forever-retribution-paladin-build">Retribution Paladin Judgment Build — 0/20/31</a></li>
+      <li><a href="/wow-forever-retribution-paladin-leveling-build">Retribution Paladin Leveling Build — 20/0/31</a></li>
     </ul>
     <h2>Explore Paladin Builds</h2>
     <ul>
