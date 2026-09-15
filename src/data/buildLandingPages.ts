@@ -69,7 +69,7 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
         items: ['Compare Holy, Protection, and Retribution paths.', 'Watch prerequisites before planning deeper talents.', 'Treat all talent details as community preview data until verified in game.'],
       },
     ],
-    finalCta: { eyebrow: 'Ready to customize?', title: 'Shape a leveling path around your Paladin.', label: 'Open WoW Forever Paladin Talent Calculator', href: '/paladin' },
+    finalCta: { eyebrow: 'Ready to customize?', title: 'Shape a leveling path around your Paladin.', label: 'Open WoW Forever Paladin Talent Calculator', href: '/paladin#calculator' },
   },
   {
     id: 'pvp',
@@ -115,7 +115,7 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
         items: ['Choose a clear offensive or support role.', 'Reserve enough points for the utility you expect to use.', 'Verify current talent behavior in game before treating a setup as final.'],
       },
     ],
-    finalCta: { eyebrow: 'Create your own PvP build', title: 'Test a PvP setup before the next fight.', label: 'Open Talent Calculator', href: '/paladin' },
+    finalCta: { eyebrow: 'Create your own PvP build', title: 'Test a PvP setup before the next fight.', label: 'Open Talent Calculator', href: '/paladin#calculator' },
   },
   {
     id: 'raid',
@@ -161,7 +161,7 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
         ],
       },
     ],
-    finalCta: { eyebrow: 'Compare Paladin talent builds', title: 'Plan a raid role your group can review.', label: 'Open Talent Calculator', href: '/paladin' },
+    finalCta: { eyebrow: 'Compare Paladin talent builds', title: 'Plan a raid role your group can review.', label: 'Open Talent Calculator', href: '/paladin#calculator' },
   },
   {
     id: 'protection-dungeon',
@@ -212,7 +212,7 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
         ],
       },
     ],
-    finalCta: { eyebrow: 'Ready to adjust the tank build?', title: 'Load the full 20/31/0 setup in the planner.', label: 'Edit This Build', href: '/paladin' },
+    finalCta: { eyebrow: 'Ready to adjust the tank build?', title: 'Load the full 20/31/0 setup in the planner.', label: 'Edit This Build', href: '/paladin#calculator' },
   },
 ]
 

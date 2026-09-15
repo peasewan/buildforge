@@ -31,7 +31,7 @@ const relatedBuilds = [
   ['Holy Paladin Build', '/wow-forever-paladin-build'],
   ['Retribution Paladin Build', '/wow-forever-retribution-paladin-build'],
   ['Paladin Leveling Build', '/wow-forever-paladin-leveling-build'],
-  ['Paladin Talent Calculator', '/paladin'],
+  ['Paladin Talent Calculator', '/paladin#calculator'],
 ]
 
 function ProtectionLink({ href, placement, className, children }: { href: string; placement: string; className?: string; children: React.ReactNode }) {
@@ -44,7 +44,7 @@ export default function ProtectionBuildsHub() {
       <header className="guide-nav shell">
         <a className="brand" href="/paladin"><img src="/images/icons/paladin-shield.png" alt="" /><span>BUILD</span><b>FORGE</b></a>
         <nav aria-label="Protection hub navigation"><a href="#featured-build">Featured Build</a><a href="#build-types">Build Types</a><a href="#protection-talents">Talents</a></nav>
-        <ProtectionLink href="/paladin" placement="header" className="button primary">Open Planner</ProtectionLink>
+        <ProtectionLink href="/paladin#calculator" placement="header" className="button primary">Open Planner</ProtectionLink>
       </header>
 
       <section className="protection-hub-hero">
@@ -55,7 +55,7 @@ export default function ProtectionBuildsHub() {
           <h1>WoW Forever Protection Paladin Builds</h1>
           <p>Explore Protection Paladin tank builds, leveling paths, and talent setups for WoW Forever.</p>
           <span>Tank builds, talent paths, and community preview setups.</span>
-          <ProtectionLink href="/paladin" placement="hero" className="button primary"><Calculator size={17} /> Open Talent Calculator</ProtectionLink>
+          <ProtectionLink href="/paladin#calculator" placement="hero" className="button primary"><Calculator size={17} /> Open Talent Calculator</ProtectionLink>
         </div>
       </section>
 
@@ -75,7 +75,7 @@ export default function ProtectionBuildsHub() {
 
       <section className="hub-tool shell">
         <div><div className="eyebrow">Interactive Talent Planner</div><h2>Create Your Protection Paladin Build</h2><p>Customize talents.<br />Test different paths.<br />Share your setup.</p></div>
-        <ProtectionLink href="/paladin" placement="calculator" className="button primary"><Calculator size={18} /> Open Paladin Talent Calculator</ProtectionLink>
+        <ProtectionLink href="/paladin#calculator" placement="calculator" className="button primary"><Calculator size={18} /> Open Paladin Talent Calculator</ProtectionLink>
       </section>
 
       <section className="hub-data shell" id="protection-talents"><div><div className="eyebrow">Protection Talent Tree</div><h2>Protection Paladin Talents</h2></div><div><p>Explore Protection talent choices, key talents, and recommended paths before committing to a tank build.</p><p>The dedicated talent page shows the current community preview tree and connects every selected route back to the interactive calculator.</p><ProtectionLink href="/wow-forever-protection-paladin-talents" placement="talents">Explore Protection Paladin talents <ArrowRight size={15} /></ProtectionLink></div></section>

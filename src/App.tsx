@@ -18,14 +18,15 @@ const branchIcons: Record<Branch, string> = {
 
 const branchMax = (branch: Branch) => talents.filter((talent) => talent.branch === branch).reduce((sum, talent) => sum + talent.maxRank, 0)
 
-function initialBuild(): Build {
+function initialPlannerState(): { build: Build; restored: boolean } {
   const params = new URLSearchParams(window.location.search)
   const shared = params.get('id')
-  if (shared) return decodeBuild(shared, talents)
+  if (shared) return { build: decodeBuild(shared, talents), restored: false }
   try {
-    return decodeBuild(localStorage.getItem('wow-forever-paladin-build') ?? '', talents)
+    const build = decodeBuild(localStorage.getItem('wow-forever-paladin-build') ?? '', talents)
+    return { build, restored: totalPoints(build) > 0 }
   } catch {
-    return {}
+    return { build: {}, restored: false }
   }
 }
 
@@ -89,10 +90,13 @@ export function TalentTree({ branch, build, onAdd, onRemove }: { branch: Branch;
 }
 
 export default function App() {
+  const [initialPlanner] = useState(initialPlannerState)
   const [branch, setBranch] = useState<Branch>('holy')
-  const [build, setBuild] = useState<Build>(initialBuild)
+  const [build, setBuild] = useState<Build>(initialPlanner.build)
+  const [showSavedBuild, setShowSavedBuild] = useState(initialPlanner.restored)
   const [copied, setCopied] = useState(false)
   const toolRef = useRef<HTMLElement>(null)
+  const calculatorRef = useRef<HTMLDivElement>(null)
   const completedBuildsRef = useRef<Set<string> | null>(null)
   if (completedBuildsRef.current === null) completedBuildsRef.current = loadClaimedBuildCompletions()
   const points = totalPoints(build)
@@ -102,6 +106,12 @@ export default function App() {
   useEffect(() => {
     localStorage.setItem('wow-forever-paladin-build', encodeBuild(build))
   }, [build])
+
+  useEffect(() => {
+    if (window.location.hash === '#calculator') {
+      calculatorRef.current?.scrollIntoView({ block: 'start' })
+    }
+  }, [])
 
   useEffect(() => {
     const node = toolRef.current
@@ -123,7 +133,15 @@ export default function App() {
       setBranch(nextBranch)
       track('spec_select', { branch: nextBranch })
     }
-    toolRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    calculatorRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+
+  const startNewBuild = () => {
+    track('start_new_build', { previous_points: points })
+    setBuild({})
+    setShowSavedBuild(false)
+    setCopied(false)
+    window.history.replaceState({}, '', '/paladin#calculator')
   }
 
   const copyBuild = async () => {
@@ -171,19 +189,21 @@ export default function App() {
     const dominantBranch = branches.reduce((best, candidate) => branchPoints(example.build, candidate, talents) > branchPoints(example.build, best, talents) ? candidate : best, 'holy')
     setBuild({ ...example.build })
     setBranch(dominantBranch)
+    setShowSavedBuild(false)
     setCopied(false)
-    window.history.replaceState({}, '', '/paladin#planner')
+    window.history.replaceState({}, '', '/paladin#calculator')
     track('example_build_load', {
       build_id: example.id,
       allocation: example.allocation,
     })
+    calculatorRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
 
   return (
     <main>
       <header className="nav shell">
         <a className="brand" href="/paladin#top"><img src="/images/icons/paladin-shield.png" alt="" /><span>BUILD</span><b>FORGE</b></a>
-        <nav aria-label="Primary navigation"><a href="/paladin#planner">Talent Calculator</a><a href="/wow-forever-paladin-build">Paladin Build</a><a href="/wow-forever-paladin-talents">Paladin Talents</a></nav>
+        <nav aria-label="Primary navigation"><a href="/paladin#calculator">Talent Calculator</a><a href="/wow-forever-paladin-build">Paladin Build</a><a href="/wow-forever-paladin-talents">Paladin Talents</a></nav>
         <button className="nav-cta" onClick={() => openTool()}>Open Planner</button>
       </header>
 
@@ -241,6 +261,25 @@ export default function App() {
       <section className="planner-section" id="planner" ref={toolRef}>
         <div className="shell">
           <div className="section-heading centered"><div className="eyebrow">Interactive Build Planner</div><h2>WoW Forever Paladin Talent Tree</h2><p>Choose Holy, Protection, or Retribution, spend all 51 points, and shape a build worth sharing.</p></div>
+          <div id="calculator" ref={calculatorRef} className="calculator-entry">
+            {showSavedBuild && <div className="saved-build-notice" role="status"><div><strong>Saved build loaded</strong><span>Your previous talent setup is ready to continue.</span></div><button type="button" onClick={startNewBuild}><RotateCcw size={14} /> Start New Build</button></div>}
+            <div className="planner-tabs" role="tablist">{branches.map((item) => <button key={item} role="tab" aria-selected={branch === item} className={branch === item ? 'active' : ''} onClick={() => { setBranch(item); track('spec_select', { branch: item }) }}><img src={branchIcons[item]} alt="" /><span>{branchNames[item]}<small>{branchPoints(build, item, talents)} points</small></span></button>)}</div>
+            <div className="planner-grid">
+              <div className="tree-card">
+                <div className="panel-heading"><div><span>{branchNames[branch]} Specialization</span><h3>{branchTaglines[branch]}</h3></div><div className="legend"><i className="dot available" /> Available <i className="dot chosen" /> Selected</div></div>
+                <TalentTree branch={branch} build={build} onAdd={addTalent} onRemove={(talent) => setBuild((current) => decrementTalent(current, talent, talents))} />
+                <p className="tree-hint">Click a talent to add a rank. Use the small minus button to remove one.</p>
+              </div>
+              <aside className="summary-card">
+                <div className="summary-title"><span>Build Summary</span><button onClick={startNewBuild}><RotateCcw size={14} /> Reset</button></div>
+                <div className="points-orb"><strong>{points}</strong><span>/ 51</span><small>Talent Points</small></div>
+                <div className="current-build"><span>Current Build</span><strong>{branchNames[currentBranch]} Paladin</strong><small>{points === 51 ? 'Build complete' : `${51 - points} points remaining`}</small></div>
+                <div className="selected-list"><span>Selected Talents</span>{selected.length ? selected.map((talent) => <button key={talent.id} onClick={() => setBuild((current) => decrementTalent(current, talent, talents))}><img src={talent.icon} alt="" /><span>{talent.name}<small>{branchNames[talent.branch]}</small></span><b>{build[talent.id]}/{talent.maxRank}</b></button>) : <div className="empty-selection"><Sparkles size={18} /> Your chosen talents will appear here.</div>}</div>
+                <button className="copy-button" disabled={!points} onClick={copyBuild}>{copied ? <Check size={17} /> : <Clipboard size={17} />}{copied ? 'Link copied' : 'Copy Build Link'}</button>
+                <p className="share-note">Creates a link that opens this exact setup.</p>
+              </aside>
+            </div>
+          </div>
           <section className="popular-builds" aria-label="Popular Paladin builds">
             <div className="popular-builds-heading"><div><span>Community preview examples</span><h2>Popular Paladin Builds</h2></div><p>Open a complete build page or load all 51 points into the calculator.</p></div>
             <div className="popular-build-grid">{EXAMPLE_BUILDS.map((example, index) => (
@@ -257,22 +296,6 @@ export default function App() {
             <div className="build-topic-grid">{BUILD_LANDING_PAGES.map((page) => <BuildCard compact key={page.id} eyebrow={page.eyebrow} title={page.title.replace('WoW Forever ', '')} description={page.subtitle} href={`/${page.slug}`} icon={(page.id === 'protection-dungeon' ? 'protection' : page.id) as BuildCardIcon} />)}</div>
             <a className="topic-hub-link" href="/wow-forever-paladin-builds">Browse all Paladin builds <ChevronDown size={15} /></a>
           </section>
-          <div className="planner-tabs" role="tablist">{branches.map((item) => <button key={item} role="tab" aria-selected={branch === item} className={branch === item ? 'active' : ''} onClick={() => { setBranch(item); track('spec_select', { branch: item }) }}><img src={branchIcons[item]} alt="" /><span>{branchNames[item]}<small>{branchPoints(build, item, talents)} points</small></span></button>)}</div>
-          <div className="planner-grid">
-            <div className="tree-card">
-              <div className="panel-heading"><div><span>{branchNames[branch]} Specialization</span><h3>{branchTaglines[branch]}</h3></div><div className="legend"><i className="dot available" /> Available <i className="dot chosen" /> Selected</div></div>
-              <TalentTree branch={branch} build={build} onAdd={addTalent} onRemove={(talent) => setBuild((current) => decrementTalent(current, talent, talents))} />
-              <p className="tree-hint">Click a talent to add a rank. Use the small minus button to remove one.</p>
-            </div>
-            <aside className="summary-card">
-              <div className="summary-title"><span>Build Summary</span><button onClick={() => setBuild({})}><RotateCcw size={14} /> Reset</button></div>
-              <div className="points-orb"><strong>{points}</strong><span>/ 51</span><small>Talent Points</small></div>
-              <div className="current-build"><span>Current Build</span><strong>{branchNames[currentBranch]} Paladin</strong><small>{points === 51 ? 'Build complete' : `${51 - points} points remaining`}</small></div>
-              <div className="selected-list"><span>Selected Talents</span>{selected.length ? selected.map((talent) => <button key={talent.id} onClick={() => setBuild((current) => decrementTalent(current, talent, talents))}><img src={talent.icon} alt="" /><span>{talent.name}<small>{branchNames[talent.branch]}</small></span><b>{build[talent.id]}/{talent.maxRank}</b></button>) : <div className="empty-selection"><Sparkles size={18} /> Your chosen talents will appear here.</div>}</div>
-              <button className="copy-button" disabled={!points} onClick={copyBuild}>{copied ? <Check size={17} /> : <Clipboard size={17} />}{copied ? 'Link copied' : 'Copy Build Link'}</button>
-              <p className="share-note">Creates a link that opens this exact setup.</p>
-            </aside>
-          </div>
         </div>
       </section>
 
@@ -284,7 +307,7 @@ export default function App() {
 
       <section className="seo-continuation" aria-label="More about the BuildForge talent calculator"><div className="shell"><p>BuildForge keeps every action visible and reversible. A locked node shows that the current branch needs more points or a completed prerequisite. An illuminated node shows a rank already chosen. The summary lists those choices by specialization and lets you remove a rank without hunting for its position in the tree. Because the URL contains only talent identifiers and ranks, it stays compact enough to paste into a chat, forum, or build discussion.</p><p>The first version focuses on a dependable planning loop rather than extra account features. It opens quickly, works without registration, and saves the latest local setup automatically. Players can test a Holy core with Protection support, compare a Retribution route, or clear everything and begin again. The structure is ready for new class trees later, while the Paladin calculator remains a clear standalone page for search visitors who want to build immediately.</p></div></section>
 
-      <footer><div className="shell"><a className="brand" href="/paladin#top"><img src="/images/icons/paladin-shield.png" alt="" /><span>BUILD</span><b>FORGE</b></a><p>WoW Forever Talent Tools</p><nav><a href="/wow-forever-paladin-builds">All Paladin Builds</a><a href="/paladin#planner">Talent Calculator</a><a href="/wow-forever-paladin-talents">Paladin Talents</a></nav><small>Community-made planning tool. Not affiliated with Blizzard Entertainment.</small></div></footer>
+      <footer><div className="shell"><a className="brand" href="/paladin#top"><img src="/images/icons/paladin-shield.png" alt="" /><span>BUILD</span><b>FORGE</b></a><p>WoW Forever Talent Tools</p><nav><a href="/wow-forever-paladin-builds">All Paladin Builds</a><a href="/paladin#calculator">Talent Calculator</a><a href="/wow-forever-paladin-talents">Paladin Talents</a></nav><small>Community-made planning tool. Not affiliated with Blizzard Entertainment.</small></div></footer>
     </main>
   )
 }

@@ -16,7 +16,7 @@ const popularBuilds = [
 ]
 
 const resources = [
-  ['Paladin Talent Calculator', '/paladin'],
+  ['Paladin Talent Calculator', '/paladin#calculator'],
   ['Holy Paladin Build', '/wow-forever-holy-paladin-build'],
   ['Protection Paladin Build', '/wow-forever-protection-paladin-build'],
   ['Retribution Paladin Build', '/wow-forever-retribution-paladin-build'],
@@ -33,7 +33,7 @@ export default function PaladinBuildsHub() {
       <header className="guide-nav shell">
         <a className="brand" href="/paladin"><img src="/images/icons/paladin-shield.png" alt="" /><span>BUILD</span><b>FORGE</b></a>
         <nav aria-label="Hub navigation"><a href="#specializations">Specializations</a><a href="#popular-builds">Popular Builds</a><a href="#resources">Resources</a></nav>
-        <HubLink href="/paladin" placement="header" className="button primary">Open Planner</HubLink>
+        <HubLink href="/paladin#calculator" placement="header" className="button primary">Open Planner</HubLink>
       </header>
 
       <section className="hub-hero">
@@ -43,7 +43,7 @@ export default function PaladinBuildsHub() {
           <div className="eyebrow">Build Forge</div>
           <h1>WoW Forever Paladin Builds &amp; Talent Calculator</h1>
           <p>Explore community preview builds,<br />talent paths, and specialization guides.</p>
-          <HubLink href="/paladin" placement="hero" className="button primary"><Calculator size={17} /> Open Talent Calculator</HubLink>
+          <HubLink href="/paladin#calculator" placement="hero" className="button primary"><Calculator size={17} /> Open Talent Calculator</HubLink>
         </div>
       </section>
 
@@ -59,7 +59,7 @@ export default function PaladinBuildsHub() {
 
       <section className="hub-tool shell">
         <div><div className="eyebrow">Interactive Build Planner</div><h2>Create Your Own Paladin Build</h2><p>Plan talents.<br />Test different paths.<br />Share your setup.</p></div>
-        <HubLink href="/paladin" placement="calculator-cta" className="button primary"><Calculator size={18} /> Open WoW Forever Paladin Talent Calculator</HubLink>
+        <HubLink href="/paladin#calculator" placement="calculator-cta" className="button primary"><Calculator size={18} /> Open WoW Forever Paladin Talent Calculator</HubLink>
       </section>
 
       <section className="hub-data shell"><div><div className="eyebrow">About Our Data</div><h2>Transparent Community Research</h2></div><div><p>BuildForgeTools uses community research and reference materials to create preview talent planners for WoW Forever.</p><p>Talent data is continuously reviewed and updated. Every build is presented as a planning reference while the underlying information is verified.</p><a href="/wow-forever-paladin-talents">Read about Paladin talents <ArrowRight size={15} /></a></div></section>

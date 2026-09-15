@@ -13,8 +13,8 @@ export default function GuidePage() {
     <main className="guide-page">
       <header className="guide-nav shell">
         <a className="brand" href="/paladin"><img src="/images/icons/paladin-shield.png" alt="" /><span>BUILD</span><b>FORGE</b></a>
-        <nav aria-label="Guide navigation"><a href="/paladin">Talent Calculator</a><a href="/wow-forever-paladin-build">Paladin Build</a><a href="#paladin-talents">Paladin Talents</a></nav>
-        <a className="nav-cta guide-nav-cta" href="/paladin" onClick={() => track('guide_cta_click', { placement: 'header' })}>Open Planner</a>
+        <nav aria-label="Guide navigation"><a href="/paladin#calculator">Talent Calculator</a><a href="/wow-forever-paladin-build">Paladin Build</a><a href="#paladin-talents">Paladin Talents</a></nav>
+        <a className="nav-cta guide-nav-cta" href="/paladin#calculator" onClick={() => track('guide_cta_click', { placement: 'header' })}>Open Planner</a>
       </header>
 
       <section className="guide-hero">
@@ -25,7 +25,7 @@ export default function GuidePage() {
           <h1>{guide.title}</h1>
           <p>{guide.dek}</p>
           <div className="guide-actions">
-            <a className="button primary" href="/paladin" onClick={() => track('guide_cta_click', { placement: 'hero' })}><Calculator size={16} /> Open Talent Calculator</a>
+            <a className="button primary" href="/paladin#calculator" onClick={() => track('guide_cta_click', { placement: 'hero' })}><Calculator size={16} /> Open Talent Calculator</a>
             <a className="text-link" href="#what-is-wow-forever">Read the guide <ArrowRight size={15} /></a>
           </div>
         </div>
@@ -52,7 +52,7 @@ export default function GuidePage() {
             </section>
           ))}
           <aside className="guide-note"><strong>Community preview</strong><p>Talent information is organized from community research and Classic references. Check current in-game tooltips before treating a value as final.</p></aside>
-          <div className="guide-final-cta"><img src="/images/icons/paladin-shield.png" alt="" /><div><span>Ready to test a build?</span><h2>Plan all 51 points in the Paladin calculator.</h2></div><a className="button primary" href="/paladin" onClick={() => track('guide_cta_click', { placement: 'footer' })}>Create your WoW Forever Paladin build <ArrowRight size={15} /></a></div>
+          <div className="guide-final-cta"><img src="/images/icons/paladin-shield.png" alt="" /><div><span>Ready to test a build?</span><h2>Plan all 51 points in the Paladin calculator.</h2></div><a className="button primary" href="/paladin#calculator" onClick={() => track('guide_cta_click', { placement: 'footer' })}>Create your WoW Forever Paladin build <ArrowRight size={15} /></a></div>
         </article>
       </div>
 

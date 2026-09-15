@@ -42,7 +42,7 @@ function LandingSectionView({ section, pageId }: { section: LandingSection; page
   )
 
   if (section.kind === 'talent-preview') {
-    const editHref = `/build?id=${encodeBuild(PROTECTION_SHIELD_BUILD.build)}`
+    const editHref = `/build?id=${encodeBuild(PROTECTION_SHIELD_BUILD.build)}#calculator`
     return (
       <section className="landing-content-section landing-talent-preview">
         <header><div className="eyebrow">Interactive Preview</div><h2>{section.title}</h2><p>{section.intro}</p></header>
@@ -63,13 +63,13 @@ function LandingSectionView({ section, pageId }: { section: LandingSection; page
 export default function BuildLandingPage({ pageId }: { pageId: BuildLandingPageId }) {
   const page = buildLandingPageById(pageId)
   const heroStyle = { '--landing-hero-image': `url(${page.heroImage})`, '--landing-hero-position': page.heroPosition } as CSSProperties
-  const primaryHref = pageId === 'protection-dungeon' ? `/build?id=${encodeBuild(PROTECTION_SHIELD_BUILD.build)}` : '/paladin'
+  const primaryHref = pageId === 'protection-dungeon' ? `/build?id=${encodeBuild(PROTECTION_SHIELD_BUILD.build)}#calculator` : '/paladin#calculator'
 
   return (
     <main className="landing-page">
       <header className="guide-nav shell">
         <a className="brand" href="/paladin"><img src="/images/icons/paladin-shield.png" alt="" /><span>BUILD</span><b>FORGE</b></a>
-        <nav aria-label="Build navigation"><a href="/paladin">Talent Calculator</a><a href="/wow-forever-paladin-talents">Paladin Talents</a><a href="#build-content">Build Details</a></nav>
+        <nav aria-label="Build navigation"><a href="/paladin#calculator">Talent Calculator</a><a href="/wow-forever-paladin-talents">Paladin Talents</a><a href="#build-content">Build Details</a></nav>
         <TrackedLink href={primaryHref} pageId={pageId} placement="header" className="button primary">Open Planner</TrackedLink>
       </header>
 

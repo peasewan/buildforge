@@ -1,8 +1,14 @@
-import { cleanup, render, screen } from '@testing-library/react'
-import { afterEach, describe, expect, it } from 'vitest'
+import { cleanup, fireEvent, render, screen } from '@testing-library/react'
+import { afterEach, describe, expect, it, vi } from 'vitest'
 import App from './App'
+import { encodeBuild } from './lib/build'
+import { HOLY_HEALING_BUILD } from './data/builds'
 
-afterEach(cleanup)
+afterEach(() => {
+  cleanup()
+  localStorage.clear()
+  window.history.replaceState({}, '', '/paladin')
+})
 
 describe('Paladin talent calculator page', () => {
   it('labels the interactive planner as a WoW Forever Paladin talent tree', () => {
@@ -45,5 +51,38 @@ describe('Paladin talent calculator page', () => {
     expect(screen.getAllByText('Officially confirmed name · Demo-verified details').length).toBeGreaterThan(0)
     const source = screen.getAllByRole('link', { name: 'Blizzard WoW Forever Deep Dive' })[0]
     expect(source.getAttribute('href')).toContain('worldofwarcraft.blizzard.com')
+  })
+
+  it('opens the actual calculator before the popular build cards', () => {
+    const scrollIntoView = vi.fn()
+    HTMLElement.prototype.scrollIntoView = scrollIntoView
+    const { container } = render(<App />)
+
+    fireEvent.click(screen.getByRole('button', { name: 'Open Talent Calculator' }))
+
+    expect(scrollIntoView).toHaveBeenCalledTimes(1)
+    const calculator = container.querySelector('#calculator')
+    const popularBuilds = container.querySelector('.popular-builds')
+    expect(calculator?.compareDocumentPosition(popularBuilds as Node) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
+  })
+
+  it('offers a fresh start when a saved build is restored', () => {
+    localStorage.setItem('wow-forever-paladin-build', encodeBuild(HOLY_HEALING_BUILD.build))
+    render(<App />)
+
+    expect(screen.getByText('Saved build loaded')).toBeTruthy()
+    fireEvent.click(screen.getByRole('button', { name: 'Start New Build' }))
+    expect(screen.queryByText('Saved build loaded')).toBeNull()
+    expect(screen.getByText('51 points remaining')).toBeTruthy()
+  })
+
+  it('honors calculator deep links from other pages', () => {
+    const scrollIntoView = vi.fn()
+    HTMLElement.prototype.scrollIntoView = scrollIntoView
+    window.history.replaceState({}, '', '/paladin#calculator')
+
+    render(<App />)
+
+    expect(scrollIntoView).toHaveBeenCalledTimes(1)
   })
 })

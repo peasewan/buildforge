@@ -53,7 +53,7 @@ export default function BuildPage({ buildId = HOLY_HEALING_BUILD.id }: { buildId
     <main className="build-page">
       <header className="guide-nav shell">
         <a className="brand" href="/paladin"><img src="/images/icons/paladin-shield.png" alt="" /><span>BUILD</span><b>FORGE</b></a>
-        <nav aria-label="Build navigation"><a href="/paladin">Talent Calculator</a><a href="/wow-forever-paladin-talents">Paladin Talents</a><a href="#talent-allocation">Selected Talents</a></nav>
+        <nav aria-label="Build navigation"><a href="/paladin#calculator">Talent Calculator</a><a href="/wow-forever-paladin-talents">Paladin Talents</a><a href="#talent-allocation">Selected Talents</a></nav>
         <OpenBuildLink build={build} href={buildContent.plannerPath} placement="header">Open Build</OpenBuildLink>
       </header>
 
@@ -96,7 +96,7 @@ export default function BuildPage({ buildId = HOLY_HEALING_BUILD.id }: { buildId
         {isProtection && <section className="protection-build-more"><h2>Explore More Protection Builds</h2><p>Compare tank paths, Protection talents, and content-focused setups from the Protection Paladin topic hub.</p><a href="/wow-forever-protection-paladin-builds">Protection Paladin Builds Hub <ArrowRight size={15} /></a></section>}
         <aside className="guide-note"><strong>Community preview</strong><p>This build uses publicly demonstrated WoW Forever talent information. Verify current in-game tooltips before treating any value as final.</p></aside>
         <div className="guide-final-cta"><img src="/images/icons/paladin-shield.png" alt="" /><div><span>Ready to customize it?</span><h2>{buildContent.footerHeading}</h2></div><OpenBuildLink build={build} href={buildContent.plannerPath} placement="footer">Open Build <ArrowRight size={15} /></OpenBuildLink></div>
-        <p className="build-calc-anchor">{calculatorCta[build.id].prompt} <a href="/paladin">{calculatorCta[build.id].anchor} <ArrowRight size={14} /></a></p>
+        <p className="build-calc-anchor">{calculatorCta[build.id].prompt} <a href="/paladin#calculator">{calculatorCta[build.id].anchor} <ArrowRight size={14} /></a></p>
       </article>
 
       <footer><div className="shell"><a className="brand" href="/paladin"><img src="/images/icons/paladin-shield.png" alt="" /><span>BUILD</span><b>FORGE</b></a><p>WoW Forever Talent Tools</p><nav><a href="/wow-forever-paladin-builds">All Paladin Builds</a><a href="/wow-forever-protection-paladin-build">Protection Build</a><a href="/wow-forever-retribution-paladin-build">Retribution Build</a></nav><small>Community-made planning tool. Not affiliated with Blizzard Entertainment.</small></div></footer>
