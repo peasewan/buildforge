@@ -5,6 +5,7 @@ import type { Branch, TalentDefinition } from "../lib/build";
 // community reported in the interface. Classic references are used only to compare
 // talents whose demo version matches the older tree.
 export const DATA_VERSION = "wow_forever_demo_2026-09-13";
+export type TalentDataVersion = typeof DATA_VERSION | `wow_forever_beta_${string}`;
 export const DATA_SOURCES: string[] = [
   "WoW Forever demo recordings",
   "ForeverTalent community transcription",
@@ -15,6 +16,7 @@ export type ChangeType = "classic_unchanged" | "moved" | "updated" | "new";
 export type VerificationStatus =
   | "official_confirmed"
   | "demo_verified"
+  | "beta_verified"
   | "community_correlated"
   | "estimated"
   | "needs_review";
@@ -23,7 +25,9 @@ export type TalentSourceType =
   | "official"
   | "demo_recording"
   | "community_transcription"
-  | "classic_reference";
+  | "classic_reference"
+  | "beta_client"
+  | "beta_capture";
 
 export interface TalentSource {
   type: TalentSourceType;
@@ -44,10 +48,12 @@ export interface Talent extends TalentDefinition {
   name: string;
   description: string;
   icon: string;
-  dataVersion: typeof DATA_VERSION;
+  dataVersion: TalentDataVersion;
   changeType: ChangeType;
   verificationStatus: VerificationStatus;
   verification: TalentVerification;
+  row: number;
+  column: number;
   x: number;
   y: number;
   sources: TalentSource[];
@@ -806,6 +812,8 @@ function toTalents(branch: Branch, raw: RawTalent[]): Talent[] {
         prerequisite: "demo_verified",
       },
       description: talent.description,
+      row: talent.y,
+      column: talent.x,
       x: COLUMN_X[talent.x],
       y: TIER_Y[talent.y],
       sources,

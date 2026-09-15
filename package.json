@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build && node scripts/prerender-guide.mjs",
+    "build": "tsc -b && vite build && node scripts/prerender-guide.mjs && tsx scripts/prerender-beta.ts",
     "test": "vitest run",
     "lint": "eslint .",
     "talents:diff": "tsx scripts/talents-diff.ts",

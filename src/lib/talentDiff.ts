@@ -16,14 +16,15 @@ export interface TalentChange {
     description?: FieldChange<string>;
     maxRank?: FieldChange<number>;
     requiredTreePoints?: FieldChange<number>;
-    y?: FieldChange<number>;
+    row?: FieldChange<number>;
+    column?: FieldChange<number>;
     branch?: FieldChange<Branch>;
     prerequisite?: FieldChange<string[]>;
   };
 }
 
 export interface TalentDiff {
-  status: "waiting" | "available";
+  status: "waiting" | "partial" | "available";
   added: Talent[];
   removed: Talent[];
   changed: TalentChange[];
@@ -44,8 +45,11 @@ function arraysDiffer(left: string[], right: string[]): boolean {
 }
 
 // Compares two talent datasets by id and reports every field that moved.
-// When the "next" dataset is still waiting (no real beta data), the result is
-// a waiting diff with no changes — never 52 phantom "removed" talents.
+//
+// Semantic fields (row, column, requiredTreePoints) are compared, not the CSS
+// percentages used for rendering. "Removed" only applies to branches the next
+// dataset marks "complete": a partial or waiting branch is simply not fully
+// transcribed yet, so its absent talents are not removals.
 export function compareTalentVersions(previous: TalentDataset, next: TalentDataset): TalentDiff {
   if (next.status === "waiting") return emptyDiff("waiting");
 
@@ -69,7 +73,8 @@ export function compareTalentVersions(previous: TalentDataset, next: TalentDatas
     if (previousTalent.description !== nextTalent.description) changes.description = { before: previousTalent.description, after: nextTalent.description };
     if (previousTalent.maxRank !== nextTalent.maxRank) changes.maxRank = { before: previousTalent.maxRank, after: nextTalent.maxRank };
     if (previousTalent.requiredTreePoints !== nextTalent.requiredTreePoints) changes.requiredTreePoints = { before: previousTalent.requiredTreePoints, after: nextTalent.requiredTreePoints };
-    if (previousTalent.y !== nextTalent.y) changes.y = { before: previousTalent.y, after: nextTalent.y };
+    if (previousTalent.row !== nextTalent.row) changes.row = { before: previousTalent.row, after: nextTalent.row };
+    if (previousTalent.column !== nextTalent.column) changes.column = { before: previousTalent.column, after: nextTalent.column };
     if (previousTalent.branch !== nextTalent.branch) changes.branch = { before: previousTalent.branch, after: nextTalent.branch };
     if (arraysDiffer(previousTalent.prerequisite ?? [], nextTalent.prerequisite ?? [])) changes.prerequisite = { before: previousTalent.prerequisite ?? [], after: nextTalent.prerequisite ?? [] };
 
@@ -81,8 +86,16 @@ export function compareTalentVersions(previous: TalentDataset, next: TalentDatas
   }
 
   for (const previousTalent of previous.talents) {
-    if (!nextById.has(previousTalent.id)) removed.push(previousTalent);
+    if (!nextById.has(previousTalent.id) && next.coverage[previousTalent.branch] === "complete") {
+      removed.push(previousTalent);
+    }
   }
 
-  return { status: "available", added, removed, changed, unchanged };
+  return {
+    status: next.status === "partial" ? "partial" : "available",
+    added,
+    removed,
+    changed,
+    unchanged,
+  };
 }

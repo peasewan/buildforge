@@ -13,7 +13,7 @@ function makeTalent(overrides: Partial<Talent> = {}): Talent {
     name: "Talent A",
     description: "A description.",
     icon: "/img.png",
-    dataVersion: "v1",
+    dataVersion: "wow_forever_demo_2026-09-13",
     changeType: "new",
     verificationStatus: "demo_verified",
     verification: {
@@ -23,6 +23,8 @@ function makeTalent(overrides: Partial<Talent> = {}): Talent {
       description: "demo_verified",
       prerequisite: "demo_verified",
     },
+    row: 0,
+    column: 0,
     x: 50,
     y: 0,
     sources: [{ type: "demo_recording", label: "Demo" }],
@@ -35,16 +37,21 @@ function makeDataset(overrides: Partial<TalentDataset> = {}): TalentDataset {
     role: "beta",
     sourceVersion: "v2",
     label: "Beta",
-    status: "available",
+    status: "complete",
+    coverage: { holy: "complete", protection: "complete", retribution: "complete" },
     talents: [],
     ...overrides,
   };
 }
 
 describe("compareTalentVersions", () => {
-  it("returns a waiting diff when beta has no real data yet, not 52 removals", () => {
+  it("returns a waiting diff when beta has no real data yet", () => {
     const previous = makeDataset({ role: "community-preview", talents: [makeTalent()] });
-    const next = makeDataset({ status: "waiting", talents: [] });
+    const next = makeDataset({
+      status: "waiting",
+      coverage: { holy: "waiting", protection: "waiting", retribution: "waiting" },
+      talents: [],
+    });
 
     const diff = compareTalentVersions(previous, next);
 
@@ -53,6 +60,38 @@ describe("compareTalentVersions", () => {
     expect(diff.removed).toHaveLength(0);
     expect(diff.changed).toHaveLength(0);
     expect(diff.unchanged).toHaveLength(0);
+  });
+
+  it("does not report removals for branches that are only partial", () => {
+    const previous = makeDataset({
+      talents: [makeTalent({ id: "holy-a" }), makeTalent({ id: "prot-a", branch: "protection" })],
+    });
+    const next = makeDataset({
+      status: "partial",
+      coverage: { holy: "complete", protection: "partial", retribution: "waiting" },
+      talents: [makeTalent({ id: "holy-a" })],
+    });
+
+    const diff = compareTalentVersions(previous, next);
+
+    expect(diff.status).toBe("partial");
+    // prot-a is missing from the partial beta, but its branch is only "partial",
+    // so it must NOT be reported as removed.
+    expect(diff.removed).toHaveLength(0);
+  });
+
+  it("reports removals only for branches marked complete", () => {
+    const previous = makeDataset({
+      talents: [makeTalent({ id: "holy-a" }), makeTalent({ id: "prot-a", branch: "protection" })],
+    });
+    const next = makeDataset({
+      status: "complete",
+      talents: [makeTalent({ id: "holy-a" })],
+    });
+
+    const diff = compareTalentVersions(previous, next);
+
+    expect(diff.removed.map((talent) => talent.id)).toEqual(["prot-a"]);
   });
 
   it("marks an identical talent unchanged", () => {
@@ -75,15 +114,6 @@ describe("compareTalentVersions", () => {
     expect(diff.added.map((talent) => talent.id)).toEqual(["new-talent"]);
   });
 
-  it("reports a preview talent absent from beta as removed", () => {
-    const diff = compareTalentVersions(
-      makeDataset({ talents: [makeTalent({ id: "old-talent" })] }),
-      makeDataset({ talents: [] }),
-    );
-
-    expect(diff.removed.map((talent) => talent.id)).toEqual(["old-talent"]);
-  });
-
   it("captures a rank change", () => {
     const diff = compareTalentVersions(
       makeDataset({ talents: [makeTalent({ maxRank: 1 })] }),
@@ -93,7 +123,7 @@ describe("compareTalentVersions", () => {
     expect(diff.changed[0].changes.maxRank).toEqual({ before: 1, after: 3 });
   });
 
-  it("captures a tier change", () => {
+  it("captures a required-tree-points change", () => {
     const diff = compareTalentVersions(
       makeDataset({ talents: [makeTalent({ requiredTreePoints: 5 })] }),
       makeDataset({ talents: [makeTalent({ requiredTreePoints: 10 })] }),
@@ -104,11 +134,20 @@ describe("compareTalentVersions", () => {
 
   it("captures a row move", () => {
     const diff = compareTalentVersions(
-      makeDataset({ talents: [makeTalent({ y: 5 })] }),
-      makeDataset({ talents: [makeTalent({ y: 4 })] }),
+      makeDataset({ talents: [makeTalent({ row: 5 })] }),
+      makeDataset({ talents: [makeTalent({ row: 4 })] }),
     );
 
-    expect(diff.changed[0].changes.y).toEqual({ before: 5, after: 4 });
+    expect(diff.changed[0].changes.row).toEqual({ before: 5, after: 4 });
+  });
+
+  it("captures a column move", () => {
+    const diff = compareTalentVersions(
+      makeDataset({ talents: [makeTalent({ column: 1 })] }),
+      makeDataset({ talents: [makeTalent({ column: 2 })] }),
+    );
+
+    expect(diff.changed[0].changes.column).toEqual({ before: 1, after: 2 });
   });
 
   it("captures a prerequisite change", () => {

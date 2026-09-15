@@ -13,7 +13,7 @@ function makeTalent(overrides: Partial<Talent> = {}): Talent {
     name: "Talent A",
     description: "A description.",
     icon: "/img.png",
-    dataVersion: "v1",
+    dataVersion: "wow_forever_demo_2026-09-13",
     changeType: "new",
     verificationStatus: "demo_verified",
     verification: {
@@ -23,6 +23,8 @@ function makeTalent(overrides: Partial<Talent> = {}): Talent {
       description: "demo_verified",
       prerequisite: "demo_verified",
     },
+    row: 0,
+    column: 0,
     x: 50,
     y: 0,
     sources: [{ type: "demo_recording", label: "Demo" }],
@@ -35,7 +37,8 @@ function makeDataset(overrides: Partial<TalentDataset> = {}): TalentDataset {
     role: "beta",
     sourceVersion: "v2",
     label: "Beta",
-    status: "available",
+    status: "complete",
+    coverage: { holy: "complete", protection: "complete", retribution: "complete" },
     talents: [],
     ...overrides,
   };

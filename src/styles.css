@@ -428,3 +428,12 @@ footer { padding: 42px 0; border-top: 1px solid rgba(217,164,65,.15); background
 .beta-changed-list h3 { margin: 0 0 8px; font: 600 15px Cinzel, serif; color: #e4c87f; }
 .beta-changed-list p { margin: 4px 0; color: #9aa0aa; font-size: 12px; }
 @media (max-width: 900px) { .beta-hero { grid-template-columns: 1fr; gap: 30px; padding-top: 120px; } }
+.beta-partial-note { text-align: center; color: #bca66f; font-size: 12px; margin: -12px 0 20px; }
+.beta-talent-section { margin-top: 34px; }
+.beta-talent-section h2 { font: 600 20px Cinzel, serif; color: #eee5d2; margin: 0 0 14px; }
+.beta-talent-section ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+.beta-talent-section li { padding: 12px 16px; background: rgba(255,255,255,.025); border: 1px solid rgba(255,255,255,.07); border-radius: 8px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.beta-talent-section li strong { color: #e2d3ac; font: 600 13px Cinzel, serif; }
+.beta-talent-section li span { color: #737b86; font-size: 11px; }
+.beta-old { color: #b0824e; text-decoration: line-through; }
+.beta-new { color: #7dc08a; }
