@@ -3,7 +3,7 @@ import BuildCard, { type BuildCardIcon } from './BuildCard'
 import { track } from './lib/analytics'
 
 const specializations = [
-  { name: 'Holy', role: 'Raid Healing', href: '/wow-forever-holy-paladin-build', icon: <Sparkles size={34} /> },
+  { name: 'Holy', role: 'Raid Healing', href: '/wow-forever-paladin-build', icon: <Sparkles size={34} /> },
   { name: 'Protection', role: 'Dungeon Tank', href: '/wow-forever-protection-paladin-builds', icon: <Shield size={34} /> },
   { name: 'Retribution', role: 'DPS Builds', href: '/wow-forever-retribution-paladin-build', icon: <Swords size={34} /> },
 ]
@@ -17,7 +17,7 @@ const popularBuilds = [
 
 const resources = [
   ['Paladin Talent Calculator', '/paladin#calculator'],
-  ['Holy Paladin Build', '/wow-forever-holy-paladin-build'],
+  ['Holy Paladin Build', '/wow-forever-paladin-build'],
   ['Protection Paladin Build', '/wow-forever-protection-paladin-build'],
   ['Retribution Paladin Build', '/wow-forever-retribution-paladin-build'],
   ['Paladin Leveling Build', '/wow-forever-paladin-leveling-build'],
