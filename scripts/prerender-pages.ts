@@ -1,13 +1,16 @@
 import { readFile, writeFile } from 'node:fs/promises'
 import { BUILD_LANDING_PAGES } from '../src/data/buildLandingPages'
-import { renderHubPrerender, renderLandingPrerender, renderProtectionHubPrerender } from '../src/lib/prerender'
+import { SPEC_BUILDS_HUBS } from '../src/data/specBuildsHubs'
+import { SPEC_TALENTS_PAGES } from '../src/data/specTalentsPages'
+import { renderHubPrerender, renderLandingPrerender, renderSpecHubPrerender, renderSpecTalentsPrerender } from '../src/lib/prerender'
 
 // Filenames come from each page's own slug so a new landing page cannot be added
 // without its template being picked up here.
 const targets: { filename: string; render: () => string }[] = [
   { filename: 'wow-forever-paladin-builds', render: renderHubPrerender },
-  { filename: 'wow-forever-protection-paladin-builds', render: renderProtectionHubPrerender },
+  ...SPEC_BUILDS_HUBS.map((hub) => ({ filename: hub.slug, render: () => renderSpecHubPrerender(hub.spec) })),
   ...BUILD_LANDING_PAGES.map((page) => ({ filename: page.slug, render: () => renderLandingPrerender(page.id) })),
+  ...SPEC_TALENTS_PAGES.map((page) => ({ filename: page.slug, render: () => renderSpecTalentsPrerender(page.spec) })),
 ]
 
 for (const { filename, render } of targets) {

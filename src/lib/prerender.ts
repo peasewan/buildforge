@@ -1,7 +1,9 @@
+import type { Branch } from './build'
 import { escapeHtml } from './html'
 import { BUILD_LANDING_PAGES, type BuildLandingPageId, type LandingSection } from '../data/buildLandingPages'
 import { HUB_INTRO, HUB_INTRO_SUB, HUB_PLAYSTYLE_SECTIONS, HUB_SPECIALIZATIONS, HUB_TALENTS, HUB_TITLE } from '../data/paladinBuildsHub'
-import { PROTECTION_HUB_BUILD_TYPES, PROTECTION_HUB_INTRO, PROTECTION_HUB_RELATED, PROTECTION_HUB_TALENTS, PROTECTION_HUB_TITLE } from '../data/protectionBuildsHub'
+import { specBuildsHubBySpec } from '../data/specBuildsHubs'
+import { specTalentsPageBySpec } from '../data/specTalentsPages'
 
 const link = (href: string, label: string) => `<a href="${escapeHtml(href)}">${escapeHtml(label)}</a>`
 
@@ -76,15 +78,33 @@ export function renderHubPrerender(): string {
 </main>`
 }
 
-export function renderProtectionHubPrerender(): string {
-  const buildTypes = PROTECTION_HUB_BUILD_TYPES.map((build) => ({ href: build.href, label: `${build.title} — ${build.description}` }))
+export function renderSpecTalentsPrerender(spec: Branch): string {
+  const page = specTalentsPageBySpec(spec)
+
+  return `<main class="spec-talents-prerender">
+  <article>
+    <p>${escapeHtml(page.eyebrow)}</p>
+    <h1>${escapeHtml(page.title)}</h1>
+    <p>${escapeHtml(page.intro)}</p>
+    <p><strong>${escapeHtml(page.allocation.label)}: ${escapeHtml(page.allocation.value)}</strong> — ${escapeHtml(page.allocation.note)}</p>
+  </article>
+  ${page.sections.map((section) => `<section><h2>${escapeHtml(section.heading)}</h2>${section.paragraphs.map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join('')}</section>`).join('\n  ')}
+  ${linkList([...page.nav.filter((item) => !item.href.startsWith('#')), ...pageFooterLinks])}
+</main>`
+}
+
+export function renderSpecHubPrerender(spec: Branch): string {
+  const hub = specBuildsHubBySpec(spec)
+  const label = spec.charAt(0).toUpperCase() + spec.slice(1)
+  const buildTypes = hub.buildTypes.map((build) => ({ href: build.href, label: `${build.title} — ${build.description}` }))
+
   return `<main class="hub-prerender">
   <article>
-    <h1>${escapeHtml(PROTECTION_HUB_TITLE)}</h1>
-    <p>${escapeHtml(PROTECTION_HUB_INTRO)}</p>
+    <h1>${escapeHtml(hub.title)}</h1>
+    <p>${escapeHtml(hub.intro)}</p>
   </article>
-  <section><h2>Protection Build Types</h2>${linkList(buildTypes)}</section>
-  <section><h2>Protection Paladin Talents</h2>${linkList(PROTECTION_HUB_TALENTS)}</section>
-  <section><h2>More Paladin Builds</h2>${linkList(PROTECTION_HUB_RELATED)}</section>
+  <section><h2>${label} Build Types</h2>${linkList(buildTypes)}</section>
+  <section><h2>${label} Paladin Talents</h2>${linkList(hub.talents)}</section>
+  <section><h2>More Paladin Builds</h2>${linkList(hub.related)}</section>
 </main>`
 }

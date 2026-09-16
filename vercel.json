@@ -27,7 +27,10 @@
     { "source": "/wow-forever-holy-paladin-pvp-build", "destination": "/wow-forever-holy-paladin-pvp-build/index.html" },
     { "source": "/wow-forever-paladin-builds", "destination": "/wow-forever-paladin-builds/index.html" },
     { "source": "/wow-forever-protection-paladin-builds", "destination": "/wow-forever-protection-paladin-builds/index.html" },
+    { "source": "/wow-forever-retribution-paladin-builds", "destination": "/wow-forever-retribution-paladin-builds/index.html" },
     { "source": "/wow-forever-protection-paladin-talents", "destination": "/wow-forever-protection-paladin-talents/index.html" },
+    { "source": "/wow-forever-holy-paladin-talents", "destination": "/wow-forever-holy-paladin-talents/index.html" },
+    { "source": "/wow-forever-retribution-paladin-talents", "destination": "/wow-forever-retribution-paladin-talents/index.html" },
     { "source": "/wow-forever-paladin-beta-talent-changes", "destination": "/wow-forever-paladin-beta-talent-changes/index.html" },
     { "source": "/wow-forever-paladin-talents", "destination": "/wow-forever-paladin-talents/index.html" }
   ]

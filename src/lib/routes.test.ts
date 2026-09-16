@@ -78,17 +78,36 @@ describe('public page routing', () => {
     })
   })
 
-  it('serves the Protection hub and talent guide with independent metadata', () => {
+  it('serves the Protection hub with independent metadata', () => {
     expect(pageForPath('/wow-forever-protection-paladin-builds/')).toMatchObject({
-      kind: 'protection-hub',
+      kind: 'spec-hub',
+      spec: 'protection',
       title: 'WoW Forever Protection Paladin Builds | Tank Talent Planner',
       canonical: 'https://buildforgetools.com/wow-forever-protection-paladin-builds',
       robots: 'index, follow',
     })
-    expect(pageForPath('/wow-forever-protection-paladin-talents/')).toMatchObject({
-      kind: 'protection-talents',
-      title: 'WoW Forever Protection Paladin Talents | Talent Tree',
-      canonical: 'https://buildforgetools.com/wow-forever-protection-paladin-talents',
+  })
+
+  it('serves the Retribution hub as its own specialization page', () => {
+    expect(pageForPath('/wow-forever-retribution-paladin-builds/')).toMatchObject({
+      kind: 'spec-hub',
+      spec: 'retribution',
+      title: 'WoW Forever Retribution Paladin Builds | Damage Talent Planner',
+      canonical: 'https://buildforgetools.com/wow-forever-retribution-paladin-builds',
+      robots: 'index, follow',
+    })
+  })
+
+  it.each([
+    ['/wow-forever-holy-paladin-talents/', 'holy', 'WoW Forever Holy Paladin Talents | Talent Tree'],
+    ['/wow-forever-protection-paladin-talents/', 'protection', 'WoW Forever Protection Paladin Talents | Talent Tree'],
+    ['/wow-forever-retribution-paladin-talents/', 'retribution', 'WoW Forever Retribution Paladin Talents | Talent Tree'],
+  ])('serves %s as its specialization talent guide', (pathname, spec, title) => {
+    expect(pageForPath(pathname)).toMatchObject({
+      kind: 'spec-talents',
+      spec,
+      title,
+      canonical: `https://buildforgetools.com${pathname.replace(/\/$/, '')}`,
       robots: 'index, follow',
     })
   })

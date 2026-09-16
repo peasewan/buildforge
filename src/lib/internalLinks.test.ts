@@ -1,7 +1,8 @@
 import { describe, expect, it } from 'vitest'
 import { BUILD_LANDING_PAGES } from '../data/buildLandingPages'
 import { HUB_BUILD_HREFS, HUB_PLAYSTYLE_SECTIONS, HUB_SPECIALIZATIONS, HUB_TALENTS } from '../data/paladinBuildsHub'
-import { PROTECTION_HUB_BUILD_TYPES, PROTECTION_HUB_HREFS, PROTECTION_HUB_RELATED, PROTECTION_HUB_TALENTS } from '../data/protectionBuildsHub'
+import { SPEC_BUILDS_HUBS, specHubHrefs } from '../data/specBuildsHubs'
+import { SPEC_TALENTS_PAGES } from '../data/specTalentsPages'
 import { pageForPath } from './routes'
 
 const ORIGIN = 'https://buildforgetools.com'
@@ -24,14 +25,16 @@ const allDeclaredHrefs = () => collectHrefs([
   HUB_PLAYSTYLE_SECTIONS,
   HUB_SPECIALIZATIONS,
   HUB_TALENTS,
-  PROTECTION_HUB_BUILD_TYPES,
-  PROTECTION_HUB_RELATED,
-  PROTECTION_HUB_TALENTS,
+  SPEC_BUILDS_HUBS,
+  SPEC_TALENTS_PAGES,
 ])
 
 describe('internal link integrity', () => {
   it('resolves every declared internal href to its own page', () => {
     for (const href of allDeclaredHrefs()) {
+      // Same-page anchors are always valid; there is no route to resolve.
+      if (href.startsWith('#')) continue
+
       const { pathname } = new URL(href, ORIGIN)
 
       // /build is a noindex deep link that deliberately serves the planner.
@@ -44,7 +47,7 @@ describe('internal link integrity', () => {
   it('keeps the href lists in sync with the data they summarise', () => {
     const declared = allDeclaredHrefs()
 
-    for (const href of [...HUB_BUILD_HREFS, ...PROTECTION_HUB_HREFS]) {
+    for (const href of [...HUB_BUILD_HREFS, ...SPEC_BUILDS_HUBS.flatMap(specHubHrefs)]) {
       expect(declared, `${href} is listed as a hub href but declared nowhere`).toContain(href)
     }
   })

@@ -1,9 +1,9 @@
 import { readFileSync } from 'node:fs'
 import { describe, expect, it } from 'vitest'
 import { HUB_BUILD_HREFS } from '../data/paladinBuildsHub'
-import { PROTECTION_HUB_HREFS } from '../data/protectionBuildsHub'
+import { SPEC_BUILDS_HUBS, specHubHrefs } from '../data/specBuildsHubs'
 import { BUILD_LANDING_PAGES } from '../data/buildLandingPages'
-import { renderHubPrerender, renderLandingPrerender, renderProtectionHubPrerender } from './prerender'
+import { renderHubPrerender, renderLandingPrerender, renderSpecHubPrerender } from './prerender'
 
 const redirections = (() => {
   const config = JSON.parse(readFileSync(`${process.cwd()}/vercel.json`, 'utf8')) as {
@@ -14,7 +14,7 @@ const redirections = (() => {
 
 const allPrerendered = () => [
   ['paladin-builds hub', renderHubPrerender()],
-  ['protection builds hub', renderProtectionHubPrerender()],
+  ...SPEC_BUILDS_HUBS.map((hub) => [`${hub.spec} builds hub`, renderSpecHubPrerender(hub.spec)] as const),
   ...BUILD_LANDING_PAGES.map((page) => [page.slug, renderLandingPrerender(page.id)] as const),
 ] as const
 
@@ -25,10 +25,10 @@ describe('prerender generation', () => {
     for (const href of HUB_BUILD_HREFS) expect(html).toContain(`href="${href}"`)
   })
 
-  it('links every build the protection hub data declares', () => {
-    const html = renderProtectionHubPrerender()
+  it.each(SPEC_BUILDS_HUBS.map((hub) => [hub.spec, hub] as const))('links every build the %s hub data declares', (_spec, hub) => {
+    const html = renderSpecHubPrerender(hub.spec)
 
-    for (const href of PROTECTION_HUB_HREFS) expect(html).toContain(`href="${href}"`)
+    for (const href of specHubHrefs(hub)) expect(html).toContain(`href="${href}"`)
   })
 
   it('carries the landing page title as its only h1', () => {
@@ -46,8 +46,10 @@ describe('prerender generation', () => {
     }
   })
 
-  it('links the Protection talent page the hub already points readers at', () => {
-    expect(renderProtectionHubPrerender()).toContain('href="/wow-forever-protection-paladin-talents"')
+  it('links each spec talent page the hub already points readers at', () => {
+    for (const hub of SPEC_BUILDS_HUBS) {
+      for (const item of hub.talents) expect(renderSpecHubPrerender(hub.spec)).toContain(`href="${item.href}"`)
+    }
   })
 
   it('carries every link its configuration declares', () => {

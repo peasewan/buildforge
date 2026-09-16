@@ -102,7 +102,7 @@ export default function BuildPage({ buildId = HOLY_HEALING_BUILD.id }: { buildId
         <p className="build-calc-anchor">{calculatorCta[build.id].prompt} <a href="/paladin#calculator">{calculatorCta[build.id].anchor} <ArrowRight size={14} /></a></p>
       </article>
 
-      <footer><div className="shell"><a className="brand" href="/paladin"><img src="/images/icons/paladin-shield.png" alt="" /><span>BUILD</span><b>FORGE</b></a><p>WoW Forever Talent Tools</p><nav><a href="/wow-forever-paladin-builds">All Paladin Builds</a><a href="/wow-forever-protection-paladin-build">Protection Build</a><a href="/wow-forever-retribution-paladin-build">Retribution Build</a></nav><small>Community-made planning tool. Not affiliated with Blizzard Entertainment.</small></div></footer>
+      <footer><div className="shell"><a className="brand" href="/paladin"><img src="/images/icons/paladin-shield.png" alt="" /><span>BUILD</span><b>FORGE</b></a><p>WoW Forever Talent Tools</p><nav><a href="/wow-forever-paladin-builds">All Paladin Builds</a><a href={`/wow-forever-${buildContent.spec.toLowerCase()}-paladin-talents`}>{buildContent.spec} Paladin Talents</a><a href="/wow-forever-protection-paladin-build">Protection Build</a></nav><small>Community-made planning tool. Not affiliated with Blizzard Entertainment.</small></div></footer>
     </main>
   )
 }

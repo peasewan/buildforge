@@ -1,5 +1,18 @@
 import { readFile, writeFile } from 'node:fs/promises'
+import { SPEC_BUILDS_HUBS } from '../src/data/specBuildsHubs'
 import { escapeHtml } from '../src/lib/html'
+
+/**
+ * Every build page links its own specialization's talent page, so no spec page
+ * depends on a hub that may not exist yet (Holy has none).
+ */
+const specLinks = (spec: string) => {
+  const lower = spec.toLowerCase()
+  const hub = SPEC_BUILDS_HUBS.find((candidate) => candidate.spec === lower)
+  const links = [` · <a href="/wow-forever-${lower}-paladin-talents">Explore ${spec} Paladin talents</a>`]
+  if (hub) links.push(` · <a href="/${hub.slug}">Explore more ${spec} builds</a>`)
+  return links.join('')
+}
 
 interface ContentSection { id: string; heading: string; paragraphs: string[] }
 interface GuideContent { eyebrow: string; title: string; dek: string; sections: ContentSection[] }
@@ -79,7 +92,7 @@ for (const [contentFile, outputFile] of buildTargets) {
       <h2>Selected talents</h2>
       <ul>${build.selectedTalents.map((talent) => `<li>${escapeHtml(talent)}</li>`).join('')}</ul>
       ${buildSections}
-      <p><a href="${escapeHtml(build.plannerPath)}">Open and edit this WoW Forever ${escapeHtml(build.spec)} Paladin build</a> · <a href="/wow-forever-paladin-builds">Explore all Paladin builds</a>${build.spec === 'Protection' ? ' · <a href="/wow-forever-protection-paladin-builds">Explore more Protection builds</a>' : ''}</p>
+      <p><a href="${escapeHtml(build.plannerPath)}">Open and edit this WoW Forever ${escapeHtml(build.spec)} Paladin build</a> · <a href="/wow-forever-paladin-builds">Explore all Paladin builds</a>${specLinks(build.spec)}</p>
     </article>
   </main>`
 
