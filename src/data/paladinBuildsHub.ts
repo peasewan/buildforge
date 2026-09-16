@@ -35,7 +35,7 @@ export const HUB_INTRO_SUB = 'Choose your playstyle, then customize a talent set
 export const HUB_SPECIALIZATIONS: HubSpecialization[] = [
   { id: 'holy', name: 'Holy', role: 'Healing & Support', href: '/wow-forever-paladin-build', icon: 'holy' },
   { id: 'protection', name: 'Protection', role: 'Tank & Defense', href: '/wow-forever-protection-paladin-builds', icon: 'protection' },
-  { id: 'retribution', name: 'Retribution', role: 'Melee Damage', href: '/wow-forever-retribution-paladin-build', icon: 'retribution' },
+  { id: 'retribution', name: 'Retribution', role: 'Melee Damage', href: '/wow-forever-retribution-paladin-builds', icon: 'retribution' },
 ]
 
 export const HUB_PLAYSTYLE_SECTIONS: HubPlaystyleSection[] = [

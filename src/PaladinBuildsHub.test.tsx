@@ -2,6 +2,7 @@ import { cleanup, fireEvent, render, screen } from '@testing-library/react'
 import { afterEach, describe, expect, it } from 'vitest'
 import PaladinBuildsHub from './PaladinBuildsHub'
 import { HUB_BUILD_HREFS, HUB_PLAYSTYLE_SECTIONS, HUB_SPECIALIZATIONS } from './data/paladinBuildsHub'
+import { SPEC_BUILDS_HUBS } from './data/specBuildsHubs'
 
 afterEach(cleanup)
 
@@ -20,9 +21,7 @@ describe('Paladin builds hub', () => {
     render(<PaladinBuildsHub />)
 
     expect(screen.getByRole('heading', { level: 1, name: 'WoW Forever Paladin Builds & Talent Calculator' })).toBeTruthy()
-    expect(document.querySelector('a[href="/wow-forever-paladin-build"]')).toBeTruthy()
-    expect(document.querySelector('a[href="/wow-forever-protection-paladin-builds"]')).toBeTruthy()
-    expect(document.querySelector('a[href="/wow-forever-retribution-paladin-build"]')).toBeTruthy()
+    for (const spec of HUB_SPECIALIZATIONS) expect(document.querySelector(`a[href="${spec.href}"]`)).toBeTruthy()
     expect(document.querySelector('a[href="/paladin"]')).toBeTruthy()
   })
 
@@ -40,6 +39,14 @@ describe('Paladin builds hub', () => {
       '/wow-forever-retribution-paladin-pvp-build',
       '/wow-forever-holy-paladin-pvp-build',
     ]) expect(document.querySelector(`a[href="${href}"]`)).toBeTruthy()
+  })
+
+  it('sends a specialization card to its hub whenever that specialization has one', () => {
+    for (const spec of HUB_SPECIALIZATIONS) {
+      const hub = SPEC_BUILDS_HUBS.find((candidate) => candidate.spec === spec.id)
+
+      if (hub) expect(spec.href, `${spec.id} has a hub but its card points elsewhere`).toBe(`/${hub.slug}`)
+    }
   })
 
   it('never promises a specialization its destination does not deliver', () => {
