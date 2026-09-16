@@ -18,4 +18,10 @@ describe('Protection Paladin builds hub', () => {
       '/paladin',
     ]) expect(document.querySelector(`a[href="${href}"]`)).toBeTruthy()
   })
+
+  it('sends the Leveling Tank card to the Protection leveling build it names', () => {
+    render(<ProtectionBuildsHub />)
+
+    expect(document.querySelector('a[href="/wow-forever-protection-paladin-leveling-build"]')).toBeTruthy()
+  })
 })

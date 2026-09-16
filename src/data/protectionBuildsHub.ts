@@ -24,7 +24,7 @@ export const PROTECTION_HUB_BUILD_TYPES: ProtectionBuildType[] = [
     eyebrow: 'Leveling Tank',
     title: 'Protection Paladin Leveling Build',
     description: 'Start with a safer solo progression path and adapt it in the planner.',
-    href: '/wow-forever-paladin-leveling-build',
+    href: '/wow-forever-protection-paladin-leveling-build',
     icon: 'leveling',
   },
   {

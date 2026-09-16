@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { Check, ChevronDown, Clipboard, LockKeyhole, Minus, RotateCcw, Sparkles, UsersRound } from 'lucide-react'
 import { EXAMPLE_BUILDS, type ExampleBuild } from './data/builds'
 import { BUILD_LANDING_PAGES } from './data/buildLandingPages'
-import BuildCard, { type BuildCardIcon } from './BuildCard'
+import BuildCard from './BuildCard'
 import { branchNames, branchTaglines, DATA_SOURCES, talentEvidenceLabel, talents, type Talent } from './data/talents'
 import { betaDataset, communityPreviewDataset } from './data/datasets'
 import { branchPoints, canIncrement, decodeBuild, decrementTalent, encodeBuild, incrementTalent, totalPoints, type Branch, type Build } from './lib/build'
@@ -295,7 +295,7 @@ export default function App() {
           </section>
           <section className="build-topic-section" aria-label="Explore Paladin builds">
             <div className="popular-builds-heading"><div><span>More ways to play</span><h2>Explore Paladin Builds</h2></div><p>Plan around leveling, PvP, raids, or Protection dungeon tanking.</p></div>
-            <div className="build-topic-grid">{BUILD_LANDING_PAGES.map((page) => <BuildCard compact key={page.id} eyebrow={page.eyebrow} title={page.title.replace('WoW Forever ', '')} description={page.subtitle} href={`/${page.slug}`} icon={(page.id === 'protection-dungeon' ? 'protection' : page.id) as BuildCardIcon} />)}</div>
+            <div className="build-topic-grid">{BUILD_LANDING_PAGES.map((page) => <BuildCard compact key={page.id} eyebrow={page.eyebrow} title={page.title.replace('WoW Forever ', '')} description={page.subtitle} href={`/${page.slug}`} icon={page.icon} />)}</div>
             <a className="topic-hub-link" href="/wow-forever-paladin-builds">Browse all Paladin builds <ChevronDown size={15} /></a>
           </section>
         </div>

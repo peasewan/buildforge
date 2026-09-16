@@ -22,4 +22,18 @@ describe('Build landing page template', () => {
     expect(screen.getByRole('link', { name: /Edit this build/ }).getAttribute('href')).toMatch(/^\/build\?id=/)
     expect(document.querySelector('a[href="/wow-forever-protection-paladin-builds"]')).toBeTruthy()
   })
+
+  it('embeds the build each page declares instead of always the Protection tree', () => {
+    render(<BuildLandingPage pageId="retribution-pvp" />)
+
+    expect(screen.getByLabelText('Retribution talent tree')).toBeTruthy()
+    expect(screen.queryByLabelText('Protection talent tree')).toBeNull()
+  })
+
+  it('sends the PvP variant cards to their dedicated pages', () => {
+    render(<BuildLandingPage pageId="pvp" />)
+
+    expect(document.querySelector('a[href="/wow-forever-retribution-paladin-pvp-build"]')).toBeTruthy()
+    expect(document.querySelector('a[href="/wow-forever-holy-paladin-pvp-build"]')).toBeTruthy()
+  })
 })

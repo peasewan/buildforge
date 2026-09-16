@@ -1,5 +1,6 @@
 import { readFileSync } from 'node:fs'
 import { describe, expect, it } from 'vitest'
+import { BUILD_LANDING_PAGES } from '../data/buildLandingPages'
 import { pageForPath } from './routes'
 
 describe('crawlable page templates', () => {
@@ -10,12 +11,9 @@ describe('crawlable page templates', () => {
   })
 
   it.each([
+    ...BUILD_LANDING_PAGES.map((page) => [`${page.slug}/index.html`] as const),
     ['wow-forever-paladin-builds/index.html'],
     ['wow-forever-protection-paladin-builds/index.html'],
-    ['wow-forever-paladin-leveling-build/index.html'],
-    ['wow-forever-paladin-pvp-build/index.html'],
-    ['wow-forever-paladin-raid-build/index.html'],
-    ['wow-forever-protection-paladin-dungeon-build/index.html'],
   ])('generates %s at build time instead of hand-writing its body', (filename) => {
     const template = readFileSync(`${process.cwd()}/${filename}`, 'utf8')
 

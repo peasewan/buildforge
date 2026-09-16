@@ -1,4 +1,5 @@
-import type { Build } from '../lib/build'
+import { branchPoints, type Branch, type Build } from '../lib/build'
+import { talents } from './talents'
 
 export interface ExampleBuild {
   id: string
@@ -130,4 +131,15 @@ export type ExampleBuildId = (typeof EXAMPLE_BUILDS)[number]['id']
 
 export function exampleBuildById(id: ExampleBuildId): ExampleBuild {
   return EXAMPLE_BUILDS.find((build) => build.id === id) ?? HOLY_HEALING_BUILD
+}
+
+/**
+ * The tree an example build actually spends most of its points in. Derived from the
+ * allocation rather than declared alongside it, so a page cannot display one
+ * specialization's tree while its configuration claims another.
+ */
+export function specializationOfBuild(example: ExampleBuild): Branch {
+  return (['holy', 'protection', 'retribution'] as const).reduce((deepest, branch) =>
+    branchPoints(example.build, branch, talents) > branchPoints(example.build, deepest, talents) ? branch : deepest,
+  )
 }

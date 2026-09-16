@@ -1,7 +1,7 @@
 import type { CSSProperties, ReactNode } from 'react'
 import { ArrowRight, Heart, Route, Shield, Sparkles, Swords, UsersRound } from 'lucide-react'
 import { TalentTree } from './App'
-import { PROTECTION_SHIELD_BUILD } from './data/builds'
+import { exampleBuildById, specializationOfBuild } from './data/builds'
 import { buildLandingPageById, type BuildLandingPageId, type LandingIcon, type LandingSection } from './data/buildLandingPages'
 import { encodeBuild } from './lib/build'
 import { track } from './lib/analytics'
@@ -23,7 +23,12 @@ function LandingSectionView({ section, pageId }: { section: LandingSection; page
   if (section.kind === 'cards') return (
     <section className="landing-content-section">
       <header><div className="eyebrow">Build Focus</div><h2>{section.title}</h2>{section.intro && <p>{section.intro}</p>}</header>
-      <div className="landing-card-grid">{section.items.map((item) => <article key={item.title}><i>{icons[item.icon]}</i><h3>{item.title}</h3><p>{item.body}</p></article>)}</div>
+      <div className="landing-card-grid">{section.items.map((item) => {
+        const card = <article><i>{icons[item.icon]}</i><h3>{item.title}</h3><p>{item.body}</p></article>
+        return item.href
+          ? <TrackedLink key={item.title} href={item.href} pageId={pageId} placement="card">{card}</TrackedLink>
+          : <article key={item.title}><i>{icons[item.icon]}</i><h3>{item.title}</h3><p>{item.body}</p></article>
+      })}</div>
     </section>
   )
 
@@ -42,11 +47,12 @@ function LandingSectionView({ section, pageId }: { section: LandingSection; page
   )
 
   if (section.kind === 'talent-preview') {
-    const editHref = `/build?id=${encodeBuild(PROTECTION_SHIELD_BUILD.build)}#calculator`
+    const example = exampleBuildById(section.buildId)
+    const editHref = `/build?id=${encodeBuild(example.build)}#calculator`
     return (
       <section className="landing-content-section landing-talent-preview">
         <header><div className="eyebrow">Interactive Preview</div><h2>{section.title}</h2><p>{section.intro}</p></header>
-        <div className="landing-tree-card"><TalentTree branch="protection" build={PROTECTION_SHIELD_BUILD.build} /></div>
+        <div className="landing-tree-card"><TalentTree branch={specializationOfBuild(example)} build={example.build} /></div>
         <TrackedLink href={editHref} pageId={pageId} placement="talent-preview" className="button primary">Edit this build <ArrowRight size={16} /></TrackedLink>
       </section>
     )
@@ -63,7 +69,8 @@ function LandingSectionView({ section, pageId }: { section: LandingSection; page
 export default function BuildLandingPage({ pageId }: { pageId: BuildLandingPageId }) {
   const page = buildLandingPageById(pageId)
   const heroStyle = { '--landing-hero-image': `url(${page.heroImage})`, '--landing-hero-position': page.heroPosition } as CSSProperties
-  const primaryHref = pageId === 'protection-dungeon' ? `/build?id=${encodeBuild(PROTECTION_SHIELD_BUILD.build)}#calculator` : '/paladin#calculator'
+  const preview = page.sections.find((section) => section.kind === 'talent-preview')
+  const primaryHref = preview ? `/build?id=${encodeBuild(exampleBuildById(preview.buildId).build)}#calculator` : '/paladin#calculator'
 
   return (
     <main className="landing-page">
@@ -92,7 +99,7 @@ export default function BuildLandingPage({ pageId }: { pageId: BuildLandingPageI
 
       <div className="shell landing-content" id="build-content">
         {page.sections.map((section) => <LandingSectionView key={section.title} section={section} pageId={pageId} />)}
-        <section className="landing-final-cta"><img src="/images/icons/paladin-shield.png" alt="" /><div><span>{page.finalCta.eyebrow}</span><h2>{page.finalCta.title}</h2></div><TrackedLink href={pageId === 'protection-dungeon' ? primaryHref : page.finalCta.href} pageId={pageId} placement="footer" className="button primary">{page.finalCta.label} <ArrowRight size={16} /></TrackedLink></section>
+        <section className="landing-final-cta"><img src="/images/icons/paladin-shield.png" alt="" /><div><span>{page.finalCta.eyebrow}</span><h2>{page.finalCta.title}</h2></div><TrackedLink href={preview ? primaryHref : page.finalCta.href} pageId={pageId} placement="footer" className="button primary">{page.finalCta.label} <ArrowRight size={16} /></TrackedLink></section>
       </div>
 
       <footer><div className="shell"><a className="brand" href="/paladin"><img src="/images/icons/paladin-shield.png" alt="" /><span>BUILD</span><b>FORGE</b></a><p>WoW Forever Talent Tools</p><nav><a href="/wow-forever-paladin-builds">All Paladin Builds</a><a href="/paladin">Talent Calculator</a><a href="/wow-forever-paladin-talents">Paladin Talents</a></nav><small>Community-made planning tool. Not affiliated with Blizzard Entertainment.</small></div></footer>

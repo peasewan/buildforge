@@ -1,14 +1,13 @@
 import { readFile, writeFile } from 'node:fs/promises'
-import type { BuildLandingPageId } from '../src/data/buildLandingPages'
+import { BUILD_LANDING_PAGES } from '../src/data/buildLandingPages'
 import { renderHubPrerender, renderLandingPrerender, renderProtectionHubPrerender } from '../src/lib/prerender'
 
+// Filenames come from each page's own slug so a new landing page cannot be added
+// without its template being picked up here.
 const targets: { filename: string; render: () => string }[] = [
   { filename: 'wow-forever-paladin-builds', render: renderHubPrerender },
   { filename: 'wow-forever-protection-paladin-builds', render: renderProtectionHubPrerender },
-  ...(['leveling', 'pvp', 'raid', 'protection-dungeon'] as BuildLandingPageId[]).map((id) => ({
-    filename: id === 'protection-dungeon' ? 'wow-forever-protection-paladin-dungeon-build' : `wow-forever-paladin-${id}-build`,
-    render: () => renderLandingPrerender(id),
-  })),
+  ...BUILD_LANDING_PAGES.map((page) => ({ filename: page.slug, render: () => renderLandingPrerender(page.id) })),
 ]
 
 for (const { filename, render } of targets) {
