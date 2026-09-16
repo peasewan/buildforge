@@ -43,6 +43,7 @@ export const HUB_PLAYSTYLE_SECTIONS: HubPlaystyleSection[] = [
     intro: 'Solo-friendly talent paths for steady progression while leveling.',
     builds: [
       { title: 'Paladin Leveling Build', description: 'A flexible solo path from level 10 onward, focused on steady progression and survivability.', href: '/wow-forever-paladin-leveling-build', icon: 'leveling' },
+      { title: 'Protection Paladin Leveling Build', description: 'A durable solo route that leans on defensive talents and carries into dungeon tanking.', href: '/wow-forever-protection-paladin-leveling-build', icon: 'protection' },
       { title: 'Retribution Paladin Leveling Build', description: 'A damage-focused solo leveling route with early Holy support for questing.', href: '/wow-forever-retribution-paladin-leveling-build', icon: 'retribution' },
     ],
   },
@@ -64,6 +65,8 @@ export const HUB_PLAYSTYLE_SECTIONS: HubPlaystyleSection[] = [
     intro: 'Pressure, utility, and survivability for player-versus-player combat.',
     builds: [
       { title: 'Paladin PvP Build', description: 'Pressure, utility, and survivability for arena and battlegrounds.', href: '/wow-forever-paladin-pvp-build', icon: 'pvp' },
+      { title: 'Retribution Paladin PvP Build', description: 'A burst-oriented setup built around short damage windows and utility.', href: '/wow-forever-retribution-paladin-pvp-build', icon: 'retribution' },
+      { title: 'Holy Paladin PvP Build', description: 'A support-oriented direction for keeping teammates alive under pressure.', href: '/wow-forever-holy-paladin-pvp-build', icon: 'holy' },
     ],
   },
 ]

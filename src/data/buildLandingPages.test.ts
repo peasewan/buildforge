@@ -24,6 +24,15 @@ describe('build landing page configurations', () => {
     expect(BUILD_LANDING_PAGES.find((page) => page.id === 'protection-dungeon')?.sections.some((section) => section.kind === 'talent-preview')).toBe(true)
   })
 
+  it('gives every page a way to reach sibling builds', () => {
+    for (const page of BUILD_LANDING_PAGES) {
+      const related = page.sections.find((section) => section.kind === 'related')
+
+      expect(related, `${page.slug} has no related section`).toBeTruthy()
+      expect(page.sections.filter((section) => section.kind === 'related')).toHaveLength(1)
+    }
+  })
+
   it('describes every build as a preview rather than an authoritative best pick', () => {
     for (const page of BUILD_LANDING_PAGES) {
       const copy = [page.title, page.metaTitle, page.description, page.subtitle, ...page.sections.flatMap((section) => [section.title, ...(('intro' in section && section.intro) ? [section.intro] : [])])].join(' ')

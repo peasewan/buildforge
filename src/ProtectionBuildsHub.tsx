@@ -1,6 +1,6 @@
 import { ArrowRight, Calculator, Shield } from 'lucide-react'
 import BuildCard from './BuildCard'
-import { PROTECTION_HUB_BUILD_TYPES, PROTECTION_HUB_INTRO, PROTECTION_HUB_RELATED, PROTECTION_HUB_TITLE } from './data/protectionBuildsHub'
+import { PROTECTION_HUB_BUILD_TYPES, PROTECTION_HUB_INTRO, PROTECTION_HUB_RELATED, PROTECTION_HUB_TALENTS, PROTECTION_HUB_TITLE } from './data/protectionBuildsHub'
 import { track } from './lib/analytics'
 
 function ProtectionLink({ href, placement, className, children }: { href: string; placement: string; className?: string; children: React.ReactNode }) {
@@ -47,7 +47,7 @@ export default function ProtectionBuildsHub() {
         <ProtectionLink href="/paladin#calculator" placement="calculator" className="button primary"><Calculator size={18} /> Open Paladin Talent Calculator</ProtectionLink>
       </section>
 
-      <section className="hub-data shell" id="protection-talents"><div><div className="eyebrow">Protection Talent Tree</div><h2>Protection Paladin Talents</h2></div><div><p>Explore Protection talent choices, key talents, and recommended paths before committing to a tank build.</p><p>The dedicated talent page shows the current community preview tree and connects every selected route back to the interactive calculator.</p><ProtectionLink href="/wow-forever-protection-paladin-talents" placement="talents">Explore Protection Paladin talents <ArrowRight size={15} /></ProtectionLink></div></section>
+      <section className="hub-data shell" id="protection-talents"><div><div className="eyebrow">Protection Talent Tree</div><h2>Protection Paladin Talents</h2></div><div><p>Explore Protection talent choices, key talents, and recommended paths before committing to a tank build.</p><p>The dedicated talent page shows the current community preview tree and connects every selected route back to the interactive calculator.</p><ProtectionLink href={PROTECTION_HUB_TALENTS.href} placement="talents">{PROTECTION_HUB_TALENTS.label} <ArrowRight size={15} /></ProtectionLink></div></section>
 
       <section className="hub-resources shell"><div className="eyebrow">Keep Exploring</div><h2>More Paladin Builds</h2><nav>{PROTECTION_HUB_RELATED.map(({ label, href }) => <ProtectionLink href={href} placement="related" key={href}><span>{label}</span><ArrowRight size={17} /></ProtectionLink>)}</nav></section>
 

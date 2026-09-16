@@ -46,6 +46,23 @@ describe('prerender generation', () => {
     }
   })
 
+  it('links the Protection talent page the hub already points readers at', () => {
+    expect(renderProtectionHubPrerender()).toContain('href="/wow-forever-protection-paladin-talents"')
+  })
+
+  it('carries every link its configuration declares', () => {
+    for (const page of BUILD_LANDING_PAGES) {
+      const html = renderLandingPrerender(page.id)
+      const declared = page.sections.flatMap((section) => {
+        if (section.kind === 'related') return section.items.map((item) => item.href)
+        if (section.kind === 'cards') return section.items.flatMap((item) => (item.href ? [item.href] : []))
+        return []
+      })
+
+      for (const href of declared) expect(html, `${page.slug} does not link ${href}`).toContain(`href="${href}"`)
+    }
+  })
+
   it('never nests a list inside a paragraph', () => {
     for (const [label, html] of allPrerendered()) {
       expect(html, label).not.toMatch(/<p>\s*<ul>/)

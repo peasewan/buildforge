@@ -1,6 +1,7 @@
 import { cleanup, render, screen } from '@testing-library/react'
 import { afterEach, describe, expect, it } from 'vitest'
 import PaladinBuildsHub from './PaladinBuildsHub'
+import { HUB_BUILD_HREFS } from './data/paladinBuildsHub'
 
 afterEach(cleanup)
 
@@ -15,14 +16,19 @@ describe('Paladin builds hub', () => {
     expect(document.querySelector('a[href="/paladin"]')).toBeTruthy()
   })
 
-  it('links every content-focused build page', () => {
+  it('links every build its own data declares', () => {
+    render(<PaladinBuildsHub />)
+
+    for (const href of HUB_BUILD_HREFS) expect(document.querySelector(`a[href="${href}"]`)).toBeTruthy()
+  })
+
+  it('lists the spec-specific builds next to their generic parents', () => {
     render(<PaladinBuildsHub />)
 
     for (const href of [
-      '/wow-forever-protection-paladin-dungeon-build',
-      '/wow-forever-paladin-leveling-build',
-      '/wow-forever-paladin-pvp-build',
-      '/wow-forever-paladin-raid-build',
+      '/wow-forever-protection-paladin-leveling-build',
+      '/wow-forever-retribution-paladin-pvp-build',
+      '/wow-forever-holy-paladin-pvp-build',
     ]) expect(document.querySelector(`a[href="${href}"]`)).toBeTruthy()
   })
 })

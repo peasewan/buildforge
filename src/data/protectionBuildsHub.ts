@@ -36,6 +36,11 @@ export const PROTECTION_HUB_BUILD_TYPES: ProtectionBuildType[] = [
   },
 ]
 
+export const PROTECTION_HUB_TALENTS: { label: string; href: string } = {
+  label: 'Explore Protection Paladin talents',
+  href: '/wow-forever-protection-paladin-talents',
+}
+
 export const PROTECTION_HUB_RELATED: { label: string; href: string }[] = [
   { label: 'Protection Shield Build 20/31/0', href: '/wow-forever-protection-paladin-build' },
   { label: 'Holy Paladin Build', href: '/wow-forever-paladin-build' },
@@ -47,4 +52,5 @@ export const PROTECTION_HUB_RELATED: { label: string; href: string }[] = [
 export const PROTECTION_HUB_HREFS = [
   ...PROTECTION_HUB_BUILD_TYPES.map((build) => build.href),
   ...PROTECTION_HUB_RELATED.map((link) => link.href),
+  PROTECTION_HUB_TALENTS.href,
 ]

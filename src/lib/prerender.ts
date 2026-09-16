@@ -1,6 +1,6 @@
 import { BUILD_LANDING_PAGES, type BuildLandingPageId, type LandingSection } from '../data/buildLandingPages'
 import { HUB_INTRO, HUB_INTRO_SUB, HUB_PLAYSTYLE_SECTIONS, HUB_SPECIALIZATIONS, HUB_TITLE } from '../data/paladinBuildsHub'
-import { PROTECTION_HUB_BUILD_TYPES, PROTECTION_HUB_INTRO, PROTECTION_HUB_RELATED, PROTECTION_HUB_TITLE } from '../data/protectionBuildsHub'
+import { PROTECTION_HUB_BUILD_TYPES, PROTECTION_HUB_INTRO, PROTECTION_HUB_RELATED, PROTECTION_HUB_TALENTS, PROTECTION_HUB_TITLE } from '../data/protectionBuildsHub'
 
 const escapeHtml = (value: string) =>
   value
@@ -33,7 +33,12 @@ function landingSection(section: LandingSection): string {
     return `<section>${heading}${linkList(section.items.map((item) => ({ href: item.href, label: `${item.title} — ${item.body}` })))}</section>`
   }
 
-  const items = section.items.map((item) => `<li><strong>${escapeHtml(item.title)}</strong> ${escapeHtml(item.body)}</li>`).join('')
+  const items = section.kind === 'cards'
+    ? section.items.map((item) => {
+      const body = escapeHtml(item.body)
+      return `<li>${item.href ? `${link(item.href, item.title)} ${body}` : `<strong>${escapeHtml(item.title)}</strong> ${body}`}</li>`
+    }).join('')
+    : section.items.map((item) => `<li><strong>${escapeHtml(item.title)}</strong> ${escapeHtml(item.body)}</li>`).join('')
   return `<section>${heading}${section.intro ? `<p>${escapeHtml(section.intro)}</p>` : ''}<ul>${items}</ul></section>`
 }
 
@@ -87,6 +92,7 @@ export function renderProtectionHubPrerender(): string {
     <p>${escapeHtml(PROTECTION_HUB_INTRO)}</p>
   </article>
   <section><h2>Protection Build Types</h2>${linkList(buildTypes)}</section>
+  <section><h2>Protection Paladin Talents</h2>${linkList([PROTECTION_HUB_TALENTS])}</section>
   <section><h2>More Paladin Builds</h2>${linkList(related)}</section>
 </main>`
 }

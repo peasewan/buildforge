@@ -80,6 +80,15 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
         intro: 'Open the planner, choose the branch that matches your current playstyle, and spend points in the order they become available. Keep a share link whenever you reach a useful milestone.',
         items: ['Compare Holy, Protection, and Retribution paths.', 'Watch prerequisites before planning deeper talents.', 'Treat all talent details as community preview data until verified in game.'],
       },
+      {
+        kind: 'related',
+        title: 'Related Leveling Builds',
+        items: [
+          { title: 'Protection Paladin Leveling Build', body: 'The durable solo route for players who want to tank later.', href: '/wow-forever-protection-paladin-leveling-build' },
+          { title: 'Retribution Paladin Leveling Build', body: 'The damage-focused solo route through the same levels.', href: '/wow-forever-retribution-paladin-leveling-build' },
+          { title: 'All Paladin Builds', body: 'Every leveling, PvE, and PvP route in one place.', href: '/wow-forever-paladin-builds' },
+        ],
+      },
     ],
     finalCta: { eyebrow: 'Ready to customize?', title: 'Shape a leveling path around your Paladin.', label: 'Open WoW Forever Paladin Talent Calculator', href: '/paladin#calculator' },
   },
@@ -127,6 +136,15 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
         intro: 'There is no single preview allocation that covers every PvP situation. Use the calculator to keep several versions and compare their tradeoffs.',
         items: ['Choose a clear offensive or support role.', 'Reserve enough points for the utility you expect to use.', 'Verify current talent behavior in game before treating a setup as final.'],
       },
+      {
+        kind: 'related',
+        title: 'Related PvP Builds',
+        items: [
+          { title: 'Retribution Paladin PvP Build', body: 'The burst-oriented route built around damage windows.', href: '/wow-forever-retribution-paladin-pvp-build' },
+          { title: 'Holy Paladin PvP Build', body: 'The support-oriented route for keeping teammates alive.', href: '/wow-forever-holy-paladin-pvp-build' },
+          { title: 'All Paladin Builds', body: 'Every leveling, PvE, and PvP route in one place.', href: '/wow-forever-paladin-builds' },
+        ],
+      },
     ],
     finalCta: { eyebrow: 'Create your own PvP build', title: 'Test a PvP setup before the next fight.', label: 'Open Talent Calculator', href: '/paladin#calculator' },
   },
@@ -159,9 +177,9 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
         title: 'Choose Your Raid Role',
         intro: 'Pick the specialization that matches your assignment, then use the planner to compare complete and hybrid talent paths.',
         items: [
-          { title: 'Holy', body: 'Build around raid healing and the support tools your group expects from a Holy Paladin.', icon: 'heart' },
-          { title: 'Protection', body: 'Explore a main tank or off tank route with defensive talents and group utility.', icon: 'shield' },
-          { title: 'Retribution', body: 'Plan a damage support route that keeps pressure and Paladin utility in view.', icon: 'sword' },
+          { title: 'Holy', body: 'Build around raid healing and the support tools your group expects from a Holy Paladin.', icon: 'heart', href: '/wow-forever-paladin-build' },
+          { title: 'Protection', body: 'Explore a main tank or off tank route with defensive talents and group utility.', icon: 'shield', href: '/wow-forever-protection-paladin-dungeon-build' },
+          { title: 'Retribution', body: 'Plan a damage support route that keeps pressure and Paladin utility in view.', icon: 'sword', href: '/wow-forever-retribution-paladin-build' },
         ],
       },
       {
@@ -172,6 +190,15 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
           { title: 'Choose the assignment', body: 'Start with healing, tanking, or damage support so every talent choice has a clear purpose.' },
           { title: 'Spend all 51 points', body: 'Use the talent tree to check prerequisites and compare the value of supporting branches.' },
           { title: 'Share the setup', body: 'Copy the build URL and send the exact allocation to raid leaders or teammates for discussion.' },
+        ],
+      },
+      {
+        kind: 'related',
+        title: 'Related Raid and Group Builds',
+        items: [
+          { title: 'Holy Healing Build 31/20/0', body: 'The healing allocation a raid healer starts from.', href: '/wow-forever-paladin-build' },
+          { title: 'Protection Dungeon Tank Build', body: 'The defensive route for group content.', href: '/wow-forever-protection-paladin-dungeon-build' },
+          { title: 'All Paladin Builds', body: 'Every leveling, PvE, and PvP route in one place.', href: '/wow-forever-paladin-builds' },
         ],
       },
     ],
@@ -221,6 +248,7 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
         kind: 'related',
         title: 'More Paladin Builds',
         items: [
+          { title: 'Protection Paladin Leveling Build', body: 'The solo route that levels into this tank setup.', href: '/wow-forever-protection-paladin-leveling-build' },
           { title: 'Protection Paladin Builds Hub', body: 'Compare tank builds, Protection talents, and planning paths.', href: '/wow-forever-protection-paladin-builds' },
           { title: 'Retribution DPS Build', body: 'Open the 0/20/31 offensive preview.', href: '/wow-forever-retribution-paladin-build' },
           { title: 'Holy Healing Build', body: 'Review the 31/20/0 healing allocation.', href: '/wow-forever-paladin-build' },
