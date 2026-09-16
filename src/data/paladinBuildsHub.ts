@@ -74,7 +74,14 @@ export const HUB_PLAYSTYLE_SECTIONS: HubPlaystyleSection[] = [
   },
 ]
 
+export const HUB_TALENTS: { label: string; href: string } = {
+  label: 'Read the WoW Forever Paladin talent guide',
+  href: '/wow-forever-paladin-talents',
+}
+
+/** Every internal href the hub and its prerendered body emit. */
 export const HUB_BUILD_HREFS = [
   ...HUB_SPECIALIZATIONS.map((spec) => spec.href),
   ...HUB_PLAYSTYLE_SECTIONS.flatMap((section) => section.builds.map((build) => build.href)),
+  HUB_TALENTS.href,
 ]

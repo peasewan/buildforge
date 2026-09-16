@@ -1,4 +1,4 @@
-import { branchPoints, type Branch, type Build } from '../lib/build'
+import { dominantBranch, type Branch, type Build } from '../lib/build'
 import { talents } from './talents'
 
 export interface ExampleBuild {
@@ -139,7 +139,5 @@ export function exampleBuildById(id: ExampleBuildId): ExampleBuild {
  * specialization's tree while its configuration claims another.
  */
 export function specializationOfBuild(example: ExampleBuild): Branch {
-  return (['holy', 'protection', 'retribution'] as const).reduce((deepest, branch) =>
-    branchPoints(example.build, branch, talents) > branchPoints(example.build, deepest, talents) ? branch : deepest,
-  )
+  return dominantBranch(example.build, talents, 'holy')
 }

@@ -1,13 +1,7 @@
+import { escapeHtml } from './html'
 import { BUILD_LANDING_PAGES, type BuildLandingPageId, type LandingSection } from '../data/buildLandingPages'
-import { HUB_INTRO, HUB_INTRO_SUB, HUB_PLAYSTYLE_SECTIONS, HUB_SPECIALIZATIONS, HUB_TITLE } from '../data/paladinBuildsHub'
+import { HUB_INTRO, HUB_INTRO_SUB, HUB_PLAYSTYLE_SECTIONS, HUB_SPECIALIZATIONS, HUB_TALENTS, HUB_TITLE } from '../data/paladinBuildsHub'
 import { PROTECTION_HUB_BUILD_TYPES, PROTECTION_HUB_INTRO, PROTECTION_HUB_RELATED, PROTECTION_HUB_TALENTS, PROTECTION_HUB_TITLE } from '../data/protectionBuildsHub'
-
-const escapeHtml = (value: string) =>
-  value
-    .replaceAll('&', '&amp;')
-    .replaceAll('<', '&lt;')
-    .replaceAll('>', '&gt;')
-    .replaceAll('"', '&quot;')
 
 const link = (href: string, label: string) => `<a href="${escapeHtml(href)}">${escapeHtml(label)}</a>`
 
@@ -78,21 +72,19 @@ export function renderHubPrerender(): string {
   </article>
   <section><h2>Choose Your Paladin Specialization</h2>${linkList(specializations)}</section>
   ${sections}
-  ${linkList([...pageFooterLinks, { href: '/wow-forever-paladin-talents', label: 'Read the WoW Forever Paladin talent guide' }])}
+  ${linkList([...pageFooterLinks, HUB_TALENTS])}
 </main>`
 }
 
 export function renderProtectionHubPrerender(): string {
   const buildTypes = PROTECTION_HUB_BUILD_TYPES.map((build) => ({ href: build.href, label: `${build.title} — ${build.description}` }))
-  const related = PROTECTION_HUB_RELATED.map(({ href, label }) => ({ href, label }))
-
   return `<main class="hub-prerender">
   <article>
     <h1>${escapeHtml(PROTECTION_HUB_TITLE)}</h1>
     <p>${escapeHtml(PROTECTION_HUB_INTRO)}</p>
   </article>
   <section><h2>Protection Build Types</h2>${linkList(buildTypes)}</section>
-  <section><h2>Protection Paladin Talents</h2>${linkList([PROTECTION_HUB_TALENTS])}</section>
-  <section><h2>More Paladin Builds</h2>${linkList(related)}</section>
+  <section><h2>Protection Paladin Talents</h2>${linkList(PROTECTION_HUB_TALENTS)}</section>
+  <section><h2>More Paladin Builds</h2>${linkList(PROTECTION_HUB_RELATED)}</section>
 </main>`
 }

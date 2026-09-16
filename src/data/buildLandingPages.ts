@@ -31,8 +31,14 @@ export interface BuildLandingPageConfig {
   heroImage: string
   heroPosition: string
   summary: { label: string; value: string }[]
+  /**
+   * Build the primary CTAs load. Only needed when the page names an allocation but
+   * renders no talent-preview section — without it the CTA falls back to an empty planner.
+   */
+  ctaBuildId?: ExampleBuildId
   sections: LandingSection[]
-  finalCta: { eyebrow: string; title: string; label: string; href: string }
+  /** Where the footer CTA goes is derived from the page's build, not configured. */
+  finalCta: { eyebrow: string; title: string; label: string }
 }
 
 export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
@@ -90,7 +96,7 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
         ],
       },
     ],
-    finalCta: { eyebrow: 'Ready to customize?', title: 'Shape a leveling path around your Paladin.', label: 'Open WoW Forever Paladin Talent Calculator', href: '/paladin#calculator' },
+    finalCta: { eyebrow: 'Ready to customize?', title: 'Shape a leveling path around your Paladin.', label: 'Open WoW Forever Paladin Talent Calculator' },
   },
   {
     id: 'pvp',
@@ -146,7 +152,7 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
         ],
       },
     ],
-    finalCta: { eyebrow: 'Create your own PvP build', title: 'Test a PvP setup before the next fight.', label: 'Open Talent Calculator', href: '/paladin#calculator' },
+    finalCta: { eyebrow: 'Create your own PvP build', title: 'Test a PvP setup before the next fight.', label: 'Open Talent Calculator' },
   },
   {
     id: 'raid',
@@ -202,7 +208,7 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
         ],
       },
     ],
-    finalCta: { eyebrow: 'Compare Paladin talent builds', title: 'Plan a raid role your group can review.', label: 'Open Talent Calculator', href: '/paladin#calculator' },
+    finalCta: { eyebrow: 'Compare Paladin talent builds', title: 'Plan a raid role your group can review.', label: 'Open Talent Calculator' },
   },
   {
     id: 'protection-dungeon',
@@ -256,7 +262,7 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
         ],
       },
     ],
-    finalCta: { eyebrow: 'Ready to adjust the tank build?', title: 'Load the full 20/31/0 setup in the planner.', label: 'Edit This Build', href: '/paladin#calculator' },
+    finalCta: { eyebrow: 'Ready to adjust the tank build?', title: 'Load the full 20/31/0 setup in the planner.', label: 'Edit This Build' },
   },
   {
     id: 'protection-leveling',
@@ -312,7 +318,7 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
         ],
       },
     ],
-    finalCta: { eyebrow: 'Ready to plan the order?', title: 'Map out your Protection leveling points.', label: 'Open Talent Calculator', href: '/paladin#calculator' },
+    finalCta: { eyebrow: 'Ready to plan the order?', title: 'Map out your Protection leveling points.', label: 'Open Talent Calculator' },
   },
   {
     id: 'retribution-pvp',
@@ -368,7 +374,7 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
         ],
       },
     ],
-    finalCta: { eyebrow: 'Test a PvP setup', title: 'Adapt the Retribution allocation to your matchups.', label: 'Open Talent Calculator', href: '/paladin#calculator' },
+    finalCta: { eyebrow: 'Test a PvP setup', title: 'Adapt the Retribution allocation to your matchups.', label: 'Open Talent Calculator' },
   },
   {
     id: 'holy-pvp',
@@ -381,6 +387,8 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
     eyebrow: 'Holy PvP Build',
     heroImage: '/images/hero/hero-paladin.webp',
     heroPosition: '68% center',
+    // This page deliberately renders no tree, so it names the allocation to load instead.
+    ctaBuildId: 'holy-healing-31-20-0',
     summary: [
       { label: 'Playstyle', value: 'PvP' },
       { label: 'Specialization', value: 'Holy' },
@@ -419,7 +427,7 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
         ],
       },
     ],
-    finalCta: { eyebrow: 'Plan your support setup', title: 'Start from the healing allocation and adapt it.', label: 'Open Talent Calculator', href: '/paladin#calculator' },
+    finalCta: { eyebrow: 'Plan your support setup', title: 'Start from the healing allocation and adapt it.', label: 'Open Talent Calculator' },
   },
 ]
 

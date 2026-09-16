@@ -1,6 +1,6 @@
 import { ArrowRight, Calculator, Shield, Sparkles, Swords } from 'lucide-react'
 import BuildCard from './BuildCard'
-import { HUB_INTRO, HUB_INTRO_SUB, HUB_PLAYSTYLE_SECTIONS, HUB_SPECIALIZATIONS, HUB_TITLE, type SpecializationIcon } from './data/paladinBuildsHub'
+import { HUB_INTRO, HUB_INTRO_SUB, HUB_PLAYSTYLE_SECTIONS, HUB_SPECIALIZATIONS, HUB_TALENTS, HUB_TITLE, type SpecializationIcon } from './data/paladinBuildsHub'
 import { track } from './lib/analytics'
 
 const specializationIcons: Record<SpecializationIcon, React.ReactNode> = {
@@ -50,7 +50,7 @@ export default function PaladinBuildsHub() {
         <HubLink href="/paladin#calculator" placement="calculator-cta" className="button primary"><Calculator size={18} /> Open WoW Forever Paladin Talent Calculator</HubLink>
       </section>
 
-      <section className="hub-data shell"><div><div className="eyebrow">About Our Data</div><h2>Transparent Community Research</h2></div><div><p>BuildForgeTools uses community research and reference materials to create preview talent planners for WoW Forever.</p><p>Talent data is continuously reviewed and updated. Every build is presented as a planning reference while the underlying information is verified.</p><a href="/wow-forever-paladin-talents">Read about Paladin talents <ArrowRight size={15} /></a></div></section>
+      <section className="hub-data shell"><div><div className="eyebrow">About Our Data</div><h2>Transparent Community Research</h2></div><div><p>BuildForgeTools uses community research and reference materials to create preview talent planners for WoW Forever.</p><p>Talent data is continuously reviewed and updated. Every build is presented as a planning reference while the underlying information is verified.</p><a href={HUB_TALENTS.href}>{HUB_TALENTS.label} <ArrowRight size={15} /></a></div></section>
 
       <footer><div className="shell"><a className="brand" href="/paladin"><img src="/images/icons/paladin-shield.png" alt="" /><span>BUILD</span><b>FORGE</b></a><p>WoW Forever Talent Tools</p><nav><a href="/paladin">Talent Calculator</a><a href="/wow-forever-paladin-talents">Paladin Talents</a><a href="/wow-forever-protection-paladin-build">Protection Build</a></nav><small>Community-made planning tool. Not affiliated with Blizzard Entertainment.</small></div></footer>
     </main>

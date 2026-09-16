@@ -26,6 +26,16 @@ describe('Protection Paladin builds hub', () => {
     expect(document.querySelector('a[href="/wow-forever-protection-paladin-leveling-build"]')).toBeTruthy()
   })
 
+  it('never promises a specialization its destination does not deliver', () => {
+    for (const build of PROTECTION_HUB_BUILD_TYPES) {
+      for (const copy of [build.title, build.eyebrow]) {
+        const promised = copy.match(/\b(Holy|Protection|Retribution)\b/)?.[1].toLowerCase()
+
+        if (promised) expect(build.href, `"${copy}" promises ${promised}`).toContain(`-${promised}-`)
+      }
+    }
+  })
+
   it('reports every build type under its own stable id', () => {
     const events: Record<string, unknown>[] = []
     window.gtag = (_command: string, ...args: unknown[]) => { events.push(args[1] as Record<string, unknown>) }

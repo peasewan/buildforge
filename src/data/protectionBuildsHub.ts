@@ -32,19 +32,20 @@ export const PROTECTION_HUB_BUILD_TYPES: ProtectionBuildType[] = [
     icon: 'leveling',
   },
   {
+    // The id is an opaque analytics key and deliberately no longer matches the label:
+    // retitling the card must not start a new GA4 series.
     id: 'pvp-protection',
-    eyebrow: 'PvP Protection',
-    title: 'Protection Paladin PvP Build',
-    description: 'Explore utility-focused setups for player combat.',
+    eyebrow: 'PvP',
+    title: 'Paladin PvP Builds',
+    description: 'Compare the class-wide PvP routes. No Protection-specific PvP build has been published yet.',
     href: '/wow-forever-paladin-pvp-build',
     icon: 'pvp',
   },
 ]
 
-export const PROTECTION_HUB_TALENTS: { label: string; href: string } = {
-  label: 'Explore Protection Paladin talents',
-  href: '/wow-forever-protection-paladin-talents',
-}
+export const PROTECTION_HUB_TALENTS: { label: string; href: string }[] = [
+  { label: 'Explore Protection Paladin talents', href: '/wow-forever-protection-paladin-talents' },
+]
 
 export const PROTECTION_HUB_RELATED: { label: string; href: string }[] = [
   { label: 'Protection Shield Build 20/31/0', href: '/wow-forever-protection-paladin-build' },
@@ -57,5 +58,5 @@ export const PROTECTION_HUB_RELATED: { label: string; href: string }[] = [
 export const PROTECTION_HUB_HREFS = [
   ...PROTECTION_HUB_BUILD_TYPES.map((build) => build.href),
   ...PROTECTION_HUB_RELATED.map((link) => link.href),
-  PROTECTION_HUB_TALENTS.href,
+  ...PROTECTION_HUB_TALENTS.map((link) => link.href),
 ]

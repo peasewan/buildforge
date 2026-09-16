@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build && node scripts/prerender-guide.mjs && tsx scripts/prerender-pages.ts && tsx scripts/prerender-beta.ts",
+    "build": "tsc -b && tsc -p tsconfig.scripts.json && vite build && tsx scripts/prerender-guide.ts && tsx scripts/prerender-pages.ts && tsx scripts/prerender-beta.ts",
+    "typecheck": "tsc -b && tsc -p tsconfig.scripts.json",
     "test": "vitest run",
     "lint": "eslint .",
     "talents:diff": "tsx scripts/talents-diff.ts",

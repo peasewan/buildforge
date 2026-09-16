@@ -70,7 +70,8 @@ export default function BuildLandingPage({ pageId }: { pageId: BuildLandingPageI
   const page = buildLandingPageById(pageId)
   const heroStyle = { '--landing-hero-image': `url(${page.heroImage})`, '--landing-hero-position': page.heroPosition } as CSSProperties
   const preview = page.sections.find((section) => section.kind === 'talent-preview')
-  const primaryHref = preview ? `/build?id=${encodeBuild(exampleBuildById(preview.buildId).build)}#calculator` : '/paladin#calculator'
+  const ctaBuildId = preview?.buildId ?? page.ctaBuildId
+  const primaryHref = ctaBuildId ? `/build?id=${encodeBuild(exampleBuildById(ctaBuildId).build)}#calculator` : '/paladin#calculator'
 
   return (
     <main className="landing-page">
@@ -88,7 +89,7 @@ export default function BuildLandingPage({ pageId }: { pageId: BuildLandingPageI
             <h1>{page.title}</h1>
             <p>{page.subtitle}</p>
             <span>Community preview build for WoW Forever Paladins.</span>
-            <div className="button-row"><TrackedLink href={primaryHref} pageId={pageId} placement="hero" className="button primary">Open Talent Calculator</TrackedLink><a href="#build-content" className="button secondary">View Talent Tree <ArrowRight size={15} /></a></div>
+            <div className="button-row"><TrackedLink href={primaryHref} pageId={pageId} placement="hero" className="button primary">Open Talent Calculator</TrackedLink>{preview && <a href="#build-content" className="button secondary">View Talent Tree <ArrowRight size={15} /></a>}</div>
           </div>
           <aside className="landing-summary-card" aria-label="Build summary">
             <div><span>Build Summary</span><i>Preview</i></div>
@@ -99,7 +100,7 @@ export default function BuildLandingPage({ pageId }: { pageId: BuildLandingPageI
 
       <div className="shell landing-content" id="build-content">
         {page.sections.map((section) => <LandingSectionView key={section.title} section={section} pageId={pageId} />)}
-        <section className="landing-final-cta"><img src="/images/icons/paladin-shield.png" alt="" /><div><span>{page.finalCta.eyebrow}</span><h2>{page.finalCta.title}</h2></div><TrackedLink href={preview ? primaryHref : page.finalCta.href} pageId={pageId} placement="footer" className="button primary">{page.finalCta.label} <ArrowRight size={16} /></TrackedLink></section>
+        <section className="landing-final-cta"><img src="/images/icons/paladin-shield.png" alt="" /><div><span>{page.finalCta.eyebrow}</span><h2>{page.finalCta.title}</h2></div><TrackedLink href={ctaBuildId ? primaryHref : '/paladin#calculator'} pageId={pageId} placement="footer" className="button primary">{page.finalCta.label} <ArrowRight size={16} /></TrackedLink></section>
       </div>
 
       <footer><div className="shell"><a className="brand" href="/paladin"><img src="/images/icons/paladin-shield.png" alt="" /><span>BUILD</span><b>FORGE</b></a><p>WoW Forever Talent Tools</p><nav><a href="/wow-forever-paladin-builds">All Paladin Builds</a><a href="/paladin">Talent Calculator</a><a href="/wow-forever-paladin-talents">Paladin Talents</a></nav><small>Community-made planning tool. Not affiliated with Blizzard Entertainment.</small></div></footer>

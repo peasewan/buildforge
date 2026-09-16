@@ -5,11 +5,9 @@ import { BUILD_LANDING_PAGES } from './data/buildLandingPages'
 import BuildCard from './BuildCard'
 import { branchNames, branchTaglines, DATA_SOURCES, talentEvidenceLabel, talents, type Talent } from './data/talents'
 import { betaDataset, communityPreviewDataset } from './data/datasets'
-import { branchPoints, canIncrement, decodeBuild, decrementTalent, encodeBuild, incrementTalent, totalPoints, type Branch, type Build } from './lib/build'
+import { BRANCHES, branchPoints, canIncrement, decodeBuild, decrementTalent, dominantBranch, encodeBuild, incrementTalent, totalPoints, type Branch, type Build } from './lib/build'
 import { claimBuildCompletion, loadClaimedBuildCompletions, saveClaimedBuildCompletions } from './lib/buildCompletion'
 import { track } from './lib/analytics'
-
-const branches: Branch[] = ['holy', 'protection', 'retribution']
 
 const branchIcons: Record<Branch, string> = {
   holy: '/images/icons/holy-strike.png',
@@ -102,7 +100,7 @@ export default function App() {
   if (completedBuildsRef.current === null) completedBuildsRef.current = loadClaimedBuildCompletions()
   const points = totalPoints(build)
   const selected = useMemo(() => talents.filter((talent) => (build[talent.id] ?? 0) > 0), [build])
-  const currentBranch = branches.reduce((best, candidate) => branchPoints(build, candidate, talents) > branchPoints(build, best, talents) ? candidate : best, branch)
+  const currentBranch = dominantBranch(build, talents, branch)
 
   useEffect(() => {
     localStorage.setItem('wow-forever-paladin-build', encodeBuild(build))
@@ -176,10 +174,10 @@ export default function App() {
     const nextBuild = incrementTalent(build, talent, talents)
     if (claimBuildCompletion(build, nextBuild, completedBuildsRef.current!)) {
       saveClaimedBuildCompletions(completedBuildsRef.current!)
-      const dominantBranch = branches.reduce((best, candidate) => branchPoints(nextBuild, candidate, talents) > branchPoints(nextBuild, best, talents) ? candidate : best, talent.branch)
+      const completedBranch = dominantBranch(nextBuild, talents, talent.branch)
       track('build_complete', {
         points: 51,
-        branch: dominantBranch,
+        branch: completedBranch,
         selected_talents: Object.keys(nextBuild).length,
       })
     }
@@ -187,9 +185,8 @@ export default function App() {
   }
 
   const loadExampleBuild = (example: ExampleBuild) => {
-    const dominantBranch = branches.reduce((best, candidate) => branchPoints(example.build, candidate, talents) > branchPoints(example.build, best, talents) ? candidate : best, 'holy')
     setBuild({ ...example.build })
-    setBranch(dominantBranch)
+    setBranch(dominantBranch(example.build, talents, 'holy'))
     setShowSavedBuild(false)
     setCopied(false)
     window.history.replaceState({}, '', '/paladin#calculator')
@@ -223,10 +220,10 @@ export default function App() {
           </div>
           <aside className="hud-card">
             <div className="hud-top"><span>Talent Preview</span><i>Live</i></div>
-            <div className="hud-tabs">{branches.map((item) => <button key={item} onClick={() => openTool(item)} className={item === branch ? 'active' : ''}>{branchNames[item]}</button>)}</div>
+            <div className="hud-tabs">{BRANCHES.map((item) => <button key={item} onClick={() => openTool(item)} className={item === branch ? 'active' : ''}>{branchNames[item]}</button>)}</div>
             <div className="hud-emblem"><div className="emblem-rings" /><img src="/images/icons/paladin-shield.png" alt="Paladin shield emblem" /></div>
             <div className="hud-points"><span>Talent Points</span><strong>{points} <small>/ 51</small></strong></div>
-            <div className="hud-branches">{branches.map((item) => (
+            <div className="hud-branches">{BRANCHES.map((item) => (
               <div className="hud-branch" key={item}>
                 <span>{branchNames[item]}</span>
                 <b>{branchPoints(build, item, talents)}<small>/{branchMax(item)}</small></b>
@@ -249,7 +246,7 @@ export default function App() {
           </div>
           <p className="spec-cta">Choose your specialization:</p>
           <div className="spec-choices">
-            {branches.map((item) => (
+            {BRANCHES.map((item) => (
               <button key={item} className="spec-choice" onClick={() => openTool(item)}>
                 <img src={branchIcons[item]} alt="" />
                 <span>{branchNames[item]}</span>
@@ -265,7 +262,7 @@ export default function App() {
           <div className="section-heading centered"><div className="eyebrow">Interactive Build Planner</div><h2>WoW Forever Paladin Talent Tree</h2><p>Choose Holy, Protection, or Retribution, spend all 51 points, and shape a build worth sharing.</p></div>
           <div id="calculator" ref={calculatorRef} className="calculator-entry">
             {showSavedBuild && <div className="saved-build-notice" role="status"><div><strong>Saved build loaded</strong><span>Your previous talent setup is ready to continue.</span></div><button type="button" onClick={startNewBuild}><RotateCcw size={14} /> Start New Build</button></div>}
-            <div className="planner-tabs" role="tablist">{branches.map((item) => <button key={item} role="tab" aria-selected={branch === item} className={branch === item ? 'active' : ''} onClick={() => { setBranch(item); track('spec_select', { branch: item }) }}><img src={branchIcons[item]} alt="" /><span>{branchNames[item]}<small>{branchPoints(build, item, talents)} points</small></span></button>)}</div>
+            <div className="planner-tabs" role="tablist">{BRANCHES.map((item) => <button key={item} role="tab" aria-selected={branch === item} className={branch === item ? 'active' : ''} onClick={() => { setBranch(item); track('spec_select', { branch: item }) }}><img src={branchIcons[item]} alt="" /><span>{branchNames[item]}<small>{branchPoints(build, item, talents)} points</small></span></button>)}</div>
             <div className="planner-grid">
               <div className="tree-card">
                 <div className="panel-heading"><div><span>{branchNames[branch]} Specialization</span><h3>{branchTaglines[branch]}</h3></div><div className="legend"><i className="dot available" /> Available <i className="dot chosen" /> Selected</div></div>

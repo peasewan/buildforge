@@ -1,4 +1,15 @@
 import { readFile, writeFile } from 'node:fs/promises'
+import { escapeHtml } from '../src/lib/html'
+
+interface ContentSection { id: string; heading: string; paragraphs: string[] }
+interface GuideContent { eyebrow: string; title: string; dek: string; sections: ContentSection[] }
+interface BuildContent extends GuideContent {
+  spec: string
+  heroHeading: string
+  allocationSummary: string
+  selectedTalents: string[]
+  plannerPath: string
+}
 
 const guidePath = new URL('../src/content/paladin-guide.json', import.meta.url)
 const outputPath = new URL('../dist/wow-forever-paladin-talents/index.html', import.meta.url)
@@ -10,13 +21,8 @@ const buildTargets = [
 ]
 const plannerOutputPath = new URL('../dist/paladin/index.html', import.meta.url)
 
-const escapeHtml = (value) => value
-  .replaceAll('&', '&amp;')
-  .replaceAll('<', '&lt;')
-  .replaceAll('>', '&gt;')
-  .replaceAll('"', '&quot;')
 
-const guide = JSON.parse(await readFile(guidePath, 'utf8'))
+const guide = JSON.parse(await readFile(guidePath, 'utf8')) as GuideContent
 const words = [guide.title, guide.dek, ...guide.sections.flatMap((section) => [section.heading, ...section.paragraphs])]
   .join(' ')
   .match(/[A-Za-z0-9’'-]+/g)?.length ?? 0
@@ -49,7 +55,7 @@ await writeFile(outputPath, template.replace('<!-- GUIDE_PRERENDER -->', prerend
 console.log(`Prerendered guide with ${words} words.`)
 
 for (const [contentFile, outputFile] of buildTargets) {
-  const build = JSON.parse(await readFile(new URL(contentFile, import.meta.url), 'utf8'))
+  const build = JSON.parse(await readFile(new URL(contentFile, import.meta.url), 'utf8')) as BuildContent
   const buildWords = [build.title, build.dek, ...build.sections.flatMap((section) => [section.heading, ...section.paragraphs])]
     .join(' ')
     .match(/[A-Za-z0-9’'-]+/g)?.length ?? 0

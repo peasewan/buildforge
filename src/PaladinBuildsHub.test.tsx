@@ -42,6 +42,14 @@ describe('Paladin builds hub', () => {
     ]) expect(document.querySelector(`a[href="${href}"]`)).toBeTruthy()
   })
 
+  it('never promises a specialization its destination does not deliver', () => {
+    for (const build of HUB_PLAYSTYLE_SECTIONS.flatMap((section) => section.builds)) {
+      const promised = build.title.match(/\b(Holy|Protection|Retribution)\b/)?.[1].toLowerCase()
+
+      if (promised) expect(build.href, `"${build.title}" promises ${promised}`).toContain(`-${promised}-`)
+    }
+  })
+
   it('reports every build card under its own stable id', () => {
     const events = captureTrackedEvents()
     const builds = HUB_PLAYSTYLE_SECTIONS.flatMap((section) => section.builds)

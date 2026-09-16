@@ -10,7 +10,20 @@ export interface TalentDefinition {
   prerequisite?: string[]
 }
 
+export const BRANCHES: Branch[] = ['holy', 'protection', 'retribution']
+
 export const MAX_TALENT_POINTS = 51
+
+/**
+ * The branch a build spends most of its points in. `seed` is returned on a tie, so
+ * callers can keep the branch a reader is already looking at rather than flickering.
+ */
+export function dominantBranch(build: Build, talents: TalentDefinition[], seed: Branch): Branch {
+  return BRANCHES.reduce(
+    (best, candidate) => branchPoints(build, candidate, talents) > branchPoints(build, best, talents) ? candidate : best,
+    seed,
+  )
+}
 
 export function totalPoints(build: Build): number {
   return Object.values(build).reduce((sum, rank) => sum + Math.max(0, rank), 0)

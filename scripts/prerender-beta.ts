@@ -1,16 +1,10 @@
 import { readFile, writeFile } from "node:fs/promises";
 import { betaDataset, communityPreviewDataset } from "../src/data/datasets";
 import { branchNames } from "../src/data/talents";
+import { escapeHtml } from "../src/lib/html";
 import { compareTalentVersions } from "../src/lib/talentDiff";
 
 const outputPath = new URL("../dist/wow-forever-paladin-beta-talent-changes/index.html", import.meta.url);
-
-const escapeHtml = (value: string) =>
-  value
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;");
 
 const diff = compareTalentVersions(communityPreviewDataset, betaDataset);
 const isWaiting = diff.status === "waiting";
