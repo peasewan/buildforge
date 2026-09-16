@@ -35,13 +35,13 @@ export default function PaladinBuildsHub() {
 
       <section className="hub-section shell" id="specializations">
         <header className="hub-section-heading"><div className="eyebrow">Three Talent Paths</div><h2>Choose Your Paladin Specialization</h2><p>Start with the role you want to play, then open a focused build and customize its talent allocation.</p></header>
-        <div className="hub-spec-grid">{HUB_SPECIALIZATIONS.map((spec) => <HubLink href={spec.href} placement={`spec-${spec.name.toLowerCase()}`} key={spec.name}><i>{specializationIcons[spec.icon]}</i><h3>{spec.name}</h3><p>{spec.role}</p><span>View Builds <ArrowRight size={15} /></span></HubLink>)}</div>
+        <div className="hub-spec-grid">{HUB_SPECIALIZATIONS.map((spec) => <HubLink href={spec.href} placement={`spec-${spec.id}`} key={spec.id}><i>{specializationIcons[spec.icon]}</i><h3>{spec.name}</h3><p>{spec.role}</p><span>View Builds <ArrowRight size={15} /></span></HubLink>)}</div>
       </section>
 
       {HUB_PLAYSTYLE_SECTIONS.map((section) => (
         <section className="hub-section shell" id={section.id} key={section.id}>
           <header className="hub-section-heading"><div className="eyebrow">{section.eyebrow}</div><h2>{section.heading}</h2><p>{section.intro}</p></header>
-          <div className="hub-build-grid">{section.builds.map((build) => <BuildCard key={build.href} eyebrow={section.eyebrow} title={build.title} description={build.description} href={build.href} icon={build.icon} onOpen={() => track('paladin_hub_click', { placement: `${section.id}-${build.title.toLowerCase().slice(0, 24)}`, destination: build.href })} />)}</div>
+          <div className="hub-build-grid">{section.builds.map((build) => <BuildCard key={build.id} eyebrow={section.eyebrow} title={build.title} description={build.description} href={build.href} icon={build.icon} onOpen={() => track('paladin_hub_click', { placement: build.id, destination: build.href })} />)}</div>
         </section>
       ))}
 

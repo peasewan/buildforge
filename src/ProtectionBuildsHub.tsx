@@ -39,7 +39,7 @@ export default function ProtectionBuildsHub() {
 
       <section className="hub-popular" id="build-types"><div className="shell">
         <header className="hub-section-heading"><div className="eyebrow">Choose a Starting Point</div><h2>Protection Build Types</h2><p>Compare defensive routes by the kind of content you want to prepare for.</p></header>
-        <div className="protection-type-grid">{PROTECTION_HUB_BUILD_TYPES.map((build) => <BuildCard compact key={build.eyebrow} eyebrow={build.eyebrow} title={build.title} description={build.description} href={build.href} icon={build.icon} onOpen={() => track('protection_hub_click', { placement: `type-${build.eyebrow.toLowerCase().replaceAll(' ', '-')}`, destination: build.href })} />)}</div>
+        <div className="protection-type-grid">{PROTECTION_HUB_BUILD_TYPES.map((build) => <BuildCard compact key={build.id} eyebrow={build.eyebrow} title={build.title} description={build.description} href={build.href} icon={build.icon} onOpen={() => track('protection_hub_click', { placement: `type-${build.id}`, destination: build.href })} />)}</div>
       </div></section>
 
       <section className="hub-tool shell">

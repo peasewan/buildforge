@@ -1,6 +1,8 @@
 import type { BuildCardIcon } from '../BuildCard'
 
 export interface ProtectionBuildType {
+  /** Stable analytics key. Never derive this from `eyebrow` — the eyebrow is copy and will change. */
+  id: string
   eyebrow: string
   title: string
   description: string
@@ -14,6 +16,7 @@ export const PROTECTION_HUB_INTRO = 'Explore Protection Paladin tank builds, lev
 
 export const PROTECTION_HUB_BUILD_TYPES: ProtectionBuildType[] = [
   {
+    id: 'dungeon-tank',
     eyebrow: 'Dungeon Tank',
     title: 'Protection Paladin Dungeon Tank Build',
     description: 'Designed for group content and defensive play.',
@@ -21,6 +24,7 @@ export const PROTECTION_HUB_BUILD_TYPES: ProtectionBuildType[] = [
     icon: 'protection',
   },
   {
+    id: 'leveling-tank',
     eyebrow: 'Leveling Tank',
     title: 'Protection Paladin Leveling Build',
     description: 'Start with a safer solo progression path and adapt it in the planner.',
@@ -28,6 +32,7 @@ export const PROTECTION_HUB_BUILD_TYPES: ProtectionBuildType[] = [
     icon: 'leveling',
   },
   {
+    id: 'pvp-protection',
     eyebrow: 'PvP Protection',
     title: 'Protection Paladin PvP Build',
     description: 'Explore utility-focused setups for player combat.',
