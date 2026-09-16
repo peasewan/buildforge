@@ -10,6 +10,19 @@ describe('crawlable page templates', () => {
   })
 
   it.each([
+    ['wow-forever-paladin-builds/index.html'],
+    ['wow-forever-protection-paladin-builds/index.html'],
+    ['wow-forever-paladin-leveling-build/index.html'],
+    ['wow-forever-paladin-pvp-build/index.html'],
+    ['wow-forever-paladin-raid-build/index.html'],
+    ['wow-forever-protection-paladin-dungeon-build/index.html'],
+  ])('generates %s at build time instead of hand-writing its body', (filename) => {
+    const template = readFileSync(`${process.cwd()}/${filename}`, 'utf8')
+
+    expect(template).toContain('<!-- PAGES_PRERENDER -->')
+  })
+
+  it.each([
     ['/paladin', 'paladin/index.html'],
     ['/wow-forever-paladin-talents', 'wow-forever-paladin-talents/index.html'],
     ['/wow-forever-paladin-build', 'wow-forever-paladin-build/index.html'],
