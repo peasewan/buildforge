@@ -329,11 +329,12 @@ footer { padding: 42px 0; border-top: 1px solid rgba(217,164,65,.15); background
 .hub-spec-grid p { margin: 0; color: #858d98; font-size: 13px; }
 .hub-spec-grid span { display: inline-flex; align-items: center; gap: 7px; margin-top: 27px; color: #d6af54; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; }
 .hub-popular { padding: 105px 0 115px; border-block: 1px solid rgba(217,164,65,.1); background: #0c0f14; }
-.hub-build-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 13px; }
+.hub-build-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 420px)); gap: 13px; }
 .hub-build-grid article { min-height: 330px; display: flex; flex-direction: column; padding: 23px; border: 1px solid rgba(255,255,255,.08); border-radius: 11px; background: linear-gradient(145deg, #131821, #0c1016); }
 .hub-build-grid article > header { display: flex; align-items: center; gap: 10px; color: #a58f59; font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: .14em; }
 .hub-build-grid article > header i { color: #d9a441; }
 .hub-build-grid h3 { min-height: 64px; margin: 23px 0 19px; color: #e9ddbf; font: 600 17px/1.4 Cinzel, serif; }
+.hub-build-grid p { margin: 0 0 22px; color: #858c97; font-size: 12px; line-height: 1.6; }
 .hub-build-grid dl { display: grid; gap: 13px; margin: 0 0 23px; }
 .hub-build-grid dl > div { padding-top: 12px; border-top: 1px solid rgba(255,255,255,.06); }
 .hub-build-grid dt { margin-bottom: 5px; color: #666e79; font-size: 8px; text-transform: uppercase; letter-spacing: .13em; }
