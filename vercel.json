@@ -1,5 +1,13 @@
 {
   "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        { "type": "host", "value": "www.buildforgetools.com" }
+      ],
+      "destination": "https://buildforgetools.com/:path*",
+      "permanent": true
+    },
     { "source": "/", "destination": "/paladin", "permanent": true },
     { "source": "/wow-forever-holy-paladin-build", "destination": "/wow-forever-paladin-build", "permanent": true }
   ],
