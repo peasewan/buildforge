@@ -1,4 +1,5 @@
 import { Calculator } from "lucide-react";
+import { PALADIN_BETA_SNAPSHOT } from "./data/betaSnapshot";
 import { betaDataset, communityPreviewDataset } from "./data/datasets";
 import { branchNames } from "./data/talents";
 import { compareTalentVersions } from "./lib/talentDiff";
@@ -9,7 +10,8 @@ export default function BetaChangesPage() {
   const isWaiting = diff.status === "waiting";
   const isPartial = diff.status === "partial";
   const total = communityPreviewDataset.talents.length;
-  const statusLabel = isWaiting ? "Waiting for Beta" : isPartial ? "Beta Partially Verified" : "Beta Verified";
+  const statusLabel = isWaiting ? "Beta Client Data Available" : isPartial ? "Beta Partially Verified" : "Beta Verified";
+  const snapshot = PALADIN_BETA_SNAPSHOT;
 
   return (
     <main className="beta-page">
@@ -23,29 +25,59 @@ export default function BetaChangesPage() {
         <div className="beta-hero-copy">
           <div className="eyebrow"><Calculator size={14} /> Beta Talent Tracker</div>
           <h1>WoW Forever Paladin Beta Talent Changes</h1>
-          <p>Track every Paladin talent change discovered in the WoW Forever Beta, compared against the current Pre-Beta Demo Preview.</p>
+          <p>Follow verified Paladin changes from the live WoW Forever Beta while client data is normalized and checked against the current Pre-Beta Demo Preview.</p>
           <a className="button primary" href="/paladin#calculator" onClick={() => track("beta_cta_click", { placement: "hero" })}>Open Paladin Calculator</a>
         </div>
         <aside className="beta-status-card" aria-label="Beta data status">
           <span>PALADIN BETA DATA</span>
           <strong>{statusLabel}</strong>
           <dl>
-            <div><dt>Verified talents</dt><dd>{isWaiting ? `0 / ${total}` : `${betaDataset.talents.length} / ${total}`}</dd></div>
-            <div><dt>Last updated</dt><dd>—</dd></div>
+            <div><dt>Client build</dt><dd>{snapshot.clientBuild}</dd></div>
+            <div><dt>Paladin talent spells</dt><dd>{snapshot.counts.paladinTalentSpells}</dd></div>
+            <div><dt>Tree-ready talents</dt><dd>{isWaiting ? `0 / ${total}` : `${betaDataset.talents.length} / ${total}`}</dd></div>
+            <div><dt>Last updated</dt><dd>Sep 17, 2026</dd></div>
           </dl>
         </aside>
       </section>
 
       {isWaiting ? (
         <section className="beta-waiting shell">
-          <div className="section-heading centered"><div className="eyebrow">Status</div><h2>Waiting for Beta Data</h2><p>Real WoW Forever Beta talent data has not been transcribed yet. As soon as it is added, this page will automatically compare the Beta against the current Pre-Beta Demo Preview and list every change.</p></div>
-          <ul className="beta-track-list">
-            <li><strong>New talents</strong> added in the Beta</li>
-            <li><strong>Updated</strong> names, tooltips, and rank values</li>
-            <li><strong>Moved</strong> talents and changed prerequisites</li>
-            <li><strong>Removed</strong> or reworked talents</li>
-          </ul>
-          <p className="beta-footnote">Community preview data. This page is a change tracker, not a source of final Beta values.</p>
+          <div className="section-heading centered"><div className="eyebrow">Client Data Status</div><h2>Beta Data Is Here. Tree Coordinates Are Still Pending.</h2><p>Client build {snapshot.clientBuild} exposes new Paladin spell records, but it does not yet provide enough structured information to place every talent safely in the calculator. The production tree stays on the reviewed preview dataset until positions, costs, ranks, and prerequisites are confirmed.</p></div>
+
+          <div className="beta-signal-grid" aria-label="Beta client data summary">
+            <article><strong>{snapshot.counts.paladinTalentSpells}</strong><span>Paladin talent spells</span></article>
+            <article><strong>{snapshot.counts.paladinSpells}</strong><span>New Paladin spells</span></article>
+            <article><strong>{snapshot.counts.allClassTalentSpells}</strong><span>Talent spells across all classes</span></article>
+            <article><strong>{snapshot.counts.paladinSets}</strong><span>Paladin sets represented</span></article>
+          </div>
+
+          <section className="beta-detail-block">
+            <div><div className="eyebrow">Not Ready for the Tree</div><h2>What the Client Data Still Does Not Tell Us</h2></div>
+            <ul className="beta-track-list">{snapshot.missingTreeFields.map((field) => <li key={field}>{field}</li>)}</ul>
+          </section>
+
+          <section className="beta-detail-block">
+            <div><div className="eyebrow">Officially Described</div><h2>Confirmed Paladin Direction</h2><p>These mechanics come from Blizzard's Forever Deep Dive. Exact Beta values can still change.</p></div>
+            <div className="beta-confirmed-grid">{snapshot.confirmedChanges.map((change) => <article key={change.title}><h3>{change.title}</h3><p>{change.detail}</p></article>)}</div>
+          </section>
+
+          <section className="beta-detail-block">
+            <div><div className="eyebrow">Update Pipeline</div><h2>How Beta Data Reaches the Calculator</h2></div>
+            <ol className="beta-pipeline">
+              <li><strong>Client data received</strong><span>Build-tagged spell records are captured without filling missing fields.</span></li>
+              <li><strong>Fields normalized</strong><span>Names and tooltips are matched against the current preview.</span></li>
+              <li><strong>Tree structure confirmed</strong><span>Coordinates, ranks, costs, and prerequisites require reliable evidence.</span></li>
+              <li><strong>Manual review</strong><span>Conflicts remain visible instead of silently replacing production data.</span></li>
+              <li><strong>Calculator update</strong><span>Only tree-ready records move into the interactive planner.</span></li>
+            </ol>
+          </section>
+
+          <section className="beta-detail-block beta-sources">
+            <div><div className="eyebrow">Sources</div><h2>Where This Snapshot Comes From</h2></div>
+            <ul>{snapshot.sources.map((source) => <li key={source.url}><span>{source.kind === "official" ? "Official" : "Datamine"}</span><a href={source.url} target="_blank" rel="noreferrer">{source.label}</a></li>)}</ul>
+          </section>
+
+          <p className="beta-footnote">Client build {snapshot.clientBuild}, compared with {snapshot.comparedWithBuild}. Datamined values may change during the Beta. This tracker does not treat a spell record as a complete talent-tree node.</p>
         </section>
       ) : (
         <section className="beta-diff shell">

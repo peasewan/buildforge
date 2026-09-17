@@ -3,8 +3,9 @@ import { Check, ChevronDown, Clipboard, LockKeyhole, Minus, RotateCcw, Sparkles,
 import { EXAMPLE_BUILDS, type ExampleBuild } from './data/builds'
 import { BUILD_LANDING_PAGES } from './data/buildLandingPages'
 import BuildCard from './BuildCard'
+import { PALADIN_BETA_SNAPSHOT } from './data/betaSnapshot'
 import { branchNames, branchTaglines, DATA_SOURCES, talentEvidenceLabel, talents, type Talent } from './data/talents'
-import { betaDataset, communityPreviewDataset } from './data/datasets'
+import { communityPreviewDataset } from './data/datasets'
 import { BRANCHES, branchPoints, canIncrement, decodeBuild, decrementTalent, dominantBranch, encodeBuild, incrementTalent, totalPoints, type Branch, type Build } from './lib/build'
 import { claimBuildCompletion, loadClaimedBuildCompletions, saveClaimedBuildCompletions } from './lib/buildCompletion'
 import { track } from './lib/analytics'
@@ -242,7 +243,7 @@ export default function App() {
             <div className="data-card-title">Talent Data</div>
             <p className="data-card-line"><span>✓</span> {talents.length} demo talent nodes transcribed — {DATA_SOURCES.join(', ')}</p>
             <p className="data-card-progress">Community verification in progress</p>
-            <p className="data-card-progress">{communityPreviewDataset.label} · Beta data: {betaDataset.status === 'waiting' ? 'Waiting' : 'Available'}</p>
+            <p className="data-card-progress">{communityPreviewDataset.label} · Beta client {PALADIN_BETA_SNAPSHOT.clientBuild} available · <a href="/wow-forever-paladin-beta-talent-changes">Track Beta changes</a></p>
           </div>
           <p className="spec-cta">Choose your specialization:</p>
           <div className="spec-choices">

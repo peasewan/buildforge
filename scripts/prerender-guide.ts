@@ -134,6 +134,8 @@ const plannerPrerendered = `<main class="planner-prerender">
     </ul>
     <p><a href="/wow-forever-paladin-talents">Read the WoW Forever Paladin talent guide</a></p>
     <p><a href="/wow-forever-paladin-builds">Explore the WoW Forever Paladin builds hub</a></p>
+    <h2>WoW Forever Paladin Beta Data</h2>
+    <p>Beta client data is now available, while talent tree positions and point costs are still being verified. <a href="/wow-forever-paladin-beta-talent-changes">Track Paladin Beta talent changes and data coverage</a>.</p>
   </article>
 </main>`
 

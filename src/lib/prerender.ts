@@ -74,7 +74,7 @@ export function renderHubPrerender(): string {
   </article>
   <section><h2>Choose Your Paladin Specialization</h2>${linkList(specializations)}</section>
   ${sections}
-  ${linkList([...pageFooterLinks, HUB_TALENTS])}
+  ${linkList([...pageFooterLinks, HUB_TALENTS, { href: '/wow-forever-paladin-beta-talent-changes', label: 'Track WoW Forever Paladin Beta talent changes' }])}
 </main>`
 }
 

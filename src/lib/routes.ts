@@ -80,7 +80,7 @@ const betaChangesPage: PageDefinition = {
   title: 'WoW Forever Paladin Beta Talent Changes | BuildForgeTools',
   description: 'Track every WoW Forever Paladin talent change discovered in the Beta, compared against the current community preview.',
   canonical: 'https://buildforgetools.com/wow-forever-paladin-beta-talent-changes',
-  robots: 'noindex, follow',
+  robots: 'index, follow',
 }
 
 export function pageForPath(pathname: string): PageDefinition {

@@ -58,13 +58,13 @@ describe('public page routing', () => {
     expect(pageForPath(pathname)).toMatchObject({ kind: 'build-landing', landingPageId, title })
   })
 
-  it('serves the Beta changes page as noindex', () => {
+  it('serves the Beta changes page as an indexable tracker', () => {
     expect(pageForPath('/wow-forever-paladin-beta-talent-changes/')).toEqual({
       kind: 'beta-changes',
       title: 'WoW Forever Paladin Beta Talent Changes | BuildForgeTools',
       description: 'Track every WoW Forever Paladin talent change discovered in the Beta, compared against the current community preview.',
       canonical: 'https://buildforgetools.com/wow-forever-paladin-beta-talent-changes',
-      robots: 'noindex, follow',
+      robots: 'index, follow',
     })
   })
 
