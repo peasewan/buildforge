@@ -13,6 +13,7 @@ export type BuildLandingPageId =
 export type LandingIcon = 'sword' | 'shield' | 'sparkles' | 'heart' | 'users' | 'route'
 
 export type LandingSection =
+  | { kind: 'copy'; title: string; intro?: string; paragraphs: string[] }
   | { kind: 'steps'; title: string; intro?: string; items: { title: string; body: string }[] }
   | { kind: 'cards'; title: string; intro?: string; items: { title: string; body: string; icon: LandingIcon; href?: string }[] }
   | { kind: 'bullets'; title: string; intro: string; items: string[] }
@@ -87,6 +88,23 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
         items: ['Compare Holy, Protection, and Retribution paths.', 'Watch prerequisites before planning deeper talents.', 'Treat all talent details as community preview data until verified in game.'],
       },
       {
+        kind: 'copy',
+        title: 'Choose a Leveling Direction',
+        intro: 'The class-wide page helps you choose a route before it sends you to a complete specialization example.',
+        paragraphs: [
+          'BuildForgeTools currently has two concrete leveling references. The Retribution leveling page loads a complete 20/0/31 allocation built around a deep Retribution core with Holy support. The Protection leveling page works toward the site’s 20/31/0 Shield allocation and explains why a player may accept slower kills in exchange for durability and an easier transition into dungeon tanking. Those are distinct end-state plans, not two labels for the same generic advice.',
+          'There is no dedicated Holy leveling allocation on the site yet. A player who wants to level through healing or group support should start with an empty calculator, choose the talents that solve the current leveling problem, and save milestone links instead of treating the 31/20/0 Holy healing build as a proven leveling route. The related pages below make the available evidence clear before you commit to one specialization.',
+        ],
+      },
+      {
+        kind: 'copy',
+        title: 'Turn an End-State Build into a Leveling Plan',
+        paragraphs: [
+          'A 51-point build shows the destination, while leveling requires an order. Begin with the talents available at the current level and ask what slows progress now: long recovery, fragile pulls, inconsistent damage, or the need to tank group content. Spend toward that immediate need while keeping deeper tree thresholds and prerequisites visible. Reopen the final allocation after each milestone to check whether short-term changes have pushed the route away from the intended specialization.',
+          'Keep separate share links around levels 20, 40, and the final 51-point setup. This makes the progression reviewable and avoids rebuilding the plan from memory. WoW Forever beta data can change ranks, tooltips, prerequisites, or coordinates, so confirm important talents in the current client and revisit the Beta tracker before following an older saved route exactly.',
+        ],
+      },
+      {
         kind: 'related',
         title: 'Related Leveling Builds',
         items: [
@@ -143,6 +161,23 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
         items: ['Choose a clear offensive or support role.', 'Reserve enough points for the utility you expect to use.', 'Verify current talent behavior in game before treating a setup as final.'],
       },
       {
+        kind: 'copy',
+        title: 'What This PvP Page Can Confirm',
+        intro: 'Use the page to compare roles and planning questions, while keeping the current evidence boundary visible.',
+        paragraphs: [
+          'The current Retribution PvP page starts from the complete 0/20/31 Judgment allocation, and the Holy PvP page starts from the complete 31/20/0 healing allocation. Those underlying builds are real calculator presets on BuildForgeTools. Their PvP interpretations are community planning directions, because the site does not yet have enough verified WoW Forever match data to call either allocation a finished PvP standard.',
+          'That distinction prevents a familiar talent name or a complete 51-point total from becoming unsupported competitive advice. Use the specialization pages to inspect which full build is being adapted, then change the ranks for the team size and objective you expect. Confirm important control, defensive, and damage effects in the current client before sharing the result as a recommendation.',
+        ],
+      },
+      {
+        kind: 'copy',
+        title: 'Compare PvP Roles Before Spending Points',
+        paragraphs: [
+          'Retribution begins with pressure: reaching a target, creating a short damage window, and surviving the answer after that window closes. Holy begins with support: staying in range of teammates, healing through focused pressure, and protecting itself well enough to continue casting. A hybrid gives up part of a deep specialization to collect selected tools from another tree, so its value depends on a precise team problem rather than the word “flexible.”',
+          'Choose the job first, list the tools that job requires, and only then spend toward deeper rows. Make one link for the general plan and separate variants for battleground objectives, small-group fights, or a specific partner composition. Comparing exact URLs is more useful than arguing over a label, especially while beta balance and talent behavior can still change.',
+        ],
+      },
+      {
         kind: 'related',
         title: 'Related PvP Builds',
         items: [
@@ -196,6 +231,23 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
           { title: 'Choose the assignment', body: 'Start with healing, tanking, or damage support so every talent choice has a clear purpose.' },
           { title: 'Spend all 51 points', body: 'Use the talent tree to check prerequisites and compare the value of supporting branches.' },
           { title: 'Share the setup', body: 'Copy the build URL and send the exact allocation to raid leaders or teammates for discussion.' },
+        ],
+      },
+      {
+        kind: 'copy',
+        title: 'Use Published Builds as Role References',
+        intro: 'Three complete examples provide concrete allocations, but their raid use still depends on assignment and current game data.',
+        paragraphs: [
+          'The Holy 31/20/0 page is the clearest healing reference: it lists every selected rank and explains the healing-oriented allocation. Protection has a complete 20/31/0 Shield build for a defensive group role, while Retribution has a complete 0/20/31 Judgment build for damage with Protection support. Each one opens the exact 51-point setup in the calculator so a raid group can review the same talents instead of discussing only a specialization name.',
+          'These examples have not been presented as encounter-tested raid standards. The current dataset mixes confirmed, community-supported, and still-unverified WoW Forever fields. Treat the complete allocations as starting references, check the talents that matter to the assigned fight, and change the supporting branch when the group needs a different form of utility or survivability.',
+        ],
+      },
+      {
+        kind: 'copy',
+        title: 'Review the Build with Your Raid Group',
+        paragraphs: [
+          'Start with the assignment: primary healing, tanking, off-tanking, damage, or support. Then review what the encounter actually asks the Paladin to survive or provide. A talent that looks attractive in isolation can be less useful when another player already covers the same support, while a less obvious defensive or utility choice may matter throughout the encounter. The planner records the decision but cannot replace that group context.',
+          'Share the URL before raid time and ask reviewers to comment on individual ranks rather than replacing the whole build with a vague label. After a beta update, compare the saved setup with the current tree, confirm changed tooltips in game, and copy a new link if prerequisites or rank limits moved. That workflow keeps a raid build tied to evidence and a specific assignment instead of presenting one static page as permanent advice.',
         ],
       },
       {
@@ -365,6 +417,23 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
         ],
       },
       {
+        kind: 'copy',
+        title: 'What the 0/20/31 PvP Preview Represents',
+        intro: 'The tree preview is exact; its use as a PvP setup remains a community interpretation.',
+        paragraphs: [
+          'The highlighted tree comes from the complete 0/20/31 Retribution Judgment build. It commits 31 points to the Retribution core and uses 20 Protection points for a sturdier supporting branch. The calculator can prove which ranks are selected, that the total reaches 51, and that the allocation follows the current prerequisite model. It cannot prove that the same ranks are optimal against every opponent or in every form of PvP.',
+          'Use the preview when you want a concrete build to edit rather than an empty tree. Review the Protection support points as carefully as the deep Retribution talents, because PvP value often comes from what happens between damage windows. If current beta testing changes a tooltip, rank limit, or prerequisite, update the allocation before evaluating how it performs in a match.',
+        ],
+      },
+      {
+        kind: 'copy',
+        title: 'Adapt Retribution to the Team and Objective',
+        paragraphs: [
+          'A battleground objective, a small-group fight, and a duel do not ask for the same setup. Write down how the Paladin is expected to reach targets, which teammate provides control, and which defensive tools must remain available after committing to burst. Change only the ranks connected to that problem, then compare the new URL with the original 0/20/31 reference so the tradeoff stays visible.',
+          'Keep separate links for a general damage route and any matchup-specific experiment. After playing them, report the exact talent and observed behavior rather than only saying that the whole build felt strong or weak. BuildForgeTools treats these pages as community previews until repeatable in-game evidence supports more specific recommendations.',
+        ],
+      },
+      {
         kind: 'related',
         title: 'Related PvP and Retribution Builds',
         items: [
@@ -415,6 +484,23 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
           'Decide early whether you are the primary healer or a support hybrid, because it changes how many points you can spare.',
           'Keep several calculator versions for different team sizes and objectives.',
           'Confirm talent behaviour in the current game client before committing.',
+        ],
+      },
+      {
+        kind: 'copy',
+        title: 'How the 31/20/0 Reference Changes in PvP',
+        intro: 'The published allocation supplies a concrete healing tree, while PvP changes the questions used to evaluate it.',
+        paragraphs: [
+          'The 31/20/0 Holy healing build is a complete calculator preset with 31 Holy points and 20 Protection points. Its full page lists every selected rank and explains the healing-oriented structure. On this PvP page it serves as a starting reference, not as evidence that a raid-style allocation has already been validated for arenas or battlegrounds. Positioning, interruption pressure, target access, and personal survival can change the value of a rank even when the underlying talent is unchanged.',
+          'Open the preset, identify the Holy talents required for the support role, and then review the Protection points for the kind of pressure the healer expects. If a deeper healing choice prevents access to a defensive or utility tool the team needs, save a second version rather than silently changing the published reference. Exact share links make that comparison possible.',
+        ],
+      },
+      {
+        kind: 'copy',
+        title: 'Holy PvP Build Review Checklist',
+        paragraphs: [
+          'Decide whether the Paladin is the primary healer, a secondary support, or part of a hybrid plan. Check how many teammates must stay in range, which opponents can interrupt or control the healer, and what defensive answer remains when pressure switches targets. Those questions define the job of the build more clearly than a general promise of stronger healing.',
+          'Before sharing a setup, verify the current client tooltip for every talent that affects survivability, casting reliability, or team utility. Keep one link for the general 31/20/0 reference and separate links for experiments. When a test reveals a conflicting rank, prerequisite, or effect, use the Feedback form to report the talent and the evidence so the data can be reviewed without turning one match result into a site-wide claim.',
         ],
       },
       {

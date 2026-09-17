@@ -18,6 +18,10 @@ const linkList = (links: { href: string; label: string }[]) =>
 function landingSection(section: LandingSection): string {
   const heading = `<h2>${escapeHtml(section.title)}</h2>`
 
+  if (section.kind === 'copy') {
+    return `<section>${heading}${section.intro ? `<p>${escapeHtml(section.intro)}</p>` : ''}${section.paragraphs.map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join('')}</section>`
+  }
+
   if (section.kind === 'bullets') {
     return `<section>${heading}<p>${escapeHtml(section.intro)}</p><ul>${section.items.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul></section>`
   }

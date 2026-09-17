@@ -36,9 +36,21 @@ describe('build landing page configurations', () => {
   it('describes every build as a preview rather than an authoritative best pick', () => {
     for (const page of BUILD_LANDING_PAGES) {
       const copy = [page.title, page.metaTitle, page.description, page.subtitle, ...page.sections.flatMap((section) => [section.title, ...(('intro' in section && section.intro) ? [section.intro] : [])])].join(' ')
-      const items = page.sections.flatMap((section) => (section.kind === 'talent-preview' ? [] : section.items)).map((item) => (typeof item === 'string' ? item : `${item.title} ${item.body}`)).join(' ')
+      const items = page.sections.flatMap((section) => (section.kind === 'talent-preview' || section.kind === 'copy' ? [] : section.items)).map((item) => (typeof item === 'string' ? item : `${item.title} ${item.body}`)).join(' ')
 
       expect(`${copy} ${items}`, page.slug).not.toMatch(/\bbest\b/i)
     }
   })
+
+  it.each(['leveling', 'pvp', 'raid', 'retribution-pvp', 'holy-pvp'] as const)(
+    'gives the %s landing page its own editorial explanation',
+    (pageId) => {
+      const page = BUILD_LANDING_PAGES.find((candidate) => candidate.id === pageId)!
+      const editorial = page.sections.filter((section) => (section as { kind: string }).kind === 'copy') as unknown as { title: string; paragraphs: string[] }[]
+
+      expect(editorial.length).toBeGreaterThanOrEqual(2)
+      expect(editorial.every((section) => section.paragraphs.length >= 2)).toBe(true)
+      expect(new Set(editorial.map((section) => section.title)).size).toBe(editorial.length)
+    },
+  )
 })

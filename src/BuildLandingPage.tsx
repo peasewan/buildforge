@@ -21,6 +21,13 @@ function TrackedLink({ href, pageId, placement, className, children }: { href: s
 }
 
 function LandingSectionView({ section, pageId }: { section: LandingSection; pageId: BuildLandingPageId }) {
+  if (section.kind === 'copy') return (
+    <section className="landing-content-section landing-copy-section">
+      <header><div className="eyebrow">Build Notes</div><h2>{section.title}</h2>{section.intro && <p>{section.intro}</p>}</header>
+      <div>{section.paragraphs.map((paragraph) => <p key={paragraph.slice(0, 50)}>{paragraph}</p>)}</div>
+    </section>
+  )
+
   if (section.kind === 'cards') return (
     <section className="landing-content-section">
       <header><div className="eyebrow">Build Focus</div><h2>{section.title}</h2>{section.intro && <p>{section.intro}</p>}</header>

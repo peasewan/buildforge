@@ -89,4 +89,14 @@ describe('prerender generation', () => {
       expect(html, label).toContain('href="/contact"')
     }
   })
+
+  it.each(['leveling', 'pvp', 'raid', 'retribution-pvp', 'holy-pvp'] as const)(
+    'gives the %s landing page at least 450 crawlable words',
+    (pageId) => {
+      const text = renderLandingPrerender(pageId).replace(/<[^>]+>/g, ' ')
+      const words = text.match(/[A-Za-z0-9'-]+/g)?.length ?? 0
+
+      expect(words).toBeGreaterThanOrEqual(450)
+    },
+  )
 })
