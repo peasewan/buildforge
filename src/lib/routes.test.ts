@@ -32,7 +32,7 @@ describe('public page routing', () => {
       kind: 'build-guide',
       buildId: 'holy-healing-31-20-0',
       title: 'WoW Forever Paladin Build – Holy Healing 31/20/0 | BuildForgeTools',
-      description: 'Open a community-preview WoW Forever Holy Paladin build with a 31/20/0 healing talent allocation, then edit and share it in the BuildForge planner.',
+      description: 'Open a community WoW Forever Holy Paladin build with a 31/20/0 healing talent allocation, then edit and share it in the BuildForge planner.',
       canonical: 'https://buildforgetools.com/wow-forever-paladin-build',
       robots: 'index, follow',
     })
@@ -62,7 +62,7 @@ describe('public page routing', () => {
     expect(pageForPath('/wow-forever-paladin-beta-talent-changes/')).toEqual({
       kind: 'beta-changes',
       title: 'WoW Forever Paladin Beta Talent Changes | BuildForgeTools',
-      description: 'Track every WoW Forever Paladin talent change discovered in the Beta, compared against the current community preview.',
+      description: 'Track every WoW Forever Paladin talent change discovered in the Beta, including exact build-to-build diffs and an archived demo comparison.',
       canonical: 'https://buildforgetools.com/wow-forever-paladin-beta-talent-changes',
       robots: 'index, follow',
     })

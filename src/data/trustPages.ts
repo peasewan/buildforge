@@ -52,7 +52,7 @@ export const TRUST_PAGES: TrustPageConfig[] = [
         heading: 'Corrections and Maintenance',
         paragraphs: [
           'The planner is maintained as an active community project. When a tooltip, rank, prerequisite, or build explanation appears wrong, visitors can use the Feedback button to identify the talent and describe the evidence. Reports are reviewed before production data changes so one unverified message cannot silently rewrite the tree.',
-          'Pages show community-preview language while the underlying game data is still developing. Update dates and source notes are added where they help readers judge freshness. The long-term goal is a transparent build tool whose uncertainty is visible, rather than a large collection of pages that repeat unsupported advice.',
+          'Talent pages identify the current Beta client build, while build pages label recommended allocations as community examples. Update dates and source notes help readers judge freshness. The goal is a transparent build tool that separates verified client fields from recommendations that still need player testing.',
         ],
         links: [{ href: '/contact', label: 'Report a correction or request a feature' }],
       },

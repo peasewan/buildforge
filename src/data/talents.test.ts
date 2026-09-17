@@ -1,5 +1,7 @@
 import { describe, expect, it } from "vitest";
-import { DATA_VERSION, talents } from "./talents";
+import { betaTalents, DATA_VERSION, previousBetaTalents, talents } from "./talents";
+import { compareTalentVersions } from "../lib/talentDiff";
+import type { TalentDataset } from "./datasets";
 
 describe("WoW Forever Paladin talent data", () => {
   it("contains the complete 52-node Beta client dataset", () => {
@@ -80,5 +82,29 @@ describe("WoW Forever Paladin talent data", () => {
       holyPower?.sources.some((source) => source.type === "classic_reference"),
     ).toBe(true);
     expect(holyPower?.verification.name).toBe("beta_verified");
+  });
+
+  it("captures the exact 69876 to 69893 client diff", () => {
+    const dataset = (sourceVersion: string, entries: typeof talents): TalentDataset => ({
+      role: "beta",
+      sourceVersion,
+      label: sourceVersion,
+      status: "complete",
+      coverage: { holy: "complete", protection: "complete", retribution: "complete" },
+      talents: entries,
+    });
+    const diff = compareTalentVersions(
+      dataset("wow_forever_beta_1.60.1.69876", previousBetaTalents),
+      dataset(DATA_VERSION, betaTalents),
+    );
+
+    expect(diff.added).toHaveLength(0);
+    expect(diff.removed).toHaveLength(0);
+    expect(diff.changed.map((change) => change.name)).toEqual([
+      "Light's Vigil",
+      "Vindication",
+      "Seal of Command",
+    ]);
+    expect(diff.unchanged).toHaveLength(49);
   });
 });

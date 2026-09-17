@@ -1,5 +1,5 @@
 {
-  "eyebrow": "Community Preview Build",
+  "eyebrow": "Community Build Example",
   "title": "WoW Forever Retribution Paladin Build – Leveling 20/0/31",
   "dek": "Open a solo-leveling WoW Forever Retribution Paladin build with a complete 20/0/31 allocation, inspect its offensive path, and continue editing it in the BuildForge Talent Calculator.",
   "updated": "September 15, 2026",
@@ -34,7 +34,7 @@
       "id": "build-overview",
       "heading": "WoW Forever Retribution Paladin Leveling Build Overview",
       "paragraphs": [
-        "This WoW Forever Retribution Paladin leveling build spends 31 points in Retribution and 20 points in Holy, with no points in Protection. The offensive path reaches Twist of Light while the early Holy points provide a light support base for steadier solo progression. It is a community-preview example for players who want a damage-focused route while questing.",
+        "This WoW Forever Retribution Paladin leveling build spends 31 points in Retribution and 20 points in Holy, with no points in Protection. The offensive path reaches Twist of Light while the early Holy points provide a light support base for steadier solo progression. It is a community build example for players who want a damage-focused route while questing.",
         "The page and calculator share one saved allocation, so the 20/0/31 summary, individual ranks, and 51-point total stay aligned. Selecting Open This Build loads the exact setup in the interactive planner. Every rank can then be removed or moved, and the resulting configuration can be copied as a shareable link without an account."
       ]
     },
@@ -43,7 +43,7 @@
       "heading": "What the 31 Retribution Points Include",
       "paragraphs": [
         "The Retribution route begins with Deflection and Benediction before adding Improved Judgement, Holy Conduit, and Conviction. Sanctified Judgement, Seal of Command, and Pursuit of Justice continue through the middle rows, while Sacred Arbiter and Crusade add further offensive choices. One rank in Two-Handed Weapon Specialization and one in Vengeance lead into Twist of Light, the deepest selected talent in this example.",
-        "Twist of Light is one of the newer entries shown in the WoW Forever community transcription, so its wording and surrounding path may still change before launch. The planner records the currently documented structure and labels the information as Community Preview, letting players inspect a concrete leveling tree without treating uncertain values as confirmed in-game facts."
+        "Twist of Light is one of the newer entries shown in the WoW Forever Beta client data, and is documented from Beta client build 1.60.1.69893. The planner identifies the allocation as a community build example because its leveling performance still needs player testing."
       ]
     },
     {
@@ -59,7 +59,7 @@
       "heading": "Edit and Share This Retribution Leveling Build",
       "paragraphs": [
         "Opening the build takes the visitor directly to the interactive planner with Retribution as the dominant 31-point branch. The selected talents list shows every active rank, and the branch counters preserve the exact 20/0/31 allocation. If a prerequisite is removed, dependent talents are cleared automatically so a shared link never retains an invalid path.",
-        "Use Copy Build Link after testing a different combination. The generated address stores talent identifiers and ranks, giving another player the same setup to inspect and modify. Combined with the visible Community Preview label, this page offers a practical WoW Forever Retribution Paladin leveling reference."
+        "Use Copy Build Link after testing a different combination. The generated address stores talent identifiers and ranks, giving another player the same setup to inspect and modify. Combined with the visible Community Build Example label, this page offers a practical WoW Forever Retribution Paladin leveling reference."
       ]
     }
   ]

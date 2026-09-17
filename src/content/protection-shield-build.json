@@ -1,5 +1,5 @@
 {
-  "eyebrow": "Community Preview Build",
+  "eyebrow": "Community Build Example",
   "title": "WoW Forever Protection Paladin Build – Shield 20/31/0",
   "dek": "Open a complete 51-point WoW Forever Protection Paladin build, inspect its defensive talent path, and continue editing it in the BuildForge Talent Calculator.",
   "updated": "September 14, 2026",
@@ -32,7 +32,7 @@
       "id": "build-overview",
       "heading": "WoW Forever Protection Paladin Build Overview",
       "paragraphs": [
-        "This WoW Forever Protection Paladin build spends 31 points in Protection and 20 points in Holy, with no points in Retribution. The Protection path reaches Holy Shield and includes the shield, armor, threat, and defensive talents visible in the current community transcription. The Holy points fill accessible opening rows to create a complete 51-point example. This is a reproducible preview for exploring the tree, not a claim that the allocation is the strongest tank build.",
+        "This WoW Forever Protection Paladin build spends 31 points in Protection and 20 points in Holy, with no points in Retribution. The Protection path reaches Holy Shield and includes the shield, armor, threat, and defensive talents visible in the Beta client build 1.60.1.69893. The Holy points fill accessible opening rows to create a complete 51-point example. This is a reproducible preview for exploring the tree, not a claim that the allocation is the strongest tank build.",
         "The public page and interactive calculator share one saved allocation. Selecting Open This Build loads the same 20/31/0 setup, illuminates every chosen node, and displays all 51 points in the summary. Players can remove a rank, test another route, or copy a new link after making changes. No account is needed, and the original example remains available from the Popular Paladin Builds section."
       ]
     },
@@ -40,8 +40,8 @@
       "id": "protection-talents",
       "heading": "What the 31 Protection Points Include",
       "paragraphs": [
-        "The defensive path begins with five ranks each in Toughness and Redoubt. Precision, Guardian’s Favor, and Anticipation complete the opening 20 points. Improved Righteous Fury, Shield Specialization, and Sacred Duty then develop threat, blocking, and stamina-related choices from the preview tree. One rank in One-Handed Weapon Specialization helps open the final tier alongside Templar’s Bulwark.",
-        "Holy Shield is the deepest selected Protection talent in this example. The calculator enforces both its 30-point tree requirement and the Templar’s Bulwark prerequisite, so the capstone cannot remain selected if an edit makes the path invalid. Talent effects and numbers may change as WoW Forever develops. Each node therefore carries a community-preview source label rather than implying final in-game verification."
+        "The defensive path begins with five ranks each in Toughness and Redoubt. Precision, Guardian’s Favor, and Anticipation complete the opening 20 points. Improved Righteous Fury, Shield Specialization, and Sacred Duty then develop threat, blocking, and stamina-related choices from the current Beta tree. One rank in One-Handed Weapon Specialization helps open the final tier alongside Templar’s Bulwark.",
+        "Holy Shield is the deepest selected Protection talent in this example. The calculator enforces both its 30-point tree requirement and the Templar’s Bulwark prerequisite, so the capstone cannot remain selected if an edit makes the path invalid. Talent effects and numbers may change in later WoW Forever builds. Each node therefore carries its Beta client build source so readers can check exactly which version the planner represents."
       ]
     },
     {
@@ -49,7 +49,7 @@
       "heading": "How the 20 Holy Support Points Are Used",
       "paragraphs": [
         "The remaining 20 points use the first two Holy rows: Divine Strength, Divine Intellect, Healing Light, Spiritual Focus, Improved Seals, and Unyielding Faith. This creates a straightforward secondary allocation while keeping Protection as the clear identity of the build. It also demonstrates how the planner handles a mixed tree without presenting those support choices as a universal prescription for every encounter or group.",
-        "Players can replace any of these early Holy points with another legal route and watch the branch totals update immediately. The example exists to make that comparison concrete. It gives search visitors a finished setup to inspect instead of an empty calculator, while still leaving the final decision to the player as more reliable beta captures, testing, and class tuning become available."
+        "Players can replace any of these early Holy points with another legal route and watch the branch totals update immediately. The example exists to make that comparison concrete. It gives search visitors a finished setup to inspect instead of an empty calculator, while still leaving the final decision to the player as more player testing and class tuning become available."
       ]
     },
     {
@@ -57,7 +57,7 @@
       "heading": "Edit and Share This Protection Paladin Build",
       "paragraphs": [
         "Open the build to move directly from this explanation into the interactive Protection talent tree. The selected talents panel lists every active rank, while the three branch counters show the complete 20/31/0 split. Removing a prerequisite also clears any dependent node that can no longer stay active, which keeps shared links consistent with the current planner rules.",
-        "Copy Build Link turns the edited allocation into a compact URL. Another player can open that URL, review exactly the same ranks, and continue changing the build. This makes the page useful for discussing a WoW Forever Protection Paladin build before the talent dataset is final, while the Community Preview label keeps the limits of the available evidence visible."
+        "Copy Build Link turns the edited allocation into a compact URL. Another player can open that URL, review exactly the same ranks, and continue changing the build. This makes the page useful for discussing a WoW Forever Protection Paladin build while the Beta continues to evolve, while the Community Build Example label keeps the limits of the available evidence visible."
       ]
     },
     {
@@ -74,7 +74,7 @@
       "heading": "Using This Build for Solo Leveling",
       "paragraphs": [
         "The same 20/31/0 allocation also works as a dependable Protection leveling route. Toughness and Redoubt form a durable opening, while Precision and Anticipation add accuracy and defense that make ordinary questing more forgiving. The 20 Holy support points provide a modest self-healing base without pulling the build away from its defensive identity.",
-        "Players leveling as Protection can load this build and adjust the Holy points as new rows unlock. The Talent Calculator enforces every prerequisite and keeps the branch counters accurate, so an edited route stays legal while the full 51-point total stays visible. Treat each rank as community preview data until the current WoW Forever client confirms the values."
+        "Players leveling as Protection can load this build and adjust the Holy points as new rows unlock. The Talent Calculator enforces every prerequisite and keeps the branch counters accurate, so an edited route stays legal while the full 51-point total stays visible. Ranks use Beta build 1.60.1.69893; report newer-client conflicts."
       ]
     }
   ]

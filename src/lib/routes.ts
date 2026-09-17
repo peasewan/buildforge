@@ -37,7 +37,7 @@ const holyHealingBuildPage: PageDefinition = {
   kind: 'build-guide',
   buildId: 'holy-healing-31-20-0',
   title: 'WoW Forever Paladin Build – Holy Healing 31/20/0 | BuildForgeTools',
-  description: 'Open a community-preview WoW Forever Holy Paladin build with a 31/20/0 healing talent allocation, then edit and share it in the BuildForge planner.',
+  description: 'Open a community WoW Forever Holy Paladin build with a 31/20/0 healing talent allocation, then edit and share it in the BuildForge planner.',
   canonical: 'https://buildforgetools.com/wow-forever-paladin-build',
   robots: 'index, follow',
 }
@@ -46,7 +46,7 @@ const protectionBuildPage: PageDefinition = {
   kind: 'build-guide',
   buildId: 'protection-shield-20-31-0',
   title: 'WoW Forever Protection Paladin Build | BuildForgeTools',
-  description: 'Open a community-preview WoW Forever Protection Paladin build with a complete 20/31/0 allocation, then edit and share it in the BuildForge planner.',
+  description: 'Open a community WoW Forever Protection Paladin build with a complete 20/31/0 allocation, then edit and share it in the BuildForge planner.',
   canonical: 'https://buildforgetools.com/wow-forever-protection-paladin-build',
   robots: 'index, follow',
 }
@@ -55,7 +55,7 @@ const retributionBuildPage: PageDefinition = {
   kind: 'build-guide',
   buildId: 'retribution-judgment-0-20-31',
   title: 'WoW Forever Retribution Paladin Build | BuildForgeTools',
-  description: 'Open a community-preview WoW Forever Retribution Paladin build with a complete 0/20/31 allocation, then edit and share it in the BuildForge planner.',
+  description: 'Open a community WoW Forever Retribution Paladin build with a complete 0/20/31 allocation, then edit and share it in the BuildForge planner.',
   canonical: 'https://buildforgetools.com/wow-forever-retribution-paladin-build',
   robots: 'index, follow',
 }
@@ -64,7 +64,7 @@ const retributionLevelingBuildPage: PageDefinition = {
   kind: 'build-guide',
   buildId: 'retribution-leveling-20-0-31',
   title: 'WoW Forever Retribution Paladin Leveling Build | BuildForgeTools',
-  description: 'Open a community-preview WoW Forever Retribution Paladin leveling build with a complete 20/0/31 allocation, then edit and share it in the BuildForge planner.',
+  description: 'Open a community WoW Forever Retribution Paladin leveling build with a complete 20/0/31 allocation, then edit and share it in the BuildForge planner.',
   canonical: 'https://buildforgetools.com/wow-forever-retribution-paladin-leveling-build',
   robots: 'index, follow',
 }
@@ -80,7 +80,7 @@ const buildsHubPage: PageDefinition = {
 const betaChangesPage: PageDefinition = {
   kind: 'beta-changes',
   title: 'WoW Forever Paladin Beta Talent Changes | BuildForgeTools',
-  description: 'Track every WoW Forever Paladin talent change discovered in the Beta, compared against the current community preview.',
+  description: 'Track every WoW Forever Paladin talent change discovered in the Beta, including exact build-to-build diffs and an archived demo comparison.',
   canonical: 'https://buildforgetools.com/wow-forever-paladin-beta-talent-changes',
   robots: 'index, follow',
 }

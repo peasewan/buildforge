@@ -51,7 +51,7 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
     metaTitle: 'WoW Forever Paladin Leveling Build | BuildForgeTools',
     description: 'Explore a beginner-friendly WoW Forever Paladin leveling build, follow a flexible talent path from level 10 onward, and customize it in the talent calculator.',
     subtitle: 'A beginner-friendly talent path for leveling Paladins in WoW Forever.',
-    eyebrow: 'Community Preview Build',
+    eyebrow: 'Community Build Example',
     heroImage: '/images/hero/paladin-leveling.webp',
     heroPosition: '68% center',
     summary: [
@@ -85,7 +85,7 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
         kind: 'bullets',
         title: 'How to Use This Leveling Preview',
         intro: 'Open the planner, choose the branch that matches your current playstyle, and spend points in the order they become available. Keep a share link whenever you reach a useful milestone.',
-        items: ['Compare Holy, Protection, and Retribution paths.', 'Watch prerequisites before planning deeper talents.', 'Treat all talent details as community preview data until verified in game.'],
+        items: ['Compare Holy, Protection, and Retribution paths.', 'Watch prerequisites before planning deeper talents.', 'Talent details use verified Beta client build 1.60.1.69893 data.'],
       },
       {
         kind: 'copy',
@@ -131,7 +131,7 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
       { label: 'Playstyle', value: 'PvP' },
       { label: 'Strengths', value: 'Burst · Utility · Survival' },
       { label: 'Difficulty', value: 'Intermediate' },
-      { label: 'Status', value: 'Community Preview' },
+      { label: 'Status', value: 'Community Build' },
     ],
     sections: [
       {
@@ -204,7 +204,7 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
       { label: 'Content', value: 'Raid' },
       { label: 'Roles', value: 'Healing · Tank · Damage' },
       { label: 'Focus', value: 'Group Utility' },
-      { label: 'Status', value: 'Community Preview' },
+      { label: 'Status', value: 'Community Build' },
     ],
     sections: [
       {
@@ -277,7 +277,7 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
       { label: 'Role', value: 'Dungeon Tank' },
       { label: 'Specialization', value: 'Protection' },
       { label: 'Playstyle', value: 'Defensive' },
-      { label: 'Status', value: 'Community Preview' },
+      { label: 'Status', value: 'Community Build' },
     ],
     sections: [
       {
@@ -293,14 +293,14 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
       {
         kind: 'talent-preview',
         title: 'Protection Talent Preview',
-        intro: 'Inspect the selected Protection branch below. The highlighted nodes come from the community-preview 20/31/0 shield build; open it in the calculator to change ranks or share your version.',
+        intro: 'Inspect the selected Protection branch below. The highlighted nodes come from the community 20/31/0 shield build; open it in the calculator to change ranks or share your version.',
         buildId: 'protection-shield-20-31-0',
       },
       {
         kind: 'bullets',
         title: 'Using the Dungeon Build',
         intro: 'A dungeon tank setup depends on the content, party, and current talent implementation. Use this page as a planning starting point.',
-        items: ['Review defensive talents before deeper utility choices.', 'Open the full build to inspect Holy support points.', 'Confirm community-preview talent effects against the current game client.'],
+        items: ['Review defensive talents before deeper utility choices.', 'Open the full build to inspect Holy support points.', 'Talent effects use Beta client build 1.60.1.69893; report conflicts from newer builds.'],
       },
       {
         kind: 'related',
@@ -331,7 +331,7 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
       { label: 'Role', value: 'Leveling' },
       { label: 'Specialization', value: 'Protection' },
       { label: 'Playstyle', value: 'Solo Survivability' },
-      { label: 'Status', value: 'Community Preview' },
+      { label: 'Status', value: 'Community Build' },
     ],
     sections: [
       {
@@ -347,7 +347,7 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
       {
         kind: 'talent-preview',
         title: 'Protection Talent Preview',
-        intro: 'The 20/31/0 community-preview allocation below is the target these levels build toward. Open it in the calculator to change ranks, or plan your own order of spending.',
+        intro: 'The 20/31/0 community build allocation below is the target these levels build toward. Open it in the calculator to change ranks, or plan your own order of spending.',
         buildId: 'protection-shield-20-31-0',
       },
       {
@@ -387,7 +387,7 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
       { label: 'Playstyle', value: 'PvP' },
       { label: 'Specialization', value: 'Retribution' },
       { label: 'Strengths', value: 'Burst · Utility · Pressure' },
-      { label: 'Status', value: 'Community Preview' },
+      { label: 'Status', value: 'Community Build' },
     ],
     sections: [
       {
@@ -403,7 +403,7 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
       {
         kind: 'talent-preview',
         title: 'Retribution Talent Preview',
-        intro: 'The 0/20/31 community-preview allocation below is the starting point. PvP rewards adaptation, so open it in the calculator and keep several versions.',
+        intro: 'The 0/20/31 community build allocation below is the starting point. PvP rewards adaptation, so open it in the calculator and keep several versions.',
         buildId: 'retribution-judgment-0-20-31',
       },
       {
@@ -430,7 +430,7 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
         title: 'Adapt Retribution to the Team and Objective',
         paragraphs: [
           'A battleground objective, a small-group fight, and a duel do not ask for the same setup. Write down how the Paladin is expected to reach targets, which teammate provides control, and which defensive tools must remain available after committing to burst. Change only the ranks connected to that problem, then compare the new URL with the original 0/20/31 reference so the tradeoff stays visible.',
-          'Keep separate links for a general damage route and any matchup-specific experiment. After playing them, report the exact talent and observed behavior rather than only saying that the whole build felt strong or weak. BuildForgeTools treats these pages as community previews until repeatable in-game evidence supports more specific recommendations.',
+          'Keep separate links for a general damage route and any matchup-specific experiment. After playing them, report the exact talent and observed behavior rather than only saying that the whole build felt strong or weak. BuildForgeTools treats these pages as community build examples until repeatable in-game evidence supports more specific recommendations.',
         ],
       },
       {
@@ -462,7 +462,7 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
       { label: 'Playstyle', value: 'PvP' },
       { label: 'Specialization', value: 'Holy' },
       { label: 'Focus', value: 'Support & Survivability' },
-      { label: 'Status', value: 'Community Preview' },
+      { label: 'Status', value: 'Community Build' },
     ],
     sections: [
       {
@@ -478,7 +478,7 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
       {
         kind: 'bullets',
         title: 'Planning a Holy PvP Setup',
-        intro: 'This page describes a direction rather than a verified PvP allocation. The 31/20/0 healing build is a starting reference point, and the community-preview talent data has not been confirmed for PvP balance in WoW Forever yet.',
+        intro: 'This page describes a direction rather than a verified PvP allocation. The 31/20/0 healing build is a starting reference point, and the example allocation has not been confirmed as balanced or optimal for WoW Forever PvP.',
         items: [
           'Treat the 31/20/0 healing allocation as a starting point, not a finished PvP build.',
           'Decide early whether you are the primary healer or a support hybrid, because it changes how many points you can spare.',

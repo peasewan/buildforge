@@ -11,7 +11,7 @@ export interface ConfirmedPaladinChange {
 
 export const PALADIN_BETA_SNAPSHOT = {
   status: "tree-data-verified" as const,
-  clientBuild: "1.60.1.69876",
+  clientBuild: "1.60.1.69893",
   comparedWithBuild: "1.15.9.69722",
   updatedAt: "2026-09-18",
   betaStartsAt: "2026-09-17",
@@ -63,13 +63,13 @@ export const PALADIN_BETA_SNAPSHOT = {
       kind: "datamine",
     },
     {
-      label: "Talents Forever — Beta client talent export",
-      url: "https://talentsforever.com/data.json",
+      label: "WoW Classic Forever — build 1.60.1.69893 Paladin talents",
+      url: "https://wowclassicforever.info/talent/paladin/",
       kind: "datamine",
     },
     {
-      label: "Hyjal — build 1.60.1.69876 talent update",
-      url: "https://hyjal.cc/updates/1.60.1.69876",
+      label: "WoW Classic Forever — client data updates",
+      url: "https://wowclassicforever.info/updates/",
       kind: "datamine",
     },
   ] satisfies BetaSource[],

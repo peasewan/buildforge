@@ -40,7 +40,7 @@ export const SPEC_BUILDS_HUBS: SpecBuildsHubConfig[] = [
     intro: 'Explore Protection Paladin tank builds, leveling paths, and talent setups for WoW Forever.',
     featured: {
       title: 'Protection Paladin Dungeon Tank Build',
-      description: 'A complete community preview setup for players exploring a defensive Protection path.',
+      description: 'A complete community build example for players exploring a defensive Protection path.',
       href: '/wow-forever-protection-paladin-dungeon-build',
       role: 'Dungeon Tank',
       playstyle: 'Defensive / Utility',
@@ -57,7 +57,7 @@ export const SPEC_BUILDS_HUBS: SpecBuildsHubConfig[] = [
         heading: 'How to Use These Protection Paladin Builds',
         paragraphs: [
           'The complete Protection example on BuildForgeTools uses a 20/31/0 allocation: 31 points establish the defensive Protection core and 20 supporting points come from Holy. The full build page lists every selected rank and loads the same allocation into the calculator. Use that page when you want an exact setup rather than a general description of tank play.',
-          'The dungeon and leveling pages approach the same current preview allocation from different situations. The dungeon page explains the jobs a group tank must plan around, while the leveling page describes how a durable route can develop before all 51 points are available. They are not presented as separate, proven best-in-slot talent trees. That distinction matters while WoW Forever beta positions, costs, and tooltips are still being verified.',
+          'The dungeon and leveling pages approach the same current example allocation from different situations. The dungeon page explains the jobs a group tank must plan around, while the leveling page describes how a durable route can develop before all 51 points are available. They are not presented as separate, proven best-in-slot talent trees. The talent fields come from Beta client build 1.60.1.69893; the build recommendations still require player testing.',
         ],
       },
       {
@@ -71,14 +71,14 @@ export const SPEC_BUILDS_HUBS: SpecBuildsHubConfig[] = [
         heading: 'Dungeon Tank and Leveling Tradeoffs',
         paragraphs: [
           'A leveling route values consistency across many ordinary fights. Extra durability can reduce recovery time and make an unexpected additional enemy less punishing. A dungeon route gives more weight to party protection, threat behavior, and the tools used during difficult pulls. The same underlying talent can matter for different reasons, so the recommended reading order changes even when the eventual 20/31/0 allocation is shared.',
-          'Use the leveling page when planning how the character grows, the dungeon page when reviewing the role in group content, and the complete Shield build when you need every rank at once. If testing shows that a different supporting branch or rank order works better, change it in the calculator and copy the new build URL. Shared links preserve the exact selection without turning one community preview into a universal recommendation.',
+          'Use the leveling page when planning how the character grows, the dungeon page when reviewing the role in group content, and the complete Shield build when you need every rank at once. If testing shows that a different supporting branch or rank order works better, change it in the calculator and copy the new build URL. Shared links preserve the exact selection without turning one community build example into a universal recommendation.',
         ],
       },
       {
         heading: 'Protection Data Status',
         paragraphs: [
           'BuildForgeTools separates confirmed information, community-supported information, and details that still need review. Beta client records may confirm a talent or ability name without confirming its tree coordinate, point cost, prerequisite, or final tooltip. New records enter the beta comparison process first, and the public tree changes only after the fields needed by the planner can be reviewed together.',
-          'Protection currently has the strongest set of complete example pages on the site, but “complete build” describes the 51-point allocation, not a claim that every beta value is final. Check the beta tracker for current coverage and use the Feedback button when an in-game value conflicts with the planner.',
+          'Protection currently has the strongest set of complete example pages on the site, but “complete build” describes the 51-point allocation rather than a performance ranking. Check the Beta tracker for the current client build and use the Feedback button when an in-game value conflicts with the planner.',
         ],
       },
     ],
@@ -100,7 +100,7 @@ export const SPEC_BUILDS_HUBS: SpecBuildsHubConfig[] = [
     intro: 'Explore Retribution Paladin damage builds, leveling routes, and PvP setups for WoW Forever.',
     featured: {
       title: 'Retribution Paladin Build 0/20/31',
-      description: 'The community preview allocation every Retribution route on this site starts from.',
+      description: 'The community build allocation every Retribution route on this site starts from.',
       href: '/wow-forever-retribution-paladin-build',
       role: 'Melee Damage',
       playstyle: 'Offensive / Support',
@@ -129,14 +129,14 @@ export const SPEC_BUILDS_HUBS: SpecBuildsHubConfig[] = [
         heading: 'Planning the Retribution Talent Core',
         paragraphs: [
           'A useful Retribution plan begins with the role of the build: solo leveling, general damage, or PvP pressure. Spend toward the talents that serve that role, then check whether prerequisite ranks and tree-point thresholds leave enough room for the supporting branch. Familiar landmarks such as Benediction, Conviction, Seal of Command, Vengeance, and Repentance help readers follow the path, while Forever-specific or changed talents require stronger source notes.',
-          'The interface enforces the current dataset’s rank limits and unlocking rules. That prevents an internally invalid shared build, but it does not prove that an unverified beta coordinate is final. Treat the selected ranks as a planning model and confirm key tooltips in the current client before using the build as a competitive recommendation.',
+          'The interface enforces the current Beta dataset’s rank limits and unlocking rules. That prevents an internally invalid shared build, but it does not prove that the selected allocation performs best. Treat the selected ranks as a planning model and test the build before using it as a competitive recommendation.',
         ],
       },
       {
         heading: 'Retribution Data Status',
         paragraphs: [
-          'Retribution mixes recognizable inherited talents with WoW Forever additions and revisions. A known name is not enough to establish a final rank count, position, prerequisite, or effect. Each field can carry its own evidence, and uncertain additions remain marked as community verified or needs review instead of being removed simply because they do not match an older database.',
-          'The beta tracker records what the available client data can confirm and what is still missing. When full tree coordinates and costs are available, they are compared with the community-preview dataset before production changes. Players can report conflicting tooltips or positions through the Feedback button so the correction enters the same review process.',
+          'Retribution mixes recognizable inherited talents with WoW Forever additions and revisions. The calculator reads the current rank count, position, prerequisite, and effect from Beta client build 1.60.1.69893 instead of assuming a familiar Classic talent is unchanged.',
+          'The Beta tracker compares each reviewed client build with the previous dataset before production changes. Players can report conflicting tooltips or positions through the Feedback button so a correction enters the same review process.',
         ],
       },
     ],

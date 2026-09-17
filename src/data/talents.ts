@@ -1,20 +1,19 @@
 import type { Branch, TalentDefinition } from "../lib/build";
-import betaTalentData from "./paladin-beta-1.60.1.69876.json";
+import betaTalentData from "./paladin-beta-1.60.1.69893.json";
+import previousBetaTalentData from "./paladin-beta-1.60.1.69876.json";
 
-// Community transcription of the Paladin trees shown in the WoW Forever public demo.
-// New and changed values may move before launch, so every node remains labelled as
-// community reported in the interface. Classic references are used only to compare
-// talents whose demo version matches the older tree.
+// The archived demo transcription remains available for historical comparisons.
+// Production uses the latest reviewed Beta client dataset below.
 export const PREVIEW_DATA_VERSION = "wow_forever_demo_2026-09-13";
-export const BETA_DATA_VERSION = "wow_forever_beta_1.60.1.69876";
+export const BETA_DATA_VERSION = "wow_forever_beta_1.60.1.69893";
 export const DATA_VERSION = BETA_DATA_VERSION;
 export type TalentDataVersion =
   | typeof PREVIEW_DATA_VERSION
   | typeof BETA_DATA_VERSION
   | `wow_forever_beta_${string}`;
 export const DATA_SOURCES: string[] = [
-  "WoW Forever Beta client build 1.60.1.69876",
-  "Talents Forever client-data export",
+  "WoW Forever Beta client build 1.60.1.69893",
+  "WoW Classic Forever client-data export",
 ];
 
 export type ChangeType = "classic_unchanged" | "moved" | "updated" | "new";
@@ -112,7 +111,8 @@ const TIER_Y: Record<number, number> = {
 const OFFICIAL_DEEP_DIVE_URL =
   "https://worldofwarcraft.blizzard.com/en-us/news/24303313/world-of-warcraft-forever-deep-dive-panel-recap";
 const COMMUNITY_TRANSCRIPTION_URL = "https://talentsforever.com/";
-const BETA_DATA_URL = "https://talentsforever.com/data.json";
+const BETA_DATA_URL = "https://wowclassicforever.info/talent/paladin/";
+const PREVIOUS_BETA_DATA_URL = "https://talentsforever.com/data.json";
 const CLASSIC_REFERENCE_URL =
   "https://warcraft.wiki.gg/wiki/Paladin_talents_(Classic)";
 
@@ -834,21 +834,26 @@ export const communityPreviewTalents: Talent[] = [
   ...toTalents("retribution", retribution),
 ];
 
-type BetaTalentRecord = (typeof betaTalentData.talents)[number];
+type BetaTalentRecord =
+  | (typeof betaTalentData.talents)[number]
+  | (typeof previousBetaTalentData.talents)[number];
 
-function toBetaTalent(record: BetaTalentRecord): Talent {
+function toBetaTalent(
+  record: BetaTalentRecord,
+  source: { dataVersion: TalentDataVersion; clientBuild: string; url: string; label: string },
+): Talent {
   const branch = record.branch as Branch;
   const sources: TalentSource[] = [
     {
       type: "beta_client",
-      label: `WoW Forever Beta client ${betaTalentData.clientBuild}`,
-      url: BETA_DATA_URL,
+      label: `WoW Forever Beta client ${source.clientBuild}`,
+      url: source.url,
       locator: `${branchNames[branch]} · row ${record.row + 1}, column ${record.column + 1}`,
     },
     {
       type: "community_transcription",
-      label: "Talents Forever client-data export",
-      url: COMMUNITY_TRANSCRIPTION_URL,
+      label: source.label,
+      url: source.url,
     },
   ];
 
@@ -877,7 +882,7 @@ function toBetaTalent(record: BetaTalentRecord): Talent {
     requiredTreePoints: record.requiredTreePoints,
     prerequisite: record.prerequisite.length ? record.prerequisite : undefined,
     icon: BRANCH_ICON[branch],
-    dataVersion: BETA_DATA_VERSION,
+    dataVersion: source.dataVersion,
     changeType: record.changeType as ChangeType,
     verificationStatus: "beta_verified",
     verification: {
@@ -897,7 +902,23 @@ function toBetaTalent(record: BetaTalentRecord): Talent {
   };
 }
 
-export const betaTalents: Talent[] = betaTalentData.talents.map(toBetaTalent);
+export const betaTalents: Talent[] = betaTalentData.talents.map((record) =>
+  toBetaTalent(record, {
+    dataVersion: BETA_DATA_VERSION,
+    clientBuild: betaTalentData.clientBuild,
+    url: BETA_DATA_URL,
+    label: "WoW Classic Forever client-data export",
+  }),
+);
+
+export const previousBetaTalents: Talent[] = previousBetaTalentData.talents.map((record) =>
+  toBetaTalent(record, {
+    dataVersion: "wow_forever_beta_1.60.1.69876",
+    clientBuild: previousBetaTalentData.clientBuild,
+    url: PREVIOUS_BETA_DATA_URL,
+    label: "Talents Forever client-data export",
+  }),
+);
 
 // The interactive calculator uses the reviewed Beta dataset. The demo
 // transcription remains available separately for the public change log.
@@ -910,5 +931,5 @@ export function talentEvidenceLabel(talent: Talent): string {
   if (talent.verification.name === "official_confirmed") {
     return "Officially confirmed name · Demo-verified details";
   }
-  return "Demo-verified community transcription";
+  return "Archived public demo transcription";
 }

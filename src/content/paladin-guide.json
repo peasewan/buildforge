@@ -8,7 +8,7 @@
       "heading": "What is World of Warcraft: Forever?",
       "paragraphs": [
         "World of Warcraft: Forever is Blizzard’s return to a reimagined version of original Azeroth. The announced experience keeps the recognizable world and class identities of early World of Warcraft while adding new discoveries, abilities, race and class combinations, and updated talents. Blizzard has announced a global launch for November 4, 2026, with access included through an active World of Warcraft subscription or Game Time.",
-        "That combination of familiar foundations and new class decisions is why talent planning matters before launch. A player may recognize the shape of a Classic talent tree while still encountering changed positions, revised effects, or new choices. This page explains how to use the available Paladin information without treating an evolving preview as a finished rulebook. For release details, see Blizzard’s official World of Warcraft: Forever announcement."
+        "That combination of familiar foundations and new class decisions is why talent planning matters before launch. A player may recognize the shape of a Classic talent tree while still encountering changed positions, revised effects, or new choices. This page explains how to use the available Paladin information while keeping current Beta data separate from build recommendations. For release details, see Blizzard’s official World of Warcraft: Forever announcement."
       ]
     },
     {
@@ -45,7 +45,7 @@
       "heading": "Using the Talent Calculator and Build Planner",
       "paragraphs": [
         "Open the Paladin Talent Calculator, choose a specialization tab, and click an available node to add a rank. Locked nodes show that more points or a prerequisite are needed. The summary panel lists every selected talent and lets you remove ranks, reset the build, or copy a build link. The current draft is also stored in the browser, so an unfinished idea is available when you return on the same device.",
-        "WoW Forever information is still developing, and preview material can change. BuildForgeTools labels the talent dataset as a community preview and lists the references used to organize it. Unconfirmed values should be checked against current in-game information as beta and launch updates arrive. The goal is a fast, transparent planning surface: understand the three Paladin directions, create a legal point allocation, and share the result without an account."
+        "WoW Forever information is still developing, and preview material can change. BuildForgeTools identifies the talent dataset as Beta client build 1.60.1.69893 and lists the references used to organize it. Later Beta and launch builds may change those fields, so the Beta tracker records the exact client version and its reviewed updates. The goal is a fast, transparent planning surface: understand the three Paladin directions, create a legal point allocation, and share the result without an account."
       ]
     }
   ]

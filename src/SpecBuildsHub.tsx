@@ -37,7 +37,7 @@ export default function SpecBuildsHub({ spec }: { spec: Branch }) {
           <div className="eyebrow">{specIcons[spec]} {spec.charAt(0).toUpperCase() + spec.slice(1)} Paladin</div>
           <h1>{hub.title}</h1>
           <p>{hub.intro}</p>
-          <span>Builds, talent paths, and community preview setups.</span>
+          <span>Build examples, talent paths, and planning tools.</span>
           <a href="/paladin#calculator" className="button primary" onClick={link('hero')('/paladin#calculator')}><Calculator size={17} /> Open Talent Calculator</a>
         </div>
       </section>
@@ -46,7 +46,7 @@ export default function SpecBuildsHub({ spec }: { spec: Branch }) {
         <header className="hub-section-heading"><div className="eyebrow">Featured Build</div><h2>{hub.featured.title}</h2><p>{hub.featured.description}</p></header>
         <article>
           <div className="spec-feature-icon">{heroIcons[spec]}</div>
-          <dl><div><dt>Role</dt><dd>{hub.featured.role}</dd></div><div><dt>Playstyle</dt><dd>{hub.featured.playstyle}</dd></div><div><dt>Status</dt><dd>Community Preview</dd></div></dl>
+          <dl><div><dt>Role</dt><dd>{hub.featured.role}</dd></div><div><dt>Playstyle</dt><dd>{hub.featured.playstyle}</dd></div><div><dt>Status</dt><dd>Community Build</dd></div></dl>
           <a href={hub.featured.href} className="button primary" onClick={link('featured')(hub.featured.href)}>View Build <ArrowRight size={16} /></a>
         </article>
       </section>
@@ -65,7 +65,7 @@ export default function SpecBuildsHub({ spec }: { spec: Branch }) {
         <a href="/paladin#calculator" className="button primary" onClick={link('calculator')('/paladin#calculator')}><Calculator size={18} /> Open Paladin Talent Calculator</a>
       </section>
 
-      <section className="hub-data shell" id="talents"><div><div className="eyebrow">{spec.charAt(0).toUpperCase() + spec.slice(1)} Talent Tree</div><h2>{spec.charAt(0).toUpperCase() + spec.slice(1)} Paladin Talents</h2></div>{hub.talents.map((item) => <div key={item.href}><p>Explore {spec} talent choices, key talents, and recommended paths before committing to a build.</p><p>The dedicated talent page shows the current community preview tree and connects every selected route back to the interactive calculator.</p><a href={item.href} onClick={link('talents')(item.href)}>{item.label} <ArrowRight size={15} /></a></div>)}</section>
+      <section className="hub-data shell" id="talents"><div><div className="eyebrow">{spec.charAt(0).toUpperCase() + spec.slice(1)} Talent Tree</div><h2>{spec.charAt(0).toUpperCase() + spec.slice(1)} Paladin Talents</h2></div>{hub.talents.map((item) => <div key={item.href}><p>Explore {spec} talent choices, key talents, and recommended paths before committing to a build.</p><p>The dedicated talent page uses the current Beta client tree and connects every selected route back to the interactive calculator.</p><a href={item.href} onClick={link('talents')(item.href)}>{item.label} <ArrowRight size={15} /></a></div>)}</section>
 
       <section className="hub-resources shell"><div className="eyebrow">Keep Exploring</div><h2>More Paladin Builds</h2><nav>{hub.related.map((item) => <a href={item.href} key={item.href} onClick={link('related')(item.href)}><span>{item.label}</span><ArrowRight size={17} /></a>)}</nav></section>
 

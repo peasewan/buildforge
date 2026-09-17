@@ -42,7 +42,7 @@ export default function SpecTalentsPage({ spec }: { spec: Branch }) {
       </section>
 
       <section className="spec-tree-section shell" id="talent-tree">
-        <header className="hub-section-heading"><div className="eyebrow">Community Preview</div><h2>{page.title.replace('WoW Forever ', '')} Tree Preview</h2><p>This preview highlights a complete {page.allocation.value} route. Open the calculator to remove ranks, compare another path, or share a custom setup.</p></header>
+        <header className="hub-section-heading"><div className="eyebrow">Beta Talent Data</div><h2>{page.title.replace('WoW Forever ', '')} Tree Preview</h2><p>This example highlights a complete {page.allocation.value} route using Beta client build 1.60.1.69893. Open the calculator to remove ranks, compare another path, or share a custom setup.</p></header>
         <div className="spec-tree-layout">
           <div className="tree-card"><TalentTree branch={spec} build={example.build} /></div>
           <aside>
