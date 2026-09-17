@@ -54,7 +54,7 @@ const diffContent = `
 const prerendered = `<main class="beta-page beta-prerender">
   <article>
     <h1>WoW Forever Paladin Beta Talent Changes</h1>
-    <p><strong>${statusLabel}</strong> · Client build ${snapshot.clientBuild} · ${isWaiting ? `0 / ${total} tree-ready talents` : `${betaDataset.talents.length} / ${total} talents verified`} · Last updated September 17, 2026</p>
+    <p><strong>${statusLabel}</strong> · Client build ${snapshot.clientBuild} · ${isWaiting ? `0 / ${total} tree-ready talents` : `${betaDataset.talents.length} / ${total} talents verified`} · Last updated September 18, 2026</p>
     ${isWaiting ? waitingContent : diffContent}
     <p><a href="/paladin">Open the Paladin Talent Calculator</a></p>
   </article>

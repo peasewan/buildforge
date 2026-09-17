@@ -5,7 +5,7 @@ import { BUILD_LANDING_PAGES } from './data/buildLandingPages'
 import BuildCard from './BuildCard'
 import { PALADIN_BETA_SNAPSHOT } from './data/betaSnapshot'
 import { branchNames, branchTaglines, DATA_SOURCES, talentEvidenceLabel, talents, type Talent } from './data/talents'
-import { communityPreviewDataset } from './data/datasets'
+import { betaDataset } from './data/datasets'
 import { BRANCHES, branchPoints, canIncrement, decodeBuild, decrementTalent, dominantBranch, encodeBuild, incrementTalent, totalPoints, type Branch, type Build } from './lib/build'
 import { claimBuildCompletion, loadClaimedBuildCompletions, saveClaimedBuildCompletions } from './lib/buildCompletion'
 import { track } from './lib/analytics'
@@ -48,6 +48,8 @@ export function TalentTree({ branch, build, onAdd, onRemove }: { branch: Branch;
       {branchTalents.map((talent) => {
         const rank = build[talent.id] ?? 0
         const unlocked = canIncrement(build, talent, talents) || rank > 0
+        const displayedRank = Math.max(1, rank)
+        const rankDescription = talent.rankDescriptions?.[displayedRank - 1] ?? talent.description
         return (
           <div className="talent-position" style={{ left: `${talent.x}%`, top: `${talent.y}%` }} key={talent.id}>
             <button
@@ -63,7 +65,7 @@ export function TalentTree({ branch, build, onAdd, onRemove }: { branch: Branch;
             {rank > 0 && onRemove && <button className="rank-minus" onClick={() => onRemove(talent)} aria-label={`Remove one rank from ${talent.name}`}><Minus size={12} /></button>}
             <div className="talent-tip" id={`tip-${talent.id}`}>
               <strong>{talent.name}</strong>
-              <span>{talent.description}</span>
+              <span>{rankDescription}</span>
               <em>
                 <span>{talentEvidenceLabel(talent)}</span>
                 <span className="talent-sources">
@@ -216,12 +218,12 @@ export default function App() {
             <div className="eyebrow"><Sparkles size={14} /> Paladin Talent Tool</div>
             <h1>WoW Forever<br /><span>Paladin Talent</span><br />Calculator</h1>
             <p className="lead">Build Paladin talent trees for Holy, Protection, and Retribution.</p>
-            <p className="hero-disclaimer">Community preview tool for planning Paladin builds. Talent data is being verified from Classic references.</p>
+            <p className="hero-disclaimer">Beta talent planner for client build {PALADIN_BETA_SNAPSHOT.clientBuild}. Values may change during testing.</p>
             <p className="hero-actions-copy">Preview talents. <span /> Create builds. <span /> Share your setup.</p>
             <div className="button-row"><button className="button primary" onClick={() => openTool()}>Open Talent Calculator</button><button className="button secondary" onClick={() => openTool('holy')}>View Talents <ChevronDown size={16} /></button></div>
           </div>
           <aside className="hud-card">
-            <div className="hud-top"><span>Talent Preview</span><i>Live</i></div>
+            <div className="hud-top"><span>Beta Talent Tree</span><i>Live</i></div>
             <div className="hud-tabs">{BRANCHES.map((item) => <button key={item} onClick={() => openTool(item)} className={item === branch ? 'active' : ''}>{branchNames[item]}</button>)}</div>
             <div className="hud-emblem"><div className="emblem-rings" /><img src="/images/icons/paladin-shield.png" alt="Paladin shield emblem" /></div>
             <div className="hud-points"><span>Talent Points</span><strong>{points} <small>/ 51</small></strong></div>
@@ -242,9 +244,9 @@ export default function App() {
           <h2>WoW Forever Paladin Talents</h2>
           <div className="data-card" role="note">
             <div className="data-card-title">Talent Data</div>
-            <p className="data-card-line"><span>✓</span> {talents.length} demo talent nodes transcribed — {DATA_SOURCES.join(', ')}</p>
-            <p className="data-card-progress">Community verification in progress</p>
-            <p className="data-card-progress">{communityPreviewDataset.label} · Beta client {PALADIN_BETA_SNAPSHOT.clientBuild} available · <a href="/wow-forever-paladin-beta-talent-changes">Track Beta changes</a></p>
+            <p className="data-card-line"><span>✓</span> {talents.length} Beta talent nodes verified — {DATA_SOURCES.join(', ')}</p>
+            <p className="data-card-progress">All three Paladin trees include client coordinates, prerequisites, rank caps, and every rank tooltip.</p>
+            <p className="data-card-progress">{betaDataset.label} · <a href="/wow-forever-paladin-beta-talent-changes">Review Beta changes</a></p>
           </div>
           <p className="spec-cta">Choose your specialization:</p>
           <div className="spec-choices">

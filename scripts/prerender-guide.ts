@@ -112,7 +112,7 @@ const plannerPrerendered = `<main class="planner-prerender">
     <p>Build Paladin talent trees for Holy, Protection, and Retribution. Plan all 51 points, preview talent ranks, create a legal build, and share the exact setup without an account.</p>
     <section>
       <h2>WoW Forever Paladin Talent Tree</h2>
-      <p>The interactive talent tree shows 52 community-transcribed preview nodes across all three Paladin specializations. Choose a branch, spend points, and see deeper rows unlock as the allocation becomes valid.</p>
+      <p>The interactive talent tree shows 52 nodes from WoW Forever Beta client build 1.60.1.69876 across all three Paladin specializations. Choose a branch, spend points, and see deeper rows unlock as the allocation becomes valid.</p>
     </section>
     <section>
       <h2>WoW Forever Talents Calculator</h2>
@@ -135,7 +135,7 @@ const plannerPrerendered = `<main class="planner-prerender">
     <p><a href="/wow-forever-paladin-talents">Read the WoW Forever Paladin talent guide</a></p>
     <p><a href="/wow-forever-paladin-builds">Explore the WoW Forever Paladin builds hub</a></p>
     <h2>WoW Forever Paladin Beta Data</h2>
-    <p>Beta client data is now available, while talent tree positions and point costs are still being verified. <a href="/wow-forever-paladin-beta-talent-changes">Track Paladin Beta talent changes and data coverage</a>.</p>
+    <p>The calculator now uses all 52 Paladin talents from Beta client build 1.60.1.69876, including tree positions, rank caps, prerequisites, and every rank tooltip. <a href="/wow-forever-paladin-beta-talent-changes">Review the Paladin Beta talent diff</a>.</p>
   </article>
 </main>`
 

@@ -1,15 +1,20 @@
 import type { Branch, TalentDefinition } from "../lib/build";
+import betaTalentData from "./paladin-beta-1.60.1.69876.json";
 
 // Community transcription of the Paladin trees shown in the WoW Forever public demo.
 // New and changed values may move before launch, so every node remains labelled as
 // community reported in the interface. Classic references are used only to compare
 // talents whose demo version matches the older tree.
-export const DATA_VERSION = "wow_forever_demo_2026-09-13";
-export type TalentDataVersion = typeof DATA_VERSION | `wow_forever_beta_${string}`;
+export const PREVIEW_DATA_VERSION = "wow_forever_demo_2026-09-13";
+export const BETA_DATA_VERSION = "wow_forever_beta_1.60.1.69876";
+export const DATA_VERSION = BETA_DATA_VERSION;
+export type TalentDataVersion =
+  | typeof PREVIEW_DATA_VERSION
+  | typeof BETA_DATA_VERSION
+  | `wow_forever_beta_${string}`;
 export const DATA_SOURCES: string[] = [
-  "WoW Forever demo recordings",
-  "ForeverTalent community transcription",
-  "Warcraft Wiki Classic comparison",
+  "WoW Forever Beta client build 1.60.1.69876",
+  "Talents Forever client-data export",
 ];
 
 export type ChangeType = "classic_unchanged" | "moved" | "updated" | "new";
@@ -47,6 +52,7 @@ export interface TalentVerification {
 export interface Talent extends TalentDefinition {
   name: string;
   description: string;
+  rankDescriptions?: string[];
   icon: string;
   dataVersion: TalentDataVersion;
   changeType: ChangeType;
@@ -106,6 +112,7 @@ const TIER_Y: Record<number, number> = {
 const OFFICIAL_DEEP_DIVE_URL =
   "https://worldofwarcraft.blizzard.com/en-us/news/24303313/world-of-warcraft-forever-deep-dive-panel-recap";
 const COMMUNITY_TRANSCRIPTION_URL = "https://talentsforever.com/";
+const BETA_DATA_URL = "https://talentsforever.com/data.json";
 const CLASSIC_REFERENCE_URL =
   "https://warcraft.wiki.gg/wiki/Paladin_talents_(Classic)";
 
@@ -800,7 +807,7 @@ function toTalents(branch: Branch, raw: RawTalent[]): Talent[] {
         ? talent.prerequisite
         : undefined,
       icon: BRANCH_ICON[branch],
-      dataVersion: DATA_VERSION,
+      dataVersion: PREVIEW_DATA_VERSION,
       changeType:
         talent.review === "classic" ? "classic_unchanged" : talent.review,
       verificationStatus: "demo_verified",
@@ -821,13 +828,85 @@ function toTalents(branch: Branch, raw: RawTalent[]): Talent[] {
   });
 }
 
-export const talents: Talent[] = [
+export const communityPreviewTalents: Talent[] = [
   ...toTalents("holy", holy),
   ...toTalents("protection", protection),
   ...toTalents("retribution", retribution),
 ];
 
+type BetaTalentRecord = (typeof betaTalentData.talents)[number];
+
+function toBetaTalent(record: BetaTalentRecord): Talent {
+  const branch = record.branch as Branch;
+  const sources: TalentSource[] = [
+    {
+      type: "beta_client",
+      label: `WoW Forever Beta client ${betaTalentData.clientBuild}`,
+      url: BETA_DATA_URL,
+      locator: `${branchNames[branch]} · row ${record.row + 1}, column ${record.column + 1}`,
+    },
+    {
+      type: "community_transcription",
+      label: "Talents Forever client-data export",
+      url: COMMUNITY_TRANSCRIPTION_URL,
+    },
+  ];
+
+  if (OFFICIALLY_NAMED_TALENTS.has(record.id)) {
+    sources.push({
+      type: "official",
+      label: "Blizzard WoW Forever Deep Dive",
+      url: OFFICIAL_DEEP_DIVE_URL,
+      locator: "A Closer Look at Paladins",
+    });
+  }
+
+  if (record.changeType !== "new") {
+    sources.push({
+      type: "classic_reference",
+      label: "Warcraft Wiki Classic comparison",
+      url: CLASSIC_REFERENCE_URL,
+    });
+  }
+
+  return {
+    id: record.id,
+    name: record.name,
+    branch,
+    maxRank: record.maxRank,
+    requiredTreePoints: record.requiredTreePoints,
+    prerequisite: record.prerequisite.length ? record.prerequisite : undefined,
+    icon: BRANCH_ICON[branch],
+    dataVersion: BETA_DATA_VERSION,
+    changeType: record.changeType as ChangeType,
+    verificationStatus: "beta_verified",
+    verification: {
+      name: "beta_verified",
+      maxRank: "beta_verified",
+      tier: "beta_verified",
+      description: "beta_verified",
+      prerequisite: "beta_verified",
+    },
+    description: record.description,
+    rankDescriptions: record.rankDescriptions,
+    row: record.row,
+    column: record.column,
+    x: COLUMN_X[record.column],
+    y: TIER_Y[record.row],
+    sources,
+  };
+}
+
+export const betaTalents: Talent[] = betaTalentData.talents.map(toBetaTalent);
+
+// The interactive calculator uses the reviewed Beta dataset. The demo
+// transcription remains available separately for the public change log.
+export const talents = betaTalents;
+
 export function talentEvidenceLabel(talent: Talent): string {
+  if (talent.verificationStatus === "beta_verified") {
+    return "Verified from Beta client data";
+  }
   if (talent.verification.name === "official_confirmed") {
     return "Officially confirmed name · Demo-verified details";
   }

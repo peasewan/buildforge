@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { DATA_VERSION, talents } from "./talents";
 
 describe("WoW Forever Paladin talent data", () => {
-  it("contains the complete 52-node community transcription", () => {
+  it("contains the complete 52-node Beta client dataset", () => {
     expect(talents).toHaveLength(52);
     expect(talents.filter((talent) => talent.branch === "holy")).toHaveLength(
       18,
@@ -33,6 +33,8 @@ describe("WoW Forever Paladin talent data", () => {
   it("keeps change history separate from field-level verification", () => {
     for (const talent of talents) {
       expect(talent.dataVersion).toBe(DATA_VERSION);
+      expect(talent.verificationStatus).toBe("beta_verified");
+      expect(talent.rankDescriptions).toHaveLength(talent.maxRank);
       expect(["classic_unchanged", "moved", "updated", "new"]).toContain(
         talent.changeType,
       );
@@ -51,7 +53,7 @@ describe("WoW Forever Paladin talent data", () => {
     }
   });
 
-  it("records official confirmation without overstating demo-transcribed fields", () => {
+  it("keeps official announcements alongside Beta-client field verification", () => {
     const officiallyNamed = [
       "light_s_vigil",
       "templar_s_bulwark",
@@ -63,8 +65,8 @@ describe("WoW Forever Paladin talent data", () => {
 
     for (const id of officiallyNamed) {
       const talent = talents.find((candidate) => candidate.id === id);
-      expect(talent?.verification.name).toBe("official_confirmed");
-      expect(talent?.verification.description).toBe("demo_verified");
+      expect(talent?.verification.name).toBe("beta_verified");
+      expect(talent?.verification.description).toBe("beta_verified");
       expect(talent?.sources.some((source) => source.type === "official")).toBe(
         true,
       );
@@ -73,10 +75,10 @@ describe("WoW Forever Paladin talent data", () => {
 
   it("retains Classic comparison as provenance rather than verification", () => {
     const holyPower = talents.find((talent) => talent.id === "holy_power");
-    expect(holyPower?.changeType).toBe("classic_unchanged");
+    expect(holyPower?.changeType).toBe("updated");
     expect(
       holyPower?.sources.some((source) => source.type === "classic_reference"),
     ).toBe(true);
-    expect(holyPower?.verification.name).toBe("demo_verified");
+    expect(holyPower?.verification.name).toBe("beta_verified");
   });
 });

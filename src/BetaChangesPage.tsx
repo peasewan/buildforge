@@ -34,9 +34,9 @@ export default function BetaChangesPage() {
           <strong>{statusLabel}</strong>
           <dl>
             <div><dt>Client build</dt><dd>{snapshot.clientBuild}</dd></div>
-            <div><dt>Paladin talent spells</dt><dd>{snapshot.counts.paladinTalentSpells}</dd></div>
+            <div><dt>New talent spell records</dt><dd>{snapshot.counts.paladinTalentSpells}</dd></div>
             <div><dt>Tree-ready talents</dt><dd>{isWaiting ? `0 / ${total}` : `${betaDataset.talents.length} / ${total}`}</dd></div>
-            <div><dt>Last updated</dt><dd>Sep 17, 2026</dd></div>
+            <div><dt>Last updated</dt><dd>Sep 18, 2026</dd></div>
           </dl>
         </aside>
       </section>

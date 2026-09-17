@@ -10,10 +10,10 @@ export interface ConfirmedPaladinChange {
 }
 
 export const PALADIN_BETA_SNAPSHOT = {
-  status: "client-data-available" as const,
+  status: "tree-data-verified" as const,
   clientBuild: "1.60.1.69876",
   comparedWithBuild: "1.15.9.69722",
-  updatedAt: "2026-09-17",
+  updatedAt: "2026-09-18",
   betaStartsAt: "2026-09-17",
   betaEndsAt: "2026-10-21",
   counts: {
@@ -22,12 +22,7 @@ export const PALADIN_BETA_SNAPSHOT = {
     paladinSpells: 30,
     paladinSets: 9,
   },
-  missingTreeFields: [
-    "Talent tree positions",
-    "Point costs and complete ranks",
-    "Complete icons and prerequisites",
-    "In-game verification for every tooltip",
-  ],
+  missingTreeFields: [],
   confirmedChanges: [
     {
       title: "Holy Strike",
@@ -65,6 +60,16 @@ export const PALADIN_BETA_SNAPSHOT = {
     {
       label: "ForeverDiff — per-build client record",
       url: "https://foreverdiff.com/builds/",
+      kind: "datamine",
+    },
+    {
+      label: "Talents Forever — Beta client talent export",
+      url: "https://talentsforever.com/data.json",
+      kind: "datamine",
+    },
+    {
+      label: "Hyjal — build 1.60.1.69876 talent update",
+      url: "https://hyjal.cc/updates/1.60.1.69876",
       kind: "datamine",
     },
   ] satisfies BetaSource[],
