@@ -4,6 +4,7 @@ import { exampleBuildById } from './data/builds'
 import { specTalentsPageBySpec } from './data/specTalentsPages'
 import type { Branch } from './lib/build'
 import { track } from './lib/analytics'
+import SiteFooter from './SiteFooter'
 
 const specIcons: Record<Branch, React.ReactNode> = {
   holy: <Heart size={15} />,
@@ -58,7 +59,7 @@ export default function SpecTalentsPage({ spec }: { spec: Branch }) {
 
       <section className="spec-talent-final shell"><img src={finalIcons[spec]} alt="" /><div><span>Ready to plan?</span><h2>Create Your {spec.charAt(0).toUpperCase() + spec.slice(1)} Build</h2></div><a className="button primary" href="/paladin#calculator" onClick={cta('footer')}>Build this setup <ArrowRight size={15} /></a></section>
 
-      <footer><div className="shell"><a className="brand" href="/paladin"><img src="/images/icons/paladin-shield.png" alt="" /><span>BUILD</span><b>FORGE</b></a><p>WoW Forever Talent Tools</p><nav><a href={page.hub.href}>{page.hub.label}</a><a href="/wow-forever-paladin-builds">All Paladin Builds</a><a href="/paladin">Talent Calculator</a></nav><small>Community-made planning tool. Not affiliated with Blizzard Entertainment.</small></div></footer>
+      <SiteFooter links={[{ href: page.hub.href, label: page.hub.label }, { href: '/wow-forever-paladin-builds', label: 'All Paladin Builds' }, { href: '/paladin', label: 'Talent Calculator' }]} />
     </main>
   )
 }

@@ -3,6 +3,7 @@ import { describe, expect, it } from 'vitest'
 import { BUILD_LANDING_PAGES } from '../data/buildLandingPages'
 import { SPEC_BUILDS_HUBS } from '../data/specBuildsHubs'
 import { SPEC_TALENTS_PAGES } from '../data/specTalentsPages'
+import { TRUST_PAGES } from '../data/trustPages'
 import { pageForPath } from './routes'
 
 describe('crawlable page templates', () => {
@@ -16,6 +17,7 @@ describe('crawlable page templates', () => {
     ...BUILD_LANDING_PAGES.map((page) => [`${page.slug}/index.html`] as const),
     ...SPEC_TALENTS_PAGES.map((page) => [`${page.slug}/index.html`] as const),
     ...SPEC_BUILDS_HUBS.map((hub) => [`${hub.slug}/index.html`] as const),
+    ...TRUST_PAGES.map((page) => [`${page.slug}/index.html`] as const),
     ['wow-forever-paladin-builds/index.html'],
   ])('generates %s at build time instead of hand-writing its body', (filename) => {
     const template = readFileSync(`${process.cwd()}/${filename}`, 'utf8')
@@ -34,6 +36,7 @@ describe('crawlable page templates', () => {
     ...BUILD_LANDING_PAGES.map((page) => [`/${page.slug}`, `${page.slug}/index.html`]),
     ...SPEC_TALENTS_PAGES.map((page) => [`/${page.slug}`, `${page.slug}/index.html`]),
     ...SPEC_BUILDS_HUBS.map((hub) => [`/${hub.slug}`, `${hub.slug}/index.html`]),
+    ...TRUST_PAGES.map((page) => [`/${page.slug}`, `${page.slug}/index.html`]),
   ] as const
 
   it.each(metadataTargets)('keeps static metadata aligned for %s', (pathname, filename) => {

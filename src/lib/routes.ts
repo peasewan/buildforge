@@ -2,10 +2,11 @@ import type { ExampleBuildId } from '../data/builds'
 import { BUILD_LANDING_PAGES, type BuildLandingPageId } from '../data/buildLandingPages'
 import { SPEC_BUILDS_HUBS } from '../data/specBuildsHubs'
 import { SPEC_TALENTS_PAGES } from '../data/specTalentsPages'
+import { TRUST_PAGES, type TrustPageId } from '../data/trustPages'
 import type { Branch } from './build'
 
 export interface PageDefinition {
-  kind: 'planner' | 'guide' | 'build-guide' | 'build-landing' | 'build-hub' | 'spec-hub' | 'spec-talents' | 'beta-changes'
+  kind: 'planner' | 'guide' | 'build-guide' | 'build-landing' | 'build-hub' | 'spec-hub' | 'spec-talents' | 'beta-changes' | 'trust'
   title: string
   description: string
   canonical: string
@@ -13,6 +14,7 @@ export interface PageDefinition {
   buildId?: ExampleBuildId
   landingPageId?: BuildLandingPageId
   spec?: Branch
+  trustPageId?: TrustPageId
 }
 
 const plannerPage: PageDefinition = {
@@ -87,6 +89,15 @@ export function pageForPath(pathname: string): PageDefinition {
   const normalized = pathname.replace(/\/+$/, '') || '/'
   if (normalized === '/build') return { ...plannerPage, robots: 'noindex, follow' }
   if (normalized === '/wow-forever-paladin-builds') return buildsHubPage
+  const trustPage = TRUST_PAGES.find((page) => normalized === `/${page.slug}`)
+  if (trustPage) return {
+    kind: 'trust',
+    trustPageId: trustPage.id,
+    title: trustPage.metaTitle,
+    description: trustPage.description,
+    canonical: `https://buildforgetools.com/${trustPage.slug}`,
+    robots: 'index, follow',
+  }
   const specHub = SPEC_BUILDS_HUBS.find((hub) => normalized === `/${hub.slug}`)
   if (specHub) return {
     kind: 'spec-hub',

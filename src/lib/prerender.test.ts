@@ -3,7 +3,8 @@ import { describe, expect, it } from 'vitest'
 import { HUB_BUILD_HREFS } from '../data/paladinBuildsHub'
 import { SPEC_BUILDS_HUBS, specHubHrefs } from '../data/specBuildsHubs'
 import { BUILD_LANDING_PAGES } from '../data/buildLandingPages'
-import { renderHubPrerender, renderLandingPrerender, renderSpecHubPrerender } from './prerender'
+import { TRUST_PAGES } from '../data/trustPages'
+import { renderHubPrerender, renderLandingPrerender, renderSpecHubPrerender, renderTrustPrerender } from './prerender'
 
 const redirections = (() => {
   const config = JSON.parse(readFileSync(`${process.cwd()}/vercel.json`, 'utf8')) as {
@@ -16,6 +17,7 @@ const allPrerendered = () => [
   ['paladin-builds hub', renderHubPrerender()],
   ...SPEC_BUILDS_HUBS.map((hub) => [`${hub.spec} builds hub`, renderSpecHubPrerender(hub.spec)] as const),
   ...BUILD_LANDING_PAGES.map((page) => [page.slug, renderLandingPrerender(page.id)] as const),
+  ...TRUST_PAGES.map((page) => [page.slug, renderTrustPrerender(page.id)] as const),
 ] as const
 
 describe('prerender generation', () => {
@@ -68,6 +70,23 @@ describe('prerender generation', () => {
   it('never nests a list inside a paragraph', () => {
     for (const [label, html] of allPrerendered()) {
       expect(html, label).not.toMatch(/<p>\s*<ul>/)
+    }
+  })
+
+  it('prerenders every trust-page section and footer link', () => {
+    for (const page of TRUST_PAGES) {
+      const html = renderTrustPrerender(page.id)
+
+      expect(html).toContain(`<h1>${page.title}</h1>`)
+      for (const section of page.sections) expect(html).toContain(`<h2>${section.heading}</h2>`)
+      expect(html).toContain('href="/privacy"')
+    }
+  })
+
+  it('makes the privacy and contact pages crawlable from every generated landing page', () => {
+    for (const [label, html] of allPrerendered()) {
+      expect(html, label).toContain('href="/privacy"')
+      expect(html, label).toContain('href="/contact"')
     }
   })
 })

@@ -3,6 +3,7 @@ import BuildCard from './BuildCard'
 import { specBuildsHubBySpec } from './data/specBuildsHubs'
 import type { Branch } from './lib/build'
 import { track } from './lib/analytics'
+import SiteFooter from './SiteFooter'
 
 const specIcons: Record<Branch, React.ReactNode> = {
   holy: <Heart size={15} />,
@@ -55,6 +56,10 @@ export default function SpecBuildsHub({ spec }: { spec: Branch }) {
         <div className="spec-type-grid">{hub.buildTypes.map((build) => <BuildCard compact key={build.id} eyebrow={build.eyebrow} title={build.title} description={build.description} href={build.href} icon={build.icon} onOpen={link(`type-${build.id}`)(build.href)} />)}</div>
       </div></section>
 
+      <article className="spec-editorial shell">
+        {hub.editorialSections.map((section) => <section key={section.heading}><h2>{section.heading}</h2>{section.paragraphs.map((paragraph) => <p key={paragraph.slice(0, 50)}>{paragraph}</p>)}</section>)}
+      </article>
+
       <section className="hub-tool shell">
         <div><div className="eyebrow">Interactive Talent Planner</div><h2>Create Your {spec.charAt(0).toUpperCase() + spec.slice(1)} Paladin Build</h2><p>Customize talents.<br />Test different paths.<br />Share your setup.</p></div>
         <a href="/paladin#calculator" className="button primary" onClick={link('calculator')('/paladin#calculator')}><Calculator size={18} /> Open Paladin Talent Calculator</a>
@@ -64,7 +69,7 @@ export default function SpecBuildsHub({ spec }: { spec: Branch }) {
 
       <section className="hub-resources shell"><div className="eyebrow">Keep Exploring</div><h2>More Paladin Builds</h2><nav>{hub.related.map((item) => <a href={item.href} key={item.href} onClick={link('related')(item.href)}><span>{item.label}</span><ArrowRight size={17} /></a>)}</nav></section>
 
-      <footer><div className="shell"><a className="brand" href="/paladin"><img src="/images/icons/paladin-shield.png" alt="" /><span>BUILD</span><b>FORGE</b></a><p>WoW Forever Talent Tools</p><nav><a href="/wow-forever-paladin-builds">All Paladin Builds</a><a href={hub.talents[0]?.href ?? '/wow-forever-paladin-talents'}>{spec.charAt(0).toUpperCase() + spec.slice(1)} Talents</a><a href="/paladin">Talent Calculator</a></nav><small>Community-made planning tool. Not affiliated with Blizzard Entertainment.</small></div></footer>
+      <SiteFooter links={[{ href: '/wow-forever-paladin-builds', label: 'All Paladin Builds' }, { href: hub.talents[0]?.href ?? '/wow-forever-paladin-talents', label: `${spec.charAt(0).toUpperCase() + spec.slice(1)} Talents` }, { href: '/paladin', label: 'Talent Calculator' }]} />
     </main>
   )
 }

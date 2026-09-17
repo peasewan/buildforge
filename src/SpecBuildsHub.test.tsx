@@ -55,4 +55,15 @@ describe('specialization builds hub', () => {
 
     expect(events).toContain('protection_hub_click')
   })
+
+  it('gives every specialization hub a substantial, distinct editorial guide', () => {
+    for (const hub of SPEC_BUILDS_HUBS) {
+      const sections = (hub as typeof hub & { editorialSections?: { heading: string; paragraphs: string[] }[] }).editorialSections
+      const words = sections?.flatMap((section) => [section.heading, ...section.paragraphs]).join(' ').match(/[A-Za-z0-9'-]+/g)?.length ?? 0
+
+      expect(sections?.length).toBeGreaterThanOrEqual(3)
+      expect(words, `${hub.spec} hub editorial copy`).toBeGreaterThanOrEqual(350)
+      expect(sections?.some((section) => section.heading.includes(hub.spec === 'protection' ? 'Protection' : 'Retribution'))).toBe(true)
+    }
+  })
 })

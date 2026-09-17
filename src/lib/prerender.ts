@@ -4,6 +4,7 @@ import { BUILD_LANDING_PAGES, type BuildLandingPageId, type LandingSection } fro
 import { HUB_INTRO, HUB_INTRO_SUB, HUB_PLAYSTYLE_SECTIONS, HUB_SPECIALIZATIONS, HUB_TALENTS, HUB_TITLE } from '../data/paladinBuildsHub'
 import { specBuildsHubBySpec } from '../data/specBuildsHubs'
 import { specTalentsPageBySpec } from '../data/specTalentsPages'
+import { trustPageById, type TrustPageId } from '../data/trustPages'
 
 const link = (href: string, label: string) => `<a href="${escapeHtml(href)}">${escapeHtml(label)}</a>`
 
@@ -41,6 +42,9 @@ function landingSection(section: LandingSection): string {
 const pageFooterLinks = [
   { href: '/paladin', label: 'Open the WoW Forever Paladin Talent Calculator' },
   { href: '/wow-forever-paladin-builds', label: 'Explore all WoW Forever Paladin builds' },
+  { href: '/about', label: 'About BuildForgeTools' },
+  { href: '/contact', label: 'Contact BuildForgeTools' },
+  { href: '/privacy', label: 'BuildForgeTools Privacy Policy' },
 ]
 
 export function renderLandingPrerender(pageId: BuildLandingPageId): string {
@@ -104,7 +108,24 @@ export function renderSpecHubPrerender(spec: Branch): string {
     <p>${escapeHtml(hub.intro)}</p>
   </article>
   <section><h2>${label} Build Types</h2>${linkList(buildTypes)}</section>
+  ${hub.editorialSections.map((section) => `<section><h2>${escapeHtml(section.heading)}</h2>${section.paragraphs.map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join('')}</section>`).join('\n  ')}
   <section><h2>${label} Paladin Talents</h2>${linkList(hub.talents)}</section>
   <section><h2>More Paladin Builds</h2>${linkList(hub.related)}</section>
+  ${linkList(pageFooterLinks)}
+</main>`
+}
+
+export function renderTrustPrerender(pageId: TrustPageId): string {
+  const page = trustPageById(pageId)
+
+  return `<main class="trust-prerender">
+  <article>
+    <p>${escapeHtml(page.eyebrow)}</p>
+    <h1>${escapeHtml(page.title)}</h1>
+    <p>${escapeHtml(page.intro)}</p>
+    <p>Last updated: ${escapeHtml(page.updated)}</p>
+  </article>
+  ${page.sections.map((section) => `<section><h2>${escapeHtml(section.heading)}</h2>${section.paragraphs.map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join('')}${section.bullets ? `<ul>${section.bullets.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul>` : ''}${section.links ? linkList(section.links) : ''}</section>`).join('\n  ')}
+  ${linkList([{ href: '/about', label: 'About' }, { href: '/contact', label: 'Contact' }, { href: '/privacy', label: 'Privacy' }, ...pageFooterLinks])}
 </main>`
 }

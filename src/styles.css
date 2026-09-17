@@ -152,7 +152,7 @@ h1 span { color: var(--light); background: linear-gradient(180deg, #fff7d7, #d9a
 .status-grid { display: grid; gap: 10px; }.status-grid article { display: flex; align-items: center; gap: 15px; background: rgba(255,255,255,.025); border: 1px solid rgba(255,255,255,.07); border-radius: 10px; padding: 17px; }.status { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; }.status.green { color: #75ce8c; background: rgba(65,167,90,.1); border: 1px solid rgba(65,167,90,.22); }.status.amber { color: #e2b355; background: rgba(217,164,65,.1); border: 1px solid rgba(217,164,65,.23); }.status.gray { color: #89909b; background: rgba(130,140,150,.08); border: 1px solid rgba(130,140,150,.16); }.status-grid h3 { margin: 0; font: 600 13px Cinzel, serif; }.status-grid p { margin: 4px 0 0; color: #737a84; font-size: 10px; }
 .benefits { padding: 112px 0; }.benefit-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 45px; }.benefit-grid article { min-height: 250px; position: relative; overflow: hidden; background: linear-gradient(145deg, #12161e, #0c0f14); border: 1px solid rgba(255,255,255,.07); border-radius: 12px; padding: 28px; }.benefit-grid img { position: absolute; right: -20px; top: -15px; width: 155px; height: 155px; object-fit: contain; opacity: .22; filter: saturate(.5); }.benefit-grid span { font: 500 10px Cinzel, serif; color: #8f7039; }.benefit-grid h3 { margin: 110px 0 10px; font: 600 18px Cinzel, serif; }.benefit-grid p { margin: 0; color: #7b828d; font-size: 12px; }
 .seo-section { padding: 110px 0 32px; background: #0c0f14; border-top: 1px solid rgba(255,255,255,.06); }.seo-grid { display: grid; grid-template-columns: .72fr 1.28fr; gap: 100px; }.seo-section h2 { color: #e9ddc1; line-height: 1.15; }.seo-copy { columns: 2; column-gap: 38px; }.seo-copy p { break-inside: avoid; margin: 0 0 18px; color: #858c97; font-size: 11px; line-height: 1.85; }.seo-copy strong { color: #bca66f; font-weight: 500; }.seo-continuation { padding: 0 0 95px; background: #0c0f14; }.seo-continuation .shell { width: min(690px, calc(100% - 48px)); margin-right: max(24px, calc((100vw - 1180px) / 2)); }.seo-continuation p { color: #858c97; font-size: 11px; line-height: 1.85; margin: 0 0 18px; }
-footer { padding: 42px 0; border-top: 1px solid rgba(217,164,65,.15); background: #07090d; }footer .shell { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 28px; }footer p { color: #666d78; font-size: 10px; }footer small { grid-column: 1 / -1; color: #4f555e; font-size: 8px; border-top: 1px solid rgba(255,255,255,.05); padding-top: 18px; }
+footer { padding: 42px 0; border-top: 1px solid rgba(217,164,65,.15); background: #07090d; }footer .shell { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 22px 28px; }footer p { color: #666d78; font-size: 10px; }footer .footer-trust { grid-column: 1 / -1; justify-content: flex-end; padding-top: 14px; border-top: 1px solid rgba(255,255,255,.05); color: #777e88; font-size: 11px; }footer small { grid-column: 1 / -1; color: #4f555e; font-size: 8px; }
 .guide-page { min-height: 100vh; background: #090b10; }
 .guide-nav { height: 76px; display: flex; align-items: center; justify-content: space-between; position: absolute; z-index: 20; left: 50%; transform: translateX(-50%); border-bottom: 1px solid rgba(255,255,255,.09); }
 .guide-nav nav { display: flex; gap: 30px; color: #b9bdc5; font-size: 12px; }.guide-nav nav a:hover { color: var(--light); }.guide-nav-cta { display: inline-flex; }
@@ -459,3 +459,40 @@ footer { padding: 42px 0; border-top: 1px solid rgba(217,164,65,.15); background
 .beta-talent-section li span { color: #737b86; font-size: 11px; }
 .beta-old { color: #b0824e; text-decoration: line-through; }
 .beta-new { color: #7dc08a; }
+
+/* Site trust pages */
+.trust-page { min-height: 100vh; background: #090b10; }
+.trust-hero { min-height: 500px; display: grid; align-items: center; border-bottom: 1px solid rgba(217,164,65,.15); background: radial-gradient(circle at 75% 35%, rgba(217,164,65,.14), transparent 27%), linear-gradient(145deg, #111720, #090b10 68%); }
+.trust-hero .shell { padding-top: 78px; }
+.trust-hero h1 { max-width: 850px; color: #fff0c6; font-size: clamp(44px, 6vw, 72px); }
+.trust-hero p { max-width: 760px; margin: 24px 0 18px; color: #aeb3bc; font: 500 17px/1.75 Cinzel, serif; }
+.trust-hero span { color: #6f7782; font-size: 11px; text-transform: uppercase; letter-spacing: .1em; }
+.trust-content { max-width: 860px; padding-top: 90px; padding-bottom: 110px; }
+.trust-content > section { margin-bottom: 62px; }
+.trust-content h2, .spec-editorial h2 { color: #eee4cc; font-size: clamp(27px, 3vw, 38px); }
+.trust-content p, .spec-editorial p { color: #999fa9; font-size: 14px; line-height: 1.95; }
+.trust-content ul { padding-left: 20px; color: #999fa9; line-height: 1.8; }
+.trust-links { display: flex; flex-wrap: wrap; gap: 12px 24px; margin-top: 20px; }
+.trust-links a { display: inline-flex; align-items: center; gap: 6px; color: #d9b45d; font-size: 12px; }
+.trust-contact-cta { display: grid; grid-template-columns: 45px 1fr auto; gap: 18px; align-items: center; padding: 28px 30px; border: 1px solid rgba(217,164,65,.28); border-radius: 13px; background: rgba(217,164,65,.055); }
+.trust-contact-cta > svg { color: #e0b95a; }
+.trust-contact-cta strong, .trust-contact-cta span { display: block; }
+.trust-contact-cta strong { color: #ead6a5; font: 600 15px Cinzel, serif; }
+.trust-contact-cta span { margin-top: 5px; color: #7f8792; font-size: 11px; }
+.trust-prerender { max-width: 860px; min-height: 100vh; margin: 0 auto; padding: 100px 24px; }
+.trust-prerender section { margin-top: 42px; }
+.trust-prerender p, .trust-prerender li { color: #9aa0aa; line-height: 1.8; }
+
+/* Distinct editorial depth for specialization hubs */
+.spec-editorial { max-width: 900px; padding-top: 105px; padding-bottom: 30px; }
+.spec-editorial section { margin-bottom: 64px; }
+
+@media (max-width: 700px) {
+  .trust-hero { min-height: 560px; }
+  .trust-hero .shell { padding-top: 110px; }
+  .trust-content { padding-top: 70px; padding-bottom: 80px; }
+  .trust-contact-cta { grid-template-columns: 38px 1fr; padding: 22px; }
+  .trust-contact-cta .button { grid-column: 1 / -1; }
+  .spec-editorial { padding-top: 75px; }
+  footer .footer-trust { justify-content: flex-start; }
+}

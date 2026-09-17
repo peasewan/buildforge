@@ -5,6 +5,7 @@ import { exampleBuildById, specializationOfBuild } from './data/builds'
 import { buildLandingPageById, type BuildLandingPageId, type LandingIcon, type LandingSection } from './data/buildLandingPages'
 import { encodeBuild } from './lib/build'
 import { track } from './lib/analytics'
+import SiteFooter from './SiteFooter'
 
 const icons: Record<LandingIcon, ReactNode> = {
   sword: <Swords size={24} />,
@@ -103,7 +104,7 @@ export default function BuildLandingPage({ pageId }: { pageId: BuildLandingPageI
         <section className="landing-final-cta"><img src="/images/icons/paladin-shield.png" alt="" /><div><span>{page.finalCta.eyebrow}</span><h2>{page.finalCta.title}</h2></div><TrackedLink href={ctaBuildId ? primaryHref : '/paladin#calculator'} pageId={pageId} placement="footer" className="button primary">{page.finalCta.label} <ArrowRight size={16} /></TrackedLink></section>
       </div>
 
-      <footer><div className="shell"><a className="brand" href="/paladin"><img src="/images/icons/paladin-shield.png" alt="" /><span>BUILD</span><b>FORGE</b></a><p>WoW Forever Talent Tools</p><nav><a href="/wow-forever-paladin-builds">All Paladin Builds</a><a href="/paladin">Talent Calculator</a><a href="/wow-forever-paladin-talents">Paladin Talents</a></nav><small>Community-made planning tool. Not affiliated with Blizzard Entertainment.</small></div></footer>
+      <SiteFooter />
     </main>
   )
 }

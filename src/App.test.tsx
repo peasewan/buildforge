@@ -85,4 +85,12 @@ describe('Paladin talent calculator page', () => {
 
     expect(scrollIntoView).toHaveBeenCalledTimes(1)
   })
+
+  it('links the site trust pages from the footer', () => {
+    render(<App />)
+
+    expect(document.querySelector('footer a[href="/about"]')).toBeTruthy()
+    expect(document.querySelector('footer a[href="/contact"]')).toBeTruthy()
+    expect(document.querySelector('footer a[href="/privacy"]')).toBeTruthy()
+  })
 })

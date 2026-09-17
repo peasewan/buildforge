@@ -1,6 +1,7 @@
 import { ArrowRight, BookOpen, Calculator, ExternalLink, Shield, Sparkles, Swords } from 'lucide-react'
 import guide from './content/paladin-guide.json'
 import { track } from './lib/analytics'
+import SiteFooter from './SiteFooter'
 
 const specCards = [
   { name: 'Holy Paladin', description: 'Healing, spell support, and efficient use of the Light.', icon: Sparkles, anchor: 'holy-paladin' },
@@ -56,7 +57,7 @@ export default function GuidePage() {
         </article>
       </div>
 
-      <footer><div className="shell"><a className="brand" href="/paladin"><img src="/images/icons/paladin-shield.png" alt="" /><span>BUILD</span><b>FORGE</b></a><p>WoW Forever Talent Tools</p><nav><a href="/wow-forever-paladin-builds">All Paladin Builds</a><a href="/paladin">Talent Calculator</a><a href="/wow-forever-paladin-talents">Paladin Talents</a></nav><small>Community-made planning tool. Not affiliated with Blizzard Entertainment.</small></div></footer>
+      <SiteFooter />
     </main>
   )
 }

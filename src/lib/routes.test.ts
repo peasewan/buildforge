@@ -111,4 +111,18 @@ describe('public page routing', () => {
       robots: 'index, follow',
     })
   })
+
+  it.each([
+    ['/about/', 'about', 'About BuildForgeTools | Community Talent Planner'],
+    ['/contact/', 'contact', 'Contact BuildForgeTools | Feedback & Corrections'],
+    ['/privacy/', 'privacy', 'Privacy Policy | BuildForgeTools'],
+  ])('serves %s as an indexable trust page', (pathname, trustPageId, title) => {
+    expect(pageForPath(pathname)).toMatchObject({
+      kind: 'trust',
+      trustPageId,
+      title,
+      canonical: `https://buildforgetools.com${pathname.replace(/\/$/, '')}`,
+      robots: 'index, follow',
+    })
+  })
 })
