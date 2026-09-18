@@ -16,7 +16,19 @@ export const PALADIN_BETA_SNAPSHOT = {
   updatedAt: "2026-09-18",
   betaStartsAt: "2026-09-17",
   betaEndsAt: "2026-10-21",
+  phase: {
+    label: "Beta Week 1",
+    levelCap: 20,
+    nextLevelCap: 30,
+  },
   counts: {
+    paladinTalents: 52,
+    paladinNewTalents: 21,
+    newTalentsByBranch: {
+      holy: 9,
+      protection: 5,
+      retribution: 7,
+    },
     allClassTalentSpells: 60,
     paladinTalentSpells: 16,
     paladinSpells: 30,
@@ -42,6 +54,11 @@ export const PALADIN_BETA_SNAPSHOT = {
     },
   ] satisfies ConfirmedPaladinChange[],
   sources: [
+    {
+      label: "Blizzard — Beta live, Week 1 level cap, and schedule",
+      url: "https://news.blizzard.com/en-us/article/24304160/the-world-of-warcraft-forever-beta-now-live",
+      kind: "official",
+    },
     {
       label: "Blizzard — Beta dates and access",
       url: "https://news.blizzard.com/en-us/article/24301508/pre-purchase-world-of-warcraft-forever-upgrades-and-begin-your-next-journey-in-azeroth",

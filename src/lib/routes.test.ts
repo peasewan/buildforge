@@ -5,7 +5,7 @@ describe('public page routing', () => {
   it('serves the calculator for the canonical tool path and shared builds', () => {
     expect(pageForPath('/paladin')).toMatchObject({
       kind: 'planner',
-      title: 'WoW Forever Paladin Talent Preview | BuildForgeTools',
+      title: 'WoW Forever Paladin Talent Calculator | Beta Build 69893',
       description: expect.stringContaining('WoW Forever Paladin talent tree'),
       canonical: 'https://buildforgetools.com/paladin',
     })

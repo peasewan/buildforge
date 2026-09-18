@@ -16,7 +16,8 @@ export function renderBetaStatusPrerender(): string {
   const status = PALADIN_BETA_STATUS
   return `<section aria-label="WoW Forever Beta data status">
     <h2>Beta build ${escapeHtml(status.build)}</h2>
-    <p>Updated ${escapeHtml(status.updated)} · ${status.talentCount} talent nodes · ${status.added} added · ${status.updatedTalents} updated · ${status.removed} removed.</p>
+    <p>Updated ${escapeHtml(status.updated)} · ${status.talentCount} talent nodes · ${status.newTalentCount} new in WoW Forever · ${escapeHtml(status.phaseLabel)} · Level cap ${status.levelCap}.</p>
+    <p>${status.added} added · ${status.updatedTalents} updated · ${status.removed} removed in the latest client diff.</p>
     <p>${status.updatedTalents} tooltip updates since ${escapeHtml(status.previousBuild)}. ${link(status.changelogHref, 'Review Beta changes')}.</p>
   </section>`
 }
@@ -72,6 +73,7 @@ export function renderLandingPrerender(pageId: BuildLandingPageId): string {
     <p>${escapeHtml(page.subtitle)}</p>
     <ul>${summary}</ul>
   </article>
+  ${renderBetaStatusPrerender()}
   ${sections}
   ${linkList(pageFooterLinks)}
 </main>`

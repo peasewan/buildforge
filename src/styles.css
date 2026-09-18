@@ -425,6 +425,9 @@ footer { padding: 42px 0; border-top: 1px solid rgba(217,164,65,.15); background
 .beta-hero { display: grid; grid-template-columns: 1.2fr .8fr; gap: 60px; align-items: center; padding: 150px 0 70px; }
 .beta-hero h1 { font-size: clamp(32px, 4vw, 52px); color: #eee5d2; }
 .beta-hero-copy p { color: #9aa0aa; font-size: 15px; line-height: 1.7; max-width: 520px; margin: 18px 0 28px; }
+.beta-hero-copy .beta-phase-label { width: fit-content; margin: -10px 0 24px; padding: 7px 11px; border: 1px solid rgba(125,192,138,.3); border-radius: 999px; color: #8fc99b; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; }
+.beta-phase-block { padding: 24px; border: 1px solid rgba(217,164,65,.2); border-radius: 10px; background: rgba(217,164,65,.04); }
+.beta-phase-block a { display: inline-block; margin-top: 14px; color: #d8c17d; font-size: 12px; }
 .beta-status-card { padding: 24px; background: linear-gradient(145deg, #12161e, #0c0f14); border: 1px solid rgba(217,164,65,.28); border-radius: 12px; }
 .beta-status-card > span { display: block; font-size: 9px; letter-spacing: .16em; text-transform: uppercase; color: #a98d50; }
 .beta-status-card > strong { display: block; font: 600 24px Cinzel, serif; color: #e4c87f; margin: 10px 0 18px; }

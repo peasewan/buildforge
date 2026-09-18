@@ -17,6 +17,15 @@ describe("WoW Forever Paladin talent data", () => {
     ).toHaveLength(18);
   });
 
+  it("classifies the 21 Forever talents by specialization", () => {
+    const newTalents = betaTalents.filter((talent) => talent.changeType === "new");
+
+    expect(newTalents).toHaveLength(21);
+    expect(newTalents.filter((talent) => talent.branch === "holy")).toHaveLength(9);
+    expect(newTalents.filter((talent) => talent.branch === "protection")).toHaveLength(5);
+    expect(newTalents.filter((talent) => talent.branch === "retribution")).toHaveLength(7);
+  });
+
   it("uses unique ids and valid prerequisites", () => {
     const ids = talents.map((talent) => talent.id);
     expect(new Set(ids).size).toBe(ids.length);

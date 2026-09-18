@@ -13,6 +13,8 @@ export default function BetaDataStatus() {
       <div className="beta-data-facts">
         <span>Updated {status.updated}</span>
         <span>{status.talentCount} talent nodes</span>
+        <span>{status.newTalentCount} new in WoW Forever</span>
+        <span>{status.phaseLabel} · Level cap {status.levelCap}</span>
         <span>{status.added} added · {status.updatedTalents} updated · {status.removed} removed</span>
         <span>{status.updatedTalents} tooltip updates since {status.previousBuild}</span>
       </div>

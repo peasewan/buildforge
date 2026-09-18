@@ -59,6 +59,7 @@ describe('Paladin talent calculator page', () => {
     expect(screen.getByText('Beta build 1.60.1.69893')).toBeTruthy()
     expect(screen.getByText('Updated September 18, 2026')).toBeTruthy()
     expect(screen.getByText('3 tooltip updates since 69876')).toBeTruthy()
+    expect(screen.getByText('Beta Week 1 · Level cap 20')).toBeTruthy()
     const status = screen.getByRole('region', { name: 'WoW Forever Beta data status' })
     expect(status.querySelector('a')?.getAttribute('href')).toBe('/wow-forever-paladin-beta-talent-changes')
   })

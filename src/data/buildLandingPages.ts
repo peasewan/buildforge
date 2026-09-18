@@ -292,7 +292,7 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
       },
       {
         kind: 'talent-preview',
-        title: 'Protection Talent Preview',
+        title: 'Protection Beta Talent Tree',
         intro: 'Inspect the selected Protection branch below. The highlighted nodes come from the community 20/31/0 shield build; open it in the calculator to change ranks or share your version.',
         buildId: 'protection-shield-20-31-0',
       },
@@ -346,7 +346,7 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
       },
       {
         kind: 'talent-preview',
-        title: 'Protection Talent Preview',
+        title: 'Protection Beta Talent Tree',
         intro: 'The 20/31/0 community build allocation below is the target these levels build toward. Open it in the calculator to change ranks, or plan your own order of spending.',
         buildId: 'protection-shield-20-31-0',
       },
@@ -402,7 +402,7 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
       },
       {
         kind: 'talent-preview',
-        title: 'Retribution Talent Preview',
+        title: 'Retribution Beta Talent Tree',
         intro: 'The 0/20/31 community build allocation below is the starting point. PvP rewards adaptation, so open it in the calculator and keep several versions.',
         buildId: 'retribution-judgment-0-20-31',
       },

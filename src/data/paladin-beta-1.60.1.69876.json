@@ -145,7 +145,7 @@
         "Increases the damage done by your Seals and Judgements by 15%."
       ],
       "description": "Increases the damage done by your Seals and Judgements by 15%.",
-      "changeType": "updated",
+      "changeType": "new",
       "iconName": "ability_thunderbolt",
       "complete": true,
       "confirmedRanks": [

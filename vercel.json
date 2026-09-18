@@ -8,6 +8,7 @@
       "destination": "https://buildforgetools.com/:path*",
       "permanent": true
     },
+    { "source": "/wow-forever-paladin-beta", "destination": "/wow-forever-paladin-beta-talent-changes", "permanent": true },
     { "source": "/", "destination": "/paladin", "permanent": true },
     { "source": "/wow-forever-holy-paladin-build", "destination": "/wow-forever-paladin-build", "permanent": true }
   ],

@@ -6,6 +6,7 @@ import { buildLandingPageById, type BuildLandingPageId, type LandingIcon, type L
 import { encodeBuild } from './lib/build'
 import { track } from './lib/analytics'
 import SiteFooter from './SiteFooter'
+import BetaDataStatus from './BetaDataStatus'
 
 const icons: Record<LandingIcon, ReactNode> = {
   sword: <Swords size={24} />,
@@ -59,7 +60,7 @@ function LandingSectionView({ section, pageId }: { section: LandingSection; page
     const editHref = `/build?id=${encodeBuild(example.build)}#calculator`
     return (
       <section className="landing-content-section landing-talent-preview">
-        <header><div className="eyebrow">Interactive Preview</div><h2>{section.title}</h2><p>{section.intro}</p></header>
+        <header><div className="eyebrow">Beta Talent Tree</div><h2>{section.title}</h2><p>{section.intro}</p></header>
         <div className="landing-tree-card"><TalentTree branch={specializationOfBuild(example)} build={example.build} /></div>
         <TrackedLink href={editHref} pageId={pageId} placement="talent-preview" className="button primary">Edit this build <ArrowRight size={16} /></TrackedLink>
       </section>
@@ -100,11 +101,13 @@ export default function BuildLandingPage({ pageId }: { pageId: BuildLandingPageI
             <div className="button-row"><TrackedLink href={primaryHref} pageId={pageId} placement="hero" className="button primary">Open Talent Calculator</TrackedLink>{preview && <a href="#build-content" className="button secondary">View Talent Tree <ArrowRight size={15} /></a>}</div>
           </div>
           <aside className="landing-summary-card" aria-label="Build summary">
-            <div><span>Build Summary</span><i>Preview</i></div>
+            <div><span>Build Summary</span><i>Beta</i></div>
             <dl>{page.summary.map((item) => <div key={item.label}><dt>{item.label}</dt><dd>{item.value}</dd></div>)}</dl>
           </aside>
         </div>
       </section>
+
+      <BetaDataStatus />
 
       <div className="shell landing-content" id="build-content">
         {page.sections.map((section) => <LandingSectionView key={section.title} section={section} pageId={pageId} />)}
