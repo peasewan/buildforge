@@ -5,11 +5,21 @@ import { HUB_INTRO, HUB_INTRO_SUB, HUB_PLAYSTYLE_SECTIONS, HUB_SPECIALIZATIONS, 
 import { specBuildsHubBySpec } from '../data/specBuildsHubs'
 import { specTalentsPageBySpec } from '../data/specTalentsPages'
 import { trustPageById, type TrustPageId } from '../data/trustPages'
+import { PALADIN_BETA_STATUS } from '../data/betaStatus'
 
 const link = (href: string, label: string) => `<a href="${escapeHtml(href)}">${escapeHtml(label)}</a>`
 
 const linkList = (links: { href: string; label: string }[]) =>
   `<ul>${links.map(({ href, label }) => `<li>${link(href, label)}</li>`).join('')}</ul>`
+
+export function renderBetaStatusPrerender(): string {
+  const status = PALADIN_BETA_STATUS
+  return `<section aria-label="WoW Forever Beta data status">
+    <h2>Beta build ${escapeHtml(status.build)}</h2>
+    <p>Updated ${escapeHtml(status.updated)} · ${status.talentCount} talent nodes · ${status.added} added · ${status.updatedTalents} updated · ${status.removed} removed.</p>
+    <p>${status.updatedTalents} tooltip updates since ${escapeHtml(status.previousBuild)}. ${link(status.changelogHref, 'Review Beta changes')}.</p>
+  </section>`
+}
 
 /**
  * Renders a landing page section as static HTML. Every branch reads from the same
@@ -80,6 +90,7 @@ export function renderHubPrerender(): string {
     <h1>${escapeHtml(HUB_TITLE)}</h1>
     <p>${escapeHtml(HUB_INTRO)} ${escapeHtml(HUB_INTRO_SUB)}</p>
   </article>
+  ${renderBetaStatusPrerender()}
   <section><h2>Choose Your Paladin Specialization</h2>${linkList(specializations)}</section>
   ${sections}
   ${linkList([...pageFooterLinks, HUB_TALENTS, { href: '/wow-forever-paladin-beta-talent-changes', label: 'Track WoW Forever Paladin Beta talent changes' }])}
@@ -96,6 +107,7 @@ export function renderSpecTalentsPrerender(spec: Branch): string {
     <p>${escapeHtml(page.intro)}</p>
     <p><strong>${escapeHtml(page.allocation.label)}: ${escapeHtml(page.allocation.value)}</strong> — ${escapeHtml(page.allocation.note)}</p>
   </article>
+  ${renderBetaStatusPrerender()}
   ${page.sections.map((section) => `<section><h2>${escapeHtml(section.heading)}</h2>${section.paragraphs.map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join('')}</section>`).join('\n  ')}
   ${linkList([...page.nav.filter((item) => !item.href.startsWith('#')), ...pageFooterLinks])}
 </main>`
@@ -111,6 +123,7 @@ export function renderSpecHubPrerender(spec: Branch): string {
     <h1>${escapeHtml(hub.title)}</h1>
     <p>${escapeHtml(hub.intro)}</p>
   </article>
+  ${renderBetaStatusPrerender()}
   <section><h2>${label} Build Types</h2>${linkList(buildTypes)}</section>
   ${hub.editorialSections.map((section) => `<section><h2>${escapeHtml(section.heading)}</h2>${section.paragraphs.map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join('')}</section>`).join('\n  ')}
   <section><h2>${label} Paladin Talents</h2>${linkList(hub.talents)}</section>

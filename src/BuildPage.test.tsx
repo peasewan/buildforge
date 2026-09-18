@@ -39,4 +39,12 @@ describe('Holy healing build page', () => {
     expect(screen.getByRole('heading', { level: 2, name: 'Explore More Protection Builds' })).toBeTruthy()
     expect(document.querySelector('a[href="/wow-forever-protection-paladin-builds"]')).toBeTruthy()
   })
+
+  it('shows the current Beta dataset on a ranked build page', () => {
+    render(<BuildPage buildId="protection-shield-20-31-0" />)
+
+    expect(screen.getByText('Beta build 1.60.1.69893')).toBeTruthy()
+    expect(screen.getByText('Updated September 18, 2026')).toBeTruthy()
+    expect(screen.getByText('3 tooltip updates since 69876')).toBeTruthy()
+  })
 })

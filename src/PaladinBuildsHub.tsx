@@ -3,6 +3,7 @@ import BuildCard from './BuildCard'
 import { HUB_INTRO, HUB_INTRO_SUB, HUB_PLAYSTYLE_SECTIONS, HUB_SPECIALIZATIONS, HUB_TALENTS, HUB_TITLE, type SpecializationIcon } from './data/paladinBuildsHub'
 import { track } from './lib/analytics'
 import SiteFooter from './SiteFooter'
+import BetaDataStatus from './BetaDataStatus'
 
 const specializationIcons: Record<SpecializationIcon, React.ReactNode> = {
   holy: <Sparkles size={34} />,
@@ -33,6 +34,8 @@ export default function PaladinBuildsHub() {
           <HubLink href="/paladin#calculator" placement="hero" className="button primary"><Calculator size={17} /> Open Talent Calculator</HubLink>
         </div>
       </section>
+
+      <BetaDataStatus />
 
       <section className="hub-section shell" id="specializations">
         <header className="hub-section-heading"><div className="eyebrow">Three Talent Paths</div><h2>Choose Your Paladin Specialization</h2><p>Start with the role you want to play, then open a focused build and customize its talent allocation.</p></header>

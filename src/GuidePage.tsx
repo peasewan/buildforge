@@ -2,6 +2,7 @@ import { ArrowRight, BookOpen, Calculator, ExternalLink, Shield, Sparkles, Sword
 import guide from './content/paladin-guide.json'
 import { track } from './lib/analytics'
 import SiteFooter from './SiteFooter'
+import BetaDataStatus from './BetaDataStatus'
 
 const specCards = [
   { name: 'Holy Paladin', description: 'Healing, spell support, and efficient use of the Light.', icon: Sparkles, anchor: 'holy-paladin' },
@@ -31,6 +32,8 @@ export default function GuidePage() {
           </div>
         </div>
       </section>
+
+      <BetaDataStatus />
 
       <section className="guide-specs shell" aria-label="Paladin specializations">
         {specCards.map(({ name, description, icon: Icon, anchor }) => (

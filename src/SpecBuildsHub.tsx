@@ -4,6 +4,7 @@ import { specBuildsHubBySpec } from './data/specBuildsHubs'
 import type { Branch } from './lib/build'
 import { track } from './lib/analytics'
 import SiteFooter from './SiteFooter'
+import BetaDataStatus from './BetaDataStatus'
 
 const specIcons: Record<Branch, React.ReactNode> = {
   holy: <Heart size={15} />,
@@ -41,6 +42,8 @@ export default function SpecBuildsHub({ spec }: { spec: Branch }) {
           <a href="/paladin#calculator" className="button primary" onClick={link('hero')('/paladin#calculator')}><Calculator size={17} /> Open Talent Calculator</a>
         </div>
       </section>
+
+      <BetaDataStatus />
 
       <section className="spec-feature shell" id="featured-build">
         <header className="hub-section-heading"><div className="eyebrow">Featured Build</div><h2>{hub.featured.title}</h2><p>{hub.featured.description}</p></header>

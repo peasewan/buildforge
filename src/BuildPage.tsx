@@ -8,6 +8,7 @@ import { branchNames, talents } from './data/talents'
 import { branchPoints, type Branch } from './lib/build'
 import { track } from './lib/analytics'
 import SiteFooter from './SiteFooter'
+import BetaDataStatus from './BetaDataStatus'
 
 const branches: Branch[] = ['holy', 'protection', 'retribution']
 
@@ -81,6 +82,8 @@ export default function BuildPage({ buildId = HOLY_HEALING_BUILD.id }: { buildId
           </aside>
         </div>
       </section>
+
+      <BetaDataStatus />
 
       <section className="build-talents shell" id="talent-allocation">
         <div className="section-heading centered"><div className="eyebrow">Full allocation</div><h2>Selected Talents</h2><p>The exact ranks loaded by this {build.allocation} {buildContent.spec} Paladin build.</p></div>

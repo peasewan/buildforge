@@ -10,6 +10,7 @@ import { BRANCHES, branchPoints, canIncrement, decodeBuild, decrementTalent, dom
 import { claimBuildCompletion, loadClaimedBuildCompletions, saveClaimedBuildCompletions } from './lib/buildCompletion'
 import { track } from './lib/analytics'
 import SiteFooter from './SiteFooter'
+import BetaDataStatus from './BetaDataStatus'
 
 const branchIcons: Record<Branch, string> = {
   holy: '/images/icons/holy-strike.png',
@@ -238,6 +239,8 @@ export default function App() {
           </aside>
         </div>
       </section>
+
+      <BetaDataStatus />
 
       <section className="spec-section" aria-label="Choose your specialization">
         <div className="shell">

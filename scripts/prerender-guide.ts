@@ -1,6 +1,7 @@
 import { readFile, writeFile } from 'node:fs/promises'
 import { SPEC_BUILDS_HUBS } from '../src/data/specBuildsHubs'
 import { escapeHtml } from '../src/lib/html'
+import { renderBetaStatusPrerender } from '../src/lib/prerender'
 
 /**
  * Every build page links its own specialization's talent page, so no spec page
@@ -58,6 +59,7 @@ const prerendered = `<main class="guide-page guide-prerender">
     ${sections}
     <p><a href="/paladin">Open the WoW Forever Paladin Talent Calculator</a> · <a href="/wow-forever-paladin-builds">Explore all WoW Forever Paladin builds</a></p>
   </article>
+  ${renderBetaStatusPrerender()}
 </main>`
 
 const template = await readFile(outputPath, 'utf8')
@@ -89,6 +91,7 @@ for (const [contentFile, outputFile] of buildTargets) {
       <h1>${escapeHtml(build.title)}</h1>
       <p>${escapeHtml(build.dek)}</p>
       <p><strong>Talent allocation: ${escapeHtml(build.heroHeading.match(/\(([^)]+)\)/)?.[1] ?? '')} — ${escapeHtml(build.allocationSummary)}.</strong></p>
+      ${renderBetaStatusPrerender()}
       <h2>Selected talents</h2>
       <ul>${build.selectedTalents.map((talent) => `<li>${escapeHtml(talent)}</li>`).join('')}</ul>
       ${buildSections}
@@ -110,6 +113,7 @@ const plannerPrerendered = `<main class="planner-prerender">
     <p>Paladin Talent Tool</p>
     <h1>WoW Forever Paladin Talent Calculator</h1>
     <p>Build Paladin talent trees for Holy, Protection, and Retribution. Plan all 51 points, preview talent ranks, create a legal build, and share the exact setup without an account.</p>
+    ${renderBetaStatusPrerender()}
     <section>
       <h2>WoW Forever Paladin Talent Tree</h2>
       <p>The interactive talent tree shows 52 nodes from WoW Forever Beta client build 1.60.1.69893 across all three Paladin specializations. Choose a branch, spend points, and see deeper rows unlock as the allocation becomes valid.</p>

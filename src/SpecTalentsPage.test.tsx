@@ -34,4 +34,12 @@ describe('specialization talent guide', () => {
       expect(document.querySelector(`a[href="${page.hub.href}"]`)).toBeTruthy()
     }
   })
+
+  it('shows the reviewed Beta version on specialization talent pages', () => {
+    render(<SpecTalentsPage spec="holy" />)
+
+    expect(screen.getByText('Beta build 1.60.1.69893')).toBeTruthy()
+    expect(screen.getByText('Updated September 18, 2026')).toBeTruthy()
+    expect(screen.getByText('3 tooltip updates since 69876')).toBeTruthy()
+  })
 })

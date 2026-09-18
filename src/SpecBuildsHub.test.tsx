@@ -56,6 +56,14 @@ describe('specialization builds hub', () => {
     expect(events).toContain('protection_hub_click')
   })
 
+  it('shows the reviewed Beta version on specialization hubs', () => {
+    render(<SpecBuildsHub spec="retribution" />)
+
+    expect(screen.getByText('Beta build 1.60.1.69893')).toBeTruthy()
+    expect(screen.getByText('Updated September 18, 2026')).toBeTruthy()
+    expect(screen.getByText('3 tooltip updates since 69876')).toBeTruthy()
+  })
+
   it('gives every specialization hub a substantial, distinct editorial guide', () => {
     for (const hub of SPEC_BUILDS_HUBS) {
       const sections = (hub as typeof hub & { editorialSections?: { heading: string; paragraphs: string[] }[] }).editorialSections

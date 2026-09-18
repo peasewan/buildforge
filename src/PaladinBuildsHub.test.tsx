@@ -31,6 +31,15 @@ describe('Paladin builds hub', () => {
     for (const href of HUB_BUILD_HREFS) expect(document.querySelector(`a[href="${href}"]`)).toBeTruthy()
   })
 
+  it('shows the current Beta build status without changing the hub title', () => {
+    render(<PaladinBuildsHub />)
+
+    expect(screen.getByRole('heading', { level: 1, name: 'WoW Forever Paladin Builds & Talent Calculator' })).toBeTruthy()
+    expect(screen.getByText('Beta build 1.60.1.69893')).toBeTruthy()
+    expect(screen.getByText('Updated September 18, 2026')).toBeTruthy()
+    expect(screen.getByText('3 tooltip updates since 69876')).toBeTruthy()
+  })
+
   it('lists the spec-specific builds next to their generic parents', () => {
     render(<PaladinBuildsHub />)
 
