@@ -5,6 +5,7 @@ import { branchNames } from "./data/talents";
 import { compareTalentVersions } from "./lib/talentDiff";
 import { track } from "./lib/analytics";
 import SiteFooter from "./SiteFooter";
+import { VerificationLegend } from "./VerificationBadge";
 
 export default function BetaChangesPage() {
   const latestDiff = compareTalentVersions(previousBetaDataset, betaDataset);
@@ -114,6 +115,7 @@ export default function BetaChangesPage() {
 
         <section className="beta-detail-block beta-sources">
           <div><div className="eyebrow">Sources</div><h2>Where This Snapshot Comes From</h2></div>
+          <VerificationLegend />
           <ul>{snapshot.sources.map((source) => <li key={source.url}><span>{source.kind === "official" ? "Official" : "Datamine"}</span><a href={source.url} target="_blank" rel="noreferrer">{source.label}</a></li>)}</ul>
         </section>
         <p className="beta-footnote">Client build {snapshot.clientBuild}, compared with previous Beta build 1.60.1.69876 and Classic Era build {snapshot.comparedWithBuild}. Beta values may change in later builds.</p>

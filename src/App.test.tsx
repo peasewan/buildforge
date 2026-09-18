@@ -49,6 +49,7 @@ describe('Paladin talent calculator page', () => {
 
     expect(screen.getByText("Light's Vigil")).toBeTruthy()
     expect(screen.getAllByText('Verified from Beta client data').length).toBeGreaterThan(0)
+    expect(screen.getAllByText('Client verified').length).toBeGreaterThan(0)
     const source = screen.getAllByRole('link', { name: 'Blizzard WoW Forever Deep Dive' })[0]
     expect(source.getAttribute('href')).toContain('worldofwarcraft.blizzard.com')
   })

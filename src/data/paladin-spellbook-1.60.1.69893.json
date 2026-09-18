@@ -1,0 +1,376 @@
+{
+  "schemaVersion": 1,
+  "className": "Paladin",
+  "clientBuild": "1.60.1.69893",
+  "sourceVersion": "wow_forever_beta_1.60.1.69893_spellbook",
+  "reviewedAt": "2026-09-18",
+  "complete": true,
+  "source": {
+    "type": "client_datamined",
+    "label": "WoW Handbook — Paladin spellbook, Beta client 1.60.1.69893",
+    "url": "https://wowhandbook.com/spellbook/paladin/",
+    "clientBuild": "1.60.1.69893"
+  },
+  "entries": [
+    {
+      "id": "holy_light",
+      "name": "Holy Light",
+      "category": "holy",
+      "learnedAt": 1,
+      "maxRank": 9,
+      "change": "changed"
+    },
+    {
+      "id": "seal_of_righteousness",
+      "name": "Seal of Righteousness",
+      "category": "holy",
+      "learnedAt": 1,
+      "maxRank": 8,
+      "change": "same"
+    },
+    {
+      "id": "purify",
+      "name": "Purify",
+      "category": "holy",
+      "learnedAt": 8,
+      "maxRank": 1,
+      "change": "same"
+    },
+    {
+      "id": "lay_on_hands",
+      "name": "Lay on Hands",
+      "category": "holy",
+      "learnedAt": 10,
+      "maxRank": 3,
+      "change": "changed"
+    },
+    {
+      "id": "redemption",
+      "name": "Redemption",
+      "category": "holy",
+      "learnedAt": 12,
+      "maxRank": 5,
+      "change": "same"
+    },
+    {
+      "id": "blessing_of_wisdom",
+      "name": "Blessing of Wisdom",
+      "category": "holy",
+      "learnedAt": 14,
+      "maxRank": 6,
+      "change": "changed"
+    },
+    {
+      "id": "consecration",
+      "name": "Consecration",
+      "category": "holy",
+      "learnedAt": 20,
+      "maxRank": 5,
+      "change": "was_talent"
+    },
+    {
+      "id": "exorcism",
+      "name": "Exorcism",
+      "category": "holy",
+      "learnedAt": 20,
+      "maxRank": 6,
+      "change": "changed"
+    },
+    {
+      "id": "flash_of_light",
+      "name": "Flash of Light",
+      "category": "holy",
+      "learnedAt": 20,
+      "maxRank": 6,
+      "change": "changed"
+    },
+    {
+      "id": "sense_undead",
+      "name": "Sense Undead",
+      "category": "holy",
+      "learnedAt": 20,
+      "maxRank": 1,
+      "change": "same"
+    },
+    {
+      "id": "turn_undead",
+      "name": "Turn Undead",
+      "category": "holy",
+      "learnedAt": 24,
+      "maxRank": 3,
+      "change": "same"
+    },
+    {
+      "id": "seal_of_light",
+      "name": "Seal of Light",
+      "category": "holy",
+      "learnedAt": 30,
+      "maxRank": 4,
+      "change": "changed"
+    },
+    {
+      "id": "seal_of_wisdom",
+      "name": "Seal of Wisdom",
+      "category": "holy",
+      "learnedAt": 38,
+      "maxRank": 3,
+      "change": "changed"
+    },
+    {
+      "id": "blessing_of_light",
+      "name": "Blessing of Light",
+      "category": "holy",
+      "learnedAt": 40,
+      "maxRank": 3,
+      "change": "changed"
+    },
+    {
+      "id": "cleanse",
+      "name": "Cleanse",
+      "category": "holy",
+      "learnedAt": 42,
+      "maxRank": 1,
+      "change": "same"
+    },
+    {
+      "id": "hammer_of_wrath",
+      "name": "Hammer of Wrath",
+      "category": "holy",
+      "learnedAt": 44,
+      "maxRank": 3,
+      "change": "changed"
+    },
+    {
+      "id": "holy_wrath",
+      "name": "Holy Wrath",
+      "category": "holy",
+      "learnedAt": 50,
+      "maxRank": 2,
+      "change": "changed"
+    },
+    {
+      "id": "greater_blessing_of_wisdom",
+      "name": "Greater Blessing of Wisdom",
+      "category": "holy",
+      "learnedAt": 54,
+      "maxRank": 2,
+      "change": "changed"
+    },
+    {
+      "id": "greater_blessing_of_light",
+      "name": "Greater Blessing of Light",
+      "category": "holy",
+      "learnedAt": 60,
+      "maxRank": 1,
+      "change": "changed"
+    },
+    {
+      "id": "devotion_aura",
+      "name": "Devotion Aura",
+      "category": "protection",
+      "learnedAt": 1,
+      "maxRank": 7,
+      "change": "same"
+    },
+    {
+      "id": "divine_protection",
+      "name": "Divine Protection",
+      "category": "protection",
+      "learnedAt": 6,
+      "maxRank": 2,
+      "change": "changed"
+    },
+    {
+      "id": "hammer_of_justice",
+      "name": "Hammer of Justice",
+      "category": "protection",
+      "learnedAt": 8,
+      "maxRank": 4,
+      "change": "same"
+    },
+    {
+      "id": "blessing_of_protection",
+      "name": "Blessing of Protection",
+      "category": "protection",
+      "learnedAt": 10,
+      "maxRank": 3,
+      "change": "changed"
+    },
+    {
+      "id": "seal_of_fury",
+      "name": "Seal of Fury",
+      "category": "protection",
+      "learnedAt": 10,
+      "maxRank": 7,
+      "change": "new"
+    },
+    {
+      "id": "righteous_fury",
+      "name": "Righteous Fury",
+      "category": "protection",
+      "learnedAt": 16,
+      "maxRank": 1,
+      "change": "changed"
+    },
+    {
+      "id": "blessing_of_freedom",
+      "name": "Blessing of Freedom",
+      "category": "protection",
+      "learnedAt": 18,
+      "maxRank": 1,
+      "change": "same"
+    },
+    {
+      "id": "blessing_of_kings",
+      "name": "Blessing of Kings",
+      "category": "protection",
+      "learnedAt": 20,
+      "maxRank": 1,
+      "change": "was_talent"
+    },
+    {
+      "id": "concentration_aura",
+      "name": "Concentration Aura",
+      "category": "protection",
+      "learnedAt": 22,
+      "maxRank": 1,
+      "change": "same"
+    },
+    {
+      "id": "seal_of_justice",
+      "name": "Seal of Justice",
+      "category": "protection",
+      "learnedAt": 22,
+      "maxRank": 1,
+      "change": "same"
+    },
+    {
+      "id": "blessing_of_salvation",
+      "name": "Blessing of Salvation",
+      "category": "protection",
+      "learnedAt": 26,
+      "maxRank": 1,
+      "change": "changed"
+    },
+    {
+      "id": "shadow_resistance_aura",
+      "name": "Shadow Resistance Aura",
+      "category": "protection",
+      "learnedAt": 28,
+      "maxRank": 3,
+      "change": "changed"
+    },
+    {
+      "id": "divine_intervention",
+      "name": "Divine Intervention",
+      "category": "protection",
+      "learnedAt": 30,
+      "maxRank": 1,
+      "change": "same"
+    },
+    {
+      "id": "frost_resistance_aura",
+      "name": "Frost Resistance Aura",
+      "category": "protection",
+      "learnedAt": 32,
+      "maxRank": 3,
+      "change": "changed"
+    },
+    {
+      "id": "divine_shield",
+      "name": "Divine Shield",
+      "category": "protection",
+      "learnedAt": 34,
+      "maxRank": 2,
+      "change": "changed"
+    },
+    {
+      "id": "fire_resistance_aura",
+      "name": "Fire Resistance Aura",
+      "category": "protection",
+      "learnedAt": 36,
+      "maxRank": 3,
+      "change": "changed"
+    },
+    {
+      "id": "hammer_of_the_righteous",
+      "name": "Hammer of the Righteous",
+      "category": "protection",
+      "learnedAt": 40,
+      "maxRank": 1,
+      "change": "new"
+    },
+    {
+      "id": "blessing_of_sacrifice",
+      "name": "Blessing of Sacrifice",
+      "category": "protection",
+      "learnedAt": 46,
+      "maxRank": 2,
+      "change": "same"
+    },
+    {
+      "id": "greater_blessing_of_kings",
+      "name": "Greater Blessing of Kings",
+      "category": "protection",
+      "learnedAt": 60,
+      "maxRank": 1,
+      "change": "changed"
+    },
+    {
+      "id": "greater_blessing_of_salvation",
+      "name": "Greater Blessing of Salvation",
+      "category": "protection",
+      "learnedAt": 60,
+      "maxRank": 1,
+      "change": "changed"
+    },
+    {
+      "id": "blessing_of_might",
+      "name": "Blessing of Might",
+      "category": "retribution",
+      "learnedAt": 4,
+      "maxRank": 7,
+      "change": "changed"
+    },
+    {
+      "id": "judgement",
+      "name": "Judgement",
+      "category": "retribution",
+      "learnedAt": 4,
+      "maxRank": 1,
+      "change": "changed"
+    },
+    {
+      "id": "holy_strike",
+      "name": "Holy Strike",
+      "category": "retribution",
+      "learnedAt": 6,
+      "maxRank": 8,
+      "change": "new"
+    },
+    {
+      "id": "seal_of_the_crusader",
+      "name": "Seal of the Crusader",
+      "category": "retribution",
+      "learnedAt": 6,
+      "maxRank": 6,
+      "change": "changed"
+    },
+    {
+      "id": "retribution_aura",
+      "name": "Retribution Aura",
+      "category": "retribution",
+      "learnedAt": 16,
+      "maxRank": 5,
+      "change": "changed"
+    },
+    {
+      "id": "greater_blessing_of_might",
+      "name": "Greater Blessing of Might",
+      "category": "retribution",
+      "learnedAt": 52,
+      "maxRank": 2,
+      "change": "changed"
+    }
+  ]
+}

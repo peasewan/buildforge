@@ -20,6 +20,9 @@ jobs:
       - run: npm ci
       - run: npm run talents:validate
       - run: npm run talents:diff:json
+      - run: npm run beta:changes:draft
+      - run: npm run spellbook:validate
+      - run: npm run pipeline:simulate
       - run: npm run typecheck
       - run: npm run lint
       - run: npm test

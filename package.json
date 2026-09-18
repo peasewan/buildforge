@@ -11,7 +11,12 @@
     "lint": "eslint .",
     "talents:diff": "tsx scripts/talents-diff.ts",
     "talents:diff:json": "tsx scripts/talents-diff.ts --json",
-    "talents:validate": "tsx scripts/talents-validate.ts"
+    "talents:validate": "tsx scripts/talents-validate.ts",
+    "beta:changes:draft": "tsx scripts/beta-changes-draft.ts",
+    "spellbook:validate": "tsx scripts/spellbook-validate.ts",
+    "spellbook:query": "tsx scripts/spellbook-query.ts",
+    "pipeline:simulate": "tsx scripts/release-simulate.ts",
+    "analytics:report": "tsx scripts/analytics-report.ts"
   },
   "dependencies": {
     "@vercel/blob": "^2.8.0",

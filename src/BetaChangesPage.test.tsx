@@ -14,6 +14,7 @@ describe('Paladin Beta changes page', () => {
     expect(screen.getByText('Holy 9 · Protection 5 · Retribution 7')).toBeTruthy()
     expect(screen.getByText(/stable client node and spell IDs became available for 52 talents/)).toBeTruthy()
     expect(screen.getByText(/Rank 3:/)).toBeTruthy()
+    expect(screen.getByLabelText('Data verification legend')).toBeTruthy()
   })
 
   it('breaks the archived Preview comparison into structural change types', () => {

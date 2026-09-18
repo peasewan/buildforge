@@ -11,6 +11,7 @@ import { claimBuildCompletion, loadClaimedBuildCompletions, saveClaimedBuildComp
 import { track } from './lib/analytics'
 import SiteFooter from './SiteFooter'
 import BetaDataStatus from './BetaDataStatus'
+import VerificationBadge from './VerificationBadge'
 
 const branchIcons: Record<Branch, string> = {
   holy: '/images/icons/holy-strike.png',
@@ -69,7 +70,8 @@ export function TalentTree({ branch, build, onAdd, onRemove }: { branch: Branch;
               <span>{rankDescription}</span>
               <em>
                 <span>{talentEvidenceLabel(talent)}</span>
-                {talent.prerequisite?.length ? <span>Prerequisite link: client verified · Required rank: Classic-rule assumption</span> : null}
+                <VerificationBadge status="client_verified" />
+                {talent.prerequisite?.length ? <span className="verification-inline">Prerequisite link <VerificationBadge status="client_verified" /> Required rank <VerificationBadge status="derived_assumption" /></span> : null}
                 <span className="talent-sources">
                   Sources:{' '}
                   {talent.sources.map((source, index) => (
