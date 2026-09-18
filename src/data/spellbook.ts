@@ -20,6 +20,20 @@ export interface SpellbookEntry {
   change: SpellChange;
   verificationStatus: EvidenceStatus;
   sources: SpellbookSource[];
+  ranks?: SpellRank[];
+}
+
+export interface SpellRank {
+  rank: number;
+  spellId?: number;
+  learnedAt?: number;
+  description?: string;
+  manaCost?: string;
+  castTime?: string;
+  cooldown?: string;
+  range?: string;
+  verificationStatus: EvidenceStatus;
+  sources: SpellbookSource[];
 }
 
 export interface SpellbookDataset {
@@ -40,7 +54,10 @@ export interface RawSpellbook {
   reviewedAt: string;
   complete: boolean;
   source: SpellbookSource;
-  entries: Array<Omit<SpellbookEntry, "sources" | "verificationStatus"> & { verificationStatus?: EvidenceStatus }>;
+  entries: Array<Omit<SpellbookEntry, "sources" | "verificationStatus" | "ranks"> & {
+    verificationStatus?: EvidenceStatus;
+    ranks?: Array<Omit<SpellRank, "sources" | "verificationStatus"> & { verificationStatus?: EvidenceStatus }>;
+  }>;
 }
 
 export interface SpellbookValidationError {
@@ -60,6 +77,11 @@ export function importSpellbook(raw: RawSpellbook): SpellbookDataset {
       ...entry,
       verificationStatus: entry.verificationStatus ?? raw.source.type,
       sources: [raw.source],
+      ranks: entry.ranks?.map((rank) => ({
+        ...rank,
+        verificationStatus: rank.verificationStatus ?? entry.verificationStatus ?? raw.source.type,
+        sources: [raw.source],
+      })),
     })),
   };
 }
@@ -78,6 +100,12 @@ export function validateSpellbook(dataset: SpellbookDataset): SpellbookValidatio
     if (!entry.name.trim()) errors.push({ id: entry.id, message: "Missing spell name" });
     if (entry.learnedAt < 1 || entry.maxRank < 1) errors.push({ id: entry.id, message: "Invalid level or rank" });
     if (entry.sources.length === 0) errors.push({ id: entry.id, message: "Missing source evidence" });
+    const seenRanks = new Set<number>();
+    for (const rank of entry.ranks ?? []) {
+      if (seenRanks.has(rank.rank) || rank.rank < 1 || rank.rank > entry.maxRank) errors.push({ id: entry.id, message: "Invalid or duplicate rank record" });
+      seenRanks.add(rank.rank);
+      if (rank.sources.length === 0) errors.push({ id: entry.id, message: "Missing rank source evidence" });
+    }
   }
   if (dataset.complete && dataset.entries.length !== 45) {
     errors.push({ id: "dataset", message: "Complete Paladin trainer spellbook must contain 45 entries" });
@@ -92,7 +120,7 @@ export function querySpellbook(
   const search = query.search?.trim().toLocaleLowerCase();
   return dataset.entries.filter((entry) => {
     if (query.category && entry.category !== query.category) return false;
-    if (search && !entry.name.toLocaleLowerCase().includes(search)) return false;
+    if (search && !entry.name.toLocaleLowerCase().includes(search) && !(entry.ranks ?? []).some((rank) => rank.description?.toLocaleLowerCase().includes(search))) return false;
     if (query.minimumLevel !== undefined && entry.learnedAt < query.minimumLevel) return false;
     return true;
   });

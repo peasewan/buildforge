@@ -25,4 +25,18 @@ describe("Paladin spellbook data layer", () => {
     expect(errors.map((error) => error.message)).toContain("Duplicate spellbook id");
     expect(errors.map((error) => error.message)).toContain("Missing source evidence");
   });
+
+  it("preserves optional per-rank trainer levels, spell ids, and tooltips", () => {
+    const raw = structuredClone(rawPaladinSpellbook);
+    raw.entries[0].ranks = [{
+      rank: 1,
+      spellId: 635,
+      learnedAt: 1,
+      description: "Heals a friendly target.",
+    }];
+    const dataset = importSpellbook(raw);
+    expect(dataset.entries[0].ranks?.[0]).toMatchObject({ rank: 1, spellId: 635, learnedAt: 1 });
+    expect(dataset.entries[0].ranks?.[0].sources[0].clientBuild).toBe("1.60.1.69893");
+    expect(querySpellbook(dataset, { search: "friendly target" })[0].name).toBe("Holy Light");
+  });
 });
