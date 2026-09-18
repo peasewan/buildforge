@@ -20,8 +20,10 @@ export type ChangeType = "classic_unchanged" | "moved" | "updated" | "new";
 export type VerificationStatus =
   | "official_confirmed"
   | "demo_verified"
-  | "beta_verified"
+  | "client_verified"
+  | "ingame_verified"
   | "community_correlated"
+  | "derived_assumption"
   | "estimated"
   | "needs_review";
 
@@ -45,13 +47,18 @@ export interface TalentVerification {
   maxRank: VerificationStatus;
   tier: VerificationStatus;
   description: VerificationStatus;
-  prerequisite: VerificationStatus;
+  prerequisiteLink: VerificationStatus;
+  prerequisiteRule: VerificationStatus;
 }
 
 export interface Talent extends TalentDefinition {
   name: string;
   description: string;
   rankDescriptions?: string[];
+  clientNodeId?: number;
+  spellId?: number;
+  confirmedRanks?: number[];
+  complete?: boolean;
   icon: string;
   dataVersion: TalentDataVersion;
   changeType: ChangeType;
@@ -804,7 +811,7 @@ function toTalents(branch: Branch, raw: RawTalent[]): Talent[] {
       maxRank: talent.rank,
       requiredTreePoints: talent.requiredTreePoints,
       prerequisite: talent.prerequisite.length
-        ? talent.prerequisite
+        ? talent.prerequisite.map((talentId) => ({ talentId, requiredRank: null }))
         : undefined,
       icon: BRANCH_ICON[branch],
       dataVersion: PREVIEW_DATA_VERSION,
@@ -816,7 +823,8 @@ function toTalents(branch: Branch, raw: RawTalent[]): Talent[] {
         maxRank: "demo_verified",
         tier: "demo_verified",
         description: "demo_verified",
-        prerequisite: "demo_verified",
+        prerequisiteLink: "demo_verified",
+        prerequisiteRule: "derived_assumption",
       },
       description: talent.description,
       row: talent.y,
@@ -880,20 +888,27 @@ function toBetaTalent(
     branch,
     maxRank: record.maxRank,
     requiredTreePoints: record.requiredTreePoints,
-    prerequisite: record.prerequisite.length ? record.prerequisite : undefined,
+    prerequisite: record.prerequisite.length
+      ? record.prerequisite.map((talentId) => ({ talentId, requiredRank: null }))
+      : undefined,
     icon: BRANCH_ICON[branch],
     dataVersion: source.dataVersion,
     changeType: record.changeType as ChangeType,
-    verificationStatus: "beta_verified",
+    verificationStatus: "client_verified",
     verification: {
-      name: "beta_verified",
-      maxRank: "beta_verified",
-      tier: "beta_verified",
-      description: "beta_verified",
-      prerequisite: "beta_verified",
+      name: "client_verified",
+      maxRank: "client_verified",
+      tier: "client_verified",
+      description: "client_verified",
+      prerequisiteLink: "client_verified",
+      prerequisiteRule: "derived_assumption",
     },
     description: record.description,
     rankDescriptions: record.rankDescriptions,
+    clientNodeId: "nodeId" in record ? record.nodeId : undefined,
+    spellId: "spellId" in record ? record.spellId : undefined,
+    confirmedRanks: record.confirmedRanks,
+    complete: record.complete,
     row: record.row,
     column: record.column,
     x: COLUMN_X[record.column],
@@ -925,7 +940,7 @@ export const previousBetaTalents: Talent[] = previousBetaTalentData.talents.map(
 export const talents = betaTalents;
 
 export function talentEvidenceLabel(talent: Talent): string {
-  if (talent.verificationStatus === "beta_verified") {
+  if (talent.verificationStatus === "client_verified") {
     return "Verified from Beta client data";
   }
   if (talent.verification.name === "official_confirmed") {

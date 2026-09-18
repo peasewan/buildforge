@@ -21,7 +21,8 @@ function makeTalent(overrides: Partial<Talent> = {}): Talent {
       maxRank: "demo_verified",
       tier: "demo_verified",
       description: "demo_verified",
-      prerequisite: "demo_verified",
+      prerequisiteLink: "demo_verified",
+      prerequisiteRule: "derived_assumption",
     },
     row: 0,
     column: 0,
@@ -152,11 +153,48 @@ describe("compareTalentVersions", () => {
 
   it("captures a prerequisite change", () => {
     const diff = compareTalentVersions(
-      makeDataset({ talents: [makeTalent({ prerequisite: ["x"] })] }),
-      makeDataset({ talents: [makeTalent({ prerequisite: ["y"] })] }),
+      makeDataset({ talents: [makeTalent({ prerequisite: [{ talentId: "x", requiredRank: null }] })] }),
+      makeDataset({ talents: [makeTalent({ prerequisite: [{ talentId: "y", requiredRank: null }] })] }),
     );
 
-    expect(diff.changed[0].changes.prerequisite).toEqual({ before: ["x"], after: ["y"] });
+    expect(diff.changed[0].changes.prerequisite).toEqual({
+      before: [{ talentId: "x", requiredRank: null }],
+      after: [{ talentId: "y", requiredRank: null }],
+    });
+  });
+
+  it("reports the exact ranks whose tooltips changed", () => {
+    const diff = compareTalentVersions(
+      makeDataset({ talents: [makeTalent({ rankDescriptions: ["Old one", "Same", "Old three"] })] }),
+      makeDataset({ talents: [makeTalent({ rankDescriptions: ["New one", "Same", "New three"] })] }),
+    );
+
+    expect(diff.changed[0].changes.rankDescriptions).toEqual([
+      { rank: 1, before: "Old one", after: "New one" },
+      { rank: 3, before: "Old three", after: "New three" },
+    ]);
+  });
+
+  it("matches a renamed talent by client node id before its internal id", () => {
+    const diff = compareTalentVersions(
+      makeDataset({ talents: [makeTalent({ id: "old-slug", clientNodeId: 42, name: "Old Name" })] }),
+      makeDataset({ talents: [makeTalent({ id: "new-slug", clientNodeId: 42, name: "New Name" })] }),
+    );
+
+    expect(diff.added).toHaveLength(0);
+    expect(diff.removed).toHaveLength(0);
+    expect(diff.changed[0].changes.name).toEqual({ before: "Old Name", after: "New Name" });
+  });
+
+  it("separates newly available stable ids from gameplay changes", () => {
+    const diff = compareTalentVersions(
+      makeDataset({ talents: [makeTalent()] }),
+      makeDataset({ talents: [makeTalent({ clientNodeId: 42, spellId: 9001 })] }),
+    );
+
+    expect(diff.changed).toHaveLength(0);
+    expect(diff.unchanged).toHaveLength(1);
+    expect(diff.metadataChanged[0]).toMatchObject({ id: "a" });
   });
 
   it("captures a name and description update", () => {

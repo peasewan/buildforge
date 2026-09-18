@@ -139,7 +139,7 @@ const plannerPrerendered = `<main class="planner-prerender">
     <p><a href="/wow-forever-paladin-talents">Read the WoW Forever Paladin talent guide</a></p>
     <p><a href="/wow-forever-paladin-builds">Explore the WoW Forever Paladin builds hub</a></p>
     <h2>WoW Forever Paladin Beta Data</h2>
-    <p>The calculator now uses all 52 Paladin talents from Beta client build 1.60.1.69893, including tree positions, rank caps, prerequisites, and every rank tooltip. <a href="/wow-forever-paladin-beta-talent-changes">Review the Paladin Beta talent diff</a>.</p>
+    <p>The calculator now uses all 52 Paladin talents from Beta client build 1.60.1.69893, including tree positions, rank caps, prerequisite links, and every rank tooltip. The client does not specify the required prerequisite rank, so the planner labels its Classic max-rank rule as an assumption. <a href="/wow-forever-paladin-beta-talent-changes">Review the Paladin Beta talent diff</a>.</p>
   </article>
 </main>`
 

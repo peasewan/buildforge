@@ -10,6 +10,7 @@
     "test": "vitest run",
     "lint": "eslint .",
     "talents:diff": "tsx scripts/talents-diff.ts",
+    "talents:diff:json": "tsx scripts/talents-diff.ts --json",
     "talents:validate": "tsx scripts/talents-validate.ts"
   },
   "dependencies": {

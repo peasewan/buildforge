@@ -1,10 +1,28 @@
-import { betaDataset, communityPreviewDataset } from "../src/data/datasets";
+import { betaDataset, previousBetaDataset } from "../src/data/datasets";
 import { compareTalentVersions } from "../src/lib/talentDiff";
 import type { Branch } from "../src/lib/build";
 
-const diff = compareTalentVersions(communityPreviewDataset, betaDataset);
+const diff = compareTalentVersions(previousBetaDataset, betaDataset);
+
+if (process.argv.includes("--json")) {
+  console.log(JSON.stringify({
+    from: previousBetaDataset.sourceVersion,
+    to: betaDataset.sourceVersion,
+    summary: {
+      added: diff.added.length,
+      removed: diff.removed.length,
+      changed: diff.changed.length,
+      unchanged: diff.unchanged.length,
+      metadataChanged: diff.metadataChanged.length,
+    },
+    changes: diff.changed,
+    metadataChanges: diff.metadataChanged,
+  }, null, 2));
+  process.exit(0);
+}
 
 console.log("Paladin Talent Diff");
+console.log(`${previousBetaDataset.label} → ${betaDataset.label}`);
 console.log("");
 
 if (diff.status === "waiting") {
@@ -21,6 +39,7 @@ if (diff.status === "waiting") {
   console.log(`Removed: ${diff.removed.length}`);
   console.log(`Changed: ${diff.changed.length}`);
   console.log(`Unchanged: ${diff.unchanged.length}`);
+  console.log(`Metadata changed: ${diff.metadataChanged.length}`);
   console.log("");
 
   const branches: Branch[] = ["holy", "protection", "retribution"];

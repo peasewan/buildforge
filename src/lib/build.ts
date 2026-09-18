@@ -2,12 +2,18 @@ export type Branch = 'holy' | 'protection' | 'retribution'
 
 export type Build = Record<string, number>
 
+export interface TalentPrerequisite {
+  talentId: string
+  /** Null means the client confirms the link but not the required rank. */
+  requiredRank: number | null
+}
+
 export interface TalentDefinition {
   id: string
   branch: Branch
   maxRank: number
   requiredTreePoints: number
-  prerequisite?: string[]
+  prerequisite?: TalentPrerequisite[]
 }
 
 export const BRANCHES: Branch[] = ['holy', 'protection', 'retribution']
@@ -50,9 +56,10 @@ export function canIncrement(
   if (branchPoints(build, talent.branch, talents) < talent.requiredTreePoints) return false
 
   if (talent.prerequisite) {
-    for (const requiredId of talent.prerequisite) {
-      const prerequisite = talents.find((candidate) => candidate.id === requiredId)
-      if (!prerequisite || (build[prerequisite.id] ?? 0) < prerequisite.maxRank) return false
+    for (const requirement of talent.prerequisite) {
+      const prerequisite = talents.find((candidate) => candidate.id === requirement.talentId)
+      const requiredRank = requirement.requiredRank ?? prerequisite?.maxRank
+      if (!prerequisite || requiredRank === undefined || (build[prerequisite.id] ?? 0) < requiredRank) return false
     }
   }
 
@@ -74,9 +81,10 @@ function remainsValid(build: Build, talent: TalentDefinition, talents: TalentDef
     return false
   }
   if (!talent.prerequisite || talent.prerequisite.length === 0) return true
-  return talent.prerequisite.every((requiredId) => {
-    const prerequisite = talents.find((candidate) => candidate.id === requiredId)
-    return Boolean(prerequisite && (build[prerequisite.id] ?? 0) >= prerequisite.maxRank)
+  return talent.prerequisite.every((requirement) => {
+    const prerequisite = talents.find((candidate) => candidate.id === requirement.talentId)
+    const requiredRank = requirement.requiredRank ?? prerequisite?.maxRank
+    return Boolean(prerequisite && requiredRank !== undefined && (build[prerequisite.id] ?? 0) >= requiredRank)
   })
 }
 

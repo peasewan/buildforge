@@ -34,7 +34,7 @@ export const SPEC_TALENTS_PAGES: SpecTalentsPageConfig[] = [
     intro: 'Explore the Holy Paladin talent tree. Plan talent points, review the healing and support talents, and create your own build.',
     buildId: 'holy-healing-31-20-0',
     allocation: {
-      label: 'Preview allocation',
+      label: 'Example Beta allocation',
       value: '31 Holy',
       note: 'The selected route reaches Holy Shock and Light’s Vigil through the healing, spell support, and utility talents in the Beta client build 1.60.1.69893.',
     },
@@ -42,7 +42,7 @@ export const SPEC_TALENTS_PAGES: SpecTalentsPageConfig[] = [
       {
         heading: 'Planning Holy Paladin Talents',
         paragraphs: [
-          'Holy Paladin talents organize the healing side of the WoW Forever Paladin tree. The opening rows in this preview include Divine Strength and Divine Intellect, which support the class baseline before any healing choice is made. Healing Light, Spiritual Focus, and Improved Seals follow, alongside utility options such as Unyielding Faith and Reverence that shape how the build plays around other players.',
+          'Holy Paladin talents organize the healing side of the WoW Forever Paladin tree. The opening rows in this Beta example include Divine Strength and Divine Intellect, which support the class baseline before any healing choice is made. Healing Light, Spiritual Focus, and Improved Seals follow, alongside utility options such as Unyielding Faith and Reverence that shape how the build plays around other players.',
           'Deeper rows move into the talents a healing build is usually recognised by. Illumination, Divine Favor, and Divine Precision sit alongside Purifying Power and Infusion of Light, with Holy Shock and Light’s Vigil among the nodes that define the specialization. BuildForgeTools publishes these nodes from Beta client build 1.60.1.69893 so players can inspect the current structure and rank tooltips.',
         ],
       },
@@ -71,7 +71,7 @@ export const SPEC_TALENTS_PAGES: SpecTalentsPageConfig[] = [
     intro: 'Explore the Protection Paladin talent tree. Plan talent points, review key talents, and create your own build.',
     buildId: 'protection-shield-20-31-0',
     allocation: {
-      label: 'Preview allocation',
+      label: 'Example Beta allocation',
       value: '31 Protection',
       note: 'The selected route reaches Holy Shield through defensive, threat, shield, and utility talents represented in the Beta client build 1.60.1.69893.',
     },
@@ -79,7 +79,7 @@ export const SPEC_TALENTS_PAGES: SpecTalentsPageConfig[] = [
       {
         heading: 'Planning Protection Paladin Talents',
         paragraphs: [
-          'Protection Paladin talents organize the defensive side of the WoW Forever Paladin tree. The opening rows in this preview include Toughness, Redoubt, Precision, and Anticipation, which build the baseline a tank works from. Improved Righteous Fury and Improved Seal of Fury address threat, while Guardian’s Favor and Sacred Duty support the tools a group expects from a Paladin.',
+          'Protection Paladin talents organize the defensive side of the WoW Forever Paladin tree. The opening rows in this Beta example include Toughness, Redoubt, Precision, and Anticipation, which build the baseline a tank works from. Improved Righteous Fury and Improved Seal of Fury address threat, while Guardian’s Favor and Sacred Duty support the tools a group expects from a Paladin.',
           'Deeper rows add the shield and durability choices the specialization is recognised by. Shield Specialization, One-Handed Weapon Specialization, and Templar’s Bulwark sit alongside Reckoning, Iron Creed, and Swift Judgement, with Holy Shield among the nodes that define the route. BuildForgeTools publishes these nodes from Beta client build 1.60.1.69893 so players can inspect the current structure and rank tooltips.',
         ],
       },
@@ -108,7 +108,7 @@ export const SPEC_TALENTS_PAGES: SpecTalentsPageConfig[] = [
     intro: 'Explore the Retribution Paladin talent tree. Plan talent points, review the damage talents, and create your own build.',
     buildId: 'retribution-judgment-0-20-31',
     allocation: {
-      label: 'Preview allocation',
+      label: 'Example Beta allocation',
       value: '31 Retribution',
       note: 'The selected route reaches Crusade and Vengeance through the weapon, judgement, and seal talents in the Beta client build 1.60.1.69893.',
     },
@@ -116,7 +116,7 @@ export const SPEC_TALENTS_PAGES: SpecTalentsPageConfig[] = [
       {
         heading: 'Planning Retribution Paladin Talents',
         paragraphs: [
-          'Retribution Paladin talents organize the damage side of the WoW Forever Paladin tree. The opening rows in this preview include Deflection, Benediction, and Improved Judgement, which set up the weapon and seal play the specialization is built around. Conviction and Vindication follow, alongside utility options such as Pursuit of Justice and Eye for an Eye that change how the build answers pressure.',
+          'Retribution Paladin talents organize the damage side of the WoW Forever Paladin tree. The opening rows in this Beta example include Deflection, Benediction, and Improved Judgement, which set up the weapon and seal play the specialization is built around. Conviction and Vindication follow, alongside utility options such as Pursuit of Justice and Eye for an Eye that change how the build answers pressure.',
           'Deeper rows add the talents an offensive build is usually recognised by. Seal of Command, Sanctified Judgement, Crusade, and Vengeance sit alongside Two-Handed Weapon Specialization, Sacred Arbiter, and Repentance, with Champion of the Light, Instrument of Law, and Twist of Light among the nodes that close the route. BuildForgeTools publishes these nodes from Beta client build 1.60.1.69893 so players can inspect the current structure and rank tooltips.',
         ],
       },

@@ -2,7 +2,7 @@ import { readFile, writeFile } from "node:fs/promises";
 import { PALADIN_BETA_SNAPSHOT } from "../src/data/betaSnapshot";
 import { betaDataset, communityPreviewDataset, previousBetaDataset } from "../src/data/datasets";
 import { escapeHtml } from "../src/lib/html";
-import { compareTalentVersions } from "../src/lib/talentDiff";
+import { compareTalentVersions, type TalentChange } from "../src/lib/talentDiff";
 
 const outputPath = new URL("../dist/wow-forever-paladin-beta-talent-changes/index.html", import.meta.url);
 const latestDiff = compareTalentVersions(previousBetaDataset, betaDataset);
@@ -16,12 +16,13 @@ const previewMoved = archiveDiff.changed.filter((change) => change.changes.row |
 const previewRankChanged = archiveDiff.changed.filter((change) => change.changes.maxRank);
 const previewPrerequisitesChanged = archiveDiff.changed.filter((change) => change.changes.prerequisite);
 
-const changeSummary = (change: { name: string; changes: Record<string, { before: unknown; after: unknown }> }) => {
+const changeSummary = (change: TalentChange) => {
   const parts: string[] = [];
   if (change.changes.maxRank) parts.push(`Rank ${change.changes.maxRank.before} → ${change.changes.maxRank.after}`);
   if (change.changes.row) parts.push(`Row ${(change.changes.row.before as number) + 1} → ${(change.changes.row.after as number) + 1}`);
   if (change.changes.column) parts.push(`Column ${(change.changes.column.before as number) + 1} → ${(change.changes.column.after as number) + 1}`);
   if (change.changes.description) parts.push("Tooltip updated");
+  if (change.changes.rankDescriptions) parts.push(`Ranks ${change.changes.rankDescriptions.map((rank) => rank.rank).join(", ")} updated`);
   return parts.join(" · ");
 };
 
@@ -39,6 +40,7 @@ const prerendered = `<main class="beta-page beta-prerender">
     <p>${movedFromClassic.map((talent) => escapeHtml(talent.name)).join(" · ")}</p>
     <h2>Beta build 1.60.1.69876 → 1.60.1.69893</h2>
     <p>Added: ${latestDiff.added.length} · Removed: ${latestDiff.removed.length} · Changed: ${latestDiff.changed.length} · Unchanged: ${latestDiff.unchanged.length}</p>
+    <p>Technical metadata: stable client node and spell IDs became available for ${latestDiff.metadataChanged.length} talents in build 69893.</p>
     <ul>${latestDiff.changed.map((change) => `<li>${escapeHtml(change.name)} — ${escapeHtml(changeSummary(change))}</li>`).join("")}</ul>
     <h2>Preview → Beta 1.60.1.69893</h2>
     <p>Added: ${archiveDiff.added.length} · Removed: ${archiveDiff.removed.length} · Changed: ${archiveDiff.changed.length} · Moved: ${previewMoved.length} · Rank changed: ${previewRankChanged.length} · Prerequisites changed: ${previewPrerequisitesChanged.length} · Unchanged: ${archiveDiff.unchanged.length}</p>

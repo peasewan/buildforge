@@ -36,7 +36,8 @@ describe("WoW Forever Paladin talent data", () => {
       expect(talent.y).toBeGreaterThan(0);
       expect(talent.y).toBeLessThan(100);
       for (const prerequisite of talent.prerequisite ?? []) {
-        expect(ids).toContain(prerequisite);
+        expect(ids).toContain(prerequisite.talentId);
+        expect(prerequisite.requiredRank).toBeNull();
       }
     }
   });
@@ -44,8 +45,10 @@ describe("WoW Forever Paladin talent data", () => {
   it("keeps change history separate from field-level verification", () => {
     for (const talent of talents) {
       expect(talent.dataVersion).toBe(DATA_VERSION);
-      expect(talent.verificationStatus).toBe("beta_verified");
+      expect(talent.verificationStatus).toBe("client_verified");
       expect(talent.rankDescriptions).toHaveLength(talent.maxRank);
+      expect(talent.clientNodeId).toEqual(expect.any(Number));
+      expect(talent.spellId).toEqual(expect.any(Number));
       expect(["classic_unchanged", "moved", "updated", "new"]).toContain(
         talent.changeType,
       );
@@ -54,7 +57,8 @@ describe("WoW Forever Paladin talent data", () => {
         maxRank: expect.any(String),
         tier: expect.any(String),
         description: expect.any(String),
-        prerequisite: expect.any(String),
+        prerequisiteLink: "client_verified",
+        prerequisiteRule: "derived_assumption",
       });
       expect(talent.sources.length).toBeGreaterThan(0);
       for (const source of talent.sources) {
@@ -76,8 +80,8 @@ describe("WoW Forever Paladin talent data", () => {
 
     for (const id of officiallyNamed) {
       const talent = talents.find((candidate) => candidate.id === id);
-      expect(talent?.verification.name).toBe("beta_verified");
-      expect(talent?.verification.description).toBe("beta_verified");
+      expect(talent?.verification.name).toBe("client_verified");
+      expect(talent?.verification.description).toBe("client_verified");
       expect(talent?.sources.some((source) => source.type === "official")).toBe(
         true,
       );
@@ -90,7 +94,7 @@ describe("WoW Forever Paladin talent data", () => {
     expect(
       holyPower?.sources.some((source) => source.type === "classic_reference"),
     ).toBe(true);
-    expect(holyPower?.verification.name).toBe("beta_verified");
+    expect(holyPower?.verification.name).toBe("client_verified");
   });
 
   it("captures the exact 69876 to 69893 client diff", () => {
@@ -115,5 +119,7 @@ describe("WoW Forever Paladin talent data", () => {
       "Seal of Command",
     ]);
     expect(diff.unchanged).toHaveLength(49);
+    expect(diff.metadataChanged).toHaveLength(52);
+    expect(diff.changed.find((change) => change.id === "vindication")?.changes.rankDescriptions).toHaveLength(3);
   });
 });

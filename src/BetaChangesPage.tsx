@@ -80,6 +80,7 @@ export default function BetaChangesPage() {
           <p><strong>Changed:</strong> {latestDiff.changed.length}</p>
           <p><strong>Unchanged:</strong> {latestDiff.unchanged.length}</p>
         </div>
+        <p className="beta-footnote">Technical metadata: stable client node and spell IDs became available for {latestDiff.metadataChanged.length} talents in build 69893.</p>
 
         <section className="beta-talent-section">
           <h2>Updated in 69893</h2>
@@ -87,7 +88,8 @@ export default function BetaChangesPage() {
             {latestDiff.changed.map((change) => (
               <article key={change.id}>
                 <h3>{change.name}</h3>
-                {change.changes.description && <p>Tooltip: <span className="beta-old">{change.changes.description.before}</span> → <span className="beta-new">{change.changes.description.after}</span></p>}
+                {change.changes.rankDescriptions?.map((rank) => <p key={rank.rank}>Rank {rank.rank}: <span className="beta-old">{rank.before}</span> → <span className="beta-new">{rank.after}</span></p>)}
+                {!change.changes.rankDescriptions && change.changes.description && <p>Tooltip: <span className="beta-old">{change.changes.description.before}</span> → <span className="beta-new">{change.changes.description.after}</span></p>}
               </article>
             ))}
           </div>

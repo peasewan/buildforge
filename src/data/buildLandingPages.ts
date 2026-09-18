@@ -58,7 +58,7 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
       { label: 'Class', value: 'Paladin' },
       { label: 'Role', value: 'Leveling' },
       { label: 'Recommended For', value: 'New Players' },
-      { label: 'Talent Points', value: 'Preview' },
+      { label: 'Talent Points', value: 'Beta example' },
     ],
     sections: [
       {
@@ -83,7 +83,7 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
       },
       {
         kind: 'bullets',
-        title: 'How to Use This Leveling Preview',
+        title: 'How to Use This Beta Example',
         intro: 'Open the planner, choose the branch that matches your current playstyle, and spend points in the order they become available. Keep a share link whenever you reach a useful milestone.',
         items: ['Compare Holy, Protection, and Retribution paths.', 'Watch prerequisites before planning deeper talents.', 'Talent details use verified Beta client build 1.60.1.69893 data.'],
       },
@@ -283,7 +283,7 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
       {
         kind: 'cards',
         title: 'Why This Tank Build',
-        intro: 'This dungeon preview starts from the site’s 20/31/0 Protection example and keeps the three jobs of a tank visible.',
+        intro: 'This dungeon Beta example starts from the site’s 20/31/0 Protection allocation and keeps the three jobs of a tank visible.',
         items: [
           { title: 'Survivability', body: 'Increase defensive capability and create a steadier base for dungeon encounters.', icon: 'shield' },
           { title: 'Threat Generation', body: 'Plan talents that help maintain enemy attention while the party deals damage.', icon: 'sword' },

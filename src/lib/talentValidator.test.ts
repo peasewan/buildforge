@@ -21,7 +21,8 @@ function makeTalent(overrides: Partial<Talent> = {}): Talent {
       maxRank: "demo_verified",
       tier: "demo_verified",
       description: "demo_verified",
-      prerequisite: "demo_verified",
+      prerequisiteLink: "demo_verified",
+      prerequisiteRule: "derived_assumption",
     },
     row: 0,
     column: 0,
@@ -59,7 +60,7 @@ describe("validateTalentDataset", () => {
 
   it("flags a prerequisite that points to a missing talent", () => {
     const errors = validateTalentDataset(
-      makeDataset({ talents: [makeTalent({ id: "a", prerequisite: ["ghost"] })] }),
+      makeDataset({ talents: [makeTalent({ id: "a", prerequisite: [{ talentId: "ghost", requiredRank: null }] })] }),
     );
     expect(errors.some((error) => error.message.includes("ghost"))).toBe(true);
   });
@@ -76,5 +77,38 @@ describe("validateTalentDataset", () => {
       makeDataset({ talents: [makeTalent({ maxRank: 0 })] }),
     );
     expect(errors.some((error) => error.message === "Invalid maxRank")).toBe(true);
+  });
+
+  it("flags rank tooltip counts that do not match maxRank", () => {
+    const errors = validateTalentDataset(
+      makeDataset({ talents: [makeTalent({ maxRank: 2, rankDescriptions: ["Rank one"] })] }),
+    );
+    expect(errors.some((error) => error.message === "rankDescriptions length does not match maxRank")).toBe(true);
+  });
+
+  it("flags duplicate branch grid positions", () => {
+    const errors = validateTalentDataset(
+      makeDataset({ talents: [makeTalent({ id: "a" }), makeTalent({ id: "b" })] }),
+    );
+    expect(errors.some((error) => error.message === "Duplicate talent grid position")).toBe(true);
+  });
+
+  it("flags duplicate client node and spell ids when present", () => {
+    const errors = validateTalentDataset(
+      makeDataset({ talents: [
+        makeTalent({ id: "a", clientNodeId: 42, spellId: 9001 }),
+        makeTalent({ id: "b", row: 1, clientNodeId: 42, spellId: 9001 }),
+      ] }),
+    );
+    expect(errors.some((error) => error.message === "Duplicate clientNodeId")).toBe(true);
+    expect(errors.some((error) => error.message === "Duplicate spellId")).toBe(true);
+  });
+
+  it("flags prerequisite cycles", () => {
+    const errors = validateTalentDataset(makeDataset({ talents: [
+      makeTalent({ id: "a", prerequisite: [{ talentId: "b", requiredRank: null }] }),
+      makeTalent({ id: "b", row: 1, prerequisite: [{ talentId: "a", requiredRank: null }] }),
+    ] }));
+    expect(errors.some((error) => error.message === "Prerequisite cycle detected")).toBe(true);
   });
 });

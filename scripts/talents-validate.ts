@@ -1,9 +1,9 @@
-import { betaDataset, communityPreviewDataset } from "../src/data/datasets";
+import { betaDataset, communityPreviewDataset, previousBetaDataset } from "../src/data/datasets";
 import { validateTalentDataset } from "../src/lib/talentValidator";
 
 let failed = false;
 
-for (const dataset of [communityPreviewDataset, betaDataset]) {
+for (const dataset of [communityPreviewDataset, previousBetaDataset, betaDataset]) {
   const errors = validateTalentDataset(dataset);
   console.log(`${dataset.label} (${dataset.role}, ${dataset.status}): ${dataset.talents.length} talents`);
 

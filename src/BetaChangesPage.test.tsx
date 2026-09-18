@@ -12,6 +12,8 @@ describe('Paladin Beta changes page', () => {
     expect(screen.getAllByText('Beta Week 1 — Level 20').length).toBeGreaterThan(0)
     expect(screen.getByText('52 talents · 21 new in WoW Forever')).toBeTruthy()
     expect(screen.getByText('Holy 9 · Protection 5 · Retribution 7')).toBeTruthy()
+    expect(screen.getByText(/stable client node and spell IDs became available for 52 talents/)).toBeTruthy()
+    expect(screen.getByText(/Rank 3:/)).toBeTruthy()
   })
 
   it('breaks the archived Preview comparison into structural change types', () => {
