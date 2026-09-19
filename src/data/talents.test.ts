@@ -2,6 +2,8 @@ import { describe, expect, it } from "vitest";
 import { betaTalents, DATA_VERSION, previousBetaTalents, talents } from "./talents";
 import { compareTalentVersions } from "../lib/talentDiff";
 import type { TalentDataset } from "./datasets";
+import { existsSync } from "node:fs";
+import { join } from "node:path";
 
 describe("WoW Forever Paladin talent data", () => {
   it("contains the complete 52-node Beta client dataset", () => {
@@ -15,6 +17,17 @@ describe("WoW Forever Paladin talent data", () => {
     expect(
       talents.filter((talent) => talent.branch === "retribution"),
     ).toHaveLength(18);
+  });
+
+  it("maps every Beta iconName to a distinct local game icon asset", () => {
+    expect(new Set(talents.map((talent) => talent.iconName)).size).toBe(52);
+
+    for (const talent of talents) {
+      expect(talent.iconName).toBeTruthy();
+      expect(talent.icon).toBe(`/images/talents/${talent.iconName}.jpg`);
+      expect(talent.icon).not.toMatch(/^https?:/);
+      expect(existsSync(join(process.cwd(), "public", talent.icon))).toBe(true);
+    }
   });
 
   it("classifies the 21 Forever talents by specialization", () => {

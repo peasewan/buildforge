@@ -60,6 +60,7 @@ export interface Talent extends TalentDefinition {
   confirmedRanks?: number[];
   complete?: boolean;
   icon: string;
+  iconName?: string;
   dataVersion: TalentDataVersion;
   changeType: ChangeType;
   verificationStatus: VerificationStatus;
@@ -891,7 +892,10 @@ function toBetaTalent(
     prerequisite: record.prerequisite.length
       ? record.prerequisite.map((talentId) => ({ talentId, requiredRank: null }))
       : undefined,
-    icon: BRANCH_ICON[branch],
+    icon: record.iconName
+      ? `/images/talents/${record.iconName.toLowerCase()}.jpg`
+      : BRANCH_ICON[branch],
+    iconName: record.iconName?.toLowerCase(),
     dataVersion: source.dataVersion,
     changeType: record.changeType as ChangeType,
     verificationStatus: "client_verified",
