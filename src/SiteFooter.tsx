@@ -4,6 +4,7 @@ export interface FooterLink {
 }
 
 const defaultLinks: FooterLink[] = [
+  { href: '/emberville', label: 'Emberville Planner' },
   { href: '/wow-forever-paladin-builds', label: 'Paladin Builds' },
   { href: '/paladin', label: 'Talent Calculator' },
   { href: '/wow-forever-paladin-talents', label: 'Paladin Talents' },

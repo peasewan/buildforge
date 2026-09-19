@@ -4,9 +4,10 @@ import { SPEC_BUILDS_HUBS } from '../data/specBuildsHubs'
 import { SPEC_TALENTS_PAGES } from '../data/specTalentsPages'
 import { TRUST_PAGES, type TrustPageId } from '../data/trustPages'
 import type { Branch } from './build'
+import { EMBERVILLE_PAGES, type EmbervillePageId } from '../data/emberville'
 
 export interface PageDefinition {
-  kind: 'planner' | 'guide' | 'build-guide' | 'build-landing' | 'build-hub' | 'spec-hub' | 'spec-talents' | 'beta-changes' | 'trust'
+  kind: 'planner' | 'guide' | 'build-guide' | 'build-landing' | 'build-hub' | 'spec-hub' | 'spec-talents' | 'beta-changes' | 'trust' | 'emberville'
   title: string
   description: string
   canonical: string
@@ -15,6 +16,7 @@ export interface PageDefinition {
   landingPageId?: BuildLandingPageId
   spec?: Branch
   trustPageId?: TrustPageId
+  embervillePageId?: EmbervillePageId
 }
 
 const plannerPage: PageDefinition = {
@@ -87,6 +89,12 @@ const betaChangesPage: PageDefinition = {
 
 export function pageForPath(pathname: string): PageDefinition {
   const normalized = pathname.replace(/\/+$/, '') || '/'
+  const embervillePage = EMBERVILLE_PAGES.find((page) => normalized === `/${page.slug}`)
+  if (embervillePage) return {
+    kind: 'emberville', embervillePageId: embervillePage.id,
+    title: embervillePage.metaTitle, description: embervillePage.description,
+    canonical: `https://buildforgetools.com/${embervillePage.slug}`, robots: 'index, follow',
+  }
   if (normalized === '/build') return { ...plannerPage, robots: 'noindex, follow' }
   if (normalized === '/wow-forever-paladin-builds') return buildsHubPage
   const trustPage = TRUST_PAGES.find((page) => normalized === `/${page.slug}`)

@@ -2,6 +2,14 @@ import { describe, expect, it } from 'vitest'
 import { pageForPath } from './routes'
 
 describe('public page routing', () => {
+  it.each([
+    ['/emberville', 'planner', 'Emberville Build Planner | BuildForgeTools'],
+    ['/emberville-builds', 'builds', 'Emberville Builds | Build Planner & Ideas'],
+    ['/emberville-classes', 'classes', 'Emberville Classes | Confirmed Systems & Planning'],
+    ['/emberville-skill-inheritance', 'inheritance', 'Emberville Skill Inheritance Guide | BuildForgeTools'],
+  ])('serves %s as an indexable Emberville page', (pathname, embervillePageId, title) => {
+    expect(pageForPath(pathname)).toMatchObject({ kind: 'emberville', embervillePageId, title, canonical: `https://buildforgetools.com${pathname}`, robots: 'index, follow' })
+  })
   it('serves the calculator for the canonical tool path and shared builds', () => {
     expect(pageForPath('/paladin')).toMatchObject({
       kind: 'planner',

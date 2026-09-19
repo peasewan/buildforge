@@ -7,11 +7,24 @@ import { specTalentsPageBySpec } from '../data/specTalentsPages'
 import { trustPageById, type TrustPageId } from '../data/trustPages'
 import { PALADIN_BETA_STATUS } from '../data/betaStatus'
 import { betaAvailabilityFor } from '../data/betaAvailability'
+import { EMBERVILLE_MECHANICS, EMBERVILLE_PAGES, EMBERVILLE_SOURCES, EMBERVILLE_STATUS, embervillePageById, type EmbervillePageId } from '../data/emberville'
 
 const link = (href: string, label: string) => `<a href="${escapeHtml(href)}">${escapeHtml(label)}</a>`
 
 const linkList = (links: { href: string; label: string }[]) =>
   `<ul>${links.map(({ href, label }) => `<li>${link(href, label)}</li>`).join('')}</ul>`
+
+export function renderEmbervillePrerender(pageId: EmbervillePageId): string {
+  const page = embervillePageById(pageId)
+  const related = EMBERVILLE_PAGES.filter((item) => item.id !== pageId).map((item) => ({ href: `/${item.slug}`, label: item.title }))
+  const pageCopy: Record<EmbervillePageId, string> = {
+    planner: '<h2>Plan with confirmed systems</h2><p>Choose a melee, magic, ranged, or hybrid combat direction. Class, weapon, and skill records remain locked until reliable identifiers and rules are confirmed.</p>',
+    builds: '<h2>Explore build directions</h2><p>Compare melee, magic, ranged, and hybrid planning categories without claiming final balance or a best build.</p>',
+    classes: '<h2>What we know before Early Access</h2><p>Emberville has a combat class system, classes can be changed, and learned classes can contribute active and passive skills. Exact class records remain in review.</p>',
+    inheritance: '<h2>How skill inheritance shapes a build</h2><p>Learn another class, inherit confirmed active or passive skills, and use those options to shape a build direction. Slot limits, costs, and compatibility rules remain under review.</p>',
+  }
+  return `<main><article><p>${escapeHtml(page.eyebrow)}</p><h1>${escapeHtml(page.title)}</h1><p>${escapeHtml(page.description)}</p><p>${escapeHtml(EMBERVILLE_STATUS.phase)} · ${escapeHtml(EMBERVILLE_STATUS.scope)} · Updated ${escapeHtml(EMBERVILLE_STATUS.updated)}</p></article><section>${pageCopy[pageId]}</section><section><h2>Confirmed Emberville mechanics</h2><ul>${EMBERVILLE_MECHANICS.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul></section><section><h2>Official sources</h2>${linkList(EMBERVILLE_SOURCES.map((source) => ({ href: source.href, label: source.label })))}</section><section><h2>Related Emberville tools</h2>${linkList(related)}</section></main>`
+}
 
 export function renderBetaStatusPrerender(): string {
   const status = PALADIN_BETA_STATUS

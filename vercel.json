@@ -21,6 +21,10 @@
     }
   ],
   "rewrites": [
+    { "source": "/emberville", "destination": "/emberville/index.html" },
+    { "source": "/emberville-builds", "destination": "/emberville-builds/index.html" },
+    { "source": "/emberville-classes", "destination": "/emberville-classes/index.html" },
+    { "source": "/emberville-skill-inheritance", "destination": "/emberville-skill-inheritance/index.html" },
     { "source": "/paladin", "destination": "/paladin/index.html" },
     { "source": "/build", "destination": "/paladin/index.html" },
     { "source": "/wow-forever-paladin-build", "destination": "/wow-forever-paladin-build/index.html" },
