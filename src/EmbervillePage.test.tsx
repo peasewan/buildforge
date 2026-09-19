@@ -16,6 +16,16 @@ describe('Emberville public pages', () => {
     expect(container.textContent).not.toContain('Swordsman')
   })
 
+  it.each([
+    ['planner', 'How planner data becomes available'],
+    ['builds', 'Choose a build direction before choosing details'],
+    ['classes', 'Class, weapon, and progression data status'],
+    ['inheritance', 'Future compatibility matrix'],
+  ] as const)('renders unique %s editorial content', (id, heading) => {
+    render(<EmbervillePage pageId={id} />)
+    expect(screen.getByRole('heading', { name: heading })).toBeTruthy()
+  })
+
   it('updates the planner, persists notes, and emits bounded analytics events', () => {
     const gtag = vi.fn()
     window.gtag = gtag

@@ -7,7 +7,7 @@ import { specTalentsPageBySpec } from '../data/specTalentsPages'
 import { trustPageById, type TrustPageId } from '../data/trustPages'
 import { PALADIN_BETA_STATUS } from '../data/betaStatus'
 import { betaAvailabilityFor } from '../data/betaAvailability'
-import { EMBERVILLE_MECHANICS, EMBERVILLE_PAGES, EMBERVILLE_SOURCES, EMBERVILLE_STATUS, embervillePageById, type EmbervillePageId } from '../data/emberville'
+import { EMBERVILLE_EDITORIAL, EMBERVILLE_PAGES, EMBERVILLE_SOURCES, EMBERVILLE_STATUS, embervillePageById, type EmbervillePageId } from '../data/emberville'
 
 const link = (href: string, label: string) => `<a href="${escapeHtml(href)}">${escapeHtml(label)}</a>`
 
@@ -23,7 +23,8 @@ export function renderEmbervillePrerender(pageId: EmbervillePageId): string {
     classes: '<h2>What we know before Early Access</h2><p>Emberville has a combat class system, classes can be changed, and learned classes can contribute active and passive skills. Exact class records remain in review.</p>',
     inheritance: '<h2>How skill inheritance shapes a build</h2><p>Learn another class, inherit confirmed active or passive skills, and use those options to shape a build direction. Slot limits, costs, and compatibility rules remain under review.</p>',
   }
-  return `<main><article><p>${escapeHtml(page.eyebrow)}</p><h1>${escapeHtml(page.title)}</h1><p>${escapeHtml(page.description)}</p><p>${escapeHtml(EMBERVILLE_STATUS.phase)} · ${escapeHtml(EMBERVILLE_STATUS.scope)} · Updated ${escapeHtml(EMBERVILLE_STATUS.updated)}</p></article><section>${pageCopy[pageId]}</section><section><h2>Confirmed Emberville mechanics</h2><ul>${EMBERVILLE_MECHANICS.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul></section><section><h2>Official sources</h2>${linkList(EMBERVILLE_SOURCES.map((source) => ({ href: source.href, label: source.label })))}</section><section><h2>Related Emberville tools</h2>${linkList(related)}</section></main>`
+  const editorial = EMBERVILLE_EDITORIAL[pageId].map((section) => `<section><h2>${escapeHtml(section.heading)}</h2>${section.paragraphs.map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join('')}${section.bullets ? `<ul>${section.bullets.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul>` : ''}</section>`).join('')
+  return `<main><article><p>${escapeHtml(page.eyebrow)}</p><h1>${escapeHtml(page.title)}</h1><p>${escapeHtml(page.description)}</p><p>${escapeHtml(EMBERVILLE_STATUS.phase)} · ${escapeHtml(EMBERVILLE_STATUS.scope)} · Updated ${escapeHtml(EMBERVILLE_STATUS.updated)}</p></article><section>${pageCopy[pageId]}</section>${editorial}<section><h2>Official sources</h2>${linkList(EMBERVILLE_SOURCES.map((source) => ({ href: source.href, label: source.label })))}</section><section><h2>Related Emberville tools</h2>${linkList(related)}</section></main>`
 }
 
 export function renderBetaStatusPrerender(): string {

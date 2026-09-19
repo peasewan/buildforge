@@ -4,7 +4,8 @@ import { HUB_BUILD_HREFS } from '../data/paladinBuildsHub'
 import { SPEC_BUILDS_HUBS, specHubHrefs } from '../data/specBuildsHubs'
 import { BUILD_LANDING_PAGES } from '../data/buildLandingPages'
 import { TRUST_PAGES } from '../data/trustPages'
-import { renderBetaAvailabilityPrerender, renderHubPrerender, renderLandingPrerender, renderSpecHubPrerender, renderTrustPrerender } from './prerender'
+import { renderBetaAvailabilityPrerender, renderEmbervillePrerender, renderHubPrerender, renderLandingPrerender, renderSpecHubPrerender, renderTrustPrerender } from './prerender'
+import { EMBERVILLE_EDITORIAL, EMBERVILLE_PAGES } from '../data/emberville'
 
 const redirections = (() => {
   const config = JSON.parse(readFileSync(`${process.cwd()}/vercel.json`, 'utf8')) as {
@@ -21,6 +22,14 @@ const allPrerendered = () => [
 ] as const
 
 describe('prerender generation', () => {
+  it.each(EMBERVILLE_PAGES.map((page) => [page.id, page.title] as const))('gives the %s Emberville page substantial unique crawlable copy', (pageId, title) => {
+    const html = renderEmbervillePrerender(pageId)
+    const words = html.replace(/<[^>]+>/g, ' ').match(/[A-Za-z0-9'-]+/g)?.length ?? 0
+    expect(html.match(/<h1>.*?<\/h1>/g)).toHaveLength(1)
+    expect(html).toContain(`<h1>${title}</h1>`)
+    for (const section of EMBERVILLE_EDITORIAL[pageId]) expect(html).toContain(`<h2>${section.heading}</h2>`)
+    expect(words).toBeGreaterThanOrEqual(220)
+  })
   it.each([
     ['holy', "Light's Vigil", 'Not available', '31 talent points'],
     ['protection', 'Improved Seal of Fury', 'Available', '11 talent points'],
