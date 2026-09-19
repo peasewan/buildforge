@@ -15,6 +15,23 @@ describe('Build landing page template', () => {
     expect(screen.getByRole('heading', { level: 2, name: 'Recommended Leveling Path' })).toBeTruthy()
     expect(screen.getByText('Beta Week 1 · Level cap 20')).toBeTruthy()
     expect(document.querySelector('a[href="/wow-forever-paladin-builds"]')).toBeTruthy()
+    const snapshot = screen.getByRole('region', { name: 'Beta leveling snapshot' })
+    expect(snapshot.textContent).toContain('Current Beta cap')
+    expect(snapshot.textContent).toContain('Level 20 · 11 points')
+    expect(snapshot.textContent).toContain('Level 30 plan')
+    expect(snapshot.textContent).toContain('0/0/21')
+    expect(snapshot.textContent).toContain('Client verified')
+    expect(snapshot.textContent).toContain('Community recommendation')
+  })
+
+  it('shows the Protection level 20 and level 30 paths on the existing leveling page', () => {
+    render(<BuildLandingPage pageId="protection-leveling" />)
+
+    const snapshot = screen.getByRole('region', { name: 'Beta leveling snapshot' })
+    expect(snapshot.textContent).toContain('2/9/0')
+    expect(snapshot.textContent).toContain('2/19/0')
+    expect(snapshot.textContent).toContain('Build 1.60.1.69893')
+    expect(snapshot.querySelector('a[href^="/build?id="]')).toBeTruthy()
   })
 
   it('reuses the Protection talent tree on the dungeon page', () => {

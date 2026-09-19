@@ -8,6 +8,8 @@ import { trustPageById, type TrustPageId } from '../data/trustPages'
 import { PALADIN_BETA_STATUS } from '../data/betaStatus'
 import { betaAvailabilityFor } from '../data/betaAvailability'
 import { EMBERVILLE_EDITORIAL, EMBERVILLE_PAGES, EMBERVILLE_SOURCES, EMBERVILLE_STATUS, embervillePageById, type EmbervillePageId } from '../data/emberville'
+import { BETA_LEVEL_CAP_SOURCE, betaLevelingPlannerHref, betaLevelingSnapshot, type BetaLevelingPageId } from '../data/levelingBeta'
+import { EVIDENCE_STATUS } from '../data/verification'
 
 const link = (href: string, label: string) => `<a href="${escapeHtml(href)}">${escapeHtml(label)}</a>`
 
@@ -44,6 +46,23 @@ export function renderBetaAvailabilityPrerender(branch: Branch): string {
     <p>Level cap ${availability.levelCap} · ${availability.availablePoints} talent points available.</p>
     <p><strong>${escapeHtml(availability.talent.name)}: ${availability.available ? 'Available' : 'Not available'}.</strong> Requires ${availability.requiredPoints} talent points and character level ${availability.minimumLevel}.</p>
     <p>Calculated from the current Beta level cap and the client tree requirement for the first rank.</p>
+  </section>`
+}
+
+export function renderBetaLevelingSnapshotPrerender(pageId: BetaLevelingPageId): string {
+  const snapshot = betaLevelingSnapshot(pageId)
+  return `<section aria-label="Beta leveling snapshot">
+    <h2>${escapeHtml(snapshot.title)}</h2>
+    <h3>Current Beta cap</h3>
+    <p><strong>Level ${snapshot.current.level} · ${snapshot.current.points} points · ${escapeHtml(snapshot.current.allocation)}</strong></p>
+    <p>${escapeHtml(snapshot.current.note)} ${link(betaLevelingPlannerHref(pageId), 'Open current path in Calculator')}.</p>
+    <p>${escapeHtml(EVIDENCE_STATUS.official.label)} level cap · ${escapeHtml(EVIDENCE_STATUS.client_verified.label)} talent data · Build ${escapeHtml(PALADIN_BETA_STATUS.build)}.</p>
+    <h3>Level 30 plan</h3>
+    <p><strong>Level ${snapshot.next.level} · ${snapshot.next.points} points · ${escapeHtml(snapshot.next.allocation)}</strong></p>
+    <p>${escapeHtml(snapshot.next.note)}</p>
+    <p>Community recommendation · ${escapeHtml(EVIDENCE_STATUS.derived_assumption.label)} editorial route, reviewed ${escapeHtml(snapshot.recommendationSource.updated)}.</p>
+    <ul>${snapshot.milestones.map((milestone) => `<li>${escapeHtml(milestone)}</li>`).join('')}</ul>
+    <p>${link(BETA_LEVEL_CAP_SOURCE.href, 'Official level-cap source')} · ${link(snapshot.recommendationSource.href, 'Recommendation source')}</p>
   </section>`
 }
 
@@ -91,6 +110,9 @@ export function renderLandingPrerender(pageId: BuildLandingPageId): string {
   const page = BUILD_LANDING_PAGES.find((candidate) => candidate.id === pageId) ?? BUILD_LANDING_PAGES[0]
   const summary = page.summary.map((item) => `<li>${escapeHtml(item.label)}: ${escapeHtml(item.value)}</li>`).join('')
   const sections = page.sections.map(landingSection).join('\n  ')
+  const levelingSnapshot = pageId === 'leveling' || pageId === 'protection-leveling'
+    ? renderBetaLevelingSnapshotPrerender(pageId)
+    : ''
 
   return `<main class="landing-prerender">
   <article>
@@ -99,6 +121,7 @@ export function renderLandingPrerender(pageId: BuildLandingPageId): string {
     <ul>${summary}</ul>
   </article>
   ${renderBetaStatusPrerender()}
+  ${levelingSnapshot}
   ${sections}
   ${linkList(pageFooterLinks)}
 </main>`

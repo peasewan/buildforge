@@ -63,4 +63,15 @@ describe('Holy healing build page', () => {
     expect(availability.textContent).toContain(status)
     expect(availability.textContent).toContain(minimumLevel)
   })
+
+  it('adds the current and next-cap route to the Retribution leveling page', () => {
+    render(<BuildPage buildId="retribution-leveling-20-0-31" />)
+
+    const snapshot = screen.getByRole('region', { name: 'Beta leveling snapshot' })
+    expect(snapshot.textContent).toContain('Level 20 · 11 points')
+    expect(snapshot.textContent).toContain('0/0/11')
+    expect(snapshot.textContent).toContain('Level 30 plan')
+    expect(snapshot.textContent).toContain('0/0/21')
+    expect(snapshot.textContent).toContain('Community recommendation')
+  })
 })

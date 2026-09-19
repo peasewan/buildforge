@@ -2,7 +2,7 @@
   "eyebrow": "Community Build Example",
   "title": "WoW Forever Retribution Paladin Build – Leveling 20/0/31",
   "dek": "Open a solo-leveling WoW Forever Retribution Paladin build with a complete 20/0/31 allocation, inspect its offensive path, and continue editing it in the BuildForge Talent Calculator.",
-  "updated": "September 15, 2026",
+  "updated": "September 19, 2026",
   "spec": "Retribution",
   "heroHeading": "WoW Forever Retribution Paladin Leveling Build (20/0/31)",
   "allocationSummary": "20 Holy, 0 Protection, 31 Retribution",
@@ -50,7 +50,7 @@
       "id": "holy-support",
       "heading": "Why the Build Adds 20 Holy Support Points",
       "paragraphs": [
-        "Instead of a Protection secondary, this leveling preview places its 20 remaining points into the early Holy rows: Divine Strength, Divine Intellect, Healing Light, Spiritual Focus, Improved Seals, and Unyielding Faith. The result is a Retribution-first route with a light support base, which keeps the build focused on solo damage while leaving a few familiar Paladin tools available during longer questing sessions.",
+        "Instead of a Protection secondary, this full-build example places its 20 remaining points into the early Holy rows: Divine Strength, Divine Intellect, Healing Light, Spiritual Focus, Improved Seals, and Unyielding Faith. The result is a Retribution-first route with a light support base, which keeps the build focused on solo damage while leaving a few familiar Paladin tools available during longer questing sessions.",
         "The 20 Holy points are a starting point rather than a prescription. Players who prefer more survivability can trade them for early Protection talents, and the calculator will immediately show the changed branch totals."
       ]
     },

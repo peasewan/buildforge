@@ -466,6 +466,27 @@ footer { padding: 42px 0; border-top: 1px solid rgba(217,164,65,.15); background
 .verification-derived_assumption { border-color: rgba(160,166,180,.38); color: #b8bdc8; background: rgba(120,126,140,.08); }
 .verification-legend, .verification-inline { display: flex; flex-wrap: wrap; align-items: center; gap: 7px; }
 .verification-legend { margin: 18px 0 4px; }
+.beta-leveling-snapshot { margin-top: 38px; padding: 32px; border: 1px solid rgba(217,164,65,.23); border-radius: 14px; background: radial-gradient(circle at 8% 0, rgba(217,164,65,.1), transparent 32%), #0d1117; }
+.beta-leveling-snapshot > header > div { display: flex; align-items: center; gap: 9px; color: #d3ab50; font-size: 9px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+.beta-leveling-snapshot > header h2 { margin: 11px 0 8px; color: #eee4cc; font: 600 clamp(22px, 3vw, 31px) Cinzel, serif; }
+.beta-leveling-snapshot > header p { margin: 0; color: #7f8792; font-size: 12px; }
+.beta-leveling-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 25px; }
+.beta-leveling-grid article { padding: 22px; border: 1px solid rgba(255,255,255,.08); border-radius: 10px; background: rgba(255,255,255,.025); }
+.beta-leveling-grid article > div { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.beta-leveling-grid article > div > span { color: #9d8958; font-size: 9px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.beta-leveling-grid strong { display: block; margin-top: 17px; color: #e9dfca; font: 600 15px Cinzel, serif; }
+.beta-leveling-grid b { display: block; margin-top: 7px; color: #f0c65f; font: 600 28px Cinzel, serif; }
+.beta-leveling-grid p { min-height: 54px; margin: 12px 0; color: #9299a3; font-size: 12px; line-height: 1.65; }
+.beta-leveling-grid a { display: inline-flex; align-items: center; gap: 6px; color: #d9b45d; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
+.beta-leveling-grid small { display: block; color: #6f7782; font-size: 10px; line-height: 1.55; }
+.beta-leveling-evidence { margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.07); }
+.beta-leveling-evidence p { display: flex; align-items: center; gap: 8px; margin: 8px 0; color: #7f8792; font-size: 11px; line-height: 1.5; }
+.beta-leveling-evidence p > svg { flex: none; color: #76bd88; }
+.beta-leveling-evidence p > span { display: flex; flex-wrap: wrap; align-items: center; gap: 7px; }
+.beta-leveling-evidence ul { display: flex; flex-wrap: wrap; gap: 8px; padding: 0; margin: 16px 0; list-style: none; }
+.beta-leveling-evidence li { padding: 7px 10px; border: 1px solid rgba(217,164,65,.17); border-radius: 999px; color: #b5a782; background: rgba(217,164,65,.04); font-size: 10px; }
+.beta-leveling-evidence > div { display: flex; flex-wrap: wrap; gap: 18px; }
+.beta-leveling-evidence > div a { color: #ad955d; font-size: 10px; text-decoration: underline; text-underline-offset: 3px; }
 .beta-footnote { margin-top: 48px; color: #69717c; font-size: 11px; line-height: 1.7; }
 .beta-footnote { color: #666d78; font-size: 11px; margin-top: 28px; }
 .beta-diff-summary { display: flex; gap: 14px; flex-wrap: wrap; margin: 24px 0 8px; }
@@ -477,6 +498,7 @@ footer { padding: 42px 0; border-top: 1px solid rgba(217,164,65,.15); background
 .beta-changed-list p { margin: 4px 0; color: #9aa0aa; font-size: 12px; }
 @media (max-width: 900px) { .beta-hero { grid-template-columns: 1fr; gap: 30px; padding-top: 120px; } .beta-signal-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 620px) { .beta-confirmed-grid, .beta-signal-grid { grid-template-columns: 1fr; } .beta-pipeline li { grid-template-columns: 28px 1fr; } .beta-pipeline li span { grid-column: 2; } }
+@media (max-width: 620px) { .beta-leveling-snapshot { margin-inline: 16px; padding: 21px 17px; } .beta-leveling-grid { grid-template-columns: 1fr; } .beta-leveling-grid p { min-height: 0; } }
 .beta-partial-note { text-align: center; color: #bca66f; font-size: 12px; margin: -12px 0 20px; }
 .beta-talent-section { margin-top: 34px; }
 .beta-talent-section h2 { font: 600 20px Cinzel, serif; color: #eee5d2; margin: 0 0 14px; }

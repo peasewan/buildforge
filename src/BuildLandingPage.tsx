@@ -7,6 +7,8 @@ import { encodeBuild } from './lib/build'
 import { track } from './lib/analytics'
 import SiteFooter from './SiteFooter'
 import BetaDataStatus from './BetaDataStatus'
+import BetaLevelingSnapshot from './BetaLevelingSnapshot'
+import { betaLevelingPlannerHref } from './data/levelingBeta'
 
 const icons: Record<LandingIcon, ReactNode> = {
   sword: <Swords size={24} />,
@@ -80,7 +82,8 @@ export default function BuildLandingPage({ pageId }: { pageId: BuildLandingPageI
   const heroStyle = { '--landing-hero-image': `url(${page.heroImage})`, '--landing-hero-position': page.heroPosition } as CSSProperties
   const preview = page.sections.find((section) => section.kind === 'talent-preview')
   const ctaBuildId = preview?.buildId ?? page.ctaBuildId
-  const primaryHref = ctaBuildId ? `/build?id=${encodeBuild(exampleBuildById(ctaBuildId).build)}#calculator` : '/paladin#calculator'
+  const levelingHref = pageId === 'leveling' || pageId === 'protection-leveling' ? betaLevelingPlannerHref(pageId) : null
+  const primaryHref = levelingHref ?? (ctaBuildId ? `/build?id=${encodeBuild(exampleBuildById(ctaBuildId).build)}#calculator` : '/paladin#calculator')
 
   return (
     <main className="landing-page">
@@ -108,6 +111,7 @@ export default function BuildLandingPage({ pageId }: { pageId: BuildLandingPageI
       </section>
 
       <BetaDataStatus />
+      {(pageId === 'leveling' || pageId === 'protection-leveling') && <BetaLevelingSnapshot pageId={pageId} />}
 
       <div className="shell landing-content" id="build-content">
         {page.sections.map((section) => <LandingSectionView key={section.title} section={section} pageId={pageId} />)}

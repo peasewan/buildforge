@@ -4,7 +4,7 @@ import { HUB_BUILD_HREFS } from '../data/paladinBuildsHub'
 import { SPEC_BUILDS_HUBS, specHubHrefs } from '../data/specBuildsHubs'
 import { BUILD_LANDING_PAGES } from '../data/buildLandingPages'
 import { TRUST_PAGES } from '../data/trustPages'
-import { renderBetaAvailabilityPrerender, renderEmbervillePrerender, renderHubPrerender, renderLandingPrerender, renderSpecHubPrerender, renderTrustPrerender } from './prerender'
+import { renderBetaAvailabilityPrerender, renderBetaLevelingSnapshotPrerender, renderEmbervillePrerender, renderHubPrerender, renderLandingPrerender, renderSpecHubPrerender, renderTrustPrerender } from './prerender'
 import { EMBERVILLE_EDITORIAL, EMBERVILLE_PAGES } from '../data/emberville'
 
 const redirections = (() => {
@@ -42,6 +42,22 @@ describe('prerender generation', () => {
     expect(html).toContain(talent)
     expect(html).toContain(status)
     expect(html).toContain(points)
+  })
+
+  it.each([
+    ['leveling', '0/0/11', '0/0/21'],
+    ['protection-leveling', '2/9/0', '2/19/0'],
+    ['retribution-leveling', '0/0/11', '0/0/21'],
+  ] as const)('prerenders the %s beta leveling snapshot', (pageId, current, next) => {
+    const html = renderBetaLevelingSnapshotPrerender(pageId)
+
+    expect(html).toContain('Current Beta cap')
+    expect(html).toContain('Level 20')
+    expect(html).toContain(current)
+    expect(html).toContain('Level 30 plan')
+    expect(html).toContain(next)
+    expect(html).toContain('1.60.1.69893')
+    expect(html).toContain('Community recommendation')
   })
 
   it('links every build the hub data declares', () => {
