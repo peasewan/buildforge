@@ -20,6 +20,11 @@ export const BRANCHES: Branch[] = ['holy', 'protection', 'retribution']
 
 export const MAX_TALENT_POINTS = 51
 
+export type TalentLockReason =
+  | { type: 'branch-points'; current: number; required: number }
+  | { type: 'prerequisite'; talentId: string; current: number; required: number }
+  | { type: 'point-cap' }
+
 /**
  * The branch a build spends most of its points in. `seed` is returned on a tie, so
  * callers can keep the branch a reader is already looking at rather than flickering.
@@ -51,19 +56,36 @@ export function canIncrement(
   talents: TalentDefinition[],
 ): boolean {
   const currentRank = build[talent.id] ?? 0
-  if (currentRank >= talent.maxRank || totalPoints(build) >= MAX_TALENT_POINTS) return false
+  return currentRank < talent.maxRank && getTalentLockReason(build, talent, talents) === null
+}
 
-  if (branchPoints(build, talent.branch, talents) < talent.requiredTreePoints) return false
+export function getTalentLockReason(
+  build: Build,
+  talent: TalentDefinition,
+  talents: TalentDefinition[],
+): TalentLockReason | null {
+  if (totalPoints(build) >= MAX_TALENT_POINTS) return { type: 'point-cap' }
 
-  if (talent.prerequisite) {
-    for (const requirement of talent.prerequisite) {
-      const prerequisite = talents.find((candidate) => candidate.id === requirement.talentId)
-      const requiredRank = requirement.requiredRank ?? prerequisite?.maxRank
-      if (!prerequisite || requiredRank === undefined || (build[prerequisite.id] ?? 0) < requiredRank) return false
+  const currentBranchPoints = branchPoints(build, talent.branch, talents)
+  if (currentBranchPoints < talent.requiredTreePoints) {
+    return { type: 'branch-points', current: currentBranchPoints, required: talent.requiredTreePoints }
+  }
+
+  for (const requirement of talent.prerequisite ?? []) {
+    const prerequisite = talents.find((candidate) => candidate.id === requirement.talentId)
+    const requiredRank = requirement.requiredRank ?? prerequisite?.maxRank
+    const currentRank = prerequisite ? (build[prerequisite.id] ?? 0) : 0
+    if (!prerequisite || requiredRank === undefined || currentRank < requiredRank) {
+      return {
+        type: 'prerequisite',
+        talentId: requirement.talentId,
+        current: currentRank,
+        required: requiredRank ?? 0,
+      }
     }
   }
 
-  return true
+  return null
 }
 
 export function incrementTalent(

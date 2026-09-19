@@ -4,6 +4,7 @@ import {
   decrementTalent,
   decodeBuild,
   encodeBuild,
+  getTalentLockReason,
   incrementTalent,
   type Build,
   type TalentDefinition,
@@ -14,12 +15,30 @@ const talents: TalentDefinition[] = [
   { id: 'focus', branch: 'holy', requiredTreePoints: 5, maxRank: 3 },
   { id: 'crown', branch: 'holy', requiredTreePoints: 10, maxRank: 1, prerequisite: [{ talentId: 'focus', requiredRank: null }] },
   { id: 'guard', branch: 'protection', requiredTreePoints: 0, maxRank: 5 },
+  { id: 'filler', branch: 'holy', requiredTreePoints: 0, maxRank: 5 },
 ]
 
 describe('talent allocation', () => {
   it('blocks a higher tier until five points are spent in its branch', () => {
     expect(canIncrement({}, talents[1], talents)).toBe(false)
     expect(canIncrement({ root: 5 }, talents[1], talents)).toBe(true)
+  })
+
+  it('explains how many branch points a locked tier still needs', () => {
+    expect(getTalentLockReason({ root: 2 }, talents[1], talents)).toEqual({
+      type: 'branch-points',
+      current: 2,
+      required: 5,
+    })
+  })
+
+  it('explains which prerequisite rank is missing after the tier is unlocked', () => {
+    expect(getTalentLockReason({ root: 5, filler: 3, focus: 2 }, talents[2], talents)).toEqual({
+      type: 'prerequisite',
+      talentId: 'focus',
+      current: 2,
+      required: 3,
+    })
   })
 
   it('caps a talent at its maximum rank and the whole build at 51 points', () => {

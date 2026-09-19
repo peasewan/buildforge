@@ -6,7 +6,7 @@ import BuildCard from './BuildCard'
 import { PALADIN_BETA_SNAPSHOT } from './data/betaSnapshot'
 import { branchNames, branchTaglines, DATA_SOURCES, talentEvidenceLabel, talents, type Talent } from './data/talents'
 import { betaDataset } from './data/datasets'
-import { BRANCHES, branchPoints, canIncrement, decodeBuild, decrementTalent, dominantBranch, encodeBuild, incrementTalent, totalPoints, type Branch, type Build } from './lib/build'
+import { BRANCHES, branchPoints, canIncrement, decodeBuild, decrementTalent, dominantBranch, encodeBuild, getTalentLockReason, incrementTalent, totalPoints, type Branch, type Build, type TalentLockReason } from './lib/build'
 import { claimBuildCompletion, loadClaimedBuildCompletions, saveClaimedBuildCompletions } from './lib/buildCompletion'
 import { track } from './lib/analytics'
 import SiteFooter from './SiteFooter'
@@ -35,6 +35,18 @@ function initialPlannerState(): { build: Build; restored: boolean } {
 
 export function TalentTree({ branch, build, onAdd, onRemove }: { branch: Branch; build: Build; onAdd?: (talent: Talent) => void; onRemove?: (talent: Talent) => void }) {
   const branchTalents = talents.filter((talent) => talent.branch === branch)
+  const spentInBranch = branchPoints(build, branch, talents)
+  const [feedbackTalentId, setFeedbackTalentId] = useState<string | null>(null)
+
+  const lockMessage = (reason: TalentLockReason) => {
+    if (reason.type === 'point-cap') return 'All 51 talent points are already spent.'
+    if (reason.type === 'branch-points') {
+      return `Requires ${reason.required} points in ${branchNames[branch]} (${reason.current}/${reason.required}).`
+    }
+    const prerequisite = talents.find((candidate) => candidate.id === reason.talentId)
+    return `Requires ${prerequisite?.name ?? 'the prerequisite talent'} at rank ${reason.required} (${reason.current}/${reason.required}).`
+  }
+
   return (
     <div className="tree-stage" aria-label={`${branchNames[branch]} talent tree`}>
       <div className="tree-watermark">{branchNames[branch]}</div>
@@ -49,26 +61,36 @@ export function TalentTree({ branch, build, onAdd, onRemove }: { branch: Branch;
       </svg>
       {branchTalents.map((talent) => {
         const rank = build[talent.id] ?? 0
-        const unlocked = canIncrement(build, talent, talents) || rank > 0
+        const canAdd = canIncrement(build, talent, talents)
+        const unlocked = canAdd || rank > 0
+        const lockReason = rank === 0 ? getTalentLockReason(build, talent, talents) : null
+        const startingChoice = spentInBranch === 0 && talent.requiredTreePoints === 0 && rank === 0
         const displayedRank = Math.max(1, rank)
         const rankDescription = talent.rankDescriptions?.[displayedRank - 1] ?? talent.description
         const matchingBuilds = EXAMPLE_BUILDS.filter((example) => (example.build[talent.id] ?? 0) > 0)
         return (
           <div className="talent-position" style={{ left: `${talent.x}%`, top: `${talent.y}%` }} key={talent.id}>
             <button
-              className={`talent-node ${rank ? 'selected' : ''} ${unlocked ? '' : 'locked'}`}
-              onClick={() => onAdd?.(talent)}
+              className={`talent-node ${rank ? 'selected' : ''} ${unlocked ? 'available' : 'locked'} ${startingChoice ? 'starting-choice' : ''}`}
+              onClick={() => {
+                if (lockReason) setFeedbackTalentId(talent.id)
+                else onAdd?.(talent)
+              }}
               aria-label={`${talent.name}, rank ${rank} of ${talent.maxRank}${unlocked ? '' : ', locked'}`}
               aria-describedby={`tip-${talent.id}`}
             >
               <img src={talent.icon} alt="" />
               {!unlocked && <LockKeyhole size={17} className="lock-icon" />}
+              {lockReason?.type === 'branch-points' && <span className="lock-requirement">{lockReason.required} pts</span>}
+              {lockReason?.type === 'prerequisite' && <span className="lock-requirement">Prereq</span>}
+              {startingChoice && <span className="start-here">Start here</span>}
               <span className="rank">{rank}/{talent.maxRank}</span>
             </button>
             {rank > 0 && onRemove && <button className="rank-minus" onClick={() => onRemove(talent)} aria-label={`Remove one rank from ${talent.name}`}><Minus size={12} /></button>}
             <div className="talent-tip" id={`tip-${talent.id}`}>
               <strong>{talent.name}</strong>
               <span>{rankDescription}</span>
+              {lockReason && <span className="talent-lock-message" role={feedbackTalentId === talent.id ? 'status' : undefined}>{lockMessage(lockReason)}</span>}
               <em>
                 <span>{talentEvidenceLabel(talent)}</span>
                 <VerificationBadge status="client_verified" />

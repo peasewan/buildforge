@@ -72,6 +72,23 @@ describe('Paladin talent calculator page', () => {
     expect(protectionDetail?.textContent).toContain('No published example yet')
   })
 
+  it('explains a locked Retribution talent when it is clicked', () => {
+    render(<App />)
+    fireEvent.click(screen.getByRole('tab', { name: /Retribution/ }))
+
+    fireEvent.click(screen.getByRole('button', { name: /Sacred Arbiter/ }))
+
+    expect(screen.getByRole('status').textContent).toContain('Requires 15 points in Retribution (0/15)')
+    expect(screen.getAllByText('15 pts').length).toBeGreaterThan(0)
+  })
+
+  it('marks the available first-tier Retribution talents as starting choices', () => {
+    render(<App />)
+    fireEvent.click(screen.getByRole('tab', { name: /Retribution/ }))
+
+    expect(screen.getAllByText('Start here')).toHaveLength(2)
+  })
+
   it('shows the current Beta build status and changelog summary', () => {
     render(<App />)
 

@@ -18,6 +18,11 @@ export default function FeedbackWidget() {
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
   const [error, setError] = useState('')
   const messageRef = useRef<HTMLTextAreaElement>(null)
+  const trimmedMessageLength = message.trim().length
+  const remainingMessageCharacters = Math.max(0, 10 - trimmedMessageLength)
+  const trimmedEmail = email.trim()
+  const emailIsValid = !trimmedEmail || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmedEmail)
+  const formIsValid = remainingMessageCharacters === 0 && emailIsValid
 
   useEffect(() => {
     if (!open) return
@@ -112,11 +117,13 @@ export default function FeedbackWidget() {
                   <span>Your feedback</span>
                   <textarea ref={messageRef} value={message} onChange={(event) => setMessage(event.target.value)} minLength={10} maxLength={1000} required placeholder="Tell us what you need, or which game record looks wrong…" />
                   <small>{message.length}/1000</small>
+                  {remainingMessageCharacters > 0 && message.length > 0 && <p className="feedback-field-error">Enter at least {remainingMessageCharacters} more characters.</p>}
                 </label>
 
                 <label className="feedback-field">
                   <span>Email <em>optional</em></span>
                   <input type="email" value={email} onChange={(event) => setEmail(event.target.value)} maxLength={254} placeholder="you@example.com" />
+                  {!emailIsValid && <p className="feedback-field-error">Enter a valid email address or leave it blank.</p>}
                 </label>
 
                 <label className="feedback-honeypot" aria-hidden="true">
@@ -125,7 +132,7 @@ export default function FeedbackWidget() {
                 </label>
 
                 {status === 'error' && <p className="feedback-error" role="alert">{error}</p>}
-                <button className="button primary feedback-submit" type="submit" disabled={status === 'sending' || message.trim().length < 10}>
+                <button className="button primary feedback-submit" type="submit" disabled={status === 'sending' || !formIsValid}>
                   <Send size={16} /> {status === 'sending' ? 'Sending…' : 'Send Feedback'}
                 </button>
                 <small className="feedback-privacy">Your feedback is stored privately. Email is only used if a reply is needed.</small>
