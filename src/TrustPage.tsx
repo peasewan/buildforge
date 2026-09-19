@@ -9,9 +9,9 @@ export default function TrustPage({ pageId }: { pageId: TrustPageId }) {
   return (
     <main className="trust-page">
       <header className="guide-nav shell">
-        <a className="brand" href="/paladin"><img src="/images/icons/paladin-shield.png" alt="" /><span>BUILD</span><b>FORGE</b></a>
-        <nav aria-label="Site information"><a href="/about">About</a><a href="/contact">Contact</a><a href="/privacy">Privacy</a></nav>
-        <a className="button primary" href="/paladin#calculator">Open Planner</a>
+        <a className="brand" href="/about"><img src="/images/icons/paladin-shield.png" alt="" /><span>BUILD</span><b>FORGE</b></a>
+        <nav aria-label="Site information"><a href="/paladin">WoW Forever</a><a href="/emberville">Emberville</a><a href="/about">About</a><a href="/contact">Contact</a><a href="/privacy">Privacy</a></nav>
+        <a className="button primary" href="/about#current-games">Explore Games</a>
       </header>
 
       <section className="trust-hero">
@@ -25,7 +25,7 @@ export default function TrustPage({ pageId }: { pageId: TrustPageId }) {
 
       <article className="trust-content shell">
         {page.sections.map((section) => (
-          <section key={section.heading}>
+          <section id={section.heading.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')} key={section.heading}>
             <h2>{section.heading}</h2>
             {section.paragraphs.map((paragraph) => <p key={paragraph.slice(0, 50)}>{paragraph}</p>)}
             {section.bullets && <ul>{section.bullets.map((item) => <li key={item}>{item}</li>)}</ul>}

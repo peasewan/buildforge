@@ -121,7 +121,7 @@ describe('public page routing', () => {
   })
 
   it.each([
-    ['/about/', 'about', 'About BuildForgeTools | Community Talent Planner'],
+    ['/about/', 'about', 'About BuildForgeTools | Game Build Planners & Data'],
     ['/contact/', 'contact', 'Contact BuildForgeTools | Feedback & Corrections'],
     ['/privacy/', 'privacy', 'Privacy Policy | BuildForgeTools'],
   ])('serves %s as an indexable trust page', (pathname, trustPageId, title) => {

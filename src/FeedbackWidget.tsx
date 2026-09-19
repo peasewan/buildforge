@@ -4,7 +4,7 @@ import { track } from './lib/analytics'
 import type { FeedbackCategory } from './lib/feedback'
 
 const categories: Array<{ value: FeedbackCategory; label: string }> = [
-  { value: 'talent-data', label: 'Talent data' },
+  { value: 'talent-data', label: 'Game data' },
   { value: 'feature', label: 'Feature request' },
   { value: 'bug', label: 'Report a bug' },
   { value: 'other', label: 'Other' },
@@ -94,7 +94,7 @@ export default function FeedbackWidget() {
               <form onSubmit={submit}>
                 <div className="feedback-kicker"><Lightbulb size={15} /> Help improve the planner</div>
                 <h2 id="feedback-title">What should BuildForge do next?</h2>
-                <p className="feedback-intro">Report incorrect talent data, a broken interaction, or a feature you want.</p>
+                <p className="feedback-intro">Report incorrect game data, a broken interaction, or a feature you want.</p>
 
                 <fieldset>
                   <legend>Feedback type</legend>
@@ -110,7 +110,7 @@ export default function FeedbackWidget() {
 
                 <label className="feedback-field">
                   <span>Your feedback</span>
-                  <textarea ref={messageRef} value={message} onChange={(event) => setMessage(event.target.value)} minLength={10} maxLength={1000} required placeholder="Tell us what you need, or which talent looks wrong…" />
+                  <textarea ref={messageRef} value={message} onChange={(event) => setMessage(event.target.value)} minLength={10} maxLength={1000} required placeholder="Tell us what you need, or which game record looks wrong…" />
                   <small>{message.length}/1000</small>
                 </label>
 

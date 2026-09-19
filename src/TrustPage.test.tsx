@@ -22,11 +22,27 @@ describe('site trust pages', () => {
     expect(document.querySelector('a[href^="mailto:"]')).toBeNull()
   })
 
+  it('presents BuildForgeTools as a multi-game planning site', () => {
+    render(<TrustPage pageId="about" />)
+
+    expect(screen.getByRole('heading', { level: 2, name: 'Current Games' })).toBeTruthy()
+    expect(screen.getByRole('link', { name: 'Explore WoW Forever tools' }).getAttribute('href')).toBe('/paladin')
+    expect(screen.getByRole('link', { name: 'Explore the Emberville planner' }).getAttribute('href')).toBe('/emberville')
+    expect(screen.getByText(/tools and reproducible build data/)).toBeTruthy()
+  })
+
+  it('asks for game-neutral correction evidence', () => {
+    render(<TrustPage pageId="contact" />)
+
+    expect(screen.getByText(/game, affected system, class, build, skill, or talent/)).toBeTruthy()
+  })
+
   it('discloses analytics and private feedback storage', () => {
     render(<TrustPage pageId="privacy" />)
 
     expect(screen.getByRole('heading', { level: 2, name: 'Analytics' })).toBeTruthy()
     expect(screen.getByRole('heading', { level: 2, name: 'Feedback Data' })).toBeTruthy()
     expect(screen.getByText(/Vercel Blob/)).toBeTruthy()
+    expect(screen.getByText(/talent or skill interactions/)).toBeTruthy()
   })
 })
