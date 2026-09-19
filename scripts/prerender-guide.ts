@@ -1,7 +1,8 @@
 import { readFile, writeFile } from 'node:fs/promises'
 import { SPEC_BUILDS_HUBS } from '../src/data/specBuildsHubs'
 import { escapeHtml } from '../src/lib/html'
-import { renderBetaStatusPrerender } from '../src/lib/prerender'
+import { renderBetaAvailabilityPrerender, renderBetaStatusPrerender } from '../src/lib/prerender'
+import type { Branch } from '../src/lib/build'
 
 /**
  * Every build page links its own specialization's talent page, so no spec page
@@ -92,6 +93,7 @@ for (const [contentFile, outputFile] of buildTargets) {
       <p>${escapeHtml(build.dek)}</p>
       <p><strong>Talent allocation: ${escapeHtml(build.heroHeading.match(/\(([^)]+)\)/)?.[1] ?? '')} — ${escapeHtml(build.allocationSummary)}.</strong></p>
       ${renderBetaStatusPrerender()}
+      ${renderBetaAvailabilityPrerender(build.spec.toLowerCase() as Branch)}
       <h2>Selected talents</h2>
       <ul>${build.selectedTalents.map((talent) => `<li>${escapeHtml(talent)}</li>`).join('')}</ul>
       ${buildSections}

@@ -54,6 +54,24 @@ describe('Paladin talent calculator page', () => {
     expect(source.getAttribute('href')).toContain('worldofwarcraft.blizzard.com')
   })
 
+  it('links published builds from each talent detail', () => {
+    render(<App />)
+
+    const holyDetail = document.querySelector('#tip-light_s_vigil')
+    expect(holyDetail?.textContent).toContain('Builds using this talent')
+    expect(holyDetail?.querySelector('a[href="/wow-forever-paladin-build"]')?.textContent).toContain('Holy Paladin Healing Build')
+
+    fireEvent.click(screen.getByRole('tab', { name: /Retribution/ }))
+    const retributionDetail = document.querySelector('#tip-twist_of_light')
+    expect(retributionDetail?.querySelectorAll('.talent-builds a')).toHaveLength(2)
+    expect(retributionDetail?.querySelector('a[href="/wow-forever-retribution-paladin-build"]')).toBeTruthy()
+    expect(retributionDetail?.querySelector('a[href="/wow-forever-retribution-paladin-leveling-build"]')).toBeTruthy()
+
+    fireEvent.click(screen.getByRole('tab', { name: /Protection/ }))
+    const protectionDetail = document.querySelector('#tip-improved_seal_of_fury')
+    expect(protectionDetail?.textContent).toContain('No published example yet')
+  })
+
   it('shows the current Beta build status and changelog summary', () => {
     render(<App />)
 

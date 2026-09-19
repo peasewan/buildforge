@@ -52,6 +52,7 @@ export function TalentTree({ branch, build, onAdd, onRemove }: { branch: Branch;
         const unlocked = canIncrement(build, talent, talents) || rank > 0
         const displayedRank = Math.max(1, rank)
         const rankDescription = talent.rankDescriptions?.[displayedRank - 1] ?? talent.description
+        const matchingBuilds = EXAMPLE_BUILDS.filter((example) => (example.build[talent.id] ?? 0) > 0)
         return (
           <div className="talent-position" style={{ left: `${talent.x}%`, top: `${talent.y}%` }} key={talent.id}>
             <button
@@ -88,6 +89,14 @@ export function TalentTree({ branch, build, onAdd, onRemove }: { branch: Branch;
                   ))}
                 </span>
               </em>
+              <div className="talent-builds">
+                <b>Builds using this talent</b>
+                {matchingBuilds.length ? matchingBuilds.map((example) => (
+                  <a key={example.id} href={`/${example.slug}`} aria-label={`Open build example ${example.allocation}`} onClick={() => track('talent_build_click', { talent_id: talent.id, build_id: example.id })}>
+                    {example.name} <small>{example.allocation}</small>
+                  </a>
+                )) : <span>No published example yet</span>}
+              </div>
             </div>
           </div>
         )

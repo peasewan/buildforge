@@ -47,4 +47,20 @@ describe('Holy healing build page', () => {
     expect(screen.getByText('Updated September 18, 2026')).toBeTruthy()
     expect(screen.getByText('3 tooltip updates since 69876')).toBeTruthy()
   })
+
+  it.each([
+    ['holy-healing-31-20-0', "Light's Vigil", '31 talent points', 'Not available', 'Level 40'],
+    ['protection-shield-20-31-0', 'Improved Seal of Fury', '11 talent points', 'Available', 'Level 20'],
+    ['retribution-judgment-0-20-31', 'Twist of Light', '31 talent points', 'Not available', 'Level 40'],
+  ])('shows current Beta availability on %s', (buildId, talentName, requiredPoints, status, minimumLevel) => {
+    render(<BuildPage buildId={buildId} />)
+
+    const availability = screen.getByRole('region', { name: 'Current Beta availability' })
+    expect(availability.textContent).toContain('Level cap 20')
+    expect(availability.textContent).toContain('11 talent points available')
+    expect(availability.textContent).toContain(talentName)
+    expect(availability.textContent).toContain(requiredPoints)
+    expect(availability.textContent).toContain(status)
+    expect(availability.textContent).toContain(minimumLevel)
+  })
 })

@@ -6,6 +6,7 @@ import { specBuildsHubBySpec } from '../data/specBuildsHubs'
 import { specTalentsPageBySpec } from '../data/specTalentsPages'
 import { trustPageById, type TrustPageId } from '../data/trustPages'
 import { PALADIN_BETA_STATUS } from '../data/betaStatus'
+import { betaAvailabilityFor } from '../data/betaAvailability'
 
 const link = (href: string, label: string) => `<a href="${escapeHtml(href)}">${escapeHtml(label)}</a>`
 
@@ -19,6 +20,16 @@ export function renderBetaStatusPrerender(): string {
     <p>Updated ${escapeHtml(status.updated)} · ${status.talentCount} talent nodes · ${status.newTalentCount} new in WoW Forever · ${escapeHtml(status.phaseLabel)} · Level cap ${status.levelCap}.</p>
     <p>${status.added} added · ${status.updatedTalents} updated · ${status.removed} removed in the latest client diff.</p>
     <p>${status.updatedTalents} tooltip updates since ${escapeHtml(status.previousBuild)}. ${link(status.changelogHref, 'Review Beta changes')}.</p>
+  </section>`
+}
+
+export function renderBetaAvailabilityPrerender(branch: Branch): string {
+  const availability = betaAvailabilityFor(branch)
+  return `<section aria-label="Current Beta availability">
+    <h2>Current Beta availability</h2>
+    <p>Level cap ${availability.levelCap} · ${availability.availablePoints} talent points available.</p>
+    <p><strong>${escapeHtml(availability.talent.name)}: ${availability.available ? 'Available' : 'Not available'}.</strong> Requires ${availability.requiredPoints} talent points and character level ${availability.minimumLevel}.</p>
+    <p>Calculated from the current Beta level cap and the client tree requirement for the first rank.</p>
   </section>`
 }
 

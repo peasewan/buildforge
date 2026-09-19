@@ -4,7 +4,7 @@ import { HUB_BUILD_HREFS } from '../data/paladinBuildsHub'
 import { SPEC_BUILDS_HUBS, specHubHrefs } from '../data/specBuildsHubs'
 import { BUILD_LANDING_PAGES } from '../data/buildLandingPages'
 import { TRUST_PAGES } from '../data/trustPages'
-import { renderHubPrerender, renderLandingPrerender, renderSpecHubPrerender, renderTrustPrerender } from './prerender'
+import { renderBetaAvailabilityPrerender, renderHubPrerender, renderLandingPrerender, renderSpecHubPrerender, renderTrustPrerender } from './prerender'
 
 const redirections = (() => {
   const config = JSON.parse(readFileSync(`${process.cwd()}/vercel.json`, 'utf8')) as {
@@ -21,6 +21,20 @@ const allPrerendered = () => [
 ] as const
 
 describe('prerender generation', () => {
+  it.each([
+    ['holy', "Light's Vigil", 'Not available', '31 talent points'],
+    ['protection', 'Improved Seal of Fury', 'Available', '11 talent points'],
+    ['retribution', 'Twist of Light', 'Not available', '31 talent points'],
+  ] as const)('prerenders current Beta availability for %s', (branch, talent, status, points) => {
+    const html = renderBetaAvailabilityPrerender(branch)
+
+    expect(html).toContain('Level cap 20')
+    expect(html).toContain('11 talent points available')
+    expect(html).toContain(talent)
+    expect(html).toContain(status)
+    expect(html).toContain(points)
+  })
+
   it('links every build the hub data declares', () => {
     const html = renderHubPrerender()
 
