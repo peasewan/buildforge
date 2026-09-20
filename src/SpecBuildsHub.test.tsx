@@ -59,9 +59,9 @@ describe('specialization builds hub', () => {
   it('shows the reviewed Beta version on specialization hubs', () => {
     render(<SpecBuildsHub spec="retribution" />)
 
-    expect(screen.getByText('Beta build 1.60.1.69893')).toBeTruthy()
-    expect(screen.getByText('Updated September 18, 2026')).toBeTruthy()
-    expect(screen.getByText('3 tooltip updates since 69876')).toBeTruthy()
+    expect(screen.getByText('Beta build 1.60.1.69913')).toBeTruthy()
+    expect(screen.getByText('Updated September 20, 2026')).toBeTruthy()
+    expect(screen.getByText('0 tooltip updates since 69893')).toBeTruthy()
   })
 
   it('gives every specialization hub a substantial, distinct editorial guide', () => {

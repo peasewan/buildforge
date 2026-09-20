@@ -31,7 +31,7 @@
       "id": "build-overview",
       "heading": "WoW Forever Holy Paladin Build Overview",
       "paragraphs": [
-        "This WoW Forever Holy Paladin build spends 31 points in Holy and 20 points in Protection, with no points in Retribution. It is a community build example using talent data from Beta client build 1.60.1.69893. The allocation reaches Holy Shock and Light’s Vigil in the Holy tree, then uses the remaining points on early Protection talents. It is presented as a practical starting point for testing the new tree, not as a final claim about the strongest healing build.",
+        "This WoW Forever Holy Paladin build spends 31 points in Holy and 20 points in Protection, with no points in Retribution. It is a community build example using talent data from Beta client build 1.60.1.69913. The allocation reaches Holy Shock and Light’s Vigil in the Holy tree, then uses the remaining points on early Protection talents. It is presented as a practical starting point for testing the new tree, not as a final claim about the strongest healing build.",
         "The page and calculator use the same saved build data. The 31/20/0 summary, individual ranks, and 51-point total therefore stay aligned. Select Open This Build to load the exact setup in the interactive planner. From there, every rank can be removed or replaced, and the resulting configuration can be copied as a shareable BuildForge link. No account is required."
       ]
     },
@@ -40,7 +40,7 @@
       "heading": "What the 31 Holy Points Include",
       "paragraphs": [
         "The Holy side starts with Divine Strength and Divine Intellect before moving through healing and spell-support talents. Healing Light, Spiritual Focus, Reverence, and Purifying Power form the middle of the allocation. Four points go into Illumination, while Holy Shock and Light’s Vigil each receive their single available rank. The build also includes Improved Seals and Unyielding Faith as part of the route through the current Beta tree.",
-        "Light’s Vigil is the final selected Holy talent in this setup and is one of the distinctive talents shown in current WoW Forever material. Its displayed effect comes from Beta client build 1.60.1.69893 and may change in a later build. BuildForge labels the client build so players can distinguish verified current data from build recommendations. The calculator tooltip for each node includes its current source status."
+        "Light’s Vigil is the final selected Holy talent in this setup and is one of the distinctive talents shown in current WoW Forever material. Its displayed effect comes from Beta client build 1.60.1.69913 and may change in a later build. BuildForge labels the client build so players can distinguish verified current data from build recommendations. The calculator tooltip for each node includes its current source status."
       ]
     },
     {
@@ -56,7 +56,7 @@
       "heading": "Holy Healing for Raids and Group Content",
       "paragraphs": [
         "This 31/20/0 Holy build is organized around raid healing and group support. The deep Holy path reaches Holy Shock and Light's Vigil, which are useful tools for steady group healing, while Illumination and Purifying Power support efficient mana use. The 20 Protection points add a small defensive base that helps a healer survive focused attention in dungeons and raids.",
-        "Group composition, encounter design, and current talent tuning will determine exactly how a Holy Paladin should adjust these points. Use the calculator to move the secondary Protection points, compare a different Holy path, and share the edited setup with a raid leader before a session. Every rank shown here comes from Beta client build 1.60.1.69893; the allocation itself remains a community planning example."
+        "Group composition, encounter design, and current talent tuning will determine exactly how a Holy Paladin should adjust these points. Use the calculator to move the secondary Protection points, compare a different Holy path, and share the edited setup with a raid leader before a session. Every rank shown here comes from Beta client build 1.60.1.69913; the allocation itself remains a community planning example."
       ]
     },
     {

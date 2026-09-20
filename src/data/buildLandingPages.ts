@@ -85,7 +85,7 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
         kind: 'bullets',
         title: 'How to Use This Beta Example',
         intro: 'Open the planner, choose the branch that matches your current playstyle, and spend points in the order they become available. Keep a share link whenever you reach a useful milestone.',
-        items: ['Compare Holy, Protection, and Retribution paths.', 'Watch prerequisites before planning deeper talents.', 'Talent details use verified Beta client build 1.60.1.69893 data.'],
+        items: ['Compare Holy, Protection, and Retribution paths.', 'Watch prerequisites before planning deeper talents.', 'Talent details use verified Beta client build 1.60.1.69913 data.'],
       },
       {
         kind: 'copy',
@@ -300,7 +300,7 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
         kind: 'bullets',
         title: 'Using the Dungeon Build',
         intro: 'A dungeon tank setup depends on the content, party, and current talent implementation. Use this page as a planning starting point.',
-        items: ['Review defensive talents before deeper utility choices.', 'Open the full build to inspect Holy support points.', 'Talent effects use Beta client build 1.60.1.69893; report conflicts from newer builds.'],
+        items: ['Review defensive talents before deeper utility choices.', 'Open the full build to inspect Holy support points.', 'Talent effects use Beta client build 1.60.1.69913; report conflicts from newer builds.'],
       },
       {
         kind: 'related',

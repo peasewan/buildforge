@@ -119,7 +119,7 @@ const plannerPrerendered = `<main class="planner-prerender">
     ${renderBetaStatusPrerender()}
     <section>
       <h2>WoW Forever Paladin Talent Tree</h2>
-      <p>The interactive talent tree shows 52 nodes from WoW Forever Beta client build 1.60.1.69893 across all three Paladin specializations. Choose a branch, spend points, and see deeper rows unlock as the allocation becomes valid.</p>
+      <p>The interactive talent tree shows 52 nodes from WoW Forever Beta client build 1.60.1.69913 across all three Paladin specializations. Choose a branch, spend points, and see deeper rows unlock as the allocation becomes valid.</p>
     </section>
     <section>
       <h2>WoW Forever Talents Calculator</h2>
@@ -142,7 +142,7 @@ const plannerPrerendered = `<main class="planner-prerender">
     <p><a href="/wow-forever-paladin-talents">Read the WoW Forever Paladin talent guide</a></p>
     <p><a href="/wow-forever-paladin-builds">Explore the WoW Forever Paladin builds hub</a></p>
     <h2>WoW Forever Paladin Beta Data</h2>
-    <p>The calculator now uses all 52 Paladin talents from Beta client build 1.60.1.69893, including tree positions, rank caps, prerequisite links, and every rank tooltip. The client does not specify the required prerequisite rank, so the planner labels its Classic max-rank rule as an assumption. <a href="/wow-forever-paladin-beta-talent-changes">Review the Paladin Beta talent diff</a>.</p>
+    <p>The calculator now uses all 52 Paladin talents from Beta client build 1.60.1.69913, including tree positions, rank caps, prerequisite links, and every rank tooltip. The client does not specify the required prerequisite rank, so the planner labels its Classic max-rank rule as an assumption. <a href="/wow-forever-paladin-beta-talent-changes">Review the Paladin Beta talent diff</a>.</p>
   </article>
 </main>`
 

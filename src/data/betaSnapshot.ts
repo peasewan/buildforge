@@ -11,9 +11,10 @@ export interface ConfirmedPaladinChange {
 
 export const PALADIN_BETA_SNAPSHOT = {
   status: "tree-data-verified" as const,
-  clientBuild: "1.60.1.69893",
+  clientBuild: "1.60.1.69913",
+  talentPayloadBuild: "1.60.1.69893",
   comparedWithBuild: "1.15.9.69722",
-  updatedAt: "2026-09-18",
+  updatedAt: "2026-09-20",
   betaStartsAt: "2026-09-17",
   betaEndsAt: "2026-10-21",
   phase: {
@@ -80,8 +81,13 @@ export const PALADIN_BETA_SNAPSHOT = {
       kind: "datamine",
     },
     {
-      label: "WoW Classic Forever — build 1.60.1.69893 Paladin talents",
+      label: "WoW Classic Forever — build 1.60.1.69913 Paladin talents",
       url: "https://wowclassicforever.info/talent/paladin/",
+      kind: "datamine",
+    },
+    {
+      label: "TheWoWDB — build 1.60.1.69913 Paladin talent table",
+      url: "https://thewowdb.com/wow-forever/talents/",
       kind: "datamine",
     },
     {

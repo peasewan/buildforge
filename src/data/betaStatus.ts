@@ -7,7 +7,7 @@ const latestDiff = compareTalentVersions(previousBetaDataset, betaDataset)
 export const PALADIN_BETA_STATUS = {
   build: PALADIN_BETA_SNAPSHOT.clientBuild,
   previousBuild: previousBetaDataset.sourceVersion.replace('wow_forever_beta_1.60.1.', ''),
-  updated: 'September 18, 2026',
+  updated: 'September 20, 2026',
   talentCount: betaDataset.talents.length,
   newTalentCount: PALADIN_BETA_SNAPSHOT.counts.paladinNewTalents,
   phaseLabel: PALADIN_BETA_SNAPSHOT.phase.label,

@@ -35,9 +35,9 @@ describe('Paladin builds hub', () => {
     render(<PaladinBuildsHub />)
 
     expect(screen.getByRole('heading', { level: 1, name: 'WoW Forever Paladin Builds & Talent Calculator' })).toBeTruthy()
-    expect(screen.getByText('Beta build 1.60.1.69893')).toBeTruthy()
-    expect(screen.getByText('Updated September 18, 2026')).toBeTruthy()
-    expect(screen.getByText('3 tooltip updates since 69876')).toBeTruthy()
+    expect(screen.getByText('Beta build 1.60.1.69913')).toBeTruthy()
+    expect(screen.getByText('Updated September 20, 2026')).toBeTruthy()
+    expect(screen.getByText('0 tooltip updates since 69893')).toBeTruthy()
   })
 
   it('lists the spec-specific builds next to their generic parents', () => {

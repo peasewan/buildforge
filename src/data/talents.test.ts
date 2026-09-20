@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { betaTalents, DATA_VERSION, previousBetaTalents, talents } from "./talents";
+import { betaTalents, DATA_VERSION, initialBetaTalents, previousBetaTalents, talents } from "./talents";
 import { compareTalentVersions } from "../lib/talentDiff";
 import type { TalentDataset } from "./datasets";
 import { existsSync } from "node:fs";
@@ -7,6 +7,7 @@ import { join } from "node:path";
 
 describe("WoW Forever Paladin talent data", () => {
   it("contains the complete 52-node Beta client dataset", () => {
+    expect(DATA_VERSION).toBe("wow_forever_beta_1.60.1.69913");
     expect(talents).toHaveLength(52);
     expect(talents.filter((talent) => talent.branch === "holy")).toHaveLength(
       18,
@@ -17,6 +18,27 @@ describe("WoW Forever Paladin talent data", () => {
     expect(
       talents.filter((talent) => talent.branch === "retribution"),
     ).toHaveLength(18);
+  });
+
+  it("records 69913 as a reviewed zero-change Paladin build", () => {
+    const dataset = (sourceVersion: string, entries: typeof talents): TalentDataset => ({
+      role: "beta",
+      sourceVersion,
+      label: sourceVersion,
+      status: "complete",
+      coverage: { holy: "complete", protection: "complete", retribution: "complete" },
+      talents: entries,
+    });
+    const diff = compareTalentVersions(
+      dataset("wow_forever_beta_1.60.1.69893", previousBetaTalents),
+      dataset(DATA_VERSION, betaTalents),
+    );
+
+    expect(diff.added).toHaveLength(0);
+    expect(diff.removed).toHaveLength(0);
+    expect(diff.changed).toHaveLength(0);
+    expect(diff.metadataChanged).toHaveLength(0);
+    expect(diff.unchanged).toHaveLength(52);
   });
 
   it("maps every Beta iconName to a distinct local game icon asset", () => {
@@ -110,7 +132,7 @@ describe("WoW Forever Paladin talent data", () => {
     expect(holyPower?.verification.name).toBe("client_verified");
   });
 
-  it("captures the exact 69876 to 69893 client diff", () => {
+  it("preserves the exact 69876 to 69893 client diff", () => {
     const dataset = (sourceVersion: string, entries: typeof talents): TalentDataset => ({
       role: "beta",
       sourceVersion,
@@ -120,8 +142,8 @@ describe("WoW Forever Paladin talent data", () => {
       talents: entries,
     });
     const diff = compareTalentVersions(
-      dataset("wow_forever_beta_1.60.1.69876", previousBetaTalents),
-      dataset(DATA_VERSION, betaTalents),
+      dataset("wow_forever_beta_1.60.1.69876", initialBetaTalents),
+      dataset("wow_forever_beta_1.60.1.69893", previousBetaTalents),
     );
 
     expect(diff.added).toHaveLength(0);

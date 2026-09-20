@@ -1,18 +1,20 @@
 import type { Branch, TalentDefinition } from "../lib/build";
-import betaTalentData from "./paladin-beta-1.60.1.69893.json";
-import previousBetaTalentData from "./paladin-beta-1.60.1.69876.json";
+import betaTalentData from "./paladin-beta-1.60.1.69913.json";
+import previousBetaTalentData from "./paladin-beta-1.60.1.69893.json";
+import initialBetaTalentData from "./paladin-beta-1.60.1.69876.json";
 
 // The archived demo transcription remains available for historical comparisons.
 // Production uses the latest reviewed Beta client dataset below.
 export const PREVIEW_DATA_VERSION = "wow_forever_demo_2026-09-13";
-export const BETA_DATA_VERSION = "wow_forever_beta_1.60.1.69893";
+export const BETA_DATA_VERSION = "wow_forever_beta_1.60.1.69913";
 export const DATA_VERSION = BETA_DATA_VERSION;
 export type TalentDataVersion =
   | typeof PREVIEW_DATA_VERSION
   | typeof BETA_DATA_VERSION
   | `wow_forever_beta_${string}`;
 export const DATA_SOURCES: string[] = [
-  "WoW Forever Beta client build 1.60.1.69893",
+  "WoW Forever Beta client build 1.60.1.69913",
+  "Verified unchanged from the reviewed 1.60.1.69893 Paladin dataset",
   "WoW Classic Forever client-data export",
 ];
 
@@ -845,7 +847,8 @@ export const communityPreviewTalents: Talent[] = [
 
 type BetaTalentRecord =
   | (typeof betaTalentData.talents)[number]
-  | (typeof previousBetaTalentData.talents)[number];
+  | (typeof previousBetaTalentData.talents)[number]
+  | (typeof initialBetaTalentData.talents)[number];
 
 function toBetaTalent(
   record: BetaTalentRecord,
@@ -932,8 +935,17 @@ export const betaTalents: Talent[] = betaTalentData.talents.map((record) =>
 
 export const previousBetaTalents: Talent[] = previousBetaTalentData.talents.map((record) =>
   toBetaTalent(record, {
-    dataVersion: "wow_forever_beta_1.60.1.69876",
+    dataVersion: "wow_forever_beta_1.60.1.69893",
     clientBuild: previousBetaTalentData.clientBuild,
+    url: BETA_DATA_URL,
+    label: "WoW Classic Forever client-data export",
+  }),
+);
+
+export const initialBetaTalents: Talent[] = initialBetaTalentData.talents.map((record) =>
+  toBetaTalent(record, {
+    dataVersion: "wow_forever_beta_1.60.1.69876",
+    clientBuild: initialBetaTalentData.clientBuild,
     url: PREVIOUS_BETA_DATA_URL,
     label: "Talents Forever client-data export",
   }),

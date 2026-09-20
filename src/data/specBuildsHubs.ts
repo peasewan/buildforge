@@ -57,7 +57,7 @@ export const SPEC_BUILDS_HUBS: SpecBuildsHubConfig[] = [
         heading: 'How to Use These Protection Paladin Builds',
         paragraphs: [
           'The complete Protection example on BuildForgeTools uses a 20/31/0 allocation: 31 points establish the defensive Protection core and 20 supporting points come from Holy. The full build page lists every selected rank and loads the same allocation into the calculator. Use that page when you want an exact setup rather than a general description of tank play.',
-          'The dungeon and leveling pages approach the same current example allocation from different situations. The dungeon page explains the jobs a group tank must plan around, while the leveling page describes how a durable route can develop before all 51 points are available. They are not presented as separate, proven best-in-slot talent trees. The talent fields come from Beta client build 1.60.1.69893; the build recommendations still require player testing.',
+          'The dungeon and leveling pages approach the same current example allocation from different situations. The dungeon page explains the jobs a group tank must plan around, while the leveling page describes how a durable route can develop before all 51 points are available. They are not presented as separate, proven best-in-slot talent trees. The talent fields come from Beta client build 1.60.1.69913; the build recommendations still require player testing.',
         ],
       },
       {
@@ -135,7 +135,7 @@ export const SPEC_BUILDS_HUBS: SpecBuildsHubConfig[] = [
       {
         heading: 'Retribution Data Status',
         paragraphs: [
-          'Retribution mixes recognizable inherited talents with WoW Forever additions and revisions. The calculator reads the current rank count, position, prerequisite, and effect from Beta client build 1.60.1.69893 instead of assuming a familiar Classic talent is unchanged.',
+          'Retribution mixes recognizable inherited talents with WoW Forever additions and revisions. The calculator reads the current rank count, position, prerequisite, and effect from Beta client build 1.60.1.69913 instead of assuming a familiar Classic talent is unchanged.',
           'The Beta tracker compares each reviewed client build with the previous dataset before production changes. Players can report conflicting tooltips or positions through the Feedback button so a correction enters the same review process.',
         ],
       },

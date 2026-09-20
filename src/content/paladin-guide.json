@@ -45,7 +45,7 @@
       "heading": "Using the Talent Calculator and Build Planner",
       "paragraphs": [
         "Open the Paladin Talent Calculator, choose a specialization tab, and click an available node to add a rank. Locked nodes show that more points or a prerequisite are needed. The summary panel lists every selected talent and lets you remove ranks, reset the build, or copy a build link. The current draft is also stored in the browser, so an unfinished idea is available when you return on the same device.",
-        "WoW Forever information is still developing, and preview material can change. BuildForgeTools identifies the talent dataset as Beta client build 1.60.1.69893 and lists the references used to organize it. Later Beta and launch builds may change those fields, so the Beta tracker records the exact client version and its reviewed updates. The goal is a fast, transparent planning surface: understand the three Paladin directions, create a legal point allocation, and share the result without an account."
+        "WoW Forever information is still developing, and preview material can change. BuildForgeTools identifies the talent dataset as Beta client build 1.60.1.69913 and lists the references used to organize it. Later Beta and launch builds may change those fields, so the Beta tracker records the exact client version and its reviewed updates. The goal is a fast, transparent planning surface: understand the three Paladin directions, create a legal point allocation, and share the result without an account."
       ]
     }
   ]

@@ -13,6 +13,8 @@ describe('Paladin Beta changes page', () => {
     expect(screen.getByText('52 talents · 21 new in WoW Forever')).toBeTruthy()
     expect(screen.getByText('Holy 9 · Protection 5 · Retribution 7')).toBeTruthy()
     expect(screen.getByText(/stable client node and spell IDs became available for 52 talents/)).toBeTruthy()
+    expect(screen.getByRole('heading', { level: 2, name: '1.60.1.69893 → 1.60.1.69913' })).toBeTruthy()
+    expect(screen.getByText(/No Paladin talent changes were detected in build 69913/)).toBeTruthy()
     expect(screen.getByText(/Rank 3:/)).toBeTruthy()
     expect(screen.getByLabelText('Data verification legend')).toBeTruthy()
   })
@@ -20,7 +22,7 @@ describe('Paladin Beta changes page', () => {
   it('breaks the archived Preview comparison into structural change types', () => {
     render(<BetaChangesPage />)
 
-    expect(screen.getByRole('heading', { level: 2, name: 'Preview → Beta 1.60.1.69893' })).toBeTruthy()
+    expect(screen.getByRole('heading', { level: 2, name: 'Preview → Beta 1.60.1.69913' })).toBeTruthy()
     expect(screen.getByText(/Moved:/)).toBeTruthy()
     expect(screen.getByText(/Rank changed:/)).toBeTruthy()
     expect(screen.getByText(/Prerequisites changed:/)).toBeTruthy()

@@ -32,7 +32,7 @@
       "id": "build-overview",
       "heading": "WoW Forever Protection Paladin Build Overview",
       "paragraphs": [
-        "This WoW Forever Protection Paladin build spends 31 points in Protection and 20 points in Holy, with no points in Retribution. The Protection path reaches Holy Shield and includes the shield, armor, threat, and defensive talents visible in the Beta client build 1.60.1.69893. The Holy points fill accessible opening rows to create a complete 51-point example. This is a reproducible preview for exploring the tree, not a claim that the allocation is the strongest tank build.",
+        "This WoW Forever Protection Paladin build spends 31 points in Protection and 20 points in Holy, with no points in Retribution. The Protection path reaches Holy Shield and includes the shield, armor, threat, and defensive talents visible in the Beta client build 1.60.1.69913. The Holy points fill accessible opening rows to create a complete 51-point example. This is a reproducible preview for exploring the tree, not a claim that the allocation is the strongest tank build.",
         "The public page and interactive calculator share one saved allocation. Selecting Open This Build loads the same 20/31/0 setup, illuminates every chosen node, and displays all 51 points in the summary. Players can remove a rank, test another route, or copy a new link after making changes. No account is needed, and the original example remains available from the Popular Paladin Builds section."
       ]
     },
@@ -74,7 +74,7 @@
       "heading": "Using This Build for Solo Leveling",
       "paragraphs": [
         "The same 20/31/0 allocation also works as a dependable Protection leveling route. Toughness and Redoubt form a durable opening, while Precision and Anticipation add accuracy and defense that make ordinary questing more forgiving. The 20 Holy support points provide a modest self-healing base without pulling the build away from its defensive identity.",
-        "Players leveling as Protection can load this build and adjust the Holy points as new rows unlock. The Talent Calculator enforces every prerequisite and keeps the branch counters accurate, so an edited route stays legal while the full 51-point total stays visible. Ranks use Beta build 1.60.1.69893; report newer-client conflicts."
+        "Players leveling as Protection can load this build and adjust the Holy points as new rows unlock. The Talent Calculator enforces every prerequisite and keeps the branch counters accurate, so an edited route stays legal while the full 51-point total stays visible. Ranks use Beta build 1.60.1.69913; report newer-client conflicts."
       ]
     }
   ]

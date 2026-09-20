@@ -1,6 +1,6 @@
 import { mkdir, readFile, rename, rm, stat, writeFile } from 'node:fs/promises'
 import { basename, join } from 'node:path'
-import betaTalentData from '../src/data/paladin-beta-1.60.1.69893.json'
+import betaTalentData from '../src/data/paladin-beta-1.60.1.69913.json'
 
 const outputDir = join(process.cwd(), 'public', 'images', 'talents')
 const iconNames = [...new Set(betaTalentData.talents.map((talent) => talent.iconName.toLowerCase()))].sort()

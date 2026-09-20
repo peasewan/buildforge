@@ -1,6 +1,6 @@
 import { Calculator } from "lucide-react";
 import { PALADIN_BETA_SNAPSHOT } from "./data/betaSnapshot";
-import { betaDataset, communityPreviewDataset, previousBetaDataset } from "./data/datasets";
+import { betaDataset, communityPreviewDataset, initialBetaDataset, previousBetaDataset } from "./data/datasets";
 import { branchNames } from "./data/talents";
 import { compareTalentVersions } from "./lib/talentDiff";
 import { track } from "./lib/analytics";
@@ -9,6 +9,7 @@ import { VerificationLegend } from "./VerificationBadge";
 
 export default function BetaChangesPage() {
   const latestDiff = compareTalentVersions(previousBetaDataset, betaDataset);
+  const priorDiff = compareTalentVersions(initialBetaDataset, previousBetaDataset);
   const archiveDiff = compareTalentVersions(communityPreviewDataset, betaDataset);
   const snapshot = PALADIN_BETA_SNAPSHOT;
   const newTalents = betaDataset.talents.filter((talent) => talent.changeType === "new");
@@ -40,11 +41,11 @@ export default function BetaChangesPage() {
           <strong>Latest Build Verified</strong>
           <dl>
             <div><dt>Client build</dt><dd>{snapshot.clientBuild}</dd></div>
-            <div><dt>Previous build</dt><dd>1.60.1.69876</dd></div>
+            <div><dt>Previous build</dt><dd>1.60.1.69893</dd></div>
             <div><dt>Tree-ready talents</dt><dd>{betaDataset.talents.length} / {betaDataset.talents.length}</dd></div>
             <div><dt>New in Forever</dt><dd>{snapshot.counts.paladinNewTalents}</dd></div>
             <div><dt>Current level cap</dt><dd>{snapshot.phase.levelCap}</dd></div>
-            <div><dt>Last updated</dt><dd>Sep 18, 2026</dd></div>
+            <div><dt>Last updated</dt><dd>Sep 20, 2026</dd></div>
           </dl>
         </aside>
       </section>
@@ -72,8 +73,8 @@ export default function BetaChangesPage() {
 
         <div className="section-heading centered">
           <div className="eyebrow">Latest Build Diff</div>
-          <h2>1.60.1.69876 → 1.60.1.69893</h2>
-          <p>The tree structure is unchanged. Three talent tooltips contain updated client values.</p>
+          <h2>1.60.1.69893 → 1.60.1.69913</h2>
+          <p>No Paladin talent changes were detected in build 69913. All 52 reviewed nodes retain the same positions, ranks, prerequisites, IDs, icons, and per-rank tooltips.</p>
         </div>
         <div className="beta-diff-summary">
           <p><strong>Added:</strong> {latestDiff.added.length}</p>
@@ -81,12 +82,13 @@ export default function BetaChangesPage() {
           <p><strong>Changed:</strong> {latestDiff.changed.length}</p>
           <p><strong>Unchanged:</strong> {latestDiff.unchanged.length}</p>
         </div>
-        <p className="beta-footnote">Technical metadata: stable client node and spell IDs became available for {latestDiff.metadataChanged.length} talents in build 69893.</p>
+        <p className="beta-footnote">Build 69913 was checked against the preserved 69893 payload. The current calculator therefore advances its verified build without changing any player allocation.</p>
 
         <section className="beta-talent-section">
           <h2>Updated in 69893</h2>
+          <p className="beta-footnote">Technical metadata: stable client node and spell IDs became available for {priorDiff.metadataChanged.length} talents in build 69893.</p>
           <div className="beta-changed-list">
-            {latestDiff.changed.map((change) => (
+            {priorDiff.changed.map((change) => (
               <article key={change.id}>
                 <h3>{change.name}</h3>
                 {change.changes.rankDescriptions?.map((rank) => <p key={rank.rank}>Rank {rank.rank}: <span className="beta-old">{rank.before}</span> → <span className="beta-new">{rank.after}</span></p>)}
@@ -97,7 +99,7 @@ export default function BetaChangesPage() {
         </section>
 
         <section className="beta-talent-section">
-          <h2>Preview → Beta 1.60.1.69893</h2>
+          <h2>Preview → Beta 1.60.1.69913</h2>
           <p>This historical comparison shows how the current 52-node Beta tree differs from the archived public Preview transcription retained for auditing.</p>
           <div className="beta-diff-summary">
             <p><strong>Added:</strong> {archiveDiff.added.length}</p>
@@ -108,7 +110,7 @@ export default function BetaChangesPage() {
             <p><strong>Prerequisites changed:</strong> {previewPrerequisitesChanged.length}</p>
             <p><strong>Unchanged:</strong> {archiveDiff.unchanged.length}</p>
           </div>
-          <p className="beta-footnote">No talents were added, removed, moved, re-ranked, or rewired between the archived Preview tree and Beta 69893. The 26 detected changes are tooltip text or values.</p>
+          <p className="beta-footnote">No talents were added, removed, moved, re-ranked, or rewired between the archived Preview tree and the current Beta baseline. The 26 detected changes are tooltip text or values.</p>
           {archiveDiff.added.length > 0 && <><h3>New Talents</h3><ul>{archiveDiff.added.map((talent) => <li key={talent.id}><strong>{talent.name}</strong><span>{branchNames[talent.branch]} · Row {talent.row + 1} · {talent.maxRank} {talent.maxRank === 1 ? "rank" : "ranks"}</span></li>)}</ul></>}
           {archiveDiff.removed.length > 0 && <><h3>Removed Talents</h3><ul>{archiveDiff.removed.map((talent) => <li key={talent.id}><strong>{talent.name}</strong><span>{branchNames[talent.branch]}</span></li>)}</ul></>}
         </section>
@@ -118,7 +120,7 @@ export default function BetaChangesPage() {
           <VerificationLegend />
           <ul>{snapshot.sources.map((source) => <li key={source.url}><span>{source.kind === "official" ? "Official" : "Datamine"}</span><a href={source.url} target="_blank" rel="noreferrer">{source.label}</a></li>)}</ul>
         </section>
-        <p className="beta-footnote">Client build {snapshot.clientBuild}, compared with previous Beta build 1.60.1.69876 and Classic Era build {snapshot.comparedWithBuild}. Beta values may change in later builds.</p>
+        <p className="beta-footnote">Client build {snapshot.clientBuild}, compared with previous Beta build 1.60.1.69893 and Classic Era build {snapshot.comparedWithBuild}. Beta values may change in later builds.</p>
       </section>
 
       <SiteFooter links={[{ href: '/paladin', label: 'Talent Calculator' }, { href: '/wow-forever-paladin-builds', label: 'All Paladin Builds' }, { href: '/wow-forever-paladin-talents', label: 'Paladin Talents' }]} />

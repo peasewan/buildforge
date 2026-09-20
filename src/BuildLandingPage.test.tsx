@@ -30,7 +30,7 @@ describe('Build landing page template', () => {
     const snapshot = screen.getByRole('region', { name: 'Beta leveling snapshot' })
     expect(snapshot.textContent).toContain('2/9/0')
     expect(snapshot.textContent).toContain('2/19/0')
-    expect(snapshot.textContent).toContain('Build 1.60.1.69893')
+    expect(snapshot.textContent).toContain('Build 1.60.1.69913')
     expect(snapshot.querySelector('a[href^="/build?id="]')).toBeTruthy()
   })
 

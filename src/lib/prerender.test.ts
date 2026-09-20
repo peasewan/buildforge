@@ -56,7 +56,7 @@ describe('prerender generation', () => {
     expect(html).toContain(current)
     expect(html).toContain('Level 30 plan')
     expect(html).toContain(next)
-    expect(html).toContain('1.60.1.69893')
+    expect(html).toContain('1.60.1.69913')
     expect(html).toContain('Community recommendation')
   })
 

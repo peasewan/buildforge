@@ -38,9 +38,9 @@ describe('specialization talent guide', () => {
   it('shows the reviewed Beta version on specialization talent pages', () => {
     render(<SpecTalentsPage spec="holy" />)
 
-    expect(screen.getByText('Beta build 1.60.1.69893')).toBeTruthy()
-    expect(screen.getByText('Updated September 18, 2026')).toBeTruthy()
-    expect(screen.getByText('3 tooltip updates since 69876')).toBeTruthy()
+    expect(screen.getByText('Beta build 1.60.1.69913')).toBeTruthy()
+    expect(screen.getByText('Updated September 20, 2026')).toBeTruthy()
+    expect(screen.getByText('0 tooltip updates since 69893')).toBeTruthy()
     expect(screen.getByText('Example Beta allocation')).toBeTruthy()
     expect(screen.getByRole('heading', { level: 2, name: 'Holy Paladin Talents Beta Talent Tree' })).toBeTruthy()
   })

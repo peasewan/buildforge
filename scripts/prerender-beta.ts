@@ -1,11 +1,12 @@
 import { readFile, writeFile } from "node:fs/promises";
 import { PALADIN_BETA_SNAPSHOT } from "../src/data/betaSnapshot";
-import { betaDataset, communityPreviewDataset, previousBetaDataset } from "../src/data/datasets";
+import { betaDataset, communityPreviewDataset, initialBetaDataset, previousBetaDataset } from "../src/data/datasets";
 import { escapeHtml } from "../src/lib/html";
 import { compareTalentVersions, type TalentChange } from "../src/lib/talentDiff";
 
 const outputPath = new URL("../dist/wow-forever-paladin-beta-talent-changes/index.html", import.meta.url);
 const latestDiff = compareTalentVersions(previousBetaDataset, betaDataset);
+const priorDiff = compareTalentVersions(initialBetaDataset, previousBetaDataset);
 const archiveDiff = compareTalentVersions(communityPreviewDataset, betaDataset);
 const snapshot = PALADIN_BETA_SNAPSHOT;
 const newTalents = betaDataset.talents.filter((talent) => talent.changeType === "new");
@@ -29,7 +30,7 @@ const changeSummary = (change: TalentChange) => {
 const prerendered = `<main class="beta-page beta-prerender">
   <article>
     <h1>WoW Forever Paladin Beta Talent Changes</h1>
-    <p><strong>Latest Build Verified</strong> · Client build ${snapshot.clientBuild} · ${betaDataset.talents.length} / ${betaDataset.talents.length} talents verified · Last updated September 18, 2026</p>
+    <p><strong>Latest Build Verified</strong> · Client build ${snapshot.clientBuild} · ${betaDataset.talents.length} / ${betaDataset.talents.length} talents verified · Last updated September 20, 2026</p>
     <p><strong>Beta Week 1 — Level 20.</strong> Blizzard says the cap will rise to 30 later in the Beta.</p>
     <h2>52 talents · 21 new in WoW Forever</h2>
     <p>Holy 9 · Protection 5 · Retribution 7</p>
@@ -38,11 +39,13 @@ const prerendered = `<main class="beta-page beta-prerender">
     <p>${newTalents.map((talent) => escapeHtml(talent.name)).join(" · ")}</p>
     <h3>Moved talents</h3>
     <p>${movedFromClassic.map((talent) => escapeHtml(talent.name)).join(" · ")}</p>
-    <h2>Beta build 1.60.1.69876 → 1.60.1.69893</h2>
+    <h2>Beta build 1.60.1.69893 → 1.60.1.69913</h2>
     <p>Added: ${latestDiff.added.length} · Removed: ${latestDiff.removed.length} · Changed: ${latestDiff.changed.length} · Unchanged: ${latestDiff.unchanged.length}</p>
-    <p>Technical metadata: stable client node and spell IDs became available for ${latestDiff.metadataChanged.length} talents in build 69893.</p>
-    <ul>${latestDiff.changed.map((change) => `<li>${escapeHtml(change.name)} — ${escapeHtml(changeSummary(change))}</li>`).join("")}</ul>
-    <h2>Preview → Beta 1.60.1.69893</h2>
+    <p>No Paladin talent changes were detected in build 69913. All 52 reviewed nodes retain the same positions, ranks, prerequisites, IDs, icons, and per-rank tooltips.</p>
+    <h2>Updated in 69893</h2>
+    <p>Technical metadata: stable client node and spell IDs became available for ${priorDiff.metadataChanged.length} talents in build 69893.</p>
+    <ul>${priorDiff.changed.map((change) => `<li>${escapeHtml(change.name)} — ${escapeHtml(changeSummary(change))}</li>`).join("")}</ul>
+    <h2>Preview → Beta 1.60.1.69913</h2>
     <p>Added: ${archiveDiff.added.length} · Removed: ${archiveDiff.removed.length} · Changed: ${archiveDiff.changed.length} · Moved: ${previewMoved.length} · Rank changed: ${previewRankChanged.length} · Prerequisites changed: ${previewPrerequisitesChanged.length} · Unchanged: ${archiveDiff.unchanged.length}</p>
     <p>The archived snapshot is retained only to document how the public demo transcription changed once complete Beta client data became available.</p>
     <h2>Sources</h2>
