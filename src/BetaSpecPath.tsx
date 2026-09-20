@@ -22,7 +22,7 @@ export default function BetaSpecPath({ branch }: { branch: Branch }) {
 
       <div className="beta-leveling-grid">
         <article>
-          <div><span>Playable now</span><VerificationBadge status="official" /></div>
+          <div><span>Official level cap</span><VerificationBadge status="official" /></div>
           <strong>Level {path.current.level} · {path.current.points} points</strong>
           <b>{path.current.allocation}</b>
           <small>Community recommendation</small>

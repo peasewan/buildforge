@@ -80,6 +80,18 @@ describe('Holy healing build page', () => {
     expect(path.querySelector(`a[href*="${encodedTalent}"][href$="#calculator"]`)).toBeTruthy()
   })
 
+  it.each([
+    'holy-healing-31-20-0',
+    'protection-shield-20-31-0',
+    'retribution-judgment-0-20-31',
+  ] as const)('labels the official fact precisely and carries the current page date on %s', (buildId) => {
+    render(<BuildPage buildId={buildId} />)
+
+    const path = screen.getByRole('region', { name: 'Current Beta talent path' })
+    expect(path.querySelector('.beta-leveling-grid article:first-child > div > span')?.textContent).toBe('Official level cap')
+    expect(document.querySelector('.build-hero-copy small')?.textContent).toBe('Updated September 20, 2026 · Beta client talent data')
+  })
+
   it('keeps the future Retribution plan separate from the executable level-20 route', () => {
     render(<BuildPage buildId="retribution-judgment-0-20-31" />)
 

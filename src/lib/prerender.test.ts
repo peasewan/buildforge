@@ -68,6 +68,7 @@ describe('prerender generation', () => {
     const html = renderBetaSpecPathPrerender(branch)
 
     expect(html).toContain('Current Beta talent path')
+    expect(html).toContain('Official current cap')
     expect(html).toContain('Level 20 · 11 points')
     expect(html).toContain(current)
     expect(html).toContain('Level 30 plan')

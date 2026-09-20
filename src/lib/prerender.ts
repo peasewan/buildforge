@@ -72,7 +72,7 @@ export function renderBetaSpecPathPrerender(branch: Branch): string {
   return `<section aria-label="Current Beta talent path">
     <h2>${escapeHtml(path.title)}</h2>
     <p>Best for: ${path.bestFor.map(escapeHtml).join(' · ')}.</p>
-    <h3>Playable now</h3>
+    <h3>Official current cap</h3>
     <p><strong>Level ${path.current.level} · ${path.current.points} points · ${escapeHtml(path.current.allocation)}</strong></p>
     <p>Community recommendation.</p>
     <ol>${path.current.steps.map((step) => `<li><strong>${escapeHtml(step.levels)}:</strong> ${escapeHtml(step.talent)}</li>`).join('')}</ol>
