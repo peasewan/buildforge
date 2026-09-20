@@ -11,6 +11,7 @@ import SiteFooter from './SiteFooter'
 import BetaDataStatus from './BetaDataStatus'
 import BetaTalentAvailability from './BetaTalentAvailability'
 import BetaLevelingSnapshot from './BetaLevelingSnapshot'
+import BetaSpecPath from './BetaSpecPath'
 
 const branches: Branch[] = ['holy', 'protection', 'retribution']
 
@@ -88,6 +89,7 @@ export default function BuildPage({ buildId = HOLY_HEALING_BUILD.id }: { buildId
 
       <BetaDataStatus />
       <BetaTalentAvailability branch={specialization} />
+      {build.id !== 'retribution-leveling-20-0-31' && <BetaSpecPath branch={specialization} />}
       {build.id === 'retribution-leveling-20-0-31' && <BetaLevelingSnapshot pageId="retribution-leveling" />}
 
       <section className="build-talents shell" id="talent-allocation">

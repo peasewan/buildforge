@@ -4,7 +4,7 @@ import { HUB_BUILD_HREFS } from '../data/paladinBuildsHub'
 import { SPEC_BUILDS_HUBS, specHubHrefs } from '../data/specBuildsHubs'
 import { BUILD_LANDING_PAGES } from '../data/buildLandingPages'
 import { TRUST_PAGES } from '../data/trustPages'
-import { renderBetaAvailabilityPrerender, renderBetaLevelingSnapshotPrerender, renderEmbervillePrerender, renderHubPrerender, renderLandingPrerender, renderSpecHubPrerender, renderTrustPrerender } from './prerender'
+import { renderBetaAvailabilityPrerender, renderBetaLevelingSnapshotPrerender, renderBetaSpecPathPrerender, renderEmbervillePrerender, renderHubPrerender, renderLandingPrerender, renderSpecHubPrerender, renderTrustPrerender } from './prerender'
 import { EMBERVILLE_EDITORIAL, EMBERVILLE_PAGES } from '../data/emberville'
 
 const redirections = (() => {
@@ -57,6 +57,23 @@ describe('prerender generation', () => {
     expect(html).toContain('Level 30 plan')
     expect(html).toContain(next)
     expect(html).toContain('1.60.1.69913')
+    expect(html).toContain('Community recommendation')
+  })
+
+  it.each([
+    ['holy', '11/0/0', '21/0/0', '5/5 Divine Intellect'],
+    ['protection', '2/9/0', '2/19/0', '2/2 Improved Holy Strike'],
+    ['retribution', '0/0/11', '2/0/19', '1/1 Seal of Command'],
+  ] as const)('prerenders the executable %s Beta talent path', (branch, current, next, milestone) => {
+    const html = renderBetaSpecPathPrerender(branch)
+
+    expect(html).toContain('Current Beta talent path')
+    expect(html).toContain('Level 20 · 11 points')
+    expect(html).toContain(current)
+    expect(html).toContain('Level 30 plan')
+    expect(html).toContain(next)
+    expect(html).toContain(milestone)
+    expect(html).toContain('#calculator')
     expect(html).toContain('Community recommendation')
   })
 

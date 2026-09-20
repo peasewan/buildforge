@@ -497,6 +497,13 @@ footer { padding: 42px 0; border-top: 1px solid rgba(217,164,65,.15); background
 .beta-leveling-evidence li { padding: 7px 10px; border: 1px solid rgba(217,164,65,.17); border-radius: 999px; color: #b5a782; background: rgba(217,164,65,.04); font-size: 10px; }
 .beta-leveling-evidence > div { display: flex; flex-wrap: wrap; gap: 18px; }
 .beta-leveling-evidence > div a { color: #ad955d; font-size: 10px; text-decoration: underline; text-underline-offset: 3px; }
+.beta-spec-best-for { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 19px; }
+.beta-spec-best-for strong { margin-right: 4px; color: #948766; font-size: 9px; letter-spacing: .12em; text-transform: uppercase; }
+.beta-spec-best-for span { padding: 7px 10px; border: 1px solid rgba(217,164,65,.18); border-radius: 999px; color: #c3b486; background: rgba(217,164,65,.05); font-size: 10px; }
+.beta-spec-path .beta-leveling-grid article:first-child > small { margin-top: 5px; color: #c4a866; }
+.beta-spec-steps { display: grid; gap: 8px; padding: 14px 0 8px; margin: 12px 0; border-top: 1px solid rgba(255,255,255,.06); list-style: none; }
+.beta-spec-steps li { display: flex; justify-content: space-between; gap: 14px; color: #7f8792; font-size: 10px; }
+.beta-spec-steps li b { margin: 0; color: #d8cfbb; font: 600 10px Inter, sans-serif; text-align: right; }
 .beta-footnote { margin-top: 48px; color: #69717c; font-size: 11px; line-height: 1.7; }
 .beta-footnote { color: #666d78; font-size: 11px; margin-top: 28px; }
 .beta-diff-summary { display: flex; gap: 14px; flex-wrap: wrap; margin: 24px 0 8px; }

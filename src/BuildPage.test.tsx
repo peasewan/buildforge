@@ -64,6 +64,31 @@ describe('Holy healing build page', () => {
     expect(availability.textContent).toContain(minimumLevel)
   })
 
+  it.each([
+    ['holy-healing-31-20-0', 'Holy Beta talent path', 'Dungeon healing', '5/5 Divine Intellect', 'divine_intellect.5'],
+    ['protection-shield-20-31-0', 'Protection Beta talent path', 'Dungeon tanking', '2/2 Improved Holy Strike', 'improved_holy_strike.2'],
+    ['retribution-judgment-0-20-31', 'Retribution Beta talent path', 'Solo leveling', '5/5 Benediction', 'benediction.5'],
+  ])('adds an executable current-cap route to %s', (buildId, heading, bestFor, firstStep, encodedTalent) => {
+    render(<BuildPage buildId={buildId} />)
+
+    const path = screen.getByRole('region', { name: 'Current Beta talent path' })
+    expect(path.textContent).toContain(heading)
+    expect(path.textContent).toContain('Level 20 · 11 points')
+    expect(path.textContent).toContain('Community recommendation')
+    expect(path.textContent).toContain(bestFor)
+    expect(path.textContent).toContain(firstStep)
+    expect(path.querySelector(`a[href*="${encodedTalent}"][href$="#calculator"]`)).toBeTruthy()
+  })
+
+  it('keeps the future Retribution plan separate from the executable level-20 route', () => {
+    render(<BuildPage buildId="retribution-judgment-0-20-31" />)
+
+    const path = screen.getByRole('region', { name: 'Current Beta talent path' })
+    expect(path.textContent).toContain('0/0/11')
+    expect(path.textContent).toContain('Level 30 plan')
+    expect(path.textContent).toContain('2/0/19')
+  })
+
   it('adds the current and next-cap route to the Retribution leveling page', () => {
     render(<BuildPage buildId="retribution-leveling-20-0-31" />)
 

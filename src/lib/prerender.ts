@@ -9,6 +9,7 @@ import { PALADIN_BETA_STATUS } from '../data/betaStatus'
 import { betaAvailabilityFor } from '../data/betaAvailability'
 import { EMBERVILLE_EDITORIAL, EMBERVILLE_PAGES, EMBERVILLE_SOURCES, EMBERVILLE_STATUS, embervillePageById, type EmbervillePageId } from '../data/emberville'
 import { BETA_LEVEL_CAP_SOURCE, betaLevelingPlannerHref, betaLevelingSnapshot, type BetaLevelingPageId } from '../data/levelingBeta'
+import { betaSpecPath, betaSpecPlannerHref } from '../data/betaSpecPaths'
 import { EVIDENCE_STATUS } from '../data/verification'
 
 const link = (href: string, label: string) => `<a href="${escapeHtml(href)}">${escapeHtml(label)}</a>`
@@ -63,6 +64,25 @@ export function renderBetaLevelingSnapshotPrerender(pageId: BetaLevelingPageId):
     <p>Community recommendation · ${escapeHtml(EVIDENCE_STATUS.derived_assumption.label)} editorial route, reviewed ${escapeHtml(snapshot.recommendationSource.updated)}.</p>
     <ul>${snapshot.milestones.map((milestone) => `<li>${escapeHtml(milestone)}</li>`).join('')}</ul>
     <p>${link(BETA_LEVEL_CAP_SOURCE.href, 'Official level-cap source')} · ${link(snapshot.recommendationSource.href, 'Recommendation source')}</p>
+  </section>`
+}
+
+export function renderBetaSpecPathPrerender(branch: Branch): string {
+  const path = betaSpecPath(branch)
+  return `<section aria-label="Current Beta talent path">
+    <h2>${escapeHtml(path.title)}</h2>
+    <p>Best for: ${path.bestFor.map(escapeHtml).join(' · ')}.</p>
+    <h3>Playable now</h3>
+    <p><strong>Level ${path.current.level} · ${path.current.points} points · ${escapeHtml(path.current.allocation)}</strong></p>
+    <p>Community recommendation.</p>
+    <ol>${path.current.steps.map((step) => `<li><strong>${escapeHtml(step.levels)}:</strong> ${escapeHtml(step.talent)}</li>`).join('')}</ol>
+    <p>${link(betaSpecPlannerHref(branch), `Load the Level ${path.current.level} path in the Calculator`)}.</p>
+    <h3>Level 30 plan</h3>
+    <p><strong>Level ${path.next.level} · ${path.next.points} points · ${escapeHtml(path.next.allocation)}</strong></p>
+    <p>${escapeHtml(path.next.note)}</p>
+    <p>Future-cap ${escapeHtml(EVIDENCE_STATUS.derived_assumption.label)} community route, reviewed ${escapeHtml(path.recommendationSource.updated)}.</p>
+    <p>${escapeHtml(EVIDENCE_STATUS.client_verified.label)} talent names, ranks, and positions · Build ${escapeHtml(PALADIN_BETA_STATUS.build)}.</p>
+    <p>${link(BETA_LEVEL_CAP_SOURCE.href, 'Official level-cap source')} · ${link(path.recommendationSource.href, 'Recommendation source')}</p>
   </section>`
 }
 
