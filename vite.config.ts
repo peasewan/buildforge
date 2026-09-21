@@ -1,6 +1,17 @@
 import { defineConfig } from 'vitest/config'
 import react from '@vitejs/plugin-react'
+import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
+
+// One entry per published class page, from the same requirement gate the routes, rewrites and
+// sitemap read. A withheld page has no input here, so it cannot reach `dist/`.
+//
+// The list is generated (`npm run classes:sync`) rather than imported: this file is its own
+// TypeScript project, and the build refuses to run while the generated artifacts are stale.
+const classInputs = Object.fromEntries(
+  (JSON.parse(readFileSync(resolve(import.meta.dirname, 'class-static-pages.json'), 'utf8')) as { name: string; file: string }[])
+    .map(({ name, file }) => [name, resolve(import.meta.dirname, file)]),
+)
 
 export default defineConfig({
   plugins: [react()],
@@ -42,6 +53,7 @@ export default defineConfig({
         embervilleBuilds: resolve(import.meta.dirname, 'emberville-builds/index.html'),
         embervilleClasses: resolve(import.meta.dirname, 'emberville-classes/index.html'),
         embervilleInheritance: resolve(import.meta.dirname, 'emberville-skill-inheritance/index.html'),
+        ...classInputs,
       },
     },
   },

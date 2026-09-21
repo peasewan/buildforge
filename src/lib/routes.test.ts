@@ -1,5 +1,22 @@
 import { describe, expect, it } from 'vitest'
+import { PUBLISHED_CLASSES } from '../data/classes'
+import { mageClass } from '../data/classes/mage'
+import { publishRequirementsFor, satisfiedRequirements } from './classPage'
 import { pageForPath } from './routes'
+
+/**
+ * What a withheld Mage path actually returns. `pageForPath` ends on the Paladin planner, so a
+ * withheld Mage slug is not "unmatched" — it serves the Paladin calculator, canonical and all.
+ * Pinning the whole definition is the point: `/mage` is withheld precisely because a Mage link
+ * there would land on the Paladin planner.
+ */
+const paladinPlannerFallback = {
+  kind: 'planner',
+  title: 'WoW Forever Paladin Talent Calculator | Beta Build 69913',
+  description: 'Use the WoW Forever Paladin Talent Calculator to explore the WoW Forever Paladin talent tree, plan all 51 points, and share Holy, Protection, or Retribution builds.',
+  canonical: 'https://buildforgetools.com/paladin',
+  robots: 'index, follow',
+}
 
 describe('public page routing', () => {
   it.each([
@@ -153,5 +170,80 @@ describe('public page routing', () => {
       canonical: `https://buildforgetools.com${pathname.replace(/\/$/, '')}`,
       robots: 'index, follow',
     })
+  })
+})
+
+describe('published class pages', () => {
+  it.each([
+    ['/wow-forever-mage-talents', 'WoW Forever Mage Talents & Talent Trees'],
+    ['/wow-forever-mage-leveling-build', 'WoW Forever Mage Leveling Build | Level 20 Beta'],
+    ['/wow-forever-frost-mage-build', 'WoW Forever Frost Mage Build | Level 20 Beta'],
+    ['/wow-forever-frost-mage-leveling-build', 'WoW Forever Frost Mage Leveling Build'],
+    ['/wow-forever-frost-mage-aoe-build', 'WoW Forever Frost Mage AoE Build'],
+    ['/wow-forever-arcane-mage-build', 'WoW Forever Arcane Mage Build | Level 20 Beta'],
+    ['/wow-forever-arcane-mage-leveling-build', 'WoW Forever Arcane Mage Leveling Build'],
+    ['/wow-forever-mage-dungeon-build', 'WoW Forever Mage Dungeon Build'],
+  ])('serves %s as the Mage class page the gate publishes', (pathname, title) => {
+    const expected = {
+      kind: 'class-document',
+      classId: 'mage',
+      classPageSlug: pathname.slice(1),
+      title,
+      canonical: `https://buildforgetools.com${pathname}`,
+      robots: 'index, follow',
+    }
+
+    expect(pageForPath(pathname)).toMatchObject(expected)
+    // The shells are served with a trailing slash by the host, so the metadata must not depend on it.
+    expect(pageForPath(`${pathname}/`)).toEqual(pageForPath(pathname))
+  })
+
+  it.each([
+    ['/mage', 'mage'],
+    ['/wow-forever-mage-builds', 'wow-forever-mage-builds'],
+    ['/wow-forever-mage-level-20-build', 'wow-forever-mage-level-20-build'],
+    ['/wow-forever-fire-mage-build', 'wow-forever-fire-mage-build'],
+    ['/wow-forever-fire-mage-leveling-build', 'wow-forever-fire-mage-leveling-build'],
+    ['/wow-forever-mage-pvp-build', 'wow-forever-mage-pvp-build'],
+    ['/wow-forever-frost-vs-fire-mage-leveling', 'wow-forever-frost-vs-fire-mage-leveling'],
+  ])('withholds %s and falls through to the Paladin planner', (pathname, slug) => {
+    // The definition exists in the class package — the path is withheld by the requirement gate,
+    // not by the page being absent. `/mage` in particular must never resolve to a Mage calculator,
+    // because the CTA that would link it has to point somewhere real.
+    expect(mageClass.pages.some((page) => page.slug === slug)).toBe(true)
+    expect(pageForPath(pathname)).toEqual(paladinPlannerFallback)
+  })
+
+  it('serves every page the publish gate publishes, and nothing the gate withholds', () => {
+    const satisfied = satisfiedRequirements(mageClass)
+    const isPublished = (page: (typeof mageClass.pages)[number]) =>
+      publishRequirementsFor(page).every((requirement) => satisfied.has(requirement))
+    const pages = mageClass.pages.map((page) => ({ page, published: isPublished(page) }))
+
+    expect(pages.filter((entry) => entry.published)).toHaveLength(8)
+    expect(pages.filter((entry) => !entry.published)).toHaveLength(7)
+    for (const { page, published } of pages) {
+      const served = pageForPath(`/${page.slug}`)
+      if (published) {
+        expect(served, page.slug).toMatchObject({
+          kind: page.kind === 'calculator' ? 'class-calculator' : 'class-document',
+          classId: 'mage',
+          classPageSlug: page.slug,
+          title: page.title,
+          canonical: page.canonical,
+        })
+      } else {
+        expect(served, page.slug).toEqual(paladinPlannerFallback)
+      }
+    }
+  })
+
+  it('never returns a class page for a path no published class declares', () => {
+    for (const pathname of ['/hunter', '/wow-forever-hunter-builds', '/wow-forever-mage-talents-extra']) {
+      expect(pageForPath(pathname)).toEqual(paladinPlannerFallback)
+    }
+    for (const classDef of PUBLISHED_CLASSES) {
+      expect(classDef.id).toBe('mage')
+    }
   })
 })

@@ -3,7 +3,7 @@ import { ArrowRight, Check, Swords } from 'lucide-react'
 import SiteFooter from './SiteFooter'
 import VerificationBadge from './VerificationBadge'
 import type { ClassBuild, ClassDefinition, ClassPageDefinition, ClassTalent } from './lib/classPage'
-import { classPlannerHref } from './lib/classPage'
+import { classPlannerHref, publishedClassPages, satisfiedRequirements } from './lib/classPage'
 import { encodePlannerBuild, totalPlannerPoints } from './lib/talentPlanner'
 
 type ChangeStatus = ClassTalent<string>['changeStatus']
@@ -38,6 +38,16 @@ function calculatorHref<B extends string>(classDef: ClassDefinition<B>, build: C
   return classPlannerHref(classDef, encodePlannerBuild(build.build), build.level)
 }
 
+/**
+ * The class calculator is a page like any other: it renders only when the class satisfies
+ * `completeClassPlanner`. A class whose planner is withheld must not link `plannerPath` at all —
+ * that path falls through to another class's calculator, so the link would be wrong, not just
+ * unavailable. Derived from the gate, so publishing the planner brings the CTA back with no edit.
+ */
+function hasPublishedPlanner<B extends string>(classDef: ClassDefinition<B>): boolean {
+  return satisfiedRequirements(classDef).has('completeClassPlanner')
+}
+
 function BuildChip() {
   return <span className="class-build-chip">Community / Editorial Build</span>
 }
@@ -49,14 +59,14 @@ function TalentEvidence() {
   return <p className="class-evidence-line"><span>Talent data</span><VerificationBadge status="client_verified" /><small>positions and ranks only</small></p>
 }
 
-function BuildGroups<B extends string>({ classDef }: { classDef: ClassDefinition<B> }) {
+function BuildGroups<B extends string>({ classDef, isPublishedHref }: { classDef: ClassDefinition<B>; isPublishedHref: (href: string) => boolean }) {
   const intents = [...new Set(classDef.builds.map((build) => build.intent))]
   return <section className="class-build-groups">
     <h2>{classDef.name} builds</h2>
     {intents.map((intent) => <div key={intent}>
       <h3>{intentLabels[intent] ?? intent}</h3>
       {classDef.builds.filter((build) => build.intent === intent).map((build) => <article key={build.id}>
-        <a href={build.href}>{build.title}</a>
+        {isPublishedHref(build.href) ? <a href={build.href}>{build.title}</a> : <strong>{build.title}</strong>}
         <p>{build.role} · Level {build.level} · {build.phase}</p>
         <p>{build.allocation} · {totalPlannerPoints(build.build)} / {build.levelCap} points</p>
         {build.strengths.length > 0 && <ul>{build.strengths.map((strength) => <li key={strength}><Check size={14} /> <span>{strength}</span></li>)}</ul>}
@@ -66,7 +76,7 @@ function BuildGroups<B extends string>({ classDef }: { classDef: ClassDefinition
   </section>
 }
 
-function PvpTabs<B extends string>({ classDef }: { classDef: ClassDefinition<B> }) {
+function PvpTabs<B extends string>({ classDef, plannerPublished }: { classDef: ClassDefinition<B>; plannerPublished: boolean }) {
   const pvpBuilds = classDef.builds.filter((build) => build.intent === 'pvp')
   const specs = classDef.branches.filter((branch) => pvpBuilds.some((build) => build.spec === branch))
   const [activeSpec, setActiveSpec] = useState<B | undefined>(specs.length > 0 ? specs[0] : undefined)
@@ -83,7 +93,7 @@ function PvpTabs<B extends string>({ classDef }: { classDef: ClassDefinition<B> 
       <ul>{orderedBuildTalents(activeBuild, classDef).map(({ talent, rank }) => <li key={talent.id}><span>{talent.name}</span><b>{rank}/{talent.maxRank}</b></li>)}</ul>
       <p>{activeBuild.role}</p>
       <BuildChip />
-      <a className="button class-primary" href={calculatorHref(classDef, activeBuild)}>Edit this build in Calculator <ArrowRight size={15} /></a>
+      {plannerPublished && <a className="button class-primary" href={calculatorHref(classDef, activeBuild)}>Edit this build in Calculator <ArrowRight size={15} /></a>}
     </div>
   </section>
 }
@@ -116,24 +126,30 @@ function TalentCatalogue<B extends string>({ classDef }: { classDef: ClassDefini
  * come from the `ClassDefinition` and the requested `ClassPageDefinition`.
  */
 export default function ClassDocumentPage<B extends string>({ classDef, page }: { classDef: ClassDefinition<B>; page: ClassPageDefinition }) {
+  const plannerPublished = hasPublishedPlanner(classDef)
+  // A link out of a published page has to land on a page that publishes. Both lists come from the
+  // same gate the routes use, so a withheld related page or build is not offered as a link at all.
+  const publishedSlugs = new Set(publishedClassPages([classDef]).map((candidate) => candidate.page.slug))
+  const isPublishedHref = (href: string) => publishedSlugs.has(href.replace(/^\//, '').split(/[?#]/)[0])
   const primaryBuild = buildById(classDef, page.primaryBuildId)
-  const relatedBuilds = page.relatedBuildIds.flatMap((id) => buildById(classDef, id) ?? [])
+  const relatedBuilds = page.relatedBuildIds.flatMap((id) => buildById(classDef, id) ?? []).filter((build) => isPublishedHref(build.href))
   const showsBuildGroups = kindsListingEveryBuild.includes(page.kind)
   const showsRelatedBuilds = relatedBuilds.length > 0 && !kindsHandlingTheirOwnBuildLinks.includes(page.kind)
   const calculatorPage = classDef.pages.find((candidate) => candidate.kind === 'calculator')
-  const navPages = classDef.pages.filter((candidate) => candidate.kind === 'buildsHub' || candidate.kind === 'talents')
+  const navPages = classDef.pages.filter((candidate) => (candidate.kind === 'buildsHub' || candidate.kind === 'talents') && isPublishedHref(`/${candidate.slug}`))
+  const relatedPages = page.relatedPages.filter((related) => isPublishedHref(related.href))
   // Only this class's own links: the site-wide class list lives in SiteFooter, which prepends
   // these to it. Nothing here may name another class.
   const footerLinks = navPages
     .map((candidate) => ({ href: `/${candidate.slug}`, label: candidate.h1 }))
-    .concat([{ href: classDef.plannerPath, label: `${classDef.name} Talent Calculator` }])
+    .concat(plannerPublished ? [{ href: classDef.plannerPath, label: `${classDef.name} Talent Calculator` }] : [])
   const editInCalculator = <a className="button class-primary" href={calculatorHref(classDef, primaryBuild)}>Edit this build in Calculator <ArrowRight size={15} /></a>
 
   return <main className="class-page">
     <header className="class-nav shell">
       <a className="class-brand" href="/"><Swords /><span>BUILD<b>FORGE</b></span></a>
       <nav aria-label={`${classDef.name} pages`}>
-        <a href={classDef.plannerPath}>{calculatorPage?.h1 ?? `${classDef.name} Talent Calculator`}</a>
+        {plannerPublished && <a href={classDef.plannerPath}>{calculatorPage?.h1 ?? `${classDef.name} Talent Calculator`}</a>}
         {navPages.map((candidate) => <a href={`/${candidate.slug}`} key={candidate.slug}>{candidate.h1}</a>)}
       </nav>
     </header>
@@ -144,7 +160,7 @@ export default function ClassDocumentPage<B extends string>({ classDef, page }: 
           <p className="class-kicker">{page.eyebrow} · {classDef.beta.phaseLabel}</p>
           <h1>{page.h1}</h1>
           <p>{page.description}</p>
-          <div className="class-hero-actions">{editInCalculator}</div>
+          {plannerPublished && <div className="class-hero-actions">{editInCalculator}</div>}
         </div>
         <aside>
           <div className="class-evidence">
@@ -158,8 +174,8 @@ export default function ClassDocumentPage<B extends string>({ classDef, page }: 
 
     <div className="shell class-document">
       <div className="class-builds" data-testid="class-build-evidence">
-        {showsBuildGroups && <BuildGroups classDef={classDef} />}
-        {page.kind === 'pvp' && <PvpTabs classDef={classDef} />}
+        {showsBuildGroups && <BuildGroups classDef={classDef} isPublishedHref={isPublishedHref} />}
+        {page.kind === 'pvp' && <PvpTabs classDef={classDef} plannerPublished={plannerPublished} />}
         {primaryBuild && !showsBuildGroups && <section className="class-primary-build">
           <h2>{primaryBuild.title}</h2>
           <p><strong>{primaryBuild.allocation}</strong> · {primaryBuild.points} / {primaryBuild.levelCap} points · {primaryBuild.phase}</p>
@@ -212,16 +228,16 @@ export default function ClassDocumentPage<B extends string>({ classDef, page }: 
         {page.faqs.map((faq) => <div key={faq.question}><h3>{faq.question}</h3><p>{faq.answer}</p></div>)}
       </section>}
 
-      {page.relatedPages.length > 0 && <section className="class-related-pages">
+      {relatedPages.length > 0 && <section className="class-related-pages">
         <h2>Related {classDef.name} pages</h2>
-        <nav aria-label={`Related ${classDef.name} pages`}>{page.relatedPages.map((related) => <a href={related.href} key={related.href}>{related.label}</a>)}</nav>
+        <nav aria-label={`Related ${classDef.name} pages`}>{relatedPages.map((related) => <a href={related.href} key={related.href}>{related.label}</a>)}</nav>
       </section>}
 
-      <section className="class-cta">
+      {plannerPublished && <section className="class-cta">
         <h2>Open the {classDef.name} calculator</h2>
-        <p>Every {classDef.name} page points back at the planner at {classDef.plannerPath}.</p>
+        <p>Every published {classDef.name} page points back at the planner at {classDef.plannerPath}.</p>
         {editInCalculator}
-      </section>
+      </section>}
     </div>
 
     <SiteFooter classLinks={footerLinks} />

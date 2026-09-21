@@ -1,0 +1,34 @@
+[
+  {
+    "name": "mage-wow-forever-mage-talents",
+    "file": "wow-forever-mage-talents/index.html"
+  },
+  {
+    "name": "mage-wow-forever-mage-leveling-build",
+    "file": "wow-forever-mage-leveling-build/index.html"
+  },
+  {
+    "name": "mage-wow-forever-frost-mage-build",
+    "file": "wow-forever-frost-mage-build/index.html"
+  },
+  {
+    "name": "mage-wow-forever-arcane-mage-build",
+    "file": "wow-forever-arcane-mage-build/index.html"
+  },
+  {
+    "name": "mage-wow-forever-frost-mage-leveling-build",
+    "file": "wow-forever-frost-mage-leveling-build/index.html"
+  },
+  {
+    "name": "mage-wow-forever-arcane-mage-leveling-build",
+    "file": "wow-forever-arcane-mage-leveling-build/index.html"
+  },
+  {
+    "name": "mage-wow-forever-frost-mage-aoe-build",
+    "file": "wow-forever-frost-mage-aoe-build/index.html"
+  },
+  {
+    "name": "mage-wow-forever-mage-dungeon-build",
+    "file": "wow-forever-mage-dungeon-build/index.html"
+  }
+]

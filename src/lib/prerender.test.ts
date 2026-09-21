@@ -4,9 +4,31 @@ import { HUB_BUILD_HREFS } from '../data/paladinBuildsHub'
 import { SPEC_BUILDS_HUBS, specHubHrefs } from '../data/specBuildsHubs'
 import { BUILD_LANDING_PAGES } from '../data/buildLandingPages'
 import { TRUST_PAGES } from '../data/trustPages'
-import { renderBetaAvailabilityPrerender, renderBetaLevelingSnapshotPrerender, renderBetaSpecPathPrerender, renderEmbervillePrerender, renderHubPrerender, renderLandingPrerender, renderSpecHubPrerender, renderSpellbookPrerender, renderTrustPrerender, renderWarriorBuildPrerender, renderWarriorHubPrerender, renderWarriorPlannerPrerender } from './prerender'
+import { renderBetaAvailabilityPrerender, renderBetaLevelingSnapshotPrerender, renderBetaSpecPathPrerender, renderClassPage, renderEmbervillePrerender, renderHubPrerender, renderLandingPrerender, renderSpecHubPrerender, renderSpellbookPrerender, renderTrustPrerender, renderWarriorBuildPrerender, renderWarriorHubPrerender, renderWarriorPlannerPrerender } from './prerender'
 import { EMBERVILLE_EDITORIAL, EMBERVILLE_PAGES } from '../data/emberville'
 import { paladinSpellbook } from '../data/paladinSpellbook'
+import { mageClass } from '../data/classes/mage'
+import { hunterClassFixture } from '../data/fixtures/hunterClass.fixture'
+import { publishRequirementsFor, satisfiedRequirements, type ClassPageDefinition } from './classPage'
+import { MAGE_BRANCHES } from '../data/mageTalents'
+import { escapeHtml } from './html'
+
+const publishedMagePages = (() => {
+  const satisfied = satisfiedRequirements(mageClass)
+  return mageClass.pages.filter((page) => publishRequirementsFor(page).every((requirement) => satisfied.has(requirement)))
+})()
+
+const withheldMageSlugs = mageClass.pages.filter((page) => !publishedMagePages.includes(page)).map((page) => `/${page.slug}`)
+
+const classPageHtml = (page: ClassPageDefinition) => renderClassPage(mageClass, page)
+
+const classPrerendered = () => [
+  ...publishedMagePages.map((page) => [page.slug, classPageHtml(page)] as const),
+  ['mage calculator (withheld definition)', renderClassPage(mageClass, mageClass.pages.find((page) => page.kind === 'calculator')!)] as const,
+]
+
+/** Every `a/b/c` allocation this HTML prints, as branch points in `MAGE_BRANCHES` order. */
+const allocationTriples = (html: string) => (html.match(/\b\d+\/\d+\/\d+\b/g) ?? []).map((triple) => triple.split('/').map(Number))
 
 const redirections = (() => {
   const config = JSON.parse(readFileSync(`${process.cwd()}/vercel.json`, 'utf8')) as {
@@ -183,4 +205,112 @@ describe('prerender generation', () => {
       expect(words).toBeGreaterThanOrEqual(450)
     },
   )
+})
+
+describe('class page prerender', () => {
+  it('prerenders one class page per published page, and only published ones', () => {
+    expect(publishedMagePages).toHaveLength(8)
+    expect(withheldMageSlugs).toHaveLength(7)
+
+    for (const page of mageClass.pages) {
+      // Every definition renders — the gate decides what ships, not the renderer.
+      expect(classPageHtml(page), page.slug).toContain(`<h1>${escapeHtml(page.h1)}</h1>`)
+    }
+  })
+
+  it.each(publishedMagePages.map((page) => [page.slug, page] as const))(
+    'gives %s its own H1, description, sections and FAQs',
+    (_slug, page) => {
+      const html = classPageHtml(page)
+
+      expect(html.match(/<h1>.*?<\/h1>/g)).toHaveLength(1)
+      expect(html).toContain(escapeHtml(page.description))
+      expect(html).toContain(escapeHtml(page.eyebrow))
+      for (const section of page.sections) expect(html).toContain(`<h2>${escapeHtml(section.heading)}</h2>`)
+      for (const faq of page.faqs) {
+        expect(html).toContain(escapeHtml(faq.question))
+        expect(html).toContain(escapeHtml(faq.answer))
+      }
+      expect(html).toContain('href="/about"')
+      expect(html).toContain('href="/privacy"')
+    },
+  )
+
+  it('lists every published talent name in the calculator prerender', () => {
+    const calculator = mageClass.pages.find((page) => page.kind === 'calculator')!
+    const html = renderClassPage(mageClass, calculator)
+
+    for (const talent of mageClass.talents) expect(html, `${talent.id} is missing`).toContain(talent.name)
+    for (const branch of MAGE_BRANCHES) expect(html).toContain(mageClass.branchNames[branch])
+    expect(html.match(/data-class-talent=/g)).toHaveLength(mageClass.talents.length)
+  })
+
+  it('carries each published build page allocation and its selected talents', () => {
+    const withPrimary = publishedMagePages.filter((page) => page.primaryBuildId)
+
+    expect(withPrimary.length).toBeGreaterThan(0)
+    for (const page of withPrimary) {
+      const build = mageClass.builds.find((candidate) => candidate.id === page.primaryBuildId)!
+      const html = classPageHtml(page)
+
+      expect(html, `${page.slug} omits its allocation`).toContain(build.allocation)
+      expect(html).toContain(`${build.points} / ${build.levelCap} points`)
+      for (const talentId of Object.keys(build.build)) {
+        const talent = mageClass.talents.find((candidate) => candidate.id === talentId)!
+        expect(html, `${page.slug} omits ${talent.name}`).toContain(talent.name)
+      }
+    }
+  })
+
+  it('never prints a fire allocation, because no fire allocation is legal', () => {
+    const fireSlot = MAGE_BRANCHES.indexOf('fire')
+
+    expect(fireSlot).toBe(1)
+    for (const [label, html] of classPrerendered()) {
+      for (const triple of allocationTriples(html)) {
+        expect(triple[fireSlot], `${label} prints ${triple.join('/')}`).toBe(0)
+      }
+    }
+  })
+
+  it('never links a page the gate withholds', () => {
+    for (const [label, html] of classPrerendered()) {
+      for (const withheld of withheldMageSlugs) {
+        expect(html, `${label} links withheld ${withheld}`).not.toContain(`href="${withheld}"`)
+      }
+    }
+  })
+
+  it('renders no link to the class calculator while the planner requirement is unmet', () => {
+    const satisfied = satisfiedRequirements(mageClass)
+
+    expect(satisfied.has('completeClassPlanner')).toBe(false)
+    for (const [label, html] of classPrerendered()) {
+      expect(html, `${label} links the withheld ${mageClass.plannerPath} calculator`).not.toContain(`href="${mageClass.plannerPath}"`)
+      expect(html, `${label} links the withheld ${mageClass.plannerPath} calculator`).not.toContain(`href="${mageClass.plannerPath}?`)
+      expect(html).not.toMatch(/Edit this build in Calculator/i)
+    }
+  })
+
+  it('adds one Mage discovery link to the existing surfaces without dropping a link', () => {
+    for (const [label, html] of [['paladin hub', renderHubPrerender()], ['paladin landing', renderLandingPrerender('leveling')], ['trust page', renderTrustPrerender('about')]] as const) {
+      expect(html, label).toContain('href="/wow-forever-mage-talents"')
+      for (const href of ['/paladin', '/wow-forever-paladin-builds', '/about', '/contact', '/privacy']) {
+        expect(html, `${label} dropped ${href}`).toContain(`href="${href}"`)
+      }
+      // Discovery must not point at the withheld calculator.
+      expect(html, label).not.toContain('href="/mage"')
+    }
+  })
+
+  it('keeps the calculator links for a class that satisfies completeClassPlanner', () => {
+    // The same renderer and the same rule: the gate decides. The Hunter fixture's planner is
+    // published, so its pages must keep exactly the links the withheld Mage pages dropped.
+    expect(satisfiedRequirements(hunterClassFixture).has('completeClassPlanner')).toBe(true)
+    const page = hunterClassFixture.pages.find((candidate) => candidate.kind === 'specBuild')!
+    const html = renderClassPage(hunterClassFixture, page)
+
+    expect(html).toContain(`href="${hunterClassFixture.plannerPath}?build=`)
+    expect(html).toMatch(/Edit this build in Calculator/i)
+  })
 })

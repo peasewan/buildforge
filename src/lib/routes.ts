@@ -6,9 +6,10 @@ import { TRUST_PAGES, type TrustPageId } from '../data/trustPages'
 import type { Branch } from './build'
 import { EMBERVILLE_PAGES, type EmbervillePageId } from '../data/emberville'
 import { WARRIOR_BUILD_PAGES, type WarriorBuildPageId } from '../data/warriorPages'
+import { publishedClassPage } from './classStaticPages'
 
 export interface PageDefinition {
-  kind: 'planner' | 'guide' | 'build-guide' | 'build-landing' | 'build-hub' | 'spec-hub' | 'spec-talents' | 'spellbook' | 'beta-changes' | 'trust' | 'emberville' | 'warrior-planner' | 'warrior-hub' | 'warrior-build'
+  kind: 'planner' | 'guide' | 'build-guide' | 'build-landing' | 'build-hub' | 'spec-hub' | 'spec-talents' | 'spellbook' | 'beta-changes' | 'trust' | 'emberville' | 'warrior-planner' | 'warrior-hub' | 'warrior-build' | 'class-calculator' | 'class-document'
   title: string
   description: string
   canonical: string
@@ -19,6 +20,8 @@ export interface PageDefinition {
   trustPageId?: TrustPageId
   embervillePageId?: EmbervillePageId
   warriorBuildPageId?: WarriorBuildPageId
+  classId?: string
+  classPageSlug?: string
 }
 
 const plannerPage: PageDefinition = {
@@ -168,5 +171,18 @@ export function pageForPath(pathname: string): PageDefinition {
   if (normalized === '/wow-forever-protection-paladin-build') return protectionBuildPage
   if (normalized === '/wow-forever-retribution-paladin-build') return retributionBuildPage
   if (normalized === '/wow-forever-retribution-paladin-leveling-build') return retributionLevelingBuildPage
+  // Last, so a class page can never shadow a Paladin, Warrior or Emberville route. The lookup is
+  // the requirement gate: a page whose requirements its class does not meet is skipped exactly as
+  // if it were not defined, and the path falls through to the Paladin planner below.
+  const classPage = publishedClassPage(normalized)
+  if (classPage) return {
+    kind: classPage.page.kind === 'calculator' ? 'class-calculator' : 'class-document',
+    classId: classPage.classDef.id,
+    classPageSlug: classPage.page.slug,
+    title: classPage.page.title,
+    description: classPage.page.description,
+    canonical: classPage.page.canonical,
+    robots: classPage.page.robots,
+  }
   return plannerPage
 }

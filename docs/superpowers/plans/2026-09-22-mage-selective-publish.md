@@ -79,7 +79,7 @@ Root cause of fire's gap: `Improved Fireball` is row 1 on both sources but colum
 - [ ] **Step 1: Write failing tests** for all eight published paths resolving to `{ kind: 'class-calculator' | 'class-document', classId, slug, ... }`, and for **each withheld path NOT resolving** — `/mage`, both fire builds, the pvp page, the hub, level-20 and frost-vs-fire must fall through to the existing default rather than matching a class page.
 - [ ] **Step 2: Implement `pageFromPublishedClasses` inside `pageForPath`** without touching the Paladin/Warrior/Emberville cases.
 - [ ] **Step 3: Generate one shell per published page** from the requirement-gated lookup — never from a hand-written slug list. Drive Vite inputs, Vercel rewrites and sitemap rows from the same source. Sitemap `<lastmod>` is each page's `updatedAt`.
-- [ ] **Step 4: Prerender.** The calculator prerender must include every published talent name; build pages must include the allocation string and calculator href. Neither may contain fire allocation copy.
+- [ ] **Step 4: Prerender.** The calculator prerender must include every published talent name; build pages must include the allocation string. Neither may contain fire allocation copy. **Amended by R18:** the calculator href must be **absent** on a class whose calculator is withheld, so for these eight Mage pages it is asserted absent rather than required — see R17.
 - [ ] **Step 5: Wire `main.tsx`.** Add Mage discovery links to the existing footers without removing any existing link.
 - [ ] **Step 6: Run the route/prerender/internal-link/share-indexing tests and `npm run build`.**
 - [ ] **Step 7: Commit.**

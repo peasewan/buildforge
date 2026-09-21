@@ -1,5 +1,9 @@
 import type { Branch } from './build'
 import { escapeHtml } from './html'
+import type { ClassBuild, ClassDefinition, ClassPageDefinition, ClassTalent } from './classPage'
+import { classPlannerHref, publishedClassPages, satisfiedRequirements } from './classPage'
+import { PUBLISHED_CLASSES } from '../data/classes'
+import { encodePlannerBuild } from './talentPlanner'
 import { BUILD_LANDING_PAGES, type BuildLandingPageId, type LandingSection } from '../data/buildLandingPages'
 import { HUB_INTRO, HUB_INTRO_SUB, HUB_PLAYSTYLE_SECTIONS, HUB_SPECIALIZATIONS, HUB_TALENTS, HUB_TITLE } from '../data/paladinBuildsHub'
 import { specBuildsHubBySpec } from '../data/specBuildsHubs'
@@ -176,9 +180,23 @@ function landingSection(section: LandingSection): string {
   return `<section>${heading}${section.intro ? `<p>${escapeHtml(section.intro)}</p>` : ''}<ul>${items}</ul></section>`
 }
 
+/**
+ * The one discovery link each published class contributes to the existing surfaces: the catalogue
+ * its gate publishes. Derived rather than written, so a class that cannot back a catalogue carries
+ * no link, a new class carries one with no edit here, and nothing points at a withheld page —
+ * `/mage` still serves the Paladin planner, so linking a class calculator is not an option while
+ * its planner requirement is unmet.
+ */
+const classDiscoveryLinks = PUBLISHED_CLASSES.flatMap((classDef) =>
+  publishedClassPages([classDef])
+    .filter(({ page }) => page.kind === 'talents')
+    .map(({ page }) => ({ href: `/${page.slug}`, label: `Explore WoW Forever ${classDef.name} talents` })),
+)
+
 const pageFooterLinks = [
   { href: '/paladin', label: 'Open the WoW Forever Paladin Talent Calculator' },
   { href: '/wow-forever-paladin-builds', label: 'Explore all WoW Forever Paladin builds' },
+  ...classDiscoveryLinks,
   { href: '/about', label: 'About BuildForgeTools' },
   { href: '/contact', label: 'Contact BuildForgeTools' },
   { href: '/privacy', label: 'BuildForgeTools Privacy Policy' },
@@ -272,5 +290,91 @@ export function renderTrustPrerender(pageId: TrustPageId): string {
   </article>
   ${page.sections.map((section) => `<section><h2>${escapeHtml(section.heading)}</h2>${section.paragraphs.map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join('')}${section.bullets ? `<ul>${section.bullets.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul>` : ''}${section.links ? linkList(section.links) : ''}</section>`).join('\n  ')}
   ${linkList([{ href: '/about', label: 'About' }, { href: '/contact', label: 'Contact' }, { href: '/privacy', label: 'Privacy' }, ...pageFooterLinks])}
+</main>`
+}
+
+/** Talents a build actually spends, in the order the build record lists them. */
+function orderedBuildTalents<B extends string>(build: ClassBuild, classDef: ClassDefinition<B>): { talent: ClassTalent<B>; rank: number }[] {
+  const spent = Object.entries(build.build).filter(([, rank]) => rank > 0).map(([talentId]) => talentId)
+  const ordered = [...build.order.filter((talentId) => spent.includes(talentId)), ...spent.filter((talentId) => !build.order.includes(talentId))]
+  return ordered.flatMap((talentId) => {
+    const talent = classDef.talents.find((candidate) => candidate.id === talentId)
+    return talent ? [{ talent, rank: build.build[talentId] ?? 0 }] : []
+  })
+}
+
+const classPageFooterLinks = [
+  { href: '/about', label: 'About BuildForgeTools' },
+  { href: '/contact', label: 'Contact BuildForgeTools' },
+  { href: '/privacy', label: 'BuildForgeTools Privacy Policy' },
+]
+
+/**
+ * Static HTML for one class page, rendered from the `ClassDefinition` and its own page record.
+ *
+ * Everything the page can link to is filtered through the same requirement gate the routes use:
+ * a withheld page is absent rather than linked, and the class calculator is linked only by a class
+ * that satisfies `completeClassPlanner` — the withheld path falls through to another class's
+ * calculator, so the link would point at the wrong tool, not merely at a missing page.
+ */
+export function renderClassPage<B extends string>(classDef: ClassDefinition<B>, page: ClassPageDefinition): string {
+  const plannerPublished = satisfiedRequirements(classDef).has('completeClassPlanner')
+  const publishedSlugs = new Set(publishedClassPages([classDef]).map((entry) => entry.page.slug))
+  const isPublished = (href: string) => publishedSlugs.has(href.replace(/^\//, '').split(/[?#]/)[0])
+  const primaryBuild = page.primaryBuildId ? classDef.builds.find((build) => build.id === page.primaryBuildId) : undefined
+  const relatedBuilds = page.relatedBuildIds.flatMap((id) => classDef.builds.filter((build) => build.id === id)).filter((build) => isPublished(build.href))
+  const relatedPages = page.relatedPages.filter((related) => isPublished(related.href))
+  const calculatorLink = primaryBuild
+    ? link(classPlannerHref(classDef, encodePlannerBuild(primaryBuild.build), primaryBuild.level), 'Edit this build in Calculator')
+    : link(classDef.plannerPath, `Open the ${classDef.name} Talent Calculator`)
+
+  const rankLabel = (talent: ClassTalent<B>) => `${talent.maxRank} rank${talent.maxRank === 1 ? '' : 's'}`
+
+  // The calculator has no build of its own: it has to carry the whole dataset instead, so a
+  // crawler sees every published node the planner offers.
+  const calculatorTrees = page.kind === 'calculator'
+    ? classDef.branches.map((branch) => {
+      const talents = classDef.talents.filter((talent) => talent.branch === branch)
+      return `<section><h2>${escapeHtml(classDef.branchNames[branch])} ${escapeHtml(classDef.name)} Talents</h2><p>${escapeHtml(classDef.branchTaglines[branch])}</p><ul>${talents.map((talent) => `<li data-class-talent="${escapeHtml(talent.id)}"><strong>${escapeHtml(talent.name)}</strong> — ${rankLabel(talent)} · Row ${talent.row} column ${talent.column}</li>`).join('')}</ul></section>`
+    }).join('\n  ')
+    : ''
+
+  const primaryBuildSection = primaryBuild
+    ? `<section><h2>${escapeHtml(primaryBuild.title)}</h2><p><strong>${escapeHtml(primaryBuild.allocation)}</strong> · ${primaryBuild.points} / ${primaryBuild.levelCap} points · ${escapeHtml(primaryBuild.phase)}</p><p>${escapeHtml(primaryBuild.role)}</p>${primaryBuild.playstyle.length > 0 ? `<ul>${primaryBuild.playstyle.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul>` : ''}<h3>Talents in this build</h3><ul>${orderedBuildTalents(primaryBuild, classDef).map(({ talent, rank }) => `<li><strong>${escapeHtml(talent.name)}</strong> — ${rank}/${talent.maxRank}</li>`).join('')}</ul><p>Community / Editorial Build · ${escapeHtml(primaryBuild.evidence === 'community_verified' ? 'Community-verified recommendation.' : 'Derived planning assumption.')} Talent positions and ranks remain client data; this allocation is editorial only.</p></section>`
+    : ''
+
+  const relatedBuildSection = relatedBuilds.length > 0
+    ? `<section><h2>Related ${escapeHtml(classDef.name)} builds</h2>${relatedBuilds.map((build) => `<article><h3>${link(build.href, build.title)}</h3><p>${escapeHtml(build.role)} · Level ${build.level} · ${escapeHtml(build.allocation)}</p></article>`).join('')}</section>`
+    : ''
+
+  const comparisonSection = page.comparison
+    ? `<section><h2>${escapeHtml(page.h1)} comparison</h2><table><thead><tr><th scope="col">${escapeHtml(page.h1)}</th>${page.comparison.columns.map((column) => `<th scope="col">${escapeHtml(column)}</th>`).join('')}</tr></thead><tbody>${page.comparison.rows.map((row) => `<tr><th scope="row">${escapeHtml(row.label)}</th>${row.values.map((value) => `<td>${escapeHtml(value)}</td>`).join('')}</tr>`).join('')}</tbody></table></section>`
+    : ''
+
+  const faqSection = page.faqs.length > 0
+    ? `<section><h2>Frequently asked questions</h2>${page.faqs.map((faq) => `<article><h3>${escapeHtml(faq.question)}</h3><p>${escapeHtml(faq.answer)}</p></article>`).join('')}</section>`
+    : ''
+
+  const navLinks = classDef.pages
+    .filter((candidate) => isPublished(`/${candidate.slug}`) && (candidate.kind === 'talents' || candidate.kind === 'calculator'))
+    .map((candidate) => ({ href: `/${candidate.slug}`, label: candidate.h1 }))
+
+  return `<main class="class-prerender">
+  <article>
+    <p>${escapeHtml(page.eyebrow)} · ${escapeHtml(classDef.beta.phaseLabel)}</p>
+    <h1>${escapeHtml(page.h1)}</h1>
+    <p>${escapeHtml(page.description)}</p>
+    <p>Reviewed ${escapeHtml(page.updatedAt)} · Client build ${escapeHtml(classDef.verifiedBuild)}.</p>
+  </article>
+  <section><h2>Evidence boundary</h2><p><strong>Talent data</strong>: positions, ranks and branches are client-derived records checked through ${escapeHtml(classDef.verifiedBuild)}; planner-legal fields only.</p><p><strong>Build</strong>: Community / Editorial build for the current Beta level cap ${classDef.beta.levelCap}. Allocations are editorial, never client facts.</p></section>
+  ${calculatorTrees}
+  ${primaryBuildSection}
+  ${relatedBuildSection}
+  ${page.sections.map((section) => `<section><h2>${escapeHtml(section.heading)}</h2>${section.paragraphs.map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join('')}${section.bullets ? `<ul>${section.bullets.map((bullet) => `<li>${escapeHtml(bullet)}</li>`).join('')}</ul>` : ''}</section>`).join('\n  ')}
+  ${comparisonSection}
+  ${faqSection}
+  ${relatedPages.length > 0 ? `<section><h2>Related ${escapeHtml(classDef.name)} pages</h2>${linkList(relatedPages)}</section>` : ''}
+  ${plannerPublished ? `<p>${calculatorLink}</p>` : ''}
+  ${linkList([...navLinks, ...classPageFooterLinks])}
 </main>`
 }

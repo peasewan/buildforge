@@ -10,12 +10,15 @@ import PaladinBuildsHub from './PaladinBuildsHub'
 import SpecBuildsHub from './SpecBuildsHub'
 import SpecTalentsPage from './SpecTalentsPage'
 import TrustPage from './TrustPage'
+import ClassCalculatorPage from './ClassCalculatorPage'
+import ClassDocumentPage from './ClassDocumentPage'
 import EmbervillePage from './EmbervillePage'
 import SpellbookPage from './SpellbookPage'
 import WarriorPage from './WarriorPage'
 import WarriorBuildPage from './WarriorBuildPage'
 import WarriorBuildsHub from './WarriorBuildsHub'
-import { pageForPath } from './lib/routes'
+import { publishedClassPage } from './lib/classStaticPages'
+import { pageForPath, type PageDefinition } from './lib/routes'
 import './styles.css'
 
 const page = pageForPath(window.location.pathname)
@@ -29,9 +32,33 @@ document.querySelector<HTMLMetaElement>('meta[property="og:title"]')?.setAttribu
 document.querySelector<HTMLMetaElement>('meta[property="og:description"]')?.setAttribute('content', page.description)
 document.querySelector<HTMLMetaElement>('meta[property="og:url"]')?.setAttribute('content', page.canonical)
 
+/**
+ * The class pages read their `ClassDefinition` and page record from the same gated lookup the
+ * router used, so the component can never render a page the gate withheld.
+ */
+function routeElement(route: PageDefinition) {
+  const classPage = publishedClassPage(window.location.pathname)
+  if (route.kind === 'class-calculator' && classPage) return <ClassCalculatorPage classDef={classPage.classDef} />
+  if (route.kind === 'class-document' && classPage) return <ClassDocumentPage classDef={classPage.classDef} page={classPage.page} />
+  if (route.kind === 'warrior-planner') return <WarriorPage />
+  if (route.kind === 'warrior-hub') return <WarriorBuildsHub />
+  if (route.kind === 'warrior-build') return <WarriorBuildPage pageId={route.warriorBuildPageId!} />
+  if (route.kind === 'emberville') return <EmbervillePage pageId={route.embervillePageId!} />
+  if (route.kind === 'guide') return <GuidePage />
+  if (route.kind === 'build-guide') return <BuildPage buildId={route.buildId} />
+  if (route.kind === 'build-landing') return <BuildLandingPage pageId={route.landingPageId!} />
+  if (route.kind === 'build-hub') return <PaladinBuildsHub />
+  if (route.kind === 'spec-hub') return <SpecBuildsHub spec={route.spec!} />
+  if (route.kind === 'spec-talents') return <SpecTalentsPage spec={route.spec!} />
+  if (route.kind === 'spellbook') return <SpellbookPage />
+  if (route.kind === 'beta-changes') return <BetaChangesPage />
+  if (route.kind === 'trust') return <TrustPage pageId={route.trustPageId!} />
+  return <App />
+}
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    {page.kind === 'warrior-planner' ? <WarriorPage /> : page.kind === 'warrior-hub' ? <WarriorBuildsHub /> : page.kind === 'warrior-build' ? <WarriorBuildPage pageId={page.warriorBuildPageId!} /> : page.kind === 'emberville' ? <EmbervillePage pageId={page.embervillePageId!} /> : page.kind === 'guide' ? <GuidePage /> : page.kind === 'build-guide' ? <BuildPage buildId={page.buildId} /> : page.kind === 'build-landing' ? <BuildLandingPage pageId={page.landingPageId!} /> : page.kind === 'build-hub' ? <PaladinBuildsHub /> : page.kind === 'spec-hub' ? <SpecBuildsHub spec={page.spec!} /> : page.kind === 'spec-talents' ? <SpecTalentsPage spec={page.spec!} /> : page.kind === 'spellbook' ? <SpellbookPage /> : page.kind === 'beta-changes' ? <BetaChangesPage /> : page.kind === 'trust' ? <TrustPage pageId={page.trustPageId!} /> : <App />}
+    {routeElement(page)}
     <FeedbackWidget />
   </StrictMode>,
 )

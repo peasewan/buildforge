@@ -4,7 +4,10 @@ import { cleanup, fireEvent, render, screen, within } from '@testing-library/rea
 import { afterEach, describe, expect, it } from 'vitest'
 import ClassDocumentPage from './ClassDocumentPage'
 import { PUBLISHED_CLASSES } from './data/classes'
+import { mageClass } from './data/classes/mage'
 import { hunterClassFixture, type HunterBranch } from './data/fixtures/hunterClass.fixture'
+import { publishedClassPages, publishRequirementsFor, satisfiedRequirements } from './lib/classPage'
+import { pageForPath } from './lib/routes'
 
 const pageOfKind = (kind: string) => hunterClassFixture.pages.find((page) => page.kind === kind)!
 const buildById = (id: string) => hunterClassFixture.builds.find((build) => build.id === id)!
@@ -137,6 +140,11 @@ describe('ClassDocumentPage renders any class from ClassDefinition', () => {
     for (const href of ['/emberville', '/warrior', '/paladin', '/wow-forever-paladin-builds']) {
       expect(footer.querySelector(`a[href="${href}"]`)).toBeTruthy()
     }
+    // The one Mage discovery link is appended there, and it points at a page that publishes:
+    // `/mage` is withheld, so the catalogue is the cluster's crawlable entry point.
+    const mageLink = footer.querySelector('a[href="/wow-forever-mage-talents"]')
+    expect(mageLink).toBeTruthy()
+    expect(pageForPath('/wow-forever-mage-talents').kind).toBe('class-document')
   })
 
   it('scopes the client-verified talent badge to planner-legal fields, never tooltip text', () => {
@@ -172,5 +180,40 @@ describe('ClassDocumentPage renders any class from ClassDefinition', () => {
     expect(PUBLISHED_CLASSES.map((classDef) => classDef.id)).not.toContain('hunter')
     expect(hunterClassFixture.branches).toHaveLength(3)
     expect(hunterClassFixture.branches.every((branch: HunterBranch) => hunterClassFixture.branchNames[branch])).toBe(true)
+  })
+
+  it('drops every calculator link on a class whose planner requirement is unmet', () => {
+    // R17: `/mage` is withheld, so a link to `classDef.plannerPath` would hand a Frost Mage
+    // reader the Paladin calculator. The gate decides, and it withholds the whole CTA — and any
+    // other link to a withheld page — from every published Mage page.
+    const satisfied = satisfiedRequirements(mageClass)
+    const pages = publishedClassPages([mageClass]).map(({ page }) => page)
+
+    expect(satisfied.has('completeClassPlanner')).toBe(false)
+    expect(pages).toHaveLength(8)
+    for (const page of pages) {
+      const { container } = render(<ClassDocumentPage classDef={mageClass} page={page} />)
+      const hrefs = [...container.querySelectorAll('a')].map((anchor) => anchor.getAttribute('href') ?? '')
+
+      expect(hrefs.filter((href) => href === mageClass.plannerPath || href.startsWith(`${mageClass.plannerPath}?`)), page.slug).toEqual([])
+      expect(within(container).queryByText(/Edit this build in Calculator/i), page.slug).toBeNull()
+      for (const withheld of mageClass.pages.filter((candidate) => !publishRequirementsFor(candidate).every((requirement) => satisfied.has(requirement)))) {
+        expect(hrefs.filter((href) => href.split('?')[0] === `/${withheld.slug}`), `${page.slug} -> ${withheld.slug}`).toEqual([])
+      }
+      cleanup()
+    }
+  })
+
+  it('keeps the calculator links on a class whose planner requirement is met', () => {
+    const satisfied = satisfiedRequirements(hunterClassFixture)
+
+    expect(satisfied.has('completeClassPlanner')).toBe(true)
+    for (const { page } of publishedClassPages([hunterClassFixture])) {
+      const { container } = render(<ClassDocumentPage classDef={hunterClassFixture} page={page} />)
+      const hrefs = [...container.querySelectorAll('a')].map((anchor) => anchor.getAttribute('href') ?? '')
+
+      expect(hrefs.some((href) => href.startsWith(hunterClassFixture.plannerPath)), page.slug).toBe(true)
+      cleanup()
+    }
   })
 })

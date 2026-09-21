@@ -11,6 +11,10 @@ const defaultLinks: FooterLink[] = [
   { href: '/paladin', label: 'Talent Calculator' },
   { href: '/wow-forever-paladin-talents', label: 'Paladin Talents' },
   { href: '/wow-forever-paladin-abilities', label: 'Paladin Abilities' },
+  // The Mage discovery link goes to the talent catalogue, not the calculator: the Mage calculator
+  // is withheld until every branch has an allocatable entry point, and `/mage` currently falls
+  // through to the Paladin planner. The catalogue is the published entry point to the cluster.
+  { href: '/wow-forever-mage-talents', label: 'Mage Talents' },
 ]
 
 /**
