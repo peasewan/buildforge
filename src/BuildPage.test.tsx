@@ -40,6 +40,13 @@ describe('Holy healing build page', () => {
     expect(document.querySelector('a[href="/wow-forever-protection-paladin-builds"]')).toBeTruthy()
   })
 
+  it('refers to the calculator cards as community examples', () => {
+    render(<BuildPage buildId="protection-shield-20-31-0" />)
+
+    expect(document.body.textContent).toContain('Community Build Examples section')
+    expect(document.body.textContent).not.toContain('Popular Paladin Builds section')
+  })
+
   it('shows the current Beta dataset on a ranked build page', () => {
     render(<BuildPage buildId="protection-shield-20-31-0" />)
 
