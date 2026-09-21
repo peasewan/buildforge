@@ -1,4 +1,20 @@
-import type { MageBranch, MageSourceTalent } from './mageTalentReconcile'
+import type { MageBranch, MageChangeStatus, MageSourceTalent } from './mageTalentReconcile'
+
+// ForeverDiff `status` and TheWoWDB `change.kind` are two spellings of the same fact
+// ("how does this node differ from Classic"), so both map onto the shared vocabulary.
+// An absent or unrecognised value yields `undefined`, which reconcile scores as `unknown`
+// rather than inventing a difference.
+const foreverDiffChangeStatus: Record<string, MageChangeStatus> = {
+  added: 'new',
+  changed: 'changed',
+  unchanged: 'same',
+}
+
+const wowDbChangeStatus: Record<string, MageChangeStatus> = {
+  changed: 'changed',
+  renamed: 'changed',
+  unchanged: 'same',
+}
 
 const extractJson = (html: string, id: string) => {
   const marker = `id="${id}"`
@@ -24,6 +40,7 @@ interface ForeverDiffTalent {
   ranks?: string[]
   prereqs?: { id: number; rank?: number }[]
   gate?: { spent?: number }
+  status?: string
 }
 
 interface ForeverDiffTree {
@@ -40,6 +57,7 @@ interface WowDbNode {
   sourceTalentId?: number
   iconName?: string
   requires?: { id: string }[]
+  change?: { kind?: string; notes?: string[] }
 }
 
 interface WowDbPayload {
@@ -76,6 +94,7 @@ export function parseForeverDiffMage(html: string): MageSourceTalent[] {
         sourceTalentId: talent.id,
         prerequisiteName: prerequisite,
         requiredTreePoints: talent.gate?.spent ?? talent.tier * 5,
+        changeStatus: talent.status ? foreverDiffChangeStatus[talent.status] : undefined,
       })
     }
   }
@@ -101,6 +120,7 @@ export function parseTheWowDbMage(html: string): MageSourceTalent[] {
         prerequisiteName: node.requires?.[0] ? nameById.get(node.requires[0].id) : undefined,
         iconName: node.iconName,
         requiredTreePoints: node.row * 5,
+        changeStatus: node.change?.kind ? wowDbChangeStatus[node.change.kind] : undefined,
       })
     }
   }

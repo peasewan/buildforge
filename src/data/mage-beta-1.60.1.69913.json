@@ -7,6 +7,7 @@
     "column": 2,
     "maxRank": 5,
     "requiredTreePoints": 0,
+    "changeStatus": "changed",
     "fieldEvidence": {
       "name": "client_verified",
       "branch": "client_verified",
@@ -16,6 +17,7 @@
       "rankDescriptions": "unknown",
       "sourceTalentId": "client_verified",
       "prerequisiteLink": "unknown",
+      "changeStatus": "client_verified",
       "iconName": "client_datamined"
     },
     "verificationStatus": "client_verified",
@@ -44,6 +46,7 @@
     "column": 3,
     "maxRank": 5,
     "requiredTreePoints": 0,
+    "changeStatus": "changed",
     "fieldEvidence": {
       "name": "client_verified",
       "branch": "client_verified",
@@ -53,6 +56,7 @@
       "rankDescriptions": "client_datamined",
       "sourceTalentId": "client_verified",
       "prerequisiteLink": "unknown",
+      "changeStatus": "client_verified",
       "iconName": "client_datamined"
     },
     "verificationStatus": "client_verified",
@@ -88,6 +92,7 @@
     "column": 3,
     "maxRank": 5,
     "requiredTreePoints": 5,
+    "changeStatus": "unknown",
     "fieldEvidence": {
       "name": "client_verified",
       "branch": "client_verified",
@@ -97,6 +102,7 @@
       "rankDescriptions": "unknown",
       "sourceTalentId": "client_verified",
       "prerequisiteLink": "unknown",
+      "changeStatus": "unknown",
       "iconName": "client_datamined"
     },
     "verificationStatus": "client_verified",
@@ -125,6 +131,7 @@
     "column": 1,
     "maxRank": 2,
     "requiredTreePoints": 10,
+    "changeStatus": "changed",
     "fieldEvidence": {
       "name": "client_verified",
       "branch": "client_verified",
@@ -134,6 +141,7 @@
       "rankDescriptions": "unknown",
       "sourceTalentId": "client_verified",
       "prerequisiteLink": "unknown",
+      "changeStatus": "client_verified",
       "iconName": "client_datamined"
     },
     "verificationStatus": "client_verified",
@@ -162,6 +170,7 @@
     "column": 2,
     "maxRank": 3,
     "requiredTreePoints": 10,
+    "changeStatus": "unknown",
     "fieldEvidence": {
       "name": "client_verified",
       "branch": "client_verified",
@@ -171,6 +180,7 @@
       "rankDescriptions": "unknown",
       "sourceTalentId": "client_verified",
       "prerequisiteLink": "unknown",
+      "changeStatus": "unknown",
       "iconName": "client_datamined"
     },
     "verificationStatus": "client_verified",
@@ -199,6 +209,7 @@
     "column": 1,
     "maxRank": 2,
     "requiredTreePoints": 15,
+    "changeStatus": "changed",
     "fieldEvidence": {
       "name": "client_verified",
       "branch": "client_verified",
@@ -208,6 +219,7 @@
       "rankDescriptions": "unknown",
       "sourceTalentId": "client_verified",
       "prerequisiteLink": "unknown",
+      "changeStatus": "client_verified",
       "iconName": "client_datamined"
     },
     "verificationStatus": "client_verified",
@@ -236,6 +248,7 @@
     "column": 2,
     "maxRank": 2,
     "requiredTreePoints": 15,
+    "changeStatus": "changed",
     "fieldEvidence": {
       "name": "client_verified",
       "branch": "client_verified",
@@ -245,6 +258,7 @@
       "rankDescriptions": "unknown",
       "sourceTalentId": "client_verified",
       "prerequisiteLink": "unknown",
+      "changeStatus": "client_verified",
       "iconName": "client_datamined"
     },
     "verificationStatus": "client_verified",
@@ -273,6 +287,7 @@
     "column": 2,
     "maxRank": 1,
     "requiredTreePoints": 20,
+    "changeStatus": "same",
     "fieldEvidence": {
       "name": "client_verified",
       "branch": "client_verified",
@@ -282,6 +297,7 @@
       "rankDescriptions": "client_verified",
       "sourceTalentId": "client_verified",
       "prerequisiteLink": "unknown",
+      "changeStatus": "client_verified",
       "iconName": "client_datamined"
     },
     "verificationStatus": "client_verified",
@@ -313,6 +329,7 @@
     "column": 3,
     "maxRank": 5,
     "requiredTreePoints": 20,
+    "changeStatus": "changed",
     "fieldEvidence": {
       "name": "client_verified",
       "branch": "client_verified",
@@ -322,6 +339,7 @@
       "rankDescriptions": "unknown",
       "sourceTalentId": "client_verified",
       "prerequisiteLink": "unknown",
+      "changeStatus": "client_verified",
       "iconName": "client_datamined"
     },
     "verificationStatus": "client_verified",
@@ -350,6 +368,7 @@
     "column": 2,
     "maxRank": 1,
     "requiredTreePoints": 30,
+    "changeStatus": "changed",
     "fieldEvidence": {
       "name": "client_verified",
       "branch": "client_verified",
@@ -359,6 +378,7 @@
       "rankDescriptions": "client_verified",
       "sourceTalentId": "client_verified",
       "prerequisiteLink": "unknown",
+      "changeStatus": "client_verified",
       "iconName": "client_datamined"
     },
     "verificationStatus": "client_verified",
@@ -390,6 +410,7 @@
     "column": 1,
     "maxRank": 5,
     "requiredTreePoints": 5,
+    "changeStatus": "unknown",
     "fieldEvidence": {
       "name": "client_verified",
       "branch": "client_verified",
@@ -399,6 +420,7 @@
       "rankDescriptions": "unknown",
       "sourceTalentId": "client_verified",
       "prerequisiteLink": "unknown",
+      "changeStatus": "unknown",
       "iconName": "client_datamined"
     },
     "verificationStatus": "client_verified",
@@ -427,6 +449,7 @@
     "column": 2,
     "maxRank": 2,
     "requiredTreePoints": 5,
+    "changeStatus": "unknown",
     "fieldEvidence": {
       "name": "client_verified",
       "branch": "client_verified",
@@ -436,6 +459,7 @@
       "rankDescriptions": "unknown",
       "sourceTalentId": "client_verified",
       "prerequisiteLink": "unknown",
+      "changeStatus": "unknown",
       "iconName": "client_datamined"
     },
     "verificationStatus": "client_verified",
@@ -464,6 +488,7 @@
     "column": 2,
     "maxRank": 3,
     "requiredTreePoints": 10,
+    "changeStatus": "unknown",
     "fieldEvidence": {
       "name": "client_verified",
       "branch": "client_verified",
@@ -473,6 +498,7 @@
       "rankDescriptions": "unknown",
       "sourceTalentId": "client_verified",
       "prerequisiteLink": "unknown",
+      "changeStatus": "unknown",
       "iconName": "client_datamined"
     },
     "verificationStatus": "client_verified",
@@ -501,6 +527,7 @@
     "column": 3,
     "maxRank": 1,
     "requiredTreePoints": 10,
+    "changeStatus": "changed",
     "fieldEvidence": {
       "name": "client_verified",
       "branch": "client_verified",
@@ -510,6 +537,7 @@
       "rankDescriptions": "client_verified",
       "sourceTalentId": "client_verified",
       "prerequisiteLink": "unknown",
+      "changeStatus": "client_verified",
       "iconName": "client_datamined"
     },
     "verificationStatus": "client_verified",
@@ -541,6 +569,7 @@
     "column": 1,
     "maxRank": 3,
     "requiredTreePoints": 15,
+    "changeStatus": "changed",
     "fieldEvidence": {
       "name": "client_verified",
       "branch": "client_verified",
@@ -550,6 +579,7 @@
       "rankDescriptions": "unknown",
       "sourceTalentId": "client_verified",
       "prerequisiteLink": "unknown",
+      "changeStatus": "client_verified",
       "iconName": "client_datamined"
     },
     "verificationStatus": "client_verified",
@@ -578,6 +608,7 @@
     "column": 2,
     "maxRank": 2,
     "requiredTreePoints": 15,
+    "changeStatus": "unknown",
     "fieldEvidence": {
       "name": "client_verified",
       "branch": "client_verified",
@@ -587,6 +618,7 @@
       "rankDescriptions": "unknown",
       "sourceTalentId": "client_verified",
       "prerequisiteLink": "unknown",
+      "changeStatus": "unknown",
       "iconName": "client_datamined"
     },
     "verificationStatus": "client_verified",
@@ -615,6 +647,7 @@
     "column": 4,
     "maxRank": 3,
     "requiredTreePoints": 15,
+    "changeStatus": "unknown",
     "fieldEvidence": {
       "name": "client_verified",
       "branch": "client_verified",
@@ -624,6 +657,7 @@
       "rankDescriptions": "client_datamined",
       "sourceTalentId": "client_verified",
       "prerequisiteLink": "unknown",
+      "changeStatus": "unknown",
       "iconName": "client_datamined"
     },
     "verificationStatus": "client_verified",
@@ -657,6 +691,7 @@
     "column": 2,
     "maxRank": 3,
     "requiredTreePoints": 20,
+    "changeStatus": "same",
     "fieldEvidence": {
       "name": "client_verified",
       "branch": "client_verified",
@@ -666,6 +701,7 @@
       "rankDescriptions": "client_datamined",
       "sourceTalentId": "client_verified",
       "prerequisiteLink": "unknown",
+      "changeStatus": "client_verified",
       "iconName": "client_datamined"
     },
     "verificationStatus": "client_verified",
@@ -699,6 +735,7 @@
     "column": 3,
     "maxRank": 1,
     "requiredTreePoints": 20,
+    "changeStatus": "changed",
     "fieldEvidence": {
       "name": "client_verified",
       "branch": "client_verified",
@@ -708,6 +745,7 @@
       "rankDescriptions": "client_verified",
       "sourceTalentId": "client_verified",
       "prerequisiteLink": "unknown",
+      "changeStatus": "client_verified",
       "iconName": "client_datamined"
     },
     "verificationStatus": "client_verified",
@@ -739,6 +777,7 @@
     "column": 3,
     "maxRank": 5,
     "requiredTreePoints": 25,
+    "changeStatus": "same",
     "fieldEvidence": {
       "name": "client_verified",
       "branch": "client_verified",
@@ -748,6 +787,7 @@
       "rankDescriptions": "client_datamined",
       "sourceTalentId": "client_verified",
       "prerequisiteLink": "unknown",
+      "changeStatus": "client_verified",
       "iconName": "client_datamined"
     },
     "verificationStatus": "client_verified",
@@ -783,6 +823,7 @@
     "column": 2,
     "maxRank": 1,
     "requiredTreePoints": 30,
+    "changeStatus": "changed",
     "fieldEvidence": {
       "name": "client_verified",
       "branch": "client_verified",
@@ -792,6 +833,7 @@
       "rankDescriptions": "unknown",
       "sourceTalentId": "client_verified",
       "prerequisiteLink": "client_verified",
+      "changeStatus": "client_verified",
       "iconName": "client_datamined"
     },
     "verificationStatus": "client_verified",
@@ -821,6 +863,7 @@
     "column": 1,
     "maxRank": 2,
     "requiredTreePoints": 0,
+    "changeStatus": "unknown",
     "fieldEvidence": {
       "name": "client_verified",
       "branch": "client_verified",
@@ -830,6 +873,7 @@
       "rankDescriptions": "client_datamined",
       "sourceTalentId": "client_verified",
       "prerequisiteLink": "unknown",
+      "changeStatus": "unknown",
       "iconName": "client_datamined"
     },
     "verificationStatus": "client_verified",
@@ -862,6 +906,7 @@
     "column": 2,
     "maxRank": 5,
     "requiredTreePoints": 0,
+    "changeStatus": "same",
     "fieldEvidence": {
       "name": "client_verified",
       "branch": "client_verified",
@@ -871,6 +916,7 @@
       "rankDescriptions": "client_datamined",
       "sourceTalentId": "client_verified",
       "prerequisiteLink": "unknown",
+      "changeStatus": "client_verified",
       "iconName": "client_datamined"
     },
     "verificationStatus": "client_verified",
@@ -906,6 +952,7 @@
     "column": 1,
     "maxRank": 5,
     "requiredTreePoints": 5,
+    "changeStatus": "unknown",
     "fieldEvidence": {
       "name": "client_verified",
       "branch": "client_verified",
@@ -915,6 +962,7 @@
       "rankDescriptions": "unknown",
       "sourceTalentId": "client_verified",
       "prerequisiteLink": "unknown",
+      "changeStatus": "unknown",
       "iconName": "client_datamined"
     },
     "verificationStatus": "client_verified",
@@ -943,6 +991,7 @@
     "column": 3,
     "maxRank": 2,
     "requiredTreePoints": 5,
+    "changeStatus": "unknown",
     "fieldEvidence": {
       "name": "client_verified",
       "branch": "client_verified",
@@ -952,6 +1001,7 @@
       "rankDescriptions": "unknown",
       "sourceTalentId": "client_verified",
       "prerequisiteLink": "unknown",
+      "changeStatus": "unknown",
       "iconName": "client_datamined"
     },
     "verificationStatus": "client_verified",
@@ -980,6 +1030,7 @@
     "column": 1,
     "maxRank": 3,
     "requiredTreePoints": 10,
+    "changeStatus": "same",
     "fieldEvidence": {
       "name": "client_verified",
       "branch": "client_verified",
@@ -989,6 +1040,7 @@
       "rankDescriptions": "client_datamined",
       "sourceTalentId": "client_verified",
       "prerequisiteLink": "unknown",
+      "changeStatus": "client_verified",
       "iconName": "client_datamined"
     },
     "verificationStatus": "client_verified",
@@ -1022,6 +1074,7 @@
     "column": 4,
     "maxRank": 3,
     "requiredTreePoints": 10,
+    "changeStatus": "changed",
     "fieldEvidence": {
       "name": "client_verified",
       "branch": "client_verified",
@@ -1031,6 +1084,7 @@
       "rankDescriptions": "unknown",
       "sourceTalentId": "client_verified",
       "prerequisiteLink": "unknown",
+      "changeStatus": "client_verified",
       "iconName": "client_datamined"
     },
     "verificationStatus": "client_verified",
@@ -1059,6 +1113,7 @@
     "column": 1,
     "maxRank": 2,
     "requiredTreePoints": 15,
+    "changeStatus": "same",
     "fieldEvidence": {
       "name": "client_verified",
       "branch": "client_verified",
@@ -1068,6 +1123,7 @@
       "rankDescriptions": "client_datamined",
       "sourceTalentId": "client_verified",
       "prerequisiteLink": "unknown",
+      "changeStatus": "client_verified",
       "iconName": "client_datamined"
     },
     "verificationStatus": "client_verified",
@@ -1100,6 +1156,7 @@
     "column": 3,
     "maxRank": 5,
     "requiredTreePoints": 25,
+    "changeStatus": "changed",
     "fieldEvidence": {
       "name": "client_verified",
       "branch": "client_verified",
@@ -1109,6 +1166,7 @@
       "rankDescriptions": "unknown",
       "sourceTalentId": "client_verified",
       "prerequisiteLink": "unknown",
+      "changeStatus": "client_verified",
       "iconName": "client_datamined"
     },
     "verificationStatus": "client_verified",
@@ -1137,6 +1195,7 @@
     "column": 2,
     "maxRank": 1,
     "requiredTreePoints": 30,
+    "changeStatus": "changed",
     "fieldEvidence": {
       "name": "client_verified",
       "branch": "client_verified",
@@ -1146,6 +1205,7 @@
       "rankDescriptions": "client_verified",
       "sourceTalentId": "client_verified",
       "prerequisiteLink": "unknown",
+      "changeStatus": "client_verified",
       "iconName": "client_datamined"
     },
     "verificationStatus": "client_verified",

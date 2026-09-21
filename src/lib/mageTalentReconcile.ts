@@ -3,6 +3,12 @@ import type { FieldEvidenceKey } from './classPage'
 
 export type MageBranch = 'arcane' | 'fire' | 'frost'
 
+// Shared vocabulary for "how does this node differ from Classic". Both live sources
+// state it in their own words (ForeverDiff `status`, TheWoWDB `change.kind`); the
+// parsers normalize onto this type so the reconcile step can compare them.
+export type MageChangeStatus = 'new' | 'changed' | 'same'
+export type MagePublishedChangeStatus = MageChangeStatus | 'unknown'
+
 export interface MageSourceTalent {
   name: string
   branch: MageBranch
@@ -14,9 +20,11 @@ export interface MageSourceTalent {
   prerequisiteName?: string
   iconName?: string
   requiredTreePoints?: number
+  changeStatus?: MageChangeStatus
 }
 
-export interface ReconciledMageTalent extends MageSourceTalent {
+export interface ReconciledMageTalent extends Omit<MageSourceTalent, 'changeStatus'> {
+  changeStatus: MagePublishedChangeStatus
   fieldEvidence: Partial<Record<FieldEvidenceKey, EvidenceStatus | 'unknown'>>
   verificationStatus: EvidenceStatus
 }
@@ -86,6 +94,7 @@ export function reconcileMageTalents(foreverDiff: MageSourceTalent[], theWowDb: 
       column: left.column,
       maxRank: left.maxRank,
       requiredTreePoints: left.requiredTreePoints ?? right.requiredTreePoints,
+      changeStatus: 'unknown',
       fieldEvidence,
       verificationStatus: 'client_verified',
     }
@@ -136,6 +145,19 @@ export function reconcileMageTalents(foreverDiff: MageSourceTalent[], theWowDb: 
       fieldEvidence.prerequisiteLink = 'unknown'
     } else {
       fieldEvidence.prerequisiteLink = 'unknown'
+    }
+
+    // Spec: "changeStatus vs Classic — dual agree: publish; one source: unknown; disagree: unknown".
+    if (left.changeStatus && right.changeStatus) {
+      if (left.changeStatus === right.changeStatus) {
+        merged.changeStatus = left.changeStatus
+        fieldEvidence.changeStatus = 'client_verified'
+      } else {
+        fieldEvidence.changeStatus = 'unknown'
+        fieldConflicts.push({ name: left.name, branch: left.branch, field: 'changeStatus' })
+      }
+    } else {
+      fieldEvidence.changeStatus = 'unknown'
     }
 
     if (left.iconName && left.iconName === right.iconName) {

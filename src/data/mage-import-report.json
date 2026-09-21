@@ -1,8 +1,24 @@
 {
   "foreverDiffUrl": "https://foreverdiff.com/talents/mage/calculator/",
   "theWowDbUrl": "https://thewowdb.com/wow-forever/talents/mage/",
-  "fetchedAt": "2026-09-21T14:48:28.560Z",
+  "fetchedAt": "2026-09-21T15:22:36.085Z",
   "acquisition": "fetch",
+  "snapshots": [
+    {
+      "file": "mage-source-foreverdiff-1.60.1.69913.json",
+      "source": "https://foreverdiff.com/talents/mage/calculator/",
+      "acquisition": "fetch",
+      "written": true,
+      "talentCount": 54
+    },
+    {
+      "file": "mage-source-thewowdb-1.60.1.69913.json",
+      "source": "https://thewowdb.com/wow-forever/talents/mage/",
+      "acquisition": "fetch",
+      "written": true,
+      "talentCount": 49
+    }
+  ],
   "foreverDiffCount": 54,
   "theWowDbCount": 49,
   "published": 30,
@@ -41,6 +57,11 @@
       "field": "rankDescriptions"
     },
     {
+      "name": "Arcane Concentration",
+      "branch": "arcane",
+      "field": "changeStatus"
+    },
+    {
       "name": "Arcane Resilience",
       "branch": "arcane",
       "field": "row"
@@ -64,6 +85,11 @@
       "name": "Arcane Impact",
       "branch": "arcane",
       "field": "rankDescriptions"
+    },
+    {
+      "name": "Arcane Impact",
+      "branch": "arcane",
+      "field": "changeStatus"
     },
     {
       "name": "Arcane Shielding",
@@ -136,9 +162,19 @@
       "field": "rankDescriptions"
     },
     {
+      "name": "Ignite",
+      "branch": "fire",
+      "field": "changeStatus"
+    },
+    {
       "name": "Flame Throwing",
       "branch": "fire",
       "field": "rankDescriptions"
+    },
+    {
+      "name": "Flame Throwing",
+      "branch": "fire",
+      "field": "changeStatus"
     },
     {
       "name": "Impact",
@@ -166,6 +202,11 @@
       "field": "rankDescriptions"
     },
     {
+      "name": "Improved Flamestrike",
+      "branch": "fire",
+      "field": "changeStatus"
+    },
+    {
       "name": "Improved Scorch",
       "branch": "fire",
       "field": "rankDescriptions"
@@ -176,9 +217,24 @@
       "field": "rankDescriptions"
     },
     {
+      "name": "Improved Fire Ward",
+      "branch": "fire",
+      "field": "changeStatus"
+    },
+    {
+      "name": "Master of Elements",
+      "branch": "fire",
+      "field": "changeStatus"
+    },
+    {
       "name": "Combustion",
       "branch": "fire",
       "field": "rankDescriptions"
+    },
+    {
+      "name": "Frost Warding",
+      "branch": "frost",
+      "field": "changeStatus"
     },
     {
       "name": "Elemental Precision",
@@ -191,6 +247,11 @@
       "field": "rankDescriptions"
     },
     {
+      "name": "Ice Shards",
+      "branch": "frost",
+      "field": "changeStatus"
+    },
+    {
       "name": "Permafrost",
       "branch": "frost",
       "field": "column"
@@ -199,6 +260,11 @@
       "name": "Improved Frost Nova",
       "branch": "frost",
       "field": "rankDescriptions"
+    },
+    {
+      "name": "Improved Frost Nova",
+      "branch": "frost",
+      "field": "changeStatus"
     },
     {
       "name": "Frostbite",
@@ -251,6 +317,12 @@
       "field": "prerequisiteLink"
     }
   ],
+  "changeStatuses": {
+    "new": 0,
+    "changed": 14,
+    "same": 6,
+    "unknown": 10
+  },
   "branches": {
     "arcane": 10,
     "fire": 11,

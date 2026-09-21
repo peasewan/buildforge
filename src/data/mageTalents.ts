@@ -22,7 +22,7 @@ export const MAGE_SOURCES: ClassTalentSource[] = [
 const columnX: Record<number, number> = { 1: 12.5, 2: 37.5, 3: 62.5, 4: 87.5 }
 const rowY: Record<number, number> = { 1: 7, 2: 21.3, 3: 35.6, 4: 49.9, 5: 64.2, 6: 78.5, 7: 92.8 }
 
-type RawMageTalent = Omit<ClassTalent<MageBranch>, 'x' | 'y' | 'icon' | 'description' | 'prerequisite' | 'prerequisiteRuleStatus' | 'changeStatus'> & {
+type RawMageTalent = Omit<ClassTalent<MageBranch>, 'x' | 'y' | 'icon' | 'description' | 'prerequisite' | 'prerequisiteRuleStatus'> & {
   prerequisiteName?: string
   iconName?: string
   rankDescriptions?: string[]
@@ -41,7 +41,7 @@ export const mageTalents: ClassTalent<MageBranch>[] = raw.map((talent) => {
     y: rowY[talent.row] ?? 50,
     prerequisite: parentId ? [{ talentId: parentId, requiredRank: null }] : undefined,
     prerequisiteRuleStatus: parentId ? 'derived_assumption' : 'not_applicable',
-    changeStatus: 'unknown',
+    changeStatus: talent.changeStatus ?? 'unknown',
   }
 })
 

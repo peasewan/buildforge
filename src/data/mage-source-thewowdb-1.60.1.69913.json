@@ -1,7 +1,7 @@
 {
   "acquisition": "fetch",
   "source": "https://thewowdb.com/wow-forever/talents/mage/",
-  "fetchedAt": "2026-09-21T14:48:28.560Z",
+  "fetchedAt": "2026-09-21T15:22:36.085Z",
   "talents": [
     {
       "name": "Arcane Subtlety",
@@ -14,7 +14,8 @@
       ],
       "sourceTalentId": 74,
       "iconName": "spell_holy_dispelmagic",
-      "requiredTreePoints": 0
+      "requiredTreePoints": 0,
+      "changeStatus": "changed"
     },
     {
       "name": "Arcane Focus",
@@ -27,7 +28,8 @@
       ],
       "sourceTalentId": 76,
       "iconName": "spell_holy_devotion",
-      "requiredTreePoints": 0
+      "requiredTreePoints": 0,
+      "changeStatus": "changed"
     },
     {
       "name": "Improved Channeling",
@@ -40,7 +42,8 @@
       ],
       "sourceTalentId": 80,
       "iconName": "spell_nature_starfall",
-      "requiredTreePoints": 0
+      "requiredTreePoints": 0,
+      "changeStatus": "changed"
     },
     {
       "name": "Wand Specialization",
@@ -53,7 +56,8 @@
       ],
       "sourceTalentId": 78,
       "iconName": "inv_wand_01",
-      "requiredTreePoints": 5
+      "requiredTreePoints": 5,
+      "changeStatus": "same"
     },
     {
       "name": "Magic Absorption",
@@ -66,7 +70,8 @@
       ],
       "sourceTalentId": 1650,
       "iconName": "spell_nature_astralrecalgroup",
-      "requiredTreePoints": 5
+      "requiredTreePoints": 5,
+      "changeStatus": "changed"
     },
     {
       "name": "Arcane Concentration",
@@ -79,7 +84,8 @@
       ],
       "sourceTalentId": 75,
       "iconName": "spell_shadow_manaburn",
-      "requiredTreePoints": 5
+      "requiredTreePoints": 5,
+      "changeStatus": "changed"
     },
     {
       "name": "Arcane Geometry",
@@ -93,7 +99,8 @@
       ],
       "sourceTalentId": 82,
       "iconName": "inv_ability_mage_radiantspark",
-      "requiredTreePoints": 10
+      "requiredTreePoints": 10,
+      "changeStatus": "changed"
     },
     {
       "name": "Arcane Impact",
@@ -106,7 +113,8 @@
       ],
       "sourceTalentId": 81,
       "iconName": "spell_nature_wispsplode",
-      "requiredTreePoints": 10
+      "requiredTreePoints": 10,
+      "changeStatus": "changed"
     },
     {
       "name": "Arcane Resilience",
@@ -119,7 +127,8 @@
       ],
       "sourceTalentId": 85,
       "iconName": "spell_arcane_arcaneresilience",
-      "requiredTreePoints": 10
+      "requiredTreePoints": 10,
+      "changeStatus": "same"
     },
     {
       "name": "Arcane Shielding",
@@ -132,7 +141,8 @@
       ],
       "sourceTalentId": 83,
       "iconName": "spell_shadow_detectlesserinvisibility",
-      "requiredTreePoints": 15
+      "requiredTreePoints": 15,
+      "changeStatus": "changed"
     },
     {
       "name": "Improved Counterspell",
@@ -145,7 +155,8 @@
       ],
       "sourceTalentId": 88,
       "iconName": "spell_frost_iceshock",
-      "requiredTreePoints": 15
+      "requiredTreePoints": 15,
+      "changeStatus": "changed"
     },
     {
       "name": "Arcane Meditation",
@@ -158,7 +169,8 @@
       ],
       "sourceTalentId": 1142,
       "iconName": "spell_shadow_siphonmana",
-      "requiredTreePoints": 15
+      "requiredTreePoints": 15,
+      "changeStatus": "changed"
     },
     {
       "name": "Presence of Mind",
@@ -171,7 +183,8 @@
       ],
       "sourceTalentId": 86,
       "iconName": "spell_nature_enchantarmor",
-      "requiredTreePoints": 20
+      "requiredTreePoints": 20,
+      "changeStatus": "same"
     },
     {
       "name": "Arcane Mind",
@@ -185,7 +198,8 @@
       "sourceTalentId": 77,
       "prerequisiteName": "Arcane Resilience",
       "iconName": "spell_shadow_charm",
-      "requiredTreePoints": 20
+      "requiredTreePoints": 20,
+      "changeStatus": "changed"
     },
     {
       "name": "Arcane Instability",
@@ -199,7 +213,8 @@
       "sourceTalentId": 421,
       "prerequisiteName": "Presence of Mind",
       "iconName": "spell_shadow_teleport",
-      "requiredTreePoints": 25
+      "requiredTreePoints": 25,
+      "changeStatus": "changed"
     },
     {
       "name": "Arcane Power",
@@ -213,7 +228,8 @@
       "sourceTalentId": 87,
       "prerequisiteName": "Arcane Instability",
       "iconName": "spell_nature_lightning",
-      "requiredTreePoints": 30
+      "requiredTreePoints": 30,
+      "changeStatus": "changed"
     },
     {
       "name": "Improved Fireball",
@@ -226,7 +242,8 @@
       ],
       "sourceTalentId": 26,
       "iconName": "spell_fire_flamebolt",
-      "requiredTreePoints": 0
+      "requiredTreePoints": 0,
+      "changeStatus": "changed"
     },
     {
       "name": "Impact",
@@ -239,7 +256,8 @@
       ],
       "sourceTalentId": 30,
       "iconName": "spell_fire_meteorstorm",
-      "requiredTreePoints": 0
+      "requiredTreePoints": 0,
+      "changeStatus": "changed"
     },
     {
       "name": "Ignite",
@@ -252,7 +270,8 @@
       ],
       "sourceTalentId": 34,
       "iconName": "spell_fire_incinerate",
-      "requiredTreePoints": 5
+      "requiredTreePoints": 5,
+      "changeStatus": "changed"
     },
     {
       "name": "Flame Throwing",
@@ -265,7 +284,8 @@
       ],
       "sourceTalentId": 28,
       "iconName": "spell_fire_flare",
-      "requiredTreePoints": 5
+      "requiredTreePoints": 5,
+      "changeStatus": "changed"
     },
     {
       "name": "Wake of Fire",
@@ -278,7 +298,8 @@
       ],
       "sourceTalentId": 27,
       "iconName": "spell_fire_lavaspawn",
-      "requiredTreePoints": 5
+      "requiredTreePoints": 5,
+      "changeStatus": "changed"
     },
     {
       "name": "Incineration",
@@ -291,7 +312,8 @@
       ],
       "sourceTalentId": 1141,
       "iconName": "spell_fire_flameshock",
-      "requiredTreePoints": 10
+      "requiredTreePoints": 10,
+      "changeStatus": "changed"
     },
     {
       "name": "Improved Flamestrike",
@@ -304,7 +326,8 @@
       ],
       "sourceTalentId": 31,
       "iconName": "spell_fire_selfdestruct",
-      "requiredTreePoints": 10
+      "requiredTreePoints": 10,
+      "changeStatus": "changed"
     },
     {
       "name": "Pyroblast",
@@ -317,7 +340,8 @@
       ],
       "sourceTalentId": 29,
       "iconName": "spell_fire_fireball02",
-      "requiredTreePoints": 10
+      "requiredTreePoints": 10,
+      "changeStatus": "changed"
     },
     {
       "name": "Burning Soul",
@@ -330,7 +354,8 @@
       ],
       "sourceTalentId": 23,
       "iconName": "spell_fire_fire",
-      "requiredTreePoints": 10
+      "requiredTreePoints": 10,
+      "changeStatus": "changed"
     },
     {
       "name": "Improved Scorch",
@@ -343,7 +368,8 @@
       ],
       "sourceTalentId": 25,
       "iconName": "spell_fire_windsofwoe",
-      "requiredTreePoints": 15
+      "requiredTreePoints": 15,
+      "changeStatus": "changed"
     },
     {
       "name": "Improved Fire Ward",
@@ -356,7 +382,8 @@
       ],
       "sourceTalentId": 24,
       "iconName": "spell_fire_firearmor",
-      "requiredTreePoints": 15
+      "requiredTreePoints": 15,
+      "changeStatus": "changed"
     },
     {
       "name": "Master of Elements",
@@ -369,7 +396,8 @@
       ],
       "sourceTalentId": 1639,
       "iconName": "spell_fire_masterofelements",
-      "requiredTreePoints": 15
+      "requiredTreePoints": 15,
+      "changeStatus": "changed"
     },
     {
       "name": "Critical Mass",
@@ -382,7 +410,8 @@
       ],
       "sourceTalentId": 33,
       "iconName": "spell_nature_wispheal",
-      "requiredTreePoints": 20
+      "requiredTreePoints": 20,
+      "changeStatus": "same"
     },
     {
       "name": "Blast Wave",
@@ -396,7 +425,8 @@
       "sourceTalentId": 32,
       "prerequisiteName": "Pyroblast",
       "iconName": "spell_holy_excorcism_02",
-      "requiredTreePoints": 20
+      "requiredTreePoints": 20,
+      "changeStatus": "changed"
     },
     {
       "name": "Fire Power",
@@ -409,7 +439,8 @@
       ],
       "sourceTalentId": 35,
       "iconName": "spell_fire_immolation",
-      "requiredTreePoints": 25
+      "requiredTreePoints": 25,
+      "changeStatus": "same"
     },
     {
       "name": "Combustion",
@@ -423,7 +454,8 @@
       "sourceTalentId": 36,
       "prerequisiteName": "Critical Mass",
       "iconName": "spell_fire_sealoffire",
-      "requiredTreePoints": 30
+      "requiredTreePoints": 30,
+      "changeStatus": "changed"
     },
     {
       "name": "Frost Warding",
@@ -436,7 +468,8 @@
       ],
       "sourceTalentId": 70,
       "iconName": "spell_frost_frostward",
-      "requiredTreePoints": 0
+      "requiredTreePoints": 0,
+      "changeStatus": "changed"
     },
     {
       "name": "Improved Frostbolt",
@@ -449,7 +482,8 @@
       ],
       "sourceTalentId": 37,
       "iconName": "spell_frost_frostbolt02",
-      "requiredTreePoints": 0
+      "requiredTreePoints": 0,
+      "changeStatus": "same"
     },
     {
       "name": "Elemental Precision",
@@ -462,7 +496,8 @@
       ],
       "sourceTalentId": 1649,
       "iconName": "spell_ice_magicdamage",
-      "requiredTreePoints": 0
+      "requiredTreePoints": 0,
+      "changeStatus": "changed"
     },
     {
       "name": "Ice Shards",
@@ -475,7 +510,8 @@
       ],
       "sourceTalentId": 73,
       "iconName": "spell_frost_iceshard",
-      "requiredTreePoints": 5
+      "requiredTreePoints": 5,
+      "changeStatus": "changed"
     },
     {
       "name": "Frostbite",
@@ -488,7 +524,8 @@
       ],
       "sourceTalentId": 38,
       "iconName": "spell_frost_frostarmor",
-      "requiredTreePoints": 5
+      "requiredTreePoints": 5,
+      "changeStatus": "changed"
     },
     {
       "name": "Improved Frost Nova",
@@ -501,7 +538,8 @@
       ],
       "sourceTalentId": 62,
       "iconName": "spell_frost_freezingbreath",
-      "requiredTreePoints": 5
+      "requiredTreePoints": 5,
+      "changeStatus": "changed"
     },
     {
       "name": "Permafrost",
@@ -514,7 +552,8 @@
       ],
       "sourceTalentId": 65,
       "iconName": "spell_frost_wisp",
-      "requiredTreePoints": 5
+      "requiredTreePoints": 5,
+      "changeStatus": "changed"
     },
     {
       "name": "Piercing Ice",
@@ -527,7 +566,8 @@
       ],
       "sourceTalentId": 61,
       "iconName": "spell_frost_frostbolt",
-      "requiredTreePoints": 10
+      "requiredTreePoints": 10,
+      "changeStatus": "same"
     },
     {
       "name": "Cold Snap",
@@ -540,7 +580,8 @@
       ],
       "sourceTalentId": 69,
       "iconName": "spell_frost_wizardmark",
-      "requiredTreePoints": 10
+      "requiredTreePoints": 10,
+      "changeStatus": "changed"
     },
     {
       "name": "Improved Blizzard",
@@ -553,7 +594,8 @@
       ],
       "sourceTalentId": 63,
       "iconName": "spell_frost_icestorm",
-      "requiredTreePoints": 10
+      "requiredTreePoints": 10,
+      "changeStatus": "changed"
     },
     {
       "name": "Arctic Reach",
@@ -566,7 +608,8 @@
       ],
       "sourceTalentId": 741,
       "iconName": "spell_shadow_darkritual",
-      "requiredTreePoints": 15
+      "requiredTreePoints": 15,
+      "changeStatus": "same"
     },
     {
       "name": "Frost Channeling",
@@ -579,7 +622,8 @@
       ],
       "sourceTalentId": 66,
       "iconName": "spell_frost_stun",
-      "requiredTreePoints": 15
+      "requiredTreePoints": 15,
+      "changeStatus": "changed"
     },
     {
       "name": "Shatter",
@@ -593,7 +637,8 @@
       "sourceTalentId": 67,
       "prerequisiteName": "Improved Frost Nova",
       "iconName": "spell_frost_frostshock",
-      "requiredTreePoints": 15
+      "requiredTreePoints": 15,
+      "changeStatus": "changed"
     },
     {
       "name": "Ice Block",
@@ -606,7 +651,8 @@
       ],
       "sourceTalentId": 72,
       "iconName": "spell_frost_frost",
-      "requiredTreePoints": 20
+      "requiredTreePoints": 20,
+      "changeStatus": "changed"
     },
     {
       "name": "Improved Cone of Cold",
@@ -619,7 +665,8 @@
       ],
       "sourceTalentId": 64,
       "iconName": "spell_frost_glacier",
-      "requiredTreePoints": 20
+      "requiredTreePoints": 20,
+      "changeStatus": "same"
     },
     {
       "name": "Winter's Chill",
@@ -632,7 +679,8 @@
       ],
       "sourceTalentId": 68,
       "iconName": "spell_frost_chillingblast",
-      "requiredTreePoints": 25
+      "requiredTreePoints": 25,
+      "changeStatus": "changed"
     },
     {
       "name": "Ice Barrier",
@@ -646,7 +694,8 @@
       "sourceTalentId": 71,
       "prerequisiteName": "Ice Block",
       "iconName": "spell_ice_lament",
-      "requiredTreePoints": 30
+      "requiredTreePoints": 30,
+      "changeStatus": "changed"
     }
   ]
 }

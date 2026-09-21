@@ -76,3 +76,51 @@ describe('mage talent field-level reconcile', () => {
     expect(result.fieldConflicts.some((conflict) => conflict.field === 'row')).toBe(true)
   })
 })
+
+describe('mage changeStatus vs Classic reconciliation', () => {
+  const ignite: MageSourceTalent = {
+    name: 'Ignite',
+    branch: 'fire',
+    row: 2,
+    column: 1,
+    maxRank: 5,
+  }
+
+  it('publishes changeStatus when both sources agree', () => {
+    const result = reconcileMageTalents(
+      [{ ...ignite, changeStatus: 'same' }],
+      [{ ...ignite, changeStatus: 'same' }],
+    )
+    expect(result.published[0].changeStatus).toBe('same')
+    expect(result.published[0].fieldEvidence.changeStatus).toBe('client_verified')
+    expect(result.fieldConflicts.some((conflict) => conflict.field === 'changeStatus')).toBe(false)
+  })
+
+  it('degrades to unknown and records a conflict when the sources disagree', () => {
+    // Live pair: ForeverDiff reports Ignite unchanged, TheWoWDB reports it changed.
+    const result = reconcileMageTalents(
+      [{ ...ignite, changeStatus: 'same' }],
+      [{ ...ignite, changeStatus: 'changed' }],
+    )
+    expect(result.published).toHaveLength(1)
+    expect(result.published[0].changeStatus).toBe('unknown')
+    expect(result.published[0].fieldEvidence.changeStatus).toBe('unknown')
+    expect(result.fieldConflicts).toContainEqual({ name: 'Ignite', branch: 'fire', field: 'changeStatus' })
+  })
+
+  it('degrades to unknown when only one source states a change status', () => {
+    const result = reconcileMageTalents(
+      [{ ...ignite, changeStatus: 'new' }],
+      [ignite],
+    )
+    expect(result.published[0].changeStatus).toBe('unknown')
+    expect(result.published[0].fieldEvidence.changeStatus).toBe('unknown')
+    expect(result.fieldConflicts.some((conflict) => conflict.field === 'changeStatus')).toBe(false)
+  })
+
+  it('degrades to unknown when neither source states a change status', () => {
+    const result = reconcileMageTalents([ignite], [ignite])
+    expect(result.published[0].changeStatus).toBe('unknown')
+    expect(result.published[0].fieldEvidence.changeStatus).toBe('unknown')
+  })
+})
