@@ -235,6 +235,19 @@ describe('Mage ClassDefinition — builds', () => {
     }
   })
 
+  it('derives each build’s allocation string from the build it renders', () => {
+    // `allocation` is rendered next to the tree (`{allocation} · {n} / {levelCap} points`), so a
+    // wrong branch split would show a claim the tree does not make.
+    const branchOf = (talentId: string) => mageTalents.find((talent) => talent.id === talentId)?.branch
+    expect(mageClass.builds).toHaveLength(9)
+    for (const build of mageClass.builds) {
+      const perBranch = mageClass.branches.map((branch) =>
+        Object.entries(build.build).reduce((sum, [talentId, rank]) => (branchOf(talentId) === branch ? sum + rank : sum), 0))
+      expect(perBranch.reduce((sum, points) => sum + points, 0), `${build.id} allocation names an unknown talent`).toBe(totalPlannerPoints(build.build))
+      expect(build.allocation, `${build.id} allocation disagrees with its own tree`).toBe(perBranch.join('/'))
+    }
+  })
+
   it('reconstructs every build by replaying its order through the planner', () => {
     for (const build of mageClass.builds) {
       const { plan, stuck } = replayOrder(build)

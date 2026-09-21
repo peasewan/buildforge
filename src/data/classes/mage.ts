@@ -813,7 +813,7 @@ const magePages: ClassPageDefinition[] = [
       {
         heading: 'The area allocation',
         paragraphs: [
-          'Improved Frostbolt 5, Ice Shards 3, Improved Frost Nova 2 and Improved Blizzard 1. This is a different allocation from the Frost single-target build, not a relabelled copy: it gives up two Ice Shards ranks to buy the root and the area cast. ' + ELEVEN_POINT_NOTE,
+          'Improved Frostbolt 5, Ice Shards 3, Improved Frost Nova 2 and Improved Blizzard 1. This is a different allocation from the Frost single-target build, not a relabelled copy: it gives up two Ice Shards ranks and its single Piercing Ice rank to buy two ranks of Improved Frost Nova and the one Improved Blizzard rank this cap can reach. ' + ELEVEN_POINT_NOTE,
         ],
       },
       {
@@ -836,7 +836,7 @@ const magePages: ClassPageDefinition[] = [
       },
     ],
     faqs: [
-      { question: 'Why does this build not max Ice Shards?', answer: 'Because the root and the area cast are what the area route is for. Two ranks of Ice Shards go to Improved Frost Nova, and one more to Improved Blizzard.' },
+      { question: 'Why does this build not max Ice Shards?', answer: 'Because the root and the area cast are what the area route is for. Both builds spend their first eight points the same way; the single-target build puts the last three into two more Ice Shards ranks and one Piercing Ice rank, while this one puts them into two ranks of Improved Frost Nova and one of Improved Blizzard.' },
       { question: 'Is the farming loop verified?', answer: 'No. It is a stated planning assumption. Only the talent names and ranks come from client-reviewed records.' },
     ],
   },
