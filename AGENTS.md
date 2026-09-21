@@ -14,11 +14,11 @@
 
 ## Current Beta data baseline
 
-- Production Paladin talent dataset: WoW Forever client build `1.60.1.69893`, 52 talents.
+- Production Paladin talent dataset: WoW Forever client build `1.60.1.69913`, 52 talents, verified unchanged from `1.60.1.69893`.
 - Internal Paladin spellbook baseline: build `1.60.1.69893`, 45 trainer spell groups.
 - Spellbook is currently an internal data capability. Do not add a public/indexable route unless explicitly requested.
-- A later upstream build number alone is not evidence of Paladin changes. Build `69913` was observed, but no verified Paladin tree diff was available at the time this memory was written.
-- The watcher named `monitor-paladin-beta-client-builds` runs every 30 minutes. Treat watcher output as an alert to inspect, not as permission to publish unverified data.
+- A later upstream build number alone is not evidence of Paladin changes. The exact `69893 → 69913` review found no Paladin additions, removals, moves, rank changes, prerequisite changes, or per-rank tooltip changes.
+- The watcher named `monitor-paladin-beta-client-builds` is currently paused by the user. Do not resume it without a new user request. Treat any future watcher output as an alert to inspect, not as permission to publish unverified data.
 
 ## Required verification vocabulary
 
@@ -82,6 +82,8 @@ Use the same daily comparison fields so decisions are based on trends rather tha
 - GSC: clicks, impressions, CTR, average position, top queries, top landing pages.
 - GA4: organic sessions/users, engagement rate, average engagement/session duration, `talent_click` users, deduplicated `build_complete`, and build copy/share events.
 - Separate product quality signals from acquisition signals. Strong calculator engagement can coexist with temporary ranking or impression loss.
+- Successful WoW Forever build-link copies send a validated anonymous record to `/api/build-usage`. Records are private Vercel Blobs under `build-usage/YYYY-MM-DD/` and deduplicate the same session/build/day through a stable pathname.
+- Do not label curated examples as popular or publish most-picked statistics until the private sample is large enough to report with a clear count and date range.
 
 ## Known implementation checkpoint
 

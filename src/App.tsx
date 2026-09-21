@@ -8,7 +8,7 @@ import { branchNames, branchTaglines, DATA_SOURCES, talentEvidenceLabel, talents
 import { betaDataset } from './data/datasets'
 import { BRANCHES, branchPoints, canIncrement, decodeBuild, decrementTalent, dominantBranch, encodeBuild, getTalentLockReason, incrementTalent, totalPoints, type Branch, type Build, type TalentLockReason } from './lib/build'
 import { claimBuildCompletion, loadClaimedBuildCompletions, saveClaimedBuildCompletions } from './lib/buildCompletion'
-import { track } from './lib/analytics'
+import { reportSharedBuild, track } from './lib/analytics'
 import SiteFooter from './SiteFooter'
 import BetaDataStatus from './BetaDataStatus'
 import VerificationBadge from './VerificationBadge'
@@ -203,7 +203,10 @@ export default function App() {
       didCopy = document.execCommand('copy')
       field.remove()
     }
-    if (didCopy) track('build_shared', { points })
+    if (didCopy) {
+      track('build_shared', { points })
+      void reportSharedBuild(code)
+    }
     setCopied(true)
     window.setTimeout(() => setCopied(false), 1800)
   }
@@ -320,8 +323,8 @@ export default function App() {
               </aside>
             </div>
           </div>
-          <section className="popular-builds" aria-label="Popular Paladin builds">
-            <div className="popular-builds-heading"><div><span>Community build examples</span><h2>Popular Paladin Builds</h2></div><p>Open a complete build page or load all 51 points into the calculator.</p></div>
+          <section className="popular-builds" aria-label="Community Paladin build examples">
+            <div className="popular-builds-heading"><div><span>Published planning examples</span><h2>Community Build Examples</h2></div><p>Open a complete build page or load all 51 points into the calculator.</p></div>
             <div className="popular-build-grid">{EXAMPLE_BUILDS.map((example, index) => (
               <article className="example-build-card" key={example.id}>
                 <div className="example-build-icon"><img src={index === 0 ? branchIcons.holy : index === 1 ? branchIcons.protection : branchIcons.retribution} alt="" /></div>

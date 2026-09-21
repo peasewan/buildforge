@@ -115,7 +115,7 @@ export const TRUST_PAGES: TrustPageConfig[] = [
     description: 'Read how BuildForgeTools uses Google Analytics, local browser storage, share links, and privately submitted feedback.',
     eyebrow: 'BuildForgeTools',
     intro: 'This policy explains what information BuildForgeTools processes when you use its build planners and game tools, visit a content page, or submit feedback.',
-    updated: 'September 19, 2026',
+    updated: 'September 21, 2026',
     sections: [
       {
         heading: 'Analytics',
@@ -133,6 +133,7 @@ export const TRUST_PAGES: TrustPageConfig[] = [
         paragraphs: [
           'Build planners may store recent selections or notes in local browser storage so work can be restored on a later visit. WoW Forever stores a recent talent allocation; the Emberville preview planner can store build notes. This information remains on the device and can be removed through the tool or by clearing browser storage.',
           'When a tool supports copied build links, selected game identifiers and ranks may be encoded in the URL. A share link does not require an account and is not intended to contain a name, email address, or other personal information. Anyone who receives the URL can open the shared setup, so do not include sensitive information in notes or links shared elsewhere.',
+          'After a WoW Forever build link is successfully copied, BuildForgeTools stores the normalized talent allocation, point total, dominant specialization, an anonymous per-session identifier, and submission time in private storage. Repeated copies of the same build in the same browser session on the same day overwrite the same record. These records are collected to measure shared build patterns and are not displayed as popularity statistics until the sample is large enough to be meaningful.',
         ],
       },
       {

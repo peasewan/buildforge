@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import {
+  buildUsageStoragePath,
   canIncrement,
   decrementTalent,
   decodeBuild,
@@ -9,6 +10,7 @@ import {
   type Build,
   type TalentDefinition,
 } from './build'
+import * as buildLogic from './build'
 
 const talents: TalentDefinition[] = [
   { id: 'root', branch: 'holy', requiredTreePoints: 0, maxRank: 5 },
@@ -88,5 +90,53 @@ describe('share codes', () => {
       'divine-strength': 5,
       'healing-light': 1,
     })
+  })
+})
+
+describe('anonymous shared-build usage', () => {
+  it('accepts a canonical build code and derives aggregate-safe fields', () => {
+    const validateBuildUsage = (buildLogic as unknown as {
+      validateBuildUsage: (input: unknown, talents: TalentDefinition[]) => unknown
+    }).validateBuildUsage
+
+    expect(typeof validateBuildUsage).toBe('function')
+    expect(validateBuildUsage({
+      buildCode: 'focus.2~root.5',
+      sessionId: '7fd4f59b-74bf-46c5-95ec-b46f7f578a11',
+    }, talents)).toEqual({
+      ok: true,
+      data: {
+        buildCode: 'focus.2~root.5',
+        sessionId: '7fd4f59b-74bf-46c5-95ec-b46f7f578a11',
+        points: 7,
+        branch: 'holy',
+        selectedTalentIds: ['focus', 'root'],
+      },
+    })
+  })
+
+  it('rejects allocations that bypass branch tiers', () => {
+    const validateBuildUsage = (buildLogic as unknown as {
+      validateBuildUsage: (input: unknown, talents: TalentDefinition[]) => { ok: boolean }
+    }).validateBuildUsage
+
+    expect(validateBuildUsage({
+      buildCode: 'focus.1',
+      sessionId: '7fd4f59b-74bf-46c5-95ec-b46f7f578a11',
+    }, talents).ok).toBe(false)
+  })
+
+  it('uses a stable daily storage path for the same session and build', () => {
+    const record = {
+      buildCode: 'focus.2~root.5',
+      sessionId: '7fd4f59b-74bf-46c5-95ec-b46f7f578a11',
+    }
+    const first = buildUsageStoragePath(record, '2026-09-21T01:00:00.000Z')
+    const repeated = buildUsageStoragePath(record, '2026-09-21T23:59:59.000Z')
+    const nextDay = buildUsageStoragePath(record, '2026-09-22T00:00:00.000Z')
+
+    expect(repeated).toBe(first)
+    expect(nextDay).not.toBe(first)
+    expect(first).toMatch(/^build-usage\/2026-09-21\/7fd4f59b-74bf-46c5-95ec-b46f7f578a11-[a-f0-9]{8}\.json$/)
   })
 })

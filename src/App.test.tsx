@@ -20,10 +20,11 @@ describe('Paladin talent calculator page', () => {
     expect(screen.getByRole('heading', { level: 2, name: 'WoW Forever Paladin Talent Tree' })).toBeTruthy()
   })
 
-  it('links all three specialization builds from Popular Builds', () => {
+  it('labels curated builds as community examples instead of measured popularity', () => {
     render(<App />)
 
-    expect(screen.getByRole('heading', { level: 2, name: 'Popular Paladin Builds' })).toBeTruthy()
+    expect(screen.getByRole('heading', { level: 2, name: 'Community Build Examples' })).toBeTruthy()
+    expect(screen.queryByRole('heading', { level: 2, name: 'Popular Paladin Builds' })).toBeNull()
     expect(screen.getByRole('link', { name: /Holy Paladin Healing Build/ }).getAttribute('href')).toBe('/wow-forever-paladin-build')
     expect(screen.getByRole('link', { name: /Protection Paladin Shield Build/ }).getAttribute('href')).toBe('/wow-forever-protection-paladin-build')
     expect(screen.getByRole('link', { name: /Retribution Paladin Judgment Build/ }).getAttribute('href')).toBe('/wow-forever-retribution-paladin-build')

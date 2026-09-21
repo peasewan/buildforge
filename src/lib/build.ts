@@ -16,6 +16,18 @@ export interface TalentDefinition {
   prerequisite?: TalentPrerequisite[]
 }
 
+export interface BuildUsageRecord {
+  buildCode: string
+  sessionId: string
+  points: number
+  branch: Branch
+  selectedTalentIds: string[]
+}
+
+export type BuildUsageValidation =
+  | { ok: true; data: BuildUsageRecord }
+  | { ok: false; error: string }
+
 export const BRANCHES: Branch[] = ['holy', 'protection', 'retribution']
 
 export const MAX_TALENT_POINTS = 51
@@ -157,4 +169,56 @@ export function decodeBuild(code: string, talents: TalentDefinition[]): Build {
     build[id] = Math.min(requestedRank, talent.maxRank)
   }
   return build
+}
+
+export function validateBuildUsage(input: unknown, talents: TalentDefinition[]): BuildUsageValidation {
+  if (!input || typeof input !== 'object') return { ok: false, error: 'Invalid build usage.' }
+  const raw = input as Record<string, unknown>
+  if (typeof raw.buildCode !== 'string' || raw.buildCode.length < 3 || raw.buildCode.length > 2_000) {
+    return { ok: false, error: 'Invalid build code.' }
+  }
+  if (typeof raw.sessionId !== 'string' || !/^[a-zA-Z0-9_-]{16,64}$/.test(raw.sessionId)) {
+    return { ok: false, error: 'Invalid session.' }
+  }
+
+  const decoded = decodeBuild(raw.buildCode, talents)
+  const buildCode = encodeBuild(decoded)
+  const points = totalPoints(decoded)
+  if (!buildCode || buildCode !== raw.buildCode || points < 1 || points > MAX_TALENT_POINTS) {
+    return { ok: false, error: 'Invalid build code.' }
+  }
+
+  let reconstructed: Build = {}
+  let previousPoints = -1
+  while (totalPoints(reconstructed) < points && totalPoints(reconstructed) !== previousPoints) {
+    previousPoints = totalPoints(reconstructed)
+    for (const talent of talents) {
+      const targetRank = decoded[talent.id] ?? 0
+      if ((reconstructed[talent.id] ?? 0) < targetRank && canIncrement(reconstructed, talent, talents)) {
+        reconstructed = incrementTalent(reconstructed, talent, talents)
+      }
+    }
+  }
+  if (encodeBuild(reconstructed) !== buildCode) return { ok: false, error: 'Invalid build allocation.' }
+
+  return {
+    ok: true,
+    data: {
+      buildCode,
+      sessionId: raw.sessionId,
+      points,
+      branch: dominantBranch(decoded, talents, 'holy'),
+      selectedTalentIds: Object.keys(decoded).sort(),
+    },
+  }
+}
+
+export function buildUsageStoragePath(record: Pick<BuildUsageRecord, 'buildCode' | 'sessionId'>, createdAt: string): string {
+  let hash = 2166136261
+  for (const character of record.buildCode) {
+    hash ^= character.charCodeAt(0)
+    hash = Math.imul(hash, 16777619)
+  }
+  const date = createdAt.slice(0, 10)
+  return `build-usage/${date}/${record.sessionId}-${(hash >>> 0).toString(16).padStart(8, '0')}.json`
 }
