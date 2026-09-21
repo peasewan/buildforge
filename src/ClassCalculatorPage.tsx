@@ -47,6 +47,15 @@ function allocationFor<B extends string>(build: PlannerBuild, classDef: ClassDef
   return classDef.branches.map((branch) => plannerBranchPoints(build, branch, classDef.talents)).join('/')
 }
 
+// One canvas row per talent row, matching the published Warrior tree rhythm (7 rows -> 658px).
+const CANVAS_ROW_HEIGHT = 94
+
+/** The canvas must be as tall as the deepest row in the dataset, not as tall as any one fixture. */
+function canvasHeightFor<B extends string>(classDef: ClassDefinition<B>): number {
+  const rows = classDef.talents.reduce((deepest, talent) => Math.max(deepest, talent.row), 1)
+  return rows * CANVAS_ROW_HEIGHT
+}
+
 function TalentNode<B extends string>({ talent, build, classDef, config, onAdd, onRemove, onInspect }: {
   talent: ClassTalent<B>
   build: PlannerBuild
@@ -81,7 +90,9 @@ export default function ClassCalculatorPage<B extends string>({ classDef }: { cl
   const [level, setLevel] = useState<PlannerLevel>(initial.level)
   const [selected, setSelected] = useState<ClassTalent<B>>(classDef.talents[0])
   const [copied, setCopied] = useState(false)
+  const [resetNotice, setResetNotice] = useState<string | null>(null)
   const cap = pointCapFor(classDef, level)
+  const canvasHeight = canvasHeightFor(classDef)
   const config = useMemo<PlannerConfig<B>>(() => ({ ...classDef.plannerConfig, pointCap: cap }), [classDef.plannerConfig, cap])
   const points = totalPlannerPoints(build)
   const activeBranch = dominantPlannerBranch(build, classDef.talents, classDef.branches, classDef.branches[0])
@@ -102,9 +113,15 @@ export default function ClassCalculatorPage<B extends string>({ classDef }: { cl
 
   const changeLevel = (nextLevel: PlannerLevel) => {
     setLevel(nextLevel)
-    // Matching the published Warrior rule: lowering the cap below the spent points resets the tree.
-    if (totalPlannerPoints(build) > pointCapFor(classDef, nextLevel)) commit({}, nextLevel)
-    else localStorage.setItem(classDef.storageKey, JSON.stringify({ build, level: nextLevel }))
+    const nextCap = pointCapFor(classDef, nextLevel)
+    // Matching the published Warrior rule: lowering the cap below the spent points resets the tree, and says so.
+    if (totalPlannerPoints(build) > nextCap) {
+      commit({}, nextLevel)
+      setResetNotice(`This allocation needed more than ${nextCap} points, so the tree was reset for Level ${nextLevel}.`)
+    } else {
+      setResetNotice(null)
+      localStorage.setItem(classDef.storageKey, JSON.stringify({ build, level: nextLevel }))
+    }
     track(`${classDef.analyticsClass}_level_mode`, { level: nextLevel })
   }
 
@@ -164,6 +181,8 @@ export default function ClassCalculatorPage<B extends string>({ classDef }: { cl
         </div>
       </div>
 
+      {resetNotice && <p className="class-reset-notice" role="status">{resetNotice}</p>}
+
       <div className="class-presets" data-testid="class-presets">
         <span>Recommended builds</span>
         <span className="class-build-chip">Community / Editorial Build</span>
@@ -177,7 +196,7 @@ export default function ClassCalculatorPage<B extends string>({ classDef }: { cl
             <b>{plannerBranchPoints(build, branch, classDef.talents)}</b>
             <p>{classDef.branchTaglines[branch]}</p>
           </header>
-          <div className="class-tree-canvas">
+          <div className="class-tree-canvas" data-testid="class-tree-canvas" style={{ height: `${canvasHeight}px`, backgroundSize: `100% ${CANVAS_ROW_HEIGHT}px, 25% 100%` }}>
             {classDef.talents.filter((talent) => talent.branch === branch).map((talent) => <TalentNode
               key={talent.id}
               talent={talent}

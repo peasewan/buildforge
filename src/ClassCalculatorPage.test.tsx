@@ -90,6 +90,51 @@ describe('ClassCalculatorPage renders any class from ClassDefinition', () => {
     expect(localStorage.getItem('wow-forever-paladin-build')).toBeNull()
   })
 
+  it('sizes each tree canvas from the deepest row of the dataset, not from the fixture', () => {
+    render(<ClassCalculatorPage classDef={hunterClassFixture} />)
+    expect(screen.getAllByTestId('class-tree-canvas')[0].style.height).toBe('282px')
+    cleanup()
+
+    // The production coordinate map used by the real Mage and Warrior datasets
+    // (`src/data/mageTalents.ts:23`, `src/data/warriorTalents.ts:57`): 7 rows over a 660px-class canvas.
+    const productionRowY: Record<number, number> = { 1: 7, 2: 21.3, 3: 35.6, 4: 49.9, 5: 64.2, 6: 78.5, 7: 92.8 }
+    const sevenRowClass = {
+      ...hunterClassFixture,
+      talents: hunterClassFixture.talents.map((talent, index) => {
+        const row = (index % 7) + 1
+        return { ...talent, row, y: productionRowY[row] }
+      }),
+    }
+    render(<ClassCalculatorPage classDef={sevenRowClass} />)
+    expect(screen.getAllByTestId('class-tree-canvas')[0].style.height).toBe('658px')
+  })
+
+  it('resets the tree and says so when a lower cap cannot hold the spent points', () => {
+    render(<ClassCalculatorPage classDef={hunterClassFixture} />)
+    fireEvent.click(screen.getByRole('button', { name: /Level 60/i }))
+    const spend = (talentName: string, ranks: number) => {
+      for (let rank = 0; rank < ranks; rank += 1) {
+        fireEvent.click(screen.getByRole('button', { name: new RegExp(`Add rank to ${talentName}`, 'i') }))
+      }
+    }
+    spend('Fixture Tracking', 5)
+    spend('Fixture Guard', 5)
+    spend('Fixture Pack Leader', 1)
+    spend('Fixture Steady Aim', 1)
+    expect(screen.getAllByText('12 / 51').length).toBeGreaterThan(0)
+
+    fireEvent.click(screen.getByRole('button', { name: /Level 20/i }))
+    expect(screen.getAllByText('0 / 11').length).toBeGreaterThan(0)
+    for (const talent of hunterClassFixture.talents) {
+      expect(document.getElementById(talent.id)?.textContent).toContain(`0/${talent.maxRank}`)
+    }
+    expect(screen.getByRole('status').textContent).toMatch(/reset/i)
+
+    const stored = JSON.parse(localStorage.getItem(HUNTER_FIXTURE_STORAGE_KEY) ?? 'null') as { build: Record<string, number>; level: number } | null
+    expect(stored?.level).toBe(20)
+    expect(totalPlannerPoints(stored?.build ?? {})).toBe(0)
+  })
+
   it('shows client-verified talent chrome and community/editorial build chrome separately', () => {
     render(<ClassCalculatorPage classDef={hunterClassFixture} />)
     const presets = screen.getByTestId('class-presets')
