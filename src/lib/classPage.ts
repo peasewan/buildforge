@@ -1,4 +1,5 @@
 import type { EvidenceStatus } from '../data/verification'
+import { canIncrementPlannerTalent, incrementPlannerTalent } from './talentPlanner'
 import type { PlannerBuild, PlannerConfig, PlannerTalent } from './talentPlanner'
 
 export type PlannerLevel = 20 | 30 | 60
@@ -109,7 +110,29 @@ export interface ClassPageDefinition {
   sections: ClassPageSection[]
   faqs: { question: string; answer: string }[]
   comparison?: { columns: string[]; rows: { label: string; values: string[] }[] }
+  /**
+   * What this page needs before it may publish. Absent means `['talentDataset']`, so a page that
+   * only lists or explains talents needs no declaration. See `satisfiedRequirements`.
+   */
+  publishRequirements?: PublishRequirement[]
 }
+
+/**
+ * A page publishes only when the data it depends on exists. The gate is per page, not per class:
+ * one branch that cannot produce a legal tree withholds the pages promising a build in that branch
+ * and leaves the rest of the class shipped.
+ */
+export type PublishRequirement =
+  /** The class has published, dual-source verified talents, so a catalogue has something to list. */
+  | 'talentDataset'
+  /** Every branch has an allocatable entry point (`requiredTreePoints === 0`). */
+  | 'completeClassPlanner'
+  /** The class has a legal build at the current level cap. */
+  | 'level20Builds'
+  /** The named branch has a legal build at the current level cap. */
+  | `legalBuild:${string}`
+
+export const legalBuildRequirement = (branch: string): PublishRequirement => `legalBuild:${branch}`
 
 export interface ClassDefinition<B extends string = string> {
   id: string
@@ -149,10 +172,107 @@ export function assertUniquePageIntents(pages: ClassPageDefinition[]): void {
   uniqueOrThrow(pages, 'canonical')
 }
 
+// Every published node carries both a primary client view and an independent cross-check view.
+// Identity-only-on-one-source nodes never reach a ClassDefinition, so a dataset with no node
+// stated by both sources has nothing a catalogue could honestly list.
+const isDualSourceVerified = <B extends string>(talent: ClassTalent<B>): boolean => {
+  const types = new Set(talent.sources.map((source) => source.type))
+  return types.has('beta_client') && types.has('beta_client_crosscheck')
+}
+
+/**
+ * Is this allocation something a player could actually spend?
+ *
+ * Replays the allocation through the planner's own allocation rules, which is what makes a branch
+ * with no entry point impossible rather than merely unwritten: a node gated behind tree points
+ * cannot be the first point spent, so no ordering exists and no build can promise one. Every id
+ * has to resolve against the class dataset, every rank has to fit `maxRank`, prerequisites have to
+ * be met at the rank the plan claims, and the whole allocation has to fit the current cap's budget.
+ */
+function isLegalAllocation<B extends string>(build: PlannerBuild, talents: ClassTalent<B>[], config: PlannerConfig<B>, pointsAtCap: number): boolean {
+  const byId = new Map(talents.map((talent) => [talent.id, talent]))
+  const wanted = new Map<string, number>()
+  for (const [id, rank] of Object.entries(build)) {
+    if (!Number.isInteger(rank) || rank <= 0) continue
+    const talent = byId.get(id)
+    if (!talent || rank > talent.maxRank) return false
+    wanted.set(id, rank)
+  }
+  // A page promising a build has to promise a build: an allocation that spends nothing is not one.
+  if (wanted.size === 0) return false
+
+  const budget: PlannerConfig<B> = { branches: config.branches, pointCap: pointsAtCap }
+  let allocation: PlannerBuild = {}
+  const outstanding = new Set(wanted.keys())
+  while (outstanding.size > 0) {
+    let progressed = false
+    for (const id of outstanding) {
+      const talent = byId.get(id)
+      if (!talent) return false
+      const target = wanted.get(id) ?? 0
+      if ((allocation[id] ?? 0) >= target) {
+        outstanding.delete(id)
+        progressed = true
+        continue
+      }
+      if (!canIncrementPlannerTalent(allocation, talent, talents, budget)) continue
+      allocation = incrementPlannerTalent(allocation, talent, talents, budget)
+      progressed = true
+      if ((allocation[id] ?? 0) >= target) outstanding.delete(id)
+    }
+    if (!progressed) return false
+  }
+  return true
+}
+
+/** A build the class ships for the cap it is currently on, with a spendable allocation. */
+function hasLegalBuildAtCap<B extends string>(classDef: ClassDefinition<B>, branch?: B): boolean {
+  return classDef.builds.some((build) =>
+    build.level === classDef.beta.levelCap
+    && (branch === undefined || build.spec === branch)
+    && isLegalAllocation(build.build, classDef.talents, classDef.plannerConfig, classDef.beta.pointsAtCap)
+  )
+}
+
+/**
+ * The requirements this class's data actually meets, derived from the class definition alone so
+ * the same helper serves every class. Publishing is then a subset question — satisfying a
+ * requirement is what publishes its pages, never an edited list of slugs.
+ */
+export function satisfiedRequirements<B extends string>(classDef: ClassDefinition<B>): Set<PublishRequirement> {
+  const satisfied = new Set<PublishRequirement>()
+
+  if (classDef.talents.some(isDualSourceVerified)) satisfied.add('talentDataset')
+
+  // The calculator draws all branches at once, so every branch needs a node that can be allocated
+  // first (`requiredTreePoints === 0`). One branch without one breaks the whole planner.
+  const entryPointBranches = new Set(classDef.talents.filter((talent) => talent.requiredTreePoints === 0).map((talent) => talent.branch))
+  if (classDef.branches.length > 0 && classDef.branches.every((branch) => entryPointBranches.has(branch))) satisfied.add('completeClassPlanner')
+
+  if (hasLegalBuildAtCap(classDef)) satisfied.add('level20Builds')
+  for (const branch of classDef.branches) {
+    if (hasLegalBuildAtCap(classDef, branch)) satisfied.add(legalBuildRequirement(branch))
+  }
+
+  return satisfied
+}
+
+/** A page with no declared requirements depends on the talent dataset, the floor every page needs. */
+export function publishRequirementsFor(page: Pick<ClassPageDefinition, 'publishRequirements'>): PublishRequirement[] {
+  return page.publishRequirements ?? ['talentDataset']
+}
+
+const requirementsMet = (page: Pick<ClassPageDefinition, 'publishRequirements'>, satisfied: Set<PublishRequirement>): boolean =>
+  publishRequirementsFor(page).every((requirement) => satisfied.has(requirement))
+
 export function pageFromPublishedClasses(pathname: string, classes: ClassDefinition[]): ClassPageDefinition | undefined {
   const slug = pathname.replace(/^\/+|\/+$/g, '')
   for (const classDef of classes) {
-    const match = classDef.pages.find((page) => page.slug === slug)
+    // A class that does not define the slug is skipped before anything is evaluated, and a page
+    // whose requirements are unmet is skipped as if it were not defined at all.
+    if (!classDef.pages.some((page) => page.slug === slug)) continue
+    const satisfied = satisfiedRequirements(classDef)
+    const match = classDef.pages.find((page) => page.slug === slug && requirementsMet(page, satisfied))
     if (match) return match
   }
   return undefined
