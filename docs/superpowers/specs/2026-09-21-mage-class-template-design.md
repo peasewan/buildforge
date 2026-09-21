@@ -76,14 +76,19 @@ If dual-source planner-legal agreement cannot produce three complete, planner-le
 Do not hand-copy public HTML into source JSON as the default path. The importer is:
 
 ```text
-fetch ForeverDiff + TheWoWDB
+fetch ForeverDiff calculator JSON (`https://foreverdiff.com/talents/mage/calculator/`, `#tc-tree`)
+fetch TheWoWDB page JSON (`https://thewowdb.com/wow-forever/talents/mage/`, `#forever-data`)
   → parse each view
-  → normalize
+  → normalize (1-based row/column)
   → snapshot raw normalized JSON (acquisition: fetch)
   → field-level reconcile
   → evidence report (stdout + committed report file)
   → production JSON after review
 ```
+
+The ForeverDiff changelog at `/talents/mage` is a change ledger, not the full tree. The importer uses that site’s calculator JSON as the Mage tree view. TheWoWDB’s visible HTML list can omit nodes that exist only in `#forever-data`; parse the JSON payload, not the Classic-shaped article list.
+
+Live check on 2026-09-21: ForeverDiff calculator JSON has 54 Mage nodes including Ice Lance. TheWoWDB `#forever-data` is a 49-node Classic-shaped tree; Ice Lance appears in other tooltips, not as a published node. Identity-only-on-one-source nodes stay unpublished.
 
 If a page cannot be parsed reliably, a checked-in snapshot is allowed only with `acquisition: manual_snapshot` on that source file, and the review report must list it. Manual snapshots are a fallback, not the pipeline.
 
