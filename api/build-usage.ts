@@ -1,6 +1,26 @@
 import { put } from '@vercel/blob'
-import { talents } from '../src/data/talents.js'
-import { buildUsageStoragePath, validateBuildUsage } from '../src/lib/build.js'
+import { createRequire } from 'node:module'
+import { buildUsageStoragePath, validateBuildUsage, type Branch, type TalentDefinition } from '../src/lib/build.js'
+
+interface RawTalentDefinition {
+  id: string
+  branch: Branch
+  maxRank: number
+  requiredTreePoints: number
+  prerequisite: string[]
+}
+
+const require = createRequire(import.meta.url)
+const betaTalentData = require('../src/data/paladin-beta-1.60.1.69913.json') as { talents: RawTalentDefinition[] }
+const talents: TalentDefinition[] = betaTalentData.talents.map((talent) => ({
+  id: talent.id,
+  branch: talent.branch,
+  maxRank: talent.maxRank,
+  requiredTreePoints: talent.requiredTreePoints,
+  prerequisite: talent.prerequisite.length
+    ? talent.prerequisite.map((talentId) => ({ talentId, requiredRank: null }))
+    : undefined,
+}))
 
 const responseHeaders = {
   'cache-control': 'no-store',

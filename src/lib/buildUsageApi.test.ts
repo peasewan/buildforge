@@ -1,11 +1,11 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest'
-import { encodeBuild } from '../src/lib/build'
-import { HOLY_HEALING_BUILD } from '../src/data/builds'
+import { encodeBuild } from './build'
+import { HOLY_HEALING_BUILD } from '../data/builds'
 
 const { put } = vi.hoisted(() => ({ put: vi.fn() }))
 vi.mock('@vercel/blob', () => ({ put }))
 
-import handler from './build-usage'
+import handler from '../../api/build-usage'
 
 describe('build usage API', () => {
   beforeEach(() => {
