@@ -105,7 +105,12 @@ describe('mage talent field-level reconcile', () => {
   })
 
   it('vetoes a node when only one source states a requiredTreePoints gate', () => {
-    const result = reconcileMageTalents([{ ...frostboltA, requiredTreePoints: 5 }], [frostboltB])
+    // The B side must genuinely omit the field: `frostboltB` states `requiredTreePoints: 0`, so
+    // passing it unmodified would compare 5 vs 0 and silently duplicate the disagreement test above.
+    const result = reconcileMageTalents(
+      [{ ...frostboltA, requiredTreePoints: 5 }],
+      [{ ...frostboltB, requiredTreePoints: undefined }],
+    )
     expect(result.published).toHaveLength(0)
     expect(result.fieldConflicts).toContainEqual({ name: 'Improved Frostbolt', branch: 'frost', field: 'requiredTreePoints' })
   })
