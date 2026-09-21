@@ -43,7 +43,10 @@ function BuildChip() {
 }
 
 function TalentEvidence() {
-  return <p className="class-evidence-line"><span>Talent data</span><VerificationBadge status="client_verified" /><small>positions, ranks and tooltips only</small></p>
+  // The badge covers planner-legal fields only (spec UI block): row, column and maxRank are
+  // `client_verified` on every published node, while `rankDescriptions` evidence is `unknown`
+  // on 17 of the 30 Mage nodes. Naming tooltips here would claim evidence the dataset lacks.
+  return <p className="class-evidence-line"><span>Talent data</span><VerificationBadge status="client_verified" /><small>positions and ranks only</small></p>
 }
 
 function BuildGroups<B extends string>({ classDef }: { classDef: ClassDefinition<B> }) {

@@ -7,6 +7,10 @@ import type { MageSourceTalent } from '../lib/mageTalentReconcile'
 const foreverDiff = JSON.parse(readFileSync(join(process.cwd(), 'src/data/mage-source-foreverdiff-1.60.1.69913.json'), 'utf8')) as { talents: MageSourceTalent[] }
 const theWowDb = JSON.parse(readFileSync(join(process.cwd(), 'src/data/mage-source-thewowdb-1.60.1.69913.json'), 'utf8')) as { talents: MageSourceTalent[] }
 const production = JSON.parse(readFileSync(join(process.cwd(), 'src/data/mage-beta-1.60.1.69913.json'), 'utf8')) as (MageSourceTalent & { id: string })[]
+const importReport = JSON.parse(readFileSync(join(process.cwd(), 'src/data/mage-import-report.json'), 'utf8')) as {
+  published: number
+  entryPoints: Record<MageSourceTalent['branch'], number>
+}
 
 const identity = (talent: MageSourceTalent) => `${talent.branch}::${talent.name.trim().toLowerCase()}`
 const wowDbById = new Map(theWowDb.talents.map((talent) => [identity(talent), talent]))
@@ -85,5 +89,26 @@ describe('WoW Forever Mage talent data', () => {
     }
 
     expect(links).toBeGreaterThan(0)
+  })
+
+  it('reports each branch entry-point count, the gate that blocks the Mage launch', () => {
+    // Plan line 141: "each branch must have at least one row-1 talent". A row-1 talent is the
+    // branch's allocatable entry point (`requiredTreePoints === 0`), and the import report must
+    // state that count per branch. Today Fire legitimately has none, which is exactly why no Mage
+    // URL ships; this test pins the report to the committed dataset so a re-run that changes the
+    // shape of any branch is caught instead of silently rewriting the production JSON.
+    expect(importReport.published).toBe(production.length)
+
+    const counted = (branch: MageSourceTalent['branch']) =>
+      production.filter((talent) => talent.branch === branch && talent.requiredTreePoints === 0).length
+
+    for (const branch of ['arcane', 'fire', 'frost'] as const) {
+      expect(importReport.entryPoints[branch]).toBe(counted(branch))
+    }
+
+    // The report tells the truth about Fire; it does not claim Fire has an entry point.
+    expect(importReport.entryPoints.fire).toBe(0)
+    expect(importReport.entryPoints.arcane).toBeGreaterThan(0)
+    expect(importReport.entryPoints.frost).toBeGreaterThan(0)
   })
 })

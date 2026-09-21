@@ -95,6 +95,9 @@ export default function ClassCalculatorPage<B extends string>({ classDef }: { cl
   const canvasHeight = canvasHeightFor(classDef)
   const config = useMemo<PlannerConfig<B>>(() => ({ ...classDef.plannerConfig, pointCap: cap }), [classDef.plannerConfig, cap])
   const points = totalPlannerPoints(build)
+  // Per-rank text is not a property of "having client data": the Mage dataset publishes it on 13
+  // of its 30 nodes, so the trust copy reports the count the class being rendered actually has.
+  const perRankTextCount = classDef.talents.filter((talent) => talent.rankDescriptions?.length).length
   const activeBranch = dominantPlannerBranch(build, classDef.talents, classDef.branches, classDef.branches[0])
   const calculatorPage = classDef.pages.find((page) => page.kind === 'calculator')
   const hubPage = classDef.pages.find((page) => page.kind === 'buildsHub') ?? classDef.pages.find((page) => page.kind === 'talents')
@@ -242,7 +245,7 @@ export default function ClassCalculatorPage<B extends string>({ classDef }: { cl
     </section>
 
     <section className="shell class-trust">
-      <div><Check /><h2>Versioned client data</h2><p>{classDef.talentCount} {classDef.name} nodes carry client build tags, per-rank text, coordinates and source records.</p></div>
+      <div><Check /><h2>Versioned client data</h2><p>{classDef.talentCount} {classDef.name} nodes carry client build tags, coordinates and source records; {perRankTextCount} of {classDef.talentCount} also carry per-rank text.</p></div>
       <div><Shield /><h2>Clear evidence labels</h2><p>Client fields and editorial build recommendations stay visibly separate on every surface.</p></div>
       <div><Swords /><h2>Build links that persist</h2><p>Share the exact talent ranks and point budget through {classDef.plannerPath} without creating indexable duplicates.</p></div>
     </section>

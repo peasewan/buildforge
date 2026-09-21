@@ -122,6 +122,32 @@ describe('ClassDocumentPage renders any class from ClassDefinition', () => {
     expect(within(talentChrome).queryAllByText(/Community \/ Editorial Build/i)).toHaveLength(0)
   })
 
+  it('scopes the client-verified talent badge to planner-legal fields, never tooltip text', () => {
+    const page = pageOfKind('specBuild')
+    render(<ClassDocumentPage classDef={hunterClassFixture} page={page} />)
+    let claim = within(screen.getByTestId('class-talent-evidence')).getByText(/positions/i).textContent ?? ''
+    expect(claim).toMatch(/positions and ranks/i)
+    // The Mage dataset carries `rankDescriptions` evidence of `unknown` on 17 of its 30 published
+    // nodes, so the badge copy may only name the planner-legal fields every node verifies.
+    expect(claim).not.toMatch(/tooltip|per-rank|rank text/i)
+    cleanup()
+
+    // The claim does not change with the dataset: a class with unknown rank-description evidence
+    // still gets the same planner-legal scoping rather than a claim it cannot support.
+    const rankTextUnknown = {
+      ...hunterClassFixture,
+      talents: hunterClassFixture.talents.map((talent, index) => (index < 2 ? talent : {
+        ...talent,
+        rankDescriptions: undefined,
+        fieldEvidence: { ...talent.fieldEvidence, rankDescriptions: 'unknown' as const },
+      })),
+    }
+    render(<ClassDocumentPage classDef={rankTextUnknown} page={page} />)
+    claim = within(screen.getByTestId('class-talent-evidence')).getByText(/positions/i).textContent ?? ''
+    expect(claim).toMatch(/positions and ranks/i)
+    expect(claim).not.toMatch(/tooltip|per-rank|rank text/i)
+  })
+
   it('keeps the fixture out of the published registry while rendering it as a full class', () => {
     expect(hunterClassFixture.id).toBe('hunter')
     expect(PUBLISHED_CLASSES).toHaveLength(0)

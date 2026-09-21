@@ -142,6 +142,24 @@ describe('ClassCalculatorPage renders any class from ClassDefinition', () => {
     expect(within(presets).queryByText(/client verified/i)).toBeNull()
     expect(screen.getAllByText('Client verified').length).toBeGreaterThan(0)
   })
+
+  it('states the per-rank-text coverage the dataset actually has', () => {
+    render(<ClassCalculatorPage classDef={hunterClassFixture} />)
+    const ranked = hunterClassFixture.talents.filter((talent) => talent.rankDescriptions?.length).length
+    expect(screen.getByText(/carry client build tags/i).textContent)
+      .toContain(`${hunterClassFixture.talentCount} Hunter nodes carry client build tags, coordinates and source records; ${ranked} of ${hunterClassFixture.talentCount} also carry per-rank text`)
+    cleanup()
+
+    // The Mage dataset publishes per-rank text on 13 of its 30 published nodes, so the copy may
+    // not claim it for every node: it has to report the count the dataset really has.
+    const sparse = {
+      ...hunterClassFixture,
+      talents: hunterClassFixture.talents.map((talent, index) => (index < 2 ? talent : { ...talent, rankDescriptions: undefined })),
+    }
+    render(<ClassCalculatorPage classDef={sparse} />)
+    expect(screen.getByText(/carry client build tags/i).textContent)
+      .toContain('9 Hunter nodes carry client build tags, coordinates and source records; 2 of 9 also carry per-rank text')
+  })
 })
 
 describe('Hunter fixture shape', () => {
