@@ -1,0 +1,259 @@
+{
+  "foreverDiffUrl": "https://foreverdiff.com/talents/mage/calculator/",
+  "theWowDbUrl": "https://thewowdb.com/wow-forever/talents/mage/",
+  "fetchedAt": "2026-09-21T14:48:28.560Z",
+  "acquisition": "fetch",
+  "foreverDiffCount": 54,
+  "theWowDbCount": 49,
+  "published": 30,
+  "missingInA": [],
+  "missingInB": [
+    "arcane:Arcane Blast",
+    "arcane:Missile Barrage",
+    "fire:Hot Streak",
+    "frost:Ice Lance",
+    "frost:Fingers of Frost"
+  ],
+  "fieldConflicts": [
+    {
+      "name": "Wand Specialization",
+      "branch": "arcane",
+      "field": "row"
+    },
+    {
+      "name": "Arcane Focus",
+      "branch": "arcane",
+      "field": "rankDescriptions"
+    },
+    {
+      "name": "Arcane Subtlety",
+      "branch": "arcane",
+      "field": "row"
+    },
+    {
+      "name": "Magic Absorption",
+      "branch": "arcane",
+      "field": "maxRank"
+    },
+    {
+      "name": "Arcane Concentration",
+      "branch": "arcane",
+      "field": "rankDescriptions"
+    },
+    {
+      "name": "Arcane Resilience",
+      "branch": "arcane",
+      "field": "row"
+    },
+    {
+      "name": "Arcane Resilience",
+      "branch": "arcane",
+      "field": "column"
+    },
+    {
+      "name": "Arcane Resilience",
+      "branch": "arcane",
+      "field": "maxRank"
+    },
+    {
+      "name": "Arcane Geometry",
+      "branch": "arcane",
+      "field": "rankDescriptions"
+    },
+    {
+      "name": "Arcane Impact",
+      "branch": "arcane",
+      "field": "rankDescriptions"
+    },
+    {
+      "name": "Arcane Shielding",
+      "branch": "arcane",
+      "field": "rankDescriptions"
+    },
+    {
+      "name": "Improved Counterspell",
+      "branch": "arcane",
+      "field": "rankDescriptions"
+    },
+    {
+      "name": "Arcane Meditation",
+      "branch": "arcane",
+      "field": "column"
+    },
+    {
+      "name": "Arcane Mind",
+      "branch": "arcane",
+      "field": "rankDescriptions"
+    },
+    {
+      "name": "Arcane Instability",
+      "branch": "arcane",
+      "field": "column"
+    },
+    {
+      "name": "Arcane Power",
+      "branch": "arcane",
+      "field": "prerequisiteLink"
+    },
+    {
+      "name": "Wake of Fire",
+      "branch": "fire",
+      "field": "row"
+    },
+    {
+      "name": "Wake of Fire",
+      "branch": "fire",
+      "field": "column"
+    },
+    {
+      "name": "Wake of Fire",
+      "branch": "fire",
+      "field": "maxRank"
+    },
+    {
+      "name": "Incineration",
+      "branch": "fire",
+      "field": "row"
+    },
+    {
+      "name": "Incineration",
+      "branch": "fire",
+      "field": "column"
+    },
+    {
+      "name": "Incineration",
+      "branch": "fire",
+      "field": "maxRank"
+    },
+    {
+      "name": "Improved Fireball",
+      "branch": "fire",
+      "field": "column"
+    },
+    {
+      "name": "Ignite",
+      "branch": "fire",
+      "field": "rankDescriptions"
+    },
+    {
+      "name": "Flame Throwing",
+      "branch": "fire",
+      "field": "rankDescriptions"
+    },
+    {
+      "name": "Impact",
+      "branch": "fire",
+      "field": "row"
+    },
+    {
+      "name": "Impact",
+      "branch": "fire",
+      "field": "maxRank"
+    },
+    {
+      "name": "Burning Soul",
+      "branch": "fire",
+      "field": "column"
+    },
+    {
+      "name": "Burning Soul",
+      "branch": "fire",
+      "field": "maxRank"
+    },
+    {
+      "name": "Improved Flamestrike",
+      "branch": "fire",
+      "field": "rankDescriptions"
+    },
+    {
+      "name": "Improved Scorch",
+      "branch": "fire",
+      "field": "rankDescriptions"
+    },
+    {
+      "name": "Improved Fire Ward",
+      "branch": "fire",
+      "field": "rankDescriptions"
+    },
+    {
+      "name": "Combustion",
+      "branch": "fire",
+      "field": "rankDescriptions"
+    },
+    {
+      "name": "Elemental Precision",
+      "branch": "frost",
+      "field": "maxRank"
+    },
+    {
+      "name": "Ice Shards",
+      "branch": "frost",
+      "field": "rankDescriptions"
+    },
+    {
+      "name": "Permafrost",
+      "branch": "frost",
+      "field": "column"
+    },
+    {
+      "name": "Improved Frost Nova",
+      "branch": "frost",
+      "field": "rankDescriptions"
+    },
+    {
+      "name": "Frostbite",
+      "branch": "frost",
+      "field": "column"
+    },
+    {
+      "name": "Frost Channeling",
+      "branch": "frost",
+      "field": "row"
+    },
+    {
+      "name": "Improved Blizzard",
+      "branch": "frost",
+      "field": "rankDescriptions"
+    },
+    {
+      "name": "Ice Block",
+      "branch": "frost",
+      "field": "row"
+    },
+    {
+      "name": "Shatter",
+      "branch": "frost",
+      "field": "column"
+    },
+    {
+      "name": "Shatter",
+      "branch": "frost",
+      "field": "maxRank"
+    },
+    {
+      "name": "Improved Cone of Cold",
+      "branch": "frost",
+      "field": "column"
+    },
+    {
+      "name": "Cold Snap",
+      "branch": "frost",
+      "field": "row"
+    },
+    {
+      "name": "Winter's Chill",
+      "branch": "frost",
+      "field": "rankDescriptions"
+    },
+    {
+      "name": "Ice Barrier",
+      "branch": "frost",
+      "field": "prerequisiteLink"
+    }
+  ],
+  "branches": {
+    "arcane": 10,
+    "fire": 11,
+    "frost": 9
+  }
+}

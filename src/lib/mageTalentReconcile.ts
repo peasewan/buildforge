@@ -38,6 +38,12 @@ const identity = (talent: MageSourceTalent) => `${talent.branch}::${talent.name.
 
 const sameArray = (left?: string[], right?: string[]) => JSON.stringify(left ?? null) === JSON.stringify(right ?? null)
 
+const prefixRanks = (left?: string[], right?: string[]) => {
+  if (!left?.length || !right?.length) return undefined
+  const [shorter, longer] = left.length <= right.length ? [left, right] : [right, left]
+  return shorter.every((value, index) => value === longer[index]) ? longer : undefined
+}
+
 const plannerLegal: FieldEvidenceKey[] = ['name', 'branch', 'row', 'column', 'maxRank']
 
 export function reconcileMageTalents(foreverDiff: MageSourceTalent[], theWowDb: MageSourceTalent[]): MageReconcileResult {
@@ -96,8 +102,14 @@ export function reconcileMageTalents(foreverDiff: MageSourceTalent[], theWowDb: 
     } else if (!left.rankDescriptions && !right.rankDescriptions) {
       fieldEvidence.rankDescriptions = 'unknown'
     } else {
-      fieldEvidence.rankDescriptions = 'unknown'
-      fieldConflicts.push({ name: left.name, branch: left.branch, field: 'rankDescriptions' })
+      const prefixed = prefixRanks(left.rankDescriptions, right.rankDescriptions)
+      if (prefixed) {
+        merged.rankDescriptions = prefixed
+        fieldEvidence.rankDescriptions = 'client_datamined'
+      } else {
+        fieldEvidence.rankDescriptions = 'unknown'
+        fieldConflicts.push({ name: left.name, branch: left.branch, field: 'rankDescriptions' })
+      }
     }
 
     if (left.sourceTalentId !== undefined && left.sourceTalentId === right.sourceTalentId) {

@@ -1,0 +1,1172 @@
+[
+  {
+    "id": "mage-arcane-arcane-focus",
+    "name": "Arcane Focus",
+    "branch": "arcane",
+    "row": 1,
+    "column": 2,
+    "maxRank": 5,
+    "requiredTreePoints": 0,
+    "fieldEvidence": {
+      "name": "client_verified",
+      "branch": "client_verified",
+      "row": "client_verified",
+      "column": "client_verified",
+      "maxRank": "client_verified",
+      "rankDescriptions": "unknown",
+      "sourceTalentId": "client_verified",
+      "prerequisiteLink": "unknown",
+      "iconName": "client_datamined"
+    },
+    "verificationStatus": "client_verified",
+    "sourceTalentId": 76,
+    "iconName": "spell_holy_devotion",
+    "sourceClientBuild": "1.60.1.69913",
+    "verifiedThroughBuild": "1.60.1.69913",
+    "sources": [
+      {
+        "label": "ForeverDiff Mage talent calculator",
+        "type": "beta_client",
+        "url": "https://foreverdiff.com/talents/mage/calculator/"
+      },
+      {
+        "label": "Build 69913 Mage talent cross-check",
+        "type": "beta_client_crosscheck",
+        "url": "https://thewowdb.com/wow-forever/talents/mage/"
+      }
+    ]
+  },
+  {
+    "id": "mage-arcane-improved-channeling",
+    "name": "Improved Channeling",
+    "branch": "arcane",
+    "row": 1,
+    "column": 3,
+    "maxRank": 5,
+    "requiredTreePoints": 0,
+    "fieldEvidence": {
+      "name": "client_verified",
+      "branch": "client_verified",
+      "row": "client_verified",
+      "column": "client_verified",
+      "maxRank": "client_verified",
+      "rankDescriptions": "client_datamined",
+      "sourceTalentId": "client_verified",
+      "prerequisiteLink": "unknown",
+      "iconName": "client_datamined"
+    },
+    "verificationStatus": "client_verified",
+    "rankDescriptions": [
+      "Gives you a 20% chance to avoid interruption caused by damage while channeling Arcane Missiles and a 14% chance while casting Arcane Blast.",
+      "Gives you a 40% chance to avoid interruption caused by damage while channeling Arcane Missiles and a 28% chance while casting Arcane Blast.",
+      "Gives you a 60% chance to avoid interruption caused by damage while channeling Arcane Missiles and a 42% chance while casting Arcane Blast.",
+      "Gives you a 80% chance to avoid interruption caused by damage while channeling Arcane Missiles and a 56% chance while casting Arcane Blast.",
+      "Gives you a 100% chance to avoid interruption caused by damage while channeling Arcane Missiles and a 70% chance while casting Arcane Blast."
+    ],
+    "sourceTalentId": 80,
+    "iconName": "spell_nature_starfall",
+    "sourceClientBuild": "1.60.1.69913",
+    "verifiedThroughBuild": "1.60.1.69913",
+    "sources": [
+      {
+        "label": "ForeverDiff Mage talent calculator",
+        "type": "beta_client",
+        "url": "https://foreverdiff.com/talents/mage/calculator/"
+      },
+      {
+        "label": "Build 69913 Mage talent cross-check",
+        "type": "beta_client_crosscheck",
+        "url": "https://thewowdb.com/wow-forever/talents/mage/"
+      }
+    ]
+  },
+  {
+    "id": "mage-arcane-arcane-concentration",
+    "name": "Arcane Concentration",
+    "branch": "arcane",
+    "row": 2,
+    "column": 3,
+    "maxRank": 5,
+    "requiredTreePoints": 5,
+    "fieldEvidence": {
+      "name": "client_verified",
+      "branch": "client_verified",
+      "row": "client_verified",
+      "column": "client_verified",
+      "maxRank": "client_verified",
+      "rankDescriptions": "unknown",
+      "sourceTalentId": "client_verified",
+      "prerequisiteLink": "unknown",
+      "iconName": "client_datamined"
+    },
+    "verificationStatus": "client_verified",
+    "sourceTalentId": 75,
+    "iconName": "spell_shadow_manaburn",
+    "sourceClientBuild": "1.60.1.69913",
+    "verifiedThroughBuild": "1.60.1.69913",
+    "sources": [
+      {
+        "label": "ForeverDiff Mage talent calculator",
+        "type": "beta_client",
+        "url": "https://foreverdiff.com/talents/mage/calculator/"
+      },
+      {
+        "label": "Build 69913 Mage talent cross-check",
+        "type": "beta_client_crosscheck",
+        "url": "https://thewowdb.com/wow-forever/talents/mage/"
+      }
+    ]
+  },
+  {
+    "id": "mage-arcane-arcane-geometry",
+    "name": "Arcane Geometry",
+    "branch": "arcane",
+    "row": 3,
+    "column": 1,
+    "maxRank": 2,
+    "requiredTreePoints": 10,
+    "fieldEvidence": {
+      "name": "client_verified",
+      "branch": "client_verified",
+      "row": "client_verified",
+      "column": "client_verified",
+      "maxRank": "client_verified",
+      "rankDescriptions": "unknown",
+      "sourceTalentId": "client_verified",
+      "prerequisiteLink": "unknown",
+      "iconName": "client_datamined"
+    },
+    "verificationStatus": "client_verified",
+    "sourceTalentId": 82,
+    "iconName": "inv_ability_mage_radiantspark",
+    "sourceClientBuild": "1.60.1.69913",
+    "verifiedThroughBuild": "1.60.1.69913",
+    "sources": [
+      {
+        "label": "ForeverDiff Mage talent calculator",
+        "type": "beta_client",
+        "url": "https://foreverdiff.com/talents/mage/calculator/"
+      },
+      {
+        "label": "Build 69913 Mage talent cross-check",
+        "type": "beta_client_crosscheck",
+        "url": "https://thewowdb.com/wow-forever/talents/mage/"
+      }
+    ]
+  },
+  {
+    "id": "mage-arcane-arcane-impact",
+    "name": "Arcane Impact",
+    "branch": "arcane",
+    "row": 3,
+    "column": 2,
+    "maxRank": 3,
+    "requiredTreePoints": 10,
+    "fieldEvidence": {
+      "name": "client_verified",
+      "branch": "client_verified",
+      "row": "client_verified",
+      "column": "client_verified",
+      "maxRank": "client_verified",
+      "rankDescriptions": "unknown",
+      "sourceTalentId": "client_verified",
+      "prerequisiteLink": "unknown",
+      "iconName": "client_datamined"
+    },
+    "verificationStatus": "client_verified",
+    "sourceTalentId": 81,
+    "iconName": "spell_nature_wispsplode",
+    "sourceClientBuild": "1.60.1.69913",
+    "verifiedThroughBuild": "1.60.1.69913",
+    "sources": [
+      {
+        "label": "ForeverDiff Mage talent calculator",
+        "type": "beta_client",
+        "url": "https://foreverdiff.com/talents/mage/calculator/"
+      },
+      {
+        "label": "Build 69913 Mage talent cross-check",
+        "type": "beta_client_crosscheck",
+        "url": "https://thewowdb.com/wow-forever/talents/mage/"
+      }
+    ]
+  },
+  {
+    "id": "mage-arcane-arcane-shielding",
+    "name": "Arcane Shielding",
+    "branch": "arcane",
+    "row": 4,
+    "column": 1,
+    "maxRank": 2,
+    "requiredTreePoints": 15,
+    "fieldEvidence": {
+      "name": "client_verified",
+      "branch": "client_verified",
+      "row": "client_verified",
+      "column": "client_verified",
+      "maxRank": "client_verified",
+      "rankDescriptions": "unknown",
+      "sourceTalentId": "client_verified",
+      "prerequisiteLink": "unknown",
+      "iconName": "client_datamined"
+    },
+    "verificationStatus": "client_verified",
+    "sourceTalentId": 83,
+    "iconName": "spell_shadow_detectlesserinvisibility",
+    "sourceClientBuild": "1.60.1.69913",
+    "verifiedThroughBuild": "1.60.1.69913",
+    "sources": [
+      {
+        "label": "ForeverDiff Mage talent calculator",
+        "type": "beta_client",
+        "url": "https://foreverdiff.com/talents/mage/calculator/"
+      },
+      {
+        "label": "Build 69913 Mage talent cross-check",
+        "type": "beta_client_crosscheck",
+        "url": "https://thewowdb.com/wow-forever/talents/mage/"
+      }
+    ]
+  },
+  {
+    "id": "mage-arcane-improved-counterspell",
+    "name": "Improved Counterspell",
+    "branch": "arcane",
+    "row": 4,
+    "column": 2,
+    "maxRank": 2,
+    "requiredTreePoints": 15,
+    "fieldEvidence": {
+      "name": "client_verified",
+      "branch": "client_verified",
+      "row": "client_verified",
+      "column": "client_verified",
+      "maxRank": "client_verified",
+      "rankDescriptions": "unknown",
+      "sourceTalentId": "client_verified",
+      "prerequisiteLink": "unknown",
+      "iconName": "client_datamined"
+    },
+    "verificationStatus": "client_verified",
+    "sourceTalentId": 88,
+    "iconName": "spell_frost_iceshock",
+    "sourceClientBuild": "1.60.1.69913",
+    "verifiedThroughBuild": "1.60.1.69913",
+    "sources": [
+      {
+        "label": "ForeverDiff Mage talent calculator",
+        "type": "beta_client",
+        "url": "https://foreverdiff.com/talents/mage/calculator/"
+      },
+      {
+        "label": "Build 69913 Mage talent cross-check",
+        "type": "beta_client_crosscheck",
+        "url": "https://thewowdb.com/wow-forever/talents/mage/"
+      }
+    ]
+  },
+  {
+    "id": "mage-arcane-presence-of-mind",
+    "name": "Presence of Mind",
+    "branch": "arcane",
+    "row": 5,
+    "column": 2,
+    "maxRank": 1,
+    "requiredTreePoints": 20,
+    "fieldEvidence": {
+      "name": "client_verified",
+      "branch": "client_verified",
+      "row": "client_verified",
+      "column": "client_verified",
+      "maxRank": "client_verified",
+      "rankDescriptions": "client_verified",
+      "sourceTalentId": "client_verified",
+      "prerequisiteLink": "unknown",
+      "iconName": "client_datamined"
+    },
+    "verificationStatus": "client_verified",
+    "rankDescriptions": [
+      "When activated, your next Mage spell with a casting time less than 10 sec becomes an instant cast spell."
+    ],
+    "sourceTalentId": 86,
+    "iconName": "spell_nature_enchantarmor",
+    "sourceClientBuild": "1.60.1.69913",
+    "verifiedThroughBuild": "1.60.1.69913",
+    "sources": [
+      {
+        "label": "ForeverDiff Mage talent calculator",
+        "type": "beta_client",
+        "url": "https://foreverdiff.com/talents/mage/calculator/"
+      },
+      {
+        "label": "Build 69913 Mage talent cross-check",
+        "type": "beta_client_crosscheck",
+        "url": "https://thewowdb.com/wow-forever/talents/mage/"
+      }
+    ]
+  },
+  {
+    "id": "mage-arcane-arcane-mind",
+    "name": "Arcane Mind",
+    "branch": "arcane",
+    "row": 5,
+    "column": 3,
+    "maxRank": 5,
+    "requiredTreePoints": 20,
+    "fieldEvidence": {
+      "name": "client_verified",
+      "branch": "client_verified",
+      "row": "client_verified",
+      "column": "client_verified",
+      "maxRank": "client_verified",
+      "rankDescriptions": "unknown",
+      "sourceTalentId": "client_verified",
+      "prerequisiteLink": "unknown",
+      "iconName": "client_datamined"
+    },
+    "verificationStatus": "client_verified",
+    "sourceTalentId": 77,
+    "iconName": "spell_shadow_charm",
+    "sourceClientBuild": "1.60.1.69913",
+    "verifiedThroughBuild": "1.60.1.69913",
+    "sources": [
+      {
+        "label": "ForeverDiff Mage talent calculator",
+        "type": "beta_client",
+        "url": "https://foreverdiff.com/talents/mage/calculator/"
+      },
+      {
+        "label": "Build 69913 Mage talent cross-check",
+        "type": "beta_client_crosscheck",
+        "url": "https://thewowdb.com/wow-forever/talents/mage/"
+      }
+    ]
+  },
+  {
+    "id": "mage-arcane-arcane-power",
+    "name": "Arcane Power",
+    "branch": "arcane",
+    "row": 7,
+    "column": 2,
+    "maxRank": 1,
+    "requiredTreePoints": 30,
+    "fieldEvidence": {
+      "name": "client_verified",
+      "branch": "client_verified",
+      "row": "client_verified",
+      "column": "client_verified",
+      "maxRank": "client_verified",
+      "rankDescriptions": "client_verified",
+      "sourceTalentId": "client_verified",
+      "prerequisiteLink": "unknown",
+      "iconName": "client_datamined"
+    },
+    "verificationStatus": "client_verified",
+    "rankDescriptions": [
+      "For the next 15 sec, your spells deal 30% more damage while costing 30% more mana to cast."
+    ],
+    "sourceTalentId": 87,
+    "iconName": "spell_nature_lightning",
+    "sourceClientBuild": "1.60.1.69913",
+    "verifiedThroughBuild": "1.60.1.69913",
+    "sources": [
+      {
+        "label": "ForeverDiff Mage talent calculator",
+        "type": "beta_client",
+        "url": "https://foreverdiff.com/talents/mage/calculator/"
+      },
+      {
+        "label": "Build 69913 Mage talent cross-check",
+        "type": "beta_client_crosscheck",
+        "url": "https://thewowdb.com/wow-forever/talents/mage/"
+      }
+    ]
+  },
+  {
+    "id": "mage-fire-ignite",
+    "name": "Ignite",
+    "branch": "fire",
+    "row": 2,
+    "column": 1,
+    "maxRank": 5,
+    "requiredTreePoints": 5,
+    "fieldEvidence": {
+      "name": "client_verified",
+      "branch": "client_verified",
+      "row": "client_verified",
+      "column": "client_verified",
+      "maxRank": "client_verified",
+      "rankDescriptions": "unknown",
+      "sourceTalentId": "client_verified",
+      "prerequisiteLink": "unknown",
+      "iconName": "client_datamined"
+    },
+    "verificationStatus": "client_verified",
+    "sourceTalentId": 34,
+    "iconName": "spell_fire_incinerate",
+    "sourceClientBuild": "1.60.1.69913",
+    "verifiedThroughBuild": "1.60.1.69913",
+    "sources": [
+      {
+        "label": "ForeverDiff Mage talent calculator",
+        "type": "beta_client",
+        "url": "https://foreverdiff.com/talents/mage/calculator/"
+      },
+      {
+        "label": "Build 69913 Mage talent cross-check",
+        "type": "beta_client_crosscheck",
+        "url": "https://thewowdb.com/wow-forever/talents/mage/"
+      }
+    ]
+  },
+  {
+    "id": "mage-fire-flame-throwing",
+    "name": "Flame Throwing",
+    "branch": "fire",
+    "row": 2,
+    "column": 2,
+    "maxRank": 2,
+    "requiredTreePoints": 5,
+    "fieldEvidence": {
+      "name": "client_verified",
+      "branch": "client_verified",
+      "row": "client_verified",
+      "column": "client_verified",
+      "maxRank": "client_verified",
+      "rankDescriptions": "unknown",
+      "sourceTalentId": "client_verified",
+      "prerequisiteLink": "unknown",
+      "iconName": "client_datamined"
+    },
+    "verificationStatus": "client_verified",
+    "sourceTalentId": 28,
+    "iconName": "spell_fire_flare",
+    "sourceClientBuild": "1.60.1.69913",
+    "verifiedThroughBuild": "1.60.1.69913",
+    "sources": [
+      {
+        "label": "ForeverDiff Mage talent calculator",
+        "type": "beta_client",
+        "url": "https://foreverdiff.com/talents/mage/calculator/"
+      },
+      {
+        "label": "Build 69913 Mage talent cross-check",
+        "type": "beta_client_crosscheck",
+        "url": "https://thewowdb.com/wow-forever/talents/mage/"
+      }
+    ]
+  },
+  {
+    "id": "mage-fire-improved-flamestrike",
+    "name": "Improved Flamestrike",
+    "branch": "fire",
+    "row": 3,
+    "column": 2,
+    "maxRank": 3,
+    "requiredTreePoints": 10,
+    "fieldEvidence": {
+      "name": "client_verified",
+      "branch": "client_verified",
+      "row": "client_verified",
+      "column": "client_verified",
+      "maxRank": "client_verified",
+      "rankDescriptions": "unknown",
+      "sourceTalentId": "client_verified",
+      "prerequisiteLink": "unknown",
+      "iconName": "client_datamined"
+    },
+    "verificationStatus": "client_verified",
+    "sourceTalentId": 31,
+    "iconName": "spell_fire_selfdestruct",
+    "sourceClientBuild": "1.60.1.69913",
+    "verifiedThroughBuild": "1.60.1.69913",
+    "sources": [
+      {
+        "label": "ForeverDiff Mage talent calculator",
+        "type": "beta_client",
+        "url": "https://foreverdiff.com/talents/mage/calculator/"
+      },
+      {
+        "label": "Build 69913 Mage talent cross-check",
+        "type": "beta_client_crosscheck",
+        "url": "https://thewowdb.com/wow-forever/talents/mage/"
+      }
+    ]
+  },
+  {
+    "id": "mage-fire-pyroblast",
+    "name": "Pyroblast",
+    "branch": "fire",
+    "row": 3,
+    "column": 3,
+    "maxRank": 1,
+    "requiredTreePoints": 10,
+    "fieldEvidence": {
+      "name": "client_verified",
+      "branch": "client_verified",
+      "row": "client_verified",
+      "column": "client_verified",
+      "maxRank": "client_verified",
+      "rankDescriptions": "client_verified",
+      "sourceTalentId": "client_verified",
+      "prerequisiteLink": "unknown",
+      "iconName": "client_datamined"
+    },
+    "verificationStatus": "client_verified",
+    "rankDescriptions": [
+      "Hurls an immense fiery boulder that causes 110 Fire damage and an additional 44 Fire damage over 12 sec."
+    ],
+    "sourceTalentId": 29,
+    "iconName": "spell_fire_fireball02",
+    "sourceClientBuild": "1.60.1.69913",
+    "verifiedThroughBuild": "1.60.1.69913",
+    "sources": [
+      {
+        "label": "ForeverDiff Mage talent calculator",
+        "type": "beta_client",
+        "url": "https://foreverdiff.com/talents/mage/calculator/"
+      },
+      {
+        "label": "Build 69913 Mage talent cross-check",
+        "type": "beta_client_crosscheck",
+        "url": "https://thewowdb.com/wow-forever/talents/mage/"
+      }
+    ]
+  },
+  {
+    "id": "mage-fire-improved-scorch",
+    "name": "Improved Scorch",
+    "branch": "fire",
+    "row": 4,
+    "column": 1,
+    "maxRank": 3,
+    "requiredTreePoints": 15,
+    "fieldEvidence": {
+      "name": "client_verified",
+      "branch": "client_verified",
+      "row": "client_verified",
+      "column": "client_verified",
+      "maxRank": "client_verified",
+      "rankDescriptions": "unknown",
+      "sourceTalentId": "client_verified",
+      "prerequisiteLink": "unknown",
+      "iconName": "client_datamined"
+    },
+    "verificationStatus": "client_verified",
+    "sourceTalentId": 25,
+    "iconName": "spell_fire_windsofwoe",
+    "sourceClientBuild": "1.60.1.69913",
+    "verifiedThroughBuild": "1.60.1.69913",
+    "sources": [
+      {
+        "label": "ForeverDiff Mage talent calculator",
+        "type": "beta_client",
+        "url": "https://foreverdiff.com/talents/mage/calculator/"
+      },
+      {
+        "label": "Build 69913 Mage talent cross-check",
+        "type": "beta_client_crosscheck",
+        "url": "https://thewowdb.com/wow-forever/talents/mage/"
+      }
+    ]
+  },
+  {
+    "id": "mage-fire-improved-fire-ward",
+    "name": "Improved Fire Ward",
+    "branch": "fire",
+    "row": 4,
+    "column": 2,
+    "maxRank": 2,
+    "requiredTreePoints": 15,
+    "fieldEvidence": {
+      "name": "client_verified",
+      "branch": "client_verified",
+      "row": "client_verified",
+      "column": "client_verified",
+      "maxRank": "client_verified",
+      "rankDescriptions": "unknown",
+      "sourceTalentId": "client_verified",
+      "prerequisiteLink": "unknown",
+      "iconName": "client_datamined"
+    },
+    "verificationStatus": "client_verified",
+    "sourceTalentId": 24,
+    "iconName": "spell_fire_firearmor",
+    "sourceClientBuild": "1.60.1.69913",
+    "verifiedThroughBuild": "1.60.1.69913",
+    "sources": [
+      {
+        "label": "ForeverDiff Mage talent calculator",
+        "type": "beta_client",
+        "url": "https://foreverdiff.com/talents/mage/calculator/"
+      },
+      {
+        "label": "Build 69913 Mage talent cross-check",
+        "type": "beta_client_crosscheck",
+        "url": "https://thewowdb.com/wow-forever/talents/mage/"
+      }
+    ]
+  },
+  {
+    "id": "mage-fire-master-of-elements",
+    "name": "Master of Elements",
+    "branch": "fire",
+    "row": 4,
+    "column": 4,
+    "maxRank": 3,
+    "requiredTreePoints": 15,
+    "fieldEvidence": {
+      "name": "client_verified",
+      "branch": "client_verified",
+      "row": "client_verified",
+      "column": "client_verified",
+      "maxRank": "client_verified",
+      "rankDescriptions": "client_datamined",
+      "sourceTalentId": "client_verified",
+      "prerequisiteLink": "unknown",
+      "iconName": "client_datamined"
+    },
+    "verificationStatus": "client_verified",
+    "rankDescriptions": [
+      "Your Fire and Frost critical strikes will refund 10% of their base mana cost.",
+      "Your Fire and Frost critical strikes will refund 20% of their base mana cost.",
+      "Your Fire and Frost critical strikes will refund 30% of their base mana cost."
+    ],
+    "sourceTalentId": 1639,
+    "iconName": "spell_fire_masterofelements",
+    "sourceClientBuild": "1.60.1.69913",
+    "verifiedThroughBuild": "1.60.1.69913",
+    "sources": [
+      {
+        "label": "ForeverDiff Mage talent calculator",
+        "type": "beta_client",
+        "url": "https://foreverdiff.com/talents/mage/calculator/"
+      },
+      {
+        "label": "Build 69913 Mage talent cross-check",
+        "type": "beta_client_crosscheck",
+        "url": "https://thewowdb.com/wow-forever/talents/mage/"
+      }
+    ]
+  },
+  {
+    "id": "mage-fire-critical-mass",
+    "name": "Critical Mass",
+    "branch": "fire",
+    "row": 5,
+    "column": 2,
+    "maxRank": 3,
+    "requiredTreePoints": 20,
+    "fieldEvidence": {
+      "name": "client_verified",
+      "branch": "client_verified",
+      "row": "client_verified",
+      "column": "client_verified",
+      "maxRank": "client_verified",
+      "rankDescriptions": "client_datamined",
+      "sourceTalentId": "client_verified",
+      "prerequisiteLink": "unknown",
+      "iconName": "client_datamined"
+    },
+    "verificationStatus": "client_verified",
+    "rankDescriptions": [
+      "Increases the critical strike chance of your Fire spells by 2%.",
+      "Increases the critical strike chance of your Fire spells by 4%.",
+      "Increases the critical strike chance of your Fire spells by 6%."
+    ],
+    "sourceTalentId": 33,
+    "iconName": "spell_nature_wispheal",
+    "sourceClientBuild": "1.60.1.69913",
+    "verifiedThroughBuild": "1.60.1.69913",
+    "sources": [
+      {
+        "label": "ForeverDiff Mage talent calculator",
+        "type": "beta_client",
+        "url": "https://foreverdiff.com/talents/mage/calculator/"
+      },
+      {
+        "label": "Build 69913 Mage talent cross-check",
+        "type": "beta_client_crosscheck",
+        "url": "https://thewowdb.com/wow-forever/talents/mage/"
+      }
+    ]
+  },
+  {
+    "id": "mage-fire-blast-wave",
+    "name": "Blast Wave",
+    "branch": "fire",
+    "row": 5,
+    "column": 3,
+    "maxRank": 1,
+    "requiredTreePoints": 20,
+    "fieldEvidence": {
+      "name": "client_verified",
+      "branch": "client_verified",
+      "row": "client_verified",
+      "column": "client_verified",
+      "maxRank": "client_verified",
+      "rankDescriptions": "client_verified",
+      "sourceTalentId": "client_verified",
+      "prerequisiteLink": "unknown",
+      "iconName": "client_datamined"
+    },
+    "verificationStatus": "client_verified",
+    "rankDescriptions": [
+      "A wave of flame radiates outward from the caster, damaging all enemies caught within the blast for 163 Fire damage, and Dazing them for 50% reduced movement speed for 6 sec."
+    ],
+    "sourceTalentId": 32,
+    "iconName": "spell_holy_excorcism_02",
+    "sourceClientBuild": "1.60.1.69913",
+    "verifiedThroughBuild": "1.60.1.69913",
+    "sources": [
+      {
+        "label": "ForeverDiff Mage talent calculator",
+        "type": "beta_client",
+        "url": "https://foreverdiff.com/talents/mage/calculator/"
+      },
+      {
+        "label": "Build 69913 Mage talent cross-check",
+        "type": "beta_client_crosscheck",
+        "url": "https://thewowdb.com/wow-forever/talents/mage/"
+      }
+    ]
+  },
+  {
+    "id": "mage-fire-fire-power",
+    "name": "Fire Power",
+    "branch": "fire",
+    "row": 6,
+    "column": 3,
+    "maxRank": 5,
+    "requiredTreePoints": 25,
+    "fieldEvidence": {
+      "name": "client_verified",
+      "branch": "client_verified",
+      "row": "client_verified",
+      "column": "client_verified",
+      "maxRank": "client_verified",
+      "rankDescriptions": "client_datamined",
+      "sourceTalentId": "client_verified",
+      "prerequisiteLink": "unknown",
+      "iconName": "client_datamined"
+    },
+    "verificationStatus": "client_verified",
+    "rankDescriptions": [
+      "Increases the damage done by your Fire spells by 2%.",
+      "Increases the damage done by your Fire spells by 4%.",
+      "Increases the damage done by your Fire spells by 6%.",
+      "Increases the damage done by your Fire spells by 8%.",
+      "Increases the damage done by your Fire spells by 10%."
+    ],
+    "sourceTalentId": 35,
+    "iconName": "spell_fire_immolation",
+    "sourceClientBuild": "1.60.1.69913",
+    "verifiedThroughBuild": "1.60.1.69913",
+    "sources": [
+      {
+        "label": "ForeverDiff Mage talent calculator",
+        "type": "beta_client",
+        "url": "https://foreverdiff.com/talents/mage/calculator/"
+      },
+      {
+        "label": "Build 69913 Mage talent cross-check",
+        "type": "beta_client_crosscheck",
+        "url": "https://thewowdb.com/wow-forever/talents/mage/"
+      }
+    ]
+  },
+  {
+    "id": "mage-fire-combustion",
+    "name": "Combustion",
+    "branch": "fire",
+    "row": 7,
+    "column": 2,
+    "maxRank": 1,
+    "requiredTreePoints": 30,
+    "fieldEvidence": {
+      "name": "client_verified",
+      "branch": "client_verified",
+      "row": "client_verified",
+      "column": "client_verified",
+      "maxRank": "client_verified",
+      "rankDescriptions": "unknown",
+      "sourceTalentId": "client_verified",
+      "prerequisiteLink": "client_verified",
+      "iconName": "client_datamined"
+    },
+    "verificationStatus": "client_verified",
+    "sourceTalentId": 36,
+    "prerequisiteName": "Critical Mass",
+    "iconName": "spell_fire_sealoffire",
+    "sourceClientBuild": "1.60.1.69913",
+    "verifiedThroughBuild": "1.60.1.69913",
+    "sources": [
+      {
+        "label": "ForeverDiff Mage talent calculator",
+        "type": "beta_client",
+        "url": "https://foreverdiff.com/talents/mage/calculator/"
+      },
+      {
+        "label": "Build 69913 Mage talent cross-check",
+        "type": "beta_client_crosscheck",
+        "url": "https://thewowdb.com/wow-forever/talents/mage/"
+      }
+    ]
+  },
+  {
+    "id": "mage-frost-frost-warding",
+    "name": "Frost Warding",
+    "branch": "frost",
+    "row": 1,
+    "column": 1,
+    "maxRank": 2,
+    "requiredTreePoints": 0,
+    "fieldEvidence": {
+      "name": "client_verified",
+      "branch": "client_verified",
+      "row": "client_verified",
+      "column": "client_verified",
+      "maxRank": "client_verified",
+      "rankDescriptions": "client_datamined",
+      "sourceTalentId": "client_verified",
+      "prerequisiteLink": "unknown",
+      "iconName": "client_datamined"
+    },
+    "verificationStatus": "client_verified",
+    "rankDescriptions": [
+      "Increases the Armor and resistance given by your Frost Armor and Ice Armor spells by 15%. In addition, gives your Frost Ward a 10% chance to reflect Frost spells and effects while active.",
+      "Increases the Armor and resistance given by your Frost Armor and Ice Armor spells by 30%. In addition, gives your Frost Ward a 20% chance to reflect Frost spells and effects while active."
+    ],
+    "sourceTalentId": 70,
+    "iconName": "spell_frost_frostward",
+    "sourceClientBuild": "1.60.1.69913",
+    "verifiedThroughBuild": "1.60.1.69913",
+    "sources": [
+      {
+        "label": "ForeverDiff Mage talent calculator",
+        "type": "beta_client",
+        "url": "https://foreverdiff.com/talents/mage/calculator/"
+      },
+      {
+        "label": "Build 69913 Mage talent cross-check",
+        "type": "beta_client_crosscheck",
+        "url": "https://thewowdb.com/wow-forever/talents/mage/"
+      }
+    ]
+  },
+  {
+    "id": "mage-frost-improved-frostbolt",
+    "name": "Improved Frostbolt",
+    "branch": "frost",
+    "row": 1,
+    "column": 2,
+    "maxRank": 5,
+    "requiredTreePoints": 0,
+    "fieldEvidence": {
+      "name": "client_verified",
+      "branch": "client_verified",
+      "row": "client_verified",
+      "column": "client_verified",
+      "maxRank": "client_verified",
+      "rankDescriptions": "client_datamined",
+      "sourceTalentId": "client_verified",
+      "prerequisiteLink": "unknown",
+      "iconName": "client_datamined"
+    },
+    "verificationStatus": "client_verified",
+    "rankDescriptions": [
+      "Reduces the casting time of your Frostbolt spell by 0.1 sec.",
+      "Reduces the casting time of your Frostbolt spell by 0.2 sec.",
+      "Reduces the casting time of your Frostbolt spell by 0.3 sec.",
+      "Reduces the casting time of your Frostbolt spell by 0.4 sec.",
+      "Reduces the casting time of your Frostbolt spell by 0.5 sec."
+    ],
+    "sourceTalentId": 37,
+    "iconName": "spell_frost_frostbolt02",
+    "sourceClientBuild": "1.60.1.69913",
+    "verifiedThroughBuild": "1.60.1.69913",
+    "sources": [
+      {
+        "label": "ForeverDiff Mage talent calculator",
+        "type": "beta_client",
+        "url": "https://foreverdiff.com/talents/mage/calculator/"
+      },
+      {
+        "label": "Build 69913 Mage talent cross-check",
+        "type": "beta_client_crosscheck",
+        "url": "https://thewowdb.com/wow-forever/talents/mage/"
+      }
+    ]
+  },
+  {
+    "id": "mage-frost-ice-shards",
+    "name": "Ice Shards",
+    "branch": "frost",
+    "row": 2,
+    "column": 1,
+    "maxRank": 5,
+    "requiredTreePoints": 5,
+    "fieldEvidence": {
+      "name": "client_verified",
+      "branch": "client_verified",
+      "row": "client_verified",
+      "column": "client_verified",
+      "maxRank": "client_verified",
+      "rankDescriptions": "unknown",
+      "sourceTalentId": "client_verified",
+      "prerequisiteLink": "unknown",
+      "iconName": "client_datamined"
+    },
+    "verificationStatus": "client_verified",
+    "sourceTalentId": 73,
+    "iconName": "spell_frost_iceshard",
+    "sourceClientBuild": "1.60.1.69913",
+    "verifiedThroughBuild": "1.60.1.69913",
+    "sources": [
+      {
+        "label": "ForeverDiff Mage talent calculator",
+        "type": "beta_client",
+        "url": "https://foreverdiff.com/talents/mage/calculator/"
+      },
+      {
+        "label": "Build 69913 Mage talent cross-check",
+        "type": "beta_client_crosscheck",
+        "url": "https://thewowdb.com/wow-forever/talents/mage/"
+      }
+    ]
+  },
+  {
+    "id": "mage-frost-improved-frost-nova",
+    "name": "Improved Frost Nova",
+    "branch": "frost",
+    "row": 2,
+    "column": 3,
+    "maxRank": 2,
+    "requiredTreePoints": 5,
+    "fieldEvidence": {
+      "name": "client_verified",
+      "branch": "client_verified",
+      "row": "client_verified",
+      "column": "client_verified",
+      "maxRank": "client_verified",
+      "rankDescriptions": "unknown",
+      "sourceTalentId": "client_verified",
+      "prerequisiteLink": "unknown",
+      "iconName": "client_datamined"
+    },
+    "verificationStatus": "client_verified",
+    "sourceTalentId": 62,
+    "iconName": "spell_frost_freezingbreath",
+    "sourceClientBuild": "1.60.1.69913",
+    "verifiedThroughBuild": "1.60.1.69913",
+    "sources": [
+      {
+        "label": "ForeverDiff Mage talent calculator",
+        "type": "beta_client",
+        "url": "https://foreverdiff.com/talents/mage/calculator/"
+      },
+      {
+        "label": "Build 69913 Mage talent cross-check",
+        "type": "beta_client_crosscheck",
+        "url": "https://thewowdb.com/wow-forever/talents/mage/"
+      }
+    ]
+  },
+  {
+    "id": "mage-frost-piercing-ice",
+    "name": "Piercing Ice",
+    "branch": "frost",
+    "row": 3,
+    "column": 1,
+    "maxRank": 3,
+    "requiredTreePoints": 10,
+    "fieldEvidence": {
+      "name": "client_verified",
+      "branch": "client_verified",
+      "row": "client_verified",
+      "column": "client_verified",
+      "maxRank": "client_verified",
+      "rankDescriptions": "client_datamined",
+      "sourceTalentId": "client_verified",
+      "prerequisiteLink": "unknown",
+      "iconName": "client_datamined"
+    },
+    "verificationStatus": "client_verified",
+    "rankDescriptions": [
+      "Increases the damage done by your Frost spells by 2%.",
+      "Increases the damage done by your Frost spells by 4%.",
+      "Increases the damage done by your Frost spells by 6%."
+    ],
+    "sourceTalentId": 61,
+    "iconName": "spell_frost_frostbolt",
+    "sourceClientBuild": "1.60.1.69913",
+    "verifiedThroughBuild": "1.60.1.69913",
+    "sources": [
+      {
+        "label": "ForeverDiff Mage talent calculator",
+        "type": "beta_client",
+        "url": "https://foreverdiff.com/talents/mage/calculator/"
+      },
+      {
+        "label": "Build 69913 Mage talent cross-check",
+        "type": "beta_client_crosscheck",
+        "url": "https://thewowdb.com/wow-forever/talents/mage/"
+      }
+    ]
+  },
+  {
+    "id": "mage-frost-improved-blizzard",
+    "name": "Improved Blizzard",
+    "branch": "frost",
+    "row": 3,
+    "column": 4,
+    "maxRank": 3,
+    "requiredTreePoints": 10,
+    "fieldEvidence": {
+      "name": "client_verified",
+      "branch": "client_verified",
+      "row": "client_verified",
+      "column": "client_verified",
+      "maxRank": "client_verified",
+      "rankDescriptions": "unknown",
+      "sourceTalentId": "client_verified",
+      "prerequisiteLink": "unknown",
+      "iconName": "client_datamined"
+    },
+    "verificationStatus": "client_verified",
+    "sourceTalentId": 63,
+    "iconName": "spell_frost_icestorm",
+    "sourceClientBuild": "1.60.1.69913",
+    "verifiedThroughBuild": "1.60.1.69913",
+    "sources": [
+      {
+        "label": "ForeverDiff Mage talent calculator",
+        "type": "beta_client",
+        "url": "https://foreverdiff.com/talents/mage/calculator/"
+      },
+      {
+        "label": "Build 69913 Mage talent cross-check",
+        "type": "beta_client_crosscheck",
+        "url": "https://thewowdb.com/wow-forever/talents/mage/"
+      }
+    ]
+  },
+  {
+    "id": "mage-frost-arctic-reach",
+    "name": "Arctic Reach",
+    "branch": "frost",
+    "row": 4,
+    "column": 1,
+    "maxRank": 2,
+    "requiredTreePoints": 15,
+    "fieldEvidence": {
+      "name": "client_verified",
+      "branch": "client_verified",
+      "row": "client_verified",
+      "column": "client_verified",
+      "maxRank": "client_verified",
+      "rankDescriptions": "client_datamined",
+      "sourceTalentId": "client_verified",
+      "prerequisiteLink": "unknown",
+      "iconName": "client_datamined"
+    },
+    "verificationStatus": "client_verified",
+    "rankDescriptions": [
+      "Increases the range of your Frostbolt and Blizzard spells and the radius of your Frost Nova and Cone of Cold spells by 10%.",
+      "Increases the range of your Frostbolt and Blizzard spells and the radius of your Frost Nova and Cone of Cold spells by 20%."
+    ],
+    "sourceTalentId": 741,
+    "iconName": "spell_shadow_darkritual",
+    "sourceClientBuild": "1.60.1.69913",
+    "verifiedThroughBuild": "1.60.1.69913",
+    "sources": [
+      {
+        "label": "ForeverDiff Mage talent calculator",
+        "type": "beta_client",
+        "url": "https://foreverdiff.com/talents/mage/calculator/"
+      },
+      {
+        "label": "Build 69913 Mage talent cross-check",
+        "type": "beta_client_crosscheck",
+        "url": "https://thewowdb.com/wow-forever/talents/mage/"
+      }
+    ]
+  },
+  {
+    "id": "mage-frost-winter-s-chill",
+    "name": "Winter's Chill",
+    "branch": "frost",
+    "row": 6,
+    "column": 3,
+    "maxRank": 5,
+    "requiredTreePoints": 25,
+    "fieldEvidence": {
+      "name": "client_verified",
+      "branch": "client_verified",
+      "row": "client_verified",
+      "column": "client_verified",
+      "maxRank": "client_verified",
+      "rankDescriptions": "unknown",
+      "sourceTalentId": "client_verified",
+      "prerequisiteLink": "unknown",
+      "iconName": "client_datamined"
+    },
+    "verificationStatus": "client_verified",
+    "sourceTalentId": 68,
+    "iconName": "spell_frost_chillingblast",
+    "sourceClientBuild": "1.60.1.69913",
+    "verifiedThroughBuild": "1.60.1.69913",
+    "sources": [
+      {
+        "label": "ForeverDiff Mage talent calculator",
+        "type": "beta_client",
+        "url": "https://foreverdiff.com/talents/mage/calculator/"
+      },
+      {
+        "label": "Build 69913 Mage talent cross-check",
+        "type": "beta_client_crosscheck",
+        "url": "https://thewowdb.com/wow-forever/talents/mage/"
+      }
+    ]
+  },
+  {
+    "id": "mage-frost-ice-barrier",
+    "name": "Ice Barrier",
+    "branch": "frost",
+    "row": 7,
+    "column": 2,
+    "maxRank": 1,
+    "requiredTreePoints": 30,
+    "fieldEvidence": {
+      "name": "client_verified",
+      "branch": "client_verified",
+      "row": "client_verified",
+      "column": "client_verified",
+      "maxRank": "client_verified",
+      "rankDescriptions": "client_verified",
+      "sourceTalentId": "client_verified",
+      "prerequisiteLink": "unknown",
+      "iconName": "client_datamined"
+    },
+    "verificationStatus": "client_verified",
+    "rankDescriptions": [
+      "Instantly shields you, absorbing 431 damage. Lasts 1 min. While the shield holds, your spellcasts will not be interrupted or delayed from taking damage."
+    ],
+    "sourceTalentId": 71,
+    "iconName": "spell_ice_lament",
+    "sourceClientBuild": "1.60.1.69913",
+    "verifiedThroughBuild": "1.60.1.69913",
+    "sources": [
+      {
+        "label": "ForeverDiff Mage talent calculator",
+        "type": "beta_client",
+        "url": "https://foreverdiff.com/talents/mage/calculator/"
+      },
+      {
+        "label": "Build 69913 Mage talent cross-check",
+        "type": "beta_client_crosscheck",
+        "url": "https://thewowdb.com/wow-forever/talents/mage/"
+      }
+    ]
+  }
+]

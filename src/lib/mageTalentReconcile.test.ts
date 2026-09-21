@@ -61,6 +61,15 @@ describe('mage talent field-level reconcile', () => {
     expect(result.fieldConflicts[0]).toMatchObject({ name: 'Improved Frostbolt', field: 'rankDescriptions' })
   })
 
+  it('keeps the longer rank list as single-source when one view only has a matching prefix', () => {
+    const result = reconcileMageTalents(
+      [frostboltA],
+      [{ ...frostboltB, rankDescriptions: [frostboltA.rankDescriptions![0]] }],
+    )
+    expect(result.published[0].rankDescriptions).toEqual(frostboltA.rankDescriptions)
+    expect(result.published[0].fieldEvidence.rankDescriptions).toBe('client_datamined')
+  })
+
   it('does not publish when planner-legal coordinates disagree', () => {
     const result = reconcileMageTalents([frostboltA], [{ ...frostboltB, row: 2 }])
     expect(result.published).toHaveLength(0)
