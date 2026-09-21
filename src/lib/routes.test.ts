@@ -3,6 +3,17 @@ import { pageForPath } from './routes'
 
 describe('public page routing', () => {
   it.each([
+    ['/warrior', 'warrior-planner', 'WoW Forever Warrior Talent Calculator | Beta Build 69913'],
+    ['/wow-forever-warrior-builds', 'warrior-hub', 'WoW Forever Warrior Builds & Talent Calculator | BuildForgeTools'],
+    ['/wow-forever-warrior-leveling-build', 'warrior-build', 'WoW Forever Warrior Leveling Build | Level 20 Beta'],
+    ['/wow-forever-arms-warrior-build', 'warrior-build', 'WoW Forever Arms Warrior Build | Level 20 Beta'],
+    ['/wow-forever-fury-warrior-build', 'warrior-build', 'WoW Forever Fury Warrior Build | Level 20 Beta'],
+    ['/wow-forever-protection-warrior-build', 'warrior-build', 'WoW Forever Protection Warrior Build | Level 20 Beta'],
+  ])('serves %s as an indexable Warrior page', (pathname, kind, title) => {
+    expect(pageForPath(pathname)).toMatchObject({ kind, title, canonical: `https://buildforgetools.com${pathname}`, robots: 'index, follow' })
+  })
+
+  it.each([
     ['/emberville', 'planner', 'Emberville Build Planner | BuildForgeTools'],
     ['/emberville-builds', 'builds', 'Emberville Builds | Build Planner & Ideas'],
     ['/emberville-classes', 'classes', 'Emberville Classes | Confirmed Systems & Planning'],

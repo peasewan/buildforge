@@ -4,7 +4,7 @@ import { HUB_BUILD_HREFS } from '../data/paladinBuildsHub'
 import { SPEC_BUILDS_HUBS, specHubHrefs } from '../data/specBuildsHubs'
 import { BUILD_LANDING_PAGES } from '../data/buildLandingPages'
 import { TRUST_PAGES } from '../data/trustPages'
-import { renderBetaAvailabilityPrerender, renderBetaLevelingSnapshotPrerender, renderBetaSpecPathPrerender, renderEmbervillePrerender, renderHubPrerender, renderLandingPrerender, renderSpecHubPrerender, renderSpellbookPrerender, renderTrustPrerender } from './prerender'
+import { renderBetaAvailabilityPrerender, renderBetaLevelingSnapshotPrerender, renderBetaSpecPathPrerender, renderEmbervillePrerender, renderHubPrerender, renderLandingPrerender, renderSpecHubPrerender, renderSpellbookPrerender, renderTrustPrerender, renderWarriorBuildPrerender, renderWarriorHubPrerender, renderWarriorPlannerPrerender } from './prerender'
 import { EMBERVILLE_EDITORIAL, EMBERVILLE_PAGES } from '../data/emberville'
 import { paladinSpellbook } from '../data/paladinSpellbook'
 
@@ -23,6 +23,17 @@ const allPrerendered = () => [
 ] as const
 
 describe('prerender generation', () => {
+  it('prerenders all 53 Warrior talent records and the build cluster', () => {
+    const planner = renderWarriorPlannerPrerender()
+    expect(planner.match(/data-warrior-talent/g)).toHaveLength(53)
+    expect(planner).toContain('<h1>WoW Forever Warrior Talent Calculator</h1>')
+    expect(renderWarriorHubPrerender()).toContain('WoW Forever Warrior Builds &amp; Talent Calculator')
+    for (const pageId of ['leveling', 'arms', 'fury', 'protection'] as const) {
+      const html = renderWarriorBuildPrerender(pageId)
+      expect(html).toContain('Community recommendation')
+      expect(html).toContain('href="/warrior?build=')
+    }
+  })
   it('prerenders every versioned Paladin spellbook entry for crawlers', () => {
     const html = renderSpellbookPrerender()
 

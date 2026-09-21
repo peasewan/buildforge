@@ -1,20 +1,26 @@
+import {
+  canIncrementPlannerTalent,
+  decodePlannerBuild,
+  decrementPlannerTalent,
+  dominantPlannerBranch,
+  encodePlannerBuild,
+  incrementPlannerTalent,
+  plannerBranchPoints,
+  plannerLockReason,
+  totalPlannerPoints,
+  type PlannerBuild,
+  type PlannerLockReason,
+  type PlannerPrerequisite,
+  type PlannerTalent,
+} from './talentPlanner'
+
 export type Branch = 'holy' | 'protection' | 'retribution'
 
-export type Build = Record<string, number>
+export type Build = PlannerBuild
 
-export interface TalentPrerequisite {
-  talentId: string
-  /** Null means the client confirms the link but not the required rank. */
-  requiredRank: number | null
-}
+export type TalentPrerequisite = PlannerPrerequisite
 
-export interface TalentDefinition {
-  id: string
-  branch: Branch
-  maxRank: number
-  requiredTreePoints: number
-  prerequisite?: TalentPrerequisite[]
-}
+export type TalentDefinition = PlannerTalent<Branch>
 
 export interface BuildUsageRecord {
   buildCode: string
@@ -32,24 +38,18 @@ export const BRANCHES: Branch[] = ['holy', 'protection', 'retribution']
 
 export const MAX_TALENT_POINTS = 51
 
-export type TalentLockReason =
-  | { type: 'branch-points'; current: number; required: number }
-  | { type: 'prerequisite'; talentId: string; current: number; required: number }
-  | { type: 'point-cap' }
+export type TalentLockReason = PlannerLockReason
 
 /**
  * The branch a build spends most of its points in. `seed` is returned on a tie, so
  * callers can keep the branch a reader is already looking at rather than flickering.
  */
 export function dominantBranch(build: Build, talents: TalentDefinition[], seed: Branch): Branch {
-  return BRANCHES.reduce(
-    (best, candidate) => branchPoints(build, candidate, talents) > branchPoints(build, best, talents) ? candidate : best,
-    seed,
-  )
+  return dominantPlannerBranch(build, talents, BRANCHES, seed)
 }
 
 export function totalPoints(build: Build): number {
-  return Object.values(build).reduce((sum, rank) => sum + Math.max(0, rank), 0)
+  return totalPlannerPoints(build)
 }
 
 export function branchPoints(
@@ -57,9 +57,7 @@ export function branchPoints(
   branch: Branch,
   talents: TalentDefinition[],
 ): number {
-  return talents
-    .filter((talent) => talent.branch === branch)
-    .reduce((sum, talent) => sum + (build[talent.id] ?? 0), 0)
+  return plannerBranchPoints(build, branch, talents)
 }
 
 export function canIncrement(
@@ -67,8 +65,7 @@ export function canIncrement(
   talent: TalentDefinition,
   talents: TalentDefinition[],
 ): boolean {
-  const currentRank = build[talent.id] ?? 0
-  return currentRank < talent.maxRank && getTalentLockReason(build, talent, talents) === null
+  return canIncrementPlannerTalent(build, talent, talents, { branches: BRANCHES, pointCap: MAX_TALENT_POINTS })
 }
 
 export function getTalentLockReason(
@@ -76,28 +73,7 @@ export function getTalentLockReason(
   talent: TalentDefinition,
   talents: TalentDefinition[],
 ): TalentLockReason | null {
-  if (totalPoints(build) >= MAX_TALENT_POINTS) return { type: 'point-cap' }
-
-  const currentBranchPoints = branchPoints(build, talent.branch, talents)
-  if (currentBranchPoints < talent.requiredTreePoints) {
-    return { type: 'branch-points', current: currentBranchPoints, required: talent.requiredTreePoints }
-  }
-
-  for (const requirement of talent.prerequisite ?? []) {
-    const prerequisite = talents.find((candidate) => candidate.id === requirement.talentId)
-    const requiredRank = requirement.requiredRank ?? prerequisite?.maxRank
-    const currentRank = prerequisite ? (build[prerequisite.id] ?? 0) : 0
-    if (!prerequisite || requiredRank === undefined || currentRank < requiredRank) {
-      return {
-        type: 'prerequisite',
-        talentId: requirement.talentId,
-        current: currentRank,
-        required: requiredRank ?? 0,
-      }
-    }
-  }
-
-  return null
+  return plannerLockReason(build, talent, talents, { branches: BRANCHES, pointCap: MAX_TALENT_POINTS })
 }
 
 export function incrementTalent(
@@ -105,21 +81,7 @@ export function incrementTalent(
   talent: TalentDefinition,
   talents: TalentDefinition[],
 ): Build {
-  if (!canIncrement(build, talent, talents)) return build
-  return { ...build, [talent.id]: (build[talent.id] ?? 0) + 1 }
-}
-
-function remainsValid(build: Build, talent: TalentDefinition, talents: TalentDefinition[]): boolean {
-  if (!(build[talent.id] > 0)) return true
-  if (branchPoints(build, talent.branch, talents) < talent.requiredTreePoints + build[talent.id]) {
-    return false
-  }
-  if (!talent.prerequisite || talent.prerequisite.length === 0) return true
-  return talent.prerequisite.every((requirement) => {
-    const prerequisite = talents.find((candidate) => candidate.id === requirement.talentId)
-    const requiredRank = requirement.requiredRank ?? prerequisite?.maxRank
-    return Boolean(prerequisite && requiredRank !== undefined && (build[prerequisite.id] ?? 0) >= requiredRank)
-  })
+  return incrementPlannerTalent(build, talent, talents, { branches: BRANCHES, pointCap: MAX_TALENT_POINTS })
 }
 
 export function decrementTalent(
@@ -127,48 +89,15 @@ export function decrementTalent(
   talent: TalentDefinition,
   talents: TalentDefinition[],
 ): Build {
-  const rank = build[talent.id] ?? 0
-  if (rank <= 0) return build
-
-  const next: Build = { ...build }
-  if (rank === 1) delete next[talent.id]
-  else next[talent.id] = rank - 1
-
-  let changed = true
-  while (changed) {
-    changed = false
-    for (const candidate of talents) {
-      if ((next[candidate.id] ?? 0) > 0 && !remainsValid(next, candidate, talents)) {
-        delete next[candidate.id]
-        changed = true
-      }
-    }
-  }
-  return next
+  return decrementPlannerTalent(build, talent, talents)
 }
 
 export function encodeBuild(build: Build): string {
-  return Object.entries(build)
-    .filter(([, rank]) => Number.isInteger(rank) && rank > 0)
-    .sort(([left], [right]) => left.localeCompare(right))
-    .map(([id, rank]) => `${id}.${rank}`)
-    .join('~')
+  return encodePlannerBuild(build)
 }
 
 export function decodeBuild(code: string, talents: TalentDefinition[]): Build {
-  const byId = new Map(talents.map((talent) => [talent.id, talent]))
-  const build: Build = {}
-
-  for (const token of code.split('~')) {
-    const separator = token.lastIndexOf('.')
-    if (separator < 1) continue
-    const id = token.slice(0, separator)
-    const requestedRank = Number(token.slice(separator + 1))
-    const talent = byId.get(id)
-    if (!talent || !Number.isInteger(requestedRank) || requestedRank <= 0) continue
-    build[id] = Math.min(requestedRank, talent.maxRank)
-  }
-  return build
+  return decodePlannerBuild(code, talents)
 }
 
 export function validateBuildUsage(input: unknown, talents: TalentDefinition[]): BuildUsageValidation {

@@ -17,7 +17,7 @@ PvP, raid, dungeon, BiS, rotation, spellbook, and additional Warrior pages are o
 
 ## Evidence Boundary
 
-The calculator dataset must contain the complete 51-node Arms, Fury, and Protection tree from WoW Forever Beta client build `1.60.1.69913`.
+The calculator dataset must contain the complete 53-node Arms, Fury, and Protection tree reviewed through WoW Forever Beta client build `1.60.1.69913`. The separate 51 figure is the full talent-point cap.
 
 Every talent record must preserve:
 
@@ -159,7 +159,7 @@ The implementation uses test-driven development and adds coverage for:
 - level selector behavior
 - calculator preset loading and analytics
 - six route definitions and metadata
-- all 51 talents in static prerender output
+- all 53 talents in static prerender output
 - sitemap, Vercel rewrites, and internal-link reachability
 - full existing Paladin regression suite
 

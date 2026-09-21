@@ -5,9 +5,10 @@ import { SPEC_TALENTS_PAGES } from '../data/specTalentsPages'
 import { TRUST_PAGES, type TrustPageId } from '../data/trustPages'
 import type { Branch } from './build'
 import { EMBERVILLE_PAGES, type EmbervillePageId } from '../data/emberville'
+import { WARRIOR_BUILD_PAGES, type WarriorBuildPageId } from '../data/warriorPages'
 
 export interface PageDefinition {
-  kind: 'planner' | 'guide' | 'build-guide' | 'build-landing' | 'build-hub' | 'spec-hub' | 'spec-talents' | 'spellbook' | 'beta-changes' | 'trust' | 'emberville'
+  kind: 'planner' | 'guide' | 'build-guide' | 'build-landing' | 'build-hub' | 'spec-hub' | 'spec-talents' | 'spellbook' | 'beta-changes' | 'trust' | 'emberville' | 'warrior-planner' | 'warrior-hub' | 'warrior-build'
   title: string
   description: string
   canonical: string
@@ -17,6 +18,7 @@ export interface PageDefinition {
   spec?: Branch
   trustPageId?: TrustPageId
   embervillePageId?: EmbervillePageId
+  warriorBuildPageId?: WarriorBuildPageId
 }
 
 const plannerPage: PageDefinition = {
@@ -97,6 +99,24 @@ const spellbookPage: PageDefinition = {
 
 export function pageForPath(pathname: string): PageDefinition {
   const normalized = pathname.replace(/\/+$/, '') || '/'
+  if (normalized === '/warrior') return {
+    kind: 'warrior-planner',
+    title: 'WoW Forever Warrior Talent Calculator | Beta Build 69913',
+    description: 'Plan Arms, Fury, and Protection trees with the WoW Forever Warrior Talent Calculator, 53 verified nodes, level caps, presets, and shareable builds.',
+    canonical: 'https://buildforgetools.com/warrior', robots: 'index, follow',
+  }
+  if (normalized === '/wow-forever-warrior-builds') return {
+    kind: 'warrior-hub',
+    title: 'WoW Forever Warrior Builds & Talent Calculator | BuildForgeTools',
+    description: 'Explore Level 20 WoW Forever Warrior builds for Arms, Fury, and Protection, then customize every talent in the BuildForgeTools calculator.',
+    canonical: 'https://buildforgetools.com/wow-forever-warrior-builds', robots: 'index, follow',
+  }
+  const warriorBuildPage = WARRIOR_BUILD_PAGES.find((page) => normalized === `/${page.slug}`)
+  if (warriorBuildPage) return {
+    kind: 'warrior-build', warriorBuildPageId: warriorBuildPage.id,
+    title: warriorBuildPage.metaTitle, description: warriorBuildPage.subtitle,
+    canonical: `https://buildforgetools.com/${warriorBuildPage.slug}`, robots: 'index, follow',
+  }
   const embervillePage = EMBERVILLE_PAGES.find((page) => normalized === `/${page.slug}`)
   if (embervillePage) return {
     kind: 'emberville', embervillePageId: embervillePage.id,

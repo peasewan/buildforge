@@ -21,6 +21,12 @@
     }
   ],
   "rewrites": [
+    { "source": "/warrior", "destination": "/warrior/index.html" },
+    { "source": "/wow-forever-warrior-builds", "destination": "/wow-forever-warrior-builds/index.html" },
+    { "source": "/wow-forever-warrior-leveling-build", "destination": "/wow-forever-warrior-leveling-build/index.html" },
+    { "source": "/wow-forever-arms-warrior-build", "destination": "/wow-forever-arms-warrior-build/index.html" },
+    { "source": "/wow-forever-fury-warrior-build", "destination": "/wow-forever-fury-warrior-build/index.html" },
+    { "source": "/wow-forever-protection-warrior-build", "destination": "/wow-forever-protection-warrior-build/index.html" },
     { "source": "/emberville", "destination": "/emberville/index.html" },
     { "source": "/emberville-builds", "destination": "/emberville-builds/index.html" },
     { "source": "/emberville-classes", "destination": "/emberville-classes/index.html" },

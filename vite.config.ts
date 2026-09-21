@@ -8,6 +8,12 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(import.meta.dirname, 'index.html'),
+        warrior: resolve(import.meta.dirname, 'warrior/index.html'),
+        warriorBuilds: resolve(import.meta.dirname, 'wow-forever-warrior-builds/index.html'),
+        warriorLeveling: resolve(import.meta.dirname, 'wow-forever-warrior-leveling-build/index.html'),
+        armsWarriorBuild: resolve(import.meta.dirname, 'wow-forever-arms-warrior-build/index.html'),
+        furyWarriorBuild: resolve(import.meta.dirname, 'wow-forever-fury-warrior-build/index.html'),
+        protectionWarriorBuild: resolve(import.meta.dirname, 'wow-forever-protection-warrior-build/index.html'),
         paladin: resolve(import.meta.dirname, 'paladin/index.html'),
         guide: resolve(import.meta.dirname, 'wow-forever-paladin-talents/index.html'),
         buildGuide: resolve(import.meta.dirname, 'wow-forever-paladin-build/index.html'),

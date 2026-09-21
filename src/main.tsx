@@ -12,6 +12,9 @@ import SpecTalentsPage from './SpecTalentsPage'
 import TrustPage from './TrustPage'
 import EmbervillePage from './EmbervillePage'
 import SpellbookPage from './SpellbookPage'
+import WarriorPage from './WarriorPage'
+import WarriorBuildPage from './WarriorBuildPage'
+import WarriorBuildsHub from './WarriorBuildsHub'
 import { pageForPath } from './lib/routes'
 import './styles.css'
 
@@ -28,7 +31,7 @@ document.querySelector<HTMLMetaElement>('meta[property="og:url"]')?.setAttribute
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    {page.kind === 'emberville' ? <EmbervillePage pageId={page.embervillePageId!} /> : page.kind === 'guide' ? <GuidePage /> : page.kind === 'build-guide' ? <BuildPage buildId={page.buildId} /> : page.kind === 'build-landing' ? <BuildLandingPage pageId={page.landingPageId!} /> : page.kind === 'build-hub' ? <PaladinBuildsHub /> : page.kind === 'spec-hub' ? <SpecBuildsHub spec={page.spec!} /> : page.kind === 'spec-talents' ? <SpecTalentsPage spec={page.spec!} /> : page.kind === 'spellbook' ? <SpellbookPage /> : page.kind === 'beta-changes' ? <BetaChangesPage /> : page.kind === 'trust' ? <TrustPage pageId={page.trustPageId!} /> : <App />}
+    {page.kind === 'warrior-planner' ? <WarriorPage /> : page.kind === 'warrior-hub' ? <WarriorBuildsHub /> : page.kind === 'warrior-build' ? <WarriorBuildPage pageId={page.warriorBuildPageId!} /> : page.kind === 'emberville' ? <EmbervillePage pageId={page.embervillePageId!} /> : page.kind === 'guide' ? <GuidePage /> : page.kind === 'build-guide' ? <BuildPage buildId={page.buildId} /> : page.kind === 'build-landing' ? <BuildLandingPage pageId={page.landingPageId!} /> : page.kind === 'build-hub' ? <PaladinBuildsHub /> : page.kind === 'spec-hub' ? <SpecBuildsHub spec={page.spec!} /> : page.kind === 'spec-talents' ? <SpecTalentsPage spec={page.spec!} /> : page.kind === 'spellbook' ? <SpellbookPage /> : page.kind === 'beta-changes' ? <BetaChangesPage /> : page.kind === 'trust' ? <TrustPage pageId={page.trustPageId!} /> : <App />}
     <FeedbackWidget />
   </StrictMode>,
 )

@@ -213,7 +213,7 @@ Run: `npm test -- src/lib/routes.test.ts src/lib/prerender.test.ts src/lib/stati
 
 Run: `npm run build`
 
-Expected: all six directories exist in `dist`; `/warrior` prerender contains 51 talent records; every focused page contains one H1 and its calculator deep link.
+Expected: all six directories exist in `dist`; `/warrior` prerender contains 53 talent records; every focused page contains one H1 and its calculator deep link.
 
 ### Task 6: Full Verification and Release
 
