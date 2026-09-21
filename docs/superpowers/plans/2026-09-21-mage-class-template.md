@@ -21,7 +21,7 @@
 - Paladin and Warrior URLs, titles, canonicals, storage keys, and share codecs stay unchanged except for appended Mage sitemap/footer discovery.
 - Every Mage page has a unique `intent`, `title`, `h1`, and `canonical`.
 - Use test-driven development for every behavioral change.
-- Do not merge Mage calculator URLs if planner-legal dual-source agreement cannot produce three planner-legal trees.
+- Publish per page, not per class: a page ships only when its declared `publishRequirements` are met (see the spec's Publish requirements section). A branch without an allocatable entry point withholds the pages that promise a build in it, not the whole class.
 
 ## File map
 

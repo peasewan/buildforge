@@ -69,7 +69,28 @@ Every **published** Mage talent keeps:
 - shared evidence vocabulary only: `official` | `client_datamined` | `client_verified` | `community_verified` | `derived_assumption`
 - two source URL records (`beta_client` ForeverDiff, `beta_client_crosscheck` TheWoWDB)
 
-If dual-source planner-legal agreement cannot produce three complete, planner-legal trees, **do not merge Mage calculator pages**. The page framework and unpublished Hunter fixture may still land; Mage URLs stay off sitemap and production until the dataset passes validation.
+### Publish requirements
+
+A class page publishes only when the data it depends on actually exists. **The gate is per page, not per class.** One branch failing to produce a legal tree blocks the pages that promise a build in that branch — it does not freeze every URL in the class.
+
+Each `ClassPageDefinition` declares what it needs via `publishRequirements`. The vocabulary:
+
+| Requirement | Satisfied when | Without it |
+| --- | --- | --- |
+| `talentDataset` | the class has published, dual-source verified talents in at least one branch | the talent catalogue and any page that only lists or explains talents is withheld |
+| `legalBuild:<branch>` | the branch has at least one legal allocation at the current cap | any page presenting a loadable or copyable build for that branch is withheld |
+| `completeClassPlanner` | **every** branch has at least one allocatable entry point (`requiredTreePoints === 0`) | the interactive class calculator is withheld |
+| `level20Builds` | the class has at least one legal build at the current cap | current-cap build pages are withheld |
+
+A page whose requirement is unmet is **not published**: no route, no sitemap row, no prerender target, no Vercel rewrite. Its definition stays in the repository, so satisfying the requirement later publishes it with no new authoring.
+
+A withheld branch is stated, not hidden. A catalogue page may list a conflicting node and say why it is excluded from build validation, provided the node cannot be allocated.
+
+The page framework and the unpublished Hunter fixture may land independently of any class's publish state.
+
+**Applied to Mage at `1.60.1.69913`:** the fire branch has no allocatable entry point, so `/mage` and every page promising a fire build stay unpublished. The frost and arcane build pages, the class-level build pages and the talent catalogue publish normally.
+
+> **Superseded wording.** An earlier revision of this spec read: *"If dual-source planner-legal agreement cannot produce three complete, planner-legal trees, do not merge Mage calculator pages. … Mage URLs stay off sitemap and production until the dataset passes validation."* The first clause was per-page and the second was per-class; the second was read literally and froze all fifteen URLs, including the eleven with no dependency on a legal fire build. The per-page rule above replaces both clauses. Do not reintroduce a class-wide gate: a future class with one conflicting branch would lose its whole topic cluster for a defect confined to that branch.
 
 ### Acquisition pipeline
 
