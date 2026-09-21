@@ -102,6 +102,8 @@ export interface ClassPageDefinition {
   eyebrow: string
   canonical: string
   robots: 'index, follow'
+  /** Social card art for this page, overriding the class default when the page has its own. */
+  ogImage?: string
   updatedAt: string
   spec?: string
   primaryBuildId?: string
@@ -138,6 +140,11 @@ export interface ClassDefinition<B extends string = string> {
   id: string
   name: string
   plannerPath: string
+  /**
+   * Social card art for the class, used by every page that does not declare its own. Left unset
+   * when the class has no art: a shell emits `og:image` only for an asset that exists.
+   */
+  ogImage?: string
   branches: readonly B[]
   branchNames: Record<B, string>
   branchTaglines: Record<B, string>

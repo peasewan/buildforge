@@ -1,5 +1,7 @@
 import { existsSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
+import { createElement } from 'react'
+import { cleanup, render } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
 import { PUBLISHED_CLASSES } from '../data/classes'
 import { mageClass } from '../data/classes/mage'
@@ -8,15 +10,18 @@ import type { ClassDefinition, ClassPageDefinition } from './classPage'
 import {
   CLASS_PAGE_MANIFEST_FILENAME,
   CLASS_PAGE_SITEMAP_MARKERS,
+  SITE_THEME_COLOR,
   classPageManifestContent,
   classPagePaths,
   classPageRewrites,
   classPageShellHtml,
   classPageSitemapBlock,
   classPageViteInputs,
+  publishedClassCatalogues,
   publishedClassPages,
 } from './classStaticPages'
 import { pageForPath } from './routes'
+import SiteFooter from '../SiteFooter'
 
 const ORIGIN = 'https://buildforgetools.com'
 
@@ -96,18 +101,36 @@ describe('generated class-page artifacts', () => {
   })
 
   it('names no class page slug in the wiring modules', () => {
-    for (const file of ['src/lib/classStaticPages.ts', 'src/lib/routes.ts', 'scripts/prerender-pages.ts', 'scripts/sync-class-static-pages.ts', 'src/main.tsx', 'src/ClassDocumentPage.tsx', 'src/lib/prerender.ts']) {
+    for (const file of ['src/lib/classStaticPages.ts', 'src/lib/routes.ts', 'scripts/prerender-pages.ts', 'scripts/sync-class-static-pages.ts', 'src/main.tsx', 'src/ClassDocumentPage.tsx', 'src/lib/prerender.ts', 'src/SiteFooter.tsx']) {
       expect(read(file), file).not.toMatch(/wow-forever-[a-z-]*mage/)
     }
     // The generated artifacts are the gate's answer, so a hand-edit has to show up somewhere.
     expect(read(CLASS_PAGE_MANIFEST_FILENAME)).not.toMatch(/fire|pvp|level-20|frost-vs-fire/)
   })
 
+  it('derives the site-wide footer entry from the gate, so it can never link a withheld path', () => {
+    const { container } = render(createElement(SiteFooter))
+    const hrefs = [...container.querySelectorAll('a')].map((anchor) => anchor.getAttribute('href') ?? '')
+
+    // The catalogue the gate publishes, and the router agrees it resolves to its own page.
+    for (const { page } of publishedClassCatalogues()) {
+      expect(hrefs, page.slug).toContain(`/${page.slug}`)
+      expect(pageForPath(`/${page.slug}`).canonical).toBe(page.canonical)
+    }
+    for (const slug of withheldSlugs) expect(hrefs, slug).not.toContain(`/${slug}`)
+    expect(hrefs).not.toContain('/mage')
+    // Nothing was dropped to make room for it.
+    for (const href of ['/emberville', '/warrior', '/paladin', '/wow-forever-warrior-builds', '/wow-forever-paladin-builds']) {
+      expect(hrefs, href).toContain(href)
+    }
+    cleanup()
+  })
+
   it.each(published.map(({ page }) => [page.slug, page] as const))('generates %s/index.html from the page record', (slug, page) => {
     const file = join(process.cwd(), slug, 'index.html')
 
     expect(existsSync(file), `${slug}/index.html is missing`).toBe(true)
-    expect(readFileSync(file, 'utf8')).toBe(classPageShellHtml(page))
+    expect(readFileSync(file, 'utf8')).toBe(classPageShellHtml(mageClass, page))
   })
 
   it('leaves no shell for a withheld page', () => {
@@ -116,7 +139,7 @@ describe('generated class-page artifacts', () => {
   })
 
   it.each(published.map(({ page }) => [page.slug, page] as const))('keeps %s metadata aligned with its route', (slug, page) => {
-    const document = new DOMParser().parseFromString(classPageShellHtml(page), 'text/html')
+    const document = new DOMParser().parseFromString(classPageShellHtml(mageClass, page), 'text/html')
     const route = pageForPath(`/${slug}`)
 
     expect(document.title).toBe(page.title)
@@ -125,7 +148,26 @@ describe('generated class-page artifacts', () => {
     expect(document.querySelector('link[rel="canonical"]')?.getAttribute('href')).toBe(page.canonical)
     expect(document.querySelector('meta[property="og:url"]')?.getAttribute('content')).toBe(page.canonical)
     expect(document.querySelector('meta[name="robots"]')?.getAttribute('content')).toBe('index, follow')
+    // The site chrome colour, not a near-miss: the same value index.html and the Paladin shells use.
+    expect(document.querySelector('meta[name="theme-color"]')?.getAttribute('content')).toBe(SITE_THEME_COLOR)
+    expect(document.querySelector('meta[name="theme-color"]')?.getAttribute('content')).toBe('#090b10')
     expect(readFileSync(join(process.cwd(), slug, 'index.html'), 'utf8')).toContain('<!-- PAGES_PRERENDER -->')
+  })
+
+  it('shares the class social card, and invents none when the class has no art', () => {
+    const page = hunterClassFixture.pages.find((candidate) => candidate.kind === 'specBuild')!
+    const ogImage = (html: string) => new DOMParser().parseFromString(html, 'text/html')
+      .querySelector('meta[property="og:image"]')?.getAttribute('content')
+
+    // The class's own art, then the page's own art when the page has some.
+    expect(ogImage(classPageShellHtml({ ...(hunterClassFixture as ClassDefinition), ogImage: '/images/hero/hunter.webp' }, page)))
+      .toBe('/images/hero/hunter.webp')
+    expect(ogImage(classPageShellHtml({ ...(hunterClassFixture as ClassDefinition), ogImage: '/images/hero/hunter.webp' }, { ...page, ogImage: '/images/hero/hunter-marksmanship.webp' })))
+      .toBe('/images/hero/hunter-marksmanship.webp')
+
+    // No art declared: no tag at all, rather than a broken or borrowed card.
+    expect(ogImage(classPageShellHtml(hunterClassFixture as ClassDefinition, page))).toBeUndefined()
+    expect(ogImage(classPageShellHtml(mageClass, mageClass.pages.find((candidate) => candidate.kind === 'talents')!))).toBeUndefined()
   })
 
   it('writes one sitemap row per published page, dated by the page itself', () => {

@@ -48,6 +48,17 @@ export function publishedClassPages(classes: ClassDefinition[] = PUBLISHED_CLASS
   return gatedClassPages(classes)
 }
 
+/**
+ * The one page each published class offers as its entry point: the catalogue its gate publishes.
+ *
+ * This is what the existing surfaces link to for discovery. A class whose catalogue is withheld
+ * contributes no link at all, which is the point — the calculator is the link these surfaces would
+ * rather carry, and it is exactly the page a withheld class cannot back.
+ */
+export function publishedClassCatalogues(classes: ClassDefinition[] = PUBLISHED_CLASSES): PublishedClassPage[] {
+  return publishedClassPages(classes).filter(({ page }) => page.kind === 'talents')
+}
+
 /** The gated page a pathname resolves to, with the class that owns it. */
 export function publishedClassPage(pathname: string, classes: ClassDefinition[] = PUBLISHED_CLASSES): PublishedClassPage | undefined {
   const page = pageFromPublishedClasses(pathname, classes)
@@ -115,11 +126,23 @@ export function withClassPageSitemapBlock(sitemap: string, block = classPageSite
   return `${sitemap.slice(0, closing)}${block}\n${sitemap.slice(closing)}`
 }
 
+/** The site chrome colour, matching `index.html` and the Paladin shells. */
+export const SITE_THEME_COLOR = '#090b10'
+
+/** The social card this page shares, if the class ships one: page art first, class art second. */
+export function classPageOgImage(classDef: Pick<ClassDefinition, 'ogImage'>, page: Pick<ClassPageDefinition, 'ogImage'>): string | undefined {
+  return page.ogImage ?? classDef.ogImage
+}
+
 /** The shell the browser loads: metadata from the page record, body filled by the prerenderer. */
-export function classPageShellHtml(page: ClassPageDefinition): string {
+export function classPageShellHtml<B extends string>(classDef: ClassDefinition<B>, page: ClassPageDefinition): string {
   const title = escapeHtml(page.title)
   const description = escapeHtml(page.description)
   const canonical = escapeHtml(page.canonical)
+  const ogImage = classPageOgImage(classDef, page)
+  // No image is invented: a class without art gets no tag, rather than a card that 404s or shows
+  // another class's art.
+  const ogImageTag = ogImage ? `<meta property="og:image" content="${escapeHtml(ogImage)}"/>` : ''
   const structuredData = JSON.stringify({
     '@context': 'https://schema.org',
     '@type': 'WebPage',
@@ -132,7 +155,7 @@ export function classPageShellHtml(page: ClassPageDefinition): string {
   return `<!doctype html>
 <html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-DDT58001FZ"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-DDT58001FZ',{page_path:window.location.pathname});</script>
-<meta name="theme-color" content="#090b0e"/><meta name="robots" content="${page.robots}"/><meta name="description" content="${description}"/><link rel="canonical" href="${canonical}"/><link rel="icon" type="image/png" href="/favicon.png"/>
-<meta property="og:title" content="${title}"/><meta property="og:site_name" content="BuildForgeTools"/><meta property="og:description" content="${description}"/><meta property="og:url" content="${canonical}"/><meta property="og:type" content="article"/>
+<meta name="theme-color" content="${SITE_THEME_COLOR}"/><meta name="robots" content="${page.robots}"/><meta name="description" content="${description}"/><link rel="canonical" href="${canonical}"/><link rel="icon" type="image/png" href="/favicon.png"/>
+<meta property="og:title" content="${title}"/><meta property="og:site_name" content="BuildForgeTools"/><meta property="og:description" content="${description}"/>${ogImageTag}<meta property="og:url" content="${canonical}"/><meta property="og:type" content="article"/>
 <script type="application/ld+json">${structuredData}</script><title>${title}</title></head><body><div id="root"><!-- PAGES_PRERENDER --></div><script type="module" src="/src/main.tsx"></script></body></html>`
 }

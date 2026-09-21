@@ -61,7 +61,7 @@ function withClassPageRewrites(config: string, rewrites: Rewrite[]): string {
   return `${config.slice(0, opening)}${body}${config.slice(closing + '\n  ]'.length)}`
 }
 
-const expectedShell = (entry: PublishedClassPage) => classPageShellHtml(entry.page)
+const expectedShell = (entry: PublishedClassPage) => classPageShellHtml(entry.classDef, entry.page)
 
 /** Everything the generator would change, as human-readable lines. Empty means in sync. */
 async function drift(): Promise<string[]> {

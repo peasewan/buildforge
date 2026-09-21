@@ -2,7 +2,7 @@ import type { Branch } from './build'
 import { escapeHtml } from './html'
 import type { ClassBuild, ClassDefinition, ClassPageDefinition, ClassTalent } from './classPage'
 import { classPlannerHref, publishedClassPages, satisfiedRequirements } from './classPage'
-import { PUBLISHED_CLASSES } from '../data/classes'
+import { publishedClassCatalogues } from './classStaticPages'
 import { encodePlannerBuild } from './talentPlanner'
 import { BUILD_LANDING_PAGES, type BuildLandingPageId, type LandingSection } from '../data/buildLandingPages'
 import { HUB_INTRO, HUB_INTRO_SUB, HUB_PLAYSTYLE_SECTIONS, HUB_SPECIALIZATIONS, HUB_TALENTS, HUB_TITLE } from '../data/paladinBuildsHub'
@@ -187,11 +187,10 @@ function landingSection(section: LandingSection): string {
  * `/mage` still serves the Paladin planner, so linking a class calculator is not an option while
  * its planner requirement is unmet.
  */
-const classDiscoveryLinks = PUBLISHED_CLASSES.flatMap((classDef) =>
-  publishedClassPages([classDef])
-    .filter(({ page }) => page.kind === 'talents')
-    .map(({ page }) => ({ href: `/${page.slug}`, label: `Explore WoW Forever ${classDef.name} talents` })),
-)
+const classDiscoveryLinks = publishedClassCatalogues().map(({ classDef, page }) => ({
+  href: `/${page.slug}`,
+  label: `Explore WoW Forever ${classDef.name} talents`,
+}))
 
 const pageFooterLinks = [
   { href: '/paladin', label: 'Open the WoW Forever Paladin Talent Calculator' },

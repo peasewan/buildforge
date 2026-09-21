@@ -1,7 +1,20 @@
+import { publishedClassCatalogues } from './lib/classStaticPages'
+
 export interface FooterLink {
   href: string
   label: string
 }
+
+/**
+ * The discovery entry each published class contributes, taken from the gate: the catalogue that
+ * class actually publishes. Derived, so a class whose catalogue is withheld contributes no link,
+ * a new class contributes one with no edit here, and this list can never point at a withheld path
+ * — a class's own calculator is exactly what a withheld class cannot back.
+ */
+const classLinks: FooterLink[] = publishedClassCatalogues().map(({ classDef, page }) => ({
+  href: `/${page.slug}`,
+  label: `${classDef.name} Talents`,
+}))
 
 const defaultLinks: FooterLink[] = [
   { href: '/emberville', label: 'Emberville Planner' },
@@ -11,10 +24,7 @@ const defaultLinks: FooterLink[] = [
   { href: '/paladin', label: 'Talent Calculator' },
   { href: '/wow-forever-paladin-talents', label: 'Paladin Talents' },
   { href: '/wow-forever-paladin-abilities', label: 'Paladin Abilities' },
-  // The Mage discovery link goes to the talent catalogue, not the calculator: the Mage calculator
-  // is withheld until every branch has an allocatable entry point, and `/mage` currently falls
-  // through to the Paladin planner. The catalogue is the published entry point to the cluster.
-  { href: '/wow-forever-mage-talents', label: 'Mage Talents' },
+  ...classLinks,
 ]
 
 /**
