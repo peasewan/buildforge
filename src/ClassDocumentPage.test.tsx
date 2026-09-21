@@ -167,7 +167,9 @@ describe('ClassDocumentPage renders any class from ClassDefinition', () => {
 
   it('keeps the fixture out of the published registry while rendering it as a full class', () => {
     expect(hunterClassFixture.id).toBe('hunter')
-    expect(PUBLISHED_CLASSES).toHaveLength(0)
+    // The registry now carries the Mage class package, so emptiness is no longer the assertion
+    // that matters; the fixture's absence from it is.
+    expect(PUBLISHED_CLASSES.map((classDef) => classDef.id)).not.toContain('hunter')
     expect(hunterClassFixture.branches).toHaveLength(3)
     expect(hunterClassFixture.branches.every((branch: HunterBranch) => hunterClassFixture.branchNames[branch])).toBe(true)
   })
