@@ -8,6 +8,7 @@ const defaultLinks: FooterLink[] = [
   { href: '/wow-forever-paladin-builds', label: 'Paladin Builds' },
   { href: '/paladin', label: 'Talent Calculator' },
   { href: '/wow-forever-paladin-talents', label: 'Paladin Talents' },
+  { href: '/wow-forever-paladin-abilities', label: 'Paladin Abilities' },
 ]
 
 export default function SiteFooter({ links = defaultLinks }: { links?: FooterLink[] }) {

@@ -11,11 +11,49 @@ import { EMBERVILLE_EDITORIAL, EMBERVILLE_PAGES, EMBERVILLE_SOURCES, EMBERVILLE_
 import { BETA_LEVEL_CAP_SOURCE, betaLevelingPlannerHref, betaLevelingSnapshot, type BetaLevelingPageId } from '../data/levelingBeta'
 import { betaSpecPath, betaSpecPlannerHref } from '../data/betaSpecPaths'
 import { EVIDENCE_STATUS } from '../data/verification'
+import { paladinSpellbook } from '../data/paladinSpellbook'
+import type { SpellChange } from '../data/spellbook'
 
 const link = (href: string, label: string) => `<a href="${escapeHtml(href)}">${escapeHtml(label)}</a>`
 
 const linkList = (links: { href: string; label: string }[]) =>
   `<ul>${links.map(({ href, label }) => `<li>${link(href, label)}</li>`).join('')}</ul>`
+
+const spellChangeLabels: Record<SpellChange, string> = {
+  same: 'Carried forward',
+  changed: 'Changed in Forever',
+  new: 'New in Forever',
+  was_talent: 'Former talent',
+}
+
+export function renderSpellbookPrerender(): string {
+  const source = paladinSpellbook.entries[0].sources[0]
+  const entries = paladinSpellbook.entries.map((entry) => `<article data-spellbook-entry>
+    <h3>${escapeHtml(entry.name)}</h3>
+    <p>${escapeHtml(entry.category)} · First learned at Level ${entry.learnedAt} · Maximum rank ${entry.maxRank} · ${escapeHtml(spellChangeLabels[entry.change])}.</p>
+  </article>`).join('\n')
+
+  return `<main class="spellbook-prerender">
+  <article>
+    <p>Beta Paladin Data</p>
+    <h1>WoW Forever Paladin Abilities &amp; Spellbook</h1>
+    <p>Browse all 45 reviewed WoW Forever Paladin abilities, skills, and spells by specialization and trainer level.</p>
+    <p>Beta client ${escapeHtml(paladinSpellbook.clientBuild)} · Reviewed ${escapeHtml(paladinSpellbook.reviewedAt)} · Trainer spell groups.</p>
+    <p>This spellbook snapshot remains versioned separately from the 69913 talent tree. It records spell presence, first trainer level, maximum rank, and change state.</p>
+  </article>
+  <section><h2>Paladin spellbook entries</h2>${entries}</section>
+  <section><h2>Data source and verification</h2><p>The snapshot comes from reviewed Beta client data. Exact rank tooltips are published only when the source record contains them.</p><p>${link(source.url, source.label)}</p></section>
+  <section><h2>Related Paladin tools</h2>${linkList([
+    { href: '/paladin#calculator', label: 'Open the Paladin Talent Calculator' },
+    { href: '/wow-forever-paladin-builds', label: 'Explore Paladin builds' },
+    { href: '/wow-forever-paladin-talents', label: 'Review Paladin talent trees' },
+    { href: '/wow-forever-paladin-beta-talent-changes', label: 'Track Beta talent changes' },
+    { href: '/about', label: 'About BuildForgeTools' },
+    { href: '/contact', label: 'Contact BuildForgeTools' },
+    { href: '/privacy', label: 'BuildForgeTools Privacy Policy' },
+  ])}</section>
+</main>`
+}
 
 export function renderEmbervillePrerender(pageId: EmbervillePageId): string {
   const page = embervillePageById(pageId)
@@ -163,7 +201,7 @@ export function renderHubPrerender(): string {
   ${renderBetaStatusPrerender()}
   <section><h2>Choose Your Paladin Specialization</h2>${linkList(specializations)}</section>
   ${sections}
-  ${linkList([...pageFooterLinks, HUB_TALENTS, { href: '/wow-forever-paladin-beta-talent-changes', label: 'Track WoW Forever Paladin Beta talent changes' }])}
+  ${linkList([...pageFooterLinks, HUB_TALENTS, { href: '/wow-forever-paladin-abilities', label: 'Browse 45 WoW Forever Paladin abilities' }, { href: '/wow-forever-paladin-beta-talent-changes', label: 'Track WoW Forever Paladin Beta talent changes' }])}
 </main>`
 }
 

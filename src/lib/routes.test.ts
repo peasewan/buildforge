@@ -76,6 +76,16 @@ describe('public page routing', () => {
     })
   })
 
+  it('serves the Paladin abilities spellbook as an indexable data page', () => {
+    expect(pageForPath('/wow-forever-paladin-abilities/')).toEqual({
+      kind: 'spellbook',
+      title: 'WoW Forever Paladin Abilities & Spellbook | BuildForgeTools',
+      description: 'Browse 45 WoW Forever Paladin abilities, skills, and spells by specialization and trainer level, with Beta client build provenance and change labels.',
+      canonical: 'https://buildforgetools.com/wow-forever-paladin-abilities',
+      robots: 'index, follow',
+    })
+  })
+
   it('serves the Paladin builds topic hub with independent metadata', () => {
     expect(pageForPath('/wow-forever-paladin-builds/')).toEqual({
       kind: 'build-hub',

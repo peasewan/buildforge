@@ -7,7 +7,7 @@ import type { Branch } from './build'
 import { EMBERVILLE_PAGES, type EmbervillePageId } from '../data/emberville'
 
 export interface PageDefinition {
-  kind: 'planner' | 'guide' | 'build-guide' | 'build-landing' | 'build-hub' | 'spec-hub' | 'spec-talents' | 'beta-changes' | 'trust' | 'emberville'
+  kind: 'planner' | 'guide' | 'build-guide' | 'build-landing' | 'build-hub' | 'spec-hub' | 'spec-talents' | 'spellbook' | 'beta-changes' | 'trust' | 'emberville'
   title: string
   description: string
   canonical: string
@@ -87,6 +87,14 @@ const betaChangesPage: PageDefinition = {
   robots: 'index, follow',
 }
 
+const spellbookPage: PageDefinition = {
+  kind: 'spellbook',
+  title: 'WoW Forever Paladin Abilities & Spellbook | BuildForgeTools',
+  description: 'Browse 45 WoW Forever Paladin abilities, skills, and spells by specialization and trainer level, with Beta client build provenance and change labels.',
+  canonical: 'https://buildforgetools.com/wow-forever-paladin-abilities',
+  robots: 'index, follow',
+}
+
 export function pageForPath(pathname: string): PageDefinition {
   const normalized = pathname.replace(/\/+$/, '') || '/'
   const embervillePage = EMBERVILLE_PAGES.find((page) => normalized === `/${page.slug}`)
@@ -125,6 +133,7 @@ export function pageForPath(pathname: string): PageDefinition {
     robots: 'index, follow',
   }
   if (normalized === '/wow-forever-paladin-beta-talent-changes') return betaChangesPage
+  if (normalized === '/wow-forever-paladin-abilities') return spellbookPage
   const landing = BUILD_LANDING_PAGES.find((page) => normalized === `/${page.slug}`)
   if (landing) return {
     kind: 'build-landing',

@@ -15,7 +15,7 @@ export default function GuidePage() {
     <main className="guide-page">
       <header className="guide-nav shell">
         <a className="brand" href="/paladin"><img src="/images/icons/paladin-shield.png" alt="" /><span>BUILD</span><b>FORGE</b></a>
-        <nav aria-label="Guide navigation"><a href="/paladin#calculator">Talent Calculator</a><a href="/wow-forever-paladin-build">Paladin Build</a><a href="#paladin-talents">Paladin Talents</a></nav>
+        <nav aria-label="Guide navigation"><a href="/paladin#calculator">Talent Calculator</a><a href="/wow-forever-paladin-build">Paladin Build</a><a href="#paladin-talents">Paladin Talents</a><a href="/wow-forever-paladin-abilities">Abilities</a></nav>
         <a className="nav-cta guide-nav-cta" href="/paladin#calculator" onClick={() => track('guide_cta_click', { placement: 'header' })}>Open Planner</a>
       </header>
 

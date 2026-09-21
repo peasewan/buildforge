@@ -3,7 +3,7 @@ import { BUILD_LANDING_PAGES } from '../src/data/buildLandingPages'
 import { SPEC_BUILDS_HUBS } from '../src/data/specBuildsHubs'
 import { SPEC_TALENTS_PAGES } from '../src/data/specTalentsPages'
 import { TRUST_PAGES } from '../src/data/trustPages'
-import { renderEmbervillePrerender, renderHubPrerender, renderLandingPrerender, renderSpecHubPrerender, renderSpecTalentsPrerender, renderTrustPrerender } from '../src/lib/prerender'
+import { renderEmbervillePrerender, renderHubPrerender, renderLandingPrerender, renderSpecHubPrerender, renderSpecTalentsPrerender, renderSpellbookPrerender, renderTrustPrerender } from '../src/lib/prerender'
 import { EMBERVILLE_PAGES } from '../src/data/emberville'
 
 // Filenames come from each page's own slug so a new landing page cannot be added
@@ -11,6 +11,7 @@ import { EMBERVILLE_PAGES } from '../src/data/emberville'
 const targets: { filename: string; render: () => string }[] = [
   ...EMBERVILLE_PAGES.map((page) => ({ filename: page.slug, render: () => renderEmbervillePrerender(page.id) })),
   { filename: 'wow-forever-paladin-builds', render: renderHubPrerender },
+  { filename: 'wow-forever-paladin-abilities', render: renderSpellbookPrerender },
   ...SPEC_BUILDS_HUBS.map((hub) => ({ filename: hub.slug, render: () => renderSpecHubPrerender(hub.spec) })),
   ...BUILD_LANDING_PAGES.map((page) => ({ filename: page.slug, render: () => renderLandingPrerender(page.id) })),
   ...SPEC_TALENTS_PAGES.map((page) => ({ filename: page.slug, render: () => renderSpecTalentsPrerender(page.spec) })),

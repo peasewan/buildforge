@@ -578,3 +578,67 @@ footer { padding: 42px 0; border-top: 1px solid rgba(217,164,65,.15); background
   .spec-editorial { padding-top: 75px; }
   footer .footer-trust { justify-content: flex-start; }
 }
+
+/* Paladin abilities and spellbook */
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+.spellbook-page { min-height: 100vh; background: radial-gradient(circle at 75% 9%, rgba(217,164,65,.09), transparent 26%), #090b10; }
+.spellbook-page .guide-nav > .button { min-height: 38px; padding-inline: 17px; }
+.spellbook-hero { min-height: 610px; display: grid; grid-template-columns: 1.25fr .75fr; gap: 80px; align-items: center; padding-top: 86px; }
+.spellbook-hero h1 { max-width: 780px; color: #fff0c6; font-size: clamp(44px, 5.7vw, 70px); }
+.spellbook-hero > div > p { max-width: 720px; margin: 24px 0 0; color: #a0a6b0; font: 500 16px/1.75 Cinzel, serif; }
+.spellbook-hero-actions { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 32px; }
+.button.ghost { border: 1px solid rgba(255,255,255,.16); color: #d9d6cd; background: rgba(255,255,255,.025); }
+.spellbook-status { padding: 27px; border: 1px solid rgba(217,164,65,.3); border-radius: 14px; background: linear-gradient(145deg, rgba(18,23,31,.92), rgba(8,11,16,.86)); box-shadow: 0 28px 80px rgba(0,0,0,.38); }
+.spellbook-status > span { color: #a98d50; font-size: 9px; font-weight: 700; letter-spacing: .17em; }
+.spellbook-status > strong { display: block; margin: 11px 0 20px; color: #f2d98c; font: 600 30px Cinzel, serif; }
+.spellbook-status dl { margin: 0; }
+.spellbook-status dl > div { display: flex; justify-content: space-between; gap: 20px; padding: 11px 0; border-top: 1px solid rgba(255,255,255,.065); }
+.spellbook-status dt { color: #737b86; font-size: 11px; }
+.spellbook-status dd { margin: 0; color: #e1d8c6; font-size: 12px; text-align: right; }
+.spellbook-boundary { display: grid; grid-template-columns: 28px 1fr; gap: 17px; padding-block: 24px; border-top: 1px solid rgba(217,164,65,.18); border-bottom: 1px solid rgba(217,164,65,.18); }
+.spellbook-boundary > svg { color: #7ec994; }
+.spellbook-boundary strong { color: #dec581; font: 600 13px Cinzel, serif; }
+.spellbook-boundary p { margin: 7px 0 0; color: #7f8792; font-size: 12px; line-height: 1.65; }
+.spellbook-browser { padding-top: 100px; padding-bottom: 80px; }
+.spellbook-browser .section-heading p { color: #7f8792; }
+.spellbook-controls { display: grid; grid-template-columns: 1fr auto minmax(230px, 330px); gap: 12px; align-items: center; margin: 33px 0 30px; }
+.spellbook-filter-group { display: flex; gap: 7px; flex-wrap: wrap; }
+.spellbook-filter-group button { min-height: 38px; padding: 0 13px; border: 1px solid rgba(255,255,255,.1); border-radius: 8px; color: #858c97; background: rgba(255,255,255,.025); cursor: pointer; font-size: 11px; }
+.spellbook-filter-group button.active { color: #f3d98e; border-color: rgba(217,164,65,.45); background: rgba(217,164,65,.1); box-shadow: inset 0 0 14px rgba(217,164,65,.055); }
+.spellbook-search { min-height: 42px; display: flex; align-items: center; gap: 10px; padding: 0 13px; border: 1px solid rgba(255,255,255,.11); border-radius: 8px; color: #777f8c; background: #0d1117; }
+.spellbook-search input { width: 100%; border: 0; outline: 0; color: #e9e2d3; background: transparent; font-size: 12px; }
+.spellbook-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.spellbook-card { min-height: 170px; padding: 20px; border: 1px solid rgba(255,255,255,.08); border-radius: 11px; background: linear-gradient(145deg, rgba(255,255,255,.032), rgba(255,255,255,.012)); }
+.spellbook-card:hover { border-color: rgba(217,164,65,.24); transform: translateY(-1px); }
+.spellbook-card-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; color: #8e96a1; font-size: 9px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.spellbook-card h3 { margin: 22px 0 17px; color: #eee3ca; font: 600 17px Cinzel, serif; }
+.spellbook-card dl { display: flex; gap: 28px; margin: 0 0 16px; }
+.spellbook-card dl > div { display: grid; gap: 4px; }
+.spellbook-card dt { color: #666e79; font-size: 9px; text-transform: uppercase; letter-spacing: .08em; }
+.spellbook-card dd { margin: 0; color: #b9b0a0; font-size: 11px; }
+.spellbook-card small { color: #606873; font-size: 9px; }
+.spellbook-change { padding: 4px 7px; border: 1px solid rgba(255,255,255,.1); border-radius: 999px; letter-spacing: .04em; }
+.spellbook-change.new { color: #91d4a4; border-color: rgba(74,173,104,.33); background: rgba(74,173,104,.08); }
+.spellbook-change.changed { color: #f0c466; border-color: rgba(217,164,65,.35); background: rgba(217,164,65,.08); }
+.spellbook-change.was_talent { color: #9fc9e8; border-color: rgba(91,154,202,.34); background: rgba(91,154,202,.08); }
+.spellbook-holy { box-shadow: inset 0 1px rgba(235,201,110,.06); }
+.spellbook-protection { box-shadow: inset 0 1px rgba(112,159,205,.07); }
+.spellbook-retribution { box-shadow: inset 0 1px rgba(205,116,83,.07); }
+.spellbook-empty { padding: 70px 24px; border: 1px dashed rgba(255,255,255,.12); border-radius: 12px; text-align: center; }
+.spellbook-empty h3 { color: #d9ccb0; font: 600 18px Cinzel, serif; }
+.spellbook-empty p { color: #757d88; font-size: 12px; }
+.spellbook-context { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; padding-bottom: 100px; }
+.spellbook-context article { padding: 28px; border-top: 1px solid rgba(217,164,65,.28); background: rgba(255,255,255,.018); }
+.spellbook-context h2 { color: #e6d8b8; font-size: 20px; }
+.spellbook-context p { color: #858d98; font-size: 12px; line-height: 1.8; }
+.spellbook-context a { color: #d5ad50; font-size: 11px; text-decoration: underline; text-underline-offset: 3px; }
+.spellbook-cta { display: flex; align-items: center; justify-content: space-between; gap: 35px; margin-bottom: 100px; padding: 38px 42px; border: 1px solid rgba(217,164,65,.3); border-radius: 14px; background: radial-gradient(circle at 10% 0, rgba(217,164,65,.12), transparent 42%), #0e1219; }
+.spellbook-cta h2 { color: #f0dfb8; font-size: 31px; }
+.spellbook-cta p { margin: 10px 0 0; color: #858d98; font-size: 12px; }
+.spellbook-prerender { max-width: 980px; min-height: 100vh; margin: 0 auto; padding: 100px 24px; }
+.spellbook-prerender section { margin-top: 46px; }
+.spellbook-prerender [data-spellbook-entry] { padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,.07); }
+.spellbook-prerender h3 { color: #e6d8b8; }
+.spellbook-prerender p, .spellbook-prerender li { color: #9299a3; line-height: 1.7; }
+@media (max-width: 950px) { .spellbook-hero { grid-template-columns: 1fr; gap: 26px; padding-top: 125px; padding-bottom: 75px; }.spellbook-controls { grid-template-columns: 1fr; }.spellbook-grid, .spellbook-context { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 650px) { .spellbook-page .guide-nav > .button { display: none; }.spellbook-hero { min-height: 720px; }.spellbook-hero h1 { font-size: 40px; }.spellbook-hero > div > p { font-size: 14px; }.spellbook-grid, .spellbook-context { grid-template-columns: 1fr; }.spellbook-browser { padding-top: 75px; }.spellbook-cta { align-items: stretch; flex-direction: column; padding: 25px 22px; }.spellbook-cta .button { width: 100%; }.spellbook-card dl { gap: 18px; } }

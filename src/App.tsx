@@ -259,7 +259,7 @@ export default function App() {
     <main>
       <header className="nav shell">
         <a className="brand" href="/paladin#top"><img src="/images/icons/paladin-shield.png" alt="" /><span>BUILD</span><b>FORGE</b></a>
-        <nav aria-label="Primary navigation"><a href="/paladin#calculator">Talent Calculator</a><a href="/wow-forever-paladin-build">Paladin Build</a><a href="/wow-forever-paladin-talents">Paladin Talents</a></nav>
+        <nav aria-label="Primary navigation"><a href="/paladin#calculator">Talent Calculator</a><a href="/wow-forever-paladin-build">Paladin Build</a><a href="/wow-forever-paladin-talents">Paladin Talents</a><a href="/wow-forever-paladin-abilities">Abilities</a></nav>
         <button className="nav-cta" onClick={() => openTool()}>Open Planner</button>
       </header>
 
@@ -302,7 +302,7 @@ export default function App() {
             <div className="data-card-title">Talent Data</div>
             <p className="data-card-line"><span>✓</span> {talents.length} Beta talent nodes verified — {DATA_SOURCES.join(', ')}</p>
             <p className="data-card-progress">All three Paladin trees include client coordinates, prerequisite links, rank caps, and every rank tooltip. Required prerequisite ranks are not present in the client tables, so the planner labels its Classic max-rank fallback as an assumption.</p>
-            <p className="data-card-progress">{betaDataset.label} · <a href="/wow-forever-paladin-beta-talent-changes">Review Beta changes</a></p>
+            <p className="data-card-progress">{betaDataset.label} · <a href="/wow-forever-paladin-beta-talent-changes">Review Beta changes</a> · <a href="/wow-forever-paladin-abilities">Browse 45 Paladin abilities</a></p>
           </div>
           <p className="spec-cta">Choose your specialization:</p>
           <div className="spec-choices">

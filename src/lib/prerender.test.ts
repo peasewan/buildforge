@@ -4,8 +4,9 @@ import { HUB_BUILD_HREFS } from '../data/paladinBuildsHub'
 import { SPEC_BUILDS_HUBS, specHubHrefs } from '../data/specBuildsHubs'
 import { BUILD_LANDING_PAGES } from '../data/buildLandingPages'
 import { TRUST_PAGES } from '../data/trustPages'
-import { renderBetaAvailabilityPrerender, renderBetaLevelingSnapshotPrerender, renderBetaSpecPathPrerender, renderEmbervillePrerender, renderHubPrerender, renderLandingPrerender, renderSpecHubPrerender, renderTrustPrerender } from './prerender'
+import { renderBetaAvailabilityPrerender, renderBetaLevelingSnapshotPrerender, renderBetaSpecPathPrerender, renderEmbervillePrerender, renderHubPrerender, renderLandingPrerender, renderSpecHubPrerender, renderSpellbookPrerender, renderTrustPrerender } from './prerender'
 import { EMBERVILLE_EDITORIAL, EMBERVILLE_PAGES } from '../data/emberville'
+import { paladinSpellbook } from '../data/paladinSpellbook'
 
 const redirections = (() => {
   const config = JSON.parse(readFileSync(`${process.cwd()}/vercel.json`, 'utf8')) as {
@@ -22,6 +23,17 @@ const allPrerendered = () => [
 ] as const
 
 describe('prerender generation', () => {
+  it('prerenders every versioned Paladin spellbook entry for crawlers', () => {
+    const html = renderSpellbookPrerender()
+
+    expect(html).toContain('<h1>WoW Forever Paladin Abilities &amp; Spellbook</h1>')
+    expect(html).toContain('Beta client 1.60.1.69893')
+    expect(html.match(/data-spellbook-entry/g)).toHaveLength(45)
+    for (const entry of paladinSpellbook.entries) expect(html).toContain(entry.name)
+    expect(html).toContain('href="/paladin#calculator"')
+    expect(html).toContain('href="/wow-forever-paladin-beta-talent-changes"')
+    expect(html).toContain('https://wowhandbook.com/spellbook/paladin/')
+  })
   it.each(EMBERVILLE_PAGES.map((page) => [page.id, page.title] as const))('gives the %s Emberville page substantial unique crawlable copy', (pageId, title) => {
     const html = renderEmbervillePrerender(pageId)
     const words = html.replace(/<[^>]+>/g, ' ').match(/[A-Za-z0-9'-]+/g)?.length ?? 0
@@ -82,6 +94,10 @@ describe('prerender generation', () => {
     const html = renderHubPrerender()
 
     for (const href of HUB_BUILD_HREFS) expect(html).toContain(`href="${href}"`)
+  })
+
+  it('links the versioned Paladin spellbook from the crawlable hub', () => {
+    expect(renderHubPrerender()).toContain('href="/wow-forever-paladin-abilities"')
   })
 
   it.each(SPEC_BUILDS_HUBS.map((hub) => [hub.spec, hub] as const))('links every build the %s hub data declares', (_spec, hub) => {
