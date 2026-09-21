@@ -36,8 +36,22 @@ describe('Holy healing build page', () => {
     render(<BuildPage buildId="protection-shield-20-31-0" />)
 
     expect(screen.getByRole('heading', { level: 2, name: 'Protection Paladin Talent Overview' })).toBeTruthy()
-    expect(screen.getByRole('heading', { level: 2, name: 'Explore More Protection Builds' })).toBeTruthy()
+    expect(screen.getByRole('heading', { level: 2, name: 'Continue with Protection' })).toBeTruthy()
     expect(document.querySelector('a[href="/wow-forever-protection-paladin-builds"]')).toBeTruthy()
+  })
+
+  it('connects the Protection build to its practical next steps', () => {
+    render(<BuildPage buildId="protection-shield-20-31-0" />)
+
+    const nextSteps = screen.getByRole('region', { name: 'Continue with Protection' })
+    for (const href of [
+      '/wow-forever-protection-paladin-dungeon-build',
+      '/wow-forever-protection-paladin-leveling-build',
+      '/wow-forever-protection-paladin-talents',
+      '/paladin#calculator',
+    ]) {
+      expect(nextSteps.querySelector(`a[href="${href}"]`)).toBeTruthy()
+    }
   })
 
   it('refers to the calculator cards as community examples', () => {

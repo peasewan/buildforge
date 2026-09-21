@@ -87,6 +87,17 @@ h1 span { color: var(--light); background: linear-gradient(180deg, #fff7d7, #d9a
 .section-heading p { color: #898f99; margin-top: 12px; font-size: 14px; }
 .centered { text-align: center; }
 .popular-builds { margin-top: 36px; }
+.current-cap-builds { margin: 34px 0 26px; padding: 22px; border: 1px solid rgba(217,164,65,.22); border-radius: 13px; background: linear-gradient(145deg, rgba(217,164,65,.08), rgba(12,15,20,.92) 52%); }
+.current-cap-build-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.current-cap-build-grid article { min-width: 0; display: grid; grid-template-columns: 42px minmax(0, 1fr); align-items: center; gap: 12px; padding: 15px; border: 1px solid rgba(255,255,255,.08); border-radius: 10px; background: rgba(8,11,15,.64); }
+.current-cap-build-grid img { width: 38px; height: 38px; object-fit: contain; }
+.current-cap-build-grid article > div { min-width: 0; display: grid; gap: 3px; }
+.current-cap-build-grid span { color: #a98d50; font-size: 8px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.current-cap-build-grid strong { color: #f1daa0; font: 600 17px Cinzel, serif; }
+.current-cap-build-grid small { overflow: hidden; color: #777f8a; font-size: 9px; text-overflow: ellipsis; white-space: nowrap; }
+.current-cap-build-grid button { grid-column: 1 / -1; min-height: 36px; border: 1px solid rgba(225,181,83,.5); border-radius: 7px; background: rgba(217,164,65,.08); color: #e8c878; cursor: pointer; font-size: 9px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.current-cap-build-grid button:hover { border-color: #ddb458; background: rgba(217,164,65,.16); }
+.current-cap-build-note { margin: 13px 0 0; color: #676f7a; font-size: 9px; line-height: 1.6; }
 .popular-builds-heading { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 18px; }.popular-builds-heading span { color: #a98d50; font-size: 8px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; }.popular-builds-heading h2 { margin: 5px 0 0; color: #eee1c0; font-size: 22px; }.popular-builds-heading p { max-width: 380px; margin: 0; color: #737b86; font-size: 10px; line-height: 1.6; text-align: right; }
 .popular-build-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 13px; }
 .example-build-card { width: 100%; padding: 16px 18px; display: grid; grid-template-columns: 46px minmax(0, 1fr); align-items: center; gap: 14px; border: 1px solid rgba(217,164,65,.24); border-radius: 11px; background: linear-gradient(135deg, rgba(217,164,65,.09), rgba(14,17,23,.9) 46%); box-shadow: 0 16px 38px rgba(0,0,0,.18); }
@@ -236,6 +247,7 @@ footer { padding: 42px 0; border-top: 1px solid rgba(217,164,65,.15); background
 @media (max-width: 600px) { .feedback-trigger { right: 14px; bottom: 14px; padding: 0 14px; }.feedback-dialog { padding: 28px 18px 22px; }.feedback-types { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 700px) { .popular-builds-heading { align-items: start; flex-direction: column; gap: 8px; }.popular-builds-heading p { text-align: left; }.example-build-card { grid-template-columns: 42px 1fr; padding: 15px; gap: 11px 13px; text-align: left; }.example-build-card > strong { grid-column: 1 / -1; text-align: left; }.example-build-card > strong small { display: inline; margin-left: 8px; }.example-build-card > button { grid-column: 1 / -1; width: 100%; }.planner-tabs { margin-top: 28px; } }
 @media (max-width: 700px) { .saved-build-notice { align-items: stretch; flex-direction: column; margin-bottom: 0; }.saved-build-notice button { justify-content: center; } }
+@media (max-width: 700px) { .current-cap-builds { padding: 16px; }.current-cap-build-grid { grid-template-columns: 1fr; }.protection-next-links { grid-template-columns: 1fr; } }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *:before, *:after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
 
 /* Reusable build landing pages */
@@ -399,6 +411,10 @@ footer { padding: 42px 0; border-top: 1px solid rgba(217,164,65,.15); background
 .spec-type-grid .build-card header { display: flex; align-items: center; gap: 9px; color: #ad965e; }
 .protection-build-more { padding: 32px; border: 1px solid rgba(217,164,65,.2); border-radius: 11px; background: rgba(217,164,65,.045); }
 .protection-build-more a { display: inline-flex; align-items: center; gap: 7px; color: #d9b45d; font-size: 13px; }
+.protection-next-links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 22px 0 18px; }
+.protection-next-links a { justify-content: space-between; min-height: 52px; padding: 12px 14px; border: 1px solid rgba(217,164,65,.16); border-radius: 8px; background: rgba(9,11,16,.56); }
+.protection-next-links a:hover { border-color: rgba(217,164,65,.42); background: rgba(217,164,65,.08); }
+.protection-build-more .protection-hub-link { color: #8e96a1; font-size: 11px; }
 .spec-talents-page { min-height: 100vh; background: #090b10; }
 .spec-talents-page .guide-nav > .button { min-height: 38px; padding-inline: 17px; }
 .spec-talents-hero { min-height: 560px; display: grid; align-items: center; border-bottom: 1px solid rgba(217,164,65,.15); background: radial-gradient(circle at 72% 44%, rgba(217,164,65,.12), transparent 28%), linear-gradient(145deg, #111720, #090b10 68%); }

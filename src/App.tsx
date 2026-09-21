@@ -4,6 +4,7 @@ import { EXAMPLE_BUILDS, type ExampleBuild } from './data/builds'
 import { BUILD_LANDING_PAGES } from './data/buildLandingPages'
 import BuildCard from './BuildCard'
 import { PALADIN_BETA_SNAPSHOT } from './data/betaSnapshot'
+import { BETA_SPEC_PATHS } from './data/betaSpecPaths'
 import { branchNames, branchTaglines, DATA_SOURCES, talentEvidenceLabel, talents, type Talent } from './data/talents'
 import { betaDataset } from './data/datasets'
 import { BRANCHES, branchPoints, canIncrement, decodeBuild, decrementTalent, dominantBranch, encodeBuild, getTalentLockReason, incrementTalent, totalPoints, type Branch, type Build, type TalentLockReason } from './lib/build'
@@ -239,6 +240,21 @@ export default function App() {
     calculatorRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
 
+  const loadBetaPath = (nextBranch: Branch) => {
+    const path = BETA_SPEC_PATHS[nextBranch]
+    setBuild({ ...path.current.build })
+    setBranch(nextBranch)
+    setShowSavedBuild(false)
+    setCopied(false)
+    window.history.replaceState({}, '', '/paladin#calculator')
+    track('beta_path_load', {
+      branch: nextBranch,
+      level: path.current.level,
+      allocation: path.current.allocation,
+    })
+    calculatorRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+
   return (
     <main>
       <header className="nav shell">
@@ -304,6 +320,22 @@ export default function App() {
       <section className="planner-section" id="planner" ref={toolRef}>
         <div className="shell">
           <div className="section-heading centered"><div className="eyebrow">Interactive Build Planner</div><h2>WoW Forever Paladin Talent Tree</h2><p>Choose Holy, Protection, or Retribution, spend all 51 points, and shape a build worth sharing.</p></div>
+          <section className="current-cap-builds" aria-label="Current Beta Level 20 builds">
+            <div className="popular-builds-heading"><div><span>Playable at the current cap</span><h2>Level 20 Beta Starting Builds</h2></div><p>Load an 11-point community route based on the current official Beta level cap.</p></div>
+            <div className="current-cap-build-grid">
+              {BRANCHES.map((item) => {
+                const path = BETA_SPEC_PATHS[item]
+                return (
+                  <article key={item}>
+                    <img src={branchIcons[item]} alt="" />
+                    <div><span>{branchNames[item]}</span><strong>{path.current.allocation}</strong><small>{path.bestFor[0]}</small></div>
+                    <button type="button" onClick={() => loadBetaPath(item)} aria-label={`Load ${branchNames[item]} Level ${path.current.level} build`}>Load Level {path.current.level}</button>
+                  </article>
+                )
+              })}
+            </div>
+            <p className="current-cap-build-note">Community recommendations, not official or measured best builds. Talent data uses client build {PALADIN_BETA_SNAPSHOT.clientBuild}.</p>
+          </section>
           <div id="calculator" ref={calculatorRef} className="calculator-entry">
             {showSavedBuild && <div className="saved-build-notice" role="status"><div><strong>Saved build loaded</strong><span>Your previous talent setup is ready to continue.</span></div><button type="button" onClick={startNewBuild}><RotateCcw size={14} /> Start New Build</button></div>}
             <div className="planner-tabs" role="tablist">{BRANCHES.map((item) => <button key={item} role="tab" aria-selected={branch === item} className={branch === item ? 'active' : ''} onClick={() => { setBranch(item); track('spec_select', { branch: item }) }}><img src={branchIcons[item]} alt="" /><span>{branchNames[item]}<small>{branchPoints(build, item, talents)} points</small></span></button>)}</div>

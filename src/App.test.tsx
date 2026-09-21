@@ -30,6 +30,28 @@ describe('Paladin talent calculator page', () => {
     expect(screen.getByRole('link', { name: /Retribution Paladin Judgment Build/ }).getAttribute('href')).toBe('/wow-forever-retribution-paladin-build')
   })
 
+  it('loads a current-cap Level 20 path directly into the calculator', () => {
+    const gtag = vi.fn()
+    HTMLElement.prototype.scrollIntoView = vi.fn()
+    window.gtag = gtag
+    render(<App />)
+
+    const paths = screen.getByRole('region', { name: 'Current Beta Level 20 builds' })
+    expect(paths.textContent).toContain('11/0/0')
+    expect(paths.textContent).toContain('2/9/0')
+    expect(paths.textContent).toContain('0/0/11')
+
+    fireEvent.click(screen.getByRole('button', { name: 'Load Protection Level 20 build' }))
+
+    expect(screen.getByText('40 points remaining')).toBeTruthy()
+    expect(screen.getByRole('tab', { name: /Protection/ }).getAttribute('aria-selected')).toBe('true')
+    expect(gtag).toHaveBeenCalledWith('event', 'beta_path_load', {
+      branch: 'protection',
+      level: 20,
+      allocation: '2/9/0',
+    })
+  })
+
   it('links the four content-focused build pages', () => {
     render(<App />)
 
