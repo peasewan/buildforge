@@ -104,10 +104,12 @@ export default function ClassCalculatorPage<B extends string>({ classDef }: { cl
   const presets = classDef.recommendedBuildIds
     .map((id) => classDef.builds.find((candidate) => candidate.id === id))
     .filter((candidate): candidate is ClassBuild => Boolean(candidate))
+  // Only this class's own links: the site-wide class list lives in SiteFooter, which prepends
+  // these to it. Nothing here may name another class.
   const footerLinks = classDef.pages
     .filter((page) => page.kind === 'buildsHub' || page.kind === 'talents' || page.kind === 'leveling' || page.kind === 'dungeon')
     .map((page) => ({ href: `/${page.slug}`, label: page.h1 }))
-    .concat([{ href: '/paladin', label: 'Paladin Calculator' }, { href: '/warrior', label: 'Warrior Calculator' }])
+    .concat([{ href: classDef.plannerPath, label: `${classDef.name} Talent Calculator` }])
 
   const commit = (next: PlannerBuild, nextLevel: PlannerLevel = level) => {
     setBuild(next)
@@ -250,6 +252,6 @@ export default function ClassCalculatorPage<B extends string>({ classDef }: { cl
       <div><Swords /><h2>Build links that persist</h2><p>Share the exact talent ranks and point budget through {classDef.plannerPath} without creating indexable duplicates.</p></div>
     </section>
 
-    <SiteFooter links={footerLinks} />
+    <SiteFooter classLinks={footerLinks} />
   </main>
 }

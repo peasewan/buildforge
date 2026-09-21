@@ -1,3 +1,5 @@
+import { readFileSync } from 'node:fs'
+import { join } from 'node:path'
 import { cleanup, fireEvent, render, screen, within } from '@testing-library/react'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import ClassCalculatorPage from './ClassCalculatorPage'
@@ -141,6 +143,23 @@ describe('ClassCalculatorPage renders any class from ClassDefinition', () => {
     expect(within(presets).getByText('Community / Editorial Build')).toBeTruthy()
     expect(within(presets).queryByText(/client verified/i)).toBeNull()
     expect(screen.getAllByText('Client verified').length).toBeGreaterThan(0)
+  })
+
+  it('hardcodes no class name and leaves the site-wide footer list to SiteFooter', () => {
+    // The class-neutral layer may name its own class only through `classDef`. Cross-class names
+    // (`/paladin`, `/warrior`) belong in SiteFooter, which already owns the site-wide class list.
+    const source = readFileSync(join(process.cwd(), 'src/ClassCalculatorPage.tsx'), 'utf8')
+    expect(source).not.toContain("'/paladin'")
+    expect(source).not.toContain("'/warrior'")
+
+    const { container } = render(<ClassCalculatorPage classDef={hunterClassFixture} />)
+    const footer = container.querySelector('footer')!
+    expect(within(footer).getByRole('link', { name: `${hunterClassFixture.name} Talent Calculator` }).getAttribute('href'))
+      .toBe(hunterClassFixture.plannerPath)
+    // SiteFooter still renders its own site-wide list next to the class-specific links.
+    for (const href of ['/emberville', '/warrior', '/paladin', '/wow-forever-paladin-builds']) {
+      expect(footer.querySelector(`a[href="${href}"]`)).toBeTruthy()
+    }
   })
 
   it('states the per-rank-text coverage the dataset actually has', () => {

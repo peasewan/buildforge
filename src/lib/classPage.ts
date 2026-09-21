@@ -22,6 +22,7 @@ export type FieldEvidenceKey =
   | 'row'
   | 'column'
   | 'maxRank'
+  | 'requiredTreePoints'
   | 'rankDescriptions'
   | 'sourceTalentId'
   | 'prerequisiteLink'

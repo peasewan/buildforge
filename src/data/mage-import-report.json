@@ -1,7 +1,7 @@
 {
   "foreverDiffUrl": "https://foreverdiff.com/talents/mage/calculator/",
   "theWowDbUrl": "https://thewowdb.com/wow-forever/talents/mage/",
-  "fetchedAt": "2026-09-21T15:44:06.639Z",
+  "fetchedAt": "2026-09-21T15:57:42.666Z",
   "acquisition": "fetch",
   "snapshots": [
     {
@@ -37,6 +37,11 @@
       "field": "row"
     },
     {
+      "name": "Wand Specialization",
+      "branch": "arcane",
+      "field": "requiredTreePoints"
+    },
+    {
       "name": "Arcane Focus",
       "branch": "arcane",
       "field": "rankDescriptions"
@@ -45,6 +50,11 @@
       "name": "Arcane Subtlety",
       "branch": "arcane",
       "field": "row"
+    },
+    {
+      "name": "Arcane Subtlety",
+      "branch": "arcane",
+      "field": "requiredTreePoints"
     },
     {
       "name": "Magic Absorption",
@@ -75,6 +85,11 @@
       "name": "Arcane Resilience",
       "branch": "arcane",
       "field": "maxRank"
+    },
+    {
+      "name": "Arcane Resilience",
+      "branch": "arcane",
+      "field": "requiredTreePoints"
     },
     {
       "name": "Arcane Geometry",
@@ -137,6 +152,11 @@
       "field": "maxRank"
     },
     {
+      "name": "Wake of Fire",
+      "branch": "fire",
+      "field": "requiredTreePoints"
+    },
+    {
       "name": "Incineration",
       "branch": "fire",
       "field": "row"
@@ -150,6 +170,11 @@
       "name": "Incineration",
       "branch": "fire",
       "field": "maxRank"
+    },
+    {
+      "name": "Incineration",
+      "branch": "fire",
+      "field": "requiredTreePoints"
     },
     {
       "name": "Improved Fireball",
@@ -185,6 +210,11 @@
       "name": "Impact",
       "branch": "fire",
       "field": "maxRank"
+    },
+    {
+      "name": "Impact",
+      "branch": "fire",
+      "field": "requiredTreePoints"
     },
     {
       "name": "Burning Soul",
@@ -277,6 +307,11 @@
       "field": "row"
     },
     {
+      "name": "Frost Channeling",
+      "branch": "frost",
+      "field": "requiredTreePoints"
+    },
+    {
       "name": "Improved Blizzard",
       "branch": "frost",
       "field": "rankDescriptions"
@@ -285,6 +320,11 @@
       "name": "Ice Block",
       "branch": "frost",
       "field": "row"
+    },
+    {
+      "name": "Ice Block",
+      "branch": "frost",
+      "field": "requiredTreePoints"
     },
     {
       "name": "Shatter",
@@ -305,6 +345,11 @@
       "name": "Cold Snap",
       "branch": "frost",
       "field": "row"
+    },
+    {
+      "name": "Cold Snap",
+      "branch": "frost",
+      "field": "requiredTreePoints"
     },
     {
       "name": "Winter's Chill",
@@ -332,5 +377,12 @@
     "arcane": 2,
     "fire": 0,
     "frost": 2
-  }
+  },
+  "plannerLegal": false,
+  "blockers": [
+    {
+      "code": "fire:no-entry-point",
+      "branch": "fire"
+    }
+  ]
 }

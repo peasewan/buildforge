@@ -122,9 +122,11 @@ export default function ClassDocumentPage<B extends string>({ classDef, page }: 
   const showsRelatedBuilds = relatedBuilds.length > 0 && !kindsHandlingTheirOwnBuildLinks.includes(page.kind)
   const calculatorPage = classDef.pages.find((candidate) => candidate.kind === 'calculator')
   const navPages = classDef.pages.filter((candidate) => candidate.kind === 'buildsHub' || candidate.kind === 'talents')
+  // Only this class's own links: the site-wide class list lives in SiteFooter, which prepends
+  // these to it. Nothing here may name another class.
   const footerLinks = navPages
     .map((candidate) => ({ href: `/${candidate.slug}`, label: candidate.h1 }))
-    .concat([{ href: classDef.plannerPath, label: `${classDef.name} Talent Calculator` }, { href: '/paladin', label: 'Paladin Calculator' }])
+    .concat([{ href: classDef.plannerPath, label: `${classDef.name} Talent Calculator` }])
   const editInCalculator = <a className="button class-primary" href={calculatorHref(classDef, primaryBuild)}>Edit this build in Calculator <ArrowRight size={15} /></a>
 
   return <main className="class-page">
@@ -222,6 +224,6 @@ export default function ClassDocumentPage<B extends string>({ classDef, page }: 
       </section>
     </div>
 
-    <SiteFooter links={footerLinks} />
+    <SiteFooter classLinks={footerLinks} />
   </main>
 }

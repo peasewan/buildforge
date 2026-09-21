@@ -52,7 +52,21 @@ const prefixRanks = (left?: string[], right?: string[]) => {
   return shorter.every((value, index) => value === longer[index]) ? longer : undefined
 }
 
-const plannerLegal: FieldEvidenceKey[] = ['name', 'branch', 'row', 'column', 'maxRank']
+// `requiredTreePoints` is planner-legal: `talentPlanner.canIncrement` refuses to spend a talent
+// until the branch has that many points, so a disagreement — or silence on either side — makes the
+// node unallocatable rather than a cosmetic difference. Such nodes are vetoed, not merged.
+const plannerLegal: FieldEvidenceKey[] = ['name', 'branch', 'row', 'column', 'maxRank', 'requiredTreePoints']
+
+// Planner-legal fields must be stated by BOTH sources, not merely equal: `undefined === undefined`
+// would publish a node with no value at all, and `canIncrement` compares
+// `current < talent.requiredTreePoints`, which is always false against `undefined` — such a node
+// would render in the tree but never be spendable. That is a silent break, so silence on either
+// side is treated exactly like a disagreement and drops the node loudly.
+const plannerFieldConflict = (left: MageSourceTalent, right: MageSourceTalent, field: FieldEvidenceKey) => {
+  const leftValue = left[field as keyof MageSourceTalent]
+  const rightValue = right[field as keyof MageSourceTalent]
+  return leftValue === undefined || rightValue === undefined || leftValue !== rightValue
+}
 
 export function reconcileMageTalents(foreverDiff: MageSourceTalent[], theWowDb: MageSourceTalent[]): MageReconcileResult {
   const sourceA = new Map(foreverDiff.map((talent) => [identity(talent), talent]))
@@ -73,18 +87,21 @@ export function reconcileMageTalents(foreverDiff: MageSourceTalent[], theWowDb: 
     const right = sourceB.get(key)
     if (!right) continue
 
-    const plannerMismatch = plannerLegal.filter((field) => left[field as keyof MageSourceTalent] !== right[field as keyof MageSourceTalent])
+    const plannerMismatch = plannerLegal.filter((field) => plannerFieldConflict(left, right, field))
     if (plannerMismatch.length) {
       for (const field of plannerMismatch) fieldConflicts.push({ name: left.name, branch: left.branch, field })
       continue
     }
 
+    // Reachable only for nodes whose every planner-legal field is present on both sources and equal
+    // between them, so each entry below claims a value the sources actually state.
     const fieldEvidence: ReconciledMageTalent['fieldEvidence'] = {
       name: 'client_verified',
       branch: 'client_verified',
       row: 'client_verified',
       column: 'client_verified',
       maxRank: 'client_verified',
+      requiredTreePoints: 'client_verified',
     }
 
     const merged: ReconciledMageTalent = {
@@ -93,7 +110,10 @@ export function reconcileMageTalents(foreverDiff: MageSourceTalent[], theWowDb: 
       row: left.row,
       column: left.column,
       maxRank: left.maxRank,
-      requiredTreePoints: left.requiredTreePoints ?? right.requiredTreePoints,
+      // The planner-legal filter above already proved both sources state this gate and agree, so
+      // this is the agreed, present value — not a fallback that prefers ForeverDiff when one source
+      // is silent (that case never reaches here).
+      requiredTreePoints: left.requiredTreePoints,
       changeStatus: 'unknown',
       fieldEvidence,
       verificationStatus: 'client_verified',

@@ -7,6 +7,7 @@ const iceLance: MageSourceTalent = {
   row: 5,
   column: 1,
   maxRank: 1,
+  requiredTreePoints: 20,
   rankDescriptions: ['Deals 28 Frost damage to an enemy target.'],
 }
 
@@ -16,6 +17,7 @@ const frostboltA: MageSourceTalent = {
   row: 1,
   column: 2,
   maxRank: 5,
+  requiredTreePoints: 0,
   rankDescriptions: [
     'Reduces the casting time of your Frostbolt spell by 0.1 sec.',
     'Reduces the casting time of your Frostbolt spell by 0.2 sec.',
@@ -32,6 +34,7 @@ const frostboltB: MageSourceTalent = {
   row: 1,
   column: 2,
   maxRank: 5,
+  requiredTreePoints: 0,
   rankDescriptions: frostboltA.rankDescriptions,
 }
 
@@ -75,6 +78,49 @@ describe('mage talent field-level reconcile', () => {
     expect(result.published).toHaveLength(0)
     expect(result.fieldConflicts.some((conflict) => conflict.field === 'row')).toBe(true)
   })
+
+  it('verifies requiredTreePoints when both sources state the same gate', () => {
+    // `requiredTreePoints` is what `talentPlanner.canIncrement` gates the spend on, so a published
+    // node may only carry the value both sources state, and must label it `client_verified`.
+    const result = reconcileMageTalents(
+      [{ ...frostboltA, requiredTreePoints: 5 }],
+      [{ ...frostboltB, requiredTreePoints: 5 }],
+    )
+    expect(result.published).toHaveLength(1)
+    expect(result.published[0].requiredTreePoints).toBe(5)
+    expect(result.published[0].fieldEvidence.requiredTreePoints).toBe('client_verified')
+    expect(result.fieldConflicts.some((conflict) => conflict.field === 'requiredTreePoints')).toBe(false)
+  })
+
+  it('vetoes a node when the sources disagree on requiredTreePoints', () => {
+    // Live shape: ForeverDiff reports Arcane Subtlety's gate as 5, TheWoWDB as 0. The planner
+    // cannot spend a node whose gate is half-verified, so the node is dropped rather than
+    // silently preferring one source.
+    const result = reconcileMageTalents(
+      [{ ...frostboltA, row: 2, requiredTreePoints: 5 }],
+      [{ ...frostboltB, row: 2, requiredTreePoints: 0 }],
+    )
+    expect(result.published).toHaveLength(0)
+    expect(result.fieldConflicts).toContainEqual({ name: 'Improved Frostbolt', branch: 'frost', field: 'requiredTreePoints' })
+  })
+
+  it('vetoes a node when only one source states a requiredTreePoints gate', () => {
+    const result = reconcileMageTalents([{ ...frostboltA, requiredTreePoints: 5 }], [frostboltB])
+    expect(result.published).toHaveLength(0)
+    expect(result.fieldConflicts).toContainEqual({ name: 'Improved Frostbolt', branch: 'frost', field: 'requiredTreePoints' })
+  })
+
+  it('vetoes a node when neither source states a requiredTreePoints gate', () => {
+    // Fail closed on silence too: `talentPlanner.canIncrement` tests `current < talent.requiredTreePoints`,
+    // which is always false against `undefined` — a node published without a gate would render in the
+    // tree but never be spendable, which is a silent break rather than a loud drop.
+    const result = reconcileMageTalents(
+      [{ ...frostboltA, requiredTreePoints: undefined }],
+      [{ ...frostboltB, requiredTreePoints: undefined }],
+    )
+    expect(result.published).toHaveLength(0)
+    expect(result.fieldConflicts).toContainEqual({ name: 'Improved Frostbolt', branch: 'frost', field: 'requiredTreePoints' })
+  })
 })
 
 describe('mage changeStatus vs Classic reconciliation', () => {
@@ -84,6 +130,7 @@ describe('mage changeStatus vs Classic reconciliation', () => {
     row: 2,
     column: 1,
     maxRank: 5,
+    requiredTreePoints: 5,
   }
 
   it('publishes changeStatus when both sources agree', () => {

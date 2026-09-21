@@ -10,6 +10,8 @@ const production = JSON.parse(readFileSync(join(process.cwd(), 'src/data/mage-be
 const importReport = JSON.parse(readFileSync(join(process.cwd(), 'src/data/mage-import-report.json'), 'utf8')) as {
   published: number
   entryPoints: Record<MageSourceTalent['branch'], number>
+  plannerLegal: boolean
+  blockers: { code: string; branch?: string; detail?: string }[]
 }
 
 const identity = (talent: MageSourceTalent) => `${talent.branch}::${talent.name.trim().toLowerCase()}`
@@ -33,6 +35,9 @@ describe('WoW Forever Mage talent data', () => {
       expect(talent.fieldEvidence.row).toBe('client_verified')
       expect(talent.fieldEvidence.column).toBe('client_verified')
       expect(talent.fieldEvidence.maxRank).toBe('client_verified')
+      // The planner gates every spend on this field, so it must be dual-source verified like the
+      // coordinates — `reconcileMageTalents` vetoes the node when the sources disagree on it.
+      expect(talent.fieldEvidence.requiredTreePoints).toBe('client_verified')
       expect(talent.sources).toHaveLength(2)
       expect(talent.verifiedThroughBuild).toBe('1.60.1.69913')
       if (talent.rankDescriptions) expect(talent.rankDescriptions).toHaveLength(talent.maxRank)
@@ -110,5 +115,19 @@ describe('WoW Forever Mage talent data', () => {
     expect(importReport.entryPoints.fire).toBe(0)
     expect(importReport.entryPoints.arcane).toBeGreaterThan(0)
     expect(importReport.entryPoints.frost).toBeGreaterThan(0)
+  })
+
+  it('states the planner-legal verdict and the exact blockers, derived from the dataset', () => {
+    // The importer exits 0 against this data (a throw would make it permanently unrunnable), so the
+    // verdict has to be readable from the report alone: `plannerLegal` plus one blocker per branch
+    // whose entry-point count is zero. Both are derived here from the count above, not restated.
+    const blockedBranches = (['arcane', 'fire', 'frost'] as const).filter(
+      (branch) => production.filter((talent) => talent.branch === branch && talent.requiredTreePoints === 0).length === 0,
+    )
+
+    expect(importReport.plannerLegal).toBe(blockedBranches.length === 0)
+    expect(importReport.plannerLegal).toBe(false)
+    expect(importReport.blockers).toEqual(blockedBranches.map((branch) => ({ code: `${branch}:no-entry-point`, branch })))
+    expect(importReport.blockers).toContainEqual({ code: 'fire:no-entry-point', branch: 'fire' })
   })
 })

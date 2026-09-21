@@ -61,6 +61,8 @@ const acquire = async (allowManualSnapshot: boolean): Promise<AcquisitionSource[
 // allocatable entry point, which the sources state as `requiredTreePoints === 0`. Fire has 11
 // published nodes and none of them, which is the exact reason no Mage URL ships — so the report
 // states the per-branch entry-point count instead of the weaker "branch is non-empty" gate below.
+const mageBranches: MageBranch[] = ['arcane', 'fire', 'frost']
+
 const entryPointsFor = (published: ReconciledMageTalent[], branch: MageBranch) =>
   published.filter((talent) => talent.branch === branch && talent.requiredTreePoints === 0).length
 
@@ -71,6 +73,15 @@ const main = async () => {
   const theWowDb = theWowDbSource.talents
   const result = reconcileMageTalents(foreverDiff, theWowDb)
   const fetchedAt = foreverDiffSource.acquisition === 'fetch' ? new Date().toISOString() : null
+  // The launch gate stated as data instead of prose: `plannerLegal` is false while any branch has
+  // zero allocatable entry points, and `blockers` names each offending branch. The importer still
+  // exits 0 — throwing on this would make it permanently unrunnable against today's live data.
+  const entryPoints = Object.fromEntries(
+    mageBranches.map((branch) => [branch, entryPointsFor(result.published, branch)]),
+  ) as Record<MageBranch, number>
+  const blockers = mageBranches
+    .filter((branch) => entryPoints[branch] === 0)
+    .map((branch) => ({ code: `${branch}:no-entry-point`, branch }))
   const report = {
     foreverDiffUrl,
     theWowDbUrl,
@@ -94,11 +105,9 @@ const main = async () => {
       fire: result.published.filter((talent) => talent.branch === 'fire').length,
       frost: result.published.filter((talent) => talent.branch === 'frost').length,
     },
-    entryPoints: {
-      arcane: entryPointsFor(result.published, 'arcane'),
-      fire: entryPointsFor(result.published, 'fire'),
-      frost: entryPointsFor(result.published, 'frost'),
-    },
+    entryPoints,
+    plannerLegal: blockers.length === 0,
+    blockers,
   }
 
   const dataDir = resolve(root, 'src/data')
@@ -110,10 +119,10 @@ const main = async () => {
   await writeFile(resolve(dataDir, 'mage-import-report.json'), `${JSON.stringify(report, null, 2)}\n`)
 
   // This is the Task 3 Step 3 gate (a branch with zero published nodes), deliberately weaker than
-  // the plan's row-1 rule: `entryPoints` above records that rule's result — today fire is 0 — and
-  // src/data/mageTalents.test.ts pins it against the committed dataset. Throwing here instead would
-  // make the importer permanently unrunnable against today's live data, which is why the gate is
-  // reported and pinned rather than enforced.
+  // the plan's row-1 rule: `entryPoints`, `plannerLegal` and `blockers` above record that rule's
+  // result — today fire is 0 — and src/data/mageTalents.test.ts pins them against the committed
+  // dataset. Throwing here instead would make the importer permanently unrunnable against today's
+  // live data, which is why the gate is reported and pinned rather than enforced.
   const emptyBranch = Object.values(report.branches).some((count) => count === 0)
   if (foreverDiff.length === 0 || theWowDb.length === 0 || emptyBranch) {
     console.log(JSON.stringify(report, null, 2))
