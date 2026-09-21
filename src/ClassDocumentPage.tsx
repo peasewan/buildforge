@@ -1,14 +1,26 @@
 import { useState } from 'react'
-import { ArrowRight, Check, Swords } from 'lucide-react'
+import { ArrowRight, Ban, Check, Swords } from 'lucide-react'
 import SiteFooter from './SiteFooter'
 import VerificationBadge from './VerificationBadge'
 import type { ClassBuild, ClassDefinition, ClassPageDefinition, ClassTalent } from './lib/classPage'
-import { classPlannerHref, publishedClassPages, satisfiedRequirements } from './lib/classPage'
+import { classPlannerHref, publishedClassPages, satisfiedRequirements, unallocatableBranches } from './lib/classPage'
 import { encodePlannerBuild, totalPlannerPoints } from './lib/talentPlanner'
 
 type ChangeStatus = ClassTalent<string>['changeStatus']
 
 const intentLabels: Record<string, string> = { leveling: 'Leveling', aoe: 'AoE', pvp: 'PvP', dungeon: 'Dungeon', spec: 'Specialization' }
+
+/**
+ * The third evidence state, stated once so every unallocatable branch says the same thing.
+ *
+ * A published node can be a dual-source client record and still be unspendable: when no node in its
+ * branch is at `requiredTreePoints === 0`, nothing in the branch can be the first point spent. That
+ * is neither the client-verified chrome (which covers positions and ranks, and is still true here)
+ * nor the editorial build chrome (which covers allocations, and none exists here), so it is worded
+ * and styled as its own state rather than borrowing either label.
+ */
+const EXCLUSION_LABEL = 'Excluded from build validation'
+const EXCLUSION_REASON = 'position conflict between the two sources: no node in this branch can be taken first'
 
 const changeStatusGroups: { status: ChangeStatus; label: string }[] = [
   { status: 'new', label: 'New in this build' },
@@ -99,25 +111,37 @@ function PvpTabs<B extends string>({ classDef, plannerPublished }: { classDef: C
 }
 
 function TalentCatalogue<B extends string>({ classDef }: { classDef: ClassDefinition<B> }) {
+  // Which branches cannot be allocated comes from the dataset, through the same rule the publish
+  // gate reads, so the catalogue cannot mark a branch the planner would accept — or miss one it
+  // cannot start.
+  const unallocatable = unallocatableBranches(classDef)
   return <section className="class-catalogue" data-testid="class-talent-catalogue">
     <h2>{classDef.name} talent catalogue</h2>
     <p>Every node, grouped by branch and client change status through build {classDef.verifiedBuild}.</p>
-    {classDef.branches.map((branch) => <div className="class-catalogue-branch" key={branch}>
-      <h3>{classDef.branchNames[branch]}</h3>
-      <p>{classDef.branchTaglines[branch]}</p>
-      {changeStatusGroups.map(({ status, label }) => {
-        const talents = classDef.talents.filter((talent) => talent.branch === branch && talent.changeStatus === status)
-        if (talents.length === 0) return null
-        return <div key={status}>
-          <h4>{label}</h4>
-          <ul>{talents.map((talent) => <li key={talent.id} data-testid="class-talent-entry">
-            <span>{talent.name}</span>
-            <b>{talent.row}/{talent.column}</b>
-            <VerificationBadge status={talent.verificationStatus} />
-          </li>)}</ul>
-        </div>
-      })}
-    </div>)}
+    {classDef.branches.map((branch) => {
+      const excluded = unallocatable.has(branch)
+      return <div className="class-catalogue-branch" key={branch} data-branch={branch} data-excluded={excluded ? 'true' : undefined}>
+        <h3>{classDef.branchNames[branch]}</h3>
+        <p>{classDef.branchTaglines[branch]}</p>
+        {changeStatusGroups.map(({ status, label }) => {
+          const talents = classDef.talents.filter((talent) => talent.branch === branch && talent.changeStatus === status)
+          if (talents.length === 0) return null
+          return <div key={status}>
+            <h4>{label}</h4>
+            <ul>{talents.map((talent) => <li key={talent.id} data-testid="class-talent-entry" data-talent-id={talent.id} data-excluded={excluded ? 'true' : undefined}>
+              <span>{talent.name}</span>
+              <b>{talent.row}/{talent.column}</b>
+              <VerificationBadge status={talent.verificationStatus} />
+              {excluded && <span className="class-exclusion-marker" data-testid="class-exclusion-marker">
+                <Ban size={12} aria-hidden="true" />
+                <span className="class-exclusion-label">{EXCLUSION_LABEL}</span>
+                <small>{EXCLUSION_REASON}</small>
+              </span>}
+            </li>)}</ul>
+          </div>
+        })}
+      </div>
+    })}
   </section>
 }
 

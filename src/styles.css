@@ -682,6 +682,14 @@ footer { padding: 42px 0; border-top: 1px solid rgba(217,164,65,.15); background
 .class-tabs { display: flex; gap: 8px; margin-bottom: 16px; }.class-tabs button { padding: 9px 16px; }.class-pvp-panel strong { color: var(--class-accent-bright); }
 .class-table-wrap { overflow-x: auto; }.class-document table { width: 100%; border-collapse: collapse; }.class-document th, .class-document td { padding: 12px; border: 1px solid rgba(255,255,255,.08); text-align: left; color: #9aa0a8; font-size: 12px; }.class-document thead th { color: #e2d6bd; background: rgba(217,164,65,.08); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; }
 .class-catalogue-branch { margin-top: 26px; }.class-catalogue h4 { margin: 18px 0 6px; color: #8f959d; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; }.class-catalogue li { justify-content: space-between; padding: 8px 11px; border: 1px solid rgba(255,255,255,.06); border-radius: 7px; }.class-catalogue li b { color: #6f757d; font-size: 10px; }
+/* The third evidence state: a published node no build can spend. Deliberately neither the green
+   client-verified pill nor the gold editorial chip — a squared, dashed, hatched strip with its own
+   words, so it cannot be read as either one. */
+.class-catalogue li[data-excluded="true"] { flex-wrap: wrap; }
+.class-exclusion-marker { flex-basis: 100%; display: flex; align-items: center; gap: 6px; padding: 4px 8px; border: 1px dashed rgba(224,121,111,.6); border-radius: 4px; color: #f0b0a6; background: repeating-linear-gradient(135deg, rgba(224,121,111,.14) 0 5px, transparent 5px 10px); font-size: 9px; line-height: 1.45; }
+.class-exclusion-label { color: #f2bdb4; font-weight: 600; }
+.class-exclusion-marker small { color: #c1958f; font-size: 9px; }
+.class-catalogue .class-exclusion-marker svg { flex: none; width: 12px; color: #e0796f; }
 .class-faq > div { padding: 18px 20px; margin-bottom: 10px; border-left: 2px solid rgba(217,164,65,.5); background: rgba(255,255,255,.02); }.class-related-pages nav { display: flex; flex-wrap: wrap; gap: 14px; }
 .class-cta { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; padding: 32px; border: 1px solid rgba(217,164,65,.3); border-radius: 14px; background: radial-gradient(circle at 10% 0, rgba(217,164,65,.12), transparent 42%), #0e1219; }
 @media (max-width: 980px) { .class-hero-grid, .class-summary { grid-template-columns: 1fr; }.class-tree-grid { overflow-x: auto; grid-template-columns: repeat(3,340px); padding-bottom: 10px; }.class-toolbar { align-items: flex-start; flex-direction: column; }.class-trust { grid-template-columns: 1fr; } }

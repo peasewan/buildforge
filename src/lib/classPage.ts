@@ -242,6 +242,22 @@ function hasLegalBuildAtCap<B extends string>(classDef: ClassDefinition<B>, bran
 }
 
 /**
+ * The branches that cannot be started: no published node in them has `requiredTreePoints === 0`.
+ *
+ * The planner's own first-point rule, stated once so the publish gate and the renderer cannot
+ * disagree about which branches are allocatable. It is derived from the dataset, never from a list
+ * of branch names: a class whose *arcane* tree lost its entry node gets the same answer as one
+ * whose fire tree did, with no code change.
+ */
+export function unallocatableBranches<B extends string>(classDef: Pick<ClassDefinition<B>, 'branches' | 'talents'>): Set<B> {
+  const entryPointBranches = new Set<B>()
+  for (const talent of classDef.talents) {
+    if (talent.requiredTreePoints === 0) entryPointBranches.add(talent.branch)
+  }
+  return new Set(classDef.branches.filter((branch) => !entryPointBranches.has(branch)))
+}
+
+/**
  * The requirements this class's data actually meets, derived from the class definition alone so
  * the same helper serves every class. Publishing is then a subset question — satisfying a
  * requirement is what publishes its pages, never an edited list of slugs.
@@ -253,8 +269,7 @@ export function satisfiedRequirements<B extends string>(classDef: ClassDefinitio
 
   // The calculator draws all branches at once, so every branch needs a node that can be allocated
   // first (`requiredTreePoints === 0`). One branch without one breaks the whole planner.
-  const entryPointBranches = new Set(classDef.talents.filter((talent) => talent.requiredTreePoints === 0).map((talent) => talent.branch))
-  if (classDef.branches.length > 0 && classDef.branches.every((branch) => entryPointBranches.has(branch))) satisfied.add('completeClassPlanner')
+  if (classDef.branches.length > 0 && unallocatableBranches(classDef).size === 0) satisfied.add('completeClassPlanner')
 
   if (hasLegalBuildAtCap(classDef)) satisfied.add('level20Builds')
   for (const branch of classDef.branches) {
