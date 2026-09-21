@@ -18,9 +18,14 @@ const intentLabels: Record<string, string> = { leveling: 'Leveling', aoe: 'AoE',
  * is neither the client-verified chrome (which covers positions and ranks, and is still true here)
  * nor the editorial build chrome (which covers allocations, and none exists here), so it is worded
  * and styled as its own state rather than borrowing either label.
+ *
+ * The reason names only the condition the renderer derives. *Why* a branch is entryless is class
+ * data — a dropped row-1 node, an unimported tier, a branch the sources disagree about — and a
+ * constant here would state one class's cause as if it were every class's. The page prose carries
+ * that story, authored per class, where it can be true.
  */
 const EXCLUSION_LABEL = 'Excluded from build validation'
-const EXCLUSION_REASON = 'position conflict between the two sources: no node in this branch can be taken first'
+const EXCLUSION_REASON = 'no node in this branch can be taken first: every published node here sits behind a tree-point requirement'
 
 const changeStatusGroups: { status: ChangeStatus; label: string }[] = [
   { status: 'new', label: 'New in this build' },

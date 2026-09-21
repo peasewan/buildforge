@@ -228,7 +228,10 @@ const entrylessTalents = mageClass.talents.filter((talent) => talent.branch === 
 const entryPointBranches = new Set(mageClass.talents.filter((talent) => talent.requiredTreePoints === 0).map((talent) => talent.branch))
 const ids = (talents: { id: string }[]) => talents.map((talent) => talent.id).sort()
 
-const markedEntries = () => screen.getAllByTestId('class-talent-entry').filter((entry) => entry.getAttribute('data-excluded') === 'true')
+// Marked means the reader is told: the entry carries the visible exclusion marker. Not the
+// `data-excluded` attribute on its own, which would still say "marked" on a page that had stopped
+// telling anyone anything.
+const markedEntries = () => screen.getAllByTestId('class-talent-entry').filter((entry) => within(entry).queryByTestId('class-exclusion-marker') !== null)
 const markerText = (entry: HTMLElement) => within(entry).getByTestId('class-exclusion-marker').textContent ?? ''
 
 /** The same class with one branch renamed, to show the marker follows the data and not a name. */
@@ -257,7 +260,11 @@ describe('the catalogue states a branch that cannot be allocated without offerin
     expect(markedIds.sort()).toEqual(ids(entrylessTalents))
     for (const entry of markedEntries()) {
       expect(markerText(entry)).toMatch(/excluded from build validation/i)
-      expect(markerText(entry)).toMatch(/position conflict between the two sources/i)
+      // The stated reason is the derived condition and nothing more: every node in the branch is
+      // behind a tree-point gate, so none can be spent first. Why the branch ended up that way is
+      // the class's own story (this page's prose tells it) and is not derivable here.
+      expect(markerText(entry)).toMatch(/no node in this branch can be taken first/i)
+      expect(markerText(entry)).not.toMatch(/position conflict|column|source/i)
     }
 
     // The branch that carries them is marked too, and the branches that can be started are not.
@@ -265,6 +272,13 @@ describe('the catalogue states a branch that cannot be allocated without offerin
     expect(branches.filter((branch) => branch.getAttribute('data-excluded') === 'true').map((branch) => branch.getAttribute('data-branch')))
       .toEqual(['fire'])
     expect(branches.length).toBe(mageClass.branches.length)
+
+    // The state attribute and the visible marker are one statement, so neither can drift from the
+    // other: an entry that says "excluded" in the DOM is an entry the reader can see it on.
+    for (const entry of screen.getAllByTestId('class-talent-entry')) {
+      expect(entry.getAttribute('data-excluded') === 'true', entry.getAttribute('data-talent-id') ?? '')
+        .toBe(within(entry).queryByTestId('class-exclusion-marker') !== null)
+    }
   })
 
   it('leaves every node of an allocatable branch unmarked', () => {
@@ -328,7 +342,15 @@ describe('the catalogue states a branch that cannot be allocated without offerin
   })
 
   it('enforces the exclusion: a marked node cannot enter a build, preset or copyable allocation', () => {
-    const markedIds = new Set(entrylessTalents.map((talent) => talent.id))
+    // "Marked" is read off the rendered page, not off the dataset: this test is about the nodes the
+    // reader is told are excluded. Delete the marker and the set empties, so the test fails instead
+    // of quietly enforcing a property on a set the reader never saw.
+    render(<ClassDocumentPage classDef={mageClass} page={mageTalentsPage} />)
+    const markedIds = new Set(markedEntries().map((entry) => entry.getAttribute('data-talent-id') ?? ''))
+    expect(markedIds.size).toBe(entrylessTalents.length)
+    const markedTalents = [...markedIds].map((id) => mageClass.talents.find((talent) => talent.id === id)!)
+    cleanup()
+
     const config = { branches: mageClass.branches, pointCap: mageClass.beta.pointsAtCap }
 
     // 1. Nothing the site already loads or copies names one. A preset loads `build.build` whole,
@@ -340,7 +362,7 @@ describe('the catalogue states a branch that cannot be allocated without offerin
     }
 
     // 2. The allocation path the calculator runs, refused from every state a preset can load.
-    for (const talent of entrylessTalents) {
+    for (const talent of markedTalents) {
       expect(plannerLockReason({}, talent, mageClass.talents, config)).toMatchObject({ type: 'branch-points' })
       for (const start of [{}, ...mageClass.builds.map((build) => build.build)]) {
         expect(canIncrementPlannerTalent(start, talent, mageClass.talents, config), talent.id).toBe(false)
@@ -360,7 +382,7 @@ describe('the catalogue states a branch that cannot be allocated without offerin
     expect(document.getElementById('mage-frost-frost-warding')?.textContent).toContain('1/2')
     expect(screen.getAllByText('0/0/1').length).toBeGreaterThan(0) // arcane / fire / frost
 
-    for (const talent of entrylessTalents) {
+    for (const talent of markedTalents) {
       const add = screen.getByRole('button', { name: `Add rank to ${talent.name}` })
       expect(add.hasAttribute('disabled'), talent.name).toBe(true)
       fireEvent.click(add)
