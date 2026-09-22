@@ -66,3 +66,12 @@ Seven pages inspected at1440×900/390×844, no overflow. Rogue cap showsthree11-
 - Paladin local regression also passed single-point editing, Protection Level 20 loading, exact build-link copying and reset; no Paladin source/output changed. Warrior and Mage individual-point/reset flows passed again.
 - Scope tests, lint, production build and all-150 static audit passed before release.
 
+
+## B10 — reviewed batch
+
+
+- Seven Warlock pages reviewed at 1440×900 and 390×844 with no overflow. The 50-record talent directory filters Shadowburn to exactly one record with rank selector and evidence.
+- Affliction, Demonology and Destruction workbenches show 11/0/0, 0/11/0 and 0/0/11 respectively, with their actual talent icons and authored roles. All three progression pages reach the correct legal 11-point endpoint at Level 20.
+- Same-allocation alternatives are disclosed. Exact tooltip gaps remain explicit; no client dataset was changed.
+- Build, lint, scope tests and 150-page static audit passed: 70 enabled, 80 frozen, all 22 Paladin pages protected.
+

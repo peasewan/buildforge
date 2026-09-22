@@ -62,7 +62,14 @@ export const EXPERIENCE_PATHS: readonly string[] = [
   "/wow-forever-beast-mastery-vs-marksmanship-hunter-leveling",
   "/wow-forever-hunter-dungeon-build",
   "/warlock",
-  "/wow-forever-warlock-builds"
+  "/wow-forever-warlock-builds",
+  "/wow-forever-warlock-talents",
+  "/wow-forever-warlock-leveling-build",
+  "/wow-forever-affliction-warlock-build",
+  "/wow-forever-affliction-warlock-leveling-build",
+  "/wow-forever-demonology-warlock-build",
+  "/wow-forever-demonology-warlock-leveling-build",
+  "/wow-forever-destruction-warlock-build"
 ]
 const enabled = new Set(EXPERIENCE_PATHS)
 export const experienceEnabled = (pathname: string): boolean => enabled.has(pathname.replace(/\/$/, "") || "/")
