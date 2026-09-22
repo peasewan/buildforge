@@ -29,6 +29,12 @@ describe('ClassCalculatorPage renders any class from ClassDefinition', () => {
     }
   })
 
+  it('uses the class artwork in the calculator hero', () => {
+    const { container } = render(<ClassCalculatorPage classDef={{ ...hunterClassFixture, ogImage: '/images/hunter/calculator.webp' }} />)
+
+    expect(container.querySelector('.class-hero')?.getAttribute('style')).toContain('/images/hunter/calculator.webp')
+  })
+
   it('spends and refunds ranks on a class-neutral talent node', () => {
     render(<ClassCalculatorPage classDef={hunterClassFixture} />)
     fireEvent.click(screen.getByRole('button', { name: /Add rank to Fixture Tracking/i }))
@@ -169,8 +175,7 @@ describe('ClassCalculatorPage renders any class from ClassDefinition', () => {
       .toContain(`${hunterClassFixture.talentCount} Hunter nodes carry client build tags, coordinates and source records; ${ranked} of ${hunterClassFixture.talentCount} also carry per-rank text`)
     cleanup()
 
-    // The Mage dataset publishes per-rank text on 13 of its 30 published nodes, so the copy may
-    // not claim it for every node: it has to report the count the dataset really has.
+    // Sparse per-rank data must not be described as complete: report the actual count.
     const sparse = {
       ...hunterClassFixture,
       talents: hunterClassFixture.talents.map((talent, index) => (index < 2 ? talent : { ...talent, rankDescriptions: undefined })),

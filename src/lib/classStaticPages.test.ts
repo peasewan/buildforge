@@ -68,9 +68,9 @@ describe('generated class-page artifacts', () => {
     expect(shouldVerifyVercelRewrites({ VERCEL: '1' })).toBe(false)
   })
 
-  it('publishes the eight pages the gate publishes and withholds the other seven', () => {
-    expect(published).toHaveLength(8)
-    expect(withheldSlugs).toHaveLength(7)
+  it('publishes the eleven pages the gate publishes and withholds the other four', () => {
+    expect(published).toHaveLength(11)
+    expect(withheldSlugs).toHaveLength(4)
     expect(classPagePaths()).toEqual(publishedSlugs.map((slug) => `/${slug}`))
     for (const slug of withheldSlugs) expect(classPagePaths()).not.toContain(`/${slug}`)
   })
@@ -112,7 +112,7 @@ describe('generated class-page artifacts', () => {
       expect(read(file), file).not.toMatch(/wow-forever-[a-z-]*mage/)
     }
     // The generated artifacts are the gate's answer, so a hand-edit has to show up somewhere.
-    expect(read(CLASS_PAGE_MANIFEST_FILENAME)).not.toMatch(/fire|pvp|level-20|frost-vs-fire/)
+    expect(read(CLASS_PAGE_MANIFEST_FILENAME)).not.toMatch(/fire|pvp|frost-vs-fire/)
   })
 
   it('derives the site-wide footer entry from the gate, so it can never link a withheld path', () => {
@@ -168,13 +168,13 @@ describe('generated class-page artifacts', () => {
 
     // The class's own art, then the page's own art when the page has some.
     expect(ogImage(classPageShellHtml({ ...(hunterClassFixture as ClassDefinition), ogImage: '/images/hero/hunter.webp' }, page)))
-      .toBe('/images/hero/hunter.webp')
+      .toBe('https://buildforgetools.com/images/hero/hunter.webp')
     expect(ogImage(classPageShellHtml({ ...(hunterClassFixture as ClassDefinition), ogImage: '/images/hero/hunter.webp' }, { ...page, ogImage: '/images/hero/hunter-marksmanship.webp' })))
-      .toBe('/images/hero/hunter-marksmanship.webp')
+      .toBe('https://buildforgetools.com/images/hero/hunter-marksmanship.webp')
 
     // No art declared: no tag at all, rather than a broken or borrowed card.
     expect(ogImage(classPageShellHtml(hunterClassFixture as ClassDefinition, page))).toBeUndefined()
-    expect(ogImage(classPageShellHtml(mageClass, mageClass.pages.find((candidate) => candidate.kind === 'talents')!))).toBeUndefined()
+    expect(ogImage(classPageShellHtml(mageClass, mageClass.pages.find((candidate) => candidate.kind === 'talents')!))).toBe('https://buildforgetools.com/images/mage/mage-hero-v1.webp')
   })
 
   it('writes one sitemap row per published page, dated by the page itself', () => {

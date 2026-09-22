@@ -9,6 +9,7 @@ const theWowDb = JSON.parse(readFileSync(join(process.cwd(), 'src/data/mage-sour
 const production = JSON.parse(readFileSync(join(process.cwd(), 'src/data/mage-beta-1.60.1.69913.json'), 'utf8')) as (MageSourceTalent & { id: string })[]
 const importReport = JSON.parse(readFileSync(join(process.cwd(), 'src/data/mage-import-report.json'), 'utf8')) as {
   published: number
+  fieldConflicts: { name: string; branch: string; field: string; resolution?: string }[]
   entryPoints: Record<MageSourceTalent['branch'], number>
   plannerLegal: boolean
   blockers: { code: string; branch?: string; detail?: string }[]
@@ -38,12 +39,25 @@ describe('WoW Forever Mage talent data', () => {
       // The planner gates every spend on this field, so it must be dual-source verified like the
       // coordinates — `reconcileMageTalents` vetoes the node when the sources disagree on it.
       expect(talent.fieldEvidence.requiredTreePoints).toBe('client_verified')
-      expect(talent.sources).toHaveLength(2)
+      expect(talent.sources).toHaveLength(3)
       expect(talent.verifiedThroughBuild).toBe('1.60.1.69913')
       if (talent.rankDescriptions) expect(talent.rankDescriptions).toHaveLength(talent.maxRank)
       if (talent.icon) expect(existsSync(join(process.cwd(), 'public', talent.icon))).toBe(true)
     }
     expect(mageTalents.some((talent) => talent.name === 'Ice Lance')).toBe(iceLanceDualPlannerLegal)
+  })
+
+  it('restores Improved Fireball at the primary client coordinate and records the resolution', () => {
+    const improvedFireball = mageTalents.find((talent) => talent.name === 'Improved Fireball')
+
+    expect(improvedFireball).toMatchObject({ branch: 'fire', row: 1, column: 2, requiredTreePoints: 0 })
+    expect(improvedFireball?.fieldEvidence.column).toBe('client_verified')
+    expect(importReport.fieldConflicts).toContainEqual({
+      name: 'Improved Fireball',
+      branch: 'fire',
+      field: 'column',
+      resolution: 'primary_client',
+    })
   })
 
   it('publishes changeStatus only where both sources agree, and never invents one', () => {
@@ -96,12 +110,11 @@ describe('WoW Forever Mage talent data', () => {
     expect(links).toBeGreaterThan(0)
   })
 
-  it('reports each branch entry-point count, the gate that blocks the Mage launch', () => {
+  it('reports a client-reviewed entry point for every Mage branch', () => {
     // Plan line 141: "each branch must have at least one row-1 talent". A row-1 talent is the
     // branch's allocatable entry point (`requiredTreePoints === 0`), and the import report must
-    // state that count per branch. Today Fire legitimately has none, which is exactly why no Mage
-    // URL ships; this test pins the report to the committed dataset so a re-run that changes the
-    // shape of any branch is caught instead of silently rewriting the production JSON.
+    // state that count per branch. Fire's Improved Fireball column disagreement is resolved by the
+    // versioned primary client snapshot, so all three branches must now be startable.
     expect(importReport.published).toBe(production.length)
 
     const counted = (branch: MageSourceTalent['branch']) =>
@@ -111,8 +124,7 @@ describe('WoW Forever Mage talent data', () => {
       expect(importReport.entryPoints[branch]).toBe(counted(branch))
     }
 
-    // The report tells the truth about Fire; it does not claim Fire has an entry point.
-    expect(importReport.entryPoints.fire).toBe(0)
+    expect(importReport.entryPoints.fire).toBeGreaterThan(0)
     expect(importReport.entryPoints.arcane).toBeGreaterThan(0)
     expect(importReport.entryPoints.frost).toBeGreaterThan(0)
   })
@@ -126,8 +138,8 @@ describe('WoW Forever Mage talent data', () => {
     )
 
     expect(importReport.plannerLegal).toBe(blockedBranches.length === 0)
-    expect(importReport.plannerLegal).toBe(false)
+    expect(importReport.plannerLegal).toBe(true)
     expect(importReport.blockers).toEqual(blockedBranches.map((branch) => ({ code: `${branch}:no-entry-point`, branch })))
-    expect(importReport.blockers).toContainEqual({ code: 'fire:no-entry-point', branch: 'fire' })
+    expect(importReport.blockers).toEqual([])
   })
 })

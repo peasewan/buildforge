@@ -8,15 +8,17 @@ import { MAGE_BRANCHES, MAGE_DATA_VERSION, MAGE_PLANNER_CONFIG, MAGE_SOURCES, ma
  * records reviewed through build 1.60.1.69913). Every allocation, talent order, playstyle note and
  * farming loop is editorial — `community_verified` or `derived_assumption` — and never a client fact.
  *
- * Fire is authored as pages only. `Improved Fireball` is row 1 on both sources but at different
- * columns, so the dual-source rule drops it and no fire node has `requiredTreePoints === 0`. A node
- * gated behind tree points cannot be the first point spent, so no fire allocation is legal at any
- * level: the fire pages carry no build, and no allocation in this file names a fire talent. The
- * `publishRequirements` gate withholds those pages so no URL promises something it cannot deliver.
+ * `Improved Fireball` has a display-column disagreement between the two derived web views. Build
+ * 1.60.1.69913's primary client Talent table resolves it to row 1, column 2, so Fire now has a legal
+ * planner entry point. Fire build pages remain withheld for a separate reason: this package does
+ * not yet carry a reviewed Fire allocation, and no URL promises a preset it cannot deliver.
  */
 
 const MAGE_UPDATED = '2026-09-22'
 const BUILD_VERIFIED = '1.60.1.69913'
+const MAGE_HERO = '/images/mage/mage-hero-v1.webp'
+const FROST_MAGE_HERO = '/images/mage/frost-mage-hero-v1.webp'
+const ARCANE_MAGE_HERO = '/images/mage/arcane-mage-hero-v1.webp'
 
 /** Published talent ids, so no allocation can name a node the dataset does not carry. */
 const T = {
@@ -315,7 +317,6 @@ const magePages: ClassPageDefinition[] = [
       { href: '/wow-forever-mage-talents', label: 'WoW Forever Mage Talents & Talent Trees' },
       { href: '/wow-forever-frost-mage-build', label: 'WoW Forever Frost Mage Build' },
       { href: '/wow-forever-arcane-mage-build', label: 'WoW Forever Arcane Mage Build' },
-      { href: '/wow-forever-fire-mage-build', label: 'WoW Forever Fire Mage Build' },
     ],
     publishRequirements: ['completeClassPlanner'],
     sections: [
@@ -334,8 +335,8 @@ const magePages: ClassPageDefinition[] = [
       {
         heading: 'Where the three trees stand at the current cap',
         paragraphs: [
-          'Frost and Arcane each have published nodes that can be placed as a first point, so both branches can spend the full 11 points. Fire cannot: every published fire node is gated behind tree points, and a gated node cannot be the first point spent, so no fire allocation exists at this cap.',
-          'The calculator therefore shows all three trees for inspection while only Frost and Arcane can be allocated. A catalogue that lists a node and a calculator that can spend it are two different claims.',
+          'Arcane, Fire and Frost each have a client-reviewed entry node that can take the first point. Improved Fireball is the Fire entry: its column conflict between the two derived web views is resolved to row 1, column 2 by the build 1.60.1.69913 client Talent table.',
+          'The calculator can therefore spend points in all three trees. Frost and Arcane have reviewed presets; Fire stays a blank canvas until a reproducible editorial allocation is reviewed.',
         ],
       },
       {
@@ -346,7 +347,7 @@ const magePages: ClassPageDefinition[] = [
       },
     ],
     faqs: [
-      { question: 'Why can I not spend points in the Fire tree?', answer: 'No published fire node can be allocated first. Every fire node the two sources agree on sits behind a tree-point requirement, so any fire point would fail the planner’s own prerequisite rules. Frost and Arcane have entry nodes and can be planned normally.' },
+      { question: 'Can I spend points in the Fire tree?', answer: 'Yes. Improved Fireball is the client-resolved Fire entry node. Fire does not yet have a recommended preset, so create the allocation manually and copy the resulting build link.' },
       { question: 'Which Mage tree should a new player plan first?', answer: 'Frost. It has the control a solo player needs — a chill slow and two roots — and it can spend the full 11 points at the Level 20 cap.' },
     ],
   },
@@ -366,11 +367,8 @@ const magePages: ClassPageDefinition[] = [
       { href: '/wow-forever-mage-talents', label: 'WoW Forever Mage Talents & Talent Trees' },
       { href: '/wow-forever-frost-mage-build', label: 'WoW Forever Frost Mage Build' },
       { href: '/wow-forever-arcane-mage-build', label: 'WoW Forever Arcane Mage Build' },
-      { href: '/wow-forever-fire-mage-build', label: 'WoW Forever Fire Mage Build' },
       { href: '/wow-forever-mage-leveling-build', label: 'WoW Forever Mage Leveling Build' },
-      { href: '/wow-forever-mage-pvp-build', label: 'WoW Forever Mage PvP Build' },
       { href: '/wow-forever-mage-level-20-build', label: 'WoW Forever Mage Level 20 Build' },
-      { href: '/wow-forever-frost-vs-fire-mage-leveling', label: 'Frost vs Fire Mage for Leveling in WoW Forever' },
     ],
     publishRequirements: ['completeClassPlanner'],
     sections: [
@@ -387,9 +385,9 @@ const magePages: ClassPageDefinition[] = [
         ],
       },
       {
-        heading: 'Nothing here claims a fire build',
+        heading: 'Fire planning is available; a Fire preset is still under review',
         paragraphs: [
-          'Fire appears in the talent catalogue and in the calculator tree view, but not as a build. No published fire node can be placed first, so the planner cannot spend a single fire point and no page presents a fire allocation.',
+          'Fire can now accept points in the calculator because the primary client Talent table resolves Improved Fireball as its entry node. This hub still does not label a Fire allocation as recommended until that route has been reviewed and replayed through the planner.',
         ],
       },
       {
@@ -400,7 +398,7 @@ const magePages: ClassPageDefinition[] = [
       },
     ],
     faqs: [
-      { question: 'Do these builds cover every Mage specialization?', answer: 'They cover Frost and Arcane. Fire has no legal allocation at the current cap, so no fire build is published rather than shipping one the planner cannot load.' },
+      { question: 'Do these builds cover every Mage specialization?', answer: 'The calculator covers Arcane, Fire and Frost. Reviewed presets currently cover Frost and Arcane; the Fire build page remains withheld until its editorial allocation is ready.' },
       { question: 'Are these builds official or guaranteed best?', answer: 'No. They are editorial routes for testing, built on client-reviewed talent positions and ranks reviewed through build 1.60.1.69913.' },
     ],
   },
@@ -410,7 +408,7 @@ const magePages: ClassPageDefinition[] = [
     intent: 'Talent trees / changes',
     title: 'WoW Forever Mage Talents & Talent Trees',
     h1: 'WoW Forever Mage Talents & Talent Trees',
-    description: 'The full Mage talent catalogue: all 30 published Arcane, Fire and Frost nodes with their rows, columns and change status through Beta build 1.60.1.69913.',
+    description: 'The full Mage talent catalogue: all 31 published Arcane, Fire and Frost nodes with their rows, columns and change status through Beta build 1.60.1.69913.',
     eyebrow: 'Beta Talent Catalogue',
     canonical: 'https://buildforgetools.com/wow-forever-mage-talents',
     robots: 'index, follow',
@@ -431,10 +429,10 @@ const magePages: ClassPageDefinition[] = [
         ],
       },
       {
-        heading: 'The Fire branch at the current cap',
+        heading: 'How the Fire entry point was verified',
         paragraphs: [
-          'Fire publishes 11 nodes that both sources agree on, and not one of them can be allocated at the current Level 20 cap: each sits behind a tree-point requirement, and a gated node cannot be the first point spent. Fire is listed here so the tree is complete and the conflict is visible, not to imply a fire build exists.',
-          'The gap traces back to a single node. Improved Fireball is a row-1 node on both sources but at a different column in each, so the dual-source rule drops it, and with it every fire entry point.',
+          'Fire publishes 12 nodes, including Improved Fireball as its row-1 entry point. The two derived web views agree on its identity, row, ranks and zero-point gate but disagree on its display column.',
+          'The build 1.60.1.69913 client Talent table resolves that display-only conflict to column 2. The source disagreement remains recorded in the import report, together with the primary-client resolution, instead of being hidden or repeated as an error under every Fire node.',
         ],
       },
       {
@@ -445,8 +443,8 @@ const magePages: ClassPageDefinition[] = [
       },
     ],
     faqs: [
-      { question: 'How many Mage talents are published?', answer: '30 nodes: 10 Arcane, 11 Fire and 9 Frost, all stated by both sources and reviewed through build 1.60.1.69913.' },
-      { question: 'Can fire talents be allocated?', answer: 'Not at the current 11-point cap. Every published fire node requires tree points before it can be taken, and no fire node requires zero, so the planner cannot place a first fire point.' },
+      { question: 'How many Mage talents are published?', answer: '31 nodes: 10 Arcane, 12 Fire and 9 Frost, reviewed through build 1.60.1.69913.' },
+      { question: 'Can fire talents be allocated?', answer: 'Yes. Improved Fireball is the row-1 Fire entry point confirmed by the primary client Talent table.' },
     ],
   },
   {
@@ -490,7 +488,7 @@ const magePages: ClassPageDefinition[] = [
       {
         heading: 'Frost, Fire and Arcane while leveling',
         paragraphs: [
-          'Frost trades a little time to kill for control: a slow, a root and an answer to adds. Arcane is the simpler loop — one target at a time with mana efficiency instead of control — and it can spend all 11 points at this cap. Fire cannot be allocated at all at this cap, so there is no fire leveling route to compare against here.',
+          'Frost trades a little time to kill for control: a slow, a root and an answer to adds. Arcane is the simpler loop — one target at a time with mana efficiency instead of control — and it can spend all 11 points at this cap. Fire is allocatable in the calculator, but its leveling preset remains under review and is not presented as a recommendation here.',
         ],
       },
       {
@@ -502,7 +500,7 @@ const magePages: ClassPageDefinition[] = [
     ],
     faqs: [
       { question: 'Is Frost the best Mage leveling spec?', answer: 'It is the recommendation on this site, not a claim about the best. Frost is picked for control: a chill slow plus two roots is what keeps a solo player alive. Arcane can spend the same 11 points and is described above.' },
-      { question: 'Can I level as Fire right now?', answer: 'No fire allocation is legal at the current cap. Every published fire node is gated behind tree points, so not even the first point can be placed.' },
+      { question: 'Can I level as Fire right now?', answer: 'You can plan a Fire tree manually from Improved Fireball. BuildForgeTools does not yet publish a recommended Fire leveling preset.' },
     ],
   },
   {
@@ -565,7 +563,7 @@ const magePages: ClassPageDefinition[] = [
     intent: 'Fire Build',
     title: 'WoW Forever Fire Mage Build | Level 20 Beta',
     h1: 'WoW Forever Fire Mage Build',
-    description: 'The Fire Mage tree at the Level 20 Beta cap: why no fire allocation is legal yet, which nodes are published, and what has to change before a fire build can ship.',
+    description: 'The Fire Mage tree at the Level 20 Beta cap: its client-verified entry point, the published nodes, and why the editorial Fire preset is still under review.',
     eyebrow: 'Beta Spec Build',
     canonical: 'https://buildforgetools.com/wow-forever-fire-mage-build',
     robots: 'index, follow',
@@ -581,28 +579,28 @@ const magePages: ClassPageDefinition[] = [
     publishRequirements: ['legalBuild:fire'],
     sections: [
       {
-        heading: 'No fire allocation is published here',
+        heading: 'Fire is planner-legal; the preset is not published yet',
         paragraphs: [
-          'This page states the gap instead of papering over it. Fire publishes 11 nodes on both sources, but none of them can be the first point spent: every one of them requires tree points already allocated in the tree. A gated node cannot be taken first, so no order exists in which the planner would accept a fire point, and this page will not show an allocation that cannot be loaded.',
-          'Rather than present a fire build it cannot deliver, this page is withheld until the branch has a legal entry point. Frost and Arcane builds are published and can be loaded in the calculator today.',
+          'Improved Fireball is now confirmed as the Fire entry node by the build 1.60.1.69913 client Talent table, so the calculator accepts Fire points normally.',
+          'This page remains withheld because a client-legal tree is not the same as a reviewed build recommendation. Frost and Arcane presets are published; Fire will publish after an 11-point allocation and spend order are tested and documented.',
         ],
       },
       {
-        heading: 'The single node behind the gap',
+        heading: 'The source conflict is resolved',
         paragraphs: [
-          'Improved Fireball is a row-1 node on both sources, and row 1 is where entry points live. The two sources disagree on its column, so the dual-source rule excludes the node, and with it every fire entry point. One column disagreement is the whole difference between a fire build and no fire build.',
+          'The two derived web views disagree only on Improved Fireball’s display column. The primary build 1.60.1.69913 Talent table places it at row 1, column 2, so that coordinate is used while the disagreement remains visible in the import report.',
         ],
       },
       {
         heading: 'What would make this page publish',
         paragraphs: [
-          'This definition stays in the repository with its requirement declared. The moment the fire branch has an allocatable entry point, a legal 11-point fire route can be authored and this page publishes without any new page work. Until then it has no URL, no sitemap row and no route.',
+          'This definition stays in the repository with its requirement declared. Once a reviewed 11-point Fire route is authored and replays through the planner, the page can publish without changing its URL or metadata.',
         ],
       },
     ],
     faqs: [
-      { question: 'Does a Fire Mage build exist for this cap?', answer: 'Not one the planner can load. Every published fire node is gated behind tree points, so no fire point can be placed at the current cap.' },
-      { question: 'Are fire talents published at all?', answer: 'Yes. All 11 fire nodes the two sources agree on are listed in the Mage talent catalogue with their verified rows, columns and change status.' },
+      { question: 'Does a Fire Mage build exist for this cap?', answer: 'The planner accepts Fire points, but this site has not yet published a reviewed Fire preset for the current cap.' },
+      { question: 'Are fire talents published at all?', answer: 'Yes. The Mage talent catalogue lists 12 Fire nodes, including the primary-client-resolved Improved Fireball entry point.' },
     ],
   },
   {
@@ -707,7 +705,7 @@ const magePages: ClassPageDefinition[] = [
     intent: 'Fire Leveling',
     title: 'WoW Forever Fire Mage Leveling Build',
     h1: 'WoW Forever Fire Mage Leveling Build',
-    description: 'Leveling as a Fire Mage at the Level 20 Beta cap: why no fire leveling route is published yet, and what the Frost and Arcane routes do instead.',
+    description: 'Leveling as a Fire Mage at the Level 20 Beta cap: the verified Fire entry point, why the leveling preset is still under review, and the published Frost and Arcane alternatives.',
     eyebrow: 'Beta Spec Leveling',
     canonical: 'https://buildforgetools.com/wow-forever-fire-mage-leveling-build',
     robots: 'index, follow',
@@ -724,7 +722,7 @@ const magePages: ClassPageDefinition[] = [
       {
         heading: 'No fire leveling route is published',
         paragraphs: [
-          'A leveling route needs points it can actually spend, and fire has none at this cap. Every published fire node requires tree points before it can be taken, so the planner cannot place a first fire point and no fire order can be written. The page states that rather than inventing ranks for a tree that will not load.',
+          'The planner can now place the first Fire point in Improved Fireball. What is still missing is a reviewed 11-point leveling allocation and spend order, so this page stays withheld rather than labelling an untested route as a recommendation.',
         ],
       },
       {
@@ -736,12 +734,12 @@ const magePages: ClassPageDefinition[] = [
       {
         heading: 'What would publish this page',
         paragraphs: [
-          'The definition stays here with its requirement declared. When fire gains an allocatable entry point, a fire leveling route can be authored and this page publishes with no new page work.',
+          'The definition stays here with its requirement declared. When a reviewed Fire leveling allocation is added, this page publishes with no new URL or metadata work.',
         ],
       },
     ],
     faqs: [
-      { question: 'Can I level as Fire in WoW Forever right now?', answer: 'Not with a published route. No fire allocation is legal at the current cap, so the fire leveling page is withheld until the branch has an entry point.' },
+      { question: 'Can I level as Fire in WoW Forever right now?', answer: 'You can allocate Fire points manually, beginning with Improved Fireball. A reviewed Fire leveling preset is not published yet.' },
       { question: 'What should I level as instead?', answer: 'Frost is the recommendation for control, and Arcane is a legal 11-point route if you would rather trade control for a simpler single-target loop.' },
     ],
   },
@@ -862,13 +860,13 @@ const magePages: ClassPageDefinition[] = [
       {
         heading: 'One hub, one tab per specialization',
         paragraphs: [
-          'Mage PvP runs as a single hub rather than three child URLs. Each specialization gets its own tab and its own legal 11-point allocation, and the fire tab says plainly that no fire allocation exists at this cap instead of showing one that cannot be loaded.',
+          'Mage PvP runs as a single hub rather than three child URLs. Each specialization needs its own reviewed 11-point allocation; Frost and Arcane are ready, while the Fire recommendation is still under review.',
         ],
       },
       {
         heading: 'Why this hub waits',
         paragraphs: [
-          'A three-tab hub with one tab empty is not the page the spec describes, so the requirement is declared rather than worked around: this page needs a legal fire build before it publishes. Frost and Arcane PvP routes are written and ready, and the page publishes without new page work once fire can be allocated.',
+          'A three-tab hub with one tab empty is not the page the spec describes, so the requirement is declared rather than worked around: this page needs a reviewed Fire build before it publishes. Frost and Arcane PvP routes are written and ready.',
         ],
       },
       {
@@ -879,7 +877,7 @@ const magePages: ClassPageDefinition[] = [
       },
     ],
     faqs: [
-      { question: 'Why is there no Fire PvP tab yet?', answer: 'A fire tab needs a legal fire allocation, and none exists at the current cap. The hub is withheld until one does.' },
+      { question: 'Why is there no Fire PvP tab yet?', answer: 'The tree is planner-legal, but the PvP hub needs a reviewed Fire allocation and spend order before that tab can publish.' },
       { question: 'Are the Frost and Arcane PvP allocations legal now?', answer: 'Yes. Both spend all 11 points at the Level 20 cap and both replay through the planner without a skipped requirement.' },
     ],
   },
@@ -923,15 +921,15 @@ const magePages: ClassPageDefinition[] = [
         ],
       },
       {
-        heading: 'Why no fire alternative is listed',
+        heading: 'Why no Fire alternative is listed',
         paragraphs: [
-          'Fire is often offered as a dungeon alternative, but no legal fire allocation exists at this cap, so this page does not present one. Fire nodes remain visible in the talent catalogue with the conflict stated.',
+          'Fire is often offered as a dungeon alternative, but BuildForgeTools has not reviewed a Fire dungeon allocation for this cap. The calculator can plan one manually; this page presents only the tested Frost route.',
         ],
       },
     ],
     faqs: [
       { question: 'Why does the dungeon build start with Frost Warding?', answer: 'It is an entry-row node, so it can be spent immediately, and it covers the early pulls while the damage nodes are still being filled.' },
-      { question: 'Is there a fire dungeon alternative?', answer: 'Not at this cap. No fire allocation is legal, so only the Frost route is presented.' },
+      { question: 'Is there a fire dungeon alternative?', answer: 'No reviewed Fire dungeon preset is published yet, so only the Frost route is presented.' },
     ],
   },
   {
@@ -940,7 +938,7 @@ const magePages: ClassPageDefinition[] = [
     intent: 'Current Beta cap',
     title: 'WoW Forever Mage Level 20 Build',
     h1: 'WoW Forever Mage Level 20 Build',
-    description: 'The Level 20 Mage cap in one place: the 11 points every specialization receives, the legal 11-point routes that spend them, and the one that cannot be spent yet.',
+    description: 'The Level 20 Mage cap in one place: the 11 points every specialization receives, the published Frost and Arcane routes, and the planner-ready Fire tree.',
     eyebrow: 'Current Beta Cap',
     canonical: 'https://buildforgetools.com/wow-forever-mage-level-20-build',
     robots: 'index, follow',
@@ -949,8 +947,6 @@ const magePages: ClassPageDefinition[] = [
     relatedPages: [
       { href: '/wow-forever-frost-mage-build', label: 'WoW Forever Frost Mage Build' },
       { href: '/wow-forever-arcane-mage-build', label: 'WoW Forever Arcane Mage Build' },
-      { href: '/wow-forever-fire-mage-build', label: 'WoW Forever Fire Mage Build' },
-      { href: '/wow-forever-mage-pvp-build', label: 'WoW Forever Mage PvP Build' },
     ],
     publishRequirements: ['completeClassPlanner'],
     sections: [
@@ -965,10 +961,10 @@ const magePages: ClassPageDefinition[] = [
         bullets: [
           'Frost — legal: an 11-point single-target route, with a distinct area variant for packs',
           'Arcane — legal: an 11-point route through the entry rows, with deeper nodes stated as out of reach',
-          'Fire — not allocatable: every published fire node is gated behind tree points, so no fire route exists',
+          'Fire — planner-ready from Improved Fireball; the reviewed 11-point preset is still pending',
         ],
         paragraphs: [
-          'This page is where the three specs are compared side by side at the live cap, which is why it needs every branch to be plannable at once before it publishes.',
+          'This page compares the three specs at the live cap. All three branches now have client-reviewed entry nodes, while build recommendations remain clearly separated from client facts.',
         ],
       },
       {
@@ -980,7 +976,7 @@ const magePages: ClassPageDefinition[] = [
     ],
     faqs: [
       { question: 'How many talent points does a Level 20 Mage get?', answer: '11 points at the current Beta cap, spendable across the Arcane, Fire and Frost trees.' },
-      { question: 'Which Mage specs can spend all 11 points today?', answer: 'Frost and Arcane. Fire cannot be allocated at all, because none of its published nodes can be the first point spent.' },
+      { question: 'Which Mage specs can spend all 11 points today?', answer: 'Arcane, Fire and Frost all have client-reviewed entry nodes. BuildForgeTools currently publishes reviewed 11-point presets for Frost and Arcane.' },
     ],
   },
   {
@@ -1011,12 +1007,12 @@ const magePages: ClassPageDefinition[] = [
       {
         heading: 'Why this comparison waits',
         paragraphs: [
-          'Half of a comparison is the fire leveling route, and no legal fire allocation exists at this cap. The page is withheld rather than comparing Frost against a route that cannot be loaded.',
+          'Half of a useful comparison is a reviewed Fire leveling route. The Fire tree is planner-legal now, but the editorial allocation is still under review, so this page stays withheld rather than comparing Frost against an untested preset.',
         ],
       },
     ],
     faqs: [
-      { question: 'Which is better for leveling, Frost or Fire?', answer: 'Frost is the recommendation on this site for its control, but the head-to-head comparison cannot be completed until fire has a legal leveling route at this cap.' },
+      { question: 'Which is better for leveling, Frost or Fire?', answer: 'Frost is the current recommendation on this site for its control. The head-to-head page will publish after a Fire leveling preset has been reviewed.' },
       { question: 'Does this comparison reduce the branches to a single number?', answer: 'No. It compares one property at a time and never collapses two different playstyles into one figure.' },
     ],
     comparison: {
@@ -1038,8 +1034,8 @@ const magePages: ClassPageDefinition[] = [
             'Ranged caster built around fire damage and its ignite effects',
             'Packs have to be gathered by hand without a root of its own',
             'No slow and no root in the published nodes',
-            'Fire damage ranks throughout the tree, all gated behind tree points',
-            'No legal allocation at this cap: every published node needs prior tree points',
+            'Improved Fireball entry, Ignite effects and deeper fire damage ranks',
+            'Planner-legal; reviewed Level 20 preset still pending',
           ],
         },
       ],
@@ -1051,6 +1047,7 @@ export const mageClass: ClassDefinition<MageBranch> = {
   id: 'mage',
   name: 'Mage',
   plannerPath: '/mage',
+  ogImage: MAGE_HERO,
   branches: MAGE_BRANCHES,
   branchNames: mageBranchNames,
   branchTaglines: mageBranchTaglines,
@@ -1068,7 +1065,10 @@ export const mageClass: ClassDefinition<MageBranch> = {
   talents: mageTalents,
   plannerConfig: MAGE_PLANNER_CONFIG,
   builds: mageBuilds,
-  pages: magePages,
+  pages: magePages.map((page) => ({
+    ...page,
+    ogImage: page.spec === 'frost' ? FROST_MAGE_HERO : page.spec === 'arcane' ? ARCANE_MAGE_HERO : page.ogImage,
+  })),
   // Frost leveling first: the class-level recommendation the calculator loads by default.
   recommendedBuildIds: ['mage-leveling', 'mage-frost-build', 'mage-arcane-build'],
   sources: MAGE_SOURCES,

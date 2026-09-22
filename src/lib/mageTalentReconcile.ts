@@ -33,6 +33,16 @@ export interface MageFieldConflict {
   name: string
   branch: MageBranch
   field: FieldEvidenceKey
+  resolution?: 'primary_client'
+}
+
+/** Structural evidence read directly from the versioned client Talent table. */
+export interface MagePrimaryClientTalent {
+  sourceTalentId?: number
+  name: string
+  branch: MageBranch
+  row: number
+  column: number
 }
 
 export interface MageReconcileResult {
@@ -42,7 +52,7 @@ export interface MageReconcileResult {
   missingInB: MageSourceTalent[]
 }
 
-const identity = (talent: MageSourceTalent) => `${talent.branch}::${talent.name.trim().toLowerCase()}`
+const identity = (talent: Pick<MageSourceTalent, 'branch' | 'name'>) => `${talent.branch}::${talent.name.trim().toLowerCase()}`
 
 const sameArray = (left?: string[], right?: string[]) => JSON.stringify(left ?? null) === JSON.stringify(right ?? null)
 
@@ -55,7 +65,7 @@ const prefixRanks = (left?: string[], right?: string[]) => {
 // `requiredTreePoints` is planner-legal: `talentPlanner.canIncrement` refuses to spend a talent
 // until the branch has that many points, so a disagreement — or silence on either side — makes the
 // node unallocatable rather than a cosmetic difference. Such nodes are vetoed, not merged.
-const plannerLegal: FieldEvidenceKey[] = ['name', 'branch', 'row', 'column', 'maxRank', 'requiredTreePoints']
+const plannerLegal: FieldEvidenceKey[] = ['name', 'branch', 'row', 'maxRank', 'requiredTreePoints']
 
 // Planner-legal fields must be stated by BOTH sources, not merely equal: `undefined === undefined`
 // would publish a node with no value at all, and `canIncrement` compares
@@ -68,9 +78,14 @@ const plannerFieldConflict = (left: MageSourceTalent, right: MageSourceTalent, f
   return leftValue === undefined || rightValue === undefined || leftValue !== rightValue
 }
 
-export function reconcileMageTalents(foreverDiff: MageSourceTalent[], theWowDb: MageSourceTalent[]): MageReconcileResult {
+export function reconcileMageTalents(
+  foreverDiff: MageSourceTalent[],
+  theWowDb: MageSourceTalent[],
+  primaryClientTalents: MagePrimaryClientTalent[] = [],
+): MageReconcileResult {
   const sourceA = new Map(foreverDiff.map((talent) => [identity(talent), talent]))
   const sourceB = new Map(theWowDb.map((talent) => [identity(talent), talent]))
+  const primaryClient = new Map(primaryClientTalents.map((talent) => [identity(talent), talent]))
   const published: ReconciledMageTalent[] = []
   const fieldConflicts: MageFieldConflict[] = []
   const missingInA: MageSourceTalent[] = []
@@ -93,6 +108,20 @@ export function reconcileMageTalents(foreverDiff: MageSourceTalent[], theWowDb: 
       continue
     }
 
+    // Column is a display coordinate, but the planner still needs one deterministic value. When
+    // the two derived web views disagree, resolve it only with the versioned client Talent table;
+    // without that primary record the node remains fail-closed.
+    const columnsAgree = left.column !== undefined && left.column === right.column
+    const primary = primaryClient.get(key)
+    if (!columnsAgree && primary?.column === undefined) {
+      fieldConflicts.push({ name: left.name, branch: left.branch, field: 'column' })
+      continue
+    }
+    const column = columnsAgree ? left.column : primary!.column
+    if (!columnsAgree) {
+      fieldConflicts.push({ name: left.name, branch: left.branch, field: 'column', resolution: 'primary_client' })
+    }
+
     // Reachable only for nodes whose every planner-legal field is present on both sources and equal
     // between them, so each entry below claims a value the sources actually state.
     const fieldEvidence: ReconciledMageTalent['fieldEvidence'] = {
@@ -108,7 +137,7 @@ export function reconcileMageTalents(foreverDiff: MageSourceTalent[], theWowDb: 
       name: left.name,
       branch: left.branch,
       row: left.row,
-      column: left.column,
+      column,
       maxRank: left.maxRank,
       // The planner-legal filter above already proved both sources state this gate and agree, so
       // this is the agreed, present value — not a fallback that prefers ForeverDiff when one source

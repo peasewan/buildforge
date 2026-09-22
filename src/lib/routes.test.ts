@@ -175,6 +175,7 @@ describe('public page routing', () => {
 
 describe('published class pages', () => {
   it.each([
+    ['/wow-forever-mage-builds', 'WoW Forever Mage Builds | Talent Calculator'],
     ['/wow-forever-mage-talents', 'WoW Forever Mage Talents & Talent Trees'],
     ['/wow-forever-mage-leveling-build', 'WoW Forever Mage Leveling Build | Level 20 Beta'],
     ['/wow-forever-frost-mage-build', 'WoW Forever Frost Mage Build | Level 20 Beta'],
@@ -183,6 +184,7 @@ describe('published class pages', () => {
     ['/wow-forever-arcane-mage-build', 'WoW Forever Arcane Mage Build | Level 20 Beta'],
     ['/wow-forever-arcane-mage-leveling-build', 'WoW Forever Arcane Mage Leveling Build'],
     ['/wow-forever-mage-dungeon-build', 'WoW Forever Mage Dungeon Build'],
+    ['/wow-forever-mage-level-20-build', 'WoW Forever Mage Level 20 Build'],
   ])('serves %s as the Mage class page the gate publishes', (pathname, title) => {
     const expected = {
       kind: 'class-document',
@@ -198,10 +200,18 @@ describe('published class pages', () => {
     expect(pageForPath(`${pathname}/`)).toEqual(pageForPath(pathname))
   })
 
+  it('serves /mage as the published Mage calculator', () => {
+    expect(pageForPath('/mage')).toMatchObject({
+      kind: 'class-calculator',
+      classId: 'mage',
+      classPageSlug: 'mage',
+      title: 'WoW Forever Mage Talent Calculator – Arcane, Fire & Frost',
+      canonical: 'https://buildforgetools.com/mage',
+      robots: 'index, follow',
+    })
+  })
+
   it.each([
-    ['/mage', 'mage'],
-    ['/wow-forever-mage-builds', 'wow-forever-mage-builds'],
-    ['/wow-forever-mage-level-20-build', 'wow-forever-mage-level-20-build'],
     ['/wow-forever-fire-mage-build', 'wow-forever-fire-mage-build'],
     ['/wow-forever-fire-mage-leveling-build', 'wow-forever-fire-mage-leveling-build'],
     ['/wow-forever-mage-pvp-build', 'wow-forever-mage-pvp-build'],
@@ -220,8 +230,8 @@ describe('published class pages', () => {
       publishRequirementsFor(page).every((requirement) => satisfied.has(requirement))
     const pages = mageClass.pages.map((page) => ({ page, published: isPublished(page) }))
 
-    expect(pages.filter((entry) => entry.published)).toHaveLength(8)
-    expect(pages.filter((entry) => !entry.published)).toHaveLength(7)
+    expect(pages.filter((entry) => entry.published)).toHaveLength(11)
+    expect(pages.filter((entry) => !entry.published)).toHaveLength(4)
     for (const { page, published } of pages) {
       const served = pageForPath(`/${page.slug}`)
       if (published) {

@@ -137,6 +137,7 @@ export function withClassPageSitemapBlock(sitemap: string, block = classPageSite
 
 /** The site chrome colour, matching `index.html` and the Paladin shells. */
 export const SITE_THEME_COLOR = '#090b10'
+const SITE_ORIGIN = 'https://buildforgetools.com'
 
 /** The social card this page shares, if the class ships one: page art first, class art second. */
 export function classPageOgImage(classDef: Pick<ClassDefinition, 'ogImage'>, page: Pick<ClassPageDefinition, 'ogImage'>): string | undefined {
@@ -151,7 +152,7 @@ export function classPageShellHtml<B extends string>(classDef: ClassDefinition<B
   const ogImage = classPageOgImage(classDef, page)
   // No image is invented: a class without art gets no tag, rather than a card that 404s or shows
   // another class's art.
-  const ogImageTag = ogImage ? `<meta property="og:image" content="${escapeHtml(ogImage)}"/>` : ''
+  const ogImageTag = ogImage ? `<meta property="og:image" content="${escapeHtml(new URL(ogImage, SITE_ORIGIN).toString())}"/>` : ''
   const structuredData = JSON.stringify({
     '@context': 'https://schema.org',
     '@type': 'WebPage',

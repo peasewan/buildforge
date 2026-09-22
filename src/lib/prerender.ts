@@ -183,9 +183,7 @@ function landingSection(section: LandingSection): string {
 /**
  * The one discovery link each published class contributes to the existing surfaces: the catalogue
  * its gate publishes. Derived rather than written, so a class that cannot back a catalogue carries
- * no link, a new class carries one with no edit here, and nothing points at a withheld page —
- * `/mage` still serves the Paladin planner, so linking a class calculator is not an option while
- * its planner requirement is unmet.
+ * no link, a new class carries one with no edit here, and nothing points at a withheld page.
  */
 const classDiscoveryLinks = publishedClassCatalogues().map(({ classDef, page }) => ({
   href: `/${page.slug}`,

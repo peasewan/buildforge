@@ -1,0 +1,14 @@
+{
+  "source": "https://wago.tools/db2/Talent/csv?build=1.60.1.69913",
+  "build": "1.60.1.69913",
+  "reviewedAt": "2026-09-22T02:37:02Z",
+  "talents": [
+    {
+      "sourceTalentId": 26,
+      "name": "Improved Fireball",
+      "branch": "fire",
+      "row": 1,
+      "column": 2
+    }
+  ]
+}

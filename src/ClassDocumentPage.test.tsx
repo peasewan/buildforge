@@ -2,7 +2,6 @@ import { existsSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { cleanup, fireEvent, render, screen, within } from '@testing-library/react'
 import { afterEach, describe, expect, it } from 'vitest'
-import ClassCalculatorPage from './ClassCalculatorPage'
 import ClassDocumentPage from './ClassDocumentPage'
 import { PUBLISHED_CLASSES } from './data/classes'
 import { mageClass } from './data/classes/mage'
@@ -10,7 +9,6 @@ import { hunterClassFixture, type HunterBranch } from './data/fixtures/hunterCla
 import type { ClassDefinition } from './lib/classPage'
 import { publishedClassPages, publishRequirementsFor, satisfiedRequirements } from './lib/classPage'
 import { pageForPath } from './lib/routes'
-import { canIncrementPlannerTalent, encodePlannerBuild, incrementPlannerTalent, plannerLockReason } from './lib/talentPlanner'
 
 const pageOfKind = (kind: string) => hunterClassFixture.pages.find((page) => page.kind === kind)!
 const buildById = (id: string) => hunterClassFixture.builds.find((build) => build.id === id)!
@@ -54,6 +52,17 @@ describe('ClassDocumentPage renders any class from ClassDefinition', () => {
       expect(screen.getAllByText(/Edit this build in Calculator/i).length).toBeGreaterThan(0)
       cleanup()
     }
+  })
+
+  it('uses page art in the hero and falls back to the class art', () => {
+    const page = pageOfKind('specBuild')
+    const classWithArt = { ...hunterClassFixture, ogImage: '/images/hunter/default.webp' }
+    const { container, rerender } = render(<ClassDocumentPage classDef={classWithArt} page={page} />)
+
+    expect(container.querySelector('.class-hero')?.getAttribute('style')).toContain('/images/hunter/default.webp')
+
+    rerender(<ClassDocumentPage classDef={classWithArt} page={{ ...page, ogImage: '/images/hunter/spec.webp' }} />)
+    expect(container.querySelector('.class-hero')?.getAttribute('style')).toContain('/images/hunter/spec.webp')
   })
 
   it('renders selected talents from primaryBuildId plus related builds and pages', () => {
@@ -155,8 +164,7 @@ describe('ClassDocumentPage renders any class from ClassDefinition', () => {
     render(<ClassDocumentPage classDef={hunterClassFixture} page={page} />)
     let claim = within(screen.getByTestId('class-talent-evidence')).getByText(/positions/i).textContent ?? ''
     expect(claim).toMatch(/positions and ranks/i)
-    // The Mage dataset carries `rankDescriptions` evidence of `unknown` on 17 of its 30 published
-    // nodes, so the badge copy may only name the planner-legal fields every node verifies.
+    // The badge copy may only name the planner-legal fields every node verifies.
     expect(claim).not.toMatch(/tooltip|per-rank|rank text/i)
     cleanup()
 
@@ -185,21 +193,17 @@ describe('ClassDocumentPage renders any class from ClassDefinition', () => {
     expect(hunterClassFixture.branches.every((branch: HunterBranch) => hunterClassFixture.branchNames[branch])).toBe(true)
   })
 
-  it('drops every calculator link on a class whose planner requirement is unmet', () => {
-    // R17: `/mage` is withheld, so a link to `classDef.plannerPath` would hand a Frost Mage
-    // reader the Paladin calculator. The gate decides, and it withholds the whole CTA — and any
-    // other link to a withheld page — from every published Mage page.
+  it('links the now-published Mage calculator while still hiding unmet build pages', () => {
     const satisfied = satisfiedRequirements(mageClass)
     const pages = publishedClassPages([mageClass]).map(({ page }) => page)
 
-    expect(satisfied.has('completeClassPlanner')).toBe(false)
-    expect(pages).toHaveLength(8)
+    expect(satisfied.has('completeClassPlanner')).toBe(true)
+    expect(pages).toHaveLength(11)
     for (const page of pages) {
       const { container } = render(<ClassDocumentPage classDef={mageClass} page={page} />)
       const hrefs = [...container.querySelectorAll('a')].map((anchor) => anchor.getAttribute('href') ?? '')
 
-      expect(hrefs.filter((href) => href === mageClass.plannerPath || href.startsWith(`${mageClass.plannerPath}?`)), page.slug).toEqual([])
-      expect(within(container).queryByText(/Edit this build in Calculator/i), page.slug).toBeNull()
+      expect(hrefs.some((href) => href === mageClass.plannerPath || href.startsWith(`${mageClass.plannerPath}?`)), page.slug).toBe(true)
       for (const withheld of mageClass.pages.filter((candidate) => !publishRequirementsFor(candidate).every((requirement) => satisfied.has(requirement)))) {
         expect(hrefs.filter((href) => href.split('?')[0] === `/${withheld.slug}`), `${page.slug} -> ${withheld.slug}`).toEqual([])
       }
@@ -221,175 +225,55 @@ describe('ClassDocumentPage renders any class from ClassDefinition', () => {
   })
 })
 
-// The branch whose nodes are visible but unallocatable. Every expectation below reads the branch
-// list straight off the dataset, so it cannot come from the same helper the renderer uses.
-const mageTalentsPage = mageClass.pages.find((page) => page.kind === 'talents')!
-const entrylessTalents = mageClass.talents.filter((talent) => talent.branch === 'fire')
-const entryPointBranches = new Set(mageClass.talents.filter((talent) => talent.requiredTreePoints === 0).map((talent) => talent.branch))
-const ids = (talents: { id: string }[]) => talents.map((talent) => talent.id).sort()
-
-// Marked means the reader is told: the entry carries the visible exclusion marker. Not the
-// `data-excluded` attribute on its own, which would still say "marked" on a page that had stopped
-// telling anyone anything.
-const markedEntries = () => screen.getAllByTestId('class-talent-entry').filter((entry) => within(entry).queryByTestId('class-exclusion-marker') !== null)
-const markerText = (entry: HTMLElement) => within(entry).getByTestId('class-exclusion-marker').textContent ?? ''
-
-/** The same class with one branch renamed, to show the marker follows the data and not a name. */
-function renameBranch<B extends string>(classDef: ClassDefinition<B>, from: B, to: string): ClassDefinition<string> {
-  const renamed = (branch: B) => (branch === from ? to : branch)
-  return {
-    ...classDef,
-    branches: classDef.branches.map(renamed),
-    branchNames: Object.fromEntries(classDef.branches.map((branch) => [renamed(branch), classDef.branchNames[branch]])),
-    branchTaglines: Object.fromEntries(classDef.branches.map((branch) => [renamed(branch), classDef.branchTaglines[branch]])),
-    talents: classDef.talents.map((talent) => (talent.branch === from ? { ...talent, branch: to } : talent)),
-    plannerConfig: { ...classDef.plannerConfig, branches: classDef.branches.map(renamed) },
-  }
+// A class-neutral broken-branch fixture keeps the fallback UI covered without depending on a
+// known Mage data defect. Mage itself is now planner-legal in all three branches.
+const blockedBranch = hunterClassFixture.branches[0]
+const blockedClass: ClassDefinition<HunterBranch> = {
+  ...hunterClassFixture,
+  talents: hunterClassFixture.talents.map((talent) => talent.branch === blockedBranch
+    ? { ...talent, requiredTreePoints: Math.max(5, talent.requiredTreePoints) }
+    : talent),
 }
 
-describe('the catalogue states a branch that cannot be allocated without offering it', () => {
+describe('the catalogue states a branch that cannot be allocated without repeating the warning', () => {
   afterEach(cleanup)
 
-  it('marks every node of a branch with no allocatable entry point, and names the reason', () => {
-    expect(entryPointBranches.has('fire'), 'the case under test needs a branch with no entry point').toBe(false)
-    expect(entrylessTalents.length).toBeGreaterThan(0)
+  it('shows one branch-level exclusion notice and none under individual talents', () => {
+    render(<ClassDocumentPage classDef={blockedClass} page={pageOfKind('talents')} />)
 
-    render(<ClassDocumentPage classDef={mageClass} page={mageTalentsPage} />)
+    const branch = document.querySelector(`.class-catalogue-branch[data-branch="${blockedBranch}"]`) as HTMLElement
+    const marker = within(branch).getByTestId('class-exclusion-marker')
+    expect(within(branch).getAllByTestId('class-exclusion-marker')).toHaveLength(1)
+    expect(marker.textContent).toMatch(/cannot be used in build validation/i)
+    expect(marker.textContent).toMatch(/no node in this branch can be taken first/i)
+    expect(marker.textContent).not.toMatch(/position conflict|column|source/i)
 
-    const markedIds = markedEntries().map((entry) => entry.getAttribute('data-talent-id') ?? '')
-    expect(markedIds.sort()).toEqual(ids(entrylessTalents))
-    for (const entry of markedEntries()) {
-      expect(markerText(entry)).toMatch(/excluded from build validation/i)
-      // The stated reason is the derived condition and nothing more: every node in the branch is
-      // behind a tree-point gate, so none can be spent first. Why the branch ended up that way is
-      // the class's own story (this page's prose tells it) and is not derivable here.
-      expect(markerText(entry)).toMatch(/no node in this branch can be taken first/i)
-      expect(markerText(entry)).not.toMatch(/position conflict|column|source/i)
-    }
-
-    // The branch that carries them is marked too, and the branches that can be started are not.
-    const branches = [...document.querySelectorAll('.class-catalogue-branch')]
-    expect(branches.filter((branch) => branch.getAttribute('data-excluded') === 'true').map((branch) => branch.getAttribute('data-branch')))
-      .toEqual(['fire'])
-    expect(branches.length).toBe(mageClass.branches.length)
-
-    // The state attribute and the visible marker are one statement, so neither can drift from the
-    // other: an entry that says "excluded" in the DOM is an entry the reader can see it on.
-    for (const entry of screen.getAllByTestId('class-talent-entry')) {
-      expect(entry.getAttribute('data-excluded') === 'true', entry.getAttribute('data-talent-id') ?? '')
-        .toBe(within(entry).queryByTestId('class-exclusion-marker') !== null)
+    for (const entry of within(branch).getAllByTestId('class-talent-entry')) {
+      expect(entry.getAttribute('data-excluded')).toBe('true')
+      expect(within(entry).queryByTestId('class-exclusion-marker')).toBeNull()
     }
   })
 
-  it('leaves every node of an allocatable branch unmarked', () => {
-    render(<ClassDocumentPage classDef={mageClass} page={mageTalentsPage} />)
-    const unmarked = screen.getAllByTestId('class-talent-entry').filter((entry) => entry.getAttribute('data-excluded') !== 'true')
+  it('leaves a fully allocatable class without exclusion notices', () => {
+    render(<ClassDocumentPage classDef={mageClass} page={mageClass.pages.find((page) => page.kind === 'talents')!} />)
 
-    expect(unmarked.map((entry) => entry.getAttribute('data-talent-id') ?? '').sort())
-      .toEqual(ids(mageClass.talents.filter((talent) => talent.branch !== 'fire')))
-    expect(unmarked.length).toBeGreaterThan(0)
-    cleanup()
-
-    // A class where every branch can be started carries no exclusion marker at all.
-    render(<ClassDocumentPage classDef={hunterClassFixture} page={pageOfKind('talents')} />)
     expect(screen.queryAllByTestId('class-exclusion-marker')).toHaveLength(0)
+    expect([...document.querySelectorAll('.class-catalogue-branch')].every((branch) => branch.getAttribute('data-excluded') !== 'true')).toBe(true)
   })
 
-  it('marks any class whose branch cannot be started, whatever that branch is called', () => {
-    const renamed = renameBranch(mageClass, 'fire', 'inferno')
-    expect(renamed.talents.filter((talent) => talent.branch === 'inferno').length).toBe(entrylessTalents.length)
-
-    render(<ClassDocumentPage classDef={renamed} page={mageTalentsPage} />)
-
-    expect(markedEntries().map((entry) => entry.getAttribute('data-talent-id') ?? '').sort())
-      .toEqual(ids(entrylessTalents))
-    for (const entry of markedEntries()) expect(markerText(entry)).toMatch(/excluded from build validation/i)
-    // A branch this class can start from is still unmarked under the same code path.
-    expect(screen.getAllByTestId('class-talent-entry').length).toBeGreaterThan(markedEntries().length)
-  })
-
-  it('derives the exclusion from the dataset, never from a branch name in the renderer', () => {
+  it('derives the exclusion from the dataset and gives it distinct visual treatment', () => {
     const source = readFileSync(join(process.cwd(), 'src/ClassDocumentPage.tsx'), 'utf8')
     expect(source).not.toMatch(/\bfire\b/i)
-    expect(source).not.toMatch(/\binferno\b/i)
-    // No second copy of the entry-point rule: the renderer asks the shared gate which branches
-    // cannot be started, so a class with a different broken branch needs no renderer change.
     expect(source).toMatch(/unallocatableBranches/)
-  })
 
-  it('renders the marker as a third state, distinct from the client and editorial chrome', () => {
-    render(<ClassDocumentPage classDef={mageClass} page={mageTalentsPage} />)
-    const entry = markedEntries()[0]
-    const marker = within(entry).getByTestId('class-exclusion-marker')
-
-    // Both labels it must not be mistaken for are on this same page.
-    expect(screen.getAllByText('Client verified').length).toBeGreaterThan(0)
-    expect(screen.getAllByText('Community / Editorial Build').length).toBeGreaterThan(0)
-
+    render(<ClassDocumentPage classDef={blockedClass} page={pageOfKind('talents')} />)
+    const marker = screen.getByTestId('class-exclusion-marker')
     expect(marker.className).not.toMatch(/verification-badge|verification-client_verified|class-build-chip/)
-    const text = marker.textContent ?? ''
-    expect(text).not.toMatch(/client verified/i)
-    expect(text).not.toMatch(/community\s*\/\s*editorial/i)
-    expect(text).not.toMatch(/positions and ranks/i)
-    expect(within(entry).queryByText(/^Client verified$/)).toBeTruthy() // the node keeps its own evidence badge
+    expect(marker.textContent).not.toMatch(/client verified|community\s*\/\s*editorial|positions and ranks/i)
 
     const styles = readFileSync(join(process.cwd(), 'src/styles.css'), 'utf8')
     const markerRule = styles.match(/\.class-exclusion-marker[^{]*\{[^}]*\}/)?.[0] ?? ''
-    expect(markerRule, 'the marker needs its own treatment in the stylesheet').not.toBe('')
     expect(markerRule).toContain('dashed')
     expect(markerRule).not.toContain('border-radius: 999px')
-    expect(styles.match(/\.verification-badge[^{]*\{[^}]*\}/)?.[0] ?? '').not.toContain('dashed')
-  })
-
-  it('enforces the exclusion: a marked node cannot enter a build, preset or copyable allocation', () => {
-    // "Marked" is read off the rendered page, not off the dataset: this test is about the nodes the
-    // reader is told are excluded. Delete the marker and the set empties, so the test fails instead
-    // of quietly enforcing a property on a set the reader never saw.
-    render(<ClassDocumentPage classDef={mageClass} page={mageTalentsPage} />)
-    const markedIds = new Set(markedEntries().map((entry) => entry.getAttribute('data-talent-id') ?? ''))
-    expect(markedIds.size).toBe(entrylessTalents.length)
-    const markedTalents = [...markedIds].map((id) => mageClass.talents.find((talent) => talent.id === id)!)
-    cleanup()
-
-    const config = { branches: mageClass.branches, pointCap: mageClass.beta.pointsAtCap }
-
-    // 1. Nothing the site already loads or copies names one. A preset loads `build.build` whole,
-    //    and both copyable allocations — the calculator's copy link and the document page's
-    //    "edit in calculator" CTA — encode exactly that object through `encodePlannerBuild`.
-    for (const build of mageClass.builds) {
-      expect(Object.keys(build.build).filter((id) => markedIds.has(id)), build.id).toEqual([])
-      expect(encodePlannerBuild(build.build).split('~').map((token) => token.split('.')[0]).filter((id) => markedIds.has(id)), build.id).toEqual([])
-    }
-
-    // 2. The allocation path the calculator runs, refused from every state a preset can load.
-    for (const talent of markedTalents) {
-      expect(plannerLockReason({}, talent, mageClass.talents, config)).toMatchObject({ type: 'branch-points' })
-      for (const start of [{}, ...mageClass.builds.map((build) => build.build)]) {
-        expect(canIncrementPlannerTalent(start, talent, mageClass.talents, config), talent.id).toBe(false)
-        // Identity, not a copy: refused allocations return the build they were handed.
-        expect(incrementPlannerTalent(start, talent, mageClass.talents, config), talent.id).toBe(start)
-      }
-    }
-
-    // 3. The same path behind the calculator's own add buttons.
-    localStorage.clear()
-    history.replaceState({}, '', mageClass.plannerPath)
-    render(<ClassCalculatorPage classDef={mageClass} />)
-
-    const control = screen.getByRole('button', { name: /Add rank to Frost Warding/i })
-    expect(control.hasAttribute('disabled')).toBe(false)
-    fireEvent.click(control)
-    expect(document.getElementById('mage-frost-frost-warding')?.textContent).toContain('1/2')
-    expect(screen.getAllByText('0/0/1').length).toBeGreaterThan(0) // arcane / fire / frost
-
-    for (const talent of markedTalents) {
-      const add = screen.getByRole('button', { name: `Add rank to ${talent.name}` })
-      expect(add.hasAttribute('disabled'), talent.name).toBe(true)
-      fireEvent.click(add)
-      expect(document.getElementById(talent.id)?.textContent, talent.id).toContain('0/')
-    }
-    // The frost point stands and not one fire rank landed, through the buttons or around them.
-    expect(screen.getAllByText('0/0/1').length).toBeGreaterThan(0)
-    localStorage.clear()
   })
 })

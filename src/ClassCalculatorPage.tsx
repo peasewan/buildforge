@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useMemo, useState, type CSSProperties } from 'react'
 import { Check, Copy, Lock, Minus, RotateCcw, Shield, Sparkles, Swords } from 'lucide-react'
 import SiteFooter from './SiteFooter'
 import VerificationBadge from './VerificationBadge'
@@ -95,11 +95,13 @@ export default function ClassCalculatorPage<B extends string>({ classDef }: { cl
   const canvasHeight = canvasHeightFor(classDef)
   const config = useMemo<PlannerConfig<B>>(() => ({ ...classDef.plannerConfig, pointCap: cap }), [classDef.plannerConfig, cap])
   const points = totalPlannerPoints(build)
-  // Per-rank text is not a property of "having client data": the Mage dataset publishes it on 13
-  // of its 30 nodes, so the trust copy reports the count the class being rendered actually has.
+  // Per-rank text is not a property of "having client data", so the trust copy reports the count
+  // the class being rendered actually has instead of assuming every node carries it.
   const perRankTextCount = classDef.talents.filter((talent) => talent.rankDescriptions?.length).length
   const activeBranch = dominantPlannerBranch(build, classDef.talents, classDef.branches, classDef.branches[0])
   const calculatorPage = classDef.pages.find((page) => page.kind === 'calculator')
+  const heroImage = calculatorPage?.ogImage ?? classDef.ogImage
+  const heroStyle = heroImage ? ({ '--class-hero-image': `url("${heroImage}")` } as CSSProperties) : undefined
   const hubPage = classDef.pages.find((page) => page.kind === 'buildsHub') ?? classDef.pages.find((page) => page.kind === 'talents')
   const presets = classDef.recommendedBuildIds
     .map((id) => classDef.builds.find((candidate) => candidate.id === id))
@@ -153,7 +155,7 @@ export default function ClassCalculatorPage<B extends string>({ classDef }: { cl
       </nav>
     </header>
 
-    <section className="class-hero">
+    <section className="class-hero" style={heroStyle}>
       <div className="shell class-hero-grid">
         <div>
           <p className="class-kicker">{classDef.beta.phaseLabel} · {classDef.talentCount} verified nodes</p>

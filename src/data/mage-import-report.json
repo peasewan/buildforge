@@ -1,7 +1,7 @@
 {
   "foreverDiffUrl": "https://foreverdiff.com/talents/mage/calculator/",
   "theWowDbUrl": "https://thewowdb.com/wow-forever/talents/mage/",
-  "fetchedAt": "2026-09-21T16:00:20.385Z",
+  "fetchedAt": "2026-09-22T02:39:46.449Z",
   "acquisition": "fetch",
   "snapshots": [
     {
@@ -19,9 +19,15 @@
       "talentCount": 49
     }
   ],
+  "primaryClientSnapshot": {
+    "file": "mage-primary-client-1.60.1.69913.json",
+    "source": "https://wago.tools/db2/Talent/csv?build=1.60.1.69913",
+    "build": "1.60.1.69913",
+    "talentCount": 1
+  },
   "foreverDiffCount": 54,
   "theWowDbCount": 49,
-  "published": 30,
+  "published": 31,
   "missingInA": [],
   "missingInB": [
     "arcane:Arcane Blast",
@@ -75,11 +81,6 @@
       "name": "Arcane Resilience",
       "branch": "arcane",
       "field": "row"
-    },
-    {
-      "name": "Arcane Resilience",
-      "branch": "arcane",
-      "field": "column"
     },
     {
       "name": "Arcane Resilience",
@@ -144,11 +145,6 @@
     {
       "name": "Wake of Fire",
       "branch": "fire",
-      "field": "column"
-    },
-    {
-      "name": "Wake of Fire",
-      "branch": "fire",
       "field": "maxRank"
     },
     {
@@ -160,11 +156,6 @@
       "name": "Incineration",
       "branch": "fire",
       "field": "row"
-    },
-    {
-      "name": "Incineration",
-      "branch": "fire",
-      "field": "column"
     },
     {
       "name": "Incineration",
@@ -179,7 +170,18 @@
     {
       "name": "Improved Fireball",
       "branch": "fire",
-      "field": "column"
+      "field": "column",
+      "resolution": "primary_client"
+    },
+    {
+      "name": "Improved Fireball",
+      "branch": "fire",
+      "field": "rankDescriptions"
+    },
+    {
+      "name": "Improved Fireball",
+      "branch": "fire",
+      "field": "changeStatus"
     },
     {
       "name": "Ignite",
@@ -215,11 +217,6 @@
       "name": "Impact",
       "branch": "fire",
       "field": "requiredTreePoints"
-    },
-    {
-      "name": "Burning Soul",
-      "branch": "fire",
-      "field": "column"
     },
     {
       "name": "Burning Soul",
@@ -329,11 +326,6 @@
     {
       "name": "Shatter",
       "branch": "frost",
-      "field": "column"
-    },
-    {
-      "name": "Shatter",
-      "branch": "frost",
       "field": "maxRank"
     },
     {
@@ -366,23 +358,18 @@
     "new": 0,
     "changed": 14,
     "same": 6,
-    "unknown": 10
+    "unknown": 11
   },
   "branches": {
     "arcane": 10,
-    "fire": 11,
+    "fire": 12,
     "frost": 9
   },
   "entryPoints": {
     "arcane": 2,
-    "fire": 0,
+    "fire": 1,
     "frost": 2
   },
-  "plannerLegal": false,
-  "blockers": [
-    {
-      "code": "fire:no-entry-point",
-      "branch": "fire"
-    }
-  ]
+  "plannerLegal": true,
+  "blockers": []
 }

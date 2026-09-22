@@ -24,7 +24,6 @@ const classPageHtml = (page: ClassPageDefinition) => renderClassPage(mageClass, 
 
 const classPrerendered = () => [
   ...publishedMagePages.map((page) => [page.slug, classPageHtml(page)] as const),
-  ['mage calculator (withheld definition)', renderClassPage(mageClass, mageClass.pages.find((page) => page.kind === 'calculator')!)] as const,
 ]
 
 /** Every `a/b/c` allocation this HTML prints, as branch points in `MAGE_BRANCHES` order. */
@@ -209,8 +208,8 @@ describe('prerender generation', () => {
 
 describe('class page prerender', () => {
   it('prerenders one class page per published page, and only published ones', () => {
-    expect(publishedMagePages).toHaveLength(8)
-    expect(withheldMageSlugs).toHaveLength(7)
+    expect(publishedMagePages).toHaveLength(11)
+    expect(withheldMageSlugs).toHaveLength(4)
 
     for (const page of mageClass.pages) {
       // Every definition renders — the gate decides what ships, not the renderer.
@@ -262,7 +261,7 @@ describe('class page prerender', () => {
     }
   })
 
-  it('never prints a fire allocation, because no fire allocation is legal', () => {
+  it('never prints an unreviewed fire preset allocation', () => {
     const fireSlot = MAGE_BRANCHES.indexOf('fire')
 
     expect(fireSlot).toBe(1)
@@ -281,14 +280,12 @@ describe('class page prerender', () => {
     }
   })
 
-  it('renders no link to the class calculator while the planner requirement is unmet', () => {
+  it('links every published document back to the now-available class calculator', () => {
     const satisfied = satisfiedRequirements(mageClass)
 
-    expect(satisfied.has('completeClassPlanner')).toBe(false)
+    expect(satisfied.has('completeClassPlanner')).toBe(true)
     for (const [label, html] of classPrerendered()) {
-      expect(html, `${label} links the withheld ${mageClass.plannerPath} calculator`).not.toContain(`href="${mageClass.plannerPath}"`)
-      expect(html, `${label} links the withheld ${mageClass.plannerPath} calculator`).not.toContain(`href="${mageClass.plannerPath}?`)
-      expect(html).not.toMatch(/Edit this build in Calculator/i)
+      expect(html, `${label} omits ${mageClass.plannerPath}`).toContain(`href="${mageClass.plannerPath}`)
     }
   })
 
@@ -298,7 +295,7 @@ describe('class page prerender', () => {
       for (const href of ['/paladin', '/wow-forever-paladin-builds', '/about', '/contact', '/privacy']) {
         expect(html, `${label} dropped ${href}`).toContain(`href="${href}"`)
       }
-      // Discovery must not point at the withheld calculator.
+      // Global discovery remains the talent catalogue; class pages provide the calculator CTA.
       expect(html, label).not.toContain('href="/mage"')
     }
   })

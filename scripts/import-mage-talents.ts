@@ -2,7 +2,7 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { parseForeverDiffMage, parseTheWowDbMage } from '../src/lib/mageTalentParse'
-import { reconcileMageTalents, type MageBranch, type MageSourceTalent, type ReconciledMageTalent } from '../src/lib/mageTalentReconcile'
+import { reconcileMageTalents, type MageBranch, type MagePrimaryClientTalent, type MageSourceTalent, type ReconciledMageTalent } from '../src/lib/mageTalentReconcile'
 import { assertMagePublishable } from '../src/lib/mageTalentPublish'
 import { readManualSnapshot } from '../src/lib/mageTalentSnapshot'
 
@@ -11,6 +11,7 @@ const foreverDiffUrl = 'https://foreverdiff.com/talents/mage/calculator/'
 const theWowDbUrl = 'https://thewowdb.com/wow-forever/talents/mage/'
 const foreverDiffSnapshot = 'mage-source-foreverdiff-1.60.1.69913.json'
 const theWowDbSnapshot = 'mage-source-thewowdb-1.60.1.69913.json'
+const primaryClientSnapshot = 'mage-primary-client-1.60.1.69913.json'
 
 const fetchText = async (url: string) => {
   const response = await fetch(url)
@@ -58,9 +59,8 @@ const acquire = async (allowManualSnapshot: boolean): Promise<AcquisitionSource[
 }
 
 // Plan line 141: "each branch must have at least one row-1 talent". A row-1 talent is the branch's
-// allocatable entry point, which the sources state as `requiredTreePoints === 0`. Fire has 11
-// published nodes and none of them, which is the exact reason no Mage URL ships — so the report
-// states the per-branch entry-point count instead of the weaker "branch is non-empty" gate below.
+// allocatable entry point, which the sources state as `requiredTreePoints === 0`. The report states
+// the per-branch entry-point count instead of the weaker "branch is non-empty" gate below.
 const mageBranches: MageBranch[] = ['arcane', 'fire', 'frost']
 
 const entryPointsFor = (published: ReconciledMageTalent[], branch: MageBranch) =>
@@ -71,7 +71,12 @@ const main = async () => {
   const [foreverDiffSource, theWowDbSource] = await acquire(allowManualSnapshot)
   const foreverDiff = foreverDiffSource.talents
   const theWowDb = theWowDbSource.talents
-  const result = reconcileMageTalents(foreverDiff, theWowDb)
+  const primaryClientRecord = JSON.parse(await readFile(resolve(root, 'src/data', primaryClientSnapshot), 'utf8')) as {
+    source: string
+    build: string
+    talents: MagePrimaryClientTalent[]
+  }
+  const result = reconcileMageTalents(foreverDiff, theWowDb, primaryClientRecord.talents)
   const fetchedAt = foreverDiffSource.acquisition === 'fetch' ? new Date().toISOString() : null
   // The launch gate stated as data instead of prose: `plannerLegal` is false while any branch has
   // zero allocatable entry points, and `blockers` names each offending branch. The importer still
@@ -88,6 +93,12 @@ const main = async () => {
     fetchedAt,
     acquisition: foreverDiffSource.acquisition,
     snapshots: [foreverDiffSource, theWowDbSource].map(({ talents, written, ...snapshot }) => ({ ...snapshot, written, talentCount: talents.length })),
+    primaryClientSnapshot: {
+      file: primaryClientSnapshot,
+      source: primaryClientRecord.source,
+      build: primaryClientRecord.build,
+      talentCount: primaryClientRecord.talents.length,
+    },
     foreverDiffCount: foreverDiff.length,
     theWowDbCount: theWowDb.length,
     published: result.published.length,
@@ -120,9 +131,9 @@ const main = async () => {
 
   // This is the Task 3 Step 3 gate (a branch with zero published nodes), deliberately weaker than
   // the plan's row-1 rule: `entryPoints`, `plannerLegal` and `blockers` above record that rule's
-  // result — today fire is 0 — and src/data/mageTalents.test.ts pins them against the committed
-  // dataset. Throwing here instead would make the importer permanently unrunnable against today's
-  // live data, which is why the gate is reported and pinned rather than enforced.
+  // result, and src/data/mageTalents.test.ts pins it against the committed dataset. The weaker
+  // empty-branch guard remains a hard import failure; entry-point legality is published in the
+  // report and then consumed by the page requirements.
   const emptyBranch = Object.values(report.branches).some((count) => count === 0)
   if (foreverDiff.length === 0 || theWowDb.length === 0 || emptyBranch) {
     console.log(JSON.stringify(report, null, 2))
@@ -137,6 +148,7 @@ const main = async () => {
     sources: [
       { label: 'ForeverDiff Mage talent calculator', type: 'beta_client', url: foreverDiffUrl },
       { label: 'Build 69913 Mage talent cross-check', type: 'beta_client_crosscheck', url: theWowDbUrl },
+      { label: 'Build 69913 client Talent table', type: 'beta_client', url: primaryClientRecord.source },
     ],
   }))
 

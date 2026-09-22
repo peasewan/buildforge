@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, type CSSProperties } from 'react'
 import { ArrowRight, Ban, Check, Swords } from 'lucide-react'
 import SiteFooter from './SiteFooter'
 import VerificationBadge from './VerificationBadge'
@@ -24,7 +24,7 @@ const intentLabels: Record<string, string> = { leveling: 'Leveling', aoe: 'AoE',
  * constant here would state one class's cause as if it were every class's. The page prose carries
  * that story, authored per class, where it can be true.
  */
-const EXCLUSION_LABEL = 'Excluded from build validation'
+const EXCLUSION_LABEL = 'Branch cannot be used in build validation'
 const EXCLUSION_REASON = 'no node in this branch can be taken first: every published node here sits behind a tree-point requirement'
 
 const changeStatusGroups: { status: ChangeStatus; label: string }[] = [
@@ -128,6 +128,11 @@ function TalentCatalogue<B extends string>({ classDef }: { classDef: ClassDefini
       return <div className="class-catalogue-branch" key={branch} data-branch={branch} data-excluded={excluded ? 'true' : undefined}>
         <h3>{classDef.branchNames[branch]}</h3>
         <p>{classDef.branchTaglines[branch]}</p>
+        {excluded && <div className="class-exclusion-marker" data-testid="class-exclusion-marker">
+          <Ban size={14} aria-hidden="true" />
+          <span className="class-exclusion-label">{EXCLUSION_LABEL}</span>
+          <small>{EXCLUSION_REASON}</small>
+        </div>}
         {changeStatusGroups.map(({ status, label }) => {
           const talents = classDef.talents.filter((talent) => talent.branch === branch && talent.changeStatus === status)
           if (talents.length === 0) return null
@@ -137,11 +142,6 @@ function TalentCatalogue<B extends string>({ classDef }: { classDef: ClassDefini
               <span>{talent.name}</span>
               <b>{talent.row}/{talent.column}</b>
               <VerificationBadge status={talent.verificationStatus} />
-              {excluded && <span className="class-exclusion-marker" data-testid="class-exclusion-marker">
-                <Ban size={12} aria-hidden="true" />
-                <span className="class-exclusion-label">{EXCLUSION_LABEL}</span>
-                <small>{EXCLUSION_REASON}</small>
-              </span>}
             </li>)}</ul>
           </div>
         })}
@@ -165,6 +165,8 @@ export default function ClassDocumentPage<B extends string>({ classDef, page }: 
   const showsBuildGroups = kindsListingEveryBuild.includes(page.kind)
   const showsRelatedBuilds = relatedBuilds.length > 0 && !kindsHandlingTheirOwnBuildLinks.includes(page.kind)
   const calculatorPage = classDef.pages.find((candidate) => candidate.kind === 'calculator')
+  const heroImage = page.ogImage ?? classDef.ogImage
+  const heroStyle = heroImage ? ({ '--class-hero-image': `url("${heroImage}")` } as CSSProperties) : undefined
   const navPages = classDef.pages.filter((candidate) => (candidate.kind === 'buildsHub' || candidate.kind === 'talents') && isPublishedHref(`/${candidate.slug}`))
   const relatedPages = page.relatedPages.filter((related) => isPublishedHref(related.href))
   // Only this class's own links: the site-wide class list lives in SiteFooter, which prepends
@@ -183,7 +185,7 @@ export default function ClassDocumentPage<B extends string>({ classDef, page }: 
       </nav>
     </header>
 
-    <section className="class-hero">
+    <section className="class-hero" style={heroStyle}>
       <div className="shell class-hero-grid">
         <div>
           <p className="class-kicker">{page.eyebrow} · {classDef.beta.phaseLabel}</p>

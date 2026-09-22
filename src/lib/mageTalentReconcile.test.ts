@@ -79,6 +79,34 @@ describe('mage talent field-level reconcile', () => {
     expect(result.fieldConflicts.some((conflict) => conflict.field === 'row')).toBe(true)
   })
 
+  it('uses primary client evidence to resolve a display-column conflict without dropping the node', () => {
+    const result = reconcileMageTalents(
+      [{ ...frostboltA, column: 3 }],
+      [{ ...frostboltB, column: 2 }],
+      [{ sourceTalentId: 38, name: 'Improved Frostbolt', branch: 'frost', row: 1, column: 2 }],
+    )
+
+    expect(result.published).toHaveLength(1)
+    expect(result.published[0].column).toBe(2)
+    expect(result.published[0].fieldEvidence.column).toBe('client_verified')
+    expect(result.fieldConflicts).toContainEqual({
+      name: 'Improved Frostbolt',
+      branch: 'frost',
+      field: 'column',
+      resolution: 'primary_client',
+    })
+  })
+
+  it('still drops a display-column conflict when no primary client evidence resolves it', () => {
+    const result = reconcileMageTalents(
+      [{ ...frostboltA, column: 3 }],
+      [{ ...frostboltB, column: 2 }],
+    )
+
+    expect(result.published).toHaveLength(0)
+    expect(result.fieldConflicts).toContainEqual({ name: 'Improved Frostbolt', branch: 'frost', field: 'column' })
+  })
+
   it('verifies requiredTreePoints when both sources state the same gate', () => {
     // `requiredTreePoints` is what `talentPlanner.canIncrement` gates the spend on, so a published
     // node may only carry the value both sources state, and must label it `client_verified`.

@@ -36,6 +36,11 @@
         "label": "Build 69913 Mage talent cross-check",
         "type": "beta_client_crosscheck",
         "url": "https://thewowdb.com/wow-forever/talents/mage/"
+      },
+      {
+        "label": "Build 69913 client Talent table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/Talent/csv?build=1.60.1.69913"
       }
     ]
   },
@@ -83,6 +88,11 @@
         "label": "Build 69913 Mage talent cross-check",
         "type": "beta_client_crosscheck",
         "url": "https://thewowdb.com/wow-forever/talents/mage/"
+      },
+      {
+        "label": "Build 69913 client Talent table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/Talent/csv?build=1.60.1.69913"
       }
     ]
   },
@@ -123,6 +133,11 @@
         "label": "Build 69913 Mage talent cross-check",
         "type": "beta_client_crosscheck",
         "url": "https://thewowdb.com/wow-forever/talents/mage/"
+      },
+      {
+        "label": "Build 69913 client Talent table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/Talent/csv?build=1.60.1.69913"
       }
     ]
   },
@@ -163,6 +178,11 @@
         "label": "Build 69913 Mage talent cross-check",
         "type": "beta_client_crosscheck",
         "url": "https://thewowdb.com/wow-forever/talents/mage/"
+      },
+      {
+        "label": "Build 69913 client Talent table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/Talent/csv?build=1.60.1.69913"
       }
     ]
   },
@@ -203,6 +223,11 @@
         "label": "Build 69913 Mage talent cross-check",
         "type": "beta_client_crosscheck",
         "url": "https://thewowdb.com/wow-forever/talents/mage/"
+      },
+      {
+        "label": "Build 69913 client Talent table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/Talent/csv?build=1.60.1.69913"
       }
     ]
   },
@@ -243,6 +268,11 @@
         "label": "Build 69913 Mage talent cross-check",
         "type": "beta_client_crosscheck",
         "url": "https://thewowdb.com/wow-forever/talents/mage/"
+      },
+      {
+        "label": "Build 69913 client Talent table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/Talent/csv?build=1.60.1.69913"
       }
     ]
   },
@@ -283,6 +313,11 @@
         "label": "Build 69913 Mage talent cross-check",
         "type": "beta_client_crosscheck",
         "url": "https://thewowdb.com/wow-forever/talents/mage/"
+      },
+      {
+        "label": "Build 69913 client Talent table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/Talent/csv?build=1.60.1.69913"
       }
     ]
   },
@@ -326,6 +361,11 @@
         "label": "Build 69913 Mage talent cross-check",
         "type": "beta_client_crosscheck",
         "url": "https://thewowdb.com/wow-forever/talents/mage/"
+      },
+      {
+        "label": "Build 69913 client Talent table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/Talent/csv?build=1.60.1.69913"
       }
     ]
   },
@@ -366,6 +406,11 @@
         "label": "Build 69913 Mage talent cross-check",
         "type": "beta_client_crosscheck",
         "url": "https://thewowdb.com/wow-forever/talents/mage/"
+      },
+      {
+        "label": "Build 69913 client Talent table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/Talent/csv?build=1.60.1.69913"
       }
     ]
   },
@@ -409,6 +454,56 @@
         "label": "Build 69913 Mage talent cross-check",
         "type": "beta_client_crosscheck",
         "url": "https://thewowdb.com/wow-forever/talents/mage/"
+      },
+      {
+        "label": "Build 69913 client Talent table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/Talent/csv?build=1.60.1.69913"
+      }
+    ]
+  },
+  {
+    "id": "mage-fire-improved-fireball",
+    "name": "Improved Fireball",
+    "branch": "fire",
+    "row": 1,
+    "column": 2,
+    "maxRank": 5,
+    "requiredTreePoints": 0,
+    "changeStatus": "unknown",
+    "fieldEvidence": {
+      "name": "client_verified",
+      "branch": "client_verified",
+      "row": "client_verified",
+      "column": "client_verified",
+      "maxRank": "client_verified",
+      "requiredTreePoints": "client_verified",
+      "rankDescriptions": "unknown",
+      "sourceTalentId": "client_verified",
+      "prerequisiteLink": "unknown",
+      "changeStatus": "unknown",
+      "iconName": "client_datamined"
+    },
+    "verificationStatus": "client_verified",
+    "sourceTalentId": 26,
+    "iconName": "spell_fire_flamebolt",
+    "sourceClientBuild": "1.60.1.69913",
+    "verifiedThroughBuild": "1.60.1.69913",
+    "sources": [
+      {
+        "label": "ForeverDiff Mage talent calculator",
+        "type": "beta_client",
+        "url": "https://foreverdiff.com/talents/mage/calculator/"
+      },
+      {
+        "label": "Build 69913 Mage talent cross-check",
+        "type": "beta_client_crosscheck",
+        "url": "https://thewowdb.com/wow-forever/talents/mage/"
+      },
+      {
+        "label": "Build 69913 client Talent table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/Talent/csv?build=1.60.1.69913"
       }
     ]
   },
@@ -449,6 +544,11 @@
         "label": "Build 69913 Mage talent cross-check",
         "type": "beta_client_crosscheck",
         "url": "https://thewowdb.com/wow-forever/talents/mage/"
+      },
+      {
+        "label": "Build 69913 client Talent table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/Talent/csv?build=1.60.1.69913"
       }
     ]
   },
@@ -489,6 +589,11 @@
         "label": "Build 69913 Mage talent cross-check",
         "type": "beta_client_crosscheck",
         "url": "https://thewowdb.com/wow-forever/talents/mage/"
+      },
+      {
+        "label": "Build 69913 client Talent table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/Talent/csv?build=1.60.1.69913"
       }
     ]
   },
@@ -529,6 +634,11 @@
         "label": "Build 69913 Mage talent cross-check",
         "type": "beta_client_crosscheck",
         "url": "https://thewowdb.com/wow-forever/talents/mage/"
+      },
+      {
+        "label": "Build 69913 client Talent table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/Talent/csv?build=1.60.1.69913"
       }
     ]
   },
@@ -572,6 +682,11 @@
         "label": "Build 69913 Mage talent cross-check",
         "type": "beta_client_crosscheck",
         "url": "https://thewowdb.com/wow-forever/talents/mage/"
+      },
+      {
+        "label": "Build 69913 client Talent table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/Talent/csv?build=1.60.1.69913"
       }
     ]
   },
@@ -612,6 +727,11 @@
         "label": "Build 69913 Mage talent cross-check",
         "type": "beta_client_crosscheck",
         "url": "https://thewowdb.com/wow-forever/talents/mage/"
+      },
+      {
+        "label": "Build 69913 client Talent table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/Talent/csv?build=1.60.1.69913"
       }
     ]
   },
@@ -652,6 +772,11 @@
         "label": "Build 69913 Mage talent cross-check",
         "type": "beta_client_crosscheck",
         "url": "https://thewowdb.com/wow-forever/talents/mage/"
+      },
+      {
+        "label": "Build 69913 client Talent table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/Talent/csv?build=1.60.1.69913"
       }
     ]
   },
@@ -697,6 +822,11 @@
         "label": "Build 69913 Mage talent cross-check",
         "type": "beta_client_crosscheck",
         "url": "https://thewowdb.com/wow-forever/talents/mage/"
+      },
+      {
+        "label": "Build 69913 client Talent table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/Talent/csv?build=1.60.1.69913"
       }
     ]
   },
@@ -742,6 +872,11 @@
         "label": "Build 69913 Mage talent cross-check",
         "type": "beta_client_crosscheck",
         "url": "https://thewowdb.com/wow-forever/talents/mage/"
+      },
+      {
+        "label": "Build 69913 client Talent table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/Talent/csv?build=1.60.1.69913"
       }
     ]
   },
@@ -785,6 +920,11 @@
         "label": "Build 69913 Mage talent cross-check",
         "type": "beta_client_crosscheck",
         "url": "https://thewowdb.com/wow-forever/talents/mage/"
+      },
+      {
+        "label": "Build 69913 client Talent table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/Talent/csv?build=1.60.1.69913"
       }
     ]
   },
@@ -832,6 +972,11 @@
         "label": "Build 69913 Mage talent cross-check",
         "type": "beta_client_crosscheck",
         "url": "https://thewowdb.com/wow-forever/talents/mage/"
+      },
+      {
+        "label": "Build 69913 client Talent table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/Talent/csv?build=1.60.1.69913"
       }
     ]
   },
@@ -873,6 +1018,11 @@
         "label": "Build 69913 Mage talent cross-check",
         "type": "beta_client_crosscheck",
         "url": "https://thewowdb.com/wow-forever/talents/mage/"
+      },
+      {
+        "label": "Build 69913 client Talent table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/Talent/csv?build=1.60.1.69913"
       }
     ]
   },
@@ -917,6 +1067,11 @@
         "label": "Build 69913 Mage talent cross-check",
         "type": "beta_client_crosscheck",
         "url": "https://thewowdb.com/wow-forever/talents/mage/"
+      },
+      {
+        "label": "Build 69913 client Talent table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/Talent/csv?build=1.60.1.69913"
       }
     ]
   },
@@ -964,6 +1119,11 @@
         "label": "Build 69913 Mage talent cross-check",
         "type": "beta_client_crosscheck",
         "url": "https://thewowdb.com/wow-forever/talents/mage/"
+      },
+      {
+        "label": "Build 69913 client Talent table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/Talent/csv?build=1.60.1.69913"
       }
     ]
   },
@@ -1004,6 +1164,11 @@
         "label": "Build 69913 Mage talent cross-check",
         "type": "beta_client_crosscheck",
         "url": "https://thewowdb.com/wow-forever/talents/mage/"
+      },
+      {
+        "label": "Build 69913 client Talent table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/Talent/csv?build=1.60.1.69913"
       }
     ]
   },
@@ -1044,6 +1209,11 @@
         "label": "Build 69913 Mage talent cross-check",
         "type": "beta_client_crosscheck",
         "url": "https://thewowdb.com/wow-forever/talents/mage/"
+      },
+      {
+        "label": "Build 69913 client Talent table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/Talent/csv?build=1.60.1.69913"
       }
     ]
   },
@@ -1089,6 +1259,11 @@
         "label": "Build 69913 Mage talent cross-check",
         "type": "beta_client_crosscheck",
         "url": "https://thewowdb.com/wow-forever/talents/mage/"
+      },
+      {
+        "label": "Build 69913 client Talent table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/Talent/csv?build=1.60.1.69913"
       }
     ]
   },
@@ -1129,6 +1304,11 @@
         "label": "Build 69913 Mage talent cross-check",
         "type": "beta_client_crosscheck",
         "url": "https://thewowdb.com/wow-forever/talents/mage/"
+      },
+      {
+        "label": "Build 69913 client Talent table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/Talent/csv?build=1.60.1.69913"
       }
     ]
   },
@@ -1173,6 +1353,11 @@
         "label": "Build 69913 Mage talent cross-check",
         "type": "beta_client_crosscheck",
         "url": "https://thewowdb.com/wow-forever/talents/mage/"
+      },
+      {
+        "label": "Build 69913 client Talent table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/Talent/csv?build=1.60.1.69913"
       }
     ]
   },
@@ -1213,6 +1398,11 @@
         "label": "Build 69913 Mage talent cross-check",
         "type": "beta_client_crosscheck",
         "url": "https://thewowdb.com/wow-forever/talents/mage/"
+      },
+      {
+        "label": "Build 69913 client Talent table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/Talent/csv?build=1.60.1.69913"
       }
     ]
   },
@@ -1256,6 +1446,11 @@
         "label": "Build 69913 Mage talent cross-check",
         "type": "beta_client_crosscheck",
         "url": "https://thewowdb.com/wow-forever/talents/mage/"
+      },
+      {
+        "label": "Build 69913 client Talent table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/Talent/csv?build=1.60.1.69913"
       }
     ]
   }

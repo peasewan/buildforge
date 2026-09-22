@@ -42,8 +42,10 @@ const SPEC_PAGES: { slug: string; kind: ClassPageKind; intent: string; title: st
   { slug: 'wow-forever-frost-vs-fire-mage-leveling', kind: 'comparison', intent: 'Frost vs Fire leveling', title: 'Frost vs Fire Mage for Leveling in WoW Forever', h1: 'Frost vs Fire Mage for Leveling in WoW Forever' },
 ]
 
-/** The plan's Global Constraints: exactly these eight URLs publish. */
+/** Pages whose current data requirements are satisfied. */
 const PUBLISHED_SLUGS = [
+  'mage',
+  'wow-forever-mage-builds',
   'wow-forever-mage-talents',
   'wow-forever-frost-mage-build',
   'wow-forever-frost-mage-leveling-build',
@@ -52,13 +54,11 @@ const PUBLISHED_SLUGS = [
   'wow-forever-arcane-mage-leveling-build',
   'wow-forever-mage-leveling-build',
   'wow-forever-mage-dungeon-build',
+  'wow-forever-mage-level-20-build',
 ]
 
-/** The plan's Global Constraints: these seven URLs stay unpublished, for the stated reason. */
+/** Pages that still require a reviewed Fire allocation. */
 const WITHHELD: Record<string, PublishRequirement> = {
-  mage: 'completeClassPlanner',
-  'wow-forever-mage-builds': 'completeClassPlanner',
-  'wow-forever-mage-level-20-build': 'completeClassPlanner',
   'wow-forever-fire-mage-build': 'legalBuild:fire',
   'wow-forever-fire-mage-leveling-build': 'legalBuild:fire',
   'wow-forever-mage-pvp-build': 'legalBuild:fire',
@@ -165,23 +165,23 @@ describe('Mage ClassDefinition — pages', () => {
   })
 })
 
-describe('Mage ClassDefinition — the eight/seven split', () => {
-  it('satisfies exactly talentDataset, level20Builds and the arcane and frost legal builds', () => {
-    expect([...satisfiedRequirements(mageClass)].sort()).toEqual(['legalBuild:arcane', 'legalBuild:frost', 'level20Builds', 'talentDataset'])
+describe('Mage ClassDefinition — data-gated publishing', () => {
+  it('satisfies the complete planner while Fire build pages still wait for an allocation', () => {
+    expect([...satisfiedRequirements(mageClass)].sort()).toEqual(['completeClassPlanner', 'legalBuild:arcane', 'legalBuild:frost', 'level20Builds', 'talentDataset'])
   })
 
-  it('publishes exactly the eight Global Constraint URLs and withholds the other seven', () => {
+  it('publishes the eleven data-ready URLs and withholds the four requiring a Fire build', () => {
     const published = mageClass.pages.filter((page) => meetsAllRequirements(page.slug)).map((page) => page.slug)
     const withheld = mageClass.pages.filter((page) => !meetsAllRequirements(page.slug)).map((page) => page.slug)
 
     expect(published.sort()).toEqual([...PUBLISHED_SLUGS].sort())
     expect(withheld.sort()).toEqual(Object.keys(WITHHELD).sort())
-    expect(published).toHaveLength(8)
-    expect(withheld).toHaveLength(7)
+    expect(published).toHaveLength(11)
+    expect(withheld).toHaveLength(4)
     expect(published.length + withheld.length).toBe(15)
   })
 
-  it('withholds each of the seven for the one requirement the Global Constraints name', () => {
+  it('withholds each remaining page for its unmet Fire-build requirement', () => {
     const satisfied = satisfiedRequirements(mageClass)
     for (const [slug, unmet] of Object.entries(WITHHELD)) {
       const page = mageClass.pages.find((candidate) => candidate.slug === slug)
@@ -196,7 +196,7 @@ describe('Mage ClassDefinition — the eight/seven split', () => {
     }
   })
 
-  it('serves the eight slugs through the requirement-gated lookup and none of the seven', () => {
+  it('serves the eleven slugs through the requirement-gated lookup and none of the four', () => {
     for (const slug of PUBLISHED_SLUGS) {
       expect(pageFromPublishedClasses(slug, PUBLISHED_CLASSES)?.slug, `${slug} should resolve`).toBe(slug)
       expect(pageFromPublishedClasses(`/${slug}`, PUBLISHED_CLASSES)?.slug, `/${slug} should resolve`).toBe(slug)

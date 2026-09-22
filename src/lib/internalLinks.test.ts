@@ -92,7 +92,7 @@ describe('internal link integrity', () => {
       PUBLISHED_CLASSES.flatMap((classDef) => classDef.pages.map((page) => `/${page.slug}`)).filter((path) => !published.has(path)),
     )
 
-    expect(withheld.size).toBe(7)
+    expect(withheld.size).toBe(4)
     for (const { slug, href } of declaredClassHrefs()) {
       const { pathname } = new URL(href, ORIGIN)
 

@@ -53,6 +53,8 @@
     { "source": "/wow-forever-paladin-beta-talent-changes", "destination": "/wow-forever-paladin-beta-talent-changes/index.html" },
     { "source": "/wow-forever-paladin-abilities", "destination": "/wow-forever-paladin-abilities/index.html" },
     { "source": "/wow-forever-paladin-talents", "destination": "/wow-forever-paladin-talents/index.html" },
+    { "source": "/mage", "destination": "/mage/index.html" },
+    { "source": "/wow-forever-mage-builds", "destination": "/wow-forever-mage-builds/index.html" },
     { "source": "/wow-forever-mage-talents", "destination": "/wow-forever-mage-talents/index.html" },
     { "source": "/wow-forever-mage-leveling-build", "destination": "/wow-forever-mage-leveling-build/index.html" },
     { "source": "/wow-forever-frost-mage-build", "destination": "/wow-forever-frost-mage-build/index.html" },
@@ -60,6 +62,7 @@
     { "source": "/wow-forever-frost-mage-leveling-build", "destination": "/wow-forever-frost-mage-leveling-build/index.html" },
     { "source": "/wow-forever-arcane-mage-leveling-build", "destination": "/wow-forever-arcane-mage-leveling-build/index.html" },
     { "source": "/wow-forever-frost-mage-aoe-build", "destination": "/wow-forever-frost-mage-aoe-build/index.html" },
-    { "source": "/wow-forever-mage-dungeon-build", "destination": "/wow-forever-mage-dungeon-build/index.html" }
+    { "source": "/wow-forever-mage-dungeon-build", "destination": "/wow-forever-mage-dungeon-build/index.html" },
+    { "source": "/wow-forever-mage-level-20-build", "destination": "/wow-forever-mage-level-20-build/index.html" }
   ]
 }

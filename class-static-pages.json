@@ -1,5 +1,13 @@
 [
   {
+    "name": "mage-mage",
+    "file": "mage/index.html"
+  },
+  {
+    "name": "mage-wow-forever-mage-builds",
+    "file": "wow-forever-mage-builds/index.html"
+  },
+  {
     "name": "mage-wow-forever-mage-talents",
     "file": "wow-forever-mage-talents/index.html"
   },
@@ -30,5 +38,9 @@
   {
     "name": "mage-wow-forever-mage-dungeon-build",
     "file": "wow-forever-mage-dungeon-build/index.html"
+  },
+  {
+    "name": "mage-wow-forever-mage-level-20-build",
+    "file": "wow-forever-mage-level-20-build/index.html"
   }
 ]
