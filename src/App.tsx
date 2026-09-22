@@ -23,6 +23,7 @@ const branchIcons: Record<Branch, string> = {
 const branchMax = (branch: Branch) => talents.filter((talent) => talent.branch === branch).reduce((sum, talent) => sum + talent.maxRank, 0)
 
 function initialPlannerState(): { build: Build; restored: boolean } {
+  if (typeof window === 'undefined') return { build: {}, restored: false }
   const params = new URLSearchParams(window.location.search)
   const shared = params.get('id')
   if (shared) return { build: decodeBuild(shared, talents), restored: false }

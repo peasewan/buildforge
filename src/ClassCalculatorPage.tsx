@@ -31,6 +31,7 @@ function requestedLevel<B extends string>(classDef: ClassDefinition<B>, candidat
 }
 
 function readStoredBuild<B extends string>(classDef: ClassDefinition<B>): { build: PlannerBuild; level: PlannerLevel } {
+  if (typeof window === 'undefined') return { build: {}, level: defaultLevel(classDef) }
   const params = new URLSearchParams(window.location.search)
   const level = requestedLevel(classDef, Number(params.get('level'))) ?? defaultLevel(classDef)
   const code = params.get('build')

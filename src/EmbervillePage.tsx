@@ -2,7 +2,6 @@ import { ArrowRight, BookOpen, Check, CircleHelp, Flame, Gamepad2, GitBranch, Sh
 import EmbervillePlanner from './EmbervillePlanner'
 import EmbervilleShell from './EmbervilleShell'
 import { EMBERVILLE_EDITORIAL, EMBERVILLE_MECHANICS, EMBERVILLE_PAGES, EMBERVILLE_SOURCES, EMBERVILLE_STATUS, embervillePageById, type EmbervillePageId } from './data/emberville'
-import './emberville.css'
 
 const buildDirections = [
   ['Melee builds', 'Positioning and close-range combat.', Swords],

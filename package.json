@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && tsc -p tsconfig.scripts.json && tsx scripts/sync-class-static-pages.ts --check && vite build && tsx scripts/prerender-guide.ts && tsx scripts/prerender-pages.ts && tsx scripts/prerender-beta.ts",
+    "build": "tsc -b && tsc -p tsconfig.scripts.json && tsx scripts/sync-class-static-pages.ts --check && vite build && tsx --tsconfig tsconfig.scripts.json scripts/prerender-visual.ts",
     "classes:sync": "tsx scripts/sync-class-static-pages.ts",
     "typecheck": "tsc -b && tsc -p tsconfig.scripts.json",
     "test": "vitest run",
