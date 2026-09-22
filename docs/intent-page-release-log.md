@@ -37,3 +37,8 @@ All seven Mage pages inspected at 1440×900 and 390×844; no overflow. Hub expos
 
 All seven pages inspected at1440×900 and390×844, no overflow. Mage AoE retains its route after selecting leveling and back; level20 link restores Improved Blizzard1. Mage dungeon renders toolkit first, level20 lists only published Frost/Arcane examples. Rogue calculator loads Combat0/11/0, copies exact ranks, resets, and single-point edit updates live counters; no console errors. Rogue directory shows51records with explicit unavailable text for blank tooltip; real Remorseless Attacks search verified after fix. Shared blank-rank fallback independently reviewed, regression tests cover valid text precedence and missing/whitespace data. Build, lint, static guard and full suite results verified before release.115frozen roots including22Paladin remain exact;150original metadata preserved.
 
+
+## B06 — reviewed batch
+
+Seven Rogue spec/leveling/PvP pages reviewed at1440×900 and390×844 without overflow. Assassination, Combat and Subtlety start from correct allocations and talents. All three level controls reach legal11-point endpoints; identical spec/leveling allocations explicitly report no talent differences. PvP preparation checkbox updates1/2 notes reviewed; source gaps remain visible. Focused tests, lint, build and150-page static guard pass,108frozen roots unchanged including22Paladin.
+
