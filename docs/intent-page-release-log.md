@@ -57,3 +57,12 @@ Seven pages inspected at1440×900/390×844, no overflow. Rogue cap showsthree11-
 - Build, leveling, and alternative-allocation compositions retain honest editorial labels. Identical allocations are not presented as fabricated differences.
 - Build, lint, scope tests and 150-URL audit passed: 56 enabled, 94 frozen, all 22 Paladin pages unchanged.
 
+
+## B09 — reviewed batch
+
+
+- All seven pages inspected at desktop 1440×900 and mobile 390×844; no document overflow. Hunter PvP checklist, pet planning, dungeon toolkit, cap snapshot and two-route comparison retain distinct tasks and explicit missing-rank evidence.
+- Warlock hub search for pet returns its relevant route. Calculator single Suppression point gives 1/0/0; Demonology preset loads, Review & share works, copied URL preserves all four talent ranks and Level 20; Reset restores 0/0/0. Browser has no errors.
+- Paladin local regression also passed single-point editing, Protection Level 20 loading, exact build-link copying and reset; no Paladin source/output changed. Warrior and Mage individual-point/reset flows passed again.
+- Scope tests, lint, production build and all-150 static audit passed before release.
+

@@ -2,7 +2,7 @@
   "baseline": "8ea3d82",
   "total": 150,
   "batchSize": 7,
-  "nextBatch": 8,
+  "nextBatch": 9,
   "pages": [
     {
       "path": "/wow-forever-warrior-builds",
@@ -1284,7 +1284,7 @@
       "kind": "leveling",
       "title": "WoW Forever Hunter Leveling Build",
       "batch": 8,
-      "status": "verified",
+      "status": "deployed",
       "implementation": "Legal level-by-level progression, milestones, next point and exact-prefix calculator link.",
       "checks": [
         "desktop 1440 screenshot review",
@@ -1296,8 +1296,13 @@
         "local assets including CSS URLs",
         "unit tests and build passed"
       ],
-      "commit": null,
-      "production": null
+      "commit": "4990514974fbe2eee1286a9f26f9a09648937cc3",
+      "production": {
+        "http": 200,
+        "intentMarker": true,
+        "metadata": "baseline preserved",
+        "vercel": "success"
+      }
     },
     {
       "path": "/wow-forever-beast-mastery-hunter-build",
@@ -1305,7 +1310,7 @@
       "kind": "specBuild",
       "title": "WoW Forever Beast Mastery Hunter Build",
       "batch": 8,
-      "status": "verified",
+      "status": "deployed",
       "implementation": "Editable allocation, authored playstyle and exact alternative-build differences.",
       "checks": [
         "desktop 1440 screenshot review",
@@ -1317,8 +1322,13 @@
         "local assets including CSS URLs",
         "unit tests and build passed"
       ],
-      "commit": null,
-      "production": null
+      "commit": "4990514974fbe2eee1286a9f26f9a09648937cc3",
+      "production": {
+        "http": 200,
+        "intentMarker": true,
+        "metadata": "baseline preserved",
+        "vercel": "success"
+      }
     },
     {
       "path": "/wow-forever-beast-mastery-hunter-leveling-build",
@@ -1326,7 +1336,7 @@
       "kind": "specLeveling",
       "title": "WoW Forever Beast Mastery Hunter Leveling Build",
       "batch": 8,
-      "status": "verified",
+      "status": "deployed",
       "implementation": "Specialization starts selected; legal per-level points and next-talent guidance.",
       "checks": [
         "desktop 1440 screenshot review",
@@ -1338,8 +1348,13 @@
         "local assets including CSS URLs",
         "unit tests and build passed"
       ],
-      "commit": null,
-      "production": null
+      "commit": "4990514974fbe2eee1286a9f26f9a09648937cc3",
+      "production": {
+        "http": 200,
+        "intentMarker": true,
+        "metadata": "baseline preserved",
+        "vercel": "success"
+      }
     },
     {
       "path": "/wow-forever-marksmanship-hunter-build",
@@ -1347,7 +1362,7 @@
       "kind": "specBuild",
       "title": "WoW Forever Marksmanship Hunter Build",
       "batch": 8,
-      "status": "verified",
+      "status": "deployed",
       "implementation": "Editable allocation, authored playstyle and exact alternative-build differences.",
       "checks": [
         "desktop 1440 screenshot review",
@@ -1359,8 +1374,13 @@
         "local assets including CSS URLs",
         "unit tests and build passed"
       ],
-      "commit": null,
-      "production": null
+      "commit": "4990514974fbe2eee1286a9f26f9a09648937cc3",
+      "production": {
+        "http": 200,
+        "intentMarker": true,
+        "metadata": "baseline preserved",
+        "vercel": "success"
+      }
     },
     {
       "path": "/wow-forever-marksmanship-hunter-leveling-build",
@@ -1368,7 +1388,7 @@
       "kind": "specLeveling",
       "title": "WoW Forever Marksmanship Hunter Leveling Build",
       "batch": 8,
-      "status": "verified",
+      "status": "deployed",
       "implementation": "Specialization starts selected; legal per-level points and next-talent guidance.",
       "checks": [
         "desktop 1440 screenshot review",
@@ -1380,8 +1400,13 @@
         "local assets including CSS URLs",
         "unit tests and build passed"
       ],
-      "commit": null,
-      "production": null
+      "commit": "4990514974fbe2eee1286a9f26f9a09648937cc3",
+      "production": {
+        "http": 200,
+        "intentMarker": true,
+        "metadata": "baseline preserved",
+        "vercel": "success"
+      }
     },
     {
       "path": "/wow-forever-survival-hunter-build",
@@ -1389,7 +1414,7 @@
       "kind": "specBuild",
       "title": "WoW Forever Survival Hunter Build",
       "batch": 8,
-      "status": "verified",
+      "status": "deployed",
       "implementation": "Editable allocation, authored playstyle and exact alternative-build differences.",
       "checks": [
         "desktop 1440 screenshot review",
@@ -1401,8 +1426,13 @@
         "local assets including CSS URLs",
         "unit tests and build passed"
       ],
-      "commit": null,
-      "production": null
+      "commit": "4990514974fbe2eee1286a9f26f9a09648937cc3",
+      "production": {
+        "http": 200,
+        "intentMarker": true,
+        "metadata": "baseline preserved",
+        "vercel": "success"
+      }
     },
     {
       "path": "/wow-forever-survival-hunter-leveling-build",
@@ -1410,7 +1440,7 @@
       "kind": "specLeveling",
       "title": "WoW Forever Survival Hunter Leveling Build",
       "batch": 8,
-      "status": "verified",
+      "status": "deployed",
       "implementation": "Specialization starts selected; legal per-level points and next-talent guidance.",
       "checks": [
         "desktop 1440 screenshot review",
@@ -1422,8 +1452,13 @@
         "local assets including CSS URLs",
         "unit tests and build passed"
       ],
-      "commit": null,
-      "production": null
+      "commit": "4990514974fbe2eee1286a9f26f9a09648937cc3",
+      "production": {
+        "http": 200,
+        "intentMarker": true,
+        "metadata": "baseline preserved",
+        "vercel": "success"
+      }
     },
     {
       "path": "/wow-forever-hunter-pvp-build",
@@ -1431,9 +1466,18 @@
       "kind": "pvp",
       "title": "WoW Forever Hunter PvP Build",
       "batch": 9,
-      "status": "pending",
-      "implementation": "",
-      "checks": [],
+      "status": "verified",
+      "implementation": "PvP route selection, encounter checklist and actual baseline talent differences.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
       "commit": null,
       "production": null
     },
@@ -1443,9 +1487,18 @@
       "kind": "levelCap",
       "title": "WoW Forever Hunter Level 20 Build",
       "batch": 9,
-      "status": "pending",
-      "implementation": "",
-      "checks": [],
+      "status": "verified",
+      "implementation": "Current planning budget, data limits and comparable routes.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
       "commit": null,
       "production": null
     },
@@ -1455,9 +1508,18 @@
       "kind": "pet",
       "title": "WoW Forever Hunter Pet Build",
       "batch": 9,
-      "status": "pending",
-      "implementation": "",
-      "checks": [],
+      "status": "verified",
+      "implementation": "Pet/player planning with known-data limits and authored route tools.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
       "commit": null,
       "production": null
     },
@@ -1467,9 +1529,18 @@
       "kind": "comparison",
       "title": "WoW Forever Beast Mastery vs Marksmanship Hunter Leveling",
       "batch": 9,
-      "status": "pending",
-      "implementation": "",
-      "checks": [],
+      "status": "verified",
+      "implementation": "Independent route selectors, allocations and exact rank difference table.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
       "commit": null,
       "production": null
     },
@@ -1479,9 +1550,18 @@
       "kind": "dungeon",
       "title": "WoW Forever Hunter Dungeon Build",
       "batch": 9,
-      "status": "pending",
-      "implementation": "",
-      "checks": [],
+      "status": "verified",
+      "implementation": "Dungeon tools grid and preparation checklist connected to existing build.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
       "commit": null,
       "production": null
     },
@@ -1491,9 +1571,18 @@
       "kind": "calculator",
       "title": "WoW Forever Warlock Talent Calculator",
       "batch": 9,
-      "status": "pending",
-      "implementation": "",
-      "checks": [],
+      "status": "verified",
+      "implementation": "Specialization point counters and direct tree / review-share navigation; existing calculator remains primary.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
       "commit": null,
       "production": null
     },
@@ -1503,9 +1592,18 @@
       "kind": "buildsHub",
       "title": "WoW Forever Warlock Builds",
       "batch": 9,
-      "status": "pending",
-      "implementation": "",
-      "checks": [],
+      "status": "verified",
+      "implementation": "Searchable published route directory organized by purpose.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
       "commit": null,
       "production": null
     },
