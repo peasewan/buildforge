@@ -42,3 +42,8 @@ All seven pages inspected at1440×900 and390×844, no overflow. Mage AoE retains
 
 Seven Rogue spec/leveling/PvP pages reviewed at1440×900 and390×844 without overflow. Assassination, Combat and Subtlety start from correct allocations and talents. All three level controls reach legal11-point endpoints; identical spec/leveling allocations explicitly report no talent differences. PvP preparation checkbox updates1/2 notes reviewed; source gaps remain visible. Focused tests, lint, build and150-page static guard pass,108frozen roots unchanged including22Paladin.
 
+
+## B07 — reviewed batch
+
+Seven pages inspected at1440×900/390×844, no overflow. Rogue cap showsthree11-point routes; comparison defaults Combat vsAssassination with exact different ranks; Subtlety PvP staysspecmatched; dungeon toolkit uses Combat allocation and explicit missing-rank text. Hunter reference has46records andrealrankdescriptions. Hunter calculator single point ->1/0/0, Marksmanship preset ->0/11/0, share URLexactrankIDs andresetallzero; no console errors. Build, lint, scope tests and150-page static guard pass;101frozen roots including22Paladin unchanged.
+
