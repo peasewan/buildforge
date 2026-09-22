@@ -4,10 +4,11 @@ import { HUB_BUILD_HREFS } from '../data/paladinBuildsHub'
 import { SPEC_BUILDS_HUBS, specHubHrefs } from '../data/specBuildsHubs'
 import { BUILD_LANDING_PAGES } from '../data/buildLandingPages'
 import { TRUST_PAGES } from '../data/trustPages'
-import { renderBetaAvailabilityPrerender, renderBetaLevelingSnapshotPrerender, renderBetaSpecPathPrerender, renderClassPage, renderEmbervillePrerender, renderHubPrerender, renderLandingPrerender, renderSpecHubPrerender, renderSpellbookPrerender, renderTrustPrerender, renderWarriorBuildPrerender, renderWarriorHubPrerender, renderWarriorPlannerPrerender } from './prerender'
+import { renderBetaAvailabilityPrerender, renderBetaLevelingSnapshotPrerender, renderBetaSpecPathPrerender, renderClassPage, renderEmbervillePrerender, renderHubPrerender, renderLandingPrerender, renderSpecHubPrerender, renderSpellbookPrerender, renderTrustPrerender } from './prerender'
 import { EMBERVILLE_EDITORIAL, EMBERVILLE_PAGES } from '../data/emberville'
 import { paladinSpellbook } from '../data/paladinSpellbook'
 import { mageClass } from '../data/classes/mage'
+import { warriorClass } from '../data/classes/warrior'
 import { hunterClassFixture } from '../data/fixtures/hunterClass.fixture'
 import { publishRequirementsFor, satisfiedRequirements, type ClassPageDefinition } from './classPage'
 import { MAGE_BRANCHES } from '../data/mageTalents'
@@ -44,14 +45,16 @@ const allPrerendered = () => [
 ] as const
 
 describe('prerender generation', () => {
-  it('prerenders all 53 Warrior talent records and the build cluster', () => {
-    const planner = renderWarriorPlannerPrerender()
-    expect(planner.match(/data-warrior-talent/g)).toHaveLength(53)
+  it('prerenders all 53 Warrior talent records and the build cluster through the generic renderer', () => {
+    const calculator = warriorClass.pages.find((page) => page.kind === 'calculator')!
+    const planner = renderClassPage(warriorClass, calculator)
+    expect(planner.match(/data-class-talent/g)).toHaveLength(53)
     expect(planner).toContain('<h1>WoW Forever Warrior Talent Calculator</h1>')
-    expect(renderWarriorHubPrerender()).toContain('WoW Forever Warrior Builds &amp; Talent Calculator')
-    for (const pageId of ['leveling', 'arms', 'fury', 'protection'] as const) {
-      const html = renderWarriorBuildPrerender(pageId)
-      expect(html).toContain('Community recommendation')
+    const hub = warriorClass.pages.find((page) => page.kind === 'buildsHub')!
+    expect(renderClassPage(warriorClass, hub)).toContain('WoW Forever Warrior Builds')
+    for (const page of warriorClass.pages.filter((candidate) => candidate.primaryBuildId)) {
+      const html = renderClassPage(warriorClass, page)
+      expect(html).toContain('Community / Editorial Build')
       expect(html).toContain('href="/warrior?build=')
     }
   })

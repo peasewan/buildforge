@@ -76,13 +76,13 @@ function TalentEvidence() {
   return <p className="class-evidence-line"><span>Talent data</span><VerificationBadge status="client_verified" /><small>positions and ranks only</small></p>
 }
 
-function BuildGroups<B extends string>({ classDef, isPublishedHref }: { classDef: ClassDefinition<B>; isPublishedHref: (href: string) => boolean }) {
-  const intents = [...new Set(classDef.builds.map((build) => build.intent))]
+function BuildGroups<B extends string>({ classDef, builds, isPublishedHref }: { classDef: ClassDefinition<B>; builds: ClassBuild[]; isPublishedHref: (href: string) => boolean }) {
+  const intents = [...new Set(builds.map((build) => build.intent))]
   return <section className="class-build-groups">
     <h2>{classDef.name} builds</h2>
     {intents.map((intent) => <div key={intent}>
       <h3>{intentLabels[intent] ?? intent}</h3>
-      {classDef.builds.filter((build) => build.intent === intent).map((build) => <article key={build.id}>
+      {builds.filter((build) => build.intent === intent).map((build) => <article key={build.id}>
         {isPublishedHref(build.href) ? <a href={build.href}>{build.title}</a> : <strong>{build.title}</strong>}
         <p>{build.role} · Level {build.level} · {build.phase}</p>
         <p>{build.allocation} · {totalPlannerPoints(build.build)} / {build.levelCap} points</p>
@@ -115,7 +115,7 @@ function PvpTabs<B extends string>({ classDef, plannerPublished }: { classDef: C
   </section>
 }
 
-function TalentCatalogue<B extends string>({ classDef }: { classDef: ClassDefinition<B> }) {
+function TalentCatalogue<B extends string>({ classDef, branchFilter }: { classDef: ClassDefinition<B>; branchFilter?: B }) {
   // Which branches cannot be allocated comes from the dataset, through the same rule the publish
   // gate reads, so the catalogue cannot mark a branch the planner would accept — or miss one it
   // cannot start.
@@ -123,7 +123,7 @@ function TalentCatalogue<B extends string>({ classDef }: { classDef: ClassDefini
   return <section className="class-catalogue" data-testid="class-talent-catalogue">
     <h2>{classDef.name} talent catalogue</h2>
     <p>Every node, grouped by branch and client change status through build {classDef.verifiedBuild}.</p>
-    {classDef.branches.map((branch) => {
+    {classDef.branches.filter((branch) => !branchFilter || branch === branchFilter).map((branch) => {
       const excluded = unallocatable.has(branch)
       return <div className="class-catalogue-branch" key={branch} data-branch={branch} data-excluded={excluded ? 'true' : undefined}>
         <h3>{classDef.branchNames[branch]}</h3>
@@ -162,6 +162,7 @@ export default function ClassDocumentPage<B extends string>({ classDef, page }: 
   const isPublishedHref = (href: string) => publishedSlugs.has(href.replace(/^\//, '').split(/[?#]/)[0])
   const primaryBuild = buildById(classDef, page.primaryBuildId)
   const relatedBuilds = page.relatedBuildIds.flatMap((id) => buildById(classDef, id) ?? []).filter((build) => isPublishedHref(build.href))
+  const groupedBuilds = page.kind === 'levelCap' && relatedBuilds.length > 0 ? relatedBuilds : classDef.builds
   const showsBuildGroups = kindsListingEveryBuild.includes(page.kind)
   const showsRelatedBuilds = relatedBuilds.length > 0 && !kindsHandlingTheirOwnBuildLinks.includes(page.kind)
   const calculatorPage = classDef.pages.find((candidate) => candidate.kind === 'calculator')
@@ -174,7 +175,7 @@ export default function ClassDocumentPage<B extends string>({ classDef, page }: 
   const footerLinks = navPages
     .map((candidate) => ({ href: `/${candidate.slug}`, label: candidate.h1 }))
     .concat(plannerPublished ? [{ href: classDef.plannerPath, label: `${classDef.name} Talent Calculator` }] : [])
-  const editInCalculator = <a className="button class-primary" href={calculatorHref(classDef, primaryBuild)}>Edit this build in Calculator <ArrowRight size={15} /></a>
+  const calculatorAction = <a className="button class-primary" href={calculatorHref(classDef, primaryBuild)}>{primaryBuild ? 'Edit this build in Calculator' : `Open ${classDef.name} Calculator`} <ArrowRight size={15} /></a>
 
   return <main className="class-page">
     <header className="class-nav shell">
@@ -188,15 +189,16 @@ export default function ClassDocumentPage<B extends string>({ classDef, page }: 
     <section className="class-hero" style={heroStyle}>
       <div className="shell class-hero-grid">
         <div>
+          <nav className="class-breadcrumbs" aria-label="Breadcrumb"><a href="/">BuildForgeTools</a><span>/</span><a href={classDef.plannerPath}>{classDef.name}</a><span>/</span><span aria-current="page">{page.h1}</span></nav>
           <p className="class-kicker">{page.eyebrow} · {classDef.beta.phaseLabel}</p>
           <h1>{page.h1}</h1>
           <p>{page.description}</p>
-          {plannerPublished && <div className="class-hero-actions">{editInCalculator}</div>}
+          {plannerPublished && <div className="class-hero-actions">{calculatorAction}</div>}
         </div>
         <aside>
           <div className="class-evidence">
             <p><span>Talent data</span><VerificationBadge status="client_verified" /></p>
-            <p><span>Build</span><BuildChip /></p>
+            {primaryBuild ? <p><span>Build</span><BuildChip /></p> : page.kind === 'specPvp' ? <p><span>Build status</span><small>Pending verification</small></p> : <p><span>Build links</span><small>Editorial routes labeled separately</small></p>}
           </div>
           <p>Reviewed {page.updatedAt}</p>
         </aside>
@@ -205,7 +207,7 @@ export default function ClassDocumentPage<B extends string>({ classDef, page }: 
 
     <div className="shell class-document">
       <div className="class-builds" data-testid="class-build-evidence">
-        {showsBuildGroups && <BuildGroups classDef={classDef} isPublishedHref={isPublishedHref} />}
+        {showsBuildGroups && <BuildGroups classDef={classDef} builds={groupedBuilds} isPublishedHref={isPublishedHref} />}
         {page.kind === 'pvp' && <PvpTabs classDef={classDef} plannerPublished={plannerPublished} />}
         {primaryBuild && !showsBuildGroups && <section className="class-primary-build">
           <h2>{primaryBuild.title}</h2>
@@ -233,7 +235,7 @@ export default function ClassDocumentPage<B extends string>({ classDef, page }: 
         </li>)}</ul>
       </section>}
 
-      {page.kind === 'talents' && <TalentCatalogue classDef={classDef} />}
+      {(page.kind === 'talents' || page.kind === 'specTalents') && <TalentCatalogue classDef={classDef} branchFilter={page.spec as B | undefined} />}
 
       {page.sections.map((section) => <section className="class-section" key={section.heading}>
         <h2>{section.heading}</h2>
@@ -267,7 +269,7 @@ export default function ClassDocumentPage<B extends string>({ classDef, page }: 
       {plannerPublished && <section className="class-cta">
         <h2>Open the {classDef.name} calculator</h2>
         <p>Every published {classDef.name} page points back at the planner at {classDef.plannerPath}.</p>
-        {editInCalculator}
+        {calculatorAction}
       </section>}
     </div>
 

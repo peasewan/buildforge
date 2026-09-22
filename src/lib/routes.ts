@@ -5,11 +5,10 @@ import { SPEC_TALENTS_PAGES } from '../data/specTalentsPages'
 import { TRUST_PAGES, type TrustPageId } from '../data/trustPages'
 import type { Branch } from './build'
 import { EMBERVILLE_PAGES, type EmbervillePageId } from '../data/emberville'
-import { WARRIOR_BUILD_PAGES, type WarriorBuildPageId } from '../data/warriorPages'
 import { publishedClassPage } from './classStaticPages'
 
 export interface PageDefinition {
-  kind: 'planner' | 'guide' | 'build-guide' | 'build-landing' | 'build-hub' | 'spec-hub' | 'spec-talents' | 'spellbook' | 'beta-changes' | 'trust' | 'emberville' | 'warrior-planner' | 'warrior-hub' | 'warrior-build' | 'class-calculator' | 'class-document'
+  kind: 'planner' | 'guide' | 'build-guide' | 'build-landing' | 'build-hub' | 'spec-hub' | 'spec-talents' | 'spellbook' | 'beta-changes' | 'trust' | 'emberville' | 'class-calculator' | 'class-document'
   title: string
   description: string
   canonical: string
@@ -19,7 +18,6 @@ export interface PageDefinition {
   spec?: Branch
   trustPageId?: TrustPageId
   embervillePageId?: EmbervillePageId
-  warriorBuildPageId?: WarriorBuildPageId
   classId?: string
   classPageSlug?: string
 }
@@ -102,24 +100,6 @@ const spellbookPage: PageDefinition = {
 
 export function pageForPath(pathname: string): PageDefinition {
   const normalized = pathname.replace(/\/+$/, '') || '/'
-  if (normalized === '/warrior') return {
-    kind: 'warrior-planner',
-    title: 'WoW Forever Warrior Talent Calculator | Beta Build 69913',
-    description: 'Plan Arms, Fury, and Protection trees with the WoW Forever Warrior Talent Calculator, 53 verified nodes, level caps, presets, and shareable builds.',
-    canonical: 'https://buildforgetools.com/warrior', robots: 'index, follow',
-  }
-  if (normalized === '/wow-forever-warrior-builds') return {
-    kind: 'warrior-hub',
-    title: 'WoW Forever Warrior Builds & Talent Calculator | BuildForgeTools',
-    description: 'Explore Level 20 WoW Forever Warrior builds for Arms, Fury, and Protection, then customize every talent in the BuildForgeTools calculator.',
-    canonical: 'https://buildforgetools.com/wow-forever-warrior-builds', robots: 'index, follow',
-  }
-  const warriorBuildPage = WARRIOR_BUILD_PAGES.find((page) => normalized === `/${page.slug}`)
-  if (warriorBuildPage) return {
-    kind: 'warrior-build', warriorBuildPageId: warriorBuildPage.id,
-    title: warriorBuildPage.metaTitle, description: warriorBuildPage.subtitle,
-    canonical: `https://buildforgetools.com/${warriorBuildPage.slug}`, robots: 'index, follow',
-  }
   const embervillePage = EMBERVILLE_PAGES.find((page) => normalized === `/${page.slug}`)
   if (embervillePage) return {
     kind: 'emberville', embervillePageId: embervillePage.id,
@@ -171,7 +151,7 @@ export function pageForPath(pathname: string): PageDefinition {
   if (normalized === '/wow-forever-protection-paladin-build') return protectionBuildPage
   if (normalized === '/wow-forever-retribution-paladin-build') return retributionBuildPage
   if (normalized === '/wow-forever-retribution-paladin-leveling-build') return retributionLevelingBuildPage
-  // Last, so a class page can never shadow a Paladin, Warrior or Emberville route. The lookup is
+  // Last, so a class page can never shadow a Paladin or Emberville route. The lookup is
   // the requirement gate: a page whose requirements its class does not meet is skipped exactly as
   // if it were not defined, and the path falls through to the Paladin planner below.
   const classPage = publishedClassPage(normalized)

@@ -36,6 +36,9 @@ const sitemapPriorities: Record<ClassPageKind, string> = {
   specBuild: '0.9',
   leveling: '0.8',
   specLeveling: '0.8',
+  specTalents: '0.8',
+  specPvp: '0.8',
+  specDungeon: '0.8',
   aoe: '0.8',
   pvp: '0.8',
   dungeon: '0.8',
@@ -153,13 +156,24 @@ export function classPageShellHtml<B extends string>(classDef: ClassDefinition<B
   // No image is invented: a class without art gets no tag, rather than a card that 404s or shows
   // another class's art.
   const ogImageTag = ogImage ? `<meta property="og:image" content="${escapeHtml(new URL(ogImage, SITE_ORIGIN).toString())}"/>` : ''
+  const classUrl = new URL(classDef.plannerPath, SITE_ORIGIN).toString()
+  const breadcrumbItems = [
+    { '@type': 'ListItem', position: 1, name: 'BuildForgeTools', item: SITE_ORIGIN },
+    { '@type': 'ListItem', position: 2, name: page.kind === 'calculator' ? page.h1 : classDef.name, item: classUrl },
+    ...(page.kind === 'calculator' ? [] : [{ '@type': 'ListItem', position: 3, name: page.h1, item: page.canonical }]),
+  ]
   const structuredData = JSON.stringify({
     '@context': 'https://schema.org',
-    '@type': 'WebPage',
-    name: page.title,
-    url: page.canonical,
-    description: page.description,
-    isPartOf: { '@type': 'WebSite', name: 'BuildForgeTools', url: 'https://buildforgetools.com' },
+    '@graph': [
+      {
+        '@type': 'WebPage',
+        name: page.title,
+        url: page.canonical,
+        description: page.description,
+        isPartOf: { '@type': 'WebSite', name: 'BuildForgeTools', url: SITE_ORIGIN },
+      },
+      { '@type': 'BreadcrumbList', itemListElement: breadcrumbItems },
+    ],
   })
 
   return `<!doctype html>

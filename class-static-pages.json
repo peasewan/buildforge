@@ -42,5 +42,85 @@
   {
     "name": "mage-wow-forever-mage-level-20-build",
     "file": "wow-forever-mage-level-20-build/index.html"
+  },
+  {
+    "name": "warrior-warrior",
+    "file": "warrior/index.html"
+  },
+  {
+    "name": "warrior-wow-forever-warrior-builds",
+    "file": "wow-forever-warrior-builds/index.html"
+  },
+  {
+    "name": "warrior-wow-forever-warrior-leveling-build",
+    "file": "wow-forever-warrior-leveling-build/index.html"
+  },
+  {
+    "name": "warrior-wow-forever-arms-warrior-build",
+    "file": "wow-forever-arms-warrior-build/index.html"
+  },
+  {
+    "name": "warrior-wow-forever-fury-warrior-build",
+    "file": "wow-forever-fury-warrior-build/index.html"
+  },
+  {
+    "name": "warrior-wow-forever-protection-warrior-build",
+    "file": "wow-forever-protection-warrior-build/index.html"
+  },
+  {
+    "name": "warrior-wow-forever-warrior-talents",
+    "file": "wow-forever-warrior-talents/index.html"
+  },
+  {
+    "name": "warrior-wow-forever-arms-warrior-leveling-build",
+    "file": "wow-forever-arms-warrior-leveling-build/index.html"
+  },
+  {
+    "name": "warrior-wow-forever-fury-warrior-leveling-build",
+    "file": "wow-forever-fury-warrior-leveling-build/index.html"
+  },
+  {
+    "name": "warrior-wow-forever-protection-warrior-leveling-build",
+    "file": "wow-forever-protection-warrior-leveling-build/index.html"
+  },
+  {
+    "name": "warrior-wow-forever-warrior-pvp-build",
+    "file": "wow-forever-warrior-pvp-build/index.html"
+  },
+  {
+    "name": "warrior-wow-forever-arms-warrior-pvp-build",
+    "file": "wow-forever-arms-warrior-pvp-build/index.html"
+  },
+  {
+    "name": "warrior-wow-forever-fury-warrior-pvp-build",
+    "file": "wow-forever-fury-warrior-pvp-build/index.html"
+  },
+  {
+    "name": "warrior-wow-forever-protection-warrior-pvp-build",
+    "file": "wow-forever-protection-warrior-pvp-build/index.html"
+  },
+  {
+    "name": "warrior-wow-forever-warrior-dungeon-build",
+    "file": "wow-forever-warrior-dungeon-build/index.html"
+  },
+  {
+    "name": "warrior-wow-forever-protection-warrior-dungeon-build",
+    "file": "wow-forever-protection-warrior-dungeon-build/index.html"
+  },
+  {
+    "name": "warrior-wow-forever-warrior-level-20-build",
+    "file": "wow-forever-warrior-level-20-build/index.html"
+  },
+  {
+    "name": "warrior-wow-forever-arms-vs-fury-warrior-leveling",
+    "file": "wow-forever-arms-vs-fury-warrior-leveling/index.html"
+  },
+  {
+    "name": "warrior-wow-forever-arms-warrior-talents",
+    "file": "wow-forever-arms-warrior-talents/index.html"
+  },
+  {
+    "name": "warrior-wow-forever-protection-warrior-talents",
+    "file": "wow-forever-protection-warrior-talents/index.html"
   }
 ]

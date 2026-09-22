@@ -21,12 +21,6 @@
     }
   ],
   "rewrites": [
-    { "source": "/warrior", "destination": "/warrior/index.html" },
-    { "source": "/wow-forever-warrior-builds", "destination": "/wow-forever-warrior-builds/index.html" },
-    { "source": "/wow-forever-warrior-leveling-build", "destination": "/wow-forever-warrior-leveling-build/index.html" },
-    { "source": "/wow-forever-arms-warrior-build", "destination": "/wow-forever-arms-warrior-build/index.html" },
-    { "source": "/wow-forever-fury-warrior-build", "destination": "/wow-forever-fury-warrior-build/index.html" },
-    { "source": "/wow-forever-protection-warrior-build", "destination": "/wow-forever-protection-warrior-build/index.html" },
     { "source": "/emberville", "destination": "/emberville/index.html" },
     { "source": "/emberville-builds", "destination": "/emberville-builds/index.html" },
     { "source": "/emberville-classes", "destination": "/emberville-classes/index.html" },
@@ -64,6 +58,26 @@
     { "source": "/wow-forever-arcane-mage-leveling-build", "destination": "/wow-forever-arcane-mage-leveling-build/index.html" },
     { "source": "/wow-forever-frost-mage-aoe-build", "destination": "/wow-forever-frost-mage-aoe-build/index.html" },
     { "source": "/wow-forever-mage-dungeon-build", "destination": "/wow-forever-mage-dungeon-build/index.html" },
-    { "source": "/wow-forever-mage-level-20-build", "destination": "/wow-forever-mage-level-20-build/index.html" }
+    { "source": "/wow-forever-mage-level-20-build", "destination": "/wow-forever-mage-level-20-build/index.html" },
+    { "source": "/warrior", "destination": "/warrior/index.html" },
+    { "source": "/wow-forever-warrior-builds", "destination": "/wow-forever-warrior-builds/index.html" },
+    { "source": "/wow-forever-warrior-leveling-build", "destination": "/wow-forever-warrior-leveling-build/index.html" },
+    { "source": "/wow-forever-arms-warrior-build", "destination": "/wow-forever-arms-warrior-build/index.html" },
+    { "source": "/wow-forever-fury-warrior-build", "destination": "/wow-forever-fury-warrior-build/index.html" },
+    { "source": "/wow-forever-protection-warrior-build", "destination": "/wow-forever-protection-warrior-build/index.html" },
+    { "source": "/wow-forever-warrior-talents", "destination": "/wow-forever-warrior-talents/index.html" },
+    { "source": "/wow-forever-arms-warrior-leveling-build", "destination": "/wow-forever-arms-warrior-leveling-build/index.html" },
+    { "source": "/wow-forever-fury-warrior-leveling-build", "destination": "/wow-forever-fury-warrior-leveling-build/index.html" },
+    { "source": "/wow-forever-protection-warrior-leveling-build", "destination": "/wow-forever-protection-warrior-leveling-build/index.html" },
+    { "source": "/wow-forever-warrior-pvp-build", "destination": "/wow-forever-warrior-pvp-build/index.html" },
+    { "source": "/wow-forever-arms-warrior-pvp-build", "destination": "/wow-forever-arms-warrior-pvp-build/index.html" },
+    { "source": "/wow-forever-fury-warrior-pvp-build", "destination": "/wow-forever-fury-warrior-pvp-build/index.html" },
+    { "source": "/wow-forever-protection-warrior-pvp-build", "destination": "/wow-forever-protection-warrior-pvp-build/index.html" },
+    { "source": "/wow-forever-warrior-dungeon-build", "destination": "/wow-forever-warrior-dungeon-build/index.html" },
+    { "source": "/wow-forever-protection-warrior-dungeon-build", "destination": "/wow-forever-protection-warrior-dungeon-build/index.html" },
+    { "source": "/wow-forever-warrior-level-20-build", "destination": "/wow-forever-warrior-level-20-build/index.html" },
+    { "source": "/wow-forever-arms-vs-fury-warrior-leveling", "destination": "/wow-forever-arms-vs-fury-warrior-leveling/index.html" },
+    { "source": "/wow-forever-arms-warrior-talents", "destination": "/wow-forever-arms-warrior-talents/index.html" },
+    { "source": "/wow-forever-protection-warrior-talents", "destination": "/wow-forever-protection-warrior-talents/index.html" }
   ]
 }

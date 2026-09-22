@@ -5,6 +5,7 @@ import { afterEach, describe, expect, it } from 'vitest'
 import ClassDocumentPage from './ClassDocumentPage'
 import { PUBLISHED_CLASSES } from './data/classes'
 import { mageClass } from './data/classes/mage'
+import { warriorClass } from './data/classes/warrior'
 import { hunterClassFixture, type HunterBranch } from './data/fixtures/hunterClass.fixture'
 import type { ClassDefinition } from './lib/classPage'
 import { publishedClassPages, publishRequirementsFor, satisfiedRequirements } from './lib/classPage'
@@ -36,7 +37,7 @@ describe('ClassDocumentPage renders any class from ClassDefinition', () => {
       expect(screen.getByText(faq.question)).toBeTruthy()
       expect(screen.getByText(faq.answer)).toBeTruthy()
     }
-    expect(screen.getAllByText(/Edit this build in Calculator/i).length).toBeGreaterThan(0)
+    expect(screen.getAllByRole('link', { name: /Calculator/i }).length).toBeGreaterThan(0)
   })
 
   it('ships no Hunter React component and no published Hunter class', () => {
@@ -49,7 +50,7 @@ describe('ClassDocumentPage renders any class from ClassDefinition', () => {
     for (const page of hunterClassFixture.pages.filter((candidate) => candidate.kind !== 'calculator')) {
       render(<ClassDocumentPage classDef={hunterClassFixture} page={page} />)
       expect(screen.getByRole('heading', { level: 1, name: page.h1 })).toBeTruthy()
-      expect(screen.getAllByText(/Edit this build in Calculator/i).length).toBeGreaterThan(0)
+      expect(screen.getAllByRole('link', { name: /Calculator/i }).length).toBeGreaterThan(0)
       cleanup()
     }
   })
@@ -98,6 +99,15 @@ describe('ClassDocumentPage renders any class from ClassDefinition', () => {
     fireEvent.click(tabs[1])
     expect(screen.getByText(survival.allocation)).toBeTruthy()
     expect(screen.getByText(survival.title)).toBeTruthy()
+  })
+
+  it('limits a level-cap page to the builds selected by that page record', () => {
+    const page = warriorClass.pages.find((candidate) => candidate.kind === 'levelCap')!
+    const { container } = render(<ClassDocumentPage classDef={warriorClass} page={page} />)
+
+    expect(container.querySelectorAll('.class-build-groups article')).toHaveLength(3)
+    expect(screen.getByText('Arms Warrior Build (Level 20)')).toBeTruthy()
+    expect(screen.queryByText('Arms Warrior PvP Build (Level 20)')).toBeNull()
   })
 
   it('lists every talent grouped by branch and change status on the talents kind', () => {

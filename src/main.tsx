@@ -14,9 +14,6 @@ import ClassCalculatorPage from './ClassCalculatorPage'
 import ClassDocumentPage from './ClassDocumentPage'
 import EmbervillePage from './EmbervillePage'
 import SpellbookPage from './SpellbookPage'
-import WarriorPage from './WarriorPage'
-import WarriorBuildPage from './WarriorBuildPage'
-import WarriorBuildsHub from './WarriorBuildsHub'
 import { publishedClassPage } from './lib/classStaticPages'
 import { pageForPath, type PageDefinition } from './lib/routes'
 import './styles.css'
@@ -40,9 +37,6 @@ function routeElement(route: PageDefinition) {
   const classPage = publishedClassPage(window.location.pathname)
   if (route.kind === 'class-calculator' && classPage) return <ClassCalculatorPage classDef={classPage.classDef} />
   if (route.kind === 'class-document' && classPage) return <ClassDocumentPage classDef={classPage.classDef} page={classPage.page} />
-  if (route.kind === 'warrior-planner') return <WarriorPage />
-  if (route.kind === 'warrior-hub') return <WarriorBuildsHub />
-  if (route.kind === 'warrior-build') return <WarriorBuildPage pageId={route.warriorBuildPageId!} />
   if (route.kind === 'emberville') return <EmbervillePage pageId={route.embervillePageId!} />
   if (route.kind === 'guide') return <GuidePage />
   if (route.kind === 'build-guide') return <BuildPage buildId={route.buildId} />

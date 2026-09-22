@@ -17,8 +17,6 @@ import { betaSpecPath, betaSpecPlannerHref } from '../data/betaSpecPaths'
 import { EVIDENCE_STATUS } from '../data/verification'
 import { paladinSpellbook } from '../data/paladinSpellbook'
 import type { SpellChange } from '../data/spellbook'
-import { warriorTalents, warriorBranchNames, WARRIOR_BRANCHES } from '../data/warriorTalents'
-import { WARRIOR_BUILD_PAGES, warriorBuildPageById, warriorPlannerHref, type WarriorBuildPageId } from '../data/warriorPages'
 
 const link = (href: string, label: string) => `<a href="${escapeHtml(href)}">${escapeHtml(label)}</a>`
 
@@ -30,24 +28,6 @@ const spellChangeLabels: Record<SpellChange, string> = {
   changed: 'Changed in Forever',
   new: 'New in Forever',
   was_talent: 'Former talent',
-}
-
-export function renderWarriorPlannerPrerender(): string {
-  const trees = WARRIOR_BRANCHES.map((branch) => `<section><h2>${warriorBranchNames[branch]} Warrior Talents</h2><p>${warriorTalents.filter((talent) => talent.branch === branch).length} reviewed nodes in the ${warriorBranchNames[branch]} tree.</p><ul>${warriorTalents.filter((talent) => talent.branch === branch).map((talent) => `<li data-warrior-talent><strong>${escapeHtml(talent.name)}</strong> — ${talent.maxRank} rank${talent.maxRank === 1 ? '' : 's'} · Tier ${talent.row}. ${escapeHtml(talent.description)}</li>`).join('')}</ul></section>`).join('')
-  return `<main class="warrior-prerender"><article><p>Beta Build 69913</p><h1>WoW Forever Warrior Talent Calculator</h1><p>Plan Arms, Fury, and Protection talent trees with 53 reviewed nodes, Level 20, Level 30, and full 51-point budgets, rank tooltips, and shareable build links.</p><p>The source talent snapshot was read from Beta client records and cross-checked unchanged through build 1.60.1.69913. Bonus talent points remain excluded until their rules can be verified.</p></article>${trees}<section><h2>Level 20 Warrior Builds</h2>${linkList(WARRIOR_BUILD_PAGES.map((page) => ({ href: `/${page.slug}`, label: page.title })))}</section><section><h2>Data verification</h2><p>Client-derived names, positions, ranks, icons, and descriptions are kept separate from community build recommendations and derived prerequisite-rank behavior.</p><p>${link('https://wowforevertalents.net/warrior/', 'Warrior client-data reference')} · ${link('https://thewowdb.com/wow-forever/talents/warrior/', 'Build 69913 cross-check')}</p></section></main>`
-}
-
-export function renderWarriorBuildPrerender(pageId: WarriorBuildPageId): string {
-  const page = warriorBuildPageById(pageId)
-  const selected = Object.entries(page.preset.build).map(([id, rank]) => {
-    const talent = warriorTalents.find((candidate) => candidate.id === id)!
-    return `<li>${escapeHtml(talent.name)} — ${rank}/${talent.maxRank}</li>`
-  }).join('')
-  return `<main class="warrior-prerender"><article><p>${escapeHtml(page.eyebrow)}</p><h1>${escapeHtml(page.title)}</h1><p>${escapeHtml(page.subtitle)}</p><p><strong>Level 20 · ${escapeHtml(page.preset.allocation)} · 11 points · Community recommendation.</strong></p><p>${link(warriorPlannerHref(page.preset), `Open ${page.preset.shortTitle} in the Warrior Talent Calculator`)}</p></article><section><h2>Selected talents</h2><ul>${selected}</ul></section>${page.sections.map((section) => `<section><h2>${escapeHtml(section.heading)}</h2>${section.paragraphs.map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join('')}</section>`).join('')}<section><h2>Verification boundary</h2><p>Talent names, ranks, positions, and tooltip text come from client-derived records checked through 1.60.1.69913. This allocation is an editable community route and is not an official or guaranteed best build.</p>${linkList([{ href: '/wow-forever-warrior-builds', label: 'Explore all Warrior builds' }, { href: '/warrior', label: 'Open the Warrior Talent Calculator' }, { href: '/about', label: 'About BuildForgeTools' }, { href: '/contact', label: 'Contact BuildForgeTools' }, { href: '/privacy', label: 'Privacy Policy' }])}</section></main>`
-}
-
-export function renderWarriorHubPrerender(): string {
-  return `<main class="warrior-prerender"><article><p>Beta Build 69913</p><h1>WoW Forever Warrior Builds &amp; Talent Calculator</h1><p>Choose a current-cap Arms, Fury, or Protection Warrior build, inspect its 11-point talent order, and customize it in the calculator.</p><p>${link('/warrior', 'Open the Warrior Talent Calculator')}</p></article><section><h2>Level 20 Warrior builds</h2>${WARRIOR_BUILD_PAGES.map((page) => `<article><h3>${link(`/${page.slug}`, page.title)}</h3><p>${escapeHtml(page.subtitle)} ${escapeHtml(page.preset.allocation)}.</p></article>`).join('')}</section><section><h2>How these builds are labeled</h2><p>The talent database is client-derived and reviewed through build 69913. Build allocations are community recommendations designed for testing, with no claim that they are official or universally optimal.</p>${linkList([{ href: '/about', label: 'About BuildForgeTools' }, { href: '/contact', label: 'Report a correction' }, { href: '/privacy', label: 'Privacy Policy' }])}</section></main>`
 }
 
 export function renderSpellbookPrerender(): string {
@@ -324,6 +304,11 @@ export function renderClassPage<B extends string>(classDef: ClassDefinition<B>, 
   const calculatorLink = primaryBuild
     ? link(classPlannerHref(classDef, encodePlannerBuild(primaryBuild.build), primaryBuild.level), 'Edit this build in Calculator')
     : link(classDef.plannerPath, `Open the ${classDef.name} Talent Calculator`)
+  const buildEvidence = primaryBuild
+    ? `<p><strong>Build</strong>: Community / Editorial build for the current Beta level cap ${classDef.beta.levelCap}. Allocations are editorial, never client facts.</p>`
+    : page.kind === 'specPvp'
+      ? '<p><strong>Build status</strong>: Pending verification. This page does not publish an allocation until one has been reviewed.</p>'
+      : '<p><strong>Build links</strong>: Editorial routes are labeled separately from client talent facts.</p>'
 
   const rankLabel = (talent: ClassTalent<B>) => `${talent.maxRank} rank${talent.maxRank === 1 ? '' : 's'}`
 
@@ -335,6 +320,16 @@ export function renderClassPage<B extends string>(classDef: ClassDefinition<B>, 
       return `<section><h2>${escapeHtml(classDef.branchNames[branch])} ${escapeHtml(classDef.name)} Talents</h2><p>${escapeHtml(classDef.branchTaglines[branch])}</p><ul>${talents.map((talent) => `<li data-class-talent="${escapeHtml(talent.id)}"><strong>${escapeHtml(talent.name)}</strong> — ${rankLabel(talent)} · Row ${talent.row} column ${talent.column}</li>`).join('')}</ul></section>`
     }).join('\n  ')
     : ''
+
+  const catalogueBranches = page.kind === 'talents'
+    ? classDef.branches
+    : page.kind === 'specTalents' && page.spec
+      ? classDef.branches.filter((branch) => branch === page.spec)
+      : []
+  const talentCatalogue = catalogueBranches.map((branch) => {
+    const talents = classDef.talents.filter((talent) => talent.branch === branch)
+    return `<section data-class-catalogue="${escapeHtml(branch)}"><h2>${escapeHtml(classDef.branchNames[branch])} ${escapeHtml(classDef.name)} talent catalogue</h2><p>${escapeHtml(classDef.branchTaglines[branch])}</p><ul>${talents.map((talent) => `<li data-class-talent="${escapeHtml(talent.id)}"><strong>${escapeHtml(talent.name)}</strong> — ${rankLabel(talent)} · Row ${talent.row} column ${talent.column} · ${escapeHtml(talent.changeStatus)}</li>`).join('')}</ul></section>`
+  }).join('\n  ')
 
   const primaryBuildSection = primaryBuild
     ? `<section><h2>${escapeHtml(primaryBuild.title)}</h2><p><strong>${escapeHtml(primaryBuild.allocation)}</strong> · ${primaryBuild.points} / ${primaryBuild.levelCap} points · ${escapeHtml(primaryBuild.phase)}</p><p>${escapeHtml(primaryBuild.role)}</p>${primaryBuild.playstyle.length > 0 ? `<ul>${primaryBuild.playstyle.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul>` : ''}<h3>Talents in this build</h3><ul>${orderedBuildTalents(primaryBuild, classDef).map(({ talent, rank }) => `<li><strong>${escapeHtml(talent.name)}</strong> — ${rank}/${talent.maxRank}</li>`).join('')}</ul><p>Community / Editorial Build · ${escapeHtml(primaryBuild.evidence === 'community_verified' ? 'Community-verified recommendation.' : 'Derived planning assumption.')} Talent positions and ranks remain client data; this allocation is editorial only.</p></section>`
@@ -358,13 +353,15 @@ export function renderClassPage<B extends string>(classDef: ClassDefinition<B>, 
 
   return `<main class="class-prerender">
   <article>
+    <nav aria-label="Breadcrumb">${link('/', 'BuildForgeTools')} / ${link(classDef.plannerPath, classDef.name)} / <span aria-current="page">${escapeHtml(page.h1)}</span></nav>
     <p>${escapeHtml(page.eyebrow)} · ${escapeHtml(classDef.beta.phaseLabel)}</p>
     <h1>${escapeHtml(page.h1)}</h1>
     <p>${escapeHtml(page.description)}</p>
     <p>Reviewed ${escapeHtml(page.updatedAt)} · Client build ${escapeHtml(classDef.verifiedBuild)}.</p>
   </article>
-  <section><h2>Evidence boundary</h2><p><strong>Talent data</strong>: positions, ranks and branches are client-derived records checked through ${escapeHtml(classDef.verifiedBuild)}; planner-legal fields only.</p><p><strong>Build</strong>: Community / Editorial build for the current Beta level cap ${classDef.beta.levelCap}. Allocations are editorial, never client facts.</p></section>
+  <section><h2>Evidence boundary</h2><p><strong>Talent data</strong>: positions, ranks and branches are client-derived records checked through ${escapeHtml(classDef.verifiedBuild)}; planner-legal fields only.</p>${buildEvidence}</section>
   ${calculatorTrees}
+  ${talentCatalogue}
   ${primaryBuildSection}
   ${relatedBuildSection}
   ${page.sections.map((section) => `<section><h2>${escapeHtml(section.heading)}</h2>${section.paragraphs.map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join('')}${section.bullets ? `<ul>${section.bullets.map((bullet) => `<li>${escapeHtml(bullet)}</li>`).join('')}</ul>` : ''}</section>`).join('\n  ')}

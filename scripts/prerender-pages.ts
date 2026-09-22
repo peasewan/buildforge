@@ -3,9 +3,8 @@ import { BUILD_LANDING_PAGES } from '../src/data/buildLandingPages'
 import { SPEC_BUILDS_HUBS } from '../src/data/specBuildsHubs'
 import { SPEC_TALENTS_PAGES } from '../src/data/specTalentsPages'
 import { TRUST_PAGES } from '../src/data/trustPages'
-import { renderClassPage, renderEmbervillePrerender, renderHubPrerender, renderLandingPrerender, renderSpecHubPrerender, renderSpecTalentsPrerender, renderSpellbookPrerender, renderTrustPrerender, renderWarriorBuildPrerender, renderWarriorHubPrerender, renderWarriorPlannerPrerender } from '../src/lib/prerender'
+import { renderClassPage, renderEmbervillePrerender, renderHubPrerender, renderLandingPrerender, renderSpecHubPrerender, renderSpecTalentsPrerender, renderSpellbookPrerender, renderTrustPrerender } from '../src/lib/prerender'
 import { EMBERVILLE_PAGES } from '../src/data/emberville'
-import { WARRIOR_BUILD_PAGES } from '../src/data/warriorPages'
 import { publishedClassPages } from '../src/lib/classStaticPages'
 
 // Filenames come from each page's own slug so a new landing page cannot be added
@@ -13,9 +12,6 @@ import { publishedClassPages } from '../src/lib/classStaticPages'
 // whose `publishRequirements` are unmet has no shell to fill and is never prerendered, while
 // satisfying a requirement later prerenders it with nothing authored here.
 const targets: { filename: string; render: () => string }[] = [
-  { filename: 'warrior', render: renderWarriorPlannerPrerender },
-  { filename: 'wow-forever-warrior-builds', render: renderWarriorHubPrerender },
-  ...WARRIOR_BUILD_PAGES.map((page) => ({ filename: page.slug, render: () => renderWarriorBuildPrerender(page.id) })),
   ...EMBERVILLE_PAGES.map((page) => ({ filename: page.slug, render: () => renderEmbervillePrerender(page.id) })),
   ...publishedClassPages().map(({ classDef, page }) => ({ filename: page.slug, render: () => renderClassPage(classDef, page) })),
   { filename: 'wow-forever-paladin-builds', render: renderHubPrerender },

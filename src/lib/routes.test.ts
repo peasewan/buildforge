@@ -20,12 +20,12 @@ const paladinPlannerFallback = {
 
 describe('public page routing', () => {
   it.each([
-    ['/warrior', 'warrior-planner', 'WoW Forever Warrior Talent Calculator | Beta Build 69913'],
-    ['/wow-forever-warrior-builds', 'warrior-hub', 'WoW Forever Warrior Builds & Talent Calculator | BuildForgeTools'],
-    ['/wow-forever-warrior-leveling-build', 'warrior-build', 'WoW Forever Warrior Leveling Build | Level 20 Beta'],
-    ['/wow-forever-arms-warrior-build', 'warrior-build', 'WoW Forever Arms Warrior Build | Level 20 Beta'],
-    ['/wow-forever-fury-warrior-build', 'warrior-build', 'WoW Forever Fury Warrior Build | Level 20 Beta'],
-    ['/wow-forever-protection-warrior-build', 'warrior-build', 'WoW Forever Protection Warrior Build | Level 20 Beta'],
+    ['/warrior', 'class-calculator', 'WoW Forever Warrior Talent Calculator | Beta Build 69913'],
+    ['/wow-forever-warrior-builds', 'class-document', 'WoW Forever Warrior Builds & Talent Calculator | BuildForgeTools'],
+    ['/wow-forever-warrior-leveling-build', 'class-document', 'WoW Forever Warrior Leveling Build | Level 20 Beta'],
+    ['/wow-forever-arms-warrior-build', 'class-document', 'WoW Forever Arms Warrior Build | Level 20 Beta'],
+    ['/wow-forever-fury-warrior-build', 'class-document', 'WoW Forever Fury Warrior Build | Level 20 Beta'],
+    ['/wow-forever-protection-warrior-build', 'class-document', 'WoW Forever Protection Warrior Build | Level 20 Beta'],
   ])('serves %s as an indexable Warrior page', (pathname, kind, title) => {
     expect(pageForPath(pathname)).toMatchObject({ kind, title, canonical: `https://buildforgetools.com${pathname}`, robots: 'index, follow' })
   })
@@ -253,8 +253,6 @@ describe('published class pages', () => {
     for (const pathname of ['/hunter', '/wow-forever-hunter-builds', '/wow-forever-mage-talents-extra']) {
       expect(pageForPath(pathname)).toEqual(paladinPlannerFallback)
     }
-    for (const classDef of PUBLISHED_CLASSES) {
-      expect(classDef.id).toBe('mage')
-    }
+    expect(PUBLISHED_CLASSES.map((classDef) => classDef.id).sort()).toEqual(['mage', 'warrior'])
   })
 })

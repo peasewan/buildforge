@@ -6,7 +6,6 @@ import { SPEC_TALENTS_PAGES } from '../data/specTalentsPages'
 import { TRUST_PAGES } from '../data/trustPages'
 import { pageForPath } from './routes'
 import { EMBERVILLE_PAGES } from '../data/emberville'
-import { WARRIOR_BUILD_PAGES } from '../data/warriorPages'
 
 describe('crawlable page templates', () => {
   it('provides a prerender target for the Paladin calculator', () => {
@@ -16,9 +15,6 @@ describe('crawlable page templates', () => {
   })
 
   it.each([
-    ['warrior/index.html'],
-    ['wow-forever-warrior-builds/index.html'],
-    ...WARRIOR_BUILD_PAGES.map((page) => [`${page.slug}/index.html`] as const),
     ...EMBERVILLE_PAGES.map((page) => [`${page.slug}/index.html`] as const),
     ...BUILD_LANDING_PAGES.map((page) => [`${page.slug}/index.html`] as const),
     ...SPEC_TALENTS_PAGES.map((page) => [`${page.slug}/index.html`] as const),
@@ -32,9 +28,6 @@ describe('crawlable page templates', () => {
   })
 
   const metadataTargets = [
-    ['/warrior', 'warrior/index.html'],
-    ['/wow-forever-warrior-builds', 'wow-forever-warrior-builds/index.html'],
-    ...WARRIOR_BUILD_PAGES.map((page) => [`/${page.slug}`, `${page.slug}/index.html`] as const),
     ...EMBERVILLE_PAGES.map((page) => [`/${page.slug}`, `${page.slug}/index.html`] as const),
     ['/paladin', 'paladin/index.html'],
     ['/wow-forever-paladin-talents', 'wow-forever-paladin-talents/index.html'],

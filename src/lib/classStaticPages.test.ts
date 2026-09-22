@@ -68,8 +68,8 @@ describe('generated class-page artifacts', () => {
     expect(shouldVerifyVercelRewrites({ VERCEL: '1' })).toBe(false)
   })
 
-  it('publishes the eleven pages the gate publishes and withholds the other four', () => {
-    expect(published).toHaveLength(11)
+  it('publishes every data-ready class page and withholds the four Mage pages still lacking a build', () => {
+    expect(published).toHaveLength(31)
     expect(withheldSlugs).toHaveLength(4)
     expect(classPagePaths()).toEqual(publishedSlugs.map((slug) => `/${slug}`))
     for (const slug of withheldSlugs) expect(classPagePaths()).not.toContain(`/${slug}`)
@@ -112,7 +112,7 @@ describe('generated class-page artifacts', () => {
       expect(read(file), file).not.toMatch(/wow-forever-[a-z-]*mage/)
     }
     // The generated artifacts are the gate's answer, so a hand-edit has to show up somewhere.
-    expect(read(CLASS_PAGE_MANIFEST_FILENAME)).not.toMatch(/fire|pvp|frost-vs-fire/)
+    for (const slug of withheldSlugs) expect(read(CLASS_PAGE_MANIFEST_FILENAME)).not.toContain(slug)
   })
 
   it('derives the site-wide footer entry from the gate, so it can never link a withheld path', () => {
@@ -133,11 +133,11 @@ describe('generated class-page artifacts', () => {
     cleanup()
   })
 
-  it.each(published.map(({ page }) => [page.slug, page] as const))('generates %s/index.html from the page record', (slug, page) => {
+  it.each(published.map(({ classDef, page }) => [page.slug, classDef, page] as const))('generates %s/index.html from the page record', (slug, classDef, page) => {
     const file = join(process.cwd(), slug, 'index.html')
 
     expect(existsSync(file), `${slug}/index.html is missing`).toBe(true)
-    expect(readFileSync(file, 'utf8')).toBe(classPageShellHtml(mageClass, page))
+    expect(readFileSync(file, 'utf8')).toBe(classPageShellHtml(classDef, page))
   })
 
   it('leaves no shell for a withheld page', () => {
@@ -145,8 +145,8 @@ describe('generated class-page artifacts', () => {
     expect(existsSync(join(process.cwd(), 'wow-forever-fire-mage-build/index.html'))).toBe(false)
   })
 
-  it.each(published.map(({ page }) => [page.slug, page] as const))('keeps %s metadata aligned with its route', (slug, page) => {
-    const document = new DOMParser().parseFromString(classPageShellHtml(mageClass, page), 'text/html')
+  it.each(published.map(({ classDef, page }) => [page.slug, classDef, page] as const))('keeps %s metadata aligned with its route', (slug, classDef, page) => {
+    const document = new DOMParser().parseFromString(classPageShellHtml(classDef, page), 'text/html')
     const route = pageForPath(`/${slug}`)
 
     expect(document.title).toBe(page.title)
@@ -175,6 +175,18 @@ describe('generated class-page artifacts', () => {
     // No art declared: no tag at all, rather than a broken or borrowed card.
     expect(ogImage(classPageShellHtml(hunterClassFixture as ClassDefinition, page))).toBeUndefined()
     expect(ogImage(classPageShellHtml(mageClass, mageClass.pages.find((candidate) => candidate.kind === 'talents')!))).toBe('https://buildforgetools.com/images/mage/mage-hero-v1.webp')
+  })
+
+  it('adds class-aware breadcrumb structured data to every generated shell', () => {
+    for (const { classDef, page } of published) {
+      const document = new DOMParser().parseFromString(classPageShellHtml(classDef, page), 'text/html')
+      const data = JSON.parse(document.querySelector('script[type="application/ld+json"]')!.textContent!) as { '@graph': { '@type': string; itemListElement?: { item?: string; name: string }[] }[] }
+      const breadcrumbs = data['@graph'].find((entry) => entry['@type'] === 'BreadcrumbList')
+
+      const names = page.kind === 'calculator' ? ['BuildForgeTools', page.h1] : ['BuildForgeTools', classDef.name, page.h1]
+      expect(breadcrumbs?.itemListElement?.map((item) => item.name)).toEqual(names)
+      expect(breadcrumbs?.itemListElement?.[1].item).toBe(`https://buildforgetools.com${classDef.plannerPath}`)
+    }
   })
 
   it('writes one sitemap row per published page, dated by the page itself', () => {
