@@ -13,6 +13,13 @@ const clipboardWrite = vi.fn().mockResolvedValue(undefined)
 
 describe('ClassCalculatorPage renders any class from ClassDefinition', () => {
   afterEach(cleanup)
+
+  it('marks the page root with the class id for class-specific art direction', () => {
+    const { container } = render(<ClassCalculatorPage classDef={hunterClassFixture} />)
+    const root = container.querySelector('main')
+    expect(root?.getAttribute('data-class')).toBe('hunter')
+    expect(root?.classList.contains('class-calculator-page')).toBe(true)
+  })
   beforeEach(() => {
     clipboardWrite.mockClear()
     localStorage.clear()

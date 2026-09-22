@@ -146,7 +146,7 @@ export default function ClassCalculatorPage<B extends string>({ classDef }: { cl
     window.setTimeout(() => setCopied(false), 1600)
   }
 
-  return <main className="class-page">
+  return <main className="class-page class-calculator-page" data-class={classDef.id}>
     <header className="class-nav shell">
       <a className="class-brand" href="/"><Swords /><span>BUILD<b>FORGE</b></span></a>
       <nav aria-label={`${classDef.name} pages`}>

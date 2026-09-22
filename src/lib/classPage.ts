@@ -149,6 +149,8 @@ export interface ClassDefinition<B extends string = string> {
    */
   ogImage?: string
   branches: readonly B[]
+  /** Compact local artwork for branch tabs, build cards and document-page summaries. */
+  branchIcons?: Partial<Record<B, string>>
   branchNames: Record<B, string>
   branchTaglines: Record<B, string>
   storageKey: string

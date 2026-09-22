@@ -1,3 +1,5 @@
+import { existsSync } from 'node:fs'
+import { join } from 'node:path'
 import { describe, expect, it } from 'vitest'
 import { pageFromPublishedClasses, publishedClassPages, satisfiedRequirements, type ClassPageKind } from '../../lib/classPage'
 import { renderClassPage } from '../../lib/prerender'
@@ -38,6 +40,18 @@ describe('Warrior ClassDefinition', () => {
       expect(page, expected.slug).toMatchObject(expected)
       expect(page?.canonical).toBe(`https://buildforgetools.com/${expected.slug}`)
       expect(pageFromPublishedClasses(expected.slug, [warriorClass])).toBe(page)
+    }
+  })
+
+  it('gives every Warrior route local hero artwork and each branch a local icon', () => {
+    const classWithIcons = warriorClass as typeof warriorClass & { branchIcons: Record<string, string> }
+    const artwork = new Set(warriorClass.pages.map((page) => page.ogImage ?? warriorClass.ogImage))
+
+    expect(artwork.size).toBe(4)
+    expect([...artwork].every(Boolean)).toBe(true)
+    expect(Object.keys(classWithIcons.branchIcons).sort()).toEqual(['arms', 'fury', 'protection'])
+    for (const asset of [...artwork, ...Object.values(classWithIcons.branchIcons)]) {
+      expect(existsSync(join(process.cwd(), 'public', asset!.replace(/^\//, ''))), asset).toBe(true)
     }
   })
 

@@ -76,6 +76,15 @@ function TalentEvidence() {
   return <p className="class-evidence-line"><span>Talent data</span><VerificationBadge status="client_verified" /><small>positions and ranks only</small></p>
 }
 
+function branchIcon<B extends string>(classDef: ClassDefinition<B>, branch: string): string | undefined {
+  return classDef.branchIcons?.[branch as B] ?? classDef.talents.find((talent) => talent.branch === branch)?.icon
+}
+
+function BuildIcon<B extends string>({ classDef, build }: { classDef: ClassDefinition<B>; build: ClassBuild }) {
+  const icon = branchIcon(classDef, build.spec)
+  return icon ? <img className="class-build-icon" src={icon} alt="" loading="lazy" /> : null
+}
+
 function BuildGroups<B extends string>({ classDef, builds, isPublishedHref }: { classDef: ClassDefinition<B>; builds: ClassBuild[]; isPublishedHref: (href: string) => boolean }) {
   const intents = [...new Set(builds.map((build) => build.intent))]
   return <section className="class-build-groups">
@@ -83,7 +92,7 @@ function BuildGroups<B extends string>({ classDef, builds, isPublishedHref }: { 
     {intents.map((intent) => <div key={intent}>
       <h3>{intentLabels[intent] ?? intent}</h3>
       {builds.filter((build) => build.intent === intent).map((build) => <article key={build.id}>
-        {isPublishedHref(build.href) ? <a href={build.href}>{build.title}</a> : <strong>{build.title}</strong>}
+        <div className="class-card-heading"><BuildIcon classDef={classDef} build={build} />{isPublishedHref(build.href) ? <a href={build.href}>{build.title}</a> : <strong>{build.title}</strong>}</div>
         <p>{build.role} · Level {build.level} · {build.phase}</p>
         <p>{build.allocation} · {totalPlannerPoints(build.build)} / {build.levelCap} points</p>
         {build.strengths.length > 0 && <ul>{build.strengths.map((strength) => <li key={strength}><Check size={14} /> <span>{strength}</span></li>)}</ul>}
@@ -102,10 +111,10 @@ function PvpTabs<B extends string>({ classDef, plannerPublished }: { classDef: C
   return <section className="class-pvp">
     <h2>{classDef.name} PvP builds</h2>
     <div className="class-tabs" role="tablist" aria-label={`${classDef.name} PvP specializations`}>
-      {specs.map((spec) => <button role="tab" type="button" key={spec} aria-selected={spec === activeSpec} className={spec === activeSpec ? 'active' : ''} onClick={() => setActiveSpec(spec)}>{classDef.branchNames[spec]}</button>)}
+      {specs.map((spec) => <button role="tab" type="button" key={spec} aria-selected={spec === activeSpec} className={spec === activeSpec ? 'active' : ''} onClick={() => setActiveSpec(spec)}>{branchIcon(classDef, spec) && <img src={branchIcon(classDef, spec)} alt="" />}{classDef.branchNames[spec]}</button>)}
     </div>
     <div className="class-pvp-panel" role="tabpanel">
-      <h3>{activeBuild.title}</h3>
+      <div className="class-card-heading"><BuildIcon classDef={classDef} build={activeBuild} /><h3>{activeBuild.title}</h3></div>
       <p><strong>{activeBuild.allocation}</strong> · {activeBuild.points} / {activeBuild.levelCap} points · {activeBuild.phase}</p>
       <ul>{orderedBuildTalents(activeBuild, classDef).map(({ talent, rank }) => <li key={talent.id}><span>{talent.name}</span><b>{rank}/{talent.maxRank}</b></li>)}</ul>
       <p>{activeBuild.role}</p>
@@ -139,6 +148,7 @@ function TalentCatalogue<B extends string>({ classDef, branchFilter }: { classDe
           return <div key={status}>
             <h4>{label}</h4>
             <ul>{talents.map((talent) => <li key={talent.id} data-testid="class-talent-entry" data-talent-id={talent.id} data-excluded={excluded ? 'true' : undefined}>
+              {talent.icon && <img className="class-talent-entry-icon" src={talent.icon} alt="" loading="lazy" />}
               <span>{talent.name}</span>
               <b>{talent.row}/{talent.column}</b>
               <VerificationBadge status={talent.verificationStatus} />
@@ -177,7 +187,7 @@ export default function ClassDocumentPage<B extends string>({ classDef, page }: 
     .concat(plannerPublished ? [{ href: classDef.plannerPath, label: `${classDef.name} Talent Calculator` }] : [])
   const calculatorAction = <a className="button class-primary" href={calculatorHref(classDef, primaryBuild)}>{primaryBuild ? 'Edit this build in Calculator' : `Open ${classDef.name} Calculator`} <ArrowRight size={15} /></a>
 
-  return <main className="class-page">
+  return <main className="class-page" data-class={classDef.id}>
     <header className="class-nav shell">
       <a className="class-brand" href="/"><Swords /><span>BUILD<b>FORGE</b></span></a>
       <nav aria-label={`${classDef.name} pages`}>
@@ -210,7 +220,7 @@ export default function ClassDocumentPage<B extends string>({ classDef, page }: 
         {showsBuildGroups && <BuildGroups classDef={classDef} builds={groupedBuilds} isPublishedHref={isPublishedHref} />}
         {page.kind === 'pvp' && <PvpTabs classDef={classDef} plannerPublished={plannerPublished} />}
         {primaryBuild && !showsBuildGroups && <section className="class-primary-build">
-          <h2>{primaryBuild.title}</h2>
+          <div className="class-card-heading"><BuildIcon classDef={classDef} build={primaryBuild} /><h2>{primaryBuild.title}</h2></div>
           <p><strong>{primaryBuild.allocation}</strong> · {primaryBuild.points} / {primaryBuild.levelCap} points · {primaryBuild.phase}</p>
           <p>{primaryBuild.role}</p>
           {primaryBuild.playstyle.length > 0 && <ul>{primaryBuild.playstyle.map((item) => <li key={item}><Check size={14} /> <span>{item}</span></li>)}</ul>}
@@ -220,7 +230,7 @@ export default function ClassDocumentPage<B extends string>({ classDef, page }: 
         {showsRelatedBuilds && <section className="class-related-builds">
           <h2>Related {classDef.name} builds</h2>
           {relatedBuilds.map((build) => <article key={build.id}>
-            <a href={build.href}>{build.title}</a>
+            <div className="class-card-heading"><BuildIcon classDef={classDef} build={build} /><a href={build.href}>{build.title}</a></div>
             <p>{build.role} · Level {build.level} · {build.phase}</p>
             <BuildChip />
           </article>)}
@@ -231,6 +241,7 @@ export default function ClassDocumentPage<B extends string>({ classDef, page }: 
         <h2>Talents in this build</h2>
         <TalentEvidence />
         <ul className="class-selected-list">{orderedBuildTalents(primaryBuild, classDef).map(({ talent, rank }) => <li key={talent.id}>
+          {talent.icon && <img className="class-selected-talent-icon" src={talent.icon} alt="" loading="lazy" />}
           <span>{talent.name}</span><b>{rank}/{talent.maxRank}</b><VerificationBadge status={talent.verificationStatus} />
         </li>)}</ul>
       </section>}

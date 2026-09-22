@@ -18,6 +18,11 @@ const branchName = (spec: string) => (hunterClassFixture.branchNames as Record<s
 describe('ClassDocumentPage renders any class from ClassDefinition', () => {
   afterEach(cleanup)
 
+  it('marks the page root with the class id for class-specific art direction', () => {
+    const { container } = render(<ClassDocumentPage classDef={hunterClassFixture} page={pageOfKind('specBuild')} />)
+    expect(container.querySelector('main')?.getAttribute('data-class')).toBe('hunter')
+  })
+
   it('renders the Hunter fixture comparison page with its table and FAQ', () => {
     const page = pageOfKind('comparison')
     const comparison = page.comparison!
@@ -106,8 +111,19 @@ describe('ClassDocumentPage renders any class from ClassDefinition', () => {
     const { container } = render(<ClassDocumentPage classDef={warriorClass} page={page} />)
 
     expect(container.querySelectorAll('.class-build-groups article')).toHaveLength(3)
+    expect(container.querySelectorAll('.class-build-icon')).toHaveLength(3)
     expect(screen.getByText('Arms Warrior Build (Level 20)')).toBeTruthy()
     expect(screen.queryByText('Arms Warrior PvP Build (Level 20)')).toBeNull()
+  })
+
+  it('shows local talent artwork throughout Warrior document pages', () => {
+    const page = warriorClass.pages.find((candidate) => candidate.slug === 'wow-forever-arms-warrior-talents')!
+    const armsTalents = warriorClass.talents.filter((talent) => talent.branch === 'arms')
+    const { container } = render(<ClassDocumentPage classDef={warriorClass} page={page} />)
+
+    const catalogueIcons = [...container.querySelectorAll<HTMLImageElement>('.class-talent-entry-icon')]
+    expect(catalogueIcons).toHaveLength(armsTalents.length)
+    expect(catalogueIcons.map((icon) => icon.getAttribute('src')).sort()).toEqual(armsTalents.map((talent) => talent.icon).sort())
   })
 
   it('lists every talent grouped by branch and change status on the talents kind', () => {

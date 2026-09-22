@@ -14,6 +14,17 @@ import {
 
 const UPDATED = '2026-09-22'
 const PHASE = 'Current Beta'
+const WARRIOR_HERO = '/images/warrior/warrior-hero-v1.jpg'
+const WARRIOR_SPEC_HERO: Record<WarriorBranch, string> = {
+  arms: '/images/warrior/arms-warrior-hero-v1.jpg',
+  fury: '/images/warrior/fury-warrior-hero-v1.jpg',
+  protection: '/images/warrior/protection-warrior-hero-v1.jpg',
+}
+const WARRIOR_BRANCH_ICONS: Record<WarriorBranch, string> = {
+  arms: '/images/warrior-talents/ability_warrior_savageblow.jpg',
+  fury: '/images/warrior-talents/spell_nature_bloodlust.jpg',
+  protection: '/images/warrior-talents/inv_shield_06.jpg',
+}
 const CAP_NOTE = 'The current Level 20 Beta cap gives a Warrior 11 talent points. Every published allocation spends that same budget so the routes remain directly comparable.'
 const EVIDENCE_NOTE = 'Talent names, ranks, positions and tooltips come from dual-source client records reviewed through build 1.60.1.69913. Build allocations and playstyle notes are editorial testing routes, not official best builds.'
 
@@ -85,6 +96,7 @@ const page = (input: {
   publishRequirements?: PublishRequirement[]
 }): ClassPageDefinition => ({
   ...input,
+  ogImage: input.spec ? WARRIOR_SPEC_HERO[input.spec] : WARRIOR_HERO,
   canonical: `https://buildforgetools.com/${input.slug}`,
   robots: 'index, follow',
   updatedAt: UPDATED,
@@ -277,7 +289,9 @@ export const warriorClass: ClassDefinition<WarriorBranch> = {
   id: 'warrior',
   name: 'Warrior',
   plannerPath: '/warrior',
+  ogImage: WARRIOR_HERO,
   branches: WARRIOR_BRANCHES,
+  branchIcons: WARRIOR_BRANCH_ICONS,
   branchNames: warriorBranchNames,
   branchTaglines: warriorBranchTaglines,
   storageKey: 'wow-forever-warrior-build',
