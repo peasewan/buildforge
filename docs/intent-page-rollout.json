@@ -2,7 +2,7 @@
   "baseline": "8ea3d82",
   "total": 150,
   "batchSize": 7,
-  "nextBatch": 4,
+  "nextBatch": 5,
   "pages": [
     {
       "path": "/wow-forever-warrior-builds",
@@ -556,6 +556,272 @@
       "kind": "buildsHub",
       "title": "WoW Forever Mage Builds",
       "batch": 4,
+      "status": "deployed",
+      "implementation": "Searchable published route directory organized by purpose.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
+      "commit": "d1f1f569e75fb0a86c270329f8ed0527ae0692a7",
+      "production": {
+        "http": 200,
+        "intentMarker": true,
+        "metadata": "baseline preserved",
+        "vercel": "success"
+      }
+    },
+    {
+      "path": "/wow-forever-mage-talents",
+      "classId": "mage",
+      "kind": "talents",
+      "title": "WoW Forever Mage Talents & Talent Trees",
+      "batch": 4,
+      "status": "deployed",
+      "implementation": "Searchable branch/rank evidence records and published editorial build links.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
+      "commit": "d1f1f569e75fb0a86c270329f8ed0527ae0692a7",
+      "production": {
+        "http": 200,
+        "intentMarker": true,
+        "metadata": "baseline preserved",
+        "vercel": "success"
+      }
+    },
+    {
+      "path": "/wow-forever-mage-leveling-build",
+      "classId": "mage",
+      "kind": "leveling",
+      "title": "WoW Forever Mage Leveling Build",
+      "batch": 4,
+      "status": "deployed",
+      "implementation": "Legal level-by-level progression, milestones, next point and exact-prefix calculator link.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
+      "commit": "d1f1f569e75fb0a86c270329f8ed0527ae0692a7",
+      "production": {
+        "http": 200,
+        "intentMarker": true,
+        "metadata": "baseline preserved",
+        "vercel": "success"
+      }
+    },
+    {
+      "path": "/wow-forever-frost-mage-build",
+      "classId": "mage",
+      "kind": "specBuild",
+      "title": "WoW Forever Frost Mage Build",
+      "batch": 4,
+      "status": "deployed",
+      "implementation": "Editable allocation, authored playstyle and exact alternative-build differences.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
+      "commit": "d1f1f569e75fb0a86c270329f8ed0527ae0692a7",
+      "production": {
+        "http": 200,
+        "intentMarker": true,
+        "metadata": "baseline preserved",
+        "vercel": "success"
+      }
+    },
+    {
+      "path": "/wow-forever-arcane-mage-build",
+      "classId": "mage",
+      "kind": "specBuild",
+      "title": "WoW Forever Arcane Mage Build",
+      "batch": 4,
+      "status": "deployed",
+      "implementation": "Editable allocation, authored playstyle and exact alternative-build differences.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
+      "commit": "d1f1f569e75fb0a86c270329f8ed0527ae0692a7",
+      "production": {
+        "http": 200,
+        "intentMarker": true,
+        "metadata": "baseline preserved",
+        "vercel": "success"
+      }
+    },
+    {
+      "path": "/wow-forever-frost-mage-leveling-build",
+      "classId": "mage",
+      "kind": "specLeveling",
+      "title": "WoW Forever Frost Mage Leveling Build",
+      "batch": 4,
+      "status": "deployed",
+      "implementation": "Specialization starts selected; legal per-level points and next-talent guidance.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
+      "commit": "d1f1f569e75fb0a86c270329f8ed0527ae0692a7",
+      "production": {
+        "http": 200,
+        "intentMarker": true,
+        "metadata": "baseline preserved",
+        "vercel": "success"
+      }
+    },
+    {
+      "path": "/wow-forever-arcane-mage-leveling-build",
+      "classId": "mage",
+      "kind": "specLeveling",
+      "title": "WoW Forever Arcane Mage Leveling Build",
+      "batch": 4,
+      "status": "deployed",
+      "implementation": "Specialization starts selected; legal per-level points and next-talent guidance.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
+      "commit": "d1f1f569e75fb0a86c270329f8ed0527ae0692a7",
+      "production": {
+        "http": 200,
+        "intentMarker": true,
+        "metadata": "baseline preserved",
+        "vercel": "success"
+      }
+    },
+    {
+      "path": "/wow-forever-frost-mage-aoe-build",
+      "classId": "mage",
+      "kind": "aoe",
+      "title": "WoW Forever Frost Mage AoE Build",
+      "batch": 5,
+      "status": "verified",
+      "implementation": "AoE route point progression paired with preserved pull/control trade-offs.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
+      "commit": null,
+      "production": null
+    },
+    {
+      "path": "/wow-forever-mage-dungeon-build",
+      "classId": "mage",
+      "kind": "dungeon",
+      "title": "WoW Forever Mage Dungeon Build",
+      "batch": 5,
+      "status": "verified",
+      "implementation": "Dungeon tools grid and preparation checklist connected to existing build.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
+      "commit": null,
+      "production": null
+    },
+    {
+      "path": "/wow-forever-mage-level-20-build",
+      "classId": "mage",
+      "kind": "levelCap",
+      "title": "WoW Forever Mage Level 20 Build",
+      "batch": 5,
+      "status": "verified",
+      "implementation": "Current planning budget, data limits and comparable routes.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
+      "commit": null,
+      "production": null
+    },
+    {
+      "path": "/rogue",
+      "classId": "rogue",
+      "kind": "calculator",
+      "title": "WoW Forever Rogue Talent Calculator",
+      "batch": 5,
+      "status": "verified",
+      "implementation": "Specialization point counters and direct tree / review-share navigation; existing calculator remains primary.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
+      "commit": null,
+      "production": null
+    },
+    {
+      "path": "/wow-forever-rogue-builds",
+      "classId": "rogue",
+      "kind": "buildsHub",
+      "title": "WoW Forever Rogue Builds",
+      "batch": 5,
       "status": "verified",
       "implementation": "Searchable published route directory organized by purpose.",
       "checks": [
@@ -572,11 +838,11 @@
       "production": null
     },
     {
-      "path": "/wow-forever-mage-talents",
-      "classId": "mage",
+      "path": "/wow-forever-rogue-talents",
+      "classId": "rogue",
       "kind": "talents",
-      "title": "WoW Forever Mage Talents & Talent Trees",
-      "batch": 4,
+      "title": "WoW Forever Rogue Talents & Talent Trees",
+      "batch": 5,
       "status": "verified",
       "implementation": "Searchable branch/rank evidence records and published editorial build links.",
       "checks": [
@@ -593,11 +859,11 @@
       "production": null
     },
     {
-      "path": "/wow-forever-mage-leveling-build",
-      "classId": "mage",
+      "path": "/wow-forever-rogue-leveling-build",
+      "classId": "rogue",
       "kind": "leveling",
-      "title": "WoW Forever Mage Leveling Build",
-      "batch": 4,
+      "title": "WoW Forever Rogue Leveling Build",
+      "batch": 5,
       "status": "verified",
       "implementation": "Legal level-by-level progression, milestones, next point and exact-prefix calculator link.",
       "checks": [
@@ -610,174 +876,6 @@
         "local assets including CSS URLs",
         "unit tests and build passed"
       ],
-      "commit": null,
-      "production": null
-    },
-    {
-      "path": "/wow-forever-frost-mage-build",
-      "classId": "mage",
-      "kind": "specBuild",
-      "title": "WoW Forever Frost Mage Build",
-      "batch": 4,
-      "status": "verified",
-      "implementation": "Editable allocation, authored playstyle and exact alternative-build differences.",
-      "checks": [
-        "desktop 1440 screenshot review",
-        "mobile 390 screenshot review / no document overflow",
-        "baseline title/H1/canonical/robots",
-        "relevant enabled intent marker",
-        "local routes and anchors",
-        "calculator parameters and allocations",
-        "local assets including CSS URLs",
-        "unit tests and build passed"
-      ],
-      "commit": null,
-      "production": null
-    },
-    {
-      "path": "/wow-forever-arcane-mage-build",
-      "classId": "mage",
-      "kind": "specBuild",
-      "title": "WoW Forever Arcane Mage Build",
-      "batch": 4,
-      "status": "verified",
-      "implementation": "Editable allocation, authored playstyle and exact alternative-build differences.",
-      "checks": [
-        "desktop 1440 screenshot review",
-        "mobile 390 screenshot review / no document overflow",
-        "baseline title/H1/canonical/robots",
-        "relevant enabled intent marker",
-        "local routes and anchors",
-        "calculator parameters and allocations",
-        "local assets including CSS URLs",
-        "unit tests and build passed"
-      ],
-      "commit": null,
-      "production": null
-    },
-    {
-      "path": "/wow-forever-frost-mage-leveling-build",
-      "classId": "mage",
-      "kind": "specLeveling",
-      "title": "WoW Forever Frost Mage Leveling Build",
-      "batch": 4,
-      "status": "verified",
-      "implementation": "Specialization starts selected; legal per-level points and next-talent guidance.",
-      "checks": [
-        "desktop 1440 screenshot review",
-        "mobile 390 screenshot review / no document overflow",
-        "baseline title/H1/canonical/robots",
-        "relevant enabled intent marker",
-        "local routes and anchors",
-        "calculator parameters and allocations",
-        "local assets including CSS URLs",
-        "unit tests and build passed"
-      ],
-      "commit": null,
-      "production": null
-    },
-    {
-      "path": "/wow-forever-arcane-mage-leveling-build",
-      "classId": "mage",
-      "kind": "specLeveling",
-      "title": "WoW Forever Arcane Mage Leveling Build",
-      "batch": 4,
-      "status": "verified",
-      "implementation": "Specialization starts selected; legal per-level points and next-talent guidance.",
-      "checks": [
-        "desktop 1440 screenshot review",
-        "mobile 390 screenshot review / no document overflow",
-        "baseline title/H1/canonical/robots",
-        "relevant enabled intent marker",
-        "local routes and anchors",
-        "calculator parameters and allocations",
-        "local assets including CSS URLs",
-        "unit tests and build passed"
-      ],
-      "commit": null,
-      "production": null
-    },
-    {
-      "path": "/wow-forever-frost-mage-aoe-build",
-      "classId": "mage",
-      "kind": "aoe",
-      "title": "WoW Forever Frost Mage AoE Build",
-      "batch": 5,
-      "status": "pending",
-      "implementation": "",
-      "checks": [],
-      "commit": null,
-      "production": null
-    },
-    {
-      "path": "/wow-forever-mage-dungeon-build",
-      "classId": "mage",
-      "kind": "dungeon",
-      "title": "WoW Forever Mage Dungeon Build",
-      "batch": 5,
-      "status": "pending",
-      "implementation": "",
-      "checks": [],
-      "commit": null,
-      "production": null
-    },
-    {
-      "path": "/wow-forever-mage-level-20-build",
-      "classId": "mage",
-      "kind": "levelCap",
-      "title": "WoW Forever Mage Level 20 Build",
-      "batch": 5,
-      "status": "pending",
-      "implementation": "",
-      "checks": [],
-      "commit": null,
-      "production": null
-    },
-    {
-      "path": "/rogue",
-      "classId": "rogue",
-      "kind": "calculator",
-      "title": "WoW Forever Rogue Talent Calculator",
-      "batch": 5,
-      "status": "pending",
-      "implementation": "",
-      "checks": [],
-      "commit": null,
-      "production": null
-    },
-    {
-      "path": "/wow-forever-rogue-builds",
-      "classId": "rogue",
-      "kind": "buildsHub",
-      "title": "WoW Forever Rogue Builds",
-      "batch": 5,
-      "status": "pending",
-      "implementation": "",
-      "checks": [],
-      "commit": null,
-      "production": null
-    },
-    {
-      "path": "/wow-forever-rogue-talents",
-      "classId": "rogue",
-      "kind": "talents",
-      "title": "WoW Forever Rogue Talents & Talent Trees",
-      "batch": 5,
-      "status": "pending",
-      "implementation": "",
-      "checks": [],
-      "commit": null,
-      "production": null
-    },
-    {
-      "path": "/wow-forever-rogue-leveling-build",
-      "classId": "rogue",
-      "kind": "leveling",
-      "title": "WoW Forever Rogue Leveling Build",
-      "batch": 5,
-      "status": "pending",
-      "implementation": "",
-      "checks": [],
       "commit": null,
       "production": null
     },

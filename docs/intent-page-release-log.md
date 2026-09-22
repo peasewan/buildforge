@@ -32,3 +32,8 @@ B03 corrective verification: CI exposed two legacy-CSS-dependent tests after ena
 
 All seven Mage pages inspected at 1440×900 and 390×844; no overflow. Hub exposes only published routes, reference has31 real records and missing tooltip notices, Frost/Arcane builds show their own allocations and alternatives. All three progression defaults match their page; Arcane level20 produces11/0/0 and exact calculator rank link. Original metadata preserved on150 pages;122 frozen roots unchanged. Focused tests, lint, build and static audit pass.
 
+
+## B05 — reviewed batch
+
+All seven pages inspected at1440×900 and390×844, no overflow. Mage AoE retains its route after selecting leveling and back; level20 link restores Improved Blizzard1. Mage dungeon renders toolkit first, level20 lists only published Frost/Arcane examples. Rogue calculator loads Combat0/11/0, copies exact ranks, resets, and single-point edit updates live counters; no console errors. Rogue directory shows51records with explicit unavailable text for blank tooltip; real Remorseless Attacks search verified after fix. Shared blank-rank fallback independently reviewed, regression tests cover valid text precedence and missing/whitespace data. Build, lint, static guard and full suite results verified before release.115frozen roots including22Paladin remain exact;150original metadata preserved.
+

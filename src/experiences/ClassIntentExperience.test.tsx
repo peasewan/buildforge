@@ -2,6 +2,7 @@ import { cleanup, fireEvent, render, screen } from '@testing-library/react'
 import { afterEach, expect, it } from 'vitest'
 import { warriorClass } from '../data/classes/warrior'
 import { mageClass } from '../data/classes/mage'
+import { rogueClass } from '../data/classes/rogue'
 import ClassIntentExperience from './ClassIntentExperience'
 import ClassExperiencePage from './ClassExperiencePage'
 import { readFileSync } from 'node:fs'
@@ -92,6 +93,106 @@ it('searches talent names and displays only matching evidence records', () => {
     'Piercing Howl',
   )
 })
+
+it('shows an unavailable tooltip for the empty Remorseless Attacks rank record', () => {
+  render(
+    <ClassIntentExperience
+      classDef={rogueClass}
+      page={rogueClass.pages.find((p) => p.kind === 'talents')!}
+    />,
+  )
+  fireEvent.change(screen.getByLabelText('Search talents'), {
+    target: { value: 'Remorseless Attacks' },
+  })
+  expect(screen.getAllByTestId('talent-record')).toHaveLength(1)
+  expect(
+    screen.getByText(
+      'This rank’s tooltip is not available in the reviewed dataset.',
+    ),
+  ).toBeTruthy()
+})
+
+it.each([undefined, '', ' \n\t '])(
+  'shows an unavailable notice for missing or blank rank text (%j)',
+  (rankText) => {
+    const def = {
+      ...warriorClass,
+      talents: warriorClass.talents.map((t) =>
+        t.name === 'Piercing Howl'
+          ? {
+              ...t,
+              rankDescriptions: rankText === undefined ? undefined : [rankText],
+            }
+          : t,
+      ),
+    }
+    render(
+      <ClassIntentExperience
+        classDef={def}
+        page={page('wow-forever-warrior-talents')}
+      />,
+    )
+    fireEvent.change(screen.getByLabelText('Search talents'), {
+      target: { value: 'Piercing Howl' },
+    })
+    expect(screen.getAllByTestId('talent-record')).toHaveLength(1)
+    expect(
+      screen.getByText(
+        'This rank’s tooltip is not available in the reviewed dataset.',
+      ),
+    ).toBeTruthy()
+  },
+)
+
+it.each([
+  {
+    rankText: '',
+    description: 'Recorded general effect.',
+    expected: 'Recorded general effect.',
+  },
+  {
+    rankText: ' \n ',
+    description: 'Recorded general effect.',
+    expected: 'Recorded general effect.',
+  },
+  {
+    rankText: undefined,
+    description: 'Recorded general effect.',
+    expected: 'Recorded general effect.',
+  },
+  {
+    rankText: '',
+    description: ' \t ',
+    expected: 'A verified effect description for this rank is not available.',
+  },
+  {
+    rankText: '  Recorded rank effect.  ',
+    description: 'Recorded general effect.',
+    expected: 'Recorded rank effect.',
+  },
+])(
+  'uses the first nonblank role-tool description: $expected',
+  ({ rankText, description, expected }) => {
+    const def = {
+      ...warriorClass,
+      talents: warriorClass.talents.map((t) => ({
+        ...t,
+        rankDescriptions:
+          rankText === undefined
+            ? undefined
+            : Array<string>(t.maxRank).fill(rankText),
+        description,
+      })),
+    }
+    render(
+      <ClassIntentExperience
+        classDef={def}
+        page={page('wow-forever-arms-warrior-pvp-build')}
+      />,
+    )
+    expect(screen.getAllByText(expected)).toHaveLength(4)
+  },
+)
 
 it('normalizes fractional levels to an existing step with an exact calculator allocation', () => {
   render(

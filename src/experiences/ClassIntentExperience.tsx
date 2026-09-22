@@ -472,8 +472,8 @@ function RoleExperience({ classDef: def, page }: Props) {
               {t.name} · {build.build[t.id]}/{t.maxRank}
             </strong>
             <p>
-              {t.rankDescriptions?.[(build.build[t.id] ?? 1) - 1] ??
-                t.description ??
+              {t.rankDescriptions?.[(build.build[t.id] ?? 1) - 1]?.trim() ||
+                t.description?.trim() ||
                 'A verified effect description for this rank is not available.'}
             </p>
           </div>
@@ -558,7 +558,7 @@ function TalentRecord({
         </select>
       </label>
       <p>
-        {t.rankDescriptions?.[rank - 1] ??
+        {t.rankDescriptions?.[rank - 1]?.trim() ||
           'This rank’s tooltip is not available in the reviewed dataset.'}
       </p>
       <div className="ix-record-facts">
