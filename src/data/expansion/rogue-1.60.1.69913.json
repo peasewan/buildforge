@@ -1,0 +1,3108 @@
+{
+  "classId": "rogue",
+  "build": "1.60.1.69913",
+  "branches": [
+    "assassination",
+    "combat",
+    "subtlety"
+  ],
+  "talents": [
+    {
+      "id": "rogue-276",
+      "nodeId": 276,
+      "sourceTalentId": 276,
+      "spellId": 14162,
+      "spellIds": [
+        14162,
+        14163,
+        14164
+      ],
+      "name": "Improved Eviscerate",
+      "branch": "assassination",
+      "row": 1,
+      "column": 1,
+      "x": 12.5,
+      "y": 7.142857142857142,
+      "maxRank": 3,
+      "requiredTreePoints": 0,
+      "rankDescriptions": [
+        "Increases the damage done by your Eviscerate ability by 20%.",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_rogue_eviscerate",
+      "icon": "/images/class-talents/ability_rogue_eviscerate.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB rogue client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/rogue/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "rogue-272",
+      "nodeId": 272,
+      "sourceTalentId": 272,
+      "spellId": 14144,
+      "spellIds": [
+        14144,
+        14148
+      ],
+      "name": "Remorseless Attacks",
+      "branch": "assassination",
+      "row": 1,
+      "column": 2,
+      "x": 37.5,
+      "y": 7.142857142857142,
+      "maxRank": 2,
+      "requiredTreePoints": 0,
+      "rankDescriptions": [
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_fiegndead",
+      "icon": "/images/class-talents/ability_fiegndead.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "unknown",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB rogue client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/rogue/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "rogue-270",
+      "nodeId": 270,
+      "sourceTalentId": 270,
+      "spellId": 14138,
+      "spellIds": [
+        14138,
+        14139,
+        14140,
+        14141,
+        14142
+      ],
+      "name": "Malice",
+      "branch": "assassination",
+      "row": 1,
+      "column": 3,
+      "x": 62.5,
+      "y": 7.142857142857142,
+      "maxRank": 5,
+      "requiredTreePoints": 0,
+      "rankDescriptions": [
+        "Increases your critical strike chance with all attacks and Poisons by 5%.",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_racial_bloodrage",
+      "icon": "/images/class-talents/ability_racial_bloodrage.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB rogue client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/rogue/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "rogue-273",
+      "nodeId": 273,
+      "sourceTalentId": 273,
+      "spellId": 14156,
+      "spellIds": [
+        14156,
+        14160,
+        14161
+      ],
+      "name": "Ruthlessness",
+      "branch": "assassination",
+      "row": 2,
+      "column": 1,
+      "x": 12.5,
+      "y": 21.428571428571427,
+      "maxRank": 3,
+      "requiredTreePoints": 5,
+      "rankDescriptions": [
+        "Gives your finishing moves a 60% chance to add a Combo Point to your target.",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_druid_disembowel",
+      "icon": "/images/class-talents/ability_druid_disembowel.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB rogue client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/rogue/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "rogue-274",
+      "nodeId": 274,
+      "sourceTalentId": 274,
+      "spellId": 14158,
+      "spellIds": [
+        14158,
+        14159
+      ],
+      "name": "Murder",
+      "branch": "assassination",
+      "row": 2,
+      "column": 2,
+      "x": 37.5,
+      "y": 21.428571428571427,
+      "maxRank": 2,
+      "requiredTreePoints": 5,
+      "rankDescriptions": [
+        "Increases all damage dealt by 4% against Humanoid and Giant targets.",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_shadow_deathscream",
+      "icon": "/images/class-talents/spell_shadow_deathscream.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB rogue client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/rogue/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "rogue-277",
+      "nodeId": 277,
+      "sourceTalentId": 277,
+      "spellId": 14165,
+      "spellIds": [
+        14165,
+        14166,
+        14167
+      ],
+      "name": "Improved Slice and Dice",
+      "branch": "assassination",
+      "row": 2,
+      "column": 4,
+      "x": 87.5,
+      "y": 21.428571428571427,
+      "maxRank": 3,
+      "requiredTreePoints": 5,
+      "rankDescriptions": [
+        "Increases the duration of your Slice and Dice ability by 15%.",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_rogue_slicedice",
+      "icon": "/images/class-talents/ability_rogue_slicedice.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB rogue client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/rogue/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "rogue-281",
+      "nodeId": 281,
+      "sourceTalentId": 281,
+      "spellId": 14179,
+      "spellIds": [
+        14179
+      ],
+      "name": "Relentless Strikes",
+      "branch": "assassination",
+      "row": 3,
+      "column": 1,
+      "x": 12.5,
+      "y": 35.714285714285715,
+      "maxRank": 1,
+      "requiredTreePoints": 10,
+      "rankDescriptions": [
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_warrior_decisivestrike",
+      "icon": "/images/class-talents/ability_warrior_decisivestrike.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "unknown",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB rogue client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/rogue/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "rogue-278",
+      "nodeId": 278,
+      "sourceTalentId": 278,
+      "spellId": 14168,
+      "spellIds": [
+        14168,
+        14169
+      ],
+      "name": "Improved Expose Armor",
+      "branch": "assassination",
+      "row": 3,
+      "column": 2,
+      "x": 37.5,
+      "y": 35.714285714285715,
+      "maxRank": 2,
+      "requiredTreePoints": 10,
+      "rankDescriptions": [
+        "Reduces the Energy cost of your Expose Armor ability by 10, and refunds 2 Combo Points when cast with 5 Combo Points.",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_warrior_riposte",
+      "icon": "/images/class-talents/ability_warrior_riposte.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB rogue client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/rogue/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "rogue-269",
+      "nodeId": 269,
+      "sourceTalentId": 269,
+      "spellId": 14128,
+      "spellIds": [
+        14128,
+        14132,
+        14135,
+        14136,
+        14137
+      ],
+      "name": "Lethality",
+      "branch": "assassination",
+      "row": 3,
+      "column": 3,
+      "x": 62.5,
+      "y": 35.714285714285715,
+      "maxRank": 5,
+      "requiredTreePoints": 10,
+      "prerequisite": [
+        {
+          "talentId": "rogue-270",
+          "requiredRank": null
+        }
+      ],
+      "rankDescriptions": [
+        "Increases the critical strike damage bonus of your Sinister Strike, Gouge, Backstab, Mutilate, Ghostly Strike, and Hemorrhage abilities by 6%.",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_criticalstrike",
+      "icon": "/images/class-talents/ability_criticalstrike.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB rogue client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/rogue/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "rogue-682",
+      "nodeId": 682,
+      "sourceTalentId": 682,
+      "spellId": 16513,
+      "spellIds": [
+        16513,
+        16514,
+        16515,
+        16719,
+        16720
+      ],
+      "name": "Vile Poisons",
+      "branch": "assassination",
+      "row": 4,
+      "column": 2,
+      "x": 37.5,
+      "y": 50,
+      "maxRank": 5,
+      "requiredTreePoints": 15,
+      "rankDescriptions": [
+        "Increases the damage dealt by your poisons by 20% and gives your poisons an additional 40% chance to resist dispel effects.",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_rogue_feigndeath",
+      "icon": "/images/class-talents/ability_rogue_feigndeath.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB rogue client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/rogue/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "rogue-268",
+      "nodeId": 268,
+      "sourceTalentId": 268,
+      "spellId": 14113,
+      "spellIds": [
+        14113,
+        14114,
+        14115,
+        14116,
+        14117
+      ],
+      "name": "Improved Poisons",
+      "branch": "assassination",
+      "row": 4,
+      "column": 3,
+      "x": 62.5,
+      "y": 50,
+      "maxRank": 5,
+      "requiredTreePoints": 15,
+      "rankDescriptions": [
+        "Increases the chance to apply Poisons to your target by 10%, and gives Poison applications a 50% chance to not consume a charge.",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_poisons",
+      "icon": "/images/class-talents/ability_poisons.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB rogue client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/rogue/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "rogue-280",
+      "nodeId": 280,
+      "sourceTalentId": 280,
+      "spellId": 14177,
+      "spellIds": [
+        14177
+      ],
+      "name": "Cold Blood",
+      "branch": "assassination",
+      "row": 5,
+      "column": 2,
+      "x": 37.5,
+      "y": 64.28571428571429,
+      "maxRank": 1,
+      "requiredTreePoints": 20,
+      "rankDescriptions": [
+        "When activated, increases the critical strike chance of your next Sinister Strike, Backstab, Ambush, Eviscerate, or Mutilate by 100%."
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_ice_lament",
+      "icon": "/images/class-talents/spell_ice_lament.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB rogue client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/rogue/"
+        }
+      ],
+      "dataNotes": []
+    },
+    {
+      "id": "rogue-279",
+      "nodeId": 279,
+      "sourceTalentId": 279,
+      "spellId": 14174,
+      "spellIds": [
+        14174,
+        14175,
+        14176
+      ],
+      "name": "Improved Kidney Shot",
+      "branch": "assassination",
+      "row": 5,
+      "column": 3,
+      "x": 62.5,
+      "y": 64.28571428571429,
+      "maxRank": 3,
+      "requiredTreePoints": 20,
+      "rankDescriptions": [
+        "Enemies Stunned by your Kidney Shot ability take 10% increased damage from your poisons and attacks.",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_rogue_kidneyshot",
+      "icon": "/images/class-talents/ability_rogue_kidneyshot.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB rogue client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/rogue/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "rogue-283",
+      "nodeId": 283,
+      "sourceTalentId": 283,
+      "spellId": 14186,
+      "spellIds": [
+        14186,
+        14190,
+        14193,
+        14194,
+        14195
+      ],
+      "name": "Seal Fate",
+      "branch": "assassination",
+      "row": 6,
+      "column": 2,
+      "x": 37.5,
+      "y": 78.57142857142857,
+      "maxRank": 5,
+      "requiredTreePoints": 25,
+      "prerequisite": [
+        {
+          "talentId": "rogue-280",
+          "requiredRank": null
+        }
+      ],
+      "rankDescriptions": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_shadow_chilltouch",
+      "icon": "/images/class-talents/spell_shadow_chilltouch.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "unknown",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB rogue client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/rogue/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "rogue-382",
+      "nodeId": 382,
+      "sourceTalentId": 382,
+      "spellId": 14983,
+      "spellIds": [
+        14983
+      ],
+      "name": "Vigor",
+      "branch": "assassination",
+      "row": 7,
+      "column": 2,
+      "x": 37.5,
+      "y": 92.85714285714286,
+      "maxRank": 1,
+      "requiredTreePoints": 30,
+      "rankDescriptions": [
+        "Increases your maximum Energy by 10."
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_nature_earthbindtotem",
+      "icon": "/images/class-talents/spell_nature_earthbindtotem.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB rogue client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/rogue/"
+        }
+      ],
+      "dataNotes": []
+    },
+    {
+      "id": "rogue-203",
+      "nodeId": 203,
+      "sourceTalentId": 203,
+      "spellId": 13741,
+      "spellIds": [
+        13741,
+        13793,
+        13792
+      ],
+      "name": "Improved Gouge",
+      "branch": "combat",
+      "row": 1,
+      "column": 1,
+      "x": 12.5,
+      "y": 7.142857142857142,
+      "maxRank": 3,
+      "requiredTreePoints": 0,
+      "rankDescriptions": [
+        "Increases the duration of your Gouge ability by 1.5 sec.",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_gouge",
+      "icon": "/images/class-talents/ability_gouge.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB rogue client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/rogue/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "rogue-201",
+      "nodeId": 201,
+      "sourceTalentId": 201,
+      "spellId": 13732,
+      "spellIds": [
+        13732,
+        13863
+      ],
+      "name": "Improved Sinister Strike",
+      "branch": "combat",
+      "row": 1,
+      "column": 2,
+      "x": 37.5,
+      "y": 7.142857142857142,
+      "maxRank": 2,
+      "requiredTreePoints": 0,
+      "rankDescriptions": [
+        "Reduces the Energy cost of your Sinister Strike ability by 5.",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_shadow_ritualofsacrifice",
+      "icon": "/images/class-talents/spell_shadow_ritualofsacrifice.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB rogue client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/rogue/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "rogue-186",
+      "nodeId": 186,
+      "sourceTalentId": 186,
+      "spellId": 13712,
+      "spellIds": [
+        13712,
+        13788,
+        13789,
+        13790,
+        13791
+      ],
+      "name": "Lightning Reflexes",
+      "branch": "combat",
+      "row": 1,
+      "column": 3,
+      "x": 62.5,
+      "y": 7.142857142857142,
+      "maxRank": 5,
+      "requiredTreePoints": 0,
+      "rankDescriptions": [
+        "Increases your Dodge chance by 5%.",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_nature_invisibilty",
+      "icon": "/images/class-talents/spell_nature_invisibilty.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB rogue client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/rogue/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "rogue-202",
+      "nodeId": 202,
+      "sourceTalentId": 202,
+      "spellId": 13733,
+      "spellIds": [
+        13733,
+        13865,
+        13866
+      ],
+      "name": "Improved Backstab",
+      "branch": "combat",
+      "row": 2,
+      "column": 1,
+      "x": 12.5,
+      "y": 21.428571428571427,
+      "maxRank": 3,
+      "requiredTreePoints": 5,
+      "rankDescriptions": [
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "unknown",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "unknown",
+        "iconName": "unknown",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB rogue client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/rogue/"
+        }
+      ],
+      "dataNotes": [
+        "Client spell name is unreadable; a historical reference label is shown. Effects remain unverified.",
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "rogue-187",
+      "nodeId": 187,
+      "sourceTalentId": 187,
+      "spellId": 13713,
+      "spellIds": [
+        13713,
+        13853,
+        13854,
+        13855,
+        13856
+      ],
+      "name": "Deflection",
+      "branch": "combat",
+      "row": 2,
+      "column": 2,
+      "x": 37.5,
+      "y": 21.428571428571427,
+      "maxRank": 5,
+      "requiredTreePoints": 5,
+      "rankDescriptions": [
+        "Increases your Parry chance by 1%.",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_parry",
+      "icon": "/images/class-talents/ability_parry.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB rogue client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/rogue/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "rogue-181",
+      "nodeId": 181,
+      "sourceTalentId": 181,
+      "spellId": 13705,
+      "spellIds": [
+        13705,
+        13832,
+        13843,
+        13844,
+        13845
+      ],
+      "name": "Precision",
+      "branch": "combat",
+      "row": 2,
+      "column": 3,
+      "x": 62.5,
+      "y": 21.428571428571427,
+      "maxRank": 5,
+      "requiredTreePoints": 5,
+      "rankDescriptions": [
+        "Improves your chance to hit by 1%.",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_marksmanship",
+      "icon": "/images/class-talents/ability_marksmanship.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB rogue client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/rogue/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "rogue-204",
+      "nodeId": 204,
+      "sourceTalentId": 204,
+      "spellId": 13742,
+      "spellIds": [
+        13742,
+        13872
+      ],
+      "name": "Endurance",
+      "branch": "combat",
+      "row": 3,
+      "column": 1,
+      "x": 12.5,
+      "y": 35.714285714285715,
+      "maxRank": 2,
+      "requiredTreePoints": 10,
+      "rankDescriptions": [
+        "Reduces the cooldown of your Sprint and Evasion abilities by 60%.",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_shadow_shadowward",
+      "icon": "/images/class-talents/spell_shadow_shadowward.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB rogue client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/rogue/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "rogue-301",
+      "nodeId": 301,
+      "sourceTalentId": 301,
+      "spellId": 14251,
+      "spellIds": [
+        14251
+      ],
+      "name": "Riposte",
+      "branch": "combat",
+      "row": 3,
+      "column": 2,
+      "x": 37.5,
+      "y": 35.714285714285715,
+      "maxRank": 1,
+      "requiredTreePoints": 10,
+      "prerequisite": [
+        {
+          "talentId": "rogue-187",
+          "requiredRank": null
+        }
+      ],
+      "rankDescriptions": [
+        "A strike that becomes active after parrying an opponent's attack. This attack deals 150% weapon damage and disarms the target."
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_warrior_challange",
+      "icon": "/images/class-talents/ability_warrior_challange.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB rogue client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/rogue/"
+        }
+      ],
+      "dataNotes": []
+    },
+    {
+      "id": "rogue-222",
+      "nodeId": 222,
+      "sourceTalentId": 222,
+      "spellId": 13743,
+      "spellIds": [
+        13743,
+        13875
+      ],
+      "name": "Improved Sprint",
+      "branch": "combat",
+      "row": 3,
+      "column": 4,
+      "x": 87.5,
+      "y": 35.714285714285715,
+      "maxRank": 2,
+      "requiredTreePoints": 10,
+      "rankDescriptions": [
+        "Gives a 100% chance to remove all movement impairing effects when you activate your Sprint ability.",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_rogue_sprint",
+      "icon": "/images/class-talents/ability_rogue_sprint.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB rogue client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/rogue/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "rogue-206",
+      "nodeId": 206,
+      "sourceTalentId": 206,
+      "spellId": 13754,
+      "spellIds": [
+        13754,
+        13867
+      ],
+      "name": "Improved Kick",
+      "branch": "combat",
+      "row": 4,
+      "column": 1,
+      "x": 12.5,
+      "y": 50,
+      "maxRank": 2,
+      "requiredTreePoints": 15,
+      "rankDescriptions": [
+        "Gives your Kick ability a 100% chance to Silence the target for 2 sec.",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_kick",
+      "icon": "/images/class-talents/ability_kick.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB rogue client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/rogue/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "rogue-182",
+      "nodeId": 182,
+      "sourceTalentId": 182,
+      "spellId": 13706,
+      "spellIds": [
+        13706,
+        13804,
+        13805,
+        13806,
+        13807
+      ],
+      "name": "Hack and Slash",
+      "branch": "combat",
+      "row": 4,
+      "column": 2,
+      "x": 37.5,
+      "y": 50,
+      "maxRank": 5,
+      "requiredTreePoints": 15,
+      "rankDescriptions": [
+        "Increases your chance to get a critical strike with Daggers and Fist Weapons by 5%.",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "inv_weapon_shortblade_05",
+      "icon": "/images/class-talents/inv_weapon_shortblade_05.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB rogue client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/rogue/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "rogue-221",
+      "nodeId": 221,
+      "sourceTalentId": 221,
+      "spellId": 13715,
+      "spellIds": [
+        13715,
+        13848,
+        13849,
+        13851,
+        13852
+      ],
+      "name": "Dual Wield Specialization",
+      "branch": "combat",
+      "row": 4,
+      "column": 3,
+      "x": 62.5,
+      "y": 50,
+      "maxRank": 5,
+      "requiredTreePoints": 15,
+      "prerequisite": [
+        {
+          "talentId": "rogue-181",
+          "requiredRank": null
+        }
+      ],
+      "rankDescriptions": [
+        "Increases the damage done by your off-hand weapon by 50%.",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_dualwield",
+      "icon": "/images/class-talents/ability_dualwield.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB rogue client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/rogue/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "rogue-184",
+      "nodeId": 184,
+      "sourceTalentId": 184,
+      "spellId": 13709,
+      "spellIds": [
+        13709,
+        13800,
+        13801,
+        13802,
+        13803
+      ],
+      "name": "Hack and Slash",
+      "branch": "combat",
+      "row": 5,
+      "column": 1,
+      "x": 12.5,
+      "y": 64.28571428571429,
+      "maxRank": 5,
+      "requiredTreePoints": 20,
+      "rankDescriptions": [
+        "Your attacks with Maces ignore up to 15% of your target's armor.",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "inv_mace_01",
+      "icon": "/images/class-talents/inv_mace_01.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB rogue client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/rogue/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "rogue-223",
+      "nodeId": 223,
+      "sourceTalentId": 223,
+      "spellId": 13877,
+      "spellIds": [
+        13877
+      ],
+      "name": "Blade Flurry",
+      "branch": "combat",
+      "row": 5,
+      "column": 2,
+      "x": 37.5,
+      "y": 64.28571428571429,
+      "maxRank": 1,
+      "requiredTreePoints": 20,
+      "rankDescriptions": [
+        "Increases your melee attack speed by 20% and your melee attacks strike an additional nearby opponent. Lasts 15 sec."
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_warrior_punishingblow",
+      "icon": "/images/class-talents/ability_warrior_punishingblow.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB rogue client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/rogue/"
+        }
+      ],
+      "dataNotes": []
+    },
+    {
+      "id": "rogue-242",
+      "nodeId": 242,
+      "sourceTalentId": 242,
+      "spellId": 13960,
+      "spellIds": [
+        13960,
+        13961,
+        13962,
+        13963,
+        13964
+      ],
+      "name": "Hack and Slash",
+      "branch": "combat",
+      "row": 5,
+      "column": 3,
+      "x": 62.5,
+      "y": 64.28571428571429,
+      "maxRank": 5,
+      "requiredTreePoints": 20,
+      "rankDescriptions": [
+        "Gives your melee weapon attacks a benefit depending on the weapon.\n\n Axe/Sword: Your successful\n melee attacks have a 5% chance\n to trigger an extra attack on the \n target.\n\n Dagger/Fist: Increases your\n critical strike chance by 5%.\n\n Mace: Your attacks ignore 15% of\n your target's armor.",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "inv_sword_27",
+      "icon": "/images/class-talents/inv_sword_27.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB rogue client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/rogue/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "rogue-183",
+      "nodeId": 183,
+      "sourceTalentId": 183,
+      "spellId": 13707,
+      "spellIds": [
+        13707,
+        13966,
+        13967,
+        13968,
+        13969
+      ],
+      "name": "Fist Weapon Specialization",
+      "branch": "combat",
+      "row": 5,
+      "column": 4,
+      "x": 87.5,
+      "y": 64.28571428571429,
+      "maxRank": 5,
+      "requiredTreePoints": 20,
+      "rankDescriptions": [
+        "Increases your chance to get a critical strike with Fist Weapons by 1%.",
+        "Increases your chance to get a critical strike with Fist Weapons by 2%.",
+        "Increases your chance to get a critical strike with Fist Weapons by 3%.",
+        "Increases your chance to get a critical strike with Fist Weapons by 4%.",
+        "Increases your chance to get a critical strike with Fist Weapons by 5%."
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "inv_gauntlets_04",
+      "icon": "/images/class-talents/inv_gauntlets_04.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB rogue client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/rogue/"
+        }
+      ],
+      "dataNotes": []
+    },
+    {
+      "id": "rogue-1703",
+      "nodeId": 1703,
+      "sourceTalentId": 1703,
+      "spellId": 30919,
+      "spellIds": [
+        30919,
+        30920
+      ],
+      "name": "Weapon Expertise",
+      "branch": "combat",
+      "row": 6,
+      "column": 2,
+      "x": 37.5,
+      "y": 78.57142857142857,
+      "maxRank": 2,
+      "requiredTreePoints": 25,
+      "prerequisite": [
+        {
+          "talentId": "rogue-223",
+          "requiredRank": null
+        }
+      ],
+      "rankDescriptions": [
+        "Reduces the chance for your attacks to be Dodged or Parried by 2%.",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_holy_blessingofstrength",
+      "icon": "/images/class-talents/spell_holy_blessingofstrength.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB rogue client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/rogue/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "rogue-1122",
+      "nodeId": 1122,
+      "sourceTalentId": 1122,
+      "spellId": 18427,
+      "spellIds": [
+        18427,
+        18428,
+        18429
+      ],
+      "name": "Aggression",
+      "branch": "combat",
+      "row": 6,
+      "column": 3,
+      "x": 62.5,
+      "y": 78.57142857142857,
+      "maxRank": 3,
+      "requiredTreePoints": 25,
+      "rankDescriptions": [
+        "Increases the damage of your Sinister Strike, Backstab, and Eviscerate abilities by 2%.",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_racial_avatar",
+      "icon": "/images/class-talents/ability_racial_avatar.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB rogue client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/rogue/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "rogue-205",
+      "nodeId": 205,
+      "sourceTalentId": 205,
+      "spellId": 13750,
+      "spellIds": [
+        13750
+      ],
+      "name": "Adrenaline Rush",
+      "branch": "combat",
+      "row": 7,
+      "column": 2,
+      "x": 37.5,
+      "y": 92.85714285714286,
+      "maxRank": 1,
+      "requiredTreePoints": 30,
+      "rankDescriptions": [
+        "Increases your Energy regeneration rate by 100% for 15 sec."
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_shadow_shadowworddominate",
+      "icon": "/images/class-talents/spell_shadow_shadowworddominate.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB rogue client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/rogue/"
+        }
+      ],
+      "dataNotes": []
+    },
+    {
+      "id": "rogue-241",
+      "nodeId": 241,
+      "sourceTalentId": 241,
+      "spellId": 13958,
+      "spellIds": [
+        13958,
+        13970,
+        13971,
+        13972,
+        13973
+      ],
+      "name": "Master of Deception",
+      "branch": "subtlety",
+      "row": 1,
+      "column": 2,
+      "x": 37.5,
+      "y": 7.142857142857142,
+      "maxRank": 5,
+      "requiredTreePoints": 0,
+      "rankDescriptions": [
+        "Reduces the chance enemies have to detect you while in Stealth mode as if you were 3 levels higher.",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_shadow_charm",
+      "icon": "/images/class-talents/spell_shadow_charm.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB rogue client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/rogue/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "rogue-261",
+      "nodeId": 261,
+      "sourceTalentId": 261,
+      "spellId": 14057,
+      "spellIds": [
+        14057,
+        14072,
+        14073,
+        14074,
+        14075
+      ],
+      "name": "Opportunity",
+      "branch": "subtlety",
+      "row": 1,
+      "column": 3,
+      "x": 62.5,
+      "y": 7.142857142857142,
+      "maxRank": 5,
+      "requiredTreePoints": 0,
+      "rankDescriptions": [
+        "Increases the damage dealt by your Backstab, Garrote, Ambush, and Mutilate abilities by 10%.",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_warrior_warcry",
+      "icon": "/images/class-talents/ability_warrior_warcry.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB rogue client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/rogue/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "rogue-1700",
+      "nodeId": 1700,
+      "sourceTalentId": 1700,
+      "spellId": 30892,
+      "spellIds": [
+        30892,
+        30893
+      ],
+      "name": "Sleight of Hand",
+      "branch": "subtlety",
+      "row": 2,
+      "column": 1,
+      "x": 12.5,
+      "y": 21.428571428571427,
+      "maxRank": 2,
+      "requiredTreePoints": 5,
+      "rankDescriptions": [
+        "Reduces the chance you are critically hit by attacks by 2% and increases the threat reduction of your Feint ability by 20%.",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_rogue_feint",
+      "icon": "/images/class-talents/ability_rogue_feint.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB rogue client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/rogue/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "rogue-247",
+      "nodeId": 247,
+      "sourceTalentId": 247,
+      "spellId": 13981,
+      "spellIds": [
+        13981,
+        14066
+      ],
+      "name": "Elusiveness",
+      "branch": "subtlety",
+      "row": 2,
+      "column": 2,
+      "x": 37.5,
+      "y": 21.428571428571427,
+      "maxRank": 2,
+      "requiredTreePoints": 5,
+      "rankDescriptions": [
+        "Reduces the cooldown of your Vanish and Blind abilities by 90 sec.",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_magic_lesserinvisibilty",
+      "icon": "/images/class-talents/spell_magic_lesserinvisibilty.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB rogue client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/rogue/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "rogue-244",
+      "nodeId": 244,
+      "sourceTalentId": 244,
+      "spellId": 13975,
+      "spellIds": [
+        13975,
+        14062,
+        14063,
+        14064,
+        14065
+      ],
+      "name": "Camouflage",
+      "branch": "subtlety",
+      "row": 2,
+      "column": 3,
+      "x": 62.5,
+      "y": 21.428571428571427,
+      "maxRank": 5,
+      "requiredTreePoints": 5,
+      "rankDescriptions": [
+        "Reduces your speed penalty from your Stealth ability by 15% and reduces its cooldown by 6 sec.",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_stealth",
+      "icon": "/images/class-talents/ability_stealth.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB rogue client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/rogue/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "rogue-245",
+      "nodeId": 245,
+      "sourceTalentId": 245,
+      "spellId": 13976,
+      "spellIds": [
+        13976,
+        13979,
+        13980
+      ],
+      "name": "Initiative",
+      "branch": "subtlety",
+      "row": 3,
+      "column": 1,
+      "x": 12.5,
+      "y": 35.714285714285715,
+      "maxRank": 3,
+      "requiredTreePoints": 10,
+      "rankDescriptions": [
+        "Gives you a 100% chance to add an additional combo point to your target when using your Ambush, Garrote, or Cheap Shot ability.",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_shadow_fumble",
+      "icon": "/images/class-talents/spell_shadow_fumble.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB rogue client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/rogue/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "rogue-303",
+      "nodeId": 303,
+      "sourceTalentId": 303,
+      "spellId": 14278,
+      "spellIds": [
+        14278
+      ],
+      "name": "Ghostly Strike",
+      "branch": "subtlety",
+      "row": 3,
+      "column": 2,
+      "x": 37.5,
+      "y": 35.714285714285715,
+      "maxRank": 1,
+      "requiredTreePoints": 10,
+      "rankDescriptions": [
+        "A strike that deals 125% (180% if a Dagger is equipped in your Main Hand) weapon damage and increases your chance to dodge by 15% for 7 sec. Awards 1 combo points."
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_shadow_curse",
+      "icon": "/images/class-talents/spell_shadow_curse.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB rogue client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/rogue/"
+        }
+      ],
+      "dataNotes": []
+    },
+    {
+      "id": "rogue-263",
+      "nodeId": 263,
+      "sourceTalentId": 263,
+      "spellId": 14079,
+      "spellIds": [
+        14079,
+        14080,
+        14081
+      ],
+      "name": "Improved Ambush",
+      "branch": "subtlety",
+      "row": 3,
+      "column": 3,
+      "x": 62.5,
+      "y": 35.714285714285715,
+      "maxRank": 3,
+      "requiredTreePoints": 10,
+      "rankDescriptions": [
+        "Increases the critical strike chance of your Ambush ability by 45%.",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_rogue_ambush",
+      "icon": "/images/class-talents/ability_rogue_ambush.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB rogue client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/rogue/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "rogue-246",
+      "nodeId": 246,
+      "sourceTalentId": 246,
+      "spellId": 13983,
+      "spellIds": [
+        13983,
+        14070,
+        14071
+      ],
+      "name": "Setup",
+      "branch": "subtlety",
+      "row": 4,
+      "column": 1,
+      "x": 12.5,
+      "y": 50,
+      "maxRank": 3,
+      "requiredTreePoints": 15,
+      "rankDescriptions": [
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_nature_mirrorimage",
+      "icon": "/images/class-talents/spell_nature_mirrorimage.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "unknown",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB rogue client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/rogue/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "rogue-262",
+      "nodeId": 262,
+      "sourceTalentId": 262,
+      "spellId": 14076,
+      "spellIds": [
+        14076,
+        14094,
+        14095
+      ],
+      "name": "Improved Sap",
+      "branch": "subtlety",
+      "row": 4,
+      "column": 2,
+      "x": 37.5,
+      "y": 50,
+      "maxRank": 3,
+      "requiredTreePoints": 15,
+      "rankDescriptions": [
+        "Gives you a 30% chance to return to stealth mode after using your Sap ability.",
+        "Gives you a 60% chance to return to stealth mode after using your Sap ability.",
+        "Gives you a 90% chance to return to stealth mode after using your Sap ability."
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_sap",
+      "icon": "/images/class-talents/ability_sap.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB rogue client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/rogue/"
+        }
+      ],
+      "dataNotes": []
+    },
+    {
+      "id": "rogue-1123",
+      "nodeId": 1123,
+      "sourceTalentId": 1123,
+      "spellId": 14171,
+      "spellIds": [
+        14171,
+        14172,
+        14173
+      ],
+      "name": "Serrated Blades",
+      "branch": "subtlety",
+      "row": 4,
+      "column": 3,
+      "x": 62.5,
+      "y": 50,
+      "maxRank": 3,
+      "requiredTreePoints": 15,
+      "rankDescriptions": [
+        "Causes your attacks to ignore 9% of your target's Armor and increases the damage dealt by your Rupture ability by 30%.",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "inv_sword_17",
+      "icon": "/images/class-talents/inv_sword_17.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB rogue client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/rogue/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "rogue-1701",
+      "nodeId": 1701,
+      "sourceTalentId": 1701,
+      "spellId": 30894,
+      "spellIds": [
+        30894,
+        30895
+      ],
+      "name": "Heightened Senses",
+      "branch": "subtlety",
+      "row": 5,
+      "column": 1,
+      "x": 12.5,
+      "y": 64.28571428571429,
+      "maxRank": 2,
+      "requiredTreePoints": 20,
+      "rankDescriptions": [
+        "Increases your Stealth detection as if you were 3 levels higher and reduces your chance to be hit by spells and ranged attacks by 6%.",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_ambush",
+      "icon": "/images/class-talents/ability_ambush.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB rogue client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/rogue/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "rogue-284",
+      "nodeId": 284,
+      "sourceTalentId": 284,
+      "spellId": 14185,
+      "spellIds": [
+        14185
+      ],
+      "name": "Preparation",
+      "branch": "subtlety",
+      "row": 5,
+      "column": 2,
+      "x": 37.5,
+      "y": 64.28571428571429,
+      "maxRank": 1,
+      "requiredTreePoints": 20,
+      "rankDescriptions": [
+        "When activated, this ability immediately finishes the cooldown on your other Rogue abilities."
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_shadow_antishadow",
+      "icon": "/images/class-talents/spell_shadow_antishadow.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB rogue client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/rogue/"
+        }
+      ],
+      "dataNotes": []
+    },
+    {
+      "id": "rogue-265",
+      "nodeId": 265,
+      "sourceTalentId": 265,
+      "spellId": 14082,
+      "spellIds": [
+        14082,
+        14083
+      ],
+      "name": "Dirty Deeds",
+      "branch": "subtlety",
+      "row": 5,
+      "column": 3,
+      "x": 62.5,
+      "y": 64.28571428571429,
+      "maxRank": 2,
+      "requiredTreePoints": 20,
+      "rankDescriptions": [
+        "Reduces the Energy cost of your Cheap Shot and Garrote abilities by 20, and your Garrote ability no longer requires you to be behind your target.",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_shadow_summonsuccubus",
+      "icon": "/images/class-talents/spell_shadow_summonsuccubus.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB rogue client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/rogue/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "rogue-681",
+      "nodeId": 681,
+      "sourceTalentId": 681,
+      "spellId": 16511,
+      "spellIds": [
+        16511
+      ],
+      "name": "Hemorrhage",
+      "branch": "subtlety",
+      "row": 5,
+      "column": 4,
+      "x": 87.5,
+      "y": 64.28571428571429,
+      "maxRank": 1,
+      "requiredTreePoints": 20,
+      "prerequisite": [
+        {
+          "talentId": "rogue-1123",
+          "requiredRank": null
+        }
+      ],
+      "rankDescriptions": [
+        "An instant strike that deals 100% weapon damage (145% if a Dagger is equipped) and causes the target to take 15% increased Rupture damage from the Rogue. Lasts 15 sec. Awards 1 Combo Points."
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_shadow_lifedrain",
+      "icon": "/images/class-talents/spell_shadow_lifedrain.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB rogue client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/rogue/"
+        }
+      ],
+      "dataNotes": []
+    },
+    {
+      "id": "rogue-1702",
+      "nodeId": 1702,
+      "sourceTalentId": 1702,
+      "spellId": 30902,
+      "spellIds": [
+        30902,
+        30903,
+        30904,
+        30905,
+        30906
+      ],
+      "name": "Deadliness",
+      "branch": "subtlety",
+      "row": 6,
+      "column": 3,
+      "x": 62.5,
+      "y": 78.57142857142857,
+      "maxRank": 5,
+      "requiredTreePoints": 25,
+      "rankDescriptions": [
+        "Increases your Attack Power by 10%.",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "inv_weapon_crossbow_11",
+      "icon": "/images/class-talents/inv_weapon_crossbow_11.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB rogue client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/rogue/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "rogue-381",
+      "nodeId": 381,
+      "sourceTalentId": 381,
+      "spellId": 14183,
+      "spellIds": [
+        14183
+      ],
+      "name": "Premeditation",
+      "branch": "subtlety",
+      "row": 7,
+      "column": 2,
+      "x": 37.5,
+      "y": 92.85714285714286,
+      "maxRank": 1,
+      "requiredTreePoints": 30,
+      "prerequisite": [
+        {
+          "talentId": "rogue-284",
+          "requiredRank": null
+        }
+      ],
+      "rankDescriptions": [
+        "Adds 2 Combo Points to your target. You must add to or use those combo points within 20 sec or the combo points are lost."
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_shadow_possession",
+      "icon": "/images/class-talents/spell_shadow_possession.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB rogue client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/rogue/"
+        }
+      ],
+      "dataNotes": []
+    }
+  ],
+  "sources": [
+    {
+      "label": "Wago Talent client table 1.60.1.69913",
+      "type": "beta_client",
+      "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+    },
+    {
+      "label": "TheWoWDB rogue client cross-check",
+      "type": "beta_client_crosscheck",
+      "url": "https://thewowdb.com/wow-forever/talents/rogue/"
+    }
+  ],
+  "conflicts": [],
+  "ready": true
+}

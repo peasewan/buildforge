@@ -360,6 +360,7 @@ export function renderClassPage<B extends string>(classDef: ClassDefinition<B>, 
     <p>Reviewed ${escapeHtml(page.updatedAt)} · Client build ${escapeHtml(classDef.verifiedBuild)}.</p>
   </article>
   <section><h2>Evidence boundary</h2><p><strong>Talent data</strong>: positions, ranks and branches are client-derived records checked through ${escapeHtml(classDef.verifiedBuild)}; planner-legal fields only.</p>${buildEvidence}</section>
+  ${classDef.dataReview ? `<section><h2>Client data and build assumptions</h2><p>${escapeHtml(classDef.dataReview.notice)}</p>${linkList(classDef.sources.map((source) => ({ href: source.url, label: source.label })))}</section>` : ''}
   ${calculatorTrees}
   ${talentCatalogue}
   ${primaryBuildSection}

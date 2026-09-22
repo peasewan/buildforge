@@ -19,6 +19,10 @@ export type ClassPageKind =
   | 'dungeon'
   | 'levelCap'
   | 'comparison'
+  | 'pet'
+  | 'healing'
+  | 'tank'
+  | 'totem'
 
 export type FieldEvidenceKey =
   | 'name'
@@ -52,6 +56,10 @@ export interface ClassTalent<B extends string> extends PlannerTalent<B> {
   sourceClientBuild: string
   verifiedThroughBuild: string
   sourceTalentId?: number
+  nodeId?: number
+  spellId?: number
+  spellIds?: number[]
+  dataNotes?: string[]
   fieldEvidence: Partial<Record<FieldEvidenceKey, EvidenceStatus | 'unknown'>>
   verificationStatus: EvidenceStatus
   prerequisiteRuleStatus: 'derived_assumption' | 'not_applicable'
@@ -158,6 +166,7 @@ export interface ClassDefinition<B extends string = string> {
   dataVersion: string
   verifiedBuild: string
   talentCount: number
+  dataReview?: { ready: boolean; notice: string }
   beta: { phaseLabel: string; levelCap: number; pointsAtCap: number }
   plannerModes: { level: PlannerLevel; points: number; label: string }[]
   talents: ClassTalent<B>[]
@@ -201,7 +210,7 @@ const isDualSourceVerified = <B extends string>(talent: ClassTalent<B>): boolean
  * has to resolve against the class dataset, every rank has to fit `maxRank`, prerequisites have to
  * be met at the rank the plan claims, and the whole allocation has to fit the current cap's budget.
  */
-function isLegalAllocation<B extends string>(build: PlannerBuild, talents: ClassTalent<B>[], config: PlannerConfig<B>, pointsAtCap: number): boolean {
+export function isLegalAllocation<B extends string>(build: PlannerBuild, talents: ClassTalent<B>[], config: PlannerConfig<B>, pointsAtCap: number): boolean {
   const byId = new Map(talents.map((talent) => [talent.id, talent]))
   const wanted = new Map<string, number>()
   for (const [id, rank] of Object.entries(build)) {
@@ -274,7 +283,7 @@ export function satisfiedRequirements<B extends string>(classDef: ClassDefinitio
 
   // The calculator draws all branches at once, so every branch needs a node that can be allocated
   // first (`requiredTreePoints === 0`). One branch without one breaks the whole planner.
-  if (classDef.branches.length > 0 && unallocatableBranches(classDef).size === 0) satisfied.add('completeClassPlanner')
+  if (classDef.dataReview?.ready !== false && classDef.branches.length > 0 && unallocatableBranches(classDef).size === 0) satisfied.add('completeClassPlanner')
 
   if (hasLegalBuildAtCap(classDef)) satisfied.add('level20Builds')
   for (const branch of classDef.branches) {
@@ -299,7 +308,7 @@ export function pageFromPublishedClasses(pathname: string, classes: ClassDefinit
     // whose requirements are unmet is skipped as if it were not defined at all.
     if (!classDef.pages.some((page) => page.slug === slug)) continue
     const satisfied = satisfiedRequirements(classDef)
-    const match = classDef.pages.find((page) => page.slug === slug && requirementsMet(page, satisfied))
+    const match = classDef.pages.find((page) => page.slug === slug && requirementsMet(page, satisfied) && pageBuildsValid(classDef, page))
     if (match) return match
   }
   return undefined
@@ -317,7 +326,7 @@ export function pageFromPublishedClasses(pathname: string, classes: ClassDefinit
 export function publishedClassPages<B extends string>(classes: ClassDefinition<B>[]): { classDef: ClassDefinition<B>; page: ClassPageDefinition }[] {
   return classes.flatMap((classDef) => {
     const satisfied = satisfiedRequirements(classDef)
-    return classDef.pages.filter((page) => requirementsMet(page, satisfied)).map((page) => ({ classDef, page }))
+    return classDef.pages.filter((page) => requirementsMet(page, satisfied) && pageBuildsValid(classDef, page)).map((page) => ({ classDef, page }))
   })
 }
 
@@ -328,4 +337,13 @@ export function classPlannerHref(classDef: Pick<ClassDefinition, 'plannerPath'>,
 
 export function sitemapLastmod(page: Pick<ClassPageDefinition, 'updatedAt'>): string {
   return page.updatedAt
+}
+
+function pageBuildsValid<B extends string>(classDef: ClassDefinition<B>, page: ClassPageDefinition): boolean {
+  if (classDef.dataReview?.ready === false) return false
+  const ids = [...page.relatedBuildIds, ...(page.primaryBuildId ? [page.primaryBuildId] : [])]
+  return ids.every((id) => {
+    const build = classDef.builds.find((candidate) => candidate.id === id)
+    return !!build && isLegalAllocation(build.build, classDef.talents, classDef.plannerConfig, build.points)
+  })
 }

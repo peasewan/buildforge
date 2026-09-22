@@ -18,7 +18,7 @@ import { publishedClassPage } from './lib/classStaticPages'
 import { pageForPath, type PageDefinition } from './lib/routes'
 import './styles.css'
 
-const page = pageForPath(window.location.pathname)
+const page = pageForPath(window.location.pathname, window.location.search)
 const robots = document.querySelector<HTMLMetaElement>('meta[name="robots"]') ?? document.head.appendChild(document.createElement('meta'))
 robots.setAttribute('name', 'robots')
 robots.setAttribute('content', page.robots)

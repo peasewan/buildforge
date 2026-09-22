@@ -97,7 +97,7 @@ export default function ClassCalculatorPage<B extends string>({ classDef }: { cl
   const points = totalPlannerPoints(build)
   // Per-rank text is not a property of "having client data", so the trust copy reports the count
   // the class being rendered actually has instead of assuming every node carries it.
-  const perRankTextCount = classDef.talents.filter((talent) => talent.rankDescriptions?.length).length
+  const perRankTextCount = classDef.talents.filter((talent) => talent.rankDescriptions?.some(Boolean)).length
   const activeBranch = dominantPlannerBranch(build, classDef.talents, classDef.branches, classDef.branches[0])
   const calculatorPage = classDef.pages.find((page) => page.kind === 'calculator')
   const heroImage = calculatorPage?.ogImage ?? classDef.ogImage
@@ -146,7 +146,7 @@ export default function ClassCalculatorPage<B extends string>({ classDef }: { cl
     window.setTimeout(() => setCopied(false), 1600)
   }
 
-  return <main className="class-page class-calculator-page" data-class={classDef.id}>
+  return <main className="class-page class-calculator-page" data-class={classDef.id} data-client-preview={classDef.dataReview ? 'true' : undefined}>
     <header className="class-nav shell">
       <a className="class-brand" href="/"><Swords /><span>BUILD<b>FORGE</b></span></a>
       <nav aria-label={`${classDef.name} pages`}>
@@ -188,6 +188,7 @@ export default function ClassCalculatorPage<B extends string>({ classDef }: { cl
         </div>
       </div>
 
+      {classDef.dataReview && <p className="class-reset-notice">Client-table preview. Tier unlocks and this eleven-point budget are planning assumptions; see data coverage below.</p>}
       {resetNotice && <p className="class-reset-notice" role="status">{resetNotice}</p>}
 
       <div className="class-presets" data-testid="class-presets">
@@ -230,7 +231,13 @@ export default function ClassCalculatorPage<B extends string>({ classDef }: { cl
           <div className="class-detail-title">
             <div><h3>{selected.name}</h3><span>{classDef.branchNames[selected.branch]} · Tier {selected.row} · {selected.maxRank} rank{selected.maxRank === 1 ? '' : 's'}</span></div>
           </div>
-          <p>{selected.rankDescriptions?.[(build[selected.id] ?? 1) - 1] ?? selected.description ?? selected.name}</p>
+          <p>{selected.rankDescriptions?.[Math.max(1, build[selected.id] ?? 0) - 1] || selected.description || selected.name}</p>
+          {classDef.dataReview && <>
+            <p><small>Talent ID {selected.nodeId} · Rank spell IDs: {selected.spellIds?.join(', ')}</small></p>
+            <p className="class-talent-evidence"><span>Rank tooltip</span>{selected.rankDescriptions?.[Math.max(1, build[selected.id] ?? 0) - 1] ? <VerificationBadge status="client_datamined" /> : <small>Not available for this rank</small>}</p>
+            {selected.dataNotes?.map((note) => <p key={note}><small>{note}</small></p>)}
+            {selected.sources.map((source) => <a className="class-source-link" key={source.url} href={source.url} target="_blank" rel="noreferrer">{source.label}</a>)}
+          </>}
           <p className="class-talent-evidence"><span>Talent data</span><VerificationBadge status={selected.verificationStatus} /></p>
           <small>Client record {selected.sourceClientBuild}; verified through {selected.verifiedThroughBuild}.{selected.prerequisiteRuleStatus === 'derived_assumption' ? ' Prerequisite rank rules are derived assumptions.' : ''}</small>
         </article>
@@ -247,6 +254,8 @@ export default function ClassCalculatorPage<B extends string>({ classDef }: { cl
         </aside>
       </div>
     </section>
+
+    {classDef.dataReview && <section className="shell class-data-review"><h2>Data coverage and planning rules</h2><p>{classDef.dataReview.notice}</p><ul>{classDef.sources.map((source) => <li key={source.url}><a href={source.url} target="_blank" rel="noreferrer">{source.label}</a></li>)}</ul></section>}
 
     <section className="shell class-trust">
       <div><Check /><h2>Versioned client data</h2><p>{classDef.talentCount} {classDef.name} nodes carry client build tags, coordinates and source records; {perRankTextCount} of {classDef.talentCount} also carry per-rank text.</p></div>

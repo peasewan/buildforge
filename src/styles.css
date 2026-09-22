@@ -699,3 +699,33 @@ footer { padding: 42px 0; border-top: 1px solid rgba(217,164,65,.15); background
 @media (max-width: 980px) { .class-hero-grid, .class-summary { grid-template-columns: 1fr; }.class-page[data-class="warrior"].class-calculator-page .class-hero aside { width: auto; justify-self: stretch; transform: none; }.class-tree-grid { overflow-x: auto; grid-template-columns: repeat(3,340px); padding-bottom: 10px; }.class-toolbar { align-items: flex-start; flex-direction: column; }.class-trust { grid-template-columns: 1fr; } }
 @media (max-width: 680px) { .class-nav nav { display: none; }.class-levels { width: 100%; }.class-levels button { min-width: 0; flex: 1; }.class-selected-list { grid-template-columns: 1fr; }.class-pvp-panel, .class-primary-build, .class-build-groups article { padding: 18px; }.class-page[data-class="warrior"] .class-hero { background-position: center, center top; background-size: 100% 100%, cover; } }
 .class-reset-notice { margin: 20px 0 0; padding: 12px 15px; border: 1px solid rgba(217,164,65,.35); border-radius: 9px; color: #f0d9a8; background: rgba(217,164,65,.08); font-size: 11px; }
+
+/* Class artwork stays fully framed; the evidence card sits under copy, away from the face. */
+.class-page[data-client-preview="true"] .class-hero { min-height: 640px; padding: 54px 0; background-repeat: no-repeat; background-position: center, right top; background-size: 100% 100%, auto 100%; }
+.class-page[data-client-preview="true"] .class-hero-grid { display: grid; grid-template-columns: 1fr; gap: 28px; }
+.class-page[data-client-preview="true"] .class-hero-grid > div { max-width: 700px; }
+.class-page[data-client-preview="true"] .class-hero aside { width: min(580px, 100%); background: rgba(9,12,17,.82); padding: 14px 20px; }
+.class-page[data-client-preview="true"] .class-hero aside b { font-size: 27px; }
+.class-page[data-client-preview="true"] .class-hero aside > p { margin-top: 8px; padding-top: 8px; }
+.class-data-review { padding: 22px; margin-top: 28px; border: 1px solid rgba(217,164,65,.24); border-radius: 12px; background: #10141a; }
+.class-data-review h2 { font-size: 19px; }
+.class-data-review p { color: #b6bdc6; line-height: 1.8; }
+.class-data-review ul { display: flex; flex-wrap: wrap; gap: 12px 24px; padding-left: 20px; }
+.class-data-review a, .class-source-link { color: #dfbd77; }
+.class-source-link { display: block; font-size: 12px; margin: 8px 0; }
+.class-page[data-class="rogue"] { --class-accent-bright: #e6c574; }
+.class-page[data-class="priest"] { --class-accent-bright: #f4e8c7; }
+.class-page[data-class="druid"] { --class-accent-bright: #dbb17a; }
+.class-page[data-class="warlock"] { --class-accent-bright: #c8a3ef; }
+.class-page[data-class="hunter"] { --class-accent-bright: #b3d68d; }
+.class-page[data-class="shaman"] { --class-accent-bright: #8dc5f2; }
+@media (max-width: 680px) {
+  .class-page[data-client-preview="true"] .class-hero { padding-top: 230px; background-size: 100% 100%, auto 330px; background-position: center, right top; }
+  .class-page[data-client-preview="true"] .class-hero-grid { gap: 20px; }
+  .class-page[data-client-preview="true"] .class-hero h1 { font-size: 33px; }
+  .class-data-review { padding: 18px; }
+}
+
+/* The class directory grows with the registry; let footer links wrap rather than widen the page. */
+footer .shell > * { min-width: 0; }
+footer nav { flex-wrap: wrap; row-gap: 14px; }

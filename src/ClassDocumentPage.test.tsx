@@ -48,7 +48,7 @@ describe('ClassDocumentPage renders any class from ClassDefinition', () => {
   it('ships no Hunter React component and no published Hunter class', () => {
     // R1: `require` does not exist in this Vite/ESM test environment, so assert the module's absence directly.
     expect(existsSync(join(process.cwd(), 'src/HunterPage.tsx'))).toBe(false)
-    expect(PUBLISHED_CLASSES.some((classDef) => classDef.id === 'hunter')).toBe(false)
+    expect(PUBLISHED_CLASSES).not.toContain(hunterClassFixture)
   })
 
   it('renders one document per ClassPageKind from the fixture H1 alone', () => {
@@ -214,7 +214,7 @@ describe('ClassDocumentPage renders any class from ClassDefinition', () => {
     expect(hunterClassFixture.id).toBe('hunter')
     // The registry now carries the Mage class package, so emptiness is no longer the assertion
     // that matters; the fixture's absence from it is.
-    expect(PUBLISHED_CLASSES.map((classDef) => classDef.id)).not.toContain('hunter')
+    expect(PUBLISHED_CLASSES).not.toContain(hunterClassFixture)
     expect(hunterClassFixture.branches).toHaveLength(3)
     expect(hunterClassFixture.branches.every((branch: HunterBranch) => hunterClassFixture.branchNames[branch])).toBe(true)
   })

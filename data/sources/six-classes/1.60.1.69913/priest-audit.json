@@ -1,0 +1,48 @@
+{
+  "sourceBuild": "1.60.1.69913",
+  "publishedNodeCount": 47,
+  "primaryCrosscheckConflicts": [],
+  "foreverDiffExtraIds": [
+    130548,
+    130554,
+    130563,
+    130564,
+    130568,
+    130569,
+    130578,
+    130580,
+    130584,
+    130585,
+    137844,
+    137845,
+    137846
+  ],
+  "foreverDiffMissingIds": [
+    342,
+    344,
+    351,
+    413,
+    1202,
+    1637,
+    1638
+  ],
+  "foreverDiffPositionOrRankMismatchIds": [
+    345,
+    352,
+    347,
+    341,
+    1201,
+    410,
+    404,
+    465,
+    464,
+    482,
+    463,
+    542,
+    481,
+    483,
+    881,
+    461,
+    484
+  ]
+}

@@ -208,7 +208,7 @@ describe('Mage ClassDefinition — data-gated publishing', () => {
 
   it('registers Mage in the published class registry', () => {
     expect(PUBLISHED_CLASSES).toContain(mageClass)
-    expect(PUBLISHED_CLASSES.map((classDef) => classDef.id).sort()).toEqual(['mage', 'warrior'])
+    expect(PUBLISHED_CLASSES.map((classDef) => classDef.id).sort()).toEqual(['druid', 'hunter', 'mage', 'priest', 'rogue', 'shaman', 'warlock', 'warrior'])
   })
 })
 

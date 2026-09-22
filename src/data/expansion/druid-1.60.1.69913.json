@@ -1,0 +1,2893 @@
+{
+  "classId": "druid",
+  "build": "1.60.1.69913",
+  "branches": [
+    "balance",
+    "feral",
+    "restoration"
+  ],
+  "talents": [
+    {
+      "id": "druid-762",
+      "nodeId": 762,
+      "sourceTalentId": 762,
+      "spellId": 16814,
+      "spellIds": [
+        16814,
+        16815,
+        16816,
+        16817,
+        16818
+      ],
+      "name": "Improved Wrath",
+      "branch": "balance",
+      "row": 1,
+      "column": 1,
+      "x": 12.5,
+      "y": 7.142857142857142,
+      "maxRank": 5,
+      "requiredTreePoints": 0,
+      "rankDescriptions": [
+        "Reduces the cast time of your Wrath spell by 0.1 sec and its Mana cost by 50%.",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_nature_abolishmagic",
+      "icon": "/images/class-talents/spell_nature_abolishmagic.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB druid client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/druid/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "druid-761",
+      "nodeId": 761,
+      "sourceTalentId": 761,
+      "spellId": 16689,
+      "spellIds": [
+        16689
+      ],
+      "name": "Nature's Grasp",
+      "branch": "balance",
+      "row": 1,
+      "column": 2,
+      "x": 37.5,
+      "y": 7.142857142857142,
+      "maxRank": 1,
+      "requiredTreePoints": 0,
+      "rankDescriptions": [
+        "The next melee attacks that strike the caster will afflict the attacker with Entangling Roots (Rank 1). Castable while shapeshifted. Lasts 45 sec."
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_nature_natureswrath",
+      "icon": "/images/class-talents/spell_nature_natureswrath.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB druid client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/druid/"
+        }
+      ],
+      "dataNotes": []
+    },
+    {
+      "id": "druid-921",
+      "nodeId": 921,
+      "sourceTalentId": 921,
+      "spellId": 17245,
+      "spellIds": [
+        17245,
+        17247,
+        17248,
+        17249
+      ],
+      "name": "Overgrowth",
+      "branch": "balance",
+      "row": 1,
+      "column": 3,
+      "x": 62.5,
+      "y": 7.142857142857142,
+      "maxRank": 4,
+      "requiredTreePoints": 0,
+      "prerequisite": [
+        {
+          "talentId": "druid-761",
+          "requiredRank": null
+        }
+      ],
+      "rankDescriptions": [
+        "Increases the maximum number of targets you may have affected by Entangling Roots by 2.",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "inv_misc_herb_15",
+      "icon": "/images/class-talents/inv_misc_herb_15.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB druid client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/druid/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "druid-787",
+      "nodeId": 787,
+      "sourceTalentId": 787,
+      "spellId": 16918,
+      "spellIds": [
+        16918,
+        16919,
+        16920
+      ],
+      "name": "Improved Entangling Roots",
+      "branch": "balance",
+      "row": 2,
+      "column": 1,
+      "x": 12.5,
+      "y": 21.428571428571427,
+      "maxRank": 3,
+      "requiredTreePoints": 5,
+      "rankDescriptions": [
+        "Increases the damage done by your Entangling Roots spell by 75%, and its victims can take up to 75% more damage without interrupting the effect.",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_nature_stranglevines",
+      "icon": "/images/class-talents/spell_nature_stranglevines.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB druid client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/druid/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "druid-763",
+      "nodeId": 763,
+      "sourceTalentId": 763,
+      "spellId": 16821,
+      "spellIds": [
+        16821,
+        16822,
+        16823,
+        16824,
+        16825
+      ],
+      "name": "Improved Moonfire",
+      "branch": "balance",
+      "row": 2,
+      "column": 2,
+      "x": 37.5,
+      "y": 21.428571428571427,
+      "maxRank": 5,
+      "requiredTreePoints": 5,
+      "rankDescriptions": [
+        "Increases the damage and critical strike chance of your Moonfire spell by 2%.",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_nature_starfall",
+      "icon": "/images/class-talents/spell_nature_starfall.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB druid client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/druid/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "druid-791",
+      "nodeId": 791,
+      "sourceTalentId": 791,
+      "spellId": 16902,
+      "spellIds": [
+        16902,
+        16903,
+        16904,
+        16905,
+        16906
+      ],
+      "name": "Natural Weapons",
+      "branch": "balance",
+      "row": 2,
+      "column": 3,
+      "x": 62.5,
+      "y": 21.428571428571427,
+      "maxRank": 5,
+      "requiredTreePoints": 5,
+      "rankDescriptions": [
+        "Increases all damage you deal by 2%.",
+        "Increases all damage you deal by 4%.",
+        "Increases all damage you deal by 6%.",
+        "Increases all damage you deal by 8%.",
+        "Increases all damage you deal by 10%."
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "inv_staff_01",
+      "icon": "/images/class-talents/inv_staff_01.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB druid client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/druid/"
+        }
+      ],
+      "dataNotes": []
+    },
+    {
+      "id": "druid-781",
+      "nodeId": 781,
+      "sourceTalentId": 781,
+      "spellId": 16833,
+      "spellIds": [
+        16833,
+        16834,
+        16835
+      ],
+      "name": "Natural Shapeshifter",
+      "branch": "balance",
+      "row": 2,
+      "column": 4,
+      "x": 87.5,
+      "y": 21.428571428571427,
+      "maxRank": 3,
+      "requiredTreePoints": 5,
+      "rankDescriptions": [
+        "Reduces the mana cost of all shapeshifting by 10%.",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_nature_wispsplode",
+      "icon": "/images/class-talents/spell_nature_wispsplode.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB druid client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/druid/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "druid-782",
+      "nodeId": 782,
+      "sourceTalentId": 782,
+      "spellId": 16836,
+      "spellIds": [
+        16836,
+        16839,
+        16840
+      ],
+      "name": "Improved Thorns",
+      "branch": "balance",
+      "row": 3,
+      "column": 1,
+      "x": 12.5,
+      "y": 35.714285714285715,
+      "maxRank": 3,
+      "requiredTreePoints": 10,
+      "rankDescriptions": [
+        "Increases damage caused by your Thorns spell by 25%.",
+        "Increases damage caused by your Thorns spell by 50%.",
+        "Increases damage caused by your Thorns spell by 75%."
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_nature_thorns",
+      "icon": "/images/class-talents/spell_nature_thorns.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB druid client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/druid/"
+        }
+      ],
+      "dataNotes": []
+    },
+    {
+      "id": "druid-788",
+      "nodeId": 788,
+      "sourceTalentId": 788,
+      "spellId": 16864,
+      "spellIds": [
+        16864
+      ],
+      "name": "Omen of Clarity",
+      "branch": "balance",
+      "row": 3,
+      "column": 3,
+      "x": 62.5,
+      "y": 35.714285714285715,
+      "maxRank": 1,
+      "requiredTreePoints": 10,
+      "prerequisite": [
+        {
+          "talentId": "druid-791",
+          "requiredRank": null
+        }
+      ],
+      "rankDescriptions": [
+        "Your spells and attacks have a chance to grant you Clearcasting, reducing the Mana, Rage, or Energy cost of your next damage or healing spell or offensive ability by 100%. Clearcasting is not consumed by Wrath or by spells or abilities that cost no resources."
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_nature_crystalball",
+      "icon": "/images/class-talents/spell_nature_crystalball.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB druid client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/druid/"
+        }
+      ],
+      "dataNotes": []
+    },
+    {
+      "id": "druid-764",
+      "nodeId": 764,
+      "sourceTalentId": 764,
+      "spellId": 16819,
+      "spellIds": [
+        16819,
+        16820
+      ],
+      "name": "Nature's Reach",
+      "branch": "balance",
+      "row": 3,
+      "column": 4,
+      "x": 87.5,
+      "y": 35.714285714285715,
+      "maxRank": 2,
+      "requiredTreePoints": 10,
+      "rankDescriptions": [
+        "Increases the range of your offensive Balance spells by 20% and improves your chance to hit by 4%.",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_nature_naturetouchgrow",
+      "icon": "/images/class-talents/spell_nature_naturetouchgrow.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB druid client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/druid/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "druid-792",
+      "nodeId": 792,
+      "sourceTalentId": 792,
+      "spellId": 16909,
+      "spellIds": [
+        16909,
+        16910,
+        16911,
+        16912,
+        16913
+      ],
+      "name": "Vengeance",
+      "branch": "balance",
+      "row": 4,
+      "column": 2,
+      "x": 37.5,
+      "y": 50,
+      "maxRank": 5,
+      "requiredTreePoints": 15,
+      "prerequisite": [
+        {
+          "talentId": "druid-763",
+          "requiredRank": null
+        }
+      ],
+      "rankDescriptions": [
+        "Increases the critical strike damage bonus of your Arcane and Nature spells by 20%.",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_nature_purge",
+      "icon": "/images/class-talents/spell_nature_purge.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB druid client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/druid/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "druid-784",
+      "nodeId": 784,
+      "sourceTalentId": 784,
+      "spellId": 16850,
+      "spellIds": [
+        16850,
+        16923,
+        16924,
+        16925,
+        16926
+      ],
+      "name": "Improved Starfire",
+      "branch": "balance",
+      "row": 4,
+      "column": 3,
+      "x": 62.5,
+      "y": 50,
+      "maxRank": 5,
+      "requiredTreePoints": 15,
+      "rankDescriptions": [
+        "Reduces the cast time of Starfire by 0.5 sec and Starfire has a 15% chance to stun its target for 3 sec.",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_arcane_starfire",
+      "icon": "/images/class-talents/spell_arcane_starfire.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB druid client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/druid/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "druid-789",
+      "nodeId": 789,
+      "sourceTalentId": 789,
+      "spellId": 16880,
+      "spellIds": [
+        16880
+      ],
+      "name": "Nature's Grace",
+      "branch": "balance",
+      "row": 5,
+      "column": 2,
+      "x": 37.5,
+      "y": 64.28571428571429,
+      "maxRank": 1,
+      "requiredTreePoints": 20,
+      "rankDescriptions": [
+        "All non-periodic spell criticals grace you with a blessing of nature, increasing your spellcasting speed and reducing your global cooldown by 10% for 3 sec."
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_nature_naturesblessing",
+      "icon": "/images/class-talents/spell_nature_naturesblessing.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB druid client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/druid/"
+        }
+      ],
+      "dataNotes": []
+    },
+    {
+      "id": "druid-783",
+      "nodeId": 783,
+      "sourceTalentId": 783,
+      "spellId": 16845,
+      "spellIds": [
+        16845,
+        16846,
+        16847
+      ],
+      "name": "Moonglow",
+      "branch": "balance",
+      "row": 5,
+      "column": 3,
+      "x": 62.5,
+      "y": 64.28571428571429,
+      "maxRank": 3,
+      "requiredTreePoints": 20,
+      "rankDescriptions": [
+        "Reduces the Mana cost of your damaging spells by 25%.",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_nature_sentinal",
+      "icon": "/images/class-talents/spell_nature_sentinal.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB druid client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/druid/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "druid-790",
+      "nodeId": 790,
+      "sourceTalentId": 790,
+      "spellId": 16896,
+      "spellIds": [
+        16896,
+        16897,
+        16899,
+        16900,
+        16901
+      ],
+      "name": "Moonfury",
+      "branch": "balance",
+      "row": 6,
+      "column": 2,
+      "x": 37.5,
+      "y": 78.57142857142857,
+      "maxRank": 5,
+      "requiredTreePoints": 25,
+      "prerequisite": [
+        {
+          "talentId": "druid-789",
+          "requiredRank": null
+        }
+      ],
+      "rankDescriptions": [
+        "Increases the damage done by your Arcane and Nature spells by 2%.",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_nature_moonglow",
+      "icon": "/images/class-talents/spell_nature_moonglow.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB druid client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/druid/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "druid-793",
+      "nodeId": 793,
+      "sourceTalentId": 793,
+      "spellId": 24858,
+      "spellIds": [
+        24858
+      ],
+      "name": "Moonkin Form",
+      "branch": "balance",
+      "row": 7,
+      "column": 2,
+      "x": 37.5,
+      "y": 92.85714285714286,
+      "maxRank": 1,
+      "requiredTreePoints": 30,
+      "rankDescriptions": [
+        "Transforms the Druid into Moonkin Form. While in this form, the armor contribution from items is increased by 360%, Omen of Clarity gains 100% increased chance to trigger, and all party members within 45 yards have their critical strike chance increased by 3%, exclusive with Leader of the Pack. The Moonkin cannot cast healing spells while shapeshifted.\n\nThe act of shapeshifting frees the caster of Polymorph and Movement Impairing effects."
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_nature_forceofnature",
+      "icon": "/images/class-talents/spell_nature_forceofnature.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB druid client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/druid/"
+        }
+      ],
+      "dataNotes": []
+    },
+    {
+      "id": "druid-796",
+      "nodeId": 796,
+      "sourceTalentId": 796,
+      "spellId": 16934,
+      "spellIds": [
+        16934,
+        16935,
+        16936,
+        16937,
+        16938
+      ],
+      "name": "Ferocity",
+      "branch": "feral",
+      "row": 1,
+      "column": 2,
+      "x": 37.5,
+      "y": 7.142857142857142,
+      "maxRank": 5,
+      "requiredTreePoints": 0,
+      "rankDescriptions": [
+        "Reduces the cost of your Maul, Mangle, Swipe, Claw, and Rake abilities by 1 Rage or Energy.",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_hunter_pet_hyena",
+      "icon": "/images/class-talents/ability_hunter_pet_hyena.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB druid client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/druid/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "druid-795",
+      "nodeId": 795,
+      "sourceTalentId": 795,
+      "spellId": 16858,
+      "spellIds": [
+        16858,
+        16859,
+        16860,
+        16861,
+        16862
+      ],
+      "name": "Feral Aggression",
+      "branch": "feral",
+      "row": 1,
+      "column": 3,
+      "x": 62.5,
+      "y": 7.142857142857142,
+      "maxRank": 5,
+      "requiredTreePoints": 0,
+      "rankDescriptions": [
+        "Increases the Attack Power reduction of your Demoralizing Roar by 8% and the damage caused by your Ferocious Bite by 3%.",
+        "Increases the Attack Power reduction of your Demoralizing Roar by 16% and the damage caused by your Ferocious Bite by 6%.",
+        "Increases the Attack Power reduction of your Demoralizing Roar by 24% and the damage caused by your Ferocious Bite by 9%.",
+        "Increases the Attack Power reduction of your Demoralizing Roar by 32% and the damage caused by your Ferocious Bite by 12%.",
+        "Increases the Attack Power reduction of your Demoralizing Roar by 40% and the damage caused by your Ferocious Bite by 15%."
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_druid_demoralizingroar",
+      "icon": "/images/class-talents/ability_druid_demoralizingroar.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB druid client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/druid/"
+        }
+      ],
+      "dataNotes": []
+    },
+    {
+      "id": "druid-799",
+      "nodeId": 799,
+      "sourceTalentId": 799,
+      "spellId": 16947,
+      "spellIds": [
+        16947,
+        16948,
+        16949,
+        16950,
+        16951
+      ],
+      "name": "Feral Instinct",
+      "branch": "feral",
+      "row": 2,
+      "column": 1,
+      "x": 12.5,
+      "y": 21.428571428571427,
+      "maxRank": 5,
+      "requiredTreePoints": 5,
+      "rankDescriptions": [
+        "Increases damage done by your Swipe ability by 3% and reduces the chance enemies have to detect you while Prowling as if you were 0.6 levels higher.",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_ambush",
+      "icon": "/images/class-talents/ability_ambush.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB druid client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/druid/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "druid-797",
+      "nodeId": 797,
+      "sourceTalentId": 797,
+      "spellId": 16940,
+      "spellIds": [
+        16940,
+        16941
+      ],
+      "name": "Brutal Impact",
+      "branch": "feral",
+      "row": 2,
+      "column": 2,
+      "x": 37.5,
+      "y": 21.428571428571427,
+      "maxRank": 2,
+      "requiredTreePoints": 5,
+      "rankDescriptions": [
+        "Increases the stun duration of your Bash and Pounce abilities by 0.5 sec and reduces the cooldown of Bash by 30 sec.",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_druid_bash",
+      "icon": "/images/class-talents/ability_druid_bash.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB druid client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/druid/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "druid-794",
+      "nodeId": 794,
+      "sourceTalentId": 794,
+      "spellId": 16929,
+      "spellIds": [
+        16929,
+        16930,
+        16931,
+        16932,
+        16933
+      ],
+      "name": "Thick Hide",
+      "branch": "feral",
+      "row": 2,
+      "column": 3,
+      "x": 62.5,
+      "y": 21.428571428571427,
+      "maxRank": 5,
+      "requiredTreePoints": 5,
+      "rankDescriptions": [
+        "While in Bear Form, Cat Form, Dire Bear Form, or Moonkin Form, you gain 3 additional base Armor per level and another 1.2 base Armor for each point of defense skill beyond five times your level. This amount can be further increased by multipliers from those forms.",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "inv_misc_pelt_bear_03",
+      "icon": "/images/class-talents/inv_misc_pelt_bear_03.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB druid client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/druid/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "druid-807",
+      "nodeId": 807,
+      "sourceTalentId": 807,
+      "spellId": 17002,
+      "spellIds": [
+        17002,
+        24866
+      ],
+      "name": "Feral Swiftness",
+      "branch": "feral",
+      "row": 3,
+      "column": 1,
+      "x": 12.5,
+      "y": 35.714285714285715,
+      "maxRank": 2,
+      "requiredTreePoints": 10,
+      "rankDescriptions": [
+        "Increases your movement speed while in Cat Form by 30%, and increases your chance to Dodge by 4%.",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_nature_spiritwolf",
+      "icon": "/images/class-talents/spell_nature_spiritwolf.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB druid client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/druid/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "druid-804",
+      "nodeId": 804,
+      "sourceTalentId": 804,
+      "spellId": 16979,
+      "spellIds": [
+        16979
+      ],
+      "name": "Feral Charge (Bear)",
+      "branch": "feral",
+      "row": 3,
+      "column": 2,
+      "x": 37.5,
+      "y": 35.714285714285715,
+      "maxRank": 1,
+      "requiredTreePoints": 10,
+      "rankDescriptions": [
+        "Charge an enemy, immobilizing them and interrupting any spell they are casting for 4 sec."
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_hunter_pet_bear",
+      "icon": "/images/class-talents/ability_hunter_pet_bear.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB druid client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/druid/"
+        }
+      ],
+      "dataNotes": []
+    },
+    {
+      "id": "druid-798",
+      "nodeId": 798,
+      "sourceTalentId": 798,
+      "spellId": 16942,
+      "spellIds": [
+        16942,
+        16943,
+        16944
+      ],
+      "name": "Sharpened Claws",
+      "branch": "feral",
+      "row": 3,
+      "column": 3,
+      "x": 62.5,
+      "y": 35.714285714285715,
+      "maxRank": 3,
+      "requiredTreePoints": 10,
+      "rankDescriptions": [
+        "Increases your critical strike chance while in Bear Form, Dire Bear Form, or Cat Form by 2%.",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "inv_misc_monsterclaw_04",
+      "icon": "/images/class-talents/inv_misc_monsterclaw_04.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB druid client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/druid/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "druid-802",
+      "nodeId": 802,
+      "sourceTalentId": 802,
+      "spellId": 16966,
+      "spellIds": [
+        16966,
+        16968
+      ],
+      "name": "Shredding Attacks",
+      "branch": "feral",
+      "row": 4,
+      "column": 1,
+      "x": 12.5,
+      "y": 50,
+      "maxRank": 2,
+      "requiredTreePoints": 15,
+      "rankDescriptions": [
+        "Reduces the Energy cost of your Shred ability by 6 and reduces the Rage cost of your Lacerate ability by 6.",
+        "Reduces the Energy cost of your Shred ability by 12."
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_shadow_vampiricaura",
+      "icon": "/images/class-talents/spell_shadow_vampiricaura.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB druid client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/druid/"
+        }
+      ],
+      "dataNotes": []
+    },
+    {
+      "id": "druid-803",
+      "nodeId": 803,
+      "sourceTalentId": 803,
+      "spellId": 16972,
+      "spellIds": [
+        16972,
+        16974,
+        16975
+      ],
+      "name": "Predatory Strikes",
+      "branch": "feral",
+      "row": 4,
+      "column": 2,
+      "x": 37.5,
+      "y": 50,
+      "maxRank": 3,
+      "requiredTreePoints": 15,
+      "rankDescriptions": [
+        "Increases your melee Attack Power in Cat Form, Bear Form, and Dire Bear Form by 50% of your level.",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_hunter_pet_cat",
+      "icon": "/images/class-talents/ability_hunter_pet_cat.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB druid client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/druid/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "druid-800",
+      "nodeId": 800,
+      "sourceTalentId": 800,
+      "spellId": 16952,
+      "spellIds": [
+        16952,
+        16954
+      ],
+      "name": "Blood Frenzy",
+      "branch": "feral",
+      "row": 4,
+      "column": 3,
+      "x": 62.5,
+      "y": 50,
+      "maxRank": 2,
+      "requiredTreePoints": 15,
+      "prerequisite": [
+        {
+          "talentId": "druid-798",
+          "requiredRank": null
+        }
+      ],
+      "rankDescriptions": [
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "unknown",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "unknown",
+        "iconName": "unknown",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB druid client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/druid/"
+        }
+      ],
+      "dataNotes": [
+        "Client spell name is unreadable; a historical reference label is shown. Effects remain unverified.",
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "druid-801",
+      "nodeId": 801,
+      "sourceTalentId": 801,
+      "spellId": 16958,
+      "spellIds": [
+        16958,
+        16961
+      ],
+      "name": "Primal Fury",
+      "branch": "feral",
+      "row": 4,
+      "column": 4,
+      "x": 87.5,
+      "y": 50,
+      "maxRank": 2,
+      "requiredTreePoints": 15,
+      "prerequisite": [
+        {
+          "talentId": "druid-798",
+          "requiredRank": null
+        }
+      ],
+      "rankDescriptions": [
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_racial_cannibalize",
+      "icon": "/images/class-talents/ability_racial_cannibalize.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "unknown",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB druid client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/druid/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "druid-805",
+      "nodeId": 805,
+      "sourceTalentId": 805,
+      "spellId": 16998,
+      "spellIds": [
+        16998,
+        16999
+      ],
+      "name": "Savage Fury",
+      "branch": "feral",
+      "row": 5,
+      "column": 1,
+      "x": 12.5,
+      "y": 64.28571428571429,
+      "maxRank": 2,
+      "requiredTreePoints": 20,
+      "rankDescriptions": [
+        "Increases the damage caused by your Claw, Rake, Shred, Maul, and Swipe abilities by 20%.",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_druid_ravage",
+      "icon": "/images/class-talents/ability_druid_ravage.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB druid client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/druid/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "druid-1162",
+      "nodeId": 1162,
+      "sourceTalentId": 1162,
+      "spellId": 16857,
+      "spellIds": [
+        16857
+      ],
+      "name": "Faerie Fire (Feral)",
+      "branch": "feral",
+      "row": 5,
+      "column": 3,
+      "x": 62.5,
+      "y": 64.28571428571429,
+      "maxRank": 1,
+      "requiredTreePoints": 20,
+      "rankDescriptions": [
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "unknown",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "unknown",
+        "iconName": "unknown",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB druid client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/druid/"
+        }
+      ],
+      "dataNotes": [
+        "Client spell name is unreadable; a historical reference label is shown. Effects remain unverified.",
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "druid-808",
+      "nodeId": 808,
+      "sourceTalentId": 808,
+      "spellId": 17003,
+      "spellIds": [
+        17003,
+        17004,
+        17005,
+        17006,
+        24894
+      ],
+      "name": "Heart of the Wild",
+      "branch": "feral",
+      "row": 6,
+      "column": 2,
+      "x": 37.5,
+      "y": 78.57142857142857,
+      "maxRank": 5,
+      "requiredTreePoints": 25,
+      "prerequisite": [
+        {
+          "talentId": "druid-803",
+          "requiredRank": null
+        }
+      ],
+      "rankDescriptions": [
+        "Increases your Intellect by 10%. In addition, while in Bear Form or Dire Bear Form your Stamina is increased by 20% and while in Cat Form your Strength is increased by 10%.",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_holy_blessingofagility",
+      "icon": "/images/class-talents/spell_holy_blessingofagility.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB druid client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/druid/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "druid-809",
+      "nodeId": 809,
+      "sourceTalentId": 809,
+      "spellId": 17007,
+      "spellIds": [
+        17007
+      ],
+      "name": "Leader of the Pack",
+      "branch": "feral",
+      "row": 7,
+      "column": 2,
+      "x": 37.5,
+      "y": 92.85714285714286,
+      "maxRank": 1,
+      "requiredTreePoints": 30,
+      "rankDescriptions": [
+        "While in Cat Form, Bear Form, or Dire Bear Form, the Leader of the Pack increases the critical strike chance of all party members within 45 yards by 3%, exclusive with Moonkin Aura."
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_nature_unyeildingstamina",
+      "icon": "/images/class-talents/spell_nature_unyeildingstamina.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB druid client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/druid/"
+        }
+      ],
+      "dataNotes": []
+    },
+    {
+      "id": "druid-821",
+      "nodeId": 821,
+      "sourceTalentId": 821,
+      "spellId": 17050,
+      "spellIds": [
+        17050,
+        17051,
+        17053,
+        17054,
+        17055
+      ],
+      "name": "Improved Mark of the Wild",
+      "branch": "restoration",
+      "row": 1,
+      "column": 2,
+      "x": 37.5,
+      "y": 7.142857142857142,
+      "maxRank": 5,
+      "requiredTreePoints": 0,
+      "rankDescriptions": [
+        "Increases the effects of your Mark of the Wild and Gift of the Wild spells by 7%.",
+        "Increases the effects of your Mark of the Wild and Gift of the Wild spells by 14%.",
+        "Increases the effects of your Mark of the Wild and Gift of the Wild spells by 21%.",
+        "Increases the effects of your Mark of the Wild and Gift of the Wild spells by 28%.",
+        "Increases the effects of your Mark of the Wild and Gift of the Wild spells by 35%."
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_nature_regeneration",
+      "icon": "/images/class-talents/spell_nature_regeneration.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB druid client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/druid/"
+        }
+      ],
+      "dataNotes": []
+    },
+    {
+      "id": "druid-822",
+      "nodeId": 822,
+      "sourceTalentId": 822,
+      "spellId": 17056,
+      "spellIds": [
+        17056,
+        17058,
+        17059,
+        17060,
+        17061
+      ],
+      "name": "Furor",
+      "branch": "restoration",
+      "row": 1,
+      "column": 3,
+      "x": 62.5,
+      "y": 7.142857142857142,
+      "maxRank": 5,
+      "requiredTreePoints": 0,
+      "rankDescriptions": [
+        "Gives you a 20% chance to gain 10 Rage when you shapeshift into Bear Form or Dire Bear Form. When you shift into Cat Form, you will regain 20% of the Energy you had when you were last in Cat Form, plus 2 Energy for each second you spent not in Bear Form, Cat Form, or Dire Bear Form, up to a maximum of 20 Energy.",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_holy_blessingofstamina",
+      "icon": "/images/class-talents/spell_holy_blessingofstamina.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB druid client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/druid/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "druid-824",
+      "nodeId": 824,
+      "sourceTalentId": 824,
+      "spellId": 17069,
+      "spellIds": [
+        17069,
+        17070,
+        17071,
+        17072,
+        17073
+      ],
+      "name": "Naturalist",
+      "branch": "restoration",
+      "row": 2,
+      "column": 1,
+      "x": 12.5,
+      "y": 21.428571428571427,
+      "maxRank": 5,
+      "requiredTreePoints": 5,
+      "rankDescriptions": [
+        "Reduces the cast time of your Healing Touch spell by 0.1 sec and increases all damage you deal by 100%.",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_nature_healingtouch",
+      "icon": "/images/class-talents/spell_nature_healingtouch.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB druid client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/druid/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "druid-823",
+      "nodeId": 823,
+      "sourceTalentId": 823,
+      "spellId": 17063,
+      "spellIds": [
+        17063,
+        17065,
+        17066,
+        17067,
+        17068
+      ],
+      "name": "Nature's Focus",
+      "branch": "restoration",
+      "row": 2,
+      "column": 2,
+      "x": 37.5,
+      "y": 21.428571428571427,
+      "maxRank": 5,
+      "requiredTreePoints": 5,
+      "rankDescriptions": [
+        "Gives you a 14% chance to avoid interruption caused by damage while casting Arcane and Nature spells.",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_nature_healingwavegreater",
+      "icon": "/images/class-talents/spell_nature_healingwavegreater.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB druid client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/druid/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "druid-826",
+      "nodeId": 826,
+      "sourceTalentId": 826,
+      "spellId": 17079,
+      "spellIds": [
+        17079,
+        17082
+      ],
+      "name": "Improved Enrage",
+      "branch": "restoration",
+      "row": 2,
+      "column": 3,
+      "x": 62.5,
+      "y": 21.428571428571427,
+      "maxRank": 2,
+      "requiredTreePoints": 5,
+      "rankDescriptions": [
+        "The Enrage ability instantly generates an additional 5 Rage.",
+        "The Enrage ability instantly generates an additional 10 Rage."
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_druid_enrage",
+      "icon": "/images/class-talents/ability_druid_enrage.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB druid client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/druid/"
+        }
+      ],
+      "dataNotes": []
+    },
+    {
+      "id": "druid-829",
+      "nodeId": 829,
+      "sourceTalentId": 829,
+      "spellId": 17106,
+      "spellIds": [
+        17106,
+        17107,
+        17108
+      ],
+      "name": "Reflection",
+      "branch": "restoration",
+      "row": 3,
+      "column": 2,
+      "x": 37.5,
+      "y": 35.714285714285715,
+      "maxRank": 3,
+      "requiredTreePoints": 10,
+      "rankDescriptions": [
+        "Allows 50% of your Mana regeneration to continue while casting.",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_frost_windwalkon",
+      "icon": "/images/class-talents/spell_frost_windwalkon.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB druid client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/druid/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "druid-827",
+      "nodeId": 827,
+      "sourceTalentId": 827,
+      "spellId": 5570,
+      "spellIds": [
+        5570
+      ],
+      "name": "Insect Swarm",
+      "branch": "restoration",
+      "row": 3,
+      "column": 3,
+      "x": 62.5,
+      "y": 35.714285714285715,
+      "maxRank": 1,
+      "requiredTreePoints": 10,
+      "rankDescriptions": [
+        "The enemy target is swarmed by insects, decreasing their chance to hit with attacks by 2% and causing 48 Nature damage over 12 sec."
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_nature_insectswarm",
+      "icon": "/images/class-talents/spell_nature_insectswarm.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB druid client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/druid/"
+        }
+      ],
+      "dataNotes": []
+    },
+    {
+      "id": "druid-841",
+      "nodeId": 841,
+      "sourceTalentId": 841,
+      "spellId": 17118,
+      "spellIds": [
+        17118,
+        17119,
+        17120,
+        17121,
+        17122
+      ],
+      "name": "Subtlety",
+      "branch": "restoration",
+      "row": 3,
+      "column": 4,
+      "x": 87.5,
+      "y": 35.714285714285715,
+      "maxRank": 5,
+      "requiredTreePoints": 10,
+      "rankDescriptions": [
+        "Reduces the threat generated by your Nature and Arcane spells by 30%.",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_eyeoftheowl",
+      "icon": "/images/class-talents/ability_eyeoftheowl.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB druid client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/druid/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "druid-843",
+      "nodeId": 843,
+      "sourceTalentId": 843,
+      "spellId": 24968,
+      "spellIds": [
+        24968,
+        24969,
+        24970,
+        24971,
+        24972
+      ],
+      "name": "Tranquil Spirit",
+      "branch": "restoration",
+      "row": 4,
+      "column": 2,
+      "x": 37.5,
+      "y": 50,
+      "maxRank": 5,
+      "requiredTreePoints": 15,
+      "rankDescriptions": [
+        "Reduces the mana cost of your Healing Touch and Tranquility spells by 2%.",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_holy_elunesgrace",
+      "icon": "/images/class-talents/spell_holy_elunesgrace.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB druid client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/druid/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "druid-830",
+      "nodeId": 830,
+      "sourceTalentId": 830,
+      "spellId": 17111,
+      "spellIds": [
+        17111,
+        17112,
+        17113
+      ],
+      "name": "Improved Rejuvenation",
+      "branch": "restoration",
+      "row": 4,
+      "column": 4,
+      "x": 87.5,
+      "y": 50,
+      "maxRank": 3,
+      "requiredTreePoints": 15,
+      "rankDescriptions": [
+        "Increases the effect of your Rejuvenation spell by 5%.",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_nature_rejuvenation",
+      "icon": "/images/class-talents/spell_nature_rejuvenation.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB druid client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/druid/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "druid-831",
+      "nodeId": 831,
+      "sourceTalentId": 831,
+      "spellId": 17116,
+      "spellIds": [
+        17116
+      ],
+      "name": "Nature's Swiftness",
+      "branch": "restoration",
+      "row": 5,
+      "column": 1,
+      "x": 12.5,
+      "y": 64.28571428571429,
+      "maxRank": 1,
+      "requiredTreePoints": 20,
+      "prerequisite": [
+        {
+          "talentId": "druid-824",
+          "requiredRank": null
+        }
+      ],
+      "rankDescriptions": [
+        "When activated, your next Nature spell becomes an instant cast spell."
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_nature_ravenform",
+      "icon": "/images/class-talents/spell_nature_ravenform.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB druid client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/druid/"
+        }
+      ],
+      "dataNotes": []
+    },
+    {
+      "id": "druid-828",
+      "nodeId": 828,
+      "sourceTalentId": 828,
+      "spellId": 17104,
+      "spellIds": [
+        17104,
+        24943,
+        24944,
+        24945,
+        24946
+      ],
+      "name": "Gift of Nature",
+      "branch": "restoration",
+      "row": 5,
+      "column": 3,
+      "x": 62.5,
+      "y": 64.28571428571429,
+      "maxRank": 5,
+      "requiredTreePoints": 20,
+      "prerequisite": [
+        {
+          "talentId": "druid-827",
+          "requiredRank": null
+        }
+      ],
+      "rankDescriptions": [
+        "Increases the effect of all your healing spells by 2%.",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_nature_protectionformnature",
+      "icon": "/images/class-talents/spell_nature_protectionformnature.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB druid client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/druid/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "druid-842",
+      "nodeId": 842,
+      "sourceTalentId": 842,
+      "spellId": 17123,
+      "spellIds": [
+        17123,
+        17124
+      ],
+      "name": "Improved Tranquility",
+      "branch": "restoration",
+      "row": 5,
+      "column": 4,
+      "x": 87.5,
+      "y": 64.28571428571429,
+      "maxRank": 2,
+      "requiredTreePoints": 20,
+      "rankDescriptions": [
+        "Reduces threat caused by Tranquility by 100% and its cooldown by 60%.",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_nature_tranquility",
+      "icon": "/images/class-talents/spell_nature_tranquility.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB druid client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/druid/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "druid-825",
+      "nodeId": 825,
+      "sourceTalentId": 825,
+      "spellId": 17074,
+      "spellIds": [
+        17074,
+        17075,
+        17076,
+        17077,
+        17078
+      ],
+      "name": "Improved Regrowth",
+      "branch": "restoration",
+      "row": 6,
+      "column": 3,
+      "x": 62.5,
+      "y": 78.57142857142857,
+      "maxRank": 5,
+      "requiredTreePoints": 25,
+      "rankDescriptions": [
+        "Increases the critical effect chance of your Regrowth spell by 10%.",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_nature_resistnature",
+      "icon": "/images/class-talents/spell_nature_resistnature.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB druid client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/druid/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "druid-844",
+      "nodeId": 844,
+      "sourceTalentId": 844,
+      "spellId": 18562,
+      "spellIds": [
+        18562
+      ],
+      "name": "Swiftmend",
+      "branch": "restoration",
+      "row": 7,
+      "column": 2,
+      "x": 37.5,
+      "y": 92.85714285714286,
+      "maxRank": 1,
+      "requiredTreePoints": 30,
+      "prerequisite": [
+        {
+          "talentId": "druid-843",
+          "requiredRank": null
+        }
+      ],
+      "rankDescriptions": [
+        "Instantly heals a target with an active Rejuvenation or Regrowth effect for an amount equal to the full duration of the periodic effect of one of those spells."
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "inv_relics_idolofrejuvenation",
+      "icon": "/images/class-talents/inv_relics_idolofrejuvenation.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB druid client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/druid/"
+        }
+      ],
+      "dataNotes": []
+    }
+  ],
+  "sources": [
+    {
+      "label": "Wago Talent client table 1.60.1.69913",
+      "type": "beta_client",
+      "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+    },
+    {
+      "label": "TheWoWDB druid client cross-check",
+      "type": "beta_client_crosscheck",
+      "url": "https://thewowdb.com/wow-forever/talents/druid/"
+    }
+  ],
+  "conflicts": [],
+  "ready": true
+}

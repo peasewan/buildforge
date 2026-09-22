@@ -90,7 +90,7 @@ describe('Warrior ClassDefinition', () => {
   })
 
   it('registers Warrior next to Mage in the generic class registry', () => {
-    expect(PUBLISHED_CLASSES.map((classDef) => classDef.id).sort()).toEqual(['mage', 'warrior'])
+    expect(PUBLISHED_CLASSES.map((classDef) => classDef.id)).toEqual(expect.arrayContaining(['mage', 'warrior']))
   })
 
   it('routes every Warrior URL through the generic class renderer', () => {

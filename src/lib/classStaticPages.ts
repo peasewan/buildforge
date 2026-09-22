@@ -44,6 +44,10 @@ const sitemapPriorities: Record<ClassPageKind, string> = {
   dungeon: '0.8',
   levelCap: '0.8',
   comparison: '0.8',
+  pet: '0.8',
+  healing: '0.8',
+  tank: '0.8',
+  totem: '0.8',
 }
 
 /** Every page of every published class that meets its own `publishRequirements`. */

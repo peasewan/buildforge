@@ -1,0 +1,22 @@
+{
+  "build": "1.60.1.69913",
+  "retrievedAt": "2026-09-22T15:10:54.720404+00:00",
+  "primaryTables": {
+    "Talent": {
+      "url": "https://wago.tools/db2/Talent/csv?build=1.60.1.69913",
+      "fullDownloadSha256": "ef5518c5a3aaa7458e074a7e41e87837f8a1c74da00938244019e2e8c0428b4a",
+      "storedSubsetSha256": "a3b866e5ab8d11fcaf567854f3b87ae58859ff7bcc26b0a0ed38c61841a93d2e"
+    },
+    "TalentTab": {
+      "url": "https://wago.tools/db2/TalentTab/csv?build=1.60.1.69913",
+      "fullDownloadSha256": "9539a388c0e697381f7574247488da528f2647099db4c39096bdb2a8695139b9",
+      "storedSubsetSha256": "658c654ca5e0fab24783424a74da038f1b7b3405526e681d316e18f0d1e9e751"
+    },
+    "SpellName": {
+      "url": "https://wago.tools/db2/SpellName/csv?build=1.60.1.69913",
+      "fullDownloadSha256": "ede393ee7dd2d8a7e9bacbf4f14a32a88ded7f67ba08b33d564e931a352773ab",
+      "storedSubsetSha256": "03d1ab32c436eae75e567cc898dfa56949f2cb2e4fd8bae5af2dece43d6272b6"
+    }
+  },
+  "note": "Primary CSV subsets contain the six requested classes only. FD is an audit reference, not a source of coordinates or rank text. WowDB tooltips are partial client transcriptions, not individually game-tested."
+}

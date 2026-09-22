@@ -1,0 +1,2809 @@
+{
+  "classId": "shaman",
+  "build": "1.60.1.69913",
+  "branches": [
+    "elemental",
+    "enhancement",
+    "restoration"
+  ],
+  "talents": [
+    {
+      "id": "shaman-564",
+      "nodeId": 564,
+      "sourceTalentId": 564,
+      "spellId": 16039,
+      "spellIds": [
+        16039,
+        16109,
+        16110,
+        16111,
+        16112
+      ],
+      "name": "Convection",
+      "branch": "elemental",
+      "row": 1,
+      "column": 2,
+      "x": 37.5,
+      "y": 7.142857142857142,
+      "maxRank": 5,
+      "requiredTreePoints": 0,
+      "rankDescriptions": [
+        "Reduces the mana cost of your Shock, Lightning Bolt, Lava Burst, and Chain Lightning spells by 2%.",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_nature_wispsplode",
+      "icon": "/images/class-talents/spell_nature_wispsplode.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB shaman client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/shaman/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "shaman-563",
+      "nodeId": 563,
+      "sourceTalentId": 563,
+      "spellId": 16035,
+      "spellIds": [
+        16035,
+        16105,
+        16106,
+        16107,
+        16108
+      ],
+      "name": "Concussion",
+      "branch": "elemental",
+      "row": 1,
+      "column": 3,
+      "x": 62.5,
+      "y": 7.142857142857142,
+      "maxRank": 5,
+      "requiredTreePoints": 0,
+      "rankDescriptions": [
+        "Increases the damage done by your Lightning Bolt, Chain Lightning, and Earth Shock spells by 1%.",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_nature_earthshock",
+      "icon": "/images/class-talents/spell_nature_earthshock.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB shaman client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/shaman/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "shaman-572",
+      "nodeId": 572,
+      "sourceTalentId": 572,
+      "spellId": 16043,
+      "spellIds": [
+        16043,
+        16130
+      ],
+      "name": "Earth's Grasp",
+      "branch": "elemental",
+      "row": 2,
+      "column": 1,
+      "x": 12.5,
+      "y": 21.428571428571427,
+      "maxRank": 2,
+      "requiredTreePoints": 5,
+      "rankDescriptions": [
+        "Increases the health of your Stoneclaw Totem by 25% and the radius of your Earthbind Totem by 10%.",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_nature_stoneclawtotem",
+      "icon": "/images/class-talents/spell_nature_stoneclawtotem.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB shaman client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/shaman/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "shaman-1640",
+      "nodeId": 1640,
+      "sourceTalentId": 1640,
+      "spellId": 28996,
+      "spellIds": [
+        28996,
+        28997,
+        28998
+      ],
+      "name": "Elemental Warding",
+      "branch": "elemental",
+      "row": 2,
+      "column": 2,
+      "x": 37.5,
+      "y": 21.428571428571427,
+      "maxRank": 3,
+      "requiredTreePoints": 5,
+      "rankDescriptions": [
+        "Reduces damage taken from Fire, Frost, and Nature effects by 4%.",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_nature_spiritarmor",
+      "icon": "/images/class-talents/spell_nature_spiritarmor.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB shaman client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/shaman/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "shaman-561",
+      "nodeId": 561,
+      "sourceTalentId": 561,
+      "spellId": 16038,
+      "spellIds": [
+        16038,
+        16160,
+        16161
+      ],
+      "name": "Call of Flame",
+      "branch": "elemental",
+      "row": 2,
+      "column": 3,
+      "x": 62.5,
+      "y": 21.428571428571427,
+      "maxRank": 3,
+      "requiredTreePoints": 5,
+      "rankDescriptions": [
+        "Increases the damage done by your Fire Totems and by your Flame Shock, Fire Nova, and Lava Burst spells by 15%.",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_fire_immolation",
+      "icon": "/images/class-talents/spell_fire_immolation.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB shaman client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/shaman/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "shaman-574",
+      "nodeId": 574,
+      "sourceTalentId": 574,
+      "spellId": 16164,
+      "spellIds": [
+        16164
+      ],
+      "name": "Elemental Focus",
+      "branch": "elemental",
+      "row": 3,
+      "column": 1,
+      "x": 12.5,
+      "y": 35.714285714285715,
+      "maxRank": 1,
+      "requiredTreePoints": 10,
+      "rankDescriptions": [
+        "Gives you a 10% chance to enter a Clearcasting state after casting any Fire, Frost, or Nature damage spell. The Clearcasting state reduces the mana cost of your next damage spell by 100%."
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_shadow_manaburn",
+      "icon": "/images/class-talents/spell_shadow_manaburn.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB shaman client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/shaman/"
+        }
+      ],
+      "dataNotes": []
+    },
+    {
+      "id": "shaman-575",
+      "nodeId": 575,
+      "sourceTalentId": 575,
+      "spellId": 16040,
+      "spellIds": [
+        16040,
+        16113,
+        16114,
+        16115,
+        16116
+      ],
+      "name": "Reverberation",
+      "branch": "elemental",
+      "row": 3,
+      "column": 2,
+      "x": 37.5,
+      "y": 35.714285714285715,
+      "maxRank": 5,
+      "requiredTreePoints": 10,
+      "rankDescriptions": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_frost_frostward",
+      "icon": "/images/class-talents/spell_frost_frostward.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "unknown",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB shaman client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/shaman/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "shaman-562",
+      "nodeId": 562,
+      "sourceTalentId": 562,
+      "spellId": 16041,
+      "spellIds": [
+        16041,
+        16117,
+        16118,
+        16119,
+        16120
+      ],
+      "name": "Call of Thunder",
+      "branch": "elemental",
+      "row": 3,
+      "column": 3,
+      "x": 62.5,
+      "y": 35.714285714285715,
+      "maxRank": 5,
+      "requiredTreePoints": 10,
+      "rankDescriptions": [
+        "",
+        "",
+        "",
+        "",
+        "Increases the critical strike chance of your Lightning Bolt and Chain Lightning spells by 3%."
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "unknown",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "unknown",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB shaman client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/shaman/"
+        }
+      ],
+      "dataNotes": [
+        "Client spell name is unreadable; a historical reference label is shown. Effects remain unverified.",
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "shaman-567",
+      "nodeId": 567,
+      "sourceTalentId": 567,
+      "spellId": 16086,
+      "spellIds": [
+        16086,
+        16544
+      ],
+      "name": "Improved Fire Nova",
+      "branch": "elemental",
+      "row": 4,
+      "column": 1,
+      "x": 12.5,
+      "y": 50,
+      "maxRank": 2,
+      "requiredTreePoints": 15,
+      "rankDescriptions": [
+        "Increases the damage done by your Fire Nova spell by 20% and reduces its cooldown by 2 sec.",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_fire_sealoffire",
+      "icon": "/images/class-talents/spell_fire_sealoffire.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB shaman client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/shaman/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "shaman-1642",
+      "nodeId": 1642,
+      "sourceTalentId": 1642,
+      "spellId": 29062,
+      "spellIds": [
+        29062,
+        29064,
+        29065
+      ],
+      "name": "Eye of the Storm",
+      "branch": "elemental",
+      "row": 4,
+      "column": 2,
+      "x": 37.5,
+      "y": 50,
+      "maxRank": 3,
+      "requiredTreePoints": 15,
+      "rankDescriptions": [
+        "Reduces the pushback suffered from damaging attacks while casting Lightning Bolt, Chain Lightning, and Lava Burst by 70%.",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_nature_eyeofthestorm",
+      "icon": "/images/class-talents/spell_nature_eyeofthestorm.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB shaman client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/shaman/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "shaman-1645",
+      "nodeId": 1645,
+      "sourceTalentId": 1645,
+      "spellId": 30160,
+      "spellIds": [
+        30160,
+        29179,
+        29180
+      ],
+      "name": "Elemental Devastation",
+      "branch": "elemental",
+      "row": 4,
+      "column": 4,
+      "x": 87.5,
+      "y": 50,
+      "maxRank": 3,
+      "requiredTreePoints": 15,
+      "rankDescriptions": [
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_fire_elementaldevastation",
+      "icon": "/images/class-talents/spell_fire_elementaldevastation.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "unknown",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB shaman client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/shaman/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "shaman-1641",
+      "nodeId": 1641,
+      "sourceTalentId": 1641,
+      "spellId": 28999,
+      "spellIds": [
+        28999,
+        29000
+      ],
+      "name": "Elemental Reach",
+      "branch": "elemental",
+      "row": 5,
+      "column": 1,
+      "x": 12.5,
+      "y": 64.28571428571429,
+      "maxRank": 2,
+      "requiredTreePoints": 20,
+      "rankDescriptions": [
+        "Increases the range of your Lightning Bolt, Chain Lightning, Fire Nova, and Lava Burst spells by 6 yards, and increases the range of your Flame Shock spell by 15 yards.",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_nature_stormreach",
+      "icon": "/images/class-talents/spell_nature_stormreach.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB shaman client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/shaman/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "shaman-565",
+      "nodeId": 565,
+      "sourceTalentId": 565,
+      "spellId": 16089,
+      "spellIds": [
+        16089
+      ],
+      "name": "Elemental Fury",
+      "branch": "elemental",
+      "row": 5,
+      "column": 2,
+      "x": 37.5,
+      "y": 64.28571428571429,
+      "maxRank": 1,
+      "requiredTreePoints": 20,
+      "rankDescriptions": [
+        "Increases the critical strike damage bonus of your Searing and Magma Totems and your Fire, Frost, and Nature spells by 100%."
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_fire_volcano",
+      "icon": "/images/class-talents/spell_fire_volcano.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB shaman client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/shaman/"
+        }
+      ],
+      "dataNotes": []
+    },
+    {
+      "id": "shaman-721",
+      "nodeId": 721,
+      "sourceTalentId": 721,
+      "spellId": 16578,
+      "spellIds": [
+        16578,
+        16579,
+        16580,
+        16581,
+        16582
+      ],
+      "name": "Elemental Alacrity",
+      "branch": "elemental",
+      "row": 6,
+      "column": 3,
+      "x": 62.5,
+      "y": 78.57142857142857,
+      "maxRank": 5,
+      "requiredTreePoints": 25,
+      "prerequisite": [
+        {
+          "talentId": "shaman-562",
+          "requiredRank": null
+        }
+      ],
+      "rankDescriptions": [
+        "",
+        "Reduces the cast time of your Lightning Bolt and Chain Lightning spells by 0.4 sec.",
+        "Reduces the cast time of your Lightning Bolt and Chain Lightning spells by 0.6 sec.",
+        "Reduces the cast time of your Lightning Bolt and Chain Lightning spells by 0.8 sec.",
+        "Reduces the cast time of your Lightning Bolt and Chain Lightning spells by 1 sec."
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_lightning_lightningbolt01",
+      "icon": "/images/class-talents/spell_lightning_lightningbolt01.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB shaman client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/shaman/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "shaman-573",
+      "nodeId": 573,
+      "sourceTalentId": 573,
+      "spellId": 16166,
+      "spellIds": [
+        16166
+      ],
+      "name": "Elemental Mastery",
+      "branch": "elemental",
+      "row": 7,
+      "column": 2,
+      "x": 37.5,
+      "y": 92.85714285714286,
+      "maxRank": 1,
+      "requiredTreePoints": 30,
+      "prerequisite": [
+        {
+          "talentId": "shaman-565",
+          "requiredRank": null
+        }
+      ],
+      "rankDescriptions": [
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "unknown",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "unknown",
+        "iconName": "unknown",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB shaman client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/shaman/"
+        }
+      ],
+      "dataNotes": [
+        "Client spell name is unreadable; a historical reference label is shown. Effects remain unverified.",
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "shaman-614",
+      "nodeId": 614,
+      "sourceTalentId": 614,
+      "spellId": 17485,
+      "spellIds": [
+        17485,
+        17486,
+        17487,
+        17488,
+        17489
+      ],
+      "name": "Ancestral Knowledge",
+      "branch": "enhancement",
+      "row": 1,
+      "column": 2,
+      "x": 37.5,
+      "y": 7.142857142857142,
+      "maxRank": 5,
+      "requiredTreePoints": 0,
+      "rankDescriptions": [
+        "Increases your Intellect by 10%.",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_shadow_grimward",
+      "icon": "/images/class-talents/spell_shadow_grimward.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB shaman client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/shaman/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "shaman-612",
+      "nodeId": 612,
+      "sourceTalentId": 612,
+      "spellId": 16253,
+      "spellIds": [
+        16253,
+        16298,
+        16299,
+        16300,
+        16301
+      ],
+      "name": "Shield Specialization",
+      "branch": "enhancement",
+      "row": 1,
+      "column": 3,
+      "x": 62.5,
+      "y": 7.142857142857142,
+      "maxRank": 5,
+      "requiredTreePoints": 0,
+      "rankDescriptions": [
+        "Increases your chance to block attacks with a shield by 1% and increases the amount blocked by 5%.",
+        "Increases your chance to block attacks with a shield by 2% and increases the amount blocked by 10%.",
+        "Increases your chance to block attacks with a shield by 3% and increases the amount blocked by 15%.",
+        "Increases your chance to block attacks with a shield by 4% and increases the amount blocked by 20%.",
+        "Increases your chance to block attacks with a shield by 5% and increases the amount blocked by 25%."
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "inv_shield_06",
+      "icon": "/images/class-talents/inv_shield_06.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB shaman client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/shaman/"
+        }
+      ],
+      "dataNotes": []
+    },
+    {
+      "id": "shaman-609",
+      "nodeId": 609,
+      "sourceTalentId": 609,
+      "spellId": 16258,
+      "spellIds": [
+        16258,
+        16293
+      ],
+      "name": "Guardian Totems",
+      "branch": "enhancement",
+      "row": 2,
+      "column": 1,
+      "x": 12.5,
+      "y": 21.428571428571427,
+      "maxRank": 2,
+      "requiredTreePoints": 5,
+      "rankDescriptions": [
+        "Increases the amount of damage reduced by your Stoneskin Totem and Windwall Totem by 10% and reduces the cooldown of your Grounding Totem by 1 sec.",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_nature_stoneskintotem",
+      "icon": "/images/class-talents/spell_nature_stoneskintotem.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB shaman client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/shaman/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "shaman-613",
+      "nodeId": 613,
+      "sourceTalentId": 613,
+      "spellId": 16255,
+      "spellIds": [
+        16255,
+        16302,
+        16303,
+        16304,
+        16305
+      ],
+      "name": "Thundering Strikes",
+      "branch": "enhancement",
+      "row": 2,
+      "column": 2,
+      "x": 37.5,
+      "y": 21.428571428571427,
+      "maxRank": 5,
+      "requiredTreePoints": 5,
+      "rankDescriptions": [
+        "Improves your chance to get a critical strike with all spells and attacks by 1%.",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_thunderbolt",
+      "icon": "/images/class-talents/ability_thunderbolt.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB shaman client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/shaman/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "shaman-605",
+      "nodeId": 605,
+      "sourceTalentId": 605,
+      "spellId": 16262,
+      "spellIds": [
+        16262,
+        16287
+      ],
+      "name": "Improved Ghost Wolf",
+      "branch": "enhancement",
+      "row": 2,
+      "column": 3,
+      "x": 62.5,
+      "y": 21.428571428571427,
+      "maxRank": 2,
+      "requiredTreePoints": 5,
+      "rankDescriptions": [
+        "Reduces the cast time of your Ghost Wolf spell by 3.1 sec, and Ghost Wolf may be used indoors.",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_nature_spiritwolf",
+      "icon": "/images/class-talents/spell_nature_spiritwolf.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB shaman client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/shaman/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "shaman-607",
+      "nodeId": 607,
+      "sourceTalentId": 607,
+      "spellId": 16261,
+      "spellIds": [
+        16261,
+        16290,
+        16291
+      ],
+      "name": "Improved Lightning Shield",
+      "branch": "enhancement",
+      "row": 2,
+      "column": 4,
+      "x": 87.5,
+      "y": 21.428571428571427,
+      "maxRank": 3,
+      "requiredTreePoints": 5,
+      "rankDescriptions": [
+        "Increases the damage done by your Lightning Shield orbs by 5%.",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_nature_lightningshield",
+      "icon": "/images/class-talents/spell_nature_lightningshield.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB shaman client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/shaman/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "shaman-610",
+      "nodeId": 610,
+      "sourceTalentId": 610,
+      "spellId": 16259,
+      "spellIds": [
+        16259,
+        16295
+      ],
+      "name": "Enhancing Totems",
+      "branch": "enhancement",
+      "row": 3,
+      "column": 1,
+      "x": 12.5,
+      "y": 35.714285714285715,
+      "maxRank": 2,
+      "requiredTreePoints": 10,
+      "rankDescriptions": [
+        "Increases the effect of your Strength of Earth and Grace of Air Totems by 8%.",
+        "Increases the effect of your Strength of Earth and Grace of Air Totems by 15%."
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_nature_earthbindtotem",
+      "icon": "/images/class-talents/spell_nature_earthbindtotem.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB shaman client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/shaman/"
+        }
+      ],
+      "dataNotes": []
+    },
+    {
+      "id": "shaman-617",
+      "nodeId": 617,
+      "sourceTalentId": 617,
+      "spellId": 16269,
+      "spellIds": [
+        16269
+      ],
+      "name": "Two-Handed Axes and Maces",
+      "branch": "enhancement",
+      "row": 3,
+      "column": 3,
+      "x": 62.5,
+      "y": 35.714285714285715,
+      "maxRank": 1,
+      "requiredTreePoints": 10,
+      "rankDescriptions": [
+        "Allows you to use Two-Handed Axes and Two-Handed Maces."
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "inv_axe_10",
+      "icon": "/images/class-talents/inv_axe_10.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB shaman client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/shaman/"
+        }
+      ],
+      "dataNotes": []
+    },
+    {
+      "id": "shaman-601",
+      "nodeId": 601,
+      "sourceTalentId": 601,
+      "spellId": 16254,
+      "spellIds": [
+        16254,
+        16271,
+        16272,
+        16273,
+        16274
+      ],
+      "name": "Anticipation",
+      "branch": "enhancement",
+      "row": 3,
+      "column": 4,
+      "x": 87.5,
+      "y": 35.714285714285715,
+      "maxRank": 5,
+      "requiredTreePoints": 10,
+      "rankDescriptions": [
+        "Increases your chance to dodge by an additional 1%.",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_nature_mirrorimage",
+      "icon": "/images/class-talents/spell_nature_mirrorimage.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB shaman client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/shaman/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "shaman-602",
+      "nodeId": 602,
+      "sourceTalentId": 602,
+      "spellId": 16256,
+      "spellIds": [
+        16256,
+        16281,
+        16282,
+        16283,
+        16284
+      ],
+      "name": "Flurry",
+      "branch": "enhancement",
+      "row": 4,
+      "column": 2,
+      "x": 37.5,
+      "y": 50,
+      "maxRank": 5,
+      "requiredTreePoints": 15,
+      "prerequisite": [
+        {
+          "talentId": "shaman-613",
+          "requiredRank": null
+        }
+      ],
+      "rankDescriptions": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_ghoulfrenzy",
+      "icon": "/images/class-talents/ability_ghoulfrenzy.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "unknown",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB shaman client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/shaman/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "shaman-615",
+      "nodeId": 615,
+      "sourceTalentId": 615,
+      "spellId": 16252,
+      "spellIds": [
+        16252,
+        16306,
+        16307,
+        16308,
+        16309
+      ],
+      "name": "Toughness",
+      "branch": "enhancement",
+      "row": 4,
+      "column": 3,
+      "x": 62.5,
+      "y": 50,
+      "maxRank": 5,
+      "requiredTreePoints": 15,
+      "rankDescriptions": [
+        "Increases your Stamina by 2%.",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_holy_devotion",
+      "icon": "/images/class-talents/spell_holy_devotion.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB shaman client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/shaman/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "shaman-1647",
+      "nodeId": 1647,
+      "sourceTalentId": 1647,
+      "spellId": 29192,
+      "spellIds": [
+        29192,
+        29193
+      ],
+      "name": "Improved Weapon Totems",
+      "branch": "enhancement",
+      "row": 5,
+      "column": 1,
+      "x": 12.5,
+      "y": 64.28571428571429,
+      "maxRank": 2,
+      "requiredTreePoints": 20,
+      "rankDescriptions": [
+        "Increases the melee attack power bonus of your Windfury Totem by 15% and increases the damage caused by your Flametongue Totem by 6%.",
+        "Increases the melee attack power bonus of your Windfury Totem by 30% and increases the damage caused by your Flametongue Totem by 12%."
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_fire_enchantweapon",
+      "icon": "/images/class-talents/spell_fire_enchantweapon.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB shaman client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/shaman/"
+        }
+      ],
+      "dataNotes": []
+    },
+    {
+      "id": "shaman-611",
+      "nodeId": 611,
+      "sourceTalentId": 611,
+      "spellId": 16266,
+      "spellIds": [
+        16266,
+        29079,
+        29080
+      ],
+      "name": "Elemental Weapons",
+      "branch": "enhancement",
+      "row": 5,
+      "column": 2,
+      "x": 37.5,
+      "y": 64.28571428571429,
+      "maxRank": 3,
+      "requiredTreePoints": 20,
+      "rankDescriptions": [
+        "Increases the melee attack power bonus of your Rockbiter Weapon by 7%, your Windfury Weapon effect by 13% and increases the damage caused by your Flametongue Weapon and Frostbrand Weapon by 5%.",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_fire_flametounge",
+      "icon": "/images/class-talents/spell_fire_flametounge.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB shaman client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/shaman/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "shaman-616",
+      "nodeId": 616,
+      "sourceTalentId": 616,
+      "spellId": 16268,
+      "spellIds": [
+        16268
+      ],
+      "name": "Spirit Weapons",
+      "branch": "enhancement",
+      "row": 5,
+      "column": 3,
+      "x": 62.5,
+      "y": 64.28571428571429,
+      "maxRank": 1,
+      "requiredTreePoints": 20,
+      "rankDescriptions": [
+        "Gives a chance to parry enemy melee attacks, reduces all threat generated by your attacks by 30% while Rockbiter Weapon is not active, and increases all threat generated by 30% while Rockbiter Weapon is active."
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_parry",
+      "icon": "/images/class-talents/ability_parry.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB shaman client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/shaman/"
+        }
+      ],
+      "dataNotes": []
+    },
+    {
+      "id": "shaman-1643",
+      "nodeId": 1643,
+      "sourceTalentId": 1643,
+      "spellId": 29082,
+      "spellIds": [
+        29082,
+        29084,
+        29086,
+        29087,
+        29088
+      ],
+      "name": "Weapon Mastery",
+      "branch": "enhancement",
+      "row": 6,
+      "column": 3,
+      "x": 62.5,
+      "y": 78.57142857142857,
+      "maxRank": 5,
+      "requiredTreePoints": 25,
+      "rankDescriptions": [
+        "Increases the damage you deal with all weapons by 2%.",
+        "Increases the damage you deal with all weapons by 4%.",
+        "Increases the damage you deal with all weapons by 6%.",
+        "Increases the damage you deal with all weapons by 8%.",
+        "Increases the damage you deal with all weapons by 10%."
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_hunter_swiftstrike",
+      "icon": "/images/class-talents/ability_hunter_swiftstrike.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB shaman client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/shaman/"
+        }
+      ],
+      "dataNotes": []
+    },
+    {
+      "id": "shaman-901",
+      "nodeId": 901,
+      "sourceTalentId": 901,
+      "spellId": 17364,
+      "spellIds": [
+        17364
+      ],
+      "name": "Stormstrike",
+      "branch": "enhancement",
+      "row": 7,
+      "column": 2,
+      "x": 37.5,
+      "y": 92.85714285714286,
+      "maxRank": 1,
+      "requiredTreePoints": 30,
+      "prerequisite": [
+        {
+          "talentId": "shaman-611",
+          "requiredRank": null
+        }
+      ],
+      "rankDescriptions": [
+        "Instantly strike for normal weapon damage and increase the damage you deal to the target with your next Lightning Bolt, Chain Lightning, or Earth Shock spell by 20% for 12 sec."
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_shaman_stormstrike",
+      "icon": "/images/class-talents/ability_shaman_stormstrike.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB shaman client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/shaman/"
+        }
+      ],
+      "dataNotes": []
+    },
+    {
+      "id": "shaman-586",
+      "nodeId": 586,
+      "sourceTalentId": 586,
+      "spellId": 16182,
+      "spellIds": [
+        16182,
+        16226,
+        16227,
+        16228,
+        16229
+      ],
+      "name": "Improved Healing Wave",
+      "branch": "restoration",
+      "row": 1,
+      "column": 2,
+      "x": 37.5,
+      "y": 7.142857142857142,
+      "maxRank": 5,
+      "requiredTreePoints": 0,
+      "rankDescriptions": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_nature_magicimmunity",
+      "icon": "/images/class-talents/spell_nature_magicimmunity.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "unknown",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB shaman client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/shaman/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "shaman-593",
+      "nodeId": 593,
+      "sourceTalentId": 593,
+      "spellId": 16179,
+      "spellIds": [
+        16179,
+        16214,
+        16215,
+        16216,
+        16217
+      ],
+      "name": "Tidal Focus",
+      "branch": "restoration",
+      "row": 1,
+      "column": 3,
+      "x": 62.5,
+      "y": 7.142857142857142,
+      "maxRank": 5,
+      "requiredTreePoints": 0,
+      "rankDescriptions": [
+        "Reduces the Mana cost of your healing spells by 5% and improves your chance to hit by 5%.",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_frost_manarecharge",
+      "icon": "/images/class-talents/spell_frost_manarecharge.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB shaman client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/shaman/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "shaman-589",
+      "nodeId": 589,
+      "sourceTalentId": 589,
+      "spellId": 16184,
+      "spellIds": [
+        16184,
+        16209
+      ],
+      "name": "Improved Reincarnation",
+      "branch": "restoration",
+      "row": 2,
+      "column": 1,
+      "x": 12.5,
+      "y": 21.428571428571427,
+      "maxRank": 2,
+      "requiredTreePoints": 5,
+      "rankDescriptions": [
+        "Reduces the cooldown of your Reincarnation spell by 10 min, increases your maximum health by 4%, and increases the amount of health and Mana you reincarnate with by an additional 10%.",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_nature_reincarnation",
+      "icon": "/images/class-talents/spell_nature_reincarnation.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB shaman client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/shaman/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "shaman-581",
+      "nodeId": 581,
+      "sourceTalentId": 581,
+      "spellId": 16176,
+      "spellIds": [
+        16176,
+        16235,
+        16240
+      ],
+      "name": "Ancestral Healing",
+      "branch": "restoration",
+      "row": 2,
+      "column": 2,
+      "x": 37.5,
+      "y": 21.428571428571427,
+      "maxRank": 3,
+      "requiredTreePoints": 5,
+      "rankDescriptions": [
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_nature_undyingstrength",
+      "icon": "/images/class-talents/spell_nature_undyingstrength.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "unknown",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB shaman client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/shaman/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "shaman-595",
+      "nodeId": 595,
+      "sourceTalentId": 595,
+      "spellId": 16173,
+      "spellIds": [
+        16173,
+        16222,
+        16223,
+        16224,
+        16225
+      ],
+      "name": "Totemic Focus",
+      "branch": "restoration",
+      "row": 2,
+      "column": 3,
+      "x": 62.5,
+      "y": 21.428571428571427,
+      "maxRank": 5,
+      "requiredTreePoints": 5,
+      "rankDescriptions": [
+        "Reduces the Mana cost of your totems and any spells that summon or move them by 5%.",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_nature_moonglow",
+      "icon": "/images/class-talents/spell_nature_moonglow.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB shaman client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/shaman/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "shaman-583",
+      "nodeId": 583,
+      "sourceTalentId": 583,
+      "spellId": 16180,
+      "spellIds": [
+        16180,
+        16196,
+        16198
+      ],
+      "name": "Nature's Guidance",
+      "branch": "restoration",
+      "row": 3,
+      "column": 1,
+      "x": 12.5,
+      "y": 35.714285714285715,
+      "maxRank": 3,
+      "requiredTreePoints": 10,
+      "rankDescriptions": [
+        "Improves your chance to hit by 1%.",
+        "Improves your chance to hit by 2%.",
+        "Improves your chance to hit by 3%."
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_frost_stun",
+      "icon": "/images/class-talents/spell_frost_stun.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB shaman client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/shaman/"
+        }
+      ],
+      "dataNotes": []
+    },
+    {
+      "id": "shaman-587",
+      "nodeId": 587,
+      "sourceTalentId": 587,
+      "spellId": 16181,
+      "spellIds": [
+        16181,
+        16230,
+        16232,
+        16233,
+        16234
+      ],
+      "name": "Healing Focus",
+      "branch": "restoration",
+      "row": 3,
+      "column": 2,
+      "x": 37.5,
+      "y": 35.714285714285715,
+      "maxRank": 5,
+      "requiredTreePoints": 10,
+      "rankDescriptions": [
+        "Gives you a 70% chance to avoid interruption caused by damage while casting any healing spell.",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_nature_healingwavelesser",
+      "icon": "/images/class-talents/spell_nature_healingwavelesser.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB shaman client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/shaman/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "shaman-582",
+      "nodeId": 582,
+      "sourceTalentId": 582,
+      "spellId": 16189,
+      "spellIds": [
+        16189
+      ],
+      "name": "Totemic Mastery",
+      "branch": "restoration",
+      "row": 3,
+      "column": 3,
+      "x": 62.5,
+      "y": 35.714285714285715,
+      "maxRank": 1,
+      "requiredTreePoints": 10,
+      "rankDescriptions": [
+        "The radius of your totems that affect friendly targets is increased to 30 yd."
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_nature_nullward",
+      "icon": "/images/class-talents/spell_nature_nullward.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB shaman client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/shaman/"
+        }
+      ],
+      "dataNotes": []
+    },
+    {
+      "id": "shaman-1646",
+      "nodeId": 1646,
+      "sourceTalentId": 1646,
+      "spellId": 29187,
+      "spellIds": [
+        29187,
+        29189,
+        29191
+      ],
+      "name": "Natural Grace",
+      "branch": "restoration",
+      "row": 3,
+      "column": 4,
+      "x": 87.5,
+      "y": 35.714285714285715,
+      "maxRank": 3,
+      "requiredTreePoints": 10,
+      "rankDescriptions": [
+        "Reduces the threat generated by your spells by 30%.",
+        "Reduces the threat generated by your healing spells by 10%.",
+        "Reduces the threat generated by your healing spells by 15%."
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_nature_healingtouch",
+      "icon": "/images/class-talents/spell_nature_healingtouch.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB shaman client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/shaman/"
+        }
+      ],
+      "dataNotes": []
+    },
+    {
+      "id": "shaman-588",
+      "nodeId": 588,
+      "sourceTalentId": 588,
+      "spellId": 16187,
+      "spellIds": [
+        16187,
+        16205,
+        16206,
+        16207,
+        16208
+      ],
+      "name": "Restorative Totems",
+      "branch": "restoration",
+      "row": 4,
+      "column": 2,
+      "x": 37.5,
+      "y": 50,
+      "maxRank": 5,
+      "requiredTreePoints": 15,
+      "rankDescriptions": [
+        "Increases the effect of your Mana Spring Totem by 5% and increases the effect of your Healing Stream Totem by 5%.",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_nature_manaregentotem",
+      "icon": "/images/class-talents/spell_nature_manaregentotem.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB shaman client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/shaman/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "shaman-594",
+      "nodeId": 594,
+      "sourceTalentId": 594,
+      "spellId": 16194,
+      "spellIds": [
+        16194,
+        16218,
+        16219,
+        16220,
+        16221
+      ],
+      "name": "Tidal Mastery",
+      "branch": "restoration",
+      "row": 4,
+      "column": 3,
+      "x": 62.5,
+      "y": 50,
+      "maxRank": 5,
+      "requiredTreePoints": 15,
+      "rankDescriptions": [
+        "Increases the critical effect chance of your healing spells by 1%.",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_nature_tranquility",
+      "icon": "/images/class-talents/spell_nature_tranquility.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB shaman client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/shaman/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "shaman-1648",
+      "nodeId": 1648,
+      "sourceTalentId": 1648,
+      "spellId": 29206,
+      "spellIds": [
+        29206,
+        29205,
+        29202
+      ],
+      "name": "Healing Way",
+      "branch": "restoration",
+      "row": 5,
+      "column": 1,
+      "x": 12.5,
+      "y": 64.28571428571429,
+      "maxRank": 3,
+      "requiredTreePoints": 20,
+      "rankDescriptions": [
+        "Increases the amount healed by your Healing Wave spell by 33%.",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_nature_healingway",
+      "icon": "/images/class-talents/spell_nature_healingway.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB shaman client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/shaman/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "shaman-591",
+      "nodeId": 591,
+      "sourceTalentId": 591,
+      "spellId": 16188,
+      "spellIds": [
+        16188
+      ],
+      "name": "Nature's Swiftness",
+      "branch": "restoration",
+      "row": 5,
+      "column": 3,
+      "x": 62.5,
+      "y": 64.28571428571429,
+      "maxRank": 1,
+      "requiredTreePoints": 20,
+      "rankDescriptions": [
+        "When activated, your next Nature spell with a casting time less than 10 sec. becomes an instant cast spell."
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_nature_ravenform",
+      "icon": "/images/class-talents/spell_nature_ravenform.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB shaman client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/shaman/"
+        }
+      ],
+      "dataNotes": []
+    },
+    {
+      "id": "shaman-592",
+      "nodeId": 592,
+      "sourceTalentId": 592,
+      "spellId": 16178,
+      "spellIds": [
+        16178,
+        16210,
+        16211,
+        16212,
+        16213
+      ],
+      "name": "Purification",
+      "branch": "restoration",
+      "row": 6,
+      "column": 3,
+      "x": 62.5,
+      "y": 78.57142857142857,
+      "maxRank": 5,
+      "requiredTreePoints": 25,
+      "rankDescriptions": [
+        "Increases the effectiveness of your healing spells by 10%.",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_frost_wizardmark",
+      "icon": "/images/class-talents/spell_frost_wizardmark.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB shaman client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/shaman/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "shaman-590",
+      "nodeId": 590,
+      "sourceTalentId": 590,
+      "spellId": 16190,
+      "spellIds": [
+        16190
+      ],
+      "name": "Mana Tide Totem",
+      "branch": "restoration",
+      "row": 7,
+      "column": 2,
+      "x": 37.5,
+      "y": 92.85714285714286,
+      "maxRank": 1,
+      "requiredTreePoints": 30,
+      "prerequisite": [
+        {
+          "talentId": "shaman-588",
+          "requiredRank": null
+        }
+      ],
+      "rankDescriptions": [
+        "Summons a Mana Tide Totem with 5 health at the feet of the caster for sec that restores 88 mana every 3 seconds to group members within 30 yards."
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_frost_summonwaterelemental",
+      "icon": "/images/class-talents/spell_frost_summonwaterelemental.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB shaman client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/shaman/"
+        }
+      ],
+      "dataNotes": []
+    }
+  ],
+  "sources": [
+    {
+      "label": "Wago Talent client table 1.60.1.69913",
+      "type": "beta_client",
+      "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+    },
+    {
+      "label": "TheWoWDB shaman client cross-check",
+      "type": "beta_client_crosscheck",
+      "url": "https://thewowdb.com/wow-forever/talents/shaman/"
+    }
+  ],
+  "conflicts": [],
+  "ready": true
+}

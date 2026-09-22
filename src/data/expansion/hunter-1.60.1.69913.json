@@ -1,0 +1,2815 @@
+{
+  "classId": "hunter",
+  "build": "1.60.1.69913",
+  "branches": [
+    "beast-mastery",
+    "marksmanship",
+    "survival"
+  ],
+  "talents": [
+    {
+      "id": "hunter-1382",
+      "nodeId": 1382,
+      "sourceTalentId": 1382,
+      "spellId": 19552,
+      "spellIds": [
+        19552,
+        19553,
+        19554,
+        19555,
+        19556
+      ],
+      "name": "Deadly Aspects",
+      "branch": "beast-mastery",
+      "row": 1,
+      "column": 2,
+      "x": 37.5,
+      "y": 7.142857142857142,
+      "maxRank": 5,
+      "requiredTreePoints": 0,
+      "rankDescriptions": [
+        "While Aspect of the Hawk is active, Auto Shot has a 10% chance of increasing ranged attack speed by 30% for 12 sec. While Aspect of the Beast is active, all melee auto attacks have a 10% chance of increasing melee attack speed by 30% for 12 sec.",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_nature_ravenform",
+      "icon": "/images/class-talents/spell_nature_ravenform.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB hunter client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/hunter/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "hunter-1389",
+      "nodeId": 1389,
+      "sourceTalentId": 1389,
+      "spellId": 19583,
+      "spellIds": [
+        19583,
+        19584,
+        19585,
+        19586,
+        19587
+      ],
+      "name": "Endurance Training",
+      "branch": "beast-mastery",
+      "row": 1,
+      "column": 3,
+      "x": 62.5,
+      "y": 7.142857142857142,
+      "maxRank": 5,
+      "requiredTreePoints": 0,
+      "rankDescriptions": [
+        "Increases the Health and Armor of your pets by 15%.",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_nature_reincarnation",
+      "icon": "/images/class-talents/spell_nature_reincarnation.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB hunter client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/hunter/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "hunter-1624",
+      "nodeId": 1624,
+      "sourceTalentId": 1624,
+      "spellId": 19557,
+      "spellIds": [
+        19557,
+        19558
+      ],
+      "name": "Improved Eyes of the Beast",
+      "branch": "beast-mastery",
+      "row": 2,
+      "column": 1,
+      "x": 12.5,
+      "y": 21.428571428571427,
+      "maxRank": 2,
+      "requiredTreePoints": 5,
+      "rankDescriptions": [
+        "Increases the duration of your Eyes of the Beast by 30 sec.",
+        "Increases the duration of your Eyes of the Beast by 60 sec."
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_eyeoftheowl",
+      "icon": "/images/class-talents/ability_eyeoftheowl.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB hunter client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/hunter/"
+        }
+      ],
+      "dataNotes": []
+    },
+    {
+      "id": "hunter-1381",
+      "nodeId": 1381,
+      "sourceTalentId": 1381,
+      "spellId": 19549,
+      "spellIds": [
+        19549,
+        19550,
+        19551,
+        24386,
+        24387
+      ],
+      "name": "Improved Aspect of the Monkey",
+      "branch": "beast-mastery",
+      "row": 2,
+      "column": 2,
+      "x": 37.5,
+      "y": 21.428571428571427,
+      "maxRank": 5,
+      "requiredTreePoints": 5,
+      "rankDescriptions": [
+        "Increases the Dodge bonus of your Aspect of the Monkey by 4%. Additionally, your pet gains 50% of the effect of your Aspect of the Monkey ability.",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_hunter_aspectofthemonkey",
+      "icon": "/images/class-talents/ability_hunter_aspectofthemonkey.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB hunter client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/hunter/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "hunter-1395",
+      "nodeId": 1395,
+      "sourceTalentId": 1395,
+      "spellId": 19609,
+      "spellIds": [
+        19609,
+        19610,
+        19612
+      ],
+      "name": "Thick Hide",
+      "branch": "beast-mastery",
+      "row": 2,
+      "column": 3,
+      "x": 62.5,
+      "y": 21.428571428571427,
+      "maxRank": 3,
+      "requiredTreePoints": 5,
+      "rankDescriptions": [
+        "Increases the Armor of your pets by 30%.",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "inv_misc_pelt_bear_03",
+      "icon": "/images/class-talents/inv_misc_pelt_bear_03.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB hunter client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/hunter/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "hunter-1625",
+      "nodeId": 1625,
+      "sourceTalentId": 1625,
+      "spellId": 24443,
+      "spellIds": [
+        24443,
+        19575
+      ],
+      "name": "Improved Revive Pet",
+      "branch": "beast-mastery",
+      "row": 2,
+      "column": 4,
+      "x": 87.5,
+      "y": 21.428571428571427,
+      "maxRank": 2,
+      "requiredTreePoints": 5,
+      "rankDescriptions": [
+        "Revive Pet's casting time is reduced by 6 sec, mana cost is reduced by 40%, and increases the health your pet returns with by an additional 30%.",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_hunter_beastsoothe",
+      "icon": "/images/class-talents/ability_hunter_beastsoothe.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB hunter client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/hunter/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "hunter-1384",
+      "nodeId": 1384,
+      "sourceTalentId": 1384,
+      "spellId": 19559,
+      "spellIds": [
+        19559,
+        19560
+      ],
+      "name": "Pathfinding",
+      "branch": "beast-mastery",
+      "row": 3,
+      "column": 1,
+      "x": 12.5,
+      "y": 35.714285714285715,
+      "maxRank": 2,
+      "requiredTreePoints": 10,
+      "rankDescriptions": [
+        "Increases the speed bonus of your Aspect of the Cheetah and Aspect of the Pack by 6%.",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_mount_jungletiger",
+      "icon": "/images/class-talents/ability_mount_jungletiger.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB hunter client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/hunter/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "hunter-1391",
+      "nodeId": 1391,
+      "sourceTalentId": 1391,
+      "spellId": 19596,
+      "spellIds": [
+        19596
+      ],
+      "name": "Bestial Swiftness",
+      "branch": "beast-mastery",
+      "row": 3,
+      "column": 2,
+      "x": 37.5,
+      "y": 35.714285714285715,
+      "maxRank": 1,
+      "requiredTreePoints": 10,
+      "rankDescriptions": [
+        "Increases the movement speed of your pets by 30%."
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_druid_dash",
+      "icon": "/images/class-talents/ability_druid_dash.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB hunter client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/hunter/"
+        }
+      ],
+      "dataNotes": []
+    },
+    {
+      "id": "hunter-1396",
+      "nodeId": 1396,
+      "sourceTalentId": 1396,
+      "spellId": 19616,
+      "spellIds": [
+        19616,
+        19617,
+        19618,
+        19619,
+        19620
+      ],
+      "name": "Unleashed Fury",
+      "branch": "beast-mastery",
+      "row": 3,
+      "column": 3,
+      "x": 62.5,
+      "y": 35.714285714285715,
+      "maxRank": 5,
+      "requiredTreePoints": 10,
+      "rankDescriptions": [
+        "Increases the damage done by your pets and hawks by 20%.",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_bullrush",
+      "icon": "/images/class-talents/ability_bullrush.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB hunter client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/hunter/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "hunter-1385",
+      "nodeId": 1385,
+      "sourceTalentId": 1385,
+      "spellId": 19572,
+      "spellIds": [
+        19572,
+        19573
+      ],
+      "name": "Improved Mend Pet",
+      "branch": "beast-mastery",
+      "row": 4,
+      "column": 2,
+      "x": 37.5,
+      "y": 50,
+      "maxRank": 2,
+      "requiredTreePoints": 15,
+      "rankDescriptions": [
+        "Gives your Mend Pet spell a 50% chance of cleansing 1 Curse, Disease, Magic, or Poison effect from your pet each time it heals and reduces the Mana cost by 20%.",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_hunter_mendpet",
+      "icon": "/images/class-talents/ability_hunter_mendpet.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB hunter client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/hunter/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "hunter-1393",
+      "nodeId": 1393,
+      "sourceTalentId": 1393,
+      "spellId": 19598,
+      "spellIds": [
+        19598,
+        19599,
+        19600,
+        19601,
+        19602
+      ],
+      "name": "Ferocity",
+      "branch": "beast-mastery",
+      "row": 4,
+      "column": 3,
+      "x": 62.5,
+      "y": 50,
+      "maxRank": 5,
+      "requiredTreePoints": 15,
+      "rankDescriptions": [
+        "Increases the critical strike chance of your pets and hawks by 16%.",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "inv_misc_monsterclaw_04",
+      "icon": "/images/class-talents/inv_misc_monsterclaw_04.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB hunter client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/hunter/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "hunter-1388",
+      "nodeId": 1388,
+      "sourceTalentId": 1388,
+      "spellId": 19578,
+      "spellIds": [
+        19578,
+        20895
+      ],
+      "name": "Spirit Bond",
+      "branch": "beast-mastery",
+      "row": 5,
+      "column": 1,
+      "x": 12.5,
+      "y": 64.28571428571429,
+      "maxRank": 2,
+      "requiredTreePoints": 20,
+      "rankDescriptions": [
+        "While your pet is active, you and your pet will regenerate 1% of total health every 5 sec.",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_druid_demoralizingroar",
+      "icon": "/images/class-talents/ability_druid_demoralizingroar.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB hunter client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/hunter/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "hunter-1387",
+      "nodeId": 1387,
+      "sourceTalentId": 1387,
+      "spellId": 19577,
+      "spellIds": [
+        19577
+      ],
+      "name": "Intimidation",
+      "branch": "beast-mastery",
+      "row": 5,
+      "column": 2,
+      "x": 37.5,
+      "y": 64.28571428571429,
+      "maxRank": 1,
+      "requiredTreePoints": 20,
+      "rankDescriptions": [
+        "Command your pet to Stun the target for 3 sec on its next successful attack, which also gains 100% increased critical strike chance. Generates high threat."
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_devour",
+      "icon": "/images/class-talents/ability_devour.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB hunter client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/hunter/"
+        }
+      ],
+      "dataNotes": []
+    },
+    {
+      "id": "hunter-1390",
+      "nodeId": 1390,
+      "sourceTalentId": 1390,
+      "spellId": 19590,
+      "spellIds": [
+        19590,
+        19592
+      ],
+      "name": "Bestial Discipline",
+      "branch": "beast-mastery",
+      "row": 5,
+      "column": 4,
+      "x": 87.5,
+      "y": 64.28571428571429,
+      "maxRank": 2,
+      "requiredTreePoints": 20,
+      "rankDescriptions": [
+        "Increases the Focus regeneration of your pets by 100% and allows 50% of your Mana regeneration to continue while casting.",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_nature_abolishmagic",
+      "icon": "/images/class-talents/spell_nature_abolishmagic.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB hunter client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/hunter/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "hunter-1397",
+      "nodeId": 1397,
+      "sourceTalentId": 1397,
+      "spellId": 19621,
+      "spellIds": [
+        19621,
+        19622,
+        19623,
+        19624,
+        19625
+      ],
+      "name": "Frenzy",
+      "branch": "beast-mastery",
+      "row": 6,
+      "column": 3,
+      "x": 62.5,
+      "y": 78.57142857142857,
+      "maxRank": 5,
+      "requiredTreePoints": 25,
+      "prerequisite": [
+        {
+          "talentId": "hunter-1393",
+          "requiredRank": null
+        }
+      ],
+      "rankDescriptions": [
+        "Gives your pet a 20% chance to gain a 30% attack speed increase for 8 sec after dealing a critical strike.",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "inv_misc_monsterclaw_03",
+      "icon": "/images/class-talents/inv_misc_monsterclaw_03.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB hunter client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/hunter/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "hunter-1386",
+      "nodeId": 1386,
+      "sourceTalentId": 1386,
+      "spellId": 19574,
+      "spellIds": [
+        19574
+      ],
+      "name": "Bestial Wrath",
+      "branch": "beast-mastery",
+      "row": 7,
+      "column": 2,
+      "x": 37.5,
+      "y": 92.85714285714286,
+      "maxRank": 1,
+      "requiredTreePoints": 30,
+      "prerequisite": [
+        {
+          "talentId": "hunter-1387",
+          "requiredRank": null
+        }
+      ],
+      "rankDescriptions": [
+        "Send your pet into a rage causing 50% additional damage for 18 sec. While enraged, the beast does not feel pity or remorse or fear and it cannot be stopped unless killed."
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_druid_ferociousbite",
+      "icon": "/images/class-talents/ability_druid_ferociousbite.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB hunter client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/hunter/"
+        }
+      ],
+      "dataNotes": []
+    },
+    {
+      "id": "hunter-1341",
+      "nodeId": 1341,
+      "sourceTalentId": 1341,
+      "spellId": 19407,
+      "spellIds": [
+        19407,
+        19412,
+        19413,
+        19414,
+        19415
+      ],
+      "name": "Improved Concussive Shot",
+      "branch": "marksmanship",
+      "row": 1,
+      "column": 2,
+      "x": 37.5,
+      "y": 7.142857142857142,
+      "maxRank": 5,
+      "requiredTreePoints": 0,
+      "rankDescriptions": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_frost_stun",
+      "icon": "/images/class-talents/spell_frost_stun.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "unknown",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB hunter client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/hunter/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "hunter-1342",
+      "nodeId": 1342,
+      "sourceTalentId": 1342,
+      "spellId": 19416,
+      "spellIds": [
+        19416,
+        19417,
+        19418,
+        19419,
+        19420
+      ],
+      "name": "Efficiency",
+      "branch": "marksmanship",
+      "row": 1,
+      "column": 3,
+      "x": 62.5,
+      "y": 7.142857142857142,
+      "maxRank": 5,
+      "requiredTreePoints": 0,
+      "rankDescriptions": [
+        "Reduces the Mana cost of your Shots, Stings, and melee abilities by 15%.",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_frost_wizardmark",
+      "icon": "/images/class-talents/spell_frost_wizardmark.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB hunter client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/hunter/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "hunter-1343",
+      "nodeId": 1343,
+      "sourceTalentId": 1343,
+      "spellId": 19421,
+      "spellIds": [
+        19421,
+        19422,
+        19423,
+        19424,
+        19425
+      ],
+      "name": "Improved Hunter's Mark",
+      "branch": "marksmanship",
+      "row": 2,
+      "column": 2,
+      "x": 37.5,
+      "y": 21.428571428571427,
+      "maxRank": 5,
+      "requiredTreePoints": 5,
+      "rankDescriptions": [
+        "Increases the Ranged Attack Power bonus of your Hunter's Mark spell by 3%.",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_hunter_snipershot",
+      "icon": "/images/class-talents/ability_hunter_snipershot.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB hunter client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/hunter/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "hunter-1344",
+      "nodeId": 1344,
+      "sourceTalentId": 1344,
+      "spellId": 19426,
+      "spellIds": [
+        19426,
+        19427,
+        19429,
+        19430,
+        19431
+      ],
+      "name": "Lethal Attacks",
+      "branch": "marksmanship",
+      "row": 2,
+      "column": 3,
+      "x": 62.5,
+      "y": 21.428571428571427,
+      "maxRank": 5,
+      "requiredTreePoints": 5,
+      "rankDescriptions": [
+        "Increases your critical strike chance with all attacks by 1%.",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_searingarrow",
+      "icon": "/images/class-talents/ability_searingarrow.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB hunter client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/hunter/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "hunter-1345",
+      "nodeId": 1345,
+      "sourceTalentId": 1345,
+      "spellId": 19434,
+      "spellIds": [
+        19434
+      ],
+      "name": "Aimed Shot",
+      "branch": "marksmanship",
+      "row": 3,
+      "column": 1,
+      "x": 12.5,
+      "y": 35.714285714285715,
+      "maxRank": 1,
+      "requiredTreePoints": 10,
+      "rankDescriptions": [
+        "An aimed shot that increases ranged damage by 20. Aimed Shot shares its cooldown with Multi-Shot."
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "inv_spear_07",
+      "icon": "/images/class-talents/inv_spear_07.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB hunter client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/hunter/"
+        }
+      ],
+      "dataNotes": []
+    },
+    {
+      "id": "hunter-1346",
+      "nodeId": 1346,
+      "sourceTalentId": 1346,
+      "spellId": 19454,
+      "spellIds": [
+        19454,
+        19455,
+        19456,
+        19457,
+        19458
+      ],
+      "name": "Improved Arcane Shot",
+      "branch": "marksmanship",
+      "row": 3,
+      "column": 2,
+      "x": 37.5,
+      "y": 35.714285714285715,
+      "maxRank": 5,
+      "requiredTreePoints": 10,
+      "rankDescriptions": [
+        "Reduces the cooldown of your Arcane Shot by 1.5 sec. Does not affect the cooldown of abilities which share a cooldown with Arcane Shot.",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_impalingbolt",
+      "icon": "/images/class-talents/ability_impalingbolt.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB hunter client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/hunter/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "hunter-1352",
+      "nodeId": 1352,
+      "sourceTalentId": 1352,
+      "spellId": 19498,
+      "spellIds": [
+        19498,
+        19499,
+        19500
+      ],
+      "name": "Hawk Eye",
+      "branch": "marksmanship",
+      "row": 3,
+      "column": 4,
+      "x": 87.5,
+      "y": 35.714285714285715,
+      "maxRank": 3,
+      "requiredTreePoints": 10,
+      "rankDescriptions": [
+        "Increases the range of your ranged weapons by 6 yards.",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_townwatch",
+      "icon": "/images/class-talents/ability_townwatch.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB hunter client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/hunter/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "hunter-1348",
+      "nodeId": 1348,
+      "sourceTalentId": 1348,
+      "spellId": 19464,
+      "spellIds": [
+        19464,
+        19465,
+        19466,
+        19467,
+        19468
+      ],
+      "name": "Improved Serpent Sting",
+      "branch": "marksmanship",
+      "row": 4,
+      "column": 2,
+      "x": 37.5,
+      "y": 50,
+      "maxRank": 5,
+      "requiredTreePoints": 15,
+      "rankDescriptions": [
+        "Increases the damage done by your Serpent Sting by 10%.",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_hunter_quickshot",
+      "icon": "/images/class-talents/ability_hunter_quickshot.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB hunter client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/hunter/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "hunter-1349",
+      "nodeId": 1349,
+      "sourceTalentId": 1349,
+      "spellId": 19485,
+      "spellIds": [
+        19485,
+        19487,
+        19488,
+        19489,
+        19490
+      ],
+      "name": "Mortal Shots",
+      "branch": "marksmanship",
+      "row": 4,
+      "column": 3,
+      "x": 62.5,
+      "y": 50,
+      "maxRank": 5,
+      "requiredTreePoints": 15,
+      "prerequisite": [
+        {
+          "talentId": "hunter-1344",
+          "requiredRank": null
+        }
+      ],
+      "rankDescriptions": [
+        "Increases the critical strike damage bonus on all ranged abilities by 30%.",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_piercedamage",
+      "icon": "/images/class-talents/ability_piercedamage.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB hunter client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/hunter/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "hunter-1353",
+      "nodeId": 1353,
+      "sourceTalentId": 1353,
+      "spellId": 19503,
+      "spellIds": [
+        19503
+      ],
+      "name": "Scatter Shot",
+      "branch": "marksmanship",
+      "row": 5,
+      "column": 1,
+      "x": 12.5,
+      "y": 64.28571428571429,
+      "maxRank": 1,
+      "requiredTreePoints": 20,
+      "rankDescriptions": [
+        "A short-range shot that deals 50% weapon damage and disorients the target for 4 sec. Any damage caused will remove the effect. Turns off your attack when used."
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_golemstormbolt",
+      "icon": "/images/class-talents/ability_golemstormbolt.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB hunter client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/hunter/"
+        }
+      ],
+      "dataNotes": []
+    },
+    {
+      "id": "hunter-1347",
+      "nodeId": 1347,
+      "sourceTalentId": 1347,
+      "spellId": 19461,
+      "spellIds": [
+        19461,
+        19462,
+        24691
+      ],
+      "name": "Barrage",
+      "branch": "marksmanship",
+      "row": 5,
+      "column": 2,
+      "x": 37.5,
+      "y": 64.28571428571429,
+      "maxRank": 3,
+      "requiredTreePoints": 20,
+      "rankDescriptions": [
+        "Increases the damage done by your Multi-Shot, Aimed Shot, and Volley abilities by 15%.",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_upgrademoonglaive",
+      "icon": "/images/class-talents/ability_upgrademoonglaive.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB hunter client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/hunter/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "hunter-1351",
+      "nodeId": 1351,
+      "sourceTalentId": 1351,
+      "spellId": 19491,
+      "spellIds": [
+        19491,
+        19493,
+        19494
+      ],
+      "name": "Improved Scorpid Sting",
+      "branch": "marksmanship",
+      "row": 5,
+      "column": 3,
+      "x": 62.5,
+      "y": 64.28571428571429,
+      "maxRank": 3,
+      "requiredTreePoints": 20,
+      "rankDescriptions": [
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "unknown",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "unknown",
+        "iconName": "unknown",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB hunter client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/hunter/"
+        }
+      ],
+      "dataNotes": [
+        "Client spell name is unreadable; a historical reference label is shown. Effects remain unverified.",
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "hunter-1362",
+      "nodeId": 1362,
+      "sourceTalentId": 1362,
+      "spellId": 19507,
+      "spellIds": [
+        19507,
+        19508,
+        19509,
+        19510,
+        19511
+      ],
+      "name": "Ranged Weapon Specialization",
+      "branch": "marksmanship",
+      "row": 6,
+      "column": 3,
+      "x": 62.5,
+      "y": 78.57142857142857,
+      "maxRank": 5,
+      "requiredTreePoints": 25,
+      "rankDescriptions": [
+        "Increases the damage you deal with ranged weapons by 5%.",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "inv_weapon_rifle_06",
+      "icon": "/images/class-talents/inv_weapon_rifle_06.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB hunter client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/hunter/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "hunter-1361",
+      "nodeId": 1361,
+      "sourceTalentId": 1361,
+      "spellId": 19506,
+      "spellIds": [
+        19506
+      ],
+      "name": "Trueshot Aura",
+      "branch": "marksmanship",
+      "row": 7,
+      "column": 2,
+      "x": 37.5,
+      "y": 92.85714285714286,
+      "maxRank": 1,
+      "requiredTreePoints": 30,
+      "prerequisite": [
+        {
+          "talentId": "hunter-1347",
+          "requiredRank": null
+        }
+      ],
+      "rankDescriptions": [
+        "Increases the Ranged Attack Power of party members within 45 yards by 50. Lasts 30 min."
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_trueshot",
+      "icon": "/images/class-talents/ability_trueshot.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB hunter client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/hunter/"
+        }
+      ],
+      "dataNotes": []
+    },
+    {
+      "id": "hunter-1623",
+      "nodeId": 1623,
+      "sourceTalentId": 1623,
+      "spellId": 24293,
+      "spellIds": [
+        24293,
+        24294,
+        24295
+      ],
+      "name": "Improved Tracking",
+      "branch": "survival",
+      "row": 1,
+      "column": 1,
+      "x": 12.5,
+      "y": 7.142857142857142,
+      "maxRank": 3,
+      "requiredTreePoints": 0,
+      "rankDescriptions": [
+        "While tracking Beasts, Demons, Dragonkin, Elementals, Giants, Humanoids, or Undead, all damage you deal to the tracked creature type is increased by 5%.",
+        "Increases all damage caused against Beasts, Giants and Dragonkin targets by 2% and increases critical damage caused against Beasts, Giants and Dragonkin targets by an additional 2%.",
+        "Increases all damage caused against Beasts, Giants and Dragonkin targets by 3% and increases critical damage caused against Beasts, Giants and Dragonkin targets by an additional 3%."
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "inv_misc_head_dragon_black",
+      "icon": "/images/class-talents/inv_misc_head_dragon_black.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB hunter client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/hunter/"
+        }
+      ],
+      "dataNotes": []
+    },
+    {
+      "id": "hunter-1301",
+      "nodeId": 1301,
+      "sourceTalentId": 1301,
+      "spellId": 19151,
+      "spellIds": [
+        19151,
+        19152,
+        19153
+      ],
+      "name": "Humanoid Slaying",
+      "branch": "survival",
+      "row": 1,
+      "column": 2,
+      "x": 37.5,
+      "y": 7.142857142857142,
+      "maxRank": 3,
+      "requiredTreePoints": 0,
+      "rankDescriptions": [
+        "Increases all damage caused against Humanoid targets by 1% and increases critical damage caused against Humanoid targets by an additional 1%.",
+        "Increases all damage caused against Humanoid targets by 2% and increases critical damage caused against Humanoid targets by an additional 2%.",
+        "Increases all damage caused against Humanoid targets by 3% and increases critical damage caused against Humanoid targets by an additional 3%."
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_holy_prayerofhealing",
+      "icon": "/images/class-talents/spell_holy_prayerofhealing.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB hunter client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/hunter/"
+        }
+      ],
+      "dataNotes": []
+    },
+    {
+      "id": "hunter-1311",
+      "nodeId": 1311,
+      "sourceTalentId": 1311,
+      "spellId": 19295,
+      "spellIds": [
+        19295,
+        19297,
+        19298,
+        19301,
+        19300
+      ],
+      "name": "Deflection",
+      "branch": "survival",
+      "row": 1,
+      "column": 3,
+      "x": 62.5,
+      "y": 7.142857142857142,
+      "maxRank": 5,
+      "requiredTreePoints": 0,
+      "rankDescriptions": [
+        "Increases your Parry chance by 5%.",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_parry",
+      "icon": "/images/class-talents/ability_parry.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB hunter client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/hunter/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "hunter-1304",
+      "nodeId": 1304,
+      "sourceTalentId": 1304,
+      "spellId": 19184,
+      "spellIds": [
+        19184,
+        19387,
+        19388,
+        19389,
+        19390
+      ],
+      "name": "Entrapment",
+      "branch": "survival",
+      "row": 2,
+      "column": 1,
+      "x": 12.5,
+      "y": 21.428571428571427,
+      "maxRank": 5,
+      "requiredTreePoints": 5,
+      "rankDescriptions": [
+        "When your traps are triggered, all affected targets are Entrapped, preventing them from moving for 5 sec.",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_nature_stranglevines",
+      "icon": "/images/class-talents/spell_nature_stranglevines.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB hunter client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/hunter/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "hunter-1621",
+      "nodeId": 1621,
+      "sourceTalentId": 1621,
+      "spellId": 19159,
+      "spellIds": [
+        19159,
+        19160
+      ],
+      "name": "Savage Strikes",
+      "branch": "survival",
+      "row": 2,
+      "column": 2,
+      "x": 37.5,
+      "y": 21.428571428571427,
+      "maxRank": 2,
+      "requiredTreePoints": 5,
+      "rankDescriptions": [
+        "Increases the critical strike chance of all your melee abilities by 20%.",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_racial_bloodrage",
+      "icon": "/images/class-talents/ability_racial_bloodrage.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB hunter client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/hunter/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "hunter-1305",
+      "nodeId": 1305,
+      "sourceTalentId": 1305,
+      "spellId": 19228,
+      "spellIds": [
+        19228,
+        19232,
+        19233,
+        19234,
+        19235
+      ],
+      "name": "Improved Wing Clip",
+      "branch": "survival",
+      "row": 2,
+      "column": 3,
+      "x": 62.5,
+      "y": 21.428571428571427,
+      "maxRank": 5,
+      "requiredTreePoints": 5,
+      "rankDescriptions": [
+        "Gives your Wing Clip ability a 20% chance to immobilize the target for 5 sec.",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_rogue_trip",
+      "icon": "/images/class-talents/ability_rogue_trip.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB hunter client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/hunter/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "hunter-1306",
+      "nodeId": 1306,
+      "sourceTalentId": 1306,
+      "spellId": 19239,
+      "spellIds": [
+        19239,
+        19245
+      ],
+      "name": "Clever Traps",
+      "branch": "survival",
+      "row": 3,
+      "column": 1,
+      "x": 12.5,
+      "y": 35.714285714285715,
+      "maxRank": 2,
+      "requiredTreePoints": 10,
+      "rankDescriptions": [
+        "Increases the duration of Freezing and Frost trap effects by 30% and the damage of Immolation and Explosive trap effects by 30%.",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_nature_timestop",
+      "icon": "/images/class-talents/spell_nature_timestop.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB hunter client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/hunter/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "hunter-1622",
+      "nodeId": 1622,
+      "sourceTalentId": 1622,
+      "spellId": 19255,
+      "spellIds": [
+        19255,
+        19256,
+        19257,
+        19258,
+        19259
+      ],
+      "name": "Survivalist",
+      "branch": "survival",
+      "row": 3,
+      "column": 2,
+      "x": 37.5,
+      "y": 35.714285714285715,
+      "maxRank": 5,
+      "requiredTreePoints": 10,
+      "rankDescriptions": [
+        "Increases your total Health by 10%.",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_shadow_twilight",
+      "icon": "/images/class-talents/spell_shadow_twilight.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB hunter client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/hunter/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "hunter-1308",
+      "nodeId": 1308,
+      "sourceTalentId": 1308,
+      "spellId": 19263,
+      "spellIds": [
+        19263
+      ],
+      "name": "Deterrence",
+      "branch": "survival",
+      "row": 3,
+      "column": 3,
+      "x": 62.5,
+      "y": 35.714285714285715,
+      "maxRank": 1,
+      "requiredTreePoints": 10,
+      "rankDescriptions": [
+        "When activated, increases your Dodge and Parry chance by 25% for 10 sec."
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_whirlwind",
+      "icon": "/images/class-talents/ability_whirlwind.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB hunter client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/hunter/"
+        }
+      ],
+      "dataNotes": []
+    },
+    {
+      "id": "hunter-1322",
+      "nodeId": 1322,
+      "sourceTalentId": 1322,
+      "spellId": 19376,
+      "spellIds": [
+        19376,
+        19377
+      ],
+      "name": "Survival Tactics",
+      "branch": "survival",
+      "row": 4,
+      "column": 1,
+      "x": 12.5,
+      "y": 50,
+      "maxRank": 2,
+      "requiredTreePoints": 15,
+      "rankDescriptions": [
+        "Increases your chance to hit with your Trap and Feign Death abilities by 17%.",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_ensnare",
+      "icon": "/images/class-talents/ability_ensnare.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB hunter client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/hunter/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "hunter-1310",
+      "nodeId": 1310,
+      "sourceTalentId": 1310,
+      "spellId": 19290,
+      "spellIds": [
+        19290,
+        19294,
+        24283
+      ],
+      "name": "Surefooted",
+      "branch": "survival",
+      "row": 4,
+      "column": 2,
+      "x": 37.5,
+      "y": 50,
+      "maxRank": 3,
+      "requiredTreePoints": 15,
+      "rankDescriptions": [
+        "Increases your hit chance by 3% and reduces the duration of movement impairing effects on you by 30%.",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_kick",
+      "icon": "/images/class-talents/ability_kick.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB hunter client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/hunter/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "hunter-1309",
+      "nodeId": 1309,
+      "sourceTalentId": 1309,
+      "spellId": 19286,
+      "spellIds": [
+        19286,
+        19287
+      ],
+      "name": "Improved Feign Death",
+      "branch": "survival",
+      "row": 4,
+      "column": 4,
+      "x": 87.5,
+      "y": 50,
+      "maxRank": 2,
+      "requiredTreePoints": 15,
+      "rankDescriptions": [
+        "Reduces the chance your Feign Death ability will be resisted by 2%.",
+        "Reduces the chance your Feign Death ability will be resisted by 4%."
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_rogue_feigndeath",
+      "icon": "/images/class-talents/ability_rogue_feigndeath.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB hunter client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/hunter/"
+        }
+      ],
+      "dataNotes": []
+    },
+    {
+      "id": "hunter-1321",
+      "nodeId": 1321,
+      "sourceTalentId": 1321,
+      "spellId": 19370,
+      "spellIds": [
+        19370,
+        19371,
+        19373
+      ],
+      "name": "Killer Instinct",
+      "branch": "survival",
+      "row": 5,
+      "column": 2,
+      "x": 37.5,
+      "y": 64.28571428571429,
+      "maxRank": 3,
+      "requiredTreePoints": 20,
+      "rankDescriptions": [
+        "Increases your critical strike chance with all attacks by 3%.",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_holy_blessingofstamina",
+      "icon": "/images/class-talents/spell_holy_blessingofstamina.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB hunter client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/hunter/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "hunter-1312",
+      "nodeId": 1312,
+      "sourceTalentId": 1312,
+      "spellId": 19306,
+      "spellIds": [
+        19306
+      ],
+      "name": "Counterattack",
+      "branch": "survival",
+      "row": 5,
+      "column": 3,
+      "x": 62.5,
+      "y": 64.28571428571429,
+      "maxRank": 1,
+      "requiredTreePoints": 20,
+      "prerequisite": [
+        {
+          "talentId": "hunter-1308",
+          "requiredRank": null
+        }
+      ],
+      "rankDescriptions": [
+        "A strike that becomes active after parrying an opponent's attack. This attack deals 50% weapon damage plus 26 and immobilizes the target for 5 sec. Counterattack cannot be blocked, dodged, or parried."
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "ability_warrior_challange",
+      "icon": "/images/class-talents/ability_warrior_challange.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB hunter client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/hunter/"
+        }
+      ],
+      "dataNotes": []
+    },
+    {
+      "id": "hunter-1303",
+      "nodeId": 1303,
+      "sourceTalentId": 1303,
+      "spellId": 19168,
+      "spellIds": [
+        19168,
+        19180,
+        19181,
+        24296,
+        24297
+      ],
+      "name": "Lightning Reflexes",
+      "branch": "survival",
+      "row": 6,
+      "column": 3,
+      "x": 62.5,
+      "y": 78.57142857142857,
+      "maxRank": 5,
+      "requiredTreePoints": 25,
+      "rankDescriptions": [
+        "Increases your Agility by 15%.",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "iconName": "spell_nature_invisibilty",
+      "icon": "/images/class-talents/spell_nature_invisibilty.jpg",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB hunter client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/hunter/"
+        }
+      ],
+      "dataNotes": [
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    },
+    {
+      "id": "hunter-1325",
+      "nodeId": 1325,
+      "sourceTalentId": 1325,
+      "spellId": 19386,
+      "spellIds": [
+        19386
+      ],
+      "name": "Wyvern Sting",
+      "branch": "survival",
+      "row": 7,
+      "column": 2,
+      "x": 37.5,
+      "y": 92.85714285714286,
+      "maxRank": 1,
+      "requiredTreePoints": 30,
+      "prerequisite": [
+        {
+          "talentId": "hunter-1321",
+          "requiredRank": null
+        }
+      ],
+      "rankDescriptions": [
+        ""
+      ],
+      "description": "Exact text for this rank is not available in the reviewed client transcription.",
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "unknown",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "unknown",
+        "iconName": "unknown",
+        "changeStatus": "unknown"
+      },
+      "verificationStatus": "client_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "unknown",
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB hunter client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/hunter/"
+        }
+      ],
+      "dataNotes": [
+        "Client spell name is unreadable; a historical reference label is shown. Effects remain unverified.",
+        "Some rank tooltips are unavailable or contain unresolved client variables. No missing values are interpolated."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "label": "Wago Talent client table 1.60.1.69913",
+      "type": "beta_client",
+      "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+    },
+    {
+      "label": "TheWoWDB hunter client cross-check",
+      "type": "beta_client_crosscheck",
+      "url": "https://thewowdb.com/wow-forever/talents/hunter/"
+    }
+  ],
+  "conflicts": [],
+  "ready": true
+}

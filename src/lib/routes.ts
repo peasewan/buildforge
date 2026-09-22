@@ -98,7 +98,7 @@ const spellbookPage: PageDefinition = {
   robots: 'index, follow',
 }
 
-export function pageForPath(pathname: string): PageDefinition {
+export function pageForPath(pathname: string, search = ''): PageDefinition {
   const normalized = pathname.replace(/\/+$/, '') || '/'
   const embervillePage = EMBERVILLE_PAGES.find((page) => normalized === `/${page.slug}`)
   if (embervillePage) return {
@@ -162,7 +162,7 @@ export function pageForPath(pathname: string): PageDefinition {
     title: classPage.page.title,
     description: classPage.page.description,
     canonical: classPage.page.canonical,
-    robots: classPage.page.robots,
+    robots: classPage.page.kind === 'calculator' && new URLSearchParams(search).has('build') ? 'noindex, follow' : classPage.page.robots,
   }
   return plannerPage
 }

@@ -187,7 +187,7 @@ export default function ClassDocumentPage<B extends string>({ classDef, page }: 
     .concat(plannerPublished ? [{ href: classDef.plannerPath, label: `${classDef.name} Talent Calculator` }] : [])
   const calculatorAction = <a className="button class-primary" href={calculatorHref(classDef, primaryBuild)}>{primaryBuild ? 'Edit this build in Calculator' : `Open ${classDef.name} Calculator`} <ArrowRight size={15} /></a>
 
-  return <main className="class-page" data-class={classDef.id}>
+  return <main className="class-page" data-class={classDef.id} data-client-preview={classDef.dataReview ? 'true' : undefined}>
     <header className="class-nav shell">
       <a className="class-brand" href="/"><Swords /><span>BUILD<b>FORGE</b></span></a>
       <nav aria-label={`${classDef.name} pages`}>
@@ -216,6 +216,7 @@ export default function ClassDocumentPage<B extends string>({ classDef, page }: 
     </section>
 
     <div className="shell class-document">
+      {classDef.dataReview && <section className="class-data-review"><h2>Client data and build assumptions</h2><p>{classDef.dataReview.notice}</p><ul>{classDef.sources.map((source) => <li key={source.url}><a href={source.url} target="_blank" rel="noreferrer">{source.label}</a></li>)}</ul></section>}
       <div className="class-builds" data-testid="class-build-evidence">
         {showsBuildGroups && <BuildGroups classDef={classDef} builds={groupedBuilds} isPublishedHref={isPublishedHref} />}
         {page.kind === 'pvp' && <PvpTabs classDef={classDef} plannerPublished={plannerPublished} />}

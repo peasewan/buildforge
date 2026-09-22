@@ -250,9 +250,21 @@ describe('published class pages', () => {
   })
 
   it('never returns a class page for a path no published class declares', () => {
-    for (const pathname of ['/hunter', '/wow-forever-hunter-builds', '/wow-forever-mage-talents-extra']) {
+    for (const pathname of ['/death-knight', '/wow-forever-death-knight-builds', '/wow-forever-mage-talents-extra']) {
       expect(pageForPath(pathname)).toEqual(paladinPlannerFallback)
     }
-    expect(PUBLISHED_CLASSES.map((classDef) => classDef.id).sort()).toEqual(['mage', 'warrior'])
+    expect(PUBLISHED_CLASSES.map((classDef) => classDef.id).sort()).toEqual(['druid', 'hunter', 'mage', 'priest', 'rogue', 'shaman', 'warlock', 'warrior'])
   })
+})
+
+describe('shared class builds', () => {
+  for (const classDef of PUBLISHED_CLASSES) {
+    it(`${classDef.id}: marks allocated URLs noindex while retaining an indexable clean calculator`, () => {
+      expect(pageForPath(classDef.plannerPath).robots).toBe('index, follow')
+      const shared = pageForPath(classDef.plannerPath, '?build=example&level=20')
+      expect(shared.robots).toBe('noindex, follow')
+      expect(shared.canonical).toBe(`https://buildforgetools.com${classDef.plannerPath}`)
+      expect(pageForPath(classDef.plannerPath, '?utm_source=test').robots).toBe('index, follow')
+    })
+  }
 })

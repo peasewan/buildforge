@@ -69,7 +69,7 @@ describe('generated class-page artifacts', () => {
   })
 
   it('publishes every data-ready class page and withholds the four Mage pages still lacking a build', () => {
-    expect(published).toHaveLength(31)
+    expect(published).toHaveLength(121)
     expect(withheldSlugs).toHaveLength(4)
     expect(classPagePaths()).toEqual(publishedSlugs.map((slug) => `/${slug}`))
     for (const slug of withheldSlugs) expect(classPagePaths()).not.toContain(`/${slug}`)
@@ -79,7 +79,7 @@ describe('generated class-page artifacts', () => {
     // The same generators, a different class: the output follows the gate, not a Mage literal.
     expect(classPagePaths([hunterWithAWithheldPage])).toEqual(hunterSlugs.map((slug) => `/${slug}`))
     expect(classPagePaths([hunterWithAWithheldPage])).not.toContain('/hunter-withheld-fixture-page')
-    expect(classPagePaths()).not.toContain('/hunter')
+    expect(classPagePaths()).not.toContain('/hunter-withheld-fixture-page')
 
     expect(classPageViteInputs([hunterWithAWithheldPage]).map((input) => input.file)).toContain('hunter/index.html')
     expect(classPageRewrites([hunterWithAWithheldPage])).toContainEqual({ source: '/hunter', destination: '/hunter/index.html' })
