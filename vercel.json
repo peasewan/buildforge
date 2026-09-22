@@ -42,6 +42,7 @@
     { "source": "/wow-forever-paladin-raid-build", "destination": "/wow-forever-paladin-raid-build/index.html" },
     { "source": "/wow-forever-protection-paladin-dungeon-build", "destination": "/wow-forever-protection-paladin-dungeon-build/index.html" },
     { "source": "/wow-forever-protection-paladin-leveling-build", "destination": "/wow-forever-protection-paladin-leveling-build/index.html" },
+    { "source": "/wow-forever-protection-paladin-pvp-build", "destination": "/wow-forever-protection-paladin-pvp-build/index.html" },
     { "source": "/wow-forever-retribution-paladin-pvp-build", "destination": "/wow-forever-retribution-paladin-pvp-build/index.html" },
     { "source": "/wow-forever-holy-paladin-pvp-build", "destination": "/wow-forever-holy-paladin-pvp-build/index.html" },
     { "source": "/wow-forever-paladin-builds", "destination": "/wow-forever-paladin-builds/index.html" },

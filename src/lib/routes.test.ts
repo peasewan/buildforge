@@ -87,6 +87,7 @@ describe('public page routing', () => {
     ['/wow-forever-paladin-pvp-build/', 'pvp', 'WoW Forever Paladin PvP Build | BuildForgeTools'],
     ['/wow-forever-paladin-raid-build/', 'raid', 'WoW Forever Paladin Raid Build | BuildForgeTools'],
     ['/wow-forever-protection-paladin-dungeon-build/', 'protection-dungeon', 'WoW Forever Protection Paladin Dungeon Tank Build | BuildForgeTools'],
+    ['/wow-forever-protection-paladin-pvp-build/', 'protection-pvp', 'WoW Forever Protection Paladin PvP Build | BuildForgeTools'],
     ['/wow-forever-protection-paladin-leveling-build/', 'protection-leveling', 'WoW Forever Protection Paladin Leveling Build | BuildForgeTools'],
     ['/wow-forever-retribution-paladin-pvp-build/', 'retribution-pvp', 'WoW Forever Retribution Paladin PvP Build | BuildForgeTools'],
     ['/wow-forever-holy-paladin-pvp-build/', 'holy-pvp', 'WoW Forever Holy Paladin PvP Build | BuildForgeTools'],

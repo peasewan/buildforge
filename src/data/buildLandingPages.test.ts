@@ -10,6 +10,7 @@ describe('build landing page configurations', () => {
       'wow-forever-paladin-raid-build',
       'wow-forever-protection-paladin-dungeon-build',
       'wow-forever-protection-paladin-leveling-build',
+      'wow-forever-protection-paladin-pvp-build',
       'wow-forever-retribution-paladin-pvp-build',
       'wow-forever-holy-paladin-pvp-build',
     ])
@@ -42,7 +43,7 @@ describe('build landing page configurations', () => {
     }
   })
 
-  it.each(['leveling', 'pvp', 'raid', 'retribution-pvp', 'holy-pvp'] as const)(
+  it.each(['leveling', 'pvp', 'raid', 'protection-pvp', 'retribution-pvp', 'holy-pvp'] as const)(
     'gives the %s landing page its own editorial explanation',
     (pageId) => {
       const page = BUILD_LANDING_PAGES.find((candidate) => candidate.id === pageId)!

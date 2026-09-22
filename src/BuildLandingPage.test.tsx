@@ -76,7 +76,17 @@ describe('Build landing page template', () => {
   it('sends the PvP variant cards to their dedicated pages', () => {
     render(<BuildLandingPage pageId="pvp" />)
 
+    expect(document.querySelector('a[href="/wow-forever-protection-paladin-pvp-build"]')).toBeTruthy()
     expect(document.querySelector('a[href="/wow-forever-retribution-paladin-pvp-build"]')).toBeTruthy()
     expect(document.querySelector('a[href="/wow-forever-holy-paladin-pvp-build"]')).toBeTruthy()
+  })
+
+  it('loads the protection reference build from the Protection PvP page', () => {
+    render(<BuildLandingPage pageId="protection-pvp" />)
+
+    expect(screen.getByText('Protection Beta Talent Tree')).toBeTruthy()
+    for (const link of screen.getAllByRole('link', { name: /Open Talent Calculator/i })) {
+      expect(link.getAttribute('href')).toMatch(/^\/build\?id=.+#calculator$/)
+    }
   })
 })

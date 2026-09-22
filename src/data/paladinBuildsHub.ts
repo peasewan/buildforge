@@ -68,6 +68,7 @@ export const HUB_PLAYSTYLE_SECTIONS: HubPlaystyleSection[] = [
     intro: 'Pressure, utility, and survivability for player-versus-player combat.',
     builds: [
       { id: 'paladin-pvp', title: 'Paladin PvP Build', description: 'Pressure, utility, and survivability for arena and battlegrounds.', href: '/wow-forever-paladin-pvp-build', icon: 'pvp' },
+      { id: 'protection-pvp', title: 'Protection Paladin PvP Build', description: 'A defensive setup for objectives, control, and team utility.', href: '/wow-forever-protection-paladin-pvp-build', icon: 'protection' },
       { id: 'retribution-pvp', title: 'Retribution Paladin PvP Build', description: 'A burst-oriented setup built around short damage windows and utility.', href: '/wow-forever-retribution-paladin-pvp-build', icon: 'retribution' },
       { id: 'holy-pvp', title: 'Holy Paladin PvP Build', description: 'A support-oriented direction for keeping teammates alive under pressure.', href: '/wow-forever-holy-paladin-pvp-build', icon: 'holy' },
     ],

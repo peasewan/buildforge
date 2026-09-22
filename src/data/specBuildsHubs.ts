@@ -48,9 +48,7 @@ export const SPEC_BUILDS_HUBS: SpecBuildsHubConfig[] = [
     buildTypes: [
       { id: 'dungeon-tank', eyebrow: 'Dungeon Tank', title: 'Protection Paladin Dungeon Tank Build', description: 'Designed for group content and defensive play.', href: '/wow-forever-protection-paladin-dungeon-build', icon: 'protection' },
       { id: 'leveling-tank', eyebrow: 'Leveling Tank', title: 'Protection Paladin Leveling Build', description: 'Start with a safer solo progression path and adapt it in the planner.', href: '/wow-forever-protection-paladin-leveling-build', icon: 'leveling' },
-      // The id is an opaque analytics key and deliberately no longer matches the label:
-      // retitling the card must not start a new GA4 series.
-      { id: 'pvp-protection', eyebrow: 'PvP', title: 'Paladin PvP Builds', description: 'Compare the class-wide PvP routes. No Protection-specific PvP build has been published yet.', href: '/wow-forever-paladin-pvp-build', icon: 'pvp' },
+      { id: 'pvp-protection', eyebrow: 'PvP', title: 'Protection Paladin PvP Build', description: 'A defensive route for objectives, survival, control, and team utility.', href: '/wow-forever-protection-paladin-pvp-build', icon: 'pvp' },
     ],
     editorialSections: [
       {

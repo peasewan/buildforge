@@ -7,6 +7,7 @@ export type BuildLandingPageId =
   | 'raid'
   | 'protection-dungeon'
   | 'protection-leveling'
+  | 'protection-pvp'
   | 'retribution-pvp'
   | 'holy-pvp'
 
@@ -151,7 +152,7 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
         items: [
           { title: 'Retribution PvP', body: 'An offensive direction for players who want direct pressure while keeping familiar Paladin utility.', icon: 'sword', href: '/wow-forever-retribution-paladin-pvp-build' },
           { title: 'Holy PvP', body: 'A support direction focused on healing, positioning, and helping teammates survive focused attacks.', icon: 'heart', href: '/wow-forever-holy-paladin-pvp-build' },
-          { title: 'Hybrid PvP', body: 'A flexible route that trades a deep specialization for selected tools across more than one tree.', icon: 'route' },
+          { title: 'Protection PvP', body: 'A defensive direction for holding objectives, absorbing pressure, and protecting teammates.', icon: 'shield', href: '/wow-forever-protection-paladin-pvp-build' },
         ],
       },
       {
@@ -165,7 +166,7 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
         title: 'What This PvP Page Can Confirm',
         intro: 'Use the page to compare roles and planning questions, while keeping the current evidence boundary visible.',
         paragraphs: [
-          'The current Retribution PvP page starts from the complete 0/20/31 Judgment allocation, and the Holy PvP page starts from the complete 31/20/0 healing allocation. Those underlying builds are real calculator presets on BuildForgeTools. Their PvP interpretations are community planning directions, because the site does not yet have enough verified WoW Forever match data to call either allocation a finished PvP standard.',
+          'The current Retribution PvP page starts from the complete 0/20/31 Judgment allocation, Holy starts from the 31/20/0 healing allocation, and Protection starts from the 20/31/0 shield allocation. Those underlying builds are real calculator presets on BuildForgeTools. Their PvP interpretations are community planning directions, because the site does not yet have enough verified WoW Forever match data to call any allocation a finished PvP standard.',
           'That distinction prevents a familiar talent name or a complete 51-point total from becoming unsupported competitive advice. Use the specialization pages to inspect which full build is being adapted, then change the ranks for the team size and objective you expect. Confirm important control, defensive, and damage effects in the current client before sharing the result as a recommendation.',
         ],
       },
@@ -183,6 +184,7 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
         items: [
           { title: 'Retribution Paladin PvP Build', body: 'The burst-oriented route built around damage windows.', href: '/wow-forever-retribution-paladin-pvp-build' },
           { title: 'Holy Paladin PvP Build', body: 'The support-oriented route for keeping teammates alive.', href: '/wow-forever-holy-paladin-pvp-build' },
+          { title: 'Protection Paladin PvP Build', body: 'The defensive route for objectives and team utility.', href: '/wow-forever-protection-paladin-pvp-build' },
           { title: 'All Paladin Builds', body: 'Every leveling, PvE, and PvP route in one place.', href: '/wow-forever-paladin-builds' },
         ],
       },
@@ -303,11 +305,21 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
         items: ['Review defensive talents before deeper utility choices.', 'Open the full build to inspect Holy support points.', 'Talent effects use Beta client build 1.60.1.69913; report conflicts from newer builds.'],
       },
       {
+        kind: 'copy',
+        title: 'Protection Paladin Tank Build for Dungeons',
+        intro: 'The same tank intent appears in searches as Protection Paladin, Prot Paladin, and Pally tank build; the page keeps those variants attached to one useful setup.',
+        paragraphs: [
+          'A Protection Paladin dungeon build has to do more than survive. It needs a repeatable way to open a pull, hold enemy attention while the party commits damage, and keep an emergency response available when an extra pack joins. The 20/31/0 reference gives those questions a concrete talent tree, while the calculator lets a player change the supporting Holy points without losing the defensive Protection core.',
+          'Dungeon composition and current Beta behavior still decide whether an individual rank is useful. Treat this tank build as a reviewed starting allocation, then compare changes against the exact share link. Confirm threat, mitigation, and utility effects in the current client before presenting a variant as the standard Protection setup for a particular dungeon.',
+        ],
+      },
+      {
         kind: 'related',
         title: 'More Paladin Builds',
         items: [
           { title: 'Protection Paladin Leveling Build', body: 'The solo route that levels into this tank setup.', href: '/wow-forever-protection-paladin-leveling-build' },
           { title: 'Protection Paladin Builds Hub', body: 'Compare tank builds, Protection talents, and planning paths.', href: '/wow-forever-protection-paladin-builds' },
+          { title: 'Protection Paladin PvP Build', body: 'Adapt the defensive core for objectives and player combat.', href: '/wow-forever-protection-paladin-pvp-build' },
           { title: 'Retribution DPS Build', body: 'Open the 0/20/31 offensive preview.', href: '/wow-forever-retribution-paladin-build' },
           { title: 'Holy Healing Build', body: 'Review the 31/20/0 healing allocation.', href: '/wow-forever-paladin-build' },
           { title: 'Paladin Leveling Build', body: 'Plan a flexible path from level 10 onward.', href: '/wow-forever-paladin-leveling-build' },
@@ -371,6 +383,71 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
       },
     ],
     finalCta: { eyebrow: 'Ready to plan the order?', title: 'Map out your Protection leveling points.', label: 'Open Talent Calculator' },
+  },
+  {
+    id: 'protection-pvp',
+    icon: 'protection',
+    slug: 'wow-forever-protection-paladin-pvp-build',
+    title: 'WoW Forever Protection Paladin PvP Build',
+    metaTitle: 'WoW Forever Protection Paladin PvP Build | BuildForgeTools',
+    description: 'Plan a defensive WoW Forever Protection Paladin PvP build for objectives, survivability, and team utility, then edit the 20/31/0 reference setup.',
+    subtitle: 'A defensive Protection Paladin setup for objectives and team utility in WoW Forever PvP.',
+    eyebrow: 'Protection PvP Build',
+    heroImage: '/images/hero/paladin-pvp.webp',
+    heroPosition: '68% center',
+    summary: [
+      { label: 'Playstyle', value: 'PvP' },
+      { label: 'Specialization', value: 'Protection' },
+      { label: 'Strengths', value: 'Survival · Control · Utility' },
+      { label: 'Status', value: 'Community Build' },
+    ],
+    sections: [
+      {
+        kind: 'cards',
+        title: 'Protection PvP Priorities',
+        intro: 'Protection approaches player combat through durability and control rather than the burst pressure of Retribution or the healing focus of Holy.',
+        items: [
+          { title: 'Hold Objectives', body: 'Use survivability and disruption to remain useful when opponents focus the Paladin.', icon: 'shield' },
+          { title: 'Control Pressure', body: 'Plan interrupts, stuns, and positioning tools around the moments an opponent commits.', icon: 'route' },
+          { title: 'Protect Teammates', body: 'Keep Paladin utility available for allies instead of spending every choice on personal defense.', icon: 'sparkles' },
+        ],
+      },
+      {
+        kind: 'talent-preview',
+        title: 'Protection Beta Talent Tree',
+        intro: 'The 20/31/0 shield allocation below is a concrete defensive reference. Its use in PvP is a community planning direction, so open it in the calculator and adapt it to the objective and team.',
+        buildId: 'protection-shield-20-31-0',
+      },
+      {
+        kind: 'copy',
+        title: 'What the 20/31/0 PvP Reference Represents',
+        intro: 'The selected ranks are exact; their competitive interpretation remains an editable community hypothesis.',
+        paragraphs: [
+          'The reference commits 31 points to Protection and uses 20 Holy points as support. BuildForgeTools can verify the selected ranks, total point count, prerequisites, and the client-derived talent fields behind the tree. That makes it a reproducible starting setup rather than a vague list of defensive goals.',
+          'The allocation has not been proven as an optimal arena or battleground build. A defensive tree can still fail if it lacks the control, mobility, or team utility required by a specific objective. Use the preview to identify the fixed Protection core, then save separate links for each experiment instead of silently changing the reference.',
+        ],
+      },
+      {
+        kind: 'copy',
+        title: 'Adapt Protection to the PvP Objective',
+        paragraphs: [
+          'Flag defense, node control, small-group fights, and open battleground pressure ask different things from a Protection Paladin. Decide whether the build must hold ground, peel for a teammate, interrupt a healer, or simply survive focused damage. Review the Holy support points after choosing that job, because utility that matters in one role may do little in another.',
+          'Test the exact share link in the current Beta client and record which talent changed the outcome. Match evidence should remain separate from client facts: the data can confirm a tooltip or prerequisite, while repeated play is needed before calling a rank competitively strong. Report conflicts through the feedback form so the tree and the editorial recommendation can be reviewed independently.',
+        ],
+      },
+      {
+        kind: 'related',
+        title: 'Related Protection and PvP Builds',
+        items: [
+          { title: 'Paladin PvP Build', body: 'Compare Protection with the Holy and Retribution PvP roles.', href: '/wow-forever-paladin-pvp-build' },
+          { title: 'Protection Paladin Builds Hub', body: 'Browse dungeon, leveling, talent, and PvP routes.', href: '/wow-forever-protection-paladin-builds' },
+          { title: 'Protection Dungeon Tank Build', body: 'Use the same defensive core for group PvE.', href: '/wow-forever-protection-paladin-dungeon-build' },
+          { title: 'Retribution Paladin PvP Build', body: 'Compare the offensive PvP alternative.', href: '/wow-forever-retribution-paladin-pvp-build' },
+          { title: 'Holy Paladin PvP Build', body: 'Compare the support and healing alternative.', href: '/wow-forever-holy-paladin-pvp-build' },
+        ],
+      },
+    ],
+    finalCta: { eyebrow: 'Test a defensive PvP setup', title: 'Adapt the Protection allocation to your objective.', label: 'Open Talent Calculator' },
   },
   {
     id: 'retribution-pvp',
@@ -438,6 +515,7 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
         title: 'Related PvP and Retribution Builds',
         items: [
           { title: 'Paladin PvP Build', body: 'The class-wide PvP overview covering every specialization.', href: '/wow-forever-paladin-pvp-build' },
+          { title: 'Protection Paladin PvP Build', body: 'The defensive alternative for objectives and team utility.', href: '/wow-forever-protection-paladin-pvp-build' },
           { title: 'Holy Paladin PvP Build', body: 'The support-oriented alternative for PvP.', href: '/wow-forever-holy-paladin-pvp-build' },
           { title: 'Retribution Leveling Build', body: 'The PvE route for the same specialization.', href: '/wow-forever-retribution-paladin-leveling-build' },
         ],
@@ -509,6 +587,7 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
         items: [
           { title: 'Holy Healing Build 31/20/0', body: 'The full healing allocation this setup starts from.', href: '/wow-forever-paladin-build' },
           { title: 'Paladin PvP Build', body: 'The class-wide PvP overview covering every specialization.', href: '/wow-forever-paladin-pvp-build' },
+          { title: 'Protection Paladin PvP Build', body: 'The defensive alternative for objectives and team utility.', href: '/wow-forever-protection-paladin-pvp-build' },
           { title: 'Retribution Paladin PvP Build', body: 'The damage-oriented alternative for PvP.', href: '/wow-forever-retribution-paladin-pvp-build' },
         ],
       },

@@ -36,6 +36,7 @@ export default defineConfig({
         raidBuild: resolve(import.meta.dirname, 'wow-forever-paladin-raid-build/index.html'),
         protectionDungeonBuild: resolve(import.meta.dirname, 'wow-forever-protection-paladin-dungeon-build/index.html'),
         protectionLevelingBuild: resolve(import.meta.dirname, 'wow-forever-protection-paladin-leveling-build/index.html'),
+        protectionPvpBuild: resolve(import.meta.dirname, 'wow-forever-protection-paladin-pvp-build/index.html'),
         retributionPvpBuild: resolve(import.meta.dirname, 'wow-forever-retribution-paladin-pvp-build/index.html'),
         holyPvpBuild: resolve(import.meta.dirname, 'wow-forever-holy-paladin-pvp-build/index.html'),
         paladinBuildsHub: resolve(import.meta.dirname, 'wow-forever-paladin-builds/index.html'),
