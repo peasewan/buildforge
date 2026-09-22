@@ -1,6 +1,7 @@
 import { cleanup, fireEvent, render, screen } from '@testing-library/react'
 import { afterEach, expect, it } from 'vitest'
 import { warriorClass } from '../data/classes/warrior'
+import { mageClass } from '../data/classes/mage'
 import ClassIntentExperience from './ClassIntentExperience'
 import ClassExperiencePage from './ClassExperiencePage'
 import { readFileSync } from 'node:fs'
@@ -29,6 +30,41 @@ it('changes the current allocation and next point with the leveling control', ()
     .getAttribute('href')!
   expect(link).toContain('cruelty.5')
   expect(link).not.toContain('unbridled-wrath.5')
+})
+it('keeps the Frost AoE route available after switching to leveling and back', () => {
+  render(
+    <ClassIntentExperience
+      classDef={mageClass}
+      page={mageClass.pages.find(
+        (p) => p.slug === 'wow-forever-frost-mage-aoe-build',
+      )!}
+    />,
+  )
+  const picker = screen.getByLabelText('Progression route') as HTMLSelectElement
+  fireEvent.change(screen.getByLabelText('Your level'), {
+    target: { value: '20' },
+  })
+  const calculatorBuild = () =>
+    new URL(
+      screen
+        .getByRole('link', { name: 'Edit this level in Calculator' })
+        .getAttribute('href')!,
+      'https://buildforgetools.com',
+    ).searchParams.get('build')
+  expect(picker.value).toBe('mage-frost-aoe')
+  expect(calculatorBuild()).toContain('mage-frost-improved-blizzard.1')
+  fireEvent.change(picker, { target: { value: 'mage-frost-leveling' } })
+  expect(picker.value).toBe('mage-frost-leveling')
+  expect(calculatorBuild()).not.toContain('improved-blizzard')
+  expect(Array.from(picker.options).map((option) => option.value)).toContain(
+    'mage-frost-aoe',
+  )
+  fireEvent.change(picker, { target: { value: 'mage-frost-aoe' } })
+  expect(picker.value).toBe('mage-frost-aoe')
+  expect(calculatorBuild()).toContain('mage-frost-improved-blizzard.1')
+  expect(screen.getByTestId('progression-current').textContent).toContain(
+    '11 points',
+  )
 })
 it('honestly reports identical baseline allocation for Arms PvP', () => {
   render(

@@ -230,7 +230,12 @@ function Progression({ classDef: def, page }: Props) {
           <p className="ix-eyebrow">YOUR NEXT POINT</p>
           <RoutePicker
             label="Progression route"
-            builds={all.filter((b) => b.intent === 'leveling' || b.id === id)}
+            builds={all.filter(
+              (b) =>
+                b.intent === 'leveling' ||
+                b.id === page.primaryBuildId ||
+                b.id === id,
+            )}
             value={id!}
             onChange={setId}
           />

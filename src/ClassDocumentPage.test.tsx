@@ -1,7 +1,7 @@
 import { existsSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { cleanup, fireEvent, render, screen, within } from '@testing-library/react'
-import { afterEach, describe, expect, it } from 'vitest'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import ClassDocumentPage from './ClassDocumentPage'
 import { PUBLISHED_CLASSES } from './data/classes'
 import { mageClass } from './data/classes/mage'
@@ -10,13 +10,24 @@ import { hunterClassFixture, type HunterBranch } from './data/fixtures/hunterCla
 import type { ClassDefinition } from './lib/classPage'
 import { publishedClassPages, publishRequirementsFor, satisfiedRequirements } from './lib/classPage'
 import { pageForPath } from './lib/routes'
+import { experienceEnabled } from './experiences/rollout'
+
+vi.mock('./experiences/rollout', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('./experiences/rollout')>()
+  return { ...actual, experienceEnabled: vi.fn(actual.experienceEnabled) }
+})
 
 const pageOfKind = (kind: string) => hunterClassFixture.pages.find((page) => page.kind === kind)!
 const buildById = (id: string) => hunterClassFixture.builds.find((build) => build.id === id)!
 const branchName = (spec: string) => (hunterClassFixture.branchNames as Record<string, string>)[spec]
 
 describe('ClassDocumentPage renders any class from ClassDefinition', () => {
-  afterEach(cleanup)
+  // These tests cover the legacy renderer and fixture independently of rollout batches.
+  beforeEach(() => { vi.mocked(experienceEnabled).mockReturnValue(false) })
+  afterEach(() => {
+    cleanup()
+    vi.mocked(experienceEnabled).mockReset()
+  })
 
   it('marks the page root with the class id for class-specific art direction', () => {
     const { container } = render(<ClassDocumentPage classDef={hunterClassFixture} page={pageOfKind('specBuild')} />)
@@ -251,6 +262,61 @@ describe('ClassDocumentPage renders any class from ClassDefinition', () => {
   })
 })
 
+describe('ClassDocumentPage intent-enabled semantic content', () => {
+  // Restore the real gate so these verify the shipped composition through its public entry point.
+  beforeEach(() => { vi.mocked(experienceEnabled).mockReset() })
+  afterEach(cleanup)
+
+  it('renders exactly the three selected cap builds with their allocations, talents and calculator links', () => {
+    const page = warriorClass.pages.find(candidate => candidate.kind === 'levelCap')!
+    render(<ClassDocumentPage classDef={warriorClass} page={page} />)
+    const cards = screen.getAllByRole('article')
+    expect(cards).toHaveLength(3)
+    expect(page.relatedBuildIds).toHaveLength(3)
+    for (const [index, id] of page.relatedBuildIds.entries()) {
+      const build = warriorClass.builds.find(candidate => candidate.id === id)!
+      const card = within(cards[index])
+      expect(card.getByRole('heading', {name: warriorClass.branchNames[build.spec as keyof typeof warriorClass.branchNames]})).toBeTruthy()
+      expect(card.getByText(build.allocation)).toBeTruthy()
+      expect(card.getByText(build.role)).toBeTruthy()
+      const selectedTalents = warriorClass.talents.filter(talent => (build.build[talent.id] ?? 0) > 0)
+      const ranks = card.getAllByRole('listitem')
+      expect(ranks).toHaveLength(selectedTalents.length)
+      for (const [rankIndex, talent] of selectedTalents.entries()) {
+        expect(within(ranks[rankIndex]).getByText(talent.name)).toBeTruthy()
+        expect(within(ranks[rankIndex]).getByText(`${build.build[talent.id]}/${talent.maxRank}`)).toBeTruthy()
+      }
+      const images = [...cards[index].querySelectorAll('img')]
+      expect(images).toHaveLength(selectedTalents.length)
+      expect(images.map(image => image.getAttribute('src'))).toEqual(selectedTalents.map(talent => talent.icon))
+      const link = new URL(card.getByRole('link', {name:'Edit in Calculator'}).getAttribute('href')!, 'https://buildforgetools.com')
+      expect(link.pathname).toBe('/warrior')
+      expect(link.searchParams.get('level')).toBe(String(build.level))
+      const allocation = Object.fromEntries(link.searchParams.get('build')!.split('~').map(entry => {
+        const [talentId, rank] = entry.split('.')
+        return [talentId, Number(rank)]
+      }))
+      expect(allocation).toEqual(build.build)
+    }
+    expect(screen.queryByText('Arms Warrior PvP Build (Level 20)')).toBeNull()
+  })
+
+  it('renders every Arms talent record with its exact local artwork', () => {
+    const page = warriorClass.pages.find(candidate => candidate.slug === 'wow-forever-arms-warrior-talents')!
+    const armsTalents = warriorClass.talents.filter(talent => talent.branch === 'arms')
+    render(<ClassDocumentPage classDef={warriorClass} page={page} />)
+    const records = screen.getAllByRole('article')
+    expect(records).toHaveLength(armsTalents.length)
+    const images = records.flatMap(record => [...record.querySelectorAll('img')])
+    expect(images).toHaveLength(armsTalents.length)
+    expect(images.map(image => image.getAttribute('src')).sort()).toEqual(armsTalents.map(talent => talent.icon).sort())
+    for (const [index, talent] of armsTalents.entries()) {
+      expect(within(records[index]).getByRole('heading', {name:talent.name})).toBeTruthy()
+      expect(records[index].querySelector('img')!.getAttribute('src')).toBe(talent.icon)
+    }
+  })
+})
+
 // A class-neutral broken-branch fixture keeps the fallback UI covered without depending on a
 // known Mage data defect. Mage itself is now planner-legal in all three branches.
 const blockedBranch = hunterClassFixture.branches[0]
@@ -262,7 +328,11 @@ const blockedClass: ClassDefinition<HunterBranch> = {
 }
 
 describe('the catalogue states a branch that cannot be allocated without repeating the warning', () => {
-  afterEach(cleanup)
+  beforeEach(() => { vi.mocked(experienceEnabled).mockReturnValue(false) })
+  afterEach(() => {
+    cleanup()
+    vi.mocked(experienceEnabled).mockReset()
+  })
 
   it('shows one branch-level exclusion notice and none under individual talents', () => {
     render(<ClassDocumentPage classDef={blockedClass} page={pageOfKind('talents')} />)
@@ -284,6 +354,7 @@ describe('the catalogue states a branch that cannot be allocated without repeati
     render(<ClassDocumentPage classDef={mageClass} page={mageClass.pages.find((page) => page.kind === 'talents')!} />)
 
     expect(screen.queryAllByTestId('class-exclusion-marker')).toHaveLength(0)
+    expect(document.querySelectorAll('.class-catalogue-branch')).toHaveLength(mageClass.branches.length)
     expect([...document.querySelectorAll('.class-catalogue-branch')].every((branch) => branch.getAttribute('data-excluded') !== 'true')).toBe(true)
   })
 
