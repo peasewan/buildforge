@@ -19,6 +19,7 @@ import {
   classPageViteInputs,
   publishedClassCatalogues,
   publishedClassPages,
+  shouldVerifyVercelRewrites,
 } from './classStaticPages'
 import { pageForPath } from './routes'
 import SiteFooter from '../SiteFooter'
@@ -61,6 +62,12 @@ const committedSitemapBlock = committedSitemap.slice(
 )
 
 describe('generated class-page artifacts', () => {
+  it('verifies committed rewrites locally but does not re-read Vercel-owned routing config during a Vercel build', () => {
+    expect(shouldVerifyVercelRewrites({})).toBe(true)
+    expect(shouldVerifyVercelRewrites({ VERCEL: '0' })).toBe(true)
+    expect(shouldVerifyVercelRewrites({ VERCEL: '1' })).toBe(false)
+  })
+
   it('publishes the eight pages the gate publishes and withholds the other seven', () => {
     expect(published).toHaveLength(8)
     expect(withheldSlugs).toHaveLength(7)

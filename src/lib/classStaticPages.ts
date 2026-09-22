@@ -98,6 +98,15 @@ export function classPageRewrites(classes: ClassDefinition[] = PUBLISHED_CLASSES
   return publishedClassPages(classes).map(({ page }) => ({ source: classPagePath(page), destination: `${classPagePath(page)}/index.html` }))
 }
 
+/**
+ * Vercel consumes and may normalize `vercel.json` before the project's build command runs. The
+ * committed config is still covered by the artifact tests and by local sync checks, but the cloud
+ * build must not assume Vercel leaves its own routing source file byte-identical in the sandbox.
+ */
+export function shouldVerifyVercelRewrites(env: Record<string, string | undefined>): boolean {
+  return env.VERCEL !== '1'
+}
+
 export function classPageSitemapBlock(classes: ClassDefinition[] = PUBLISHED_CLASSES): string {
   const rows = publishedClassPages(classes).map(({ page }) => [
     '  <url>',

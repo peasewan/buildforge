@@ -10,6 +10,7 @@ import {
   classPageShellHtml,
   classPageSitemapBlock,
   publishedClassPages,
+  shouldVerifyVercelRewrites,
   withClassPageSitemapBlock,
   type PublishedClassPage,
 } from '../src/lib/classStaticPages'
@@ -83,8 +84,13 @@ async function drift(): Promise<string[]> {
   const sitemap = await readFile(sitemapPath, 'utf8')
   if (withClassPageSitemapBlock(sitemap) !== sitemap) problems.push('stale class page rows in public/sitemap.xml')
 
-  const config = await readVercel()
-  if (withClassPageRewrites(config, classPageRewrites()) !== config) problems.push('stale class page rewrites in vercel.json')
+  // Vercel has already consumed its routing config before the project build runs and may normalize
+  // the sandbox copy. Local checks and the committed-artifact tests remain the source-of-truth
+  // guard for vercel.json; the cloud build verifies every artifact it still owns at this stage.
+  if (shouldVerifyVercelRewrites(process.env)) {
+    const config = await readVercel()
+    if (withClassPageRewrites(config, classPageRewrites()) !== config) problems.push('stale class page rewrites in vercel.json')
+  }
 
   if (!existsSync(manifestPath)) problems.push(`missing ${CLASS_PAGE_MANIFEST_FILENAME}`)
   else if ((await readFile(manifestPath, 'utf8')) !== classPageManifestContent()) problems.push(`stale ${CLASS_PAGE_MANIFEST_FILENAME}`)
