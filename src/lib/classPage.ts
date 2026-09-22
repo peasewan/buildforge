@@ -88,6 +88,8 @@ export interface ClassBuild {
   strengths: string[]
   keyTalentIds: string[]
   order: string[]
+  /** Reviewed per-rank editorial sequence; unlike order, IDs may repeat. */
+  pointOrder?: string[]
   build: PlannerBuild
   evidence: 'community_verified' | 'derived_assumption'
   sources: ClassBuildSource[]

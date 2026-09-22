@@ -4,6 +4,8 @@ import AppRoute from './AppRoute'
 import { pageForPath } from './lib/routes'
 import './emberville.css'
 import './styles.css'
+import './experiences/experience.css'
+import './experiences/legacy-experience.css'
 
 const page = pageForPath(window.location.pathname, window.location.search)
 const robots = document.querySelector<HTMLMetaElement>('meta[name="robots"]') ?? document.head.appendChild(document.createElement('meta'))

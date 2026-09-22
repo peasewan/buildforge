@@ -55,6 +55,7 @@ const makeBuild = (
   strengths,
   keyTalentIds: [...new Set(preset.order)].slice(-3),
   order: [...new Set(preset.order)],
+  pointOrder: [...preset.order],
   build: preset.build,
   evidence: 'derived_assumption',
   sources: [{ label: 'BuildForgeTools current-cap Warrior testing route', url: `https://buildforgetools.com${href}` }],

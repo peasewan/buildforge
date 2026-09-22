@@ -1,3 +1,5 @@
+import LegacyIntentExperience from './experiences/LegacyIntentExperience'
+import { experienceEnabled } from './experiences/rollout'
 import { ArrowRight, MessageSquarePlus } from 'lucide-react'
 import SiteFooter from './SiteFooter'
 import { trustPageById, type TrustPageId } from './data/trustPages'
@@ -7,7 +9,7 @@ export default function TrustPage({ pageId }: { pageId: TrustPageId }) {
   const openFeedback = () => document.querySelector<HTMLButtonElement>('.feedback-trigger')?.click()
 
   return (
-    <main className="trust-page">
+    <main className={experienceEnabled(`/${page.slug}`) ? 'trust-page legacy-experience-page' : 'trust-page'}>
       <header className="guide-nav shell">
         <a className="brand" href="/about"><img src="/images/icons/paladin-shield.png" alt="" /><span>BUILD</span><b>FORGE</b></a>
         <nav aria-label="Site information"><a href="/paladin">WoW Forever</a><a href="/emberville">Emberville</a><a href="/about">About</a><a href="/contact">Contact</a><a href="/privacy">Privacy</a></nav>
@@ -22,6 +24,7 @@ export default function TrustPage({ pageId }: { pageId: TrustPageId }) {
           <span>Last updated: {page.updated}</span>
         </div>
       </section>
+      <LegacyIntentExperience path={`/${page.slug}`} />
 
       <article className="trust-content shell">
         {page.sections.map((section) => (

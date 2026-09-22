@@ -1,5 +1,6 @@
 import { PUBLISHED_CLASSES } from '../data/classes'
 import { escapeHtml } from './html'
+import { experienceLastmod } from '../experiences/rollout'
 import {
   pageFromPublishedClasses,
   publishedClassPages as gatedClassPages,
@@ -118,7 +119,7 @@ export function classPageSitemapBlock(classes: ClassDefinition[] = PUBLISHED_CLA
   const rows = publishedClassPages(classes).map(({ page }) => [
     '  <url>',
     `    <loc>${escapeHtml(page.canonical)}</loc>`,
-    `    <lastmod>${sitemapLastmod(page)}</lastmod>`,
+    `    <lastmod>${experienceLastmod(classPagePath(page), sitemapLastmod(page))}</lastmod>`,
     '    <changefreq>weekly</changefreq>',
     `    <priority>${sitemapPriorities[page.kind]}</priority>`,
     '  </url>',

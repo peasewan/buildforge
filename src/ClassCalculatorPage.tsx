@@ -1,3 +1,4 @@
+import { experienceEnabled } from './experiences/rollout'
 import { useMemo, useState, type CSSProperties } from 'react'
 import { Check, Copy, Lock, Minus, RotateCcw, Shield, Sparkles, Swords } from 'lucide-react'
 import SiteFooter from './SiteFooter'
@@ -147,7 +148,7 @@ export default function ClassCalculatorPage<B extends string>({ classDef }: { cl
     window.setTimeout(() => setCopied(false), 1600)
   }
 
-  return <main className="class-page class-calculator-page" data-class={classDef.id} data-client-preview={classDef.dataReview ? 'true' : undefined}>
+  return <main className="class-page class-calculator-page" data-class={classDef.id} data-intent-calculator={experienceEnabled(classDef.plannerPath) ? "true" : undefined} data-client-preview={classDef.dataReview ? 'true' : undefined}>
     <header className="class-nav shell">
       <a className="class-brand" href="/"><Swords /><span>BUILD<b>FORGE</b></span></a>
       <nav aria-label={`${classDef.name} pages`}>
@@ -198,8 +199,9 @@ export default function ClassCalculatorPage<B extends string>({ classDef }: { cl
         {presets.map((preset) => <button type="button" key={preset.id} aria-label={`Load ${preset.shortTitle}`} onClick={() => loadPreset(preset)}>{preset.shortTitle}<small>{preset.allocation}</small></button>)}
       </div>
 
+      {experienceEnabled(classDef.plannerPath) && <nav className="ix-calculator-nav" aria-label="Jump to specialization"><span>Jump to tree</span>{classDef.branches.map(b => <a key={b} href={`#tree-${b}`}>{classDef.branchNames[b]} · {plannerBranchPoints(build,b,classDef.talents)} points</a>)}<a href="#build-summary">Review &amp; share</a></nav>}
       <div className="class-tree-grid">
-        {classDef.branches.map((branch) => <section className={`class-tree ${branch}`} key={branch}>
+        {classDef.branches.map((branch) => <section className={`class-tree ${branch}`} id={experienceEnabled(classDef.plannerPath) ? `tree-${branch}` : undefined} key={branch}>
           <header>
             <div><Sparkles size={18} /><h3>{classDef.branchNames[branch]}</h3></div>
             <b>{plannerBranchPoints(build, branch, classDef.talents)}</b>
@@ -226,7 +228,7 @@ export default function ClassCalculatorPage<B extends string>({ classDef }: { cl
         </section>)}
       </div>
 
-      <div className="class-summary">
+      <div className="class-summary" id={experienceEnabled(classDef.plannerPath) ? "build-summary" : undefined}>
         <article>
           <p className="class-kicker">Selected talent</p>
           <div className="class-detail-title">

@@ -1,3 +1,5 @@
+import ClassExperiencePage from './experiences/ClassExperiencePage'
+import { experienceEnabled } from './experiences/rollout'
 import { useState, type CSSProperties } from 'react'
 import { ArrowRight, Ban, Check, Swords } from 'lucide-react'
 import SiteFooter from './SiteFooter'
@@ -165,6 +167,7 @@ function TalentCatalogue<B extends string>({ classDef, branchFilter }: { classDe
  * come from the `ClassDefinition` and the requested `ClassPageDefinition`.
  */
 export default function ClassDocumentPage<B extends string>({ classDef, page }: { classDef: ClassDefinition<B>; page: ClassPageDefinition }) {
+  if (experienceEnabled(`/${page.slug}`)) return <ClassExperiencePage classDef={classDef} page={page} />
   const plannerPublished = hasPublishedPlanner(classDef)
   // A link out of a published page has to land on a page that publishes. Both lists come from the
   // same gate the routes use, so a withheld related page or build is not offered as a link at all.

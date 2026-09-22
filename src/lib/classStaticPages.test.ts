@@ -23,6 +23,7 @@ import {
 } from './classStaticPages'
 import { pageForPath } from './routes'
 import SiteFooter from '../SiteFooter'
+import { experienceLastmod } from '../experiences/rollout'
 
 const ORIGIN = 'https://buildforgetools.com'
 
@@ -189,7 +190,7 @@ describe('generated class-page artifacts', () => {
     }
   })
 
-  it('writes one sitemap row per published page, dated by the page itself', () => {
+  it('writes one sitemap row per published page, including released UI changes', () => {
     expect(committedSitemapBlock).toBe(classPageSitemapBlock())
     const locs = [...committedSitemapBlock.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) => match[1])
 
@@ -197,7 +198,7 @@ describe('generated class-page artifacts', () => {
     for (const { page } of published) {
       const row = committedSitemapBlock.split('<url>').find((candidate) => candidate.includes(`<loc>${page.canonical}</loc>`))!
 
-      expect(row, page.slug).toContain(`<lastmod>${page.updatedAt}</lastmod>`)
+      expect(row, page.slug).toContain(`<lastmod>${experienceLastmod(`/${page.slug}`, page.updatedAt)}</lastmod>`)
     }
   })
 
