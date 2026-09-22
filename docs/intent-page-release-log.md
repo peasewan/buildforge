@@ -27,3 +27,8 @@ User scope amendment: all 22 Paladin pages are protected/excluded. Active 128 pa
 All seven pages inspected at 1440×900 and 390×844; no horizontal overflow. Fury PvP retains its own allocation; Protection PvP explicitly has no reviewed allocation. Dungeon toolkit, level-cap budget and branch-filtered talent directories are distinct. Mage Arcane preset loads 11/0/0, share URL preserves all ranks, reset clears tree navigation counts; browser console has no errors. Static guard passed all 150 URLs, including exact content/link/lastmod freeze for all 22 Paladin URLs and inactive pages. Rollout/metadata tests: 15 passed.
 
 B03 corrective verification: CI exposed two legacy-CSS-dependent tests after enabling cap/talent pages. Legacy renderer tests now isolate the disabled gate; separate enabled tests retain exact build/talent/icon/link assertions. Fixed the not-yet-published Mage AoE route selector losing its primary choice after switching away, with a failing-then-passing roundtrip regression. Independent review approved. Relevant32 tests pass; full suite827 passed/5 timed out under concurrent load, then all5 timed-out cases passed alone. Lint, typecheck, build and150-page static guard pass.
+
+## B04 — reviewed batch
+
+All seven Mage pages inspected at 1440×900 and 390×844; no overflow. Hub exposes only published routes, reference has31 real records and missing tooltip notices, Frost/Arcane builds show their own allocations and alternatives. All three progression defaults match their page; Arcane level20 produces11/0/0 and exact calculator rank link. Original metadata preserved on150 pages;122 frozen roots unchanged. Focused tests, lint, build and static audit pass.
+
