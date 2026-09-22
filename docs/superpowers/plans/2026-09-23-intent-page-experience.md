@@ -2,15 +2,18 @@
 
 > **For agentic workers:** Use superpowers:subagent-driven-development or superpowers:executing-plans to implement this plan task-by-task. Track steps with checkboxes and use the rollout ledger to resume.
 
-**Goal:** Upgrade and self-verify all 150 existing production URLs in batches of at most seven, then submit the production sitemap to GSC.
+**Goal:** Upgrade and self-verify all 128 non-Paladin production URLs in batches of at most seven, then submit the production sitemap to GSC.
 
-**Architecture:** Retain ClassDefinition and existing route metadata. Add small intent components driven by reviewed existing data, gated by an explicit pathname allowlist. Shared visual server rendering and client rendering use the same enabled composition. Legacy Paladin, Emberville and trust pages get scoped enhancements via their existing components/adapters; do not force them into a new class database.
+**Architecture:** Retain ClassDefinition and existing route metadata. Add small intent components driven by reviewed existing data, gated by an explicit pathname allowlist. Shared visual server rendering and client rendering use the same enabled composition. Legacy Emberville and trust pages get scoped enhancements via their existing components/adapters; do not force them into a new class database.
 
 **Tech Stack:** React, TypeScript, Vite, Vitest, existing CSS/Lucide, GitHub/Vercel, GSC MCP.
 
 **Spec:** `docs/superpowers/specs/2026-09-23-intent-page-experience.md`
 
 ## Global constraints
+
+**HARD SCOPE AMENDMENT:** 128 active pages; 22 Paladin pages excluded by the user. All earlier Paladin enhancement tasks are canceled. Maintain site inventory at150; do not touch protected components or expand shared styling into them. Lastmod for Paladin must remain unchanged.
+
 
 Use the complete approved spec above. The user has authorized main pushes, production deployment and GSC submission. The paused Beta watcher stays paused. Do not wait for another approval between batches. No claimed ranking gains or invented data. This plan covers exactly the baseline 150 sitemap URLs, not the four withheld Mage definitions.
 
@@ -53,14 +56,14 @@ Use the complete approved spec above. The user has authorized main pushes, produ
 - [ ] Add real behavior tests (input changes budget/next point/link, selectors change diff, filters change records). Empty/missing fields remain explicit.
 - [ ] Wire pathname-gated compositions into shared renderer. Keep global CSS and non-enabled markup unchanged.
 
-## Task 4 — Apply subsequent batches B02–B22
+## Task 4 — Apply subsequent batches B02–B19
 
 For every batch in the exact URL schedule below:
 
 - [ ] Re-read each page's own data/content, resolve intent and supported unique task; record concrete changes per URL in the ledger before marking ready.
 - [ ] Add only the batch paths to the allowlist. Author role-specific notes from existing evidence; retain disclaimers for incomplete sources.
 - [ ] Reuse approved components but test every page's actual data. If a new page family appears (cap, AoE, pet, totem, healing, trust), add its own purposeful module and tests before enabling.
-- [ ] For old Paladin pages, adapt current preset/path data without renaming talent IDs, changing saved-link codecs, or replacing its calculator.
+- [ ] For the 22 protected Paladin pages, require identical root markup, metadata and links versus baseline; make no component or data changes.
 - [ ] For calculators, keep tree interaction primary and add useful preset/spec navigation. For Emberville, focus direction choice, system comparison or inheritance flow with unknown records still disabled. Trust pages get accessible local navigation and clear actions without fabricated contacts.
 - [ ] Run this batch's meaningful data/UI tests, complete typecheck/lint/build and static audit. Run full suite whenever shared logic changes; carry earlier-page regression fixtures forward.
 - [ ] Open every batch page at desktop 1440 and mobile 390; inspect screenshots, overflow and primary action. Compare seven pilot screenshots as a set; confirm no text-first flash on normal navigation or script-free first paint.
@@ -71,15 +74,15 @@ For every batch in the exact URL schedule below:
 
 ## Task 5 — Final whole-site acceptance
 
-- [ ] All 150 ledger records have a concrete enhancement and passing checks; no pending/blocked/merely queued pages count.
+- [ ] All 128 active ledger records have a concrete enhancement and passing checks; no pending/blocked/merely queued pages count.
 - [ ] Rebuild and crawl all 150 production URLs: HTTP 200, one H1, correct unchanged title/canonical, index/follow, visual first paint, supported primary module, working internal links/assets.
 - [ ] Validate the nine calculators' edit/reset/load/share flows; shared query URLs remain noindex. No double-counted analytics from static rendering.
 - [ ] Verify main equals deployed commit; full CI and local required checks green.
 - [ ] Confirm sitemap has the same 150 canonical URLs, truthful per-page lastmod, no shared URLs/withheld Mage pages.
 - [ ] GSC MCP: call list_properties, submit `https://buildforgetools.com/sitemap.xml` for `sc-domain:buildforgetools.com`, then read status. Record submission time and pending state honestly.
-- [ ] Deliver main commit(s), 150-page result, representative page links, screenshots and any explicit data limitations. Do not imply Google has already reindexed them.
+- [ ] Deliver main commit(s), 128-page upgrade result plus 22-page protection result, representative page links, screenshots and any explicit data limitations. Do not imply Google has already reindexed them.
 
-## Batch schedule — each URL exactly once
+## Batch schedule — 128 active URLs, each exactly once
 
 ### B01 — 7 pages
 
@@ -126,177 +129,170 @@ For every batch in the exact URL schedule below:
 - [ ] `/wow-forever-frost-mage-aoe-build` — mage / aoe
 - [ ] `/wow-forever-mage-dungeon-build` — mage / dungeon
 - [ ] `/wow-forever-mage-level-20-build` — mage / levelCap
-- [ ] `/paladin` — paladin / planner
-- [ ] `/wow-forever-paladin-builds` — paladin / build-hub
-- [ ] `/wow-forever-paladin-talents` — paladin / guide
-- [ ] `/wow-forever-paladin-build` — paladin / build-guide
-
-### B06 — 7 pages
-
-- [ ] `/wow-forever-protection-paladin-build` — paladin / build-guide
-- [ ] `/wow-forever-retribution-paladin-build` — paladin / build-guide
-- [ ] `/wow-forever-retribution-paladin-leveling-build` — paladin / build-guide
-- [ ] `/wow-forever-paladin-leveling-build` — paladin / build-landing
-- [ ] `/wow-forever-paladin-pvp-build` — paladin / build-landing
-- [ ] `/wow-forever-paladin-raid-build` — paladin / build-landing
-- [ ] `/wow-forever-protection-paladin-dungeon-build` — paladin / build-landing
-
-### B07 — 7 pages
-
-- [ ] `/wow-forever-retribution-paladin-builds` — paladin / spec-hub
-- [ ] `/wow-forever-protection-paladin-builds` — paladin / spec-hub
-- [ ] `/wow-forever-protection-paladin-leveling-build` — paladin / build-landing
-- [ ] `/wow-forever-protection-paladin-pvp-build` — paladin / build-landing
-- [ ] `/wow-forever-retribution-paladin-pvp-build` — paladin / build-landing
-- [ ] `/wow-forever-holy-paladin-pvp-build` — paladin / build-landing
-- [ ] `/wow-forever-holy-paladin-talents` — paladin / spec-talents
-
-### B08 — 7 pages
-
-- [ ] `/wow-forever-retribution-paladin-talents` — paladin / spec-talents
-- [ ] `/wow-forever-protection-paladin-talents` — paladin / spec-talents
-- [ ] `/wow-forever-paladin-beta-talent-changes` — paladin / beta-changes
-- [ ] `/wow-forever-paladin-abilities` — paladin / spellbook
 - [ ] `/rogue` — rogue / calculator
 - [ ] `/wow-forever-rogue-builds` — rogue / buildsHub
 - [ ] `/wow-forever-rogue-talents` — rogue / talents
-
-### B09 — 7 pages
-
 - [ ] `/wow-forever-rogue-leveling-build` — rogue / leveling
+
+### B06 — 7 pages
+
 - [ ] `/wow-forever-assassination-rogue-build` — rogue / specBuild
 - [ ] `/wow-forever-assassination-rogue-leveling-build` — rogue / specLeveling
 - [ ] `/wow-forever-combat-rogue-build` — rogue / specBuild
 - [ ] `/wow-forever-combat-rogue-leveling-build` — rogue / specLeveling
 - [ ] `/wow-forever-subtlety-rogue-build` — rogue / specBuild
 - [ ] `/wow-forever-subtlety-rogue-leveling-build` — rogue / specLeveling
-
-### B10 — 7 pages
-
 - [ ] `/wow-forever-rogue-pvp-build` — rogue / pvp
+
+### B07 — 7 pages
+
 - [ ] `/wow-forever-rogue-level-20-build` — rogue / levelCap
 - [ ] `/wow-forever-subtlety-rogue-pvp-build` — rogue / specPvp
 - [ ] `/wow-forever-combat-vs-assassination-rogue-leveling` — rogue / comparison
 - [ ] `/wow-forever-rogue-dungeon-build` — rogue / dungeon
 - [ ] `/hunter` — hunter / calculator
 - [ ] `/wow-forever-hunter-builds` — hunter / buildsHub
-
-### B11 — 7 pages
-
 - [ ] `/wow-forever-hunter-talents` — hunter / talents
+
+### B08 — 7 pages
+
 - [ ] `/wow-forever-hunter-leveling-build` — hunter / leveling
 - [ ] `/wow-forever-beast-mastery-hunter-build` — hunter / specBuild
 - [ ] `/wow-forever-beast-mastery-hunter-leveling-build` — hunter / specLeveling
 - [ ] `/wow-forever-marksmanship-hunter-build` — hunter / specBuild
 - [ ] `/wow-forever-marksmanship-hunter-leveling-build` — hunter / specLeveling
 - [ ] `/wow-forever-survival-hunter-build` — hunter / specBuild
-
-### B12 — 7 pages
-
 - [ ] `/wow-forever-survival-hunter-leveling-build` — hunter / specLeveling
+
+### B09 — 7 pages
+
 - [ ] `/wow-forever-hunter-pvp-build` — hunter / pvp
 - [ ] `/wow-forever-hunter-level-20-build` — hunter / levelCap
 - [ ] `/wow-forever-hunter-pet-build` — hunter / pet
 - [ ] `/wow-forever-beast-mastery-vs-marksmanship-hunter-leveling` — hunter / comparison
 - [ ] `/wow-forever-hunter-dungeon-build` — hunter / dungeon
 - [ ] `/warlock` — warlock / calculator
-
-### B13 — 7 pages
-
 - [ ] `/wow-forever-warlock-builds` — warlock / buildsHub
+
+### B10 — 7 pages
+
 - [ ] `/wow-forever-warlock-talents` — warlock / talents
 - [ ] `/wow-forever-warlock-leveling-build` — warlock / leveling
 - [ ] `/wow-forever-affliction-warlock-build` — warlock / specBuild
 - [ ] `/wow-forever-affliction-warlock-leveling-build` — warlock / specLeveling
 - [ ] `/wow-forever-demonology-warlock-build` — warlock / specBuild
 - [ ] `/wow-forever-demonology-warlock-leveling-build` — warlock / specLeveling
-
-### B14 — 7 pages
-
 - [ ] `/wow-forever-destruction-warlock-build` — warlock / specBuild
+
+### B11 — 7 pages
+
 - [ ] `/wow-forever-destruction-warlock-leveling-build` — warlock / specLeveling
 - [ ] `/wow-forever-warlock-pvp-build` — warlock / pvp
 - [ ] `/wow-forever-warlock-level-20-build` — warlock / levelCap
 - [ ] `/wow-forever-warlock-pet-build` — warlock / pet
 - [ ] `/wow-forever-affliction-vs-demonology-warlock-leveling` — warlock / comparison
 - [ ] `/wow-forever-warlock-dungeon-build` — warlock / dungeon
-
-### B15 — 7 pages
-
 - [ ] `/priest` — priest / calculator
+
+### B12 — 7 pages
+
 - [ ] `/wow-forever-priest-builds` — priest / buildsHub
 - [ ] `/wow-forever-priest-talents` — priest / talents
 - [ ] `/wow-forever-priest-leveling-build` — priest / leveling
 - [ ] `/wow-forever-discipline-priest-build` — priest / specBuild
 - [ ] `/wow-forever-discipline-priest-leveling-build` — priest / specLeveling
 - [ ] `/wow-forever-holy-priest-build` — priest / specBuild
-
-### B16 — 7 pages
-
 - [ ] `/wow-forever-holy-priest-leveling-build` — priest / specLeveling
+
+### B13 — 7 pages
+
 - [ ] `/wow-forever-shadow-priest-build` — priest / specBuild
 - [ ] `/wow-forever-shadow-priest-leveling-build` — priest / specLeveling
 - [ ] `/wow-forever-priest-pvp-build` — priest / pvp
 - [ ] `/wow-forever-priest-level-20-build` — priest / levelCap
 - [ ] `/wow-forever-priest-healing-build` — priest / healing
 - [ ] `/wow-forever-holy-priest-dungeon-build` — priest / specDungeon
-
-### B17 — 7 pages
-
 - [ ] `/wow-forever-shadow-vs-discipline-priest-leveling` — priest / comparison
+
+### B14 — 7 pages
+
 - [ ] `/druid` — druid / calculator
 - [ ] `/wow-forever-druid-builds` — druid / buildsHub
 - [ ] `/wow-forever-druid-talents` — druid / talents
 - [ ] `/wow-forever-druid-leveling-build` — druid / leveling
 - [ ] `/wow-forever-balance-druid-build` — druid / specBuild
 - [ ] `/wow-forever-balance-druid-leveling-build` — druid / specLeveling
-
-### B18 — 7 pages
-
 - [ ] `/wow-forever-feral-druid-build` — druid / specBuild
+
+### B15 — 7 pages
+
 - [ ] `/wow-forever-feral-druid-leveling-build` — druid / specLeveling
 - [ ] `/wow-forever-restoration-druid-build` — druid / specBuild
 - [ ] `/wow-forever-restoration-druid-leveling-build` — druid / specLeveling
 - [ ] `/wow-forever-druid-pvp-build` — druid / pvp
 - [ ] `/wow-forever-druid-level-20-build` — druid / levelCap
 - [ ] `/wow-forever-feral-druid-tank-build` — druid / tank
-
-### B19 — 7 pages
-
 - [ ] `/wow-forever-restoration-druid-healing-build` — druid / healing
+
+### B16 — 7 pages
+
 - [ ] `/wow-forever-balance-vs-feral-druid-leveling` — druid / comparison
 - [ ] `/shaman` — shaman / calculator
 - [ ] `/wow-forever-shaman-builds` — shaman / buildsHub
 - [ ] `/wow-forever-shaman-talents` — shaman / talents
 - [ ] `/wow-forever-shaman-leveling-build` — shaman / leveling
 - [ ] `/wow-forever-elemental-shaman-build` — shaman / specBuild
-
-### B20 — 7 pages
-
 - [ ] `/wow-forever-elemental-shaman-leveling-build` — shaman / specLeveling
+
+### B17 — 7 pages
+
 - [ ] `/wow-forever-enhancement-shaman-build` — shaman / specBuild
 - [ ] `/wow-forever-enhancement-shaman-leveling-build` — shaman / specLeveling
 - [ ] `/wow-forever-restoration-shaman-build` — shaman / specBuild
 - [ ] `/wow-forever-restoration-shaman-leveling-build` — shaman / specLeveling
 - [ ] `/wow-forever-shaman-pvp-build` — shaman / pvp
 - [ ] `/wow-forever-shaman-level-20-build` — shaman / levelCap
-
-### B21 — 7 pages
-
 - [ ] `/wow-forever-shaman-totem-build` — shaman / totem
+
+### B18 — 7 pages
+
 - [ ] `/wow-forever-elemental-vs-enhancement-shaman-leveling` — shaman / comparison
 - [ ] `/wow-forever-restoration-shaman-healing-build` — shaman / healing
 - [ ] `/emberville` — emberville / emberville
 - [ ] `/emberville-builds` — emberville / emberville
 - [ ] `/emberville-classes` — emberville / emberville
 - [ ] `/emberville-skill-inheritance` — emberville / emberville
-
-### B22 — 3 pages
-
 - [ ] `/about` — site / trust
+
+### B19 — 2 pages
+
 - [ ] `/contact` — site / trust
 - [ ] `/privacy` — site / trust
 
-## Completion and recovery rules
+## Frozen Paladin scope — verify, do not redesign
 
-A batch is complete only after implementation + data tests + desktop/mobile inspection + SEO invariants + successful production verification. Do not use percentage progress as a substitute for page records. Source limitations affect claims, not permission to fabricate missing game facts. If network/deployment fails, retain the reviewed commit and retry safely; do not mark online. Revert a faulty batch rather than hiding content, changing canonicals, or loosening evidence gates. The original 150 URL inventory remains fixed unless the user changes scope.
+- `/paladin`
+- `/wow-forever-paladin-builds`
+- `/wow-forever-paladin-talents`
+- `/wow-forever-paladin-build`
+- `/wow-forever-protection-paladin-build`
+- `/wow-forever-retribution-paladin-build`
+- `/wow-forever-retribution-paladin-leveling-build`
+- `/wow-forever-paladin-leveling-build`
+- `/wow-forever-paladin-pvp-build`
+- `/wow-forever-paladin-raid-build`
+- `/wow-forever-protection-paladin-dungeon-build`
+- `/wow-forever-retribution-paladin-builds`
+- `/wow-forever-protection-paladin-builds`
+- `/wow-forever-protection-paladin-leveling-build`
+- `/wow-forever-protection-paladin-pvp-build`
+- `/wow-forever-retribution-paladin-pvp-build`
+- `/wow-forever-holy-paladin-pvp-build`
+- `/wow-forever-holy-paladin-talents`
+- `/wow-forever-retribution-paladin-talents`
+- `/wow-forever-protection-paladin-talents`
+- `/wow-forever-paladin-beta-talent-changes`
+- `/wow-forever-paladin-abilities`
+
+## Recovery
+Resume first incomplete active batch. No page is complete before tests, desktop/mobile inspection and production checks pass. Preserve already reviewed commits; never force-push main. Final sitemap submission covers all150 canonical URLs but only changed non-Paladin lastmod values advance.

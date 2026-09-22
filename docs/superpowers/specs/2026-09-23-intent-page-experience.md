@@ -1,11 +1,15 @@
 # Intent Page Experience — Approved Scope
 
-2026-09-23. User approved autonomous planning, coding, self-review, batches of at most seven pages, pushing main and production verification until all 150 existing sitemap URLs are covered; submit GSC sitemap at the end. No further batch approval is required.
+## Binding amendment — Paladin excluded
+
+The user explicitly removed ALL Paladin pages from this redesign on 2026-09-23. This supersedes every earlier 150-page redesign instruction. The site inventory remains 150 URLs; active scope is 128 URLs, and 22 Paladin URLs are frozen. Do not change Paladin components, layout, copy, data, metadata, internal link destinations, title, H1, canonical, robots or lastmod. Cross-cutting changes must prove the protected pages unchanged. Do not activate generic experiences for any Paladin path. No App pathname/legacy adapter changes are required for Paladin. Only Emberville and trust pages use the legacy enhancement module.
+
+2026-09-23. User approved autonomous planning, coding, self-review, batches of at most seven pages, pushing main and production verification until all 128 non-Paladin sitemap URLs are upgraded and 22 protected Paladin URLs verified unchanged; submit GSC sitemap at the end. No further batch approval is required.
 
 ## Product contract
 - Shared design language, different primary tasks. Build = final allocation and alternatives; leveling = current level, prefix allocation and next point; comparison = two exact allocations and their differences; PvP = selected specialization, authored tactical trade-offs and honest baseline comparison; dungeon/healing/tank = role and sourced tools/checklist; talents = searchable evidence and used-in-editorial-build links; cap = comparable budgets; hub = navigable purpose-based directory.
 - Calculator pages keep their actual interactive trees; improve route discovery and navigation without replacing the calculator. Emberville keeps confirmed-data limitations, but receives page-specific useful interaction/navigation. About/contact/privacy keep their distinct purposes and receive practical navigation/usability improvements, not game widgets.
-- Every existing URL receives an appropriate visible improvement and page-specific review. No page is counted merely because a shared component exists.
+- Every non-Paladin URL receives an appropriate visible improvement and page-specific review. No page is counted merely because a shared component exists.
 - Smaller article heroes; interaction/data close to title. Desktop 1440 and mobile 390, accessible labels/focus, no overflow. Existing imagery reused with safe character framing.
 - No new URLs, deletions, redirects, class expansions, rewritten titles/canonicals, fabricated abilities, ratings, results, pet records, or talent datasets. Repeated allocations are explicitly identical, never manufactured differences.
 - Preserve first-paint visual prerender from 8ea3d82, shared URL noindex, GA event integrity, legal allocation rules and source evidence vocabulary.
