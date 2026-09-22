@@ -21,3 +21,7 @@ User scope amendment: all 22 Paladin pages are protected/excluded. Active 128 pa
 - Warrior calculator: loaded Fury, verified 0/11/0 live nav counters, jumped to Fury/review, copied exact 11-point URL and reset to zero. Class PvP switch selected Fury's own tools, notes and link. No browser console errors.
 - 97 focused tests, build/typecheck/lint and 150-page static audit pass; 136 frozen roots and all original metadata remain unchanged. Added independently reviewed production checker with exact candidate content parity and all-URL sitemap-date checks.
 - Ruling: Vite preview's extensionless fallback does not emulate Vercel rewrites. Browser QA now uses a local static server mapping the actual built canonical URL to its own HTML. Production checks always use canonical custom-domain URLs without fallback.
+
+## B03 — Warrior completion and Mage calculator
+
+All seven pages inspected at 1440×900 and 390×844; no horizontal overflow. Fury PvP retains its own allocation; Protection PvP explicitly has no reviewed allocation. Dungeon toolkit, level-cap budget and branch-filtered talent directories are distinct. Mage Arcane preset loads 11/0/0, share URL preserves all ranks, reset clears tree navigation counts; browser console has no errors. Static guard passed all 150 URLs, including exact content/link/lastmod freeze for all 22 Paladin URLs and inactive pages. Rollout/metadata tests: 15 passed.

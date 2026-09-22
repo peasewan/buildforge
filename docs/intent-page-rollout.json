@@ -2,7 +2,7 @@
   "baseline": "8ea3d82",
   "total": 150,
   "batchSize": 7,
-  "nextBatch": 2,
+  "nextBatch": 3,
   "pages": [
     {
       "path": "/wow-forever-warrior-builds",
@@ -192,6 +192,314 @@
       "kind": "calculator",
       "title": "WoW Forever Warrior Talent Calculator",
       "batch": 2,
+      "status": "deployed",
+      "implementation": "Specialization point counters and direct tree / review-share navigation; existing calculator remains primary.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
+      "commit": "469ec29602233739ae19770c5df1ef296957a172",
+      "production": {
+        "http": 200,
+        "intentMarker": true,
+        "metadata": "baseline preserved",
+        "vercel": "success"
+      }
+    },
+    {
+      "path": "/wow-forever-warrior-leveling-build",
+      "classId": "warrior",
+      "kind": "leveling",
+      "title": "WoW Forever Warrior Leveling Build",
+      "batch": 2,
+      "status": "deployed",
+      "implementation": "Legal level-by-level progression, milestones, next point and exact-prefix calculator link.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
+      "commit": "469ec29602233739ae19770c5df1ef296957a172",
+      "production": {
+        "http": 200,
+        "intentMarker": true,
+        "metadata": "baseline preserved",
+        "vercel": "success"
+      }
+    },
+    {
+      "path": "/wow-forever-arms-warrior-build",
+      "classId": "warrior",
+      "kind": "specBuild",
+      "title": "WoW Forever Arms Warrior Build",
+      "batch": 2,
+      "status": "deployed",
+      "implementation": "Editable allocation, authored playstyle and exact alternative-build differences.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
+      "commit": "469ec29602233739ae19770c5df1ef296957a172",
+      "production": {
+        "http": 200,
+        "intentMarker": true,
+        "metadata": "baseline preserved",
+        "vercel": "success"
+      }
+    },
+    {
+      "path": "/wow-forever-protection-warrior-build",
+      "classId": "warrior",
+      "kind": "specBuild",
+      "title": "WoW Forever Protection Warrior Build",
+      "batch": 2,
+      "status": "deployed",
+      "implementation": "Editable allocation, authored playstyle and exact alternative-build differences.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
+      "commit": "469ec29602233739ae19770c5df1ef296957a172",
+      "production": {
+        "http": 200,
+        "intentMarker": true,
+        "metadata": "baseline preserved",
+        "vercel": "success"
+      }
+    },
+    {
+      "path": "/wow-forever-arms-warrior-leveling-build",
+      "classId": "warrior",
+      "kind": "specLeveling",
+      "title": "WoW Forever Arms Warrior Leveling Build",
+      "batch": 2,
+      "status": "deployed",
+      "implementation": "Specialization starts selected; legal per-level points and next-talent guidance.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
+      "commit": "469ec29602233739ae19770c5df1ef296957a172",
+      "production": {
+        "http": 200,
+        "intentMarker": true,
+        "metadata": "baseline preserved",
+        "vercel": "success"
+      }
+    },
+    {
+      "path": "/wow-forever-protection-warrior-leveling-build",
+      "classId": "warrior",
+      "kind": "specLeveling",
+      "title": "WoW Forever Protection Warrior Leveling Build",
+      "batch": 2,
+      "status": "deployed",
+      "implementation": "Specialization starts selected; legal per-level points and next-talent guidance.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
+      "commit": "469ec29602233739ae19770c5df1ef296957a172",
+      "production": {
+        "http": 200,
+        "intentMarker": true,
+        "metadata": "baseline preserved",
+        "vercel": "success"
+      }
+    },
+    {
+      "path": "/wow-forever-warrior-pvp-build",
+      "classId": "warrior",
+      "kind": "pvp",
+      "title": "WoW Forever Warrior PvP Builds",
+      "batch": 2,
+      "status": "deployed",
+      "implementation": "PvP route selection, encounter checklist and actual baseline talent differences.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
+      "commit": "469ec29602233739ae19770c5df1ef296957a172",
+      "production": {
+        "http": 200,
+        "intentMarker": true,
+        "metadata": "baseline preserved",
+        "vercel": "success"
+      }
+    },
+    {
+      "path": "/wow-forever-fury-warrior-pvp-build",
+      "classId": "warrior",
+      "kind": "specPvp",
+      "title": "WoW Forever Fury Warrior PvP Build",
+      "batch": 3,
+      "status": "verified",
+      "implementation": "Spec-matched PvP route and checklist; unsupported allocation stays explicitly unavailable.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
+      "commit": null,
+      "production": null
+    },
+    {
+      "path": "/wow-forever-protection-warrior-pvp-build",
+      "classId": "warrior",
+      "kind": "specPvp",
+      "title": "WoW Forever Protection Warrior PvP Build",
+      "batch": 3,
+      "status": "verified",
+      "implementation": "Spec-matched PvP route and checklist; unsupported allocation stays explicitly unavailable.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
+      "commit": null,
+      "production": null
+    },
+    {
+      "path": "/wow-forever-warrior-dungeon-build",
+      "classId": "warrior",
+      "kind": "dungeon",
+      "title": "WoW Forever Warrior Dungeon Builds",
+      "batch": 3,
+      "status": "verified",
+      "implementation": "Dungeon tools grid and preparation checklist connected to existing build.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
+      "commit": null,
+      "production": null
+    },
+    {
+      "path": "/wow-forever-warrior-level-20-build",
+      "classId": "warrior",
+      "kind": "levelCap",
+      "title": "WoW Forever Warrior Level 20 Builds",
+      "batch": 3,
+      "status": "verified",
+      "implementation": "Current planning budget, data limits and comparable routes.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
+      "commit": null,
+      "production": null
+    },
+    {
+      "path": "/wow-forever-arms-warrior-talents",
+      "classId": "warrior",
+      "kind": "specTalents",
+      "title": "WoW Forever Arms Warrior Talents",
+      "batch": 3,
+      "status": "verified",
+      "implementation": "Specialization-filtered rank and prerequisite evidence; searchable talent records.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
+      "commit": null,
+      "production": null
+    },
+    {
+      "path": "/wow-forever-protection-warrior-talents",
+      "classId": "warrior",
+      "kind": "specTalents",
+      "title": "WoW Forever Protection Warrior Talents",
+      "batch": 3,
+      "status": "verified",
+      "implementation": "Specialization-filtered rank and prerequisite evidence; searchable talent records.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
+      "commit": null,
+      "production": null
+    },
+    {
+      "path": "/mage",
+      "classId": "mage",
+      "kind": "calculator",
+      "title": "WoW Forever Mage Talent Calculator",
+      "batch": 3,
       "status": "verified",
       "implementation": "Specialization point counters and direct tree / review-share navigation; existing calculator remains primary.",
       "checks": [
@@ -204,216 +512,6 @@
         "local assets including CSS URLs",
         "unit tests and build passed"
       ],
-      "commit": null,
-      "production": null
-    },
-    {
-      "path": "/wow-forever-warrior-leveling-build",
-      "classId": "warrior",
-      "kind": "leveling",
-      "title": "WoW Forever Warrior Leveling Build",
-      "batch": 2,
-      "status": "verified",
-      "implementation": "Legal level-by-level progression, milestones, next point and exact-prefix calculator link.",
-      "checks": [
-        "desktop 1440 screenshot review",
-        "mobile 390 screenshot review / no document overflow",
-        "baseline title/H1/canonical/robots",
-        "relevant enabled intent marker",
-        "local routes and anchors",
-        "calculator parameters and allocations",
-        "local assets including CSS URLs",
-        "unit tests and build passed"
-      ],
-      "commit": null,
-      "production": null
-    },
-    {
-      "path": "/wow-forever-arms-warrior-build",
-      "classId": "warrior",
-      "kind": "specBuild",
-      "title": "WoW Forever Arms Warrior Build",
-      "batch": 2,
-      "status": "verified",
-      "implementation": "Editable allocation, authored playstyle and exact alternative-build differences.",
-      "checks": [
-        "desktop 1440 screenshot review",
-        "mobile 390 screenshot review / no document overflow",
-        "baseline title/H1/canonical/robots",
-        "relevant enabled intent marker",
-        "local routes and anchors",
-        "calculator parameters and allocations",
-        "local assets including CSS URLs",
-        "unit tests and build passed"
-      ],
-      "commit": null,
-      "production": null
-    },
-    {
-      "path": "/wow-forever-protection-warrior-build",
-      "classId": "warrior",
-      "kind": "specBuild",
-      "title": "WoW Forever Protection Warrior Build",
-      "batch": 2,
-      "status": "verified",
-      "implementation": "Editable allocation, authored playstyle and exact alternative-build differences.",
-      "checks": [
-        "desktop 1440 screenshot review",
-        "mobile 390 screenshot review / no document overflow",
-        "baseline title/H1/canonical/robots",
-        "relevant enabled intent marker",
-        "local routes and anchors",
-        "calculator parameters and allocations",
-        "local assets including CSS URLs",
-        "unit tests and build passed"
-      ],
-      "commit": null,
-      "production": null
-    },
-    {
-      "path": "/wow-forever-arms-warrior-leveling-build",
-      "classId": "warrior",
-      "kind": "specLeveling",
-      "title": "WoW Forever Arms Warrior Leveling Build",
-      "batch": 2,
-      "status": "verified",
-      "implementation": "Specialization starts selected; legal per-level points and next-talent guidance.",
-      "checks": [
-        "desktop 1440 screenshot review",
-        "mobile 390 screenshot review / no document overflow",
-        "baseline title/H1/canonical/robots",
-        "relevant enabled intent marker",
-        "local routes and anchors",
-        "calculator parameters and allocations",
-        "local assets including CSS URLs",
-        "unit tests and build passed"
-      ],
-      "commit": null,
-      "production": null
-    },
-    {
-      "path": "/wow-forever-protection-warrior-leveling-build",
-      "classId": "warrior",
-      "kind": "specLeveling",
-      "title": "WoW Forever Protection Warrior Leveling Build",
-      "batch": 2,
-      "status": "verified",
-      "implementation": "Specialization starts selected; legal per-level points and next-talent guidance.",
-      "checks": [
-        "desktop 1440 screenshot review",
-        "mobile 390 screenshot review / no document overflow",
-        "baseline title/H1/canonical/robots",
-        "relevant enabled intent marker",
-        "local routes and anchors",
-        "calculator parameters and allocations",
-        "local assets including CSS URLs",
-        "unit tests and build passed"
-      ],
-      "commit": null,
-      "production": null
-    },
-    {
-      "path": "/wow-forever-warrior-pvp-build",
-      "classId": "warrior",
-      "kind": "pvp",
-      "title": "WoW Forever Warrior PvP Builds",
-      "batch": 2,
-      "status": "verified",
-      "implementation": "PvP route selection, encounter checklist and actual baseline talent differences.",
-      "checks": [
-        "desktop 1440 screenshot review",
-        "mobile 390 screenshot review / no document overflow",
-        "baseline title/H1/canonical/robots",
-        "relevant enabled intent marker",
-        "local routes and anchors",
-        "calculator parameters and allocations",
-        "local assets including CSS URLs",
-        "unit tests and build passed"
-      ],
-      "commit": null,
-      "production": null
-    },
-    {
-      "path": "/wow-forever-fury-warrior-pvp-build",
-      "classId": "warrior",
-      "kind": "specPvp",
-      "title": "WoW Forever Fury Warrior PvP Build",
-      "batch": 3,
-      "status": "pending",
-      "implementation": "",
-      "checks": [],
-      "commit": null,
-      "production": null
-    },
-    {
-      "path": "/wow-forever-protection-warrior-pvp-build",
-      "classId": "warrior",
-      "kind": "specPvp",
-      "title": "WoW Forever Protection Warrior PvP Build",
-      "batch": 3,
-      "status": "pending",
-      "implementation": "",
-      "checks": [],
-      "commit": null,
-      "production": null
-    },
-    {
-      "path": "/wow-forever-warrior-dungeon-build",
-      "classId": "warrior",
-      "kind": "dungeon",
-      "title": "WoW Forever Warrior Dungeon Builds",
-      "batch": 3,
-      "status": "pending",
-      "implementation": "",
-      "checks": [],
-      "commit": null,
-      "production": null
-    },
-    {
-      "path": "/wow-forever-warrior-level-20-build",
-      "classId": "warrior",
-      "kind": "levelCap",
-      "title": "WoW Forever Warrior Level 20 Builds",
-      "batch": 3,
-      "status": "pending",
-      "implementation": "",
-      "checks": [],
-      "commit": null,
-      "production": null
-    },
-    {
-      "path": "/wow-forever-arms-warrior-talents",
-      "classId": "warrior",
-      "kind": "specTalents",
-      "title": "WoW Forever Arms Warrior Talents",
-      "batch": 3,
-      "status": "pending",
-      "implementation": "",
-      "checks": [],
-      "commit": null,
-      "production": null
-    },
-    {
-      "path": "/wow-forever-protection-warrior-talents",
-      "classId": "warrior",
-      "kind": "specTalents",
-      "title": "WoW Forever Protection Warrior Talents",
-      "batch": 3,
-      "status": "pending",
-      "implementation": "",
-      "checks": [],
-      "commit": null,
-      "production": null
-    },
-    {
-      "path": "/mage",
-      "classId": "mage",
-      "kind": "calculator",
-      "title": "WoW Forever Mage Talent Calculator",
-      "batch": 3,
-      "status": "pending",
-      "implementation": "",
-      "checks": [],
       "commit": null,
       "production": null
     },
