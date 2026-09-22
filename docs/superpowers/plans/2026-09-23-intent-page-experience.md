@@ -12,7 +12,7 @@
 
 ## Global constraints
 
-**HARD SCOPE AMENDMENT:** 128 active pages; 22 Paladin pages excluded by the user. All earlier Paladin enhancement tasks are canceled. Maintain site inventory at150; do not touch protected components or expand shared styling into them. Lastmod for Paladin must remain unchanged.
+**HARD SCOPE AMENDMENT:** 128 active pages; 22 Paladin pages excluded by the user. All earlier Paladin enhancement tasks are canceled. Maintain site inventory at 150; do not touch protected components or expand shared styling into them. Lastmod for Paladin must remain unchanged. Shared CSS, navigation, footer, rendering and data changes must not alter Paladin output or behavior. Any protected-page regression blocks the batch release; fix or isolate the shared change before pushing main.
 
 
 Use the complete approved spec above. The user has authorized main pushes, production deployment and GSC submission. The paused Beta watcher stays paused. Do not wait for another approval between batches. No claimed ranking gains or invented data. This plan covers exactly the baseline 150 sitemap URLs, not the four withheld Mage definitions.
@@ -24,7 +24,7 @@ Use the complete approved spec above. The user has authorized main pushes, produ
 - `src/experiences/experience.css`: namespaced layout responsive to task and viewport; never style disabled pages.
 - `src/experiences/rollout.ts`: explicit list of reviewed and enabled paths. Batches add at most seven.
 - `src/ClassDocumentPage.tsx`, `src/ClassCalculatorPage.tsx`: integrate enabled composition while keeping old rendering for inactive paths.
-- Legacy page components and `src/experiences/LegacyIntentExperience.tsx`: Paladin/Emberville/trust-specific improvements with existing data.
+- Legacy page components and `src/experiences/LegacyIntentExperience.tsx`: Emberville/trust-specific improvements with existing data only. Paladin adapters and components are excluded.
 - `scripts/check-intent-rollout.ts`: sitemap/ledger coverage, enabled set, per-page static content/metadata/link checks; not a word-count or similarity ranking score.
 - `docs/intent-page-rollout.json`: 150 path records, batch, status, specific change, checks, commit and production result.
 - `docs/intent-page-release-log.md`: per-batch review/rulings and evidence. Never mark deployed before the production check.
@@ -75,7 +75,7 @@ For every batch in the exact URL schedule below:
 ## Task 5 — Final whole-site acceptance
 
 - [ ] All 128 active ledger records have a concrete enhancement and passing checks; no pending/blocked/merely queued pages count.
-- [ ] Rebuild and crawl all 150 production URLs: HTTP 200, one H1, correct unchanged title/canonical, index/follow, visual first paint, supported primary module, working internal links/assets.
+- [ ] Rebuild and crawl all 150 production URLs: HTTP 200, one H1, unchanged title/canonical and indexability, visual first paint, working internal links/assets. Require the new intent module on the 128 active pages only; require unchanged content and rendering on the 22 protected Paladin pages.
 - [ ] Validate the nine calculators' edit/reset/load/share flows; shared query URLs remain noindex. No double-counted analytics from static rendering.
 - [ ] Verify main equals deployed commit; full CI and local required checks green.
 - [ ] Confirm sitemap has the same 150 canonical URLs, truthful per-page lastmod, no shared URLs/withheld Mage pages.
@@ -295,4 +295,4 @@ For every batch in the exact URL schedule below:
 - `/wow-forever-paladin-abilities`
 
 ## Recovery
-Resume first incomplete active batch. No page is complete before tests, desktop/mobile inspection and production checks pass. Preserve already reviewed commits; never force-push main. Final sitemap submission covers all150 canonical URLs but only changed non-Paladin lastmod values advance.
+Resume first incomplete active batch. No page is complete before tests, desktop/mobile inspection and production checks pass. Preserve already reviewed commits; never force-push main. Final sitemap submission covers all 150 canonical URLs but only changed non-Paladin lastmod values advance.
