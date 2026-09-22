@@ -48,7 +48,14 @@ export const EXPERIENCE_PATHS: readonly string[] = [
   "/wow-forever-rogue-dungeon-build",
   "/hunter",
   "/wow-forever-hunter-builds",
-  "/wow-forever-hunter-talents"
+  "/wow-forever-hunter-talents",
+  "/wow-forever-hunter-leveling-build",
+  "/wow-forever-beast-mastery-hunter-build",
+  "/wow-forever-beast-mastery-hunter-leveling-build",
+  "/wow-forever-marksmanship-hunter-build",
+  "/wow-forever-marksmanship-hunter-leveling-build",
+  "/wow-forever-survival-hunter-build",
+  "/wow-forever-survival-hunter-leveling-build"
 ]
 const enabled = new Set(EXPERIENCE_PATHS)
 export const experienceEnabled = (pathname: string): boolean => enabled.has(pathname.replace(/\/$/, "") || "/")

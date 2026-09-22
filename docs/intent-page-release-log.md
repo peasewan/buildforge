@@ -47,3 +47,13 @@ Seven Rogue spec/leveling/PvP pages reviewed at1440×900 and390×844 without ove
 
 Seven pages inspected at1440×900/390×844, no overflow. Rogue cap showsthree11-point routes; comparison defaults Combat vsAssassination with exact different ranks; Subtlety PvP staysspecmatched; dungeon toolkit uses Combat allocation and explicit missing-rank text. Hunter reference has46records andrealrankdescriptions. Hunter calculator single point ->1/0/0, Marksmanship preset ->0/11/0, share URLexactrankIDs andresetallzero; no console errors. Build, lint, scope tests and150-page static guard pass;101frozen roots including22Paladin unchanged.
 
+
+## B08 — reviewed batch
+
+
+### B08 — Hunter specializations and progression
+- Reviewed all seven pages at 1440×900 and 390×844; no horizontal overflow, clipped titles, or broken talent images.
+- All four leveling controls reach Level 20 / 11 points, with Beast Mastery 11/0/0, Marksmanship 0/11/0, and Survival 0/0/11. Each build workbench matches its own specialization.
+- Build, leveling, and alternative-allocation compositions retain honest editorial labels. Identical allocations are not presented as fabricated differences.
+- Build, lint, scope tests and 150-URL audit passed: 56 enabled, 94 frozen, all 22 Paladin pages unchanged.
+
