@@ -18,7 +18,8 @@
     "spellbook:query": "tsx scripts/spellbook-query.ts",
     "pipeline:simulate": "tsx scripts/release-simulate.ts",
     "analytics:report": "tsx scripts/analytics-report.ts",
-    "talents:icons": "tsx scripts/download-talent-icons.ts"
+    "talents:icons": "tsx scripts/download-talent-icons.ts",
+    "seo:validate": "tsx scripts/seo-validate.ts"
   },
   "dependencies": {
     "@vercel/blob": "^2.8.0",
