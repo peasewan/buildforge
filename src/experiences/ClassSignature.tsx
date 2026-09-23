@@ -10,15 +10,15 @@ export interface ClassSignatureProps {
 }
 
 type SignatureClass = 'warrior' | 'mage' | 'rogue' | 'priest' | 'druid' | 'warlock' | 'hunter' | 'shaman'
-const patterns: Record<SignatureClass, { feature: ClassPageDefinition['kind']; core: string; pattern: string; action: string }> = {
-  warrior: { feature: 'pvp', core: 'arms', pattern: 'rage-cycle', action: 'Test the Rage route' },
-  mage: { feature: 'aoe', core: 'frost', pattern: 'cast-window', action: 'Open the cast route' },
-  rogue: { feature: 'pvp', core: 'combat', pattern: 'opener-cycle', action: 'Rehearse the opener' },
-  priest: { feature: 'healing', core: 'shadow', pattern: 'recovery-ledger', action: 'Compare the mana route' },
-  druid: { feature: 'tank', core: 'feral', pattern: 'form-switch', action: 'Plan the chosen form' },
-  warlock: { feature: 'pet', core: 'affliction', pattern: 'pet-compact', action: 'Plan with the same demon' },
-  hunter: { feature: 'pet', core: 'beast-mastery', pattern: 'distance-track', action: 'Keep range in the test' },
-  shaman: { feature: 'totem', core: 'enhancement', pattern: 'totem-field', action: 'Plan around placement' },
+const patterns: Record<SignatureClass, { feature: ClassPageDefinition['kind']; core: string; pattern: string; action: string; question: string }> = {
+  warrior: { feature: 'pvp', core: 'arms', pattern: 'rage-cycle', action: 'Test the Rage route', question: 'Where does the Rage go?' },
+  mage: { feature: 'aoe', core: 'frost', pattern: 'cast-window', action: 'Open the cast route', question: 'Control the next cast window' },
+  rogue: { feature: 'pvp', core: 'combat', pattern: 'opener-cycle', action: 'Rehearse the opener', question: 'Can the opener survive the whole fight?' },
+  priest: { feature: 'healing', core: 'shadow', pattern: 'recovery-ledger', action: 'Compare the mana route', question: 'What happens after the cast?' },
+  druid: { feature: 'tank', core: 'feral', pattern: 'form-switch', action: 'Plan the chosen form', question: 'Which form is this build for?' },
+  warlock: { feature: 'pet', core: 'affliction', pattern: 'pet-compact', action: 'Plan with the same demon', question: 'What does the demon contribute?' },
+  hunter: { feature: 'pet', core: 'beast-mastery', pattern: 'distance-track', action: 'Keep range in the test', question: 'Can you keep useful range?' },
+  shaman: { feature: 'totem', core: 'enhancement', pattern: 'totem-field', action: 'Plan around placement', question: 'Will the group stay near the totem?' },
 }
 const supported = (id: string): id is SignatureClass => Object.prototype.hasOwnProperty.call(patterns, id)
 const profileFor = (id: string) => expansionProfiles.find((profile) => profile.id === id)
@@ -75,7 +75,7 @@ function SignatureBody({ id, def, build, focus, names }: { id: SignatureClass; d
       <p>{focus}</p>
     </div>
     case 'warlock': return <div className="cs-pet-compact">
-      <div className="cs-caster-side"><span>CASTER CYCLE</span><strong>{def.branchNames[build.spec] ?? build.spec}</strong><p>{profile?.specs.find((spec) => spec.id === 'affliction')?.test}</p></div>
+      <div className="cs-caster-side"><span>CASTER CYCLE</span><strong>{def.branchNames.affliction ?? 'Affliction'}</strong><p>{profile?.specs.find((spec) => spec.id === 'affliction')?.test}</p></div>
       <div className="cs-pet-join" aria-hidden="true">+</div>
       <div className="cs-pet-side"><span>PET CYCLE</span><strong>Demonology</strong><p>{profile?.specs.find((spec) => spec.id === 'demonology')?.test}</p></div>
       <p className="cs-pet-foot">{focus}</p>
@@ -92,7 +92,7 @@ function SignatureBody({ id, def, build, focus, names }: { id: SignatureClass; d
   }
 }
 
-export function ClassSignature({ classDef, page }: ClassSignatureProps) {
+function signatureContext(classDef: ClassDefinition, page: ClassPageDefinition) {
   if (!supported(classDef.id)) return null
   const id = classDef.id
   const config = patterns[id]
@@ -100,8 +100,21 @@ export function ClassSignature({ classDef, page }: ClassSignatureProps) {
   if (!eligible) return null
   const build = routeBuild(classDef, page)
   if (!build) return null
+  return { id, config, build }
+}
+
+// The page shell uses this to reserve a slot only for a signature with a published route.
+// eslint-disable-next-line react-refresh/only-export-components
+export function hasClassSignature(classDef: ClassDefinition, page: ClassPageDefinition): boolean {
+  return signatureContext(classDef, page) !== null
+}
+
+export function ClassSignature({ classDef, page }: ClassSignatureProps) {
+  const context = signatureContext(classDef, page)
+  if (!context) return null
+  const { id, config, build } = context
   return <section className="class-signature" data-class-signature={id} data-signature-pattern={config.pattern} aria-label={`${classDef.name} planning question`}>
-    <div className="cs-intro"><span className="cs-kicker">{classDef.name.toUpperCase()} / PLANNING QUESTION</span><h2>{classDef.name}: what changes the next pull?</h2><p>{page.kind === 'buildsHub' ? 'Choose a route to test.' : page.kind === 'leveling' ? 'Compare full pull-and-recovery cycles.' : page.kind === config.feature ? 'Match the setup to this role.' : 'Keep the test conditions stable while you edit.'}</p></div>
+    <div className="cs-intro"><span className="cs-kicker">{classDef.name.toUpperCase()} / PLANNING QUESTION</span><h2>{config.question}</h2><p>{page.kind === 'buildsHub' ? 'Choose a route to test.' : page.kind === 'leveling' ? 'Compare full pull-and-recovery cycles.' : page.kind === config.feature ? 'Match the setup to this role.' : 'Keep the test conditions stable while you edit.'}</p></div>
     <SignatureBody id={id} def={classDef} build={build} focus={pageFocus(classDef, page)} names={firstTalentNames(classDef, build)} />
     <div className="cs-outro"><span>Editorial test prompt · Client talent records reviewed through {classDef.verifiedBuild}; build performance is unverified.</span><a href={classPlannerHref(classDef, encodePlannerBuild(build.build), build.level)}>{config.action} <ArrowRight size={15} aria-hidden="true" /></a></div>
   </section>
