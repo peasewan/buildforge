@@ -125,7 +125,9 @@ export const EXPERIENCE_PATHS: readonly string[] = [
   "/emberville-builds",
   "/emberville-classes",
   "/emberville-skill-inheritance",
-  "/about"
+  "/about",
+  "/contact",
+  "/privacy"
 ]
 const enabled = new Set(EXPERIENCE_PATHS)
 export const experienceEnabled = (pathname: string): boolean => enabled.has(pathname.replace(/\/$/, "") || "/")

@@ -144,3 +144,11 @@ Seven pages inspected at 1440×900/390×844, no overflow. Rogue cap shows three 
 - Fixed four pre-existing missing favicon.jpg references to the actual favicon.png. Updated only this batch's seven sitemap dates; protected dates remain unchanged.
 - Build, lint, 15 scope/metadata tests and 150-page audit pass: 126 enabled, 24 frozen, including all 22 Paladin pages.
 
+
+## B19 — reviewed batch
+
+
+- Contact and Privacy inspected at 1440×900 and 390×844, no overflow. Page-specific task panels keep original editorial sections and metadata.
+- Privacy section navigation reaches the selected storage/share section. Contact topic selector changes report-preparation instructions; the existing feedback form opens and closes correctly. No message was submitted; no browser console errors.
+- Final local build, lint, 15 scope/metadata tests and all-150 static audit pass: 128 enabled, exactly 22 Paladin pages frozen. Lastmod changed only for the two enabled trust pages in this batch.
+

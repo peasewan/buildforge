@@ -2,7 +2,7 @@
   "baseline": "8ea3d82",
   "total": 150,
   "batchSize": 7,
-  "nextBatch": 18,
+  "nextBatch": 19,
   "pages": [
     {
       "path": "/wow-forever-warrior-builds",
@@ -3104,7 +3104,7 @@
       "kind": "comparison",
       "title": "WoW Forever Elemental vs Enhancement Shaman Leveling",
       "batch": 18,
-      "status": "verified",
+      "status": "deployed",
       "implementation": "Independent route selectors, allocations and exact rank difference table.",
       "checks": [
         "desktop 1440 screenshot review",
@@ -3116,8 +3116,13 @@
         "local assets including CSS URLs",
         "unit tests and build passed"
       ],
-      "commit": null,
-      "production": null
+      "commit": "9be2324a60020844e7d62f1046e7d6de7cd66350",
+      "production": {
+        "http": 200,
+        "intentMarker": true,
+        "metadata": "baseline preserved",
+        "vercel": "success"
+      }
     },
     {
       "path": "/wow-forever-restoration-shaman-healing-build",
@@ -3125,7 +3130,7 @@
       "kind": "healing",
       "title": "WoW Forever Restoration Shaman Healing Build",
       "batch": 18,
-      "status": "verified",
+      "status": "deployed",
       "implementation": "Healing tools and checklist from existing reviewed allocation.",
       "checks": [
         "desktop 1440 screenshot review",
@@ -3137,8 +3142,13 @@
         "local assets including CSS URLs",
         "unit tests and build passed"
       ],
-      "commit": null,
-      "production": null
+      "commit": "9be2324a60020844e7d62f1046e7d6de7cd66350",
+      "production": {
+        "http": 200,
+        "intentMarker": true,
+        "metadata": "baseline preserved",
+        "vercel": "success"
+      }
     },
     {
       "path": "/emberville",
@@ -3146,7 +3156,7 @@
       "kind": "emberville",
       "title": "Emberville Build Planner | BuildForgeTools",
       "batch": 18,
-      "status": "verified",
+      "status": "deployed",
       "implementation": "Page-specific planning session / direction comparison / class evidence / inheritance workflow.",
       "checks": [
         "desktop 1440 screenshot review",
@@ -3158,8 +3168,13 @@
         "local assets including CSS URLs",
         "unit tests and build passed"
       ],
-      "commit": null,
-      "production": null
+      "commit": "9be2324a60020844e7d62f1046e7d6de7cd66350",
+      "production": {
+        "http": 200,
+        "intentMarker": true,
+        "metadata": "baseline preserved",
+        "vercel": "success"
+      }
     },
     {
       "path": "/emberville-builds",
@@ -3167,7 +3182,7 @@
       "kind": "emberville",
       "title": "Emberville Builds | Build Planner & Ideas",
       "batch": 18,
-      "status": "verified",
+      "status": "deployed",
       "implementation": "Page-specific planning session / direction comparison / class evidence / inheritance workflow.",
       "checks": [
         "desktop 1440 screenshot review",
@@ -3179,8 +3194,13 @@
         "local assets including CSS URLs",
         "unit tests and build passed"
       ],
-      "commit": null,
-      "production": null
+      "commit": "9be2324a60020844e7d62f1046e7d6de7cd66350",
+      "production": {
+        "http": 200,
+        "intentMarker": true,
+        "metadata": "baseline preserved",
+        "vercel": "success"
+      }
     },
     {
       "path": "/emberville-classes",
@@ -3188,7 +3208,7 @@
       "kind": "emberville",
       "title": "Emberville Classes | Confirmed Systems & Planning",
       "batch": 18,
-      "status": "verified",
+      "status": "deployed",
       "implementation": "Page-specific planning session / direction comparison / class evidence / inheritance workflow.",
       "checks": [
         "desktop 1440 screenshot review",
@@ -3200,8 +3220,13 @@
         "local assets including CSS URLs",
         "unit tests and build passed"
       ],
-      "commit": null,
-      "production": null
+      "commit": "9be2324a60020844e7d62f1046e7d6de7cd66350",
+      "production": {
+        "http": 200,
+        "intentMarker": true,
+        "metadata": "baseline preserved",
+        "vercel": "success"
+      }
     },
     {
       "path": "/emberville-skill-inheritance",
@@ -3209,7 +3234,7 @@
       "kind": "emberville",
       "title": "Emberville Skill Inheritance Guide | BuildForgeTools",
       "batch": 18,
-      "status": "verified",
+      "status": "deployed",
       "implementation": "Page-specific planning session / direction comparison / class evidence / inheritance workflow.",
       "checks": [
         "desktop 1440 screenshot review",
@@ -3221,8 +3246,13 @@
         "local assets including CSS URLs",
         "unit tests and build passed"
       ],
-      "commit": null,
-      "production": null
+      "commit": "9be2324a60020844e7d62f1046e7d6de7cd66350",
+      "production": {
+        "http": 200,
+        "intentMarker": true,
+        "metadata": "baseline preserved",
+        "vercel": "success"
+      }
     },
     {
       "path": "/about",
@@ -3230,6 +3260,32 @@
       "kind": "trust",
       "title": "About BuildForgeTools | Game Build Planners & Data",
       "batch": 18,
+      "status": "deployed",
+      "implementation": "Accessible local topic navigation and task-specific contact/privacy/evidence action.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
+      "commit": "9be2324a60020844e7d62f1046e7d6de7cd66350",
+      "production": {
+        "http": 200,
+        "intentMarker": true,
+        "metadata": "baseline preserved",
+        "vercel": "success"
+      }
+    },
+    {
+      "path": "/contact",
+      "classId": "site",
+      "kind": "trust",
+      "title": "Contact BuildForgeTools | Feedback & Corrections",
+      "batch": 19,
       "status": "verified",
       "implementation": "Accessible local topic navigation and task-specific contact/privacy/evidence action.",
       "checks": [
@@ -3246,26 +3302,23 @@
       "production": null
     },
     {
-      "path": "/contact",
-      "classId": "site",
-      "kind": "trust",
-      "title": "Contact BuildForgeTools | Feedback & Corrections",
-      "batch": 19,
-      "status": "pending",
-      "implementation": "",
-      "checks": [],
-      "commit": null,
-      "production": null
-    },
-    {
       "path": "/privacy",
       "classId": "site",
       "kind": "trust",
       "title": "Privacy Policy | BuildForgeTools",
       "batch": 19,
-      "status": "pending",
-      "implementation": "",
-      "checks": [],
+      "status": "verified",
+      "implementation": "Accessible local topic navigation and task-specific contact/privacy/evidence action.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
       "commit": null,
       "production": null
     },
