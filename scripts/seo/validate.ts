@@ -5,7 +5,7 @@ const { JSDOM } = createRequire(import.meta.url)('jsdom') as {
   JSDOM: new (html: string, options?: { contentType?: string }) => { window: { document: Document; close(): void } }
 }
 export interface FrozenPage { path: string; title: string; h1: string; description: string; canonical: string; robots: string | null; lastmod: string; rootSha256: string; linksSha256: string; headSeoSha256: string }
-export interface Requirement { selector: string; hub?: string; kind?: string; unavailableText?: string[] }
+export interface Requirement { selector: string; hub?: string; kind?: string; intentShell?: boolean; unavailableText?: string[] }
 export interface SeoInput {
   origin: string; pages: Record<string, string>; sitemap: { url: string; lastmod: string }[]
   expectedPaths: string[]; withheldPaths: string[]; redirects: Record<string, string>; aliases: Record<string, string>
@@ -95,6 +95,12 @@ export function validateSeo(input: SeoInput) {
     }
     const requirement = input.requirements[path]
     if (requirement) {
+      if (requirement.intentShell) {
+        const shell = page.d.querySelectorAll(`main.class-page.intent-page[data-intent-page="${requirement.kind}"]`)
+        if (shell.length !== 1) errors.push(`${path}: missing intent shell for ${requirement.kind}`)
+        if (page.d.querySelector('.class-document')) errors.push(`${path}: legacy class-document shell in intent artifact`)
+        if (shell.length === 1 && shell[0].querySelectorAll(`[data-experience-kind="${requirement.kind}"]`).length !== 1) errors.push(`${path}: missing or duplicated intent wrapper for ${requirement.kind}`)
+      }
       const wrapper = requirement.kind ? page.d.querySelector(`[data-experience-kind="${requirement.kind}"]`) : page.d
       const unavailable = requirement.unavailableText?.some(text => [...(wrapper?.querySelectorAll('p') ?? [])].some(n => clean(n.textContent ?? '') === text))
       if (!wrapper?.querySelector(requirement.selector) && !unavailable) errors.push(`${path}: missing primary module ${requirement.selector}`)

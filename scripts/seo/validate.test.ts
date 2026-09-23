@@ -47,6 +47,18 @@ describe('rendered SEO release gate', () => {
     const input = fixture(); input.requirements['/guide'] = { selector: '.ix-progression', hub: '/hub' }
     expect(errors(input)).toContain('primary module'); expect(errors(input)).toContain('class hub')
   })
+  it('requires the current intent shell on migrated class pages', () => {
+    const input = fixture()
+    input.requirements['/guide'] = { selector: '.ix-progression', kind: 'specLeveling', intentShell: true }
+    input.pages['/guide'] = input.pages['/guide'].replace('<h1>Heading /guide</h1>', '<main class="class-page intent-page" data-intent-page="specLeveling"><h1>Heading /guide</h1><section data-experience-kind="specLeveling"><div class="ix-progression">Planner</div></section></main>')
+    expect(errors(input)).toBe('')
+    input.pages['/guide'] = input.pages['/guide'].replace('class="class-page intent-page"', 'class="class-page class-document"')
+    expect(errors(input)).toContain('missing intent shell')
+    input.pages['/guide'] = input.pages['/guide'].replace('class="class-page class-document"', 'class="class-page intent-page class-document"')
+    expect(errors(input)).toContain('legacy class-document shell')
+    input.pages['/guide'] = input.pages['/guide'].replace('data-experience-kind="specLeveling"', 'data-experience-kind="leveling"')
+    expect(errors(input)).toContain('intent wrapper')
+  })
   it('compares frozen markup, links, head SEO and lastmod', () => {
     const input = fixture(); input.frozen = [{ path: '/guide', ...fingerprint(input.pages['/guide'], '2026-09-23') }]
     expect(errors(input)).toBe('')

@@ -7,6 +7,7 @@ import { TRUST_PAGES } from '../src/data/trustPages'
 import { EMBERVILLE_PAGES } from '../src/data/emberville'
 import { publishedClassPages } from '../src/lib/classStaticPages'
 import type { ClassPageKind } from '../src/lib/classPage'
+import { experienceEnabled } from '../src/experiences/rollout'
 import baseline from '../docs/seo/paladin-frozen-baseline.json'
 import vercel from '../vercel.json'
 import { parseSitemap, validateSeo, type Requirement } from './seo/validate'
@@ -32,6 +33,7 @@ for (const kind of ['pvp', 'specPvp', 'dungeon', 'specDungeon', 'tank', 'healing
 const requirements: Record<string, Requirement> = {}
 for (const { classDef, page } of published) requirements[`/${page.slug}`] = {
   selector: selectors[page.kind], kind: page.kind === 'calculator' ? undefined : page.kind,
+  intentShell: page.kind !== 'calculator' && experienceEnabled(`/${page.slug}`),
   hub: `/${published.find(p => p.classDef === classDef && p.page.kind === 'buildsHub')!.page.slug}`,
   unavailableText: unavailable[page.kind],
 }
