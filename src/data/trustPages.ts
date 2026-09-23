@@ -28,7 +28,7 @@ export const TRUST_PAGES: TrustPageConfig[] = [
     description: 'Learn how BuildForgeTools creates interactive build planners and reviews verified mechanics for WoW Forever, Emberville, and other evolving games.',
     eyebrow: 'Independent Community Project',
     intro: 'BuildForgeTools is an independent game build-planning site focused on interactive planners, talent tools, and verified mechanics for new and evolving games.',
-    updated: 'September 19, 2026',
+    updated: 'September 23, 2026',
     sections: [
       {
         heading: 'Why BuildForgeTools Exists',
@@ -40,11 +40,12 @@ export const TRUST_PAGES: TrustPageConfig[] = [
       {
         heading: 'Current Games',
         paragraphs: [
-          'WoW Forever is represented by the Paladin Talent Calculator, complete example builds, specialization pages, and a versioned Beta change tracker. Its data pipeline preserves client build numbers, talent identifiers, ranks, tooltips, prerequisites, and verification states.',
+          'WoW Forever tools cover Paladin, Warrior, Mage, Hunter, Rogue, Priest, Warlock, Shaman, and Druid. Published calculators and build pages let players inspect talent ranks, follow point-by-point progression, compare example allocations, and open supported setups in a calculator. Available tools differ by class. Publication gates check each page’s declared data dependencies, and known source conflicts or missing recommendations remain visible.',
           'Emberville is represented by a pre-Early Access build planner, build-direction hub, class-system overview, and skill-inheritance guide. Confirmed systems are available now; exact class, weapon, skill, and compatibility records remain locked until reliable source data supports them.',
         ],
         links: [
-          { href: '/paladin', label: 'Explore WoW Forever tools' },
+          { href: '/wow-forever-classes', label: 'Explore WoW Forever tools' },
+          { href: '/wow-forever-builds', label: 'Find builds by playstyle' },
           { href: '/emberville', label: 'Explore the Emberville planner' },
         ],
       },
@@ -52,9 +53,16 @@ export const TRUST_PAGES: TrustPageConfig[] = [
         heading: 'How Game Data Is Reviewed',
         paragraphs: [
           'Game datasets are compared with official announcements, public client information, demonstrated gameplay, and consistent community research. Similarity to an older game or preview does not automatically prove that a name, value, position, requirement, or interaction is unchanged.',
-          'Records can be official, client verified, community verified, derived assumptions, or still in review. New information enters a comparison and validation process before it changes a public planner. Page dates, source links, and version labels help players judge the current coverage.',
+          'Records distinguish official information, client datamines, client-verified fields, community verification, and derived assumptions. The data pipeline preserves client build numbers, talent and spell identifiers, ranks, tooltips, prerequisites, and source references. Candidate data is validated and compared with the published version before a planner is updated. Page dates, source links, and version labels show what was reviewed; they are not a promise that every mechanic has been tested in game.',
         ],
         links: [{ href: '/wow-forever-paladin-beta-talent-changes', label: 'View a versioned data change tracker' }],
+      },
+      {
+        heading: 'How Build Recommendations Differ from Game Data',
+        paragraphs: [
+          'A client record can establish a talent name, rank, position, or tooltip. It does not establish the best way to spend points for every encounter. Our editorial and community build examples are labeled separately from the records used to validate them.',
+          'Progression tools identify whether a point order is editorial or derived from a legal allocation. Comparisons show which talent ranks differ; they do not simulate damage or prove that one build performs better. Reused allocations are not presented as independent player builds or popularity statistics. If required data is missing, the tool explains the limitation instead of inventing a result.',
+        ],
       },
       {
         heading: 'Corrections and Maintenance',
@@ -79,8 +87,8 @@ export const TRUST_PAGES: TrustPageConfig[] = [
     metaTitle: 'Contact BuildForgeTools | Feedback & Corrections',
     description: 'Contact BuildForgeTools to report incorrect game data, broken planner behavior, or a feature request through the private feedback form.',
     eyebrow: 'Feedback and Corrections',
-    intro: 'Use the site feedback form to report incorrect game data, a broken interaction, or a feature that would make a BuildForgeTools planner more useful.',
-    updated: 'September 19, 2026',
+    intro: 'BuildForgeTools is independently operated and maintained as a community game-tools project. Use the site feedback form to report incorrect game data, a broken interaction, or a feature that would make a BuildForgeTools planner more useful.',
+    updated: 'September 23, 2026',
     sections: [
       {
         heading: 'Send a Report',
@@ -100,7 +108,7 @@ export const TRUST_PAGES: TrustPageConfig[] = [
         heading: 'Useful Starting Points',
         paragraphs: ['Before reporting missing information, check the relevant planner and data-status sections. They show which records are available, which are preview-only, and which details are still waiting for verification.'],
         links: [
-          { href: '/paladin', label: 'Open the WoW Forever Paladin Calculator' },
+          { href: '/wow-forever-classes', label: 'Find a WoW Forever class calculator' },
           { href: '/emberville', label: 'Open the Emberville Build Planner' },
           { href: '/wow-forever-paladin-beta-talent-changes', label: 'Check the Beta data tracker' },
         ],

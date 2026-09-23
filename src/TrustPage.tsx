@@ -11,8 +11,8 @@ export default function TrustPage({ pageId }: { pageId: TrustPageId }) {
   return (
     <main className={experienceEnabled(`/${page.slug}`) ? 'trust-page legacy-experience-page' : 'trust-page'}>
       <header className="guide-nav shell">
-        <a className="brand" href="/about"><img src="/images/icons/paladin-shield.png" alt="" /><span>BUILD</span><b>FORGE</b></a>
-        <nav aria-label="Site information"><a href="/paladin">WoW Forever</a><a href="/emberville">Emberville</a><a href="/about">About</a><a href="/contact">Contact</a><a href="/privacy">Privacy</a></nav>
+        <a className="brand" href="/"><img src="/images/icons/paladin-shield.png" alt="" /><span>BUILD</span><b>FORGE</b></a>
+        <nav aria-label="Site information"><a href="/wow-forever-classes">WoW Forever</a><a href="/emberville">Emberville</a><a href="/about">About</a><a href="/contact">Contact</a><a href="/privacy">Privacy</a></nav>
         <a className="button primary" href="/about#current-games">Explore Games</a>
       </header>
 
@@ -38,7 +38,7 @@ export default function TrustPage({ pageId }: { pageId: TrustPageId }) {
         {pageId === 'contact' && <aside className="trust-contact-cta"><MessageSquarePlus size={28} /><div><strong>Send feedback from this page</strong><span>The same private form is available throughout BuildForgeTools.</span></div><button className="button primary" type="button" onClick={openFeedback}>Open Feedback Form</button></aside>}
       </article>
 
-      <SiteFooter />
+      <SiteFooter discovery />
     </main>
   )
 }

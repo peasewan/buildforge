@@ -26,7 +26,7 @@ describe('site trust pages', () => {
     render(<TrustPage pageId="about" />)
 
     expect(screen.getByRole('heading', { level: 2, name: 'Current Games' })).toBeTruthy()
-    expect(screen.getByRole('link', { name: 'Explore WoW Forever tools' }).getAttribute('href')).toBe('/paladin')
+    expect(screen.getByRole('link', { name: 'Explore WoW Forever tools' }).getAttribute('href')).toBe('/wow-forever-classes')
     expect(screen.getByRole('link', { name: 'Explore the Emberville planner' }).getAttribute('href')).toBe('/emberville')
     expect(screen.getByText(/tools and reproducible build data/)).toBeTruthy()
   })
