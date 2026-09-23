@@ -59,6 +59,14 @@ describe('rendered SEO release gate', () => {
     input.pages['/guide'] = input.pages['/guide'].replace('data-experience-kind="specLeveling"', 'data-experience-kind="leveling"')
     expect(errors(input)).toContain('intent wrapper')
   })
+  it('rejects a rendered page whose first task belongs to another intent', () => {
+    const input = fixture()
+    input.requirements['/guide'] = { selector: '.ix-progression', kind: 'specLeveling', intentShell: true, surface: 'level-progression' }
+    input.pages['/guide'] = input.pages['/guide'].replace('<h1>Heading /guide</h1>', '<main class="class-page intent-page" data-intent-page="specLeveling"><h1>Heading /guide</h1><div data-experience-kind="specLeveling"><section class="ix-progression" data-surface="level-progression">Task</section></div></main>')
+    expect(errors(input)).toBe('')
+    input.pages['/guide'] = input.pages['/guide'].replace('data-surface="level-progression"', 'data-surface="build-workbench"')
+    expect(errors(input)).toContain('missing intent surface level-progression')
+  })
   it('compares frozen markup, links, head SEO and lastmod', () => {
     const input = fixture(); input.frozen = [{ path: '/guide', ...fingerprint(input.pages['/guide'], '2026-09-23') }]
     expect(errors(input)).toBe('')

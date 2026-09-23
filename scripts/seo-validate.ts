@@ -19,7 +19,12 @@ const classPaths = published.map(({ page }) => `/${page.slug}`)
 const selectors: Record<ClassPageKind, string> = {
   calculator: '[data-intent-calculator="true"]', buildsHub: '.ix-hub', talents: '.ix-reference', specTalents: '.ix-reference',
   specBuild: '.ix-workbench', leveling: '.ix-progression', specLeveling: '.ix-progression', aoe: '.ix-progression', comparison: '.ix-comparison', levelCap: '.ix-cap',
-  pvp: '.ix-role', specPvp: '.ix-role', dungeon: '.ix-role', specDungeon: '.ix-role', tank: '.ix-role', healing: '.ix-role', pet: '.ix-role', totem: '.ix-role',
+  pvp: '.rs-surface', specPvp: '.rs-surface', dungeon: '.rs-surface', specDungeon: '.rs-surface', tank: '.rs-surface', healing: '.rs-surface', pet: '.rs-surface', totem: '.rs-surface',
+}
+const surfaces: Record<ClassPageKind, string> = {
+  calculator: '', buildsHub: 'build-discovery', talents: 'talent-reference', specTalents: 'talent-reference',
+  specBuild: 'build-workbench', leveling: 'level-progression', specLeveling: 'level-progression', aoe: 'level-progression', comparison: 'route-comparison', levelCap: 'cap-snapshot',
+  pvp: 'pvp-matchup', specPvp: 'pvp-matchup', dungeon: 'dungeon-pull', specDungeon: 'dungeon-pull', tank: 'tank-inventory', healing: 'healing-compare', pet: 'pet-support', totem: 'totem-coverage',
 }
 // Exact existing UI messages, scoped inside the page's intent wrapper. Missing data is not a license to fabricate an allocation.
 const unavailable: Partial<Record<ClassPageKind, string[]>> = {
@@ -34,6 +39,7 @@ const requirements: Record<string, Requirement> = {}
 for (const { classDef, page } of published) requirements[`/${page.slug}`] = {
   selector: selectors[page.kind], kind: page.kind === 'calculator' ? undefined : page.kind,
   intentShell: page.kind !== 'calculator' && experienceEnabled(`/${page.slug}`),
+  surface: page.kind !== 'calculator' && experienceEnabled(`/${page.slug}`) ? surfaces[page.kind] : undefined,
   hub: `/${published.find(p => p.classDef === classDef && p.page.kind === 'buildsHub')!.page.slug}`,
   unavailableText: unavailable[page.kind],
 }

@@ -10,6 +10,34 @@ const baseStyles = readFileSync('src/styles.css', 'utf8')
 const experienceStyles = readFileSync('src/experiences/experience.css', 'utf8')
 afterEach(cleanup)
 const page = (slug: string) => warriorClass.pages.find((p) => p.slug === slug)!
+it.each([
+  ['wow-forever-warrior-builds', 'build-discovery', 'a[href]'],
+  ['wow-forever-fury-warrior-build', 'build-workbench', 'a[href*="build="]'],
+  ['wow-forever-fury-warrior-leveling-build', 'level-progression', 'input[aria-label="Your level"]'],
+  ['wow-forever-arms-warrior-pvp-build', 'pvp-matchup', 'button[aria-pressed]'],
+  ['wow-forever-protection-warrior-dungeon-build', 'dungeon-pull', 'button[aria-pressed]'],
+  ['wow-forever-warrior-talents', 'talent-reference', 'input[aria-label="Search talents"]'],
+  ['wow-forever-arms-vs-fury-warrior-leveling', 'route-comparison', 'select'],
+])('puts the %s task first as %s', (slug, surface, control) => {
+  const { container } = render(<ClassExperiencePage classDef={warriorClass} page={page(slug)} />)
+  const first = container.querySelector('[data-surface]')
+  expect(first?.getAttribute('data-surface')).toBe(surface)
+  expect(first?.querySelector(control)).toBeTruthy()
+  expect(container.querySelector('main')?.getAttribute('data-intent-page')).toBe(page(slug).kind)
+})
+
+it('composes support modules by task rather than the same template order', () => {
+  const slots = (slug: string) => {
+    const { container, unmount } = render(<ClassExperiencePage classDef={warriorClass} page={page(slug)} />)
+    const result = [...container.querySelectorAll('[data-composition-slot]')]
+      .map(element => element.getAttribute('data-composition-slot'))
+    unmount()
+    return result
+  }
+  expect(slots('wow-forever-warrior-talents').slice(0, 3)).toEqual(['intent', 'evidence', 'editorial'])
+  expect(slots('wow-forever-fury-warrior-build').slice(0, 3)).toEqual(['intent', 'editorial', 'evidence'])
+  expect(slots('wow-forever-arms-vs-fury-warrior-leveling').slice(0, 3)).toEqual(['intent', 'comparison', 'editorial'])
+})
 it('changes the current allocation and next point with the leveling control', () => {
   render(
     <ClassIntentExperience

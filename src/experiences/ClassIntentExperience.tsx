@@ -5,8 +5,6 @@ import {
   Ban,
   Check,
   Search,
-  Shield,
-  Swords,
   Waypoints,
 } from 'lucide-react'
 import type {
@@ -33,6 +31,7 @@ import {
 } from './buildExperience'
 
 import { experienceLabel } from './experienceLabels'
+import { PvpPlanner, DungeonPlanner, TankPlanner, HealingPlanner, PetPlanner, TotemPlanner } from './RoleIntentSurfaces'
 
 type Props = { classDef: ClassDefinition; page: ClassPageDefinition }
 const allocation = (def: ClassDefinition, build: PlannerBuild) =>
@@ -178,7 +177,7 @@ function Comparison({ classDef: def, page }: Props) {
       <p>Two reviewed build records are not yet available for comparison.</p>
     )
   return (
-    <section className="ix-comparison" aria-label="Build comparison">
+    <section className="ix-comparison" aria-label="Build comparison" data-surface="route-comparison">
       <div className="ix-two">
         {[
           { b: left, label: 'Left build', set: setLeft },
@@ -225,7 +224,7 @@ function Progression({ classDef: def, page }: Props) {
   const nextTalent = def.talents.find((t) => t.id === next?.talentId),
     points = step?.allocation ?? {}
   return (
-    <section className="ix-progression" aria-label="Talent progression">
+    <section className="ix-progression" aria-label="Talent progression" data-surface="level-progression">
       <div className="ix-two">
         <article className="ix-level-control ix-panel">
           <p className="ix-eyebrow">YOUR NEXT POINT</p>
@@ -340,7 +339,7 @@ function BuildWorkbench({ classDef: def, page }: Props) {
   if (!build) return <p>No reviewed allocation is available for this page.</p>
   const other = alternatives.find((b) => b.id === otherId)
   return (
-    <section className="ix-workbench">
+    <section className="ix-workbench" data-surface="build-workbench">
       <div className="ix-two">
         <article className="ix-panel ix-build-target">
           <p className="ix-eyebrow">TARGET ALLOCATION</p>
@@ -375,149 +374,6 @@ function BuildWorkbench({ classDef: def, page }: Props) {
           )}
         </article>
       </div>
-    </section>
-  )
-}
-function RoleExperience({ classDef: def, page }: Props) {
-  const all = availableBuilds(def),
-    pvp = page.kind === 'pvp' || page.kind === 'specPvp',
-    roleBuilds = pvp
-      ? all.filter(
-          (b) =>
-            b.intent === 'pvp' &&
-            (page.kind !== 'specPvp' || b.spec === page.spec),
-        )
-      : all.filter(
-          (b) =>
-            b.id === page.primaryBuildId || page.relatedBuildIds.includes(b.id),
-        )
-  const [id, setId] = useState(
-      roleBuilds.find((b) => b.id === page.primaryBuildId)?.id ??
-        roleBuilds[0]?.id,
-    ),
-    [checked, setChecked] = useState<string[]>([])
-  const build = roleBuilds.find((b) => b.id === id),
-    baseline = all.find(
-      (b) =>
-        b.spec === build?.spec && b.intent === 'spec' && b.id !== build?.id,
-    )
-  if (!build)
-    return (
-      <section className="ix-panel">
-        <h2>What can be planned now</h2>
-        <p>
-          A role-specific legal allocation has not been published. Review the
-          documented limitations below before choosing a supported route.
-        </p>
-        <ul>
-          {all.map((b) => (
-            <li key={b.id}>
-              <a href={b.href}>{b.title}</a>
-            </li>
-          ))}
-        </ul>
-      </section>
-    )
-  const tools = def.talents.filter((t) => (build.build[t.id] ?? 0) > 0)
-  const loadout = ['dungeon', 'specDungeon', 'tank'].includes(page.kind)
-  const checklist = (
-    <article className="ix-panel ix-role-checklist">
-      <h3>{pvp ? 'Encounter checklist' : 'Preparation checklist'}</h3>
-      <p className="ix-note">
-        Editorial testing notes for this route, not verified encounter results.
-      </p>
-      <div className="ix-checklist-items">
-        {build.playstyle.map((note, i) => (
-          <label className="ix-check" key={`${id}-${i}`}>
-            <input
-              type="checkbox"
-              checked={checked.includes(note)}
-              onChange={() =>
-                setChecked(
-                  checked.includes(note)
-                    ? checked.filter((n) => n !== note)
-                    : [...checked, note],
-                )
-              }
-            />
-            <span>{note}</span>
-          </label>
-        ))}
-      </div>
-      <p aria-live="polite">
-        {checked.length} / {build.playstyle.length} notes reviewed
-      </p>
-      {!loadout && (
-        <>
-          <strong className="ix-allocation">{build.allocation}</strong>
-          <EditLink def={def} build={build} />
-        </>
-      )}
-    </article>
-  )
-  const toolkit = (
-    <article className="ix-panel ix-role-tools">
-      <h3>
-        {loadout ? 'Your dungeon toolkit' : 'Talents supporting this setup'}
-      </h3>
-      {loadout && (
-        <div className="ix-loadout-summary">
-          <strong className="ix-allocation">{build.allocation}</strong>
-          <EditLink def={def} build={build} />
-        </div>
-      )}
-      <div className="ix-tool-grid">
-        {tools.map((t) => (
-          <div className="ix-tool" key={t.id}>
-            <strong>
-              {t.name} · {build.build[t.id]}/{t.maxRank}
-            </strong>
-            <p>
-              {t.rankDescriptions?.[(build.build[t.id] ?? 1) - 1]?.trim() ||
-                t.description?.trim() ||
-                'A verified effect description for this rank is not available.'}
-            </p>
-          </div>
-        ))}
-      </div>
-    </article>
-  )
-  return (
-    <section className={`ix-role ix-role--${page.kind}`}>
-      <div className="ix-role-heading">
-        {pvp ? <Swords size={30} /> : <Shield size={30} />}
-        <div>
-          <p className="ix-eyebrow">
-            {pvp ? 'ENCOUNTER PLANNING' : 'ROLE PREPARATION'}
-          </p>
-          <h2>{build.role}</h2>
-        </div>
-      </div>
-      {roleBuilds.length > 1 && (
-        <RoutePicker
-          label={pvp ? 'PvP route' : 'Role route'}
-          builds={roleBuilds}
-          value={id!}
-          onChange={(v) => {
-            setId(v)
-            setChecked([])
-          }}
-        />
-      )}
-      <div className={loadout ? 'ix-loadout' : 'ix-two'}>
-        {loadout ? (
-          <>
-            {toolkit}
-            {checklist}
-          </>
-        ) : (
-          <>
-            {checklist}
-            {toolkit}
-          </>
-        )}
-      </div>
-      {baseline && <DiffTable def={def} left={baseline} right={build} />}
     </section>
   )
 }
@@ -621,7 +477,7 @@ function TalentReference({ classDef: def, page }: Props) {
       t.name.toLowerCase().includes(query.toLowerCase().trim()),
   )
   return (
-    <section className="ix-reference">
+    <section className="ix-reference" data-surface="talent-reference">
       <div className="ix-search-bar">
         <label className="ix-field">
           <span>
@@ -699,7 +555,7 @@ function Hub({ classDef: def }: Props) {
       `${p.h1} ${p.kind}`.toLowerCase().includes(query.toLowerCase()),
     )
   return (
-    <section className="ix-hub">
+    <section className="ix-hub" data-surface="build-discovery">
       <div className="ix-hub-discovery">
         <h2>Choose a specialization</h2>
         <div className="ix-hub-specs">{def.branches.map(branch => {
@@ -746,7 +602,7 @@ function CapSnapshot({ classDef: def, page }: Props) {
     ),
     routes = builds.length ? builds : all.filter((b) => b.intent === 'spec')
   return (
-    <section className="ix-cap">
+    <section className="ix-cap" data-surface="cap-snapshot">
       <div className="ix-cap-stats">
         <div>
           <small>PLANNING LEVEL</small>
@@ -791,19 +647,12 @@ export default function ClassIntentExperience(props: Props) {
     body = <Progression {...props} />
   else if (k === 'comparison') body = <Comparison {...props} />
   else if (k === 'levelCap') body = <CapSnapshot {...props} />
-  else if (
-    [
-      'pvp',
-      'specPvp',
-      'dungeon',
-      'specDungeon',
-      'tank',
-      'healing',
-      'pet',
-      'totem',
-    ].includes(k)
-  )
-    body = <RoleExperience {...props} />
+  else if (k === 'pvp' || k === 'specPvp') body = <PvpPlanner {...props} />
+  else if (k === 'dungeon' || k === 'specDungeon') body = <DungeonPlanner {...props} />
+  else if (k === 'tank') body = <TankPlanner {...props} />
+  else if (k === 'healing') body = <HealingPlanner {...props} />
+  else if (k === 'pet') body = <PetPlanner {...props} />
+  else if (k === 'totem') body = <TotemPlanner {...props} />
   else body = <BuildWorkbench {...props} />
   return (
     <div className={`intent-experience intent-${k}`} data-experience-kind={k}>

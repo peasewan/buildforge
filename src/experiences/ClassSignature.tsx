@@ -2,7 +2,6 @@ import { ArrowRight } from 'lucide-react'
 import { expansionProfiles } from '../data/expansion/profiles'
 import { classPlannerHref, publishedClassPages, type ClassBuild, type ClassDefinition, type ClassPageDefinition } from '../lib/classPage'
 import { encodePlannerBuild } from '../lib/talentPlanner'
-import './class-signature.css'
 
 export interface ClassSignatureProps {
   classDef: ClassDefinition

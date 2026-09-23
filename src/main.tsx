@@ -5,6 +5,8 @@ import { pageForPath } from './lib/routes'
 import './emberville.css'
 import './styles.css'
 import './experiences/experience.css'
+import './experiences/role-surfaces.css'
+import './experiences/class-signature.css'
 import './experiences/legacy-experience.css'
 
 const page = pageForPath(window.location.pathname, window.location.search)

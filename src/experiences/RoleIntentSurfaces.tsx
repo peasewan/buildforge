@@ -4,7 +4,6 @@ import type { ClassBuild, ClassDefinition, ClassPageDefinition, ClassTalent } fr
 import { classPlannerHref, publishedClassPages } from '../lib/classPage'
 import { encodePlannerBuild } from '../lib/talentPlanner'
 import { diffBuilds } from './buildExperience'
-import './role-surfaces.css'
 
 export type RoleSurfaceProps = { classDef: ClassDefinition; page: ClassPageDefinition }
 

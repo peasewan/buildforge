@@ -47,8 +47,70 @@
   margin-top: 17px;
 }
 .intent-page .ix-body {
-  padding-top: 28px;
+  padding-top: 16px;
   padding-bottom: 40px;
+}
+.intent-page .ix-slot--intent {
+  position: relative;
+}
+.intent-page[data-intent-page='buildsHub'] .ix-slot--editorial .ix-editorial {
+  display: block;
+  border-top: 1px solid #d9a4413a;
+}
+.intent-page[data-intent-page='buildsHub'] .ix-slot--editorial .class-section {
+  border: 0;
+  border-left: 2px solid #d9a44170;
+  border-radius: 0;
+  background: transparent;
+  max-width: 900px;
+}
+.intent-page[data-intent-page='specBuild'] .ix-build-target {
+  border-color: #edb75d;
+  background: radial-gradient(circle at 18% 8%, #76501b66, #121923 58%);
+}
+.intent-page[data-intent-page='comparison'] .ix-comparison .ix-panel:first-child {
+  border-color: #6897af99;
+  background: linear-gradient(145deg, #1b3243, #10151e);
+}
+.intent-page[data-intent-page='comparison'] .ix-comparison .ix-panel:last-child {
+  border-color: #cf9d5c99;
+  background: linear-gradient(145deg, #3c2d1e, #10151e);
+}
+.intent-page[data-intent-page='talents'] .ix-reference .ix-search-bar,
+.intent-page[data-intent-page='specTalents'] .ix-reference .ix-search-bar {
+  padding: 18px;
+  border: 1px solid #678ba766;
+  border-radius: 12px;
+  background: #142431;
+  margin-bottom: 18px;
+}
+.intent-page[data-intent-page='leveling'] .ix-editorial,
+.intent-page[data-intent-page='specLeveling'] .ix-editorial,
+.intent-page[data-intent-page='aoe'] .ix-editorial {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+}
+.intent-page[data-intent-page='leveling'] .ix-editorial .class-section,
+.intent-page[data-intent-page='specLeveling'] .ix-editorial .class-section,
+.intent-page[data-intent-page='aoe'] .ix-editorial .class-section {
+  border-top: 3px solid #bb944c;
+  background: linear-gradient(#26211755, #10151b44);
+}
+.intent-page[data-intent-page='pvp'] .ix-editorial .class-section:first-child,
+.intent-page[data-intent-page='specPvp'] .ix-editorial .class-section:first-child {
+  border-left: 3px solid #d4856d;
+  background: linear-gradient(110deg, #5b292930, #10151b44);
+}
+.intent-page[data-intent-page='dungeon'] .ix-editorial,
+.intent-page[data-intent-page='specDungeon'] .ix-editorial,
+.intent-page[data-intent-page='tank'] .ix-editorial {
+  grid-template-columns: 1fr;
+  max-width: 920px;
+}
+.intent-page[data-intent-page='dungeon'] .ix-editorial .class-section,
+.intent-page[data-intent-page='specDungeon'] .ix-editorial .class-section,
+.intent-page[data-intent-page='tank'] .ix-editorial .class-section {
+  border-left: 3px solid #6e9e9f;
 }
 .intent-experience {
   font-family: Arial, sans-serif;
@@ -603,6 +665,11 @@
   text-decoration: none;
 }
 @media (max-width: 900px) {
+  .intent-page[data-intent-page='leveling'] .ix-editorial,
+  .intent-page[data-intent-page='specLeveling'] .ix-editorial,
+  .intent-page[data-intent-page='aoe'] .ix-editorial {
+    grid-template-columns: 1fr 1fr;
+  }
   .intent-experience .ix-route-grid,
   .intent-experience .ix-cap-routes {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -612,6 +679,11 @@
   }
 }
 @media (max-width: 650px) {
+  .intent-page[data-intent-page='leveling'] .ix-editorial,
+  .intent-page[data-intent-page='specLeveling'] .ix-editorial,
+  .intent-page[data-intent-page='aoe'] .ix-editorial {
+    grid-template-columns: 1fr;
+  }
   .class-page.intent-page .class-hero.ix-hero::before {
     background: linear-gradient(90deg, #090b10f5, #090b10d9);
   }
