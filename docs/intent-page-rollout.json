@@ -2,7 +2,7 @@
   "baseline": "8ea3d82",
   "total": 150,
   "batchSize": 7,
-  "nextBatch": 16,
+  "nextBatch": 17,
   "pages": [
     {
       "path": "/wow-forever-warrior-builds",
@@ -2740,7 +2740,7 @@
       "kind": "comparison",
       "title": "WoW Forever Balance vs Feral Druid Leveling",
       "batch": 16,
-      "status": "verified",
+      "status": "deployed",
       "implementation": "Independent route selectors, allocations and exact rank difference table.",
       "checks": [
         "desktop 1440 screenshot review",
@@ -2752,8 +2752,13 @@
         "local assets including CSS URLs",
         "unit tests and build passed"
       ],
-      "commit": null,
-      "production": null
+      "commit": "6fb934018119c1215ec8ef7c3327ef9e5050ddef",
+      "production": {
+        "http": 200,
+        "intentMarker": true,
+        "metadata": "baseline preserved",
+        "vercel": "success"
+      }
     },
     {
       "path": "/shaman",
@@ -2761,7 +2766,7 @@
       "kind": "calculator",
       "title": "WoW Forever Shaman Talent Calculator",
       "batch": 16,
-      "status": "verified",
+      "status": "deployed",
       "implementation": "Specialization point counters and direct tree / review-share navigation; existing calculator remains primary.",
       "checks": [
         "desktop 1440 screenshot review",
@@ -2773,8 +2778,13 @@
         "local assets including CSS URLs",
         "unit tests and build passed"
       ],
-      "commit": null,
-      "production": null
+      "commit": "6fb934018119c1215ec8ef7c3327ef9e5050ddef",
+      "production": {
+        "http": 200,
+        "intentMarker": true,
+        "metadata": "baseline preserved",
+        "vercel": "success"
+      }
     },
     {
       "path": "/wow-forever-shaman-builds",
@@ -2782,7 +2792,7 @@
       "kind": "buildsHub",
       "title": "WoW Forever Shaman Builds",
       "batch": 16,
-      "status": "verified",
+      "status": "deployed",
       "implementation": "Searchable published route directory organized by purpose.",
       "checks": [
         "desktop 1440 screenshot review",
@@ -2794,8 +2804,13 @@
         "local assets including CSS URLs",
         "unit tests and build passed"
       ],
-      "commit": null,
-      "production": null
+      "commit": "6fb934018119c1215ec8ef7c3327ef9e5050ddef",
+      "production": {
+        "http": 200,
+        "intentMarker": true,
+        "metadata": "baseline preserved",
+        "vercel": "success"
+      }
     },
     {
       "path": "/wow-forever-shaman-talents",
@@ -2803,7 +2818,7 @@
       "kind": "talents",
       "title": "WoW Forever Shaman Talents & Talent Trees",
       "batch": 16,
-      "status": "verified",
+      "status": "deployed",
       "implementation": "Searchable branch/rank evidence records and published editorial build links.",
       "checks": [
         "desktop 1440 screenshot review",
@@ -2815,8 +2830,13 @@
         "local assets including CSS URLs",
         "unit tests and build passed"
       ],
-      "commit": null,
-      "production": null
+      "commit": "6fb934018119c1215ec8ef7c3327ef9e5050ddef",
+      "production": {
+        "http": 200,
+        "intentMarker": true,
+        "metadata": "baseline preserved",
+        "vercel": "success"
+      }
     },
     {
       "path": "/wow-forever-shaman-leveling-build",
@@ -2824,7 +2844,7 @@
       "kind": "leveling",
       "title": "WoW Forever Shaman Leveling Build",
       "batch": 16,
-      "status": "verified",
+      "status": "deployed",
       "implementation": "Legal level-by-level progression, milestones, next point and exact-prefix calculator link.",
       "checks": [
         "desktop 1440 screenshot review",
@@ -2836,8 +2856,13 @@
         "local assets including CSS URLs",
         "unit tests and build passed"
       ],
-      "commit": null,
-      "production": null
+      "commit": "6fb934018119c1215ec8ef7c3327ef9e5050ddef",
+      "production": {
+        "http": 200,
+        "intentMarker": true,
+        "metadata": "baseline preserved",
+        "vercel": "success"
+      }
     },
     {
       "path": "/wow-forever-elemental-shaman-build",
@@ -2845,6 +2870,58 @@
       "kind": "specBuild",
       "title": "WoW Forever Elemental Shaman Build",
       "batch": 16,
+      "status": "deployed",
+      "implementation": "Editable allocation, authored playstyle and exact alternative-build differences.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
+      "commit": "6fb934018119c1215ec8ef7c3327ef9e5050ddef",
+      "production": {
+        "http": 200,
+        "intentMarker": true,
+        "metadata": "baseline preserved",
+        "vercel": "success"
+      }
+    },
+    {
+      "path": "/wow-forever-elemental-shaman-leveling-build",
+      "classId": "shaman",
+      "kind": "specLeveling",
+      "title": "WoW Forever Elemental Shaman Leveling Build",
+      "batch": 16,
+      "status": "deployed",
+      "implementation": "Specialization starts selected; legal per-level points and next-talent guidance.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
+      "commit": "6fb934018119c1215ec8ef7c3327ef9e5050ddef",
+      "production": {
+        "http": 200,
+        "intentMarker": true,
+        "metadata": "baseline preserved",
+        "vercel": "success"
+      }
+    },
+    {
+      "path": "/wow-forever-enhancement-shaman-build",
+      "classId": "shaman",
+      "kind": "specBuild",
+      "title": "WoW Forever Enhancement Shaman Build",
+      "batch": 17,
       "status": "verified",
       "implementation": "Editable allocation, authored playstyle and exact alternative-build differences.",
       "checks": [
@@ -2861,11 +2938,11 @@
       "production": null
     },
     {
-      "path": "/wow-forever-elemental-shaman-leveling-build",
+      "path": "/wow-forever-enhancement-shaman-leveling-build",
       "classId": "shaman",
       "kind": "specLeveling",
-      "title": "WoW Forever Elemental Shaman Leveling Build",
-      "batch": 16,
+      "title": "WoW Forever Enhancement Shaman Leveling Build",
+      "batch": 17,
       "status": "verified",
       "implementation": "Specialization starts selected; legal per-level points and next-talent guidance.",
       "checks": [
@@ -2882,38 +2959,23 @@
       "production": null
     },
     {
-      "path": "/wow-forever-enhancement-shaman-build",
-      "classId": "shaman",
-      "kind": "specBuild",
-      "title": "WoW Forever Enhancement Shaman Build",
-      "batch": 17,
-      "status": "pending",
-      "implementation": "",
-      "checks": [],
-      "commit": null,
-      "production": null
-    },
-    {
-      "path": "/wow-forever-enhancement-shaman-leveling-build",
-      "classId": "shaman",
-      "kind": "specLeveling",
-      "title": "WoW Forever Enhancement Shaman Leveling Build",
-      "batch": 17,
-      "status": "pending",
-      "implementation": "",
-      "checks": [],
-      "commit": null,
-      "production": null
-    },
-    {
       "path": "/wow-forever-restoration-shaman-build",
       "classId": "shaman",
       "kind": "specBuild",
       "title": "WoW Forever Restoration Shaman Build",
       "batch": 17,
-      "status": "pending",
-      "implementation": "",
-      "checks": [],
+      "status": "verified",
+      "implementation": "Editable allocation, authored playstyle and exact alternative-build differences.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
       "commit": null,
       "production": null
     },
@@ -2923,9 +2985,18 @@
       "kind": "specLeveling",
       "title": "WoW Forever Restoration Shaman Leveling Build",
       "batch": 17,
-      "status": "pending",
-      "implementation": "",
-      "checks": [],
+      "status": "verified",
+      "implementation": "Specialization starts selected; legal per-level points and next-talent guidance.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
       "commit": null,
       "production": null
     },
@@ -2935,9 +3006,18 @@
       "kind": "pvp",
       "title": "WoW Forever Shaman PvP Build",
       "batch": 17,
-      "status": "pending",
-      "implementation": "",
-      "checks": [],
+      "status": "verified",
+      "implementation": "PvP route selection, encounter checklist and actual baseline talent differences.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
       "commit": null,
       "production": null
     },
@@ -2947,9 +3027,18 @@
       "kind": "levelCap",
       "title": "WoW Forever Shaman Level 20 Build",
       "batch": 17,
-      "status": "pending",
-      "implementation": "",
-      "checks": [],
+      "status": "verified",
+      "implementation": "Current planning budget, data limits and comparable routes.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
       "commit": null,
       "production": null
     },
@@ -2959,9 +3048,18 @@
       "kind": "totem",
       "title": "WoW Forever Shaman Totem Build",
       "batch": 17,
-      "status": "pending",
-      "implementation": "",
-      "checks": [],
+      "status": "verified",
+      "implementation": "Totem role planning and data limits using existing authored route.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
       "commit": null,
       "production": null
     },

@@ -125,3 +125,12 @@ Seven pages inspected at 1440×900/390×844, no overflow. Rogue cap shows three 
 - Shaman calculator: Convection single point → 1/0/0; Enhancement preset → 0/11/0; exact copied ranks shaman-613.5~shaman-614.5~shaman-617.1 with level=20; reset → 0/0/0; no browser console errors.
 - Local build, lint, 15 scope/metadata tests and all-150 static audit pass; 112 active and 38 frozen pages, including all 22 Paladin pages.
 
+
+## B17 — reviewed batch
+
+
+- Reviewed all seven Shaman pages at desktop 1440×900 and mobile 390×844. No overflow; separate build, progression, PvP, cap and totem tasks remain readable.
+- Enhancement and Restoration progression reach 0/11/0 and 0/0/11 at Level 20. Cap view renders three distinct allocations. Enhancement weapon-access caveat and missing rank descriptions remain explicit.
+- Totem checklist changes to 1/2 after checking a note and resets to 0/2 when changing route; no unsupported four-totem loadout is claimed.
+- Build, lint, 15 focused tests and 150-page static audit pass; 119 enabled / 31 frozen, including all 22 protected Paladin pages.
+
