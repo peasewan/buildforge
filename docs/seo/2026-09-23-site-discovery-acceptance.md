@@ -21,4 +21,12 @@ Two existing advisory warnings remain: the frozen Retribution build/leveling H1 
 
 ## Production acceptance
 
-Pending main deployment, exact-SHA CI, public HTTP crawl and GSC sitemap resubmission. Results will be recorded after verification.
+Release `d5b0da035e8ac356e5edbe0bb87725802d614090` fast-forwarded to main and pushed using the Git Data API with identical Git object hashes and a non-force ref update.
+
+- Vercel deployment succeeded; GitHub CI run 35865023394 passed for that exact SHA.
+- Public acceptance at 2026-09-23 13:10 UTC: all 153 pages and 377 referenced assets passed; rendered bodies and metadata matched the candidate, sitemap matched exactly.
+- `/build?id=invalid` and `/warrior?build=invalid&level=20` returned 200 with `X-Robots-Tag: noindex, follow`.
+- `www` directory URL returned 308 to the exact non-www URL.
+- GSC MCP resubmitted the canonical sitemap at 13:11 UTC. Follow-up returned processed, 153 submitted URLs, zero errors and zero warnings. Sitemap processing is not a claim of page indexing.
+
+Raw local evidence: `/tmp/site-discovery-final-tests.log`, `/tmp/site-discovery-final-seo.log`, `/tmp/site-discovery-final-local-acceptance.json`, `/tmp/site-discovery-production.json`. Portable baseline and CI checks are committed; raw local evidence is not required by CI.

@@ -37,6 +37,6 @@ Files: scripts/seo-validate.ts, reusable pure validation/test module, package.js
 
 ## Task 4: Production acceptance
 - [x] Run tests/typecheck/lint/build/SEO checks; inspect desktop/mobile screenshots and all navigation routes.
-- [ ] Review diff and protected-page fingerprints. Commit results and merge fast-forward main; push (Git Data API fallback if needed).
-- [ ] Wait for CI and deployment for exact SHA. Check root 200, new hubs, /paladin unchanged, www permanent redirect, /build noindex; crawl 153 indexable URLs and verify metadata.
-- [ ] Submit https://buildforgetools.com/sitemap.xml to sc-domain:buildforgetools.com via MCP; report actual status without promising indexing.
+- [x] Review diff and protected-page fingerprints. Commit results and merge fast-forward main; push (Git Data API fallback if needed).
+- [x] Wait for CI and deployment for exact SHA. Check root 200, new hubs, /paladin unchanged, www permanent redirect, /build noindex; crawl 153 indexable URLs and verify metadata.
+- [x] Submit https://buildforgetools.com/sitemap.xml to sc-domain:buildforgetools.com via MCP; report actual status without promising indexing.
