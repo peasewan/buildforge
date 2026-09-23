@@ -23,3 +23,5 @@ const app = <StrictMode><AppRoute pathname={window.location.pathname} /></Strict
 // Keep the existing client mount so saved allocations and share parameters restore normally.
 // The build-time HTML now uses this same component tree instead of a separate text-only page.
 createRoot(root).render(app)
+
+import './site-discovery.css'

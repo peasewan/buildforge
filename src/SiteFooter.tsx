@@ -32,12 +32,12 @@ const defaultLinks: FooterLink[] = [
  * names and URLs of the whole site belong here, so a class-neutral renderer only ever passes its
  * own class's links and never has to know about any other class.
  */
-export default function SiteFooter({ links = defaultLinks, classLinks = [] }: { links?: FooterLink[]; classLinks?: FooterLink[] }) {
-  const items = [...classLinks, ...links].filter((item, index, all) => all.findIndex((candidate) => candidate.href === item.href) === index)
+export default function SiteFooter({ links = defaultLinks, classLinks = [], discovery = false }: { discovery?: boolean; links?: FooterLink[]; classLinks?: FooterLink[] }) {
+  const items = [...(discovery ? [{ href: '/', label: 'Home' }, { href: '/wow-forever-classes', label: 'WoW Classes' }, { href: '/wow-forever-builds', label: 'WoW Builds' }] : []), ...classLinks, ...links].filter((item, index, all) => all.findIndex((candidate) => candidate.href === item.href) === index)
   return (
     <footer>
       <div className="shell">
-        <a className="brand" href="/paladin"><img src="/images/icons/paladin-shield.png" alt="" /><span>BUILD</span><b>FORGE</b></a>
+        <a className="brand" href={discovery ? '/' : '/paladin'}><img src="/images/icons/paladin-shield.png" alt="" /><span>BUILD</span><b>FORGE</b></a>
         <p>Build planners and verified game data</p>
         <nav aria-label="BuildForgeTools resources">{items.map((item) => <a href={item.href} key={item.href}>{item.label}</a>)}</nav>
         <nav className="footer-trust" aria-label="About BuildForgeTools"><a href="/about">About</a><a href="/contact">Contact</a><a href="/privacy">Privacy</a></nav>

@@ -266,6 +266,6 @@ export default function ClassCalculatorPage<B extends string>({ classDef }: { cl
       <div><Swords /><h2>Build links that persist</h2><p>Share the exact talent ranks and point budget through {classDef.plannerPath} without creating indexable duplicates.</p></div>
     </section>
 
-    <SiteFooter classLinks={footerLinks} />
+    <SiteFooter discovery classLinks={footerLinks} />
   </main>
 }

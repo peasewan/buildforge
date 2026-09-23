@@ -13,10 +13,12 @@ const paths = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) => new URL
 const protectedPaths = paths.filter((path) => path.includes('paladin'))
 
 describe('intent rollout scope', () => {
-  it('covers the complete 150-page sitemap exactly once', () => {
-    expect(paths).toHaveLength(150)
+  it('preserves the historical 150-page ledger and adds three discovery paths', () => {
+    const discoveryPaths = ['/', '/wow-forever-classes', '/wow-forever-builds']
+    expect(paths).toHaveLength(153)
+    expect(paths.filter(path => discoveryPaths.includes(path)).sort()).toEqual([...discoveryPaths].sort())
     expect(new Set(ledger.pages.map((page) => page.path)).size).toBe(150)
-    expect(ledger.pages.map((page) => page.path).sort()).toEqual([...paths].sort())
+    expect(ledger.pages.map((page) => page.path).sort()).toEqual(paths.filter(path => !discoveryPaths.includes(path)).sort())
     expect(ledger.total).toBe(150)
     expect(ledger.activeTotal).toBe(128)
     expect(ledger.protectedTotal).toBe(22)

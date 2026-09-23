@@ -9,7 +9,6 @@
       "permanent": true
     },
     { "source": "/wow-forever-paladin-beta", "destination": "/wow-forever-paladin-beta-talent-changes", "permanent": true },
-    { "source": "/", "destination": "/paladin", "permanent": true },
     { "source": "/wow-forever-holy-paladin-build", "destination": "/wow-forever-paladin-build", "permanent": true }
   ],
   "headers": [
@@ -26,6 +25,8 @@
     }
   ],
   "rewrites": [
+    { "source": "/wow-forever-classes", "destination": "/wow-forever-classes/index.html" },
+    { "source": "/wow-forever-builds", "destination": "/wow-forever-builds/index.html" },
     { "source": "/emberville", "destination": "/emberville/index.html" },
     { "source": "/emberville-builds", "destination": "/emberville-builds/index.html" },
     { "source": "/emberville-classes", "destination": "/emberville-classes/index.html" },

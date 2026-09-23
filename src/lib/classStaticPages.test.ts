@@ -230,7 +230,6 @@ describe('generated class-page artifacts', () => {
     expect(committedVercel.redirects.map((redirect) => redirect.source)).toEqual([
       '/:path*',
       '/wow-forever-paladin-beta',
-      '/',
       '/wow-forever-holy-paladin-build',
     ])
     expect(committedVercel.headers).toContainEqual({

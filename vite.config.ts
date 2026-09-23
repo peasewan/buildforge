@@ -27,6 +27,8 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(import.meta.dirname, 'index.html'),
+        wowClasses: resolve(import.meta.dirname, 'wow-forever-classes/index.html'),
+        wowBuilds: resolve(import.meta.dirname, 'wow-forever-builds/index.html'),
         paladin: resolve(import.meta.dirname, 'paladin/index.html'),
         guide: resolve(import.meta.dirname, 'wow-forever-paladin-talents/index.html'),
         buildGuide: resolve(import.meta.dirname, 'wow-forever-paladin-build/index.html'),

@@ -1,3 +1,4 @@
+import { discoveryGroups } from '../data/siteDiscovery'
 import { useState } from 'react'
 import {
   ArrowRight,
@@ -699,6 +700,16 @@ function Hub({ classDef: def }: Props) {
     )
   return (
     <section className="ix-hub">
+      <div className="ix-hub-discovery">
+        <h2>Choose a specialization</h2>
+        <div className="ix-hub-specs">{def.branches.map(branch => {
+          const routes = pages.filter(p => p.spec === branch)
+          const example = availableBuilds(def).find(b => b.spec === branch && b.intent === 'spec')
+          return <article className="ix-hub-spec" key={branch}><h3>{def.branchIcons?.[branch] && <img src={def.branchIcons[branch]} alt="" />}{def.branchNames[branch]}</h3><p>{def.branchTaglines[branch]}</p>{example && <p><strong>{example.allocation}</strong> · {totalPlannerPoints(example.build)} points · Editorial allocation</p>}<nav aria-label={`${def.branchNames[branch]} routes`}>{routes.length ? routes.map(p => <a key={p.slug} href={`/${p.slug}`}>{experienceLabel(p.kind)}</a>) : <span>No specialization route published yet.</span>}</nav></article>
+        })}</div>
+        <h2>Choose a playstyle</h2>
+        <div className="ix-hub-intents">{discoveryGroups([def], false).filter(g => g.links.length).map(g => <section key={g.id}><h3>{g.label}</h3><p>{g.description}</p><nav aria-label={`${g.label} routes`}>{g.links.map(l => <a href={l.href} key={l.href}>{l.label}</a>)}</nav></section>)}</div>
+      </div>
       <label className="ix-field">
         Find a route
         <input

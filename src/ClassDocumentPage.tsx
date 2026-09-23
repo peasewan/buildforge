@@ -288,6 +288,6 @@ export default function ClassDocumentPage<B extends string>({ classDef, page }: 
       </section>}
     </div>
 
-    <SiteFooter classLinks={footerLinks} />
+    <SiteFooter discovery classLinks={footerLinks} />
   </main>
 }

@@ -328,3 +328,17 @@ it('mentions the verified build only once in the new header', () => {
       .textContent!.split(warriorClass.verifiedBuild),
   ).toHaveLength(2)
 })
+
+it('keeps specialization and playstyle discovery gated and search interactive', () => {
+  const hub = mageClass.pages.find(p => p.kind === 'buildsHub')!
+  const { container } = render(<ClassIntentExperience classDef={mageClass} page={hub} />)
+  const grouped = container.querySelector('.ix-hub-discovery')!
+  expect(grouped.textContent).toContain('Editorial allocation')
+  const links = [...grouped.querySelectorAll('a')].map(a => a.getAttribute('href'))
+  expect(links).not.toContain('/wow-forever-fire-mage-build')
+  expect(links).toContain('/wow-forever-frost-mage-build')
+  fireEvent.change(screen.getByLabelText('Find a route'), { target: { value: 'no-such-route' } })
+  expect(container.querySelectorAll('.ix-route-grid a')).toHaveLength(0)
+  expect(screen.getByText('No route matches that search.')).toBeTruthy()
+  expect(container.querySelector('.ix-hub-discovery a')).toBeTruthy()
+})

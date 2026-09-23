@@ -164,7 +164,7 @@ export default function ClassExperiencePage({
           </section>
         )}
       </div>
-      <SiteFooter
+      <SiteFooter discovery
         classLinks={nav.map((p) => ({ href: `/${p.slug}`, label: p.h1 }))}
       />
     </main>
