@@ -1,9 +1,10 @@
 import { writeFileSync, mkdirSync, readFileSync } from 'node:fs'
+import { escapeHtml } from '../src/lib/html'
 import { DISCOVERY_PAGES } from '../src/data/siteDiscovery'
 for (const page of DISCOVERY_PAGES) {
   const file = page.path === '/' ? 'index.html' : `${page.path.slice(1)}/index.html`
   if (!process.argv.includes('--check') && page.path !== '/') mkdirSync(page.path.slice(1), { recursive: true })
-  const title = page.title.replaceAll('&', '&amp;'), description = page.description.replaceAll('&', '&amp;'), canonical = `https://buildforgetools.com${page.path}`
+  const title = escapeHtml(page.title), description = escapeHtml(page.description), canonical = escapeHtml(`https://buildforgetools.com${page.path}`)
   const html = `<!doctype html>
 <html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-DDT58001FZ"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-DDT58001FZ',{page_path:window.location.pathname});</script>

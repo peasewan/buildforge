@@ -23,6 +23,8 @@ function inspect(html: string) {
   const descriptions = attrs('head meta[name="description"]', 'content')
   const canonicals = attrs('head link[rel="canonical"]', 'href')
   const robots = attrs('head meta[name="robots"]', 'content')
+  // Effective indexing directives are case-insensitive; keep raw fingerprint fields unchanged.
+  const effectiveRobots = all('head meta[name]').filter(n => ['robots', 'googlebot'].includes((n.getAttribute('name') ?? '').trim().toLowerCase())).map(n => n.getAttribute('content') ?? '')
   const links = attrs('a[href],area[href]', 'href')
   const root = d.querySelector('#root')
   const fields = { title: titles[0] ?? '', h1: h1s[0] ?? '', description: descriptions[0] ?? '', canonical: canonicals[0] ?? '', robots: robots[0] ?? null,
@@ -32,7 +34,7 @@ function inspect(html: string) {
   content.querySelectorAll('nav,footer,header,script,style,[role="navigation"]').forEach(n => n.remove())
   const words = clean(content.textContent ?? '').toLowerCase().match(/[\p{L}\p{N}]+/gu) ?? []
   const shingles = new Set(words.slice(0, -4).map((_, i) => words.slice(i, i + 5).join(' ')))
-  return { dom, d, fields, titles, h1s, descriptions, canonicals, links, noindex: robots.some(r => /\bnoindex\b/i.test(r)), rendered: Boolean(root?.textContent?.trim()), ids: [...attrs('[id]', 'id'), ...attrs('a[name]', 'name')], shingles }
+  return { dom, d, fields, titles, h1s, descriptions, canonicals, links, noindex: effectiveRobots.some(r => r.toLowerCase().split(/[\s,]+/).some(token => token === 'noindex' || token === 'none')), rendered: Boolean(root?.textContent?.trim()), ids: [...attrs('[id]', 'id'), ...attrs('a[name]', 'name')], shingles }
 }
 export function fingerprint(html: string, lastmod: string): Omit<FrozenPage, 'path'> {
   const page = inspect(html); const result = { ...page.fields, lastmod }; page.dom.window.close(); return result
@@ -77,6 +79,7 @@ export function validateSeo(input: SeoInput) {
     return result
   }
   const inbound = new Set<string>()
+  const discoveryEdges = new Map<string, Set<string>>()
   const duplicates = { canonical: new Map<string, string[]>(), title: new Map<string, string[]>(), h1: new Map<string, string[]>(), description: new Map<string, string[]>() }
   for (const [path, page] of pages) {
     if (!page.noindex) {
@@ -109,7 +112,11 @@ export function validateSeo(input: SeoInput) {
         if (!target) { errors.push(`${path}: broken link ${href}`); continue }
         if (url.hash && !target.ids.includes(decodeURIComponent(url.hash.slice(1)))) errors.push(`${path}: broken anchor ${href}`)
         if (!alias && !url.search && target.noindex) errors.push(`${path}: noindex target ${href}`)
-        if (!page.noindex && !target.noindex && !alias && !url.search && targetPath !== path) inbound.add(targetPath)
+        if (!page.noindex && !target.noindex && !alias && !url.search && targetPath !== path) {
+          inbound.add(targetPath)
+          if (!discoveryEdges.has(path)) discoveryEdges.set(path, new Set())
+          discoveryEdges.get(path)!.add(targetPath)
+        }
       } catch { errors.push(`${path}: malformed link ${href}`) }
     }
   }
@@ -119,6 +126,16 @@ export function validateSeo(input: SeoInput) {
     ;(known ? warnings : errors).push(`${known ? 'frozen legacy ' : ''}duplicate ${field}: ${paths.join(', ')}`)
   }
   for (const path of expected) if (!inbound.has(path)) errors.push(`orphan: ${path}`)
+  if (expected.has('/')) {
+    const reachable = new Set<string>(), queue = ['/']
+    for (let index = 0; index < queue.length; index++) {
+      const path = queue[index]
+      if (reachable.has(path)) continue
+      reachable.add(path)
+      queue.push(...(discoveryEdges.get(path) ?? []))
+    }
+    for (const path of expected) if (!reachable.has(path)) errors.push(`unreachable from /: ${path}`)
+  }
   for (const frozen of input.frozen) {
     const page = pages.get(frozen.path)
     if (!page) { errors.push(`missing frozen page: ${frozen.path}`); continue }

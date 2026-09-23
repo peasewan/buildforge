@@ -95,4 +95,34 @@ describe('rendered SEO release gate', () => {
     expect(errors(input)).toBe('')
   })
 
+  it.each([
+    ['robots', 'none'], ['googlebot', 'noindex'], ['ROBOTS', 'noindex'], ['GoogleBot', 'NoIndex, follow'],
+  ])('rejects effective noindex for %s=%s', (name, content) => {
+    const input = fixture()
+    input.pages['/guide'] = input.pages['/guide'].replace('<head>', `<head><meta name="${name}" content="${content}">`)
+    const result = errors(input)
+    expect(result).toContain('noindex sitemap leak: /guide')
+    expect(result).toContain('noindex target /guide#details')
+    expect(result).toContain('orphan: /guide')
+    expect(result).toContain('orphan: /')
+  })
+  it('rejects a disconnected cycle even though both pages have inbound links', () => {
+    const input = fixture()
+    for (const [path, target] of [['/island-a', '/island-b'], ['/island-b', '/island-a']]) {
+      input.pages[path] = html(path, `<a href="${target}">Other island page</a>`)
+      input.expectedPaths.push(path); input.sitemap.push({ url: `${origin}${path}`, lastmod: '2026-09-23' })
+    }
+    const result = errors(input)
+    expect(result).toContain('unreachable from /: /island-a')
+    expect(result).toContain('unreachable from /: /island-b')
+    expect(result).not.toContain('orphan: /island')
+    input.pages['/'] += '<a href="/island-a">Island</a>'
+    expect(errors(input)).toBe('')
+  })
+  it('does not use parameter links to connect an otherwise disconnected cycle', () => {
+    const input = fixture()
+    input.pages['/'] = html('/', '<a href="/guide?build=x">Share</a><a href="/">Home</a>')
+    expect(errors(input)).toContain('unreachable from /: /guide')
+  })
+
 })
