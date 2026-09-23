@@ -81,3 +81,12 @@ Seven pages inspected at 1440×900/390×844, no overflow. Rogue cap shows three 
 - Priest calculator single Unbreakable Will point gives 1/0/0. Holy preset loads, Review & share jumps correctly, copied URL includes all four talent ranks and Level 20, Reset returns 0/0/0. No console errors.
 - Build, lint, scope tests and 150-URL static audit passed: 77 enabled / 73 frozen, including all 22 Paladin pages.
 
+
+## B12 — reviewed batch
+
+
+- Seven Priest pages reviewed at desktop 1440×900 and mobile 390×844; no overflow or broken images. Hub gives purpose-based routes; reference displays all 47 records with rank/evidence controls.
+- General leveling starts Shadow and reaches 0/0/11. Discipline and Holy leveling reach 11/0/0 and 0/11/0. Their initial talents, final ranks, authored roles and calculator links stay specialization-specific.
+- Holy uses current Twilight Focus / Improved Renew / Divine Fury / Holy Nova records. Same-allocation comparisons remain explicit, with no invented power claim.
+- Build, lint, scope tests and all-150 audit pass: 84 enabled, 66 frozen, 22 Paladin pages unchanged.
+
