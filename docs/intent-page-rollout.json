@@ -2,7 +2,7 @@
   "baseline": "8ea3d82",
   "total": 150,
   "batchSize": 7,
-  "nextBatch": 12,
+  "nextBatch": 13,
   "pages": [
     {
       "path": "/wow-forever-warrior-builds",
@@ -2012,7 +2012,7 @@
       "kind": "buildsHub",
       "title": "WoW Forever Priest Builds",
       "batch": 12,
-      "status": "verified",
+      "status": "deployed",
       "implementation": "Searchable published route directory organized by purpose.",
       "checks": [
         "desktop 1440 screenshot review",
@@ -2024,8 +2024,13 @@
         "local assets including CSS URLs",
         "unit tests and build passed"
       ],
-      "commit": null,
-      "production": null
+      "commit": "c7cdbc8b9e322e1ee1ef4d7fbb4b7827207629e3",
+      "production": {
+        "http": 200,
+        "intentMarker": true,
+        "metadata": "baseline preserved",
+        "vercel": "success"
+      }
     },
     {
       "path": "/wow-forever-priest-talents",
@@ -2033,7 +2038,7 @@
       "kind": "talents",
       "title": "WoW Forever Priest Talents & Talent Trees",
       "batch": 12,
-      "status": "verified",
+      "status": "deployed",
       "implementation": "Searchable branch/rank evidence records and published editorial build links.",
       "checks": [
         "desktop 1440 screenshot review",
@@ -2045,8 +2050,13 @@
         "local assets including CSS URLs",
         "unit tests and build passed"
       ],
-      "commit": null,
-      "production": null
+      "commit": "c7cdbc8b9e322e1ee1ef4d7fbb4b7827207629e3",
+      "production": {
+        "http": 200,
+        "intentMarker": true,
+        "metadata": "baseline preserved",
+        "vercel": "success"
+      }
     },
     {
       "path": "/wow-forever-priest-leveling-build",
@@ -2054,7 +2064,7 @@
       "kind": "leveling",
       "title": "WoW Forever Priest Leveling Build",
       "batch": 12,
-      "status": "verified",
+      "status": "deployed",
       "implementation": "Legal level-by-level progression, milestones, next point and exact-prefix calculator link.",
       "checks": [
         "desktop 1440 screenshot review",
@@ -2066,8 +2076,13 @@
         "local assets including CSS URLs",
         "unit tests and build passed"
       ],
-      "commit": null,
-      "production": null
+      "commit": "c7cdbc8b9e322e1ee1ef4d7fbb4b7827207629e3",
+      "production": {
+        "http": 200,
+        "intentMarker": true,
+        "metadata": "baseline preserved",
+        "vercel": "success"
+      }
     },
     {
       "path": "/wow-forever-discipline-priest-build",
@@ -2075,7 +2090,7 @@
       "kind": "specBuild",
       "title": "WoW Forever Discipline Priest Build",
       "batch": 12,
-      "status": "verified",
+      "status": "deployed",
       "implementation": "Editable allocation, authored playstyle and exact alternative-build differences.",
       "checks": [
         "desktop 1440 screenshot review",
@@ -2087,8 +2102,13 @@
         "local assets including CSS URLs",
         "unit tests and build passed"
       ],
-      "commit": null,
-      "production": null
+      "commit": "c7cdbc8b9e322e1ee1ef4d7fbb4b7827207629e3",
+      "production": {
+        "http": 200,
+        "intentMarker": true,
+        "metadata": "baseline preserved",
+        "vercel": "success"
+      }
     },
     {
       "path": "/wow-forever-discipline-priest-leveling-build",
@@ -2096,7 +2116,7 @@
       "kind": "specLeveling",
       "title": "WoW Forever Discipline Priest Leveling Build",
       "batch": 12,
-      "status": "verified",
+      "status": "deployed",
       "implementation": "Specialization starts selected; legal per-level points and next-talent guidance.",
       "checks": [
         "desktop 1440 screenshot review",
@@ -2108,8 +2128,13 @@
         "local assets including CSS URLs",
         "unit tests and build passed"
       ],
-      "commit": null,
-      "production": null
+      "commit": "c7cdbc8b9e322e1ee1ef4d7fbb4b7827207629e3",
+      "production": {
+        "http": 200,
+        "intentMarker": true,
+        "metadata": "baseline preserved",
+        "vercel": "success"
+      }
     },
     {
       "path": "/wow-forever-holy-priest-build",
@@ -2117,6 +2142,58 @@
       "kind": "specBuild",
       "title": "WoW Forever Holy Priest Build",
       "batch": 12,
+      "status": "deployed",
+      "implementation": "Editable allocation, authored playstyle and exact alternative-build differences.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
+      "commit": "c7cdbc8b9e322e1ee1ef4d7fbb4b7827207629e3",
+      "production": {
+        "http": 200,
+        "intentMarker": true,
+        "metadata": "baseline preserved",
+        "vercel": "success"
+      }
+    },
+    {
+      "path": "/wow-forever-holy-priest-leveling-build",
+      "classId": "priest",
+      "kind": "specLeveling",
+      "title": "WoW Forever Holy Priest Leveling Build",
+      "batch": 12,
+      "status": "deployed",
+      "implementation": "Specialization starts selected; legal per-level points and next-talent guidance.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
+      "commit": "c7cdbc8b9e322e1ee1ef4d7fbb4b7827207629e3",
+      "production": {
+        "http": 200,
+        "intentMarker": true,
+        "metadata": "baseline preserved",
+        "vercel": "success"
+      }
+    },
+    {
+      "path": "/wow-forever-shadow-priest-build",
+      "classId": "priest",
+      "kind": "specBuild",
+      "title": "WoW Forever Shadow Priest Build",
+      "batch": 13,
       "status": "verified",
       "implementation": "Editable allocation, authored playstyle and exact alternative-build differences.",
       "checks": [
@@ -2129,39 +2206,6 @@
         "local assets including CSS URLs",
         "unit tests and build passed"
       ],
-      "commit": null,
-      "production": null
-    },
-    {
-      "path": "/wow-forever-holy-priest-leveling-build",
-      "classId": "priest",
-      "kind": "specLeveling",
-      "title": "WoW Forever Holy Priest Leveling Build",
-      "batch": 12,
-      "status": "verified",
-      "implementation": "Specialization starts selected; legal per-level points and next-talent guidance.",
-      "checks": [
-        "desktop 1440 screenshot review",
-        "mobile 390 screenshot review / no document overflow",
-        "baseline title/H1/canonical/robots",
-        "relevant enabled intent marker",
-        "local routes and anchors",
-        "calculator parameters and allocations",
-        "local assets including CSS URLs",
-        "unit tests and build passed"
-      ],
-      "commit": null,
-      "production": null
-    },
-    {
-      "path": "/wow-forever-shadow-priest-build",
-      "classId": "priest",
-      "kind": "specBuild",
-      "title": "WoW Forever Shadow Priest Build",
-      "batch": 13,
-      "status": "pending",
-      "implementation": "",
-      "checks": [],
       "commit": null,
       "production": null
     },
@@ -2171,9 +2215,18 @@
       "kind": "specLeveling",
       "title": "WoW Forever Shadow Priest Leveling Build",
       "batch": 13,
-      "status": "pending",
-      "implementation": "",
-      "checks": [],
+      "status": "verified",
+      "implementation": "Specialization starts selected; legal per-level points and next-talent guidance.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
       "commit": null,
       "production": null
     },
@@ -2183,9 +2236,18 @@
       "kind": "pvp",
       "title": "WoW Forever Priest PvP Build",
       "batch": 13,
-      "status": "pending",
-      "implementation": "",
-      "checks": [],
+      "status": "verified",
+      "implementation": "PvP route selection, encounter checklist and actual baseline talent differences.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
       "commit": null,
       "production": null
     },
@@ -2195,9 +2257,18 @@
       "kind": "levelCap",
       "title": "WoW Forever Priest Level 20 Build",
       "batch": 13,
-      "status": "pending",
-      "implementation": "",
-      "checks": [],
+      "status": "verified",
+      "implementation": "Current planning budget, data limits and comparable routes.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
       "commit": null,
       "production": null
     },
@@ -2207,9 +2278,18 @@
       "kind": "healing",
       "title": "WoW Forever Priest Healing Build",
       "batch": 13,
-      "status": "pending",
-      "implementation": "",
-      "checks": [],
+      "status": "verified",
+      "implementation": "Healing tools and checklist from existing reviewed allocation.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
       "commit": null,
       "production": null
     },
@@ -2219,9 +2299,18 @@
       "kind": "specDungeon",
       "title": "WoW Forever Holy Priest Dungeon Build",
       "batch": 13,
-      "status": "pending",
-      "implementation": "",
-      "checks": [],
+      "status": "verified",
+      "implementation": "Specialization dungeon tools grid, preparation checklist and exact allocation.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
       "commit": null,
       "production": null
     },
@@ -2231,9 +2320,18 @@
       "kind": "comparison",
       "title": "WoW Forever Shadow vs Discipline Priest Leveling",
       "batch": 13,
-      "status": "pending",
-      "implementation": "",
-      "checks": [],
+      "status": "verified",
+      "implementation": "Independent route selectors, allocations and exact rank difference table.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
       "commit": null,
       "production": null
     },

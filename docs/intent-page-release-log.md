@@ -90,3 +90,11 @@ Seven pages inspected at 1440×900/390×844, no overflow. Rogue cap shows three 
 - Holy uses current Twilight Focus / Improved Renew / Divine Fury / Holy Nova records. Same-allocation comparisons remain explicit, with no invented power claim.
 - Build, lint, scope tests and all-150 audit pass: 84 enabled, 66 frozen, 22 Paladin pages unchanged.
 
+
+## B13 — reviewed batch
+
+
+- All seven remaining Priest pages inspected at 1440×900 and 390×844 without overflow. Shadow workbench and progression use Spirit Tap, Improved Shadow Word: Pain, Shadow Focus and Mind Flay; Level 20 reaches 0/0/11.
+- PvP uses the Discipline allocation, healing and Holy dungeon use Holy. Dungeon places its toolkit before preparation notes; healing keeps a role checklist; cap gives all three point budgets. Shadow versus Discipline presents separate allocations and actual rank differences.
+- Page-specific notes and data gaps remain visible. Build, lint, scope tests and all-150 audit passed: 91 enabled / 59 frozen, including all 22 Paladin pages unchanged.
+
