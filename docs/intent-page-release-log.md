@@ -152,3 +152,6 @@ Seven pages inspected at 1440×900/390×844, no overflow. Rogue cap shows three 
 - Privacy section navigation reaches the selected storage/share section. Contact topic selector changes report-preparation instructions; the existing feedback form opens and closes correctly. No message was submitted; no browser console errors.
 - Final local build, lint, 15 scope/metadata tests and all-150 static audit pass: 128 enabled, exactly 22 Paladin pages frozen. Lastmod changed only for the two enabled trust pages in this batch.
 
+## Final acceptance
+
+All 19 batches deployed and verified: 128 upgraded non-Paladin pages, 22 protected Paladin pages, 150 unchanged sitemap URLs. Whole-site online asset/content/metadata audit passed. GSC sitemap submitted and status read back. See `docs/intent-page-final-acceptance.md` for exact evidence and deployment commits.

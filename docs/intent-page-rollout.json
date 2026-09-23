@@ -2,7 +2,7 @@
   "baseline": "8ea3d82",
   "total": 150,
   "batchSize": 7,
-  "nextBatch": 19,
+  "nextBatch": 20,
   "pages": [
     {
       "path": "/wow-forever-warrior-builds",
@@ -3286,7 +3286,7 @@
       "kind": "trust",
       "title": "Contact BuildForgeTools | Feedback & Corrections",
       "batch": 19,
-      "status": "verified",
+      "status": "deployed",
       "implementation": "Accessible local topic navigation and task-specific contact/privacy/evidence action.",
       "checks": [
         "desktop 1440 screenshot review",
@@ -3298,8 +3298,13 @@
         "local assets including CSS URLs",
         "unit tests and build passed"
       ],
-      "commit": null,
-      "production": null
+      "commit": "e308cbd4a623689269e5b4dc40efb9fa44ca12ef",
+      "production": {
+        "http": 200,
+        "intentMarker": true,
+        "metadata": "baseline preserved",
+        "vercel": "success"
+      }
     },
     {
       "path": "/privacy",
@@ -3307,7 +3312,7 @@
       "kind": "trust",
       "title": "Privacy Policy | BuildForgeTools",
       "batch": 19,
-      "status": "verified",
+      "status": "deployed",
       "implementation": "Accessible local topic navigation and task-specific contact/privacy/evidence action.",
       "checks": [
         "desktop 1440 screenshot review",
@@ -3319,8 +3324,13 @@
         "local assets including CSS URLs",
         "unit tests and build passed"
       ],
-      "commit": null,
-      "production": null
+      "commit": "e308cbd4a623689269e5b4dc40efb9fa44ca12ef",
+      "production": {
+        "http": 200,
+        "intentMarker": true,
+        "metadata": "baseline preserved",
+        "vercel": "success"
+      }
     },
     {
       "path": "/paladin",
