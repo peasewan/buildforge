@@ -1,0 +1,231 @@
+.intent-experience .rs-surface {
+  --rs-accent: #d9a441;
+  display: grid;
+  gap: 18px;
+  min-width: 0;
+}
+
+.intent-experience .rs-surface h2,
+.intent-experience .rs-surface h3 { margin: 0; }
+
+.intent-experience .rs-first {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--rs-accent) 48%, transparent);
+  border-radius: 16px;
+  padding: clamp(20px, 3vw, 32px);
+  background: #101620;
+  min-width: 0;
+}
+
+.intent-experience .rs-first::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0 0 0 55%;
+  content: '';
+  opacity: .43;
+  background: radial-gradient(circle at 75% 50%, var(--rs-accent), transparent 68%);
+  pointer-events: none;
+}
+
+.intent-experience .rs-first h2 {
+  font-size: clamp(23px, 2.5vw, 33px);
+  margin: 5px 0 17px;
+}
+
+.intent-experience .rs-first > p { max-width: 760px; }
+
+.intent-experience .rs-kicker {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--rs-accent);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .17em;
+}
+
+.intent-experience .rs-kicker svg { width: 20px; height: 20px; }
+
+.intent-experience .rs-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.intent-experience .rs-options button {
+  min-height: 42px;
+  padding: 9px 15px;
+  border: 1px solid #ffffff38;
+  border-radius: 8px;
+  background: #090d14a8;
+  color: #d7deea;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.intent-experience .rs-options button[aria-pressed='true'] {
+  background: color-mix(in srgb, var(--rs-accent) 18%, #0a0e15);
+  color: #fff6dc;
+  border-color: var(--rs-accent);
+  box-shadow: inset 0 -2px var(--rs-accent);
+}
+
+.intent-experience .rs-small {
+  display: block;
+  color: #aab4c2;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.intent-experience .rs-surface :is(.rs-allocation, .rs-evidence, .rs-role-support, .rs-unavailable) {
+  min-width: 0;
+  background: linear-gradient(145deg, #161d27, #0c1119);
+  border: 1px solid #ffffff20;
+  border-radius: 13px;
+  padding: clamp(18px, 2vw, 24px);
+}
+
+.intent-experience .rs-allocation {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.intent-experience .rs-allocation small {
+  color: #c9bb9a;
+  font-size: 10px;
+  letter-spacing: .09em;
+}
+
+.intent-experience .rs-allocation h3,
+.intent-experience .rs-evidence h3,
+.intent-experience .rs-role-support h3 { margin: 10px 0; }
+
+.intent-experience .rs-allocation-number {
+  font: 500 clamp(32px, 4vw, 48px)/1.2 Georgia, serif;
+  color: #ffe8a3;
+  letter-spacing: .05em;
+}
+
+.intent-experience .rs-allocation .ix-action { margin: 8px 0 14px; }
+
+.intent-experience .rs-evidence ul,
+.intent-experience .rs-diff ul {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+}
+
+.intent-experience .rs-evidence li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  border-top: 1px solid #ffffff18;
+  padding: 12px 0;
+}
+
+.intent-experience .rs-evidence li img {
+  width: 35px;
+  height: 35px;
+  object-fit: cover;
+  border-radius: 7px;
+  flex: 0 0 auto;
+}
+
+.intent-experience .rs-evidence li strong { display: block; color: #f5e5c5; }
+.intent-experience .rs-evidence li strong span { color: #d8af61; white-space: nowrap; }
+.intent-experience .rs-evidence li p { margin: 4px 0; color: #c4ccd6; font-size: 13px; }
+.intent-experience .rs-evidence li small { color: #98a9bc; font-size: 11px; }
+
+.intent-experience .rs-route-picker {
+  display: grid;
+  gap: 7px;
+  color: #c8d0dd;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.intent-experience .rs-route-picker select {
+  min-width: 0;
+  width: 100%;
+  background: #0c121b;
+  color: #f6ead4;
+  padding: 12px;
+  border: 1px solid #ffffff42;
+  border-radius: 8px;
+}
+
+.intent-experience .rs-unavailable nav { display: flex; flex-wrap: wrap; gap: 9px 16px; }
+.intent-experience .rs-unavailable nav a { font-size: 13px; }
+.intent-experience .rs-diff li { padding: 5px 0; border-top: 1px solid #ffffff17; }
+
+/* The six role layouts deliberately present different visual tasks before the shared allocation. */
+.intent-experience .rs-pvp { --rs-accent: #dd8068; }
+.intent-experience .rs-pvp-board {
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+  column-gap: 32px;
+  background: linear-gradient(125deg, #251c23, #10131a 66%);
+}
+.intent-experience .rs-pvp-board::before { background: repeating-linear-gradient(135deg, #d4705145 0 1px, transparent 1px 22px); }
+.intent-experience .rs-pvp-board :is(.rs-kicker, h2, .rs-options) { grid-column: 1; }
+.intent-experience .rs-pvp-board .rs-options { flex-direction: column; align-items: stretch; }
+.intent-experience .rs-pvp-board .rs-options button { flex: 0 0 auto; text-align: left; }
+.intent-experience .rs-pvp-board > p { grid-column: 2; grid-row: 2 / span 2; align-self: center; font-size: 16px; }
+.intent-experience .rs-pvp-board > p.rs-small { grid-row: 4; font-size: 12px; }
+.intent-experience .rs-pvp-details { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; }
+.intent-experience .rs-pvp-details > .rs-evidence { grid-column: 1 / -1; }
+
+.intent-experience .rs-dungeon { --rs-accent: #86b9b4; }
+.intent-experience .rs-dungeon-timeline { border-left: 5px solid #86b9b4; }
+.intent-experience .rs-dungeon-timeline .rs-options { position: relative; padding-top: 7px; }
+.intent-experience .rs-dungeon-timeline .rs-options::before { position: absolute; content: ''; top: 0; left: 10px; right: 10px; border-top: 1px dashed #86b9b480; }
+.intent-experience .rs-dungeon-details { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 16px; }
+.intent-experience .rs-dungeon-details > .rs-route-picker { grid-column: 1 / -1; }
+.intent-experience .rs-dungeon-details > .rs-evidence { grid-column: 2; grid-row: 2 / span 2; }
+
+.intent-experience .rs-tank { --rs-accent: #a7c3e0; }
+.intent-experience .rs-tank-ledger { background: linear-gradient(135deg, #1a2632, #10151c); }
+.intent-experience .rs-tank-ledger .rs-options { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.intent-experience .rs-tank-ledger .rs-options button { border-radius: 3px; text-align: left; min-height: 62px; }
+.intent-experience .rs-tank-ledger .rs-options button::before { content: '◻'; margin-right: 8px; color: #a7c3e0; }
+.intent-experience .rs-tank-ledger .rs-options button[aria-pressed='true']::before { content: '▣'; }
+.intent-experience .rs-tank-details { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: 16px; }
+.intent-experience .rs-tank-details > .rs-evidence { grid-row: 1 / span 2; }
+
+.intent-experience .rs-healing { --rs-accent: #9bd1aa; }
+.intent-experience .rs-healing-pulse { background: linear-gradient(135deg, #152620, #10161b); }
+.intent-experience .rs-healing-pulse::after { content: ''; position: absolute; right: 5%; top: 42%; width: 24%; border-top: 2px solid #9bd1aa6b; clip-path: polygon(0 45%, 18% 45%, 28% 0, 38% 100%, 48% 45%, 100% 45%); opacity: .5; }
+.intent-experience .rs-healing-pulse .rs-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 760px; }
+.intent-experience .rs-healing-pulse .rs-options button { min-height: 80px; text-align: left; font: 500 18px Georgia, serif; }
+.intent-experience .rs-healing-pulse > p[aria-live] { border-left: 3px solid #9bd1aa; padding-left: 16px; }
+.intent-experience .rs-healing-details { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; }
+.intent-experience .rs-healing-details > .rs-role-support { grid-column: 1 / -1; }
+
+.intent-experience .rs-pet { --rs-accent: #bd9be1; }
+.intent-experience .rs-pet-chain { background: linear-gradient(135deg, #251d2d, #11151b); }
+.intent-experience .rs-pet-chain .rs-options button { border-radius: 999px; }
+.intent-experience .rs-pet-chain > p[aria-live] { max-width: 570px; }
+.intent-experience .rs-pet-details { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 16px; }
+.intent-experience .rs-pet-details > .rs-evidence { grid-row: 1 / span 2; }
+
+.intent-experience .rs-totem { --rs-accent: #e8b27b; }
+.intent-experience .rs-totem-field { background: radial-gradient(circle at 85% 54%, #7f4d252c 0 15%, transparent 15% 19%, #7f4d252c 19% 20%, transparent 20%), #17181d; }
+.intent-experience .rs-totem-field .rs-options { max-width: 560px; }
+.intent-experience .rs-totem-field .rs-options button { border-radius: 0; border-left-width: 4px; text-align: left; }
+.intent-experience .rs-totem-details { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; align-items: stretch; }
+.intent-experience .rs-source-line { display: flex; gap: 8px; align-items: center; color: #a8b7bb; font-size: 12px; }
+
+@media (max-width: 760px) {
+  .intent-experience .rs-pvp-board { display: block; }
+  .intent-experience .rs-pvp-board .rs-options { flex-direction: row; }
+  .intent-experience .rs-pvp-board .rs-options button { flex: 1 1 130px; }
+  .intent-experience :is(.rs-pvp-details, .rs-dungeon-details, .rs-tank-details, .rs-healing-details, .rs-pet-details, .rs-totem-details) { display: grid; grid-template-columns: minmax(0, 1fr); }
+  .intent-experience :is(.rs-pvp-details, .rs-dungeon-details, .rs-tank-details, .rs-healing-details, .rs-pet-details, .rs-totem-details) > * { grid-column: 1; grid-row: auto; }
+  .intent-experience .rs-options button { flex: 1 1 130px; }
+  .intent-experience .rs-tank-ledger .rs-options { grid-template-columns: minmax(0, 1fr); }
+  .intent-experience .rs-first::before { inset: 40% 0 0 25%; }
+}
