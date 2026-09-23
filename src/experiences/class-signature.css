@@ -382,6 +382,34 @@
   padding-left:14px
 }
 @media(max-width:720px) {
+  .intent-page[data-intent-page='buildsHub'] .class-signature {
+    display:flex;
+    flex-direction:column
+  }
+  .intent-page[data-intent-page='buildsHub'] .class-signature .cs-intro {
+    order:0;
+    margin-bottom:14px
+  }
+  .intent-page[data-intent-page='buildsHub'] .class-signature .cs-outro {
+    order:1;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:10px;
+    margin:0 0 18px;
+    padding:0 0 18px;
+    border-top:0;
+    border-bottom:1px solid #d9a44130
+  }
+  .intent-page[data-intent-page='buildsHub'] .class-signature .cs-outro a {
+    order:-1;
+    border:1px solid #d9a4418c;
+    border-radius:8px;
+    padding:10px 13px;
+    background:#d9a4411c
+  }
+  .intent-page[data-intent-page='buildsHub'] .class-signature > :not(.cs-intro):not(.cs-outro) {
+    order:2
+  }
   .cs-rage-cycle ol,.cs-cast-window dl,.cs-ledger-lines,.cs-distance-detail {
     grid-template-columns:1fr
   }

@@ -34,9 +34,17 @@ it('composes support modules by task rather than the same template order', () =>
     unmount()
     return result
   }
-  expect(slots('wow-forever-warrior-talents').slice(0, 3)).toEqual(['intent', 'evidence', 'editorial'])
-  expect(slots('wow-forever-fury-warrior-build').slice(0, 3)).toEqual(['intent', 'editorial', 'evidence'])
+  expect(slots('wow-forever-warrior-builds').slice(0, 2)).toEqual(['signature', 'intent'])
+  expect(slots('wow-forever-warrior-talents').slice(0, 3)).toEqual(['intent', 'evidence', 'related'])
+  expect(slots('wow-forever-fury-warrior-build').slice(0, 3)).toEqual(['intent', 'editorial', 'related'])
   expect(slots('wow-forever-arms-vs-fury-warrior-leveling').slice(0, 3)).toEqual(['intent', 'comparison', 'editorial'])
+  const pilot = [
+    'wow-forever-warrior-builds', 'wow-forever-fury-warrior-build',
+    'wow-forever-fury-warrior-leveling-build', 'wow-forever-arms-warrior-pvp-build',
+    'wow-forever-protection-warrior-dungeon-build', 'wow-forever-warrior-talents',
+    'wow-forever-arms-vs-fury-warrior-leveling',
+  ]
+  expect(new Set(pilot.map(slug => slots(slug).join('>'))).size).toBe(pilot.length)
 })
 it('changes the current allocation and next point with the leveling control', () => {
   render(

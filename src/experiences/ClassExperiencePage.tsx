@@ -9,8 +9,10 @@ import { experienceLabel } from './experienceLabels'
 
 type Slot = 'intent' | 'signature' | 'evidence' | 'editorial' | 'comparison' | 'faq' | 'related'
 const supportOrder = (kind: ClassPageDefinition['kind']): Slot[] => {
+  if (kind === 'buildsHub') return ['signature', 'intent', 'editorial', 'evidence', 'faq', 'related']
   if (kind === 'comparison') return ['intent', 'comparison', 'editorial', 'evidence', 'faq', 'related']
-  if (kind === 'talents' || kind === 'specTalents') return ['intent', 'evidence', 'editorial', 'faq', 'related']
+  if (kind === 'talents' || kind === 'specTalents') return ['intent', 'evidence', 'related', 'editorial', 'faq']
+  if (kind === 'specBuild') return ['intent', 'editorial', 'signature', 'related', 'evidence', 'comparison', 'faq']
   if (kind === 'dungeon' || kind === 'specDungeon' || kind === 'tank') return ['intent', 'signature', 'evidence', 'editorial', 'comparison', 'faq', 'related']
   if (kind === 'pvp' || kind === 'specPvp') return ['intent', 'signature', 'editorial', 'comparison', 'evidence', 'faq', 'related']
   return ['intent', 'signature', 'editorial', 'evidence', 'comparison', 'faq', 'related']

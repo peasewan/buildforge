@@ -53,6 +53,9 @@
 .intent-page .ix-slot--intent {
   position: relative;
 }
+.intent-page .ix-body > .ix-slot--signature:first-child .class-signature {
+  margin-top: 0;
+}
 .intent-page[data-intent-page='buildsHub'] .ix-slot--editorial .ix-editorial {
   display: block;
   border-top: 1px solid #d9a4413a;
