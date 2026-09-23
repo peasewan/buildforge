@@ -1,3 +1,5 @@
+import { isProductionAnalyticsHost } from './analyticsBootstrap'
+
 declare global {
   interface Window {
     gtag?: (command: string, ...args: unknown[]) => void
@@ -7,7 +9,7 @@ declare global {
 export type TrackParams = Record<string, string | number>
 
 export function track(event: string, params: TrackParams = {}): void {
-  if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
+  if (typeof window !== 'undefined' && isProductionAnalyticsHost(window.location.hostname) && typeof window.gtag === 'function') {
     window.gtag('event', event, params)
   }
 }

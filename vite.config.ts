@@ -2,6 +2,7 @@ import { defineConfig } from 'vitest/config'
 import react from '@vitejs/plugin-react'
 import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
+import { transformAnalyticsHtml } from './src/lib/analyticsBootstrap.ts'
 
 // One entry per published class page, from the same requirement gate the routes, rewrites and
 // sitemap read. A withheld page has no input here, so it cannot reach `dist/`.
@@ -14,7 +15,14 @@ const classInputs = Object.fromEntries(
 )
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    {
+      name: 'production-only-analytics',
+      enforce: 'pre',
+      transformIndexHtml: transformAnalyticsHtml,
+    },
+    react(),
+  ],
   build: {
     rollupOptions: {
       input: {
@@ -54,6 +62,7 @@ export default defineConfig({
   },
   test: {
     environment: 'jsdom',
+    environmentOptions: { jsdom: { url: 'https://buildforgetools.com/' } },
     exclude: ['**/node_modules/**', '**/.worktrees/**'],
   },
 })

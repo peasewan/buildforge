@@ -92,7 +92,7 @@ describe('ClassCalculatorPage renders any class from ClassDefinition', () => {
     fireEvent.click(screen.getByRole('button', { name: /Copy build link/i }))
 
     const copiedUrl = String(clipboardWrite.mock.calls[0]?.[0])
-    expect(copiedUrl).toMatch(/^http:\/\/localhost:\d+\/hunter\?build=.+&level=20$/)
+    expect(copiedUrl).toMatch(/^https:\/\/buildforgetools\.com\/hunter\?build=.+&level=20$/)
     expect(copiedUrl).toContain('build=')
     expect(copiedUrl).toContain('level=20')
 
