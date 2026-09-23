@@ -1,0 +1,426 @@
+.class-signature {
+  color:#e7e2d8;
+  border:1px solid #d9a4414d;
+  border-radius:14px;
+  padding:clamp(18px,3vw,32px);
+  margin:26px 0;
+  background:linear-gradient(135deg,#181b20,#10151b 68%,#0b1016);
+  font:14px/1.5 Arial,sans-serif;
+  overflow:hidden
+}
+.class-signature * {
+  box-sizing:border-box
+}
+.class-signature .cs-intro {
+  display:flex;
+  align-items:baseline;
+  flex-wrap:wrap;
+  gap:8px 20px;
+  margin-bottom:22px
+}
+.class-signature .cs-kicker {
+  color:#d9a441;
+  font-size:10px;
+  letter-spacing:.16em;
+  font-weight:700;
+  width:100%
+}
+.class-signature h2 {
+  font:600 clamp(20px,2.4vw,28px)/1.2 Georgia,serif;
+  margin:0;
+  color:#f5e9d2
+}
+.class-signature .cs-intro p {
+  margin:0;
+  color:#aeb8c2
+}
+.class-signature .cs-outro {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  flex-wrap:wrap;
+  border-top:1px solid #d9a44130;
+  margin-top:22px;
+  padding-top:15px
+}
+.class-signature .cs-outro span {
+  color:#aeb8c2;
+  font-size:12px;
+  max-width:620px
+}
+.class-signature .cs-outro a {
+  color:#f3cd89;
+  display:inline-flex;
+  gap:8px;
+  align-items:center;
+  font-weight:700;
+  text-decoration:none
+}
+.class-signature .cs-outro a:hover {
+  text-decoration:underline
+}
+.class-signature .cs-outro a:focus-visible {
+  outline:2px solid #ffe8a3;
+  outline-offset:4px
+}
+.cs-rage-cycle {
+  border-left:5px solid #c98b50
+}
+.cs-rage-readout {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  color:#c5b4a2;
+  letter-spacing:.11em;
+  text-transform:uppercase;
+  font-size:11px
+}
+.cs-rage-readout strong {
+  font:600 30px/1 Georgia,serif;
+  color:#f5b66e
+}
+.cs-rage-cycle ol {
+  list-style:none;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  margin:14px 0 0;
+  padding:0;
+  gap:3px
+}
+.cs-rage-cycle li {
+  border-top:4px solid #f0a35b;
+  padding:12px;
+  background:#241b18;
+  min-width:0
+}
+.cs-rage-cycle li:nth-child(2) {
+  border-color:#df773e
+}
+.cs-rage-cycle li:nth-child(3) {
+  border-color:#a94d2e
+}
+.cs-rage-cycle li b {
+  display:block;
+  color:#ffcc96;
+  margin-bottom:5px
+}
+.cs-cast-window {
+  border-color:#7ea9d067;
+  background:linear-gradient(140deg,#111b27,#17131b 65%,#100f15)
+}
+.cs-cast-head {
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  color:#8dc7f3;
+  letter-spacing:.15em;
+  font-size:11px
+}
+.cs-cast-head strong {
+  color:#d6eaff;
+  font-size:14px
+}
+.cs-cast-track {
+  display:grid;
+  grid-template-columns:1fr 1.4fr .7fr;
+  gap:5px;
+  margin:12px 0 8px;
+  height:7px
+}
+.cs-cast-track span {
+  background:#4c8ed2;
+  border-radius:20px
+}
+.cs-cast-track span:nth-child(2) {
+  background:#9d84d6
+}
+.cs-cast-track span:nth-child(3) {
+  background:#546579
+}
+.cs-cast-window dl {
+  display:grid;
+  grid-template-columns:1fr 1.4fr .7fr;
+  gap:14px;
+  margin:0
+}
+.cs-cast-window dt {
+  color:#9ba8b9;
+  font-size:11px;
+  text-transform:uppercase
+}
+.cs-cast-window dd {
+  margin:2px 0 0
+}
+.cs-cast-window p {
+  border-left:2px solid #7ea9d0;
+  padding-left:14px;
+  max-width:900px
+}
+.cs-opener-cycle {
+  border-color:#a7788d73;
+  background:linear-gradient(90deg,#17131c,#11151a)
+}
+.cs-opener-cycle ol {
+  list-style:none;
+  padding:0;
+  margin:0;
+  display:grid;
+  gap:6px;
+  max-width:890px
+}
+.cs-opener-cycle li {
+  display:flex;
+  gap:18px;
+  border-left:2px solid #bd8c9b;
+  padding:0 0 14px 18px
+}
+.cs-opener-cycle li:last-child {
+  padding-bottom:0
+}
+.cs-opener-cycle .cs-number {
+  color:#dca7bd;
+  font:22px/1 Georgia,serif
+}
+.cs-opener-cycle li b {
+  color:#f2dfeb
+}
+.cs-opener-cycle li p {
+  margin:2px 0 0;
+  color:#c2bdc9
+}
+.cs-recovery-ledger {
+  border-color:#a3a9d163;
+  background:#111622
+}
+.cs-ledger-heading,.cs-ledger-lines {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px
+}
+.cs-ledger-heading {
+  color:#b8bce0;
+  font-size:11px;
+  letter-spacing:.15em;
+  border-bottom:1px solid #a3a9d15c;
+  padding-bottom:8px
+}
+.cs-ledger-lines p {
+  margin:10px 0 16px
+}
+.cs-ledger-total {
+  display:flex;
+  gap:14px;
+  align-items:baseline;
+  border-top:1px solid #a3a9d15c;
+  padding-top:12px
+}
+.cs-ledger-total b {
+  white-space:nowrap;
+  color:#d7d9fc
+}
+.cs-form-switch {
+  border-color:#78aa825f;
+  background:linear-gradient(160deg,#101a19,#161817)
+}
+.cs-form-axis {
+  color:#b9d6bc;
+  font:italic 18px Georgia,serif;
+  margin-bottom:14px
+}
+.cs-form-paths {
+  display:flex;
+  gap:4px
+}
+.cs-form-paths>div {
+  flex:1;
+  min-width:0;
+  padding:18px 14px;
+  background:#1a2622;
+  border-top:3px solid #77aa79
+}
+.cs-form-paths>div:nth-child(2) {
+  background:#203022;
+  border-color:#b1b973
+}
+.cs-form-paths>div:nth-child(3) {
+  background:#192b2d;
+  border-color:#82bfc0
+}
+.cs-form-paths b,.cs-form-paths span {
+  display:block
+}
+.cs-form-paths b {
+  font:19px Georgia,serif;
+  color:#d9ecd3
+}
+.cs-form-paths span {
+  margin-top:5px;
+  color:#b4c5b8
+}
+.cs-pet-compact {
+  border-color:#ae819e61;
+  background:#17131b
+}
+.cs-caster-side,.cs-pet-side {
+  display:inline-block;
+  vertical-align:top;
+  width:calc(50% - 26px);
+  border:1px solid #9c718b69;
+  border-radius:10px;
+  padding:16px;
+  min-height:125px
+}
+.cs-pet-side {
+  border-color:#c6926975
+}
+.cs-pet-join {
+  display:inline-flex;
+  width:52px;
+  justify-content:center;
+  font:30px Georgia,serif;
+  color:#e4b487;
+  vertical-align:middle
+}
+.cs-caster-side>span,.cs-pet-side>span {
+  display:block;
+  color:#c59eb7;
+  letter-spacing:.13em;
+  font-size:10px
+}
+.cs-pet-side>span {
+  color:#e0b991
+}
+.cs-caster-side strong,.cs-pet-side strong {
+  display:block;
+  font:21px Georgia,serif;
+  margin-top:6px
+}
+.cs-caster-side p,.cs-pet-side p {
+  margin-bottom:0
+}
+.cs-pet-foot {
+  margin:12px 0 0
+}
+.cs-distance-track {
+  border-color:#9fba8070;
+  background:linear-gradient(110deg,#17211a,#12181c)
+}
+.cs-range-track {
+  display:flex;
+  align-items:center;
+  gap:15px;
+  color:#c7daa9;
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.12em
+}
+.cs-range-track i {
+  flex:1;
+  height:8px;
+  background:repeating-linear-gradient(90deg,#79944f 0 3px,transparent 3px 11px);
+  border-bottom:1px solid #bad890
+}
+.cs-distance-detail {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+  margin-top:18px
+}
+.cs-distance-detail>div:first-child {
+  border-right:1px solid #9fba8059;
+  padding-right:18px
+}
+.cs-distance-detail b {
+  color:#d5e2bf
+}
+.cs-distance-detail p {
+  margin:5px 0
+}
+.cs-distance-track>p {
+  color:#bfc9b8
+}
+.cs-totem-field {
+  border-color:#a1bbbc66;
+  background:linear-gradient(135deg,#142124,#181820);
+  display:grid;
+  grid-template-columns:220px 1fr;
+  gap:25px
+}
+.cs-field-marker {
+  border:1px dashed #8cb7bc;
+  border-radius:50%;
+  width:210px;
+  height:210px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:25px;
+  box-shadow:inset 0 0 0 25px #789a9a18
+}
+.cs-field-marker span {
+  font-size:10px;
+  letter-spacing:.1em;
+  color:#a6c6c8
+}
+.cs-field-marker b {
+  font:20px Georgia,serif;
+  color:#e0ebdf;
+  margin:7px 0
+}
+.cs-field-marker small {
+  color:#b9c5cc
+}
+.cs-field-notes {
+  align-self:center
+}
+.cs-field-notes p {
+  border-left:2px solid #8cb7bc;
+  padding-left:14px
+}
+@media(max-width:720px) {
+  .cs-rage-cycle ol,.cs-cast-window dl,.cs-ledger-lines,.cs-distance-detail {
+    grid-template-columns:1fr
+  }
+  .cs-form-paths {
+    flex-direction:column
+  }
+  .cs-cast-track,.cs-ledger-heading {
+    display:none
+  }
+  .cs-ledger-lines p {
+    border-left:2px solid #a3a9d1;
+    padding-left:10px
+  }
+  .cs-ledger-total {
+    flex-direction:column;
+    gap:4px
+  }
+  .cs-ledger-total b {
+    white-space:normal
+  }
+  .cs-caster-side,.cs-pet-side {
+    width:100%
+  }
+  .cs-pet-join {
+    display:flex;
+    width:100%;
+    line-height:1
+  }
+  .cs-distance-detail>div:first-child {
+    border-right:0;
+    border-bottom:1px solid #9fba8059;
+    padding:0 0 12px
+  }
+  .cs-totem-field {
+    grid-template-columns:1fr
+  }
+  .cs-field-marker {
+    width:190px;
+    height:190px;
+    margin:auto
+  }
+}
