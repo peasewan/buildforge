@@ -118,7 +118,14 @@ export const EXPERIENCE_PATHS: readonly string[] = [
   "/wow-forever-restoration-shaman-leveling-build",
   "/wow-forever-shaman-pvp-build",
   "/wow-forever-shaman-level-20-build",
-  "/wow-forever-shaman-totem-build"
+  "/wow-forever-shaman-totem-build",
+  "/wow-forever-elemental-vs-enhancement-shaman-leveling",
+  "/wow-forever-restoration-shaman-healing-build",
+  "/emberville",
+  "/emberville-builds",
+  "/emberville-classes",
+  "/emberville-skill-inheritance",
+  "/about"
 ]
 const enabled = new Set(EXPERIENCE_PATHS)
 export const experienceEnabled = (pathname: string): boolean => enabled.has(pathname.replace(/\/$/, "") || "/")

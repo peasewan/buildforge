@@ -134,3 +134,13 @@ Seven pages inspected at 1440×900/390×844, no overflow. Rogue cap shows three 
 - Totem checklist changes to 1/2 after checking a note and resets to 0/2 when changing route; no unsupported four-totem loadout is claimed.
 - Build, lint, 15 focused tests and 150-page static audit pass; 119 enabled / 31 frozen, including all 22 protected Paladin pages.
 
+
+## B18 — reviewed batch
+
+
+- Reviewed all seven pages at 1440×900 and 390×844; no overflow. Shaman comparison shows different weapon/casting allocations; healing uses authored preparation notes.
+- Emberville now exposes task navigation, direction comparison, class evidence stages and inheritance stages. Browser verified identical-direction disclosure, weapon-data pending message and unverified destination compatibility. Planner Ranged button still updates the summary; no browser errors.
+- About local navigation reaches the exact data-review section. Existing editorial content and titles are preserved.
+- Fixed four pre-existing missing favicon.jpg references to the actual favicon.png. Updated only this batch's seven sitemap dates; protected dates remain unchanged.
+- Build, lint, 15 scope/metadata tests and 150-page audit pass: 126 enabled, 24 frozen, including all 22 Paladin pages.
+

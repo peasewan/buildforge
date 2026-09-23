@@ -2,7 +2,7 @@
   "baseline": "8ea3d82",
   "total": 150,
   "batchSize": 7,
-  "nextBatch": 17,
+  "nextBatch": 18,
   "pages": [
     {
       "path": "/wow-forever-warrior-builds",
@@ -2922,7 +2922,7 @@
       "kind": "specBuild",
       "title": "WoW Forever Enhancement Shaman Build",
       "batch": 17,
-      "status": "verified",
+      "status": "deployed",
       "implementation": "Editable allocation, authored playstyle and exact alternative-build differences.",
       "checks": [
         "desktop 1440 screenshot review",
@@ -2934,8 +2934,13 @@
         "local assets including CSS URLs",
         "unit tests and build passed"
       ],
-      "commit": null,
-      "production": null
+      "commit": "8fcc67ae728d348e7f2e68d7e5a6b1a731a19aec",
+      "production": {
+        "http": 200,
+        "intentMarker": true,
+        "metadata": "baseline preserved",
+        "vercel": "success"
+      }
     },
     {
       "path": "/wow-forever-enhancement-shaman-leveling-build",
@@ -2943,7 +2948,7 @@
       "kind": "specLeveling",
       "title": "WoW Forever Enhancement Shaman Leveling Build",
       "batch": 17,
-      "status": "verified",
+      "status": "deployed",
       "implementation": "Specialization starts selected; legal per-level points and next-talent guidance.",
       "checks": [
         "desktop 1440 screenshot review",
@@ -2955,8 +2960,13 @@
         "local assets including CSS URLs",
         "unit tests and build passed"
       ],
-      "commit": null,
-      "production": null
+      "commit": "8fcc67ae728d348e7f2e68d7e5a6b1a731a19aec",
+      "production": {
+        "http": 200,
+        "intentMarker": true,
+        "metadata": "baseline preserved",
+        "vercel": "success"
+      }
     },
     {
       "path": "/wow-forever-restoration-shaman-build",
@@ -2964,7 +2974,7 @@
       "kind": "specBuild",
       "title": "WoW Forever Restoration Shaman Build",
       "batch": 17,
-      "status": "verified",
+      "status": "deployed",
       "implementation": "Editable allocation, authored playstyle and exact alternative-build differences.",
       "checks": [
         "desktop 1440 screenshot review",
@@ -2976,8 +2986,13 @@
         "local assets including CSS URLs",
         "unit tests and build passed"
       ],
-      "commit": null,
-      "production": null
+      "commit": "8fcc67ae728d348e7f2e68d7e5a6b1a731a19aec",
+      "production": {
+        "http": 200,
+        "intentMarker": true,
+        "metadata": "baseline preserved",
+        "vercel": "success"
+      }
     },
     {
       "path": "/wow-forever-restoration-shaman-leveling-build",
@@ -2985,7 +3000,7 @@
       "kind": "specLeveling",
       "title": "WoW Forever Restoration Shaman Leveling Build",
       "batch": 17,
-      "status": "verified",
+      "status": "deployed",
       "implementation": "Specialization starts selected; legal per-level points and next-talent guidance.",
       "checks": [
         "desktop 1440 screenshot review",
@@ -2997,8 +3012,13 @@
         "local assets including CSS URLs",
         "unit tests and build passed"
       ],
-      "commit": null,
-      "production": null
+      "commit": "8fcc67ae728d348e7f2e68d7e5a6b1a731a19aec",
+      "production": {
+        "http": 200,
+        "intentMarker": true,
+        "metadata": "baseline preserved",
+        "vercel": "success"
+      }
     },
     {
       "path": "/wow-forever-shaman-pvp-build",
@@ -3006,7 +3026,7 @@
       "kind": "pvp",
       "title": "WoW Forever Shaman PvP Build",
       "batch": 17,
-      "status": "verified",
+      "status": "deployed",
       "implementation": "PvP route selection, encounter checklist and actual baseline talent differences.",
       "checks": [
         "desktop 1440 screenshot review",
@@ -3018,8 +3038,13 @@
         "local assets including CSS URLs",
         "unit tests and build passed"
       ],
-      "commit": null,
-      "production": null
+      "commit": "8fcc67ae728d348e7f2e68d7e5a6b1a731a19aec",
+      "production": {
+        "http": 200,
+        "intentMarker": true,
+        "metadata": "baseline preserved",
+        "vercel": "success"
+      }
     },
     {
       "path": "/wow-forever-shaman-level-20-build",
@@ -3027,7 +3052,7 @@
       "kind": "levelCap",
       "title": "WoW Forever Shaman Level 20 Build",
       "batch": 17,
-      "status": "verified",
+      "status": "deployed",
       "implementation": "Current planning budget, data limits and comparable routes.",
       "checks": [
         "desktop 1440 screenshot review",
@@ -3039,8 +3064,13 @@
         "local assets including CSS URLs",
         "unit tests and build passed"
       ],
-      "commit": null,
-      "production": null
+      "commit": "8fcc67ae728d348e7f2e68d7e5a6b1a731a19aec",
+      "production": {
+        "http": 200,
+        "intentMarker": true,
+        "metadata": "baseline preserved",
+        "vercel": "success"
+      }
     },
     {
       "path": "/wow-forever-shaman-totem-build",
@@ -3048,8 +3078,34 @@
       "kind": "totem",
       "title": "WoW Forever Shaman Totem Build",
       "batch": 17,
-      "status": "verified",
+      "status": "deployed",
       "implementation": "Totem role planning and data limits using existing authored route.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
+      "commit": "8fcc67ae728d348e7f2e68d7e5a6b1a731a19aec",
+      "production": {
+        "http": 200,
+        "intentMarker": true,
+        "metadata": "baseline preserved",
+        "vercel": "success"
+      }
+    },
+    {
+      "path": "/wow-forever-elemental-vs-enhancement-shaman-leveling",
+      "classId": "shaman",
+      "kind": "comparison",
+      "title": "WoW Forever Elemental vs Enhancement Shaman Leveling",
+      "batch": 18,
+      "status": "verified",
+      "implementation": "Independent route selectors, allocations and exact rank difference table.",
       "checks": [
         "desktop 1440 screenshot review",
         "mobile 390 screenshot review / no document overflow",
@@ -3064,26 +3120,23 @@
       "production": null
     },
     {
-      "path": "/wow-forever-elemental-vs-enhancement-shaman-leveling",
-      "classId": "shaman",
-      "kind": "comparison",
-      "title": "WoW Forever Elemental vs Enhancement Shaman Leveling",
-      "batch": 18,
-      "status": "pending",
-      "implementation": "",
-      "checks": [],
-      "commit": null,
-      "production": null
-    },
-    {
       "path": "/wow-forever-restoration-shaman-healing-build",
       "classId": "shaman",
       "kind": "healing",
       "title": "WoW Forever Restoration Shaman Healing Build",
       "batch": 18,
-      "status": "pending",
-      "implementation": "",
-      "checks": [],
+      "status": "verified",
+      "implementation": "Healing tools and checklist from existing reviewed allocation.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
       "commit": null,
       "production": null
     },
@@ -3093,9 +3146,18 @@
       "kind": "emberville",
       "title": "Emberville Build Planner | BuildForgeTools",
       "batch": 18,
-      "status": "pending",
-      "implementation": "",
-      "checks": [],
+      "status": "verified",
+      "implementation": "Page-specific planning session / direction comparison / class evidence / inheritance workflow.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
       "commit": null,
       "production": null
     },
@@ -3105,9 +3167,18 @@
       "kind": "emberville",
       "title": "Emberville Builds | Build Planner & Ideas",
       "batch": 18,
-      "status": "pending",
-      "implementation": "",
-      "checks": [],
+      "status": "verified",
+      "implementation": "Page-specific planning session / direction comparison / class evidence / inheritance workflow.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
       "commit": null,
       "production": null
     },
@@ -3117,9 +3188,18 @@
       "kind": "emberville",
       "title": "Emberville Classes | Confirmed Systems & Planning",
       "batch": 18,
-      "status": "pending",
-      "implementation": "",
-      "checks": [],
+      "status": "verified",
+      "implementation": "Page-specific planning session / direction comparison / class evidence / inheritance workflow.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
       "commit": null,
       "production": null
     },
@@ -3129,9 +3209,18 @@
       "kind": "emberville",
       "title": "Emberville Skill Inheritance Guide | BuildForgeTools",
       "batch": 18,
-      "status": "pending",
-      "implementation": "",
-      "checks": [],
+      "status": "verified",
+      "implementation": "Page-specific planning session / direction comparison / class evidence / inheritance workflow.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
       "commit": null,
       "production": null
     },
@@ -3141,9 +3230,18 @@
       "kind": "trust",
       "title": "About BuildForgeTools | Game Build Planners & Data",
       "batch": 18,
-      "status": "pending",
-      "implementation": "",
-      "checks": [],
+      "status": "verified",
+      "implementation": "Accessible local topic navigation and task-specific contact/privacy/evidence action.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
       "commit": null,
       "production": null
     },
