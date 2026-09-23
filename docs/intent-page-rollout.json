@@ -2,7 +2,7 @@
   "baseline": "8ea3d82",
   "total": 150,
   "batchSize": 7,
-  "nextBatch": 15,
+  "nextBatch": 16,
   "pages": [
     {
       "path": "/wow-forever-warrior-builds",
@@ -2558,8 +2558,190 @@
       "kind": "specLeveling",
       "title": "WoW Forever Feral Druid Leveling Build",
       "batch": 15,
-      "status": "verified",
+      "status": "deployed",
       "implementation": "Specialization starts selected; legal per-level points and next-talent guidance.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
+      "commit": "644094bc1ee89fe8062042117a8d8d5c506620a8",
+      "production": {
+        "http": 200,
+        "intentMarker": true,
+        "metadata": "baseline preserved",
+        "vercel": "success"
+      }
+    },
+    {
+      "path": "/wow-forever-restoration-druid-build",
+      "classId": "druid",
+      "kind": "specBuild",
+      "title": "WoW Forever Restoration Druid Build",
+      "batch": 15,
+      "status": "deployed",
+      "implementation": "Editable allocation, authored playstyle and exact alternative-build differences.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
+      "commit": "644094bc1ee89fe8062042117a8d8d5c506620a8",
+      "production": {
+        "http": 200,
+        "intentMarker": true,
+        "metadata": "baseline preserved",
+        "vercel": "success"
+      }
+    },
+    {
+      "path": "/wow-forever-restoration-druid-leveling-build",
+      "classId": "druid",
+      "kind": "specLeveling",
+      "title": "WoW Forever Restoration Druid Leveling Build",
+      "batch": 15,
+      "status": "deployed",
+      "implementation": "Specialization starts selected; legal per-level points and next-talent guidance.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
+      "commit": "644094bc1ee89fe8062042117a8d8d5c506620a8",
+      "production": {
+        "http": 200,
+        "intentMarker": true,
+        "metadata": "baseline preserved",
+        "vercel": "success"
+      }
+    },
+    {
+      "path": "/wow-forever-druid-pvp-build",
+      "classId": "druid",
+      "kind": "pvp",
+      "title": "WoW Forever Druid PvP Build",
+      "batch": 15,
+      "status": "deployed",
+      "implementation": "PvP route selection, encounter checklist and actual baseline talent differences.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
+      "commit": "644094bc1ee89fe8062042117a8d8d5c506620a8",
+      "production": {
+        "http": 200,
+        "intentMarker": true,
+        "metadata": "baseline preserved",
+        "vercel": "success"
+      }
+    },
+    {
+      "path": "/wow-forever-druid-level-20-build",
+      "classId": "druid",
+      "kind": "levelCap",
+      "title": "WoW Forever Druid Level 20 Build",
+      "batch": 15,
+      "status": "deployed",
+      "implementation": "Current planning budget, data limits and comparable routes.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
+      "commit": "644094bc1ee89fe8062042117a8d8d5c506620a8",
+      "production": {
+        "http": 200,
+        "intentMarker": true,
+        "metadata": "baseline preserved",
+        "vercel": "success"
+      }
+    },
+    {
+      "path": "/wow-forever-feral-druid-tank-build",
+      "classId": "druid",
+      "kind": "tank",
+      "title": "WoW Forever Feral Druid Tank Build",
+      "batch": 15,
+      "status": "deployed",
+      "implementation": "Tank tool reference and preparation checklist using authored route.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
+      "commit": "644094bc1ee89fe8062042117a8d8d5c506620a8",
+      "production": {
+        "http": 200,
+        "intentMarker": true,
+        "metadata": "baseline preserved",
+        "vercel": "success"
+      }
+    },
+    {
+      "path": "/wow-forever-restoration-druid-healing-build",
+      "classId": "druid",
+      "kind": "healing",
+      "title": "WoW Forever Restoration Druid Healing Build",
+      "batch": 15,
+      "status": "deployed",
+      "implementation": "Healing tools and checklist from existing reviewed allocation.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
+      "commit": "644094bc1ee89fe8062042117a8d8d5c506620a8",
+      "production": {
+        "http": 200,
+        "intentMarker": true,
+        "metadata": "baseline preserved",
+        "vercel": "success"
+      }
+    },
+    {
+      "path": "/wow-forever-balance-vs-feral-druid-leveling",
+      "classId": "druid",
+      "kind": "comparison",
+      "title": "WoW Forever Balance vs Feral Druid Leveling",
+      "batch": 16,
+      "status": "verified",
+      "implementation": "Independent route selectors, allocations and exact rank difference table.",
       "checks": [
         "desktop 1440 screenshot review",
         "mobile 390 screenshot review / no document overflow",
@@ -2574,11 +2756,95 @@
       "production": null
     },
     {
-      "path": "/wow-forever-restoration-druid-build",
-      "classId": "druid",
+      "path": "/shaman",
+      "classId": "shaman",
+      "kind": "calculator",
+      "title": "WoW Forever Shaman Talent Calculator",
+      "batch": 16,
+      "status": "verified",
+      "implementation": "Specialization point counters and direct tree / review-share navigation; existing calculator remains primary.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
+      "commit": null,
+      "production": null
+    },
+    {
+      "path": "/wow-forever-shaman-builds",
+      "classId": "shaman",
+      "kind": "buildsHub",
+      "title": "WoW Forever Shaman Builds",
+      "batch": 16,
+      "status": "verified",
+      "implementation": "Searchable published route directory organized by purpose.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
+      "commit": null,
+      "production": null
+    },
+    {
+      "path": "/wow-forever-shaman-talents",
+      "classId": "shaman",
+      "kind": "talents",
+      "title": "WoW Forever Shaman Talents & Talent Trees",
+      "batch": 16,
+      "status": "verified",
+      "implementation": "Searchable branch/rank evidence records and published editorial build links.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
+      "commit": null,
+      "production": null
+    },
+    {
+      "path": "/wow-forever-shaman-leveling-build",
+      "classId": "shaman",
+      "kind": "leveling",
+      "title": "WoW Forever Shaman Leveling Build",
+      "batch": 16,
+      "status": "verified",
+      "implementation": "Legal level-by-level progression, milestones, next point and exact-prefix calculator link.",
+      "checks": [
+        "desktop 1440 screenshot review",
+        "mobile 390 screenshot review / no document overflow",
+        "baseline title/H1/canonical/robots",
+        "relevant enabled intent marker",
+        "local routes and anchors",
+        "calculator parameters and allocations",
+        "local assets including CSS URLs",
+        "unit tests and build passed"
+      ],
+      "commit": null,
+      "production": null
+    },
+    {
+      "path": "/wow-forever-elemental-shaman-build",
+      "classId": "shaman",
       "kind": "specBuild",
-      "title": "WoW Forever Restoration Druid Build",
-      "batch": 15,
+      "title": "WoW Forever Elemental Shaman Build",
+      "batch": 16,
       "status": "verified",
       "implementation": "Editable allocation, authored playstyle and exact alternative-build differences.",
       "checks": [
@@ -2595,11 +2861,11 @@
       "production": null
     },
     {
-      "path": "/wow-forever-restoration-druid-leveling-build",
-      "classId": "druid",
+      "path": "/wow-forever-elemental-shaman-leveling-build",
+      "classId": "shaman",
       "kind": "specLeveling",
-      "title": "WoW Forever Restoration Druid Leveling Build",
-      "batch": 15,
+      "title": "WoW Forever Elemental Shaman Leveling Build",
+      "batch": 16,
       "status": "verified",
       "implementation": "Specialization starts selected; legal per-level points and next-talent guidance.",
       "checks": [
@@ -2612,174 +2878,6 @@
         "local assets including CSS URLs",
         "unit tests and build passed"
       ],
-      "commit": null,
-      "production": null
-    },
-    {
-      "path": "/wow-forever-druid-pvp-build",
-      "classId": "druid",
-      "kind": "pvp",
-      "title": "WoW Forever Druid PvP Build",
-      "batch": 15,
-      "status": "verified",
-      "implementation": "PvP route selection, encounter checklist and actual baseline talent differences.",
-      "checks": [
-        "desktop 1440 screenshot review",
-        "mobile 390 screenshot review / no document overflow",
-        "baseline title/H1/canonical/robots",
-        "relevant enabled intent marker",
-        "local routes and anchors",
-        "calculator parameters and allocations",
-        "local assets including CSS URLs",
-        "unit tests and build passed"
-      ],
-      "commit": null,
-      "production": null
-    },
-    {
-      "path": "/wow-forever-druid-level-20-build",
-      "classId": "druid",
-      "kind": "levelCap",
-      "title": "WoW Forever Druid Level 20 Build",
-      "batch": 15,
-      "status": "verified",
-      "implementation": "Current planning budget, data limits and comparable routes.",
-      "checks": [
-        "desktop 1440 screenshot review",
-        "mobile 390 screenshot review / no document overflow",
-        "baseline title/H1/canonical/robots",
-        "relevant enabled intent marker",
-        "local routes and anchors",
-        "calculator parameters and allocations",
-        "local assets including CSS URLs",
-        "unit tests and build passed"
-      ],
-      "commit": null,
-      "production": null
-    },
-    {
-      "path": "/wow-forever-feral-druid-tank-build",
-      "classId": "druid",
-      "kind": "tank",
-      "title": "WoW Forever Feral Druid Tank Build",
-      "batch": 15,
-      "status": "verified",
-      "implementation": "Tank tool reference and preparation checklist using authored route.",
-      "checks": [
-        "desktop 1440 screenshot review",
-        "mobile 390 screenshot review / no document overflow",
-        "baseline title/H1/canonical/robots",
-        "relevant enabled intent marker",
-        "local routes and anchors",
-        "calculator parameters and allocations",
-        "local assets including CSS URLs",
-        "unit tests and build passed"
-      ],
-      "commit": null,
-      "production": null
-    },
-    {
-      "path": "/wow-forever-restoration-druid-healing-build",
-      "classId": "druid",
-      "kind": "healing",
-      "title": "WoW Forever Restoration Druid Healing Build",
-      "batch": 15,
-      "status": "verified",
-      "implementation": "Healing tools and checklist from existing reviewed allocation.",
-      "checks": [
-        "desktop 1440 screenshot review",
-        "mobile 390 screenshot review / no document overflow",
-        "baseline title/H1/canonical/robots",
-        "relevant enabled intent marker",
-        "local routes and anchors",
-        "calculator parameters and allocations",
-        "local assets including CSS URLs",
-        "unit tests and build passed"
-      ],
-      "commit": null,
-      "production": null
-    },
-    {
-      "path": "/wow-forever-balance-vs-feral-druid-leveling",
-      "classId": "druid",
-      "kind": "comparison",
-      "title": "WoW Forever Balance vs Feral Druid Leveling",
-      "batch": 16,
-      "status": "pending",
-      "implementation": "",
-      "checks": [],
-      "commit": null,
-      "production": null
-    },
-    {
-      "path": "/shaman",
-      "classId": "shaman",
-      "kind": "calculator",
-      "title": "WoW Forever Shaman Talent Calculator",
-      "batch": 16,
-      "status": "pending",
-      "implementation": "",
-      "checks": [],
-      "commit": null,
-      "production": null
-    },
-    {
-      "path": "/wow-forever-shaman-builds",
-      "classId": "shaman",
-      "kind": "buildsHub",
-      "title": "WoW Forever Shaman Builds",
-      "batch": 16,
-      "status": "pending",
-      "implementation": "",
-      "checks": [],
-      "commit": null,
-      "production": null
-    },
-    {
-      "path": "/wow-forever-shaman-talents",
-      "classId": "shaman",
-      "kind": "talents",
-      "title": "WoW Forever Shaman Talents & Talent Trees",
-      "batch": 16,
-      "status": "pending",
-      "implementation": "",
-      "checks": [],
-      "commit": null,
-      "production": null
-    },
-    {
-      "path": "/wow-forever-shaman-leveling-build",
-      "classId": "shaman",
-      "kind": "leveling",
-      "title": "WoW Forever Shaman Leveling Build",
-      "batch": 16,
-      "status": "pending",
-      "implementation": "",
-      "checks": [],
-      "commit": null,
-      "production": null
-    },
-    {
-      "path": "/wow-forever-elemental-shaman-build",
-      "classId": "shaman",
-      "kind": "specBuild",
-      "title": "WoW Forever Elemental Shaman Build",
-      "batch": 16,
-      "status": "pending",
-      "implementation": "",
-      "checks": [],
-      "commit": null,
-      "production": null
-    },
-    {
-      "path": "/wow-forever-elemental-shaman-leveling-build",
-      "classId": "shaman",
-      "kind": "specLeveling",
-      "title": "WoW Forever Elemental Shaman Leveling Build",
-      "batch": 16,
-      "status": "pending",
-      "implementation": "",
-      "checks": [],
       "commit": null,
       "production": null
     },

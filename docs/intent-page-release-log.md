@@ -115,3 +115,13 @@ Seven pages inspected at 1440×900/390×844, no overflow. Rogue cap shows three 
 - Tank page exposes its Bear toolkit above the checklist; restoration healing has its recovery-oriented notes; PvP keeps Feral's authored form limitations. Cap compares all three real eleven-point allocations.
 - Exact rank gaps are visible, and duplicate allocations are not given invented differences. Build, lint, scope tests and all-150 static audit passed: 105 enabled / 45 frozen, including all 22 Paladin pages.
 
+
+## B16 — reviewed batch
+
+
+### B16 — Druid comparison and Shaman foundations
+- Reviewed all seven pages at 1440×900 and 390×844; no horizontal overflow, readable artwork, distinct comparison/hub/reference/build/progression layouts.
+- General Shaman progression reaches 0/11/0 at Level 20; Elemental reaches 11/0/0. Druid comparison shows distinct Feral and Balance allocations.
+- Shaman calculator: Convection single point → 1/0/0; Enhancement preset → 0/11/0; exact copied ranks shaman-613.5~shaman-614.5~shaman-617.1 with level=20; reset → 0/0/0; no browser console errors.
+- Local build, lint, 15 scope/metadata tests and all-150 static audit pass; 112 active and 38 frozen pages, including all 22 Paladin pages.
+
