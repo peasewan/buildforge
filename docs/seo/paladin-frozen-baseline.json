@@ -1,0 +1,247 @@
+{
+  "commit": "a0d58e98f21c31dfba2e5e834b70bd97d2ed78a8",
+  "pages": [
+    {
+      "path": "/paladin",
+      "title": "WoW Forever Paladin Talent Calculator | Beta Build 69913",
+      "h1": "WoW ForeverPaladin TalentCalculator",
+      "description": "Use the WoW Forever Paladin Talent Calculator to explore the WoW Forever Paladin talent tree, plan all 51 points, and share Holy, Protection, or Retribution builds.",
+      "canonical": "https://buildforgetools.com/paladin",
+      "robots": null,
+      "lastmod": "2026-09-18",
+      "rootSha256": "0f0ef09903234f53f5f9ad7f1b7124eb26b4d55a2b1046d1bf40af1d2978f164",
+      "linksSha256": "cd9a8f65819b529ee966e36976889bfe59477252596ec5f3d357a05477e5d137"
+    },
+    {
+      "path": "/wow-forever-paladin-builds",
+      "title": "WoW Forever Paladin Builds & Talent Calculator | BuildForgeTools",
+      "h1": "WoW Forever Paladin Builds & Talent Calculator",
+      "description": "Explore WoW Forever Paladin builds for Holy, Protection, and Retribution. Plan talents, customize builds, and share your setup with BuildForgeTools.",
+      "canonical": "https://buildforgetools.com/wow-forever-paladin-builds",
+      "robots": null,
+      "lastmod": "2026-09-18",
+      "rootSha256": "aa5042f0e5048e48881ec7f7542703dd4e3d1aedc572ca81c20f7ac8fa7df7c9",
+      "linksSha256": "eb763e61fd53db0fb5627e59b3067172b010b53bf3fd809e05dae23b3a333f2f"
+    },
+    {
+      "path": "/wow-forever-paladin-talents",
+      "title": "WoW Forever Paladin Talent Guide & Build Planner | BuildForgeTools",
+      "h1": "WoW Forever Paladin Talent Guide & Build Planner",
+      "description": "Explore every WoW Forever Paladin talent path for Holy, Protection, and Retribution, then open the talent calculator to create a 51-point build.",
+      "canonical": "https://buildforgetools.com/wow-forever-paladin-talents",
+      "robots": null,
+      "lastmod": "2026-09-18",
+      "rootSha256": "49733b60af924c178edf58560715262bbd9bf57699d3bd57c33ff17a37edcbd6",
+      "linksSha256": "941aba96709141e72f4b2aed4599a7a167b5cb9fe45020e90e20a2f8cdc2b256"
+    },
+    {
+      "path": "/wow-forever-paladin-build",
+      "title": "WoW Forever Paladin Build – Holy Healing 31/20/0 | BuildForgeTools",
+      "h1": "WoW ForeverPaladin Build",
+      "description": "Open a community WoW Forever Holy Paladin build with a 31/20/0 healing talent allocation, then edit and share it in the BuildForge planner.",
+      "canonical": "https://buildforgetools.com/wow-forever-paladin-build",
+      "robots": null,
+      "lastmod": "2026-09-18",
+      "rootSha256": "7c48f5da0cc2c67b4db97ab1f25ac129feda666be2290152df2e692b40ce6529",
+      "linksSha256": "db766e5746f112b9bd0ce3916f56e4be8a2d5f7129da9c8fb227bef8a1d58224"
+    },
+    {
+      "path": "/wow-forever-protection-paladin-build",
+      "title": "WoW Forever Protection Paladin Build | BuildForgeTools",
+      "h1": "WoW ForeverProtection Paladin Build",
+      "description": "Open a community WoW Forever Protection Paladin build with a complete 20/31/0 allocation, then edit and share it in the BuildForge planner.",
+      "canonical": "https://buildforgetools.com/wow-forever-protection-paladin-build",
+      "robots": null,
+      "lastmod": "2026-09-18",
+      "rootSha256": "9f6e4239dbb218fa15c9d831253a218db94b9271fc41d921ac3bfb35e9a8e2f7",
+      "linksSha256": "f05264ba66799da22e7d7d08b86557b59c0c1e4762d006f292fa618e57795077"
+    },
+    {
+      "path": "/wow-forever-retribution-paladin-build",
+      "title": "WoW Forever Retribution Paladin Build | BuildForgeTools",
+      "h1": "WoW ForeverRetribution Paladin Build",
+      "description": "Open a community WoW Forever Retribution Paladin build with a complete 0/20/31 allocation, then edit and share it in the BuildForge planner.",
+      "canonical": "https://buildforgetools.com/wow-forever-retribution-paladin-build",
+      "robots": null,
+      "lastmod": "2026-09-18",
+      "rootSha256": "369a2ceb7c218ad6640061096699f96011b65a76f03b02433a5da8bc7bbc9f25",
+      "linksSha256": "51cfcacaae61fd141b9fbc0c2fa7f08fdfcc3e8e275c7d489e6532e55737cffe"
+    },
+    {
+      "path": "/wow-forever-retribution-paladin-leveling-build",
+      "title": "WoW Forever Retribution Paladin Leveling Build | BuildForgeTools",
+      "h1": "WoW ForeverRetribution Paladin Build",
+      "description": "Open a community WoW Forever Retribution Paladin leveling build with a complete 20/0/31 allocation, then edit and share it in the BuildForge planner.",
+      "canonical": "https://buildforgetools.com/wow-forever-retribution-paladin-leveling-build",
+      "robots": "index, follow",
+      "lastmod": "2026-09-19",
+      "rootSha256": "fa62e53acc683bb1a799d1e5db5feff722466c318154e0035a5e96e0b4dcb47b",
+      "linksSha256": "dcd3e7824feed331f179c7d61297000ee672723a3578c89ffeaa5c54c7fde822"
+    },
+    {
+      "path": "/wow-forever-paladin-leveling-build",
+      "title": "WoW Forever Paladin Leveling Build | BuildForgeTools",
+      "h1": "WoW Forever Paladin Leveling Build",
+      "description": "Explore a beginner-friendly WoW Forever Paladin leveling build, follow a flexible talent path from level 10 onward, and customize it in the talent calculator.",
+      "canonical": "https://buildforgetools.com/wow-forever-paladin-leveling-build",
+      "robots": "index, follow",
+      "lastmod": "2026-09-19",
+      "rootSha256": "6e04be1c006542dc752d99e194c930de0825e15588570fa0a78ce8b1738b7b62",
+      "linksSha256": "51673776a36f99f54f6b0d76625833bed90c79ff95717ef90ca0dc53cb44f953"
+    },
+    {
+      "path": "/wow-forever-paladin-pvp-build",
+      "title": "WoW Forever Paladin PvP Build | BuildForgeTools",
+      "h1": "WoW Forever Paladin PvP Build",
+      "description": "Plan a flexible WoW Forever Paladin PvP build for pressure, utility, and survivability, then compare Retribution, Holy, and hybrid talent variants.",
+      "canonical": "https://buildforgetools.com/wow-forever-paladin-pvp-build",
+      "robots": null,
+      "lastmod": "2026-09-18",
+      "rootSha256": "e3d0f5687e09e269d4168ffeeca6c2ae2c8f4d3883412715e17c05015a0f431e",
+      "linksSha256": "96a597910c8fd4a04024e12e4e98ed1c54c428f7c57e6f717a0d223a14e1ee34"
+    },
+    {
+      "path": "/wow-forever-paladin-raid-build",
+      "title": "WoW Forever Paladin Raid Build | BuildForgeTools",
+      "h1": "WoW Forever Paladin Raid Build",
+      "description": "Explore WoW Forever Paladin raid build roles for Holy healing, Protection tanking, and Retribution support, then plan all 51 talent points.",
+      "canonical": "https://buildforgetools.com/wow-forever-paladin-raid-build",
+      "robots": null,
+      "lastmod": "2026-09-18",
+      "rootSha256": "196f6f2831a5249e33c8a0ae49b5453f4419d9e2b495471ef673576a9f01ac05",
+      "linksSha256": "831ead509ef0b1ebb6b200719bd63d90799d78e80bb7e24b6573d72ce43a3912"
+    },
+    {
+      "path": "/wow-forever-protection-paladin-dungeon-build",
+      "title": "WoW Forever Protection Paladin Dungeon Tank Build | BuildForgeTools",
+      "h1": "WoW Forever Protection Paladin Dungeon Tank Build",
+      "description": "Preview a defensive WoW Forever Protection Paladin dungeon tank build, inspect the Protection talent tree, and edit the 20/31/0 setup.",
+      "canonical": "https://buildforgetools.com/wow-forever-protection-paladin-dungeon-build",
+      "robots": null,
+      "lastmod": "2026-09-18",
+      "rootSha256": "c98d987896426fa548cfe94adeeacafe50f16ab32efa65ee76dbaefe01a70721",
+      "linksSha256": "4fdbcb274dc4d5f625c7ef7222a2e4b1d055feffb0f05a65d145803fa415e099"
+    },
+    {
+      "path": "/wow-forever-retribution-paladin-builds",
+      "title": "WoW Forever Retribution Paladin Builds | Damage Talent Planner",
+      "h1": "WoW Forever Retribution Paladin Builds",
+      "description": "Explore WoW Forever Retribution Paladin damage builds for leveling, PvP, and group content, then plan the talents in the BuildForgeTools planner.",
+      "canonical": "https://buildforgetools.com/wow-forever-retribution-paladin-builds",
+      "robots": null,
+      "lastmod": "2026-09-18",
+      "rootSha256": "9e07c6debd77fd40e03fe54377ba28eb2daf7a894c07a10dfeaf4bc9bc3ee859",
+      "linksSha256": "65a760e3f7693ba8f3a42610f75f3603f881f218ca0a0bdbb07a1d56d4e4417f"
+    },
+    {
+      "path": "/wow-forever-protection-paladin-builds",
+      "title": "WoW Forever Protection Paladin Builds | Tank Talent Planner",
+      "h1": "WoW Forever Protection Paladin Builds",
+      "description": "Explore WoW Forever Protection Paladin tank builds, leveling paths, dungeon setups, and talents in the BuildForgeTools planner.",
+      "canonical": "https://buildforgetools.com/wow-forever-protection-paladin-builds",
+      "robots": null,
+      "lastmod": "2026-09-18",
+      "rootSha256": "31dc1e2d855550f00f7a6959b2514fecccc04b156e7d5aa93c3e55547a25557d",
+      "linksSha256": "f436651b9b10e68999afc133090339d760ace5c40f3c9410ab4d142bd05c6ac8"
+    },
+    {
+      "path": "/wow-forever-protection-paladin-leveling-build",
+      "title": "WoW Forever Protection Paladin Leveling Build | BuildForgeTools",
+      "h1": "WoW Forever Protection Paladin Leveling Build",
+      "description": "Level a WoW Forever Protection Paladin with a durable solo setup. Follow the talent path, cut downtime between fights, and carry it into dungeon tanking.",
+      "canonical": "https://buildforgetools.com/wow-forever-protection-paladin-leveling-build",
+      "robots": "index, follow",
+      "lastmod": "2026-09-19",
+      "rootSha256": "d632121ee566868f9f09acc865cb5dc420cd5368f7276b5fc145838900055c23",
+      "linksSha256": "416db225cedb8ed36f6fade20cdd7a38c90c5b7b60dcb94002c1fd04be3cfe13"
+    },
+    {
+      "path": "/wow-forever-protection-paladin-pvp-build",
+      "title": "WoW Forever Protection Paladin PvP Build | BuildForgeTools",
+      "h1": "WoW Forever Protection Paladin PvP Build",
+      "description": "Plan a defensive WoW Forever Protection Paladin PvP build for objectives, survivability, and team utility, then edit the 20/31/0 reference setup.",
+      "canonical": "https://buildforgetools.com/wow-forever-protection-paladin-pvp-build",
+      "robots": null,
+      "lastmod": "2026-09-22",
+      "rootSha256": "84acc1226ada11ed674e75aa82f4c4d02a44421acdf7e506099bd73fae1e195b",
+      "linksSha256": "9f69789b96b5e2ff0ef33f1a10ea9f35dc18456209e33023b3d835779f30b6c2"
+    },
+    {
+      "path": "/wow-forever-retribution-paladin-pvp-build",
+      "title": "WoW Forever Retribution Paladin PvP Build | BuildForgeTools",
+      "h1": "WoW Forever Retribution Paladin PvP Build",
+      "description": "Plan a WoW Forever Retribution Paladin PvP build around burst windows and utility. Inspect the 0/20/31 allocation and adjust it for your matchups.",
+      "canonical": "https://buildforgetools.com/wow-forever-retribution-paladin-pvp-build",
+      "robots": null,
+      "lastmod": "2026-09-18",
+      "rootSha256": "47114c1a7ad2bda7a90c2f7dd66ed0b3bb1e111cfa1627d8dc8518124fd08168",
+      "linksSha256": "49855240566f700530915c39976365b30d63ce5f44c76ee8715fabfcea160144"
+    },
+    {
+      "path": "/wow-forever-holy-paladin-pvp-build",
+      "title": "WoW Forever Holy Paladin PvP Build | BuildForgeTools",
+      "h1": "WoW Forever Holy Paladin PvP Build",
+      "description": "Plan a support-oriented WoW Forever Holy Paladin PvP setup. Start from the 31/20/0 healing allocation and adjust it for arena and battleground play.",
+      "canonical": "https://buildforgetools.com/wow-forever-holy-paladin-pvp-build",
+      "robots": null,
+      "lastmod": "2026-09-18",
+      "rootSha256": "1ac67fd0023cfa991f4e8f82ff793df7c6a42667bbe5ba6dfe9c790a1d9d75f7",
+      "linksSha256": "5dc2e2b81bae9fe12efa2cdb59357f5f52d57f475698eaa7c1619a1bb6f6b53b"
+    },
+    {
+      "path": "/wow-forever-holy-paladin-talents",
+      "title": "WoW Forever Holy Paladin Talents | Talent Tree",
+      "h1": "WoW Forever Holy Paladin Talents",
+      "description": "Explore the WoW Forever Holy Paladin talent tree, review the healing and support talents, and plan your own allocation in the talent calculator.",
+      "canonical": "https://buildforgetools.com/wow-forever-holy-paladin-talents",
+      "robots": null,
+      "lastmod": "2026-09-18",
+      "rootSha256": "b13285564802cc6504a1075dcc497d81675e790c908dcb4a3d3debf313bf4d80",
+      "linksSha256": "cab19c76032b83f3a17a5346d37914a4d5d6b3a5db3e62f365ff1b4db8ae45f1"
+    },
+    {
+      "path": "/wow-forever-retribution-paladin-talents",
+      "title": "WoW Forever Retribution Paladin Talents | Talent Tree",
+      "h1": "WoW Forever Retribution Paladin Talents",
+      "description": "Explore the WoW Forever Retribution Paladin talent tree, review the damage and judgement talents, and plan your own build in the talent calculator.",
+      "canonical": "https://buildforgetools.com/wow-forever-retribution-paladin-talents",
+      "robots": null,
+      "lastmod": "2026-09-18",
+      "rootSha256": "cc01a9502e05546e6db209cc1ee620f2e13dc135f5ed16a9667d173bd1d2ee69",
+      "linksSha256": "0c8e9f9329c282265885dc845932056e97afe7c5b4df28c69fd699a83dca1f4d"
+    },
+    {
+      "path": "/wow-forever-protection-paladin-talents",
+      "title": "WoW Forever Protection Paladin Talents | Talent Tree",
+      "h1": "WoW Forever Protection Paladin Talents",
+      "description": "Explore the WoW Forever Protection Paladin talent tree, review key tank talents, and create a custom build in the talent calculator.",
+      "canonical": "https://buildforgetools.com/wow-forever-protection-paladin-talents",
+      "robots": null,
+      "lastmod": "2026-09-18",
+      "rootSha256": "426a62fd296afaed9cf792cab204bc02c720ef734016da099467f0f73751047e",
+      "linksSha256": "50cd1687c8dacca34b88e661ecbeefbe62a25bf78553aa50c3a90d128dbe828f"
+    },
+    {
+      "path": "/wow-forever-paladin-beta-talent-changes",
+      "title": "WoW Forever Paladin Beta Talent Changes | BuildForgeTools",
+      "h1": "WoW Forever Paladin Beta Talent Changes",
+      "description": "Track every WoW Forever Paladin talent change discovered in the Beta, including exact build-to-build diffs and an archived demo comparison.",
+      "canonical": "https://buildforgetools.com/wow-forever-paladin-beta-talent-changes",
+      "robots": "index, follow",
+      "lastmod": "2026-09-18",
+      "rootSha256": "784960079c5a082d21814ad191776be45b2209569c8914cc7baa46b3e3e0be4b",
+      "linksSha256": "2d491963eb92b47095396eec7ed5f6dedfc7da120ace102729bf0b11d6445f43"
+    },
+    {
+      "path": "/wow-forever-paladin-abilities",
+      "title": "WoW Forever Paladin Abilities & Spellbook | BuildForgeTools",
+      "h1": "WoW Forever Paladin Abilities & Spellbook",
+      "description": "Browse 45 WoW Forever Paladin abilities, skills, and spells by specialization and trainer level, with Beta client build provenance and change labels.",
+      "canonical": "https://buildforgetools.com/wow-forever-paladin-abilities",
+      "robots": "index, follow",
+      "lastmod": "2026-09-21",
+      "rootSha256": "70aaab33ec22848325d1e01c24ca6f5819f66137949819eccd22497023093905",
+      "linksSha256": "2e89cec5f7350a622499decd6276be35422ffa37efe133664b3f541b31cd6d3b"
+    }
+  ]
+}
