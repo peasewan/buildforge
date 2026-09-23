@@ -225,6 +225,7 @@
   .intent-experience .rs-pvp-board .rs-options button { flex: 1 1 130px; }
   .intent-experience :is(.rs-pvp-details, .rs-dungeon-details, .rs-tank-details, .rs-healing-details, .rs-pet-details, .rs-totem-details) { display: grid; grid-template-columns: minmax(0, 1fr); }
   .intent-experience :is(.rs-pvp-details, .rs-dungeon-details, .rs-tank-details, .rs-healing-details, .rs-pet-details, .rs-totem-details) > * { grid-column: 1; grid-row: auto; }
+  .intent-experience :is(.rs-pvp-details, .rs-dungeon-details, .rs-tank-details, .rs-healing-details, .rs-pet-details) > :is(.rs-evidence, .rs-role-support, .rs-route-picker) { grid-column: 1; grid-row: auto; }
   .intent-experience .rs-options button { flex: 1 1 130px; }
   .intent-experience .rs-tank-ledger .rs-options { grid-template-columns: minmax(0, 1fr); }
   .intent-experience .rs-first::before { inset: 40% 0 0 25%; }
