@@ -107,3 +107,11 @@ Seven pages inspected at 1440×900/390×844, no overflow. Rogue cap shows three 
 - Calculator: Improved Wrath single point -> 1/0/0; Feral preset loads exact three-node eleven-point build; Review & share, copied rank URL and reset all pass. No browser errors.
 - Build, lint, scope tests and all-150 audit passed: 98 enabled, 52 frozen including 22 protected Paladin pages.
 
+
+## B15 — reviewed batch
+
+
+- Seven Druid pages reviewed at 1440×900 and 390×844 without overflow. Feral and Restoration progression reach the correct 0/11/0 and 0/0/11 Level 20 endpoints.
+- Tank page exposes its Bear toolkit above the checklist; restoration healing has its recovery-oriented notes; PvP keeps Feral's authored form limitations. Cap compares all three real eleven-point allocations.
+- Exact rank gaps are visible, and duplicate allocations are not given invented differences. Build, lint, scope tests and all-150 static audit passed: 105 enabled / 45 frozen, including all 22 Paladin pages.
+
