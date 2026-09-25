@@ -184,17 +184,17 @@ it.each([
   {
     rankText: '',
     description: 'Recorded general effect.',
-    expected: 'Recorded general effect.',
+    expected: 'General description (not rank-specific): Recorded general effect.',
   },
   {
     rankText: ' \n ',
     description: 'Recorded general effect.',
-    expected: 'Recorded general effect.',
+    expected: 'General description (not rank-specific): Recorded general effect.',
   },
   {
     rankText: undefined,
     description: 'Recorded general effect.',
-    expected: 'Recorded general effect.',
+    expected: 'General description (not rank-specific): Recorded general effect.',
   },
   {
     rankText: '',
