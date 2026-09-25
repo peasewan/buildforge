@@ -432,7 +432,6 @@ function TalentRecord({
       <div className="ix-record-facts">
         <span>{t.requiredTreePoints} earlier tree points</span>
         <span>Client {t.verifiedThroughBuild}</span>
-        <span>Change: {t.changeStatus}</span>
       </div>
       {t.prerequisite?.length ? (
         <p>
@@ -446,8 +445,23 @@ function TalentRecord({
           . Required rank: derived assumption.
         </p>
       ) : null}
+      {used.length > 0 && (
+        <div className="ix-editorial-impact" data-editorial-usage>
+          <h4>Used in {used.length} published editorial builds</h4>
+          <p>Editorial examples, not player popularity. Some routes reuse the same allocation.</p>
+          <ul>
+            {used.map((build) => (
+              <li key={build.id}>
+                <a href={build.href}>{build.title}</a>
+                <span>Rank {build.build[t.id]}/{t.maxRank} · Level {build.level} · {build.role}</span>
+                {build.keyTalentIds.includes(t.id) && <span>Key talent in this editorial route</span>}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
       <details>
-        <summary>Sources &amp; {used.length} editorial build records</summary>
+        <summary>Sources</summary>
         <ul>
           {t.sources.map((s) => (
             <li key={s.url}>
@@ -457,23 +471,6 @@ function TalentRecord({
             </li>
           ))}
         </ul>
-        {used.length ? (
-          <>
-            <p className="ix-note">
-              Published editorial examples, including reused allocations. These
-              are not player popularity statistics.
-            </p>
-            <ul>
-              {used.map((b) => (
-                <li key={b.id}>
-                  <a href={b.href}>{b.title}</a>
-                </li>
-              ))}
-            </ul>
-          </>
-        ) : (
-          <p>No published example currently selects this talent.</p>
-        )}
       </details>
     </article>
   )
@@ -517,6 +514,7 @@ function TalentReference({ classDef: def, page }: Props) {
         {talents.length} matching talents · positions and ranks carry field
         evidence; tooltip gaps stay visible.
       </p>
+      <p className="ix-note">No reviewed previous client-build snapshot is available for this catalog, so no talent change since a prior Beta build is claimed here.</p>
       {def.branches
         .filter(
           (b) => unallocatable.has(b) && (branch === 'all' || b === branch),

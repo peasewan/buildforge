@@ -385,6 +385,42 @@ it('mentions the verified build only once in the new header', () => {
   ).toHaveLength(2)
 })
 
+it('shows exact editorial talent use without presenting it as player popularity', () => {
+  const { container } = render(
+    <ClassIntentExperience
+      classDef={warriorClass}
+      page={page('wow-forever-warrior-talents')}
+    />,
+  )
+  const record = (name: string) => [...container.querySelectorAll('[data-testid="talent-record"]')]
+    .find((candidate) => candidate.querySelector('h3')?.textContent === name)
+
+  const angerUsage = record('Anger Management')?.querySelector('[data-editorial-usage]')
+  expect(angerUsage).toBeTruthy()
+  expect(angerUsage?.closest('details')).toBeNull()
+  expect(angerUsage?.textContent).toContain('Editorial examples, not player popularity')
+  const armsRoute = angerUsage?.querySelector('a[href="/wow-forever-arms-warrior-build"]')?.closest('li')
+  expect(armsRoute?.textContent).toContain('Rank 1/1')
+  expect(armsRoute?.textContent).toContain('Level 20')
+  expect(armsRoute?.textContent).toContain('Weapon damage and stance control')
+  expect(armsRoute?.textContent).toContain('Key talent in this editorial route')
+
+  const rendRoute = record('Improved Rend')?.querySelector('[data-editorial-usage] a[href="/wow-forever-arms-warrior-build"]')?.closest('li')
+  expect(rendRoute?.textContent).toContain('Rank 3/3')
+  expect(rendRoute?.textContent).not.toContain('Key talent in this editorial route')
+})
+
+it('does not present source change labels as a verified client-build diff', () => {
+  const { container } = render(
+    <ClassIntentExperience
+      classDef={warriorClass}
+      page={page('wow-forever-warrior-talents')}
+    />,
+  )
+  expect(container.querySelector('.ix-reference')?.textContent).toContain('No reviewed previous client-build snapshot')
+  expect(container.querySelector('[data-testid="talent-record"] .ix-record-facts')?.textContent).not.toContain('Change:')
+})
+
 it('keeps specialization and playstyle discovery gated and search interactive', () => {
   const hub = mageClass.pages.find(p => p.kind === 'buildsHub')!
   const { container } = render(<ClassIntentExperience classDef={mageClass} page={hub} />)
