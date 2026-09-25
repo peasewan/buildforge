@@ -125,6 +125,41 @@ it('shows selected pet-support ranks without inventing a pet-family dataset', ()
   expect(screen.getByRole('link', { name: 'Edit in Calculator' })).toBeTruthy()
 })
 
+it('distinguishes verified talent records from unavailable and datamined rank tooltips', () => {
+  const { container } = render(
+    <PetPlanner
+      classDef={warlockClass}
+      page={page(warlockClass, 'wow-forever-warlock-pet-build')}
+    />,
+  )
+  const rows = Array.from(container.querySelectorAll('.rs-evidence li'))
+  const row = (name: string) => rows.find((item) => item.querySelector('strong')?.textContent?.includes(name))
+  expect(row('Improved Voidwalker')?.querySelector('small')?.textContent)
+    .toBe('Talent record: Client verified · Rank tooltip: Unavailable')
+  expect(row('Improved Voidwalker')?.querySelector('p')?.textContent)
+    .toBe('General description (not rank-specific): Exact text for this rank is not available in the reviewed client transcription.')
+  expect(row('Fel Domination')?.querySelector('small')?.textContent)
+    .toBe('Talent record: Client verified · Rank tooltip: Client datamined')
+  expect(row('Fel Domination')?.querySelector('p')?.textContent)
+    .toBe('Your next Imp, Voidwalker, Succubus, Incubus, or Felhunter Summon spell has its casting time reduced by 5.5 sec and its Mana cost reduced by 50%.')
+})
+
+it('marks an existing rank text unverified when its field evidence is unknown', () => {
+  const talents = warlockClass.talents.map((talent) => talent.name === 'Fel Domination'
+    ? { ...talent, fieldEvidence: { ...talent.fieldEvidence, rankDescriptions: 'unknown' as const } }
+    : talent)
+  const { container } = render(
+    <PetPlanner
+      classDef={{ ...warlockClass, talents }}
+      page={page(warlockClass, 'wow-forever-warlock-pet-build')}
+    />,
+  )
+  const row = Array.from(container.querySelectorAll('.rs-evidence li'))
+    .find((item) => item.querySelector('strong')?.textContent?.includes('Fel Domination'))
+  expect(row?.querySelector('small')?.textContent)
+    .toBe('Talent record: Client verified · Rank tooltip: Unverified')
+})
+
 it('shows totem talent coverage and marks spell loadout as unverified', () => {
   const { container } = render(
     <TotemPlanner

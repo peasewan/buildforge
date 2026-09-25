@@ -3,6 +3,7 @@ import { ArrowRight, Check, Compass, HeartPulse, PawPrint, Shield, Swords, Waypo
 import type { ClassBuild, ClassDefinition, ClassPageDefinition, ClassTalent } from '../lib/classPage'
 import { classPlannerHref, publishedClassPages } from '../lib/classPage'
 import { encodePlannerBuild } from '../lib/talentPlanner'
+import { EVIDENCE_STATUS } from '../data/verification'
 import { diffBuilds } from './buildExperience'
 
 export type RoleSurfaceProps = { classDef: ClassDefinition; page: ClassPageDefinition }
@@ -84,14 +85,24 @@ function TalentInventory({ def, build, heading = 'Selected talent ranks', filter
         <ul>
           {talents.map((talent) => {
             const rank = build.build[talent.id] ?? 0
-            const description = talent.rankDescriptions?.[rank - 1]?.trim() || talent.description?.trim()
+            const rankDescription = talent.rankDescriptions?.[rank - 1]?.trim()
+            const description = rankDescription || talent.description?.trim()
+            const tooltipStatus = talent.fieldEvidence.rankDescriptions
+            const tooltipLabel = !rankDescription
+              ? 'Unavailable'
+              : tooltipStatus && tooltipStatus !== 'unknown'
+                ? EVIDENCE_STATUS[tooltipStatus].label
+                : 'Unverified'
             return (
               <li key={talent.id}>
                 {talent.icon && <img src={talent.icon} alt="" loading="lazy" />}
                 <div>
                   <strong>{talent.name} <span>{rank}/{talent.maxRank}</span></strong>
-                  <p>{description || 'A verified effect description for this rank is not available.'}</p>
-                  <small>{talent.verificationStatus.replace('_', ' ')} · client {talent.verifiedThroughBuild}</small>
+                  <p>{rankDescription ? rankDescription : description
+                    ? `General description (not rank-specific): ${description}`
+                    : 'A verified effect description for this rank is not available.'}</p>
+                  <small>Talent record: {EVIDENCE_STATUS[talent.verificationStatus].label} · Rank tooltip: {tooltipLabel}</small>
+                  <small>Client build {talent.verifiedThroughBuild}</small>
                 </div>
               </li>
             )
