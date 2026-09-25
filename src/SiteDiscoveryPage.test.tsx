@@ -7,6 +7,30 @@ import { PUBLISHED_CLASSES } from './data/classes'
 import { pageForPath } from './lib/routes'
 
 describe('discovery rendering and artifacts', () => {
+  it('links directly to the Paladin calculator and builds from the first WoW card', () => {
+    const doc = new DOMParser().parseFromString(renderToStaticMarkup(<AppRoute pathname="/" />), 'text/html')
+    const wowCard = doc.querySelector('.sd-games .sd-wow')
+    expect(wowCard).not.toBeNull()
+    const featured = wowCard!.querySelector('nav[aria-label="Featured Paladin tools"]')
+    expect(featured).not.toBeNull()
+    expect(featured!.querySelector('a[href="/paladin"]')?.textContent).toContain('WoW Forever Paladin Talent Calculator')
+    expect(featured!.querySelector('a[href="/wow-forever-paladin-builds"]')?.textContent).toContain('Paladin Builds')
+    expect(featured!.compareDocumentPosition(wowCard!.querySelector('.sd-primary')!) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
+  })
+  it('places a contextual Paladin builds hub link before the playstyle directory', () => {
+    const doc = new DOMParser().parseFromString(renderToStaticMarkup(<AppRoute pathname="/wow-forever-builds" />), 'text/html')
+    const featured = doc.querySelector('.sd-paladin-hub a[href="/wow-forever-paladin-builds"]')
+    const intentNav = doc.querySelector('.sd-intent-nav')
+    expect(featured?.textContent).toContain('Paladin Builds')
+    expect(featured?.compareDocumentPosition(intentNav!) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
+  })
+  it('dates the edited discovery pages while retaining the classes date', () => {
+    const sitemap = new DOMParser().parseFromString(readFileSync('public/sitemap.xml', 'utf8'), 'application/xml')
+    const date = (path: string) => [...sitemap.querySelectorAll('url')].find(url => url.querySelector('loc')?.textContent === `https://buildforgetools.com${path}`)?.querySelector('lastmod')?.textContent
+    expect(date('/')).toBe('2026-09-25')
+    expect(date('/wow-forever-builds')).toBe('2026-09-25')
+    expect(date('/wow-forever-classes')).toBe('2026-09-23')
+  })
   it.each(DISCOVERY_PAGES)('serves $path with matching shell and browser metadata', page => {
     const file = page.path === '/' ? 'index.html' : `${page.path.slice(1)}/index.html`
     const shell = new DOMParser().parseFromString(readFileSync(file, 'utf8'), 'text/html')
