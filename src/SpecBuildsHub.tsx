@@ -5,6 +5,7 @@ import type { Branch } from './lib/build'
 import { track } from './lib/analytics'
 import SiteFooter from './SiteFooter'
 import BetaDataStatus from './BetaDataStatus'
+import { betaLevelingPlannerHref, betaLevelingSnapshot } from './data/levelingBeta'
 
 const specIcons: Record<Branch, React.ReactNode> = {
   holy: <Heart size={15} />,
@@ -20,6 +21,7 @@ const heroIcons: Record<Branch, React.ReactNode> = {
 
 export default function SpecBuildsHub({ spec }: { spec: Branch }) {
   const hub = specBuildsHubBySpec(spec)
+  const betaStart = spec === 'protection' ? betaLevelingSnapshot('protection-leveling') : null
   // The event name is per specialization so the existing protection_hub_click history stays continuous.
   const link = (placement: string) => (href: string) => () => track(`${spec}_hub_click`, { spec, placement, destination: href })
 
@@ -44,6 +46,21 @@ export default function SpecBuildsHub({ spec }: { spec: Branch }) {
       </section>
 
       <BetaDataStatus />
+
+      {betaStart && <section className="spec-beta-start shell" aria-label="Current Beta Protection starting route">
+        <div>
+          <div className="eyebrow">Current Beta Start · Community recommendation</div>
+          <h2>Start with the Level {betaStart.current.level} Protection route</h2>
+          <p>{betaStart.current.note}</p>
+          <small>The point allocation is editorial guidance; talent names and positions are checked against the Beta client. The 51-point featured build below is a longer-term example.</small>
+        </div>
+        <div className="spec-beta-start-actions">
+          <strong>{betaStart.current.allocation}</strong>
+          <span>{betaStart.current.points} points at Level {betaStart.current.level}</span>
+          <a href={betaLevelingPlannerHref('protection-leveling')} className="button primary" onClick={link('beta-start')(betaLevelingPlannerHref('protection-leveling'))}>Load in Talent Calculator <ArrowRight size={16} /></a>
+          <a href="/wow-forever-protection-paladin-leveling-build" onClick={link('beta-leveling')('/wow-forever-protection-paladin-leveling-build')}>See the level-by-level route <ArrowRight size={15} /></a>
+        </div>
+      </section>}
 
       <section className="spec-feature shell" id="featured-build">
         <header className="hub-section-heading"><div className="eyebrow">Featured Build</div><h2>{hub.featured.title}</h2><p>{hub.featured.description}</p></header>

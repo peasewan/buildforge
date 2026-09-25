@@ -13,6 +13,7 @@ import { hunterClassFixture } from '../data/fixtures/hunterClass.fixture'
 import { publishRequirementsFor, satisfiedRequirements, type ClassPageDefinition } from './classPage'
 import { MAGE_BRANCHES } from '../data/mageTalents'
 import { escapeHtml } from './html'
+import { betaLevelingPlannerHref } from '../data/levelingBeta'
 
 const publishedMagePages = (() => {
   const satisfied = satisfiedRequirements(mageClass)
@@ -139,6 +140,15 @@ describe('prerender generation', () => {
     const html = renderSpecHubPrerender(hub.spec)
 
     for (const href of specHubHrefs(hub)) expect(html).toContain(`href="${href}"`)
+  })
+
+  it('renders the current Protection Beta route and direct calculator link for crawlers', () => {
+    const html = renderSpecHubPrerender('protection')
+    expect(html).toContain('Level 20')
+    expect(html).toContain('2/9/0')
+    expect(html).toContain(`href="${betaLevelingPlannerHref('protection-leveling')}"`)
+    expect(html).toContain('href="/wow-forever-protection-paladin-leveling-build"')
+    expect(renderSpecHubPrerender('retribution')).not.toContain('2/9/0')
   })
 
   it('carries the landing page title as its only h1', () => {

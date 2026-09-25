@@ -247,6 +247,10 @@ export function renderSpecHubPrerender(spec: Branch): string {
     <p>${escapeHtml(hub.intro)}</p>
   </article>
   ${renderBetaStatusPrerender()}
+  ${spec === 'protection' ? (() => {
+    const snapshot = betaLevelingSnapshot('protection-leveling')
+    return `<section aria-label="Current Beta Protection starting route"><h2>Start with the Level ${snapshot.current.level} Protection route</h2><p>${escapeHtml(snapshot.current.note)}</p><p>Community recommendation · ${snapshot.current.points} points at Level ${snapshot.current.level} · ${escapeHtml(snapshot.current.allocation)}. Talent names and positions are checked against the Beta client; the 51-point featured build is a longer-term example.</p><p>${link(betaLevelingPlannerHref('protection-leveling'), 'Load in Talent Calculator')} · ${link('/wow-forever-protection-paladin-leveling-build', 'See the level-by-level route')}</p></section>`
+  })() : ''}
   <section><h2>${label} Build Types</h2>${linkList(buildTypes)}</section>
   ${hub.editorialSections.map((section) => `<section><h2>${escapeHtml(section.heading)}</h2>${section.paragraphs.map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join('')}</section>`).join('\n  ')}
   <section><h2>${label} Paladin Talents</h2>${linkList(hub.talents)}</section>

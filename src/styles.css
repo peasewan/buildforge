@@ -400,6 +400,16 @@ footer { padding: 42px 0; border-top: 1px solid rgba(217,164,65,.15); background
 .spec-hub-hero-inner > p { max-width: 650px; margin: 24px 0 10px; color: #d0d2d6; font: 500 17px/1.7 Cinzel, serif; }
 .spec-hub-hero-inner > span { display: block; margin-bottom: 30px; color: #858c97; font-size: 13px; }
 .spec-feature { padding-top: 105px; padding-bottom: 110px; }
+.spec-beta-start { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 32px; margin-top: 32px; padding: 28px 34px; border: 1px solid rgba(217,164,65,.34); border-radius: 15px; background: radial-gradient(circle at 8% 50%, rgba(217,164,65,.14), transparent 45%), #11151d; }
+.spec-beta-start h2 { margin: 9px 0 10px; color: #ffe8a3; font: 600 clamp(22px,3vw,32px) Cinzel,serif; }
+.spec-beta-start p { max-width: 670px; margin: 0 0 12px; color: #d0d2d6; font-size: 13px; line-height: 1.65; }
+.spec-beta-start small { display: block; max-width: 700px; color: #969da7; font-size: 11px; line-height: 1.55; }
+.spec-beta-start-actions { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+.spec-beta-start-actions strong { color: #f4ca68; font: 600 28px Cinzel,serif; }
+.spec-beta-start-actions span { color: #aeb4bd; font-size: 11px; }
+.spec-beta-start-actions .button { white-space: nowrap; }
+.spec-beta-start-actions > a:last-child { display: inline-flex; align-items: center; gap: 6px; color: #d9b45d; font-size: 11px; }
+@media (max-width: 760px) { .spec-beta-start { grid-template-columns: 1fr; margin-inline: 16px; padding: 23px 20px; }.spec-beta-start-actions .button { white-space: normal; } }
 .spec-feature > article { display: grid; grid-template-columns: 110px 1fr auto; align-items: center; gap: 34px; padding: 38px 42px; border: 1px solid rgba(217,164,65,.3); border-radius: 15px; background: radial-gradient(circle at 8% 50%, rgba(217,164,65,.13), transparent 31%), #11151d; }
 .spec-feature-icon { width: 86px; height: 86px; display: grid; place-items: center; border: 1px solid rgba(217,164,65,.35); border-radius: 50%; color: #e0b95a; background: rgba(217,164,65,.07); }
 .spec-feature dl { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 0; }
