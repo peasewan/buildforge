@@ -47,6 +47,12 @@ describe('rendered SEO release gate', () => {
     const input = fixture(); input.requirements['/guide'] = { selector: '.ix-progression', hub: '/hub' }
     expect(errors(input)).toContain('primary module'); expect(errors(input)).toContain('class hub')
   })
+  it('rejects an indexable page whose promised primary module is unavailable', () => {
+    const input = fixture()
+    input.requirements['/guide'] = { selector: '.ix-progression', unavailableText: ['A reviewed point-by-point route is not available yet.'] }
+    input.pages['/guide'] = input.pages['/guide'].replace('Distinct content /guide', 'A reviewed point-by-point route is not available yet.')
+    expect(errors(input)).toContain('/guide: unavailable primary module')
+  })
   it('requires the current intent shell on migrated class pages', () => {
     const input = fixture()
     input.requirements['/guide'] = { selector: '.ix-progression', kind: 'specLeveling', intentShell: true }
@@ -80,10 +86,10 @@ describe('rendered SEO release gate', () => {
     input.pages['/unexpected'] = html('/unexpected', '')
     expect(errors(input)).toContain('unpublished indexable artifact')
   })
-  it('allows unavailable messaging only within the matching intent wrapper', () => {
+  it('rejects unavailable messaging inside the matching intent wrapper', () => {
     const input = fixture(); input.requirements['/guide'] = { selector: '.ix-role', kind: 'pvp', unavailableText: ['No reviewed allocation.'] }
     input.pages['/guide'] += '<div data-experience-kind="pvp"><p>No reviewed allocation.</p></div>'
-    expect(errors(input)).toBe('')
+    expect(errors(input)).toContain('/guide: unavailable primary module')
     input.pages['/guide'] = input.pages['/guide'].replace('data-experience-kind="pvp"', 'data-experience-kind="leveling"')
     expect(errors(input)).toContain('primary module')
   })

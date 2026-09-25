@@ -345,6 +345,24 @@ export function sitemapLastmod(page: Pick<ClassPageDefinition, 'updatedAt'>): st
 
 function pageBuildsValid<B extends string>(classDef: ClassDefinition<B>, page: ClassPageDefinition): boolean {
   if (classDef.dataReview?.ready === false) return false
+  // A page promising a concrete route needs a route of its own. Without this, an empty array of
+  // related builds passes `every()` and can publish a "build pending verification" placeholder.
+  const primaryKinds = new Set<ClassPageKind>([
+    'specBuild', 'leveling', 'specLeveling', 'specPvp', 'specDungeon',
+    'aoe', 'tank', 'healing', 'pet', 'totem',
+  ])
+  const primary = classDef.builds.find((candidate) => candidate.id === page.primaryBuildId)
+  if (primaryKinds.has(page.kind) && !primary) return false
+  if (primary && page.spec && primary.spec !== page.spec) return false
+  if (page.kind === 'specPvp' && primary?.intent !== 'pvp') return false
+
+  // A comparison with two labels but identical points offers no actual talent difference.
+  if (page.kind === 'comparison') {
+    const compared = [...new Set(page.relatedBuildIds)].map((id) => classDef.builds.find((candidate) => candidate.id === id))
+    if (compared.length < 2 || compared.some((build) => !build)) return false
+    const signatures = compared.map((build) => JSON.stringify(Object.entries(build!.build).sort(([left], [right]) => left.localeCompare(right))))
+    if (new Set(signatures).size < 2) return false
+  }
   const ids = [...page.relatedBuildIds, ...(page.primaryBuildId ? [page.primaryBuildId] : [])]
   return ids.every((id) => {
     const build = classDef.builds.find((candidate) => candidate.id === id)

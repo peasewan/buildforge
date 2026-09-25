@@ -45,4 +45,13 @@ describe('site trust pages', () => {
     expect(screen.getByText(/Vercel Blob/)).toBeTruthy()
     expect(screen.getByText(/talent or skill interactions/)).toBeTruthy()
   })
+
+  it('explains future advertising cookies and gives visitors a personalization opt-out', () => {
+    render(<TrustPage pageId="privacy" />)
+
+    expect(screen.getByText(/does not currently display third-party advertising/)).toBeTruthy()
+    expect(screen.getByText(/third-party vendors, including Google, may use cookies to serve ads based on prior visits/i)).toBeTruthy()
+    expect(screen.getByRole('link', { name: 'Google Ads Settings' }).getAttribute('href')).toBe('https://www.google.com/settings/ads')
+    expect(screen.getByText(/Google-certified consent platform/)).toBeTruthy()
+  })
 })

@@ -4,6 +4,7 @@ import {
   classPlannerHref,
   legalBuildRequirement,
   pageFromPublishedClasses,
+  publishedClassPages,
   publishRequirementsFor,
   satisfiedRequirements,
   sitemapLastmod,
@@ -221,6 +222,8 @@ describe('requirement-gated page lookup', () => {
     title: 'G',
     h1: 'HG',
     canonical: 'https://buildforgetools.com/wow-forever-gamma-fixture-build',
+    spec: 'gamma',
+    primaryBuildId: gammaBuild.id,
     publishRequirements: ['legalBuild:gamma'],
   })
 
@@ -252,5 +255,40 @@ describe('requirement-gated page lookup', () => {
   it('gates a page on every requirement it declares, not just one', () => {
     const doublyGated = { ...gated, slug: 'doubly-gated', publishRequirements: ['talentDataset', 'legalBuild:gamma'] as const }
     expect(pageFromPublishedClasses('/doubly-gated', [fixtureClass({ pages: [doublyGated as ClassPageDefinition] })])).toBeUndefined()
+  })
+
+  it('withholds a specialization PvP page until its own reviewed PvP build exists', () => {
+    const pvpPage = page({
+      kind: 'specPvp', slug: 'fixture-alpha-pvp', intent: 'Alpha PvP', title: 'Alpha PvP', h1: 'Alpha PvP',
+      canonical: 'https://buildforgetools.com/fixture-alpha-pvp', spec: 'alpha', publishRequirements: ['talentDataset'],
+    })
+    const noBuild = fixtureClass({ pages: [pvpPage] })
+    expect(pageFromPublishedClasses('/fixture-alpha-pvp', [noBuild])).toBeUndefined()
+    expect(publishedClassPages([noBuild])).toEqual([])
+
+    const wrongIntent = fixtureClass({ pages: [{ ...pvpPage, primaryBuildId: alphaBuild.id }] })
+    expect(pageFromPublishedClasses('/fixture-alpha-pvp', [wrongIntent])).toBeUndefined()
+
+    const reviewedPvp = { ...alphaBuild, id: 'fixture-alpha-pvp-build', intent: 'pvp' }
+    const supported = fixtureClass({ builds: [alphaBuild, reviewedPvp], pages: [{ ...pvpPage, primaryBuildId: reviewedPvp.id }] })
+    expect(pageFromPublishedClasses('/fixture-alpha-pvp', [supported])?.kind).toBe('specPvp')
+  })
+
+  it.each(['specBuild', 'leveling', 'specLeveling', 'specDungeon', 'aoe', 'tank', 'healing', 'pet', 'totem'] as const)(
+    'withholds an indexable %s page with no primary build', (kind) => {
+      const empty = page({ kind, slug: `fixture-empty-${kind}`, intent: `Empty ${kind}`, title: `Empty ${kind}`, h1: `Empty ${kind}`,
+        canonical: `https://buildforgetools.com/fixture-empty-${kind}`, publishRequirements: ['talentDataset'] })
+      expect(pageFromPublishedClasses(`/${empty.slug}`, [fixtureClass({ pages: [empty] })])).toBeUndefined()
+    },
+  )
+
+  it('withholds a comparison when two named routes have the same allocation', () => {
+    const same = { ...alphaBuild, id: 'fixture-alpha-copy' }
+    const comparison = page({ kind: 'comparison', slug: 'fixture-comparison', intent: 'Compare', title: 'Compare', h1: 'Compare',
+      canonical: 'https://buildforgetools.com/fixture-comparison', relatedBuildIds: [alphaBuild.id, same.id], publishRequirements: ['level20Builds'] })
+    expect(pageFromPublishedClasses('/fixture-comparison', [fixtureClass({ pages: [comparison], builds: [alphaBuild, same] })])).toBeUndefined()
+    const beta = build('fixture-beta-route', 'beta', { 'beta-1': 5, 'beta-2': 5 })
+    const distinct = { ...comparison, relatedBuildIds: [alphaBuild.id, beta.id] }
+    expect(pageFromPublishedClasses('/fixture-comparison', [fixtureClass({ pages: [distinct], builds: [alphaBuild, beta] })])?.kind).toBe('comparison')
   })
 })

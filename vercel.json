@@ -9,7 +9,8 @@
       "permanent": true
     },
     { "source": "/wow-forever-paladin-beta", "destination": "/wow-forever-paladin-beta-talent-changes", "permanent": true },
-    { "source": "/wow-forever-holy-paladin-build", "destination": "/wow-forever-paladin-build", "permanent": true }
+    { "source": "/wow-forever-holy-paladin-build", "destination": "/wow-forever-paladin-build", "permanent": true },
+    { "source": "/wow-forever-protection-warrior-pvp-build", "destination": "/wow-forever-warrior-pvp-build", "permanent": true }
   ],
   "headers": [
     {
@@ -78,7 +79,6 @@
     { "source": "/wow-forever-warrior-pvp-build", "destination": "/wow-forever-warrior-pvp-build/index.html" },
     { "source": "/wow-forever-arms-warrior-pvp-build", "destination": "/wow-forever-arms-warrior-pvp-build/index.html" },
     { "source": "/wow-forever-fury-warrior-pvp-build", "destination": "/wow-forever-fury-warrior-pvp-build/index.html" },
-    { "source": "/wow-forever-protection-warrior-pvp-build", "destination": "/wow-forever-protection-warrior-pvp-build/index.html" },
     { "source": "/wow-forever-warrior-dungeon-build", "destination": "/wow-forever-warrior-dungeon-build/index.html" },
     { "source": "/wow-forever-protection-warrior-dungeon-build", "destination": "/wow-forever-protection-warrior-dungeon-build/index.html" },
     { "source": "/wow-forever-warrior-level-20-build", "destination": "/wow-forever-warrior-level-20-build/index.html" },

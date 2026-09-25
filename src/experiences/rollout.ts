@@ -15,7 +15,6 @@ export const EXPERIENCE_PATHS: readonly string[] = [
   "/wow-forever-protection-warrior-leveling-build",
   "/wow-forever-warrior-pvp-build",
   "/wow-forever-fury-warrior-pvp-build",
-  "/wow-forever-protection-warrior-pvp-build",
   "/wow-forever-warrior-dungeon-build",
   "/wow-forever-warrior-level-20-build",
   "/wow-forever-arms-warrior-talents",

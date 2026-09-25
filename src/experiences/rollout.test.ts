@@ -9,16 +9,18 @@ import { calculatorLinkIssues, comparePageHtml, partitionAssetIssues } from '../
 
 const sitemap = readFileSync(new URL('../../public/sitemap.xml', import.meta.url), 'utf8')
 const paths = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) => new URL(match[1]).pathname)
+const retiredPaths = ['/wow-forever-protection-warrior-pvp-build']
 // Independent of the ledger's editable class/status fields: these paths are frozen by the scope amendment.
 const protectedPaths = paths.filter((path) => path.includes('paladin'))
 
 describe('intent rollout scope', () => {
-  it('preserves the historical 150-page ledger and adds three discovery paths', () => {
+  it('retains the historical rollout ledger while withholding an unfinished build page', () => {
     const discoveryPaths = ['/', '/wow-forever-classes', '/wow-forever-builds']
-    expect(paths).toHaveLength(153)
+    expect(paths).toHaveLength(152)
     expect(paths.filter(path => discoveryPaths.includes(path)).sort()).toEqual([...discoveryPaths].sort())
     expect(new Set(ledger.pages.map((page) => page.path)).size).toBe(150)
-    expect(ledger.pages.map((page) => page.path).sort()).toEqual(paths.filter(path => !discoveryPaths.includes(path)).sort())
+    expect(ledger.pages.map((page) => page.path).sort()).toEqual([...paths.filter(path => !discoveryPaths.includes(path)), ...retiredPaths].sort())
+    for (const path of retiredPaths) expect(paths).not.toContain(path)
     expect(ledger.total).toBe(150)
     expect(ledger.activeTotal).toBe(128)
     expect(ledger.protectedTotal).toBe(22)

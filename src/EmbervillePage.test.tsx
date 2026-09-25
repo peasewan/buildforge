@@ -32,6 +32,10 @@ describe('Emberville public pages', () => {
     render(<EmbervillePage pageId="planner" />)
     fireEvent.click(screen.getByRole('button', { name: /Magic/ }))
     expect(screen.getByRole('heading', { name: 'Magic direction' })).toBeTruthy()
+    fireEvent.click(screen.getByRole('button', { name: /Skill inheritance/ }))
+    expect(screen.getByText('Test active and passive skills learned through other classes.')).toBeTruthy()
+    expect(screen.queryByText('Skill slots coming soon')).toBeNull()
+    expect(screen.queryByRole('combobox')).toBeNull()
     const notes = screen.getByPlaceholderText(/Record playstyle ideas/) as HTMLTextAreaElement
     fireEvent.change(notes, { target: { value: 'Test a flexible magic setup' } })
     fireEvent.click(screen.getByRole('button', { name: 'Save notes' }))

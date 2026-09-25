@@ -49,7 +49,7 @@ export const EMBERVILLE_EDITORIAL: Record<EmbervillePageId, EmbervilleEditorialS
       heading: 'What the preview planner can do today',
       paragraphs: [
         'The Emberville Build Planner starts with combat direction because melee, magic, and ranged combat are confirmed for Early Access. You can choose one of those directions, or keep a hybrid direction in view when thinking about class and skill inheritance. The build summary changes with your choice, while local notes let you record ideas without presenting them as verified game data.',
-        'Class, weapon, and skill selectors remain locked until stable records are available. That keeps the interface useful as a planning workspace without filling it with names, values, or combinations that may change before release.',
+        'Choose a confirmed system to investigate alongside your combat direction: class switching, weapon-bound combos, or active and passive skill inheritance. The planner turns these into a testable question and leaves space for your own notes. It excludes exact class, weapon, and skill names until their records can be verified, so no unconfirmed combinations are presented as game facts.',
       ],
     },
     {

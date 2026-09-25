@@ -39,6 +39,7 @@ const committedVercel = JSON.parse(read('vercel.json')) as {
 const published = publishedClassPages()
 const publishedSlugs = published.map(({ page }) => page.slug)
 const withheldSlugs = mageClass.pages.map((page) => page.slug).filter((slug) => !publishedSlugs.includes(slug))
+const unfinishedWarriorSlug = 'wow-forever-protection-warrior-pvp-build'
 
 /** A second registry whose gate answers differently, so a literal Mage list cannot pass. */
 const hunterWithAWithheldPage: ClassDefinition = {
@@ -55,7 +56,8 @@ const hunterWithAWithheldPage: ClassDefinition = {
     },
   ],
 }
-const hunterSlugs = hunterWithAWithheldPage.pages.map((page) => page.slug).filter((slug) => slug !== 'hunter-withheld-fixture-page')
+const hunterSlugs = hunterWithAWithheldPage.pages.map((page) => page.slug).filter((slug) =>
+  slug !== 'hunter-withheld-fixture-page' && slug !== 'wow-forever-beast-mastery-vs-marksmanship-hunter-leveling')
 
 const committedSitemapBlock = committedSitemap.slice(
   committedSitemap.indexOf(`  ${CLASS_PAGE_SITEMAP_MARKERS.start}`),
@@ -69,11 +71,12 @@ describe('generated class-page artifacts', () => {
     expect(shouldVerifyVercelRewrites({ VERCEL: '1' })).toBe(false)
   })
 
-  it('publishes every data-ready class page and withholds the four Mage pages still lacking a build', () => {
-    expect(published).toHaveLength(121)
+  it('publishes data-ready class pages and withholds unfinished build promises', () => {
+    expect(published).toHaveLength(120)
     expect(withheldSlugs).toHaveLength(4)
     expect(classPagePaths()).toEqual(publishedSlugs.map((slug) => `/${slug}`))
     for (const slug of withheldSlugs) expect(classPagePaths()).not.toContain(`/${slug}`)
+    expect(classPagePaths()).not.toContain(`/${unfinishedWarriorSlug}`)
   })
 
   it('answers from whatever registry it is given, never from a hand-written slug list', () => {
@@ -211,12 +214,13 @@ describe('generated class-page artifacts', () => {
     }
     const block = classPageSitemapBlock([redated])
 
-    expect(block.match(/<lastmod>2027-01-02<\/lastmod>/g)).toHaveLength(hunterClassFixture.pages.length)
+    expect(block.match(/<lastmod>2027-01-02<\/lastmod>/g)).toHaveLength(publishedClassPages([redated]).length)
     expect(block).not.toContain('<lastmod>2026-09-22</lastmod>')
   })
 
   it('keeps every withheld path out of the sitemap', () => {
     for (const slug of withheldSlugs) expect(committedSitemap, slug).not.toContain(`/${slug}<`)
+    expect(committedSitemap).not.toContain(`/${unfinishedWarriorSlug}<`)
   })
 
   it('rewrites one path per published page and leaves the existing deployment config alone', () => {
@@ -231,6 +235,7 @@ describe('generated class-page artifacts', () => {
       '/:path*',
       '/wow-forever-paladin-beta',
       '/wow-forever-holy-paladin-build',
+      '/wow-forever-protection-warrior-pvp-build',
     ])
     expect(committedVercel.headers).toContainEqual({
       source: '/build',

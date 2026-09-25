@@ -199,7 +199,7 @@ const warriorPages: ClassPageDefinition[] = [
     title: 'WoW Forever Warrior PvP Builds', h1: 'WoW Forever Warrior PvP Builds',
     description: 'Compare current-cap Arms and Fury Warrior PvP testing routes and review the verified Protection talent options still awaiting a recommended allocation.', eyebrow: 'Current Beta PvP',
     relatedBuildIds: ['warrior-arms-pvp', 'warrior-fury-pvp'],
-    relatedPages: [['/wow-forever-arms-warrior-pvp-build', 'Arms PvP'], ['/wow-forever-fury-warrior-pvp-build', 'Fury PvP'], ['/wow-forever-protection-warrior-pvp-build', 'Protection PvP Options'], ['/warrior', 'Warrior Calculator']],
+    relatedPages: [['/wow-forever-arms-warrior-pvp-build', 'Arms PvP'], ['/wow-forever-fury-warrior-pvp-build', 'Fury PvP'], ['/wow-forever-protection-warrior-talents', 'Protection Talents'], ['/warrior', 'Warrior Calculator']],
     sections: [{ heading: 'Choose a PvP playstyle', paragraphs: ['Arms emphasizes weapon pressure and stance decisions. Fury uses critical strikes, Rage flow and Piercing Howl. Protection has verified talent data but no recommended PvP allocation yet.', EVIDENCE_NOTE] }],
     publishRequirements: ['legalBuild:arms', 'legalBuild:fury'],
   }),

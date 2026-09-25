@@ -123,7 +123,7 @@ export const TRUST_PAGES: TrustPageConfig[] = [
     description: 'Read how BuildForgeTools uses Google Analytics, local browser storage, share links, and privately submitted feedback.',
     eyebrow: 'BuildForgeTools',
     intro: 'This policy explains what information BuildForgeTools processes when you use its build planners and game tools, visit a content page, or submit feedback.',
-    updated: 'September 21, 2026',
+    updated: 'September 26, 2026',
     sections: [
       {
         heading: 'Analytics',
@@ -155,9 +155,14 @@ export const TRUST_PAGES: TrustPageConfig[] = [
         heading: 'Advertising and Cookies',
         paragraphs: [
           'BuildForgeTools does not currently display third-party advertising. If advertising is introduced, this policy will be updated before activation to describe the providers, advertising cookies, personalization choices, and opt-out controls that apply.',
-          'If Google AdSense is introduced, Google and its partners may use cookies to serve and measure ads based on visits to this and other websites. Required consent controls, including a Google-certified consent platform for visitors in the European Economic Area, the United Kingdom, and Switzerland, will be configured before personalized ads are served in those regions.',
+          'If advertising is activated, third-party vendors, including Google, may use cookies to serve ads based on prior visits to BuildForgeTools or other websites. Google advertising cookies enable Google and its partners to personalize ads based on visits to this site and other sites. Visitors can opt out of personalized ads through Google Ads Settings or manage participating third-party vendors through the industry opt-out page. We will identify any additional active ad networks here before ads are served.',
+          'If Google AdSense is introduced, required consent controls, including a Google-certified consent platform for visitors in the European Economic Area, the United Kingdom, and Switzerland, will be configured before personalized ads are served in those regions.',
         ],
-        links: [{ href: 'https://policies.google.com/technologies/ads', label: 'How Google uses information for advertising' }],
+        links: [
+          { href: 'https://policies.google.com/technologies/ads', label: 'How Google uses information for advertising' },
+          { href: 'https://www.google.com/settings/ads', label: 'Google Ads Settings' },
+          { href: 'https://www.aboutads.info/choices/', label: 'Industry advertising opt-out' },
+        ],
       },
       {
         heading: 'External Links and Service Providers',

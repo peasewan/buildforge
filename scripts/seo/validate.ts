@@ -105,7 +105,8 @@ export function validateSeo(input: SeoInput) {
       const unavailable = requirement.unavailableText?.some(text => [...(wrapper?.querySelectorAll('p') ?? [])].some(n => clean(n.textContent ?? '') === text))
       if (!wrapper?.querySelector(requirement.selector) && !unavailable) errors.push(`${path}: missing primary module ${requirement.selector}`)
       if (requirement.surface && !unavailable && !wrapper?.querySelector(`[data-surface="${requirement.surface}"]`)) errors.push(`${path}: missing intent surface ${requirement.surface}`)
-      if (unavailable) warnings.push(`${path}: explicit unavailable UI preserved`)
+      if (unavailable && !page.noindex) errors.push(`${path}: unavailable primary module`)
+      else if (unavailable) warnings.push(`${path}: explicit unavailable UI preserved on noindex page`)
       if (requirement.hub && !page.links.some(href => { try { const u = new URL(href, `${input.origin}${path}`); return u.origin === input.origin && normalize(u.pathname) === requirement.hub && !u.search } catch { return false } })) errors.push(`${path}: missing class hub link ${requirement.hub}`)
     }
     for (const href of page.links) {
