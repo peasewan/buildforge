@@ -161,7 +161,7 @@ export function PvpPlanner({ classDef: def, page }: RoleSurfaceProps) {
           </div>
           <div className="rs-role-support">
             <h3>Compare the route</h3>
-            <p>{page.sections[0]?.paragraphs[0] ?? build.role}</p>
+            <p>{page.surfaceDescription ?? page.sections[0]?.paragraphs[0] ?? build.role}</p>
             <SameAllocation def={def} baseline={baseline} build={build} />
           </div>
           <TalentInventory def={def} build={build} />

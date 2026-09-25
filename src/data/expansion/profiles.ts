@@ -11,7 +11,7 @@ export interface ExtraProfile {
 export interface ExpansionProfile {
   id: string; name: string; intro: string; defaultSpec: string; pvpSpec: string; dungeonSpec: string
   resource: string; leveling: string; pvp: string; dungeon: string
-  pvpDescription?: string; pvpUpdatedAt?: string
+  pvpDescription?: string; pvpArticle?: string; pvpUpdatedAt?: string
   specs: SpecProfile[]; comparison: [string, string]; extras: ExtraProfile[]
 }
 
@@ -81,6 +81,7 @@ export const expansionProfiles: ExpansionProfile[] = [
     pvpDescription: 'WoW Forever Warlock PvP build: 11-point Affliction route with Improved Corruption, Improved Life Tap, Soul Siphon and Amplify Curse. Client-table preview.',
     pvpUpdatedAt: '2026-09-25',
     pvp: 'This 11-point Affliction route spends Improved Corruption 5/5 → Improved Life Tap 2/2 → Soul Siphon 3/3 → Amplify Curse 1/1. It is an editorial client-table preview for Level 20, not a ranked or proven best PvP build. For comparable PvP encounters, keep opponent level and equipment similar and record whether Corruption stays active long enough to matter, whether Life Tap creates a safe health-to-mana window, whether pet positioning helps, and whether you can disengage or survive. Compare useful pressure and lost control over several fights; one duel does not establish a win rate.',
+    pvpArticle: 'Unlike the shared leveling allocation, a PvP check needs to include the opponent\'s ability to interrupt pressure, force pet repositioning or punish Life Tap. For comparable PvP encounters, keep opponent level and equipment similar, then record control uptime and safe health-to-mana windows. If pet survival limits the route, compare the Demonology starter at the same eleven-point budget. Neither allocation has a measured win rate.',
     dungeon: 'Destruction offers a direct-cast comparison for group pulls. Watch the tank target and crowd control: a damage-over-time effect on the wrong enemy can make an otherwise legal allocation unhelpful to the party.',
     comparison: ['affliction', 'demonology'],
     specs: [

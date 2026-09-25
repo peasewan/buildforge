@@ -123,6 +123,8 @@ export interface ClassPageDefinition {
   relatedBuildIds: string[]
   relatedPages: { href: string; label: string }[]
   sections: ClassPageSection[]
+  /** Intent-surface guidance when the interactive module and editorial section need distinct copy. */
+  surfaceDescription?: string
   faqs: { question: string; answer: string }[]
   comparison?: { columns: string[]; rows: { label: string; values: string[] }[] }
   /**

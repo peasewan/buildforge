@@ -20,11 +20,14 @@ describe('Warlock PvP SEO pilot', () => {
     expect(page.description.length).toBeLessThanOrEqual(160)
 
     const html = renderClassPage(warlockClass, page)
-    expect(html).toContain(route)
-    expect(html).toContain('editorial client-table preview')
+    expect(page.surfaceDescription).toContain(route)
+    expect(page.surfaceDescription).toContain('editorial client-table preview')
+    expect(html).not.toContain(route)
+    expect(html).toContain('Client-table preview')
+    expect(html).toContain('a PvP check needs to include the opponent')
     expect(html).toContain('opponent level and equipment')
-    expect(html).toContain('pet positioning')
-    expect(html).toContain('disengage or survive')
+    expect(html).toContain('pet repositioning')
+    expect(page.surfaceDescription).toContain('disengage or survive')
     expect(html).toContain('href="/warlock?build=')
 
     const shell = readFileSync(`${process.cwd()}/${slug}/index.html`, 'utf8')

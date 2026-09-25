@@ -3,6 +3,7 @@ import { afterEach, expect, it } from 'vitest'
 import { warriorClass } from '../data/classes/warrior'
 import { mageClass } from '../data/classes/mage'
 import { rogueClass } from '../data/classes/rogue'
+import { warlockClass } from '../data/classes/warlock'
 import ClassIntentExperience from './ClassIntentExperience'
 import ClassExperiencePage from './ClassExperiencePage'
 import { readFileSync } from 'node:fs'
@@ -10,6 +11,13 @@ const baseStyles = readFileSync('src/styles.css', 'utf8')
 const experienceStyles = readFileSync('src/experiences/experience.css', 'utf8')
 afterEach(cleanup)
 const page = (slug: string) => warriorClass.pages.find((p) => p.slug === slug)!
+it('gives Warlock PvP a distinct editorial note instead of repeating the route paragraph', () => {
+  const warlockPvp = warlockClass.pages.find(p => p.slug === 'wow-forever-warlock-pvp-build')!
+  const { container } = render(<ClassExperiencePage classDef={warlockClass} page={warlockPvp} />)
+  const text = container.textContent ?? ''
+  expect(text.split('This 11-point Affliction route spends').length - 1).toBe(1)
+  expect(text).toContain('a PvP check needs to include the opponent')
+})
 it.each([
   ['wow-forever-warrior-builds', 'build-discovery', 'a[href]'],
   ['wow-forever-fury-warrior-build', 'build-workbench', 'a[href*="build="]'],
