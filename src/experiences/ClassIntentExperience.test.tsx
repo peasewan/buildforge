@@ -76,11 +76,12 @@ it('shows a clearly modeled Talented timing comparison without adding unverified
       page={page('wow-forever-fury-warrior-leveling-build')}
     />,
   )
-  expect(screen.getByTestId('progression-current').textContent).toContain('1 points')
+  expect(screen.getByTestId('progression-current').textContent).toContain('1 point')
   fireEvent.click(screen.getByRole('switch', { name: /Legacy: Talented/i }))
   expect(screen.getByTestId('progression-current').textContent).toContain('6 points')
   expect(screen.getByTestId('progression-next').textContent).toContain('level 11')
   expect(screen.getByText(/illustrative maximum five-level advance/i)).toBeTruthy()
+  expect(screen.getByText(/requires earned Legacy points and a per-character choice/i)).toBeTruthy()
   expect(screen.getByRole('link', { name: /Blizzard Legacy announcement/i }).getAttribute('href'))
     .toBe('https://news.blizzard.com/en-us/article/24307383/get-to-know-the-world-of-warcraft-forever-legacy-system')
 

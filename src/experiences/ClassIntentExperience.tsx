@@ -277,7 +277,7 @@ function Progression({ classDef: def, page }: Props) {
             onChange={(e) => setLevel(Number(e.target.value))}
           />
           <p data-testid="progression-current">
-            <b>{totalPlannerPoints(points)} points</b> ·{' '}
+            <b>{totalPlannerPoints(points)} {totalPlannerPoints(points) === 1 ? 'point' : 'points'}</b> ·{' '}
             {allocation(def, points)}
           </p>
           <div className="ix-next" data-testid="progression-next">
@@ -298,7 +298,7 @@ function Progression({ classDef: def, page }: Props) {
             {result.orderStatus === 'editorial'
               ? 'Uses the recorded editorial point order.'
               : 'Step order is derived from the published allocation, checked for legal prerequisites.'}
-            {' '}The <a href="https://news.blizzard.com/en-us/article/24307383/get-to-know-the-world-of-warcraft-forever-legacy-system" target="_blank" rel="noreferrer">Blizzard Legacy announcement</a> confirms only that Talented can unlock points up to five levels early. It does not confirm the exact schedule or current Beta availability. This comparison does not model points beyond this published route.
+            {' '}The <a href="https://news.blizzard.com/en-us/article/24307383/get-to-know-the-world-of-warcraft-forever-legacy-system" target="_blank" rel="noreferrer">Blizzard Legacy announcement</a> confirms only that Talented can unlock points up to five levels early. Using it requires earned Legacy points and a per-character choice. Blizzard does not confirm the exact schedule or current Beta availability. This comparison does not model points beyond this published route.
           </p>
         </article>
         <article className="ix-panel">
