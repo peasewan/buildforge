@@ -11,6 +11,7 @@ export interface ExtraProfile {
 export interface ExpansionProfile {
   id: string; name: string; intro: string; defaultSpec: string; pvpSpec: string; dungeonSpec: string
   resource: string; leveling: string; pvp: string; dungeon: string
+  pvpDescription?: string; pvpUpdatedAt?: string
   specs: SpecProfile[]; comparison: [string, string]; extras: ExtraProfile[]
 }
 
@@ -77,7 +78,9 @@ export const expansionProfiles: ExpansionProfile[] = [
     intro: 'Compare damage-over-time pressure, demon support and direct casting. Pet management, health-to-mana decisions and target lifetime change which early points you can evaluate meaningfully.',
     resource: 'Mana, health and pet control',
     leveling: 'Affliction is the default damage-over-time comparison. Demonology is the alternative when the pet is central to your solo routine. Keep the same demon and target type when testing a talent change so two variables do not move at once.',
-    pvp: 'The Affliction example is a starting allocation for sustained-pressure testing. Separate useful pressure from damage that never changes the encounter. Pet positioning and escape options remain part of the setup even when they are not talent ranks.',
+    pvpDescription: 'WoW Forever Warlock PvP build: 11-point Affliction route with Improved Corruption, Improved Life Tap, Soul Siphon and Amplify Curse. Client-table preview.',
+    pvpUpdatedAt: '2026-09-25',
+    pvp: 'This 11-point Affliction route spends Improved Corruption 5/5 → Improved Life Tap 2/2 → Soul Siphon 3/3 → Amplify Curse 1/1. It is an editorial client-table preview for Level 20, not a ranked or proven best PvP build. For comparable PvP encounters, keep opponent level and equipment similar and record whether Corruption stays active long enough to matter, whether Life Tap creates a safe health-to-mana window, whether pet positioning helps, and whether you can disengage or survive. Compare useful pressure and lost control over several fights; one duel does not establish a win rate.',
     dungeon: 'Destruction offers a direct-cast comparison for group pulls. Watch the tank target and crowd control: a damage-over-time effect on the wrong enemy can make an otherwise legal allocation unhelpful to the party.',
     comparison: ['affliction', 'demonology'],
     specs: [
