@@ -4,6 +4,7 @@ import { warriorClass } from '../data/classes/warrior'
 import { druidClass } from '../data/classes/druid'
 import { priestClass } from '../data/classes/priest'
 import { warlockClass } from '../data/classes/warlock'
+import { hunterClass } from '../data/classes/hunter'
 import { shamanClass } from '../data/classes/shaman'
 import {
   DungeonPlanner,
@@ -22,6 +23,20 @@ function page<T extends { pages: { slug: string }[] }>(def: T, slug: string) {
   return result
 }
 
+function expectBuildBeforeGuidance(container: HTMLElement) {
+  const surface = container.querySelector('.rs-surface')
+  const allocation = surface?.querySelector('.rs-allocation')
+  const guidance = surface?.querySelector('.rs-first')
+  const evidence = surface?.querySelector('.rs-evidence')
+  expect(surface?.firstElementChild?.contains(allocation ?? null)).toBe(true)
+  expect(allocation).toBeTruthy()
+  expect(guidance).toBeTruthy()
+  expect(evidence).toBeTruthy()
+  expect(surface?.querySelector('h2, h3')?.tagName).toBe('H2')
+  expect(allocation!.compareDocumentPosition(guidance!) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
+  expect(guidance!.compareDocumentPosition(evidence!) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
+}
+
 it('offers a PvP encounter focus and preserves a legal editable route', () => {
   const { container } = render(
     <PvpPlanner
@@ -30,6 +45,7 @@ it('offers a PvP encounter focus and preserves a legal editable route', () => {
     />,
   )
   expect(container.querySelector('[data-surface="pvp-matchup"]')).toBeTruthy()
+  expectBuildBeforeGuidance(container)
   expect(screen.getByRole('heading', { name: 'Set the encounter focus' })).toBeTruthy()
   fireEvent.click(screen.getByRole('button', { name: 'Recovery and exit' }))
   expect(screen.getByRole('button', { name: 'Recovery and exit' }).getAttribute('aria-pressed')).toBe('true')
@@ -38,8 +54,26 @@ it('offers a PvP encounter focus and preserves a legal editable route', () => {
   expect(screen.getByText(/same talent allocation/)).toBeTruthy()
 })
 
+it('shows the Hunter PvP build and calculator link before optional encounter prompts', () => {
+  const { container } = render(
+    <PvpPlanner
+      classDef={hunterClass}
+      page={page(hunterClass, 'wow-forever-hunter-pvp-build')}
+    />,
+  )
+  expectBuildBeforeGuidance(container)
+  expect(screen.getByText('0/0/11')).toBeTruthy()
+  const link = screen.getByRole('link', { name: 'Edit in Calculator' })
+  const url = new URL(link.getAttribute('href')!, 'https://buildforgetools.com')
+  expect(url.pathname).toBe('/hunter')
+  expect(url.searchParams.get('level')).toBe('20')
+  expect(url.searchParams.get('build')).toContain('hunter-')
+  fireEvent.click(screen.getByRole('button', { name: 'Recovery and exit' }))
+  expect(screen.getByRole('button', { name: 'Recovery and exit' }).getAttribute('aria-pressed')).toBe('true')
+})
+
 it('keeps a PvP page with no legal allocation explicit and unlinked', () => {
-  render(
+  const { container } = render(
     <PvpPlanner
       classDef={warriorClass}
       page={page(warriorClass, 'wow-forever-protection-warrior-pvp-build')}
@@ -47,6 +81,20 @@ it('keeps a PvP page with no legal allocation explicit and unlinked', () => {
   )
   expect(screen.getByRole('heading', { name: 'What can be planned now' })).toBeTruthy()
   expect(screen.getByText(/role-specific legal allocation has not been published/)).toBeTruthy()
+  expect(screen.queryByRole('link', { name: 'Edit in Calculator' })).toBeNull()
+  expect(container.querySelector('.rs-surface')?.firstElementChild?.classList.contains('rs-unavailable')).toBe(true)
+})
+
+it.each([
+  ['PvP', PvpPlanner, warriorClass, 'wow-forever-arms-warrior-pvp-build'],
+  ['dungeon', DungeonPlanner, warriorClass, 'wow-forever-protection-warrior-dungeon-build'],
+  ['tank', TankPlanner, druidClass, 'wow-forever-feral-druid-tank-build'],
+  ['healing', HealingPlanner, priestClass, 'wow-forever-priest-healing-build'],
+  ['pet', PetPlanner, warlockClass, 'wow-forever-warlock-pet-build'],
+  ['totem', TotemPlanner, shamanClass, 'wow-forever-shaman-totem-build'],
+] as const)('shows unavailable first for a %s role without a legal build', (_role, Surface, def, slug) => {
+  const { container } = render(<Surface classDef={{ ...def, builds: [] }} page={page(def, slug)} />)
+  expect(container.querySelector('.rs-surface')?.firstElementChild?.classList.contains('rs-unavailable')).toBe(true)
   expect(screen.queryByRole('link', { name: 'Edit in Calculator' })).toBeNull()
 })
 
@@ -74,6 +122,7 @@ it('prepares a dungeon pull using a phase control before showing the route', () 
     />,
   )
   expect(container.querySelector('[data-surface="dungeon-pull"]')).toBeTruthy()
+  expectBuildBeforeGuidance(container)
   expect(screen.getByRole('heading', { name: 'Prepare a pull' })).toBeTruthy()
   fireEvent.click(screen.getByRole('button', { name: 'After the pull' }))
   expect(screen.getByRole('button', { name: 'After the pull' }).getAttribute('aria-pressed')).toBe('true')
@@ -88,6 +137,7 @@ it('starts the tank route with threat and mitigation review, then lists selected
     />,
   )
   expect(container.querySelector('[data-surface="tank-inventory"]')).toBeTruthy()
+  expectBuildBeforeGuidance(container)
   expect(screen.getByRole('heading', { name: 'Tank review ledger' })).toBeTruthy()
   fireEvent.click(screen.getByRole('button', { name: 'Incoming damage' }))
   expect(screen.getByRole('button', { name: 'Incoming damage' }).getAttribute('aria-pressed')).toBe('true')
@@ -103,6 +153,7 @@ it('makes mana and group support the first healing comparison', () => {
     />,
   )
   expect(container.querySelector('[data-surface="healing-compare"]')).toBeTruthy()
+  expectBuildBeforeGuidance(container)
   expect(screen.getByRole('heading', { name: 'Compare the healing job' })).toBeTruthy()
   fireEvent.click(screen.getByRole('button', { name: 'Group support' }))
   expect(screen.getByRole('button', { name: 'Group support' }).getAttribute('aria-pressed')).toBe('true')
@@ -117,6 +168,7 @@ it('shows selected pet-support ranks without inventing a pet-family dataset', ()
     />,
   )
   expect(container.querySelector('[data-surface="pet-support"]')).toBeTruthy()
+  expectBuildBeforeGuidance(container)
   expect(screen.getByRole('heading', { name: 'Selected support talents' })).toBeTruthy()
   expect(container.querySelector('.rs-evidence')?.textContent).toContain('Improved Voidwalker')
   expect(screen.getByText(/No verified pet-family comparison/)).toBeTruthy()
@@ -168,6 +220,7 @@ it('shows totem talent coverage and marks spell loadout as unverified', () => {
     />,
   )
   expect(container.querySelector('[data-surface="totem-coverage"]')).toBeTruthy()
+  expectBuildBeforeGuidance(container)
   expect(screen.getByRole('heading', { name: 'Totem talent coverage' })).toBeTruthy()
   expect(container.querySelector('.rs-evidence')?.textContent).toContain('Totemic Focus')
   expect(screen.getByText(/Totem spell loadout is not verified/)).toBeTruthy()

@@ -67,7 +67,7 @@ function Allocation({ def, build, heading = 'Editable allocation' }: { def: Clas
   return (
     <article className="rs-allocation">
       <small>EDITORIAL EXAMPLE · LEVEL {build.level} · {build.evidence.replace('_', ' ')}</small>
-      <h3>{heading}</h3>
+      <h2>{heading}</h2>
       <strong className="rs-allocation-number">{build.allocation}</strong>
       <p>{def.branchNames[build.spec] ?? build.spec} · {build.role}</p>
       <EditLink def={def} build={build} />
@@ -144,15 +144,17 @@ export function PvpPlanner({ classDef: def, page }: RoleSurfaceProps) {
     'Sustained pressure': 'Compare repeatable actions and recovery during the full encounter; one opening hit is not an outcome measure.',
     'Recovery and exit': 'Note whether you can reset or support the next exchange after pressure changes.',
   }
+  const board = (
+    <div className="rs-first rs-pvp-board">
+      <div className="rs-kicker"><Swords aria-hidden="true" /> PVP TEST PLAN</div>
+      <h2>Set the encounter focus</h2>
+      <FocusButtons options={Object.keys(prompts)} selected={focus} onChange={setFocus} label="Encounter focus" />
+      <p aria-live="polite">{prompts[focus]}</p>
+      <p className="rs-small">Editorial observation prompts. No matchup win rate or simulated damage is claimed.</p>
+    </div>
+  )
   return (
     <section className="rs-surface rs-pvp" data-surface="pvp-matchup" aria-label="PvP encounter planner">
-      <div className="rs-first rs-pvp-board">
-        <div className="rs-kicker"><Swords aria-hidden="true" /> PVP TEST PLAN</div>
-        <h2>Set the encounter focus</h2>
-        <FocusButtons options={Object.keys(prompts)} selected={focus} onChange={setFocus} label="Encounter focus" />
-        <p aria-live="polite">{prompts[focus]}</p>
-        <p className="rs-small">Editorial observation prompts. No matchup win rate or simulated damage is claimed.</p>
-      </div>
       {build ? (
         <div className="rs-pvp-details">
           <div>
@@ -164,9 +166,10 @@ export function PvpPlanner({ classDef: def, page }: RoleSurfaceProps) {
             <p>{page.surfaceDescription ?? page.sections[0]?.paragraphs[0] ?? build.role}</p>
             <SameAllocation def={def} baseline={baseline} build={build} />
           </div>
-          <TalentInventory def={def} build={build} />
         </div>
       ) : <Unavailable def={def} page={page} />}
+      {board}
+      {build && <TalentInventory def={def} build={build} />}
     </section>
   )
 }
@@ -181,23 +184,26 @@ export function DungeonPlanner({ classDef: def, page }: RoleSurfaceProps) {
     'During the pull': 'Watch target selection, positioning and any interruption or control loss. Record what actually happened.',
     'After the pull': 'Separate recovery, missed actions and uncontrolled enemies before changing a talent rank.',
   }
+  const board = (
+    <div className="rs-first rs-dungeon-timeline">
+      <div className="rs-kicker"><Waypoints aria-hidden="true" /> GROUP PULL</div>
+      <h2>Prepare a pull</h2>
+      <FocusButtons options={Object.keys(prompts)} selected={phase} onChange={setPhase} label="Pull phase" />
+      <p aria-live="polite">{prompts[phase]}</p>
+      <p className="rs-small">Planning checklist, not a verified dungeon encounter script.</p>
+    </div>
+  )
   return (
     <section className="rs-surface rs-dungeon" data-surface="dungeon-pull" aria-label="Dungeon pull planner">
-      <div className="rs-first rs-dungeon-timeline">
-        <div className="rs-kicker"><Waypoints aria-hidden="true" /> GROUP PULL</div>
-        <h2>Prepare a pull</h2>
-        <FocusButtons options={Object.keys(prompts)} selected={phase} onChange={setPhase} label="Pull phase" />
-        <p aria-live="polite">{prompts[phase]}</p>
-        <p className="rs-small">Planning checklist, not a verified dungeon encounter script.</p>
-      </div>
       {build ? (
         <div className="rs-dungeon-details">
           <RouteChooser builds={routes} selected={build} onChange={setId} label="Dungeon route" />
           <Allocation def={def} build={build} heading="Group route" />
           <div className="rs-role-support"><h3>What the route asks you to test</h3><p>{page.sections[0]?.paragraphs[0] ?? build.role}</p></div>
-          <TalentInventory def={def} build={build} />
         </div>
       ) : <Unavailable def={def} page={page} />}
+      {board}
+      {build && <TalentInventory def={def} build={build} />}
     </section>
   )
 }
@@ -211,22 +217,25 @@ export function TankPlanner({ classDef: def, page }: RoleSurfaceProps) {
     'Incoming damage': 'Compare damage received across similar pulls and note healer recovery separately.',
     'Healer recovery': 'Record the group’s recovery time after comparable pulls before changing the allocation.',
   }
+  const board = (
+    <div className="rs-first rs-tank-ledger">
+      <div className="rs-kicker"><Shield aria-hidden="true" /> TANK REVIEW</div>
+      <h2>Tank review ledger</h2>
+      <FocusButtons options={Object.keys(prompts)} selected={focus} onChange={setFocus} label="Tank observation" />
+      <p aria-live="polite">{prompts[focus]}</p>
+      <p className="rs-small">These are observations to make in play. Talent records do not calculate threat or mitigation here.</p>
+    </div>
+  )
   return (
     <section className="rs-surface rs-tank" data-surface="tank-inventory" aria-label="Tank review ledger">
-      <div className="rs-first rs-tank-ledger">
-        <div className="rs-kicker"><Shield aria-hidden="true" /> TANK REVIEW</div>
-        <h2>Tank review ledger</h2>
-        <FocusButtons options={Object.keys(prompts)} selected={focus} onChange={setFocus} label="Tank observation" />
-        <p aria-live="polite">{prompts[focus]}</p>
-        <p className="rs-small">These are observations to make in play. Talent records do not calculate threat or mitigation here.</p>
-      </div>
       {build ? (
         <div className="rs-tank-details">
-          <TalentInventory def={def} build={build} />
           <Allocation def={def} build={build} heading="Tank starting point" />
           <div className="rs-role-support"><h3>Role condition</h3><p>{page.sections[0]?.paragraphs[0] ?? build.role}</p></div>
         </div>
       ) : <Unavailable def={def} page={page} />}
+      {board}
+      {build && <TalentInventory def={def} build={build} />}
     </section>
   )
 }
@@ -239,22 +248,25 @@ export function HealingPlanner({ classDef: def, page }: RoleSurfaceProps) {
     'Mana and recovery': 'Track remaining mana and time needed before the next comparable pull.',
     'Group support': 'Track missed support opportunities and whether movement or line of sight limited the group.',
   }
+  const board = (
+    <div className="rs-first rs-healing-pulse">
+      <div className="rs-kicker"><HeartPulse aria-hidden="true" /> HEALING TEST</div>
+      <h2>Compare the healing job</h2>
+      <FocusButtons options={Object.keys(prompts)} selected={lens} onChange={setLens} label="Healing observation" />
+      <p aria-live="polite">{prompts[lens]}</p>
+      <p className="rs-small">Compare like-for-like pulls. This planner does not derive healing throughput or a rotation.</p>
+    </div>
+  )
   return (
     <section className="rs-surface rs-healing" data-surface="healing-compare" aria-label="Healing route comparison">
-      <div className="rs-first rs-healing-pulse">
-        <div className="rs-kicker"><HeartPulse aria-hidden="true" /> HEALING TEST</div>
-        <h2>Compare the healing job</h2>
-        <FocusButtons options={Object.keys(prompts)} selected={lens} onChange={setLens} label="Healing observation" />
-        <p aria-live="polite">{prompts[lens]}</p>
-        <p className="rs-small">Compare like-for-like pulls. This planner does not derive healing throughput or a rotation.</p>
-      </div>
       {build ? (
         <div className="rs-healing-details">
-          <div className="rs-role-support"><h3>Group context</h3><p>{page.sections[0]?.paragraphs[0] ?? build.role}</p></div>
           <Allocation def={def} build={build} heading="Healing route" />
-          <TalentInventory def={def} build={build} />
+          <div className="rs-role-support"><h3>Group context</h3><p>{page.sections[0]?.paragraphs[0] ?? build.role}</p></div>
         </div>
       ) : <Unavailable def={def} page={page} />}
+      {board}
+      {build && <TalentInventory def={def} build={build} />}
     </section>
   )
 }
@@ -263,26 +275,29 @@ export function PetPlanner({ classDef: def, page }: RoleSurfaceProps) {
   const routes = routesFor(def, page)
   const build = routes.find((route) => route.id === page.primaryBuildId) ?? routes[0]
   const [view, setView] = useState('Selected talents')
+  const board = (
+    <div className="rs-first rs-pet-chain">
+      <div className="rs-kicker"><PawPrint aria-hidden="true" /> PET SUPPORT</div>
+      <h2>Selected support talents</h2>
+      <FocusButtons options={['Selected talents', 'Evidence gaps']} selected={view} onChange={setView} label="Pet data view" />
+      {view === 'Evidence gaps' ? (
+        <p aria-live="polite">No verified pet-family comparison, pet talent tree or pet scaling calculation is available in this planner.</p>
+      ) : (
+        <p aria-live="polite">Review the selected player talents, then test pet control and recovery with the same pet in play.</p>
+      )}
+      <p className="rs-small">No verified pet-family comparison is provided. Player talent ranks are the only editable data here.</p>
+    </div>
+  )
   return (
     <section className="rs-surface rs-pet" data-surface="pet-support" aria-label="Pet support talent view">
-      <div className="rs-first rs-pet-chain">
-        <div className="rs-kicker"><PawPrint aria-hidden="true" /> PET SUPPORT</div>
-        <h2>Selected support talents</h2>
-        <FocusButtons options={['Selected talents', 'Evidence gaps']} selected={view} onChange={setView} label="Pet data view" />
-        {view === 'Evidence gaps' ? (
-          <p aria-live="polite">No verified pet-family comparison, pet talent tree or pet scaling calculation is available in this planner.</p>
-        ) : (
-          <p aria-live="polite">Review the selected player talents, then test pet control and recovery with the same pet in play.</p>
-        )}
-        <p className="rs-small">No verified pet-family comparison is provided. Player talent ranks are the only editable data here.</p>
-      </div>
       {build ? (
         <div className="rs-pet-details">
-          <TalentInventory def={def} build={build} heading="Player talent records" />
-          <div className="rs-role-support"><h3>Use the same pet in the test</h3><p>{page.sections[0]?.paragraphs[0] ?? build.role}</p></div>
           <Allocation def={def} build={build} heading="Pet-support route" />
+          <div className="rs-role-support"><h3>Use the same pet in the test</h3><p>{page.sections[0]?.paragraphs[0] ?? build.role}</p></div>
         </div>
       ) : <Unavailable def={def} page={page} />}
+      {board}
+      {build && <TalentInventory def={def} build={build} heading="Player talent records" />}
     </section>
   )
 }
@@ -291,24 +306,27 @@ export function TotemPlanner({ classDef: def, page }: RoleSurfaceProps) {
   const routes = routesFor(def, page)
   const build = routes.find((route) => route.id === page.primaryBuildId) ?? routes[0]
   const [view, setView] = useState('Talent coverage')
+  const board = (
+    <div className="rs-first rs-totem-field">
+      <div className="rs-kicker"><Compass aria-hidden="true" /> TOTEM PLANNING</div>
+      <h2>Totem talent coverage</h2>
+      <FocusButtons options={['Talent coverage', 'Spell loadout limits']} selected={view} onChange={setView} label="Totem planning view" />
+      <p aria-live="polite">{view === 'Talent coverage'
+        ? 'Compare the selected talent ranks with the group’s placement and movement needs.'
+        : 'Totem spell loadout is not verified here; the calculator does not assign totems to slots or simulate their coverage.'}</p>
+      <p className="rs-small">Totem spell loadout is not verified by these talent records.</p>
+    </div>
+  )
   return (
     <section className="rs-surface rs-totem" data-surface="totem-coverage" aria-label="Totem talent coverage">
-      <div className="rs-first rs-totem-field">
-        <div className="rs-kicker"><Compass aria-hidden="true" /> TOTEM PLANNING</div>
-        <h2>Totem talent coverage</h2>
-        <FocusButtons options={['Talent coverage', 'Spell loadout limits']} selected={view} onChange={setView} label="Totem planning view" />
-        <p aria-live="polite">{view === 'Talent coverage'
-          ? 'Compare the selected talent ranks with the group’s placement and movement needs.'
-          : 'Totem spell loadout is not verified here; the calculator does not assign totems to slots or simulate their coverage.'}</p>
-        <p className="rs-small">Totem spell loadout is not verified by these talent records.</p>
-      </div>
       {build ? (
         <div className="rs-totem-details">
-          <TalentInventory def={def} build={build} heading="Totem-related selected ranks" filter={(talent) => /totem/i.test(talent.name)} />
-          <div className="rs-role-support"><h3>Placement condition</h3><p>{page.sections[0]?.paragraphs[0] ?? build.role}</p></div>
           <Allocation def={def} build={build} heading="Editable talent route" />
+          <div className="rs-role-support"><h3>Placement condition</h3><p>{page.sections[0]?.paragraphs[0] ?? build.role}</p></div>
         </div>
       ) : <Unavailable def={def} page={page} />}
+      {board}
+      {build && <TalentInventory def={def} build={build} heading="Totem-related selected ranks" filter={(talent) => /totem/i.test(talent.name)} />}
       <p className="rs-source-line"><Check size={14} aria-hidden="true" /> Talent ranks come from the class dataset; spell coverage requires separate verification.</p>
     </section>
   )

@@ -99,7 +99,7 @@
   letter-spacing: .09em;
 }
 
-.intent-experience .rs-allocation h3,
+.intent-experience .rs-allocation h2,
 .intent-experience .rs-evidence h3,
 .intent-experience .rs-role-support h3 { margin: 10px 0; }
 
@@ -162,7 +162,7 @@
 .intent-experience .rs-unavailable nav a { font-size: 13px; }
 .intent-experience .rs-diff li { padding: 5px 0; border-top: 1px solid #ffffff17; }
 
-/* The six role layouts deliberately present different visual tasks before the shared allocation. */
+/* Each role starts with its editable allocation, followed by role-specific guidance and talent evidence. */
 .intent-experience .rs-pvp { --rs-accent: #dd8068; }
 .intent-experience .rs-pvp-board {
   display: grid;
@@ -177,7 +177,6 @@
 .intent-experience .rs-pvp-board > p { grid-column: 2; grid-row: 2 / span 2; align-self: center; font-size: 16px; }
 .intent-experience .rs-pvp-board > p.rs-small { grid-row: 4; font-size: 12px; }
 .intent-experience .rs-pvp-details { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; }
-.intent-experience .rs-pvp-details > .rs-evidence { grid-column: 1 / -1; }
 
 .intent-experience .rs-dungeon { --rs-accent: #86b9b4; }
 .intent-experience .rs-dungeon-timeline { border-left: 5px solid #86b9b4; }
@@ -185,7 +184,6 @@
 .intent-experience .rs-dungeon-timeline .rs-options::before { position: absolute; content: ''; top: 0; left: 10px; right: 10px; border-top: 1px dashed #86b9b480; }
 .intent-experience .rs-dungeon-details { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 16px; }
 .intent-experience .rs-dungeon-details > .rs-route-picker { grid-column: 1 / -1; }
-.intent-experience .rs-dungeon-details > .rs-evidence { grid-column: 2; grid-row: 2 / span 2; }
 
 .intent-experience .rs-tank { --rs-accent: #a7c3e0; }
 .intent-experience .rs-tank-ledger { background: linear-gradient(135deg, #1a2632, #10151c); }
@@ -194,7 +192,6 @@
 .intent-experience .rs-tank-ledger .rs-options button::before { content: '◻'; margin-right: 8px; color: #a7c3e0; }
 .intent-experience .rs-tank-ledger .rs-options button[aria-pressed='true']::before { content: '▣'; }
 .intent-experience .rs-tank-details { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: 16px; }
-.intent-experience .rs-tank-details > .rs-evidence { grid-row: 1 / span 2; }
 
 .intent-experience .rs-healing { --rs-accent: #9bd1aa; }
 .intent-experience .rs-healing-pulse { background: linear-gradient(135deg, #152620, #10161b); }
@@ -203,20 +200,18 @@
 .intent-experience .rs-healing-pulse .rs-options button { min-height: 80px; text-align: left; font: 500 18px Georgia, serif; }
 .intent-experience .rs-healing-pulse > p[aria-live] { border-left: 3px solid #9bd1aa; padding-left: 16px; }
 .intent-experience .rs-healing-details { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; }
-.intent-experience .rs-healing-details > .rs-role-support { grid-column: 1 / -1; }
 
 .intent-experience .rs-pet { --rs-accent: #bd9be1; }
 .intent-experience .rs-pet-chain { background: linear-gradient(135deg, #251d2d, #11151b); }
 .intent-experience .rs-pet-chain .rs-options button { border-radius: 999px; }
 .intent-experience .rs-pet-chain > p[aria-live] { max-width: 570px; }
 .intent-experience .rs-pet-details { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 16px; }
-.intent-experience .rs-pet-details > .rs-evidence { grid-row: 1 / span 2; }
 
 .intent-experience .rs-totem { --rs-accent: #e8b27b; }
 .intent-experience .rs-totem-field { background: radial-gradient(circle at 85% 54%, #7f4d252c 0 15%, transparent 15% 19%, #7f4d252c 19% 20%, transparent 20%), #17181d; }
 .intent-experience .rs-totem-field .rs-options { max-width: 560px; }
 .intent-experience .rs-totem-field .rs-options button { border-radius: 0; border-left-width: 4px; text-align: left; }
-.intent-experience .rs-totem-details { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; align-items: stretch; }
+.intent-experience .rs-totem-details { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; align-items: stretch; }
 .intent-experience .rs-source-line { display: flex; gap: 8px; align-items: center; color: #a8b7bb; font-size: 12px; }
 
 @media (max-width: 760px) {
