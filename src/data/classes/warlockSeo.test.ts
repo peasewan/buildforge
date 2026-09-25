@@ -7,7 +7,7 @@ import { renderClassPage } from '../../lib/prerender'
 
 const slug = 'wow-forever-warlock-pvp-build'
 const page = warlockClass.pages.find((candidate) => candidate.slug === slug)!
-const route = 'Improved Corruption 5/5 → Improved Life Tap 2/2 → Soul Siphon 3/3 → Amplify Curse 1/1'
+const route = 'Improved Corruption 5/5 → Improved Life Tap 2/2 → Soul Siphon 3/5 → Amplify Curse 1/1'
 
 describe('Warlock PvP SEO pilot', () => {
   it('keeps the existing search-facing identity and gives the public page a specific preview', () => {
