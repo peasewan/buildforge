@@ -68,6 +68,26 @@ it('changes the current allocation and next point with the leveling control', ()
   expect(link).toContain('cruelty.5')
   expect(link).not.toContain('unbridled-wrath.5')
 })
+
+it('shows a clearly modeled Talented timing comparison without adding unverified points', () => {
+  render(
+    <ClassIntentExperience
+      classDef={warriorClass}
+      page={page('wow-forever-fury-warrior-leveling-build')}
+    />,
+  )
+  expect(screen.getByTestId('progression-current').textContent).toContain('1 points')
+  fireEvent.click(screen.getByRole('switch', { name: /Legacy: Talented/i }))
+  expect(screen.getByTestId('progression-current').textContent).toContain('6 points')
+  expect(screen.getByTestId('progression-next').textContent).toContain('level 11')
+  expect(screen.getByText(/illustrative maximum five-level advance/i)).toBeTruthy()
+  expect(screen.getByRole('link', { name: /Blizzard Legacy announcement/i }).getAttribute('href'))
+    .toBe('https://news.blizzard.com/en-us/article/24307383/get-to-know-the-world-of-warcraft-forever-legacy-system')
+
+  fireEvent.change(screen.getByLabelText('Your level'), { target: { value: '20' } })
+  expect(screen.getByTestId('progression-current').textContent).toContain('11 points')
+  expect(screen.getByText(/does not model points beyond this published route/i)).toBeTruthy()
+})
 it('keeps the Frost AoE route available after switching to leveling and back', () => {
   render(
     <ClassIntentExperience

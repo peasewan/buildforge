@@ -312,6 +312,45 @@
   border-color: #d9a44180;
   background: radial-gradient(ellipse at top right, #ad773226, #101721 65%);
 }
+.intent-experience .ix-talented-control {
+  margin-top: 18px;
+  padding: 12px 14px;
+  border: 1px solid #d9a44155;
+  border-radius: 10px;
+  background: #d9a4410c;
+}
+.intent-experience .ix-talented-control button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  width: 100%;
+  border: 0;
+  padding: 0;
+  color: #ffe8a3;
+  background: transparent;
+  text-align: left;
+  font-weight: 700;
+  cursor: pointer;
+}
+.intent-experience .ix-talented-control button span {
+  color: #bfc6d0;
+  font-size: 12px;
+  font-weight: 400;
+}
+.intent-experience .ix-talented-control button[aria-checked='true'] span {
+  color: #ffe8a3;
+}
+.intent-experience .ix-talented-control button:focus-visible {
+  outline: 2px solid #ffe8a3;
+  outline-offset: 5px;
+}
+.intent-experience .ix-talented-control p {
+  margin: 8px 0 0;
+  color: #c4cbd2;
+  font-size: 12px;
+}
 .intent-experience .ix-level-field {
   display: flex;
   align-items: center;

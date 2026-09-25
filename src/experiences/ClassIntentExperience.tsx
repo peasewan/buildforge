@@ -205,7 +205,8 @@ function Progression({ classDef: def, page }: Props) {
   const all = availableBuilds(def),
     initial = all.find((b) => b.id === page.primaryBuildId) ?? all[0]
   const [id, setId] = useState(initial?.id),
-    [level, setLevel] = useState(10)
+    [level, setLevel] = useState(10),
+    [talentedPreview, setTalentedPreview] = useState(false)
   const build = all.find((b) => b.id === id)
   if (!build)
     return <p>A reviewed point-by-point route is not available yet.</p>
@@ -219,10 +220,14 @@ function Progression({ classDef: def, page }: Props) {
     )
   const end = result.steps.at(-1)?.level ?? 10,
     current = Math.min(level, end),
-    step = result.steps.find((s) => s.level === current),
-    next = result.steps.find((s) => s.level === current + 1)
+    advance = talentedPreview ? 5 : 0,
+    atLevel = (targetLevel: number, earlyLevels: number) => result.steps.filter((s) => s.level <= targetLevel + earlyLevels).at(-1),
+    step = atLevel(current, advance),
+    next = result.steps.find((s) => s.level > current + advance)
   const nextTalent = def.talents.find((t) => t.id === next?.talentId),
-    points = step?.allocation ?? {}
+    points = step?.allocation ?? {},
+    standardPoints = totalPlannerPoints(atLevel(current, 0)?.allocation ?? {}),
+    modeledPoints = totalPlannerPoints(atLevel(current, 5)?.allocation ?? {})
   return (
     <section className="ix-progression" aria-label="Talent progression" data-surface="level-progression">
       <div className="ix-two">
@@ -239,6 +244,12 @@ function Progression({ classDef: def, page }: Props) {
             value={id!}
             onChange={setId}
           />
+          <div className="ix-talented-control">
+            <button type="button" role="switch" aria-checked={talentedPreview} aria-label="Legacy: Talented timing preview" onClick={() => setTalentedPreview((value) => !value)}>
+              Legacy: Talented <span>{talentedPreview ? 'Preview on' : 'Preview off'}</span>
+            </button>
+            <p>At level {current}: standard route {standardPoints}/{result.steps.length}; illustrative maximum advance {modeledPoints}/{result.steps.length} points.</p>
+          </div>
           <label className="ix-level-field">
             Your level{' '}
             <input
@@ -272,7 +283,7 @@ function Progression({ classDef: def, page }: Props) {
           <div className="ix-next" data-testid="progression-next">
             <Waypoints />
             <div>
-              <span>{next ? `At level ${current + 1}` : 'Route complete'}</span>
+              <span>{next ? `At level ${next.level - advance}${talentedPreview ? ' (modeled)' : ''}` : 'Published route complete'}</span>
               <strong>
                 {nextTalent
                   ? `${nextTalent.name} ${next!.rank}/${nextTalent.maxRank}`
@@ -281,14 +292,17 @@ function Progression({ classDef: def, page }: Props) {
             </div>
           </div>
           <p className="ix-note">
-            One point per level from 10 is a planner assumption.{' '}
+            {talentedPreview
+              ? 'Illustrative maximum five-level advance, not a verified Beta unlock schedule. '
+              : 'One point per level from 10 is a planner assumption. '}
             {result.orderStatus === 'editorial'
               ? 'Uses the recorded editorial point order.'
               : 'Step order is derived from the published allocation, checked for legal prerequisites.'}
+            {' '}The <a href="https://news.blizzard.com/en-us/article/24307383/get-to-know-the-world-of-warcraft-forever-legacy-system" target="_blank" rel="noreferrer">Blizzard Legacy announcement</a> confirms only that Talented can unlock points up to five levels early. It does not confirm the exact schedule or current Beta availability. This comparison does not model points beyond this published route.
           </p>
         </article>
         <article className="ix-panel">
-          <h2>Your allocation at level {current}</h2>
+          <h2>Your allocation at level {current}{talentedPreview ? ' · modeled Talented timing' : ''}</h2>
           <RankList def={def} points={points} />
           <EditLink
             def={def}
@@ -296,10 +310,7 @@ function Progression({ classDef: def, page }: Props) {
             points={points}
             label="Edit this level in Calculator"
           />
-          <p className="ix-note">
-            Loads these exact points in the calculator’s Level {build.level}{' '}
-            budget; it does not change the live Beta level cap.
-          </p>
+          <p className="ix-note">Loads these exact points in the calculator’s Level {build.level} budget. The modeled timing does not change its point cap or verify early access in the live Beta.</p>
         </article>
       </div>
       <div className="ix-milestones" aria-label="Level milestones">
@@ -313,13 +324,13 @@ function Progression({ classDef: def, page }: Props) {
               onClick={() => setLevel(l)}
             >
               <small>LEVEL {l}</small>
-              <strong>{l - 9} points</strong>
+              <strong>{totalPlannerPoints(atLevel(l, advance)?.allocation ?? {})} route points</strong>
               <span>
                 {
                   def.talents.find(
                     (t) =>
                       t.id ===
-                      result.steps.find((s) => s.level === l)?.talentId,
+                      atLevel(l, advance)?.talentId,
                   )?.name
                 }
               </span>
