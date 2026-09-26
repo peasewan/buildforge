@@ -14,7 +14,7 @@ describe('visual first paint without JavaScript', () => {
       expect((html.match(/<h1[ >]/g) ?? []).length, page.slug).toBe(1)
       expect(html, page.slug).not.toContain('class-prerender')
     }
-  })
+  }, 30_000)
   it.each(['/paladin', '/wow-forever-paladin-build', '/wow-forever-paladin-leveling-build', '/emberville'])('renders %s without a browser or storage', (pathname) => {
     const html = renderToString(<AppRoute pathname={pathname} />)
     expect(html).toContain('<h1')

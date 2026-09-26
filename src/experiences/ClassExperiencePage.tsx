@@ -1,7 +1,8 @@
 import type { CSSProperties, ReactNode } from 'react'
 import { ArrowRight, Swords } from 'lucide-react'
 import type { ClassDefinition, ClassPageDefinition } from '../lib/classPage'
-import { publishedClassPages } from '../lib/classPage'
+import { classPlannerHref, publishedClassPages } from '../lib/classPage'
+import { encodePlannerBuild } from '../lib/talentPlanner'
 import SiteFooter from '../SiteFooter'
 import ClassIntentExperience from './ClassIntentExperience'
 import ClassSignature, { hasClassSignature } from './ClassSignature'
@@ -27,6 +28,11 @@ export default function ClassExperiencePage({
 }) {
   const published = publishedClassPages([def]).map(({ page }) => page),
     paths = new Set(published.map((p) => `/${p.slug}`))
+  const plannerPublished = published.some((p) => p.kind === 'calculator')
+  const primaryBuild = def.builds.find((build) => build.id === page.primaryBuildId && paths.has(build.href))
+  const calculatorHref = primaryBuild
+    ? classPlannerHref(def, encodePlannerBuild(primaryBuild.build), primaryBuild.level)
+    : def.plannerPath
   const related = page.relatedPages.filter((p) => paths.has(p.href)),
     art = page.ogImage ?? def.ogImage
   const heroStyle = art
@@ -118,6 +124,14 @@ export default function ClassExperiencePage({
           <p className="ix-eyebrow">{experienceLabel(page.kind)}</p>
           <h1>{page.h1}</h1>
           <p className="ix-dek">{page.description}</p>
+          {plannerPublished && (
+            <div className="class-hero-actions">
+              <a className="button class-primary" href={calculatorHref}>
+                {primaryBuild ? 'Edit this build in Calculator' : `Open ${def.name} Calculator`}
+                <ArrowRight size={15} aria-hidden="true" />
+              </a>
+            </div>
+          )}
           <div className="ix-meta">
             <span>
               {def.dataReview ? 'CLIENT-TABLE PREVIEW' : def.beta.phaseLabel}

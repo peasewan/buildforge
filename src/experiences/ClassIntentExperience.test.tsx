@@ -1,9 +1,10 @@
-import { cleanup, fireEvent, render, screen } from '@testing-library/react'
+import { cleanup, fireEvent, render, screen, within } from '@testing-library/react'
 import { afterEach, expect, it } from 'vitest'
 import { warriorClass } from '../data/classes/warrior'
 import { mageClass } from '../data/classes/mage'
 import { rogueClass } from '../data/classes/rogue'
 import { warlockClass } from '../data/classes/warlock'
+import { hunterClass } from '../data/classes/hunter'
 import { PUBLISHED_CLASSES } from '../data/classes'
 import ClassIntentExperience from './ClassIntentExperience'
 import ClassExperiencePage from './ClassExperiencePage'
@@ -12,6 +13,23 @@ const baseStyles = readFileSync('src/styles.css', 'utf8')
 const experienceStyles = readFileSync('src/experiences/experience.css', 'utf8')
 afterEach(cleanup)
 const page = (slug: string) => warriorClass.pages.find((p) => p.slug === slug)!
+it('opens the Hunter PvP build from a prominent hero calculator link', () => {
+  const hunterPvp = hunterClass.pages.find((p) => p.slug === 'wow-forever-hunter-pvp-build')!
+  const { container } = render(<ClassExperiencePage classDef={hunterClass} page={hunterPvp} />)
+  const hero = container.querySelector('.ix-hero')!
+  const link = within(hero as HTMLElement).getByRole('link', { name: /Edit this build in Calculator/i })
+  const url = new URL(link.getAttribute('href')!, 'https://buildforgetools.com')
+  expect(url.pathname).toBe('/hunter')
+  expect(url.searchParams.get('level')).toBe('20')
+  expect(url.searchParams.get('build')).toContain('hunter-')
+})
+
+it('opens a blank calculator from a talent reference with no selected build', () => {
+  const { container } = render(<ClassExperiencePage classDef={warriorClass} page={page('wow-forever-warrior-talents')} />)
+  const hero = container.querySelector('.ix-hero')!
+  const link = within(hero as HTMLElement).getByRole('link', { name: 'Open Warrior Calculator' })
+  expect(link.getAttribute('href')).toBe('/warrior')
+})
 it('gives Warlock PvP a distinct editorial note instead of repeating the route paragraph', () => {
   const warlockPvp = warlockClass.pages.find(p => p.slug === 'wow-forever-warlock-pvp-build')!
   const { container } = render(<ClassExperiencePage classDef={warlockClass} page={warlockPvp} />)
