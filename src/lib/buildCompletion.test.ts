@@ -1,4 +1,5 @@
-import { describe, expect, it } from 'vitest'
+import { afterEach, describe, expect, it, vi } from 'vitest'
+import { encodeBuild } from './build'
 import {
   claimBuildCompletion,
   loadClaimedBuildCompletions,
@@ -36,5 +37,46 @@ describe('claimBuildCompletion', () => {
 
     const refreshedPage = loadClaimedBuildCompletions(storage)
     expect(claimBuildCompletion({ first: 50 }, complete, refreshedPage)).toBe(false)
+  })
+})
+
+
+describe('completion context', () => {
+  afterEach(() => vi.restoreAllMocks())
+
+  it('uses the active level budget and isolates classes and modes', () => {
+    const claimed = new Set<string>()
+    const before = { first: 10 }
+    const next = { first: 10, final: 1 }
+    const context = { classId: 'hunter', level: 20, pointCap: 11 }
+    expect(claimBuildCompletion(before, next, claimed, context)).toBe(true)
+    expect(claimBuildCompletion(before, next, claimed, context)).toBe(false)
+    expect(claimBuildCompletion(before, next, claimed, { ...context, classId: 'mage' })).toBe(true)
+    expect(claimBuildCompletion(before, next, claimed, { ...context, level: 30, pointCap: 21 })).toBe(false)
+    expect(claimBuildCompletion({ first: 20 }, { first: 20, final: 1 }, claimed, { ...context, level: 30, pointCap: 21 })).toBe(true)
+  })
+
+  it('retains legacy Paladin deduplication when context is added', () => {
+    const before = { first: 50 }
+    const next = { first: 50, final: 1 }
+    const claimed = new Set([encodeBuild(next)])
+    expect(claimBuildCompletion(before, next, claimed, { classId: 'paladin', level: 60, pointCap: 51 })).toBe(false)
+    expect(claimBuildCompletion(before, next, claimed)).toBe(false)
+  })
+
+  it('persists the class and level claims across a page refresh', () => {
+    let data: string | null = null
+    const storage = { getItem: () => data, setItem: (_key: string, value: string) => { data = value } }
+    const context = { classId: 'warrior', level: 20, pointCap: 11 }
+    const claimed = loadClaimedBuildCompletions(storage)
+    expect(claimBuildCompletion({ first: 10 }, { first: 11 }, claimed, context)).toBe(true)
+    saveClaimedBuildCompletions(claimed, storage)
+    expect(claimBuildCompletion({ first: 10 }, { first: 11 }, loadClaimedBuildCompletions(storage), context)).toBe(false)
+  })
+
+  it('does not break building when access to sessionStorage itself is blocked', () => {
+    vi.spyOn(window, 'sessionStorage', 'get').mockImplementation(() => { throw new Error('Blocked') })
+    expect(() => loadClaimedBuildCompletions()).not.toThrow()
+    expect(() => saveClaimedBuildCompletions(new Set(['example']))).not.toThrow()
   })
 })

@@ -10,6 +10,8 @@ import { betaDataset } from './data/datasets'
 import { BRANCHES, branchPoints, canIncrement, decodeBuild, decrementTalent, dominantBranch, encodeBuild, getTalentLockReason, incrementTalent, totalPoints, type Branch, type Build, type TalentLockReason } from './lib/build'
 import { claimBuildCompletion, loadClaimedBuildCompletions, saveClaimedBuildCompletions } from './lib/buildCompletion'
 import { reportSharedBuild, track } from './lib/analytics'
+import { copyTextToClipboard } from './lib/clipboard'
+import { usePlannerView } from './lib/usePlannerView'
 import SiteFooter from './SiteFooter'
 import BetaDataStatus from './BetaDataStatus'
 import VerificationBadge from './VerificationBadge'
@@ -135,7 +137,7 @@ export default function App() {
   const [build, setBuild] = useState<Build>(initialPlanner.build)
   const [showSavedBuild, setShowSavedBuild] = useState(initialPlanner.restored)
   const [copied, setCopied] = useState(false)
-  const toolRef = useRef<HTMLElement>(null)
+  const viewMarker = useRef<HTMLDivElement>(null)
   const calculatorRef = useRef<HTMLDivElement>(null)
   const completedBuildsRef = useRef<Set<string> | null>(null)
   if (completedBuildsRef.current === null) completedBuildsRef.current = loadClaimedBuildCompletions()
@@ -153,22 +155,10 @@ export default function App() {
     }
   }, [])
 
-  useEffect(() => {
-    const node = toolRef.current
-    if (!node || typeof IntersectionObserver === 'undefined') return
-    let sent = false
-    const observer = new IntersectionObserver((entries) => {
-      if (!sent && entries.some((entry) => entry.isIntersecting)) {
-        sent = true
-        track('view_planner')
-        observer.disconnect()
-      }
-    }, { threshold: 0.15 })
-    observer.observe(node)
-    return () => observer.disconnect()
-  }, [])
+  usePlannerView(viewMarker, 'paladin', 60, 51)
 
-  const openTool = (nextBranch?: Branch) => {
+  const openTool = (nextBranch?: Branch, placement = 'hero') => {
+    track('calculator_open', { class: 'paladin', page_path: window.location.pathname, target_path: '/paladin', placement })
     if (nextBranch) {
       setBranch(nextBranch)
       track('spec_select', { branch: nextBranch })
@@ -185,44 +175,33 @@ export default function App() {
   }
 
   const copyBuild = async () => {
-    track('build_copy', { points })
+    const pagePath = window.location.pathname
     const code = encodeBuild(build)
     const path = `/build?id=${code}`
     window.history.replaceState({}, '', path)
     const shareUrl = `${window.location.origin}${path}`
-    let didCopy: boolean
-    try {
-      await navigator.clipboard.writeText(shareUrl)
-      didCopy = true
-    } catch {
-      const field = document.createElement('textarea')
-      field.value = shareUrl
-      field.setAttribute('readonly', '')
-      field.style.position = 'fixed'
-      field.style.opacity = '0'
-      document.body.appendChild(field)
-      field.select()
-      didCopy = document.execCommand('copy')
-      field.remove()
-    }
-    if (didCopy) {
-      track('build_shared', { points })
-      void reportSharedBuild(code)
-    }
-    setCopied(true)
+    const didCopy = await copyTextToClipboard(shareUrl)
+    setCopied(didCopy)
+    if (!didCopy) return
+    track('build_copy', { class: 'paladin', page_path: pagePath, level: 60, point_cap: 51, points, branch: currentBranch })
+    track('build_shared', { points })
+    void reportSharedBuild(code)
     window.setTimeout(() => setCopied(false), 1800)
   }
 
   const addTalent = (talent: Talent) => {
-    track('talent_click', { talent_id: talent.id, branch: talent.branch })
     const nextBuild = incrementTalent(build, talent, talents)
+    if (nextBuild === build) return
+    track('talent_click', { class: 'paladin', talent_id: talent.id, branch: talent.branch, rank: nextBuild[talent.id] ?? 0 })
     if (claimBuildCompletion(build, nextBuild, completedBuildsRef.current!)) {
       saveClaimedBuildCompletions(completedBuildsRef.current!)
       const completedBranch = dominantBranch(nextBuild, talents, talent.branch)
       track('build_complete', {
+        class: 'paladin', page_path: window.location.pathname,
+        level: 60, point_cap: 51, completion_source: 'manual',
         points: 51,
         branch: completedBranch,
-        selected_talents: Object.keys(nextBuild).length,
+        selected_talents: Object.values(nextBuild).filter(rank => rank > 0).length,
       })
     }
     setBuild(nextBuild)
@@ -261,7 +240,7 @@ export default function App() {
       <header className="nav shell">
         <a className="brand" href="/paladin#top"><img src="/images/icons/paladin-shield.png" alt="" /><span>BUILD</span><b>FORGE</b></a>
         <nav aria-label="Primary navigation"><a href="/paladin#calculator">Talent Calculator</a><a href="/wow-forever-paladin-build">Paladin Build</a><a href="/wow-forever-paladin-talents">Paladin Talents</a><a href="/wow-forever-paladin-abilities">Abilities</a></nav>
-        <button className="nav-cta" onClick={() => openTool()}>Open Planner</button>
+        <button className="nav-cta" onClick={() => openTool(undefined, 'navigation')}>Open Planner</button>
       </header>
 
       <section className="hero" id="top">
@@ -308,7 +287,7 @@ export default function App() {
           <p className="spec-cta">Choose your specialization:</p>
           <div className="spec-choices">
             {BRANCHES.map((item) => (
-              <button key={item} className="spec-choice" onClick={() => openTool(item)}>
+              <button key={item} className="spec-choice" onClick={() => openTool(item, 'content')}>
                 <img src={branchIcons[item]} alt="" />
                 <span>{branchNames[item]}</span>
                 <small>{branchTaglines[item]}</small>
@@ -318,7 +297,7 @@ export default function App() {
         </div>
       </section>
 
-      <section className="planner-section" id="planner" ref={toolRef}>
+      <section className="planner-section" id="planner">
         <div className="shell">
           <div className="section-heading centered"><div className="eyebrow">Interactive Build Planner</div><h2>WoW Forever Paladin Talent Tree</h2><p>Choose Holy, Protection, or Retribution, spend all 51 points, and shape a build worth sharing.</p></div>
           <section className="current-cap-builds" aria-label="Current Beta Level 20 builds">
@@ -339,7 +318,7 @@ export default function App() {
           </section>
           <div id="calculator" ref={calculatorRef} className="calculator-entry">
             {showSavedBuild && <div className="saved-build-notice" role="status"><div><strong>Saved build loaded</strong><span>Your previous talent setup is ready to continue.</span></div><button type="button" onClick={startNewBuild}><RotateCcw size={14} /> Start New Build</button></div>}
-            <div className="planner-tabs" role="tablist">{BRANCHES.map((item) => <button key={item} role="tab" aria-selected={branch === item} className={branch === item ? 'active' : ''} onClick={() => { setBranch(item); track('spec_select', { branch: item }) }}><img src={branchIcons[item]} alt="" /><span>{branchNames[item]}<small>{branchPoints(build, item, talents)} points</small></span></button>)}</div>
+            <div className="planner-tabs" ref={viewMarker} role="tablist">{BRANCHES.map((item) => <button key={item} role="tab" aria-selected={branch === item} className={branch === item ? 'active' : ''} onClick={() => { setBranch(item); track('spec_select', { branch: item }) }}><img src={branchIcons[item]} alt="" /><span>{branchNames[item]}<small>{branchPoints(build, item, talents)} points</small></span></button>)}</div>
             <div className="planner-grid">
               <div className="tree-card">
                 <div className="panel-heading"><div><span>{branchNames[branch]} Specialization</span><h3>{branchTaglines[branch]}</h3></div><div className="legend"><i className="dot available" /> Available <i className="dot chosen" /> Selected</div></div>

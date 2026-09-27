@@ -1,5 +1,5 @@
 import { experienceEnabled } from './experiences/rollout'
-import { useMemo, useState, type CSSProperties } from 'react'
+import { useMemo, useRef, useState, type CSSProperties } from 'react'
 import { Check, Copy, Lock, Minus, RotateCcw, Shield, Sparkles, Swords } from 'lucide-react'
 import SiteFooter from './SiteFooter'
 import VerificationBadge from './VerificationBadge'
@@ -18,6 +18,9 @@ import {
   totalPlannerPoints,
 } from './lib/talentPlanner'
 import { track } from './lib/analytics'
+import { copyTextToClipboard } from './lib/clipboard'
+import { claimBuildCompletion, loadClaimedBuildCompletions, saveClaimedBuildCompletions } from './lib/buildCompletion'
+import { usePlannerView } from './lib/usePlannerView'
 
 function defaultLevel<B extends string>(classDef: ClassDefinition<B>): PlannerLevel {
   return classDef.plannerModes[0]?.level ?? (classDef.beta.levelCap as PlannerLevel)
@@ -94,6 +97,10 @@ export default function ClassCalculatorPage<B extends string>({ classDef }: { cl
   const [copied, setCopied] = useState(false)
   const [resetNotice, setResetNotice] = useState<string | null>(null)
   const cap = pointCapFor(classDef, level)
+  const viewMarker = useRef<HTMLDivElement>(null)
+  const completedBuilds = useRef<Set<string> | null>(null)
+  if (completedBuilds.current === null) completedBuilds.current = loadClaimedBuildCompletions()
+  usePlannerView(viewMarker, classDef.id, level, cap)
   const canvasHeight = canvasHeightFor(classDef)
   const config = useMemo<PlannerConfig<B>>(() => ({ ...classDef.plannerConfig, pointCap: cap }), [classDef.plannerConfig, cap])
   const points = totalPlannerPoints(build)
@@ -142,8 +149,10 @@ export default function ClassCalculatorPage<B extends string>({ classDef }: { cl
 
   const copyBuild = async () => {
     const url = new URL(classPlannerHref(classDef, encodePlannerBuild(build), level), window.location.origin)
-    await navigator.clipboard.writeText(url.toString())
-    setCopied(true)
+    const didCopy = await copyTextToClipboard(url.toString())
+    setCopied(didCopy)
+    if (!didCopy) return
+    track('build_copy', { class: classDef.id, page_path: window.location.pathname, level, point_cap: cap, points, branch: String(activeBranch) })
     track(`${classDef.analyticsClass}_build_copy`, { level, points, specialization: String(activeBranch) })
     window.setTimeout(() => setCopied(false), 1600)
   }
@@ -183,7 +192,7 @@ export default function ClassCalculatorPage<B extends string>({ classDef }: { cl
     </section>
 
     <section className="shell class-calculator" id="class-calculator">
-      <div className="class-toolbar">
+      <div className="class-toolbar" ref={viewMarker}>
         <div><p className="class-kicker">Interactive talent trees</p><h2>Build Your {classDef.name}</h2></div>
         <div className="class-levels" aria-label="Planner level">
           {classDef.plannerModes.map((mode) => <button className={level === mode.level ? 'active' : ''} type="button" key={mode.level} onClick={() => changeLevel(mode.level)}>{mode.label}<small>{mode.points} points</small></button>)}
@@ -220,6 +229,16 @@ export default function ClassCalculatorPage<B extends string>({ classDef }: { cl
                 if (next !== build) {
                   commit(next)
                   track('talent_click', { class: classDef.analyticsClass, talent: talent.id, rank: next[talent.id] ?? 0 })
+                  if (claimBuildCompletion(build, next, completedBuilds.current!, { classId: classDef.id, level, pointCap: cap })) {
+                    saveClaimedBuildCompletions(completedBuilds.current!)
+                    track('build_complete', {
+                      class: classDef.id, page_path: window.location.pathname,
+                      level, point_cap: cap, points: totalPlannerPoints(next),
+                      branch: String(dominantPlannerBranch(next, classDef.talents, classDef.branches, classDef.branches[0])),
+                      selected_talents: Object.values(next).filter(rank => rank > 0).length,
+                      completion_source: 'manual',
+                    })
+                  }
                 }
               }}
               onRemove={() => commit(decrementPlannerTalent(build, talent, classDef.talents))}
