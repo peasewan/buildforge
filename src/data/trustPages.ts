@@ -123,7 +123,7 @@ export const TRUST_PAGES: TrustPageConfig[] = [
     description: 'Read how BuildForgeTools uses Google Analytics, local browser storage, share links, and privately submitted feedback.',
     eyebrow: 'BuildForgeTools',
     intro: 'This policy explains what information BuildForgeTools processes when you use its build planners and game tools, visit a content page, or submit feedback.',
-    updated: 'September 26, 2026',
+    updated: 'September 27, 2026',
     sections: [
       {
         heading: 'Analytics',
@@ -154,9 +154,9 @@ export const TRUST_PAGES: TrustPageConfig[] = [
       {
         heading: 'Advertising and Cookies',
         paragraphs: [
-          'BuildForgeTools does not currently display third-party advertising. If advertising is introduced, this policy will be updated before activation to describe the providers, advertising cookies, personalization choices, and opt-out controls that apply.',
-          'If advertising is activated, third-party vendors, including Google, may use cookies to serve ads based on prior visits to BuildForgeTools or other websites. Google advertising cookies enable Google and its partners to personalize ads based on visits to this site and other sites. Visitors can opt out of personalized ads through Google Ads Settings or manage participating third-party vendors through the industry opt-out page. We will identify any additional active ad networks here before ads are served.',
-          'If Google AdSense is introduced, required consent controls, including a Google-certified consent platform for visitors in the European Economic Area, the United Kingdom, and Switzerland, will be configured before personalized ads are served in those regions.',
+          'BuildForgeTools has integrated Google AdSense for site verification and advertising. Ad display depends on Google approval and site settings. Google and its partners may process information such as IP addresses, browser and device details, pages visited, cookies, and other identifiers to deliver, measure, and personalize advertising.',
+          'Third-party vendors, including Google, may use cookies to serve ads based on prior visits to BuildForgeTools or other websites. Google advertising cookies enable Google and its partners to personalize ads based on visits to this site and other sites. Visitors can opt out of personalized ads through Google Ads Settings or manage participating third-party vendors through the industry opt-out page.',
+          'For visitors in the European Economic Area, the United Kingdom, and Switzerland, advertising and analytics storage default to denied until a consent choice is communicated. Google consent mode may send measurements without cookies while storage is denied. Google Privacy & messaging provides a Google-certified consent platform: where its message is displayed, visitors can consent, decline, or manage their choices, and can reopen those choices through the Privacy and cookie settings link. This privacy policy page does not load advertising, consent-message, or Google Analytics scripts.',
         ],
         links: [
           { href: 'https://policies.google.com/technologies/ads', label: 'How Google uses information for advertising' },

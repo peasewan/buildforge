@@ -48,9 +48,20 @@ describe('production-only Google Analytics', () => {
 
   it.each(['buildforgetools.com', 'www.buildforgetools.com'])('configures and loads once on %s', (hostname) => {
     const result = executeBootstrap(hostname)
-    expect(result.dataLayer).toHaveLength(2)
-    expect(Array.from(result.dataLayer[0] as IArguments)[0]).toBe('js')
-    expect(Array.from(result.dataLayer[1] as IArguments)).toEqual([
+    expect(result.dataLayer).toHaveLength(3)
+    const consent = Array.from(result.dataLayer[0] as IArguments)
+    expect(consent.slice(0, 2)).toEqual(['consent', 'default'])
+    expect(consent[2]).toMatchObject({
+      ad_storage: 'denied', ad_user_data: 'denied',
+      ad_personalization: 'denied', analytics_storage: 'denied', wait_for_update: 500,
+    })
+    const regions = (consent[2] as { region: string[] }).region
+    expect(regions).toContain('DE')
+    expect(regions).toContain('GB')
+    expect(regions).toContain('CH')
+    expect(regions).not.toContain('US')
+    expect(Array.from(result.dataLayer[1] as IArguments)[0]).toBe('js')
+    expect(Array.from(result.dataLayer[2] as IArguments)).toEqual([
       'config', 'G-DDT58001FZ', { page_path: '/paladin' },
     ])
     expect(result.insertedScripts).toEqual([{
@@ -75,6 +86,15 @@ describe('production-only Google Analytics', () => {
     expect(transformed).toContain(`<script>${analyticsBootstrapSource()}</script>`)
     expect(transformed).not.toContain('<script async src="https://www.googletagmanager.com/')
     expect(transformed).toContain('<div id="root"><!-- PAGES_PRERENDER --></div>')
+  })
+
+  it.each(['/privacy', '/privacy/', '/privacy/index.html'])('keeps %s free of analytics tags', (path) => {
+    const html = readFileSync(resolve(import.meta.dirname, '../../privacy/index.html'), 'utf8')
+    const transformed = transformAnalyticsHtml(html, { path })
+    expect(transformed).not.toContain('googletagmanager.com')
+    expect(transformed).not.toContain('window.gtag')
+    expect(transformed).toContain('https://buildforgetools.com/privacy')
+    expect(transformed).toContain('<div id="root">')
   })
 
   it.each(['localhost', '127.0.0.1', 'preview-buildforge.vercel.app'])(

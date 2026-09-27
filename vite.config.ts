@@ -21,6 +21,25 @@ export default defineConfig({
       enforce: 'pre',
       transformIndexHtml: transformAnalyticsHtml,
     },
+    {
+      name: 'adsense-site-verification',
+      apply: 'build',
+      transformIndexHtml(_html, context) {
+        if (process.env.VERCEL_ENV === 'preview') return []
+        const publisher = 'ca-pub-4279730688530289'
+        // Keep the linked privacy policy free of ad and CMP scripts.
+        if (/^\/privacy(?:\/index\.html|\/)?$/.test(context.path)) return []
+        return [{
+          tag: 'script',
+          attrs: {
+            async: true,
+            src: `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${publisher}`,
+            crossorigin: 'anonymous',
+          },
+          injectTo: 'head' as const,
+        }]
+      },
+    },
     react(),
   ],
   build: {

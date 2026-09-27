@@ -105,3 +105,10 @@ Use the same daily comparison fields so decisions are based on trends rather tha
 - Reviewed catalog includes Knight (official), Wanderer (September press preview), Sword/Bow/Staff (official category examples), and Focus Strike/Swift Foot names plus observed effects. Their active/passive types, inheritability, slots, unlocks and compatibility remain unknown. Never infer skill type from an effect, or class equip slots from inheritance slots.
 - Planner drafts are local browser intentions, not confirmed game builds. Keep old `emberville-build-notes` migration, stale-record rechecks and storage-failure fallback. Do not send notes to analytics or fire `build_complete` when saving drafts.
 - Preserve the four Emberville URLs, metadata and sitemap entries during data upgrades. No new route is needed to ingest a new reviewed dataset.
+
+## AdSense and European consent
+
+- Publisher: `ca-pub-4279730688530289`. The Vite HTML hook injects the async AdSense verification/advertising tag into production build entries; Vercel Preview deployments skip it. `public/ads.txt` authorizes the matching `pub-4279730688530289` seller. The script is the chosen site-verification method; no additional account meta tag is needed.
+- `/privacy` must remain free of AdSense/CMP and GA scripts so the policy linked from the consent message can be read without consent.
+- The analytics bootstrap queues EEA/UK/Switzerland defaults of `denied` for `ad_storage`, `ad_user_data`, `ad_personalization`, and `analytics_storage` before measurement configuration. This is advanced consent mode, which may send cookieless measurements; it is not a complete network block.
+- Google Privacy & messaging controls the certified CMP. The owner must publish the European message for `buildforgetools.com`, use `https://buildforgetools.com/privacy`, and enable consent mode for both advertising and analytics. Code deployment alone does not publish the account-side message or submit AdSense review. Do not claim either is complete without verifying it in the account.
