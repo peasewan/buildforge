@@ -25,6 +25,7 @@ describe('ClassCalculatorPage renders any class from ClassDefinition', () => {
     localStorage.clear()
     history.replaceState({}, '', hunterClassFixture.plannerPath)
     Object.assign(navigator, { clipboard: { writeText: clipboardWrite } })
+    HTMLElement.prototype.scrollIntoView = vi.fn()
   })
 
   it('renders the Hunter fixture H1, every branch and every talent', () => {
@@ -92,7 +93,7 @@ describe('ClassCalculatorPage renders any class from ClassDefinition', () => {
     fireEvent.click(screen.getByRole('button', { name: /Copy build link/i }))
 
     const copiedUrl = String(clipboardWrite.mock.calls[0]?.[0])
-    expect(copiedUrl).toMatch(/^https:\/\/buildforgetools\.com\/hunter\?build=.+&level=20$/)
+    expect(copiedUrl).toMatch(/^https:\/\/buildforgetools\.com\/hunter\?build=.+&level=20#tree-beastmastery$/)
     expect(copiedUrl).toContain('build=')
     expect(copiedUrl).toContain('level=20')
 

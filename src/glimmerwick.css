@@ -6,3 +6,5 @@
 .glimmerwick-site { color-scheme: light; }
 .glimmerwick-site h1 { text-shadow: none; }
 .glimmerwick-site h1 span { background: none; -webkit-text-fill-color: currentColor; }
+
+.gw-reviewed-crop{margin:18px 0;padding:14px;border:1px solid #cbd7bd;border-radius:7px;background:#f9fbf1}.gw-reviewed-crop>span{font-size:9px;font-weight:700;letter-spacing:.12em;color:#71835b}.gw-crop-heading{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:9px}.gw-crop-heading strong{font-family:Georgia,serif;font-size:20px}.gw-reviewed-crop p{font-size:11px;line-height:1.65;color:var(--gw-muted)}.gw-reviewed-crop a{font-size:10px}.gw-reference-evidence{display:inline-block;font-size:9px;color:#46613d;background:#e2ead6;padding:5px 8px;border-radius:20px}.gw-garden-reference small{font-size:10px;color:var(--gw-muted)}.gw-row-actions button{min-width:30px;min-height:30px}.gw-planting-form .gw-field-help{font-size:11px!important}.gw-plan-panel>.gw-field-help{max-width:660px}

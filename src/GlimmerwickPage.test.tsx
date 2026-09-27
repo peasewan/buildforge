@@ -42,6 +42,48 @@ describe('Glimmerwick garden tool', () => {
     expect(screen.queryByRole('table')).toBeNull()
   })
 
+  it('starts Basil from reviewed footage without filling unverified growth values', () => {
+    render(<GlimmerwickPage />)
+    fireEvent.click(screen.getByRole('button', { name: 'Use Basil' }))
+    expect((screen.getByLabelText('Crop name') as HTMLInputElement).value).toBe('Basil')
+    expect((screen.getByLabelText('Observed growth days') as HTMLInputElement).value).toBe('')
+    fireEvent.click(screen.getByRole('button', { name: 'Add planting' }))
+    const table = screen.getByRole('table', { name: 'Your harvest schedule' })
+    expect(within(table).getByText('Basil')).toBeTruthy()
+    expect(table.textContent).toContain('Growth unknown')
+    expect(table.textContent).not.toContain('Ready to check')
+    expect(JSON.parse(localStorage.getItem('glimmerwick-garden-plan')!).plantings[0].growthDays).toBeNull()
+    expect(screen.getByRole('link', { name: 'Basil footage · 1:48' }).getAttribute('href')).toBe('https://www.youtube.com/watch?v=dm_9ViL_soU&t=108s')
+  })
+
+  it('records a personal harvest observation without claiming an official growth time', () => {
+    const view = render(<GlimmerwickPage />)
+    fireEvent.click(screen.getByRole('button', { name: 'Use Basil' }))
+    fireEvent.change(screen.getByLabelText('Planting day'), { target: { value: '3' } })
+    fireEvent.click(screen.getByRole('button', { name: 'Add planting' }))
+    fireEvent.click(screen.getByRole('button', { name: 'Record harvest for Basil' }))
+    expect(screen.getByRole('alert').textContent).toContain('harvest day')
+    fireEvent.change(screen.getByLabelText('Current garden day'), { target: { value: '7' } })
+    fireEvent.click(screen.getByRole('button', { name: 'Update day' }))
+    fireEvent.click(screen.getByRole('button', { name: 'Record harvest for Basil' }))
+    const observation = JSON.parse(localStorage.getItem('glimmerwick-garden-plan')!).plantings[0]
+    expect(observation).toMatchObject({ crop: 'Basil', plantedDay: 3, growthDays: 4, harvestedDay: 7 })
+    expect(screen.getByRole('table').textContent).toContain('Observed · Day 7')
+    expect(screen.getByRole('table').textContent).toContain('4 elapsed days')
+    expect(JSON.stringify((window.gtag as ReturnType<typeof vi.fn>).mock.calls)).not.toContain('Basil')
+    view.unmount()
+    render(<GlimmerwickPage />)
+    expect(screen.getByRole('table').textContent).toContain('Observed · Day 7')
+  })
+
+  it('clears a different crop duration when choosing the reviewed Basil name', () => {
+    render(<GlimmerwickPage />)
+    fireEvent.change(screen.getByLabelText('Crop name'), { target: { value: 'Other crop' } })
+    fireEvent.change(screen.getByLabelText('Observed growth days'), { target: { value: '9' } })
+    fireEvent.click(screen.getByRole('button', { name: 'Use Basil' }))
+    expect((screen.getByLabelText('Observed growth days') as HTMLInputElement).value).toBe('')
+  })
+
   it('updates the planning day and shows when an estimate is ready', () => {
     render(<GlimmerwickPage />)
     addPlanting()

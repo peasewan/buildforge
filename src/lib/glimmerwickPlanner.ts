@@ -4,8 +4,10 @@ export type GardenPlanting = {
   crop: string
   quantity: number
   plantedDay: number
-  growthDays: number
+  growthDays: number | null
   notes: string
+  /** A personal observation, never an official crop timing. */
+  harvestedDay?: number
 }
 
 export type GardenPlan = {
@@ -28,16 +30,18 @@ function isIntegerInRange(value: unknown, min: number, max: number): value is nu
 
 function parsePlanting(value: unknown): GardenPlanting | undefined {
   if (!isRecord(value)) return undefined
-  const { id, crop, quantity, plantedDay, growthDays, notes } = value
+  const { id, crop, quantity, plantedDay, growthDays, notes, harvestedDay } = value
   if (typeof id !== 'string' || !id.trim()
     || typeof crop !== 'string' || !crop.trim() || crop.length > 80
     || typeof notes !== 'string' || notes.length > 240
     || !isIntegerInRange(quantity, 1, 999)
     || !isIntegerInRange(plantedDay, 1, 9999)
-    || !isIntegerInRange(growthDays, 1, 365)) return undefined
+    || (growthDays !== null && !isIntegerInRange(growthDays, 1, 365))) return undefined
+  if (harvestedDay !== undefined && (!isIntegerInRange(harvestedDay, 1, 9999)
+    || growthDays === null || harvestedDay - plantedDay !== growthDays)) return undefined
 
   // Rebuild only the supported fields; stored extras never enter the application state.
-  return { id, crop, quantity, plantedDay, growthDays, notes }
+  return { id, crop, quantity, plantedDay, growthDays, notes, ...(harvestedDay !== undefined ? { harvestedDay } : {}) }
 }
 
 /** Recover valid rows independently, without coercing or silently rewriting user input. */
@@ -66,15 +70,21 @@ export function parseGardenPlan(raw: string | null): GardenPlan {
   return plan
 }
 
-export function harvestDay(row: GardenPlanting): number {
-  return row.plantedDay + row.growthDays
+export function harvestDay(row: GardenPlanting): number | null {
+  return row.growthDays === null ? null : row.plantedDay + row.growthDays
 }
 
-export function gardenSchedule(plan: GardenPlan): { planting: GardenPlanting; readyDay: number; daysRemaining: number }[] {
+export function recordGardenHarvest(row: GardenPlanting, harvestedDay: number): GardenPlanting | undefined {
+  const elapsed = harvestedDay - row.plantedDay
+  if (!isIntegerInRange(harvestedDay, 1, 9999) || !isIntegerInRange(elapsed, 1, 365)) return undefined
+  return { ...row, growthDays: elapsed, harvestedDay }
+}
+
+export function gardenSchedule(plan: GardenPlan): { planting: GardenPlanting; readyDay: number | null; daysRemaining: number | null }[] {
   return plan.plantings.map((planting) => {
     const readyDay = harvestDay(planting)
-    return { planting, readyDay, daysRemaining: Math.max(0, readyDay - plan.currentDay) }
-  }).sort((left, right) => left.readyDay - right.readyDay)
+    return { planting, readyDay, daysRemaining: readyDay === null ? null : Math.max(0, readyDay - plan.currentDay) }
+  }).sort((left, right) => (left.readyDay ?? Infinity) - (right.readyDay ?? Infinity))
 }
 
 function csvText(value: string): string {
@@ -87,10 +97,10 @@ function csvText(value: string): string {
 }
 
 export function gardenPlanCsv(plan: GardenPlan): string {
-  const header = 'currentDay,id,crop,quantity,plantedDay,growthDays,notes,readyDay'
+  const header = 'currentDay,id,crop,quantity,plantedDay,growthDays,notes,readyDay,harvestedDay'
   const rows = plan.plantings.map((row) => [
     plan.currentDay, csvText(row.id), csvText(row.crop), row.quantity,
-    row.plantedDay, row.growthDays, csvText(row.notes), harvestDay(row),
+    row.plantedDay, row.growthDays ?? '', csvText(row.notes), harvestDay(row) ?? '', row.harvestedDay ?? '',
   ].join(','))
   return `${[header, ...rows].join('\r\n')}\r\n`
 }

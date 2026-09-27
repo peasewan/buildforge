@@ -4,6 +4,52 @@ export const GLIMMERWICK_REFERENCE = {
   demoAvailable: true,
 } as const
 
+/** Names reviewed in public Demo footage. Numeric fields remain deliberately unknown. */
+export const GLIMMERWICK_REVIEWED_CROPS = [{
+  id: 'basil',
+  name: 'Basil',
+  version: 'Public Demo',
+  verificationStatus: 'community_verified',
+  checkedAt: '2026-09-27',
+  growthDays: null,
+  seasons: null,
+  harvestYield: null,
+  seedPrice: null,
+  sources: [
+    { label: 'Basil footage · 1:48', href: 'https://www.youtube.com/watch?v=dm_9ViL_soU&t=108s' },
+    { label: 'Demo dialogue · 51:20', href: 'https://www.youtube.com/watch?v=EgGVHbzWVZk&t=3080s' },
+    { label: 'Second Demo dialogue · 1:00:38', href: 'https://www.youtube.com/watch?v=0JmmDn6Q_Ek&t=3638s' },
+  ],
+}] as const
+
+export const GLIMMERWICK_GARDEN_RULES = [
+  {
+    id: 'daily-watering', title: 'Check watering each day',
+    description: 'The Demo garden tutorial asks you to water plants daily. It does not establish a missed-watering penalty or a growth duration.',
+    version: 'Public Demo footage', verificationStatus: 'community_verified',
+    sourceLabel: 'Garden tutorial · 50:47', sourceHref: 'https://www.youtube.com/watch?v=EgGVHbzWVZk&t=3047s',
+  },
+  {
+    id: 'tilling', title: 'Song of Tilling',
+    description: 'The Demo tutorial uses this song to enchant a hoe and prepare soil for sowing. Demo update 0.484 identifies it as the first song in the game.',
+    version: 'Demo 0.484 / tutorial', verificationStatus: 'community_verified',
+    sourceLabel: 'Developer Demo update 0.484', sourceHref: 'https://store.steampowered.com/news/app/1706510/view/711152269082494267',
+    footageHref: 'https://www.youtube.com/watch?v=EgGVHbzWVZk&t=2867s',
+  },
+  {
+    id: 'garden-well', title: 'Plan around the garden well',
+    description: 'The Demo tutorial describes putting grown crops in the garden well and receiving sale proceeds overnight. Prices and yield per plant are not verified here.',
+    version: 'Public Demo footage', verificationStatus: 'community_verified',
+    sourceLabel: 'Garden tutorial · 50:58', sourceHref: 'https://www.youtube.com/watch?v=EgGVHbzWVZk&t=3058s',
+  },
+  {
+    id: 'casting', title: 'Stars are not required to cast',
+    description: 'Demo update 0.466 confirms that casting spells does not require earning stars in the music minigame. It does not establish a crop speed bonus.',
+    version: 'Demo 0.466', verificationStatus: 'official',
+    sourceLabel: 'Developer Demo update 0.466', sourceHref: 'https://store.steampowered.com/news/app/1706510/view/515239886340494123',
+  },
+] as const
+
 export const GLIMMERWICK_SOURCES = [
   {
     label: 'Official Steam page and demo',

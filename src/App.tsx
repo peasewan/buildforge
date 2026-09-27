@@ -28,7 +28,7 @@ function initialPlannerState(): { build: Build; restored: boolean } {
   if (typeof window === 'undefined') return { build: {}, restored: false }
   const params = new URLSearchParams(window.location.search)
   const shared = params.get('id')
-  if (shared) return { build: decodeBuild(shared, talents), restored: false }
+  if (params.has('id')) return { build: decodeBuild(shared ?? '', talents), restored: false }
   try {
     const build = decodeBuild(localStorage.getItem('wow-forever-paladin-build') ?? '', talents)
     return { build, restored: totalPoints(build) > 0 }
@@ -133,10 +133,12 @@ export function TalentTree({ branch, build, onAdd, onRemove }: { branch: Branch;
 
 export default function App() {
   const [initialPlanner] = useState(initialPlannerState)
-  const [branch, setBranch] = useState<Branch>('holy')
+  const [branch, setBranch] = useState<Branch>(() => dominantBranch(initialPlanner.build, talents, 'holy'))
   const [build, setBuild] = useState<Build>(initialPlanner.build)
   const [showSavedBuild, setShowSavedBuild] = useState(initialPlanner.restored)
   const [copied, setCopied] = useState(false)
+  const [manualShareUrl, setManualShareUrl] = useState<string | null>(null)
+  const copyRequest = useRef(0)
   const viewMarker = useRef<HTMLDivElement>(null)
   const calculatorRef = useRef<HTMLDivElement>(null)
   const completedBuildsRef = useRef<Set<string> | null>(null)
@@ -146,7 +148,11 @@ export default function App() {
   const currentBranch = dominantBranch(build, talents, branch)
 
   useEffect(() => {
-    localStorage.setItem('wow-forever-paladin-build', encodeBuild(build))
+    try {
+      localStorage.setItem('wow-forever-paladin-build', encodeBuild(build))
+    } catch {
+      // The calculator remains editable when browser storage is unavailable.
+    }
   }, [build])
 
   useEffect(() => {
@@ -156,6 +162,13 @@ export default function App() {
   }, [])
 
   usePlannerView(viewMarker, 'paladin', 60, 51)
+
+  const replaceBuild = (next: Build) => {
+    copyRequest.current += 1
+    setCopied(false)
+    setManualShareUrl(null)
+    setBuild(next)
+  }
 
   const openTool = (nextBranch?: Branch, placement = 'hero') => {
     track('calculator_open', { class: 'paladin', page_path: window.location.pathname, target_path: '/paladin', placement })
@@ -168,7 +181,7 @@ export default function App() {
 
   const startNewBuild = () => {
     track('start_new_build', { previous_points: points })
-    setBuild({})
+    replaceBuild({})
     setShowSavedBuild(false)
     setCopied(false)
     window.history.replaceState({}, '', '/paladin#calculator')
@@ -177,16 +190,19 @@ export default function App() {
   const copyBuild = async () => {
     const pagePath = window.location.pathname
     const code = encodeBuild(build)
-    const path = `/build?id=${code}`
-    window.history.replaceState({}, '', path)
+    const path = `/build?id=${code}#calculator`
     const shareUrl = `${window.location.origin}${path}`
+    const request = ++copyRequest.current
     const didCopy = await copyTextToClipboard(shareUrl)
+    if (request !== copyRequest.current) return
     setCopied(didCopy)
+    setManualShareUrl(didCopy ? null : shareUrl)
     if (!didCopy) return
+    window.history.replaceState({}, '', path)
     track('build_copy', { class: 'paladin', page_path: pagePath, level: 60, point_cap: 51, points, branch: currentBranch })
     track('build_shared', { points })
     void reportSharedBuild(code)
-    window.setTimeout(() => setCopied(false), 1800)
+    window.setTimeout(() => { if (request === copyRequest.current) setCopied(false) }, 1800)
   }
 
   const addTalent = (talent: Talent) => {
@@ -204,11 +220,11 @@ export default function App() {
         selected_talents: Object.values(nextBuild).filter(rank => rank > 0).length,
       })
     }
-    setBuild(nextBuild)
+    replaceBuild(nextBuild)
   }
 
   const loadExampleBuild = (example: ExampleBuild) => {
-    setBuild({ ...example.build })
+    replaceBuild({ ...example.build })
     setBranch(dominantBranch(example.build, talents, 'holy'))
     setShowSavedBuild(false)
     setCopied(false)
@@ -222,7 +238,7 @@ export default function App() {
 
   const loadBetaPath = (nextBranch: Branch) => {
     const path = BETA_SPEC_PATHS[nextBranch]
-    setBuild({ ...path.current.build })
+    replaceBuild({ ...path.current.build })
     setBranch(nextBranch)
     setShowSavedBuild(false)
     setCopied(false)
@@ -322,16 +338,19 @@ export default function App() {
             <div className="planner-grid">
               <div className="tree-card">
                 <div className="panel-heading"><div><span>{branchNames[branch]} Specialization</span><h3>{branchTaglines[branch]}</h3></div><div className="legend"><i className="dot available" /> Available <i className="dot chosen" /> Selected</div></div>
-                <TalentTree branch={branch} build={build} onAdd={addTalent} onRemove={(talent) => setBuild((current) => decrementTalent(current, talent, talents))} />
+                {points === 51 && <p className="pvp-edit-notice" role="status">This 51-point reference is full. Remove a rank with the minus button before adding a different talent.</p>}
+                <TalentTree branch={branch} build={build} onAdd={addTalent} onRemove={(talent) => replaceBuild(decrementTalent(build, talent, talents))} />
                 <p className="tree-hint">Click a talent to add a rank. Use the small minus button to remove one.</p>
+                <a className="pvp-review-link" href="#paladin-build-summary">Review &amp; share this build →</a>
               </div>
-              <aside className="summary-card">
+              <aside className="summary-card" id="paladin-build-summary">
                 <div className="summary-title"><span>Build Summary</span><button onClick={startNewBuild}><RotateCcw size={14} /> Reset</button></div>
                 <div className="points-orb"><strong>{points}</strong><span>/ 51</span><small>Talent Points</small></div>
                 <div className="current-build"><span>Current Build</span><strong>{branchNames[currentBranch]} Paladin</strong><small>{points === 51 ? 'Build complete' : `${51 - points} points remaining`}</small></div>
-                <div className="selected-list"><span>Selected Talents</span>{selected.length ? selected.map((talent) => <button key={talent.id} onClick={() => setBuild((current) => decrementTalent(current, talent, talents))}><img src={talent.icon} alt="" /><span>{talent.name}<small>{branchNames[talent.branch]}</small></span><b>{build[talent.id]}/{talent.maxRank}</b></button>) : <div className="empty-selection"><Sparkles size={18} /> Your chosen talents will appear here.</div>}</div>
+                <div className="selected-list"><span>Selected Talents</span>{selected.length ? selected.map((talent) => <button key={talent.id} onClick={() => replaceBuild(decrementTalent(build, talent, talents))}><img src={talent.icon} alt="" /><span>{talent.name}<small>{branchNames[talent.branch]}</small></span><b>{build[talent.id]}/{talent.maxRank}</b></button>) : <div className="empty-selection"><Sparkles size={18} /> Your chosen talents will appear here.</div>}</div>
                 <button className="copy-button" disabled={!points} onClick={copyBuild}>{copied ? <Check size={17} /> : <Clipboard size={17} />}{copied ? 'Link copied' : 'Copy Build Link'}</button>
                 <p className="share-note">Creates a link that opens this exact setup.</p>
+                {manualShareUrl && <div className="pvp-manual-share"><p role="status">Clipboard access was unavailable. Select and copy this link manually.</p><label htmlFor="paladin-manual-share">Build link for manual copy</label><input id="paladin-manual-share" readOnly value={manualShareUrl} onFocus={(event) => event.currentTarget.select()} /></div>}
               </aside>
             </div>
           </div>

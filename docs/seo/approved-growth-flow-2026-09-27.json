@@ -1,0 +1,14 @@
+{
+  "reviewedAt": "2026-09-27",
+  "authorization": "User requested items 1 and 2 today: improve the existing PvP-to-calculator editing/sharing flow and verified Glimmerwick garden data. Only these two Paladin body/link fingerprints are amended; all frozen SEO metadata and sitemap fields remain unchanged.",
+  "pages": {
+    "/paladin": {
+      "rootSha256": "58094db395a06ebdcca9030d055d5d5aa7bddde19ed8993f0f97f1c06214f9ca",
+      "linksSha256": "4869fbb29484c5c7e97618218bd5fa8997e98d387f9ac646db2d9b1db91971c9"
+    },
+    "/wow-forever-paladin-pvp-build": {
+      "rootSha256": "f024eee3ce36c2de6311882b6bc1df58cc1d54b27ca65dc19347b911165d6a57",
+      "linksSha256": "a52a45374b7f3453e2b4518d432888058153fffcc7f7d512c6744e9f70623890"
+    }
+  }
+}

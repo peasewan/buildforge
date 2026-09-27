@@ -6,6 +6,7 @@ import {
   gardenSchedule,
   harvestDay,
   parseGardenPlan,
+  recordGardenHarvest,
   type GardenPlanting,
 } from './glimmerwickPlanner'
 
@@ -79,6 +80,32 @@ describe('garden plan recovery', () => {
 })
 
 describe('garden harvest schedule', () => {
+  it('keeps unknown durations without inventing a harvest estimate', () => {
+    const row = planting({ growthDays: null })
+    expect(parseGardenPlan(stored([row])).plantings).toEqual([row])
+    expect(harvestDay(row)).toBeNull()
+    expect(gardenSchedule({ version: 1, currentDay: 8, plantings: [row] })).toEqual([
+      { planting: row, readyDay: null, daysRemaining: null },
+    ])
+    expect(gardenPlanCsv({ version: 1, currentDay: 8, plantings: [row] }).split('\r\n')[1]).toBe('8,"plot-a","My crop",2,3,,"Near the gate",,')
+  })
+
+  it('records the actual harvest as a personal elapsed-day observation and restores it', () => {
+    const row = planting({ growthDays: null })
+    const observed = recordGardenHarvest(row, 7)
+    expect(observed).toEqual({ ...row, growthDays: 4, harvestedDay: 7 })
+    expect(row.growthDays).toBeNull()
+    expect(parseGardenPlan(stored([observed])).plantings).toEqual([observed])
+  })
+
+  it.each([2, 3, 3.5, 369, 10000, NaN])('rejects invalid or out-of-range harvest days (%s)', day => {
+    expect(recordGardenHarvest(planting({ growthDays: null }), day)).toBeUndefined()
+  })
+
+  it('does not accept storage with a harvest observation inconsistent with its duration', () => {
+    expect(parseGardenPlan(stored([planting({ harvestedDay: 8, growthDays: 4 })])).plantings).toEqual([])
+  })
+
   it('adds only the user supplied growth duration, including dates beyond the input-day limit', () => {
     expect(harvestDay(planting({ plantedDay: 1, growthDays: 1 }))).toBe(2)
     expect(harvestDay(planting({ plantedDay: 9999, growthDays: 365 }))).toBe(10364)
@@ -106,8 +133,8 @@ describe('garden CSV export', () => {
   it('exports every input field and an estimated ready day with valid CSV escaping', () => {
     const row = planting({ id: 'plot,"north"', crop: 'My, crop', notes: 'Line 1\nHe said "grow"' })
     expect(gardenPlanCsv({ version: 1, currentDay: 8, plantings: [row] })).toBe(
-      'currentDay,id,crop,quantity,plantedDay,growthDays,notes,readyDay\r\n' +
-      '8,"plot,""north""","My, crop",2,3,4,"Line 1\nHe said ""grow""",7\r\n',
+      'currentDay,id,crop,quantity,plantedDay,growthDays,notes,readyDay,harvestedDay\r\n' +
+      '8,"plot,""north""","My, crop",2,3,4,"Line 1\nHe said ""grow""",7,\r\n',
     )
   })
 
@@ -116,17 +143,17 @@ describe('garden CSV export', () => {
       const row = planting({ id: text, crop: text, notes: text })
       const csv = gardenPlanCsv({ version: 1, currentDay: 8, plantings: [row] })
       const safe = `"'${text.replaceAll('"', '""')}"`
-      expect(csv).toBe('currentDay,id,crop,quantity,plantedDay,growthDays,notes,readyDay\r\n' +
-        `8,${safe},${safe},2,3,4,${safe},7\r\n`)
+      expect(csv).toBe('currentDay,id,crop,quantity,plantedDay,growthDays,notes,readyDay,harvestedDay\r\n' +
+        `8,${safe},${safe},2,3,4,${safe},7,\r\n`)
     },
   )
 
   it('preserves ordinary text and produces a header for an empty plan', () => {
     const row = planting({ id: "plot-a", crop: "Growers' mix", notes: "'=already text" })
     expect(gardenPlanCsv({ version: 1, currentDay: 1, plantings: [row] })).toBe(
-      'currentDay,id,crop,quantity,plantedDay,growthDays,notes,readyDay\r\n' +
-      '1,"plot-a","Growers\' mix",2,3,4,"\'=already text",7\r\n',
+      'currentDay,id,crop,quantity,plantedDay,growthDays,notes,readyDay,harvestedDay\r\n' +
+      '1,"plot-a","Growers\' mix",2,3,4,"\'=already text",7,\r\n',
     )
-    expect(gardenPlanCsv(createGardenPlan())).toBe('currentDay,id,crop,quantity,plantedDay,growthDays,notes,readyDay\r\n')
+    expect(gardenPlanCsv(createGardenPlan())).toBe('currentDay,id,crop,quantity,plantedDay,growthDays,notes,readyDay,harvestedDay\r\n')
   })
 })

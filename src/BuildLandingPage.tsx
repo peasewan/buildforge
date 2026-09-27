@@ -9,6 +9,7 @@ import SiteFooter from './SiteFooter'
 import BetaDataStatus from './BetaDataStatus'
 import BetaLevelingSnapshot from './BetaLevelingSnapshot'
 import { betaLevelingPlannerHref } from './data/levelingBeta'
+import PaladinPvpRoutes from './PaladinPvpRoutes'
 
 const icons: Record<LandingIcon, ReactNode> = {
   sword: <Swords size={24} />,
@@ -111,6 +112,7 @@ export default function BuildLandingPage({ pageId }: { pageId: BuildLandingPageI
       </section>
 
       <BetaDataStatus />
+      {pageId === 'pvp' && <PaladinPvpRoutes />}
       {(pageId === 'leveling' || pageId === 'protection-leveling') && <BetaLevelingSnapshot pageId={pageId} />}
 
       <div className="shell landing-content" id="build-content">

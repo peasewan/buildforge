@@ -1,0 +1,408 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-09-27",
+  "game": "Songs of Glimmerwick",
+  "purpose": "Evidence review for a garden planner; short excerpts and source locators only.",
+  "evidencePolicy": {
+    "communityVerified": "Original IGN preview and two independent demo gameplay transcripts corroborate the named crop and observed rules; they are not official published crop values.",
+    "official": "Only developer-authored Steam announcement text is labelled official.",
+    "unknown": "Fields without a directly supported value remain null. Unknown growth duration must not generate a ready day.",
+    "excerptLimit": "At most 25 quoted words per original source, cumulatively across this archive; no complete video transcript is retained.",
+    "excluded": "No wiki inference, soundtrack-title inference, installed demo, or guessed numeric crop data."
+  },
+  "sources": [
+    {
+      "id": "ign-demo",
+      "title": "Songs of Glimmerwick Is a Stylish, Stardew Valley-ish RPG | IGN Preview",
+      "url": "https://www.youtube.com/watch?v=dm_9ViL_soU",
+      "kind": "gameplay_video",
+      "creator": "IGN / Gabriel Moss",
+      "publishedAt": "2026-04-02",
+      "verification": "community_verified",
+      "scope": "2026 demo",
+      "accessMethod": "Tavily extraction of the original YouTube video page and its timestamped transcript",
+      "limitations": [
+        "Automatic transcript; no direct frame-by-frame visual verification.",
+        "The transcript describes demo behavior; final-release values are unverified."
+      ],
+      "excerpts": [
+        {
+          "timestamp": "1:48",
+          "timeSeconds": 108,
+          "url": "https://www.youtube.com/watch?v=dm_9ViL_soU&t=108s",
+          "text": "when it's time to sew some basil."
+        },
+        {
+          "timestamp": "5:18",
+          "timeSeconds": 318,
+          "url": "https://www.youtube.com/watch?v=dm_9ViL_soU&t=318s",
+          "text": "Crops and gathered goods can get tossed into a well."
+        },
+        {
+          "timestamp": "5:18",
+          "timeSeconds": 318,
+          "url": "https://www.youtube.com/watch?v=dm_9ViL_soU&t=318s",
+          "text": "when you sleep"
+        }
+      ],
+      "quoteWordCount": 20
+    },
+    {
+      "id": "cozy-demo",
+      "title": "Enchanting Witch School Life Sim ✨ Songs of Glimmerwick Demo Gameplay",
+      "url": "https://www.youtube.com/watch?v=EgGVHbzWVZk",
+      "kind": "gameplay_video",
+      "creator": "The Cozy Gaming Club",
+      "publishedAt": "2026-04-02",
+      "verification": "community_verified",
+      "scope": "2026 demo",
+      "accessMethod": "Tavily extraction of the original YouTube video page and its timestamped transcript",
+      "limitations": [
+        "Automatic transcript; no direct frame-by-frame visual verification.",
+        "The transcript describes demo behavior; final-release values are unverified."
+      ],
+      "excerpts": [
+        {
+          "timestamp": "50:47",
+          "timeSeconds": 3047,
+          "url": "https://www.youtube.com/watch?v=EgGVHbzWVZk&t=3047s",
+          "text": "watering your crops every day."
+        },
+        {
+          "timestamp": "51:05",
+          "timeSeconds": 3065,
+          "url": "https://www.youtube.com/watch?v=EgGVHbzWVZk&t=3065s",
+          "text": "drop them into the well"
+        },
+        {
+          "timestamp": "51:05",
+          "timeSeconds": 3065,
+          "url": "https://www.youtube.com/watch?v=EgGVHbzWVZk&t=3065s",
+          "text": "compensate you for it in the night."
+        },
+        {
+          "timestamp": "51:20",
+          "timeSeconds": 3080,
+          "url": "https://www.youtube.com/watch?v=EgGVHbzWVZk&t=3080s",
+          "text": "My turtle loves basil"
+        }
+      ],
+      "quoteWordCount": 21
+    },
+    {
+      "id": "justkristn-demo",
+      "title": "Songs of Glimmerwick Demo 🌱✨ First Look",
+      "url": "https://www.youtube.com/watch?v=0JmmDn6Q_Ek",
+      "kind": "gameplay_video",
+      "creator": "justKristn",
+      "publishedAt": "2026-05-27",
+      "verification": "community_verified",
+      "scope": "2026 demo",
+      "accessMethod": "Tavily extraction of the original YouTube video page and its timestamped transcript",
+      "limitations": [
+        "Automatic transcript; no direct frame-by-frame visual verification.",
+        "The transcript describes demo behavior; final-release values are unverified."
+      ],
+      "excerpts": [
+        {
+          "timestamp": "1:00:09",
+          "timeSeconds": 3609,
+          "url": "https://www.youtube.com/watch?v=0JmmDn6Q_Ek&t=3609s",
+          "text": "watering your crops every day."
+        },
+        {
+          "timestamp": "1:00:23",
+          "timeSeconds": 3623,
+          "url": "https://www.youtube.com/watch?v=0JmmDn6Q_Ek&t=3623s",
+          "text": "drop them into the well"
+        },
+        {
+          "timestamp": "1:00:38",
+          "timeSeconds": 3638,
+          "url": "https://www.youtube.com/watch?v=0JmmDn6Q_Ek&t=3638s",
+          "text": "My turtle loves basil"
+        },
+        {
+          "timestamp": "1:00:48",
+          "timeSeconds": 3648,
+          "url": "https://www.youtube.com/watch?v=0JmmDn6Q_Ek&t=3648s",
+          "text": "bringing three clippings up to my office"
+        }
+      ],
+      "quoteWordCount": 21
+    },
+    {
+      "id": "steam-0.466",
+      "title": "Songs of Glimmerwick - Demo Version 0.466 - Steam News",
+      "url": "https://store.steampowered.com/news/app/1706510/view/515239886340494123",
+      "kind": "developer_steam_update",
+      "creator": "Eastshade Studios",
+      "publishedAt": "2026-04-14T00:39:00Z",
+      "verification": "official",
+      "scope": "Demo version 0.466",
+      "accessMethod": "Tavily extracted the standalone official Steam announcement body.",
+      "excerpts": [
+        {
+          "section": "Demo Version 0.466, final bullet",
+          "text": "you don't need to achieve any stars in the music minigame to cast spells"
+        }
+      ],
+      "quoteWordCount": 14
+    },
+    {
+      "id": "steam-0.484",
+      "title": "Songs of Glimmerwick - Demo Version 0.484 - Steam News",
+      "url": "https://store.steampowered.com/news/app/1706510/view/711152269082494267",
+      "kind": "developer_steam_update",
+      "creator": "Eastshade Studios",
+      "publishedAt": "2026-06-13",
+      "verification": "official",
+      "scope": "Demo version 0.484",
+      "accessMethod": "Standalone announcement URL/title verified via indexed official results; corresponding body was read in the official Steam Community allnews feed.",
+      "bodySourceUrl": "https://steamcommunity.com/app/1706510/allnews/",
+      "limitations": [
+        "Standalone body extraction returned navigation only; the quote was read in the official aggregate feed."
+      ],
+      "excerpts": [
+        {
+          "section": "Demo Version 0.484, first bullet",
+          "text": "Song of Tilling"
+        }
+      ],
+      "quoteWordCount": 3
+    },
+    {
+      "id": "steam-0.464",
+      "title": "Songs of Glimmerwick - Demo Version 0.464 - Steam News",
+      "url": "https://store.steampowered.com/news/app/1706510/view/515239886340490207",
+      "kind": "developer_steam_update",
+      "creator": "Eastshade Studios",
+      "publishedAt": "2026-04-09",
+      "verification": "official",
+      "scope": "Demo version 0.464",
+      "accessMethod": "Standalone announcement URL/title verified via indexed official results; corresponding body was read in the official Steam Community allnews feed.",
+      "bodySourceUrl": "https://steamcommunity.com/app/1706510/allnews/",
+      "limitations": [
+        "Official feed displayed Apr 8 in its localized date; the standalone announcement date was Apr 9 UTC.",
+        "Markdown emphasis around 'very' is removed in the short excerpt."
+      ],
+      "excerpts": [
+        {
+          "section": "Demo Version 0.464, first bullet",
+          "text": "made the clock stop while in player menu and shops"
+        },
+        {
+          "section": "Demo Version 0.464, first bullet, parenthesis",
+          "text": "flute mode is a very deliberate decision to not stop clock."
+        }
+      ],
+      "quoteWordCount": 21
+    }
+  ],
+  "records": [
+    {
+      "id": "basil",
+      "kind": "crop",
+      "verification": "community_verified",
+      "confidence": "High for name; corroborated demo transcripts",
+      "verifiedFields": {
+        "name": "Basil",
+        "canBeGrown": true
+      },
+      "unknownFields": {
+        "growthDays": null,
+        "seasons": null,
+        "harvestYield": null,
+        "seedPrice": null,
+        "regrowthDays": null,
+        "waterRequirementValue": null
+      },
+      "evidence": [
+        {
+          "source": "ign-demo",
+          "timestamp": "1:48"
+        },
+        {
+          "source": "cozy-demo",
+          "timestamp": "51:20"
+        },
+        {
+          "source": "justkristn-demo",
+          "timestamp": "1:00:38"
+        }
+      ],
+      "interpretationNotes": [
+        "IGN's automatic transcript spells 'sow' as 'sew'; the excerpt preserves the source spelling.",
+        "A spring demo setting does not establish an exclusive planting season.",
+        "These sources do not establish growth duration or harvest quantity."
+      ]
+    },
+    {
+      "id": "daily-watering",
+      "kind": "garden_rule",
+      "verification": "community_verified",
+      "confidence": "High for the demo tutorial wording",
+      "verifiedFields": {
+        "instruction": "Water crops every day."
+      },
+      "unknownFields": {
+        "missedWaterGrowthPenalty": null,
+        "missedWaterCropDeath": null,
+        "perCropWaterExceptions": null,
+        "wateringAmount": null
+      },
+      "evidence": [
+        {
+          "source": "cozy-demo",
+          "timestamp": "50:47"
+        },
+        {
+          "source": "justkristn-demo",
+          "timestamp": "1:00:09"
+        }
+      ],
+      "interpretationNotes": [
+        "The rule is spoken in captured game tutorial dialogue. Its precise simulation consequences are unverified."
+      ]
+    },
+    {
+      "id": "well-selling",
+      "kind": "garden_rule",
+      "verification": "community_verified",
+      "confidence": "High; IGN and both demo recordings agree",
+      "verifiedFields": {
+        "use": "Put finished crops or other sale goods into the well.",
+        "compensationTiming": "At night / when sleeping, as described by the demo dialogue and preview."
+      },
+      "unknownFields": {
+        "basilSalePrice": null,
+        "otherItemSalePrices": null,
+        "shippingCapacity": null,
+        "saleMultipliers": null
+      },
+      "evidence": [
+        {
+          "source": "ign-demo",
+          "timestamp": "5:18"
+        },
+        {
+          "source": "cozy-demo",
+          "timestamp": "51:05"
+        },
+        {
+          "source": "justkristn-demo",
+          "timestamp": "1:00:23"
+        }
+      ]
+    },
+    {
+      "id": "basil-quest-request",
+      "kind": "quest_context",
+      "verification": "community_verified",
+      "confidence": "High for the dialogue request",
+      "verifiedFields": {
+        "crop": "Basil",
+        "requestedClippings": 3,
+        "purpose": "Bring clippings to an NPC's office for a turtle."
+      },
+      "unknownFields": {
+        "perPlantHarvestYield": null,
+        "requiredNumberOfPlants": null
+      },
+      "evidence": [
+        {
+          "source": "cozy-demo",
+          "timestamp": "51:26"
+        },
+        {
+          "source": "justkristn-demo",
+          "timestamp": "1:00:48"
+        }
+      ],
+      "interpretationNotes": [
+        "Three is a quest delivery quantity. It must not be used as Basil's per-plant harvest yield."
+      ]
+    },
+    {
+      "id": "spells-without-stars",
+      "kind": "music_rule",
+      "verification": "official",
+      "confidence": "High; explicit developer update",
+      "verifiedFields": {
+        "musicMinigameStarsRequiredToCastSpells": false
+      },
+      "unknownFields": {
+        "spellManaCost": null,
+        "cropGrowthEffect": null
+      },
+      "evidence": [
+        {
+          "source": "steam-0.466",
+          "section": "final bullet"
+        }
+      ]
+    },
+    {
+      "id": "song-of-tilling",
+      "kind": "spell_name",
+      "verification": "official",
+      "confidence": "High; explicit developer update",
+      "verifiedFields": {
+        "name": "Song of Tilling",
+        "describedAsFirstSongInGame": true
+      },
+      "unknownFields": {
+        "manaCost": null,
+        "area": null,
+        "castDuration": null,
+        "cropGrowthEffect": null
+      },
+      "evidence": [
+        {
+          "source": "steam-0.484",
+          "section": "first bullet"
+        }
+      ],
+      "interpretationNotes": [
+        "The name and first-song description are verified. This record does not infer any crop growth number from the spell."
+      ]
+    },
+    {
+      "id": "menu-shop-time-pause",
+      "kind": "time_rule",
+      "verification": "official",
+      "confidence": "High for the specified demo patch",
+      "verifiedFields": {
+        "clockStopsInPlayerMenu": true,
+        "clockStopsInShops": true,
+        "clockStopsInFluteMode": false
+      },
+      "unknownFields": {
+        "currentFullReleaseBehavior": null,
+        "minutesPerGameDay": null
+      },
+      "evidence": [
+        {
+          "source": "steam-0.464",
+          "section": "first bullet"
+        }
+      ]
+    }
+  ],
+  "rejectedCandidates": [
+    {
+      "names": [
+        "Snap Taters",
+        "Moon Poppy",
+        "Dread Sorrel"
+      ],
+      "reason": "Previously observed as official soundtrack track names, without enough evidence that they are plantable crop records. Not adopted as crop facts."
+    }
+  ],
+  "limitations": [
+    "Exactly one crop name, Basil, is suitable for the current evidence-backed shortcut.",
+    "No official crop growth days, seasons, harvest yield, or seed price were verified.",
+    "The sources document demo builds. Future final-release behavior must be checked separately.",
+    "User-entered durations and harvest observations are user data, not official verified values."
+  ]
+}

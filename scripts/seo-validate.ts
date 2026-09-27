@@ -10,9 +10,11 @@ import type { ClassPageKind } from '../src/lib/classPage'
 import { experienceEnabled } from '../src/experiences/rollout'
 import baseline from '../docs/seo/paladin-frozen-baseline.json'
 import patchAmendments from '../docs/seo/approved-patch-notice-2026-09-27.json'
+import growthAmendments from '../docs/seo/approved-growth-flow-2026-09-27.json'
 // Explicitly reviewed patch annotations update only body/link hashes; baseline SEO fields stay frozen.
 const frozenPages = baseline.pages.map(page => {
-  const amendment = patchAmendments.pages[page.path as keyof typeof patchAmendments.pages]
+  const amendment = growthAmendments.pages[page.path as keyof typeof growthAmendments.pages]
+    ?? patchAmendments.pages[page.path as keyof typeof patchAmendments.pages]
   return amendment ? { ...page, rootSha256: amendment.rootSha256, linksSha256: amendment.linksSha256 } : page
 })
 import vercel from '../vercel.json'
