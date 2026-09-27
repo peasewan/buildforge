@@ -27,3 +27,4 @@ const app = <StrictMode><AppRoute pathname={window.location.pathname} /></Strict
 createRoot(root).render(app)
 
 import './site-discovery.css'
+import './glimmerwick.css'

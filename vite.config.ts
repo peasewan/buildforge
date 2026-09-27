@@ -54,6 +54,7 @@ export default defineConfig({
         about: resolve(import.meta.dirname, 'about/index.html'),
         contact: resolve(import.meta.dirname, 'contact/index.html'),
         privacy: resolve(import.meta.dirname, 'privacy/index.html'),
+        songsOfGlimmerwick: resolve(import.meta.dirname, 'songs-of-glimmerwick/index.html'),
         emberville: resolve(import.meta.dirname, 'emberville/index.html'),
         embervilleBuilds: resolve(import.meta.dirname, 'emberville-builds/index.html'),
         embervilleClasses: resolve(import.meta.dirname, 'emberville-classes/index.html'),

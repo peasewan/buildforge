@@ -27,7 +27,7 @@ describe('discovery rendering and artifacts', () => {
   it('dates the edited discovery pages while retaining the classes date', () => {
     const sitemap = new DOMParser().parseFromString(readFileSync('public/sitemap.xml', 'utf8'), 'application/xml')
     const date = (path: string) => [...sitemap.querySelectorAll('url')].find(url => url.querySelector('loc')?.textContent === `https://buildforgetools.com${path}`)?.querySelector('lastmod')?.textContent
-    expect(date('/')).toBe('2026-09-25')
+    expect(date('/')).toBe('2026-09-27')
     expect(date('/wow-forever-builds')).toBe('2026-09-25')
     expect(date('/wow-forever-classes')).toBe('2026-09-23')
   })

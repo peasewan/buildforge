@@ -9,7 +9,7 @@ import { EMBERVILLE_PAGES, type EmbervillePageId } from '../data/emberville'
 import { publishedClassPage } from './classStaticPages'
 
 export interface PageDefinition {
-  kind: 'discovery' | 'planner' | 'guide' | 'build-guide' | 'build-landing' | 'build-hub' | 'spec-hub' | 'spec-talents' | 'spellbook' | 'beta-changes' | 'trust' | 'emberville' | 'class-calculator' | 'class-document'
+  kind: 'discovery' | 'planner' | 'guide' | 'build-guide' | 'build-landing' | 'build-hub' | 'spec-hub' | 'spec-talents' | 'spellbook' | 'beta-changes' | 'trust' | 'emberville' | 'glimmerwick' | 'class-calculator' | 'class-document'
   title: string
   description: string
   canonical: string
@@ -100,8 +100,17 @@ const spellbookPage: PageDefinition = {
   robots: 'index, follow',
 }
 
+const glimmerwickPage: PageDefinition = {
+  kind: 'glimmerwick',
+  title: 'Songs of Glimmerwick Garden Planner | BuildForgeTools',
+  description: 'Plan your Songs of Glimmerwick garden with your own crop timings. Track planting days, estimate harvests, save notes, and export your plan.',
+  canonical: 'https://buildforgetools.com/songs-of-glimmerwick',
+  robots: 'index, follow',
+}
+
 export function pageForPath(pathname: string, search = ''): PageDefinition {
   const normalized = pathname.replace(/\/+$/, '') || '/'
+  if (normalized === '/songs-of-glimmerwick') return glimmerwickPage
   const discovery = DISCOVERY_PAGES.find(page => page.path === normalized)
   if (discovery) return { kind: 'discovery', discoveryId: discovery.id, title: discovery.title, description: discovery.description, canonical: `https://buildforgetools.com${discovery.path}`, robots: 'index, follow' }
   const embervillePage = EMBERVILLE_PAGES.find((page) => normalized === `/${page.slug}`)

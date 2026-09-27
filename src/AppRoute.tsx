@@ -1,4 +1,5 @@
 import SiteDiscoveryPage from './SiteDiscoveryPage'
+import GlimmerwickPage from './GlimmerwickPage'
 import App from './App'
 import BetaChangesPage from './BetaChangesPage'
 import BuildPage from './BuildPage'
@@ -19,6 +20,7 @@ import { pageForPath } from './lib/routes'
 function routeElement(pathname: string) {
   const route = pageForPath(pathname)
   if (route.kind === 'discovery') return <SiteDiscoveryPage pageId={route.discoveryId!} />
+  if (route.kind === 'glimmerwick') return <GlimmerwickPage />
   const classPage = publishedClassPage(pathname)
   if (route.kind === 'class-calculator' && classPage) return <ClassCalculatorPage classDef={classPage.classDef} />
   if (route.kind === 'class-document' && classPage) return <ClassDocumentPage classDef={classPage.classDef} page={classPage.page} />
