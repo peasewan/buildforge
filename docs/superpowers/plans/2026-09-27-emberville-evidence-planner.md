@@ -38,3 +38,7 @@
 - SEO: 155/155 indexable pages, 155 sitemap entries, 22 frozen pages, zero errors; existing frozen Ret H1 duplication remains advisory.
 - Chrome desktop/mobile: four routes return 200, canonical/title preserved, no horizontal overflow or JavaScript errors; draft save/restore/reset and Open Planner anchor passed.
 - Independent review resolved client-source provenance and selected-skill removal; UI explicitly scopes confirmation to recorded inheritance evidence.
+
+## Latest main integration
+
+Preserved concurrent Nivalis commits `7fb595e` and `69f05f5`. Integration verification: 79 files / 1199 tests passed, full lint and production build passed, 156/156 SEO pages with zero errors and all 22 frozen pages intact. Four Emberville routes also passed Chrome desktop/mobile interaction checks after integration.
