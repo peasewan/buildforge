@@ -2,6 +2,7 @@ import BetaPatchNotice from './BetaPatchNotice'
 import PlanningToolsPage from './PlanningToolsPage'
 import SiteDiscoveryPage from './SiteDiscoveryPage'
 import GlimmerwickPage from './GlimmerwickPage'
+import NivalisPage from './NivalisPage'
 import App from './App'
 import BetaChangesPage from './BetaChangesPage'
 import BuildPage from './BuildPage'
@@ -24,6 +25,7 @@ function routeElement(pathname: string) {
   if (route.discoveryId === 'dungeon-finder' || route.discoveryId === 'class-picker') return <PlanningToolsPage tool={route.discoveryId} />
   if (route.kind === 'discovery') return <SiteDiscoveryPage pageId={route.discoveryId!} />
   if (route.kind === 'glimmerwick') return <GlimmerwickPage />
+  if (route.kind === 'nivalis') return <NivalisPage />
   const classPage = publishedClassPage(pathname)
   if (route.kind === 'class-calculator' && classPage) return <ClassCalculatorPage classDef={classPage.classDef} />
   if (route.kind === 'class-document' && classPage) return <ClassDocumentPage classDef={classPage.classDef} page={classPage.page} />
