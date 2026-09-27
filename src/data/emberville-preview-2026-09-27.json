@@ -1,0 +1,287 @@
+{
+  "schemaVersion": 1,
+  "dataVersion": "emberville_preview_2026-09-27",
+  "phase": "pre_early_access",
+  "reviewedAt": "2026-09-27",
+  "sources": [
+    {
+      "id": "steam-store",
+      "label": "Official Steam page",
+      "url": "https://store.steampowered.com/app/2295170/Emberville/",
+      "kind": "official",
+      "locator": "About This Game: Develop your own fighting style; Customize and improve your character"
+    },
+    {
+      "id": "developer-overview",
+      "label": "Official developer overview",
+      "url": "https://www.cygnuscross.com/devlog/welcome-to-emberville",
+      "kind": "official",
+      "locator": "Progressing Your Character: Weapons and Classes. Historical preview; not a complete release roster."
+    },
+    {
+      "id": "developer-knight",
+      "label": "Cygnus Cross: Knight reveal",
+      "url": "https://www.linkedin.com/company/cygnuscross/",
+      "kind": "official",
+      "locator": "Knight class reveal post linking the Knight trailer, displayed as 6 months old on review date. Name and sword/shield identity only."
+    },
+    {
+      "id": "september-hands-on",
+      "label": "September prologue hands-on \u2014 Jordan Hawes",
+      "url": "https://waytoomany.games/2026/09/11/preview-emberville/",
+      "kind": "community_research",
+      "locator": "September 11, 2026 preview: Wanderer class and Focus Strike / Swift Foot paragraph. Press observation; not a client export."
+    }
+  ],
+  "mechanics": [
+    {
+      "id": "class-switching",
+      "description": {
+        "value": "Unlocked combat classes can be changed at any time.",
+        "verificationStatus": "official",
+        "sourceIds": [
+          "steam-store"
+        ]
+      }
+    },
+    {
+      "id": "weapon-combos",
+      "description": {
+        "value": "Weapons have weapon-bound combos.",
+        "verificationStatus": "official",
+        "sourceIds": [
+          "steam-store"
+        ]
+      }
+    },
+    {
+      "id": "skill-inheritance",
+      "description": {
+        "value": "Combat classes can inherit active and passive skills from other learned classes.",
+        "verificationStatus": "official",
+        "sourceIds": [
+          "steam-store"
+        ]
+      }
+    },
+    {
+      "id": "weapon-progression",
+      "description": {
+        "value": "Weapon progression is independent and can unlock weapon-specific skills.",
+        "verificationStatus": "official",
+        "sourceIds": [
+          "developer-overview"
+        ]
+      }
+    },
+    {
+      "id": "class-progression",
+      "description": {
+        "value": "Weapon or armor use milestones can unlock classes. Exact per-class requirements remain unknown.",
+        "verificationStatus": "official",
+        "sourceIds": [
+          "developer-overview"
+        ]
+      }
+    }
+  ],
+  "classes": [
+    {
+      "id": "knight",
+      "name": {
+        "value": "Knight",
+        "verificationStatus": "official",
+        "sourceIds": [
+          "developer-knight"
+        ]
+      },
+      "description": {
+        "value": "A close-combat class presented with a sword and shield.",
+        "verificationStatus": "official",
+        "sourceIds": [
+          "developer-knight"
+        ]
+      },
+      "gameId": {
+        "value": null,
+        "verificationStatus": null,
+        "sourceIds": [],
+        "note": "Editorial ID only; game identifier not yet verified."
+      }
+    },
+    {
+      "id": "wanderer",
+      "name": {
+        "value": "Wanderer",
+        "verificationStatus": "community_verified",
+        "sourceIds": [
+          "september-hands-on"
+        ]
+      },
+      "description": {
+        "value": "A class unlocked during the September prologue hands-on.",
+        "verificationStatus": "community_verified",
+        "sourceIds": [
+          "september-hands-on"
+        ]
+      },
+      "gameId": {
+        "value": null,
+        "verificationStatus": null,
+        "sourceIds": [],
+        "note": "Editorial ID only; game identifier not yet verified."
+      }
+    }
+  ],
+  "weapons": [
+    {
+      "id": "sword",
+      "name": {
+        "value": "Sword",
+        "verificationStatus": "official",
+        "sourceIds": [
+          "developer-overview"
+        ]
+      },
+      "description": {
+        "value": null,
+        "verificationStatus": null,
+        "sourceIds": [],
+        "note": "Category example only; stats and class compatibility remain unknown."
+      },
+      "gameId": {
+        "value": null,
+        "verificationStatus": null,
+        "sourceIds": [],
+        "note": "No verified game identifier."
+      }
+    },
+    {
+      "id": "bow",
+      "name": {
+        "value": "Bow",
+        "verificationStatus": "official",
+        "sourceIds": [
+          "developer-overview"
+        ]
+      },
+      "description": {
+        "value": null,
+        "verificationStatus": null,
+        "sourceIds": [],
+        "note": "Category example only; stats and class compatibility remain unknown."
+      },
+      "gameId": {
+        "value": null,
+        "verificationStatus": null,
+        "sourceIds": [],
+        "note": "No verified game identifier."
+      }
+    },
+    {
+      "id": "staff",
+      "name": {
+        "value": "Staff",
+        "verificationStatus": "official",
+        "sourceIds": [
+          "developer-overview"
+        ]
+      },
+      "description": {
+        "value": null,
+        "verificationStatus": null,
+        "sourceIds": [],
+        "note": "Category example only; stats and class compatibility remain unknown."
+      },
+      "gameId": {
+        "value": null,
+        "verificationStatus": null,
+        "sourceIds": [],
+        "note": "No verified game identifier."
+      }
+    }
+  ],
+  "skills": [
+    {
+      "id": "wanderer-focus-strike",
+      "classId": "wanderer",
+      "name": {
+        "value": "Focus Strike",
+        "verificationStatus": "community_verified",
+        "sourceIds": [
+          "september-hands-on"
+        ]
+      },
+      "type": {
+        "value": null,
+        "verificationStatus": null,
+        "sourceIds": [],
+        "note": "The source does not identify this skill as active or passive."
+      },
+      "effect": {
+        "value": "A punch attack observed in the September prologue.",
+        "verificationStatus": "community_verified",
+        "sourceIds": [
+          "september-hands-on"
+        ]
+      },
+      "inheritance": {
+        "value": null,
+        "verificationStatus": null,
+        "sourceIds": [],
+        "note": "Whether this specific skill can be inherited is not verified."
+      }
+    },
+    {
+      "id": "wanderer-swift-foot",
+      "classId": "wanderer",
+      "name": {
+        "value": "Swift Foot",
+        "verificationStatus": "community_verified",
+        "sourceIds": [
+          "september-hands-on"
+        ]
+      },
+      "type": {
+        "value": null,
+        "verificationStatus": null,
+        "sourceIds": [],
+        "note": "The source does not identify this skill as active or passive."
+      },
+      "effect": {
+        "value": "Increases movement speed in the September prologue observation.",
+        "verificationStatus": "community_verified",
+        "sourceIds": [
+          "september-hands-on"
+        ]
+      },
+      "inheritance": {
+        "value": null,
+        "verificationStatus": null,
+        "sourceIds": [],
+        "note": "Whether this specific skill can be inherited is not verified."
+      }
+    }
+  ],
+  "rules": {
+    "activeSlots": {
+      "value": null,
+      "verificationStatus": null,
+      "sourceIds": [],
+      "note": "Class equip slots reported in a preview are not proof of inheritance limits."
+    },
+    "passiveSlots": {
+      "value": null,
+      "verificationStatus": null,
+      "sourceIds": [],
+      "note": "Class equip slots reported in a preview are not proof of inheritance limits."
+    },
+    "unlockLevel": {
+      "value": null,
+      "verificationStatus": null,
+      "sourceIds": [],
+      "note": "No reviewed inheritance unlock level."
+    },
+    "compatibility": []
+  }
+}

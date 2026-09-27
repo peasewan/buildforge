@@ -3,7 +3,7 @@ export type EmbervillePageId = 'planner' | 'builds' | 'classes' | 'inheritance'
 export const EMBERVILLE_STATUS = {
   phase: 'Pre-Early Access',
   scope: 'Core mechanics only',
-  updated: 'Sep 19, 2026',
+  updated: 'Sep 27, 2026',
   releaseDate: 'Oct 27, 2026',
 } as const
 
@@ -49,7 +49,7 @@ export const EMBERVILLE_EDITORIAL: Record<EmbervillePageId, EmbervilleEditorialS
       heading: 'What the preview planner can do today',
       paragraphs: [
         'The Emberville Build Planner starts with combat direction because melee, magic, and ranged combat are confirmed for Early Access. You can choose one of those directions, or keep a hybrid direction in view when thinking about class and skill inheritance. The build summary changes with your choice, while local notes let you record ideas without presenting them as verified game data.',
-        'Choose a confirmed system to investigate alongside your combat direction: class switching, weapon-bound combos, or active and passive skill inheritance. The planner turns these into a testable question and leaves space for your own notes. It excludes exact class, weapon, and skill names until their records can be verified, so no unconfirmed combinations are presented as game facts.',
+        'Choose a confirmed system to investigate alongside your combat direction: class switching, weapon-bound combos, or active and passive skill inheritance. The planner turns these into a testable question and leaves space for your own notes. Reviewed class and weapon names can now be selected with source links. Observed skills retain separate name, effect, type, and inheritance evidence, so a known name does not turn an unconfirmed combination into a game fact.',
       ],
     },
     {
@@ -98,7 +98,7 @@ export const EMBERVILLE_EDITORIAL: Record<EmbervillePageId, EmbervilleEditorialS
     {
       heading: 'Class, weapon, and progression data status',
       paragraphs: [
-        'The system is confirmed, but BuildForgeTools is not treating every preview name or creator-video label as a stable record. Individual class pages will require a reliable name, an identifiable source, and enough information to describe what the class changes. Weapon entries will follow the same rule.',
+        'The system is confirmed, but BuildForgeTools is not treating every preview name or creator-video label as a stable record. The reviewed catalog currently includes Knight from an official reveal and Wanderer from a September press hands-on. Sword, Bow, and Staff are category examples from the developer overview. Their presence does not establish a complete roster or class-specific weapon restrictions.',
         'Progression is also broader than combat. Official material connects character improvement to leveling, items, rescued villagers, exploration, rebuilding, and quests. We will keep those systems separate from class mechanics unless a source shows a direct relationship.',
       ],
       bullets: [
@@ -127,7 +127,7 @@ export const EMBERVILLE_EDITORIAL: Record<EmbervillePageId, EmbervilleEditorialS
     {
       heading: 'Future compatibility matrix',
       paragraphs: [
-        'The compatibility matrix is currently in review. Its purpose will be to show a base class on one axis and learned-class skills on the other, with each intersection marked confirmed, unavailable, or still unverified. Empty cells will remain unknown rather than being interpreted as compatible.',
+        'The compatibility matrix is available as an evidence reference. Its purpose will be to show a base class on one axis and learned-class skills on the other, with each intersection marked confirmed, unavailable, or still unverified. The first matrix now connects reviewed class names to observed skill names. Cells remain unknown until destination-class compatibility can be verified.',
       ],
       bullets: [
         'Source class and skill type must be known before a row appears.',
