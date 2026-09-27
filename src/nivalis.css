@@ -12,7 +12,9 @@
 .nv-header nav,.nv-footer nav { display:flex; align-items:center; gap:26px; font-size:12px; }
 .nv-header nav a { display:flex; align-items:center; gap:7px; }
 .nivalis-site nav a:hover { color:var(--nv-accent); text-decoration:underline; }
-.nv-hero { display:grid; grid-template-columns:1.4fr .75fr; align-items:center; gap:85px; padding:80px 0; }
+.nv-hero { position:relative; isolation:isolate; display:grid; grid-template-columns:1.4fr .75fr; align-items:center; gap:85px; padding:80px 0; }
+.nv-hero::before { content:""; position:absolute; z-index:-1; inset:0 calc((100vw - 100%) / -2); background:linear-gradient(90deg,rgba(9,22,28,.82),rgba(9,22,28,.25)),linear-gradient(0deg,#09161c,transparent 35%),url('/images/nivalis/night-market-concept.jpg') center / cover no-repeat; }
+.nv-hero::after { content:"Decorative concept art"; position:absolute; right:0; bottom:16px; color:#a5c7cc; font-size:10px; }
 .nv-kicker { display:flex; align-items:center; gap:8px; color:var(--nv-accent); font-size:10px; font-weight:600; letter-spacing:.17em; }
 .nv-hero h1 { font-size:clamp(38px,4.6vw,65px); line-height:1.1; margin:22px 0; font-weight:600; }
 .nv-lead { font-size:16px; line-height:1.85; max-width:600px; color:var(--nv-muted); }
