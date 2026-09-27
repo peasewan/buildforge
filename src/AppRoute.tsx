@@ -1,3 +1,5 @@
+import BetaPatchNotice from './BetaPatchNotice'
+import PlanningToolsPage from './PlanningToolsPage'
 import SiteDiscoveryPage from './SiteDiscoveryPage'
 import GlimmerwickPage from './GlimmerwickPage'
 import App from './App'
@@ -19,6 +21,7 @@ import { pageForPath } from './lib/routes'
 
 function routeElement(pathname: string) {
   const route = pageForPath(pathname)
+  if (route.discoveryId === 'dungeon-finder' || route.discoveryId === 'class-picker') return <PlanningToolsPage tool={route.discoveryId} />
   if (route.kind === 'discovery') return <SiteDiscoveryPage pageId={route.discoveryId!} />
   if (route.kind === 'glimmerwick') return <GlimmerwickPage />
   const classPage = publishedClassPage(pathname)
@@ -40,5 +43,7 @@ function routeElement(pathname: string) {
 
 /** Shared by the build-time renderer and the browser: one visual layout. */
 export default function AppRoute({ pathname }: { pathname: string }) {
-  return <>{routeElement(pathname)}<FeedbackWidget /></>
+  const classPage = publishedClassPage(pathname)
+  const classId = classPage?.classDef.id ?? (pathname === '/paladin' || pathname === '/build' || pathname.includes('paladin') ? 'paladin' : undefined)
+  return <>{classId && <BetaPatchNotice classId={classId} />}{routeElement(pathname)}<FeedbackWidget /></>
 }

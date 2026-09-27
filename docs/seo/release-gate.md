@@ -23,3 +23,7 @@ The report lists up to 30 strongest content pairs with five-word shingle Jaccard
 ## Validation on 2026-09-23
 
 The existing Task 2 rendered build passed: **153 expected/indexable HTML pages, 153 sitemap entries, 22 unchanged frozen pages, zero errors**. Two warnings were recorded: the frozen Retribution H1 pair and the explicit unavailable allocation on `/wow-forever-protection-warrior-pvp-build`. No content pairs exceeded the advisory overlap threshold. The pure validator has mutation fixtures covering metadata, sitemap, links, anchors, noindex destinations, orphan/self-link behavior, withheld artifacts, intent modules, frozen fingerprints and both narrow exceptions.
+
+## September 27 patch annotation amendment
+
+The user explicitly requested a 70009 review and necessary webpage updates. `approved-patch-notice-2026-09-27.json` records only the new root/link hashes for the source-linked patch annotations. All 22 baseline titles, H1s, descriptions, canonicals, robots, head SEO signatures and sitemap dates remain unchanged. Before accepting the amendment, stripping the patch notice reproduced the original body/link hashes for 21 pages; the Beta Changes page additionally received the reviewed update section and historical-diff labels. The original baseline remains intact, and the amended body/link signatures remain strict checks for future releases.

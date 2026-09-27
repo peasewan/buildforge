@@ -90,3 +90,10 @@ Use the same daily comparison fields so decisions are based on trends rather tha
 - Pipeline foundation commit: `977ce13` (`feat: add beta data publishing pipeline`).
 - Rank-level spellbook support commit: `867a475` (`feat: support rank-level spellbook data`).
 - At this checkpoint the repository passed 29 test files / 204 tests and the remote CI run succeeded. Re-run current checks rather than assuming this historical result still holds.
+
+## September 27 planning tools and patch review
+
+- `/wow-forever-dungeon-build-finder` and `/wow-forever-class-picker` use `src/data/planningTools.ts`: published/legal routes only, replayed point snapshots, editorial preference matching rather than performance rankings. Low-level snapshots open in existing calculator modes; the UI explains this difference. Excavation Site stays locked pending reviewed higher-level routes.
+- `src/data/betaPatchReview.ts` records source-linked September 24 / 70009 announcements separately from imported dataset versions. `data/reviews/1.60.1.70009/review.json` documents the acquisition/reconciliation conflict. Do not stamp the existing 69913 datasets as 70009-verified. Protection Paladin is excluded from new tool recommendations while its archived route includes the removed Improved Holy Strike.
+- Unified funnel events are `calculator_open`, `view_planner`, `build_complete`, `build_copy`. Generic calculators deduplicate manual completion by class, budget and allocation per session; presets/share initialization do not complete a build. Clipboard failures do not count as successful copies. Class-specific legacy copy events remain compatible.
+- `docs/seo/approved-patch-notice-2026-09-27.json` amends only approved Paladin body/link signatures. Original SEO metadata and head signatures remain frozen; do not regenerate baselines to hide unrelated changes.

@@ -16,8 +16,8 @@ const protectedPaths = paths.filter((path) => path.includes('paladin'))
 
 describe('intent rollout scope', () => {
   it('retains the historical rollout ledger while withholding an unfinished build page', () => {
-    const discoveryPaths = ['/', '/wow-forever-classes', '/wow-forever-builds']
-    expect(paths).toHaveLength(153)
+    const discoveryPaths = ['/', '/wow-forever-classes', '/wow-forever-builds', '/wow-forever-dungeon-build-finder', '/wow-forever-class-picker']
+    expect(paths).toHaveLength(155)
     expect(paths.filter(path => discoveryPaths.includes(path)).sort()).toEqual([...discoveryPaths].sort())
     expect(new Set(ledger.pages.map((page) => page.path)).size).toBe(150)
     expect(ledger.pages.map((page) => page.path).sort()).toEqual([...paths.filter(path => !discoveryPaths.includes(path) && !independentToolPaths.includes(path)), ...retiredPaths].sort())

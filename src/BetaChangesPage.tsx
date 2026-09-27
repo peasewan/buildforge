@@ -1,3 +1,4 @@
+import BetaPatchNotice from './BetaPatchNotice'
 import { Calculator } from "lucide-react";
 import { PALADIN_BETA_SNAPSHOT } from "./data/betaSnapshot";
 import { betaDataset, communityPreviewDataset, initialBetaDataset, previousBetaDataset } from "./data/datasets";
@@ -38,9 +39,9 @@ export default function BetaChangesPage() {
         </div>
         <aside className="beta-status-card" aria-label="Beta data status">
           <span>PALADIN BETA DATA</span>
-          <strong>Latest Build Verified</strong>
+          <strong>Calculator Dataset Verified</strong>
           <dl>
-            <div><dt>Client build</dt><dd>{snapshot.clientBuild}</dd></div>
+            <div><dt>Imported client build</dt><dd>{snapshot.clientBuild}</dd></div>
             <div><dt>Previous build</dt><dd>1.60.1.69893</dd></div>
             <div><dt>Tree-ready talents</dt><dd>{betaDataset.talents.length} / {betaDataset.talents.length}</dd></div>
             <div><dt>New in Forever</dt><dd>{snapshot.counts.paladinNewTalents}</dd></div>
@@ -51,6 +52,7 @@ export default function BetaChangesPage() {
       </section>
 
       <section className="beta-diff shell">
+        <section className="beta-detail-block"><h2>September 24 update · build 70009</h2><p>70009 includes new class changes. The historical calculator dataset below remains 69913 until the full client payload and cross-check agree. “Unchanged in 69913” does not mean unchanged in 70009.</p><BetaPatchNotice classId="paladin" expanded /></section>
         <section className="beta-detail-block">
           <div><div className="eyebrow">Current Beta Baseline</div><h2>52 talents · 21 new in WoW Forever</h2><p>Client build {snapshot.clientBuild} contains the complete Holy, Protection, and Retribution trees used by the calculator.</p></div>
           <div className="beta-signal-grid">
@@ -72,7 +74,7 @@ export default function BetaChangesPage() {
         </section>
 
         <div className="section-heading centered">
-          <div className="eyebrow">Latest Build Diff</div>
+          <div className="eyebrow">Last Imported Build Diff · Historical</div>
           <h2>1.60.1.69893 → 1.60.1.69913</h2>
           <p>No Paladin talent changes were detected in build 69913. All 52 reviewed nodes retain the same positions, ranks, prerequisites, IDs, icons, and per-rank tooltips.</p>
         </div>

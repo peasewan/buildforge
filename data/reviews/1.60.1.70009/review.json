@@ -1,0 +1,15 @@
+{
+  "reviewedAt": "2026-09-27",
+  "candidateBuild": "1.60.1.70009",
+  "productionDataset": "1.60.1.69913",
+  "status": "pending_reconciliation",
+  "officialSource": "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-september-24/2360696",
+  "clientDiffSource": "https://foreverdiff.com/compare/1.60.1.69977__1.60.1.70009/",
+  "acquisition": {
+    "wagoCsv": "Public Talent, TalentTab and SpellName CSV endpoints returned 200 for the requested 70009 build.",
+    "foreverDiffCalculator": "Direct calculator acquisition returned HTTP 403.",
+    "reconciliation": "CSV identities do not match the imported Paladin node IDs. The six-class Talent subset has no structural changes, conflicting with announced Shaman movement. A requested build query alone is insufficient proof that an export is the intended game branch. Do not promote these tables without a matching independent client view."
+  },
+  "publishAction": "Show source-linked update notes, separate official announcements from client-diff reports, retain honest imported dataset versions, exclude obsolete Protection Paladin from new recommendations.",
+  "nextImportRequirements": ["Verify game branch and build from export metadata", "Reconcile stable spell/node IDs against an independent 70009 client view", "Acquire per-rank text and coordinates", "Validate removed talents and migrate affected presets explicitly", "Run diff and build legality checks before promotion"]
+}

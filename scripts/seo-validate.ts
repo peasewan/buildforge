@@ -9,6 +9,12 @@ import { publishedClassPages } from '../src/lib/classStaticPages'
 import type { ClassPageKind } from '../src/lib/classPage'
 import { experienceEnabled } from '../src/experiences/rollout'
 import baseline from '../docs/seo/paladin-frozen-baseline.json'
+import patchAmendments from '../docs/seo/approved-patch-notice-2026-09-27.json'
+// Explicitly reviewed patch annotations update only body/link hashes; baseline SEO fields stay frozen.
+const frozenPages = baseline.pages.map(page => {
+  const amendment = patchAmendments.pages[page.path as keyof typeof patchAmendments.pages]
+  return amendment ? { ...page, rootSha256: amendment.rootSha256, linksSha256: amendment.linksSha256 } : page
+})
 import vercel from '../vercel.json'
 import { parseSitemap, validateSeo, type Requirement } from './seo/validate'
 
@@ -44,7 +50,7 @@ for (const { classDef, page } of published) requirements[`/${page.slug}`] = {
   unavailableText: unavailable[page.kind],
 }
 requirements['/songs-of-glimmerwick'] = { selector: '[data-surface="glimmerwick-garden"]' }
-for (const page of DISCOVERY_PAGES) requirements[page.path] = { selector: page.id === 'home' ? '.sd-games' : page.id === 'classes' ? '.sd-class-grid' : '.sd-build-groups' }
+for (const page of DISCOVERY_PAGES) requirements[page.path] = { selector: page.id === 'dungeon-finder' || page.id === 'class-picker' ? '.planning-tools' : page.id === 'home' ? '.sd-games' : page.id === 'classes' ? '.sd-class-grid' : '.sd-build-groups' }
 for (const page of [...TRUST_PAGES, ...EMBERVILLE_PAGES]) requirements[`/${page.slug}`] = { selector: `[data-intent-experience="/${page.slug}"]` }
 const files = readdirSync(dist, { recursive: true, withFileTypes: true }).filter(f => f.isFile() && f.name.endsWith('.html'))
 const pages: Record<string, string> = {}
@@ -57,7 +63,7 @@ const redirects = Object.fromEntries(vercel.redirects.filter(r => r.permanent &&
 const report = validateSeo({ origin: 'https://buildforgetools.com', pages, sitemap: parseSitemap(readFileSync(resolve(dist, 'sitemap.xml'), 'utf8')),
   expectedPaths: ['/songs-of-glimmerwick', ...baseline.pages.map(p => p.path), ...classPaths, ...DISCOVERY_PAGES.map(p => p.path), ...TRUST_PAGES.map(p => `/${p.slug}`), ...EMBERVILLE_PAGES.map(p => `/${p.slug}`)],
   withheldPaths: PUBLISHED_CLASSES.flatMap(c => c.pages.map(p => `/${p.slug}`)).filter(p => !classPaths.includes(p)),
-  redirects, aliases: { '/build': '/paladin' }, requirements, frozen: baseline.pages,
+  redirects, aliases: { '/build': '/paladin' }, requirements, frozen: frozenPages,
 })
 const output = resolve(dist, 'seo-report.json')
 writeFileSync(output, `${JSON.stringify({ generatedAt: new Date().toISOString(), baselineCommit: baseline.commit, ...report }, null, 2)}\n`)

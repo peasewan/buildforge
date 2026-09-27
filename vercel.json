@@ -26,6 +26,8 @@
     }
   ],
   "rewrites": [
+    { "source": "/wow-forever-dungeon-build-finder", "destination": "/wow-forever-dungeon-build-finder/index.html" },
+    { "source": "/wow-forever-class-picker", "destination": "/wow-forever-class-picker/index.html" },
     { "source": "/wow-forever-classes", "destination": "/wow-forever-classes/index.html" },
     { "source": "/wow-forever-builds", "destination": "/wow-forever-builds/index.html" },
     { "source": "/songs-of-glimmerwick", "destination": "/songs-of-glimmerwick/index.html" },

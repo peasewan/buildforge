@@ -739,3 +739,5 @@ footer { padding: 42px 0; border-top: 1px solid rgba(217,164,65,.15); background
 /* The class directory grows with the registry; let footer links wrap rather than widen the page. */
 footer .shell > * { min-width: 0; }
 footer nav { flex-wrap: wrap; row-gap: 14px; }
+
+.beta-patch-notice{background:#211b11;color:#dccaa5;border-bottom:1px solid #665439;padding:13px max(24px,calc((100vw - 1260px)/2));font-size:13px;line-height:1.7}.beta-patch-notice summary{cursor:pointer;font-weight:600}.beta-patch-notice p,.beta-patch-notice ul{max-width:1050px}.beta-patch-notice nav{display:flex;gap:22px;flex-wrap:wrap}.beta-patch-notice a{color:#ffe8a3;text-decoration:underline}.beta-patch-notice summary:focus-visible{outline:2px solid #ffe8a3;outline-offset:3px}
