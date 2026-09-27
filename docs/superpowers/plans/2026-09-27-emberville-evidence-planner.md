@@ -29,7 +29,7 @@
 - [x] UI: write failing integration tests for class selection/evidence/unknown inheritance, retained notes, persisted draft and storage errors; implement accessible controls and evidence reference views with existing visual styles.
 - [x] Tooling: add `emberville:validate`, `emberville:query`, `emberville:diff`, `emberville:import` commands and usage documentation, verify on fixture candidates and reviewed dataset.
 - [x] Verify: run complete tests, lint, typecheck, production build and SEO validator. Review visual desktop/mobile output and keyboard/control behavior; independently review the diff.
-- [ ] Publish: commit and integrate main without discarding concurrent work; push, verify Vercel deployment, production four-page content and canonical tags; record commands and limitations in project memory.
+- [x] Publish: commit and integrate main without discarding concurrent work; push, verify Vercel deployment, production four-page content and canonical tags; record commands and limitations in project memory.
 
 ## Verification record
 
@@ -42,3 +42,7 @@
 ## Latest main integration
 
 Preserved concurrent Nivalis commits `7fb595e` and `69f05f5`. Integration verification: 79 files / 1199 tests passed, full lint and production build passed, 156/156 SEO pages with zero errors and all 22 frozen pages intact. Four Emberville routes also passed Chrome desktop/mobile interaction checks after integration.
+
+## Production acceptance
+
+Commit `686c119d015c7f4a120c7143173d30c0904f390a` was pushed to main and Vercel Production deployment `6693472371` succeeded. The custom-domain Chrome check passed all four existing Emberville routes with HTTP 200, unchanged titles/canonicals, desktop/mobile overflow checks, no page errors, Open Planner anchor navigation and local draft save/restore/reset. Google Analytics and Tag Manager requests were blocked during this production test. No new Emberville route or sitemap entry was introduced.
