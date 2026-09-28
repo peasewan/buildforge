@@ -709,6 +709,11 @@ footer { padding: 42px 0; border-top: 1px solid rgba(217,164,65,.15); background
 @media (max-width: 980px) { .class-hero-grid, .class-summary { grid-template-columns: 1fr; }.class-page[data-class="warrior"].class-calculator-page .class-hero aside { width: auto; justify-self: stretch; transform: none; }.class-tree-grid { overflow-x: auto; grid-template-columns: repeat(3,340px); padding-bottom: 10px; }.class-toolbar { align-items: flex-start; flex-direction: column; }.class-trust { grid-template-columns: 1fr; } }
 @media (max-width: 680px) { .class-nav nav { display: none; }.class-levels { width: 100%; }.class-levels button { min-width: 0; flex: 1; }.class-selected-list { grid-template-columns: 1fr; }.class-pvp-panel, .class-primary-build, .class-build-groups article { padding: 18px; }.class-page[data-class="warrior"] .class-hero { background-position: center, center top; background-size: 100% 100%, cover; } }
 .class-reset-notice { margin: 20px 0 0; padding: 12px 15px; border: 1px solid rgba(217,164,65,.35); border-radius: 9px; color: #f0d9a8; background: rgba(217,164,65,.08); font-size: 11px; }
+.class-tree-grid.has-full-route .class-tree > header { min-height: 160px; }
+.class-tree > header .class-full-route { margin-top: 10px; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.class-full-route span { max-width: 260px; color: #d6be8f; font-size: 10px; line-height: 1.5; }
+.class-full-route button { flex: none; padding: 7px 9px; border: 1px solid rgba(217,164,65,.55); border-radius: 7px; color: #ffe6ba; background: rgba(217,164,65,.14); font-size: 10px; cursor: pointer; }
+.class-full-route button:hover, .class-full-route button:focus-visible { border-color: #f1ce88; background: rgba(217,164,65,.24); }
 
 /* Class artwork stays fully framed; the evidence card sits under copy, away from the face. */
 .class-page[data-client-preview="true"] .class-hero { min-height: 640px; padding: 54px 0; background-repeat: no-repeat; background-position: center, right top; background-size: 100% 100%, auto 100%; }

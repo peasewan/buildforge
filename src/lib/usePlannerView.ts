@@ -7,6 +7,7 @@ export function usePlannerView(
   classId: string,
   level: number,
   pointCap: number,
+  treeMarker?: RefObject<Element | null>,
 ): void {
   const sent = useRef(false)
   useEffect(() => {
@@ -21,6 +22,8 @@ export function usePlannerView(
       }
     }, { threshold: 0.15 })
     observer.observe(node)
+    // A shared URL can target a different tree from the branch holding most points.
+    treeMarker?.current?.querySelectorAll('.class-tree > header').forEach(header => observer.observe(header))
     return () => { active = false; observer.disconnect() }
-  }, [marker, classId, level, pointCap])
+  }, [marker, classId, level, pointCap, treeMarker])
 }

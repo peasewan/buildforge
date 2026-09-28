@@ -102,7 +102,7 @@ export default function BuildLandingPage({ pageId }: { pageId: BuildLandingPageI
             <div className="eyebrow"><Sparkles size={14} /> {page.eyebrow}</div>
             <h1>{page.title}</h1>
             <p>{page.subtitle}</p>
-            <span>Community build example using the current WoW Forever Beta talent tree.</span>
+            <span>{pageId === 'protection-leveling' ? 'The older Level 20 Protection route below is archived after the September 24 talent removal.' : 'Community build example using the current WoW Forever Beta talent tree.'}</span>
             <div className="button-row"><TrackedLink href={primaryHref} pageId={pageId} placement="hero" className="button primary">{pvpRouteHref ? 'Choose a PvP Route' : 'Open Talent Calculator'}</TrackedLink>{preview && <a href="#build-content" className="button secondary">View Talent Tree <ArrowRight size={15} /></a>}</div>
           </div>
           <aside className="landing-summary-card" aria-label="Build summary">

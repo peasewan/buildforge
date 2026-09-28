@@ -130,8 +130,8 @@ export function calculatorLinkIssues(url: URL): string[] {
   const branches = classDef?.branches ?? ['holy', 'protection', 'retribution']
   const code = url.searchParams.get('build')
   if (code !== null) {
-    // Both calculators restore local storage when the build parameter is falsy.
-    if (code === '') issues.push('empty calculator build would restore saved state')
+    // Class calculators honor an explicit empty build; the legacy Paladin loader still restores storage.
+    if (code === '' && paladin) issues.push('empty calculator build would restore saved state')
     const decoded = decodePlannerBuild(code, talents)
     if (encodePlannerBuild(decoded) !== code) issues.push('calculator build does not round-trip exactly')
     if (totalPlannerPoints(decoded) > cap) issues.push('calculator allocation exceeds selected point budget')

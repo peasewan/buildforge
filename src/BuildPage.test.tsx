@@ -52,6 +52,7 @@ describe('Holy healing build page', () => {
     ]) {
       expect(nextSteps.querySelector(`a[href="${href}"]`)).toBeTruthy()
     }
+    expect(nextSteps.textContent).toContain('archived Level 20')
   })
 
   it('refers to the calculator cards as community examples', () => {
@@ -87,7 +88,6 @@ describe('Holy healing build page', () => {
 
   it.each([
     ['holy-healing-31-20-0', 'Holy Beta talent path', 'Dungeon healing', '5/5 Divine Intellect', 'divine_intellect.5'],
-    ['protection-shield-20-31-0', 'Protection Beta talent path', 'Dungeon tanking', '2/2 Improved Holy Strike', 'improved_holy_strike.2'],
     ['retribution-judgment-0-20-31', 'Retribution Beta talent path', 'Solo leveling', '5/5 Benediction', 'benediction.5'],
   ])('adds an executable current-cap route to %s', (buildId, heading, bestFor, firstStep, encodedTalent) => {
     render(<BuildPage buildId={buildId} />)
@@ -101,6 +101,16 @@ describe('Holy healing build page', () => {
     expect(path.querySelector(`a[href*="${encodedTalent}"][href$="#calculator"]`)).toBeTruthy()
   })
 
+  it('shows the Protection Level 20 route as historical without a loadable removed talent', () => {
+    render(<BuildPage buildId="protection-shield-20-31-0" />)
+
+    const path = screen.getByRole('region', { name: 'Archived Beta talent path' })
+    expect(path.textContent).toContain('2/9/0')
+    expect(path.textContent).toContain('Archived September 24')
+    expect(path.querySelector('a[href*="improved_holy_strike"]')).toBeNull()
+    expect(path.querySelector('a[href="/build?id=#calculator"]')).toBeTruthy()
+  })
+
   it.each([
     'holy-healing-31-20-0',
     'protection-shield-20-31-0',
@@ -108,7 +118,7 @@ describe('Holy healing build page', () => {
   ] as const)('labels the official fact precisely and carries the current page date on %s', (buildId) => {
     render(<BuildPage buildId={buildId} />)
 
-    const path = screen.getByRole('region', { name: 'Current Beta talent path' })
+    const path = screen.getByRole('region', { name: buildId === 'protection-shield-20-31-0' ? 'Archived Beta talent path' : 'Current Beta talent path' })
     expect(path.querySelector('.beta-leveling-grid article:first-child > div > span')?.textContent).toBe('Official level cap')
     expect(document.querySelector('.build-hero-copy small')?.textContent).toBe('Updated September 20, 2026 · Beta client talent data')
   })
@@ -118,7 +128,7 @@ describe('Holy healing build page', () => {
 
     const path = screen.getByRole('region', { name: 'Current Beta talent path' })
     expect(path.textContent).toContain('0/0/11')
-    expect(path.textContent).toContain('Level 30 plan')
+    expect(path.textContent).toContain('Level 30 projection under review')
     expect(path.textContent).toContain('2/0/19')
   })
 

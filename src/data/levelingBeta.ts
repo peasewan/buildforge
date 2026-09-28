@@ -2,10 +2,16 @@ import { encodeBuild, type Build } from '../lib/build'
 import { PALADIN_BETA_SNAPSHOT } from './betaSnapshot'
 
 export type BetaLevelingPageId = 'leveling' | 'protection-leveling' | 'retribution-leveling'
+export type BetaRouteStatus = 'current' | 'archived'
+export const EMPTY_PALADIN_PLANNER_HREF = '/build?id=#calculator'
+
+export const PROTECTION_ROUTE_ARCHIVE_NOTICE = 'Archived September 24, 2026: Blizzard removed Improved Holy Strike from the Beta talent tree. This 1.60.1.69913-era allocation is historical; a replacement Protection route has not been verified.'
 
 export interface BetaLevelingSnapshot {
   pageId: BetaLevelingPageId
   title: string
+  status: BetaRouteStatus
+  archiveNotice?: string
   current: { level: number; points: number; allocation: string; build: Build; note: string }
   next: { level: number; points: number; allocation: string; note: string }
   milestones: string[]
@@ -27,6 +33,7 @@ const protectionCurrent: Build = {
 
 const retributionSnapshot = {
   title: 'Retribution-first Beta leveling path',
+  status: 'current' as const,
   current: {
     level: PALADIN_BETA_SNAPSHOT.phase.levelCap,
     points: PALADIN_BETA_SNAPSHOT.phase.levelCap - 9,
@@ -54,18 +61,20 @@ export const BETA_LEVELING_SNAPSHOTS: Record<BetaLevelingPageId, BetaLevelingSna
   'protection-leveling': {
     pageId: 'protection-leveling',
     title: 'Protection Beta leveling path',
+    status: 'archived',
+    archiveNotice: PROTECTION_ROUTE_ARCHIVE_NOTICE,
     current: {
       level: PALADIN_BETA_SNAPSHOT.phase.levelCap,
       points: PALADIN_BETA_SNAPSHOT.phase.levelCap - 9,
       allocation: '2/9/0',
       build: protectionCurrent,
-      note: 'Use 2 points in Improved Holy Strike, then build Redoubt, Precision, and the first rank of Anticipation for the current cap.',
+      note: 'The pre-September 24 route used 2 points in Improved Holy Strike before Redoubt, Precision, and Anticipation. It is retained only to explain the historical allocation.',
     },
     next: {
       level: PALADIN_BETA_SNAPSHOT.phase.nextLevelCap,
       points: PALADIN_BETA_SNAPSHOT.phase.nextLevelCap - 9,
       allocation: '2/19/0',
-      note: 'The community level-30 target adds Anticipation, Shield Specialization, Improved Righteous Fury, and threat or durability flex points.',
+      note: 'This earlier level-30 projection also reserved points for the removed talent. It is archived and must be reconsidered against a reconciled Beta tree.',
     },
     milestones: ['2/2 Improved Holy Strike', '5/5 Redoubt', '3/3 Precision', 'Shield Specialization → Improved Righteous Fury'],
     recommendationSource: {
@@ -79,7 +88,9 @@ export const BETA_LEVELING_SNAPSHOTS: Record<BetaLevelingPageId, BetaLevelingSna
 export const betaLevelingSnapshot = (pageId: BetaLevelingPageId) => BETA_LEVELING_SNAPSHOTS[pageId]
 
 export const betaLevelingPlannerHref = (pageId: BetaLevelingPageId) =>
-  `/build?id=${encodeBuild(betaLevelingSnapshot(pageId).current.build)}#calculator`
+  betaLevelingSnapshot(pageId).status === 'archived'
+    ? EMPTY_PALADIN_PLANNER_HREF
+    : `/build?id=${encodeBuild(betaLevelingSnapshot(pageId).current.build)}#calculator`
 
 export const BETA_LEVEL_CAP_SOURCE = {
   label: 'Blizzard — WoW Forever Beta Now Live',

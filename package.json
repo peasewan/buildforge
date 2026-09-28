@@ -20,6 +20,7 @@
     "analytics:report": "tsx scripts/analytics-report.ts",
     "talents:icons": "tsx scripts/download-talent-icons.ts",
     "seo:validate": "tsx scripts/seo-validate.ts",
+    "smoke:production": "node --import tsx scripts/post-deploy-smoke.ts",
     "emberville:validate": "node --import tsx scripts/emberville-data.ts --validate src/data/emberville-preview-2026-09-27.json",
     "emberville:query": "node --import tsx scripts/emberville-data.ts --query src/data/emberville-preview-2026-09-27.json",
     "emberville:diff": "node --import tsx scripts/emberville-data.ts --diff",

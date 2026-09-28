@@ -65,21 +65,23 @@ describe('specialization builds hub', () => {
     expect(screen.getByText('0 tooltip updates since 69893')).toBeTruthy()
   })
 
-  it('puts the current Protection Beta route before the complete featured build', () => {
+  it('puts the archived Protection route before the complete featured build without loading it', () => {
     render(<SpecBuildsHub spec="protection" />)
 
-    const route = screen.getByRole('region', { name: 'Current Beta Protection starting route' })
+    const route = screen.getByRole('region', { name: 'Archived Beta Protection starting route' })
     expect(route.textContent).toContain('Level 20')
     expect(route.textContent).toContain('2/9/0')
-    expect(route.textContent).toContain('Community recommendation')
-    expect(route.querySelector('a[href="' + betaLevelingPlannerHref('protection-leveling') + '"]')).toBeTruthy()
+    expect(route.textContent).toContain('Archived')
+    expect(betaLevelingPlannerHref('protection-leveling')).toBe('/build?id=#calculator')
+    expect(route.querySelector('a[href*="improved_holy_strike"]')).toBeNull()
+    expect(route.querySelector('a[href="/build?id=#calculator"]')).toBeTruthy()
     expect(route.querySelector('a[href="/wow-forever-protection-paladin-leveling-build"]')).toBeTruthy()
     expect(route.compareDocumentPosition(document.querySelector('#featured-build')!)).toBe(Node.DOCUMENT_POSITION_FOLLOWING)
   })
 
   it('does not add the Protection starting route to Retribution', () => {
     render(<SpecBuildsHub spec="retribution" />)
-    expect(screen.queryByRole('region', { name: 'Current Beta Protection starting route' })).toBeNull()
+    expect(screen.queryByRole('region', { name: 'Archived Beta Protection starting route' })).toBeNull()
   })
 
   it('gives every specialization hub a substantial, distinct editorial guide', () => {

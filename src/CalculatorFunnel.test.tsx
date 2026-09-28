@@ -9,9 +9,9 @@ import { encodeBuild } from './lib/build'
 
 const gtag = vi.fn()
 const writeText = vi.fn()
-const observations: { callback: IntersectionObserverCallback; observer: IntersectionObserver; target?: Element }[] = []
-function visible(entry: typeof observations[number]) {
-  entry.callback([{ isIntersecting: true, target: entry.target } as IntersectionObserverEntry], entry.observer)
+const observations: { callback: IntersectionObserverCallback; observer: IntersectionObserver; targets: Element[] }[] = []
+function visible(entry: typeof observations[number], target: Element = entry.targets.at(-1)!) {
+  entry.callback([{ isIntersecting: true, target } as IntersectionObserverEntry], entry.observer)
 }
 const events = (name: string) => gtag.mock.calls.filter(call => call[1] === name)
 function spendHunter() {
@@ -32,9 +32,9 @@ beforeEach(() => {
   observations.length = 0
   vi.stubGlobal('IntersectionObserver', class {
     constructor(callback: IntersectionObserverCallback) {
-      observations.push({ callback, observer: this as unknown as IntersectionObserver })
+      observations.push({ callback, observer: this as unknown as IntersectionObserver, targets: [] })
     }
-    observe(target: Element) { observations.at(-1)!.target = target }
+    observe(target: Element) { observations.at(-1)!.targets.push(target) }
     disconnect() {}
   })
 })
@@ -44,11 +44,32 @@ describe('all-class calculator funnel', () => {
   it('records an actual visible calculator once, including StrictMode replay', () => {
     render(<StrictMode><ClassCalculatorPage classDef={hunterClassFixture} /></StrictMode>)
     expect(events('view_planner')).toHaveLength(0)
-    expect(observations.at(-1)?.target?.className).toBe('class-toolbar')
-    visible(observations.at(-1)!)
+    expect(observations.at(-1)?.targets[0]?.className).toBe('class-toolbar')
+    visible(observations.at(-1)!, observations.at(-1)!.targets[0])
     visible(observations.at(-1)!)
     expect(events('view_planner')).toHaveLength(1)
     expect(events('view_planner')[0][2]).toMatchObject({ class: 'hunter', page_path: '/hunter', level: 20, point_cap: 11 })
+  })
+
+  it('counts a deep-linked tree visit without requiring the toolbar to be visible', () => {
+    history.replaceState({}, '', '/hunter?build=bm-1.5~bm-2.5~bm-3.1&level=20#tree-beastmastery')
+    render(<ClassCalculatorPage classDef={hunterClassFixture} />)
+    const observer = observations.at(-1)!
+    const treeHeader = document.querySelector('#tree-beastmastery > header')!
+    expect(observer.targets).toContain(treeHeader)
+    visible(observer, treeHeader)
+    visible(observer, observer.targets[0])
+    expect(events('view_planner')).toHaveLength(1)
+  })
+
+  it('counts an explicitly requested tree even when a different branch has the loaded points', () => {
+    history.replaceState({}, '', '/hunter?build=bm-1.5~bm-2.5~bm-3.1&level=20#tree-survival')
+    render(<ClassCalculatorPage classDef={hunterClassFixture} />)
+    const observer = observations.at(-1)!
+    const requestedHeader = document.querySelector('#tree-survival > header')!
+    expect(observer.targets).toContain(requestedHeader)
+    visible(observer, requestedHeader)
+    expect(events('view_planner')).toHaveLength(1)
   })
 
   it('records manual completion once at the active cap, even after refund, refill and refresh', () => {
@@ -102,7 +123,7 @@ describe('Paladin compatibility', () => {
 
   it('observes the calculator tabs rather than the preceding build cards, once under StrictMode', () => {
     render(<StrictMode><App /></StrictMode>)
-    expect(observations.at(-1)?.target?.className).toBe('planner-tabs')
+    expect(observations.at(-1)?.targets[0]?.className).toBe('planner-tabs')
     visible(observations.at(-1)!)
     visible(observations.at(-1)!)
     expect(events('view_planner')).toHaveLength(1)

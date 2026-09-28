@@ -31,8 +31,11 @@ describe('Build landing page template', () => {
     const snapshot = screen.getByRole('region', { name: 'Beta leveling snapshot' })
     expect(snapshot.textContent).toContain('2/9/0')
     expect(snapshot.textContent).toContain('2/19/0')
-    expect(snapshot.textContent).toContain('Build 1.60.1.69913')
-    expect(snapshot.querySelector('a[href^="/build?id="]')).toBeTruthy()
+    expect(snapshot.textContent).toContain('Archived')
+    expect(snapshot.textContent).toContain('Improved Holy Strike')
+    expect(snapshot.querySelector('a[href*="improved_holy_strike"]')).toBeNull()
+    expect(snapshot.querySelector('a[href="/build?id=#calculator"]')).toBeTruthy()
+    expect(screen.getByRole('link', { name: 'Open Planner' }).getAttribute('href')).toBe('/build?id=#calculator')
   })
 
   it('reuses the Protection talent tree on the dungeon page', () => {

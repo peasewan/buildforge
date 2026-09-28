@@ -128,8 +128,8 @@ describe('calculator link audit', () => {
     expect(check('/warrior?level=20')).toEqual([])
   })
 
-  it('rejects an empty shared build that would restore storage instead of an exact allocation', () => {
-    expect(check('/warrior?build=&level=20')).toContain('empty calculator build would restore saved state')
+  it('accepts explicit blank class routes but rejects an empty Paladin link that restores storage', () => {
+    expect(check('/warrior?build=&level=20')).toEqual([])
     expect(check('/paladin?build=')).toContain('empty calculator build would restore saved state')
   })
 

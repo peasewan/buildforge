@@ -14,6 +14,7 @@ import { betaAvailabilityFor } from '../data/betaAvailability'
 import { EMBERVILLE_EDITORIAL, EMBERVILLE_PAGES, EMBERVILLE_SOURCES, EMBERVILLE_STATUS, embervillePageById, type EmbervillePageId } from '../data/emberville'
 import { BETA_LEVEL_CAP_SOURCE, betaLevelingPlannerHref, betaLevelingSnapshot, type BetaLevelingPageId } from '../data/levelingBeta'
 import { betaSpecPath, betaSpecPlannerHref } from '../data/betaSpecPaths'
+import { BETA_PATCH_REVIEW } from '../data/betaPatchReview'
 import { EVIDENCE_STATUS } from '../data/verification'
 import { paladinSpellbook } from '../data/paladinSpellbook'
 import type { SpellChange } from '../data/spellbook'
@@ -94,16 +95,18 @@ export function renderBetaAvailabilityPrerender(branch: Branch): string {
 
 export function renderBetaLevelingSnapshotPrerender(pageId: BetaLevelingPageId): string {
   const snapshot = betaLevelingSnapshot(pageId)
+  const archived = snapshot.status === 'archived'
   return `<section aria-label="Beta leveling snapshot">
     <h2>${escapeHtml(snapshot.title)}</h2>
-    <h3>Current Beta cap</h3>
+    ${archived ? `<p>${escapeHtml(snapshot.archiveNotice ?? '')} ${link(BETA_PATCH_REVIEW.officialSource, 'Blizzard September 24 removal notice')}.</p>` : ''}
+    <h3>${archived ? 'Archived Level 20 route' : 'Current Beta cap'}</h3>
     <p><strong>Level ${snapshot.current.level} · ${snapshot.current.points} points · ${escapeHtml(snapshot.current.allocation)}</strong></p>
-    <p>${escapeHtml(snapshot.current.note)} ${link(betaLevelingPlannerHref(pageId), 'Open current path in Calculator')}.</p>
-    <p>${escapeHtml(EVIDENCE_STATUS.official.label)} level cap · ${escapeHtml(EVIDENCE_STATUS.client_verified.label)} talent data · Build ${escapeHtml(PALADIN_BETA_STATUS.build)}.</p>
-    <h3>Level 30 plan</h3>
+    <p>${escapeHtml(snapshot.current.note)} ${link(betaLevelingPlannerHref(pageId), archived ? 'Open Calculator without this route' : 'Open current path in Calculator')}.</p>
+    <p>${escapeHtml(EVIDENCE_STATUS.official.label)} level cap · ${archived ? 'historical' : escapeHtml(EVIDENCE_STATUS.client_verified.label)} talent data · Build ${escapeHtml(PALADIN_BETA_STATUS.build)}.</p>
+    <h3>${archived ? 'Archived Level 30 projection' : 'Level 30 plan'}</h3>
     <p><strong>Level ${snapshot.next.level} · ${snapshot.next.points} points · ${escapeHtml(snapshot.next.allocation)}</strong></p>
     <p>${escapeHtml(snapshot.next.note)}</p>
-    <p>Community recommendation · ${escapeHtml(EVIDENCE_STATUS.derived_assumption.label)} editorial route, reviewed ${escapeHtml(snapshot.recommendationSource.updated)}.</p>
+    <p>${archived ? 'Historical community recommendation' : 'Community recommendation'} · ${escapeHtml(EVIDENCE_STATUS.derived_assumption.label)} editorial route, reviewed ${escapeHtml(snapshot.recommendationSource.updated)}.</p>
     <ul>${snapshot.milestones.map((milestone) => `<li>${escapeHtml(milestone)}</li>`).join('')}</ul>
     <p>${link(BETA_LEVEL_CAP_SOURCE.href, 'Official level-cap source')} · ${link(snapshot.recommendationSource.href, 'Recommendation source')}</p>
   </section>`
@@ -111,19 +114,22 @@ export function renderBetaLevelingSnapshotPrerender(pageId: BetaLevelingPageId):
 
 export function renderBetaSpecPathPrerender(branch: Branch): string {
   const path = betaSpecPath(branch)
-  return `<section aria-label="Current Beta talent path">
+  const archived = path.status === 'archived'
+  return `<section aria-label="${archived ? 'Archived' : 'Current'} Beta talent path">
     <h2>${escapeHtml(path.title)}</h2>
+    ${archived ? `<p>${escapeHtml(path.archiveNotice ?? '')} ${link(BETA_PATCH_REVIEW.officialSource, 'Blizzard September 24 removal notice')}.</p>` : ''}
     <p>Best for: ${path.bestFor.map(escapeHtml).join(' · ')}.</p>
-    <h3>Official current cap</h3>
+    <h3>${archived ? 'Archived Level 20 route' : 'Official current cap'}</h3>
     <p><strong>Level ${path.current.level} · ${path.current.points} points · ${escapeHtml(path.current.allocation)}</strong></p>
-    <p>Community recommendation.</p>
+    <p>${archived ? 'Historical community recommendation; not playable after the September 24 talent removal.' : 'Community recommendation.'}</p>
     <ol>${path.current.steps.map((step) => `<li><strong>${escapeHtml(step.levels)}:</strong> ${escapeHtml(step.talent)}</li>`).join('')}</ol>
-    <p>${link(betaSpecPlannerHref(branch), `Load the Level ${path.current.level} path in the Calculator`)}.</p>
-    <h3>Level 30 plan</h3>
+    <p>${link(betaSpecPlannerHref(branch), archived ? 'Open Calculator without this route' : `Load the Level ${path.current.level} path in the Calculator`)}.</p>
+    <h3>${archived ? 'Archived Level 30 projection' : path.next.status === 'under_review' ? 'Level 30 projection under review' : 'Level 30 plan'}</h3>
     <p><strong>Level ${path.next.level} · ${path.next.points} points · ${escapeHtml(path.next.allocation)}</strong></p>
     <p>${escapeHtml(path.next.note)}</p>
-    <p>Future-cap ${escapeHtml(EVIDENCE_STATUS.derived_assumption.label)} community route, reviewed ${escapeHtml(path.recommendationSource.updated)}.</p>
-    <p>${escapeHtml(EVIDENCE_STATUS.client_verified.label)} talent names, ranks, and positions · Build ${escapeHtml(PALADIN_BETA_STATUS.build)}.</p>
+    <p>${path.next.status === 'under_review' ? 'Not a current build or a verified future-cap recommendation.' : 'Future-cap community route.'} ${escapeHtml(EVIDENCE_STATUS.derived_assumption.label)} editorial route, reviewed ${escapeHtml(path.recommendationSource.updated)}.</p>
+    ${path.next.status === 'under_review' && !archived ? `<p>${link(BETA_PATCH_REVIEW.officialSource, 'Blizzard September 24 removal notice')}</p>` : ''}
+    <p>${archived ? 'Historical' : escapeHtml(EVIDENCE_STATUS.client_verified.label)} talent names, ranks, and positions · Build ${escapeHtml(PALADIN_BETA_STATUS.build)}.</p>
     <p>${link(BETA_LEVEL_CAP_SOURCE.href, 'Official level-cap source')} · ${link(path.recommendationSource.href, 'Recommendation source')}</p>
   </section>`
 }
@@ -249,7 +255,7 @@ export function renderSpecHubPrerender(spec: Branch): string {
   ${renderBetaStatusPrerender()}
   ${spec === 'protection' ? (() => {
     const snapshot = betaLevelingSnapshot('protection-leveling')
-    return `<section aria-label="Current Beta Protection starting route"><h2>Start with the Level ${snapshot.current.level} Protection route</h2><p>${escapeHtml(snapshot.current.note)}</p><p>Community recommendation · ${snapshot.current.points} points at Level ${snapshot.current.level} · ${escapeHtml(snapshot.current.allocation)}. Talent names and positions are checked against the Beta client; the 51-point featured build is a longer-term example.</p><p>${link(betaLevelingPlannerHref('protection-leveling'), 'Load in Talent Calculator')} · ${link('/wow-forever-protection-paladin-leveling-build', 'See the level-by-level route')}</p></section>`
+    return `<section aria-label="Archived Beta Protection starting route"><h2>Archived Level ${snapshot.current.level} Protection route</h2><p>${escapeHtml(snapshot.archiveNotice ?? '')}</p><p>Historical community recommendation · ${snapshot.current.points} points at Level ${snapshot.current.level} · ${escapeHtml(snapshot.current.allocation)}. This 69913-era route is retained for comparison, not offered as a playable build.</p><p>${link(betaLevelingPlannerHref('protection-leveling'), 'Open Calculator without old route')} · ${link('/wow-forever-protection-paladin-leveling-build', 'See the archived level-by-level route')}</p></section>`
   })() : ''}
   <section><h2>${label} Build Types</h2>${linkList(buildTypes)}</section>
   ${hub.editorialSections.map((section) => `<section><h2>${escapeHtml(section.heading)}</h2>${section.paragraphs.map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join('')}</section>`).join('\n  ')}

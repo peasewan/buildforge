@@ -94,7 +94,6 @@ describe('prerender generation', () => {
 
   it.each([
     ['leveling', '0/0/11', '0/0/21'],
-    ['protection-leveling', '2/9/0', '2/19/0'],
     ['retribution-leveling', '0/0/11', '0/0/21'],
   ] as const)('prerenders the %s beta leveling snapshot', (pageId, current, next) => {
     const html = renderBetaLevelingSnapshotPrerender(pageId)
@@ -108,9 +107,17 @@ describe('prerender generation', () => {
     expect(html).toContain('Community recommendation')
   })
 
+  it('prerenders the old Protection leveling path as archived without its stale build deep link', () => {
+    const html = renderBetaLevelingSnapshotPrerender('protection-leveling')
+    expect(html).toContain('Archived Level 20 route')
+    expect(html).toContain('2/9/0')
+    expect(html).toContain('Archived Level 30 projection')
+    expect(html).toContain('href="/build?id=#calculator"')
+    expect(html).not.toMatch(/href="\/build\?id=[^#"]/)
+  })
+
   it.each([
     ['holy', '11/0/0', '21/0/0', '5/5 Divine Intellect'],
-    ['protection', '2/9/0', '2/19/0', '2/2 Improved Holy Strike'],
     ['retribution', '0/0/11', '2/0/19', '1/1 Seal of Command'],
   ] as const)('prerenders the executable %s Beta talent path', (branch, current, next, milestone) => {
     const html = renderBetaSpecPathPrerender(branch)
@@ -119,11 +126,20 @@ describe('prerender generation', () => {
     expect(html).toContain('Official current cap')
     expect(html).toContain('Level 20 · 11 points')
     expect(html).toContain(current)
-    expect(html).toContain('Level 30 plan')
+    expect(html).toContain(branch === 'retribution' ? 'Level 30 projection under review' : 'Level 30 plan')
     expect(html).toContain(next)
     expect(html).toContain(milestone)
     expect(html).toContain('#calculator')
     expect(html).toContain('Community recommendation')
+  })
+
+  it('prerenders the archived Protection route with a blank calculator link', () => {
+    const html = renderBetaSpecPathPrerender('protection')
+    expect(html).toContain('Archived Beta talent path')
+    expect(html).toContain('2/9/0')
+    expect(html).toContain('Improved Holy Strike')
+    expect(html).toContain('href="/build?id=#calculator"')
+    expect(html).not.toMatch(/href="\/build\?id=[^#"]/)
   })
 
   it('links every build the hub data declares', () => {
@@ -142,11 +158,13 @@ describe('prerender generation', () => {
     for (const href of specHubHrefs(hub)) expect(html).toContain(`href="${href}"`)
   })
 
-  it('renders the current Protection Beta route and direct calculator link for crawlers', () => {
+  it('renders the archived Protection Beta route without the old deep link for crawlers', () => {
     const html = renderSpecHubPrerender('protection')
     expect(html).toContain('Level 20')
     expect(html).toContain('2/9/0')
+    expect(html).toContain('Archived')
     expect(html).toContain(`href="${betaLevelingPlannerHref('protection-leveling')}"`)
+    expect(html).not.toMatch(/href="\/build\?id=[^#"]/)
     expect(html).toContain('href="/wow-forever-protection-paladin-leveling-build"')
     expect(renderSpecHubPrerender('retribution')).not.toContain('2/9/0')
   })

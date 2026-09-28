@@ -39,17 +39,14 @@ describe('Paladin talent calculator page', () => {
     const paths = screen.getByRole('region', { name: 'Current Beta Level 20 builds' })
     expect(paths.textContent).toContain('11/0/0')
     expect(paths.textContent).toContain('2/9/0')
+    expect(paths.textContent).toContain('Archived')
     expect(paths.textContent).toContain('0/0/11')
+    expect(screen.queryByRole('button', { name: 'Load Protection Level 20 build' })).toBeNull()
 
-    fireEvent.click(screen.getByRole('button', { name: 'Load Protection Level 20 build' }))
-
+    fireEvent.click(screen.getByRole('button', { name: 'Load Holy Level 20 build' }))
     expect(screen.getByText('40 points remaining')).toBeTruthy()
-    expect(screen.getByRole('tab', { name: /Protection/ }).getAttribute('aria-selected')).toBe('true')
-    expect(gtag).toHaveBeenCalledWith('event', 'beta_path_load', {
-      branch: 'protection',
-      level: 20,
-      allocation: '2/9/0',
-    })
+    expect(gtag).toHaveBeenCalledWith('event', 'beta_path_load', { branch: 'holy', level: 20, allocation: '11/0/0' })
+    expect(gtag).not.toHaveBeenCalledWith('event', 'beta_path_load', expect.objectContaining({ branch: 'protection' }))
   })
 
   it('links the four content-focused build pages', () => {
@@ -142,6 +139,15 @@ describe('Paladin talent calculator page', () => {
 
     expect(screen.getByText('Saved build loaded')).toBeTruthy()
     fireEvent.click(screen.getByRole('button', { name: 'Start New Build' }))
+    expect(screen.queryByText('Saved build loaded')).toBeNull()
+    expect(screen.getByText('51 points remaining')).toBeTruthy()
+  })
+
+  it('starts blank when an explicit empty build id overrides saved points', () => {
+    localStorage.setItem('wow-forever-paladin-build', encodeBuild(HOLY_HEALING_BUILD.build))
+    window.history.replaceState({}, '', '/build?id=#calculator')
+    render(<App />)
+
     expect(screen.queryByText('Saved build loaded')).toBeNull()
     expect(screen.getByText('51 points remaining')).toBeTruthy()
   })

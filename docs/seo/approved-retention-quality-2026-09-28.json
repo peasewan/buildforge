@@ -1,0 +1,38 @@
+{
+  "reviewedAt": "2026-09-28",
+  "authorization": "User requested deeper click and retention improvements and prevention of recurrent defects. These body and link changes archive a removed Protection Level 20 route while preserving existing SEO title, H1, description, canonical, robots, head metadata, sitemap and URL.",
+  "pages": {
+    "/paladin": {
+      "rootSha256": "a206fd09cc8c07309e621ecb67875b49ca1c9208231aef6ba9f31e175c1b0af4",
+      "linksSha256": "d96c75ccce155bc128be59be36512641ce72770162b8be84b641232102d6aed0"
+    },
+    "/wow-forever-paladin-build": {
+      "rootSha256": "1654cef69e8d7daa376781dc8907e60f15078e449f7dfff28f14798b30392e15",
+      "linksSha256": "d0c4a6ed68b2f63660ca7cb8de922ce492180501c44b6aeeea038b8cacf26b3d"
+    },
+    "/wow-forever-protection-paladin-build": {
+      "rootSha256": "96d00754b2ef61d8c501b754e060da3fb7d80ed2e2468b645c12e8e8aa9de044",
+      "linksSha256": "0148e91299b535b5bd6830968d43ce9acd387bb14e9fdbaabe376a4c765a6868"
+    },
+    "/wow-forever-retribution-paladin-build": {
+      "rootSha256": "58b3bba77db864d0e6ecc6070fa984b34f7ea2e640fa540ba5fc1b9a78e1fa7d",
+      "linksSha256": "a3dffc0cd32f8017ecde5db2247598bbe1b72370f562c89fe672d8837799f54c"
+    },
+    "/wow-forever-retribution-paladin-leveling-build": {
+      "rootSha256": "c3e2b3251a9c2d5ee11dc16bc6987f02e9c3d7c6f61386c1a14886b475540025",
+      "linksSha256": "c9bbafa9cb0bdae963f5c1d873eaaf1766c004af4fce2b4f00b2de58259ba726"
+    },
+    "/wow-forever-paladin-leveling-build": {
+      "rootSha256": "da0d58f3577abee9d643d11c2b82ac5c279b974efb05fa82f30865cecf746d00",
+      "linksSha256": "b6e1a62655567acae081d8a57fed06ac06974450ffafbef4fcdfcb8378428714"
+    },
+    "/wow-forever-protection-paladin-builds": {
+      "rootSha256": "9c149a03deb923d8e8ffd7de94034dd84608f2df818d1d2da1bc562d11e2a8b7",
+      "linksSha256": "c16944b55610c01e65ec6ecfb68bd034c7107d2d5cfa0fbebf5d08fca3802b0f"
+    },
+    "/wow-forever-protection-paladin-leveling-build": {
+      "rootSha256": "b91099db4888e910cbf30665cd0ccbae4e90d48d7dc6c587fba521fa5e236376",
+      "linksSha256": "7975392659f808c891a5a121caaaed3a73e48ce67e52d32136bb313c22566e9e"
+    }
+  }
+}

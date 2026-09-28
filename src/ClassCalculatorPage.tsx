@@ -39,7 +39,7 @@ function readStoredBuild<B extends string>(classDef: ClassDefinition<B>): { buil
   const params = new URLSearchParams(window.location.search)
   const level = requestedLevel(classDef, Number(params.get('level'))) ?? defaultLevel(classDef)
   const code = params.get('build')
-  if (code || (classDef.id === 'hunter' && params.has('build'))) return { build: decodePlannerBuild(code ?? '', classDef.talents), level }
+  if (params.has('build')) return { build: decodePlannerBuild(code ?? '', classDef.talents), level }
   try {
     const stored = JSON.parse(localStorage.getItem(classDef.storageKey) ?? '{}') as { build?: PlannerBuild; level?: PlannerLevel }
     return { build: stored.build ?? {}, level: requestedLevel(classDef, Number(stored.level)) ?? level }
@@ -90,14 +90,14 @@ function TalentNode<B extends string>({ talent, build, classDef, config, onAdd, 
  * branches, talent nodes, planner modes, presets, storage key, planner path and analytics name.
  */
 export default function ClassCalculatorPage<B extends string>({ classDef }: { classDef: ClassDefinition<B> }) {
-  const isHunter = classDef.id === 'hunter'
   const [initial] = useState(() => readStoredBuild(classDef))
   const [build, setBuild] = useState<PlannerBuild>(initial.build)
   const [level, setLevel] = useState<PlannerLevel>(initial.level)
   const [selected, setSelected] = useState<ClassTalent<B>>(() => {
-    if (!isHunter) return classDef.talents[0]
     const branch = dominantPlannerBranch(initial.build, classDef.talents, classDef.branches, classDef.branches[0])
-    return classDef.talents.find(talent => talent.branch === branch && initial.build[talent.id] > 0) ?? classDef.talents[0]
+    return classDef.talents.find(talent => talent.branch === branch && initial.build[talent.id] > 0)
+      ?? classDef.talents.find(talent => talent.branch === branch)
+      ?? classDef.talents[0]
   })
   const [copied, setCopied] = useState(false)
   const [manualShareUrl, setManualShareUrl] = useState<string | null>(null)
@@ -105,9 +105,10 @@ export default function ClassCalculatorPage<B extends string>({ classDef }: { cl
   const [resetNotice, setResetNotice] = useState<string | null>(null)
   const cap = pointCapFor(classDef, level)
   const viewMarker = useRef<HTMLDivElement>(null)
+  const treeViewMarker = useRef<HTMLDivElement>(null)
   const completedBuilds = useRef<Set<string> | null>(null)
   if (completedBuilds.current === null) completedBuilds.current = loadClaimedBuildCompletions()
-  usePlannerView(viewMarker, classDef.id, level, cap)
+  usePlannerView(viewMarker, classDef.id, level, cap, treeViewMarker)
   const canvasHeight = canvasHeightFor(classDef)
   const config = useMemo<PlannerConfig<B>>(() => ({ ...classDef.plannerConfig, pointCap: cap }), [classDef.plannerConfig, cap])
   const points = totalPlannerPoints(build)
@@ -124,14 +125,14 @@ export default function ClassCalculatorPage<B extends string>({ classDef }: { cl
     .filter((candidate): candidate is ClassBuild => Boolean(candidate))
 
   useEffect(() => {
-    if (classDef.id !== 'hunter') return
     const params = new URLSearchParams(window.location.search)
     if (!params.has('build') && !window.location.hash) return
     const branch = dominantPlannerBranch(initial.build, classDef.talents, classDef.branches, classDef.branches[0])
     const requested = window.location.hash.slice(1)
     const explicitTarget = requested === 'class-calculator' || requested === 'build-summary' || classDef.branches.some(branch => requested === `tree-${branch}`)
+    if (requested && !explicitTarget) return
     const target = explicitTarget ? requested : totalPlannerPoints(initial.build) ? `tree-${branch}` : 'class-calculator'
-    document.getElementById(target)?.scrollIntoView({ block: 'start', inline: 'nearest' })
+    ;(document.getElementById(target) ?? document.getElementById('class-calculator'))?.scrollIntoView({ block: 'start', inline: 'nearest' })
   }, [classDef, initial])
   // Only this class's own links: the site-wide class list lives in SiteFooter, which prepends
   // these to it. Nothing here may name another class.
@@ -140,26 +141,31 @@ export default function ClassCalculatorPage<B extends string>({ classDef }: { cl
     .map((page) => ({ href: `/${page.slug}`, label: page.h1 }))
     .concat([{ href: classDef.plannerPath, label: `${classDef.name} Talent Calculator` }])
 
+  const syncSharedRoute = (next: PlannerBuild, nextLevel: PlannerLevel) => {
+    const url = new URL(window.location.href)
+    if (!url.searchParams.has('build')) return
+    url.searchParams.set('build', encodePlannerBuild(next))
+    url.searchParams.set('level', String(nextLevel))
+    window.history.replaceState(window.history.state, '', `${url.pathname}${url.search}${url.hash}`)
+  }
+
   const commit = (next: PlannerBuild, nextLevel: PlannerLevel = level) => {
+    syncSharedRoute(next, nextLevel)
     setBuild(next)
-    if (isHunter) {
-      copyRequest.current += 1
-      setCopied(false)
-      setManualShareUrl(null)
-      try {
-        localStorage.setItem(classDef.storageKey, JSON.stringify({ build: next, level: nextLevel }))
-      } catch {
-        // Editing and sharing continue when browser persistence is unavailable.
-      }
-    } else localStorage.setItem(classDef.storageKey, JSON.stringify({ build: next, level: nextLevel }))
+    copyRequest.current += 1
+    setCopied(false)
+    setManualShareUrl(null)
+    try {
+      localStorage.setItem(classDef.storageKey, JSON.stringify({ build: next, level: nextLevel }))
+    } catch {
+      // Editing and sharing continue when browser persistence is unavailable.
+    }
   }
 
   const changeLevel = (nextLevel: PlannerLevel) => {
-    if (isHunter) {
-      copyRequest.current += 1
-      setCopied(false)
-      setManualShareUrl(null)
-    }
+    copyRequest.current += 1
+    setCopied(false)
+    setManualShareUrl(null)
     setLevel(nextLevel)
     const nextCap = pointCapFor(classDef, nextLevel)
     // Matching the published Warrior rule: lowering the cap below the spent points resets the tree, and says so.
@@ -167,14 +173,13 @@ export default function ClassCalculatorPage<B extends string>({ classDef }: { cl
       commit({}, nextLevel)
       setResetNotice(`This allocation needed more than ${nextCap} points, so the tree was reset for Level ${nextLevel}.`)
     } else {
+      syncSharedRoute(build, nextLevel)
       setResetNotice(null)
-      if (isHunter) {
-        try {
-          localStorage.setItem(classDef.storageKey, JSON.stringify({ build, level: nextLevel }))
-        } catch {
-          // The chosen mode still applies when browser persistence is unavailable.
-        }
-      } else localStorage.setItem(classDef.storageKey, JSON.stringify({ build, level: nextLevel }))
+      try {
+        localStorage.setItem(classDef.storageKey, JSON.stringify({ build, level: nextLevel }))
+      } catch {
+        // The chosen mode still applies when browser persistence is unavailable.
+      }
     }
     track(`${classDef.analyticsClass}_level_mode`, { level: nextLevel })
   }
@@ -182,27 +187,36 @@ export default function ClassCalculatorPage<B extends string>({ classDef }: { cl
   const loadPreset = (preset: ClassBuild) => {
     setLevel(preset.level)
     commit(preset.build, preset.level)
-    if (isHunter) {
-      setResetNotice(null)
-      const branch = dominantPlannerBranch(preset.build, classDef.talents, classDef.branches, classDef.branches[0])
-      setSelected(classDef.talents.find(talent => talent.branch === branch && preset.build[talent.id] > 0) ?? classDef.talents[0])
-      document.getElementById(`tree-${branch}`)?.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' })
-    }
+    setResetNotice(null)
+    const branch = dominantPlannerBranch(preset.build, classDef.talents, classDef.branches, classDef.branches[0])
+    setSelected(classDef.talents.find(talent => talent.branch === branch && preset.build[talent.id] > 0) ?? classDef.talents[0])
+    document.getElementById(`tree-${branch}`)?.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' })
     track(`${classDef.analyticsClass}_preset_load`, { preset: preset.id })
+  }
+
+  const startBlank = () => {
+    const url = new URL(window.location.href)
+    if (points > 0 && !url.searchParams.has('build')) {
+      url.searchParams.set('build', '')
+      window.history.replaceState(window.history.state, '', `${url.pathname}${url.search}${url.hash}`)
+    }
+    commit({})
+    setResetNotice(null)
+    track('calculator_start_blank', { class: classDef.id, page_path: window.location.pathname, level })
   }
 
   const copyBuild = async () => {
     const url = new URL(classPlannerHref(classDef, encodePlannerBuild(build), level), window.location.origin)
-    if (isHunter) url.hash = points ? `tree-${activeBranch}` : 'class-calculator'
+    url.hash = points ? `tree-${activeBranch}` : 'class-calculator'
     const request = ++copyRequest.current
     const didCopy = await copyTextToClipboard(url.toString())
-    if (isHunter && request !== copyRequest.current) return
+    if (request !== copyRequest.current) return
     setCopied(didCopy)
-    if (isHunter) setManualShareUrl(didCopy ? null : url.toString())
+    setManualShareUrl(didCopy ? null : url.toString())
     if (!didCopy) return
     track('build_copy', { class: classDef.id, page_path: window.location.pathname, level, point_cap: cap, points, branch: String(activeBranch) })
     track(`${classDef.analyticsClass}_build_copy`, { level, points, specialization: String(activeBranch) })
-    window.setTimeout(() => { if (!isHunter || request === copyRequest.current) setCopied(false) }, 1600)
+    window.setTimeout(() => { if (request === copyRequest.current) setCopied(false) }, 1600)
   }
 
   return <main className="class-page class-calculator-page" data-class={classDef.id} data-intent-calculator={experienceEnabled(classDef.plannerPath) ? "true" : undefined} data-client-preview={classDef.dataReview ? 'true' : undefined}>
@@ -249,7 +263,6 @@ export default function ClassCalculatorPage<B extends string>({ classDef }: { cl
 
       {classDef.dataReview && <p className="class-reset-notice">Client-table preview. Tier unlocks and this eleven-point budget are planning assumptions; see data coverage below.</p>}
       {resetNotice && <p className="class-reset-notice" role="status">{resetNotice}</p>}
-      {isHunter && points >= cap && <p className="class-reset-notice" role="status">This Level {level} route uses all {cap} points. Remove a rank with the minus button before adding a different talent.</p>}
 
       <div className="class-presets" data-testid="class-presets">
         <span>Recommended builds</span>
@@ -258,12 +271,16 @@ export default function ClassCalculatorPage<B extends string>({ classDef }: { cl
       </div>
 
       {experienceEnabled(classDef.plannerPath) && <nav className="ix-calculator-nav" aria-label="Jump to specialization"><span>Jump to tree</span>{classDef.branches.map(b => <a key={b} href={`#tree-${b}`}>{classDef.branchNames[b]} · {plannerBranchPoints(build,b,classDef.talents)} points</a>)}<a href="#build-summary">Review &amp; share</a></nav>}
-      <div className="class-tree-grid">
+      <div className={points >= cap ? 'class-tree-grid has-full-route' : 'class-tree-grid'} ref={treeViewMarker}>
         {classDef.branches.map((branch) => <section className={`class-tree ${branch}`} id={experienceEnabled(classDef.plannerPath) ? `tree-${branch}` : undefined} key={branch}>
           <header>
             <div><Sparkles size={18} /><h3>{classDef.branchNames[branch]}</h3></div>
             <b>{plannerBranchPoints(build, branch, classDef.talents)}</b>
             <p>{classDef.branchTaglines[branch]}</p>
+            {branch === activeBranch && points >= cap && <div className="class-full-route" role="status">
+              <span>This Level {level} route uses all {cap} points. Remove a rank before adding a different talent, or start a blank build.</span>
+              <button type="button" onClick={startBlank}>Start blank build</button>
+            </div>}
           </header>
           <div className="class-tree-canvas" data-testid="class-tree-canvas" style={{ height: `${canvasHeight}px`, backgroundSize: `100% ${CANVAS_ROW_HEIGHT}px, 25% 100%` }}>
             {classDef.talents.filter((talent) => talent.branch === branch).map((talent) => <TalentNode
@@ -317,12 +334,12 @@ export default function ClassCalculatorPage<B extends string>({ classDef }: { cl
           <strong>{allocationFor(build, classDef)}</strong>
           <p>{classDef.branchNames[activeBranch]} {classDef.name} · Level {level}</p>
           <div className="class-summary-actions">
-            <button type="button" onClick={() => commit({})}><RotateCcw size={15} /> Reset</button>
+            <button type="button" onClick={startBlank}><RotateCcw size={15} /> Reset</button>
             <button type="button" aria-label="Copy build link" onClick={copyBuild}><Copy size={15} /> {copied ? 'Copied' : 'Copy build link'}</button>
           </div>
           <div className="class-progress"><i style={{ width: `${Math.min(100, (points / cap) * 100)}%` }} /></div>
           <small>{points} / {cap}</small>
-          {isHunter && manualShareUrl && <div className="pvp-manual-share"><p role="status">Clipboard access was unavailable. Select and copy this link manually.</p><label htmlFor="hunter-manual-share">Build link for manual copy</label><input id="hunter-manual-share" readOnly value={manualShareUrl} onFocus={(event) => event.currentTarget.select()} /></div>}
+          {manualShareUrl && <div className="pvp-manual-share"><p role="status">Clipboard access was unavailable. Select and copy this link manually.</p><label htmlFor={`${classDef.id}-manual-share`}>Build link for manual copy</label><input id={`${classDef.id}-manual-share`} readOnly value={manualShareUrl} onFocus={(event) => event.currentTarget.select()} /></div>}
         </aside>
       </div>
     </section>

@@ -238,6 +238,7 @@ export default function App() {
 
   const loadBetaPath = (nextBranch: Branch) => {
     const path = BETA_SPEC_PATHS[nextBranch]
+    if (path.status !== 'current') return
     replaceBuild({ ...path.current.build })
     setBranch(nextBranch)
     setShowSavedBuild(false)
@@ -317,20 +318,22 @@ export default function App() {
         <div className="shell">
           <div className="section-heading centered"><div className="eyebrow">Interactive Build Planner</div><h2>WoW Forever Paladin Talent Tree</h2><p>Choose Holy, Protection, or Retribution, spend all 51 points, and shape a build worth sharing.</p></div>
           <section className="current-cap-builds" aria-label="Current Beta Level 20 builds">
-            <div className="popular-builds-heading"><div><span>Playable at the current cap</span><h2>Level 20 Beta Starting Builds</h2></div><p>Load an 11-point community route based on the current official Beta level cap.</p></div>
+            <div className="popular-builds-heading"><div><span>Current routes and historical references</span><h2>Level 20 Beta Starting Builds</h2></div><p>Load a current 11-point community route or review why an older allocation was retired.</p></div>
             <div className="current-cap-build-grid">
               {BRANCHES.map((item) => {
                 const path = BETA_SPEC_PATHS[item]
                 return (
                   <article key={item}>
                     <img src={branchIcons[item]} alt="" />
-                    <div><span>{branchNames[item]}</span><strong>{path.current.allocation}</strong><small>{path.bestFor[0]}</small></div>
-                    <button type="button" onClick={() => loadBetaPath(item)} aria-label={`Load ${branchNames[item]} Level ${path.current.level} build`}>Load Level {path.current.level}</button>
+                    <div><span>{branchNames[item]}</span><strong>{path.current.allocation}</strong><small>{path.status === 'archived' ? 'Archived · Improved Holy Strike removed' : path.bestFor[0]}</small></div>
+                    {path.status === 'current'
+                      ? <button type="button" onClick={() => loadBetaPath(item)} aria-label={`Load ${branchNames[item]} Level ${path.current.level} build`}>Load Level {path.current.level}</button>
+                      : <a href="/wow-forever-protection-paladin-leveling-build">Review retired route</a>}
                   </article>
                 )
               })}
             </div>
-            <p className="current-cap-build-note">Community recommendations, not official or measured best builds. Talent data uses client build {PALADIN_BETA_SNAPSHOT.clientBuild}.</p>
+            <p className="current-cap-build-note">Community recommendations, not official or measured best builds. The Protection allocation is archived after the September 24 removal of Improved Holy Strike. Talent data uses client build {PALADIN_BETA_SNAPSHOT.clientBuild}.</p>
           </section>
           <div id="calculator" ref={calculatorRef} className="calculator-entry">
             {showSavedBuild && <div className="saved-build-notice" role="status"><div><strong>Saved build loaded</strong><span>Your previous talent setup is ready to continue.</span></div><button type="button" onClick={startNewBuild}><RotateCcw size={14} /> Start New Build</button></div>}

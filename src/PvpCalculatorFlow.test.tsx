@@ -5,6 +5,7 @@ import BuildLandingPage from './BuildLandingPage'
 import ClassCalculatorPage from './ClassCalculatorPage'
 import ClassDocumentPage from './ClassDocumentPage'
 import { hunterClass } from './data/classes/hunter'
+import { warriorClass } from './data/classes/warrior'
 import { decodeBuild, incrementTalent, totalPoints, type Build } from './lib/build'
 import { talents } from './data/talents'
 
@@ -56,6 +57,15 @@ function enterHunterPvp() {
   render(<ClassCalculatorPage classDef={hunterClass} />)
 }
 
+function enterWarriorPvp() {
+  const page = warriorClass.pages.find(page => page.slug === 'wow-forever-arms-warrior-pvp-build')!
+  render(<ClassDocumentPage classDef={warriorClass} page={page} />)
+  const href = document.querySelector<HTMLAnchorElement>('a[href^="/warrior?build="]')!.getAttribute('href')!
+  cleanup()
+  history.replaceState({}, '', href)
+  render(<ClassCalculatorPage classDef={warriorClass} />)
+}
+
 describe('Published PvP route → adjust → share', () => {
   it.each([
     ['retribution-pvp', 'Retribution'],
@@ -74,6 +84,24 @@ describe('Published PvP route → adjust → share', () => {
     expect(scrollTargets).toContain('tree-survival')
     const selectedName = document.querySelector('.class-detail-title h3')?.textContent
     expect(['Deflection', 'Entrapment', 'Savage Strikes', 'Deterrence']).toContain(selectedName)
+  })
+
+  it('opens a production Warrior PvP route at its allocated tree and detail', () => {
+    enterWarriorPvp()
+    expect(scrollTargets).toContain('tree-arms')
+    const selectedName = document.querySelector('.class-detail-title h3')?.textContent
+    const selectedTalent = warriorClass.talents.find(talent => talent.name === selectedName)
+    expect(selectedTalent?.branch).toBe('arms')
+    expect(document.querySelector('.class-summary aside')?.textContent).toContain('11 / 11')
+  })
+
+  it('honors an explicitly empty Warrior share over the recipient’s saved allocation', () => {
+    const pvp = warriorClass.builds.find(build => build.id === 'warrior-arms-pvp')!
+    localStorage.setItem(warriorClass.storageKey, JSON.stringify({ build: pvp.build, level: 20 }))
+    history.replaceState({}, '', '/warrior?build=&level=20')
+    render(<ClassCalculatorPage classDef={warriorClass} />)
+    expect(document.querySelector('.class-summary aside')?.textContent).toContain('0/0/0')
+    expect(document.querySelector('.class-summary aside')?.textContent).toContain('0 / 11')
   })
 
   it('honors an explicitly empty Hunter share over the recipient’s saved allocation', () => {
@@ -102,6 +130,46 @@ describe('Published PvP route → adjust → share', () => {
     expect(document.getElementById('hunter-1308')?.textContent).toContain('0/1')
     expect(screen.getByRole('button', { name: 'Remove rank from Humanoid Slaying' })).toBeTruthy()
     expect(document.querySelector('.class-summary aside')?.textContent).toContain('11 / 11')
+  })
+
+  it('offers a blank starting point beside a full Hunter tree and keeps it blank after refresh', () => {
+    enterHunterPvp()
+    const tree = document.getElementById('tree-survival')!
+    expect(within(tree).getByText(/uses all 11 points/i)).toBeTruthy()
+    fireEvent.click(within(tree).getByRole('button', { name: 'Start blank build' }))
+    expect(document.querySelector('.class-summary aside')?.textContent).toContain('0 / 11')
+    expect(new URLSearchParams(location.search).get('build')).toBe('')
+    cleanup()
+    render(<ClassCalculatorPage classDef={hunterClass} />)
+    expect(document.querySelector('.class-summary aside')?.textContent).toContain('0 / 11')
+  })
+
+  it('keeps a shared Warrior route cleared after using the summary Reset and refreshing', () => {
+    enterWarriorPvp()
+    fireEvent.click(screen.getByRole('button', { name: 'Reset' }))
+    expect(document.querySelector('.class-summary aside')?.textContent).toContain('0 / 11')
+    expect(new URLSearchParams(location.search).get('build')).toBe('')
+    cleanup()
+    render(<ClassCalculatorPage classDef={warriorClass} />)
+    expect(document.querySelector('.class-summary aside')?.textContent).toContain('0 / 11')
+  })
+
+  it('keeps edits to a shared Warrior route after refreshing', () => {
+    enterWarriorPvp()
+    fireEvent.click(screen.getByRole('button', { name: 'Remove rank from Anger Management' }))
+    expect(document.querySelector('.class-summary aside')?.textContent).toContain('10 / 11')
+    cleanup()
+    render(<ClassCalculatorPage classDef={warriorClass} />)
+    expect(document.querySelector('.class-summary aside')?.textContent).toContain('10 / 11')
+  })
+
+  it('keeps a new level mode on a shared Warrior route after refreshing', () => {
+    enterWarriorPvp()
+    fireEvent.click(screen.getByRole('button', { name: /Level 30/ }))
+    expect(document.querySelector('.class-summary aside')?.textContent).toContain('Level 30')
+    cleanup()
+    render(<ClassCalculatorPage classDef={warriorClass} />)
+    expect(document.querySelector('.class-summary aside')?.textContent).toContain('Level 30')
   })
 
   it('restores an adjusted Paladin reference and its tree from the copied URL', async () => {
