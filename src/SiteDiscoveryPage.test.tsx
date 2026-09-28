@@ -43,9 +43,9 @@ describe('discovery rendering and artifacts', () => {
     expect(doc.querySelector('h1')?.textContent).toBe(page.h1)
     for (const link of doc.querySelectorAll('a[href^="#"]')) expect(doc.getElementById(link.getAttribute('href')!.slice(1))).not.toBeNull()
   })
-  it('removes only the root redirect and ships both directory rewrites', () => {
+  it('has no unconditional root redirect and ships both directory rewrites', () => {
     const config = JSON.parse(readFileSync('vercel.json', 'utf8'))
-    expect(config.redirects.some((r: { source: string }) => r.source === '/')).toBe(false)
+    expect(config.redirects.some((r: { source: string; has?: unknown }) => r.source === '/' && !r.has)).toBe(false)
     for (const page of DISCOVERY_PAGES.filter(p => p.path !== '/')) expect(config.rewrites).toContainEqual({ source: page.path, destination: `${page.path}/index.html` })
   })
   it.each(PUBLISHED_CLASSES)('groups $name before search and exposes site discovery on all class routes', def => {

@@ -1,6 +1,14 @@
 {
   "redirects": [
     {
+      "source": "/",
+      "has": [
+        { "type": "host", "value": "www.buildforgetools.com" }
+      ],
+      "destination": "https://buildforgetools.com/",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "has": [
         { "type": "host", "value": "www.buildforgetools.com" }

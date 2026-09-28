@@ -1,4 +1,4 @@
-import { cleanup, fireEvent, render, screen } from '@testing-library/react'
+import { cleanup, fireEvent, render, screen, within } from '@testing-library/react'
 import { afterEach, expect, it } from 'vitest'
 import { warriorClass } from '../data/classes/warrior'
 import { druidClass } from '../data/classes/druid'
@@ -70,6 +70,32 @@ it('shows the Hunter PvP build and calculator link before optional encounter pro
   expect(url.searchParams.get('build')).toContain('hunter-')
   fireEvent.click(screen.getByRole('button', { name: 'Recovery and exit' }))
   expect(screen.getByRole('button', { name: 'Recovery and exit' }).getAttribute('aria-pressed')).toBe('true')
+})
+
+it('compares the three Hunter Level 20 directions without labeling ordinary routes as PvP-tested', () => {
+  render(<PvpPlanner classDef={hunterClass} page={page(hunterClass, 'wow-forever-hunter-pvp-build')} />)
+  const choices = within(screen.getByRole('region', { name: 'Hunter PvP starting points' }))
+  for (const spec of ['Beast Mastery', 'Marksmanship', 'Survival']) {
+    expect(choices.getByRole('heading', { name: spec })).toBeTruthy()
+  }
+  expect(choices.getByText(/only Survival has a published PvP testing route/i)).toBeTruthy()
+  expect(choices.getByText(/pet uptime under opponent control/i)).toBeTruthy()
+  expect(choices.getByText(/ranged attacks under pressure/i)).toBeTruthy()
+  expect(choices.getByText(/escape after an opponent reaches melee range/i)).toBeTruthy()
+  const bm = choices.getByRole('link', { name: 'Try Beast Mastery points in Calculator' })
+  const bmUrl = new URL(bm.getAttribute('href')!, 'https://buildforgetools.com')
+  expect(bmUrl.pathname).toBe('/hunter')
+  expect(bmUrl.searchParams.get('level')).toBe('20')
+  expect(bmUrl.searchParams.get('build')).toContain('hunter-1389.5')
+  expect(choices.getByRole('link', { name: 'Hunter Pet Build' }).getAttribute('href')).toBe('/wow-forever-hunter-pet-build')
+})
+
+it('connects Hunter leveling, comparison and pet decisions back to the PvP page', () => {
+  const pvp = '/wow-forever-hunter-pvp-build'
+  for (const slug of ['wow-forever-hunter-leveling-build', 'wow-forever-beast-mastery-vs-marksmanship-hunter-leveling', 'wow-forever-hunter-pet-build']) {
+    expect(page(hunterClass, slug).relatedPages.some((link) => link.href === pvp)).toBe(true)
+  }
+  expect(page(hunterClass, 'wow-forever-hunter-pvp-build').relatedPages.some((link) => link.href === '/wow-forever-hunter-pet-build')).toBe(true)
 })
 
 it('keeps a PvP page with no legal allocation explicit and unlinked', () => {

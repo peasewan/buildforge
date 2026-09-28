@@ -177,6 +177,14 @@
 .intent-experience .rs-pvp-board > p { grid-column: 2; grid-row: 2 / span 2; align-self: center; font-size: 16px; }
 .intent-experience .rs-pvp-board > p.rs-small { grid-row: 4; font-size: 12px; }
 .intent-experience .rs-pvp-details { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; }
+.intent-experience .rs-hunter-directions { padding: 25px; border: 1px solid #d88d6a65; border-radius: 18px; background: linear-gradient(135deg, #221a20, #101722); }
+.intent-experience .rs-hunter-directions > p { max-width: 850px; color: #bdc6d2; }
+.intent-experience .rs-hunter-directions-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 18px 0; }
+.intent-experience .rs-hunter-directions-grid article { padding: 18px; border: 1px solid #ffffff2a; border-radius: 12px; background: #0c121bba; }
+.intent-experience .rs-hunter-directions-grid h3 { margin: 0 0 10px; }
+.intent-experience .rs-hunter-directions-grid strong { color: #f0ca9d; }
+.intent-experience .rs-hunter-directions-grid p { color: #bdc6d2; }
+.intent-experience .rs-hunter-directions-grid a { display: inline-flex; align-items: center; gap: 5px; color: #f1b17f; }
 
 .intent-experience .rs-dungeon { --rs-accent: #86b9b4; }
 .intent-experience .rs-dungeon-timeline { border-left: 5px solid #86b9b4; }
@@ -216,6 +224,7 @@
 
 @media (max-width: 760px) {
   .intent-experience .rs-pvp-board { display: block; }
+  .intent-experience .rs-hunter-directions-grid { grid-template-columns: 1fr; }
   .intent-experience .rs-pvp-board .rs-options { flex-direction: row; }
   .intent-experience .rs-pvp-board .rs-options button { flex: 1 1 130px; }
   .intent-experience :is(.rs-pvp-details, .rs-dungeon-details, .rs-tank-details, .rs-healing-details, .rs-pet-details, .rs-totem-details) { display: grid; grid-template-columns: minmax(0, 1fr); }

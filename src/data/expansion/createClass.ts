@@ -102,6 +102,16 @@ export function createExpansionClass(profile: ExpansionProfile, dataset: Dataset
   }
   const hubPage = pages.find((page) => page.kind === 'buildsHub')!
   hubPage.relatedPages = pages.filter((page) => page !== hubPage).map((page) => ({ href: `/${page.slug}`, label: page.h1.replace('WoW Forever ', '') }))
+  if (id === 'hunter') {
+    const pvpHref = '/wow-forever-hunter-pvp-build'
+    const pvpPage = pages.find((page) => page.kind === 'pvp')!
+    pvpPage.updatedAt = '2026-09-28'
+    pvpPage.relatedPages.push({ href: '/wow-forever-hunter-pet-build', label: 'Hunter Pet Build' })
+    for (const page of pages.filter((candidate) => candidate.kind === 'leveling' || candidate.kind === 'comparison' || candidate.kind === 'pet')) {
+      page.updatedAt = '2026-09-28'
+      page.relatedPages.push({ href: pvpHref, label: 'Hunter PvP Build' })
+    }
+  }
   if (pages.length !== 15) throw new Error(`${id}: expected 15 page definitions`)
   assertUniquePageIntents(pages)
   return {

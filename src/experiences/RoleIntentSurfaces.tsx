@@ -133,6 +133,32 @@ function SameAllocation({ def, baseline, build }: { def: ClassDefinition; baseli
   )
 }
 
+function HunterPvpStartingPoints({ def, pvpBuild }: { def: ClassDefinition; pvpBuild: ClassBuild }) {
+  const general = publishedBuilds(def).filter((build) => build.intent === 'spec')
+  const choices = def.branches.map((spec) => spec === pvpBuild.spec ? pvpBuild : general.find((build) => build.spec === spec)).filter((build): build is ClassBuild => !!build)
+  const testPrompts: Record<string, string> = {
+    'beast-mastery': 'Track pet uptime under opponent control, your ability to reposition, and pressure when the pet cannot attack.',
+    marksmanship: 'Track completed ranged attacks under pressure, lost distance, and whether you can act after an interrupted attack.',
+    survival: 'Track whether the route gives you time to escape after an opponent reaches melee range.',
+  }
+  return (
+    <section className="rs-hunter-directions" aria-label="Hunter PvP starting points">
+      <h2>Compare three Hunter starting directions</h2>
+      <p>At Level 20, only Survival has a published PvP testing route here. Beast Mastery and Marksmanship are general eleven-point starting routes, not tested PvP recommendations. Compare them under the same opponent, pet and equipment conditions.</p>
+      <div className="rs-hunter-directions-grid">
+        {choices.map((build) => <article key={build.id}>
+          <h3>{def.branchNames[build.spec]}</h3>
+          <strong>{build.allocation} · 11 points</strong>
+          <p>{build.role}. {build.id === pvpBuild.id ? 'This is the current editorial PvP test route.' : 'This general route needs PvP testing before any performance claim.'}</p>
+          <p>{testPrompts[build.spec]}</p>
+          <a href={classPlannerHref(def, encodePlannerBuild(build.build), build.level)} aria-label={`Try ${def.branchNames[build.spec]} points in Calculator`}>Try these points <ArrowRight size={14} aria-hidden="true" /></a>
+        </article>)}
+      </div>
+      <p className="rs-small">A pet can change positioning and recovery even when player talent points stay the same. Compare the <a href="/wow-forever-hunter-pet-build">Hunter Pet Build</a> and the <a href="/wow-forever-beast-mastery-vs-marksmanship-hunter-leveling">Beast Mastery vs Marksmanship leveling comparison</a> as separate planning references.</p>
+    </section>
+  )
+}
+
 export function PvpPlanner({ classDef: def, page }: RoleSurfaceProps) {
   const routes = routesFor(def, page)
   const [id, setId] = useState(routes.find((build) => build.id === page.primaryBuildId)?.id ?? routes[0]?.id)
@@ -168,6 +194,7 @@ export function PvpPlanner({ classDef: def, page }: RoleSurfaceProps) {
           </div>
         </div>
       ) : <Unavailable def={def} page={page} />}
+      {def.id === 'hunter' && page.kind === 'pvp' && build && <HunterPvpStartingPoints def={def} pvpBuild={build} />}
       {board}
       {build && <TalentInventory def={def} build={build} />}
     </section>
