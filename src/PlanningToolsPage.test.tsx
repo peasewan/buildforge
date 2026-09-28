@@ -1,17 +1,32 @@
 import { afterEach, expect, it } from 'vitest'
-import { cleanup, fireEvent, render, screen } from '@testing-library/react'
+import { cleanup, fireEvent, render, screen, within } from '@testing-library/react'
 import PlanningToolsPage from './PlanningToolsPage'
 afterEach(cleanup)
-it('filters a dungeon route and builds a lower-level calculator snapshot', () => {
+it('opens the confirmed Ruins dungeon with a current-cap route and calculator snapshot', () => {
   render(<PlanningToolsPage tool="dungeon-finder" />)
+  expect(screen.getByRole('button',{name:/Ruins of Lordaeron/i}).getAttribute('aria-pressed')).toBe('true')
+  expect(within(screen.getByRole('region',{name:'Ruins of Lordaeron planning context'})).getByRole('link',{name:/Blizzard Beta announcement/i}).getAttribute('href')).toContain('worldofwarcraft.blizzard.com')
   fireEvent.change(screen.getByLabelText('Class'),{target:{value:'warrior'}})
-  const link = screen.getByRole('link',{name:/Edit level 13 snapshot/i})
+  const link = screen.getByRole('link',{name:/Edit level 20 snapshot/i})
   expect(link.getAttribute('href')).toContain('/warrior?build=')
-  expect(screen.getByText('4 talent points')).toBeTruthy()
+  expect(screen.getByText('11 talent points')).toBeTruthy()
+  fireEvent.click(screen.getByRole('button',{name:'Level 15 milestone'}))
+  expect(screen.getByRole('link',{name:/Edit level 15 snapshot/i})).toBeTruthy()
+  expect(screen.getByText('6 talent points')).toBeTruthy()
+  expect(screen.getByText(/Next point · Level 16/i)).toBeTruthy()
   fireEvent.change(screen.getByLabelText('Your level'),{target:{value:'17'}})
   expect(screen.getByRole('link',{name:/Edit level 17 snapshot/i})).toBeTruthy()
   expect(screen.getByText('8 talent points')).toBeTruthy()
   expect(screen.getByRole('button',{name:/Excavation Site/i}).hasAttribute('disabled')).toBe(true)
+})
+it('switches dungeon and party roles without offering a stale Protection Paladin route', () => {
+  render(<PlanningToolsPage tool="dungeon-finder" />)
+  expect(document.querySelector('[data-tool-route="paladin-protection"]')).toBeNull()
+  fireEvent.click(screen.getByRole('button',{name:'Heal'}))
+  expect(screen.getByRole('heading',{name:/Ruins of Lordaeron: Heal routes/i})).toBeTruthy()
+  fireEvent.click(screen.getByRole('button',{name:/Hall of Thanes/i}))
+  expect(screen.getByRole('button',{name:/Hall of Thanes/i}).getAttribute('aria-pressed')).toBe('true')
+  expect(screen.getByText('Level 13 · 4 points')).toBeTruthy()
 })
 it('class picker shows explainable matches and a useful empty state', () => {
   render(<PlanningToolsPage tool="class-picker" />)

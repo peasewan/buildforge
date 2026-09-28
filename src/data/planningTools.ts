@@ -10,11 +10,12 @@ export type ToolRole = 'tank' | 'heal' | 'damage'
 export type ToolStyle = 'melee' | 'ranged' | 'any'
 export type ToolActivity = 'solo' | 'pvp' | 'dungeon'
 export const DUNGEONS = [
-  { id: 'hall-of-thanes', name: 'Hall of Thanes', minLevel: 13, maxLevel: 18, supported: true, note: 'A lower-level group route. Start with your party role and the points you can actually spend.' },
-  { id: 'ruins-of-lordaeron', name: 'Ruins of Lordaeron', minLevel: 15, maxLevel: 20, supported: true, note: 'Compare group-role routes within the supported Level 20 planning budget.' },
-  { id: 'excavation-site', name: 'Excavation Site', minLevel: 24, maxLevel: 29, supported: false, note: 'Not available in this tool: a reviewed higher-level route is required first.' },
+  { id: 'ruins-of-lordaeron', name: 'Ruins of Lordaeron', minLevel: 15, maxLevel: 20, milestones: [15, 18, 20], supported: true, note: 'Compare group-role routes within the supported Level 20 planning budget.' },
+  { id: 'hall-of-thanes', name: 'Hall of Thanes', minLevel: 13, maxLevel: 18, milestones: [13, 16, 18], supported: true, note: 'A lower-level group route. Start with your party role and the points you can actually spend.' },
+  { id: 'excavation-site', name: 'Excavation Site', minLevel: 24, maxLevel: 29, milestones: [], supported: false, note: 'Not available in this tool: a reviewed higher-level route is required first.' },
 ] as const
 export const DUNGEON_SOURCES = [
+  { label: 'Blizzard Beta announcement — Ruins of Lordaeron (Level 15–20)', href: 'https://worldofwarcraft.blizzard.com/en-us/news/24304160/the-world-of-warcraft-forever-beta-now-live' },
   { label: 'Wowhead dungeon overview — reference level ranges', href: 'https://www.wowhead.com/forever/guide/dungeons-overview-locations-details' },
   { label: 'Warcraft Tavern dungeon reference', href: 'https://www.warcrafttavern.com/forever/guides/dungeons/' },
 ]
@@ -78,6 +79,13 @@ const catalogue = buildCatalogue()
 export function snapshotAtLevel(route: ToolRoute, level: number) {
   if (!Number.isInteger(level) || level < 10 || level > 20) return undefined
   return route.steps.find(step => step.level === level)
+}
+export function milestonesForDungeon(dungeonId: string): number[] {
+  const dungeon = DUNGEONS.find(d => d.id === dungeonId)
+  return dungeon?.supported ? [...dungeon.milestones] : []
+}
+export function nextTalentAtLevel(route: ToolRoute, level: number) {
+  return Number.isInteger(level) ? snapshotAtLevel(route, level + 1) : undefined
 }
 function uniqueSpecs(routes: ToolRoute[]): ToolRoute[] {
   const seen = new Set<string>()

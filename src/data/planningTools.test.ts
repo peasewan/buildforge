@@ -1,14 +1,30 @@
 import { describe, expect, it } from 'vitest'
-import { DUNGEONS, buildCatalogue, dungeonMatches, pickSpecs, snapshotAtLevel } from './planningTools'
+import { DUNGEONS, buildCatalogue, dungeonMatches, milestonesForDungeon, nextTalentAtLevel, pickSpecs, snapshotAtLevel } from './planningTools'
 import { PUBLISHED_CLASSES } from './classes'
 import { pageForPath } from '../lib/routes'
 import { totalPlannerPoints } from '../lib/talentPlanner'
 
 describe('evidence-bounded planning tools', () => {
   it('keeps unreviewed future dungeons locked', () => {
-    expect(DUNGEONS.map(d => [d.id, d.minLevel, d.maxLevel])).toEqual([['hall-of-thanes',13,18],['ruins-of-lordaeron',15,20],['excavation-site',24,29]])
+    expect(DUNGEONS.map(d => [d.id, d.minLevel, d.maxLevel])).toEqual([['ruins-of-lordaeron',15,20],['hall-of-thanes',13,18],['excavation-site',24,29]])
     expect(dungeonMatches('excavation-site','tank','all',25)).toEqual([])
     expect(dungeonMatches('hall-of-thanes','tank','all',20)).toEqual([])
+  })
+  it('returns in-range planning milestones only for supported dungeons', () => {
+    expect(milestonesForDungeon('ruins-of-lordaeron')).toEqual([15, 18, 20])
+    expect(milestonesForDungeon('hall-of-thanes')).toEqual([13, 16, 18])
+    expect(milestonesForDungeon('excavation-site')).toEqual([])
+    expect(milestonesForDungeon('unknown')).toEqual([])
+  })
+  it('finds the next level-specific talent without crossing the current cap', () => {
+    const route = dungeonMatches('ruins-of-lordaeron', 'tank', 'warrior', 15)[0]
+    expect(route).toBeDefined()
+    const next = nextTalentAtLevel(route, 15)
+    expect(next?.level).toBe(16)
+    expect(totalPlannerPoints(next!.allocation)).toBe(7)
+    expect(nextTalentAtLevel(route, 19)?.level).toBe(20)
+    expect(nextTalentAtLevel(route, 20)).toBeUndefined()
+    expect(nextTalentAtLevel(route, 20.5)).toBeUndefined()
   })
   it('offers only published, replayable routes and excludes known obsolete Paladin nodes', () => {
     const catalogue = buildCatalogue()
