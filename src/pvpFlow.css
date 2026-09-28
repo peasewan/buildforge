@@ -1,4 +1,4 @@
-.pvp-starting-routes { padding-top: 34px; padding-bottom: 34px; }
+.pvp-starting-routes { padding-top: 34px; padding-bottom: 34px; scroll-margin-top: 24px; }
 .pvp-starting-routes header { max-width: 850px; }
 .pvp-starting-routes h2 { color: #ffe8a3; font-family: Georgia, serif; }
 .pvp-starting-routes p, .pvp-starting-routes small { color: #b7becb; line-height: 1.65; }

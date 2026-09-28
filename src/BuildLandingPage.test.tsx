@@ -1,8 +1,9 @@
-import { cleanup, render, screen } from '@testing-library/react'
+import { cleanup, render, screen, within } from '@testing-library/react'
 import { afterEach, describe, expect, it } from 'vitest'
 import BuildLandingPage from './BuildLandingPage'
 import { HOLY_HEALING_BUILD } from './data/builds'
-import { encodeBuild } from './lib/build'
+import { encodeBuild, validateBuildUsage } from './lib/build'
+import { talents } from './data/talents'
 
 afterEach(cleanup)
 
@@ -79,6 +80,25 @@ describe('Build landing page template', () => {
     expect(document.querySelector('a[href="/wow-forever-protection-paladin-pvp-build"]')).toBeTruthy()
     expect(document.querySelector('a[href="/wow-forever-retribution-paladin-pvp-build"]')).toBeTruthy()
     expect(document.querySelector('a[href="/wow-forever-holy-paladin-pvp-build"]')).toBeTruthy()
+  })
+
+  it('takes Paladin PvP entry points to the available Level 20 routes before opening a calculator', () => {
+    render(<BuildLandingPage pageId="pvp" />)
+
+    const routes = document.getElementById('pvp-starting-routes')
+    expect(routes).toBeTruthy()
+    for (const selector of ['.guide-nav .button.primary', '.landing-hero .button.primary', '.landing-final-cta .button.primary']) {
+      expect(document.querySelector<HTMLAnchorElement>(selector)?.getAttribute('href')).toBe('#pvp-starting-routes')
+    }
+    const routeLinks = within(routes!).getAllByRole<HTMLAnchorElement>('link', { name: /Load (Holy|Retribution) route/ })
+    expect(routeLinks).toHaveLength(2)
+    for (const link of routeLinks) {
+      const href = new URL(link.href)
+      expect(href.pathname).toBe('/build')
+      expect(href.hash).toBe('#calculator')
+      const result = validateBuildUsage({ buildCode: href.searchParams.get('id'), sessionId: 'pvp-route-check-2026' }, talents)
+      expect(result.ok && result.data.points).toBe(11)
+    }
   })
 
   it('loads the protection reference build from the Protection PvP page', () => {

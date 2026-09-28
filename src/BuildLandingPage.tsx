@@ -84,14 +84,15 @@ export default function BuildLandingPage({ pageId }: { pageId: BuildLandingPageI
   const preview = page.sections.find((section) => section.kind === 'talent-preview')
   const ctaBuildId = preview?.buildId ?? page.ctaBuildId
   const levelingHref = pageId === 'leveling' || pageId === 'protection-leveling' ? betaLevelingPlannerHref(pageId) : null
-  const primaryHref = levelingHref ?? (ctaBuildId ? `/build?id=${encodeBuild(exampleBuildById(ctaBuildId).build)}#calculator` : '/paladin#calculator')
+  const pvpRouteHref = pageId === 'pvp' ? '#pvp-starting-routes' : null
+  const primaryHref = pvpRouteHref ?? levelingHref ?? (ctaBuildId ? `/build?id=${encodeBuild(exampleBuildById(ctaBuildId).build)}#calculator` : '/paladin#calculator')
 
   return (
     <main className="landing-page">
       <header className="guide-nav shell">
         <a className="brand" href="/paladin"><img src="/images/icons/paladin-shield.png" alt="" /><span>BUILD</span><b>FORGE</b></a>
         <nav aria-label="Build navigation"><a href="/paladin#calculator">Talent Calculator</a><a href="/wow-forever-paladin-talents">Paladin Talents</a><a href="#build-content">Build Details</a></nav>
-        <TrackedLink href={primaryHref} pageId={pageId} placement="header" className="button primary">Open Planner</TrackedLink>
+        <TrackedLink href={primaryHref} pageId={pageId} placement="header" className="button primary">{pvpRouteHref ? 'Choose PvP Route' : 'Open Planner'}</TrackedLink>
       </header>
 
       <section className="landing-hero" style={heroStyle}>
@@ -102,7 +103,7 @@ export default function BuildLandingPage({ pageId }: { pageId: BuildLandingPageI
             <h1>{page.title}</h1>
             <p>{page.subtitle}</p>
             <span>Community build example using the current WoW Forever Beta talent tree.</span>
-            <div className="button-row"><TrackedLink href={primaryHref} pageId={pageId} placement="hero" className="button primary">Open Talent Calculator</TrackedLink>{preview && <a href="#build-content" className="button secondary">View Talent Tree <ArrowRight size={15} /></a>}</div>
+            <div className="button-row"><TrackedLink href={primaryHref} pageId={pageId} placement="hero" className="button primary">{pvpRouteHref ? 'Choose a PvP Route' : 'Open Talent Calculator'}</TrackedLink>{preview && <a href="#build-content" className="button secondary">View Talent Tree <ArrowRight size={15} /></a>}</div>
           </div>
           <aside className="landing-summary-card" aria-label="Build summary">
             <div><span>Build Summary</span><i>Beta</i></div>
@@ -117,7 +118,7 @@ export default function BuildLandingPage({ pageId }: { pageId: BuildLandingPageI
 
       <div className="shell landing-content" id="build-content">
         {page.sections.map((section) => <LandingSectionView key={section.title} section={section} pageId={pageId} />)}
-        <section className="landing-final-cta"><img src="/images/icons/paladin-shield.png" alt="" /><div><span>{page.finalCta.eyebrow}</span><h2>{page.finalCta.title}</h2></div><TrackedLink href={ctaBuildId ? primaryHref : '/paladin#calculator'} pageId={pageId} placement="footer" className="button primary">{page.finalCta.label} <ArrowRight size={16} /></TrackedLink></section>
+        <section className="landing-final-cta"><img src="/images/icons/paladin-shield.png" alt="" /><div><span>{page.finalCta.eyebrow}</span><h2>{page.finalCta.title}</h2></div><TrackedLink href={pvpRouteHref ?? (ctaBuildId ? primaryHref : '/paladin#calculator')} pageId={pageId} placement="footer" className="button primary">{page.finalCta.label} <ArrowRight size={16} /></TrackedLink></section>
       </div>
 
       <SiteFooter />

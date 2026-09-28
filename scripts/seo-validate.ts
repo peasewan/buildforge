@@ -11,9 +11,11 @@ import { experienceEnabled } from '../src/experiences/rollout'
 import baseline from '../docs/seo/paladin-frozen-baseline.json'
 import patchAmendments from '../docs/seo/approved-patch-notice-2026-09-27.json'
 import growthAmendments from '../docs/seo/approved-growth-flow-2026-09-27.json'
+import pvpEntryAmendments from '../docs/seo/approved-pvp-entry-2026-09-28.json'
 // Explicitly reviewed patch annotations update only body/link hashes; baseline SEO fields stay frozen.
 const frozenPages = baseline.pages.map(page => {
-  const amendment = growthAmendments.pages[page.path as keyof typeof growthAmendments.pages]
+  const amendment = pvpEntryAmendments.pages[page.path as keyof typeof pvpEntryAmendments.pages]
+    ?? growthAmendments.pages[page.path as keyof typeof growthAmendments.pages]
     ?? patchAmendments.pages[page.path as keyof typeof patchAmendments.pages]
   return amendment ? { ...page, rootSha256: amendment.rootSha256, linksSha256: amendment.linksSha256 } : page
 })

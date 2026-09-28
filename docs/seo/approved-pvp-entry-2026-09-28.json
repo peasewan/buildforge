@@ -1,0 +1,10 @@
+{
+  "reviewedAt": "2026-09-28",
+  "authorization": "User requested a focused WoW improvement. The Paladin PvP page now sends its primary calls to action to the existing legal Level 20 route picker; SEO metadata, sitemap and other Paladin pages remain unchanged.",
+  "pages": {
+    "/wow-forever-paladin-pvp-build": {
+      "rootSha256": "d8400d345b044e4799e3125a60423481763fb2660f7b00793108ec544077575f",
+      "linksSha256": "0ad060568f8f2a87b5108e3e6f925849396c78cec77e74d507a153dbedb3e31c"
+    }
+  }
+}

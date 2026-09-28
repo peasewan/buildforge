@@ -6,7 +6,7 @@ import { track } from './lib/analytics'
 
 /** Reuse the published routes as editable starts, without claiming measured PvP performance. */
 export default function PaladinPvpRoutes() {
-  return <section className="shell pvp-starting-routes" aria-label="Paladin PvP starting routes">
+  return <section id="pvp-starting-routes" className="shell pvp-starting-routes" aria-label="Paladin PvP starting routes">
     <header><div className="eyebrow">Editorial planning examples</div><h2>Choose a starting route, then adjust for PvP</h2>
       <p>These Level 20 examples reuse our existing damage and support paths. They are not tested PvP recommendations or best-build claims.</p>
       <p>Imported talent dataset: {PALADIN_BETA_SNAPSHOT.clientBuild}. The newer {BETA_PATCH_REVIEW.clientBuild} update is awaiting reconciliation; review changed talents before using any historical setup.</p>

@@ -189,7 +189,7 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
         ],
       },
     ],
-    finalCta: { eyebrow: 'Create your own PvP build', title: 'Test a PvP setup before the next fight.', label: 'Open Talent Calculator' },
+    finalCta: { eyebrow: 'Create your own PvP build', title: 'Test a PvP setup before the next fight.', label: 'Choose a PvP Route' },
   },
   {
     id: 'raid',
