@@ -1,6 +1,6 @@
 # Rendered SEO release gate
 
-Run `npm run build` and then `npm run seo:validate`. CI runs both, after the existing data, lint, type and test checks. The command reads only the repository and its generated `dist`; no baseline directory, browser, server, credentials or network is needed. It writes `dist/seo-report.json` (already ignored by Git) and exits nonzero on errors.
+Run `npm run build`; the build now runs `seo:validate` after rendering, so an invalid SEO artifact fails the build itself. `npm run seo:validate` remains available for a standalone recheck of `dist`. CI runs the release checks after data, lint, type and test checks. The validator reads only the repository and generated `dist`; no baseline directory, browser, server, credentials or network is needed. It writes `dist/seo-report.json` (already ignored by Git) and exits nonzero on errors.
 
 The expected inventory comes from the class publish gate, the discovery/trust/Emberville definitions and the frozen legacy Paladin manifest. It is not locked to a page count. Every HTML file is scanned, including artifacts absent from the sitemap. Indexable pages require one nonempty, unique title, H1, description and self-canonical matching the sitemap. Withheld class artifacts, sitemap noindex leaks, unrendered roots, broken local links/anchors, missing primary intent modules, missing class hub links and pages with no other-page inbound link fail the gate. The same discovery edges must also make every expected page reachable from `/`; disconnected cycles fail separately from orphan checks. Generic robots and Googlebot directives are interpreted case-insensitively, with `none` equivalent to `noindex`. Local redirects are limited to the permanent, unconditional entries in `vercel.json`; the established `/build` alias resolves to the Paladin document without becoming an indexable discovery edge. Parameter links likewise do not supply discovery edges.
 
@@ -27,3 +27,7 @@ The existing Task 2 rendered build passed: **153 expected/indexable HTML pages, 
 ## September 27 patch annotation amendment
 
 The user explicitly requested a 70009 review and necessary webpage updates. `approved-patch-notice-2026-09-27.json` records only the new root/link hashes for the source-linked patch annotations. All 22 baseline titles, H1s, descriptions, canonicals, robots, head SEO signatures and sitemap dates remain unchanged. Before accepting the amendment, stripping the patch notice reproduced the original body/link hashes for 21 pages; the Beta Changes page additionally received the reviewed update section and historical-diff labels. The original baseline remains intact, and the amended body/link signatures remain strict checks for future releases.
+
+## September 29 site-consistency amendment
+
+`approved-site-consistency-2026-09-29.json` records the reviewed body, link, head and sitemap changes for 21 affected Paladin pages. Their title, H1, canonical and robots values remain unchanged. The amendment covers the read-only previews, retired-build notices, official removal labeling and historical Retribution allocation handling. It does not relax the baseline checks for other pages.

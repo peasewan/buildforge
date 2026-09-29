@@ -1,0 +1,130 @@
+{
+  "reviewedAt": "2026-09-29",
+  "authorization": "The owner asked to repair the site-wide audit findings. These 21 existing Paladin pages now distinguish the imported 69913 snapshot from the September 24 official removal, stop loading unverified Crusade-dependent 51-point routes, and make talent previews honestly read-only. New allocation links and Ret descriptions reflect the actual planner behavior. The affected pages have substantive body updates, so their sitemap lastmod and Article dateModified values are 2026-09-29. Every published URL, title, H1, canonical and robots directive was compared against the pre-change rendered site and remains unchanged. Other games and class pages are outside this SEO amendment.",
+  "pages": {
+    "/paladin": {
+      "lastmod": "2026-09-29",
+      "rootSha256": "7c428e0b91e5cfafa0a48cb2e212481dc25e4af612fc7a1675581055922afb79",
+      "linksSha256": "90fa316a84a72c30f5d534cc19fcd043c1ad0b5c2e97e28a5de85273200a475d"
+    },
+    "/wow-forever-paladin-builds": {
+      "lastmod": "2026-09-29",
+      "rootSha256": "d8d043afe7afeeeeab56cee294aafec140fe34912776ff410885b53f9769b948",
+      "linksSha256": "74f5e87147346448707264e2fcf2e73ab55130148fe321112f844b05115d0971"
+    },
+    "/wow-forever-paladin-talents": {
+      "lastmod": "2026-09-29",
+      "rootSha256": "de6c9fff617c42259127c3b0430b734de7f6e03a81e70e244a816c9d8d3e93a9",
+      "linksSha256": "2343de2eb8acff62e300454f1b130be4a6740b62853be6e0511672fe62fdf077"
+    },
+    "/wow-forever-paladin-build": {
+      "lastmod": "2026-09-29",
+      "rootSha256": "f0171412561c39119c11d98590a1d0695ee1b05c0e86c0df7074d28c49f84de5",
+      "linksSha256": "ae457035ae31e45b4b0c39c6ac4668ada1cd3c96583bbd11c306c8051a7c3e16",
+      "headSeoSha256": "07a15e5e49d864e9595ef099f0e9b29e281b3e1ba8be51f1d3ddccb9b13e7c6e"
+    },
+    "/wow-forever-protection-paladin-build": {
+      "lastmod": "2026-09-29",
+      "rootSha256": "965f5f926e62625d43938a7d6f7ec9394e3d0b15628e88797d0190db754bfc18",
+      "linksSha256": "9e7e55a88498b939f620ca1e014ab1b4072d1926b9d12450839ede42ed2a2a10",
+      "headSeoSha256": "e06324027e747e8c759d06b260e2e7c64a86370bfed46241d99f0041e08ff273"
+    },
+    "/wow-forever-retribution-paladin-build": {
+      "lastmod": "2026-09-29",
+      "rootSha256": "37d0a7b7e1352975651956be47fd7c8952eefb8341b283f75edddbf9613338a5",
+      "linksSha256": "bf434cb6de5c2c6a180424877dc55e939456aa6843719a83ec5cfbda9a2efe10",
+      "description": "Review the historical WoW Forever Retribution Paladin 0/20/31 allocation. Crusade is under review after a reported Beta change; start a new build.",
+      "headSeoSha256": "9572de8f8d2ce808f24200045b26f49cda5186cdb0e5a94090d9005a4184d3a8"
+    },
+    "/wow-forever-retribution-paladin-leveling-build": {
+      "lastmod": "2026-09-29",
+      "rootSha256": "424848492fcf601e572056575edaed84dcdc4bd6aec800894770a4395dde2bdd",
+      "linksSha256": "9e78d9933d888922286478f5413762eb67a0194f790f88c4a6b0ccda547b8c06",
+      "description": "Review the historical WoW Forever Retribution Paladin leveling 20/0/31 allocation. Crusade is under review; start a new Level 20 route.",
+      "headSeoSha256": "6e651c255398951179de909f831d0d1686c74835df191a29348fe13b06bc9dd2"
+    },
+    "/wow-forever-paladin-leveling-build": {
+      "lastmod": "2026-09-29",
+      "rootSha256": "b08e70e513500266e92659188f5a47729cb35febe8455e3f2a1b6c54396438b4",
+      "linksSha256": "0a739d35196cb0687e330e6be20e4a247d805afee29a29ce889619bc9eefe9d4",
+      "headSeoSha256": "94f7eeb24ce00fd9480b8b6ccb3d067806370f7e586ac75283631cca80bc589f"
+    },
+    "/wow-forever-paladin-pvp-build": {
+      "lastmod": "2026-09-29",
+      "rootSha256": "4f08ad918672589b2f657546f53859e77915c7bdd3a3b8e1b063cbf4f438fcc0",
+      "linksSha256": "0ad060568f8f2a87b5108e3e6f925849396c78cec77e74d507a153dbedb3e31c",
+      "headSeoSha256": "ecec54007438d05d8e0cde2aeaac25b6431021d619a8a0c3c989973f79e60802"
+    },
+    "/wow-forever-paladin-raid-build": {
+      "lastmod": "2026-09-29",
+      "rootSha256": "12ce1fe5b8c8b24076dd91eb203d590af8744f23067db770129ec6b5c984dd33",
+      "linksSha256": "8dfbdbdff25ac6e6c7e601d086512afba8baf2c41bcaa1f95d798634b6159a94",
+      "headSeoSha256": "5f7da685baa1610a94beb559bb91822a8080b51653f6d4a3f8216f0a58913fba"
+    },
+    "/wow-forever-protection-paladin-dungeon-build": {
+      "lastmod": "2026-09-29",
+      "rootSha256": "f08752937536968579c86a5b814b0c460617e924817f67042ed2d23b92043092",
+      "linksSha256": "7b14ec94b64d3c338be8200827962acd70915c44de05f122724b46e5042e42aa",
+      "headSeoSha256": "26a66de86951d6ae4f229a21ec87ab29d8faedb78abd62ee410909479ecb688a"
+    },
+    "/wow-forever-retribution-paladin-builds": {
+      "lastmod": "2026-09-29",
+      "rootSha256": "81faed380e7525bc8cd1debb3702ab75db312b8e40a4539ee1c40e858e1fd9f1",
+      "linksSha256": "a4d113287c1a22321278205ac9f595e77852be6ac6876dcd9459ffc9efcfa137"
+    },
+    "/wow-forever-protection-paladin-builds": {
+      "lastmod": "2026-09-29",
+      "rootSha256": "149b6490c7b98819bea5612513a9f409a9ed1075207a9c771783470f3996abb1",
+      "linksSha256": "c16944b55610c01e65ec6ecfb68bd034c7107d2d5cfa0fbebf5d08fca3802b0f"
+    },
+    "/wow-forever-protection-paladin-leveling-build": {
+      "lastmod": "2026-09-29",
+      "rootSha256": "a0e7f439fe1aae5bb19b61c272229be5d66dd5706e7bf58375290ef2f6f2e893",
+      "linksSha256": "86a53edb8a51b1a163a75b884f2c5fab774ca2ec28d38d8b51fa867e649f2714",
+      "description": "Review the archived WoW Forever Protection Paladin Level 20 route. Improved Holy Strike was removed; no replacement is verified. Start a blank talent plan.",
+      "headSeoSha256": "87c70591f1d9d13e16c822b666a0fc17793839a209843ee4c5119f6ddeadc5b6"
+    },
+    "/wow-forever-protection-paladin-pvp-build": {
+      "lastmod": "2026-09-29",
+      "rootSha256": "0354a264799328d971f9506750c4ca9c14262c85a7a3dfe8aaf6d60d1a228e40",
+      "linksSha256": "4d9593c07306da38ba0abc7224bc3c3dfe898a4e191940d82c5562ec7edd8ede",
+      "headSeoSha256": "492370d70d208934a4576b9fcd2dddf25c9822a116bf738337106731808faf81"
+    },
+    "/wow-forever-retribution-paladin-pvp-build": {
+      "lastmod": "2026-09-29",
+      "rootSha256": "320b5acbaf28f74c6dedef9cc5102cd36826ff0994004ba7fc3733b8d024eaee",
+      "linksSha256": "73a3e247b58eadb8a96943fb499015ea9a0a599a8436b6967311fe5f6b635add",
+      "description": "Plan a WoW Forever Retribution Paladin PvP build around burst windows and utility. Compare a historical 0/20/31 allocation, then start a new route.",
+      "headSeoSha256": "b9b316060922b6be499bd115039902352a11b9f3c32eb8953d6b29c02cf2945e"
+    },
+    "/wow-forever-holy-paladin-pvp-build": {
+      "lastmod": "2026-09-29",
+      "rootSha256": "5210570e26af5b3547a104d08c912e988bdd599537f9e90dd5bb936920f1a687",
+      "linksSha256": "51f81148d1d8cb45226898560438c3c104be64d3a9361b13b179602b6409fd08",
+      "headSeoSha256": "1eb9999bb3edbd3c4528bb194759d37ca64108ed24cd3fe98e8dc768c0d46663"
+    },
+    "/wow-forever-holy-paladin-talents": {
+      "lastmod": "2026-09-29",
+      "rootSha256": "bb8c17a2de88838c8df038f135234be854a23bc8be85470c9840b2fa11076507",
+      "linksSha256": "2a037f5475591fa2d4e18a3af86e35eec88002f313319a8527aad0a1c77c4216",
+      "headSeoSha256": "dcfe14256e5e59a63a36388135db116e1abbeb94a5da1c5612e27e2c36ada224"
+    },
+    "/wow-forever-retribution-paladin-talents": {
+      "lastmod": "2026-09-29",
+      "rootSha256": "fcb759d1d52376fda1ae1172aeef4079977155f7fc1a9c9fa9f72db244a4f5b5",
+      "linksSha256": "510966b44be47efcf0e1d9d20183b9222a39a459029636046a6e41007aab97f8",
+      "headSeoSha256": "8205328b68f8a511c6090d5e269e8702eb6a0467db7a7a3975374008167eeab3"
+    },
+    "/wow-forever-protection-paladin-talents": {
+      "lastmod": "2026-09-29",
+      "rootSha256": "dacbbd2be1e41ff997d6f630ad2898c9796418acc5e9894a31aba983e9bd57b9",
+      "linksSha256": "b8e54e3b08614e07f0df05437131aec135a9eb442a21ca61f932e62f09b5a324",
+      "headSeoSha256": "62efb259d89b303e7509f7e9604793fefcf3e5cb406b6a8ce513ce5a0591f54f"
+    },
+    "/wow-forever-paladin-beta-talent-changes": {
+      "lastmod": "2026-09-29",
+      "rootSha256": "e8784ddd7cdeed061064f4e725815477ce5d3224b89413e370af167364d3d0b0",
+      "linksSha256": "55e16f0037fcc50aaf635917bbc42bf74d3d7281d6448a85c49d05416a9edd7f"
+    }
+  }
+}

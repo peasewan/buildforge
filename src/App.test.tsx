@@ -127,7 +127,7 @@ describe('Paladin talent calculator page', () => {
     talent.sources = [...previous, { ...official, label: 'Later official patch', url: 'https://example.test/patch' }]
     const errors = vi.spyOn(console, 'error').mockImplementation(() => {})
     try {
-      render(<TalentTree branch="holy" build={{}} />)
+      render(<TalentTree branch="holy" build={{}} readOnly />)
       expect(screen.getByRole('link', { name: 'Later official patch' })).toBeTruthy()
       expect(errors.mock.calls.flat().join(' ')).not.toMatch(/same key/i)
     } finally {

@@ -27,8 +27,9 @@ describe('Build landing page template', () => {
       const preview = document.querySelector('.landing-talent-preview')!
       expect(preview.textContent).toMatch(/read-only preview/i)
       expect(within(preview as HTMLElement).queryAllByRole('button')).toHaveLength(0)
-      const edit = within(preview as HTMLElement).getByRole('link', { name: /open editable calculator/i })
-      expect(edit.getAttribute('href')).toMatch(/^\/build\?id=.+#calculator$/)
+      const historical = pageId === 'retribution-pvp'
+      const edit = within(preview as HTMLElement).getAllByRole('link', { name: historical ? /start a new build/i : /open editable calculator/i })[0]
+      expect(edit.getAttribute('href')).toMatch(historical ? /^\/build\?id=#calculator$/ : /^\/build\?id=.+#calculator$/)
       expect(edit.compareDocumentPosition(preview.querySelector('.landing-tree-card')!) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
     },
   )
@@ -96,7 +97,9 @@ describe('Build landing page template', () => {
     render(<BuildLandingPage pageId="retribution-pvp" />)
 
     expect(screen.getByRole('link', { name: 'Open Planner' }).getAttribute('href')).toBe('/build?id=#calculator')
-    expect(screen.getByRole('link', { name: /Start a new build/i }).getAttribute('href')).toBe('/build?id=#calculator')
+    for (const link of screen.getAllByRole('link', { name: /Start a new build/i })) {
+      expect(link.getAttribute('href')).toBe('/build?id=#calculator')
+    }
     expect(document.querySelector('.landing-talent-preview')?.textContent).toMatch(/historical.*Crusade.*under review/i)
     expect(document.querySelector('a[href*="crusade.2"]')).toBeNull()
     expect(document.body.textContent).not.toContain('The 0/20/31 community build allocation below is the starting point')

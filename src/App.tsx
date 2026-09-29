@@ -47,7 +47,12 @@ function initialPlannerState(): { build: Build; restored: boolean; notice?: stri
   }
 }
 
-export function TalentTree({ branch, build, onAdd, onRemove, readOnly = false }: { branch: Branch; build: Build; onAdd?: (talent: Talent) => void; onRemove?: (talent: Talent) => void; readOnly?: boolean }) {
+type TalentTreeProps = { branch: Branch; build: Build } & (
+  | { readOnly: true; onAdd?: never; onRemove?: never }
+  | { readOnly?: false; onAdd: (talent: Talent) => void; onRemove?: (talent: Talent) => void }
+)
+
+export function TalentTree({ branch, build, onAdd, onRemove, readOnly = false }: TalentTreeProps) {
   const branchTalents = talents.filter((talent) => talent.branch === branch)
   const spentInBranch = branchPoints(build, branch, talents)
   const [feedbackTalentId, setFeedbackTalentId] = useState<string | null>(null)

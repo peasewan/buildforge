@@ -15,6 +15,7 @@ import pvpEntryAmendments from '../docs/seo/approved-pvp-entry-2026-09-28.json'
 import retentionAmendments from '../docs/seo/approved-retention-quality-2026-09-28.json'
 import protectionArchiveAmendments from '../docs/seo/approved-protection-archive-2026-09-29.json'
 import previewReleaseAmendments from '../docs/seo/approved-preview-release-gate-2026-09-29.json'
+import siteConsistencyAmendments from '../docs/seo/approved-site-consistency-2026-09-29.json'
 // Explicitly reviewed annotations scope body and sitemap revisions; only named descriptions and head fingerprints can change.
 const frozenPages = baseline.pages.map(page => {
   const archiveAmendment = protectionArchiveAmendments.pages[page.path as keyof typeof protectionArchiveAmendments.pages]
@@ -32,7 +33,9 @@ const frozenPages = baseline.pages.map(page => {
     headSeoSha256: archiveAmendment && 'headSeoSha256' in archiveAmendment ? archiveAmendment.headSeoSha256 : page.headSeoSha256,
   } : page
   const previewAmendment = previewReleaseAmendments.pages[page.path as keyof typeof previewReleaseAmendments.pages]
-  return previewAmendment ? { ...previouslyReviewed, ...previewAmendment } : previouslyReviewed
+  const withPreview = previewAmendment ? { ...previouslyReviewed, ...previewAmendment } : previouslyReviewed
+  const consistencyAmendment = siteConsistencyAmendments.pages[page.path as keyof typeof siteConsistencyAmendments.pages]
+  return consistencyAmendment ? { ...withPreview, ...consistencyAmendment } : withPreview
 })
 import vercel from '../vercel.json'
 import { parseSitemap, validateSeo, type Requirement } from './seo/validate'
