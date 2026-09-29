@@ -120,6 +120,15 @@ describe('Paladin talent calculator page', () => {
     }
   })
 
+  it('keeps Crusade visible as a 69913 record but withholds it pending 70009 identity review', () => {
+    const add = vi.fn()
+    render(<TalentTree branch="retribution" build={{}} onAdd={add} />)
+    fireEvent.click(screen.getByRole('button', { name: /Crusade/ }))
+    expect(add).not.toHaveBeenCalled()
+    expect(screen.getByRole('status').textContent).toMatch(/70009.*under review/i)
+    expect(screen.getByText('Needs review')).toBeTruthy()
+  })
+
   it('keeps multiple official references for the same talent without duplicate React keys', () => {
     const talent = talents.find(candidate => candidate.id === 'improved_holy_strike')!
     const previous = talent.sources

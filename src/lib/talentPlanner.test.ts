@@ -67,4 +67,12 @@ describe('class-neutral talent planner', () => {
     expect(isValidPlannerBuild({ root: 1 }, currentTalents, config)).toBe(false)
     expect(decodeValidatedPlannerBuild('root.1', currentTalents, config)).toBeNull()
   })
+
+  it('withholds a reported removal while its client node identity is under review', () => {
+    const pending = { ...talents[0], currentBetaAvailability: 'reported_removed_under_review' as const }
+    const currentTalents = [pending, ...talents.slice(1)]
+    expect(plannerLockReason({}, pending, currentTalents, config)).toEqual({ type: 'pending-client-review' })
+    expect(canIncrementPlannerTalent({}, pending, currentTalents, config)).toBe(false)
+    expect(decodeValidatedPlannerBuild('root.1', currentTalents, config)).toBeNull()
+  })
 })

@@ -59,6 +59,7 @@ export function TalentTree({ branch, build, onAdd, onRemove, readOnly = false }:
 
   const lockMessage = (reason: TalentLockReason) => {
     if (reason.type === 'removed-official') return 'Removed by the September 24 Beta update. This historical client node cannot be added to a current build.'
+    if (reason.type === 'pending-client-review') return 'A 70009 client diff reports this talent removed, but its node identity is under review. This historical 69913 node cannot be added to a current build.'
     if (reason.type === 'point-cap') return 'All 51 talent points are already spent.'
     if (reason.type === 'branch-points') {
       return `Requires ${reason.required} points in ${branchNames[branch]} (${reason.current}/${reason.required}).`
@@ -110,7 +111,7 @@ export function TalentTree({ branch, build, onAdd, onRemove, readOnly = false }:
               {lockReason && <span className="talent-lock-message" role={feedbackTalentId === talent.id ? 'status' : undefined}>{lockMessage(lockReason)}</span>}
               <em>
                 <span>{talentEvidenceLabel(talent)}</span>
-                <VerificationBadge status="client_verified" />
+                <VerificationBadge status={talent.currentBetaAvailability === 'reported_removed_under_review' ? 'needs_review' : 'client_verified'} />
                 {talent.prerequisite?.length ? <span className="verification-inline">Prerequisite link <VerificationBadge status="client_verified" /> Required rank <VerificationBadge status="derived_assumption" /></span> : null}
                 <span className="talent-sources">
                   Sources:{' '}
@@ -318,7 +319,7 @@ export default function App() {
           <h2>WoW Forever Paladin Talents</h2>
           <div className="data-card" role="note">
             <div className="data-card-title">Talent Data</div>
-            <p className="data-card-line"><span>✓</span> {talents.length} Beta talent nodes verified — {DATA_SOURCES.join(', ')}</p>
+            <p className="data-card-line"><span>✓</span> {talents.length} records imported from the 69913 client snapshot; Improved Holy Strike was later removed and Crusade awaits 70009 review — {DATA_SOURCES.join(', ')}</p>
             <p className="data-card-progress">All three Paladin trees include client coordinates, prerequisite links, rank caps, and every rank tooltip. Required prerequisite ranks are not present in the client tables, so the planner labels its Classic max-rank fallback as an assumption.</p>
             <p className="data-card-progress">{betaDataset.label} · <a href="/wow-forever-paladin-beta-talent-changes">Review Beta changes</a> · <a href="/wow-forever-paladin-abilities">Browse 45 Paladin abilities</a></p>
           </div>

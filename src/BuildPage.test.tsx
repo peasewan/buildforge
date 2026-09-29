@@ -140,6 +140,9 @@ describe('Holy healing build page', () => {
     expect(document.querySelector('a[href*="crusade.2"]')).toBeNull()
     expect(document.body.textContent).not.toContain('Selecting Open This Build loads all 51 points')
     expect(document.body.textContent).not.toContain('Opening the build takes the visitor directly to the interactive planner')
+    expect(document.querySelector('.build-calc-anchor')?.textContent).toMatch(/Start a new Retribution/i)
+    expect(document.querySelector('.build-calc-anchor')?.textContent).not.toMatch(/Customize this Retribution/i)
+    expect(document.querySelector('.build-talents .section-heading p')?.textContent).toMatch(/historical.*ranks/i)
   })
 
   it('adds the current and next-cap route to the Retribution leveling page', () => {

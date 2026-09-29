@@ -506,6 +506,7 @@ footer { padding: 42px 0; border-top: 1px solid rgba(217,164,65,.15); background
 .verification-badge { display: inline-flex; align-items: center; width: fit-content; padding: 3px 7px; border: 1px solid rgba(217,164,65,.36); border-radius: 999px; color: #d8caab; background: rgba(217,164,65,.08); font: 600 8px/1.2 Cinzel, serif; letter-spacing: .06em; text-transform: uppercase; }
 .verification-client_verified, .verification-official { border-color: rgba(100,190,135,.45); color: #9fd5b0; background: rgba(70,145,98,.1); }
 .verification-derived_assumption { border-color: rgba(160,166,180,.38); color: #b8bdc8; background: rgba(120,126,140,.08); }
+.verification-needs_review { border-color: rgba(217,164,65,.55); color: #ffe0a1; background: rgba(217,164,65,.12); }
 .verification-legend, .verification-inline { display: flex; flex-wrap: wrap; align-items: center; gap: 7px; }
 .verification-legend { margin: 18px 0 4px; }
 .beta-leveling-snapshot { margin-top: 38px; padding: 32px; border: 1px solid rgba(217,164,65,.23); border-radius: 14px; background: radial-gradient(circle at 8% 0, rgba(217,164,65,.1), transparent 32%), #0d1117; }

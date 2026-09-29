@@ -16,7 +16,10 @@ describe('Paladin snapshot and September 24 patch truth', () => {
     expect(historical?.currentBetaAvailability).toBeUndefined()
     expect(planner?.currentBetaAvailability).toBe('removed_official')
     expect(talentEvidenceLabel(planner!)).toMatch(/removed.*September 24/i)
-    expect(talents.find((talent) => talent.id === 'crusade')?.currentBetaAvailability).toBeUndefined()
+    const crusade = talents.find((talent) => talent.id === 'crusade')
+    expect(betaTalents.find((talent) => talent.id === 'crusade')?.currentBetaAvailability).toBeUndefined()
+    expect(crusade?.currentBetaAvailability).toBe('reported_removed_under_review')
+    expect(talentEvidenceLabel(crusade!)).toMatch(/70009.*under review/i)
   })
 
   it('labels the zero-change count as only the 69893-to-69913 snapshot comparison', () => {

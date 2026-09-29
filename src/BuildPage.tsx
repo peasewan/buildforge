@@ -38,8 +38,8 @@ const contentByBuildId: Record<ExampleBuildId, BuildContent> = {
 const calculatorCta: Record<string, { prompt: string; anchor: string }> = {
   [HOLY_HEALING_BUILD.id]: { prompt: 'Want to start a build from scratch?', anchor: 'Open the WoW Forever Paladin Talent Calculator' },
   'protection-shield-20-31-0': { prompt: 'Want to customize this build?', anchor: 'Open the Paladin Talent Calculator' },
-  'retribution-judgment-0-20-31': { prompt: 'Prefer a different Retribution route?', anchor: 'Customize this Retribution build' },
-  'retribution-leveling-20-0-31': { prompt: 'Prefer a different Retribution route?', anchor: 'Customize this Retribution leveling build' },
+  'retribution-judgment-0-20-31': { prompt: 'Ready for a current route?', anchor: 'Start a new Retribution build' },
+  'retribution-leveling-20-0-31': { prompt: 'Ready for a current route?', anchor: 'Start a new Retribution leveling build' },
 }
 
 function OpenBuildLink({ build, href, placement, children }: { build: ExampleBuild; href: string; placement: string; children: React.ReactNode }) {
@@ -96,7 +96,7 @@ export default function BuildPage({ buildId = HOLY_HEALING_BUILD.id }: { buildId
       {build.id === 'retribution-leveling-20-0-31' && <BetaLevelingSnapshot pageId="retribution-leveling" />}
 
       <section className="build-talents shell" id="talent-allocation">
-        <div className="section-heading centered"><div className="eyebrow">Full allocation</div><h2>Selected Talents</h2><p>The exact ranks loaded by this {build.allocation} {buildContent.spec} Paladin build.</p></div>
+        <div className="section-heading centered"><div className="eyebrow">Full allocation</div><h2>Selected Talents</h2><p>{underReview ? `Historical ranks recorded for this ${build.allocation} ${buildContent.spec} Paladin example; these points are not loaded as a current build.` : `The exact ranks loaded by this ${build.allocation} ${buildContent.spec} Paladin build.`}</p></div>
         <div className="build-talent-columns">
           {selectedByBranch.map(({ branch, points, talents: selectedTalents }) => (
             <article key={branch} className={selectedTalents.length ? '' : 'empty'}>

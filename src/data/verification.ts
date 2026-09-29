@@ -3,7 +3,8 @@ export type EvidenceStatus =
   | "client_datamined"
   | "client_verified"
   | "community_verified"
-  | "derived_assumption";
+  | "derived_assumption"
+  | "needs_review";
 
 export const EVIDENCE_STATUS = {
   official: {
@@ -26,5 +27,8 @@ export const EVIDENCE_STATUS = {
     label: "Derived assumption",
     description: "An inferred rule used where the client does not provide the field directly.",
   },
+  needs_review: {
+    label: "Needs review",
+    description: "A later source conflicts with this record; current availability is not verified.",
+  },
 } satisfies Record<EvidenceStatus, { label: string; description: string }>;
-

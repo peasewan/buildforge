@@ -4,7 +4,7 @@
   "pages": {
     "/paladin": {
       "lastmod": "2026-09-29",
-      "rootSha256": "7c428e0b91e5cfafa0a48cb2e212481dc25e4af612fc7a1675581055922afb79",
+      "rootSha256": "0e84ce2fc2dcb2ac15a81ea409be777d03fbf6e4652466d2b68cc7c30353b7ad",
       "linksSha256": "90fa316a84a72c30f5d534cc19fcd043c1ad0b5c2e97e28a5de85273200a475d"
     },
     "/wow-forever-paladin-builds": {
@@ -19,26 +19,26 @@
     },
     "/wow-forever-paladin-build": {
       "lastmod": "2026-09-29",
-      "rootSha256": "f0171412561c39119c11d98590a1d0695ee1b05c0e86c0df7074d28c49f84de5",
+      "rootSha256": "c132b473048cbd08130e5bd60bc3736001357a4edba29d58464598e9e78edb16",
       "linksSha256": "ae457035ae31e45b4b0c39c6ac4668ada1cd3c96583bbd11c306c8051a7c3e16",
       "headSeoSha256": "07a15e5e49d864e9595ef099f0e9b29e281b3e1ba8be51f1d3ddccb9b13e7c6e"
     },
     "/wow-forever-protection-paladin-build": {
       "lastmod": "2026-09-29",
-      "rootSha256": "965f5f926e62625d43938a7d6f7ec9394e3d0b15628e88797d0190db754bfc18",
+      "rootSha256": "4823c7b33d946c1ae70f41c2ad67839fc61aecae8d9c05d113f27183fbabd6a6",
       "linksSha256": "9e7e55a88498b939f620ca1e014ab1b4072d1926b9d12450839ede42ed2a2a10",
       "headSeoSha256": "e06324027e747e8c759d06b260e2e7c64a86370bfed46241d99f0041e08ff273"
     },
     "/wow-forever-retribution-paladin-build": {
       "lastmod": "2026-09-29",
-      "rootSha256": "37d0a7b7e1352975651956be47fd7c8952eefb8341b283f75edddbf9613338a5",
+      "rootSha256": "f71a1836f60734d2b5834b462460f3fc360feec2fc21c3f62fc6a0abe51ed339",
       "linksSha256": "bf434cb6de5c2c6a180424877dc55e939456aa6843719a83ec5cfbda9a2efe10",
       "description": "Review the historical WoW Forever Retribution Paladin 0/20/31 allocation. Crusade is under review after a reported Beta change; start a new build.",
       "headSeoSha256": "9572de8f8d2ce808f24200045b26f49cda5186cdb0e5a94090d9005a4184d3a8"
     },
     "/wow-forever-retribution-paladin-leveling-build": {
       "lastmod": "2026-09-29",
-      "rootSha256": "424848492fcf601e572056575edaed84dcdc4bd6aec800894770a4395dde2bdd",
+      "rootSha256": "917d5be4d0a1f45d5751497b62cea5a8bfa5bef291c259a06632b8800d18625d",
       "linksSha256": "9e78d9933d888922286478f5413762eb67a0194f790f88c4a6b0ccda547b8c06",
       "description": "Review the historical WoW Forever Retribution Paladin leveling 20/0/31 allocation. Crusade is under review; start a new Level 20 route.",
       "headSeoSha256": "6e651c255398951179de909f831d0d1686c74835df191a29348fe13b06bc9dd2"
@@ -92,8 +92,8 @@
     },
     "/wow-forever-retribution-paladin-pvp-build": {
       "lastmod": "2026-09-29",
-      "rootSha256": "320b5acbaf28f74c6dedef9cc5102cd36826ff0994004ba7fc3733b8d024eaee",
-      "linksSha256": "73a3e247b58eadb8a96943fb499015ea9a0a599a8436b6967311fe5f6b635add",
+      "rootSha256": "fb43ef3d7941a18d995cf0218ae85e4098f94d2196342c09befd8a136cb48f72",
+      "linksSha256": "d07f42ecf0e5099e3ca99687909a35b19b9996e8b1f5e6cb868bb144d38c2c96",
       "description": "Plan a WoW Forever Retribution Paladin PvP build around burst windows and utility. Compare a historical 0/20/31 allocation, then start a new route.",
       "headSeoSha256": "b9b316060922b6be499bd115039902352a11b9f3c32eb8953d6b29c02cf2945e"
     },
@@ -111,8 +111,8 @@
     },
     "/wow-forever-retribution-paladin-talents": {
       "lastmod": "2026-09-29",
-      "rootSha256": "fcb759d1d52376fda1ae1172aeef4079977155f7fc1a9c9fa9f72db244a4f5b5",
-      "linksSha256": "510966b44be47efcf0e1d9d20183b9222a39a459029636046a6e41007aab97f8",
+      "rootSha256": "90234323b08e512f2134858f1fa44c71a068ec7334d5bddcc577b1781fe5ff48",
+      "linksSha256": "363ecbf13709412b4d07c7a710fed5b14da41a8e1d97c3b0eceea6b50cf11955",
       "headSeoSha256": "8205328b68f8a511c6090d5e269e8702eb6a0467db7a7a3975374008167eeab3"
     },
     "/wow-forever-protection-paladin-talents": {
@@ -123,7 +123,7 @@
     },
     "/wow-forever-paladin-beta-talent-changes": {
       "lastmod": "2026-09-29",
-      "rootSha256": "e8784ddd7cdeed061064f4e725815477ce5d3224b89413e370af167364d3d0b0",
+      "rootSha256": "7a3aa9ed9bdda7f850c7b0ee36b5b39bd4fc4784620c4f378863af7dc4ee2cbf",
       "linksSha256": "55e16f0037fcc50aaf635917bbc42bf74d3d7281d6448a85c49d05416a9edd7f"
     }
   }
