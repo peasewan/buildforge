@@ -39,7 +39,7 @@ export default function BetaChangesPage() {
         </div>
         <aside className="beta-status-card" aria-label="Beta data status">
           <span>PALADIN BETA DATA</span>
-          <strong>Calculator Dataset Verified</strong>
+          <strong>Last fully imported dataset</strong>
           <dl>
             <div><dt>Imported client build</dt><dd>{snapshot.clientBuild}</dd></div>
             <div><dt>Previous build</dt><dd>1.60.1.69893</dd></div>
@@ -54,7 +54,7 @@ export default function BetaChangesPage() {
       <section className="beta-diff shell">
         <section className="beta-detail-block"><h2>September 24 update · build 70009</h2><p>70009 includes new class changes. The historical calculator dataset below remains 69913 until the full client payload and cross-check agree. “Unchanged in 69913” does not mean unchanged in 70009.</p><BetaPatchNotice classId="paladin" expanded /></section>
         <section className="beta-detail-block">
-          <div><div className="eyebrow">Current Beta Baseline</div><h2>52 talents · 21 new in WoW Forever</h2><p>Client build {snapshot.clientBuild} contains the complete Holy, Protection, and Retribution trees used by the calculator.</p></div>
+          <div><div className="eyebrow">Imported 69913 snapshot</div><h2>52 talents · 21 new in WoW Forever</h2><p>Client build {snapshot.clientBuild} contains the last fully imported Holy, Protection, and Retribution trees. The September 24 official removal is applied as a separate calculator availability overlay while the later client payload awaits reconciliation.</p></div>
           <div className="beta-signal-grid">
             <article><strong>{newTalents.length}</strong><span>New talents versus Classic</span></article>
             <article><strong>{changedFromClassic.length}</strong><span>Changed talents versus Classic</span></article>
@@ -84,7 +84,7 @@ export default function BetaChangesPage() {
           <p><strong>Changed:</strong> {latestDiff.changed.length}</p>
           <p><strong>Unchanged:</strong> {latestDiff.unchanged.length}</p>
         </div>
-        <p className="beta-footnote">Build 69913 was checked against the preserved 69893 payload. The current calculator therefore advances its verified build without changing any player allocation.</p>
+        <p className="beta-footnote">Build 69913 was checked against the preserved 69893 payload. Those zero-change counts refer only to that historical comparison; the later September 24 Improved Holy Strike removal is tracked separately and cannot be selected in a new build.</p>
 
         <section className="beta-talent-section">
           <h2>Updated in 69893</h2>
@@ -102,7 +102,7 @@ export default function BetaChangesPage() {
 
         <section className="beta-talent-section">
           <h2>Preview → Beta 1.60.1.69913</h2>
-          <p>This historical comparison shows how the current 52-node Beta tree differs from the archived public Preview transcription retained for auditing.</p>
+          <p>This historical comparison shows how the imported 52-node 69913 Beta snapshot differs from the archived public Preview transcription retained for auditing.</p>
           <div className="beta-diff-summary">
             <p><strong>Added:</strong> {archiveDiff.added.length}</p>
             <p><strong>Removed:</strong> {archiveDiff.removed.length}</p>
@@ -112,7 +112,7 @@ export default function BetaChangesPage() {
             <p><strong>Prerequisites changed:</strong> {previewPrerequisitesChanged.length}</p>
             <p><strong>Unchanged:</strong> {archiveDiff.unchanged.length}</p>
           </div>
-          <p className="beta-footnote">No talents were added, removed, moved, re-ranked, or rewired between the archived Preview tree and the current Beta baseline. The 26 detected changes are tooltip text or values.</p>
+          <p className="beta-footnote">No talents were added, removed, moved, re-ranked, or rewired between the archived Preview tree and the imported 69913 snapshot. The 26 detected changes are tooltip text or values; this does not assess later tuning.</p>
           {archiveDiff.added.length > 0 && <><h3>New Talents</h3><ul>{archiveDiff.added.map((talent) => <li key={talent.id}><strong>{talent.name}</strong><span>{branchNames[talent.branch]} · Row {talent.row + 1} · {talent.maxRank} {talent.maxRank === 1 ? "rank" : "ranks"}</span></li>)}</ul></>}
           {archiveDiff.removed.length > 0 && <><h3>Removed Talents</h3><ul>{archiveDiff.removed.map((talent) => <li key={talent.id}><strong>{talent.name}</strong><span>{branchNames[talent.branch]}</span></li>)}</ul></>}
         </section>

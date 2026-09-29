@@ -17,6 +17,8 @@ describe('Paladin Beta changes page', () => {
     expect(screen.getByText(/No Paladin talent changes were detected in build 69913/)).toBeTruthy()
     expect(screen.getByText(/Rank 3:/)).toBeTruthy()
     expect(screen.getByLabelText('Data verification legend')).toBeTruthy()
+    expect(screen.getByText('Last fully imported dataset')).toBeTruthy()
+    expect(document.body.textContent).not.toContain('Calculator Dataset Verified')
   })
 
   it('breaks the archived Preview comparison into structural change types', () => {

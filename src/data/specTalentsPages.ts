@@ -43,7 +43,7 @@ export const SPEC_TALENTS_PAGES: SpecTalentsPageConfig[] = [
         heading: 'Planning Holy Paladin Talents',
         paragraphs: [
           'Holy Paladin talents organize the healing side of the WoW Forever Paladin tree. The opening rows in this Beta example include Divine Strength and Divine Intellect, which support the class baseline before any healing choice is made. Healing Light, Spiritual Focus, and Improved Seals follow, alongside utility options such as Unyielding Faith and Reverence that shape how the build plays around other players.',
-          'Deeper rows move into the talents a healing build is usually recognised by. Illumination, Divine Favor, and Divine Precision sit alongside Purifying Power and Infusion of Light, with Holy Shock and Light’s Vigil among the nodes that define the specialization. BuildForgeTools publishes these nodes from Beta client build 1.60.1.69913 so players can inspect the current structure and rank tooltips.',
+          'Deeper rows move into the talents a healing build is usually recognised by. Illumination, Divine Favor, and Divine Precision sit alongside Purifying Power and Infusion of Light, with Holy Shock and Light’s Vigil among the nodes that define the specialization. BuildForgeTools displays their imported 1.60.1.69913 structure and rank tooltips; later changes require separate verification.',
         ],
       },
       {
@@ -80,7 +80,7 @@ export const SPEC_TALENTS_PAGES: SpecTalentsPageConfig[] = [
         heading: 'Planning Protection Paladin Talents',
         paragraphs: [
           'Protection Paladin talents organize the defensive side of the WoW Forever Paladin tree. The opening rows in this Beta example include Toughness, Redoubt, Precision, and Anticipation, which build the baseline a tank works from. Improved Righteous Fury and Improved Seal of Fury address threat, while Guardian’s Favor and Sacred Duty support the tools a group expects from a Paladin.',
-          'Deeper rows add the shield and durability choices the specialization is recognised by. Shield Specialization, One-Handed Weapon Specialization, and Templar’s Bulwark sit alongside Reckoning, Iron Creed, and Swift Judgement, with Holy Shield among the nodes that define the route. BuildForgeTools publishes these nodes from Beta client build 1.60.1.69913 so players can inspect the current structure and rank tooltips.',
+          'Deeper rows add the shield and durability choices the specialization is recognised by. Shield Specialization, One-Handed Weapon Specialization, and Templar’s Bulwark sit alongside Reckoning, Iron Creed, and Swift Judgement, with Holy Shield among the nodes that define the route. BuildForgeTools displays their imported 1.60.1.69913 structure and rank tooltips; later changes require separate verification.',
         ],
       },
       {
@@ -110,20 +110,20 @@ export const SPEC_TALENTS_PAGES: SpecTalentsPageConfig[] = [
     allocation: {
       label: 'Example Beta allocation',
       value: '31 Retribution',
-      note: 'The selected route reaches Crusade and Vengeance through the weapon, judgement, and seal talents in the Beta client build 1.60.1.69913.',
+      note: 'Historical 69913 example: this route selected Crusade and Vengeance. Crusade is reported removed in 70009, but the node identity is under review, so do not load this allocation as a current route.',
     },
     sections: [
       {
         heading: 'Planning Retribution Paladin Talents',
         paragraphs: [
           'Retribution Paladin talents organize the damage side of the WoW Forever Paladin tree. The opening rows in this Beta example include Deflection, Benediction, and Improved Judgement, which set up the weapon and seal play the specialization is built around. Conviction and Vindication follow, alongside utility options such as Pursuit of Justice and Eye for an Eye that change how the build answers pressure.',
-          'Deeper rows add the talents an offensive build is usually recognised by. Seal of Command, Sanctified Judgement, Crusade, and Vengeance sit alongside Two-Handed Weapon Specialization, Sacred Arbiter, and Repentance, with Champion of the Light, Instrument of Law, and Twist of Light among the nodes that close the route. BuildForgeTools publishes these nodes from Beta client build 1.60.1.69913 so players can inspect the current structure and rank tooltips.',
+          'Deeper rows in the imported 69913 snapshot included Seal of Command, Sanctified Judgement, Crusade, and Vengeance alongside Two-Handed Weapon Specialization, Sacred Arbiter, and Repentance. Champion of the Light, Instrument of Law, and Twist of Light closed that older route. A reported 70009 removal names Crusade, but the supplied node ID does not yet reconcile with our imported record. The 51-point preview remains historical while that identity is reviewed.',
         ],
       },
       {
         heading: 'From Talent Tree to Damage Build',
         paragraphs: [
-          'A Retribution tree becomes more useful when it connects to a complete build. The featured 0/20/31 setup reaches the deeper Retribution nodes while spending 20 points in Protection for survivability, and both the leveling and PvP routes start from the same allocation shape. The full setup opens in the calculator, where every selected node is visible, all 51 points are counted, and the edited result becomes a shareable URL.',
+          'A Retribution tree becomes more useful when it connects to a complete build. The featured 0/20/31 snapshot reached the deeper Retribution nodes while spending 20 points in Protection for survivability. Because that historical example selects Crusade, it is not loaded as a current calculator preset. The separate Level 20 route remains an editable starting point while the 70009 identity is reconciled.',
           'WoW Forever talent information may change while new captures and testing become available. Review current in-game tooltips before treating a talent value as confirmed. The planner keeps uncertain data visible, makes each edit reversible, and gives the community one consistent way to compare Retribution Paladin builds.',
         ],
       },

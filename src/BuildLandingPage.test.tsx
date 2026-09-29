@@ -44,7 +44,7 @@ describe('Build landing page template', () => {
     const snapshot = screen.getByRole('region', { name: 'Beta leveling snapshot' })
     expect(snapshot.textContent).toContain('Current Beta cap')
     expect(snapshot.textContent).toContain('Level 20 · 11 points')
-    expect(snapshot.textContent).toContain('Level 30 plan')
+    expect(snapshot.textContent).toContain('Level 30 projection under review')
     expect(snapshot.textContent).toContain('0/0/21')
     expect(snapshot.textContent).toContain('Client verified')
     expect(snapshot.textContent).toContain('Community recommendation')
@@ -90,6 +90,24 @@ describe('Build landing page template', () => {
 
     expect(screen.getByLabelText('Retribution talent tree')).toBeTruthy()
     expect(screen.queryByLabelText('Protection talent tree')).toBeNull()
+  })
+
+  it('does not load the unreconciled Crusade allocation from Retribution PvP', () => {
+    render(<BuildLandingPage pageId="retribution-pvp" />)
+
+    expect(screen.getByRole('link', { name: 'Open Planner' }).getAttribute('href')).toBe('/build?id=#calculator')
+    expect(screen.getByRole('link', { name: /Start a new build/i }).getAttribute('href')).toBe('/build?id=#calculator')
+    expect(document.querySelector('.landing-talent-preview')?.textContent).toMatch(/historical.*Crusade.*under review/i)
+    expect(document.querySelector('a[href*="crusade.2"]')).toBeNull()
+    expect(document.body.textContent).not.toContain('The 0/20/31 community build allocation below is the starting point')
+    expect(document.body.textContent).not.toContain('Use the preview when you want a concrete build to edit rather than an empty tree')
+  })
+
+  it('does not promise the raid page can load the under-review Retribution allocation', () => {
+    render(<BuildLandingPage pageId="raid" />)
+
+    expect(document.body.textContent).toMatch(/Retribution.*historical.*Crusade.*under review/i)
+    expect(document.body.textContent).not.toContain('Each one opens the exact 51-point setup')
   })
 
   it('deep-links a page to the allocation its copy tells readers to start from', () => {

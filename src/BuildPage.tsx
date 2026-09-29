@@ -3,7 +3,7 @@ import holyContent from './content/holy-healing-build.json'
 import protectionContent from './content/protection-shield-build.json'
 import retributionContent from './content/retribution-judgment-build.json'
 import retributionLevelingContent from './content/retribution-leveling-build.json'
-import { exampleBuildById, HOLY_HEALING_BUILD, type ExampleBuild, type ExampleBuildId } from './data/builds'
+import { exampleBuildById, examplePlannerHref, HOLY_HEALING_BUILD, type ExampleBuild, type ExampleBuildId } from './data/builds'
 import { branchNames, talents } from './data/talents'
 import { branchPoints, type Branch } from './lib/build'
 import { track } from './lib/analytics'
@@ -56,6 +56,8 @@ export default function BuildPage({ buildId = HOLY_HEALING_BUILD.id }: { buildId
   }))
   const heroTitle = build.id === HOLY_HEALING_BUILD.id ? 'Paladin Build' : `${buildContent.spec} Paladin Build`
   const isProtection = build.id === 'protection-shield-20-31-0'
+  const underReview = build.reviewStatus === 'under_review'
+  const plannerHref = examplePlannerHref(build)
   const specialization = buildContent.spec.toLowerCase() as Branch
 
   return (
@@ -63,7 +65,7 @@ export default function BuildPage({ buildId = HOLY_HEALING_BUILD.id }: { buildId
       <header className="guide-nav shell">
         <a className="brand" href="/paladin"><img src="/images/icons/paladin-shield.png" alt="" /><span>BUILD</span><b>FORGE</b></a>
         <nav aria-label="Build navigation"><a href="/paladin#calculator">Talent Calculator</a><a href="/wow-forever-paladin-talents">Paladin Talents</a><a href="#talent-allocation">Selected Talents</a></nav>
-        <OpenBuildLink build={build} href={buildContent.plannerPath} placement="header">Open Build</OpenBuildLink>
+        <OpenBuildLink build={build} href={plannerHref} placement="header">{underReview ? 'Start a New Build' : 'Open Build'}</OpenBuildLink>
       </header>
 
       <section className="build-hero">
@@ -75,7 +77,8 @@ export default function BuildPage({ buildId = HOLY_HEALING_BUILD.id }: { buildId
             <h1>WoW Forever<br /><span>{heroTitle}</span></h1>
             <h2>{buildContent.heroHeading}</h2>
             <p>{buildContent.dek}</p>
-            <div className="build-actions"><OpenBuildLink build={build} href={buildContent.plannerPath} placement="hero"><Calculator size={16} /> Open This Build</OpenBuildLink><a className="text-link" href="#talent-allocation">View selected talents <ArrowRight size={15} /></a></div>
+            {underReview && <p role="status">Historical 69913 allocation: Crusade appears in the reported 70009 client diff, but its node identity is under review. This 51-point example is not a verified current route.</p>}
+            <div className="build-actions"><OpenBuildLink build={build} href={plannerHref} placement="hero"><Calculator size={16} /> {underReview ? 'Start a New Build' : 'Open This Build'}</OpenBuildLink><a className="text-link" href="#talent-allocation">View selected talents <ArrowRight size={15} /></a></div>
             <small>Updated {buildContent.updated} · Beta client talent data</small>
           </div>
           <aside className="build-allocation-card" aria-label="Build allocation">
@@ -102,14 +105,14 @@ export default function BuildPage({ buildId = HOLY_HEALING_BUILD.id }: { buildId
             </article>
           ))}
         </div>
-        <div className="build-inline-cta"><Shield size={30} /><div><strong>Make it your build</strong><span>Load all 51 points, change any rank, then copy a new share link.</span></div><OpenBuildLink build={build} href={buildContent.plannerPath} placement="allocation">Edit in Calculator <ArrowRight size={15} /></OpenBuildLink></div>
+        <div className="build-inline-cta"><Shield size={30} /><div><strong>{underReview ? 'Plan a current build' : 'Make it your build'}</strong><span>{underReview ? 'The historical Crusade allocation is withheld while 70009 IDs are reconciled. Start with a blank tree.' : 'Load all 51 points, change any rank, then copy a new share link.'}</span></div><OpenBuildLink build={build} href={plannerHref} placement="allocation">{underReview ? 'Start in Calculator' : 'Edit in Calculator'} <ArrowRight size={15} /></OpenBuildLink></div>
       </section>
 
       <article className="build-copy shell">
         {buildContent.sections.map((section) => <section id={section.id} key={section.id}><h2>{section.heading}</h2>{section.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</section>)}
         {isProtection && <section className="protection-build-more" aria-label="Continue with Protection"><h2>Continue with Protection</h2><p>Compare this 51-point example with the archived Level 20 leveling route, a dungeon setup, or the Protection talent reference.</p><div className="protection-next-links"><a href="/wow-forever-protection-paladin-dungeon-build">Dungeon Tank Build <ArrowRight size={15} /></a><a href="/wow-forever-protection-paladin-leveling-build">Archived Protection Leveling Route <ArrowRight size={15} /></a><a href="/wow-forever-protection-paladin-talents">Protection Talents <ArrowRight size={15} /></a><a href="/paladin#calculator">Open Talent Calculator <ArrowRight size={15} /></a></div><a className="protection-hub-link" href="/wow-forever-protection-paladin-builds">Browse the Protection Builds Hub <ArrowRight size={15} /></a></section>}
-        <aside className="guide-note"><strong>Community build example</strong><p>The talent tree and tooltips use Beta client build 1.60.1.69913. The selected allocation is a planning example, so test it in game before treating it as an optimal build.</p></aside>
-        <div className="guide-final-cta"><img src="/images/icons/paladin-shield.png" alt="" /><div><span>Ready to customize it?</span><h2>{buildContent.footerHeading}</h2></div><OpenBuildLink build={build} href={buildContent.plannerPath} placement="footer">Open Build <ArrowRight size={15} /></OpenBuildLink></div>
+        <aside className="guide-note"><strong>{underReview ? 'Historical community build example' : 'Community build example'}</strong><p>{underReview ? 'This selected allocation comes from the 1.60.1.69913 client snapshot. The reported 70009 Crusade removal has a conflicting node ID, so the example is retained for comparison and withheld from current calculator presets.' : 'The talent tree and tooltips use Beta client build 1.60.1.69913. The selected allocation is a planning example, so test it in game before treating it as an optimal build.'}</p></aside>
+        <div className="guide-final-cta"><img src="/images/icons/paladin-shield.png" alt="" /><div><span>{underReview ? 'Ready to plan a new route?' : 'Ready to customize it?'}</span><h2>{underReview ? 'Start from a blank Paladin tree.' : buildContent.footerHeading}</h2></div><OpenBuildLink build={build} href={plannerHref} placement="footer">{underReview ? 'Open Calculator' : 'Open Build'} <ArrowRight size={15} /></OpenBuildLink></div>
         <p className="build-calc-anchor">{calculatorCta[build.id].prompt} <a href="/paladin#calculator">{calculatorCta[build.id].anchor} <ArrowRight size={14} /></a></p>
       </article>
 

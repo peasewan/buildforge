@@ -98,42 +98,42 @@ export const SPEC_BUILDS_HUBS: SpecBuildsHubConfig[] = [
     intro: 'Explore Retribution Paladin damage builds, leveling routes, and PvP setups for WoW Forever.',
     featured: {
       title: 'Retribution Paladin Build 0/20/31',
-      description: 'The community build allocation every Retribution route on this site starts from.',
+      description: 'A historical 69913-era allocation; its Crusade ranks await 70009 identity review.',
       href: '/wow-forever-retribution-paladin-build',
       role: 'Melee Damage',
       playstyle: 'Offensive / Support',
     },
     buildTypes: [
-      { id: 'damage-build', eyebrow: 'Damage Build', title: 'Retribution Paladin Build 0/20/31', description: 'The complete offensive allocation with 20 Protection points for survivability.', href: '/wow-forever-retribution-paladin-build', icon: 'retribution' },
-      { id: 'leveling', eyebrow: 'Leveling', title: 'Retribution Paladin Leveling Build', description: 'A damage-focused solo route with early Holy support for questing.', href: '/wow-forever-retribution-paladin-leveling-build', icon: 'leveling' },
+      { id: 'damage-build', eyebrow: 'Damage Build', title: 'Retribution Paladin Build 0/20/31', description: 'Historical 69913 allocation with 20 Protection points; Crusade awaits review.', href: '/wow-forever-retribution-paladin-build', icon: 'retribution' },
+      { id: 'leveling', eyebrow: 'Leveling', title: 'Retribution Paladin Leveling Build', description: 'Historical 20/0/31 route with Holy support; its Crusade ranks await review.', href: '/wow-forever-retribution-paladin-leveling-build', icon: 'leveling' },
       { id: 'pvp', eyebrow: 'PvP', title: 'Retribution Paladin PvP Build', description: 'A burst-oriented setup built around short damage windows and utility.', href: '/wow-forever-retribution-paladin-pvp-build', icon: 'pvp' },
     ],
     editorialSections: [
       {
         heading: 'Compare the Retribution Paladin Routes',
         paragraphs: [
-          'BuildForgeTools currently provides two complete 51-point Retribution examples. The 0/20/31 Judgment build commits 31 points to Retribution and uses 20 Protection points for defensive support. The 20/0/31 leveling example reaches the same deep Retribution path but places its supporting points in Holy. Their individual pages list every selected rank, explain the purpose of the allocation, and open that exact setup in the calculator.',
-          'The Retribution PvP page is different. It describes planning goals for burst windows, utility, and survival, but it is not yet labeled as a fully verified PvP allocation. Use it to frame a custom setup rather than assuming that a general PvP direction has the same evidence as the published 0/20/31 and 20/0/31 examples.',
+          'BuildForgeTools preserves two complete 51-point Retribution examples from the imported 69913 snapshot. The 0/20/31 Judgment build used 31 Retribution points and 20 Protection points for defensive support. The 20/0/31 leveling example used the same deep Retribution route with Holy support. Both selected Crusade. A reported 70009 client removal names Crusade but its node ID conflicts with the imported record, so these two allocations are historical and under review. Their individual pages list the old ranks for comparison but start a blank calculator instead of loading them as current builds.',
+          'The Retribution PvP page is also a planning discussion, not a fully verified PvP allocation. Its 51-point preview shares that under-review Crusade branch and is visibly marked historical. Use the separate Level 20 route for an editable current-cap example, or start a blank tree for a fresh PvP setup.',
         ],
       },
       {
         heading: 'Choosing Between 0/20/31 and 20/0/31',
         paragraphs: [
-          'Choose the supporting branch by the problem you want the remaining 20 points to solve. The Protection-supported example is organized around a sturdier offensive build for group play. The Holy-supported leveling example emphasizes a solo progression route that can keep familiar Retribution damage talents while adding support from a different tree. Neither label makes the allocation optimal for every player, encounter, or stage of beta testing.',
-          'Open both full build pages and compare the selected-talent columns instead of comparing only their three-number summaries. A 31-point Retribution core can look similar at a glance while the supporting branch changes how the character handles recovery, durability, and utility. The calculator lets you remove ranks, test a hybrid, and copy a distinct URL without overwriting either published example.',
+          'In those historical examples, the Protection-supported build aimed at a sturdier offensive role in group play. The Holy-supported version aimed at steadier solo progression. These older allocations can help readers compare why the remaining 20 points were placed in different branches, but neither is a current route while the Crusade identity remains unresolved.',
+          'Open both full build pages and compare the selected-talent columns rather than their three-number summaries alone. A 31-point Retribution core can look similar at a glance while the supporting branch changes recovery, durability, and utility. Start a fresh calculator route when you want a playable allocation and copy its own URL after checking the latest patch information.',
         ],
       },
       {
         heading: 'Planning the Retribution Talent Core',
         paragraphs: [
           'A useful Retribution plan begins with the role of the build: solo leveling, general damage, or PvP pressure. Spend toward the talents that serve that role, then check whether prerequisite ranks and tree-point thresholds leave enough room for the supporting branch. Familiar landmarks such as Benediction, Conviction, Seal of Command, Vengeance, and Repentance help readers follow the path, while Forever-specific or changed talents require stronger source notes.',
-          'The interface enforces the current Beta dataset’s rank limits and unlocking rules. That prevents an internally invalid shared build, but it does not prove that the selected allocation performs best. Treat the selected ranks as a planning model and test the build before using it as a competitive recommendation.',
+          'The interface enforces the imported 69913 snapshot’s rank limits and unlocking rules, with the official September 24 removal blocked separately. That prevents some internally invalid paths, but it cannot prove that all later tuning has been reconciled or that any allocation performs best. Treat each selected rank as a planning model and compare it with the latest game client.',
         ],
       },
       {
         heading: 'Retribution Data Status',
         paragraphs: [
-          'Retribution mixes recognizable inherited talents with WoW Forever additions and revisions. The calculator reads the current rank count, position, prerequisite, and effect from Beta client build 1.60.1.69913 instead of assuming a familiar Classic talent is unchanged.',
+          'Retribution mixes recognizable inherited talents with WoW Forever additions and revisions. The calculator reads ranks, positions, prerequisite links, and effects from the last fully imported Beta client build 1.60.1.69913; later patch notes are shown separately until their client identities reconcile.',
           'The Beta tracker compares each reviewed client build with the previous dataset before production changes. Players can report conflicting tooltips or positions through the Feedback button so a correction enters the same review process.',
         ],
       },

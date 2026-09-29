@@ -15,8 +15,13 @@ const pages = [
 describe('prerendered build content', () => {
   it.each(pages)('contains the exact interactive build and every selected talent for $1.name', (content, example) => {
     expect(content.plannerPath).toMatch(/^\/build\?id=/)
-    const encoded = new URLSearchParams(content.plannerPath.split('?')[1]).get('id') ?? ''
-    expect(decodeBuild(encoded, talents)).toEqual(example.build)
+    const encoded = new URL(content.plannerPath, 'https://buildforgetools.com').searchParams.get('id') ?? ''
+    if (example.reviewStatus === 'under_review') {
+      expect(content.plannerPath).toBe('/build?id=#calculator')
+      expect(encoded).toBe('')
+    } else {
+      expect(decodeBuild(encoded, talents)).toEqual(example.build)
+    }
 
     const expectedTalents = talents
       .filter((talent) => (example.build[talent.id] ?? 0) > 0)

@@ -72,6 +72,8 @@ export interface Talent extends TalentDefinition {
   x: number;
   y: number;
   sources: TalentSource[];
+  /** September 24 official removal is applied to the interactive view, not the preserved 69913 snapshot. */
+  currentBetaAvailability?: 'available' | 'removed_official';
 }
 
 export const branchNames: Record<Branch, string> = {
@@ -951,11 +953,25 @@ export const initialBetaTalents: Talent[] = initialBetaTalentData.talents.map((r
   }),
 );
 
-// The interactive calculator uses the reviewed Beta dataset. The demo
-// transcription remains available separately for the public change log.
-export const talents = betaTalents;
+// Preserve all 52 imported 69913 rows for exact historical diffs. The
+// interactive view overlays the later official removal without pretending
+// the unreconciled 70009 client payload has been imported.
+export const talents: Talent[] = betaTalents.map((talent) => talent.id === 'improved_holy_strike'
+  ? {
+      ...talent,
+      currentBetaAvailability: 'removed_official',
+      sources: [...talent.sources, {
+        type: 'official',
+        label: 'Blizzard September 24 Beta development notes — talent removed',
+        url: 'https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-september-24/2360696',
+      }],
+    }
+  : { ...talent });
 
 export function talentEvidenceLabel(talent: Talent): string {
+  if (talent.currentBetaAvailability === 'removed_official') {
+    return 'Historical 69913 entry · removed September 24 by Blizzard';
+  }
   if (talent.verificationStatus === "client_verified") {
     return "Verified from Beta client data";
   }
