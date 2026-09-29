@@ -82,6 +82,35 @@ export function validateSeo(input: SeoInput) {
   const discoveryEdges = new Map<string, Set<string>>()
   const duplicates = { canonical: new Map<string, string[]>(), title: new Map<string, string[]>(), h1: new Map<string, string[]>(), description: new Map<string, string[]>() }
   for (const [path, page] of pages) {
+    const lastmod = sitemap.get(path)
+    if (lastmod) for (const script of page.d.querySelectorAll('head script[type="application/ld+json"]')) {
+      let data: { '@type'?: string; '@graph'?: { '@type'?: string; dateModified?: string }[]; dateModified?: string }
+      try { data = JSON.parse(script.textContent ?? '') } catch { continue }
+      const nodes = data['@graph'] ?? [data]
+      for (const node of nodes) if (node['@type'] === 'Article' && typeof node.dateModified === 'string' && node.dateModified < lastmod) {
+        errors.push(`${path}: Article dateModified precedes sitemap lastmod (${node.dateModified} < ${lastmod})`)
+      }
+    }
+    const statusStrip = page.d.querySelector('.beta-data-strip')
+    if (statusStrip) {
+      const label = clean(statusStrip.querySelector('.beta-data-build span')?.textContent ?? '')
+      const build = clean(statusStrip.querySelector('.beta-data-build strong')?.textContent ?? '')
+      if (/\bcurrent (?:talent|beta|client)\b|\blatest beta\b/i.test(label) && /\b69913\b/.test(build)) {
+        errors.push(`${path}: imported 69913 snapshot mislabeled current`)
+      }
+      for (const fact of statusStrip.querySelectorAll('.beta-data-facts > span')) {
+        const claim = clean(fact.textContent ?? '')
+        if (/\b0 removed\b/i.test(claim) && !/\b69893\b.*\b69913\b|\b69913\b.*\b69893\b/.test(claim)) {
+          errors.push(`${path}: zero-removals claim lacks build-to-build scope`)
+        }
+      }
+    }
+    for (const block of page.d.querySelectorAll('.beta-page .beta-detail-block')) {
+      const eyebrow = clean(block.querySelector('.eyebrow')?.textContent ?? '')
+      if (/^current beta baseline$/i.test(eyebrow) && /\b69913\b/.test(block.textContent ?? '')) {
+        errors.push(`${path}: imported 69913 snapshot mislabeled current`)
+      }
+    }
     if (!page.noindex) {
       if (!sitemap.has(path)) errors.push(`missing sitemap entry for indexable HTML: ${path}`)
       if (!expected.has(path)) errors.push(`unpublished indexable artifact: ${path}`)

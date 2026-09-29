@@ -1,0 +1,56 @@
+{
+  "reviewedAt": "2026-09-29",
+  "evidence": "Commit 96d1a5e on 2026-09-18 changed shared Paladin Beta content and introduced the 69893 tree across these Article pages; their existing sitemap lastmod already records 2026-09-18. Four talent previews were made explicitly read-only with an above-tree edit link on 2026-09-29, so those rendered bodies and any changed sitemap lastmod are separately reviewed. This amendment only records the exact resulting fingerprints; URLs, titles, H1s, descriptions, canonicals and robots were checked unchanged.",
+  "pages": {
+    "/wow-forever-holy-paladin-pvp-build": {
+      "headSeoSha256": "2a49fb2f78ad11861f71a24811d32f46009fdd92d077f1e7c06b90cc942a04c6"
+    },
+    "/wow-forever-holy-paladin-talents": {
+      "headSeoSha256": "05729f257b5d2439a2159b8744d1c9462f82c4103f4e65f12ab69e6d9e01b822"
+    },
+    "/wow-forever-paladin-build": {
+      "headSeoSha256": "1d509d378ee5672894c8ed5dfe05cf283cbee951128625664ce2fc9f12e697bc"
+    },
+    "/wow-forever-paladin-pvp-build": {
+      "headSeoSha256": "a895017263b95fe4f34712391dc5e07579d42654951f07776af948af58325772"
+    },
+    "/wow-forever-paladin-raid-build": {
+      "headSeoSha256": "07dd323c64fd369c9cb91172c05dab698bfb214d40cb09bfc7cc9f144d51f5f5"
+    },
+    "/wow-forever-protection-paladin-build": {
+      "headSeoSha256": "faaff8e2623626cfc804dcfe9ace3c57d2a56dd33cda0adea529194ad84fd6ff"
+    },
+    "/wow-forever-protection-paladin-dungeon-build": {
+      "rootSha256": "41e4bfcc798792db1d7faad276efd2b2ed82b06805ac818cb8bb75485b64f212",
+      "linksSha256": "7b14ec94b64d3c338be8200827962acd70915c44de05f122724b46e5042e42aa",
+      "lastmod": "2026-09-29",
+      "headSeoSha256": "26a66de86951d6ae4f229a21ec87ab29d8faedb78abd62ee410909479ecb688a"
+    },
+    "/wow-forever-protection-paladin-pvp-build": {
+      "rootSha256": "0b185e28d36470381fbfad445202e12a732fc045253d110e7ba762c2d174d32d",
+      "linksSha256": "4d9593c07306da38ba0abc7224bc3c3dfe898a4e191940d82c5562ec7edd8ede",
+      "lastmod": "2026-09-29",
+      "headSeoSha256": "492370d70d208934a4576b9fcd2dddf25c9822a116bf738337106731808faf81"
+    },
+    "/wow-forever-protection-paladin-talents": {
+      "headSeoSha256": "03ebd0e4bdec73c0cc355f92d08a1bd802b1934c44b022e5dbd35782bf653efe"
+    },
+    "/wow-forever-retribution-paladin-build": {
+      "headSeoSha256": "cec787624ea8a5e60515a31ceac0d097dc98d749a49fb0163157148b5563d6ef"
+    },
+    "/wow-forever-retribution-paladin-pvp-build": {
+      "rootSha256": "56dcf21ac2b7c4f2d7ecb12bead65e604a929e502a300923842365ab198af218",
+      "linksSha256": "68f678d5c86f9d2944d5ba67733b20a2fa277b0e57732de2b4bd0766a1156a30",
+      "lastmod": "2026-09-29",
+      "headSeoSha256": "255c077e9728b08e770b96e06a8f2ccb81a1935ac4baca270b58721f496528d1"
+    },
+    "/wow-forever-retribution-paladin-talents": {
+      "headSeoSha256": "98abe5dc9e14e08e26063b30871cd7a5b51d489c3329b350b5a19da6e6fdf103"
+    },
+    "/wow-forever-protection-paladin-leveling-build": {
+      "rootSha256": "3e2a059d42befaa78672a73e1ffea313c746d8c4a7ccc17c615fca1f1adf437d",
+      "linksSha256": "86a53edb8a51b1a163a75b884f2c5fab774ca2ec28d38d8b51fa867e649f2714",
+      "lastmod": "2026-09-29"
+    }
+  }
+}

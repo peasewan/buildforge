@@ -64,7 +64,8 @@ function LandingSectionView({ section, pageId }: { section: LandingSection; page
     return (
       <section className="landing-content-section landing-talent-preview">
         <header><div className="eyebrow">Beta Talent Tree</div><h2>{section.title}</h2><p>{section.intro}</p></header>
-        <div className="landing-tree-card"><TalentTree branch={specializationOfBuild(example)} build={example.build} /></div>
+        <div className="landing-preview-actions"><p>Read-only preview. Focus or hover a talent to inspect it; change ranks in the calculator.</p><TrackedLink href={editHref} pageId={pageId} placement="talent-preview-top" className="button primary">Open editable calculator <ArrowRight size={16} /></TrackedLink></div>
+        <div className="landing-tree-card"><TalentTree branch={specializationOfBuild(example)} build={example.build} readOnly /></div>
         <TrackedLink href={editHref} pageId={pageId} placement="talent-preview" className="button primary">Edit this build <ArrowRight size={16} /></TrackedLink>
       </section>
     )

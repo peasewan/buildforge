@@ -1,13 +1,38 @@
-import { cleanup, render, screen, within } from '@testing-library/react'
+import { cleanup, fireEvent, render, screen, within } from '@testing-library/react'
 import { afterEach, describe, expect, it } from 'vitest'
+import { useState } from 'react'
+import { TalentTree } from './App'
 import BuildLandingPage from './BuildLandingPage'
 import { HOLY_HEALING_BUILD } from './data/builds'
-import { encodeBuild, validateBuildUsage } from './lib/build'
+import { encodeBuild, incrementTalent, validateBuildUsage } from './lib/build'
 import { talents } from './data/talents'
 
 afterEach(cleanup)
 
 describe('Build landing page template', () => {
+  it('keeps the calculator talent nodes editable', () => {
+    function EditableTree() {
+      const [build, setBuild] = useState({})
+      return <TalentTree branch="holy" build={build} onAdd={(talent) => setBuild((current) => incrementTalent(current, talent, talents))} />
+    }
+    render(<EditableTree />)
+    fireEvent.click(screen.getByRole('button', { name: /Divine Intellect, rank 0 of 5/ }))
+    expect(screen.getByRole('button', { name: /Divine Intellect, rank 1 of 5/ })).toBeTruthy()
+  })
+
+  it.each(['protection-dungeon', 'protection-leveling', 'protection-pvp', 'retribution-pvp'] as const)(
+    'shows a read-only tree with a visible edit action before the nodes on %s', (pageId) => {
+      render(<BuildLandingPage pageId={pageId} />)
+
+      const preview = document.querySelector('.landing-talent-preview')!
+      expect(preview.textContent).toMatch(/read-only preview/i)
+      expect(within(preview as HTMLElement).queryAllByRole('button')).toHaveLength(0)
+      const edit = within(preview as HTMLElement).getByRole('link', { name: /open editable calculator/i })
+      expect(edit.getAttribute('href')).toMatch(/^\/build\?id=.+#calculator$/)
+      expect(edit.compareDocumentPosition(preview.querySelector('.landing-tree-card')!) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
+    },
+  )
+
   it('renders the Leveling content from configuration', () => {
     render(<BuildLandingPage pageId="leveling" />)
 

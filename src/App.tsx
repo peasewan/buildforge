@@ -37,7 +37,7 @@ function initialPlannerState(): { build: Build; restored: boolean } {
   }
 }
 
-export function TalentTree({ branch, build, onAdd, onRemove }: { branch: Branch; build: Build; onAdd?: (talent: Talent) => void; onRemove?: (talent: Talent) => void }) {
+export function TalentTree({ branch, build, onAdd, onRemove, readOnly = false }: { branch: Branch; build: Build; onAdd?: (talent: Talent) => void; onRemove?: (talent: Talent) => void; readOnly?: boolean }) {
   const branchTalents = talents.filter((talent) => talent.branch === branch)
   const spentInBranch = branchPoints(build, branch, talents)
   const [feedbackTalentId, setFeedbackTalentId] = useState<string | null>(null)
@@ -72,25 +72,22 @@ export function TalentTree({ branch, build, onAdd, onRemove }: { branch: Branch;
         const displayedRank = Math.max(1, rank)
         const rankDescription = talent.rankDescriptions?.[displayedRank - 1] ?? talent.description
         const matchingBuilds = EXAMPLE_BUILDS.filter((example) => (example.build[talent.id] ?? 0) > 0)
+        const label = `${talent.name}, rank ${rank} of ${talent.maxRank}${unlocked ? '' : ', locked'}`
+        const nodeContents = <>
+          <img src={talent.icon} alt="" />
+          {!unlocked && <LockKeyhole size={17} className="lock-icon" />}
+          {lockReason?.type === 'branch-points' && <span className="lock-requirement">{lockReason.required} pts</span>}
+          {lockReason?.type === 'prerequisite' && <span className="lock-requirement">Prereq</span>}
+          {startingChoice && !readOnly && <span className="start-here">Start here</span>}
+          <span className="rank">{rank}/{talent.maxRank}</span>
+        </>
+        const nodeClass = `talent-node ${rank ? 'selected' : ''} ${unlocked ? 'available' : 'locked'} ${startingChoice && !readOnly ? 'starting-choice' : ''}`
         return (
           <div className="talent-position" style={{ left: `${talent.x}%`, top: `${talent.y}%` }} key={talent.id}>
-            <button
-              className={`talent-node ${rank ? 'selected' : ''} ${unlocked ? 'available' : 'locked'} ${startingChoice ? 'starting-choice' : ''}`}
-              onClick={() => {
-                if (lockReason) setFeedbackTalentId(talent.id)
-                else onAdd?.(talent)
-              }}
-              aria-label={`${talent.name}, rank ${rank} of ${talent.maxRank}${unlocked ? '' : ', locked'}`}
-              aria-describedby={`tip-${talent.id}`}
-            >
-              <img src={talent.icon} alt="" />
-              {!unlocked && <LockKeyhole size={17} className="lock-icon" />}
-              {lockReason?.type === 'branch-points' && <span className="lock-requirement">{lockReason.required} pts</span>}
-              {lockReason?.type === 'prerequisite' && <span className="lock-requirement">Prereq</span>}
-              {startingChoice && <span className="start-here">Start here</span>}
-              <span className="rank">{rank}/{talent.maxRank}</span>
-            </button>
-            {rank > 0 && onRemove && <button className="rank-minus" onClick={() => onRemove(talent)} aria-label={`Remove one rank from ${talent.name}`}><Minus size={12} /></button>}
+            {readOnly
+              ? <span className={`${nodeClass} read-only`} role="img" tabIndex={0} aria-label={label} aria-describedby={`tip-${talent.id}`}>{nodeContents}</span>
+              : <button className={nodeClass} onClick={() => { if (lockReason) setFeedbackTalentId(talent.id); else onAdd?.(talent) }} aria-label={label} aria-describedby={`tip-${talent.id}`}>{nodeContents}</button>}
+            {rank > 0 && onRemove && !readOnly && <button className="rank-minus" onClick={() => onRemove(talent)} aria-label={`Remove one rank from ${talent.name}`}><Minus size={12} /></button>}
             <div className="talent-tip" id={`tip-${talent.id}`}>
               <strong>{talent.name}</strong>
               <span>{rankDescription}</span>
