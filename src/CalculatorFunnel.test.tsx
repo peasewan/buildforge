@@ -97,12 +97,14 @@ describe('all-class calculator funnel', () => {
     expect(events('build_complete')).toHaveLength(0)
   })
 
-  it('records canonical and legacy copy events only after a successful copy', async () => {
+  it('does not copy or count an empty class build', async () => {
     render(<ClassCalculatorPage classDef={hunterClassFixture} />)
-    fireEvent.click(screen.getByRole('button', { name: 'Copy build link' }))
-    await waitFor(() => expect(events('build_copy')).toHaveLength(1))
-    expect(events('build_copy')[0][2]).toMatchObject({ class: 'hunter', level: 20, point_cap: 11, points: 0 })
-    expect(events('hunter_fixture_build_copy')).toHaveLength(1)
+    const copy = screen.getByRole('button', { name: 'Copy build link' })
+    expect((copy as HTMLButtonElement).disabled).toBe(true)
+    fireEvent.click(copy)
+    expect(writeText).not.toHaveBeenCalled()
+    expect(events('build_copy')).toHaveLength(0)
+    expect(events('hunter_fixture_build_copy')).toHaveLength(0)
     expect(events('build_shared')).toHaveLength(0)
   })
 
@@ -110,6 +112,7 @@ describe('all-class calculator funnel', () => {
     writeText.mockRejectedValue(new Error('Denied'))
     Object.defineProperty(document, 'execCommand', { configurable: true, value: vi.fn(() => false) })
     render(<ClassCalculatorPage classDef={hunterClassFixture} />)
+    fireEvent.click(screen.getByRole('button', { name: 'Add rank to Fixture Tracking' }))
     fireEvent.click(screen.getByRole('button', { name: 'Copy build link' }))
     await waitFor(() => expect(document.execCommand).toHaveBeenCalled())
     expect(events('build_copy')).toHaveLength(0)
