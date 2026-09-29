@@ -21,4 +21,5 @@
 .forge-pilot-explanation a{color:#ffe8a3}
 .forge-pilot-original{font-size:.8rem;color:#b6afa0;margin-bottom:.6rem}.forge-pilot-original code{display:block;overflow-wrap:anywhere;margin:.3rem 0;color:#e8e3d6}
 .forge-pilot-review-link{font-size:.84rem;line-height:1.5;color:#c8c1b3}.forge-pilot-review-link a{color:#ffe8a3}
+.forge-pilot-evidence{display:inline-block;margin:-.2rem 0 .65rem;color:#ffe8a3;font-size:.82rem}
 @media(max-width:640px){.forge-pilot-save-row>*{width:100%}.forge-pilot-record-actions>*{flex:1 1 auto}}

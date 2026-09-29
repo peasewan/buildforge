@@ -2,10 +2,12 @@ import { describe, expect, it } from 'vitest'
 import {
   canIncrementPlannerTalent,
   decodePlannerBuild,
+  decodeValidatedPlannerBuild,
   decrementPlannerTalent,
   dominantPlannerBranch,
   encodePlannerBuild,
   incrementPlannerTalent,
+  isValidPlannerBuild,
   plannerLockReason,
   totalPlannerPoints,
   type PlannerConfig,
@@ -39,5 +41,38 @@ describe('class-neutral talent planner', () => {
     expect(decodePlannerBuild(code, talents)).toEqual(build)
     expect(totalPlannerPoints(build)).toBe(8)
     expect(dominantPlannerBranch(build, talents, config.branches, 'right')).toBe('left')
+  })
+
+  it('rejects allocations that cannot be spent under the selected cap, tiers, or prerequisite rules', () => {
+    expect(isValidPlannerBuild({ root: 5, focus: 3, crown: 1, guard: 3 }, talents, config)).toBe(false)
+    expect(isValidPlannerBuild({ focus: 1 }, talents, config)).toBe(false)
+    expect(isValidPlannerBuild({ root: 5, focus: 2, crown: 1 }, talents, config)).toBe(false)
+    expect(isValidPlannerBuild({ root: 5, focus: 3, crown: 1 }, talents, config)).toBe(true)
+  })
+
+  it('rejects unknown, duplicated, and overranked incoming codes instead of silently loading a partial build', () => {
+    expect(decodeValidatedPlannerBuild('root.5~unknown.1', talents, config)).toBeNull()
+    expect(decodeValidatedPlannerBuild('root.5~root.4', talents, config)).toBeNull()
+    expect(decodeValidatedPlannerBuild('root.6', talents, config)).toBeNull()
+    expect(decodeValidatedPlannerBuild('focus.1', talents, config)).toBeNull()
+    expect(decodeValidatedPlannerBuild('focus.3~root.5', talents, config)).toEqual({ root: 5, focus: 3 })
+    expect(decodeValidatedPlannerBuild('', talents, config)).toEqual({})
+  })
+
+  it('keeps a retired client node visible while rejecting new and shared ranks in it', () => {
+    const retired = { ...talents[0], currentBetaAvailability: 'removed_official' as const }
+    const currentTalents = [retired, ...talents.slice(1)]
+    expect(plannerLockReason({}, retired, currentTalents, config)).toEqual({ type: 'removed-official' })
+    expect(canIncrementPlannerTalent({}, retired, currentTalents, config)).toBe(false)
+    expect(isValidPlannerBuild({ root: 1 }, currentTalents, config)).toBe(false)
+    expect(decodeValidatedPlannerBuild('root.1', currentTalents, config)).toBeNull()
+  })
+
+  it('withholds a reported removal while its client node identity is under review', () => {
+    const pending = { ...talents[0], currentBetaAvailability: 'reported_removed_under_review' as const }
+    const currentTalents = [pending, ...talents.slice(1)]
+    expect(plannerLockReason({}, pending, currentTalents, config)).toEqual({ type: 'pending-client-review' })
+    expect(canIncrementPlannerTalent({}, pending, currentTalents, config)).toBe(false)
+    expect(decodeValidatedPlannerBuild('root.1', currentTalents, config)).toBeNull()
   })
 })

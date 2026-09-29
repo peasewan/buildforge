@@ -86,14 +86,14 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
         kind: 'bullets',
         title: 'How to Use This Beta Example',
         intro: 'Open the planner, choose the branch that matches your current playstyle, and spend points in the order they become available. Keep a share link whenever you reach a useful milestone.',
-        items: ['Compare Holy, Protection, and Retribution paths.', 'Watch prerequisites before planning deeper talents.', 'Talent details use verified Beta client build 1.60.1.69913 data.'],
+        items: ['Compare Holy, Protection, and Retribution paths.', 'Watch prerequisites before planning deeper talents.', 'Talent details use the imported 69913 snapshot; later official removals are marked separately.'],
       },
       {
         kind: 'copy',
         title: 'Choose a Leveling Direction',
         intro: 'The class-wide page helps you choose a route before it sends you to a complete specialization example.',
         paragraphs: [
-          'The Retribution leveling page shows an 11-point Level 20 Beta preview alongside a separate 51-point destination. Review the current client before treating that later allocation as playable. The former Protection Level 20 route is archived because it spent points in Improved Holy Strike, removed on September 24. Its page explains the change and offers an empty calculator; it no longer claims to progress into the 20/31/0 Shield example.',
+          'The Retribution leveling page shows an editable 11-point Level 20 Beta preview alongside a separate historical 51-point allocation. The later example selects Crusade and is withheld from current presets while the reported 70009 removal is reconciled. The former Protection Level 20 route is also archived because it spent points in Improved Holy Strike, removed on September 24. Its page explains the change and offers an empty calculator; it no longer claims to progress into the 20/31/0 Shield example.',
           'There is no dedicated Holy leveling allocation on the site yet. A player who wants to level through healing or group support should start with an empty calculator, choose the talents that solve the current leveling problem, and save milestone links instead of treating the 31/20/0 Holy healing build as a proven leveling route. The related pages below make the available evidence clear before you commit to one specialization.',
         ],
       },
@@ -166,7 +166,7 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
         title: 'What This PvP Page Can Confirm',
         intro: 'Use the page to compare roles and planning questions, while keeping the current evidence boundary visible.',
         paragraphs: [
-          'The current Retribution PvP page starts from the complete 0/20/31 Judgment allocation, Holy starts from the 31/20/0 healing allocation, and Protection starts from the 20/31/0 shield allocation. Those underlying builds are real calculator presets on BuildForgeTools. Their PvP interpretations are community planning directions, because the site does not yet have enough verified WoW Forever match data to call any allocation a finished PvP standard.',
+          'The Retribution PvP page displays the historical 0/20/31 Judgment tree, but does not load that Crusade-containing allocation while its 70009 identity remains under review. Holy shows a 31/20/0 healing example and Protection a separate 20/31/0 shield example. Their PvP interpretations remain community planning directions; the site does not have enough verified match data to call any allocation a finished PvP standard.',
           'That distinction prevents a familiar talent name or a complete 51-point total from becoming unsupported competitive advice. Use the specialization pages to inspect which full build is being adapted, then change the ranks for the team size and objective you expect. Confirm important control, defensive, and damage effects in the current client before sharing the result as a recommendation.',
         ],
       },
@@ -240,7 +240,7 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
         title: 'Use Published Builds as Role References',
         intro: 'Three complete examples provide concrete allocations, but their raid use still depends on assignment and current game data.',
         paragraphs: [
-          'The Holy 31/20/0 page is the clearest healing reference: it lists every selected rank and explains the healing-oriented allocation. Protection has a complete 20/31/0 Shield build for a defensive group role, while Retribution has a complete 0/20/31 Judgment build for damage with Protection support. Each one opens the exact 51-point setup in the calculator so a raid group can review the same talents instead of discussing only a specialization name.',
+          'The Holy 31/20/0 page lists every selected rank in a healing-oriented reference. Protection has a separate 20/31/0 Shield example for a defensive group role. Retribution retains a historical 0/20/31 Judgment allocation for comparison, but its Crusade ranks are under review after the reported 70009 change. Holy and Protection can open their exact examples in the calculator; Retribution starts a new blank plan until its historical allocation is reconciled.',
           'These examples have not been presented as encounter-tested raid standards. The current dataset mixes confirmed, community-supported, and still-unverified WoW Forever fields. Treat the complete allocations as starting references, check the talents that matter to the assigned fight, and change the supporting branch when the group needs a different form of utility or survivability.',
         ],
       },
@@ -455,7 +455,7 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
     slug: 'wow-forever-retribution-paladin-pvp-build',
     title: 'WoW Forever Retribution Paladin PvP Build',
     metaTitle: 'WoW Forever Retribution Paladin PvP Build | BuildForgeTools',
-    description: 'Plan a WoW Forever Retribution Paladin PvP build around burst windows and utility. Inspect the 0/20/31 allocation and adjust it for your matchups.',
+    description: 'Plan a WoW Forever Retribution Paladin PvP build around burst windows and utility. Compare a historical 0/20/31 allocation, then start a new route.',
     subtitle: 'A burst-oriented Retribution setup for WoW Forever PvP combat.',
     eyebrow: 'Retribution PvP Build',
     heroImage: '/images/hero/paladin-pvp.webp',
@@ -464,7 +464,7 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
       { label: 'Playstyle', value: 'PvP' },
       { label: 'Specialization', value: 'Retribution' },
       { label: 'Strengths', value: 'Burst · Utility · Pressure' },
-      { label: 'Status', value: 'Community Build' },
+      { label: 'Status', value: 'Historical 69913 Preview' },
     ],
     sections: [
       {
@@ -480,7 +480,7 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
       {
         kind: 'talent-preview',
         title: 'Retribution Beta Talent Tree',
-        intro: 'The 0/20/31 community build allocation below is the starting point. PvP rewards adaptation, so open it in the calculator and keep several versions.',
+        intro: 'The 0/20/31 tree below is a historical 69913 preview. Its Crusade ranks are under review against a reported 70009 removal, so start a new calculator route instead of loading this exact allocation.',
         buildId: 'retribution-judgment-0-20-31',
       },
       {
@@ -496,17 +496,17 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
       {
         kind: 'copy',
         title: 'What the 0/20/31 PvP Preview Represents',
-        intro: 'The tree preview is exact; its use as a PvP setup remains a community interpretation.',
+        intro: 'The tree preview records 69913; its current availability and PvP value remain unverified.',
         paragraphs: [
-          'The highlighted tree comes from the complete 0/20/31 Retribution Judgment build. It commits 31 points to the Retribution core and uses 20 Protection points for a sturdier supporting branch. The calculator can prove which ranks are selected, that the total reaches 51, and that the allocation follows the current prerequisite model. It cannot prove that the same ranks are optimal against every opponent or in every form of PvP.',
-          'Use the preview when you want a concrete build to edit rather than an empty tree. Review the Protection support points as carefully as the deep Retribution talents, because PvP value often comes from what happens between damage windows. If current beta testing changes a tooltip, rank limit, or prerequisite, update the allocation before evaluating how it performs in a match.',
+          'The highlighted tree records the complete 69913-era 0/20/31 Retribution Judgment allocation. It committed 31 points to Retribution and used 20 Protection points for a sturdier secondary branch. The calculator can verify those historical ranks against the imported tree, but the Crusade identity conflict means it cannot certify the same 51 points as current. Nor does the snapshot prove PvP effectiveness against any opponent.',
+          'Use this preview to inspect the old tradeoffs, then start a blank planner for present Beta testing. Review Protection support points as carefully as deep Retribution talents, and check each selected rank against the latest client before sharing a new allocation.',
         ],
       },
       {
         kind: 'copy',
         title: 'Adapt Retribution to the Team and Objective',
         paragraphs: [
-          'A battleground objective, a small-group fight, and a duel do not ask for the same setup. Write down how the Paladin is expected to reach targets, which teammate provides control, and which defensive tools must remain available after committing to burst. Change only the ranks connected to that problem, then compare the new URL with the original 0/20/31 reference so the tradeoff stays visible.',
+          'A battleground objective, a small-group fight, and a duel do not ask for the same setup. Write down how the Paladin is expected to reach targets, which teammate provides control, and which defensive tools must remain available after committing to burst. Build a new legal route around those needs; the older 0/20/31 record remains available for historical comparison.',
           'Keep separate links for a general damage route and any matchup-specific experiment. After playing them, report the exact talent and observed behavior rather than only saying that the whole build felt strong or weak. BuildForgeTools treats these pages as community build examples until repeatable in-game evidence supports more specific recommendations.',
         ],
       },

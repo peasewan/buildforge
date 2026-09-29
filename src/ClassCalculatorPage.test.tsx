@@ -99,6 +99,65 @@ describe('ClassCalculatorPage renders any class from ClassDefinition', () => {
     expect(screen.getAllByText('5 / 21').length).toBeGreaterThan(0)
   })
 
+  it('starts blank with an explanation when a shared route skips a tier or exceeds its level budget', () => {
+    history.replaceState({}, '', `${hunterClassFixture.plannerPath}?build=bm-2.1&level=20`)
+    render(<ClassCalculatorPage classDef={hunterClassFixture} />)
+    expect(screen.getAllByText('0 / 11').length).toBeGreaterThan(0)
+    expect(screen.getByRole('status').textContent).toMatch(/shared build.*invalid/i)
+    fireEvent.click(screen.getByRole('button', { name: 'Add rank to Fixture Tracking' }))
+    expect(screen.queryByText(/shared build.*invalid/i)).toBeNull()
+    cleanup()
+
+    history.replaceState({}, '', `${hunterClassFixture.plannerPath}?build=bm-1.5~mm-1.5~sv-1.5&level=20`)
+    render(<ClassCalculatorPage classDef={hunterClassFixture} />)
+    expect(screen.getAllByText('0 / 11').length).toBeGreaterThan(0)
+    expect(screen.getByRole('status').textContent).toMatch(/shared build.*invalid/i)
+  })
+
+  it('rejects an impossible locally saved allocation instead of silently restoring it', () => {
+    localStorage.setItem(HUNTER_FIXTURE_STORAGE_KEY, JSON.stringify({ build: { 'bm-3': 1 }, level: 20 }))
+    render(<ClassCalculatorPage classDef={hunterClassFixture} />)
+    expect(screen.getAllByText('0 / 11').length).toBeGreaterThan(0)
+    expect(screen.getByRole('status').textContent).toMatch(/saved build.*invalid/i)
+  })
+
+  it('does not silently switch a saved build to a different point budget when its saved level is unknown', () => {
+    localStorage.setItem(HUNTER_FIXTURE_STORAGE_KEY, JSON.stringify({ build: { 'bm-1': 5 }, level: 999 }))
+    render(<ClassCalculatorPage classDef={hunterClassFixture} />)
+    expect(screen.getAllByText('0 / 11').length).toBeGreaterThan(0)
+    expect(screen.getByRole('status').textContent).toMatch(/saved build.*invalid/i)
+  })
+
+  it('clears malformed local data after explaining the blank recovery', () => {
+    localStorage.setItem(HUNTER_FIXTURE_STORAGE_KEY, '{broken')
+    render(<ClassCalculatorPage classDef={hunterClassFixture} />)
+    expect(screen.getByRole('status').textContent).toMatch(/saved build.*invalid/i)
+    cleanup()
+    render(<ClassCalculatorPage classDef={hunterClassFixture} />)
+    expect(screen.queryByText(/saved build.*invalid/i)).toBeNull()
+    expect(screen.getAllByText('0 / 11').length).toBeGreaterThan(0)
+  })
+
+  it('rejects a removed official node in a class URL or saved build', () => {
+    const current = {
+      ...hunterClassFixture,
+      talents: hunterClassFixture.talents.map(talent => talent.id === 'bm-1'
+        ? { ...talent, currentBetaAvailability: 'removed_official' as const }
+        : talent),
+    }
+    history.replaceState({}, '', `${current.plannerPath}?build=bm-1.1&level=20`)
+    render(<ClassCalculatorPage classDef={current} />)
+    expect(screen.getByRole('status').textContent).toMatch(/shared build.*invalid/i)
+    expect(screen.getAllByText('0 / 11').length).toBeGreaterThan(0)
+    cleanup()
+
+    history.replaceState({}, '', current.plannerPath)
+    localStorage.setItem(current.storageKey, JSON.stringify({ build: { 'bm-1': 1 }, level: 20 }))
+    render(<ClassCalculatorPage classDef={current} />)
+    expect(screen.getByRole('status').textContent).toMatch(/saved build.*invalid/i)
+    expect(screen.getAllByText('0 / 11').length).toBeGreaterThan(0)
+  })
+
   it('switches planner modes from classDef.plannerModes', () => {
     render(<ClassCalculatorPage classDef={hunterClassFixture} />)
     fireEvent.click(screen.getByRole('button', { name: /Level 60/i }))

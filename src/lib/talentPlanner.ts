@@ -11,6 +11,7 @@ export interface PlannerTalent<B extends string> {
   maxRank: number
   requiredTreePoints: number
   prerequisite?: PlannerPrerequisite[]
+  currentBetaAvailability?: 'available' | 'removed_official' | 'reported_removed_under_review'
 }
 
 export interface PlannerConfig<B extends string> {
@@ -19,6 +20,8 @@ export interface PlannerConfig<B extends string> {
 }
 
 export type PlannerLockReason =
+  | { type: 'removed-official' }
+  | { type: 'pending-client-review' }
   | { type: 'branch-points'; current: number; required: number }
   | { type: 'prerequisite'; talentId: string; current: number; required: number }
   | { type: 'point-cap' }
@@ -36,6 +39,8 @@ export function dominantPlannerBranch<B extends string>(build: PlannerBuild, tal
 }
 
 export function plannerLockReason<B extends string>(build: PlannerBuild, talent: PlannerTalent<B>, talents: PlannerTalent<B>[], config: PlannerConfig<B>): PlannerLockReason | null {
+  if (talent.currentBetaAvailability === 'removed_official') return { type: 'removed-official' }
+  if (talent.currentBetaAvailability === 'reported_removed_under_review') return { type: 'pending-client-review' }
   if (totalPlannerPoints(build) >= config.pointCap) return { type: 'point-cap' }
   const current = plannerBranchPoints(build, talent.branch, talents)
   if (current < talent.requiredTreePoints) return { type: 'branch-points', current, required: talent.requiredTreePoints }
@@ -105,4 +110,47 @@ export function decodePlannerBuild<B extends string>(code: string, talents: Plan
     build[talent.id] = Math.min(requestedRank, talent.maxRank)
   }
   return build
+}
+
+/** Replay untrusted ranks through the same point, tier and prerequisite rules as a click. */
+export function isValidPlannerBuild<B extends string>(build: PlannerBuild, talents: PlannerTalent<B>[], config: PlannerConfig<B>): boolean {
+  if (!build || typeof build !== 'object' || Array.isArray(build)) return false
+  const byId = new Map(talents.map((talent) => [talent.id, talent]))
+  const requested = Object.entries(build)
+  for (const [id, rank] of requested) {
+    const talent = byId.get(id)
+    if (!talent || !Number.isInteger(rank) || rank < 1 || rank > talent.maxRank) return false
+  }
+  if (totalPlannerPoints(build) > config.pointCap) return false
+
+  let replayed: PlannerBuild = {}
+  while (totalPlannerPoints(replayed) < totalPlannerPoints(build)) {
+    let progressed = false
+    for (const talent of talents) {
+      if ((replayed[talent.id] ?? 0) >= (build[talent.id] ?? 0)) continue
+      if (!canIncrementPlannerTalent(replayed, talent, talents, config)) continue
+      replayed = incrementPlannerTalent(replayed, talent, talents, config)
+      progressed = true
+    }
+    if (!progressed) return false
+  }
+  return true
+}
+
+/** Return null for a broken share instead of silently dropping its unknown or impossible ranks. */
+export function decodeValidatedPlannerBuild<B extends string>(code: string, talents: PlannerTalent<B>[], config: PlannerConfig<B>): PlannerBuild | null {
+  if (code === '') return {}
+  if (code.length > 2_000) return null
+  const byId = new Map(talents.map((talent) => [talent.id, talent]))
+  const build: PlannerBuild = {}
+  for (const token of code.split('~')) {
+    const separator = token.lastIndexOf('.')
+    const id = token.slice(0, separator)
+    const rankText = token.slice(separator + 1)
+    const talent = byId.get(id)
+    const rank = Number(rankText)
+    if (separator < 1 || !talent || Object.hasOwn(build, id) || !/^[1-9]\d*$/.test(rankText) || !Number.isSafeInteger(rank) || rank > talent.maxRank) return null
+    build[id] = rank
+  }
+  return isValidPlannerBuild(build, talents, config) ? build : null
 }

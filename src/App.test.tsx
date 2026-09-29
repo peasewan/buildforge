@@ -1,8 +1,12 @@
 import { cleanup, fireEvent, render, screen } from '@testing-library/react'
-import { afterEach, describe, expect, it, vi } from 'vitest'
-import App from './App'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
+import App, { TalentTree } from './App'
 import { encodeBuild } from './lib/build'
-import { HOLY_HEALING_BUILD } from './data/builds'
+import { EXAMPLE_BUILDS, HOLY_HEALING_BUILD, type ExampleBuild } from './data/builds'
+import { talents } from './data/talents'
+import { createForgePilotSavedBuild } from './lib/forgePilot'
+
+beforeEach(() => { HTMLElement.prototype.scrollIntoView = vi.fn() })
 
 afterEach(() => {
   cleanup()
@@ -58,6 +62,22 @@ describe('Paladin talent calculator page', () => {
     expect(localStorage.getItem('buildforge-forge-pilot-saved-builds-v1')).toContain('"dataVersion":"unknown"')
     expect(screen.queryByRole('link', { name: 'Reopen in Calculator' })).toBeNull()
     expect(screen.getByRole('link', { name: 'Open original link for review' }).getAttribute('href')).toContain('/build?id=')
+  })
+
+  it('labels a saved allocation with an officially removed talent as historical', () => {
+    const created = createForgePilotSavedBuild({
+      id: 'historical', name: 'Old strike path', classId: 'paladin',
+      dataVersion: 'wow_forever_beta_1.60.1.69913', shareInput: 'improved_holy_strike.1',
+      savedAt: '2026-09-29T00:00:00.000Z',
+    })
+    if (!created.ok) throw new Error(created.error)
+    localStorage.setItem('buildforge-forge-pilot-saved-builds-v1', JSON.stringify([created.build]))
+    render(<App />)
+    fireEvent.click(screen.getByRole('button', { name: 'Save to ForgePilot' }))
+
+    expect(screen.getByText(/a talent was officially removed/i)).toBeTruthy()
+    expect(screen.getByRole('link', { name: 'Official patch notes' })).toBeTruthy()
+    expect(screen.queryByRole('link', { name: 'Reopen in Calculator' })).toBeNull()
   })
 
   it('labels the interactive planner as a WoW Forever Paladin talent tree', () => {
@@ -151,6 +171,85 @@ describe('Paladin talent calculator page', () => {
     expect(screen.getAllByText('15 pts').length).toBeGreaterThan(0)
   })
 
+  it('keeps an officially removed talent visible but blocks adding it with an explanation', () => {
+    const retired = talents.find(talent => talent.id === 'improved_holy_strike')!
+    const previous = retired.currentBetaAvailability
+    retired.currentBetaAvailability = 'removed_official'
+    const add = vi.fn()
+    try {
+      render(<TalentTree branch="holy" build={{}} onAdd={add} />)
+      fireEvent.click(screen.getByRole('button', { name: /Improved Holy Strike/ }))
+      expect(add).not.toHaveBeenCalled()
+      expect(screen.getByRole('status').textContent).toMatch(/removed.*September 24/i)
+    } finally {
+      retired.currentBetaAvailability = previous
+    }
+  })
+
+  it('keeps Crusade visible as a 69913 record but withholds it pending 70009 identity review', () => {
+    const add = vi.fn()
+    render(<TalentTree branch="retribution" build={{}} onAdd={add} />)
+    fireEvent.click(screen.getByRole('button', { name: /Crusade/ }))
+    expect(add).not.toHaveBeenCalled()
+    expect(screen.getByRole('status').textContent).toMatch(/70009.*under review/i)
+    expect(screen.getByText('Needs review')).toBeTruthy()
+  })
+
+  it('keeps multiple official references for the same talent without duplicate React keys', () => {
+    const talent = talents.find(candidate => candidate.id === 'improved_holy_strike')!
+    const previous = talent.sources
+    const official = previous.find(source => source.type === 'official')!
+    talent.sources = [...previous, { ...official, label: 'Later official patch', url: 'https://example.test/patch' }]
+    const errors = vi.spyOn(console, 'error').mockImplementation(() => {})
+    try {
+      render(<TalentTree branch="holy" build={{}} readOnly />)
+      expect(screen.getByRole('link', { name: 'Later official patch' })).toBeTruthy()
+      expect(errors.mock.calls.flat().join(' ')).not.toMatch(/same key/i)
+    } finally {
+      talent.sources = previous
+      errors.mockRestore()
+    }
+  })
+
+  it('refuses retired talent ranks from both shared URLs and browser storage', () => {
+    const retired = talents.find(talent => talent.id === 'improved_holy_strike')!
+    const previous = retired.currentBetaAvailability
+    retired.currentBetaAvailability = 'removed_official'
+    try {
+      history.replaceState({}, '', '/build?id=improved_holy_strike.1#calculator')
+      render(<App />)
+      expect(screen.getByText(/shared build.*invalid/i)).toBeTruthy()
+      expect(screen.getByText('51 points remaining')).toBeTruthy()
+      cleanup()
+
+      history.replaceState({}, '', '/paladin')
+      localStorage.setItem('wow-forever-paladin-build', 'improved_holy_strike.1')
+      render(<App />)
+      expect(screen.getByText(/saved build.*invalid/i)).toBeTruthy()
+      expect(screen.getByText('51 points remaining')).toBeTruthy()
+    } finally {
+      retired.currentBetaAvailability = previous
+    }
+  })
+
+  it('leaves a Ret example under review visible without offering it as a current preset', () => {
+    const example = EXAMPLE_BUILDS.find(candidate => candidate.id === 'retribution-judgment-0-20-31') as ExampleBuild & { reviewStatus?: 'under_review' }
+    const previous = example.reviewStatus
+    example.reviewStatus = 'under_review'
+    try {
+      render(<App />)
+      const card = screen.getByRole('link', { name: 'Retribution Paladin Judgment Build' }).closest('.example-build-card')!
+      const load = card.querySelector('button') as HTMLButtonElement
+      expect(load.disabled).toBe(true)
+      expect(load.textContent).toContain('Under review')
+      expect(screen.getByText('51 points remaining')).toBeTruthy()
+      fireEvent.click(screen.getByRole('tab', { name: /Retribution/ }))
+      expect(document.querySelector('#tip-crusade .talent-builds')?.textContent).toContain('Under review')
+    } finally {
+      example.reviewStatus = previous
+    }
+  })
+
   it('marks the available first-tier Retribution talents as starting choices', () => {
     render(<App />)
     fireEvent.click(screen.getByRole('tab', { name: /Retribution/ }))
@@ -162,11 +261,20 @@ describe('Paladin talent calculator page', () => {
     render(<App />)
 
     expect(screen.getByText('Beta build 1.60.1.69913')).toBeTruthy()
-    expect(screen.getByText('Updated September 20, 2026')).toBeTruthy()
-    expect(screen.getByText('0 tooltip updates since 69893')).toBeTruthy()
+    expect(screen.getByText('69913 snapshot reviewed September 20, 2026')).toBeTruthy()
+    expect(screen.getByText('0 tooltip updates since 69893 in that comparison')).toBeTruthy()
     expect(screen.getByText('Beta Week 1 · Level cap 20')).toBeTruthy()
     const status = screen.getByRole('region', { name: 'WoW Forever Beta data status' })
     expect(status.querySelector('a')?.getAttribute('href')).toBe('/wow-forever-paladin-beta-talent-changes')
+  })
+
+  it('describes 69913 as an imported snapshot rather than the fully current Beta dataset', () => {
+    render(<App />)
+    const explanation = document.querySelector('.seo-copy')?.textContent ?? ''
+    expect(explanation).toContain('imported client snapshot')
+    expect(explanation).toContain('September 24')
+    expect(explanation).not.toContain('The current tree uses')
+    expect(explanation).not.toContain('reflects the current Beta client')
   })
 
   it('opens the actual calculator before the popular build cards', () => {
@@ -199,6 +307,33 @@ describe('Paladin talent calculator page', () => {
 
     expect(screen.queryByText('Saved build loaded')).toBeNull()
     expect(screen.getByText('51 points remaining')).toBeTruthy()
+  })
+
+  it('does not silently load a shared or saved allocation that skips talent tiers', () => {
+    window.history.replaceState({}, '', '/build?id=holy_shock.1#calculator')
+    render(<App />)
+    expect(screen.getByText('51 points remaining')).toBeTruthy()
+    expect(screen.getByText(/shared build.*invalid/i)).toBeTruthy()
+    cleanup()
+
+    window.history.replaceState({}, '', '/paladin')
+    localStorage.setItem('wow-forever-paladin-build', 'holy_shock.1')
+    render(<App />)
+    expect(screen.getByText('51 points remaining')).toBeTruthy()
+    expect(screen.getByText(/saved build.*invalid/i)).toBeTruthy()
+  })
+
+  it('keeps edits to a shared Paladin build after refreshing the URL', () => {
+    window.history.replaceState({}, '', `/build?id=${encodeBuild(HOLY_HEALING_BUILD.build)}#calculator`)
+    render(<App />)
+    fireEvent.click(screen.getByRole('tab', { name: /Protection/ }))
+    fireEvent.click(screen.getByRole('button', { name: 'Remove one rank from Anticipation' }))
+    expect(new URLSearchParams(location.search).get('id')).toContain('anticipation.4')
+    cleanup()
+    localStorage.clear()
+    render(<App />)
+    fireEvent.click(screen.getByRole('tab', { name: /Protection/ }))
+    expect(screen.getByRole('button', { name: /^Anticipation, rank 4 of/ })).toBeTruthy()
   })
 
   it('honors calculator deep links from other pages', () => {

@@ -1,14 +1,12 @@
 import { describe, expect, it } from 'vitest'
 import { branchPoints, incrementTalent, totalPoints, type Build } from '../lib/build'
-import { EXAMPLE_BUILDS, HOLY_HEALING_BUILD, PROTECTION_SHIELD_BUILD, RETRIBUTION_JUDGMENT_BUILD, RETRIBUTION_LEVELING_BUILD } from './builds'
+import { EXAMPLE_BUILDS, HOLY_HEALING_BUILD, PROTECTION_SHIELD_BUILD, RETRIBUTION_JUDGMENT_BUILD, RETRIBUTION_LEVELING_BUILD, examplePlannerHref } from './builds'
 import { talents } from './talents'
 
 describe('example builds', () => {
   it.each([
     [HOLY_HEALING_BUILD, [31, 20, 0]],
     [PROTECTION_SHIELD_BUILD, [20, 31, 0]],
-    [RETRIBUTION_JUDGMENT_BUILD, [0, 20, 31]],
-    [RETRIBUTION_LEVELING_BUILD, [20, 0, 31]],
   ] as const)('provides a legal 51-point $name', (example, expectedAllocation) => {
     let allocated: Build = {}
 
@@ -40,5 +38,16 @@ describe('example builds', () => {
       'wow-forever-retribution-paladin-build',
       'wow-forever-retribution-paladin-leveling-build',
     ])
+  })
+
+  it('withholds exact Crusade-containing 51-point allocations while their 70009 identity is unresolved', () => {
+    for (const example of [RETRIBUTION_JUDGMENT_BUILD, RETRIBUTION_LEVELING_BUILD]) {
+      expect(example.reviewStatus).toBe('under_review')
+      expect(example.build.crusade).toBe(2)
+      expect(totalPoints(example.build)).toBe(51)
+      expect(examplePlannerHref(example)).toBe('/build?id=#calculator')
+    }
+    expect(examplePlannerHref(HOLY_HEALING_BUILD)).toContain('/build?id=')
+    expect(examplePlannerHref(PROTECTION_SHIELD_BUILD)).toContain('/build?id=')
   })
 })

@@ -72,6 +72,8 @@ export interface Talent extends TalentDefinition {
   x: number;
   y: number;
   sources: TalentSource[];
+  /** September 24 official removal is applied to the interactive view, not the preserved 69913 snapshot. */
+  currentBetaAvailability?: 'available' | 'removed_official' | 'reported_removed_under_review';
 }
 
 export const branchNames: Record<Branch, string> = {
@@ -951,11 +953,38 @@ export const initialBetaTalents: Talent[] = initialBetaTalentData.talents.map((r
   }),
 );
 
-// The interactive calculator uses the reviewed Beta dataset. The demo
-// transcription remains available separately for the public change log.
-export const talents = betaTalents;
+// Preserve all 52 imported 69913 rows for exact historical diffs. The
+// interactive view overlays the later official removal without pretending
+// the unreconciled 70009 client payload has been imported.
+export const talents: Talent[] = betaTalents.map((talent) => talent.id === 'improved_holy_strike'
+  ? {
+      ...talent,
+      currentBetaAvailability: 'removed_official',
+      sources: [...talent.sources, {
+        type: 'official',
+        label: 'Blizzard September 24 Beta development notes — talent removed',
+        url: 'https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-september-24/2360696',
+      }],
+    }
+  : talent.id === 'crusade'
+    ? {
+        ...talent,
+        currentBetaAvailability: 'reported_removed_under_review',
+        sources: [...talent.sources, {
+          type: 'beta_client',
+          label: '70009 client diff — Crusade removal reported; node identity unresolved',
+          url: 'https://foreverdiff.com/compare/1.60.1.69977__1.60.1.70009/',
+        }],
+      }
+    : { ...talent });
 
 export function talentEvidenceLabel(talent: Talent): string {
+  if (talent.currentBetaAvailability === 'removed_official') {
+    return 'Historical 69913 entry · removed September 24 by Blizzard';
+  }
+  if (talent.currentBetaAvailability === 'reported_removed_under_review') {
+    return 'Historical 69913 entry · 70009 removal report under review';
+  }
   if (talent.verificationStatus === "client_verified") {
     return "Verified from Beta client data";
   }

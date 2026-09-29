@@ -66,8 +66,8 @@ describe('Holy healing build page', () => {
     render(<BuildPage buildId="protection-shield-20-31-0" />)
 
     expect(screen.getByText('Beta build 1.60.1.69913')).toBeTruthy()
-    expect(screen.getByText('Updated September 20, 2026')).toBeTruthy()
-    expect(screen.getByText('0 tooltip updates since 69893')).toBeTruthy()
+    expect(screen.getByText('69913 snapshot reviewed September 20, 2026')).toBeTruthy()
+    expect(screen.getByText('0 tooltip updates since 69893 in that comparison')).toBeTruthy()
   })
 
   it.each([
@@ -120,7 +120,7 @@ describe('Holy healing build page', () => {
 
     const path = screen.getByRole('region', { name: buildId === 'protection-shield-20-31-0' ? 'Archived Beta talent path' : 'Current Beta talent path' })
     expect(path.querySelector('.beta-leveling-grid article:first-child > div > span')?.textContent).toBe('Official level cap')
-    expect(document.querySelector('.build-hero-copy small')?.textContent).toBe('Updated September 20, 2026 · Beta client talent data')
+    expect(document.querySelector('.build-hero-copy small')?.textContent).toBe(`Updated ${buildId === 'retribution-judgment-0-20-31' ? 'September 29' : 'September 20'}, 2026 · Beta client talent data`)
   })
 
   it('keeps the future Retribution plan separate from the executable level-20 route', () => {
@@ -132,13 +132,26 @@ describe('Holy healing build page', () => {
     expect(path.textContent).toContain('2/0/19')
   })
 
+  it.each(['retribution-judgment-0-20-31', 'retribution-leveling-20-0-31'] as const)('treats %s as a historical 69913 allocation while Crusade is under review', (buildId) => {
+    render(<BuildPage buildId={buildId} />)
+
+    expect(screen.getByRole('status').textContent).toMatch(/Crusade.*70009.*under review/i)
+    expect(document.querySelector('.build-hero-copy a.button.primary')?.getAttribute('href')).toBe('/build?id=#calculator')
+    expect(document.querySelector('a[href*="crusade.2"]')).toBeNull()
+    expect(document.body.textContent).not.toContain('Selecting Open This Build loads all 51 points')
+    expect(document.body.textContent).not.toContain('Opening the build takes the visitor directly to the interactive planner')
+    expect(document.querySelector('.build-calc-anchor')?.textContent).toMatch(/Start a new Retribution/i)
+    expect(document.querySelector('.build-calc-anchor')?.textContent).not.toMatch(/Customize this Retribution/i)
+    expect(document.querySelector('.build-talents .section-heading p')?.textContent).toMatch(/historical.*ranks/i)
+  })
+
   it('adds the current and next-cap route to the Retribution leveling page', () => {
     render(<BuildPage buildId="retribution-leveling-20-0-31" />)
 
     const snapshot = screen.getByRole('region', { name: 'Beta leveling snapshot' })
     expect(snapshot.textContent).toContain('Level 20 · 11 points')
     expect(snapshot.textContent).toContain('0/0/11')
-    expect(snapshot.textContent).toContain('Level 30 plan')
+    expect(snapshot.textContent).toContain('Level 30 projection under review')
     expect(snapshot.textContent).toContain('0/0/21')
     expect(snapshot.textContent).toContain('Community recommendation')
   })

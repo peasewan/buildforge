@@ -13,7 +13,7 @@ export interface BetaLevelingSnapshot {
   status: BetaRouteStatus
   archiveNotice?: string
   current: { level: number; points: number; allocation: string; build: Build; note: string }
-  next: { level: number; points: number; allocation: string; note: string }
+  next: { level: number; points: number; allocation: string; note: string; status: 'planned' | 'under_review' }
   milestones: string[]
   recommendationSource: { label: string; href: string; updated: string }
 }
@@ -21,7 +21,7 @@ export interface BetaLevelingSnapshot {
 const retributionCurrent: Build = {
   benediction: 5,
   conviction: 5,
-  pursuit_of_justice: 1,
+  seal_of_command: 1,
 }
 
 const protectionCurrent: Build = {
@@ -39,15 +39,16 @@ const retributionSnapshot = {
     points: PALADIN_BETA_SNAPSHOT.phase.levelCap - 9,
     allocation: '0/0/11',
     build: retributionCurrent,
-    note: 'Spend the current 11 points into Benediction, Conviction, then the first rank of Pursuit of Justice.',
+    note: 'Spend the current 11 points into Benediction, Conviction, then Seal of Command. This matches the Level 20 Retribution specialization path.',
   },
   next: {
     level: PALADIN_BETA_SNAPSHOT.phase.nextLevelCap,
     points: PALADIN_BETA_SNAPSHOT.phase.nextLevelCap - 9,
     allocation: '0/0/21',
-    note: 'The community route continues through Pursuit of Justice, Seal of Command, Sanctified Judgement, Sacred Arbiter, Crusade, Vindication, and Vengeance.',
+    note: 'A later 21-point route remains under review. The reported 70009 Crusade removal has not been reconciled against the imported client record; do not treat a Crusade-containing projection as current.',
+    status: 'under_review' as const,
   },
-  milestones: ['5/5 Benediction', '5/5 Conviction', 'Pursuit of Justice → Seal of Command', 'Vengeance at the level-30 target'],
+  milestones: ['5/5 Benediction', '5/5 Conviction', 'Seal of Command at Level 20', 'Later points pending client reconciliation'],
   recommendationSource: {
     label: 'Mobalytics Paladin Leveling Guide (Level 1–30)',
     href: 'https://mobalytics.gg/wow-forever/classes/paladin-leveling-guide',
@@ -75,6 +76,7 @@ export const BETA_LEVELING_SNAPSHOTS: Record<BetaLevelingPageId, BetaLevelingSna
       points: PALADIN_BETA_SNAPSHOT.phase.nextLevelCap - 9,
       allocation: '2/19/0',
       note: 'This earlier level-30 projection also reserved points for the removed talent. It is archived and must be reconsidered against a reconciled Beta tree.',
+      status: 'under_review',
     },
     milestones: ['2/2 Improved Holy Strike', '5/5 Redoubt', '3/3 Precision', 'Shield Specialization → Improved Righteous Fury'],
     recommendationSource: {

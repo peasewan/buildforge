@@ -4,6 +4,8 @@ import {
   inspectForgePilotSavedBuild,
 } from './forgePilot'
 import type { PlannerTalent } from './talentPlanner'
+import { talents as publishedPaladinTalents } from '../data/talents'
+import { BRANCHES } from './build'
 
 const CURRENT_VERSION = 'wow_forever_beta_1.60.1.69913'
 const talents: PlannerTalent<'holy'>[] = [
@@ -113,6 +115,20 @@ describe('ForgePilot saved builds', () => {
       reason: 'dataset_changed',
     })
     expect(old.originalCode).toBe('capstone.1~root.5')
+  })
+
+  it('keeps officially removed and client-reported Paladin nodes as historical review records', () => {
+    const published = {
+      classId: 'paladin', dataVersion: CURRENT_VERSION,
+      talents: publishedPaladinTalents,
+      config: { branches: BRANCHES, pointCap: 51 },
+    }
+    expect(inspectForgePilotSavedBuild(savedBuild('improved_holy_strike.1'), published)).toEqual({
+      status: 'needs_review', reason: 'removed_official', talentId: 'improved_holy_strike',
+    })
+    expect(inspectForgePilotSavedBuild(savedBuild('crusade.1'), published)).toEqual({
+      status: 'needs_review', reason: 'reported_removed_under_review', talentId: 'crusade',
+    })
   })
 
   it('does not open a Paladin save in a different class calculator', () => {

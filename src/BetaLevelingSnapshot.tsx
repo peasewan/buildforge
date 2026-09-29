@@ -24,11 +24,11 @@ export default function BetaLevelingSnapshot({ pageId }: { pageId: BetaLevelingP
           <a href={betaLevelingPlannerHref(pageId)}>{archived ? 'Open Calculator without this route' : 'Open current path in Calculator'} <ArrowRight size={14} /></a>
         </article>
         <article>
-          <div><span>{archived ? 'Archived Level 30 projection' : 'Level 30 plan'}</span><VerificationBadge status="derived_assumption" /></div>
+          <div><span>{archived ? 'Archived Level 30 projection' : snapshot.next.status === 'under_review' ? 'Level 30 projection under review' : 'Level 30 plan'}</span><VerificationBadge status="derived_assumption" /></div>
           <strong>Level {snapshot.next.level} · {snapshot.next.points} points</strong>
           <b>{snapshot.next.allocation}</b>
           <p>{snapshot.next.note}</p>
-          <small>{archived ? 'Historical projection only; do not use it as a current build.' : 'Community recommendation · prepare now, available after Blizzard raises the cap.'}</small>
+          <small>{archived ? 'Historical projection only; do not use it as a current build.' : snapshot.next.status === 'under_review' ? 'Not a current build or a verified future-cap recommendation; wait for a reconciled Beta tree.' : 'Community recommendation · prepare now, available after Blizzard raises the cap.'}</small>
         </article>
       </div>
       <div className="beta-leveling-evidence">

@@ -1,4 +1,4 @@
-import { dominantBranch, type Branch, type Build } from '../lib/build'
+import { dominantBranch, encodeBuild, type Branch, type Build } from '../lib/build'
 import { talents } from './talents'
 
 export interface ExampleBuild {
@@ -8,6 +8,8 @@ export interface ExampleBuild {
   allocation: string
   description: string
   build: Build
+  /** Source-linked 70009 report conflicts with imported node identity; retain the 69913 allocation as history. */
+  reviewStatus?: 'under_review'
 }
 
 export const HOLY_HEALING_BUILD: ExampleBuild = {
@@ -68,7 +70,8 @@ export const RETRIBUTION_JUDGMENT_BUILD: ExampleBuild = {
   slug: 'wow-forever-retribution-paladin-build',
   name: 'Retribution Paladin Judgment Build',
   allocation: '0/20/31',
-  description: 'An offensive preview that reaches Twist of Light with early Protection utility.',
+  description: 'Historical 69913-era offensive preview. Its Crusade ranks await 70009 identity reconciliation.',
+  reviewStatus: 'under_review',
   build: {
     toughness: 5,
     redoubt: 5,
@@ -96,7 +99,8 @@ export const RETRIBUTION_LEVELING_BUILD: ExampleBuild = {
   slug: 'wow-forever-retribution-paladin-leveling-build',
   name: 'Retribution Paladin Leveling Build',
   allocation: '20/0/31',
-  description: 'A solo-leveling Retribution preview that reaches Twist of Light with early Holy support.',
+  description: 'Historical 69913-era solo-leveling preview. Its Crusade ranks await 70009 identity reconciliation.',
+  reviewStatus: 'under_review',
   build: {
     divine_strength: 5,
     divine_intellect: 5,
@@ -131,6 +135,12 @@ export type ExampleBuildId = (typeof EXAMPLE_BUILDS)[number]['id']
 
 export function exampleBuildById(id: ExampleBuildId): ExampleBuild {
   return EXAMPLE_BUILDS.find((build) => build.id === id) ?? HOLY_HEALING_BUILD
+}
+
+export function examplePlannerHref(example: ExampleBuild): string {
+  return example.reviewStatus === 'under_review'
+    ? '/build?id=#calculator'
+    : `/build?id=${encodeBuild(example.build)}#calculator`
 }
 
 /**

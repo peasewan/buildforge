@@ -36,8 +36,8 @@ describe('Paladin builds hub', () => {
 
     expect(screen.getByRole('heading', { level: 1, name: 'WoW Forever Paladin Builds & Talent Calculator' })).toBeTruthy()
     expect(screen.getByText('Beta build 1.60.1.69913')).toBeTruthy()
-    expect(screen.getByText('Updated September 20, 2026')).toBeTruthy()
-    expect(screen.getByText('0 tooltip updates since 69893')).toBeTruthy()
+    expect(screen.getByText('69913 snapshot reviewed September 20, 2026')).toBeTruthy()
+    expect(screen.getByText('0 tooltip updates since 69893 in that comparison')).toBeTruthy()
   })
 
   it('lists the spec-specific builds next to their generic parents', () => {
@@ -56,6 +56,14 @@ describe('Paladin builds hub', () => {
     const link = document.querySelector('a[href="/wow-forever-protection-paladin-leveling-build"]')
     expect(link?.closest('.build-card')?.textContent).toMatch(/archived/i)
     expect(link?.closest('.build-card')?.textContent).toMatch(/removed/i)
+  })
+
+  it('labels the Ret 51-point leveling example as historical before readers open it', () => {
+    render(<PaladinBuildsHub />)
+
+    const link = document.querySelector('a[href="/wow-forever-retribution-paladin-leveling-build"]')
+    expect(link?.closest('.build-card')?.textContent).toMatch(/historical/i)
+    expect(link?.closest('.build-card')?.textContent).toMatch(/Crusade.*review/i)
   })
 
   it('sends a specialization card to its hub whenever that specialization has one', () => {

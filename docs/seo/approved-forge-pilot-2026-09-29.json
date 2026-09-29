@@ -1,10 +1,10 @@
 {
   "reviewedAt": "2026-09-29",
-  "authorization": "The owner requested ForgePilot browser-local Build saving. This amendment permits only the reviewed /paladin calculator body change for the collapsed Save to ForgePilot control. URL, title, H1, description, canonical, robots, head SEO, internal links, and sitemap remain unchanged.",
+  "authorization": "The owner requested ForgePilot browser-local Build saving. This final fingerprint includes separately approved September 29 Paladin consistency changes already on main, plus the collapsed Save to ForgePilot control. URL, title, H1, description, canonical, robots, head SEO, and existing internal links remain unchanged; the upstream sitemap lastmod is retained.",
   "pages": {
     "/paladin": {
-      "rootSha256": "a36e7d3cb6f603ba75aa21a73832b3b08f750448a5fa858ff9ca079cd14db35c",
-      "linksSha256": "d96c75ccce155bc128be59be36512641ce72770162b8be84b641232102d6aed0"
+      "rootSha256": "55ace14158aaaf3cd80e421256749a7509b2922adec68e4642e8b5bbf32302e5",
+      "linksSha256": "90fa316a84a72c30f5d534cc19fcd043c1ad0b5c2e97e28a5de85273200a475d"
     }
   }
 }

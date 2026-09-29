@@ -101,10 +101,10 @@ describe('prerender generation', () => {
     expect(html).toContain('Current Beta cap')
     expect(html).toContain('Level 20')
     expect(html).toContain(current)
-    expect(html).toContain('Level 30 plan')
+    expect(html).toContain('Level 30 projection under review')
     expect(html).toContain(next)
     expect(html).toContain('1.60.1.69913')
-    expect(html).toContain('Community recommendation')
+    expect(html).toContain('Unverified future-cap projection')
   })
 
   it('prerenders the old Protection leveling path as archived without its stale build deep link', () => {

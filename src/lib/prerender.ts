@@ -78,8 +78,8 @@ export function renderBetaStatusPrerender(): string {
   return `<section aria-label="WoW Forever Beta data status">
     <h2>Beta build ${escapeHtml(status.build)}</h2>
     <p>Updated ${escapeHtml(status.updated)} · ${status.talentCount} talent nodes · ${status.newTalentCount} new in WoW Forever · ${escapeHtml(status.phaseLabel)} · Level cap ${status.levelCap}.</p>
-    <p>${status.added} added · ${status.updatedTalents} updated · ${status.removed} removed in the latest client diff.</p>
-    <p>${status.updatedTalents} tooltip updates since ${escapeHtml(status.previousBuild)}. ${link(status.changelogHref, 'Review Beta changes')}.</p>
+    <p>${escapeHtml(status.comparisonLabel)} imported snapshot comparison: ${status.added} added · ${status.updatedTalents} updated · ${status.removed} removed.</p>
+    <p>September 24 official removal: Improved Holy Strike is unavailable in new builds. ${status.patchBuild} client records await reconciliation. ${link(status.changelogHref, 'Review Beta changes')}.</p>
   </section>`
 }
 
@@ -103,10 +103,10 @@ export function renderBetaLevelingSnapshotPrerender(pageId: BetaLevelingPageId):
     <p><strong>Level ${snapshot.current.level} · ${snapshot.current.points} points · ${escapeHtml(snapshot.current.allocation)}</strong></p>
     <p>${escapeHtml(snapshot.current.note)} ${link(betaLevelingPlannerHref(pageId), archived ? 'Open Calculator without this route' : 'Open current path in Calculator')}.</p>
     <p>${escapeHtml(EVIDENCE_STATUS.official.label)} level cap · ${archived ? 'historical' : escapeHtml(EVIDENCE_STATUS.client_verified.label)} talent data · Build ${escapeHtml(PALADIN_BETA_STATUS.build)}.</p>
-    <h3>${archived ? 'Archived Level 30 projection' : 'Level 30 plan'}</h3>
+    <h3>${archived ? 'Archived Level 30 projection' : snapshot.next.status === 'under_review' ? 'Level 30 projection under review' : 'Level 30 plan'}</h3>
     <p><strong>Level ${snapshot.next.level} · ${snapshot.next.points} points · ${escapeHtml(snapshot.next.allocation)}</strong></p>
     <p>${escapeHtml(snapshot.next.note)}</p>
-    <p>${archived ? 'Historical community recommendation' : 'Community recommendation'} · ${escapeHtml(EVIDENCE_STATUS.derived_assumption.label)} editorial route, reviewed ${escapeHtml(snapshot.recommendationSource.updated)}.</p>
+    <p>${archived ? 'Historical community recommendation' : snapshot.next.status === 'under_review' ? 'Unverified future-cap projection' : 'Community recommendation'} · ${escapeHtml(EVIDENCE_STATUS.derived_assumption.label)} editorial route, reviewed ${escapeHtml(snapshot.recommendationSource.updated)}.</p>
     <ul>${snapshot.milestones.map((milestone) => `<li>${escapeHtml(milestone)}</li>`).join('')}</ul>
     <p>${link(BETA_LEVEL_CAP_SOURCE.href, 'Official level-cap source')} · ${link(snapshot.recommendationSource.href, 'Recommendation source')}</p>
   </section>`

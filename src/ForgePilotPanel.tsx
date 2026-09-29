@@ -160,12 +160,18 @@ export default function ForgePilotPanel<B extends string>({ classId, className, 
       <h3>Your {className} Builds</h3>
       {classBuilds.length === 0 ? <p>No named builds saved yet.</p> : <ul className="forge-pilot-list">{classBuilds.map((saved) => {
         const cap = saved.level === null ? config.pointCap : pointCaps[saved.level]
-        const inspection = cap === undefined ? { status: 'needs_review' as const } : inspectForgePilotSavedBuild(saved, {
+        const inspection = cap === undefined ? { status: 'needs_review' as const, reason: 'dataset_changed' as const } : inspectForgePilotSavedBuild(saved, {
           classId, dataVersion, talents, config: { ...config, pointCap: cap },
         })
         return <li key={saved.id}>
           <div className="forge-pilot-record-top"><strong>{saved.name}</strong><small>{saved.level === null ? 'Level unknown' : `Level ${saved.level}`} · {saved.dataVersion}</small></div>
-          <p className="forge-pilot-status">{inspection.status === 'ready' ? `Matches published ${dataVersion} talent data` : inspection.status === 'invalid' ? 'Saved allocation needs correction' : 'Version needs review before reopening'}</p>
+          <p className="forge-pilot-status">{inspection.status === 'ready' ? `Matches published ${dataVersion} talent data`
+            : inspection.status === 'invalid' ? 'Saved allocation needs correction'
+            : inspection.reason === 'removed_official' ? 'Historical allocation: a talent was officially removed. This snapshot cannot reopen under current rules.'
+            : inspection.reason === 'reported_removed_under_review' ? 'Historical allocation: a client diff reports a removed talent, pending identity review. This snapshot cannot reopen under current rules.'
+            : 'Version needs review before reopening'}</p>
+          {inspection.status === 'needs_review' && inspection.reason === 'removed_official' && <a className="forge-pilot-evidence" href={BETA_PATCH_REVIEW.officialSource} target="_blank" rel="noreferrer">Official patch notes</a>}
+          {inspection.status === 'needs_review' && inspection.reason === 'reported_removed_under_review' && <a className="forge-pilot-evidence" href={BETA_PATCH_REVIEW.clientDiffSource} target="_blank" rel="noreferrer">Client diff under review</a>}
           {saved.sourceUrl && <details className="forge-pilot-original"><summary>Original share link</summary><code>{saved.sourceUrl}</code></details>}
           {saved.sourceUrl && inspection.status === 'needs_review' && <p className="forge-pilot-review-link">The original version is unknown. Opening this link uses the current calculator; compare its talents before saving a new snapshot. <a href={saved.sourceUrl} target="_blank" rel="noopener noreferrer">Open original link for review</a></p>}
           {editingId === saved.id && <div className="forge-pilot-edit"><label htmlFor={`forge-pilot-edit-${saved.id}`}>New build name</label><input id={`forge-pilot-edit-${saved.id}`} value={editName} maxLength={120} onChange={(event) => setEditName(event.target.value)} /><button type="button" onClick={() => rename(saved)}>Save name</button></div>}

@@ -30,6 +30,25 @@ describe('rendered SEO release gate', () => {
     const input = fixture(); input.sitemap.pop(); expect(errors(input)).toContain('missing sitemap')
     delete input.pages['/guide']; expect(errors(input)).toContain('missing rendered')
   })
+  it('rejects an Article modification date older than its sitemap lastmod', () => {
+    const input = fixture()
+    input.pages['/guide'] = input.pages['/guide'].replace('</head>', '<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Guide","dateModified":"2026-09-22"}</script></head>')
+    expect(errors(input)).toContain('/guide: Article dateModified precedes sitemap lastmod')
+  })
+  it('rejects a current claim for an imported 69913 snapshot and an unscoped zero-removals count', () => {
+    const input = fixture()
+    input.pages['/guide'] = input.pages['/guide'].replace('</div></body>', '<section class="beta-data-strip"><div class="beta-data-build"><span>Current talent dataset</span><strong>Beta build 1.60.1.69913</strong></div><div class="beta-data-facts"><span>0 added · 0 updated · 0 removed</span></div></section></div></body>')
+    expect(errors(input)).toContain('/guide: imported 69913 snapshot mislabeled current')
+    expect(errors(input)).toContain('/guide: zero-removals claim lacks build-to-build scope')
+  })
+  it('rejects a current Beta Changes baseline while accepting an explicitly historical 69893 to 69913 comparison', () => {
+    const input = fixture()
+    const current = '<main class="beta-page"><section class="beta-detail-block"><div class="eyebrow">Current Beta Baseline</div><p>Client build 1.60.1.69913</p></section></main>'
+    input.pages['/guide'] = input.pages['/guide'].replace('</div></body>', `${current}</div></body>`)
+    expect(errors(input)).toContain('/guide: imported 69913 snapshot mislabeled current')
+    input.pages['/guide'] = input.pages['/guide'].replace(current, '<main class="beta-page"><section class="beta-detail-block"><div class="eyebrow">Last Imported Build Diff · Historical</div><h2>1.60.1.69893 → 1.60.1.69913</h2><p>0 removed in this comparison; later patches are reviewed separately.</p></section></main>')
+    expect(errors(input)).toBe('')
+  })
   it('rejects noindex linked targets and does not count self links as inbound', () => {
     const input = fixture(); input.pages['/guide'] = input.pages['/guide'].replace('<head>', '<head><meta name="robots" content="noindex">')
     expect(errors(input)).toContain('noindex target')

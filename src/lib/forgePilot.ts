@@ -31,7 +31,7 @@ export type ForgePilotCreateResult =
 
 export type ForgePilotInspection =
   | { status: 'ready'; allocation: PlannerBuild; points: number }
-  | { status: 'needs_review'; reason: 'dataset_changed' }
+  | { status: 'needs_review'; reason: 'dataset_changed' | 'removed_official' | 'reported_removed_under_review'; talentId?: string }
   | { status: 'invalid'; reason: 'class_mismatch' | 'malformed_code' | 'unknown_talent' | 'rank_out_of_range' | 'duplicate_talent' | 'illegal_allocation'; talentId?: string }
 
 function localUrl(input: string): URL | null {
@@ -123,6 +123,7 @@ export function inspectForgePilotSavedBuild<B extends string>(
 
   const byId = new Map(current.talents.map((talent) => [talent.id, talent]))
   const target: PlannerBuild = {}
+  let unavailable: { reason: 'removed_official' | 'reported_removed_under_review'; talentId: string } | null = null
   for (const token of saved.originalCode.split('~')) {
     const separator = token.lastIndexOf('.')
     if (separator < 1 || separator === token.length - 1) return { status: 'invalid', reason: 'malformed_code' }
@@ -134,8 +135,13 @@ export function inspectForgePilotSavedBuild<B extends string>(
     if (!talent) return { status: 'invalid', reason: 'unknown_talent', talentId: id }
     const rank = Number(rankText)
     if (!Number.isSafeInteger(rank) || rank > talent.maxRank) return { status: 'invalid', reason: 'rank_out_of_range', talentId: id }
+    if (!unavailable && (talent.currentBetaAvailability === 'removed_official' || talent.currentBetaAvailability === 'reported_removed_under_review')) {
+      unavailable = { reason: talent.currentBetaAvailability, talentId: id }
+    }
     target[id] = rank
   }
+
+  if (unavailable) return { status: 'needs_review', ...unavailable }
 
   const points = totalPlannerPoints(target)
   if (points < 1 || points > current.config.pointCap) return { status: 'invalid', reason: 'illegal_allocation' }

@@ -1,13 +1,39 @@
-import { cleanup, render, screen, within } from '@testing-library/react'
+import { cleanup, fireEvent, render, screen, within } from '@testing-library/react'
 import { afterEach, describe, expect, it } from 'vitest'
+import { useState } from 'react'
+import { TalentTree } from './App'
 import BuildLandingPage from './BuildLandingPage'
 import { HOLY_HEALING_BUILD } from './data/builds'
-import { encodeBuild, validateBuildUsage } from './lib/build'
+import { encodeBuild, incrementTalent, validateBuildUsage } from './lib/build'
 import { talents } from './data/talents'
 
 afterEach(cleanup)
 
 describe('Build landing page template', () => {
+  it('keeps the calculator talent nodes editable', () => {
+    function EditableTree() {
+      const [build, setBuild] = useState({})
+      return <TalentTree branch="holy" build={build} onAdd={(talent) => setBuild((current) => incrementTalent(current, talent, talents))} />
+    }
+    render(<EditableTree />)
+    fireEvent.click(screen.getByRole('button', { name: /Divine Intellect, rank 0 of 5/ }))
+    expect(screen.getByRole('button', { name: /Divine Intellect, rank 1 of 5/ })).toBeTruthy()
+  })
+
+  it.each(['protection-dungeon', 'protection-leveling', 'protection-pvp', 'retribution-pvp'] as const)(
+    'shows a read-only tree with a visible edit action before the nodes on %s', (pageId) => {
+      render(<BuildLandingPage pageId={pageId} />)
+
+      const preview = document.querySelector('.landing-talent-preview')!
+      expect(preview.textContent).toMatch(/read-only preview/i)
+      expect(within(preview as HTMLElement).queryAllByRole('button')).toHaveLength(0)
+      const historical = pageId === 'retribution-pvp'
+      const edit = within(preview as HTMLElement).getAllByRole('link', { name: historical ? /start a new build/i : /open editable calculator/i })[0]
+      expect(edit.getAttribute('href')).toMatch(historical ? /^\/build\?id=#calculator$/ : /^\/build\?id=.+#calculator$/)
+      expect(edit.compareDocumentPosition(preview.querySelector('.landing-tree-card')!) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
+    },
+  )
+
   it('renders the Leveling content from configuration', () => {
     render(<BuildLandingPage pageId="leveling" />)
 
@@ -19,7 +45,7 @@ describe('Build landing page template', () => {
     const snapshot = screen.getByRole('region', { name: 'Beta leveling snapshot' })
     expect(snapshot.textContent).toContain('Current Beta cap')
     expect(snapshot.textContent).toContain('Level 20 · 11 points')
-    expect(snapshot.textContent).toContain('Level 30 plan')
+    expect(snapshot.textContent).toContain('Level 30 projection under review')
     expect(snapshot.textContent).toContain('0/0/21')
     expect(snapshot.textContent).toContain('Client verified')
     expect(snapshot.textContent).toContain('Community recommendation')
@@ -65,6 +91,26 @@ describe('Build landing page template', () => {
 
     expect(screen.getByLabelText('Retribution talent tree')).toBeTruthy()
     expect(screen.queryByLabelText('Protection talent tree')).toBeNull()
+  })
+
+  it('does not load the unreconciled Crusade allocation from Retribution PvP', () => {
+    render(<BuildLandingPage pageId="retribution-pvp" />)
+
+    expect(screen.getByRole('link', { name: 'Open Planner' }).getAttribute('href')).toBe('/build?id=#calculator')
+    for (const link of screen.getAllByRole('link', { name: /Start a new build/i })) {
+      expect(link.getAttribute('href')).toBe('/build?id=#calculator')
+    }
+    expect(document.querySelector('.landing-talent-preview')?.textContent).toMatch(/historical.*Crusade.*under review/i)
+    expect(document.querySelector('a[href*="crusade.2"]')).toBeNull()
+    expect(document.body.textContent).not.toContain('The 0/20/31 community build allocation below is the starting point')
+    expect(document.body.textContent).not.toContain('Use the preview when you want a concrete build to edit rather than an empty tree')
+  })
+
+  it('does not promise the raid page can load the under-review Retribution allocation', () => {
+    render(<BuildLandingPage pageId="raid" />)
+
+    expect(document.body.textContent).toMatch(/Retribution.*historical.*Crusade.*under review/i)
+    expect(document.body.textContent).not.toContain('Each one opens the exact 51-point setup')
   })
 
   it('deep-links a page to the allocation its copy tells readers to start from', () => {

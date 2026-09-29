@@ -61,8 +61,8 @@ describe('specialization builds hub', () => {
     render(<SpecBuildsHub spec="retribution" />)
 
     expect(screen.getByText('Beta build 1.60.1.69913')).toBeTruthy()
-    expect(screen.getByText('Updated September 20, 2026')).toBeTruthy()
-    expect(screen.getByText('0 tooltip updates since 69893')).toBeTruthy()
+    expect(screen.getByText('69913 snapshot reviewed September 20, 2026')).toBeTruthy()
+    expect(screen.getByText('0 tooltip updates since 69893 in that comparison')).toBeTruthy()
   })
 
   it('puts the archived Protection route before the complete featured build without loading it', () => {
@@ -90,6 +90,13 @@ describe('specialization builds hub', () => {
   it('does not add the Protection starting route to Retribution', () => {
     render(<SpecBuildsHub spec="retribution" />)
     expect(screen.queryByRole('region', { name: 'Archived Beta Protection starting route' })).toBeNull()
+  })
+
+  it('presents the two full Retribution snapshots as under review without promising to load them', () => {
+    render(<SpecBuildsHub spec="retribution" />)
+    expect(document.body.textContent).toMatch(/0\/20\/31.*historical/i)
+    expect(document.body.textContent).toMatch(/Crusade.*70009.*under review/i)
+    expect(document.body.textContent).not.toContain('open that exact setup in the calculator')
   })
 
   it('gives every specialization hub a substantial, distinct editorial guide', () => {

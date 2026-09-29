@@ -26,6 +26,20 @@ describe('specialization talent guide', () => {
     expect(screen.queryByLabelText('Holy talent tree')).toBeNull()
   })
 
+  it('labels the Ret 69913 preview as historical while Crusade identity is unresolved', () => {
+    render(<SpecTalentsPage spec="retribution" />)
+
+    const preview = screen.getByRole('region', { name: 'Retribution talent preview' })
+    expect(preview.textContent).toMatch(/historical.*Crusade.*under review/i)
+    expect(preview.querySelector('a[href="/build?id=#calculator"]')).toBeTruthy()
+    expect(document.body.textContent).not.toContain('current structure and rank tooltips')
+    expect(screen.getAllByRole('link', { name: /Start a new build/i })).toHaveLength(2)
+    expect(document.querySelectorAll('a[href="/build?id=#calculator"]').length).toBeGreaterThanOrEqual(3)
+    expect(screen.queryByRole('link', { name: /Build this setup/i })).toBeNull()
+    expect(preview.textContent).toMatch(/read-only preview/i)
+    expect(preview.querySelectorAll('button')).toHaveLength(0)
+  })
+
   it('links each guide to the hub its configuration names', () => {
     for (const page of SPEC_TALENTS_PAGES) {
       cleanup()
@@ -39,8 +53,8 @@ describe('specialization talent guide', () => {
     render(<SpecTalentsPage spec="holy" />)
 
     expect(screen.getByText('Beta build 1.60.1.69913')).toBeTruthy()
-    expect(screen.getByText('Updated September 20, 2026')).toBeTruthy()
-    expect(screen.getByText('0 tooltip updates since 69893')).toBeTruthy()
+    expect(screen.getByText('69913 snapshot reviewed September 20, 2026')).toBeTruthy()
+    expect(screen.getByText('0 tooltip updates since 69893 in that comparison')).toBeTruthy()
     expect(screen.getByText('Example Beta allocation')).toBeTruthy()
     expect(screen.getByRole('heading', { level: 2, name: 'Holy Paladin Talents Beta Talent Tree' })).toBeTruthy()
   })

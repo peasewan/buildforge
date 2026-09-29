@@ -8,11 +8,12 @@ import { classPlannerHref } from './lib/classPage'
 import type { PlannerBuild, PlannerConfig } from './lib/talentPlanner'
 import {
   canIncrementPlannerTalent,
-  decodePlannerBuild,
+  decodeValidatedPlannerBuild,
   decrementPlannerTalent,
   dominantPlannerBranch,
   encodePlannerBuild,
   incrementPlannerTalent,
+  isValidPlannerBuild,
   plannerBranchPoints,
   plannerLockReason,
   totalPlannerPoints,
@@ -35,17 +36,35 @@ function requestedLevel<B extends string>(classDef: ClassDefinition<B>, candidat
   return classDef.plannerModes.find((mode) => mode.level === candidate)?.level
 }
 
-function readStoredBuild<B extends string>(classDef: ClassDefinition<B>): { build: PlannerBuild; level: PlannerLevel } {
+function readStoredBuild<B extends string>(classDef: ClassDefinition<B>): { build: PlannerBuild; level: PlannerLevel; notice?: string } {
   if (typeof window === 'undefined') return { build: {}, level: defaultLevel(classDef) }
   const params = new URLSearchParams(window.location.search)
   const level = requestedLevel(classDef, Number(params.get('level'))) ?? defaultLevel(classDef)
   const code = params.get('build')
-  if (params.has('build')) return { build: decodePlannerBuild(code ?? '', classDef.talents), level }
+  const config = { ...classDef.plannerConfig, pointCap: pointCapFor(classDef, level) }
+  if (params.has('build')) {
+    const build = decodeValidatedPlannerBuild(code ?? '', classDef.talents, config)
+    if (build && (!params.has('level') || requestedLevel(classDef, Number(params.get('level'))))) return { build, level }
+    return { build: {}, level, notice: 'This shared build is invalid or outdated. Start a new build with the current talent rules.' }
+  }
   try {
-    const stored = JSON.parse(localStorage.getItem(classDef.storageKey) ?? '{}') as { build?: PlannerBuild; level?: PlannerLevel }
-    return { build: stored.build ?? {}, level: requestedLevel(classDef, Number(stored.level)) ?? level }
+    const raw = localStorage.getItem(classDef.storageKey)
+    if (!raw) return { build: {}, level }
+    const stored = JSON.parse(raw) as { build?: PlannerBuild; level?: PlannerLevel }
+    if (!stored || typeof stored !== 'object' || Array.isArray(stored) || (stored.level !== undefined && !requestedLevel(classDef, Number(stored.level)))) {
+      localStorage.removeItem(classDef.storageKey)
+      return { build: {}, level, notice: 'Your saved build is invalid or outdated. Start a new build with the current talent rules.' }
+    }
+    const storedLevel = requestedLevel(classDef, Number(stored.level)) ?? level
+    const saved = stored.build ?? {}
+    if (!isValidPlannerBuild(saved, classDef.talents, { ...classDef.plannerConfig, pointCap: pointCapFor(classDef, storedLevel) })) {
+      localStorage.removeItem(classDef.storageKey)
+      return { build: {}, level, notice: 'Your saved build is invalid or outdated. Start a new build with the current talent rules.' }
+    }
+    return { build: saved, level: storedLevel }
   } catch {
-    return { build: {}, level }
+    try { localStorage.removeItem(classDef.storageKey) } catch { /* Browser storage may be unavailable. */ }
+    return { build: {}, level, notice: 'Your saved build is invalid or outdated. Start a new build with the current talent rules.' }
   }
 }
 
@@ -103,7 +122,7 @@ export default function ClassCalculatorPage<B extends string>({ classDef }: { cl
   const [copied, setCopied] = useState(false)
   const [manualShareUrl, setManualShareUrl] = useState<string | null>(null)
   const copyRequest = useRef(0)
-  const [resetNotice, setResetNotice] = useState<string | null>(null)
+  const [resetNotice, setResetNotice] = useState<string | null>(initial.notice ?? null)
   const cap = pointCapFor(classDef, level)
   const viewMarker = useRef<HTMLDivElement>(null)
   const treeViewMarker = useRef<HTMLDivElement>(null)
@@ -153,6 +172,7 @@ export default function ClassCalculatorPage<B extends string>({ classDef }: { cl
   const commit = (next: PlannerBuild, nextLevel: PlannerLevel = level) => {
     syncSharedRoute(next, nextLevel)
     setBuild(next)
+    setResetNotice(null)
     copyRequest.current += 1
     setCopied(false)
     setManualShareUrl(null)
@@ -207,6 +227,7 @@ export default function ClassCalculatorPage<B extends string>({ classDef }: { cl
   }
 
   const copyBuild = async () => {
+    if (!points) return
     const url = new URL(classPlannerHref(classDef, encodePlannerBuild(build), level), window.location.origin)
     url.hash = points ? `tree-${activeBranch}` : 'class-calculator'
     const request = ++copyRequest.current
@@ -336,7 +357,7 @@ export default function ClassCalculatorPage<B extends string>({ classDef }: { cl
           <p>{classDef.branchNames[activeBranch]} {classDef.name} · Level {level}</p>
           <div className="class-summary-actions">
             <button type="button" onClick={startBlank}><RotateCcw size={15} /> Reset</button>
-            <button type="button" aria-label="Copy build link" onClick={copyBuild}><Copy size={15} /> {copied ? 'Copied' : 'Copy build link'}</button>
+            <button type="button" aria-label="Copy build link" disabled={!points} onClick={copyBuild}><Copy size={15} /> {copied ? 'Copied' : 'Copy build link'}</button>
           </div>
           <ForgePilotPanel classId={classDef.id} className={classDef.name} dataVersion={classDef.dataVersion} level={level} pointCaps={Object.fromEntries(classDef.plannerModes.map((mode) => [mode.level, mode.points]))} points={points} buildCode={encodePlannerBuild(build)} defaultName={`${classDef.branchNames[activeBranch]} ${classDef.name} build`} talents={classDef.talents} config={classDef.plannerConfig} />
           <div className="class-progress"><i style={{ width: `${Math.min(100, (points / cap) * 100)}%` }} /></div>

@@ -63,7 +63,7 @@ const retributionBuildPage: PageDefinition = {
   kind: 'build-guide',
   buildId: 'retribution-judgment-0-20-31',
   title: 'WoW Forever Retribution Paladin Build | BuildForgeTools',
-  description: 'Open a community WoW Forever Retribution Paladin build with a complete 0/20/31 allocation, then edit and share it in the BuildForge planner.',
+  description: 'Review the historical WoW Forever Retribution Paladin 0/20/31 allocation. Crusade is under review after a reported Beta change; start a new build.',
   canonical: 'https://buildforgetools.com/wow-forever-retribution-paladin-build',
   robots: 'index, follow',
 }
@@ -72,7 +72,7 @@ const retributionLevelingBuildPage: PageDefinition = {
   kind: 'build-guide',
   buildId: 'retribution-leveling-20-0-31',
   title: 'WoW Forever Retribution Paladin Leveling Build | BuildForgeTools',
-  description: 'Open a community WoW Forever Retribution Paladin leveling build with a complete 20/0/31 allocation, then edit and share it in the BuildForge planner.',
+  description: 'Review the historical WoW Forever Retribution Paladin leveling 20/0/31 allocation. Crusade is under review; start a new Level 20 route.',
   canonical: 'https://buildforgetools.com/wow-forever-retribution-paladin-leveling-build',
   robots: 'index, follow',
 }

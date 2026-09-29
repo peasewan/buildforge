@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && tsc -p tsconfig.scripts.json && tsx scripts/sync-class-static-pages.ts --check && vite build && tsx --tsconfig tsconfig.scripts.json scripts/prerender-visual.ts",
+    "build": "tsc -b && tsc -p tsconfig.scripts.json && node --import tsx scripts/sync-class-static-pages.ts --check && vite build --configLoader runner && env TSX_TSCONFIG_PATH=tsconfig.scripts.json node --import tsx scripts/prerender-visual.ts && env TSX_TSCONFIG_PATH=tsconfig.scripts.json node --import tsx scripts/seo-validate.ts",
     "classes:sync": "tsx scripts/sync-class-static-pages.ts",
     "typecheck": "tsc -b && tsc -p tsconfig.scripts.json",
     "test": "vitest run",
@@ -19,7 +19,7 @@
     "pipeline:simulate": "tsx scripts/release-simulate.ts",
     "analytics:report": "tsx scripts/analytics-report.ts",
     "talents:icons": "tsx scripts/download-talent-icons.ts",
-    "seo:validate": "tsx scripts/seo-validate.ts",
+    "seo:validate": "env TSX_TSCONFIG_PATH=tsconfig.scripts.json node --import tsx scripts/seo-validate.ts",
     "smoke:production": "node --import tsx scripts/post-deploy-smoke.ts",
     "emberville:validate": "node --import tsx scripts/emberville-data.ts --validate src/data/emberville-preview-2026-09-27.json",
     "emberville:query": "node --import tsx scripts/emberville-data.ts --query src/data/emberville-preview-2026-09-27.json",
