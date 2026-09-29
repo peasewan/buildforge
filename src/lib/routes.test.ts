@@ -95,6 +95,12 @@ describe('public page routing', () => {
     expect(pageForPath(pathname)).toMatchObject({ kind: 'build-landing', landingPageId, title })
   })
 
+  it('does not promise the archived Protection leveling route in the search description', () => {
+    const page = pageForPath('/wow-forever-protection-paladin-leveling-build/')
+    expect(page?.description).toMatch(/archived.*Improved Holy Strike/i)
+    expect(page?.description).not.toMatch(/follow the talent path/i)
+  })
+
   it('serves the Beta changes page as an indexable tracker', () => {
     expect(pageForPath('/wow-forever-paladin-beta-talent-changes/')).toEqual({
       kind: 'beta-changes',

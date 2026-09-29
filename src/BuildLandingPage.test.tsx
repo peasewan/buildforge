@@ -38,6 +38,19 @@ describe('Build landing page template', () => {
     expect(screen.getByRole('link', { name: 'Open Planner' }).getAttribute('href')).toBe('/build?id=#calculator')
   })
 
+  it('presents the retired Protection route as history and starts a blank replacement plan', () => {
+    render(<BuildLandingPage pageId="protection-leveling" />)
+
+    const hero = document.querySelector('.landing-hero')!
+    expect(hero.textContent).toMatch(/archived/i)
+    expect(hero.textContent).toMatch(/no replacement/i)
+    expect(hero.textContent).toMatch(/Status\s*Archived/i)
+    expect(screen.getByRole('heading', { level: 2, name: 'What to Do After the Route Was Archived' })).toBeTruthy()
+    for (const link of screen.getAllByRole('link', { name: /start a blank calculator/i })) {
+      expect(link.getAttribute('href')).toBe('/build?id=#calculator')
+    }
+  })
+
   it('reuses the Protection talent tree on the dungeon page', () => {
     render(<BuildLandingPage pageId="protection-dungeon" />)
 

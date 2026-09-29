@@ -50,6 +50,14 @@ describe('Paladin builds hub', () => {
     ]) expect(document.querySelector(`a[href="${href}"]`)).toBeTruthy()
   })
 
+  it('labels the retired Protection leveling route before sending readers to it', () => {
+    render(<PaladinBuildsHub />)
+
+    const link = document.querySelector('a[href="/wow-forever-protection-paladin-leveling-build"]')
+    expect(link?.closest('.build-card')?.textContent).toMatch(/archived/i)
+    expect(link?.closest('.build-card')?.textContent).toMatch(/removed/i)
+  })
+
   it('sends a specialization card to its hub whenever that specialization has one', () => {
     for (const spec of HUB_SPECIALIZATIONS) {
       const hub = SPEC_BUILDS_HUBS.find((candidate) => candidate.spec === spec.id)

@@ -1,0 +1,39 @@
+{
+  "reviewedAt": "2026-09-29",
+  "authorization": "The owner requested a targeted response to the September 28 GSC losses. Protection Leveling had 11–45 daily impressions on September 18–24 and none on September 25–28. The route had been archived after a talent removal, but several pages still presented it as current. This amendment permits the reviewed body copy, the archived page's corrected description and Open Graph description, two Article dateModified updates, and three meaningful sitemap lastmod updates. URLs, titles, H1s, canonicals, robots, and link destinations remain frozen; all other descriptions and head SEO remain frozen.",
+  "pages": {
+    "/paladin": {
+      "lastmod": "2026-09-18",
+      "rootSha256": "58f51e8ad87b161ada0e5f710d63502d4737151d57b5c591ad0075dba54440e5",
+      "linksSha256": "d96c75ccce155bc128be59be36512641ce72770162b8be84b641232102d6aed0"
+    },
+    "/wow-forever-paladin-builds": {
+      "lastmod": "2026-09-18",
+      "rootSha256": "dea237afbdefdde51f6f0d345ec09fe3bfffa8eb9a729a3c3188da48fa29705b",
+      "linksSha256": "74f5e87147346448707264e2fcf2e73ab55130148fe321112f844b05115d0971"
+    },
+    "/wow-forever-paladin-leveling-build": {
+      "lastmod": "2026-09-29",
+      "rootSha256": "90620914b6cc356091c9d029afae5440148b632a155f41b278425bc306c50c39",
+      "linksSha256": "b6e1a62655567acae081d8a57fed06ac06974450ffafbef4fcdfcb8378428714",
+      "headSeoSha256": "94f7eeb24ce00fd9480b8b6ccb3d067806370f7e586ac75283631cca80bc589f"
+    },
+    "/wow-forever-protection-paladin-dungeon-build": {
+      "lastmod": "2026-09-18",
+      "rootSha256": "6ffd47dfc20590a00aa824e2a4f0c28c7616fd667da4c39bc35f871f0803fbe1",
+      "linksSha256": "0fd7d4d271fce8a5b98d77f615b70311ee1d8f1a7d78cc33b5697fb387fb375c"
+    },
+    "/wow-forever-protection-paladin-builds": {
+      "lastmod": "2026-09-29",
+      "rootSha256": "4f6b47f11aa5387c68514a80a804a8d65cb595d47402a796ca95e47fc6d143fe",
+      "linksSha256": "c16944b55610c01e65ec6ecfb68bd034c7107d2d5cfa0fbebf5d08fca3802b0f"
+    },
+    "/wow-forever-protection-paladin-leveling-build": {
+      "lastmod": "2026-09-29",
+      "rootSha256": "1651a28a0b760d5e5a5a1f2d32bbe53e336c1b4e287da029e6c6cf2b1f6f7439",
+      "linksSha256": "7975392659f808c891a5a121caaaed3a73e48ce67e52d32136bb313c22566e9e",
+      "description": "Review the archived WoW Forever Protection Paladin Level 20 route. Improved Holy Strike was removed; no replacement is verified. Start a blank talent plan.",
+      "headSeoSha256": "87c70591f1d9d13e16c822b666a0fc17793839a209843ee4c5119f6ddeadc5b6"
+    }
+  }
+}

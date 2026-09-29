@@ -79,6 +79,14 @@ describe('specialization builds hub', () => {
     expect(route.compareDocumentPosition(document.querySelector('#featured-build')!)).toBe(Node.DOCUMENT_POSITION_FOLLOWING)
   })
 
+  it('does not advertise the archived Protection route as a current leveling path', () => {
+    render(<SpecBuildsHub spec="protection" />)
+
+    const links = document.querySelectorAll('a[href="/wow-forever-protection-paladin-leveling-build"]')
+    expect(links.length).toBeGreaterThan(0)
+    for (const link of links) expect(link.closest('article, .spec-beta-start')?.textContent).toMatch(/archived/i)
+  })
+
   it('does not add the Protection starting route to Retribution', () => {
     render(<SpecBuildsHub spec="retribution" />)
     expect(screen.queryByRole('region', { name: 'Archived Beta Protection starting route' })).toBeNull()

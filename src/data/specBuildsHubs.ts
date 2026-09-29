@@ -47,7 +47,7 @@ export const SPEC_BUILDS_HUBS: SpecBuildsHubConfig[] = [
     },
     buildTypes: [
       { id: 'dungeon-tank', eyebrow: 'Dungeon Tank', title: 'Protection Paladin Dungeon Tank Build', description: 'Designed for group content and defensive play.', href: '/wow-forever-protection-paladin-dungeon-build', icon: 'protection' },
-      { id: 'leveling-tank', eyebrow: 'Leveling Tank', title: 'Protection Paladin Leveling Build', description: 'Start with a safer solo progression path and adapt it in the planner.', href: '/wow-forever-protection-paladin-leveling-build', icon: 'leveling' },
+      { id: 'leveling-tank', eyebrow: 'Archived Leveling', title: 'Protection Paladin Leveling Build', description: 'The old Level 20 route used a removed talent. Review its history, then start a blank planner; no replacement is verified.', href: '/wow-forever-protection-paladin-leveling-build', icon: 'leveling' },
       { id: 'pvp-protection', eyebrow: 'PvP', title: 'Protection Paladin PvP Build', description: 'A defensive route for objectives, survival, control, and team utility.', href: '/wow-forever-protection-paladin-pvp-build', icon: 'pvp' },
     ],
     editorialSections: [
@@ -55,7 +55,7 @@ export const SPEC_BUILDS_HUBS: SpecBuildsHubConfig[] = [
         heading: 'How to Use These Protection Paladin Builds',
         paragraphs: [
           'The complete Protection example on BuildForgeTools uses a 20/31/0 allocation: 31 points establish the defensive Protection core and 20 supporting points come from Holy. The full build page lists every selected rank and loads the same allocation into the calculator. Use that page when you want an exact setup rather than a general description of tank play.',
-          'The dungeon and leveling pages approach the same current example allocation from different situations. The dungeon page explains the jobs a group tank must plan around, while the leveling page describes how a durable route can develop before all 51 points are available. They are not presented as separate, proven best-in-slot talent trees. The talent fields come from Beta client build 1.60.1.69913; the build recommendations still require player testing.',
+          'The dungeon page explains the jobs a group tank must plan around. The leveling page now preserves an older Level 20 route for comparison: it included Improved Holy Strike, which Blizzard removed on September 24. Do not load that archived allocation as a current route. The separate 20/31/0 example is a longer-term community build, not a verified replacement for Level 20. Talent fields in the planner are from client build 1.60.1.69913 and remain under review against later Beta changes.',
         ],
       },
       {
@@ -68,8 +68,8 @@ export const SPEC_BUILDS_HUBS: SpecBuildsHubConfig[] = [
       {
         heading: 'Dungeon Tank and Leveling Tradeoffs',
         paragraphs: [
-          'A leveling route values consistency across many ordinary fights. Extra durability can reduce recovery time and make an unexpected additional enemy less punishing. A dungeon route gives more weight to party protection, threat behavior, and the tools used during difficult pulls. The same underlying talent can matter for different reasons, so the recommended reading order changes even when the eventual 20/31/0 allocation is shared.',
-          'Use the leveling page when planning how the character grows, the dungeon page when reviewing the role in group content, and the complete Shield build when you need every rank at once. If testing shows that a different supporting branch or rank order works better, change it in the calculator and copy the new build URL. Shared links preserve the exact selection without turning one community build example into a universal recommendation.',
+          'A leveling route values consistency across many ordinary fights, while a dungeon route gives more weight to party protection and tools for difficult pulls. The archived Level 20 Protection route included a talent since removed, so it cannot be treated as a verified progression into the separate 20/31/0 tank example. Compare the two pages as different planning records until a replacement early-level path is reviewed.',
+          'Use the archived leveling page to see why the earlier point order was retired, the dungeon page to review the group role, and the complete Shield build to inspect every rank of a separate 51-point example. To plan current leveling, begin with a blank calculator and check each point against the latest client before sharing it. We will publish a new step-by-step Protection route only after its data and allocation are reviewed.',
         ],
       },
       {

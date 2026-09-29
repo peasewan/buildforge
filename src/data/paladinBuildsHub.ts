@@ -46,7 +46,7 @@ export const HUB_PLAYSTYLE_SECTIONS: HubPlaystyleSection[] = [
     intro: 'Solo-friendly talent paths for steady progression while leveling.',
     builds: [
       { id: 'paladin-leveling', title: 'Paladin Leveling Build', description: 'A flexible solo path from level 10 onward, focused on steady progression and survivability.', href: '/wow-forever-paladin-leveling-build', icon: 'leveling' },
-      { id: 'protection-leveling', title: 'Protection Paladin Leveling Build', description: 'A durable solo route that leans on defensive talents and carries into dungeon tanking.', href: '/wow-forever-protection-paladin-leveling-build', icon: 'protection' },
+      { id: 'protection-leveling', title: 'Protection Paladin Leveling Build', description: 'Archived Beta route: its Level 20 example included the removed Improved Holy Strike. No replacement has been verified.', href: '/wow-forever-protection-paladin-leveling-build', icon: 'protection' },
       { id: 'retribution-leveling', title: 'Retribution Paladin Leveling Build', description: 'A damage-focused solo leveling route with early Holy support for questing.', href: '/wow-forever-retribution-paladin-leveling-build', icon: 'retribution' },
     ],
   },

@@ -13,13 +13,23 @@ import patchAmendments from '../docs/seo/approved-patch-notice-2026-09-27.json'
 import growthAmendments from '../docs/seo/approved-growth-flow-2026-09-27.json'
 import pvpEntryAmendments from '../docs/seo/approved-pvp-entry-2026-09-28.json'
 import retentionAmendments from '../docs/seo/approved-retention-quality-2026-09-28.json'
-// Explicitly reviewed patch annotations update only body/link hashes; baseline SEO fields stay frozen.
+import protectionArchiveAmendments from '../docs/seo/approved-protection-archive-2026-09-29.json'
+// Explicitly reviewed annotations scope body and sitemap revisions; only named descriptions and head fingerprints can change.
 const frozenPages = baseline.pages.map(page => {
-  const amendment = retentionAmendments.pages[page.path as keyof typeof retentionAmendments.pages]
+  const archiveAmendment = protectionArchiveAmendments.pages[page.path as keyof typeof protectionArchiveAmendments.pages]
+  const amendment = archiveAmendment
+    ?? retentionAmendments.pages[page.path as keyof typeof retentionAmendments.pages]
     ?? pvpEntryAmendments.pages[page.path as keyof typeof pvpEntryAmendments.pages]
     ?? growthAmendments.pages[page.path as keyof typeof growthAmendments.pages]
     ?? patchAmendments.pages[page.path as keyof typeof patchAmendments.pages]
-  return amendment ? { ...page, rootSha256: amendment.rootSha256, linksSha256: amendment.linksSha256 } : page
+  return amendment ? {
+    ...page,
+    rootSha256: amendment.rootSha256,
+    linksSha256: amendment.linksSha256,
+    lastmod: archiveAmendment?.lastmod ?? page.lastmod,
+    description: archiveAmendment && 'description' in archiveAmendment ? archiveAmendment.description : page.description,
+    headSeoSha256: archiveAmendment && 'headSeoSha256' in archiveAmendment ? archiveAmendment.headSeoSha256 : page.headSeoSha256,
+  } : page
 })
 import vercel from '../vercel.json'
 import { parseSitemap, validateSeo, type Requirement } from './seo/validate'

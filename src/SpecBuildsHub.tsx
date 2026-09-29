@@ -58,7 +58,7 @@ export default function SpecBuildsHub({ spec }: { spec: Branch }) {
           <strong>{betaStart.current.allocation}</strong>
           <span>{betaStart.current.points} points at Level {betaStart.current.level}</span>
           <a href={betaLevelingPlannerHref('protection-leveling')} className="button primary" onClick={link('beta-start')(betaLevelingPlannerHref('protection-leveling'))}>{betaStart.status === 'archived' ? 'Open Calculator without old route' : 'Load in Talent Calculator'} <ArrowRight size={16} /></a>
-          <a href="/wow-forever-protection-paladin-leveling-build" onClick={link('beta-leveling')('/wow-forever-protection-paladin-leveling-build')}>See the level-by-level route <ArrowRight size={15} /></a>
+          <a href="/wow-forever-protection-paladin-leveling-build" onClick={link('beta-leveling')('/wow-forever-protection-paladin-leveling-build')}>{betaStart.status === 'archived' ? 'Review the archived level-by-level route' : 'See the level-by-level route'} <ArrowRight size={15} /></a>
         </div>
       </section>}
 
