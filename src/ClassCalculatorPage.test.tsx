@@ -12,6 +12,27 @@ const buildById = (id: string) => hunterClassFixture.builds.find((build) => buil
 const clipboardWrite = vi.fn().mockResolvedValue(undefined)
 
 describe('ClassCalculatorPage renders any class from ClassDefinition', () => {
+  it('lets a player save and reopen a named build for a class calculator', () => {
+    render(<ClassCalculatorPage classDef={hunterClassFixture} />)
+    fireEvent.click(screen.getByRole('button', { name: new RegExp(`Load ${buildById('hunter-bm-leveling').shortTitle}`, 'i') }))
+    fireEvent.click(screen.getByRole('button', { name: 'Save to ForgePilot' }))
+    fireEvent.change(screen.getByRole('textbox', { name: 'Build name' }), { target: { value: 'My Hunter route' } })
+    fireEvent.click(screen.getByRole('button', { name: 'Save this build' }))
+
+    expect(screen.getByText('My Hunter route')).toBeTruthy()
+    const saved = localStorage.getItem('buildforge-forge-pilot-saved-builds-v1') ?? ''
+    expect(saved).toContain('My Hunter route')
+    expect(saved).toContain(hunterClassFixture.dataVersion)
+    const reopen = screen.getByRole('link', { name: 'Reopen in Calculator' }).getAttribute('href')
+    expect(reopen).toContain('/hunter?build=')
+    expect(reopen).toContain('level=20')
+
+    cleanup()
+    history.replaceState({}, '', reopen ?? hunterClassFixture.plannerPath)
+    render(<ClassCalculatorPage classDef={hunterClassFixture} />)
+    expect(screen.getAllByText('11 / 11').length).toBeGreaterThan(0)
+  })
+
   afterEach(cleanup)
 
   it('marks the page root with the class id for class-specific art direction', () => {

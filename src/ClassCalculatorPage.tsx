@@ -21,6 +21,7 @@ import { track } from './lib/analytics'
 import { copyTextToClipboard } from './lib/clipboard'
 import { claimBuildCompletion, loadClaimedBuildCompletions, saveClaimedBuildCompletions } from './lib/buildCompletion'
 import { usePlannerView } from './lib/usePlannerView'
+import ForgePilotPanel from './ForgePilotPanel'
 
 function defaultLevel<B extends string>(classDef: ClassDefinition<B>): PlannerLevel {
   return classDef.plannerModes[0]?.level ?? (classDef.beta.levelCap as PlannerLevel)
@@ -337,6 +338,7 @@ export default function ClassCalculatorPage<B extends string>({ classDef }: { cl
             <button type="button" onClick={startBlank}><RotateCcw size={15} /> Reset</button>
             <button type="button" aria-label="Copy build link" onClick={copyBuild}><Copy size={15} /> {copied ? 'Copied' : 'Copy build link'}</button>
           </div>
+          <ForgePilotPanel classId={classDef.id} className={classDef.name} dataVersion={classDef.dataVersion} level={level} pointCaps={Object.fromEntries(classDef.plannerModes.map((mode) => [mode.level, mode.points]))} points={points} buildCode={encodePlannerBuild(build)} defaultName={`${classDef.branchNames[activeBranch]} ${classDef.name} build`} talents={classDef.talents} config={classDef.plannerConfig} />
           <div className="class-progress"><i style={{ width: `${Math.min(100, (points / cap) * 100)}%` }} /></div>
           <small>{points} / {cap}</small>
           {manualShareUrl && <div className="pvp-manual-share"><p role="status">Clipboard access was unavailable. Select and copy this link manually.</p><label htmlFor={`${classDef.id}-manual-share`}>Build link for manual copy</label><input id={`${classDef.id}-manual-share`} readOnly value={manualShareUrl} onFocus={(event) => event.currentTarget.select()} /></div>}

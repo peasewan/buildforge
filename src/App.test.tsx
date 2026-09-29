@@ -11,6 +11,55 @@ afterEach(() => {
 })
 
 describe('Paladin talent calculator page', () => {
+  it('saves a named ForgePilot build without replacing the editable calculator draft', () => {
+    HTMLElement.prototype.scrollIntoView = vi.fn()
+    render(<App />)
+    fireEvent.click(screen.getByRole('button', { name: 'Load Holy Level 20 build' }))
+    const draftBefore = localStorage.getItem('wow-forever-paladin-build')
+
+    fireEvent.click(screen.getByRole('button', { name: 'Save to ForgePilot' }))
+    fireEvent.change(screen.getByRole('textbox', { name: 'Build name' }), { target: { value: 'My Holy route' } })
+    fireEvent.click(screen.getByRole('button', { name: 'Save this build' }))
+
+    expect(screen.getByText('My Holy route')).toBeTruthy()
+    expect(localStorage.getItem('wow-forever-paladin-build')).toBe(draftBefore)
+    expect(localStorage.getItem('buildforge-forge-pilot-saved-builds-v1')).toContain('My Holy route')
+    expect(localStorage.getItem('buildforge-forge-pilot-saved-builds-v1')).toContain('"level":20')
+  })
+
+  it('reopens a Level 20 ForgePilot build with its level intact', () => {
+    HTMLElement.prototype.scrollIntoView = vi.fn()
+    const first = render(<App />)
+    fireEvent.click(screen.getByRole('button', { name: 'Load Holy Level 20 build' }))
+    fireEvent.click(screen.getByRole('button', { name: 'Save to ForgePilot' }))
+    fireEvent.click(screen.getByRole('button', { name: 'Save this build' }))
+    const reopen = screen.getByRole('link', { name: 'Reopen in Calculator' })
+    expect(reopen.getAttribute('href')).toContain('level=20')
+
+    first.unmount()
+    window.history.replaceState({}, '', reopen.getAttribute('href') ?? '/paladin')
+    render(<App />)
+    fireEvent.click(screen.getByRole('button', { name: 'Save to ForgePilot' }))
+    fireEvent.click(screen.getByRole('button', { name: 'Save this build' }))
+    const saved = JSON.parse(localStorage.getItem('buildforge-forge-pilot-saved-builds-v1') ?? '[]') as Array<{ level: number | null }>
+    expect(saved).toHaveLength(1)
+    expect(saved[0].level).toBe(20)
+  })
+
+  it('keeps a versionless imported Paladin link in review instead of treating it as current data', () => {
+    render(<App />)
+    fireEvent.click(screen.getByRole('button', { name: 'Save to ForgePilot' }))
+    fireEvent.change(screen.getByRole('textbox', { name: 'Build name' }), { target: { value: 'Old Holy link' } })
+    fireEvent.change(screen.getByRole('textbox', { name: 'Import a BuildForge link' }), { target: { value: `/build?id=${encodeBuild(HOLY_HEALING_BUILD.build)}#calculator` } })
+    fireEvent.click(screen.getByRole('button', { name: 'Import link for review' }))
+
+    expect(screen.getByText('Old Holy link')).toBeTruthy()
+    expect(screen.getByText('Version needs review before reopening')).toBeTruthy()
+    expect(localStorage.getItem('buildforge-forge-pilot-saved-builds-v1')).toContain('"dataVersion":"unknown"')
+    expect(screen.queryByRole('link', { name: 'Reopen in Calculator' })).toBeNull()
+    expect(screen.getByRole('link', { name: 'Open original link for review' }).getAttribute('href')).toContain('/build?id=')
+  })
+
   it('labels the interactive planner as a WoW Forever Paladin talent tree', () => {
     render(<App />)
 

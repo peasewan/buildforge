@@ -15,6 +15,7 @@ import { usePlannerView } from './lib/usePlannerView'
 import SiteFooter from './SiteFooter'
 import BetaDataStatus from './BetaDataStatus'
 import VerificationBadge from './VerificationBadge'
+import ForgePilotPanel from './ForgePilotPanel'
 
 const branchIcons: Record<Branch, string> = {
   holy: '/images/icons/holy-strike.png',
@@ -24,16 +25,22 @@ const branchIcons: Record<Branch, string> = {
 
 const branchMax = (branch: Branch) => talents.filter((talent) => talent.branch === branch).reduce((sum, talent) => sum + talent.maxRank, 0)
 
-function initialPlannerState(): { build: Build; restored: boolean } {
-  if (typeof window === 'undefined') return { build: {}, restored: false }
+function initialPlannerState(): { build: Build; restored: boolean; forgePilotLevel: number | null } {
+  if (typeof window === 'undefined') return { build: {}, restored: false, forgePilotLevel: null }
   const params = new URLSearchParams(window.location.search)
   const shared = params.get('id')
-  if (params.has('id')) return { build: decodeBuild(shared ?? '', talents), restored: false }
+  if (params.has('id')) {
+    const build = decodeBuild(shared ?? '', talents)
+    const requestedLevel = Number(params.get('level'))
+    const forgePilotLevel = requestedLevel === 20 && totalPoints(build) <= 11 ? 20
+      : requestedLevel === 60 ? 60 : null
+    return { build, restored: false, forgePilotLevel }
+  }
   try {
     const build = decodeBuild(localStorage.getItem('wow-forever-paladin-build') ?? '', talents)
-    return { build, restored: totalPoints(build) > 0 }
+    return { build, restored: totalPoints(build) > 0, forgePilotLevel: null }
   } catch {
-    return { build: {}, restored: false }
+    return { build: {}, restored: false, forgePilotLevel: null }
   }
 }
 
@@ -135,6 +142,7 @@ export default function App() {
   const [initialPlanner] = useState(initialPlannerState)
   const [branch, setBranch] = useState<Branch>(() => dominantBranch(initialPlanner.build, talents, 'holy'))
   const [build, setBuild] = useState<Build>(initialPlanner.build)
+  const [forgePilotLevel, setForgePilotLevel] = useState<number | null>(initialPlanner.forgePilotLevel)
   const [showSavedBuild, setShowSavedBuild] = useState(initialPlanner.restored)
   const [copied, setCopied] = useState(false)
   const [manualShareUrl, setManualShareUrl] = useState<string | null>(null)
@@ -168,6 +176,7 @@ export default function App() {
     setCopied(false)
     setManualShareUrl(null)
     setBuild(next)
+    if (totalPoints(next) > 11) setForgePilotLevel((previous) => previous === 20 ? null : previous)
   }
 
   const openTool = (nextBranch?: Branch, placement = 'hero') => {
@@ -182,6 +191,7 @@ export default function App() {
   const startNewBuild = () => {
     track('start_new_build', { previous_points: points })
     replaceBuild({})
+    setForgePilotLevel(null)
     setShowSavedBuild(false)
     setCopied(false)
     window.history.replaceState({}, '', '/paladin#calculator')
@@ -225,6 +235,7 @@ export default function App() {
 
   const loadExampleBuild = (example: ExampleBuild) => {
     replaceBuild({ ...example.build })
+    setForgePilotLevel(60)
     setBranch(dominantBranch(example.build, talents, 'holy'))
     setShowSavedBuild(false)
     setCopied(false)
@@ -240,6 +251,7 @@ export default function App() {
     const path = BETA_SPEC_PATHS[nextBranch]
     if (path.status !== 'current') return
     replaceBuild({ ...path.current.build })
+    setForgePilotLevel(20)
     setBranch(nextBranch)
     setShowSavedBuild(false)
     setCopied(false)
@@ -352,6 +364,7 @@ export default function App() {
                 <div className="current-build"><span>Current Build</span><strong>{branchNames[currentBranch]} Paladin</strong><small>{points === 51 ? 'Build complete' : `${51 - points} points remaining`}</small></div>
                 <div className="selected-list"><span>Selected Talents</span>{selected.length ? selected.map((talent) => <button key={talent.id} onClick={() => replaceBuild(decrementTalent(build, talent, talents))}><img src={talent.icon} alt="" /><span>{talent.name}<small>{branchNames[talent.branch]}</small></span><b>{build[talent.id]}/{talent.maxRank}</b></button>) : <div className="empty-selection"><Sparkles size={18} /> Your chosen talents will appear here.</div>}</div>
                 <button className="copy-button" disabled={!points} onClick={copyBuild}>{copied ? <Check size={17} /> : <Clipboard size={17} />}{copied ? 'Link copied' : 'Copy Build Link'}</button>
+                <ForgePilotPanel classId="paladin" className="Paladin" dataVersion={betaDataset.sourceVersion} level={forgePilotLevel} pointCaps={{ 20: 11, 60: 51 }} points={points} buildCode={encodeBuild(build)} defaultName={`${branchNames[currentBranch]} Paladin build`} talents={talents} config={{ branches: BRANCHES, pointCap: 51 }} />
                 <p className="share-note">Creates a link that opens this exact setup.</p>
                 {manualShareUrl && <div className="pvp-manual-share"><p role="status">Clipboard access was unavailable. Select and copy this link manually.</p><label htmlFor="paladin-manual-share">Build link for manual copy</label><input id="paladin-manual-share" readOnly value={manualShareUrl} onFocus={(event) => event.currentTarget.select()} /></div>}
               </aside>
