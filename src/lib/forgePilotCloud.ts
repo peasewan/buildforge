@@ -1,5 +1,5 @@
 import type { ForgePilotSavedBuild } from './forgePilot'
-import { isSavedBuild } from './forgePilotStorage'
+import { isSavedBuild } from './forgePilotStorage.js'
 
 export const CLOUD_BUILD_LIMIT = 20
 

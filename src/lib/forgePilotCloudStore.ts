@@ -1,6 +1,6 @@
 import { del, get, list, put } from '@vercel/blob'
 import type { ForgePilotSavedBuild } from './forgePilot'
-import { CLOUD_BUILD_LIMIT, cloudBuildPath, cloudUserPrefix, parseCloudBuild, sameCloudBuild, validCloudBuildName } from './forgePilotCloud'
+import { CLOUD_BUILD_LIMIT, cloudBuildPath, cloudUserPrefix, parseCloudBuild, sameCloudBuild, validCloudBuildName } from './forgePilotCloud.js'
 
 export type CloudStoreErrorCode = 'invalid_id' | 'limit_reached' | 'conflict' | 'not_found' | 'corrupt_store'
 
