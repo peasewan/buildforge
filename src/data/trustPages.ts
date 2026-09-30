@@ -123,7 +123,7 @@ export const TRUST_PAGES: TrustPageConfig[] = [
     description: 'Read how BuildForgeTools uses Google Analytics, local browser storage, share links, and privately submitted feedback.',
     eyebrow: 'BuildForgeTools',
     intro: 'This policy explains what information BuildForgeTools processes when you use its build planners and game tools, visit a content page, or submit feedback.',
-    updated: 'September 27, 2026',
+    updated: 'September 29, 2026',
     sections: [
       {
         heading: 'Analytics',
@@ -139,7 +139,8 @@ export const TRUST_PAGES: TrustPageConfig[] = [
       {
         heading: 'Planner Storage and Share Links',
         paragraphs: [
-          'Build planners may store recent selections or notes in local browser storage so work can be restored on a later visit. WoW Forever stores a recent talent allocation; the Emberville preview planner can store build notes. This information remains on the device and can be removed through the tool or by clearing browser storage.',
+          'Build planners may store recent selections or notes in local browser storage so work can be restored on a later visit. WoW Forever stores a recent talent allocation and any ForgePilot saves kept on this device; the Emberville preview planner can store build notes. This local information remains on the device and can be removed through the tool or by clearing browser storage.',
+          'An optional ForgePilot account lets signed-in players save named WoW Forever builds across devices. For those cloud saves, BuildForgeTools stores the build name, class, original talent allocation, data version, level, source link when present, and save time in private Vercel Blob storage under the account identifier supplied by Clerk. Local builds are uploaded only when the player explicitly chooses cloud save or imports them. Signing out does not delete local or cloud records. Players can delete cloud builds in ForgePilot and can use the Feedback form to request account and associated data deletion.',
           'When a tool supports copied build links, selected game identifiers and ranks may be encoded in the URL. A share link does not require an account and is not intended to contain a name, email address, or other personal information. Anyone who receives the URL can open the shared setup, so do not include sensitive information in notes or links shared elsewhere.',
           'After a WoW Forever build link is successfully copied, BuildForgeTools stores the normalized talent allocation, point total, dominant specialization, an anonymous per-session identifier, and submission time in private storage. Repeated copies of the same build in the same browser session on the same day overwrite the same record. These records are collected to measure shared build patterns and are not displayed as popularity statistics until the sample is large enough to be meaningful.',
         ],
@@ -167,8 +168,9 @@ export const TRUST_PAGES: TrustPageConfig[] = [
       {
         heading: 'External Links and Service Providers',
         paragraphs: [
-          'Pages may link to official game announcements, public community references, and other websites. Their privacy practices are controlled by their respective operators. BuildForgeTools is hosted through Vercel, which processes the technical requests needed to deliver the site and feedback endpoint.',
+          'Pages may link to official game announcements, public community references, and other websites. Their privacy practices are controlled by their respective operators. BuildForgeTools is hosted through Vercel, which processes the technical requests needed to deliver the site and private storage. Optional account sign-in is provided by Clerk, which processes the account identifiers, authentication information, and session data needed for login. BuildForgeTools does not receive your password from Clerk.',
         ],
+        links: [{ href: 'https://clerk.com/legal/privacy', label: 'Clerk Privacy Policy' }],
       },
       {
         heading: 'Questions and Policy Changes',

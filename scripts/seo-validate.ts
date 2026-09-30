@@ -15,6 +15,7 @@ import pvpEntryAmendments from '../docs/seo/approved-pvp-entry-2026-09-28.json'
 import retentionAmendments from '../docs/seo/approved-retention-quality-2026-09-28.json'
 import protectionArchiveAmendments from '../docs/seo/approved-protection-archive-2026-09-29.json'
 import forgePilotAmendments from '../docs/seo/approved-forge-pilot-2026-09-29.json'
+import forgePilotAccountAmendments from '../docs/seo/approved-forge-pilot-account-2026-09-29.json'
 import previewReleaseAmendments from '../docs/seo/approved-preview-release-gate-2026-09-29.json'
 import siteConsistencyAmendments from '../docs/seo/approved-site-consistency-2026-09-29.json'
 // Explicitly reviewed annotations scope body and sitemap revisions; only named descriptions and head fingerprints can change.
@@ -38,7 +39,9 @@ const frozenPages = baseline.pages.map(page => {
   const consistencyAmendment = siteConsistencyAmendments.pages[page.path as keyof typeof siteConsistencyAmendments.pages]
   const withConsistency = consistencyAmendment ? { ...withPreview, ...consistencyAmendment } : withPreview
   const forgePilotAmendment = forgePilotAmendments.pages[page.path as keyof typeof forgePilotAmendments.pages]
-  return forgePilotAmendment ? { ...withConsistency, ...forgePilotAmendment } : withConsistency
+  const withForgePilot = forgePilotAmendment ? { ...withConsistency, ...forgePilotAmendment } : withConsistency
+  const accountAmendment = forgePilotAccountAmendments.pages[page.path as keyof typeof forgePilotAccountAmendments.pages]
+  return accountAmendment ? { ...withForgePilot, ...accountAmendment } : withForgePilot
 })
 import vercel from '../vercel.json'
 import { parseSitemap, validateSeo, type Requirement } from './seo/validate'

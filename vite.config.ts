@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitest/config'
+import { loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
 import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
@@ -14,7 +15,16 @@ const classInputs = Object.fromEntries(
     .map(({ name, file }) => [name, resolve(import.meta.dirname, file)]),
 )
 
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
+  // Clerk's Vercel integration supplies NEXT_PUBLIC_ for Next.js. Expose only
+  // its publishable key to this Vite client; never map CLERK_SECRET_KEY here.
+  define: {
+    'import.meta.env.VITE_CLERK_PUBLISHABLE_KEY': JSON.stringify(
+      loadEnv(mode, import.meta.dirname, 'VITE_').VITE_CLERK_PUBLISHABLE_KEY
+        ?? process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY
+        ?? '',
+    ),
+  },
   plugins: [
     {
       name: 'production-only-analytics',
@@ -90,4 +100,4 @@ export default defineConfig({
     environmentOptions: { jsdom: { url: 'https://buildforgetools.com/' } },
     exclude: ['**/node_modules/**', '**/.worktrees/**'],
   },
-})
+}))

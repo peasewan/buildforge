@@ -42,8 +42,15 @@ describe('site trust pages', () => {
 
     expect(screen.getByRole('heading', { level: 2, name: 'Analytics' })).toBeTruthy()
     expect(screen.getByRole('heading', { level: 2, name: 'Feedback Data' })).toBeTruthy()
-    expect(screen.getByText(/Vercel Blob/)).toBeTruthy()
+    expect(screen.getByText(/Submissions are saved in private Vercel Blob storage/)).toBeTruthy()
     expect(screen.getByText(/talent or skill interactions/)).toBeTruthy()
+  })
+
+  it('explains optional account sync without implying local builds are uploaded automatically', () => {
+    render(<TrustPage pageId="privacy" />)
+
+    expect(screen.getByText(/Local builds are uploaded only when the player explicitly chooses cloud save or imports them/)).toBeTruthy()
+    expect(screen.getByRole('link', { name: 'Clerk Privacy Policy' }).getAttribute('href')).toBe('https://clerk.com/legal/privacy')
   })
 
   it('explains advertising cookies and gives visitors a personalization opt-out', () => {

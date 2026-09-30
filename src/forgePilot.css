@@ -6,6 +6,12 @@
 .forge-pilot-content{padding-top:1rem}
 .forge-pilot-heading,.forge-pilot-record-top{display:flex;justify-content:space-between;gap:.75rem;flex-wrap:wrap}
 .forge-pilot-heading small,.forge-pilot-record-top small{color:#b6afa0}
+.forge-pilot-account-bar,.forge-pilot-cloud-heading{display:flex;align-items:center;justify-content:space-between;gap:.65rem;flex-wrap:wrap}
+.forge-pilot-account-bar{margin-top:.85rem;padding:.7rem .8rem;border:1px solid rgba(217,164,65,.22);border-radius:9px;background:#141922;font-size:.83rem;line-height:1.45;color:#d5d0c3}
+.forge-pilot-account-bar button,.forge-pilot-cloud-heading button{border:1px solid #74603b;border-radius:8px;background:#202633;color:#ffe8a3;padding:.5rem .7rem}
+.forge-pilot-cloud-section{margin-top:1.25rem;padding-top:1rem;border-top:1px solid #38404b}
+.forge-pilot-cloud-heading h4,.forge-pilot-content>h4{margin:.8rem 0 .6rem;color:#ffe8a3}
+.forge-pilot-cloud-heading h4{margin:0}
 .forge-pilot label{display:block;margin:.9rem 0 .3rem;font-size:.85rem}
 .forge-pilot-save-row,.forge-pilot-edit,.forge-pilot-record-actions{display:flex;gap:.5rem;flex-wrap:wrap}
 .forge-pilot input{min-width:12rem;flex:1;border:1px solid #6a5a3c;border-radius:8px;background:#10141d;color:#fff;padding:.6rem}

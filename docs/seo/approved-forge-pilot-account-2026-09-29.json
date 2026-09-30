@@ -1,0 +1,9 @@
+{
+  "reviewedAt": "2026-09-29",
+  "authorization": "The owner requested ForgePilot login for future paid features. This fingerprint covers only the optional account/cloud-save controls inside the existing Paladin calculator and the short paragraph accurately describing them. URL, title, H1, description, canonical, robots, head SEO, sitemap lastmod, and existing internal links remain unchanged.",
+  "pages": {
+    "/paladin": {
+      "rootSha256": "50347a17b48380732ab00cf1fd4c68665e1f6f1d04c14d11a43cd835bbf170f4"
+    }
+  }
+}
