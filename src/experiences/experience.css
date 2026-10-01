@@ -735,6 +735,41 @@
   color: #edd7a4;
   text-decoration: none;
 }
+.intent-page .hunter-official {
+  margin: 24px 0;
+  padding: clamp(18px, 3vw, 30px);
+  border: 1px solid #a7c88355;
+  border-radius: 14px;
+  background: linear-gradient(140deg, #17241b, #111820 70%);
+}
+.intent-page .hunter-official-heading {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  color: #bbd79f;
+  font: 700 11px Arial, sans-serif;
+  letter-spacing: .1em;
+}
+.intent-page .hunter-official h2 { margin: 10px 0 8px; color: #e7f0db; font-size: clamp(22px, 3vw, 30px); }
+.intent-page .hunter-official p { color: #c1cbbd; font: 14px/1.65 Arial, sans-serif; }
+.intent-page .hunter-official strong { color: #e5efdb; }
+.intent-page .hunter-official-source { margin: 0 0 18px; }
+.intent-page .hunter-official a { color: #c9eca7; text-underline-offset: 3px; }
+.intent-page .hunter-official-facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 245px), 1fr)); gap: 12px; }
+.intent-page .hunter-official-facts p { margin: 0; padding: 14px; border: 1px solid #ffffff1a; border-radius: 9px; background: #07100b77; }
+.intent-page .hunter-official-boundary { margin: 18px 0 0; padding: 12px 14px; border-left: 3px solid #8bb96d; background: #0b1114; }
+.intent-page .hunter-official-search { display: grid; gap: 8px; max-width: 420px; margin: 16px 0 8px; color: #e5efdb; font: 700 13px Arial, sans-serif; }
+.intent-page .hunter-official-search input { width: 100%; min-width: 0; padding: 11px 12px; border: 1px solid #a7c88380; border-radius: 8px; background: #0b1414; color: #f2f6ed; font: 14px Arial, sans-serif; }
+.intent-page .hunter-official-count { margin: 8px 0; }
+.intent-page .hunter-official-family-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 170px), 1fr)); gap: 8px; }
+.intent-page .hunter-official-family-list button { display: grid; gap: 5px; min-height: 62px; padding: 12px; border: 1px solid #ffffff30; border-radius: 8px; background: #101b1b; color: #c3d5b5; text-align: left; cursor: pointer; }
+.intent-page .hunter-official-family-list button:hover,
+.intent-page .hunter-official-family-list button[aria-pressed='true'] { border-color: #b7dd8a; background: #1a2d20; }
+.intent-page .hunter-official-family-list button:focus-visible,
+.intent-page .hunter-official-search input:focus-visible { outline: 2px solid #c9eca7; outline-offset: 2px; }
+.intent-page .hunter-official-family-list button span { font: 12px Arial, sans-serif; }
+.intent-page .hunter-official-selected { min-height: 26px; margin: 14px 0; padding: 12px 14px; border-radius: 8px; background: #0b1114; }
 @media (max-width: 900px) {
   .intent-page[data-intent-page='leveling'] .ix-editorial,
   .intent-page[data-intent-page='specLeveling'] .ix-editorial,

@@ -105,12 +105,17 @@ export function createExpansionClass(profile: ExpansionProfile, dataset: Dataset
   if (id === 'hunter') {
     const pvpHref = '/wow-forever-hunter-pvp-build'
     const pvpPage = pages.find((page) => page.kind === 'pvp')!
-    pvpPage.updatedAt = '2026-09-28'
+    pvpPage.updatedAt = '2026-10-01'
     pvpPage.relatedPages.push({ href: '/wow-forever-hunter-pet-build', label: 'Hunter Pet Build' })
     for (const page of pages.filter((candidate) => candidate.kind === 'leveling' || candidate.kind === 'comparison' || candidate.kind === 'pet')) {
       page.updatedAt = '2026-09-28'
       page.relatedPages.push({ href: pvpHref, label: 'Hunter PvP Build' })
     }
+    for (const page of pages.filter((candidate) => [
+      'wow-forever-hunter-builds',
+      'wow-forever-beast-mastery-vs-marksmanship-hunter-leveling',
+      'wow-forever-hunter-pet-build',
+    ].includes(candidate.slug))) page.updatedAt = '2026-10-01'
   }
   if (pages.length !== 15) throw new Error(`${id}: expected 15 page definitions`)
   assertUniquePageIntents(pages)

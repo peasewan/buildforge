@@ -6,17 +6,18 @@ import { encodePlannerBuild } from '../lib/talentPlanner'
 import SiteFooter from '../SiteFooter'
 import ClassIntentExperience from './ClassIntentExperience'
 import ClassSignature, { hasClassSignature } from './ClassSignature'
+import HunterOfficialUpdate, { isHunterOfficialUpdatePage } from './HunterOfficialUpdate'
 import { experienceLabel } from './experienceLabels'
 
-type Slot = 'intent' | 'signature' | 'evidence' | 'editorial' | 'comparison' | 'faq' | 'related'
+type Slot = 'intent' | 'official' | 'signature' | 'evidence' | 'editorial' | 'comparison' | 'faq' | 'related'
 const supportOrder = (kind: ClassPageDefinition['kind']): Slot[] => {
-  if (kind === 'buildsHub') return ['intent', 'signature', 'editorial', 'evidence', 'faq', 'related']
-  if (kind === 'comparison') return ['intent', 'comparison', 'editorial', 'evidence', 'faq', 'related']
+  if (kind === 'buildsHub') return ['intent', 'signature', 'official', 'editorial', 'evidence', 'faq', 'related']
+  if (kind === 'comparison') return ['intent', 'comparison', 'official', 'editorial', 'evidence', 'faq', 'related']
   if (kind === 'talents' || kind === 'specTalents') return ['intent', 'evidence', 'related', 'editorial', 'faq']
   if (kind === 'specBuild') return ['intent', 'editorial', 'signature', 'related', 'evidence', 'comparison', 'faq']
   if (kind === 'dungeon' || kind === 'specDungeon' || kind === 'tank') return ['intent', 'signature', 'evidence', 'editorial', 'comparison', 'faq', 'related']
-  if (kind === 'pvp' || kind === 'specPvp') return ['intent', 'signature', 'editorial', 'comparison', 'evidence', 'faq', 'related']
-  return ['intent', 'signature', 'editorial', 'evidence', 'comparison', 'faq', 'related']
+  if (kind === 'pvp' || kind === 'specPvp') return ['intent', 'signature', 'official', 'editorial', 'comparison', 'evidence', 'faq', 'related']
+  return ['intent', 'signature', 'official', 'editorial', 'evidence', 'comparison', 'faq', 'related']
 }
 
 export default function ClassExperiencePage({
@@ -43,6 +44,7 @@ export default function ClassExperiencePage({
   )
   const slots: Record<Slot, ReactNode> = {
     intent: <ClassIntentExperience classDef={def} page={page} />,
+    official: def.id === 'hunter' && isHunterOfficialUpdatePage(page.slug) ? <HunterOfficialUpdate slug={page.slug} /> : null,
     signature: hasClassSignature(def, page) ? <ClassSignature classDef={def} page={page} /> : null,
     evidence: (
       <details className="ix-evidence">
