@@ -79,6 +79,9 @@ For shared build URLs, retain the established canonical/noindex strategy and do 
 
 Use the same daily comparison fields so decisions are based on trends rather than manual searches:
 
+- For live BuildForgeTools traffic or indexing questions, query the connected GSC MCP (`mcp__gscServer__*`) and GA4 MCP (`mcp__analytics_mcp__*`) first through `functions.exec` (discover deferred tools in `ALL_TOOLS` if needed). Use the GSC property `sc-domain:buildforgetools.com` and GA4 property `properties/553881022`. Do not substitute local OAuth files, browser screenshots, or recollection for the connected MCP data. If either MCP is unavailable, say so explicitly and label any fallback source.
+- Compare complete date ranges and check GSC `data_state` freshness before interpreting a daily drop. Keep GSC search impressions/clicks separate from GA4 page views and sessions.
+
 - GSC: clicks, impressions, CTR, average position, top queries, top landing pages.
 - GA4: organic sessions/users, engagement rate, average engagement/session duration, `talent_click` users, deduplicated `build_complete`, and build copy/share events.
 - Separate product quality signals from acquisition signals. Strong calculator engagement can coexist with temporary ranking or impression loss.
