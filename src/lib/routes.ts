@@ -8,9 +8,10 @@ import type { Branch } from './build'
 import { EMBERVILLE_PAGES, type EmbervillePageId } from '../data/emberville'
 import { publishedClassPage } from './classStaticPages'
 import { NIVALIS_PAGE } from '../data/nivalis'
+import { GLIMMERWICK_LAUNCH_PAGES, type GlimmerwickLaunchPageId } from '../data/glimmerwickLaunchPages'
 
 export interface PageDefinition {
-  kind: 'discovery' | 'planner' | 'guide' | 'build-guide' | 'build-landing' | 'build-hub' | 'spec-hub' | 'spec-talents' | 'spellbook' | 'beta-changes' | 'trust' | 'emberville' | 'glimmerwick' | 'nivalis' | 'class-calculator' | 'class-document'
+  kind: 'discovery' | 'planner' | 'guide' | 'build-guide' | 'build-landing' | 'build-hub' | 'spec-hub' | 'spec-talents' | 'spellbook' | 'beta-changes' | 'trust' | 'emberville' | 'glimmerwick' | 'glimmerwick-launch' | 'nivalis' | 'class-calculator' | 'class-document'
   title: string
   description: string
   canonical: string
@@ -23,6 +24,7 @@ export interface PageDefinition {
   embervillePageId?: EmbervillePageId
   classId?: string
   classPageSlug?: string
+  glimmerwickLaunchPageId?: GlimmerwickLaunchPageId
 }
 
 const plannerPage: PageDefinition = {
@@ -113,6 +115,8 @@ export function pageForPath(pathname: string, search = ''): PageDefinition {
   const normalized = pathname.replace(/\/+$/, '') || '/'
   if (normalized === '/nivalis-nights-profit-calculator') return { kind: 'nivalis', title: NIVALIS_PAGE.title, description: NIVALIS_PAGE.description, canonical: NIVALIS_PAGE.canonical, robots: 'index, follow' }
   if (normalized === '/songs-of-glimmerwick') return glimmerwickPage
+  const glimmerwickLaunchPage = GLIMMERWICK_LAUNCH_PAGES.find(page => page.path === normalized)
+  if (glimmerwickLaunchPage) return { kind: 'glimmerwick-launch', glimmerwickLaunchPageId: glimmerwickLaunchPage.id, title: glimmerwickLaunchPage.title, description: glimmerwickLaunchPage.description, canonical: `https://buildforgetools.com${glimmerwickLaunchPage.path}`, robots: 'index, follow' }
   const discovery = DISCOVERY_PAGES.find(page => page.path === normalized)
   if (discovery) return { kind: 'discovery', discoveryId: discovery.id, title: discovery.title, description: discovery.description, canonical: `https://buildforgetools.com${discovery.path}`, robots: 'index, follow' }
   const embervillePage = EMBERVILLE_PAGES.find((page) => normalized === `/${page.slug}`)

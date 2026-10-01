@@ -78,6 +78,9 @@ for (const { classDef, page } of published) requirements[`/${page.slug}`] = {
   unavailableText: unavailable[page.kind],
 }
 requirements['/songs-of-glimmerwick'] = { selector: '[data-surface="glimmerwick-garden"]' }
+requirements['/songs-of-glimmerwick-first-days'] = { selector: '[data-surface="glimmerwick-first-days"]' }
+requirements['/songs-of-glimmerwick-spellcasting'] = { selector: '[data-surface="glimmerwick-spellcasting"]' }
+requirements['/songs-of-glimmerwick-garden-well'] = { selector: '[data-surface="glimmerwick-well"]' }
 requirements['/nivalis-nights-profit-calculator'] = { selector: '[data-surface="nivalis-profit"]' }
 for (const page of DISCOVERY_PAGES) requirements[page.path] = { selector: page.id === 'dungeon-finder' || page.id === 'class-picker' ? '.planning-tools' : page.id === 'home' ? '.sd-games' : page.id === 'classes' ? '.sd-class-grid' : '.sd-build-groups' }
 for (const page of [...TRUST_PAGES, ...EMBERVILLE_PAGES]) requirements[`/${page.slug}`] = { selector: `[data-intent-experience="/${page.slug}"]` }
@@ -90,7 +93,7 @@ for (const file of files) {
 }
 const redirects = Object.fromEntries(vercel.redirects.filter(r => r.permanent && !('has' in r) && !r.source.includes(':')).map(r => [r.source, r.destination]))
 const report = validateSeo({ origin: 'https://buildforgetools.com', pages, sitemap: parseSitemap(readFileSync(resolve(dist, 'sitemap.xml'), 'utf8')),
-  expectedPaths: ['/nivalis-nights-profit-calculator', '/songs-of-glimmerwick', ...baseline.pages.map(p => p.path), ...classPaths, ...DISCOVERY_PAGES.map(p => p.path), ...TRUST_PAGES.map(p => `/${p.slug}`), ...EMBERVILLE_PAGES.map(p => `/${p.slug}`)],
+  expectedPaths: ['/nivalis-nights-profit-calculator', '/songs-of-glimmerwick', '/songs-of-glimmerwick-first-days', '/songs-of-glimmerwick-spellcasting', '/songs-of-glimmerwick-garden-well', ...baseline.pages.map(p => p.path), ...classPaths, ...DISCOVERY_PAGES.map(p => p.path), ...TRUST_PAGES.map(p => `/${p.slug}`), ...EMBERVILLE_PAGES.map(p => `/${p.slug}`)],
   withheldPaths: PUBLISHED_CLASSES.flatMap(c => c.pages.map(p => `/${p.slug}`)).filter(p => !classPaths.includes(p)),
   redirects, aliases: { '/build': '/paladin' }, requirements, frozen: frozenPages,
 })

@@ -10,7 +10,7 @@ const categories: Array<{ value: FeedbackCategory; label: string }> = [
   { value: 'other', label: 'Other' },
 ]
 
-export default function FeedbackWidget() {
+export default function FeedbackWidget({ inline = false }: { inline?: boolean } = {}) {
   const [open, setOpen] = useState(false)
   const [category, setCategory] = useState<FeedbackCategory>('feature')
   const [message, setMessage] = useState('')
@@ -77,7 +77,7 @@ export default function FeedbackWidget() {
 
   return (
     <>
-      <button className="feedback-trigger" type="button" onClick={show}>
+      <button className={`feedback-trigger${inline ? ' feedback-trigger-inline' : ''}`} type="button" onClick={show}>
         <MessageSquarePlus size={18} />
         <span>Feedback</span>
       </button>

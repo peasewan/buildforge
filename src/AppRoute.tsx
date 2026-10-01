@@ -2,6 +2,9 @@ import BetaPatchNotice from './BetaPatchNotice'
 import PlanningToolsPage from './PlanningToolsPage'
 import SiteDiscoveryPage from './SiteDiscoveryPage'
 import GlimmerwickPage from './GlimmerwickPage'
+import GlimmerwickFirstDaysPage from './GlimmerwickFirstDaysPage'
+import GlimmerwickSpellcastingPage from './GlimmerwickSpellcastingPage'
+import GlimmerwickWellPage from './GlimmerwickWellPage'
 import NivalisPage from './NivalisPage'
 import App from './App'
 import BetaChangesPage from './BetaChangesPage'
@@ -25,6 +28,11 @@ function routeElement(pathname: string) {
   if (route.discoveryId === 'dungeon-finder' || route.discoveryId === 'class-picker') return <PlanningToolsPage tool={route.discoveryId} />
   if (route.kind === 'discovery') return <SiteDiscoveryPage pageId={route.discoveryId!} />
   if (route.kind === 'glimmerwick') return <GlimmerwickPage />
+  if (route.kind === 'glimmerwick-launch') {
+    if (route.glimmerwickLaunchPageId === 'first-days') return <GlimmerwickFirstDaysPage />
+    if (route.glimmerwickLaunchPageId === 'spellcasting') return <GlimmerwickSpellcastingPage />
+    return <GlimmerwickWellPage />
+  }
   if (route.kind === 'nivalis') return <NivalisPage />
   const classPage = publishedClassPage(pathname)
   if (route.kind === 'class-calculator' && classPage) return <ClassCalculatorPage classDef={classPage.classDef} />
@@ -45,7 +53,8 @@ function routeElement(pathname: string) {
 
 /** Shared by the build-time renderer and the browser: one visual layout. */
 export default function AppRoute({ pathname }: { pathname: string }) {
+  const route = pageForPath(pathname)
   const classPage = publishedClassPage(pathname)
   const classId = classPage?.classDef.id ?? (pathname === '/paladin' || pathname === '/build' || pathname.includes('paladin') ? 'paladin' : undefined)
-  return <>{classId && <BetaPatchNotice classId={classId} />}{routeElement(pathname)}<FeedbackWidget /></>
+  return <>{classId && <BetaPatchNotice classId={classId} />}{routeElement(pathname)}<FeedbackWidget inline={route.kind === 'glimmerwick-launch'} /></>
 }
