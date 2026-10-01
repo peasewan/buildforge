@@ -1,16 +1,16 @@
 export const GLIMMERWICK_REFERENCE = {
-  checkedAt: '2026-09-27',
+  checkedAt: '2026-10-01',
   releaseDate: '2026-09-30',
-  demoAvailable: true,
+  released: true,
 } as const
 
-/** Names reviewed in public Demo footage. Numeric fields remain deliberately unknown. */
+/** Only observed names are prefilled. No launch crop timing or economy value is verified. */
 export const GLIMMERWICK_REVIEWED_CROPS = [{
   id: 'basil',
   name: 'Basil',
   version: 'Public Demo',
   verificationStatus: 'community_verified',
-  checkedAt: '2026-09-27',
+  checkedAt: '2026-10-01',
   growthDays: null,
   seasons: null,
   harvestYield: null,
@@ -20,6 +20,14 @@ export const GLIMMERWICK_REVIEWED_CROPS = [{
     { label: 'Demo dialogue · 51:20', href: 'https://www.youtube.com/watch?v=EgGVHbzWVZk&t=3080s' },
     { label: 'Second Demo dialogue · 1:00:38', href: 'https://www.youtube.com/watch?v=0JmmDn6Q_Ek&t=3638s' },
   ],
+}, {
+  id: 'marjoram', name: 'Marjoram', version: 'Launch playthrough', verificationStatus: 'firsthand_reported', checkedAt: '2026-10-01',
+  growthDays: null, seasons: null, harvestYield: null, seedPrice: null,
+  sources: [{ label: 'Launch playthrough · Kotaku', href: 'https://kotaku.com/im-happily-attending-the-musical-magical-garden-school-where-no-one-is-mad-if-im-hours-late-to-class-2000738461' }],
+}, {
+  id: 'cranberries', name: 'Cranberries', version: 'Launch playthrough', verificationStatus: 'firsthand_reported', checkedAt: '2026-10-01',
+  growthDays: null, seasons: null, harvestYield: null, seedPrice: null,
+  sources: [{ label: 'Launch playthrough · Kotaku', href: 'https://kotaku.com/im-happily-attending-the-musical-magical-garden-school-where-no-one-is-mad-if-im-hours-late-to-class-2000738461' }],
 }] as const
 
 export const GLIMMERWICK_GARDEN_RULES = [
@@ -52,7 +60,7 @@ export const GLIMMERWICK_GARDEN_RULES = [
 
 export const GLIMMERWICK_SOURCES = [
   {
-    label: 'Official Steam page and demo',
+    label: 'Official Steam page',
     href: 'https://store.steampowered.com/app/1706510/?l=english',
   },
   {

@@ -20,7 +20,7 @@ describe('Glimmerwick garden tool', () => {
     expect(screen.getByRole('heading', { level: 1, name: 'Songs of Glimmerwick Garden Planner' })).toBeTruthy()
     expect(container.querySelectorAll('h1')).toHaveLength(1)
     expect(container.querySelector('[data-surface="glimmerwick-garden"]')).toBeTruthy()
-    expect(screen.getByRole('link', { name: 'Official Steam page and demo' })).toBeTruthy()
+    expect(screen.getByRole('link', { name: 'Official Steam page' })).toBeTruthy()
     expect(screen.getByText(/Growth times come from your observations/)).toBeTruthy()
   })
 
@@ -37,9 +37,9 @@ describe('Glimmerwick garden tool', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Edit My herb' }))
     fireEvent.change(screen.getByLabelText('Observed growth days'), { target: { value: '5' } })
     fireEvent.click(screen.getByRole('button', { name: 'Save changes' }))
-    expect(within(screen.getByRole('table')).getByText('Day 8')).toBeTruthy()
+    expect(within(screen.getByRole('table', { name: 'Your harvest schedule' })).getByText('Day 8')).toBeTruthy()
     fireEvent.click(screen.getByRole('button', { name: 'Remove My herb' }))
-    expect(screen.queryByRole('table')).toBeNull()
+    expect(screen.queryByRole('table', { name: 'Your harvest schedule' })).toBeNull()
   })
 
   it('starts Basil from reviewed footage without filling unverified growth values', () => {
@@ -56,6 +56,18 @@ describe('Glimmerwick garden tool', () => {
     expect(screen.getByRole('link', { name: 'Basil footage · 1:48' }).getAttribute('href')).toBe('https://www.youtube.com/watch?v=dm_9ViL_soU&t=108s')
   })
 
+  it('reflects the live release and offers launch-observed crops without invented numbers', () => {
+    render(<GlimmerwickPage />)
+    expect(screen.getByText('Released Sep 30, 2026')).toBeTruthy()
+    const table = screen.getByRole('table', { name: 'Songs of Glimmerwick crop evidence' })
+    expect(within(table).getByText('Marjoram')).toBeTruthy()
+    expect(within(table).getByText('Cranberries')).toBeTruthy()
+    expect(within(table).getAllByText('Not verified')).toHaveLength(12)
+    fireEvent.click(screen.getByRole('button', { name: 'Use Marjoram' }))
+    expect((screen.getByLabelText('Crop name') as HTMLInputElement).value).toBe('Marjoram')
+    expect((screen.getByLabelText('Observed growth days') as HTMLInputElement).value).toBe('')
+  })
+
   it('records a personal harvest observation without claiming an official growth time', () => {
     const view = render(<GlimmerwickPage />)
     fireEvent.click(screen.getByRole('button', { name: 'Use Basil' }))
@@ -68,12 +80,12 @@ describe('Glimmerwick garden tool', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Record harvest for Basil' }))
     const observation = JSON.parse(localStorage.getItem('glimmerwick-garden-plan')!).plantings[0]
     expect(observation).toMatchObject({ crop: 'Basil', plantedDay: 3, growthDays: 4, harvestedDay: 7 })
-    expect(screen.getByRole('table').textContent).toContain('Observed · Day 7')
-    expect(screen.getByRole('table').textContent).toContain('4 elapsed days')
+    expect(screen.getByRole('table', { name: 'Your harvest schedule' }).textContent).toContain('Observed · Day 7')
+    expect(screen.getByRole('table', { name: 'Your harvest schedule' }).textContent).toContain('4 elapsed days')
     expect(JSON.stringify((window.gtag as ReturnType<typeof vi.fn>).mock.calls)).not.toContain('Basil')
     view.unmount()
     render(<GlimmerwickPage />)
-    expect(screen.getByRole('table').textContent).toContain('Observed · Day 7')
+    expect(screen.getByRole('table', { name: 'Your harvest schedule' }).textContent).toContain('Observed · Day 7')
   })
 
   it('clears a different crop duration when choosing the reviewed Basil name', () => {
@@ -89,7 +101,7 @@ describe('Glimmerwick garden tool', () => {
     addPlanting()
     fireEvent.change(screen.getByLabelText('Current garden day'), { target: { value: '8' } })
     fireEvent.click(screen.getByRole('button', { name: 'Update day' }))
-    expect(screen.getByRole('table').textContent).toContain('Ready to check')
+    expect(screen.getByRole('table', { name: 'Your harvest schedule' }).textContent).toContain('Ready to check')
   })
 
   it('keeps the tool usable when browser storage is blocked', () => {
@@ -97,7 +109,7 @@ describe('Glimmerwick garden tool', () => {
     vi.spyOn(Storage.prototype, 'setItem').mockImplementation(() => { throw new Error('blocked') })
     render(<GlimmerwickPage />)
     addPlanting()
-    expect(screen.getByRole('table').textContent).toContain('My herb')
+    expect(screen.getByRole('table', { name: 'Your harvest schedule' }).textContent).toContain('My herb')
     expect(screen.getByRole('status').textContent).toContain('Storage unavailable')
   })
 
@@ -107,7 +119,7 @@ describe('Glimmerwick garden tool', () => {
     fireEvent.change(screen.getByLabelText('Observed growth days'), { target: { value: '0' } })
     fireEvent.click(screen.getByRole('button', { name: 'Add planting' }))
     expect(screen.getByRole('alert').textContent).toContain('growth days 1–365')
-    expect(screen.queryByRole('table')).toBeNull()
+    expect(screen.queryByRole('table', { name: 'Your harvest schedule' })).toBeNull()
     fireEvent.change(screen.getByLabelText('Current garden day'), { target: { value: '1.5' } })
     fireEvent.click(screen.getByRole('button', { name: 'Update day' }))
     expect(screen.getAllByRole('alert').some(element => element.textContent?.includes('whole-number day'))).toBe(true)
