@@ -1,7 +1,7 @@
 {
   "eyebrow": "WoW Forever Class Guide",
   "title": "WoW Forever Paladin Talent Guide & Build Planner",
-  "dek": "Explore every WoW Forever Paladin talent path, compare Holy, Protection, and Retribution, and turn an idea into a shareable 51-point build.",
+  "dek": "Explore every WoW Forever Paladin talent path, compare Holy, Protection, and Retribution, and turn an idea into a shareable build. The live Beta cap is Level 30; 51-point examples are long-term references.",
   "sections": [
     {
       "id": "what-is-wow-forever",
@@ -37,7 +37,7 @@
       "id": "retribution-paladin",
       "heading": "Retribution Paladin",
       "paragraphs": [
-        "Retribution Paladin talents emphasize weapon combat, judgments, and offensive holy power. The path suits players who want their Paladin to pressure enemies directly while retaining the class’s broader utility. In the Build Planner, players can test a deep Retribution route, compare it with a mixed build, and immediately see the effect on the 51-point total. Sharing the finished URL gives another player the exact same allocation to review."
+        "Retribution Paladin talents emphasize weapon combat, judgments, and offensive holy power. The path suits players who want their Paladin to pressure enemies directly while retaining the class’s broader utility. In the Build Planner, players can test a deep Retribution route, compare it with a mixed build, and immediately see the effect on the planner’s long-term 51-point reference total. Current Beta builds remain limited by the Level 30 cap. Sharing the finished URL gives another player the exact same allocation to review."
       ]
     },
     {

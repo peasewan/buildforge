@@ -49,13 +49,26 @@ describe('specialization talent guide', () => {
     }
   })
 
-  it('shows the reviewed Beta version on specialization talent pages', () => {
+  it('keeps the imported client version distinct from live-cap builds', () => {
     render(<SpecTalentsPage spec="holy" />)
 
     expect(screen.getByText('Beta build 1.60.1.69913')).toBeTruthy()
     expect(screen.getByText('69913 snapshot reviewed September 20, 2026')).toBeTruthy()
     expect(screen.getByText('0 tooltip updates since 69893 in that comparison')).toBeTruthy()
-    expect(screen.getByText('Example Beta allocation')).toBeTruthy()
+    expect(screen.getByText('Historical 51-point reference')).toBeTruthy()
     expect(screen.getByRole('heading', { level: 2, name: 'Holy Paladin Talents Beta Talent Tree' })).toBeTruthy()
   })
+
+  it.each(SPEC_TALENTS_PAGES.map((page) => [page.spec, page.allocation.value] as const))(
+    'does not offer the %s 51-point reference as a current Beta preset',
+    (spec, allocation) => {
+      render(<SpecTalentsPage spec={spec} />)
+
+      expect(screen.getByText('Historical 51-point reference')).toBeTruthy()
+      expect(screen.getByText(allocation)).toBeTruthy()
+      expect(document.body.textContent).toMatch(/live Beta cap is Level 30/i)
+      expect(screen.queryByRole('link', { name: /Build this setup/i })).toBeNull()
+      expect(document.querySelectorAll('a[href="/build?id=#calculator"]').length).toBeGreaterThanOrEqual(3)
+    },
+  )
 })

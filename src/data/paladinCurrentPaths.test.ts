@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { BETA_SPEC_PATHS, betaSpecPlannerHref } from './betaSpecPaths'
+import { PALADIN_BETA_SNAPSHOT } from './betaSnapshot'
 import { BETA_LEVELING_SNAPSHOTS, betaLevelingPlannerHref } from './levelingBeta'
 
 describe('published current Paladin routes', () => {
@@ -16,13 +17,23 @@ describe('published current Paladin routes', () => {
     expect(betaLevelingPlannerHref('protection-leveling')).toBe('/build?id=#calculator')
   })
 
-  it('holds projections that used the removed talent for review instead of offering them as plans', () => {
-    expect(BETA_SPEC_PATHS.holy.next.status).toBe('planned')
+  it('keeps Level 20 starter allocations separate from the official Level 30 cap', () => {
+    expect(PALADIN_BETA_SNAPSHOT.phase.levelCap).toBe(30)
+    expect(PALADIN_BETA_SNAPSHOT.phase.routeSnapshotLevelCap).toBe(20)
+    expect(PALADIN_BETA_SNAPSHOT.phase.officialSource).toContain('2360696/1')
+    expect(BETA_SPEC_PATHS.holy.next.status).toBe('under_review')
     expect(BETA_SPEC_PATHS.protection.next.status).toBe('under_review')
     expect(BETA_SPEC_PATHS.retribution.next.status).toBe('under_review')
     for (const path of Object.values(BETA_SPEC_PATHS)) {
-      if (path.next.status === 'planned') expect(path.next.note).not.toContain('Improved Holy Strike')
+      expect(path.current.level).toBe(20)
+      expect(path.current.points).toBe(11)
+      expect(path.next.level).toBe(30)
+      expect(path.next).not.toHaveProperty('allocation')
     }
+    expect(betaSpecPlannerHref('holy')).toMatch(/&level=20#calculator$/)
+    expect(betaSpecPlannerHref('retribution')).toMatch(/&level=20#calculator$/)
+    expect(betaLevelingPlannerHref('leveling')).toMatch(/&level=20#calculator$/)
+    expect(betaLevelingPlannerHref('retribution-leveling')).toMatch(/&level=20#calculator$/)
   })
 
 })

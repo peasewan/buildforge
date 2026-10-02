@@ -65,7 +65,7 @@ export default function BuildPage({ buildId = HOLY_HEALING_BUILD.id }: { buildId
       <header className="guide-nav shell">
         <a className="brand" href="/paladin"><img src="/images/icons/paladin-shield.png" alt="" /><span>BUILD</span><b>FORGE</b></a>
         <nav aria-label="Build navigation"><a href="/paladin#calculator">Talent Calculator</a><a href="/wow-forever-paladin-talents">Paladin Talents</a><a href="#talent-allocation">Selected Talents</a></nav>
-        <OpenBuildLink build={build} href={plannerHref} placement="header">{underReview ? 'Start a New Build' : 'Open Build'}</OpenBuildLink>
+        <OpenBuildLink build={build} href={plannerHref} placement="header">Start a New Build</OpenBuildLink>
       </header>
 
       <section className="build-hero">
@@ -77,15 +77,15 @@ export default function BuildPage({ buildId = HOLY_HEALING_BUILD.id }: { buildId
             <h1>WoW Forever<br /><span>{heroTitle}</span></h1>
             <h2>{buildContent.heroHeading}</h2>
             <p>{buildContent.dek}</p>
-            {underReview && <p role="status">Historical 69913 allocation: Crusade appears in the reported 70009 client diff, but its node identity is under review. This 51-point example is not a verified current route.</p>}
-            <div className="build-actions"><OpenBuildLink build={build} href={plannerHref} placement="hero"><Calculator size={16} /> {underReview ? 'Start a New Build' : 'Open This Build'}</OpenBuildLink><a className="text-link" href="#talent-allocation">View selected talents <ArrowRight size={15} /></a></div>
+            <p role="status">This 51-point allocation is a long-term historical reference. The live Beta cap is Level 30, so it cannot be played as a complete current Beta build. {underReview && 'Its Crusade node from the reported 70009 client diff remains under review.'}</p>
+            <div className="build-actions"><OpenBuildLink build={build} href={plannerHref} placement="hero"><Calculator size={16} /> Start a New Build</OpenBuildLink><a className="text-link" href="#talent-allocation">View selected talents <ArrowRight size={15} /></a></div>
             <small>Updated {buildContent.updated} · Beta client talent data</small>
           </div>
           <aside className="build-allocation-card" aria-label="Build allocation">
             <span>Talent allocation</span>
             <strong>{build.allocation}</strong>
             <div>{selectedByBranch.map(({ branch, points }) => <p key={branch}><img src={branch === 'holy' ? '/images/icons/holy-strike.png' : branch === 'protection' ? '/images/icons/shield.png' : '/images/icons/hammer.png'} alt="" /><span>{branchNames[branch]}</span><b>{points}</b></p>)}</div>
-            <div className="build-allocation-status"><Check size={15} /> 51 of 51 points allocated</div>
+            <div className="build-allocation-status"><Check size={15} /> 51-point long-term reference</div>
           </aside>
         </div>
       </section>
@@ -96,7 +96,7 @@ export default function BuildPage({ buildId = HOLY_HEALING_BUILD.id }: { buildId
       {build.id === 'retribution-leveling-20-0-31' && <BetaLevelingSnapshot pageId="retribution-leveling" />}
 
       <section className="build-talents shell" id="talent-allocation">
-        <div className="section-heading centered"><div className="eyebrow">Full allocation</div><h2>Selected Talents</h2><p>{underReview ? `Historical ranks recorded for this ${build.allocation} ${buildContent.spec} Paladin example; these points are not loaded as a current build.` : `The exact ranks loaded by this ${build.allocation} ${buildContent.spec} Paladin build.`}</p></div>
+        <div className="section-heading centered"><div className="eyebrow">Historical full allocation</div><h2>Selected Talents</h2><p>Historical ranks recorded for this {build.allocation} {buildContent.spec} Paladin example; these 51 points are not loaded as a current Level 30 build.</p></div>
         <div className="build-talent-columns">
           {selectedByBranch.map(({ branch, points, talents: selectedTalents }) => (
             <article key={branch} className={selectedTalents.length ? '' : 'empty'}>
@@ -105,14 +105,14 @@ export default function BuildPage({ buildId = HOLY_HEALING_BUILD.id }: { buildId
             </article>
           ))}
         </div>
-        <div className="build-inline-cta"><Shield size={30} /><div><strong>{underReview ? 'Plan a current build' : 'Make it your build'}</strong><span>{underReview ? 'The historical Crusade allocation is withheld while 70009 IDs are reconciled. Start with a blank tree.' : 'Load all 51 points, change any rank, then copy a new share link.'}</span></div><OpenBuildLink build={build} href={plannerHref} placement="allocation">{underReview ? 'Start in Calculator' : 'Edit in Calculator'} <ArrowRight size={15} /></OpenBuildLink></div>
+        <div className="build-inline-cta"><Shield size={30} /><div><strong>Draft a Beta route</strong><span>Start with a blank older 69913 tree and stop manually at 21 points for the Level 30 budget. This historical 51-point allocation stays here for comparison{underReview ? ' while Crusade IDs are reconciled.' : '.'}</span></div><OpenBuildLink build={build} href={plannerHref} placement="allocation">Start in Calculator <ArrowRight size={15} /></OpenBuildLink></div>
       </section>
 
       <article className="build-copy shell">
         {buildContent.sections.map((section) => <section id={section.id} key={section.id}><h2>{section.heading}</h2>{section.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</section>)}
         {isProtection && <section className="protection-build-more" aria-label="Continue with Protection"><h2>Continue with Protection</h2><p>Compare this 51-point example with the archived Level 20 leveling route, a dungeon setup, or the Protection talent reference.</p><div className="protection-next-links"><a href="/wow-forever-protection-paladin-dungeon-build">Dungeon Tank Build <ArrowRight size={15} /></a><a href="/wow-forever-protection-paladin-leveling-build">Archived Protection Leveling Route <ArrowRight size={15} /></a><a href="/wow-forever-protection-paladin-talents">Protection Talents <ArrowRight size={15} /></a><a href="/paladin#calculator">Open Talent Calculator <ArrowRight size={15} /></a></div><a className="protection-hub-link" href="/wow-forever-protection-paladin-builds">Browse the Protection Builds Hub <ArrowRight size={15} /></a></section>}
-        <aside className="guide-note"><strong>{underReview ? 'Historical community build example' : 'Community build example'}</strong><p>{underReview ? 'This selected allocation comes from the 1.60.1.69913 client snapshot. The reported 70009 Crusade removal has a conflicting node ID, so the example is retained for comparison and withheld from current calculator presets.' : 'The talent tree and tooltips use Beta client build 1.60.1.69913. The selected allocation is a planning example, so test it in game before treating it as an optimal build.'}</p></aside>
-        <div className="guide-final-cta"><img src="/images/icons/paladin-shield.png" alt="" /><div><span>{underReview ? 'Ready to plan a new route?' : 'Ready to customize it?'}</span><h2>{underReview ? 'Start from a blank Paladin tree.' : buildContent.footerHeading}</h2></div><OpenBuildLink build={build} href={plannerHref} placement="footer">{underReview ? 'Open Calculator' : 'Open Build'} <ArrowRight size={15} /></OpenBuildLink></div>
+        <aside className="guide-note"><strong>Historical community build example</strong><p>{underReview ? 'This selected allocation comes from the 1.60.1.69913 client snapshot. The reported 70009 Crusade removal has a conflicting node ID, so the example is retained for comparison and withheld from current calculator presets.' : 'The 51-point allocation exceeds the live Level 30 Beta cap. Its talent tree and tooltips use client build 1.60.1.69913 and may not reflect later official tuning; inspect it as a long-term reference, not a current recommendation.'}</p></aside>
+        <div className="guide-final-cta"><img src="/images/icons/paladin-shield.png" alt="" /><div><span>Ready to plan a current route?</span><h2>Start from a blank Paladin tree.</h2></div><OpenBuildLink build={build} href={plannerHref} placement="footer">Open Calculator <ArrowRight size={15} /></OpenBuildLink></div>
         <p className="build-calc-anchor">{calculatorCta[build.id].prompt} <a href="/paladin#calculator">{calculatorCta[build.id].anchor} <ArrowRight size={14} /></a></p>
       </article>
 

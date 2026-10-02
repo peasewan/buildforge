@@ -13,7 +13,8 @@ import {
 } from '../warriorTalents'
 
 const UPDATED = '2026-09-22'
-const PHASE = 'Current Beta'
+const PHASE = 'Level 20 starter snapshot'
+const OFFICIAL_OCT_1_SOURCE = 'https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-1/2360696'
 const WARRIOR_HERO = '/images/warrior/warrior-hero-v1.jpg'
 const WARRIOR_SPEC_HERO: Record<WarriorBranch, string> = {
   arms: '/images/warrior/arms-warrior-hero-v1.jpg',
@@ -25,8 +26,8 @@ const WARRIOR_BRANCH_ICONS: Record<WarriorBranch, string> = {
   fury: '/images/warrior-talents/spell_nature_bloodlust.jpg',
   protection: '/images/warrior-talents/inv_shield_06.jpg',
 }
-const CAP_NOTE = 'The current Level 20 Beta cap gives a Warrior 11 talent points. Every published allocation spends that same budget so the routes remain directly comparable.'
-const EVIDENCE_NOTE = 'Talent names, ranks, positions and tooltips come from dual-source client records reviewed through build 1.60.1.69913. Build allocations and playstyle notes are editorial testing routes, not official best builds.'
+const CAP_NOTE = "Blizzard's October 1 Beta development notes raised the playable cap to Level 30. These 11-point Level 20 starter snapshots retain the reviewed 1.60.1.69913 Warrior tree; no reviewed Level 30 Warrior allocation is published here."
+const EVIDENCE_NOTE = 'Talent names, ranks, positions and tooltips come from dual-source client records reviewed through build 1.60.1.69913. The October 1–2 Warrior changes are official announcements, not imported or client-verified updates to this tree. Build allocations and playstyle notes are editorial testing routes, not official best builds.'
 
 const [armsPreset, furyPreset, protectionPreset] = WARRIOR_LEVEL_20_BUILDS
 
@@ -58,7 +59,10 @@ const makeBuild = (
   pointOrder: [...preset.order],
   build: preset.build,
   evidence: 'derived_assumption',
-  sources: [{ label: 'BuildForgeTools current-cap Warrior testing route', url: `https://buildforgetools.com${href}` }],
+  sources: [
+    { label: 'BuildForgeTools Level 20 Warrior starter route', url: `https://buildforgetools.com${href}` },
+    { label: 'Blizzard October 1 Beta announcement: cap and Warrior changes, not client verification', url: OFFICIAL_OCT_1_SOURCE },
+  ],
   verifiedThroughBuild: WARRIOR_VERIFIED_BUILD,
   createdAt: UPDATED,
   updatedAt: UPDATED,
@@ -66,15 +70,15 @@ const makeBuild = (
 })
 
 const warriorBuilds: ClassBuild[] = [
-  makeBuild(armsPreset, 'warrior-arms-build', 'spec', '/wow-forever-arms-warrior-build', 'Arms Warrior Build (Level 20)', 'Weapon damage and stance control', ['Apply Rend before settling into the pull.', 'Preserve Rage while changing stance.', 'Use Anger Management as the current-cap endpoint.'], ['Direct solo route', 'Stance-change testing', 'Two-handed weapon focus']),
-  makeBuild(furyPreset, 'warrior-fury-build', 'spec', '/wow-forever-fury-warrior-build', 'Fury Warrior Build (Level 20)', 'Critical strikes and Rage flow', ['Build Cruelty before deeper Fury talents.', 'Measure Unbridled Wrath with the same weapon speed.', 'Use Piercing Howl to create space.'], ['Simple melee loop', 'Rage-generation test', 'Current-cap control']),
+  makeBuild(armsPreset, 'warrior-arms-build', 'spec', '/wow-forever-arms-warrior-build', 'Arms Warrior Build (Level 20)', 'Weapon damage and stance control', ['Apply Rend before settling into the pull.', 'Preserve Rage while changing stance.', 'Use Anger Management as the 11-point snapshot endpoint.'], ['Direct solo route', 'Stance-change testing', 'Two-handed weapon focus']),
+  makeBuild(furyPreset, 'warrior-fury-build', 'spec', '/wow-forever-fury-warrior-build', 'Fury Warrior Build (Level 20)', 'Critical strikes and Rage flow', ['Build Cruelty before deeper Fury talents.', 'Measure Unbridled Wrath with the same weapon speed.', 'Use Piercing Howl to create space.'], ['Simple melee loop', 'Rage-generation test', 'Level 20 control']),
   makeBuild(protectionPreset, 'warrior-protection-build', 'spec', '/wow-forever-protection-warrior-build', 'Protection Warrior Build (Level 20)', 'Shield tank and defensive group play', ['Keep a shield equipped for the full test.', 'Use Bloodrage before the pull needs extra Rage.', 'Hold Last Stand for a real defensive check.'], ['Shield-first route', 'Dungeon-ready utility', 'Defensive cooldown']),
   makeBuild(armsPreset, 'warrior-arms-leveling', 'leveling', '/wow-forever-arms-warrior-leveling-build', 'Arms Warrior Leveling Build (Level 20)', 'Solo leveling with weapon damage', ['Open with Rend.', 'Keep enough Rage for the next stance decision.', 'Compare pulls with the same weapon.'], ['Sustained solo damage', 'Straightforward point order', 'Low setup cost']),
   makeBuild(furyPreset, 'warrior-fury-leveling', 'leveling', '/wow-forever-fury-warrior-leveling-build', 'Fury Warrior Leveling Build (Level 20)', 'Fast melee leveling and Rage testing', ['Max Cruelty first.', 'Track extra Rage from Unbridled Wrath.', 'Use Piercing Howl when a pull becomes unsafe.'], ['Fast melee rhythm', 'Extra Rage opportunities', 'Escape utility']),
   makeBuild(protectionPreset, 'warrior-protection-leveling', 'leveling', '/wow-forever-protection-warrior-leveling-build', 'Protection Warrior Leveling Build (Level 20)', 'Defensive leveling and dungeon groups', ['Level with a shield when survivability matters.', 'Use Thunder Clap on controlled multi-target pulls.', 'Move to the dungeon route when group tanking becomes the goal.'], ['Safer pulls', 'Group-ready talents', 'Clear defensive identity']),
-  makeBuild(armsPreset, 'warrior-arms-pvp', 'pvp', '/wow-forever-arms-warrior-pvp-build', 'Arms Warrior PvP Build (Level 20)', 'Weapon pressure and stance control in PvP', ['Keep Rend active when pressure is possible.', 'Preserve Rage through the stance change that answers the opponent.', 'Treat the route as a current-cap test, not a final PvP ranking.'], ['Sustained pressure', 'Rage retention', 'Simple 11-point route']),
-  makeBuild(furyPreset, 'warrior-fury-pvp', 'pvp', '/wow-forever-fury-warrior-pvp-build', 'Fury Warrior PvP Build (Level 20)', 'Melee pressure with Piercing Howl utility', ['Use Piercing Howl to stay connected or disengage.', 'Test Cruelty and Rage generation across repeated fights.', 'Avoid claiming full-level Fury conclusions from the Level 20 cap.'], ['Movement control', 'Critical-strike pressure', 'Rage-flow testing']),
-  makeBuild(protectionPreset, 'warrior-protection-dungeon', 'dungeon', '/wow-forever-protection-warrior-dungeon-build', 'Protection Warrior Dungeon Build (Level 20)', 'Current-cap dungeon tank', ['Enter each pull with a shield and a Rage plan.', 'Use Thunder Clap where the pack makes it worthwhile.', 'Reserve Last Stand for the pull that would otherwise end the run.'], ['Shield specialization', 'Multi-target control', 'Emergency cooldown']),
+  makeBuild(armsPreset, 'warrior-arms-pvp', 'pvp', '/wow-forever-arms-warrior-pvp-build', 'Arms Warrior PvP Build (Level 20)', 'Weapon pressure and stance control in PvP', ['Keep Rend active when pressure is possible.', 'Preserve Rage through the stance change that answers the opponent.', 'Treat the 11-point snapshot as a test, not a final PvP ranking.'], ['Sustained pressure', 'Rage retention', 'Simple 11-point route']),
+  makeBuild(furyPreset, 'warrior-fury-pvp', 'pvp', '/wow-forever-fury-warrior-pvp-build', 'Fury Warrior PvP Build (Level 20)', 'Melee pressure with Piercing Howl utility', ['Use Piercing Howl to stay connected or disengage.', 'Test Cruelty and Rage generation across repeated fights.', 'Avoid claiming Level 30 Fury conclusions from this 11-point snapshot.'], ['Movement control', 'Critical-strike pressure', 'Rage-flow testing']),
+  makeBuild(protectionPreset, 'warrior-protection-dungeon', 'dungeon', '/wow-forever-protection-warrior-dungeon-build', 'Protection Warrior Dungeon Build (Level 20)', 'Level 20 dungeon tank starter', ['Enter each pull with a shield and a Rage plan.', 'Use Thunder Clap where the pack makes it worthwhile.', 'Reserve Last Stand for the pull that would otherwise end the run.'], ['Shield specialization', 'Multi-target control', 'Emergency cooldown']),
 ]
 
 const related = (...items: [string, string][]) => items.map(([href, label]) => ({ href, label }))
@@ -95,15 +99,19 @@ const page = (input: {
   faqs?: ClassPageDefinition['faqs']
   comparison?: ClassPageDefinition['comparison']
   publishRequirements?: PublishRequirement[]
+  updatedAt?: string
 }): ClassPageDefinition => ({
   ...input,
   ogImage: input.spec ? WARRIOR_SPEC_HERO[input.spec] : WARRIOR_HERO,
   canonical: `https://buildforgetools.com/${input.slug}`,
   robots: 'index, follow',
-  updatedAt: UPDATED,
+  updatedAt: input.updatedAt ?? UPDATED,
   relatedBuildIds: input.relatedBuildIds ?? [],
   relatedPages: related(...input.relatedPages),
   faqs: input.faqs ?? [],
+  sections: input.sections.map((section, index) => index === 0
+    ? { ...section, paragraphs: [CAP_NOTE, ...section.paragraphs.filter((paragraph) => paragraph !== CAP_NOTE)] }
+    : section),
 })
 
 const warriorPages: ClassPageDefinition[] = [
@@ -119,16 +127,16 @@ const warriorPages: ClassPageDefinition[] = [
   page({
     kind: 'buildsHub', slug: 'wow-forever-warrior-builds', intent: 'Builds Hub',
     title: 'WoW Forever Warrior Builds & Talent Calculator | BuildForgeTools', h1: 'WoW Forever Warrior Builds',
-    description: 'Explore Level 20 WoW Forever Warrior builds for Arms, Fury, and Protection, then customize every talent in the BuildForgeTools calculator.', eyebrow: 'Current Beta Builds',
+    description: 'Explore Level 20 Warrior starter builds for Arms, Fury, and Protection, then customize the 11-point snapshots in the talent calculator.', eyebrow: 'Level 20 Starter Builds',
     relatedBuildIds: warriorBuilds.map((build) => build.id),
     relatedPages: [['/warrior', 'Warrior Talent Calculator'], ['/wow-forever-warrior-leveling-build', 'Warrior Leveling Build'], ['/wow-forever-warrior-pvp-build', 'Warrior PvP Builds'], ['/wow-forever-warrior-dungeon-build', 'Warrior Dungeon Builds']],
-    sections: [{ heading: 'Choose a Warrior route', paragraphs: ['Arms, Fury and Protection solve different current-cap problems. Use the role and intent labels to choose a starting route, then edit its exact allocation in the calculator.', EVIDENCE_NOTE] }],
+    sections: [{ heading: 'Choose a Warrior route', paragraphs: ['Arms, Fury and Protection offer different ways to test the 11-point opening. Use the role and intent labels to choose a starting route, then edit its exact allocation in the calculator.', EVIDENCE_NOTE] }],
     publishRequirements: ['level20Builds'],
   }),
   page({
     kind: 'leveling', slug: 'wow-forever-warrior-leveling-build', intent: 'General Leveling',
     title: 'WoW Forever Warrior Leveling Build | Level 20 Beta', h1: 'WoW Forever Warrior Leveling Build',
-    description: 'Compare three current-cap Warrior routes, then load a complete 11-point path in the talent calculator.', eyebrow: 'Level 20 Beta Starter', primaryBuildId: 'warrior-arms-leveling',
+    description: 'Compare three Level 20 Warrior starter routes, then load a complete 11-point snapshot in the talent calculator.', eyebrow: 'Level 20 Beta Starter', primaryBuildId: 'warrior-arms-leveling',
     relatedBuildIds: ['warrior-fury-leveling', 'warrior-protection-leveling'],
     relatedPages: [['/wow-forever-arms-warrior-leveling-build', 'Arms Leveling'], ['/wow-forever-fury-warrior-leveling-build', 'Fury Leveling'], ['/wow-forever-protection-warrior-leveling-build', 'Protection Leveling'], ['/wow-forever-arms-vs-fury-warrior-leveling', 'Arms vs Fury']],
     sections: [{ heading: 'Choose a Level 20 Warrior path', paragraphs: ['Arms offers direct weapon pressure, Fury tests critical strikes and Rage flow, and Protection trades speed for a safer shield route. Arms is the default starting point here because it gives solo players a clear eleven-point path.', CAP_NOTE] }, { heading: 'Use the build as a test', paragraphs: [EVIDENCE_NOTE, 'Load the route, keep weapon and target conditions consistent, and change one talent decision at a time.'] }],
@@ -140,7 +148,7 @@ const warriorPages: ClassPageDefinition[] = [
     description: 'A Level 20 Arms path built around Rend, retained Rage, and Anger Management.', eyebrow: '11/0/0 Community Route', spec: 'arms', primaryBuildId: 'warrior-arms-build',
     relatedBuildIds: ['warrior-arms-leveling', 'warrior-arms-pvp'],
     relatedPages: [['/wow-forever-arms-warrior-leveling-build', 'Arms Leveling'], ['/wow-forever-arms-warrior-pvp-build', 'Arms PvP'], ['/wow-forever-arms-warrior-talents', 'Arms Talents']],
-    sections: [{ heading: 'Why this Arms route', paragraphs: ['Improved Rend opens the damage package while Deflection completes the first tier. Improved Tactical Mastery preserves more Rage through stance changes before Anger Management closes the current-cap route.', EVIDENCE_NOTE] }, { heading: 'Talent order', paragraphs: ['Spend three points in Improved Rend, two in Deflection, five in Improved Tactical Mastery and take Anger Management with the final point.'] }],
+    sections: [{ heading: 'Why this Arms route', paragraphs: ['Improved Rend opens the damage package while Deflection completes the first tier. Improved Tactical Mastery preserves more Rage through stance changes before Anger Management closes this 11-point snapshot.', EVIDENCE_NOTE] }, { heading: 'Talent order', paragraphs: ['Spend three points in Improved Rend, two in Deflection, five in Improved Tactical Mastery and take Anger Management with the final point.'] }],
     publishRequirements: ['legalBuild:arms'],
   }),
   page({
@@ -149,7 +157,7 @@ const warriorPages: ClassPageDefinition[] = [
     description: 'A Level 20 Fury path for testing critical strikes, Rage generation, and Piercing Howl utility.', eyebrow: '0/11/0 Community Route', spec: 'fury', primaryBuildId: 'warrior-fury-build',
     relatedBuildIds: ['warrior-fury-leveling', 'warrior-fury-pvp'],
     relatedPages: [['/wow-forever-fury-warrior-leveling-build', 'Fury Leveling'], ['/wow-forever-fury-warrior-pvp-build', 'Fury PvP'], ['/wow-forever-warrior-talents', 'Warrior Talents']],
-    sections: [{ heading: 'Why this Fury route', paragraphs: ['Cruelty raises critical-strike chance, Unbridled Wrath creates a repeatable Rage-generation test and Piercing Howl adds current-cap control after ten Fury points.', EVIDENCE_NOTE] }, { heading: 'Talent order', paragraphs: ['Complete Cruelty, spend five points in Unbridled Wrath, then take Piercing Howl with the eleventh point.'] }],
+    sections: [{ heading: 'Why this Fury route', paragraphs: ['Cruelty raises critical-strike chance, Unbridled Wrath creates a repeatable Rage-generation test and Piercing Howl adds control to this 11-point snapshot after ten Fury points.', EVIDENCE_NOTE] }, { heading: 'Talent order', paragraphs: ['Complete Cruelty, spend five points in Unbridled Wrath, then take Piercing Howl with the eleventh point.'] }],
     publishRequirements: ['legalBuild:fury'],
   }),
   page({
@@ -164,9 +172,9 @@ const warriorPages: ClassPageDefinition[] = [
   page({
     kind: 'talents', slug: 'wow-forever-warrior-talents', intent: 'Talent Trees and Changes',
     title: 'WoW Forever Warrior Talents & Talent Trees', h1: 'WoW Forever Warrior Talents & Talent Trees',
-    description: 'Browse all 53 current WoW Forever Warrior talents across Arms, Fury, and Protection with Beta change status, rank, position, and source labels.', eyebrow: 'Client Talent Catalogue',
+    description: 'Browse the 53 imported 69913 Warrior talents across Arms, Fury, and Protection with Beta change status, rank, position, and source labels.', eyebrow: '69913 Client Talent Catalogue',
     relatedPages: [['/warrior', 'Warrior Talent Calculator'], ['/wow-forever-arms-warrior-talents', 'Arms Talents'], ['/wow-forever-protection-warrior-talents', 'Protection Talents'], ['/wow-forever-warrior-builds', 'Warrior Builds']],
-    sections: [{ heading: 'Read the current Warrior trees', paragraphs: ['The catalogue groups every published node by branch and by its change status in the imported Beta dataset. It keeps client facts separate from editorial allocations.', EVIDENCE_NOTE] }],
+    sections: [{ heading: 'Read the imported Warrior trees', paragraphs: ['The catalogue groups every 69913 node by branch and by its change status in that imported Beta dataset. It keeps client facts separate from later announcements and editorial allocations.', EVIDENCE_NOTE] }],
   }),
   page({
     kind: 'specLeveling', slug: 'wow-forever-arms-warrior-leveling-build', intent: 'Arms Leveling',
@@ -174,7 +182,7 @@ const warriorPages: ClassPageDefinition[] = [
     description: 'Follow an editable Level 20 Arms Warrior leveling route built around Rend, Rage retention, and a direct two-handed playstyle.', eyebrow: 'Level 20 Arms Leveling', spec: 'arms', primaryBuildId: 'warrior-arms-leveling', relatedBuildIds: ['warrior-fury-leveling'],
     relatedPages: [['/wow-forever-arms-warrior-build', 'Arms Build'], ['/wow-forever-arms-vs-fury-warrior-leveling', 'Arms vs Fury'], ['/wow-forever-arms-warrior-talents', 'Arms Talents']],
     sections: [{ heading: 'Level 10 to 20 talent path', paragraphs: ['Build Improved Rend first, add Deflection, then commit the next five points to Improved Tactical Mastery before taking Anger Management.', CAP_NOTE] }, { heading: 'Weapons, Rage and solo play', paragraphs: ['Use the same weapon while comparing pulls so weapon speed does not hide the talent result. The route values predictable Rage handling over an unverified damage ranking.'] }],
-    faqs: [{ question: 'Is Arms good for leveling in the current Beta?', answer: 'It offers a legal, direct 11-point route with Rend and Rage retention. Its performance still depends on weapon and encounter conditions.' }],
+    faqs: [{ question: 'Is Arms a useful leveling starter?', answer: 'The reviewed Level 20 starter snapshot offers a legal, direct 11-point route with Rend and Rage retention. Its performance still depends on weapon and encounter conditions; no Level 30 recommendation has been verified.' }],
     publishRequirements: ['legalBuild:arms'],
   }),
   page({
@@ -183,7 +191,7 @@ const warriorPages: ClassPageDefinition[] = [
     description: 'Test a Level 20 Fury Warrior leveling route focused on critical strikes, Rage generation, and Piercing Howl utility.', eyebrow: 'Level 20 Fury Leveling', spec: 'fury', primaryBuildId: 'warrior-fury-leveling', relatedBuildIds: ['warrior-arms-leveling'],
     relatedPages: [['/wow-forever-fury-warrior-build', 'Fury Build'], ['/wow-forever-arms-vs-fury-warrior-leveling', 'Arms vs Fury'], ['/wow-forever-warrior-talents', 'Warrior Talents']],
     sections: [{ heading: 'Level 10 to 20 talent path', paragraphs: ['Max Cruelty, invest five points in Unbridled Wrath and take Piercing Howl with the final point.', CAP_NOTE] }, { heading: 'Rage and early Fury', paragraphs: ['Track Rage generation over several equivalent fights. A short Beta sample cannot establish a universal Fury ranking, but it can show whether the route fits your weapon and pace.'] }],
-    faqs: [{ question: 'Is Fury good for leveling?', answer: 'Fury offers a legal early route with critical-strike and Rage tools. Compare it directly with Arms using equivalent weapons and targets.' }, { question: 'Can this page prove a dual-wield build is best?', answer: 'No. This page publishes a current-cap talent route and does not turn weapon assumptions into client facts.' }],
+    faqs: [{ question: 'Is Fury good for leveling?', answer: 'The 69913 starter snapshot offers a legal 11-point route with critical-strike and Rage tools. Compare it directly with Arms using equivalent weapons and targets.' }, { question: 'Can this page prove a dual-wield build is best?', answer: 'No. This page publishes a Level 20 starter allocation and does not turn weapon assumptions into client facts or verify the October 1 Fury changes in a newer client.' }],
     publishRequirements: ['legalBuild:fury'],
   }),
   page({
@@ -197,7 +205,7 @@ const warriorPages: ClassPageDefinition[] = [
   page({
     kind: 'pvp', slug: 'wow-forever-warrior-pvp-build', intent: 'Warrior PvP Hub',
     title: 'WoW Forever Warrior PvP Builds', h1: 'WoW Forever Warrior PvP Builds',
-    description: 'Compare current-cap Arms and Fury Warrior PvP testing routes and review the verified Protection talent options still awaiting a recommended allocation.', eyebrow: 'Current Beta PvP',
+    description: 'Compare 11-point Arms and Fury Warrior PvP starter routes and review Protection options awaiting a recommended allocation.', eyebrow: 'Level 20 PvP Snapshots',
     relatedBuildIds: ['warrior-arms-pvp', 'warrior-fury-pvp'],
     relatedPages: [['/wow-forever-arms-warrior-pvp-build', 'Arms PvP'], ['/wow-forever-fury-warrior-pvp-build', 'Fury PvP'], ['/wow-forever-protection-warrior-talents', 'Protection Talents'], ['/warrior', 'Warrior Calculator']],
     sections: [{ heading: 'Choose a PvP playstyle', paragraphs: ['Arms emphasizes weapon pressure and stance decisions. Fury uses critical strikes, Rage flow and Piercing Howl. Protection has verified talent data but no recommended PvP allocation yet.', EVIDENCE_NOTE] }],
@@ -206,9 +214,9 @@ const warriorPages: ClassPageDefinition[] = [
   page({
     kind: 'specPvp', slug: 'wow-forever-arms-warrior-pvp-build', intent: 'Arms PvP',
     title: 'WoW Forever Arms Warrior PvP Build', h1: 'WoW Forever Arms Warrior PvP Build',
-    description: 'Load an editable Level 20 Arms Warrior PvP route for Rend pressure, stance changes, and Rage retention in the current Beta.', eyebrow: 'Level 20 Arms PvP', spec: 'arms', primaryBuildId: 'warrior-arms-pvp',
+    description: 'Load an editable Level 20 Arms Warrior PvP snapshot for Rend pressure, stance changes, and Rage retention.', eyebrow: 'Level 20 Arms PvP', spec: 'arms', primaryBuildId: 'warrior-arms-pvp',
     relatedPages: [['/wow-forever-warrior-pvp-build', 'Warrior PvP Hub'], ['/wow-forever-arms-warrior-build', 'Arms Build'], ['/wow-forever-arms-warrior-talents', 'Arms Talents']],
-    sections: [{ heading: 'Current-cap Arms PvP plan', paragraphs: ['The route spends all eleven points on a legal Arms path. Rend maintains pressure while Tactical Mastery supports the stance change needed to answer a target.', 'Level 20 cannot represent the full Warrior PvP toolkit, so use this allocation as an editable test rather than a final competitive ranking.'] }],
+    sections: [{ heading: 'Level 20 Arms PvP starter', paragraphs: ['The route spends all eleven points on a legal Arms path in the 69913 tree. Rend maintains pressure while Improved Tactical Mastery supports the stance change needed to answer a target.', 'This starter allocation cannot represent the full Level 30 Warrior PvP toolkit, so use it as an editable test rather than a final competitive ranking.'] }],
     publishRequirements: ['legalBuild:arms'],
   }),
   page({
@@ -216,21 +224,21 @@ const warriorPages: ClassPageDefinition[] = [
     title: 'WoW Forever Fury Warrior PvP Build', h1: 'WoW Forever Fury Warrior PvP Build',
     description: 'Load an editable Level 20 Fury Warrior PvP route for melee pressure, Rage generation, and Piercing Howl control.', eyebrow: 'Level 20 Fury PvP', spec: 'fury', primaryBuildId: 'warrior-fury-pvp',
     relatedPages: [['/wow-forever-warrior-pvp-build', 'Warrior PvP Hub'], ['/wow-forever-fury-warrior-build', 'Fury Build'], ['/wow-forever-warrior-talents', 'Warrior Talents']],
-    sections: [{ heading: 'Current-cap Fury PvP plan', paragraphs: ['Cruelty and Unbridled Wrath make repeated fights measurable, while Piercing Howl gives the route a control tool at the current cap.', 'The allocation is editorial. Talent structure is client-derived, but matchups and effectiveness require player testing.'] }],
+    sections: [{ heading: 'Level 20 Fury PvP starter', paragraphs: ['Cruelty and Unbridled Wrath make repeated fights measurable, while Piercing Howl gives this 11-point snapshot a control tool.', 'The allocation is editorial. Its talent structure comes from the imported 69913 client tree, while October 1 Fury changes and matchups need fresh client review and player testing.'] }],
     publishRequirements: ['legalBuild:fury'],
   }),
   page({
     kind: 'specPvp', slug: 'wow-forever-protection-warrior-pvp-build', intent: 'Protection PvP',
     title: 'WoW Forever Protection Warrior PvP Build', h1: 'WoW Forever Protection Warrior PvP Build',
-    description: 'Review verified Protection Warrior PvP talent options for the current Beta while the recommended Level 20 allocation remains under review.', eyebrow: 'Protection PvP Data Status', spec: 'protection',
+    description: 'Review 69913 Protection Warrior PvP talent options while a recommended allocation for the Level 30 Beta remains under review.', eyebrow: 'Protection PvP Data Status', spec: 'protection',
     relatedPages: [['/wow-forever-warrior-pvp-build', 'Warrior PvP Hub'], ['/wow-forever-protection-warrior-talents', 'Protection Talents'], ['/warrior', 'Warrior Calculator']],
-    sections: [{ heading: 'Build pending verification', paragraphs: ['A Protection PvP allocation is pending verification. The page publishes the current talent dataset and its defensive options without presenting the dungeon tank route as a proven PvP build.', 'Use the calculator to test Shield Specialization, Rage tools and control talents, then report what works in actual matches.'] }],
+    sections: [{ heading: 'Build pending verification', paragraphs: ['A Protection PvP allocation is pending verification. The page publishes the imported 69913 talent dataset and its defensive options without presenting the dungeon tank route as a proven PvP build.', 'Use the calculator to test Shield Specialization, Rage tools and control talents, then report what works in actual matches.'] }],
     publishRequirements: ['talentDataset'],
   }),
   page({
     kind: 'dungeon', slug: 'wow-forever-warrior-dungeon-build', intent: 'Warrior Dungeon Hub',
     title: 'WoW Forever Warrior Dungeon Builds', h1: 'WoW Forever Warrior Dungeon Builds',
-    description: 'Compare Warrior roles for current Beta dungeons and open the dedicated Protection tank route in the talent calculator.', eyebrow: 'Current Beta Dungeons', primaryBuildId: 'warrior-protection-dungeon',
+    description: 'Compare Warrior dungeon roles and open the 11-point Protection tank starter in the talent calculator.', eyebrow: 'Dungeon Role Starters', primaryBuildId: 'warrior-protection-dungeon',
     relatedBuildIds: ['warrior-arms-build', 'warrior-fury-build'],
     relatedPages: [['/wow-forever-protection-warrior-dungeon-build', 'Protection Dungeon Tank'], ['/wow-forever-protection-warrior-build', 'Protection Build'], ['/wow-forever-warrior-leveling-build', 'Warrior Leveling']],
     sections: [{ heading: 'Warrior dungeon roles', paragraphs: ['Protection supplies the dedicated tank route. Arms and Fury remain damage-oriented alternatives when another player tanks the group.', 'This hub separates the role choice from the client facts and links the shield route directly into the calculator.'] }],
@@ -245,33 +253,53 @@ const warriorPages: ClassPageDefinition[] = [
     publishRequirements: ['legalBuild:protection'],
   }),
   page({
-    kind: 'levelCap', slug: 'wow-forever-warrior-level-20-build', intent: 'Current Beta Level 20',
+    kind: 'levelCap', slug: 'wow-forever-warrior-level-20-build', intent: 'Level 20 Starter Snapshots',
     title: 'WoW Forever Warrior Level 20 Builds', h1: 'WoW Forever Warrior Level 20 Builds',
-    description: 'Compare complete 11-point Arms, Fury, and Protection Warrior builds for the current WoW Forever Level 20 Beta cap.', eyebrow: 'Current Beta Cap',
+    description: 'Compare three complete 11-point Level 20 Warrior starter snapshots while the official WoW Forever Beta cap is Level 30.', eyebrow: 'Level 20 Starter Snapshots',
     relatedBuildIds: ['warrior-arms-build', 'warrior-fury-build', 'warrior-protection-build'],
     relatedPages: [['/wow-forever-arms-warrior-build', 'Arms 11/0/0'], ['/wow-forever-fury-warrior-build', 'Fury 0/11/0'], ['/wow-forever-protection-warrior-build', 'Protection 0/0/11'], ['/warrior', 'Warrior Calculator']],
-    sections: [{ heading: 'Level 20 and 11 talent points', paragraphs: [CAP_NOTE, 'The three starter routes spend the same budget in one branch each. That makes the tradeoffs visible without pretending the Beta cap represents a full Level 60 build.'] }],
+    sections: [{ heading: 'Level 20 and 11 talent points', paragraphs: [CAP_NOTE, 'The three historical starter routes spend the same budget in one branch each. That makes their opening tradeoffs visible without treating them as complete Level 30 builds.'] }],
     publishRequirements: ['legalBuild:arms', 'legalBuild:fury', 'legalBuild:protection'],
   }),
   page({
     kind: 'comparison', slug: 'wow-forever-arms-vs-fury-warrior-leveling', intent: 'Arms vs Fury Leveling',
     title: 'Arms vs Fury Warrior for Leveling in WoW Forever', h1: 'Arms vs Fury Warrior for Leveling in WoW Forever',
-    description: 'Compare Arms and Fury Warrior leveling playstyles, Rage mechanics, control, and current-cap talent routes without declaring a universal winner.', eyebrow: 'Leveling Comparison',
+    description: 'Choose an Arms or Fury Warrior Level 20 starter route by Rage management, control, and weapon testing while the Level 30 Beta tree awaits review.', eyebrow: 'Leveling Comparison', updatedAt: '2026-10-02',
     relatedBuildIds: ['warrior-arms-leveling', 'warrior-fury-leveling'],
     relatedPages: [['/wow-forever-arms-warrior-leveling-build', 'Arms Leveling Build'], ['/wow-forever-fury-warrior-leveling-build', 'Fury Leveling Build'], ['/wow-forever-warrior-leveling-build', 'Warrior Leveling Hub']],
-    sections: [{ heading: 'Choose by playstyle', paragraphs: ['Arms favors a direct weapon route and stance-aware Rage retention. Fury favors critical-strike and Rage-generation testing with Piercing Howl as its current-cap control tool.', 'Weapon quality and play conditions can outweigh small talent differences, so the comparison presents tradeoffs rather than a winner.'] }],
+    sections: [
+      { heading: 'Which Level 20 starter should you load?', paragraphs: [
+        'Choose Arms if you want a direct weapon-focused route and regularly switch stances: the published 11/0/0 snapshot spends three points in Improved Rend, two in Deflection, five in Improved Tactical Mastery and one in Anger Management. Rage retained through stance changes is the behavior to test.',
+        'Choose Fury if you prefer to watch critical strikes and Rage flow across repeated pulls or value Piercing Howl when you need space. Its 0/11/0 snapshot spends five points in Cruelty, five in Unbridled Wrath and one in Piercing Howl. This is a reason to test Fury, not evidence that it levels faster or requires dual wielding.',
+      ] },
+      { heading: 'What changed on October 1?', paragraphs: [
+        "Blizzard's October 1 development notes announce a Level 30 cap and Warrior changes. For Arms, Spearing Strike no longer requires a two-handed weapon but does require Battle Stance. For Fury, the notes announce Lingering Rage in row 2, Furious Precision in row 3, removal of the two-handed Rage bonus from Unbridled Wrath, and a changed path to Flurry through Death Wish.",
+        'These are official announcements, not imported into the 69913 tree or client-verified in this calculator. The two linked 11-point routes use the older imported snapshot; no reviewed Level 30 allocation is published. Do not extend either route to 21 points as if the announced Fury layout were already verified.',
+      ] },
+      { heading: 'How to make a useful comparison', paragraphs: [
+        'Run the two starter routes at the same level against comparable targets. Record weapon damage and speed, downtime between pulls, Rage left after stance changes, and whether Piercing Howl changes an unsafe pull. Swap one condition at a time; the result is more useful than a universal winner claim.',
+      ] },
+    ],
     comparison: { columns: ['Arms', 'Fury'], rows: [
-      { label: 'Current route', values: ['11/0/0', '0/11/0'] },
-      { label: 'Core loop', values: ['Rend and stance management', 'Critical strikes and Rage flow'] },
-      { label: 'Control', values: ['Stance tools and weapon pressure', 'Piercing Howl'] },
-      { label: 'Best test', values: ['Consistent weapon pulls', 'Repeated Rage samples'] },
+      { label: 'Published Level 20 route', values: ['11/0/0 from imported 69913', '0/11/0 from imported 69913'] },
+      { label: 'First 10 points', values: ['Improved Rend 3, Deflection 2, Improved Tactical Mastery 5', 'Cruelty 5, Unbridled Wrath 5'] },
+      { label: 'Eleventh point', values: ['Anger Management', 'Piercing Howl'] },
+      { label: 'Rage question', values: ['Does retaining Rage through stance changes help your pulls?', 'Does Unbridled Wrath improve Rage flow with your tested weapon?'] },
+      { label: 'Control and safety', values: ['Plan stance changes before a pull becomes unsafe', 'Use Piercing Howl to create space when needed'] },
+      { label: 'Best reason to choose', values: ['You value a direct weapon route and stance decisions', 'You want critical-strike and Rage-flow testing with a slow'] },
+      { label: 'October 1 status', values: ['Spearing Strike rule announced; not imported into 69913', 'Lingering Rage and Furious Precision announced; not imported into 69913'] },
     ] },
+    faqs: [
+      { question: 'Is Arms or Fury faster to level?', answer: 'No universal speed ranking is verified. The published routes are 11-point Level 20 snapshots; weapon quality, target choice and downtime can change the result. Test comparable pulls before choosing.' },
+      { question: 'Does Fury require dual wielding for this route?', answer: 'No. The 0/11/0 allocation does not establish a best weapon setup. Blizzard also announced the removal of Unbridled Wrath’s extra two-handed Rage bonus on October 1, but that change has not been reconciled with the imported 69913 client tree.' },
+      { question: 'Can I use this as a Level 30 build?', answer: 'The official Beta cap is Level 30, but no reviewed Level 30 allocation is published here. Load either 11-point starter snapshot, then treat further point choices as experiments until the newer Warrior tree is reviewed.' },
+    ],
     publishRequirements: ['legalBuild:arms', 'legalBuild:fury'],
   }),
   page({
     kind: 'specTalents', slug: 'wow-forever-arms-warrior-talents', intent: 'Arms Talent Tree',
     title: 'WoW Forever Arms Warrior Talents', h1: 'WoW Forever Arms Warrior Talents',
-    description: 'Browse the current WoW Forever Arms Warrior talent tree with client-derived ranks, positions, change status, and links to builds using the branch.', eyebrow: 'Arms Talent Catalogue', spec: 'arms',
+    description: 'Browse the imported 69913 Arms Warrior talent tree with client-derived ranks, positions, change status, and links to starter builds.', eyebrow: 'Arms Talent Catalogue', spec: 'arms',
     relatedBuildIds: ['warrior-arms-build', 'warrior-arms-leveling', 'warrior-arms-pvp'],
     relatedPages: [['/wow-forever-warrior-talents', 'All Warrior Talents'], ['/wow-forever-arms-warrior-build', 'Arms Build'], ['/wow-forever-arms-warrior-leveling-build', 'Arms Leveling']],
     sections: [{ heading: 'Read the Arms tree', paragraphs: ['This catalogue filters the Warrior dataset to Arms and groups its nodes by Beta change status. Build links show where the branch is used without turning an editorial allocation into a client fact.', EVIDENCE_NOTE] }],
@@ -279,7 +307,7 @@ const warriorPages: ClassPageDefinition[] = [
   page({
     kind: 'specTalents', slug: 'wow-forever-protection-warrior-talents', intent: 'Protection Talent Tree',
     title: 'WoW Forever Protection Warrior Talents', h1: 'WoW Forever Protection Warrior Talents',
-    description: 'Browse the current WoW Forever Protection Warrior talent tree with client-derived ranks, positions, change status, and tank-build links.', eyebrow: 'Protection Talent Catalogue', spec: 'protection',
+    description: 'Browse the imported 69913 Protection Warrior talent tree with client-derived ranks, positions, change status, and tank-build links.', eyebrow: 'Protection Talent Catalogue', spec: 'protection',
     relatedBuildIds: ['warrior-protection-build', 'warrior-protection-leveling', 'warrior-protection-dungeon'],
     relatedPages: [['/wow-forever-warrior-talents', 'All Warrior Talents'], ['/wow-forever-protection-warrior-build', 'Protection Build'], ['/wow-forever-protection-warrior-dungeon-build', 'Protection Dungeon Tank']],
     sections: [{ heading: 'Read the Protection tree', paragraphs: ['This catalogue filters the Warrior dataset to Protection and connects shield, Rage and defensive nodes to the routes that use them.', EVIDENCE_NOTE] }],
@@ -300,7 +328,8 @@ export const warriorClass: ClassDefinition<WarriorBranch> = {
   dataVersion: WARRIOR_DATA_VERSION,
   verifiedBuild: WARRIOR_VERIFIED_BUILD,
   talentCount: warriorTalents.length,
-  beta: { phaseLabel: 'Beta · Build 1.60.1.69913', levelCap: 20, pointsAtCap: 11 },
+  // The publication gate uses this budget to validate preserved Level 20 builds; the playable Beta cap is Level 30.
+  beta: { phaseLabel: 'Beta · 1.60.1.69913 Level 20 snapshot', levelCap: 20, pointsAtCap: 11 },
   plannerModes: [
     { level: 20, points: 11, label: 'Level 20' },
     { level: 30, points: 21, label: 'Level 30' },

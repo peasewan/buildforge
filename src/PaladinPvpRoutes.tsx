@@ -8,7 +8,7 @@ import { track } from './lib/analytics'
 export default function PaladinPvpRoutes() {
   return <section id="pvp-starting-routes" className="shell pvp-starting-routes" aria-label="Paladin PvP starting routes">
     <header><div className="eyebrow">Editorial planning examples</div><h2>Choose a starting route, then adjust for PvP</h2>
-      <p>These Level 20 examples reuse our existing damage and support paths. They are not tested PvP recommendations or best-build claims.</p>
+      <p>These 11-point Level 20 examples are starting snapshots under the official Level {PALADIN_BETA_SNAPSHOT.phase.levelCap} cap. They are not tested PvP recommendations or complete Level 30 builds.</p>
       <p>Imported talent dataset: {PALADIN_BETA_SNAPSHOT.clientBuild}. The newer {BETA_PATCH_REVIEW.clientBuild} update is awaiting reconciliation; review changed talents before using any historical setup.</p>
       <p>The Level 20 snapshot opens in the 51-point reference calculator. Extra room is for future planning, not talent points available at Level 20.</p>
     </header>

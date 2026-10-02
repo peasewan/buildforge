@@ -33,8 +33,8 @@ export default function BetaChangesPage() {
         <div className="beta-hero-copy">
           <div className="eyebrow"><Calculator size={14} /> Beta Talent Tracker</div>
           <h1>WoW Forever Paladin Beta Talent Changes</h1>
-          <p>Track verified Paladin talent changes in the live WoW Forever Beta, including the current Week 1 level cap, changes from Classic, the archived Preview comparison, and exact client build diffs.</p>
-          <p className="beta-phase-label">Beta Week 1 — Level 20</p>
+          <p>Track official Paladin Beta updates alongside the last fully imported client tree, including the October 1 Level 30 cap and historical build diffs.</p>
+          <p className="beta-phase-label">October 1 update — Level 30 cap</p>
           <a className="button primary" href="/paladin#calculator" onClick={() => track("beta_cta_click", { placement: "hero" })}>Open Paladin Calculator</a>
         </div>
         <aside className="beta-status-card" aria-label="Beta data status">
@@ -52,7 +52,18 @@ export default function BetaChangesPage() {
       </section>
 
       <section className="beta-diff shell">
-        <section className="beta-detail-block"><h2>September 24 update · build 70009</h2><p>70009 includes new class changes. The historical calculator dataset below remains 69913 until the full client payload and cross-check agree. “Unchanged in 69913” does not mean unchanged in 70009.</p><BetaPatchNotice classId="paladin" expanded /></section>
+        <section className="beta-detail-block">
+          <h2>October 1 Beta update · Level 30</h2>
+          <p>Blizzard says players can now level to 30. The same official update announces these Paladin tuning changes:</p>
+          <ul>
+            <li>Redoubt: Block chance now 4/8/12/16/20% (was 6/12/18/24/30%).</li>
+            <li>Holy Shield: Block chance now 30% (was 20%).</li>
+            <li>Champion of the Light: Intellect-to-Spell-Damage ratio now 20/40/60% (was 33/66/100%).</li>
+          </ul>
+          <p>For Champion of the Light, the Healing increase was a tooltip error, not a live effect. The 69913 rank tooltips have not been updated from this announcement. These official changes are separate from the imported 69913 talent tree; no Level 30 allocation is treated as reviewed yet.</p>
+          <p><a href={snapshot.phase.officialSource} target="_blank" rel="noreferrer">Read Blizzard’s October 1 development notes</a></p>
+        </section>
+        <section className="beta-detail-block"><h2>September 24 update · build 70009</h2><p>70009 includes new class changes. The historical calculator dataset below remains 69913 until the full client payload and cross-check agree. “Unchanged in 69913” does not mean unchanged in 70009 or the October 1 update.</p><BetaPatchNotice classId="paladin" expanded /></section>
         <section className="beta-detail-block">
           <div><div className="eyebrow">Imported 69913 snapshot</div><h2>52 talents · 21 new in WoW Forever</h2><p>Client build {snapshot.clientBuild} contains the last fully imported Holy, Protection, and Retribution trees. The September 24 official removal is applied as a separate calculator availability overlay while the later client payload awaits reconciliation.</p></div>
           <div className="beta-signal-grid">
@@ -69,8 +80,8 @@ export default function BetaChangesPage() {
         </section>
 
         <section className="beta-detail-block beta-phase-block">
-          <div><div className="eyebrow">Live Test Phase</div><h2>Beta Week 1 — Level 20</h2><p>The current Beta level cap is 20. Blizzard says it will rise to 30 later in the test, so Level 30 routes are upcoming planning references rather than builds available to test today.</p></div>
-          <a href="https://news.blizzard.com/en-us/article/24304160/the-world-of-warcraft-forever-beta-now-live" target="_blank" rel="noreferrer">Read the official Beta schedule</a>
+          <div><div className="eyebrow">Live Test Phase</div><h2>October 1 Beta — Level 30</h2><p>The official level cap is now 30. Our published 11-point Level 20 routes remain partial starting snapshots; a reviewed 21-point Level 30 route is pending updated client-tree reconciliation.</p></div>
+          <a href={snapshot.phase.officialSource} target="_blank" rel="noreferrer">Read the official Level 30 update</a>
         </section>
 
         <div className="section-heading centered">

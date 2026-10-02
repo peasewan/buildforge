@@ -3,8 +3,7 @@ import { afterEach, describe, expect, it } from 'vitest'
 import { useState } from 'react'
 import { TalentTree } from './App'
 import BuildLandingPage from './BuildLandingPage'
-import { HOLY_HEALING_BUILD } from './data/builds'
-import { encodeBuild, incrementTalent, validateBuildUsage } from './lib/build'
+import { incrementTalent, validateBuildUsage } from './lib/build'
 import { talents } from './data/talents'
 
 afterEach(cleanup)
@@ -27,9 +26,8 @@ describe('Build landing page template', () => {
       const preview = document.querySelector('.landing-talent-preview')!
       expect(preview.textContent).toMatch(/read-only preview/i)
       expect(within(preview as HTMLElement).queryAllByRole('button')).toHaveLength(0)
-      const historical = pageId === 'retribution-pvp'
-      const edit = within(preview as HTMLElement).getAllByRole('link', { name: historical ? /start a new build/i : /open editable calculator/i })[0]
-      expect(edit.getAttribute('href')).toMatch(historical ? /^\/build\?id=#calculator$/ : /^\/build\?id=.+#calculator$/)
+      const edit = within(preview as HTMLElement).getAllByRole('link', { name: /start a new build/i })[0]
+      expect(edit.getAttribute('href')).toBe('/build?id=#calculator')
       expect(edit.compareDocumentPosition(preview.querySelector('.landing-tree-card')!) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
     },
   )
@@ -40,13 +38,14 @@ describe('Build landing page template', () => {
     expect(screen.getByRole('heading', { level: 1, name: 'WoW Forever Paladin Leveling Build' })).toBeTruthy()
     expect(screen.getByText('New Players')).toBeTruthy()
     expect(screen.getByRole('heading', { level: 2, name: 'Recommended Leveling Path' })).toBeTruthy()
-    expect(screen.getByText('Beta Week 1 · Level cap 20')).toBeTruthy()
+    expect(screen.getByText(/October 1 Beta update · Official level cap 30/)).toBeTruthy()
     expect(document.querySelector('a[href="/wow-forever-paladin-builds"]')).toBeTruthy()
     const snapshot = screen.getByRole('region', { name: 'Beta leveling snapshot' })
-    expect(snapshot.textContent).toContain('Current Beta cap')
+    expect(snapshot.textContent).toContain('Level 20 starting route')
     expect(snapshot.textContent).toContain('Level 20 · 11 points')
-    expect(snapshot.textContent).toContain('Level 30 projection under review')
-    expect(snapshot.textContent).toContain('0/0/21')
+    expect(snapshot.textContent).toContain('Official Level 30 cap')
+    expect(snapshot.textContent).toContain('No reviewed allocation')
+    expect(snapshot.textContent).not.toContain('0/0/21')
     expect(snapshot.textContent).toContain('Client verified')
     expect(snapshot.textContent).toContain('Community recommendation')
   })
@@ -56,7 +55,8 @@ describe('Build landing page template', () => {
 
     const snapshot = screen.getByRole('region', { name: 'Beta leveling snapshot' })
     expect(snapshot.textContent).toContain('2/9/0')
-    expect(snapshot.textContent).toContain('2/19/0')
+    expect(snapshot.textContent).not.toContain('2/19/0')
+    expect(snapshot.textContent).toContain('No reviewed allocation')
     expect(snapshot.textContent).toContain('Archived')
     expect(snapshot.textContent).toContain('Improved Holy Strike')
     expect(snapshot.querySelector('a[href*="improved_holy_strike"]')).toBeNull()
@@ -82,7 +82,9 @@ describe('Build landing page template', () => {
 
     expect(screen.getByRole('heading', { level: 1, name: 'WoW Forever Protection Paladin Dungeon Tank Build' })).toBeTruthy()
     expect(screen.getByLabelText('Protection talent tree')).toBeTruthy()
-    expect(screen.getByRole('link', { name: /Edit this build/ }).getAttribute('href')).toMatch(/^\/build\?id=/)
+    for (const link of screen.getAllByRole('link', { name: /Start a new build/ })) {
+      expect(link.getAttribute('href')).toBe('/build?id=#calculator')
+    }
     expect(document.querySelector('a[href="/wow-forever-protection-paladin-builds"]')).toBeTruthy()
   })
 
@@ -113,16 +115,27 @@ describe('Build landing page template', () => {
     expect(document.body.textContent).not.toContain('Each one opens the exact 51-point setup')
   })
 
-  it('deep-links a page to the allocation its copy tells readers to start from', () => {
+  it('does not auto-load an over-cap Holy reference into a current Beta planner', () => {
     render(<BuildLandingPage pageId="holy-pvp" />)
 
-    const expected = `/build?id=${encodeBuild(HOLY_HEALING_BUILD.build)}#calculator`
+    const expected = '/build?id=#calculator'
 
     expect(screen.getByRole('link', { name: 'Open Planner' }).getAttribute('href')).toBe(expected)
     for (const link of screen.getAllByRole('link', { name: /Open Talent Calculator/i })) {
       expect(link.getAttribute('href')).toBe(expected)
     }
+    expect(document.querySelector('.landing-hero')?.textContent).toMatch(/historical.*51-point.*Level 30/i)
   })
+
+  it.each(['protection-dungeon', 'protection-pvp', 'holy-pvp'] as const)(
+    'describes the %s 51-point tree as a historical reference instead of a current starter', (pageId) => {
+      render(<BuildLandingPage pageId={pageId} />)
+      expect(document.querySelector('.landing-hero')?.textContent).toMatch(/historical 51-point.*Level 30/i)
+      expect(document.querySelector('.landing-summary-card')?.textContent).toContain('Historical 51-point reference')
+      expect(screen.getByRole('link', { name: 'Open Planner' }).getAttribute('href')).toBe('/build?id=#calculator')
+      expect(document.body.textContent).not.toMatch(/reviewed starting allocation|complete calculator preset|open the preset/i)
+    },
+  )
 
   it('offers no talent tree link on a page that renders no tree', () => {
     render(<BuildLandingPage pageId="holy-pvp" />)
@@ -142,6 +155,9 @@ describe('Build landing page template', () => {
     expect(document.querySelector('a[href="/wow-forever-protection-paladin-pvp-build"]')).toBeTruthy()
     expect(document.querySelector('a[href="/wow-forever-retribution-paladin-pvp-build"]')).toBeTruthy()
     expect(document.querySelector('a[href="/wow-forever-holy-paladin-pvp-build"]')).toBeTruthy()
+    expect(screen.getByRole('heading', { name: /choose a pvp role at level 30/i })).toBeTruthy()
+    expect(document.body.textContent).toContain('Level 20 starting snapshots')
+    expect(document.body.textContent).toContain('51-point examples are historical')
   })
 
   it('takes Paladin PvP entry points to the available Level 20 routes before opening a calculator', () => {
@@ -163,12 +179,12 @@ describe('Build landing page template', () => {
     }
   })
 
-  it('loads the protection reference build from the Protection PvP page', () => {
+  it('starts a blank current-cap plan from the historical Protection PvP page', () => {
     render(<BuildLandingPage pageId="protection-pvp" />)
 
     expect(screen.getByText('Protection Beta Talent Tree')).toBeTruthy()
-    for (const link of screen.getAllByRole('link', { name: /Open Talent Calculator/i })) {
-      expect(link.getAttribute('href')).toMatch(/^\/build\?id=.+#calculator$/)
+    for (const selector of ['.guide-nav .button.primary', '.landing-hero .button.primary', '.landing-final-cta .button.primary']) {
+      expect(document.querySelector<HTMLAnchorElement>(selector)?.getAttribute('href')).toBe('/build?id=#calculator')
     }
   })
 })

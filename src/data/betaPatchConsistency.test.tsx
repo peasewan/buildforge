@@ -37,6 +37,17 @@ describe('Paladin snapshot and September 24 patch truth', () => {
     expect(changes).toContain('Imported 69913 snapshot')
   })
 
+  it('warns every shared Paladin status panel about the October 1 tuning boundary', () => {
+    const html = renderToStaticMarkup(<BetaDataStatus />)
+
+    expect(html).toContain('October 1 official tuning')
+    expect(html).toContain('Redoubt')
+    expect(html).toContain('Holy Shield')
+    expect(html).toContain('Champion of the Light')
+    expect(html).toContain('69913 tooltips may be stale')
+    expect(html).toContain('2360696/1')
+  })
+
   it('shows one consistent Level 20 Retribution route in leveling and spec entry points', () => {
     expect(BETA_LEVELING_SNAPSHOTS.leveling.current.build).toEqual(BETA_SPEC_PATHS.retribution.current.build)
     expect(BETA_LEVELING_SNAPSHOTS['retribution-leveling'].current.build).toEqual(BETA_SPEC_PATHS.retribution.current.build)

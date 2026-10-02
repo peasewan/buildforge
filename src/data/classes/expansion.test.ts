@@ -21,6 +21,15 @@ describe('six-class release', () => {
     assertUniquePageIntents(pages)
     expect(publishedClassPages(classes)).toHaveLength(90)
   })
+  it('keeps the Hunter builds hub focused on read-only historical routes, without claiming old allocations can be edited', () => {
+    const hunter = classes.find((candidate) => candidate.id === 'hunter')!
+    const hub = hunter.pages.find((page) => page.kind === 'buildsHub')!
+    expect(hub.description).toContain('historical Level 20')
+    expect(hub.description).not.toContain('before editing the client-table planner')
+    expect(hub.sections.flatMap((section) => section.paragraphs).join(' ')).toContain('blank calculator')
+    const rogue = classes.find((candidate) => candidate.id === 'rogue')!
+    expect(rogue.pages.find((page) => page.kind === 'buildsHub')?.description).toContain('Compare exact eleven-point allocations before editing')
+  })
   for (const c of classes) {
     it(`${c.name}: reproduces the checked-in dataset from archived primary and cross-check records`, () => {
       const imported = importClientClass({ classId: c.id, classMask: masks[c.id], build: c.verifiedBuild, talents: csv('Talent'), tabs: csv('TalentTab'), spells: csv('SpellName'), crosscheck: JSON.parse(readFileSync(`${dir}/${c.id}-db.json`, 'utf8')) })

@@ -15,13 +15,13 @@ export interface BetaSpecPath {
     build: Build
     steps: { levels: string; talent: string }[]
   }
-  next: { level: number; points: number; allocation: string; note: string; status: 'planned' | 'under_review' }
+  next: { level: number; points: number; note: string; status: 'under_review' }
   recommendationSource: { label: string; href: string; updated: string }
 }
 
-const currentLevel = PALADIN_BETA_SNAPSHOT.phase.levelCap
+const currentLevel = PALADIN_BETA_SNAPSHOT.phase.routeSnapshotLevelCap
 const currentPoints = currentLevel - 9
-const nextLevel = PALADIN_BETA_SNAPSHOT.phase.nextLevelCap
+const nextLevel = PALADIN_BETA_SNAPSHOT.phase.levelCap
 const nextPoints = nextLevel - 9
 
 export const BETA_SPEC_PATHS: Record<Branch, BetaSpecPath> = {
@@ -50,9 +50,8 @@ export const BETA_SPEC_PATHS: Record<Branch, BetaSpecPath> = {
     next: {
       level: nextLevel,
       points: nextPoints,
-      allocation: '21/0/0',
-      note: 'The published level-30 route continues through Reverence, Purifying Power, Divine Favor, Illumination, and Holy Shock.',
-      status: 'planned',
+      note: 'No Level 30 Holy allocation has been reviewed against the updated client tree. The Level 20 route is only a starting snapshot.',
+      status: 'under_review',
     },
     recommendationSource: {
       label: 'Mobalytics Holy Paladin Guide',
@@ -86,8 +85,7 @@ export const BETA_SPEC_PATHS: Record<Branch, BetaSpecPath> = {
     next: {
       level: nextLevel,
       points: nextPoints,
-      allocation: '2/19/0',
-      note: 'This earlier level-30 projection reserved points for Improved Holy Strike, which Blizzard removed on September 24. It is archived pending a reconciled tree.',
+      note: 'No replacement Level 30 Protection route has been verified after Improved Holy Strike was removed. The old projection is withheld.',
       status: 'under_review',
     },
     recommendationSource: {
@@ -119,8 +117,7 @@ export const BETA_SPEC_PATHS: Record<Branch, BetaSpecPath> = {
     next: {
       level: nextLevel,
       points: nextPoints,
-      allocation: '2/0/19',
-      note: 'The earlier level-30 projection included Improved Holy Strike, which Blizzard removed on September 24. Recheck this future-cap route after the Beta talent data is reconciled.',
+      note: 'No Level 30 Retribution allocation has been reviewed against the updated client tree. The earlier projection included removed Improved Holy Strike and is withheld.',
       status: 'under_review',
     },
     recommendationSource: {
@@ -136,6 +133,6 @@ export const betaSpecPath = (branch: Branch) => BETA_SPEC_PATHS[branch]
 export const betaSpecPlannerHref = (branch: Branch) =>
   betaSpecPath(branch).status === 'archived'
     ? EMPTY_PALADIN_PLANNER_HREF
-    : `/build?id=${encodeBuild(betaSpecPath(branch).current.build)}#calculator`
+    : `/build?id=${encodeBuild(betaSpecPath(branch).current.build)}&level=20#calculator`
 
 export { BETA_LEVEL_CAP_SOURCE }

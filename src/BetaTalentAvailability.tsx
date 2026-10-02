@@ -6,11 +6,11 @@ export default function BetaTalentAvailability({ branch }: { branch: Branch }) {
   const { talent, levelCap, availablePoints, requiredPoints, minimumLevel, available } = betaAvailabilityFor(branch)
 
   return (
-    <section className="beta-availability shell" aria-label="Current Beta availability">
+    <section className="beta-availability shell" aria-label="Beta level-range check">
       <div>
-        <span>Current Beta availability</span>
+        <span>Beta level-range check</span>
         <strong>Level cap {levelCap}</strong>
-        <small>{availablePoints} talent points available</small>
+        <small>Up to {availablePoints} points under the leveling assumption</small>
       </div>
       <article className={available ? 'available' : 'unavailable'}>
         <img src={talent.icon} alt="" />
@@ -18,9 +18,9 @@ export default function BetaTalentAvailability({ branch }: { branch: Branch }) {
           <strong>{talent.name}</strong>
           <span>{requiredPoints} talent points · Level {minimumLevel}</span>
         </div>
-        <b>{available ? <Check size={14} /> : <LockKeyhole size={14} />}{available ? 'Available' : 'Not available'}</b>
+        <b>{available ? <Check size={14} /> : <LockKeyhole size={14} />}{available ? 'Within level range' : 'Above level range'}</b>
       </article>
-      <p>Calculated from the current Beta level cap and the client tree requirement for the first rank.</p>
+      <p>Level 30 is official. The point budget assumes one point per level from 10; talent requirements come from the older 69913 client tree and need reconciliation before current availability can be confirmed.</p>
     </section>
   )
 }

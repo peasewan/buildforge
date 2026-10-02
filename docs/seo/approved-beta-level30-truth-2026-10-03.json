@@ -1,0 +1,110 @@
+{
+  "reviewedAt": "2026-10-03",
+  "authorization": "The official October 1 Beta update raised the live level cap to 30. This reviewed update marks old 69913 and 51-point Paladin material as historical, revises seven Paladin meta descriptions so they do not imply current 51-point play, and records changed body and internal-link fingerprints for all 22 existing Paladin pages. The five targeted query pages receive focused editorial corrections. Only the Paladin PvP page advances its Article dateModified and sitemap lastmod to 2026-10-02; all other frozen sitemap dates remain unchanged. Existing Paladin URLs, titles, H1s, canonicals, and robots directives are preserved. Independent cross-page review also corrected Paladin copy that had implied an enforced Level 30 mode: the older 69913 canvas requires a manual stop at 21 points. Hunter archived-build CTAs were corrected without changing frozen Paladin URLs, titles, H1s, canonicals, or robots. Five existing Paladin content pages now pass the explicit level=20 parameter when opening an 11-point starter route, preserving its point budget in sharing and saved-build context.",
+  "pages": {
+    "/paladin": {
+      "rootSha256": "c1169c33825f5a28c42b0539596839feafba72499216bc4a4318b9b6fdba97f3",
+      "linksSha256": "ef7405308972fa5449fb66ec1da69fa940db7171b1e2f059daca84ec7a7c0181",
+      "description": "Explore the WoW Forever Paladin talent tree in the older 69913 client snapshot. Draft up to 21 points manually for the Level 30 Beta, review official changes, and share builds.",
+      "headSeoSha256": "26dcd98a1f6321d0219e36ae91a7df16a4e5825005fad03a553d3567c4cfdf5c"
+    },
+    "/wow-forever-paladin-builds": {
+      "rootSha256": "2c4e9a7b6065060a91d1dbe125b2b007ec6a517b4e745bdb5751a90e1d183aca",
+      "linksSha256": "6d79c8c06c1f92cac8a30e1d8dcf0c55c6bf32efb590f879e6f4081e2966c5e9"
+    },
+    "/wow-forever-paladin-talents": {
+      "rootSha256": "ff916fb17b6240d64d5db00ecdb7fd174c8d1cfed5e1af26575c2d8c1a584559",
+      "linksSha256": "16f43ada6aba94ba8bf1775f64aafc34bb28a2bed3b2cde274c3ac0b1192fdd8",
+      "description": "Explore Holy, Protection, and Retribution talents in the older 69913 snapshot. Draft a 21-point Level 30 idea manually, or inspect historical 51-point references.",
+      "headSeoSha256": "ca9251c3c86501683a912b72f2d3aeab618f1c2347d50eed9953889b9068e4e4"
+    },
+    "/wow-forever-paladin-build": {
+      "rootSha256": "ad1a461d29e51d20649933d724479860949d09b76da6bc8dc45f110b29e4d399",
+      "linksSha256": "1ff19613ddb2b3a93318c70c2a190e57cc25932c1cac14fcdd69ca70a3d81a41",
+      "description": "Inspect a historical 31/20/0 Holy Paladin healing reference, then start a new build for the live Level 30 Beta cap.",
+      "headSeoSha256": "a141e3170605ab9843236d09be9e6adb23945ed518a06ffe115080218367b467"
+    },
+    "/wow-forever-protection-paladin-build": {
+      "rootSha256": "0cae399ebd136ddbda1ea1f61ddfd519e90618f28f097aaba96749625d77c566",
+      "linksSha256": "780aeaedb7fb3d951668b67b0eb940dd4cc5a8cb64430025fd974dff5eafd985",
+      "description": "Inspect a historical 20/31/0 Protection Paladin tank reference, then start a new build for the live Level 30 Beta cap.",
+      "headSeoSha256": "7f0c4c6cbc69082b328a80d601d375530a219f04b4a6d0e1a996398f36538e90"
+    },
+    "/wow-forever-retribution-paladin-build": {
+      "rootSha256": "a83af2e6d694a8de33d0bbfcd4b606bd17f29af7578382f2749a53951447a76f",
+      "linksSha256": "05b4690c32fc257584ee12855d2cfddea3977c7e43ba0b1bbe6b34442ad70a17"
+    },
+    "/wow-forever-retribution-paladin-leveling-build": {
+      "rootSha256": "9b69a5b5b82d0f461af63ca209ec9ab95a9ae5709eef2d1286c1876588ef7ead",
+      "linksSha256": "8c94c060828b4a58fec413901650a9f7359fc61e58d3ee94076a8bd1fb2bbcc9"
+    },
+    "/wow-forever-paladin-leveling-build": {
+      "rootSha256": "8e792e5f951e61f887a6a375c9b6f7c4749cb926d43d8809b8e03fc8a8699747",
+      "linksSha256": "42f677230a88a8b5c3373104363cc293d09a9bc768a12f7d832ea3cb363e3721"
+    },
+    "/wow-forever-paladin-pvp-build": {
+      "rootSha256": "409990ee1810d22e00278ce7d7cde90801e7e80a74d569cbee9b064d9352d0c5",
+      "linksSha256": "8d27b50f6a9a765025455462b89ade54be8d65558ab70b770c7c5f19514d955a",
+      "headSeoSha256": "9077ae93a116eb17fcdf79881a62f79e323159dd2f679ae806d28e0eea5da869",
+      "lastmod": "2026-10-02"
+    },
+    "/wow-forever-paladin-raid-build": {
+      "rootSha256": "8bb7421fe3dc5a5a37deed7a1300387a94e57f31cc2e488ea54fd77958be4e98",
+      "linksSha256": "e5af6be6f461510c419b1784aeea7e6b53adb355a72f581a58905b700231896f",
+      "description": "Explore Holy, Protection, and Retribution raid roles. Compare historical 51-point references separately from the live Level 30 Beta planner.",
+      "headSeoSha256": "4757487e59a34f5fbcdb88e3c327b69afef2504c941387019e40f585ce106d1c"
+    },
+    "/wow-forever-protection-paladin-dungeon-build": {
+      "rootSha256": "84c3c20480ec5d2916fc5e2aee2970a5b4aad1168ffbb92465faea21c8df8a41",
+      "linksSha256": "95eb09274ae9972a47873d8b39baec2d42c53c8937836bb9cc563b4bd146cb44",
+      "description": "Inspect a historical 20/31/0 Protection Paladin dungeon tank reference, then start a new build within the live Level 30 Beta cap.",
+      "headSeoSha256": "95fc22d75b04220a1fb0d57b46d51c417305982db6455239e96d5f87721be64a"
+    },
+    "/wow-forever-retribution-paladin-builds": {
+      "rootSha256": "98f76926689991b6191ff4c8fd7d41301a5b3e9775c682c9d3d7dab7ce94d0d5",
+      "linksSha256": "dffc055696f7f884fb101e35829a18c8217fe12618087a3ae08f5cbb0e0c653a"
+    },
+    "/wow-forever-protection-paladin-builds": {
+      "rootSha256": "12abf1686627d6547334ebed650eb2748f3a2e55b564238748915a6ef581671d",
+      "linksSha256": "05528034e11f73b000fed5ee1fb618348c6b9c8b02115a7edc0a5027fb4f47f6"
+    },
+    "/wow-forever-protection-paladin-leveling-build": {
+      "rootSha256": "fa8befe32cbc70ad6a49e7f8b57ae4df6cae135e97c4fa53db84469932b37f97",
+      "linksSha256": "14dc3eb95ec30f5590a0b795b7aeb02ddeff4ecfbe0827e90b2e323462271c1b"
+    },
+    "/wow-forever-protection-paladin-pvp-build": {
+      "rootSha256": "cb0b093b86c5999866e30a015a791fa148d28f094a7b81368b615e53bff46a36",
+      "linksSha256": "ba65ea18669300c12654a41b40d7d4bca47793c4c04bfec27d5e8986ccb4c3d3"
+    },
+    "/wow-forever-retribution-paladin-pvp-build": {
+      "rootSha256": "34ce999040ec51b1167f205c658bf1f501959259e37e34c16a7772e0e6a1bcda",
+      "linksSha256": "9a4b84e26ce54343ffa1e0c62976f4ab47269f25af7171778941de512de60f23"
+    },
+    "/wow-forever-holy-paladin-pvp-build": {
+      "rootSha256": "b43d6400a50107b79a71291aef27782d7b65d299156614983e60ad92b2ab95b1",
+      "linksSha256": "0fc740c9bc2ade463077434b4e5a7a925c879816780f6693230ac33d84d85bdf",
+      "description": "Plan Holy Paladin PvP for the live Level 30 Beta. Inspect the historical 31/20/0 healing reference, then start a blank current-cap route.",
+      "headSeoSha256": "a3b9f3a6dc72f47fa32f1f3537cef8fab252cab905f3f746d8b8399f8eec25df"
+    },
+    "/wow-forever-holy-paladin-talents": {
+      "rootSha256": "a61338366970e52a756e9113f9d3620014ec95fddeca910618ffb3e54c268f64",
+      "linksSha256": "54ecb4fd4404e43a4d552de0941859782f4d19cb544fb7a6ee42784fb7090f57"
+    },
+    "/wow-forever-retribution-paladin-talents": {
+      "rootSha256": "00bf075fa7824e9244d0f111cd7f982430759e508d7498764bddb4aecd9db6f9",
+      "linksSha256": "9396c9fc6d5f65b60e1a6b83fd5a607cec7d0a16dfb40ee18c51ba3266684f59"
+    },
+    "/wow-forever-protection-paladin-talents": {
+      "rootSha256": "a69f2021de932399272a7b261b847da4f78729fb0516c0e453c76186f3593fbe",
+      "linksSha256": "8f819c26aefd7abe23f644fb280a04410bc59b2700218e49c6954c0a14e807d9"
+    },
+    "/wow-forever-paladin-beta-talent-changes": {
+      "rootSha256": "0dd1523e8b7dda31371da8777f71a5081b4da00e4e8a1692404c7c63c76827ed",
+      "linksSha256": "7d7636280526a4c69bcd2333db26b1866a1cd67ad11c73167f7421216ca1f307"
+    },
+    "/wow-forever-paladin-abilities": {
+      "rootSha256": "fe090331b85a18d28abcdb907fc3ffa44820abef900e3e1e7a95de05409ea602",
+      "linksSha256": "792e39382c152db7e603205ca4a3bbab2c876d3a97b957ad161279e1d19096cc"
+    }
+  }
+}

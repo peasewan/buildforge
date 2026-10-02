@@ -3,6 +3,7 @@ import { join } from 'node:path'
 import { cleanup, fireEvent, render, screen, within } from '@testing-library/react'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import ClassCalculatorPage from './ClassCalculatorPage'
+import { hunterClass } from './data/classes/hunter'
 import { HUNTER_FIXTURE_AOE_BUILD_ID, HUNTER_FIXTURE_STORAGE_KEY, hunterClassFixture } from './data/fixtures/hunterClass.fixture'
 import { assertUniquePageIntents } from './lib/classPage'
 import { totalPlannerPoints } from './lib/talentPlanner'
@@ -56,6 +57,20 @@ describe('ClassCalculatorPage renders any class from ClassDefinition', () => {
     for (const branch of hunterClassFixture.branches) {
       expect(screen.getByRole('heading', { level: 3, name: hunterClassFixture.branchNames[branch] })).toBeTruthy()
     }
+  })
+
+  it('separates the live Level 30 cap from its older 11-point client snapshot', () => {
+    const { container } = render(<ClassCalculatorPage classDef={hunterClassFixture} />)
+    expect(container.querySelector('.class-beta-boundary')?.textContent).toMatch(/live Beta cap is Level 30.*older.*69913.*11-point starting snapshots/i)
+    expect(screen.getByRole('link', { name: /Read Blizzard.s October 1 update/i }).getAttribute('href')).toContain('forums.blizzard.com')
+    expect(screen.getByRole('region', { name: /Hunter October 1 official changes/i })).toBeTruthy()
+  })
+
+  it('states when a real class only has a Level 20 snapshot mode and labels verification as historical', () => {
+    const { container } = render(<ClassCalculatorPage classDef={hunterClass} />)
+    expect(container.querySelector('.class-beta-boundary')?.textContent).toMatch(/Level 30 planning mode is not available/i)
+    expect(container.querySelector('.class-evidence')?.textContent).toMatch(/69913 snapshot.*verified/i)
+    expect(container.querySelector('.class-evidence')?.textContent).not.toMatch(/Current Beta talent data.*verified/i)
   })
 
   it('uses the class artwork in the calculator hero', () => {
@@ -156,6 +171,50 @@ describe('ClassCalculatorPage renders any class from ClassDefinition', () => {
     render(<ClassCalculatorPage classDef={current} />)
     expect(screen.getByRole('status').textContent).toMatch(/saved build.*invalid/i)
     expect(screen.getAllByText('0 / 11').length).toBeGreaterThan(0)
+  })
+
+  it('keeps an older officially removed node readable without offering it as a current build', () => {
+    const olderSnapshot = {
+      ...hunterClassFixture,
+      id: 'warrior',
+      talents: hunterClassFixture.talents.map(talent => talent.id === 'bm-1'
+        ? { ...talent, name: 'Improved Cleave' }
+        : talent),
+    }
+    history.replaceState({}, '', `${olderSnapshot.plannerPath}?build=bm-1.1&level=20`)
+    render(<ClassCalculatorPage classDef={olderSnapshot} />)
+
+    expect(document.getElementById('bm-1')?.textContent).toContain('1/5')
+    expect(screen.getByText(/Historical allocation: Improved Cleave was removed/i)).toBeTruthy()
+    expect(screen.getByRole('button', { name: /Copy build link/i }).hasAttribute('disabled')).toBe(true)
+    expect(screen.queryByRole('button', { name: 'Save to ForgePilot' })).toBeNull()
+
+    cleanup()
+    history.replaceState({}, '', olderSnapshot.plannerPath)
+    localStorage.setItem(olderSnapshot.storageKey, JSON.stringify({ build: { 'bm-1': 1 }, level: 20 }))
+    render(<ClassCalculatorPage classDef={olderSnapshot} />)
+    expect(document.getElementById('bm-1')?.textContent).toContain('1/5')
+    expect(screen.getByRole('button', { name: /Copy build link/i }).hasAttribute('disabled')).toBe(true)
+    expect(screen.queryByRole('button', { name: 'Save to ForgePilot' })).toBeNull()
+  })
+
+  it('does not load an older preset containing an officially removed talent', () => {
+    const olderSnapshot = {
+      ...hunterClassFixture,
+      id: 'warrior',
+      talents: hunterClassFixture.talents.map(talent => talent.id === 'bm-1'
+        ? { ...talent, name: 'Improved Cleave' }
+        : talent),
+    }
+    render(<ClassCalculatorPage classDef={olderSnapshot} />)
+
+    const presets = screen.getByTestId('class-presets')
+    expect(within(presets).getByText(/69913 starter snapshots/)).toBeTruthy()
+    const removedPreset = within(presets).getByRole('button', { name: /Load Beast Mastery Leveling/i })
+    expect(removedPreset.hasAttribute('disabled')).toBe(true)
+    fireEvent.click(removedPreset)
+    expect(screen.getAllByText('0 / 11').length).toBeGreaterThan(0)
+    expect(within(presets).getByRole('button', { name: /Load Marksmanship AoE/i }).hasAttribute('disabled')).toBe(false)
   })
 
   it('switches planner modes from classDef.plannerModes', () => {

@@ -18,9 +18,11 @@ export const PALADIN_BETA_SNAPSHOT = {
   betaStartsAt: "2026-09-17",
   betaEndsAt: "2026-10-21",
   phase: {
-    label: "Beta Week 1",
-    levelCap: 20,
-    nextLevelCap: 30,
+    label: "October 1 Beta update",
+    levelCap: 30,
+    routeSnapshotLevelCap: 20,
+    updatedAt: "2026-10-01",
+    officialSource: "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-1/2360696/1",
   },
   counts: {
     paladinTalents: 52,
@@ -56,7 +58,12 @@ export const PALADIN_BETA_SNAPSHOT = {
   ] satisfies ConfirmedPaladinChange[],
   sources: [
     {
-      label: "Blizzard — Beta live, Week 1 level cap, and schedule",
+      label: "Blizzard — October 1 Beta development notes and Level 30 cap",
+      url: "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-1/2360696/1",
+      kind: "official",
+    },
+    {
+      label: "Blizzard — Beta launch, initial Level 20 cap, and schedule",
       url: "https://news.blizzard.com/en-us/article/24304160/the-world-of-warcraft-forever-beta-now-live",
       kind: "official",
     },

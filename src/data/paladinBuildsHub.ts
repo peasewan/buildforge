@@ -42,8 +42,8 @@ export const HUB_PLAYSTYLE_SECTIONS: HubPlaystyleSection[] = [
   {
     id: 'leveling',
     eyebrow: 'Leveling Builds',
-    heading: 'Level Efficiently from 1–60',
-    intro: 'Solo-friendly talent paths for steady progression while leveling.',
+    heading: 'Plan Leveling Through the Live Level 30 Beta',
+    intro: 'Compare early solo paths now; deeper 51-point examples remain historical long-term references.',
     builds: [
       { id: 'paladin-leveling', title: 'Paladin Leveling Build', description: 'A flexible solo path from level 10 onward, focused on steady progression and survivability.', href: '/wow-forever-paladin-leveling-build', icon: 'leveling' },
       { id: 'protection-leveling', title: 'Protection Paladin Leveling Build', description: 'Archived Beta route: its Level 20 example included the removed Improved Holy Strike. No replacement has been verified.', href: '/wow-forever-protection-paladin-leveling-build', icon: 'protection' },
@@ -56,8 +56,8 @@ export const HUB_PLAYSTYLE_SECTIONS: HubPlaystyleSection[] = [
     heading: 'Group Content Builds',
     intro: 'Tank, healing, and damage setups for dungeons and raids.',
     builds: [
-      { id: 'protection-dungeon-tank', title: 'Protection Paladin Dungeon Tank Build', description: 'A defensive tank setup for dungeons and group content.', href: '/wow-forever-protection-paladin-dungeon-build', icon: 'protection' },
-      { id: 'protection-shield', title: 'Protection Paladin Shield Build', description: 'A complete 20/31/0 Protection tank build for group play.', href: '/wow-forever-protection-paladin-build', icon: 'protection' },
+      { id: 'protection-dungeon-tank', title: 'Protection Paladin Dungeon Tank Build', description: 'A historical 51-point tank reference; start a new route for the live Level 30 cap.', href: '/wow-forever-protection-paladin-dungeon-build', icon: 'protection' },
+      { id: 'protection-shield', title: 'Protection Paladin Shield Build', description: 'A historical 20/31/0 Protection allocation that exceeds the current Beta cap.', href: '/wow-forever-protection-paladin-build', icon: 'protection' },
       { id: 'paladin-raid', title: 'Paladin Raid Build', description: 'Raid-oriented paths for healing, tanking, and damage support.', href: '/wow-forever-paladin-raid-build', icon: 'raid' },
     ],
   },

@@ -13,7 +13,7 @@ import { pageForPath } from './routes'
 const paladinPlannerFallback = {
   kind: 'planner',
   title: 'WoW Forever Paladin Talent Calculator | Beta Build 69913',
-  description: 'Use the WoW Forever Paladin Talent Calculator to explore the WoW Forever Paladin talent tree, plan all 51 points, and share Holy, Protection, or Retribution builds.',
+  description: 'Explore the WoW Forever Paladin talent tree in the older 69913 client snapshot. Draft up to 21 points manually for the Level 30 Beta, review official changes, and share builds.',
   canonical: 'https://buildforgetools.com/paladin',
   robots: 'index, follow',
 }
@@ -57,7 +57,7 @@ describe('public page routing', () => {
     expect(pageForPath('/wow-forever-paladin-talents/')).toEqual({
       kind: 'guide',
       title: 'WoW Forever Paladin Talent Guide & Build Planner | BuildForgeTools',
-      description: 'Explore every WoW Forever Paladin talent path for Holy, Protection, and Retribution, then open the talent calculator to create a 51-point build.',
+      description: 'Explore Holy, Protection, and Retribution talents in the older 69913 snapshot. Draft a 21-point Level 30 idea manually, or inspect historical 51-point references.',
       canonical: 'https://buildforgetools.com/wow-forever-paladin-talents',
       robots: 'index, follow',
     })
@@ -68,7 +68,7 @@ describe('public page routing', () => {
       kind: 'build-guide',
       buildId: 'holy-healing-31-20-0',
       title: 'WoW Forever Paladin Build – Holy Healing 31/20/0 | BuildForgeTools',
-      description: 'Open a community WoW Forever Holy Paladin build with a 31/20/0 healing talent allocation, then edit and share it in the BuildForge planner.',
+      description: 'Inspect a historical 31/20/0 Holy Paladin healing reference, then start a new build for the live Level 30 Beta cap.',
       canonical: 'https://buildforgetools.com/wow-forever-paladin-build',
       robots: 'index, follow',
     })

@@ -289,7 +289,7 @@ describe('ClassDocumentPage intent-enabled semantic content', () => {
       const images = [...cards[index].querySelectorAll('img')]
       expect(images).toHaveLength(selectedTalents.length)
       expect(images.map(image => image.getAttribute('src'))).toEqual(selectedTalents.map(talent => talent.icon))
-      const link = new URL(card.getByRole('link', {name:'Edit in Calculator'}).getAttribute('href')!, 'https://buildforgetools.com')
+      const link = new URL(card.getByRole('link', {name:'Inspect Level 20 snapshot'}).getAttribute('href')!, 'https://buildforgetools.com')
       expect(link.pathname).toBe('/warrior')
       expect(link.searchParams.get('level')).toBe(String(build.level))
       const allocation = Object.fromEntries(link.searchParams.get('build')!.split('~').map(entry => {

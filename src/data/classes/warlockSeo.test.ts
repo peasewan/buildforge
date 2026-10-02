@@ -15,15 +15,17 @@ describe('Warlock PvP SEO pilot', () => {
     expect(page.h1).toBe('WoW Forever Warlock PvP Build')
     expect(page.canonical).toBe(`https://buildforgetools.com/${slug}`)
     expect(page.slug).toBe(slug)
-    expect(page.description).toMatch(/^WoW Forever Warlock PvP build: 11-point Affliction route/)
-    expect(page.description).toContain('Client-table preview')
+    expect(page.description).toMatch(/^WoW Forever Warlock PvP build/)
+    expect(page.description).toContain('Level 20 starter')
+    expect(page.description).toContain('Level 30 Beta')
     expect(page.description.length).toBeLessThanOrEqual(160)
 
     const html = renderClassPage(warlockClass, page)
     expect(page.surfaceDescription).toContain(route)
-    expect(page.surfaceDescription).toContain('editorial client-table preview')
+    expect(page.surfaceDescription).toContain('Level 20 starting snapshot')
+    expect(page.surfaceDescription).toContain('live Beta cap is Level 30')
     expect(html).not.toContain(route)
-    expect(html).toContain('Client-table preview')
+    expect(html).toContain('Level 30 Beta')
     expect(html).toContain('a PvP check needs to include the opponent')
     expect(html).toContain('opponent level and equipment')
     expect(html).toContain('pet repositioning')
@@ -42,12 +44,12 @@ describe('Warlock PvP SEO pilot', () => {
     const withPilotCopy = pages.filter((candidate) => candidate.sections.some((section) =>
       section.paragraphs.some((paragraph) => paragraph.includes('For comparable PvP encounters'))))
     expect(withPilotCopy.map((candidate) => candidate.slug)).toEqual([slug])
-    expect(page.updatedAt).toBe('2026-09-25')
+    expect(page.updatedAt).toBe('2026-10-02')
 
     const sitemap = readFileSync(`${process.cwd()}/public/sitemap.xml`, 'utf8')
     expect(withClassPageSitemapBlock(sitemap)).toBe(sitemap)
-    const changedRows = [...classPageSitemapBlock().matchAll(/<loc>([^<]+)<\/loc>\s*<lastmod>2026-09-25<\/lastmod>/g)]
+    const warlockRows = [...classPageSitemapBlock().matchAll(/<loc>([^<]+warlock[^<]*)<\/loc>\s*<lastmod>2026-10-02<\/lastmod>/g)]
       .map((match) => match[1])
-    expect(changedRows).toEqual([page.canonical])
+    expect(warlockRows).toEqual([page.canonical])
   })
 })

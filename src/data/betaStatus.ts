@@ -16,6 +16,8 @@ export const PALADIN_BETA_STATUS = {
   newTalentCount: PALADIN_BETA_SNAPSHOT.counts.paladinNewTalents,
   phaseLabel: PALADIN_BETA_SNAPSHOT.phase.label,
   levelCap: PALADIN_BETA_SNAPSHOT.phase.levelCap,
+  levelCapSource: PALADIN_BETA_SNAPSHOT.phase.officialSource,
+  routeSnapshotLevelCap: PALADIN_BETA_SNAPSHOT.phase.routeSnapshotLevelCap,
   added: latestDiff.added.length,
   updatedTalents: latestDiff.changed.length,
   removed: latestDiff.removed.length,

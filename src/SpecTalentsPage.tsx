@@ -1,6 +1,6 @@
 import { ArrowRight, Calculator, Heart, Shield, Swords } from 'lucide-react'
 import { TalentTree } from './App'
-import { exampleBuildById } from './data/builds'
+import { exampleBuildById, isHistoricalExample } from './data/builds'
 import { branchNames } from './data/talents'
 import { specTalentsPageBySpec } from './data/specTalentsPages'
 import type { Branch } from './lib/build'
@@ -23,7 +23,7 @@ const finalIcons: Record<Branch, string> = {
 export default function SpecTalentsPage({ spec }: { spec: Branch }) {
   const page = specTalentsPageBySpec(spec)
   const example = exampleBuildById(page.buildId)
-  const isHistorical = example.reviewStatus === 'under_review'
+  const isHistorical = isHistoricalExample(example)
   const plannerHref = isHistorical ? '/build?id=#calculator' : '/paladin#calculator'
   // Per-specialization event name keeps protection_talents_cta_click history continuous.
   const cta = (placement: string) => () => track(`${spec}_talents_cta_click`, { spec, placement })
@@ -48,7 +48,7 @@ export default function SpecTalentsPage({ spec }: { spec: Branch }) {
       <BetaDataStatus />
 
       <section className="spec-tree-section shell" id="talent-tree" aria-label={`${branchNames[spec]} talent preview`}>
-        <header className="hub-section-heading"><div className="eyebrow">Beta Talent Data</div><h2>{page.title.replace('WoW Forever ', '')} Beta Talent Tree</h2><p>This read-only preview highlights a complete {page.allocation.value} route from the imported Beta client build 1.60.1.69913. {example.reviewStatus === 'under_review' ? 'Historical preview: Crusade appears in a reported 70009 removal but its node identity is under review. Start with a blank calculator rather than loading this old allocation.' : 'Open the editable calculator to remove ranks, compare another path, or share a custom setup.'}</p></header>
+        <header className="hub-section-heading"><div className="eyebrow">Beta Talent Data</div><h2>{page.title.replace('WoW Forever ', '')} Beta Talent Tree</h2><p>This read-only preview highlights a historical 51-point {page.allocation.value} reference from imported client build 1.60.1.69913. The live Beta cap is Level 30, so this is not a complete current build. {example.reviewStatus === 'under_review' ? 'Crusade also appears in a reported 70009 removal but its node identity is under review.' : 'Start a new calculator route to plan within the live Beta cap.'}</p></header>
         <div className="spec-tree-layout">
           <div className="tree-card"><TalentTree branch={spec} build={example.build} readOnly /></div>
           <aside>

@@ -40,14 +40,14 @@ describe('example builds', () => {
     ])
   })
 
-  it('withholds exact Crusade-containing 51-point allocations while their 70009 identity is unresolved', () => {
+  it('starts a blank planner for every 51-point historical allocation under the live Level 30 cap', () => {
     for (const example of [RETRIBUTION_JUDGMENT_BUILD, RETRIBUTION_LEVELING_BUILD]) {
       expect(example.reviewStatus).toBe('under_review')
       expect(example.build.crusade).toBe(2)
       expect(totalPoints(example.build)).toBe(51)
+    }
+    for (const example of EXAMPLE_BUILDS) {
       expect(examplePlannerHref(example)).toBe('/build?id=#calculator')
     }
-    expect(examplePlannerHref(HOLY_HEALING_BUILD)).toContain('/build?id=')
-    expect(examplePlannerHref(PROTECTION_SHIELD_BUILD)).toContain('/build?id=')
   })
 })

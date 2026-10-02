@@ -40,13 +40,13 @@ export const SPEC_BUILDS_HUBS: SpecBuildsHubConfig[] = [
     intro: 'Explore Protection Paladin tank builds, leveling paths, and talent setups for WoW Forever.',
     featured: {
       title: 'Protection Paladin Dungeon Tank Build',
-      description: 'A complete community build example for players exploring a defensive Protection path.',
+      description: 'A historical 51-point Protection reference; start a blank route for the live Level 30 cap.',
       href: '/wow-forever-protection-paladin-dungeon-build',
       role: 'Dungeon Tank',
       playstyle: 'Defensive / Utility',
     },
     buildTypes: [
-      { id: 'dungeon-tank', eyebrow: 'Dungeon Tank', title: 'Protection Paladin Dungeon Tank Build', description: 'Designed for group content and defensive play.', href: '/wow-forever-protection-paladin-dungeon-build', icon: 'protection' },
+      { id: 'dungeon-tank', eyebrow: 'Dungeon Tank', title: 'Protection Paladin Dungeon Tank Build', description: 'A historical full allocation for group tank planning, not a current-cap build.', href: '/wow-forever-protection-paladin-dungeon-build', icon: 'protection' },
       { id: 'leveling-tank', eyebrow: 'Archived Leveling', title: 'Protection Paladin Leveling Build', description: 'The old Level 20 route used a removed talent. Review its history, then start a blank planner; no replacement is verified.', href: '/wow-forever-protection-paladin-leveling-build', icon: 'leveling' },
       { id: 'pvp-protection', eyebrow: 'PvP', title: 'Protection Paladin PvP Build', description: 'A defensive route for objectives, survival, control, and team utility.', href: '/wow-forever-protection-paladin-pvp-build', icon: 'pvp' },
     ],
@@ -54,7 +54,7 @@ export const SPEC_BUILDS_HUBS: SpecBuildsHubConfig[] = [
       {
         heading: 'How to Use These Protection Paladin Builds',
         paragraphs: [
-          'The complete Protection example on BuildForgeTools uses a 20/31/0 allocation: 31 points establish the defensive Protection core and 20 supporting points come from Holy. The full build page lists every selected rank and loads the same allocation into the calculator. Use that page when you want an exact setup rather than a general description of tank play.',
+          'The historical Protection example on BuildForgeTools uses a 20/31/0 allocation: 31 points establish a defensive Protection core and 20 supporting points come from Holy. Its full build page lists every selected rank, but the 51 points exceed the live Level 30 cap. Use it to inspect an older tank idea, then start a blank current-cap calculator route.',
           'The dungeon page explains the jobs a group tank must plan around. The leveling page now preserves an older Level 20 route for comparison: it included Improved Holy Strike, which Blizzard removed on September 24. Do not load that archived allocation as a current route. The separate 20/31/0 example is a longer-term community build, not a verified replacement for Level 20. Talent fields in the planner are from client build 1.60.1.69913 and remain under review against later Beta changes.',
         ],
       },
@@ -62,21 +62,21 @@ export const SPEC_BUILDS_HUBS: SpecBuildsHubConfig[] = [
         heading: 'Protection Priorities for a Tank Planner',
         paragraphs: [
           'Start by deciding what the build must do. A dungeon tank needs a dependable defensive base, a way to keep enemy attention, and enough utility to respond when a pull changes. In the planner, check the talents that support those jobs before spending points simply to reach a deeper row. The point counter and prerequisite locks show whether the route is legal, but they cannot decide whether a talent fits a particular party or encounter.',
-          'The current example reaches Holy Shield as the Protection endpoint and uses Holy support for the remaining allocation. Because beta behavior can differ from inherited Classic behavior, names such as Toughness, Anticipation, Redoubt, and Holy Shield are useful landmarks rather than proof that every number is unchanged. Open the dedicated Protection talents page to inspect the displayed tree, then verify important effects against the current game client before treating the result as final.',
+          'The historical 51-point example reaches Holy Shield as the Protection endpoint and uses Holy support for the remaining allocation. Because beta behavior can differ from inherited Classic behavior, names such as Toughness, Anticipation, Redoubt, and Holy Shield are useful landmarks rather than proof that every number is unchanged. Open the dedicated Protection talents page to inspect the displayed tree, then verify important effects against the current game client before treating the result as final.',
         ],
       },
       {
         heading: 'Dungeon Tank and Leveling Tradeoffs',
         paragraphs: [
           'A leveling route values consistency across many ordinary fights, while a dungeon route gives more weight to party protection and tools for difficult pulls. The archived Level 20 Protection route included a talent since removed, so it cannot be treated as a verified progression into the separate 20/31/0 tank example. Compare the two pages as different planning records until a replacement early-level path is reviewed.',
-          'Use the archived leveling page to see why the earlier point order was retired, the dungeon page to review the group role, and the complete Shield build to inspect every rank of a separate 51-point example. To plan current leveling, begin with a blank calculator and check each point against the latest client before sharing it. We will publish a new step-by-step Protection route only after its data and allocation are reviewed.',
+          'Use the archived leveling page to see why the earlier point order was retired, the dungeon page to review the group role, and the historical Shield build to inspect every rank of a separate 51-point example. To plan current leveling, begin with a blank calculator and check each point against the latest client before sharing it. We will publish a new step-by-step Protection route only after its data and allocation are reviewed.',
         ],
       },
       {
         heading: 'Protection Data Status',
         paragraphs: [
           'BuildForgeTools separates confirmed information, community-supported information, and details that still need review. Beta client records may confirm a talent or ability name without confirming its tree coordinate, point cost, prerequisite, or final tooltip. New records enter the beta comparison process first, and the public tree changes only after the fields needed by the planner can be reviewed together.',
-          'Protection currently has the strongest set of complete example pages on the site, but “complete build” describes the 51-point allocation rather than a performance ranking. Check the Beta tracker for the current client build and use the Feedback button when an in-game value conflicts with the planner.',
+          'Protection has several full 51-point historical examples, but none is a reviewed current-cap performance ranking. Check the Beta tracker for later patch notices and client-import status, and use the Feedback button when an in-game value conflicts with the planner.',
         ],
       },
     ],
@@ -113,7 +113,7 @@ export const SPEC_BUILDS_HUBS: SpecBuildsHubConfig[] = [
         heading: 'Compare the Retribution Paladin Routes',
         paragraphs: [
           'BuildForgeTools preserves two complete 51-point Retribution examples from the imported 69913 snapshot. The 0/20/31 Judgment build used 31 Retribution points and 20 Protection points for defensive support. The 20/0/31 leveling example used the same deep Retribution route with Holy support. Both selected Crusade. A reported 70009 client removal names Crusade but its node ID conflicts with the imported record, so these two allocations are historical and under review. Their individual pages list the old ranks for comparison but start a blank calculator instead of loading them as current builds.',
-          'The Retribution PvP page is also a planning discussion, not a fully verified PvP allocation. Its 51-point preview shares that under-review Crusade branch and is visibly marked historical. Use the separate Level 20 route for an editable current-cap example, or start a blank tree for a fresh PvP setup.',
+          'The Retribution PvP page is also a planning discussion, not a fully verified PvP allocation. Its 51-point preview shares that under-review Crusade branch and is visibly marked historical. The separate Level 20 starting snapshot is an editable 11-point route under the official Level 30 cap, not a completed current-cap build. Start a blank tree for a fresh PvP setup.',
         ],
       },
       {

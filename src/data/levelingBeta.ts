@@ -13,7 +13,7 @@ export interface BetaLevelingSnapshot {
   status: BetaRouteStatus
   archiveNotice?: string
   current: { level: number; points: number; allocation: string; build: Build; note: string }
-  next: { level: number; points: number; allocation: string; note: string; status: 'planned' | 'under_review' }
+  next: { level: number; points: number; note: string; status: 'under_review' }
   milestones: string[]
   recommendationSource: { label: string; href: string; updated: string }
 }
@@ -35,17 +35,16 @@ const retributionSnapshot = {
   title: 'Retribution-first Beta leveling path',
   status: 'current' as const,
   current: {
-    level: PALADIN_BETA_SNAPSHOT.phase.levelCap,
-    points: PALADIN_BETA_SNAPSHOT.phase.levelCap - 9,
+    level: PALADIN_BETA_SNAPSHOT.phase.routeSnapshotLevelCap,
+    points: PALADIN_BETA_SNAPSHOT.phase.routeSnapshotLevelCap - 9,
     allocation: '0/0/11',
     build: retributionCurrent,
-    note: 'Spend the current 11 points into Benediction, Conviction, then Seal of Command. This matches the Level 20 Retribution specialization path.',
+    note: 'This reviewed Level 20 starting route spends 11 points into Benediction, Conviction, then Seal of Command. It is a partial allocation at the current Level 30 cap.',
   },
   next: {
-    level: PALADIN_BETA_SNAPSHOT.phase.nextLevelCap,
-    points: PALADIN_BETA_SNAPSHOT.phase.nextLevelCap - 9,
-    allocation: '0/0/21',
-    note: 'A later 21-point route remains under review. The reported 70009 Crusade removal has not been reconciled against the imported client record; do not treat a Crusade-containing projection as current.',
+    level: PALADIN_BETA_SNAPSHOT.phase.levelCap,
+    points: PALADIN_BETA_SNAPSHOT.phase.levelCap - 9,
+    note: 'No Level 30 allocation has been reviewed against the updated client tree. The September 24 Crusade report remains unresolved in the imported data.',
     status: 'under_review' as const,
   },
   milestones: ['5/5 Benediction', '5/5 Conviction', 'Seal of Command at Level 20', 'Later points pending client reconciliation'],
@@ -65,17 +64,16 @@ export const BETA_LEVELING_SNAPSHOTS: Record<BetaLevelingPageId, BetaLevelingSna
     status: 'archived',
     archiveNotice: PROTECTION_ROUTE_ARCHIVE_NOTICE,
     current: {
-      level: PALADIN_BETA_SNAPSHOT.phase.levelCap,
-      points: PALADIN_BETA_SNAPSHOT.phase.levelCap - 9,
+      level: PALADIN_BETA_SNAPSHOT.phase.routeSnapshotLevelCap,
+      points: PALADIN_BETA_SNAPSHOT.phase.routeSnapshotLevelCap - 9,
       allocation: '2/9/0',
       build: protectionCurrent,
       note: 'The pre-September 24 route used 2 points in Improved Holy Strike before Redoubt, Precision, and Anticipation. It is retained only to explain the historical allocation.',
     },
     next: {
-      level: PALADIN_BETA_SNAPSHOT.phase.nextLevelCap,
-      points: PALADIN_BETA_SNAPSHOT.phase.nextLevelCap - 9,
-      allocation: '2/19/0',
-      note: 'This earlier level-30 projection also reserved points for the removed talent. It is archived and must be reconsidered against a reconciled Beta tree.',
+      level: PALADIN_BETA_SNAPSHOT.phase.levelCap,
+      points: PALADIN_BETA_SNAPSHOT.phase.levelCap - 9,
+      note: 'No replacement Level 30 route has been verified after Improved Holy Strike was removed. The old projection is withheld.',
       status: 'under_review',
     },
     milestones: ['2/2 Improved Holy Strike', '5/5 Redoubt', '3/3 Precision', 'Shield Specialization → Improved Righteous Fury'],
@@ -92,9 +90,9 @@ export const betaLevelingSnapshot = (pageId: BetaLevelingPageId) => BETA_LEVELIN
 export const betaLevelingPlannerHref = (pageId: BetaLevelingPageId) =>
   betaLevelingSnapshot(pageId).status === 'archived'
     ? EMPTY_PALADIN_PLANNER_HREF
-    : `/build?id=${encodeBuild(betaLevelingSnapshot(pageId).current.build)}#calculator`
+    : `/build?id=${encodeBuild(betaLevelingSnapshot(pageId).current.build)}&level=20#calculator`
 
 export const BETA_LEVEL_CAP_SOURCE = {
-  label: 'Blizzard — WoW Forever Beta Now Live',
-  href: 'https://news.blizzard.com/en-us/article/24304160/the-world-of-warcraft-forever-beta-now-live',
+  label: 'Blizzard — October 1 Beta development notes',
+  href: PALADIN_BETA_SNAPSHOT.phase.officialSource,
 }

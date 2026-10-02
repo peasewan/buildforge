@@ -1,7 +1,7 @@
 import { ArrowRight } from 'lucide-react'
 import { expansionProfiles } from '../data/expansion/profiles'
-import { classPlannerHref, publishedClassPages, type ClassBuild, type ClassDefinition, type ClassPageDefinition } from '../lib/classPage'
-import { encodePlannerBuild } from '../lib/talentPlanner'
+import { publishedClassPages, type ClassBuild, type ClassDefinition, type ClassPageDefinition } from '../lib/classPage'
+import { classBuildPlannerHref, hasRemovedTalentInBuild } from '../lib/archivedClassBuild'
 
 export interface ClassSignatureProps {
   classDef: ClassDefinition
@@ -112,10 +112,11 @@ export function ClassSignature({ classDef, page }: ClassSignatureProps) {
   const context = signatureContext(classDef, page)
   if (!context) return null
   const { id, config, build } = context
+  const archived = hasRemovedTalentInBuild(classDef, build)
   return <section className="class-signature" data-class-signature={id} data-signature-pattern={config.pattern} aria-label={`${classDef.name} planning question`}>
     <div className="cs-intro"><span className="cs-kicker">{classDef.name.toUpperCase()} / PLANNING QUESTION</span><h2>{config.question}</h2><p>{page.kind === 'buildsHub' ? 'Choose a route to test.' : page.kind === 'leveling' ? 'Compare full pull-and-recovery cycles.' : page.kind === config.feature ? 'Match the setup to this role.' : 'Keep the test conditions stable while you edit.'}</p></div>
     <SignatureBody id={id} def={classDef} build={build} focus={pageFocus(classDef, page)} names={firstTalentNames(classDef, build)} />
-    <div className="cs-outro"><span>Editorial test prompt · Client talent records reviewed through {classDef.verifiedBuild}; build performance is unverified.</span><a href={classPlannerHref(classDef, encodePlannerBuild(build.build), build.level)}>{config.action} <ArrowRight size={15} aria-hidden="true" /></a></div>
+    <div className="cs-outro"><span>Editorial test prompt · Client talent records reviewed through {classDef.verifiedBuild}; build performance is unverified.{archived && ' This historical route contains an officially removed talent.'}</span><a href={classBuildPlannerHref(classDef, build)}>{archived ? 'Open blank Calculator · archived route' : config.action} <ArrowRight size={15} aria-hidden="true" /></a></div>
   </section>
 }
 

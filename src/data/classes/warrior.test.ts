@@ -67,6 +67,37 @@ describe('Warrior ClassDefinition', () => {
     ])
   })
 
+  it('publishes the Level 20 routes as 69913 starter snapshots under the official Level 30 cap', () => {
+    expect(warriorClass.beta).toMatchObject({ levelCap: 20, pointsAtCap: 11 })
+    expect(warriorClass.beta.phaseLabel).toMatch(/69913.*snapshot/i)
+    for (const build of warriorClass.builds) {
+      expect(build).toMatchObject({ level: 20, levelCap: 20, points: 11, verifiedThroughBuild: '1.60.1.69913' })
+      expect(build.phase).toMatch(/starter snapshot/i)
+      expect(build.sources.some((source) => source.url?.includes('us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes'))).toBe(true)
+    }
+    for (const { page } of publishedClassPages([warriorClass])) {
+      const pageText = [page.description, page.eyebrow, ...page.sections.flatMap((section) => [section.heading, ...section.paragraphs]), ...page.faqs.map((faq) => faq.answer)].join(' ')
+      expect(pageText, page.slug).toMatch(/October 1.*Level 30/i)
+      expect(pageText, page.slug).toMatch(/11-point.*Level 20.*snapshot/i)
+      expect(pageText, page.slug).not.toMatch(/current[- ]cap|current .*Level 20 Beta cap/i)
+    }
+  })
+
+  it('gives Arms vs Fury readers a choice and separates October 1 announcements from imported talents', () => {
+    const page = warriorClass.pages.find((candidate) => candidate.slug === 'wow-forever-arms-vs-fury-warrior-leveling')!
+    const text = [page.description, ...page.sections.flatMap((section) => [section.heading, ...section.paragraphs]), ...page.faqs.map((faq) => faq.answer), ...page.comparison!.rows.flatMap((row) => [row.label, ...row.values])].join(' ')
+
+    expect(page.updatedAt).toBe('2026-10-02')
+    expect(page.comparison!.rows.length).toBeGreaterThanOrEqual(6)
+    expect(text).toMatch(/Choose Arms/i)
+    expect(text).toMatch(/Choose Fury/i)
+    expect(text).toMatch(/Lingering Rage/)
+    expect(text).toMatch(/Furious Precision/)
+    expect(text).toMatch(/not.*imported.*69913|69913.*not.*client.verified/i)
+    expect(text).toMatch(/no.*reviewed.*Level 30.*allocation/i)
+    expect(renderClassPage(warriorClass, page)).toContain('Lingering Rage')
+  })
+
   it('withholds unfinished Protection PvP and redirects its old URL to the supported PvP hub', () => {
     const page = warriorClass.pages.find((candidate) => candidate.slug === WITHHELD_PVP)
     expect(page?.publishRequirements).toEqual(['talentDataset'])
@@ -110,12 +141,17 @@ describe('Warrior ClassDefinition', () => {
   it('renders spec talent catalogues with only the requested Warrior branch', () => {
     const armsPage = warriorClass.pages.find((page) => page.slug === 'wow-forever-arms-warrior-talents')!
     const html = renderClassPage(warriorClass, armsPage)
+    const document = new DOMParser().parseFromString(html, 'text/html')
+    const armsCatalogue = document.querySelector('[data-class-catalogue="arms"]')
     const armsTalent = warriorClass.talents.find((talent) => talent.branch === 'arms')!
     const furyTalent = warriorClass.talents.find((talent) => talent.branch === 'fury')!
     const protectionTalent = warriorClass.talents.find((talent) => talent.branch === 'protection')!
 
-    expect(html).toContain(armsTalent.name)
-    expect(html).not.toContain(furyTalent.name)
-    expect(html).not.toContain(protectionTalent.name)
+    expect(armsCatalogue).not.toBeNull()
+    expect(document.querySelectorAll('[data-class-catalogue]')).toHaveLength(1)
+    expect(armsCatalogue?.textContent).toContain(armsTalent.name)
+    expect(armsCatalogue?.textContent).not.toContain(furyTalent.name)
+    expect(armsCatalogue?.textContent).not.toContain(protectionTalent.name)
+    expect(html).toContain('Warrior official changes')
   })
 })

@@ -37,3 +37,14 @@ it('class picker shows explainable matches and a useful empty state', () => {
   expect(screen.getByText(/No published route matches all three choices/i)).toBeTruthy()
   expect(screen.getByRole('button',{name:'Reset preferences'})).toBeTruthy()
 })
+it('shows a Hunter route with removed talents as historical and opens a blank calculator', () => {
+  render(<PlanningToolsPage tool="dungeon-finder" />)
+  fireEvent.click(screen.getByRole('button', {name:'DPS'}))
+  fireEvent.change(screen.getByLabelText('Class'), {target:{value:'hunter'}})
+  const card = document.querySelector('[data-tool-route="hunter-hunter-dungeon-build"]') as HTMLElement
+  expect(card).toBeTruthy()
+  expect(screen.getByText(/^\d+ results$/)).toBeTruthy()
+  expect(within(card).getByText(/Aimed Shot.*removed/i)).toBeTruthy()
+  expect(within(card).getByRole('link', {name:/Open blank Hunter Calculator/i}).getAttribute('href')).toBe('/hunter?build=#class-calculator')
+  expect(within(card).queryByRole('link', {name:/Edit level 20 snapshot/i})).toBeNull()
+})

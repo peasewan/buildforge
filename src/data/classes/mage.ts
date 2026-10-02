@@ -16,6 +16,7 @@ import { MAGE_BRANCHES, MAGE_DATA_VERSION, MAGE_PLANNER_CONFIG, MAGE_SOURCES, ma
 
 const MAGE_UPDATED = '2026-09-22'
 const BUILD_VERIFIED = '1.60.1.69913'
+const OFFICIAL_CAP_SOURCE = 'https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-1/2360696'
 const MAGE_HERO = '/images/mage/mage-hero-v1.webp'
 const FROST_MAGE_HERO = '/images/mage/frost-mage-hero-v1.webp'
 const ARCANE_MAGE_HERO = '/images/mage/arcane-mage-hero-v1.webp'
@@ -34,8 +35,9 @@ const T = {
   improvedBlizzard: 'mage-frost-improved-blizzard',
 }
 
-/** The eleven-point question, answered the same way on every page that presents a build. */
-const ELEVEN_POINT_NOTE = 'At the current Level 20 Beta cap a Mage has 11 talent points. Every allocation on this page spends all 11.'
+/** Keep the reviewed starter allocation separate from the playable Beta cap. */
+const ELEVEN_POINT_NOTE = 'This reviewed Level 20 starter allocation spends 11 points. Blizzard raised the playable Beta cap to Level 30 on October 1; this route is not a reviewed Level 30 build.'
+const LIVE_CAP_NOTE = `Blizzard's October 1 Beta development notes raised the playable cap to Level 30. These 11-point Mage routes preserve the initial Level 20 snapshot, and no Level 30 allocation is verified here. Official source: ${OFFICIAL_CAP_SOURCE}`
 
 const evidenceBoundary = 'Talent names, positions and ranks are dual-source client records reviewed through build 1.60.1.69913. The allocation and the order it is spent in are editorial recommendations for testing, not official or guaranteed best builds.'
 
@@ -46,7 +48,7 @@ const mageBuilds: ClassBuild[] = [
     intent: 'spec',
     level: 20,
     levelCap: 20,
-    phase: 'Current Beta',
+    phase: 'Level 20 starter snapshot',
     points: 11,
     allocation: '0/0/11',
     title: 'Frost Mage Build (Level 20)',
@@ -62,7 +64,7 @@ const mageBuilds: ClassBuild[] = [
     order: [T.improvedFrostbolt, T.iceShards, T.piercingIce],
     build: { [T.improvedFrostbolt]: 5, [T.iceShards]: 5, [T.piercingIce]: 1 },
     evidence: 'community_verified',
-    sources: [{ label: 'BuildForgeTools Frost Mage route, current Beta cap', url: 'https://buildforgetools.com/wow-forever-frost-mage-build' }],
+    sources: [{ label: 'BuildForgeTools Frost Mage route, Level 20 starter snapshot', url: 'https://buildforgetools.com/wow-forever-frost-mage-build' }],
     verifiedThroughBuild: BUILD_VERIFIED,
     createdAt: MAGE_UPDATED,
     updatedAt: MAGE_UPDATED,
@@ -74,7 +76,7 @@ const mageBuilds: ClassBuild[] = [
     intent: 'leveling',
     level: 20,
     levelCap: 20,
-    phase: 'Current Beta',
+    phase: 'Level 20 starter snapshot',
     points: 11,
     allocation: '0/0/11',
     title: 'Frost Mage Leveling Build (Level 20)',
@@ -90,7 +92,7 @@ const mageBuilds: ClassBuild[] = [
     order: [T.improvedFrostbolt, T.iceShards, T.improvedFrostNova],
     build: { [T.improvedFrostbolt]: 5, [T.iceShards]: 4, [T.improvedFrostNova]: 2 },
     evidence: 'community_verified',
-    sources: [{ label: 'BuildForgeTools Frost Mage leveling route, current Beta cap', url: 'https://buildforgetools.com/wow-forever-frost-mage-leveling-build' }],
+    sources: [{ label: 'BuildForgeTools Frost Mage leveling route, Level 20 starter snapshot', url: 'https://buildforgetools.com/wow-forever-frost-mage-leveling-build' }],
     verifiedThroughBuild: BUILD_VERIFIED,
     createdAt: MAGE_UPDATED,
     updatedAt: MAGE_UPDATED,
@@ -102,7 +104,7 @@ const mageBuilds: ClassBuild[] = [
     intent: 'aoe',
     level: 20,
     levelCap: 20,
-    phase: 'Current Beta',
+    phase: 'Level 20 starter snapshot',
     points: 11,
     allocation: '0/0/11',
     title: 'Frost Mage AoE Build (Level 20)',
@@ -118,7 +120,7 @@ const mageBuilds: ClassBuild[] = [
     order: [T.improvedFrostbolt, T.iceShards, T.improvedFrostNova, T.improvedBlizzard],
     build: { [T.improvedFrostbolt]: 5, [T.iceShards]: 3, [T.improvedFrostNova]: 2, [T.improvedBlizzard]: 1 },
     evidence: 'derived_assumption',
-    sources: [{ label: 'BuildForgeTools Frost Mage area route, current Beta cap', url: 'https://buildforgetools.com/wow-forever-frost-mage-aoe-build' }],
+    sources: [{ label: 'BuildForgeTools Frost Mage area route, Level 20 starter snapshot', url: 'https://buildforgetools.com/wow-forever-frost-mage-aoe-build' }],
     verifiedThroughBuild: BUILD_VERIFIED,
     createdAt: MAGE_UPDATED,
     updatedAt: MAGE_UPDATED,
@@ -130,7 +132,7 @@ const mageBuilds: ClassBuild[] = [
     intent: 'spec',
     level: 20,
     levelCap: 20,
-    phase: 'Current Beta',
+    phase: 'Level 20 starter snapshot',
     points: 11,
     allocation: '11/0/0',
     title: 'Arcane Mage Build (Level 20)',
@@ -146,7 +148,7 @@ const mageBuilds: ClassBuild[] = [
     order: [T.arcaneFocus, T.improvedChanneling, T.arcaneConcentration],
     build: { [T.arcaneFocus]: 5, [T.improvedChanneling]: 5, [T.arcaneConcentration]: 1 },
     evidence: 'community_verified',
-    sources: [{ label: 'BuildForgeTools Arcane Mage route, current Beta cap', url: 'https://buildforgetools.com/wow-forever-arcane-mage-build' }],
+    sources: [{ label: 'BuildForgeTools Arcane Mage route, Level 20 starter snapshot', url: 'https://buildforgetools.com/wow-forever-arcane-mage-build' }],
     verifiedThroughBuild: BUILD_VERIFIED,
     createdAt: MAGE_UPDATED,
     updatedAt: MAGE_UPDATED,
@@ -158,7 +160,7 @@ const mageBuilds: ClassBuild[] = [
     intent: 'leveling',
     level: 20,
     levelCap: 20,
-    phase: 'Current Beta',
+    phase: 'Level 20 starter snapshot',
     points: 11,
     allocation: '11/0/0',
     title: 'Arcane Mage Leveling Build (Level 20)',
@@ -174,7 +176,7 @@ const mageBuilds: ClassBuild[] = [
     order: [T.arcaneFocus, T.arcaneConcentration, T.arcaneImpact],
     build: { [T.arcaneFocus]: 5, [T.arcaneConcentration]: 5, [T.arcaneImpact]: 1 },
     evidence: 'derived_assumption',
-    sources: [{ label: 'BuildForgeTools Arcane Mage leveling route, current Beta cap', url: 'https://buildforgetools.com/wow-forever-arcane-mage-leveling-build' }],
+    sources: [{ label: 'BuildForgeTools Arcane Mage leveling route, Level 20 starter snapshot', url: 'https://buildforgetools.com/wow-forever-arcane-mage-leveling-build' }],
     verifiedThroughBuild: BUILD_VERIFIED,
     createdAt: MAGE_UPDATED,
     updatedAt: MAGE_UPDATED,
@@ -187,7 +189,7 @@ const mageBuilds: ClassBuild[] = [
     intent: 'leveling',
     level: 20,
     levelCap: 20,
-    phase: 'Current Beta',
+    phase: 'Level 20 starter snapshot',
     points: 11,
     allocation: '0/0/11',
     title: 'Mage Leveling Build (Frost)',
@@ -203,7 +205,7 @@ const mageBuilds: ClassBuild[] = [
     order: [T.improvedFrostbolt, T.iceShards, T.improvedFrostNova],
     build: { [T.improvedFrostbolt]: 5, [T.iceShards]: 4, [T.improvedFrostNova]: 2 },
     evidence: 'community_verified',
-    sources: [{ label: 'BuildForgeTools Mage leveling recommendation, current Beta cap', url: 'https://buildforgetools.com/wow-forever-mage-leveling-build' }],
+    sources: [{ label: 'BuildForgeTools Mage leveling recommendation, Level 20 starter snapshot', url: 'https://buildforgetools.com/wow-forever-mage-leveling-build' }],
     verifiedThroughBuild: BUILD_VERIFIED,
     createdAt: MAGE_UPDATED,
     updatedAt: MAGE_UPDATED,
@@ -215,7 +217,7 @@ const mageBuilds: ClassBuild[] = [
     intent: 'dungeon',
     level: 20,
     levelCap: 20,
-    phase: 'Current Beta',
+    phase: 'Level 20 starter snapshot',
     points: 11,
     allocation: '0/0/11',
     title: 'Mage Dungeon Build (Frost)',
@@ -231,7 +233,7 @@ const mageBuilds: ClassBuild[] = [
     order: [T.frostWarding, T.improvedFrostbolt, T.iceShards],
     build: { [T.frostWarding]: 2, [T.improvedFrostbolt]: 5, [T.iceShards]: 4 },
     evidence: 'derived_assumption',
-    sources: [{ label: 'BuildForgeTools Mage dungeon route, current Beta cap', url: 'https://buildforgetools.com/wow-forever-mage-dungeon-build' }],
+    sources: [{ label: 'BuildForgeTools Mage dungeon route, Level 20 starter snapshot', url: 'https://buildforgetools.com/wow-forever-mage-dungeon-build' }],
     verifiedThroughBuild: BUILD_VERIFIED,
     createdAt: MAGE_UPDATED,
     updatedAt: MAGE_UPDATED,
@@ -243,7 +245,7 @@ const mageBuilds: ClassBuild[] = [
     intent: 'pvp',
     level: 20,
     levelCap: 20,
-    phase: 'Current Beta',
+    phase: 'Level 20 starter snapshot',
     points: 11,
     allocation: '0/0/11',
     title: 'Frost Mage PvP Build (Level 20)',
@@ -259,7 +261,7 @@ const mageBuilds: ClassBuild[] = [
     order: [T.improvedFrostbolt, T.iceShards, T.improvedFrostNova],
     build: { [T.improvedFrostbolt]: 5, [T.iceShards]: 5, [T.improvedFrostNova]: 1 },
     evidence: 'derived_assumption',
-    sources: [{ label: 'BuildForgeTools Mage PvP routes, current Beta cap', url: 'https://buildforgetools.com/wow-forever-mage-pvp-build' }],
+    sources: [{ label: 'BuildForgeTools Mage PvP routes, Level 20 starter snapshot', url: 'https://buildforgetools.com/wow-forever-mage-pvp-build' }],
     verifiedThroughBuild: BUILD_VERIFIED,
     createdAt: MAGE_UPDATED,
     updatedAt: MAGE_UPDATED,
@@ -271,7 +273,7 @@ const mageBuilds: ClassBuild[] = [
     intent: 'pvp',
     level: 20,
     levelCap: 20,
-    phase: 'Current Beta',
+    phase: 'Level 20 starter snapshot',
     points: 11,
     allocation: '11/0/0',
     title: 'Arcane Mage PvP Build (Level 20)',
@@ -287,7 +289,7 @@ const mageBuilds: ClassBuild[] = [
     order: [T.arcaneFocus, T.improvedChanneling, T.arcaneConcentration],
     build: { [T.arcaneFocus]: 5, [T.improvedChanneling]: 3, [T.arcaneConcentration]: 3 },
     evidence: 'derived_assumption',
-    sources: [{ label: 'BuildForgeTools Mage PvP routes, current Beta cap', url: 'https://buildforgetools.com/wow-forever-mage-pvp-build' }],
+    sources: [{ label: 'BuildForgeTools Mage PvP routes, Level 20 starter snapshot', url: 'https://buildforgetools.com/wow-forever-mage-pvp-build' }],
     verifiedThroughBuild: BUILD_VERIFIED,
     createdAt: MAGE_UPDATED,
     updatedAt: MAGE_UPDATED,
@@ -306,7 +308,7 @@ const magePages: ClassPageDefinition[] = [
     intent: 'Talent Calculator',
     title: 'WoW Forever Mage Talent Calculator – Arcane, Fire & Frost',
     h1: 'WoW Forever Mage Talent Calculator',
-    description: 'Build Arcane, Fire and Frost Mage talent trees from current WoW Forever Beta data, spend the 11 points of the Level 20 cap and share the exact build link.',
+    description: 'Build Arcane, Fire and Frost Mage talent trees from reviewed Beta client data. The live cap is Level 30; our recommended routes remain 11-point Level 20 snapshots.',
     eyebrow: 'Beta Talent Planner',
     canonical: 'https://buildforgetools.com/mage',
     robots: 'index, follow',
@@ -327,13 +329,13 @@ const magePages: ClassPageDefinition[] = [
           ELEVEN_POINT_NOTE,
         ],
         bullets: [
-          'Level 20, 30 and 60 planning modes with 11, 21 and 51 talent points',
+          'Level 20, 30 and 60 point-budget modes; only the 11-point Level 20 routes have reviewed allocations',
           'Rank tooltips, prerequisite messages and required-tree-point labels on every node',
           'Copy build link, reset, and recommended build presets',
         ],
       },
       {
-        heading: 'Where the three trees stand at the current cap',
+        heading: 'Where the three trees stand in the reviewed snapshot',
         paragraphs: [
           'Arcane, Fire and Frost each have a client-reviewed entry node that can take the first point. Improved Fireball is the Fire entry: its column conflict between the two derived web views is resolved to row 1, column 2 by the build 1.60.1.69913 client Talent table.',
           'The calculator can therefore spend points in all three trees. Frost and Arcane have reviewed presets; Fire stays a blank canvas until a reproducible editorial allocation is reviewed.',
@@ -348,7 +350,7 @@ const magePages: ClassPageDefinition[] = [
     ],
     faqs: [
       { question: 'Can I spend points in the Fire tree?', answer: 'Yes. Improved Fireball is the client-resolved Fire entry node. Fire does not yet have a recommended preset, so create the allocation manually and copy the resulting build link.' },
-      { question: 'Which Mage tree should a new player plan first?', answer: 'Frost. It has the control a solo player needs — a chill slow and two roots — and it can spend the full 11 points at the Level 20 cap.' },
+      { question: 'Which Mage tree should a new player plan first?', answer: 'Frost is this site’s reviewed Level 20 starting route because its slow and roots help a solo player. A Level 30 allocation has not been reviewed here.' },
     ],
   },
   {
@@ -357,7 +359,7 @@ const magePages: ClassPageDefinition[] = [
     intent: 'Builds Hub',
     title: 'WoW Forever Mage Builds | Talent Calculator',
     h1: 'WoW Forever Mage Builds',
-    description: 'Every current-cap Mage build in one place: Frost leveling and area routes, the Arcane 11-point route, dungeon play and the calculator that loads them.',
+    description: 'Reviewed Level 20 Mage starter builds in one place: Frost leveling and area routes, an Arcane 11-point route, dungeon play and the calculator.',
     eyebrow: 'Beta Build Hub',
     canonical: 'https://buildforgetools.com/wow-forever-mage-builds',
     robots: 'index, follow',
@@ -373,14 +375,14 @@ const magePages: ClassPageDefinition[] = [
     publishRequirements: ['completeClassPlanner'],
     sections: [
       {
-        heading: 'Three specs, one current cap',
+        heading: 'Three specs in the Level 20 snapshot',
         paragraphs: [
-          'Frost is the class recommendation for leveling because the chill slow and the roots are what a solo player leans on. Arcane is the phase-preview route: its deeper nodes sit far above the 11-point cap, so what ships here is the entry half of that tree.',
+          'Frost is the reviewed Level 20 leveling start because its slow and roots help a solo player. Arcane is another 11-point starter route; its deeper nodes remain outside this allocation. Neither route has been extended and reviewed for Level 30.',
           ELEVEN_POINT_NOTE,
         ],
         bullets: [
           'Frost leveling and Frost area routes',
-          'Arcane 11-point route with a stated current-cap note',
+          'Arcane 11-point route with a stated Level 20 scope',
           'Frost dungeon and Frost PvP routes',
         ],
       },
@@ -453,7 +455,7 @@ const magePages: ClassPageDefinition[] = [
     intent: 'Mage Leveling',
     title: 'WoW Forever Mage Leveling Build | Level 20 Beta',
     h1: 'WoW Forever Mage Leveling Build',
-    description: 'The Mage leveling recommendation for the Level 20 Beta cap: an 11-point Frost route, the order to spend it in, and how Arcane and Fire compare while leveling.',
+    description: 'The Mage leveling recommendation for the Level 20 starter snapshot: an 11-point Frost route, the order to spend it in, and how Arcane and Fire compare while leveling.',
     eyebrow: 'Beta Leveling Guide',
     canonical: 'https://buildforgetools.com/wow-forever-mage-leveling-build',
     robots: 'index, follow',
@@ -488,13 +490,13 @@ const magePages: ClassPageDefinition[] = [
       {
         heading: 'Frost, Fire and Arcane while leveling',
         paragraphs: [
-          'Frost trades a little time to kill for control: a slow, a root and an answer to adds. Arcane is the simpler loop — one target at a time with mana efficiency instead of control — and it can spend all 11 points at this cap. Fire is allocatable in the calculator, but its leveling preset remains under review and is not presented as a recommendation here.',
+          'Frost trades a little time to kill for control: a slow, a root and an answer to adds. Arcane is the simpler loop — one target at a time with mana efficiency instead of control — and the Level 20 starter route spends 11 points. Fire is allocatable in the calculator, but its leveling preset remains under review and is not presented as a recommendation here.',
         ],
       },
       {
         heading: 'Where the points stop',
         paragraphs: [
-          'Deeper Frost nodes sit above the current cap. Arctic Reach needs 15 points of Frost, Winter’s Chill needs 25 and Ice Barrier needs 30, so none of them are reachable at 11 points. The pages say so rather than planning points a player cannot spend yet.',
+          'Deeper Frost nodes sit beyond this 11-point allocation. Arctic Reach needs 15 Frost points, Winter’s Chill needs 25 and Ice Barrier needs 30, so this Level 20 route cannot reach them. The live Level 30 cap alone does not validate a new allocation.',
         ],
       },
     ],
@@ -509,7 +511,7 @@ const magePages: ClassPageDefinition[] = [
     intent: 'Frost Build',
     title: 'WoW Forever Frost Mage Build | Level 20 Beta',
     h1: 'WoW Forever Frost Mage Build',
-    description: 'The Frost Mage build for the Level 20 Beta cap: an 11-point allocation, the order to spend it in, the key nodes and the current-cap limits of the Frost tree.',
+    description: 'The Frost Mage Level 20 starter snapshot: an 11-point allocation, its spend order and key nodes. The live Beta cap is 30; this is not a reviewed 30 build.',
     eyebrow: 'Beta Spec Build',
     canonical: 'https://buildforgetools.com/wow-forever-frost-mage-build',
     robots: 'index, follow',
@@ -525,7 +527,7 @@ const magePages: ClassPageDefinition[] = [
     publishRequirements: ['legalBuild:frost'],
     sections: [
       {
-        heading: 'Current-cap Frost allocation',
+        heading: 'Level 20 starter Frost allocation',
         paragraphs: [
           'Improved Frostbolt 5, Ice Shards 5 and Piercing Ice 1. ' + ELEVEN_POINT_NOTE,
         ],
@@ -546,9 +548,9 @@ const magePages: ClassPageDefinition[] = [
         paragraphs: [],
       },
       {
-        heading: 'What waits above this cap',
+        heading: 'What this 11-point route cannot reach',
         paragraphs: [
-          'Frost’s deeper rows are not reachable with 11 points. Arctic Reach needs 15 Frost points, Winter’s Chill needs 25 and Ice Barrier needs 30, so this build cannot touch them yet. When the cap rises, those are the first additions to plan.',
+          'Frost’s deeper rows are not reachable with this 11-point route. Arctic Reach needs 15 Frost points, Winter’s Chill needs 25 and Ice Barrier needs 30. The Beta cap has risen to 30, but these nodes need a separate, reviewed allocation before we recommend them.',
         ],
       },
     ],
@@ -563,7 +565,7 @@ const magePages: ClassPageDefinition[] = [
     intent: 'Fire Build',
     title: 'WoW Forever Fire Mage Build | Level 20 Beta',
     h1: 'WoW Forever Fire Mage Build',
-    description: 'The Fire Mage tree at the Level 20 Beta cap: its client-verified entry point, the published nodes, and why the editorial Fire preset is still under review.',
+    description: 'The Fire Mage tree at the Level 20 starter snapshot: its client-verified entry point, the published nodes, and why the editorial Fire preset is still under review.',
     eyebrow: 'Beta Spec Build',
     canonical: 'https://buildforgetools.com/wow-forever-fire-mage-build',
     robots: 'index, follow',
@@ -599,7 +601,7 @@ const magePages: ClassPageDefinition[] = [
       },
     ],
     faqs: [
-      { question: 'Does a Fire Mage build exist for this cap?', answer: 'The planner accepts Fire points, but this site has not yet published a reviewed Fire preset for the current cap.' },
+      { question: 'Is there a reviewed Fire Mage build for Level 20?', answer: 'The planner accepts Fire points, but this site has not published a reviewed Fire starter preset or a Level 30 allocation.' },
       { question: 'Are fire talents published at all?', answer: 'Yes. The Mage talent catalogue lists 12 Fire nodes, including the primary-client-resolved Improved Fireball entry point.' },
     ],
   },
@@ -609,7 +611,7 @@ const magePages: ClassPageDefinition[] = [
     intent: 'Arcane Build',
     title: 'WoW Forever Arcane Mage Build | Level 20 Beta',
     h1: 'WoW Forever Arcane Mage Build',
-    description: 'The Arcane Mage build for the Level 20 Beta cap: an 11-point allocation, its spend order, and the deeper Arcane rows that the current cap cannot reach.',
+    description: 'The Arcane Mage Level 20 starter snapshot: an 11-point allocation, its spend order and deeper rows outside this route. Live Beta cap: Level 30.',
     eyebrow: 'Beta Spec Build',
     canonical: 'https://buildforgetools.com/wow-forever-arcane-mage-build',
     robots: 'index, follow',
@@ -625,7 +627,7 @@ const magePages: ClassPageDefinition[] = [
     publishRequirements: ['legalBuild:arcane'],
     sections: [
       {
-        heading: 'Current-cap Arcane allocation',
+        heading: 'Level 20 starter Arcane allocation',
         paragraphs: [
           'Arcane Focus 5, Improved Channeling 5 and Arcane Concentration 1. ' + ELEVEN_POINT_NOTE,
         ],
@@ -637,14 +639,14 @@ const magePages: ClassPageDefinition[] = [
         ],
       },
       {
-        heading: 'Current Beta note: the rest of the tree is out of reach',
+        heading: 'Beyond this 11-point Arcane route',
         paragraphs: [
-          'This is the entry half of the Arcane tree, not the whole of it. Arcane Shielding and Improved Counterspell need 15 Arcane points, Presence of Mind and Arcane Mind need 20, and Arcane Power needs 30. With 11 points available at the current cap, none of them can be taken, and this build does not pretend otherwise.',
+          'This 11-point Level 20 starter route covers the entry half of the Arcane tree. Arcane Shielding and Improved Counterspell need 15 Arcane points, Presence of Mind and Arcane Mind need 20, and Arcane Power needs 30. None fit this reviewed route; the current Level 30 cap does not itself verify a deeper allocation.',
         ],
       },
     ],
     faqs: [
-      { question: 'Can this build reach Arcane Power?', answer: 'No. Arcane Power requires 30 Arcane points and the current cap allows 11 points in total, so it is out of reach at this level.' },
+      { question: 'Can this build reach Arcane Power?', answer: 'No. Arcane Power requires 30 Arcane points, while this reviewed Level 20 route spends 11. We have not validated a Level 30 allocation.' },
       { question: 'Why max Arcane Focus before Arcane Concentration?', answer: 'Arcane Focus is on the entry row and can be spent immediately, while Arcane Concentration needs five Arcane points in the tree first. The order spends points where they can actually go.' },
     ],
   },
@@ -654,7 +656,7 @@ const magePages: ClassPageDefinition[] = [
     intent: 'Frost Leveling',
     title: 'WoW Forever Frost Mage Leveling Build',
     h1: 'WoW Forever Frost Mage Leveling Build',
-    description: 'How to level as a Frost Mage at the Level 20 Beta cap: the 11-point route, the spend order, single-target play, area pulls and how to kite with the tools the tree gives you.',
+    description: 'How to level as a Frost Mage at the Level 20 starter snapshot: the 11-point route, the spend order, single-target play, area pulls and how to kite with the tools the tree gives you.',
     eyebrow: 'Beta Spec Leveling',
     canonical: 'https://buildforgetools.com/wow-forever-frost-mage-leveling-build',
     robots: 'index, follow',
@@ -684,13 +686,13 @@ const magePages: ClassPageDefinition[] = [
       {
         heading: 'Area pulls',
         paragraphs: [
-          'Frost Nova is the area button at this cap: root the pack, step out of melee range, and cast while it is held. A dedicated area allocation takes Improved Blizzard instead of maxing Ice Shards; that variant belongs to the Frost AoE build, and the choice is which of the two you would rather have.',
+          'Frost Nova is the area button in this Level 20 route: root the pack, step out of melee range, and cast while it is held. A dedicated area allocation takes Improved Blizzard instead of maxing Ice Shards; that variant belongs to the Frost AoE build.',
         ],
       },
       {
         heading: 'Kiting',
         paragraphs: [
-          'The chill slow plus the root is the whole kiting kit here. Pull with Frostbolt, let the mob walk to you, root it when it arrives, then walk away and cast again. There is no blink-style escape in this tree at this cap.',
+          'The chill slow plus the root is this route’s kiting kit. Pull with Frostbolt, let the mob walk to you, root it when it arrives, then walk away and cast again. This reviewed 11-point tree allocation contains no blink-style escape.',
         ],
       },
     ],
@@ -705,7 +707,7 @@ const magePages: ClassPageDefinition[] = [
     intent: 'Fire Leveling',
     title: 'WoW Forever Fire Mage Leveling Build',
     h1: 'WoW Forever Fire Mage Leveling Build',
-    description: 'Leveling as a Fire Mage at the Level 20 Beta cap: the verified Fire entry point, why the leveling preset is still under review, and the published Frost and Arcane alternatives.',
+    description: 'Leveling as a Fire Mage at the Level 20 starter snapshot: the verified Fire entry point, why the leveling preset is still under review, and the published Frost and Arcane alternatives.',
     eyebrow: 'Beta Spec Leveling',
     canonical: 'https://buildforgetools.com/wow-forever-fire-mage-leveling-build',
     robots: 'index, follow',
@@ -728,7 +730,7 @@ const magePages: ClassPageDefinition[] = [
       {
         heading: 'Frost vs Fire, honestly',
         paragraphs: [
-          'Frost is the leveling recommendation on this site, but the comparison cannot be run against a fire route that does not exist. What can be said is what the two branches offer in the data: Frost publishes an entry node and control tools, fire publishes neither at this cap. The head-to-head page is withheld for the same reason this one is.',
+          'Frost is the reviewed Level 20 leveling recommendation on this site, but no reviewed Fire route is available for a fair comparison. Both branches have client-reviewed entry nodes; Frost also has control tools in the published data. The head-to-head page remains withheld until the Fire allocation is reviewed.',
         ],
       },
       {
@@ -749,7 +751,7 @@ const magePages: ClassPageDefinition[] = [
     intent: 'Arcane Leveling',
     title: 'WoW Forever Arcane Mage Leveling Build',
     h1: 'WoW Forever Arcane Mage Leveling Build',
-    description: 'Leveling as an Arcane Mage at the Level 20 Beta cap: the 11-point route, why its mana tools matter while solo, and how far into the tree 11 points actually reach.',
+    description: 'Leveling as an Arcane Mage at the Level 20 starter snapshot: the 11-point route, why its mana tools matter while solo, and how far into the tree 11 points actually reach.',
     eyebrow: 'Beta Spec Leveling',
     canonical: 'https://buildforgetools.com/wow-forever-arcane-mage-leveling-build',
     robots: 'index, follow',
@@ -778,13 +780,13 @@ const magePages: ClassPageDefinition[] = [
       {
         heading: 'Phase 1 of the tree, and what comes later',
         paragraphs: [
-          'What ships at this cap is the first phase of Arcane. The later rows are gated far above 11 points: 15 for Arcane Shielding and Improved Counterspell, 20 for Presence of Mind and Arcane Mind, 30 for Arcane Power. Those are named here from their verified requirements so the cap boundary is visible, and are not planned into the route.',
+          'This Level 20 snapshot covers the first phase of Arcane. Later rows require more than 11 points: 15 for Arcane Shielding and Improved Counterspell, 20 for Presence of Mind and Arcane Mind, and 30 for Arcane Power. Those gates are client data; this page does not turn them into a Level 30 recommendation.',
         ],
       },
     ],
     faqs: [
       { question: 'Is Arcane a good leveling choice?', answer: 'It is a legal alternative with a simpler loop. Frost is still the recommendation, because control is what saves a solo player when a pull goes wrong.' },
-      { question: 'How deep can 11 Arcane points go?', answer: 'As far as the third row. Arcane Impact requires ten Arcane points, so one rank of it is the deepest this cap can reach.' },
+      { question: 'How deep can 11 Arcane points go?', answer: 'As far as the third row in this route. Arcane Impact requires ten Arcane points, leaving one rank for the eleventh point.' },
     ],
   },
   {
@@ -793,7 +795,7 @@ const magePages: ClassPageDefinition[] = [
     intent: 'Frost AoE farming',
     title: 'WoW Forever Frost Mage AoE Build',
     h1: 'WoW Forever Frost Mage AoE Build',
-    description: 'The Frost Mage area allocation for the Level 20 Beta cap: root the pack, cast the area damage, and the spell list and farming loop that go with it.',
+    description: 'The Frost Mage area allocation for the Level 20 starter snapshot: root the pack, cast the area damage, and the spell list and farming loop that go with it.',
     eyebrow: 'Beta Area Route',
     canonical: 'https://buildforgetools.com/wow-forever-frost-mage-aoe-build',
     robots: 'index, follow',
@@ -811,7 +813,7 @@ const magePages: ClassPageDefinition[] = [
       {
         heading: 'The area allocation',
         paragraphs: [
-          'Improved Frostbolt 5, Ice Shards 3, Improved Frost Nova 2 and Improved Blizzard 1. This is a different allocation from the Frost single-target build, not a relabelled copy: it gives up two Ice Shards ranks and its single Piercing Ice rank to buy two ranks of Improved Frost Nova and the one Improved Blizzard rank this cap can reach. ' + ELEVEN_POINT_NOTE,
+          'Improved Frostbolt 5, Ice Shards 3, Improved Frost Nova 2 and Improved Blizzard 1. This Level 20 allocation differs from the Frost single-target route: it gives up two Ice Shards ranks and one Piercing Ice rank for two Improved Frost Nova ranks and one Improved Blizzard rank. ' + ELEVEN_POINT_NOTE,
         ],
       },
       {
@@ -844,7 +846,7 @@ const magePages: ClassPageDefinition[] = [
     intent: 'Mage PvP hub',
     title: 'WoW Forever Mage PvP Build',
     h1: 'WoW Forever Mage PvP Build',
-    description: 'The Mage PvP hub for the Level 20 Beta cap, with a tab per specialization, the allocation each one loads, and the fire tab that cannot be supplied yet.',
+    description: 'The Mage PvP hub for the Level 20 starter snapshot, with a tab per specialization, the allocation each one loads, and the fire tab that cannot be supplied yet.',
     eyebrow: 'Beta PvP Hub',
     canonical: 'https://buildforgetools.com/wow-forever-mage-pvp-build',
     robots: 'index, follow',
@@ -878,7 +880,7 @@ const magePages: ClassPageDefinition[] = [
     ],
     faqs: [
       { question: 'Why is there no Fire PvP tab yet?', answer: 'The tree is planner-legal, but the PvP hub needs a reviewed Fire allocation and spend order before that tab can publish.' },
-      { question: 'Are the Frost and Arcane PvP allocations legal now?', answer: 'Yes. Both spend all 11 points at the Level 20 cap and both replay through the planner without a skipped requirement.' },
+      { question: 'Are the Frost and Arcane PvP allocations legal now?', answer: 'Yes, as Level 20 starter allocations. Both spend 11 points and replay through the planner without a skipped requirement; neither is a reviewed Level 30 route.' },
     ],
   },
   {
@@ -887,7 +889,7 @@ const magePages: ClassPageDefinition[] = [
     intent: 'Dungeon',
     title: 'WoW Forever Mage Dungeon Build',
     h1: 'WoW Forever Mage Dungeon Build',
-    description: 'The Mage dungeon build for the Level 20 Beta cap: a Frost utility-focused 11-point allocation, the control that groups want, and the class claims that stay assumptions.',
+    description: 'The Mage dungeon build for the Level 20 starter snapshot: a Frost utility-focused 11-point allocation, the control that groups want, and the class claims that stay assumptions.',
     eyebrow: 'Beta Dungeon Route',
     canonical: 'https://buildforgetools.com/wow-forever-mage-dungeon-build',
     robots: 'index, follow',
@@ -923,7 +925,7 @@ const magePages: ClassPageDefinition[] = [
       {
         heading: 'Why no Fire alternative is listed',
         paragraphs: [
-          'Fire is often offered as a dungeon alternative, but BuildForgeTools has not reviewed a Fire dungeon allocation for this cap. The calculator can plan one manually; this page presents only the tested Frost route.',
+          'Fire is often offered as a dungeon alternative, but BuildForgeTools has not reviewed a Fire dungeon allocation for this Level 20 snapshot or the new Level 30 phase. The calculator can plan one manually; this page presents only the 11-point Frost route.',
         ],
       },
     ],
@@ -935,11 +937,11 @@ const magePages: ClassPageDefinition[] = [
   {
     kind: 'levelCap',
     slug: 'wow-forever-mage-level-20-build',
-    intent: 'Current Beta cap',
+    intent: 'Level 20 starter snapshot',
     title: 'WoW Forever Mage Level 20 Build',
     h1: 'WoW Forever Mage Level 20 Build',
-    description: 'The Level 20 Mage cap in one place: the 11 points every specialization receives, the published Frost and Arcane routes, and the planner-ready Fire tree.',
-    eyebrow: 'Current Beta Cap',
+    description: 'The initial Level 20 Mage snapshot: 11-point Frost and Arcane routes and the planner-ready Fire tree. The current Beta cap is Level 30.',
+    eyebrow: 'Level 20 Starter Snapshot',
     canonical: 'https://buildforgetools.com/wow-forever-mage-level-20-build',
     robots: 'index, follow',
     updatedAt: MAGE_UPDATED,
@@ -953,30 +955,30 @@ const magePages: ClassPageDefinition[] = [
       {
         heading: 'What Level 20 gives a Mage',
         paragraphs: [
-          'The current Beta cap is Level 20 with 11 talent points. Planning modes for Level 30 and Level 60 exist in the calculator, but this page describes only the cap that is live now. ' + ELEVEN_POINT_NOTE,
+          'The Beta began with a Level 20 cap and an 11-point planning budget. Blizzard raised the live cap to Level 30 on October 1. The calculator also offers Level 30 and Level 60 point-budget modes, but this page documents only reviewed Level 20 routes. ' + ELEVEN_POINT_NOTE,
         ],
       },
       {
-        heading: 'The three specs at this cap',
+        heading: 'The three specs in this starter snapshot',
         bullets: [
           'Frost — legal: an 11-point single-target route, with a distinct area variant for packs',
           'Arcane — legal: an 11-point route through the entry rows, with deeper nodes stated as out of reach',
           'Fire — planner-ready from Improved Fireball; the reviewed 11-point preset is still pending',
         ],
         paragraphs: [
-          'This page compares the three specs at the live cap. All three branches now have client-reviewed entry nodes, while build recommendations remain clearly separated from client facts.',
+          'This page compares the three specs at Level 20. All three branches have client-reviewed entry nodes, while the Frost and Arcane 11-point builds remain editorial recommendations rather than verified Level 30 routes.',
         ],
       },
       {
-        heading: 'When the cap moves',
+        heading: 'How to use this older snapshot',
         paragraphs: [
-          'This page is time-sensitive and will be archived in place rather than deleted when the cap rises; the routes above are written for Level 20 and the current 11 points.',
+          'The playable cap has already risen to Level 30. Keep this Level 20 page as a starting allocation; do not treat its eleven points as a complete current-cap build.',
         ],
       },
     ],
     faqs: [
-      { question: 'How many talent points does a Level 20 Mage get?', answer: '11 points at the current Beta cap, spendable across the Arcane, Fire and Frost trees.' },
-      { question: 'Which Mage specs can spend all 11 points today?', answer: 'Arcane, Fire and Frost all have client-reviewed entry nodes. BuildForgeTools currently publishes reviewed 11-point presets for Frost and Arcane.' },
+      { question: 'How many points are in this Level 20 Mage snapshot?', answer: '11 planning points, spendable across Arcane, Fire and Frost. The live Beta cap is Level 30; this page does not document a reviewed Level 30 allocation.' },
+      { question: 'Which Mage specs have reviewed 11-point presets?', answer: 'Frost and Arcane have published starter presets. Fire has a client-reviewed entry node, but its preset remains under review.' },
     ],
   },
   {
@@ -985,7 +987,7 @@ const magePages: ClassPageDefinition[] = [
     intent: 'Frost vs Fire leveling',
     title: 'Frost vs Fire Mage for Leveling in WoW Forever',
     h1: 'Frost vs Fire Mage for Leveling in WoW Forever',
-    description: 'Frost and Fire compared for Mage leveling at the Level 20 Beta cap: playstyle, area damage, safety, key mechanics and what each branch can actually allocate today.',
+    description: 'Frost and Fire compared for Mage leveling at the Level 20 starter snapshot: playstyle, area damage, safety, key mechanics and what each branch can actually allocate today.',
     eyebrow: 'Beta Comparison',
     canonical: 'https://buildforgetools.com/wow-forever-frost-vs-fire-mage-leveling',
     robots: 'index, follow',
@@ -1001,7 +1003,7 @@ const magePages: ClassPageDefinition[] = [
       {
         heading: 'How to read this comparison',
         paragraphs: [
-          'The table compares the Frost and Fire branches for leveling at the current cap on playstyle, area damage, safety, key mechanics and what each branch can allocate. There is no combined number anywhere on this page: a single figure for two different playstyles would hide exactly the trade-off the comparison exists to show.',
+          'The table compares Frost and Fire for the Level 20 starter snapshot on playstyle, area damage, safety, key mechanics and what each branch can allocate. It does not claim to compare reviewed Level 30 builds.',
         ],
       },
       {
@@ -1016,7 +1018,7 @@ const magePages: ClassPageDefinition[] = [
       { question: 'Does this comparison reduce the branches to a single number?', answer: 'No. It compares one property at a time and never collapses two different playstyles into one figure.' },
     ],
     comparison: {
-      columns: ['Playstyle', 'AoE', 'Safety', 'Key mechanics', 'Current Beta'],
+      columns: ['Playstyle', 'AoE', 'Safety', 'Key mechanics', 'Level 20 snapshot'],
       rows: [
         {
           label: 'Frost',
@@ -1064,9 +1066,13 @@ export const mageClass: ClassDefinition<MageBranch> = {
   ],
   talents: mageTalents,
   plannerConfig: MAGE_PLANNER_CONFIG,
-  builds: mageBuilds,
+  builds: mageBuilds.map((build) => ({
+    ...build,
+    sources: [...build.sources, { label: 'Blizzard October 1 Beta development notes: Level 30 cap', url: OFFICIAL_CAP_SOURCE }],
+  })),
   pages: magePages.map((page) => ({
     ...page,
+    sections: page.sections.map((section, index) => index === 0 ? { ...section, paragraphs: [LIVE_CAP_NOTE, ...section.paragraphs] } : section),
     ogImage: page.spec === 'frost' ? FROST_MAGE_HERO : page.spec === 'arcane' ? ARCANE_MAGE_HERO : page.ogImage,
   })),
   // Frost leveling first: the class-level recommendation the calculator loads by default.

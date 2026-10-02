@@ -5,6 +5,7 @@ import { talents, branchNames, BETA_DATA_VERSION } from './talents'
 import { classPlannerHref, publishedClassPages, type ClassDefinition } from '../lib/classPage'
 import { incrementPlannerTalent, encodePlannerBuild, type PlannerBuild } from '../lib/talentPlanner'
 import { progressionForBuild } from '../experiences/buildExperience'
+import { OCTOBER_OFFICIAL_SOURCE, officialTalentNotice } from './officialOctoberChanges'
 
 export type ToolRole = 'tank' | 'heal' | 'damage'
 export type ToolStyle = 'melee' | 'ranged' | 'any'
@@ -12,17 +13,19 @@ export type ToolActivity = 'solo' | 'pvp' | 'dungeon'
 export const DUNGEONS = [
   { id: 'ruins-of-lordaeron', name: 'Ruins of Lordaeron', minLevel: 15, maxLevel: 20, milestones: [15, 18, 20], supported: true, note: 'Compare group-role routes within the supported Level 20 planning budget.' },
   { id: 'hall-of-thanes', name: 'Hall of Thanes', minLevel: 13, maxLevel: 18, milestones: [13, 16, 18], supported: true, note: 'A lower-level group route. Start with your party role and the points you can actually spend.' },
-  { id: 'excavation-site', name: 'Excavation Site', minLevel: 24, maxLevel: 29, milestones: [], supported: false, note: 'Not available in this tool: a reviewed higher-level route is required first.' },
+  { id: 'excavation-site', name: 'Excavation Site', minLevel: 26, maxLevel: 31, milestones: [], supported: false, note: 'Open in the Beta, but this tool has no reviewed higher-level build route yet.' },
 ] as const
 export const DUNGEON_SOURCES = [
   { label: 'Blizzard Beta announcement — Ruins of Lordaeron (Level 15–20)', href: 'https://worldofwarcraft.blizzard.com/en-us/news/24304160/the-world-of-warcraft-forever-beta-now-live' },
   { label: 'Wowhead dungeon overview — reference level ranges', href: 'https://www.wowhead.com/forever/guide/dungeons-overview-locations-details' },
   { label: 'Warcraft Tavern dungeon reference', href: 'https://www.warcrafttavern.com/forever/guides/dungeons/' },
+  { label: 'Blizzard October 1 Beta notes — Excavation Site (Level 26–31)', href: OCTOBER_OFFICIAL_SOURCE },
 ]
 export interface ToolRoute {
   id: string; classId: string; className: string; spec: string; specName: string
   role: ToolRole; style: Exclude<ToolStyle, 'any'>; activity: ToolActivity
   title: string; href: string; image?: string; version: string
+  removedTalentNames: string[]
   steps: Array<{ level: number; allocation: PlannerBuild; talentId: string; rank: number; name: string }>
   calculatorHref: (allocation: PlannerBuild) => string
 }
@@ -46,9 +49,15 @@ export function buildCatalogue(classes: ClassDefinition[] = PUBLISHED_CLASSES, i
       if (build.level !== 20 || !paths.has(build.href)) return []
       const progression = progressionForBuild(def, build)
       if (progression.error || progression.steps.length !== 11) return []
+      const removedTalentNames = def.talents.filter(talent =>
+        (build.build[talent.id] ?? 0) > 0 && officialTalentNotice(def.id, talent.name)?.status === 'removed',
+      ).map(talent => talent.name)
       return [{ id: build.id, classId: def.id, className: def.name, spec: build.spec, specName: def.branchNames[build.spec], role: roleFor(def.id,build.spec,build.intent), style: styleFor(def.id,build.spec), activity: activityFor(build.intent), title: build.title, href: build.href, image: def.branchIcons?.[build.spec], version: build.verifiedThroughBuild,
+        removedTalentNames,
         steps: progression.steps.map(s => ({...s, name: def.talents.find(t => t.id === s.talentId)!.name})),
-        calculatorHref: (allocation: PlannerBuild) => `${classPlannerHref(def,encodePlannerBuild(allocation),20)}#class-calculator`,
+        calculatorHref: (allocation: PlannerBuild) => removedTalentNames.length
+          ? `${def.plannerPath}?build=#class-calculator`
+          : `${classPlannerHref(def,encodePlannerBuild(allocation),20)}#class-calculator`,
       }]
     })
   })
@@ -70,7 +79,7 @@ export function buildCatalogue(classes: ClassDefinition[] = PUBLISHED_CLASSES, i
         }
       }
       if (steps.length !== 11) continue
-      routes.push({id:`paladin-${branch}`,classId:'paladin',className:'Paladin',spec:branch,specName:branchNames[branch],role:branch === 'holy' ? 'heal' : 'damage',style:branch === 'holy' ? 'ranged' : 'melee',activity:branch === 'holy' ? 'dungeon' : 'solo',title:`${branchNames[branch]} Paladin starting route`,href:branch === 'holy' ? '/wow-forever-paladin-build' : '/wow-forever-retribution-paladin-build',image:branch === 'holy' ? '/images/icons/holy-strike.png' : '/images/icons/hammer.png',version:BETA_DATA_VERSION.replace('wow_forever_beta_',''),steps,calculatorHref: allocation => `/build?id=${encodeBuild(allocation)}#calculator`})
+      routes.push({id:`paladin-${branch}`,classId:'paladin',className:'Paladin',spec:branch,specName:branchNames[branch],role:branch === 'holy' ? 'heal' : 'damage',style:branch === 'holy' ? 'ranged' : 'melee',activity:branch === 'holy' ? 'dungeon' : 'solo',title:`${branchNames[branch]} Paladin starting route`,href:branch === 'holy' ? '/wow-forever-paladin-build' : '/wow-forever-retribution-paladin-build',image:branch === 'holy' ? '/images/icons/holy-strike.png' : '/images/icons/hammer.png',version:BETA_DATA_VERSION.replace('wow_forever_beta_',''),removedTalentNames:[],steps,calculatorHref: allocation => `/build?id=${encodeBuild(allocation)}&level=20#calculator`})
     }
   }
   return routes
@@ -99,6 +108,6 @@ export function dungeonMatches(dungeonId: string, role: ToolRole, classId: strin
 export interface PickerPreferences { activity: ToolActivity; role: ToolRole; style: ToolStyle }
 export function pickSpecs(preferences: PickerPreferences): Array<{ route: ToolRoute; reasons: string[] }> {
   const matches = catalogue.filter(r => r.role === preferences.role && (preferences.style === 'any' || r.style === preferences.style) && (preferences.activity === 'dungeon' || r.activity === preferences.activity))
-  return uniqueSpecs(matches.sort((a,b) => Number(b.activity === preferences.activity)-Number(a.activity === preferences.activity) || a.className.localeCompare(b.className) || a.specName.localeCompare(b.specName))).map(route => ({route,reasons:[`${preferences.role === 'heal' ? 'Healing' : preferences.role === 'tank' ? 'Tanking' : 'Damage'} role matches your choice.`, `${route.style === 'melee' ? 'Melee' : 'Ranged / casting'} focus${preferences.style === 'any' ? ' is shown for comparison' : ' matches your preferred style'}.`,route.activity === preferences.activity ? 'A published route covers your selected activity.' : 'A published starting route is available; dungeon suitability still needs party testing.']}))
+  return uniqueSpecs(matches.sort((a,b) => Number(b.activity === preferences.activity)-Number(a.activity === preferences.activity) || a.className.localeCompare(b.className) || a.specName.localeCompare(b.specName))).map(route => ({route,reasons:[`${preferences.role === 'heal' ? 'Healing' : preferences.role === 'tank' ? 'Tanking' : 'Damage'} role matches your choice.`, `${route.style === 'melee' ? 'Melee' : 'Ranged / casting'} focus${preferences.style === 'any' ? ' is shown for comparison' : ' matches your preferred style'}.`,route.removedTalentNames.length ? 'Historical route only: a selected talent was removed after this client snapshot.' : route.activity === preferences.activity ? 'A published route covers your selected activity.' : 'A published starting route is available; dungeon suitability still needs party testing.']}))
 }
 export const TOOL_CLASSES = [...new Map(catalogue.map(r => [r.classId,{id:r.classId,name:r.className}])).values()].sort((a,b)=>a.name.localeCompare(b.name))

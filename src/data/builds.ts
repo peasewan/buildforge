@@ -1,4 +1,4 @@
-import { dominantBranch, encodeBuild, type Branch, type Build } from '../lib/build'
+import { dominantBranch, encodeBuild, totalPoints, type Branch, type Build } from '../lib/build'
 import { talents } from './talents'
 
 export interface ExampleBuild {
@@ -10,6 +10,11 @@ export interface ExampleBuild {
   build: Build
   /** Source-linked 70009 report conflicts with imported node identity; retain the 69913 allocation as history. */
   reviewStatus?: 'under_review'
+}
+
+/** The published 51-point examples exceed the live Level 30 Beta, even when used only as references. */
+export function isHistoricalExample(build: ExampleBuild): boolean {
+  return build.reviewStatus === 'under_review' || totalPoints(build.build) > 30
 }
 
 export const HOLY_HEALING_BUILD: ExampleBuild = {
@@ -138,7 +143,7 @@ export function exampleBuildById(id: ExampleBuildId): ExampleBuild {
 }
 
 export function examplePlannerHref(example: ExampleBuild): string {
-  return example.reviewStatus === 'under_review'
+  return isHistoricalExample(example)
     ? '/build?id=#calculator'
     : `/build?id=${encodeBuild(example.build)}#calculator`
 }

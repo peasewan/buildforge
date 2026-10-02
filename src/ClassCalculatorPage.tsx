@@ -23,6 +23,8 @@ import { copyTextToClipboard } from './lib/clipboard'
 import { claimBuildCompletion, loadClaimedBuildCompletions, saveClaimedBuildCompletions } from './lib/buildCompletion'
 import { usePlannerView } from './lib/usePlannerView'
 import ForgePilotPanel from './ForgePilotPanel'
+import OfficialClassChanges from './experiences/OfficialClassChanges'
+import { OCTOBER_OFFICIAL_SOURCE, officialTalentNotice } from './data/officialOctoberChanges'
 
 function defaultLevel<B extends string>(classDef: ClassDefinition<B>): PlannerLevel {
   return classDef.plannerModes[0]?.level ?? (classDef.beta.levelCap as PlannerLevel)
@@ -72,6 +74,10 @@ function allocationFor<B extends string>(build: PlannerBuild, classDef: ClassDef
   return classDef.branches.map((branch) => plannerBranchPoints(build, branch, classDef.talents)).join('/')
 }
 
+function removedOfficialTalents<B extends string>(build: PlannerBuild, classDef: ClassDefinition<B>): ClassTalent<B>[] {
+  return classDef.talents.filter((talent) => (build[talent.id] ?? 0) > 0 && officialTalentNotice(classDef.id, talent.name)?.status === 'removed')
+}
+
 // One canvas row per talent row, matching the published Warrior tree rhythm (7 rows -> 658px).
 const CANVAS_ROW_HEIGHT = 94
 
@@ -92,7 +98,9 @@ function TalentNode<B extends string>({ talent, build, classDef, config, onAdd, 
 }) {
   const rank = build[talent.id] ?? 0
   const reason = plannerLockReason(build, talent, classDef.talents, config)
-  const available = canIncrementPlannerTalent(build, talent, classDef.talents, config)
+  const officialNotice = officialTalentNotice(classDef.id, talent.name)
+  const removed = officialNotice?.status === 'removed'
+  const available = !removed && canIncrementPlannerTalent(build, talent, classDef.talents, config)
   return <article className={`class-talent ${rank ? 'selected' : ''} ${!available && !rank ? 'locked' : ''}`} data-testid="class-talent" id={talent.id} style={{ left: `${talent.x}%`, top: `${talent.y}%` }}>
     <button className="class-talent-main" type="button" aria-label={`Add rank to ${talent.name}`} disabled={!available} onClick={() => { onAdd(); onInspect() }}>
       {talent.icon ? <img src={talent.icon} alt="" /> : <span className="class-talent-glyph" aria-hidden="true">{talent.name.slice(0, 2)}</span>}
@@ -101,7 +109,7 @@ function TalentNode<B extends string>({ talent, build, classDef, config, onAdd, 
     </button>
     {rank > 0 && <button className="class-rank-minus" type="button" aria-label={`Remove rank from ${talent.name}`} onClick={() => { onRemove(); onInspect() }}><Minus size={14} /></button>}
     <button className="class-talent-name" type="button" onClick={onInspect}>{talent.name}</button>
-    {reason?.type === 'branch-points' && <small>{reason.required} points required</small>}
+    {removed ? <small>Removed after this client snapshot</small> : reason?.type === 'branch-points' && <small>{reason.required} points required</small>}
   </article>
 }
 
@@ -135,6 +143,8 @@ export default function ClassCalculatorPage<B extends string>({ classDef }: { cl
   // Per-rank text is not a property of "having client data", so the trust copy reports the count
   // the class being rendered actually has instead of assuming every node carries it.
   const perRankTextCount = classDef.talents.filter((talent) => talent.rankDescriptions?.some(Boolean)).length
+  const selectedOfficialNotice = officialTalentNotice(classDef.id, selected.name)
+  const removedSelected = removedOfficialTalents(build, classDef)
   const activeBranch = dominantPlannerBranch(build, classDef.talents, classDef.branches, classDef.branches[0])
   const calculatorPage = classDef.pages.find((page) => page.kind === 'calculator')
   const heroImage = calculatorPage?.ogImage ?? classDef.ogImage
@@ -206,6 +216,7 @@ export default function ClassCalculatorPage<B extends string>({ classDef }: { cl
   }
 
   const loadPreset = (preset: ClassBuild) => {
+    if (removedOfficialTalents(preset.build, classDef).length > 0) return
     setLevel(preset.level)
     commit(preset.build, preset.level)
     setResetNotice(null)
@@ -227,7 +238,7 @@ export default function ClassCalculatorPage<B extends string>({ classDef }: { cl
   }
 
   const copyBuild = async () => {
-    if (!points) return
+    if (!points || removedSelected.length > 0) return
     const url = new URL(classPlannerHref(classDef, encodePlannerBuild(build), level), window.location.origin)
     url.hash = points ? `tree-${activeBranch}` : 'class-calculator'
     const request = ++copyRequest.current
@@ -253,22 +264,23 @@ export default function ClassCalculatorPage<B extends string>({ classDef }: { cl
     <section className="class-hero" style={heroStyle}>
       <div className="shell class-hero-grid">
         <div>
-          <p className="class-kicker">{classDef.beta.phaseLabel} · {classDef.talentCount} verified nodes</p>
+          <p className="class-kicker">{classDef.beta.phaseLabel} · {classDef.talentCount} imported nodes</p>
           <h1>{calculatorPage?.h1 ?? `${classDef.name} Talent Calculator`}</h1>
           <p>{calculatorPage?.description ?? `Plan ${classDef.name} talents from versioned client data.`}</p>
+          <p className="class-beta-boundary">The live Beta cap is Level 30. This planner uses the older {classDef.verifiedBuild} client talent tree; its Level 20 presets are 11-point starting snapshots, not reviewed Level 30 builds. {classDef.plannerModes.some((mode) => mode.level === 30) ? 'The Level 30 point budget is experimental until the updated tree is reviewed. ' : 'A Level 30 planning mode is not available for this class until the updated tree is reviewed. '}<a href={OCTOBER_OFFICIAL_SOURCE} target="_blank" rel="noreferrer">Read Blizzard’s October 1 update</a>.</p>
           <div className="class-hero-actions">
             <a className="button class-primary" href="#class-calculator">Start building</a>
             {hubPage && <a className="button ghost" href={`/${hubPage.slug}`}>View {classDef.name} pages</a>}
           </div>
         </div>
         <aside>
-          <strong>Current planner</strong>
+          <strong>Snapshot planner</strong>
           <span>{classDef.branchNames[activeBranch]} {classDef.name}</span>
           <b>{points} / {cap}</b>
           <small>Talent points spent</small>
           <p>Client data reviewed through {classDef.verifiedBuild}</p>
           <div className="class-evidence">
-            <p><span>Talent data</span><VerificationBadge status="client_verified" /></p>
+            <p><span>{classDef.verifiedBuild} snapshot</span><VerificationBadge status="client_verified" /></p>
             <p><span>Build</span><span className="class-build-chip">Community / Editorial Build</span></p>
           </div>
         </aside>
@@ -283,13 +295,18 @@ export default function ClassCalculatorPage<B extends string>({ classDef }: { cl
         </div>
       </div>
 
-      {classDef.dataReview && <p className="class-reset-notice">Client-table preview. Tier unlocks and this eleven-point budget are planning assumptions; see data coverage below.</p>}
+      {classDef.dataReview && <p className="class-reset-notice">Client-table preview. The 11-point Level 20 budget and tier unlocks are planning assumptions; the live Beta cap is Level 30. See data coverage below.</p>}
       {resetNotice && <p className="class-reset-notice" role="status">{resetNotice}</p>}
 
+      {removedSelected.length > 0 && <p className="class-reset-notice" role="status">This is a historical {classDef.verifiedBuild} allocation, not a current Beta build. {removedSelected.map((talent) => talent.name).join(', ')} {removedSelected.length === 1 ? 'was' : 'were'} removed by later official updates. Remove the outdated ranks before copying or saving this build.</p>}
+
       <div className="class-presets" data-testid="class-presets">
-        <span>Recommended builds</span>
+        <span>{classDef.verifiedBuild} starter snapshots</span>
         <span className="class-build-chip">Community / Editorial Build</span>
-        {presets.map((preset) => <button type="button" key={preset.id} aria-label={`Load ${preset.shortTitle}`} onClick={() => loadPreset(preset)}>{preset.shortTitle}<small>{preset.allocation}</small></button>)}
+        {presets.map((preset) => {
+          const archived = removedOfficialTalents(preset.build, classDef).length > 0
+          return <button type="button" key={preset.id} aria-label={`Load ${preset.shortTitle}`} disabled={archived} title={archived ? 'Historical allocation includes a talent removed in an official update' : undefined} onClick={() => loadPreset(preset)}>{preset.shortTitle}<small>{archived ? 'Historical · removed talent' : preset.allocation}</small></button>
+        })}
       </div>
 
       {experienceEnabled(classDef.plannerPath) && <nav className="ix-calculator-nav" aria-label="Jump to specialization"><span>Jump to tree</span>{classDef.branches.map(b => <a key={b} href={`#tree-${b}`}>{classDef.branchNames[b]} · {plannerBranchPoints(build,b,classDef.talents)} points</a>)}<a href="#build-summary">Review &amp; share</a></nav>}
@@ -317,7 +334,7 @@ export default function ClassCalculatorPage<B extends string>({ classDef }: { cl
                 if (next !== build) {
                   commit(next)
                   track('talent_click', { class: classDef.analyticsClass, talent: talent.id, rank: next[talent.id] ?? 0 })
-                  if (claimBuildCompletion(build, next, completedBuilds.current!, { classId: classDef.id, level, pointCap: cap })) {
+                  if (removedSelected.length === 0 && claimBuildCompletion(build, next, completedBuilds.current!, { classId: classDef.id, level, pointCap: cap })) {
                     saveClaimedBuildCompletions(completedBuilds.current!)
                     track('build_complete', {
                       class: classDef.id, page_path: window.location.pathname,
@@ -339,8 +356,9 @@ export default function ClassCalculatorPage<B extends string>({ classDef }: { cl
         <article>
           <p className="class-kicker">Selected talent</p>
           <div className="class-detail-title">
-            <div><h3>{selected.name}</h3><span>{classDef.branchNames[selected.branch]} · Tier {selected.row} · {selected.maxRank} rank{selected.maxRank === 1 ? '' : 's'}</span></div>
+          <div><h3>{selected.name}</h3><span>{classDef.branchNames[selected.branch]} · Tier {selected.row} · {selected.maxRank} rank{selected.maxRank === 1 ? '' : 's'}</span></div>
           </div>
+          {selectedOfficialNotice && <p className="class-reset-notice" role="status">Official update after this 69913 import: {selectedOfficialNotice.message} The older node text below is retained for comparison. <a href={selectedOfficialNotice.source} target="_blank" rel="noreferrer">Read the Blizzard notes</a>.</p>}
           <p>{selected.rankDescriptions?.[Math.max(1, build[selected.id] ?? 0) - 1] || selected.description || selected.name}</p>
           {classDef.dataReview && <>
             <p><small>Talent ID {selected.nodeId} · Rank spell IDs: {selected.spellIds?.join(', ')}</small></p>
@@ -348,18 +366,19 @@ export default function ClassCalculatorPage<B extends string>({ classDef }: { cl
             {selected.dataNotes?.map((note) => <p key={note}><small>{note}</small></p>)}
             {selected.sources.map((source) => <a className="class-source-link" key={source.url} href={source.url} target="_blank" rel="noreferrer">{source.label}</a>)}
           </>}
-          <p className="class-talent-evidence"><span>Talent data</span><VerificationBadge status={selected.verificationStatus} /></p>
+          <p className="class-talent-evidence"><span>Talent data</span><VerificationBadge status={selectedOfficialNotice ? 'needs_review' : selected.verificationStatus} /></p>
           <small>Client record {selected.sourceClientBuild}; verified through {selected.verifiedThroughBuild}.{selected.prerequisiteRuleStatus === 'derived_assumption' ? ' Prerequisite rank rules are derived assumptions.' : ''}</small>
         </article>
         <aside>
-          <span>Current build</span>
+          <span>Planner allocation</span>
           <strong>{allocationFor(build, classDef)}</strong>
           <p>{classDef.branchNames[activeBranch]} {classDef.name} · Level {level}</p>
+          {removedSelected.length > 0 && <p className="class-reset-notice" role="status">Historical allocation: {removedSelected.map((talent) => talent.name).join(', ')} {removedSelected.length === 1 ? 'was' : 'were'} removed after this 69913 snapshot. Remove those ranks before using the build as a live Beta plan.</p>}
           <div className="class-summary-actions">
             <button type="button" onClick={startBlank}><RotateCcw size={15} /> Reset</button>
-            <button type="button" aria-label="Copy build link" disabled={!points} onClick={copyBuild}><Copy size={15} /> {copied ? 'Copied' : 'Copy build link'}</button>
+            <button type="button" aria-label="Copy build link" disabled={!points || removedSelected.length > 0} onClick={copyBuild}><Copy size={15} /> {copied ? 'Copied' : 'Copy build link'}</button>
           </div>
-          <ForgePilotPanel classId={classDef.id} className={classDef.name} dataVersion={classDef.dataVersion} level={level} pointCaps={Object.fromEntries(classDef.plannerModes.map((mode) => [mode.level, mode.points]))} points={points} buildCode={encodePlannerBuild(build)} defaultName={`${classDef.branchNames[activeBranch]} ${classDef.name} build`} talents={classDef.talents} config={classDef.plannerConfig} />
+          {removedSelected.length === 0 && <ForgePilotPanel classId={classDef.id} className={classDef.name} dataVersion={classDef.dataVersion} level={level} pointCaps={Object.fromEntries(classDef.plannerModes.map((mode) => [mode.level, mode.points]))} points={points} buildCode={encodePlannerBuild(build)} defaultName={`${classDef.branchNames[activeBranch]} ${classDef.name} build`} talents={classDef.talents} config={classDef.plannerConfig} />}
           <div className="class-progress"><i style={{ width: `${Math.min(100, (points / cap) * 100)}%` }} /></div>
           <small>{points} / {cap}</small>
           {manualShareUrl && <div className="pvp-manual-share"><p role="status">Clipboard access was unavailable. Select and copy this link manually.</p><label htmlFor={`${classDef.id}-manual-share`}>Build link for manual copy</label><input id={`${classDef.id}-manual-share`} readOnly value={manualShareUrl} onFocus={(event) => event.currentTarget.select()} /></div>}
@@ -367,6 +386,7 @@ export default function ClassCalculatorPage<B extends string>({ classDef }: { cl
       </div>
     </section>
 
+    <div className="shell class-official-update"><OfficialClassChanges classId={classDef.id} /></div>
     {classDef.dataReview && <section className="shell class-data-review"><h2>Data coverage and planning rules</h2><p>{classDef.dataReview.notice}</p><ul>{classDef.sources.map((source) => <li key={source.url}><a href={source.url} target="_blank" rel="noreferrer">{source.label}</a></li>)}</ul></section>}
 
     <section className="shell class-trust">

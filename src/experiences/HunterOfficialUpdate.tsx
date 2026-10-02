@@ -2,6 +2,7 @@ import { useState } from 'react'
 import VerificationBadge from '../VerificationBadge'
 
 const SOURCE = 'https://news.blizzard.com/en-us/article/24301515/world-of-warcraft-forever-class-deep-dives-hunter-and-druid'
+const OCTOBER_SOURCE = 'https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-1/2360696'
 
 const updateBySlug = {
   'wow-forever-hunter-builds': 'hub',
@@ -76,11 +77,13 @@ function UpdateBody({ kind }: { kind: UpdateKind }) {
     <p><strong>Beast Mastery:</strong> Summon Hawk is an announced 16-point milestone.</p>
     <p><strong>Marksmanship:</strong> Lone Wolf is an announced 11-point milestone for playing without an active pet.</p>
     <p><strong>Marksmanship:</strong> Trueshot Aura moves to the 21-point milestone.</p>
-    <p>The editable calculator is still a Level 20 plan with 11 points. This official design note is not a verified Level 30 route.</p>
+    <p>The imported Level 20 comparison records show 11 points each, but both contain talents Blizzard later removed or made baseline. The blank calculator does not load these historical routes with removed talents. The live Beta cap is Level 30, and the September design note does not verify a Level 30 allocation in the imported tree.</p>
   </div>
   if (kind === 'pvp') return <div className="hunter-official-facts">
     <p>Hunter traps can now be used in combat with a 30-second cooldown.</p>
     <p>Fire-based and Frost-based traps have separate cooldowns.</p>
+    <p>Blizzard's October 1 notes changed Survival Deflection to 1/2/3/4/5% Parry. The older 69913 tooltip must not be treated as current PvP tuning.</p>
+    <p>The official update raised the Level 30 cap; no 21-point Hunter PvP route has been reviewed here yet.</p>
     <p>Use these announced ability rules as questions to check in beta play; the PvP allocation below remains an editorial testing route.</p>
   </div>
   return <PetFamilyLookup />
@@ -98,8 +101,8 @@ export default function HunterOfficialUpdate({ slug }: { slug: keyof typeof upda
   return <section className="hunter-official" aria-label="Hunter official class deep dive">
     <div className="hunter-official-heading"><span>BLIZZARD DESIGN NOTE</span><VerificationBadge status="official" /></div>
     <h2>{headings[kind]}</h2>
-    <p className="hunter-official-source">Published Sep 30, 2026 · <a href={SOURCE} target="_blank" rel="noreferrer">Blizzard class deep dive</a></p>
+    <p className="hunter-official-source">Published Sep 30, 2026 · <a href={SOURCE} target="_blank" rel="noreferrer">Blizzard class deep dive</a> · Updated Oct 1 · <a href={OCTOBER_SOURCE} target="_blank" rel="noreferrer">October 1 Beta notes</a></p>
     <UpdateBody kind={kind} />
-    <p className="hunter-official-boundary">The editable talent data still comes from client build 1.60.1.69913. This later official design note does not verify those talent nodes or establish that a higher level cap is open.</p>
+    <p className="hunter-official-boundary">The live Beta cap is Level 30. Editable talent records still come from client build 1.60.1.69913; later official changes have not yet been reconciled against that import.</p>
   </section>
 }

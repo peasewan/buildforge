@@ -13,22 +13,22 @@ export default function BetaLevelingSnapshot({ pageId }: { pageId: BetaLevelingP
       <header>
         <div><Route size={18} /><span>{archived ? 'Archived Beta leveling snapshot' : 'Beta leveling snapshot'}</span></div>
         <h2>{snapshot.title}</h2>
-        <p>{archived ? snapshot.archiveNotice : 'Current client facts and editorial recommendations are labeled separately.'}</p>
+        <p>{archived ? snapshot.archiveNotice : 'This reviewed Level 20 route is an 11-point start within the current Level 30 Beta cap.'}</p>
       </header>
       <div className="beta-leveling-grid">
         <article>
-          <div><span>{archived ? 'Archived Level 20 route' : 'Current Beta cap'}</span><VerificationBadge status={archived ? 'derived_assumption' : 'official'} /></div>
+          <div><span>{archived ? 'Archived Level 20 route' : 'Level 20 starting route'}</span><VerificationBadge status="derived_assumption" /></div>
           <strong>Level {snapshot.current.level} · {snapshot.current.points} points</strong>
           <b>{snapshot.current.allocation}</b>
           <p>{snapshot.current.note}</p>
-          <a href={betaLevelingPlannerHref(pageId)}>{archived ? 'Open Calculator without this route' : 'Open current path in Calculator'} <ArrowRight size={14} /></a>
+          <a href={betaLevelingPlannerHref(pageId)}>{archived ? 'Open Calculator without this route' : 'Open Level 20 start in Calculator'} <ArrowRight size={14} /></a>
         </article>
         <article>
-          <div><span>{archived ? 'Archived Level 30 projection' : snapshot.next.status === 'under_review' ? 'Level 30 projection under review' : 'Level 30 plan'}</span><VerificationBadge status="derived_assumption" /></div>
-          <strong>Level {snapshot.next.level} · {snapshot.next.points} points</strong>
-          <b>{snapshot.next.allocation}</b>
+          <div><span>Official Level 30 cap</span><VerificationBadge status="official" /></div>
+          <strong>Official cap: Level {snapshot.next.level}</strong>
+          <b>No reviewed allocation</b>
           <p>{snapshot.next.note}</p>
-          <small>{archived ? 'Historical projection only; do not use it as a current build.' : snapshot.next.status === 'under_review' ? 'Not a current build or a verified future-cap recommendation; wait for a reconciled Beta tree.' : 'Community recommendation · prepare now, available after Blizzard raises the cap.'}</small>
+          <small>A {snapshot.next.points}-point budget follows the one-point-per-level planning assumption; it is not a verified build.</small>
         </article>
       </div>
       <div className="beta-leveling-evidence">

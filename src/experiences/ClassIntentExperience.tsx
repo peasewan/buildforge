@@ -13,17 +13,14 @@ import type {
   ClassPageDefinition,
   ClassTalent,
 } from '../lib/classPage'
+import { publishedClassPages, unallocatableBranches } from '../lib/classPage'
+import { classBuildPlannerHref, hasRemovedTalentInBuild } from '../lib/archivedClassBuild'
 import {
-  classPlannerHref,
-  publishedClassPages,
-  unallocatableBranches,
-} from '../lib/classPage'
-import {
-  encodePlannerBuild,
   totalPlannerPoints,
   type PlannerBuild,
 } from '../lib/talentPlanner'
 import VerificationBadge from '../VerificationBadge'
+import { OCTOBER_OFFICIAL_SOURCE, officialTalentNotice } from '../data/officialOctoberChanges'
 import {
   buildsUsingTalent,
   diffBuilds,
@@ -43,7 +40,7 @@ const allocation = (def: ClassDefinition, build: PlannerBuild) =>
     )
     .join('/')
 const href = (def: ClassDefinition, build: ClassBuild, points = build.build) =>
-  classPlannerHref(def, encodePlannerBuild(points), build.level)
+  classBuildPlannerHref(def, build, points)
 const availableBuilds = (def: ClassDefinition) => {
   const paths = new Set(
     publishedClassPages([def]).map(({ page: p }) => `/${p.slug}`),
@@ -61,9 +58,10 @@ function EditLink({
   points?: PlannerBuild
   label?: string
 }) {
+  const archived = hasRemovedTalentInBuild(def, build)
   return (
     <a className="ix-action" href={href(def, build, points)}>
-      {label}
+      {archived ? 'Open blank Calculator · archived route' : label}
       <ArrowRight size={16} />
     </a>
   )
@@ -79,15 +77,22 @@ function RankList({
     <ul className="ix-ranks">
       {def.talents
         .filter((t) => (points[t.id] ?? 0) > 0)
-        .map((t) => (
-          <li key={t.id}>
+        .map((t) => {
+          const officialNotice = officialTalentNotice(def.id, t.name)
+          return <li key={t.id} data-official-status={officialNotice?.status}>
             {t.icon && <img src={t.icon} alt="" loading="lazy" />}
             <span>{t.name}</span>
+            {officialNotice && (
+              <>
+                <span className="verification-badge verification-needs_review">{officialNotice.status === 'removed' ? 'Removed in official update' : 'Changed in official update'}</span>
+                <a href={officialNotice.source} target="_blank" rel="noreferrer" title={officialNotice.message}>Official update</a>
+              </>
+            )}
             <b>
               {points[t.id]}/{t.maxRank}
             </b>
           </li>
-        ))}
+        })}
     </ul>
   )
 }
@@ -310,7 +315,7 @@ function Progression({ classDef: def, page }: Props) {
             points={points}
             label="Edit this level in Calculator"
           />
-          <p className="ix-note">Loads these exact points in the calculator’s Level {build.level} budget. The modeled timing does not change its point cap or verify early access in the live Beta.</p>
+          <p className="ix-note">{hasRemovedTalentInBuild(def, build) ? 'This historical route includes an officially removed talent, so the calculator opens blank.' : `Loads these exact points in the calculator’s Level ${build.level} budget.`} The modeled timing does not change its point cap or verify early access in the live Beta.</p>
         </article>
       </div>
       <div className="ix-milestones" aria-label="Level milestones">
@@ -399,11 +404,13 @@ function TalentRecord({
 }) {
   const [rank, setRank] = useState(1),
     used = buildsUsingTalent(def, t.id)
+  const officialNotice = officialTalentNotice(def.id, t.name)
   return (
     <article
       className="ix-talent-record"
       data-testid="talent-record"
       data-excluded={excluded ? 'true' : undefined}
+      data-official-status={officialNotice?.status}
     >
       <div className="ix-record-head">
         {t.icon && <img src={t.icon} alt="" loading="lazy" />}
@@ -413,8 +420,16 @@ function TalentRecord({
             {def.branchNames[t.branch]} · Tier {t.row} · {t.maxRank} ranks
           </small>
         </div>
-        <VerificationBadge status={t.verificationStatus} />
+        {officialNotice
+          ? <span className="verification-badge verification-needs_review">{officialNotice.status === 'removed' ? 'Removed in official update' : 'Changed in official update'}</span>
+          : <VerificationBadge status={t.verificationStatus} />}
       </div>
+      {officialNotice && (
+        <p className="ix-note" role="note">
+          This is a 69913 historical record, not a verified current Beta node. {officialNotice.message}{' '}
+          <a href={officialNotice.source} target="_blank" rel="noreferrer">Read the official update</a>.
+        </p>
+      )}
       <label className="ix-field">
         Tooltip rank for {t.name}
         <select value={rank} onChange={(e) => setRank(Number(e.target.value))}>
@@ -514,7 +529,7 @@ function TalentReference({ classDef: def, page }: Props) {
         {talents.length} matching talents · positions and ranks carry field
         evidence; tooltip gaps stay visible.
       </p>
-      <p className="ix-note">No reviewed previous client-build snapshot is available for this catalog, so no talent change since a prior Beta build is claimed here.</p>
+      <p className="ix-note">No reviewed previous client-build snapshot is available for this catalog, so no talent change since a prior Beta build is claimed here. Official change notices on individual records are separate from a client-build diff.</p>
       {def.branches
         .filter(
           (b) => unallocatable.has(b) && (branch === 'all' || b === branch),
@@ -612,6 +627,7 @@ function CapSnapshot({ classDef: def, page }: Props) {
     routes = builds.length ? builds : all.filter((b) => b.intent === 'spec')
   return (
     <section className="ix-cap" data-surface="cap-snapshot">
+      <p className="ix-note">The live Beta cap is Level 30. The figures below describe an older Level 20, 11-point planning snapshot from client build {def.verifiedBuild}, not a complete current-cap build. <a href={OCTOBER_OFFICIAL_SOURCE} target="_blank" rel="noreferrer">Blizzard’s October 1 update</a></p>
       <div className="ix-cap-stats">
         <div>
           <small>PLANNING LEVEL</small>
@@ -639,7 +655,7 @@ function CapSnapshot({ classDef: def, page }: Props) {
             <strong className="ix-allocation">{b.allocation}</strong>
             <p>{b.role}</p>
             <RankList def={def} points={b.build} />
-            <EditLink def={def} build={b} />
+            <EditLink def={def} build={b} label="Inspect Level 20 snapshot" />
           </article>
         ))}
       </div>

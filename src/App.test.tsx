@@ -1,4 +1,4 @@
-import { cleanup, fireEvent, render, screen } from '@testing-library/react'
+import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import App, { TalentTree } from './App'
 import { encodeBuild } from './lib/build'
@@ -87,6 +87,7 @@ describe('Paladin talent calculator page', () => {
     expect(primaryHeading?.textContent).toBe('WoW ForeverPaladin TalentCalculator')
     expect(screen.getByText('Build Paladin talent trees for Holy, Protection, and Retribution.')).toBeTruthy()
     expect(screen.getByRole('heading', { level: 2, name: 'WoW Forever Paladin Talent Tree' })).toBeTruthy()
+    expect(document.querySelector('.summary-card')?.textContent).toMatch(/21-point Level 30 budget is not enforced/i)
   })
 
   it('labels curated builds as community examples instead of measured popularity', () => {
@@ -99,13 +100,25 @@ describe('Paladin talent calculator page', () => {
     expect(screen.getByRole('link', { name: /Retribution Paladin Judgment Build/ }).getAttribute('href')).toBe('/wow-forever-retribution-paladin-build')
   })
 
-  it('loads a current-cap Level 20 path directly into the calculator', () => {
+  it('keeps all 51-point example cards as historical reading links instead of loading them into the live planner', () => {
+    render(<App />)
+    const cards = document.querySelectorAll('.example-build-card')
+    expect(cards).toHaveLength(EXAMPLE_BUILDS.length)
+    for (const card of cards) {
+      expect(card.textContent).toMatch(/historical 51-point/i)
+      expect(card.querySelector('button')).toBeNull()
+      expect(card.querySelector<HTMLAnchorElement>('a[href^="/wow-forever-"]')?.getAttribute('href')).toBeTruthy()
+    }
+  })
+
+  it('loads a Level 20 starting path without presenting it as a complete Level 30 build', () => {
     const gtag = vi.fn()
     HTMLElement.prototype.scrollIntoView = vi.fn()
     window.gtag = gtag
     render(<App />)
 
-    const paths = screen.getByRole('region', { name: 'Current Beta Level 20 builds' })
+    const paths = screen.getByRole('region', { name: 'Level 20 Beta starting builds' })
+    expect(paths.textContent).toContain('No Level 30 route has been verified yet')
     expect(paths.textContent).toContain('11/0/0')
     expect(paths.textContent).toContain('2/9/0')
     expect(paths.textContent).toContain('Archived')
@@ -113,9 +126,29 @@ describe('Paladin talent calculator page', () => {
     expect(screen.queryByRole('button', { name: 'Load Protection Level 20 build' })).toBeNull()
 
     fireEvent.click(screen.getByRole('button', { name: 'Load Holy Level 20 build' }))
-    expect(screen.getByText('40 points remaining')).toBeTruthy()
+    expect(screen.getByText('40 reference points remaining')).toBeTruthy()
     expect(gtag).toHaveBeenCalledWith('event', 'beta_path_load', { branch: 'holy', level: 20, allocation: '11/0/0' })
     expect(gtag).not.toHaveBeenCalledWith('event', 'beta_path_load', expect.objectContaining({ branch: 'protection' }))
+  })
+
+  it('keeps the Level 20 starter context in its copied URL and analytics', async () => {
+    const oldClipboard = Object.getOwnPropertyDescriptor(navigator, 'clipboard')
+    const writeText = vi.fn().mockResolvedValue(undefined)
+    const gtag = vi.fn()
+    Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText } })
+    window.gtag = gtag
+    try {
+      render(<App />)
+      fireEvent.click(screen.getByRole('button', { name: 'Load Holy Level 20 build' }))
+      fireEvent.click(screen.getByRole('button', { name: 'Copy Build Link' }))
+      await waitFor(() => expect(writeText).toHaveBeenCalledTimes(1))
+      expect(String(writeText.mock.calls[0]?.[0])).toMatch(/\/build\?id=.+&level=20#calculator$/)
+      expect(gtag).toHaveBeenCalledWith('event', 'build_copy', expect.objectContaining({ level: 20, point_cap: 11, points: 11 }))
+    } finally {
+      if (oldClipboard) Object.defineProperty(navigator, 'clipboard', oldClipboard)
+      else Reflect.deleteProperty(navigator, 'clipboard')
+      window.gtag = undefined
+    }
   })
 
   it('links the four content-focused build pages', () => {
@@ -192,7 +225,16 @@ describe('Paladin talent calculator page', () => {
     fireEvent.click(screen.getByRole('button', { name: /Crusade/ }))
     expect(add).not.toHaveBeenCalled()
     expect(screen.getByRole('status').textContent).toMatch(/70009.*under review/i)
-    expect(screen.getByText('Needs review')).toBeTruthy()
+    expect(screen.getAllByText('Needs review').length).toBeGreaterThan(0)
+  })
+
+  it('marks October 1 Paladin tooltip changes as older client text', () => {
+    render(<TalentTree branch="protection" build={{}} readOnly />)
+    const redoubt = document.getElementById('tip-redoubt')
+    const holyShield = document.getElementById('tip-holy_shield')
+    expect(redoubt?.textContent).toMatch(/4\/8\/12\/16\/20%.*older 69913/i)
+    expect(holyShield?.textContent).toMatch(/30%.*older 69913/i)
+    expect(redoubt?.querySelector('a[href*="forums.blizzard.com"]')).toBeTruthy()
   })
 
   it('keeps multiple official references for the same talent without duplicate React keys', () => {
@@ -219,14 +261,14 @@ describe('Paladin talent calculator page', () => {
       history.replaceState({}, '', '/build?id=improved_holy_strike.1#calculator')
       render(<App />)
       expect(screen.getByText(/shared build.*invalid/i)).toBeTruthy()
-      expect(screen.getByText('51 points remaining')).toBeTruthy()
+      expect(screen.getByText('51 reference points remaining')).toBeTruthy()
       cleanup()
 
       history.replaceState({}, '', '/paladin')
       localStorage.setItem('wow-forever-paladin-build', 'improved_holy_strike.1')
       render(<App />)
       expect(screen.getByText(/saved build.*invalid/i)).toBeTruthy()
-      expect(screen.getByText('51 points remaining')).toBeTruthy()
+      expect(screen.getByText('51 reference points remaining')).toBeTruthy()
     } finally {
       retired.currentBetaAvailability = previous
     }
@@ -239,10 +281,9 @@ describe('Paladin talent calculator page', () => {
     try {
       render(<App />)
       const card = screen.getByRole('link', { name: 'Retribution Paladin Judgment Build' }).closest('.example-build-card')!
-      const load = card.querySelector('button') as HTMLButtonElement
-      expect(load.disabled).toBe(true)
-      expect(load.textContent).toContain('Under review')
-      expect(screen.getByText('51 points remaining')).toBeTruthy()
+      expect(card.querySelector('button')).toBeNull()
+      expect(card.textContent).toContain('Historical 51-point reference')
+      expect(screen.getByText('51 reference points remaining')).toBeTruthy()
       fireEvent.click(screen.getByRole('tab', { name: /Retribution/ }))
       expect(document.querySelector('#tip-crusade .talent-builds')?.textContent).toContain('Under review')
     } finally {
@@ -263,9 +304,11 @@ describe('Paladin talent calculator page', () => {
     expect(screen.getByText('Beta build 1.60.1.69913')).toBeTruthy()
     expect(screen.getByText('69913 snapshot reviewed September 20, 2026')).toBeTruthy()
     expect(screen.getByText('0 tooltip updates since 69893 in that comparison')).toBeTruthy()
-    expect(screen.getByText('Beta Week 1 · Level cap 20')).toBeTruthy()
+    expect(screen.getByText(/October 1 Beta update · Official level cap 30/)).toBeTruthy()
     const status = screen.getByRole('region', { name: 'WoW Forever Beta data status' })
-    expect(status.querySelector('a')?.getAttribute('href')).toBe('/wow-forever-paladin-beta-talent-changes')
+    expect(status.textContent).toContain('Level 20 routes are 11-point starting snapshots')
+    expect(status.querySelector('a[href*="2360696"]')).toBeTruthy()
+    expect(status.querySelector('a[href="/wow-forever-paladin-beta-talent-changes"]')).toBeTruthy()
   })
 
   it('describes 69913 as an imported snapshot rather than the fully current Beta dataset', () => {
@@ -297,7 +340,7 @@ describe('Paladin talent calculator page', () => {
     expect(screen.getByText('Saved build loaded')).toBeTruthy()
     fireEvent.click(screen.getByRole('button', { name: 'Start New Build' }))
     expect(screen.queryByText('Saved build loaded')).toBeNull()
-    expect(screen.getByText('51 points remaining')).toBeTruthy()
+    expect(screen.getByText('51 reference points remaining')).toBeTruthy()
   })
 
   it('starts blank when an explicit empty build id overrides saved points', () => {
@@ -306,20 +349,20 @@ describe('Paladin talent calculator page', () => {
     render(<App />)
 
     expect(screen.queryByText('Saved build loaded')).toBeNull()
-    expect(screen.getByText('51 points remaining')).toBeTruthy()
+    expect(screen.getByText('51 reference points remaining')).toBeTruthy()
   })
 
   it('does not silently load a shared or saved allocation that skips talent tiers', () => {
     window.history.replaceState({}, '', '/build?id=holy_shock.1#calculator')
     render(<App />)
-    expect(screen.getByText('51 points remaining')).toBeTruthy()
+    expect(screen.getByText('51 reference points remaining')).toBeTruthy()
     expect(screen.getByText(/shared build.*invalid/i)).toBeTruthy()
     cleanup()
 
     window.history.replaceState({}, '', '/paladin')
     localStorage.setItem('wow-forever-paladin-build', 'holy_shock.1')
     render(<App />)
-    expect(screen.getByText('51 points remaining')).toBeTruthy()
+    expect(screen.getByText('51 reference points remaining')).toBeTruthy()
     expect(screen.getByText(/saved build.*invalid/i)).toBeTruthy()
   })
 

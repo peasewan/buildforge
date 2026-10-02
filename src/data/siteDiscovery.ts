@@ -27,7 +27,7 @@ export const DISCOVERY_INTENTS: { id: string; label: string; description: string
   { id: 'leveling', label: 'Leveling', description: 'Follow a published route as you spend talent points.', kinds: ['leveling', 'specLeveling', 'aoe'], paladin: [{ href: '/wow-forever-paladin-leveling-build', label: 'Paladin leveling' }] },
   { id: 'pvp', label: 'PvP', description: 'Explore allocations and encounter preparation notes.', kinds: ['pvp', 'specPvp'], paladin: [{ href: '/wow-forever-paladin-pvp-build', label: 'Paladin PvP' }] },
   { id: 'dungeon', label: 'Dungeon & group roles', description: 'Find published dungeon, tanking and healing routes.', kinds: ['dungeon', 'specDungeon', 'tank', 'healing'], paladin: [{ href: '/wow-forever-protection-paladin-dungeon-build', label: 'Protection Paladin dungeon' }] },
-  { id: 'planning-cap', label: 'Current planning cap', description: 'Inspect each dataset’s planning level and point budget. These are not live server-cap confirmations.', kinds: ['levelCap'], paladin: [] },
+  { id: 'planning-cap', label: 'Published Level 20 snapshots', description: 'Inspect each dataset’s planning level and point budget. These are not live server-cap confirmations.', kinds: ['levelCap'], paladin: [] },
 ]
 export function discoveryGroups(classes: ClassDefinition[] = PUBLISHED_CLASSES, includePaladin = true) {
   const pages = publishedClassPages(classes)

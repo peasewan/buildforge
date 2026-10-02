@@ -31,26 +31,26 @@ export const SPEC_TALENTS_PAGES: SpecTalentsPageConfig[] = [
     metaTitle: 'WoW Forever Holy Paladin Talents | Talent Tree',
     description: 'Explore the WoW Forever Holy Paladin talent tree, review the healing and support talents, and plan your own allocation in the talent calculator.',
     eyebrow: 'Holy Talent Guide',
-    intro: 'Explore the Holy Paladin talent tree. Plan talent points, review the healing and support talents, and create your own build.',
+    intro: 'Explore Holy healing and support talents in the imported 69913 tree. The live Beta cap is Level 30; the 51-point allocation below is a historical reference, not a current build.',
     buildId: 'holy-healing-31-20-0',
     allocation: {
-      label: 'Example Beta allocation',
+      label: 'Historical 51-point reference',
       value: '31 Holy',
-      note: 'The selected route reaches Holy Shock and Light’s Vigil through the healing, spell support, and utility talents in the Beta client build 1.60.1.69913.',
+      note: 'This 31/20/0 route uses all 51 points in the older 1.60.1.69913 client snapshot. It exceeds the live Level 30 Beta cap; inspect it as a long-term reference, then start a new calculator route for current testing.',
     },
     sections: [
       {
         heading: 'Planning Holy Paladin Talents',
         paragraphs: [
-          'Holy Paladin talents organize the healing side of the WoW Forever Paladin tree. The opening rows in this Beta example include Divine Strength and Divine Intellect, which support the class baseline before any healing choice is made. Healing Light, Spiritual Focus, and Improved Seals follow, alongside utility options such as Unyielding Faith and Reverence that shape how the build plays around other players.',
-          'Deeper rows move into the talents a healing build is usually recognised by. Illumination, Divine Favor, and Divine Precision sit alongside Purifying Power and Infusion of Light, with Holy Shock and Light’s Vigil among the nodes that define the specialization. BuildForgeTools displays their imported 1.60.1.69913 structure and rank tooltips; later changes require separate verification.',
+          'Holy Paladin talents organize the healing side of the WoW Forever Paladin tree. The opening rows in the imported 69913 snapshot include Divine Strength and Divine Intellect. Healing Light, Spiritual Focus, and Improved Seals follow, alongside utility options such as Unyielding Faith and Reverence. These are tree landmarks for comparison, not an endorsed Level 30 point order.',
+          'Deeper rows in that older snapshot contain Illumination, Divine Favor, Divine Precision, Purifying Power, Infusion of Light, Holy Shock, and Light’s Vigil. BuildForgeTools displays the imported 1.60.1.69913 positions and rank tooltips so players can inspect the historical tree. Later official changes are tracked separately; a fully reconciled current-cap route has not yet been published.',
         ],
       },
       {
         heading: 'From Talent Tree to Healing Build',
         paragraphs: [
-          'A Holy tree becomes more useful when it connects to a complete build. The featured 31/20/0 setup spends its Holy points first and then reaches into Protection for early survivability and utility. The full allocation can be opened from the calculator, where every selected node is visible, all 51 points are counted, and the edited result becomes a shareable URL.',
-          'WoW Forever talent information may change while new captures and testing become available. Review current in-game tooltips before treating a talent value as confirmed. The planner keeps uncertain data visible, makes each edit reversible, and gives the community one consistent way to compare Holy Paladin builds.',
+          'The featured 31/20/0 allocation spends 31 points in Holy and 20 in Protection. Its 51-point total is beyond the live Level 30 Beta cap. The read-only tree below preserves that longer-term example, while its calculator links start blank so the old allocation is not presented as a current preset.',
+          'To test a Holy route now, add only points available to your character and check important effects against current in-game tooltips. The calculator still uses the imported 69913 tree, so treat later patch notices and any uncertain rank text separately from a verified live allocation.',
         ],
       },
     ],
@@ -68,26 +68,26 @@ export const SPEC_TALENTS_PAGES: SpecTalentsPageConfig[] = [
     metaTitle: 'WoW Forever Protection Paladin Talents | Talent Tree',
     description: 'Explore the WoW Forever Protection Paladin talent tree, review key tank talents, and create a custom build in the talent calculator.',
     eyebrow: 'Protection Talent Guide',
-    intro: 'Explore the Protection Paladin talent tree. Plan talent points, review key talents, and create your own build.',
+    intro: 'Explore Protection tank talents in the imported 69913 tree. The live Beta cap is Level 30; the 51-point tank allocation below is a historical reference, not a current build.',
     buildId: 'protection-shield-20-31-0',
     allocation: {
-      label: 'Example Beta allocation',
+      label: 'Historical 51-point reference',
       value: '31 Protection',
-      note: 'The selected route reaches Holy Shield through defensive, threat, shield, and utility talents represented in the Beta client build 1.60.1.69913.',
+      note: 'This 20/31/0 route uses all 51 points in the older 1.60.1.69913 client snapshot. It exceeds the live Level 30 Beta cap, and its Redoubt and Holy Shield tooltips predate the October 1 tuning.',
     },
     sections: [
       {
         heading: 'Planning Protection Paladin Talents',
         paragraphs: [
-          'Protection Paladin talents organize the defensive side of the WoW Forever Paladin tree. The opening rows in this Beta example include Toughness, Redoubt, Precision, and Anticipation, which build the baseline a tank works from. Improved Righteous Fury and Improved Seal of Fury address threat, while Guardian’s Favor and Sacred Duty support the tools a group expects from a Paladin.',
-          'Deeper rows add the shield and durability choices the specialization is recognised by. Shield Specialization, One-Handed Weapon Specialization, and Templar’s Bulwark sit alongside Reckoning, Iron Creed, and Swift Judgement, with Holy Shield among the nodes that define the route. BuildForgeTools displays their imported 1.60.1.69913 structure and rank tooltips; later changes require separate verification.',
+          'Protection Paladin talents organize the defensive side of the WoW Forever Paladin tree. The opening rows in the imported 69913 snapshot include Toughness, Redoubt, Precision, and Anticipation. Improved Righteous Fury and Improved Seal of Fury appear among threat choices, while Guardian’s Favor and Sacred Duty are utility landmarks. This is a historical tree inventory, not a reviewed Level 30 tank order.',
+          'Deeper rows in that older snapshot include Shield Specialization, One-Handed Weapon Specialization, Templar’s Bulwark, Reckoning, Iron Creed, Swift Judgement, and Holy Shield. Blizzard changed Redoubt and Holy Shield on October 1. Their 69913 rank text can therefore be stale even though the old positions remain useful for comparing the historical route.',
         ],
       },
       {
         heading: 'From Talent Tree to Tank Build',
         paragraphs: [
-          'The Protection tree becomes more useful when it connects to a complete build. The featured 20/31/0 setup combines 31 Protection points with early Holy support and can be opened from the Protection Builds Hub. From there, the calculator shows every selected node, counts all 51 points, and creates a shareable URL for the edited result.',
-          'WoW Forever talent information may change while new captures and testing become available. Review current in-game tooltips before treating a talent value as confirmed. The planner keeps uncertain data visible, makes each edit reversible, and gives the community one consistent way to compare Protection Paladin builds.',
+          'The featured 20/31/0 allocation combines 31 Protection points with 20 Holy points. Its 51-point total is beyond the live Level 30 Beta cap. The read-only preview preserves it as a long-term reference; the calculator links start blank rather than loading it as a current tank preset.',
+          'For a tank build you can test now, start from a blank tree and check the current client before relying on mitigation, threat, or prerequisite text. The calculator still uses the imported 69913 tree, while later official tuning is displayed separately until the full client data is reconciled.',
         ],
       },
     ],
@@ -105,26 +105,26 @@ export const SPEC_TALENTS_PAGES: SpecTalentsPageConfig[] = [
     metaTitle: 'WoW Forever Retribution Paladin Talents | Talent Tree',
     description: 'Explore the WoW Forever Retribution Paladin talent tree, review the damage and judgement talents, and plan your own build in the talent calculator.',
     eyebrow: 'Retribution Talent Guide',
-    intro: 'Explore the Retribution Paladin talent tree. Plan talent points, review the damage talents, and create your own build.',
+    intro: 'Explore Retribution damage talents in the imported 69913 tree. The live Beta cap is Level 30; the 51-point route below is historical and includes a node under later-patch review.',
     buildId: 'retribution-judgment-0-20-31',
     allocation: {
-      label: 'Example Beta allocation',
+      label: 'Historical 51-point reference',
       value: '31 Retribution',
-      note: 'Historical 69913 example: this route selected Crusade and Vengeance. Crusade is reported removed in 70009, but the node identity is under review, so do not load this allocation as a current route.',
+      note: 'This 0/20/31 route uses all 51 points in the older 1.60.1.69913 snapshot. It exceeds the live Level 30 cap and selects Crusade; a reported 70009 removal remains under node-identity review, so do not use it as a current route.',
     },
     sections: [
       {
         heading: 'Planning Retribution Paladin Talents',
         paragraphs: [
-          'Retribution Paladin talents organize the damage side of the WoW Forever Paladin tree. The opening rows in this Beta example include Deflection, Benediction, and Improved Judgement, which set up the weapon and seal play the specialization is built around. Conviction and Vindication follow, alongside utility options such as Pursuit of Justice and Eye for an Eye that change how the build answers pressure.',
-          'Deeper rows in the imported 69913 snapshot included Seal of Command, Sanctified Judgement, Crusade, and Vengeance alongside Two-Handed Weapon Specialization, Sacred Arbiter, and Repentance. Champion of the Light, Instrument of Law, and Twist of Light closed that older route. A reported 70009 removal names Crusade, but the supplied node ID does not yet reconcile with our imported record. The 51-point preview remains historical while that identity is reviewed.',
+          'Retribution Paladin talents organize the damage side of the WoW Forever Paladin tree. The opening rows in the imported 69913 snapshot include Deflection, Benediction, and Improved Judgement. Conviction and Vindication follow, alongside options such as Pursuit of Justice and Eye for an Eye. These names describe the older tree; they do not establish a reviewed current-cap point order.',
+          'Deeper rows in the imported 69913 snapshot include Seal of Command, Sanctified Judgement, Crusade, Vengeance, Two-Handed Weapon Specialization, Sacred Arbiter, and Repentance. Champion of the Light, Instrument of Law, and Twist of Light are other deeper tree options, not all selected by this example. A reported 70009 removal names Crusade, but its supplied node ID does not reconcile with our imported record. Blizzard also changed Champion of the Light on October 1. The 51-point preview remains historical while those differences are reviewed.',
         ],
       },
       {
         heading: 'From Talent Tree to Damage Build',
         paragraphs: [
-          'A Retribution tree becomes more useful when it connects to a complete build. The featured 0/20/31 snapshot reached the deeper Retribution nodes while spending 20 points in Protection for survivability. Because that historical example selects Crusade, it is not loaded as a current calculator preset. The separate Level 20 route remains an editable starting point while the 70009 identity is reconciled.',
-          'WoW Forever talent information may change while new captures and testing become available. Review current in-game tooltips before treating a talent value as confirmed. The planner keeps uncertain data visible, makes each edit reversible, and gives the community one consistent way to compare Retribution Paladin builds.',
+          'The featured 0/20/31 snapshot reached deeper Retribution nodes while spending 20 points in Protection. Its 51-point total exceeds the live Level 30 Beta cap. It also selects Crusade, so the read-only example is not loaded as a current calculator preset. The separate Level 20 route is an older editable starting snapshot, not a verified Level 30 recommendation.',
+          'To test Retribution now, start a blank route and confirm important ranks against current in-game tooltips. The calculator keeps the imported 69913 tree visible, while the reported 70009 removal and later official tuning remain separate until the client records are reconciled.',
         ],
       },
     ],

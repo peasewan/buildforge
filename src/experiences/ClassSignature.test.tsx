@@ -1,6 +1,7 @@
 import { cleanup, render, screen } from '@testing-library/react'
 import { afterEach, expect, it } from 'vitest'
 import { PUBLISHED_CLASSES } from '../data/classes'
+import { hasRemovedTalentInBuild } from '../lib/archivedClassBuild'
 import { publishedClassPages } from '../lib/classPage'
 import ClassSignature, { hasClassSignature } from './ClassSignature'
 
@@ -41,13 +42,29 @@ for (const item of cases) {
       expect(link).not.toBeNull()
       const destination = new URL(link!.getAttribute('href')!, 'https://buildforgetools.com')
       expect(destination.pathname).toBe(classDef.plannerPath)
-      expect(destination.searchParams.get('build')).toBeTruthy()
+      const route = classDef.builds.find((build) => build.id === page!.primaryBuildId)
+        ?? classDef.builds.find((build) => build.id === classDef.recommendedBuildIds[0])!
+      if (hasRemovedTalentInBuild(classDef, route)) {
+        expect(destination.searchParams.has('build')).toBe(true)
+        expect(destination.searchParams.get('build')).toBe('')
+        expect(destination.hash).toBe('#class-calculator')
+        expect(link!.textContent).toContain('archived route')
+      } else expect(destination.searchParams.get('build')).toBeTruthy()
       expect(screen.getByText(/Editorial test prompt/i)).toBeTruthy()
       unmount()
     }
     expect(new Set(routeCopy).size).toBe(4)
   })
 }
+
+it('does not prefill the removed Thick Hide Hunter signature route', () => {
+  const hunter = PUBLISHED_CLASSES.find((def) => def.id === 'hunter')!
+  const page = hunter.pages.find((candidate) => candidate.kind === 'specBuild' && candidate.spec === 'beast-mastery')!
+  const { container } = render(<ClassSignature classDef={hunter} page={page} />)
+  const link = container.querySelector('.cs-outro a') as HTMLAnchorElement
+  expect(link.getAttribute('href')).toBe('/hunter?build=#class-calculator')
+  expect(link.textContent).toContain('archived route')
+})
 
 it('omits the signature from unrelated routes and the protected Paladin surface', () => {
   const warrior = PUBLISHED_CLASSES.find((def) => def.id === 'warrior')!

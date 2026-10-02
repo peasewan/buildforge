@@ -1,21 +1,30 @@
 import type { CSSProperties, ReactNode } from 'react'
 import { ArrowRight, Swords } from 'lucide-react'
 import type { ClassDefinition, ClassPageDefinition } from '../lib/classPage'
-import { classPlannerHref, publishedClassPages } from '../lib/classPage'
-import { encodePlannerBuild } from '../lib/talentPlanner'
+import { publishedClassPages } from '../lib/classPage'
+import { classBuildPlannerHref, hasRemovedTalentInBuild } from '../lib/archivedClassBuild'
 import SiteFooter from '../SiteFooter'
 import ClassIntentExperience from './ClassIntentExperience'
 import ClassSignature, { hasClassSignature } from './ClassSignature'
 import HunterOfficialUpdate, { isHunterOfficialUpdatePage } from './HunterOfficialUpdate'
+import OfficialClassChanges from './OfficialClassChanges'
 import { experienceLabel } from './experienceLabels'
+
+const OCTOBER_BETA_NOTES = 'https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-1/2360696'
+const OCTOBER_REVIEWED_PAGES = new Set([
+  'wow-forever-hunter-pvp-build',
+  'wow-forever-warlock-pvp-build',
+  'wow-forever-arms-vs-fury-warrior-leveling',
+  'wow-forever-beast-mastery-vs-marksmanship-hunter-leveling',
+])
 
 type Slot = 'intent' | 'official' | 'signature' | 'evidence' | 'editorial' | 'comparison' | 'faq' | 'related'
 const supportOrder = (kind: ClassPageDefinition['kind']): Slot[] => {
   if (kind === 'buildsHub') return ['intent', 'signature', 'official', 'editorial', 'evidence', 'faq', 'related']
   if (kind === 'comparison') return ['intent', 'comparison', 'official', 'editorial', 'evidence', 'faq', 'related']
-  if (kind === 'talents' || kind === 'specTalents') return ['intent', 'evidence', 'related', 'editorial', 'faq']
-  if (kind === 'specBuild') return ['intent', 'editorial', 'signature', 'related', 'evidence', 'comparison', 'faq']
-  if (kind === 'dungeon' || kind === 'specDungeon' || kind === 'tank') return ['intent', 'signature', 'evidence', 'editorial', 'comparison', 'faq', 'related']
+  if (kind === 'talents' || kind === 'specTalents') return ['intent', 'official', 'evidence', 'related', 'editorial', 'faq']
+  if (kind === 'specBuild') return ['intent', 'editorial', 'official', 'signature', 'related', 'evidence', 'comparison', 'faq']
+  if (kind === 'dungeon' || kind === 'specDungeon' || kind === 'tank') return ['intent', 'signature', 'official', 'evidence', 'editorial', 'comparison', 'faq', 'related']
   if (kind === 'pvp' || kind === 'specPvp') return ['intent', 'signature', 'official', 'editorial', 'comparison', 'evidence', 'faq', 'related']
   return ['intent', 'signature', 'official', 'editorial', 'evidence', 'comparison', 'faq', 'related']
 }
@@ -31,9 +40,8 @@ export default function ClassExperiencePage({
     paths = new Set(published.map((p) => `/${p.slug}`))
   const plannerPublished = published.some((p) => p.kind === 'calculator')
   const primaryBuild = def.builds.find((build) => build.id === page.primaryBuildId && paths.has(build.href))
-  const calculatorHref = primaryBuild
-    ? classPlannerHref(def, encodePlannerBuild(primaryBuild.build), primaryBuild.level)
-    : def.plannerPath
+  const archivedBuild = primaryBuild ? hasRemovedTalentInBuild(def, primaryBuild) : false
+  const calculatorHref = primaryBuild ? classBuildPlannerHref(def, primaryBuild) : def.plannerPath
   const related = page.relatedPages.filter((p) => paths.has(p.href)),
     art = page.ogImage ?? def.ogImage
   const heroStyle = art
@@ -44,13 +52,17 @@ export default function ClassExperiencePage({
   )
   const slots: Record<Slot, ReactNode> = {
     intent: <ClassIntentExperience classDef={def} page={page} />,
-    official: def.id === 'hunter' && isHunterOfficialUpdatePage(page.slug) ? <HunterOfficialUpdate slug={page.slug} /> : null,
+    official: def.id === 'hunter' && isHunterOfficialUpdatePage(page.slug)
+      ? <HunterOfficialUpdate slug={page.slug} />
+      : <OfficialClassChanges classId={def.id} />,
     signature: hasClassSignature(def, page) ? <ClassSignature classDef={def} page={page} /> : null,
     evidence: (
       <details className="ix-evidence">
         <summary>Data sources, verification &amp; planning limits</summary>
         <p>{def.dataReview?.notice ?? 'Talent positions and ranks are client records. Build allocations are editorial examples; performance is not simulated. Prerequisite rank rules may be derived assumptions.'}</p>
-        <ul>{def.sources.map((s) => <li key={s.url}><a href={s.url} target="_blank" rel="noreferrer">{s.label}</a></li>)}</ul>
+        <ul>{def.sources.map((s) => <li key={s.url}><a href={s.url} target="_blank" rel="noreferrer">{s.label}</a></li>)}
+          {OCTOBER_REVIEWED_PAGES.has(page.slug) && <li><a href={OCTOBER_BETA_NOTES} target="_blank" rel="noreferrer">Blizzard October 1 Beta development notes</a></li>}
+        </ul>
       </details>
     ),
     editorial: page.sections.length ? (
@@ -129,11 +141,12 @@ export default function ClassExperiencePage({
           {plannerPublished && (
             <div className="class-hero-actions">
               <a className="button class-primary" href={calculatorHref}>
-                {primaryBuild ? 'Edit this build in Calculator' : `Open ${def.name} Calculator`}
+                {archivedBuild ? `Open blank ${def.name} Calculator` : primaryBuild ? 'Inspect Level 20 snapshot in Calculator' : `Open ${def.name} Calculator`}
                 <ArrowRight size={15} aria-hidden="true" />
               </a>
             </div>
           )}
+          {archivedBuild && <p className="ix-note" role="note">This historical route includes an officially removed talent. Review the old ranks below, then start a blank calculator route.</p>}
           <div className="ix-meta">
             <span>
               {def.dataReview ? 'CLIENT-TABLE PREVIEW' : def.beta.phaseLabel}

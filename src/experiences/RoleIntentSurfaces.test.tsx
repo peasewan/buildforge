@@ -82,12 +82,27 @@ it('compares the three Hunter Level 20 directions without labeling ordinary rout
   expect(choices.getByText(/pet uptime under opponent control/i)).toBeTruthy()
   expect(choices.getByText(/ranged attacks under pressure/i)).toBeTruthy()
   expect(choices.getByText(/escape after an opponent reaches melee range/i)).toBeTruthy()
-  const bm = choices.getByRole('link', { name: 'Try Beast Mastery points in Calculator' })
+  const bm = choices.getByRole('link', { name: 'Open blank Hunter Calculator for archived Beast Mastery route' })
   const bmUrl = new URL(bm.getAttribute('href')!, 'https://buildforgetools.com')
   expect(bmUrl.pathname).toBe('/hunter')
-  expect(bmUrl.searchParams.get('level')).toBe('20')
-  expect(bmUrl.searchParams.get('build')).toContain('hunter-1389.5')
+  expect(bmUrl.searchParams.has('build')).toBe(true)
+  expect(bmUrl.searchParams.get('build')).toBe('')
+  expect(bmUrl.hash).toBe('#class-calculator')
+  expect(bm.textContent).toMatch(/archived route/i)
   expect(choices.getByRole('link', { name: 'Hunter Pet Build' }).getAttribute('href')).toBe('/wow-forever-hunter-pet-build')
+})
+
+it.each([
+  [PetPlanner, 'wow-forever-hunter-pet-build', 'Thick Hide'],
+  [DungeonPlanner, 'wow-forever-hunter-dungeon-build', 'Aimed Shot'],
+] as const)('keeps %s as a historical route with a blank calculator CTA', (Planner, slug, removedTalent) => {
+  const { container } = render(<Planner classDef={hunterClass} page={page(hunterClass, slug)} />)
+  const action = container.querySelector('.rs-allocation .ix-action') as HTMLAnchorElement
+  expect(action.getAttribute('href')).toBe('/hunter?build=#class-calculator')
+  expect(action.textContent).toMatch(/archived route/i)
+  const row = [...container.querySelectorAll('.rs-evidence li')].find((candidate) => candidate.textContent?.includes(removedTalent))
+  expect(row?.textContent).toContain('Removed in official update')
+  expect(row?.querySelector('a[href*="news.blizzard.com"]')).toBeTruthy()
 })
 
 it('connects Hunter leveling, comparison and pet decisions back to the PvP page', () => {

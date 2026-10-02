@@ -1,12 +1,12 @@
 {
   "eyebrow": "Community Build Example",
   "title": "WoW Forever Paladin Build – Holy Healing 31/20/0",
-  "dek": "Open a complete 51-point WoW Forever Holy Paladin build, inspect every selected healing talent, and continue editing it in the BuildForge Talent Calculator.",
+  "dek": "Inspect a historical 51-point WoW Forever Holy Paladin healing reference, then start a new calculator route for the live Level 30 Beta cap.",
   "updated": "September 20, 2026",
   "spec": "Holy",
   "heroHeading": "WoW Forever Holy Paladin Build (31/20/0)",
   "allocationSummary": "31 Holy, 20 Protection, 0 Retribution",
-  "footerHeading": "Open the complete 31/20/0 build.",
+  "footerHeading": "Start a new Level 30 Holy build.",
   "plannerPath": "/build?id=anticipation.5~divine_intellect.5~divine_strength.5~guardian_s_favor.2~healing_light.3~holy_shock.1~illumination.4~improved_seals.3~light_s_vigil.1~precision.3~purifying_power.2~redoubt.5~reverence.3~spiritual_focus.2~toughness.5~unyielding_faith.2",
   "selectedTalents": [
     "Divine Strength 5/5",
@@ -31,16 +31,16 @@
       "id": "build-overview",
       "heading": "WoW Forever Holy Paladin Build Overview",
       "paragraphs": [
-        "This WoW Forever Holy Paladin build spends 31 points in Holy and 20 points in Protection, with no points in Retribution. It is a community build example using talent data from Beta client build 1.60.1.69913. The allocation reaches Holy Shock and Light’s Vigil in the Holy tree, then uses the remaining points on early Protection talents. It is presented as a practical starting point for testing the new tree, not as a final claim about the strongest healing build.",
-        "The page and calculator use the same saved build data. The 31/20/0 summary, individual ranks, and 51-point total therefore stay aligned. Select Open This Build to load the exact setup in the interactive planner. From there, every rank can be removed or replaced, and the resulting configuration can be copied as a shareable BuildForge link. No account is required."
+        "This historical WoW Forever Holy Paladin example spends 31 points in Holy and 20 points in Protection, with no points in Retribution. It uses talent data from Beta client build 1.60.1.69913. The allocation reaches Holy Shock and Light’s Vigil in the Holy tree, then uses the remaining points on early Protection talents. The 51-point reference exceeds the live Level 30 Beta budget; it is for exploring the tree, not a current healing recommendation.",
+        "The 31/20/0 summary and individual ranks below document the historical 51-point setup. Because it exceeds the live Beta cap, the primary calculator action starts a blank tree instead of loading the old allocation. A new legal experiment can be copied as a shareable BuildForge link. No account is required."
       ]
     },
     {
       "id": "holy-talents",
       "heading": "What the 31 Holy Points Include",
       "paragraphs": [
-        "The Holy side starts with Divine Strength and Divine Intellect before moving through healing and spell-support talents. Healing Light, Spiritual Focus, Reverence, and Purifying Power form the middle of the allocation. Four points go into Illumination, while Holy Shock and Light’s Vigil each receive their single available rank. The build also includes Improved Seals and Unyielding Faith as part of the route through the current Beta tree.",
-        "Light’s Vigil is the final selected Holy talent in this setup and is one of the distinctive talents shown in current WoW Forever material. Its displayed effect comes from Beta client build 1.60.1.69913 and may change in a later build. BuildForge labels the client build so players can distinguish verified current data from build recommendations. The calculator tooltip for each node includes its current source status."
+        "The Holy side starts with Divine Strength and Divine Intellect before moving through healing and spell-support talents. Healing Light, Spiritual Focus, Reverence, and Purifying Power form the middle of the allocation. Four points go into Illumination, while Holy Shock and Light’s Vigil each receive their single available rank. The build also includes Improved Seals and Unyielding Faith as part of the route through the imported 69913 Beta tree.",
+        "Light’s Vigil is the final selected Holy talent in this setup and is one of the distinctive talents shown in WoW Forever material. Its displayed effect comes from Beta client build 1.60.1.69913 and may change in a later build. BuildForge labels the client build so players can distinguish versioned imported data from build recommendations. The calculator tooltip for each node includes its source status."
       ]
     },
     {
@@ -56,15 +56,15 @@
       "heading": "Holy Healing for Raids and Group Content",
       "paragraphs": [
         "This 31/20/0 Holy build is organized around raid healing and group support. The deep Holy path reaches Holy Shock and Light's Vigil, which are useful tools for steady group healing, while Illumination and Purifying Power support efficient mana use. The 20 Protection points add a small defensive base that helps a healer survive focused attention in dungeons and raids.",
-        "Group composition, encounter design, and current talent tuning will determine exactly how a Holy Paladin should adjust these points. Use the calculator to move the secondary Protection points, compare a different Holy path, and share the edited setup with a raid leader before a session. Every rank shown here comes from Beta client build 1.60.1.69913; the allocation itself remains a community planning example."
+        "Group composition, encounter design, and current talent tuning will determine which Holy and Protection points to spend in a live Level 30 route. Start a blank calculator tree, compare legal early choices, and share the new setup with a group before a session. The historical ranks shown here come from Beta client build 1.60.1.69913 and are not a current recommendation."
       ]
     },
     {
       "id": "edit-and-share",
       "heading": "Edit and Share This WoW Forever Paladin Build",
       "paragraphs": [
-        "Open the build in the Talent Calculator to see the selected nodes illuminated across the Holy and Protection tabs. The summary panel lists each chosen talent and its rank. Removing a prerequisite also clears talents that can no longer remain active, which keeps edited builds valid. The point counter shows how many of the available 51 points remain as you compare alternatives.",
-        "When the allocation is ready, Copy Build Link creates a compact URL containing the selected talent identifiers and ranks. Anyone opening that URL receives the same configuration and can continue editing it. This makes the page useful as both an indexable WoW Forever Paladin build example and a starting point for community conversations while the talent system is still being documented."
+        "The selected talents on this page preserve the old Holy and Protection ranks for inspection. Open Calculator starts a blank route for a current-cap experiment. Its summary lists your newly chosen ranks, and removing a prerequisite also clears dependent selections under the imported planner rules. The 51-point historical total is not the live Beta budget.",
+        "When a current allocation is ready, Copy Build Link creates a compact URL containing its selected talent identifiers and ranks. Anyone opening that link sees the same experiment and can continue editing it. Keep that share link distinct from this older 31/20/0 reference while the talent system is still being documented."
       ]
     }
   ]

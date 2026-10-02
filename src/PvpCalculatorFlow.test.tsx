@@ -48,6 +48,14 @@ function enterPaladinVariant(pageId: 'retribution-pvp' | 'protection-pvp') {
   render(<App />)
 }
 
+function enterPaladinPvpStarter() {
+  render(<BuildLandingPage pageId="pvp" />)
+  const href = screen.getByRole('link', { name: /Load Retribution route/ }).getAttribute('href')!
+  cleanup()
+  history.replaceState({}, '', href)
+  render(<App />)
+}
+
 function enterHunterPvp() {
   const page = hunterClass.pages.find(page => page.kind === 'pvp')!
   render(<ClassDocumentPage classDef={hunterClass} page={page} />)
@@ -67,17 +75,18 @@ function enterWarriorPvp() {
 }
 
 describe('Published PvP route → adjust → share', () => {
-  it('opens Protection PvP on its allocated tree', () => {
+  it('opens the historical Protection PvP reference on a blank calculator', () => {
     enterPaladinVariant('protection-pvp')
-    expect(screen.getByRole('tab', { name: /^Protection/ }).getAttribute('aria-selected')).toBe('true')
-    expect(screen.getByLabelText('Protection talent tree')).toBeTruthy()
+    expect(new URLSearchParams(location.search).get('id')).toBe('')
+    expect(document.querySelector('.current-build')?.textContent).toContain('51 reference points remaining')
+    expect(screen.getByRole('tab', { name: /^Holy/ }).getAttribute('aria-selected')).toBe('true')
     expect(scrollTargets).toContain('calculator')
   })
 
   it('opens the historical Retribution PvP reference on a blank calculator', () => {
     enterPaladinVariant('retribution-pvp')
     expect(new URLSearchParams(location.search).get('id')).toBe('')
-    expect(document.querySelector('.current-build')?.textContent).toContain('51 points remaining')
+    expect(document.querySelector('.current-build')?.textContent).toContain('51 reference points remaining')
     expect(scrollTargets).toContain('calculator')
   })
 
@@ -119,9 +128,9 @@ describe('Published PvP route → adjust → share', () => {
 
   it('explains a filled Hunter route, then shares and restores a legal adjustment', async () => {
     enterHunterPvp()
-    expect(screen.getByRole('status').textContent).toMatch(/remove.*rank.*add/i)
+    expect(document.querySelector('.class-full-route')?.textContent).toMatch(/remove.*rank.*add/i)
     fireEvent.click(screen.getByRole('button', { name: 'Remove rank from Deterrence' }))
-    fireEvent.click(screen.getByRole('button', { name: 'Add rank to Humanoid Slaying' }))
+    fireEvent.click(screen.getByRole('button', { name: 'Add rank to Improved Wing Clip' }))
     fireEvent.click(screen.getByRole('button', { name: 'Copy build link' }))
     await waitFor(() => expect(copiedUrl).toContain('/hunter?build='))
     const url = new URL(copiedUrl)
@@ -132,7 +141,7 @@ describe('Published PvP route → adjust → share', () => {
     history.replaceState({}, '', `${url.pathname}${url.search}${url.hash}`)
     render(<ClassCalculatorPage classDef={hunterClass} />)
     expect(document.getElementById('hunter-1308')?.textContent).toContain('0/1')
-    expect(screen.getByRole('button', { name: 'Remove rank from Humanoid Slaying' })).toBeTruthy()
+    expect(screen.getByRole('button', { name: 'Remove rank from Improved Wing Clip' })).toBeTruthy()
     expect(document.querySelector('.class-summary aside')?.textContent).toContain('11 / 11')
   })
 
@@ -176,29 +185,28 @@ describe('Published PvP route → adjust → share', () => {
     expect(document.querySelector('.class-summary aside')?.textContent).toContain('Level 30')
   })
 
-  it('restores an adjusted Paladin reference and its tree from the copied URL', async () => {
-    enterPaladinVariant('protection-pvp')
-    expect(screen.getByRole('status').textContent).toMatch(/remove.*rank.*add/i)
-    fireEvent.click(screen.getByRole('button', { name: 'Remove one rank from Holy Shield' }))
-    fireEvent.click(screen.getByRole('button', { name: /^Holy Shield, rank 0 of/ }))
+  it('restores an adjusted Paladin PvP starter and its tree from the copied URL', async () => {
+    enterPaladinPvpStarter()
+    expect(screen.getByRole('tab', { name: /^Retribution/ }).getAttribute('aria-selected')).toBe('true')
+    fireEvent.click(screen.getByRole('button', { name: 'Remove one rank from Seal of Command' }))
     fireEvent.click(screen.getByRole('button', { name: 'Copy Build Link' }))
     await waitFor(() => expect(copiedUrl).toContain('/build?id='))
     const url = new URL(copiedUrl)
     expect(url.hash).toBe('#calculator')
     await waitFor(() => expect(screen.getByRole('button', { name: 'Link copied' })).toBeTruthy())
-    fireEvent.click(screen.getByRole('button', { name: 'Remove one rank from Holy Shield' }))
+    fireEvent.click(screen.getByRole('button', { name: /^Seal of Command, rank 0 of/ }))
     expect(screen.getByRole('button', { name: 'Copy Build Link' })).toBeTruthy()
     cleanup()
     localStorage.clear()
     history.replaceState({}, '', `${url.pathname}${url.search}${url.hash}`)
     render(<App />)
-    expect(screen.getByRole('tab', { name: /^Protection/ }).getAttribute('aria-selected')).toBe('true')
-    expect(screen.getByRole('button', { name: /^Holy Shield, rank 1 of/ })).toBeTruthy()
+    expect(screen.getByRole('tab', { name: /^Retribution/ }).getAttribute('aria-selected')).toBe('true')
+    expect(screen.getByRole('button', { name: /^Seal of Command, rank 0 of/ })).toBeTruthy()
   })
 
   it('keeps the Paladin URL on clipboard failure and offers its exact link for manual copy', async () => {
-    enterPaladinVariant('protection-pvp')
-    fireEvent.click(screen.getByRole('button', { name: 'Remove one rank from Holy Shield' }))
+    enterPaladinPvpStarter()
+    fireEvent.click(screen.getByRole('button', { name: 'Remove one rank from Seal of Command' }))
     const before = location.href
     refuseClipboard = true
     fireEvent.click(screen.getByRole('button', { name: 'Copy Build Link' }))

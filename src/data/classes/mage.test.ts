@@ -38,7 +38,7 @@ const SPEC_PAGES: { slug: string; kind: ClassPageKind; intent: string; title: st
   { slug: 'wow-forever-frost-mage-aoe-build', kind: 'aoe', intent: 'Frost AoE farming', title: 'WoW Forever Frost Mage AoE Build', h1: 'WoW Forever Frost Mage AoE Build' },
   { slug: 'wow-forever-mage-pvp-build', kind: 'pvp', intent: 'Mage PvP hub', title: 'WoW Forever Mage PvP Build', h1: 'WoW Forever Mage PvP Build' },
   { slug: 'wow-forever-mage-dungeon-build', kind: 'dungeon', intent: 'Dungeon', title: 'WoW Forever Mage Dungeon Build', h1: 'WoW Forever Mage Dungeon Build' },
-  { slug: 'wow-forever-mage-level-20-build', kind: 'levelCap', intent: 'Current Beta cap', title: 'WoW Forever Mage Level 20 Build', h1: 'WoW Forever Mage Level 20 Build' },
+  { slug: 'wow-forever-mage-level-20-build', kind: 'levelCap', intent: 'Level 20 starter snapshot', title: 'WoW Forever Mage Level 20 Build', h1: 'WoW Forever Mage Level 20 Build' },
   { slug: 'wow-forever-frost-vs-fire-mage-leveling', kind: 'comparison', intent: 'Frost vs Fire leveling', title: 'Frost vs Fire Mage for Leveling in WoW Forever', h1: 'Frost vs Fire Mage for Leveling in WoW Forever' },
 ]
 

@@ -9,8 +9,11 @@ import { EMBERVILLE_EDITORIAL, EMBERVILLE_PAGES } from '../data/emberville'
 import { paladinSpellbook } from '../data/paladinSpellbook'
 import { mageClass } from '../data/classes/mage'
 import { warriorClass } from '../data/classes/warrior'
+import { hunterClass } from '../data/classes/hunter'
+import { PUBLISHED_CLASSES } from '../data/classes'
+import { officialTalentNotice } from '../data/officialOctoberChanges'
 import { hunterClassFixture } from '../data/fixtures/hunterClass.fixture'
-import { publishRequirementsFor, satisfiedRequirements, type ClassPageDefinition } from './classPage'
+import { publishRequirementsFor, publishedClassPages, satisfiedRequirements, type ClassPageDefinition } from './classPage'
 import { MAGE_BRANCHES } from '../data/mageTalents'
 import { escapeHtml } from './html'
 import { betaLevelingPlannerHref } from '../data/levelingBeta'
@@ -29,7 +32,7 @@ const classPrerendered = () => [
 ]
 
 /** Every `a/b/c` allocation this HTML prints, as branch points in `MAGE_BRANCHES` order. */
-const allocationTriples = (html: string) => (html.match(/\b\d+\/\d+\/\d+\b/g) ?? []).map((triple) => triple.split('/').map(Number))
+const allocationTriples = (html: string) => (html.replace(/<[^>]*>/g, ' ').match(/\b\d+\/\d+\/\d+\b/g) ?? []).map((triple) => triple.split('/').map(Number))
 
 const redirections = (() => {
   const config = JSON.parse(readFileSync(`${process.cwd()}/vercel.json`, 'utf8')) as {
@@ -46,6 +49,55 @@ const allPrerendered = () => [
 ] as const
 
 describe('prerender generation', () => {
+  it('marks every published class static page as an older Level 20 snapshot beneath the live Level 30 cap', () => {
+    const pages = publishedClassPages(PUBLISHED_CLASSES)
+    expect(pages.length).toBeGreaterThan(100)
+    for (const { classDef, page } of pages) {
+      const html = renderClassPage(classDef, page)
+      expect(html, page.slug).toContain('live Beta cap is Level 30')
+      expect(html, page.slug).toContain('older 1.60.1.69913 talent tree')
+      expect(html, page.slug).toContain('Level 20 routes are 11-point starting snapshots')
+      expect(html, page.slug).toContain('2360696/1')
+      expect(html, page.slug).toContain(`${classDef.name} official changes`)
+    }
+  })
+
+  it('includes the October 2 Warrior follow-up in the crawlable Warrior page', () => {
+    const page = warriorClass.pages.find((entry) => entry.kind === 'calculator')!
+    const html = renderClassPage(warriorClass, page)
+    expect(html).toContain('October 2 Warrior follow-up')
+    expect(html).toContain('warrior-updates-in-todays-beta-build/2369360')
+    expect(html).toContain('100% extra Rage')
+  })
+
+  it.each([
+    ['warrior', 'Toughness', 'removed'],
+    ['warrior', 'Improved Cleave', 'removed'],
+    ['mage', 'Improved Scorch', 'changed'],
+    ['hunter', 'Aimed Shot', 'removed'],
+    ['hunter', 'Thick Hide', 'removed'],
+  ] as const)('marks old %s %s as officially %s in static calculator and catalog records', (classId, name, status) => {
+    const classDef = PUBLISHED_CLASSES.find((candidate) => candidate.id === classId)!
+    const talent = classDef.talents.find((candidate) => candidate.name === name)!
+    expect(talent, `${classId} ${name} must remain as a historical record`).toBeTruthy()
+    for (const kind of ['calculator', 'talents'] as const) {
+      const page = classDef.pages.find((candidate) => candidate.kind === kind)!
+      const html = renderClassPage(classDef, page)
+      const item = html.match(new RegExp(`<li data-class-talent="${talent.id}"[^>]*>.*?<\\/li>`, 's'))?.[0]
+      expect(item, `${kind} must include ${name}`).toBeTruthy()
+      expect(item).toContain(`data-official-status="${status}"`)
+      expect(item).toContain('69913 historical record')
+      expect(item).toContain(officialTalentNotice(classId, name)?.source)
+      expect(item).not.toContain('Client verified')
+    }
+  })
+
+  it('does not tell crawlers a blank Paladin calculator link loads the historical talent preview', () => {
+    const html = renderLandingPrerender('retribution-pvp')
+    expect(html).toContain('Open a blank Paladin Talent Calculator')
+    expect(html).not.toContain('to inspect the same allocation')
+  })
+
   it('prerenders all 53 Warrior talent records and the build cluster through the generic renderer', () => {
     const calculator = warriorClass.pages.find((page) => page.kind === 'calculator')!
     const planner = renderClassPage(warriorClass, calculator)
@@ -57,6 +109,26 @@ describe('prerender generation', () => {
       const html = renderClassPage(warriorClass, page)
       expect(html).toContain('Community / Editorial Build')
       expect(html).toContain('href="/warrior?build=')
+    }
+  })
+
+  it('keeps removed-talent Hunter routes as indexed historical records without prefilled calculator CTAs', () => {
+    const ids = [
+      'hunter-beast-mastery-starter',
+      'hunter-marksmanship-starter',
+      'hunter-beast-mastery-leveling',
+      'hunter-marksmanship-leveling',
+      'hunter-hunter-pet-build',
+      'hunter-hunter-dungeon-build',
+    ]
+    for (const id of ids) {
+      const build = hunterClass.builds.find((candidate) => candidate.id === id)!
+      const route = hunterClass.pages.find((candidate) => candidate.slug === build.href.slice(1))!
+      const html = renderClassPage(hunterClass, route)
+      expect(html, route.slug).toContain(build.allocation)
+      expect(html, route.slug).toContain('historical route includes an officially removed talent')
+      expect(html, route.slug).toContain('href="/hunter?build=#class-calculator"')
+      expect(html, route.slug).not.toMatch(/href="\/hunter\?build=[^"#]/)
     }
   })
   it('prerenders every versioned Paladin spellbook entry for crawlers', () => {
@@ -79,55 +151,58 @@ describe('prerender generation', () => {
     expect(words).toBeGreaterThanOrEqual(220)
   })
   it.each([
-    ['holy', "Light's Vigil", 'Not available', '31 talent points'],
-    ['protection', 'Improved Seal of Fury', 'Available', '11 talent points'],
-    ['retribution', 'Twist of Light', 'Not available', '31 talent points'],
+    ['holy', "Light's Vigil", 'Above level range', '31 talent points'],
+    ['protection', 'Improved Seal of Fury', 'Within level range', '11 talent points'],
+    ['retribution', 'Twist of Light', 'Above level range', '31 talent points'],
   ] as const)('prerenders current Beta availability for %s', (branch, talent, status, points) => {
     const html = renderBetaAvailabilityPrerender(branch)
 
-    expect(html).toContain('Level cap 20')
-    expect(html).toContain('11 talent points available')
+    expect(html).toContain('Official level cap 30')
+    expect(html).toContain('21 points under the one-point-per-level planning assumption')
+    expect(html).toContain('current talent availability is not confirmed')
     expect(html).toContain(talent)
     expect(html).toContain(status)
     expect(html).toContain(points)
   })
 
   it.each([
-    ['leveling', '0/0/11', '0/0/21'],
-    ['retribution-leveling', '0/0/11', '0/0/21'],
-  ] as const)('prerenders the %s beta leveling snapshot', (pageId, current, next) => {
+    ['leveling', '0/0/11'],
+    ['retribution-leveling', '0/0/11'],
+  ] as const)('prerenders the %s beta leveling snapshot', (pageId, current) => {
     const html = renderBetaLevelingSnapshotPrerender(pageId)
 
-    expect(html).toContain('Current Beta cap')
+    expect(html).toContain('Level 20 starting route')
     expect(html).toContain('Level 20')
     expect(html).toContain(current)
-    expect(html).toContain('Level 30 projection under review')
-    expect(html).toContain(next)
+    expect(html).toContain('Official Level 30 cap · Route pending review')
+    expect(html).toContain('No reviewed allocation')
+    expect(html).not.toContain('0/0/21')
     expect(html).toContain('1.60.1.69913')
-    expect(html).toContain('Unverified future-cap projection')
+    expect(html).toContain('not a verified build')
   })
 
   it('prerenders the old Protection leveling path as archived without its stale build deep link', () => {
     const html = renderBetaLevelingSnapshotPrerender('protection-leveling')
     expect(html).toContain('Archived Level 20 route')
     expect(html).toContain('2/9/0')
-    expect(html).toContain('Archived Level 30 projection')
+    expect(html).toContain('Official Level 30 cap · Route pending review')
     expect(html).toContain('href="/build?id=#calculator"')
     expect(html).not.toMatch(/href="\/build\?id=[^#"]/)
   })
 
   it.each([
-    ['holy', '11/0/0', '21/0/0', '5/5 Divine Intellect'],
-    ['retribution', '0/0/11', '2/0/19', '1/1 Seal of Command'],
-  ] as const)('prerenders the executable %s Beta talent path', (branch, current, next, milestone) => {
+    ['holy', '11/0/0', '5/5 Divine Intellect'],
+    ['retribution', '0/0/11', '1/1 Seal of Command'],
+  ] as const)('prerenders the executable %s Beta talent path', (branch, current, milestone) => {
     const html = renderBetaSpecPathPrerender(branch)
 
-    expect(html).toContain('Current Beta talent path')
-    expect(html).toContain('Official current cap')
+    expect(html).toContain('Beta talent starting path')
+    expect(html).toContain('Level 20 starting route')
     expect(html).toContain('Level 20 · 11 points')
     expect(html).toContain(current)
-    expect(html).toContain(branch === 'retribution' ? 'Level 30 projection under review' : 'Level 30 plan')
-    expect(html).toContain(next)
+    expect(html).toContain('Official Level 30 cap · Route pending review')
+    expect(html).toContain('No reviewed allocation')
+    expect(html).not.toMatch(/21\/0\/0|2\/0\/19/)
     expect(html).toContain(milestone)
     expect(html).toContain('#calculator')
     expect(html).toContain('Community recommendation')
@@ -339,6 +414,6 @@ describe('class page prerender', () => {
     const html = renderClassPage(hunterClassFixture, page)
 
     expect(html).toContain(`href="${hunterClassFixture.plannerPath}?build=`)
-    expect(html).toMatch(/Edit this build in Calculator/i)
+    expect(html).toMatch(/Inspect Level 20 snapshot in Calculator/i)
   })
 })

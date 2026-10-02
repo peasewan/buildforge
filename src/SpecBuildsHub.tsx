@@ -47,12 +47,12 @@ export default function SpecBuildsHub({ spec }: { spec: Branch }) {
 
       <BetaDataStatus />
 
-      {betaStart && <section className="spec-beta-start shell" aria-label={betaStart.status === 'archived' ? 'Archived Beta Protection starting route' : 'Current Beta Protection starting route'}>
+      {betaStart && <section className="spec-beta-start shell" aria-label={betaStart.status === 'archived' ? 'Archived Beta Protection starting route' : 'Older Beta Protection starting route'}>
         <div>
-          <div className="eyebrow">{betaStart.status === 'archived' ? 'Archived Beta Start · Under Review' : 'Current Beta Start · Community recommendation'}</div>
+          <div className="eyebrow">{betaStart.status === 'archived' ? 'Archived Beta Start · Under Review' : 'Level 20 Snapshot · Community recommendation'}</div>
           <h2>{betaStart.status === 'archived' ? `Review the former Level ${betaStart.current.level} Protection route` : `Start with the Level ${betaStart.current.level} Protection route`}</h2>
           <p>{betaStart.archiveNotice ?? betaStart.current.note}</p>
-          <small>{betaStart.status === 'archived' ? 'The old allocation remains visible for comparison. A replacement has not been verified; start from a blank calculator while the Beta tree is reconciled.' : 'The point allocation is editorial guidance; talent names and positions are checked against the Beta client. The 51-point featured build below is a longer-term example.'}</small>
+          <small>{betaStart.status === 'archived' ? 'The old allocation remains visible for comparison. A replacement has not been verified; start from a blank calculator while the Beta tree is reconciled.' : 'This Level 20 point allocation is editorial guidance from the older 69913 tree, not a reviewed Level 30 build. The 51-point featured build below is historical.'}</small>
         </div>
         <div className="spec-beta-start-actions">
           <strong>{betaStart.current.allocation}</strong>

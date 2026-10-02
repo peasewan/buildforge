@@ -6,7 +6,7 @@ import { totalPlannerPoints } from '../lib/talentPlanner'
 
 describe('evidence-bounded planning tools', () => {
   it('keeps unreviewed future dungeons locked', () => {
-    expect(DUNGEONS.map(d => [d.id, d.minLevel, d.maxLevel])).toEqual([['ruins-of-lordaeron',15,20],['hall-of-thanes',13,18],['excavation-site',24,29]])
+    expect(DUNGEONS.map(d => [d.id, d.minLevel, d.maxLevel])).toEqual([['ruins-of-lordaeron',15,20],['hall-of-thanes',13,18],['excavation-site',26,31]])
     expect(dungeonMatches('excavation-site','tank','all',25)).toEqual([])
     expect(dungeonMatches('hall-of-thanes','tank','all',20)).toEqual([])
   })
@@ -38,6 +38,23 @@ describe('evidence-bounded planning tools', () => {
       expect(snapshotAtLevel(route,21)).toBeUndefined()
     }
     expect(buildCatalogue(PUBLISHED_CLASSES.map(c => ({...c, builds:[]})), false)).toEqual([])
+  })
+  it('marks Hunter routes using removed talents as historical and opens a blank planner', () => {
+    const routes = buildCatalogue()
+    const beastMastery = routes.find(route => route.id === 'hunter-beast-mastery-starter')!
+    const marksmanship = routes.find(route => route.id === 'hunter-marksmanship-starter')!
+    const survival = routes.find(route => route.id === 'hunter-survival-starter')!
+
+    expect(beastMastery.removedTalentNames).toEqual(['Thick Hide'])
+    expect(marksmanship.removedTalentNames).toEqual(['Aimed Shot'])
+    expect(beastMastery.calculatorHref(snapshotAtLevel(beastMastery, 15)!.allocation)).toBe('/hunter?build=#class-calculator')
+    expect(marksmanship.calculatorHref(snapshotAtLevel(marksmanship, 20)!.allocation)).toBe('/hunter?build=#class-calculator')
+    expect(survival.removedTalentNames).toEqual([])
+    expect(survival.calculatorHref(snapshotAtLevel(survival, 20)!.allocation)).toMatch(/^\/hunter\?build=.+#class-calculator$/)
+  })
+  it('keeps the Level 20 mode when opening a Paladin starting route from a planning tool', () => {
+    const holy = buildCatalogue().find(route => route.id === 'paladin-holy')!
+    expect(holy.calculatorHref(snapshotAtLevel(holy, 20)!.allocation)).toMatch(/&level=20#calculator$/)
   })
   it('filters dungeon roles without suggesting damage routes for healing', () => {
     const results = dungeonMatches('ruins-of-lordaeron','heal','all',17)

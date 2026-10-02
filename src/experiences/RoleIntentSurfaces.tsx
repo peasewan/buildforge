@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import { ArrowRight, Check, Compass, HeartPulse, PawPrint, Shield, Swords, Waypoints } from 'lucide-react'
 import type { ClassBuild, ClassDefinition, ClassPageDefinition, ClassTalent } from '../lib/classPage'
-import { classPlannerHref, publishedClassPages } from '../lib/classPage'
-import { encodePlannerBuild } from '../lib/talentPlanner'
+import { publishedClassPages } from '../lib/classPage'
+import { classBuildPlannerHref, hasRemovedTalentInBuild } from '../lib/archivedClassBuild'
+import { officialTalentNotice } from '../data/officialOctoberChanges'
 import { EVIDENCE_STATUS } from '../data/verification'
 import { diffBuilds } from './buildExperience'
 
@@ -27,9 +28,10 @@ function selectedTalents(def: ClassDefinition, build: ClassBuild): ClassTalent<s
 }
 
 function EditLink({ def, build }: { def: ClassDefinition; build: ClassBuild }) {
+  const archived = hasRemovedTalentInBuild(def, build)
   return (
-    <a className="ix-action" href={classPlannerHref(def, encodePlannerBuild(build.build), build.level)}>
-      Edit in Calculator <ArrowRight size={16} aria-hidden="true" />
+    <a className="ix-action" href={classBuildPlannerHref(def, build)}>
+      {archived ? 'Open blank Calculator · archived route' : 'Edit in Calculator'} <ArrowRight size={16} aria-hidden="true" />
     </a>
   )
 }
@@ -64,13 +66,15 @@ function RouteChooser({ builds, selected, onChange, label }: { builds: ClassBuil
 }
 
 function Allocation({ def, build, heading = 'Editable allocation' }: { def: ClassDefinition; build: ClassBuild; heading?: string }) {
+  const archived = hasRemovedTalentInBuild(def, build)
   return (
     <article className="rs-allocation">
       <small>EDITORIAL EXAMPLE · LEVEL {build.level} · {build.evidence.replace('_', ' ')}</small>
-      <h2>{heading}</h2>
+      <h2>{archived && heading === 'Editable allocation' ? 'Historical allocation' : heading}</h2>
       <strong className="rs-allocation-number">{build.allocation}</strong>
       <p>{def.branchNames[build.spec] ?? build.spec} · {build.role}</p>
       <EditLink def={def} build={build} />
+      {archived && <p className="rs-small">This historical route contains an officially removed talent. Its selected ranks remain readable; start a blank route to plan with the current Beta.</p>}
       <span className="rs-small">Talent snapshot through client build {build.verifiedThroughBuild}. Build recommendations are editorial.</span>
     </article>
   )
@@ -84,6 +88,7 @@ function TalentInventory({ def, build, heading = 'Selected talent ranks', filter
       {talents.length ? (
         <ul>
           {talents.map((talent) => {
+            const officialNotice = officialTalentNotice(def.id, talent.name)
             const rank = build.build[talent.id] ?? 0
             const rankDescription = talent.rankDescriptions?.[rank - 1]?.trim()
             const description = rankDescription || talent.description?.trim()
@@ -103,6 +108,7 @@ function TalentInventory({ def, build, heading = 'Selected talent ranks', filter
                     : 'A verified effect description for this rank is not available.'}</p>
                   <small>Talent record: {EVIDENCE_STATUS[talent.verificationStatus].label} · Rank tooltip: {tooltipLabel}</small>
                   <small>Client build {talent.verifiedThroughBuild}</small>
+                  {officialNotice && <small>{officialNotice.status === 'removed' ? 'Removed' : 'Changed'} in official update · <a href={officialNotice.source} target="_blank" rel="noreferrer">Official source</a></small>}
                 </div>
               </li>
             )
@@ -151,7 +157,7 @@ function HunterPvpStartingPoints({ def, pvpBuild }: { def: ClassDefinition; pvpB
           <strong>{build.allocation} · 11 points</strong>
           <p>{build.role}. {build.id === pvpBuild.id ? 'This is the current editorial PvP test route.' : 'This general route needs PvP testing before any performance claim.'}</p>
           <p>{testPrompts[build.spec]}</p>
-          <a href={classPlannerHref(def, encodePlannerBuild(build.build), build.level)} aria-label={`Try ${def.branchNames[build.spec]} points in Calculator`}>Try these points <ArrowRight size={14} aria-hidden="true" /></a>
+          <a href={classBuildPlannerHref(def, build)} aria-label={hasRemovedTalentInBuild(def, build) ? `Open blank Hunter Calculator for archived ${def.branchNames[build.spec]} route` : `Try ${def.branchNames[build.spec]} points in Calculator`}>{hasRemovedTalentInBuild(def, build) ? 'Open blank calculator · archived route' : 'Try these points'} <ArrowRight size={14} aria-hidden="true" /></a>
         </article>)}
       </div>
       <p className="rs-small">A pet can change positioning and recovery even when player talent points stay the same. Compare the <a href="/wow-forever-hunter-pet-build">Hunter Pet Build</a> and the <a href="/wow-forever-beast-mastery-vs-marksmanship-hunter-leveling">Beast Mastery vs Marksmanship leveling comparison</a> as separate planning references.</p>

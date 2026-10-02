@@ -1,9 +1,9 @@
 import type { Branch } from './build'
 import { escapeHtml } from './html'
 import type { ClassBuild, ClassDefinition, ClassPageDefinition, ClassTalent } from './classPage'
-import { classPlannerHref, publishedClassPages, satisfiedRequirements } from './classPage'
+import { publishedClassPages, satisfiedRequirements } from './classPage'
+import { classBuildPlannerHref, hasRemovedTalentInBuild } from './archivedClassBuild'
 import { publishedClassCatalogues } from './classStaticPages'
-import { encodePlannerBuild } from './talentPlanner'
 import { BUILD_LANDING_PAGES, type BuildLandingPageId, type LandingSection } from '../data/buildLandingPages'
 import { HUB_INTRO, HUB_INTRO_SUB, HUB_PLAYSTYLE_SECTIONS, HUB_SPECIALIZATIONS, HUB_TALENTS, HUB_TITLE } from '../data/paladinBuildsHub'
 import { specBuildsHubBySpec } from '../data/specBuildsHubs'
@@ -17,6 +17,7 @@ import { betaSpecPath, betaSpecPlannerHref } from '../data/betaSpecPaths'
 import { BETA_PATCH_REVIEW } from '../data/betaPatchReview'
 import { EVIDENCE_STATUS } from '../data/verification'
 import { paladinSpellbook } from '../data/paladinSpellbook'
+import { OCTOBER_OFFICIAL_SOURCE, OFFICIAL_OCTOBER_CHANGES, officialTalentNotice, type OfficialOctoberClassId } from '../data/officialOctoberChanges'
 import type { SpellChange } from '../data/spellbook'
 
 const link = (href: string, label: string) => `<a href="${escapeHtml(href)}">${escapeHtml(label)}</a>`
@@ -45,6 +46,7 @@ export function renderSpellbookPrerender(): string {
     <p>Browse all 45 reviewed WoW Forever Paladin abilities, skills, and spells by specialization and trainer level.</p>
     <p>Beta client ${escapeHtml(paladinSpellbook.clientBuild)} · Reviewed ${escapeHtml(paladinSpellbook.reviewedAt)} · Trainer spell groups.</p>
     <p>This spellbook snapshot remains versioned separately from the 69913 talent tree. It records spell presence, first trainer level, maximum rank, and change state.</p>
+    <p>The official Beta cap rose to Level ${PALADIN_BETA_STATUS.levelCap} on October 1. Level filters use this older client snapshot; current spell availability requires a newer review. ${link(PALADIN_BETA_STATUS.levelCapSource, 'Blizzard October 1 notes')}.</p>
   </article>
   <section><h2>Paladin spellbook entries</h2>${entries}</section>
   <section><h2>Data source and verification</h2><p>The snapshot comes from reviewed Beta client data. Exact rank tooltips are published only when the source record contains them.</p><p>${link(source.url, source.label)}</p></section>
@@ -77,7 +79,8 @@ export function renderBetaStatusPrerender(): string {
   const status = PALADIN_BETA_STATUS
   return `<section aria-label="WoW Forever Beta data status">
     <h2>Beta build ${escapeHtml(status.build)}</h2>
-    <p>Updated ${escapeHtml(status.updated)} · ${status.talentCount} talent nodes · ${status.newTalentCount} new in WoW Forever · ${escapeHtml(status.phaseLabel)} · Level cap ${status.levelCap}.</p>
+    <p>Imported 69913 snapshot reviewed ${escapeHtml(status.updated)} · ${status.talentCount} talent nodes · ${status.newTalentCount} new in WoW Forever.</p>
+    <p>${escapeHtml(status.phaseLabel)} · Official level cap ${status.levelCap}. ${link(status.levelCapSource, 'Blizzard October 1 notes')}. Level ${status.routeSnapshotLevelCap} routes remain 11-point starting snapshots.</p>
     <p>${escapeHtml(status.comparisonLabel)} imported snapshot comparison: ${status.added} added · ${status.updatedTalents} updated · ${status.removed} removed.</p>
     <p>September 24 official removal: Improved Holy Strike is unavailable in new builds. ${status.patchBuild} client records await reconciliation. ${link(status.changelogHref, 'Review Beta changes')}.</p>
   </section>`
@@ -85,11 +88,11 @@ export function renderBetaStatusPrerender(): string {
 
 export function renderBetaAvailabilityPrerender(branch: Branch): string {
   const availability = betaAvailabilityFor(branch)
-  return `<section aria-label="Current Beta availability">
-    <h2>Current Beta availability</h2>
-    <p>Level cap ${availability.levelCap} · ${availability.availablePoints} talent points available.</p>
-    <p><strong>${escapeHtml(availability.talent.name)}: ${availability.available ? 'Available' : 'Not available'}.</strong> Requires ${availability.requiredPoints} talent points and character level ${availability.minimumLevel}.</p>
-    <p>Calculated from the current Beta level cap and the client tree requirement for the first rank.</p>
+  return `<section aria-label="Beta level-range check">
+    <h2>Beta level-range check</h2>
+    <p>Official level cap ${availability.levelCap} · ${availability.availablePoints} points under the one-point-per-level planning assumption.</p>
+    <p><strong>${escapeHtml(availability.talent.name)}: ${availability.available ? 'Within level range' : 'Above level range'}.</strong> The imported 69913 tree requires ${availability.requiredPoints} talent points and character level ${availability.minimumLevel}.</p>
+    <p>The October 1 client tree has not been reconciled; current talent availability is not confirmed. ${link(PALADIN_BETA_STATUS.levelCapSource, 'Blizzard October 1 notes')}.</p>
   </section>`
 }
 
@@ -99,14 +102,14 @@ export function renderBetaLevelingSnapshotPrerender(pageId: BetaLevelingPageId):
   return `<section aria-label="Beta leveling snapshot">
     <h2>${escapeHtml(snapshot.title)}</h2>
     ${archived ? `<p>${escapeHtml(snapshot.archiveNotice ?? '')} ${link(BETA_PATCH_REVIEW.officialSource, 'Blizzard September 24 removal notice')}.</p>` : ''}
-    <h3>${archived ? 'Archived Level 20 route' : 'Current Beta cap'}</h3>
+    <h3>${archived ? 'Archived Level 20 route' : 'Level 20 starting route'}</h3>
     <p><strong>Level ${snapshot.current.level} · ${snapshot.current.points} points · ${escapeHtml(snapshot.current.allocation)}</strong></p>
-    <p>${escapeHtml(snapshot.current.note)} ${link(betaLevelingPlannerHref(pageId), archived ? 'Open Calculator without this route' : 'Open current path in Calculator')}.</p>
-    <p>${escapeHtml(EVIDENCE_STATUS.official.label)} level cap · ${archived ? 'historical' : escapeHtml(EVIDENCE_STATUS.client_verified.label)} talent data · Build ${escapeHtml(PALADIN_BETA_STATUS.build)}.</p>
-    <h3>${archived ? 'Archived Level 30 projection' : snapshot.next.status === 'under_review' ? 'Level 30 projection under review' : 'Level 30 plan'}</h3>
-    <p><strong>Level ${snapshot.next.level} · ${snapshot.next.points} points · ${escapeHtml(snapshot.next.allocation)}</strong></p>
+    <p>${escapeHtml(snapshot.current.note)} ${link(betaLevelingPlannerHref(pageId), archived ? 'Open Calculator without this route' : 'Open Level 20 start in Calculator')}.</p>
+    <p>${archived ? 'Historical' : escapeHtml(EVIDENCE_STATUS.client_verified.label)} talent data · Imported Build ${escapeHtml(PALADIN_BETA_STATUS.build)}.</p>
+    <h3>Official Level 30 cap · Route pending review</h3>
+    <p><strong>Official cap: Level ${snapshot.next.level} · No reviewed allocation</strong></p>
     <p>${escapeHtml(snapshot.next.note)}</p>
-    <p>${archived ? 'Historical community recommendation' : snapshot.next.status === 'under_review' ? 'Unverified future-cap projection' : 'Community recommendation'} · ${escapeHtml(EVIDENCE_STATUS.derived_assumption.label)} editorial route, reviewed ${escapeHtml(snapshot.recommendationSource.updated)}.</p>
+    <p>A ${snapshot.next.points}-point budget follows the one-point-per-level planning assumption; it is not a verified build.</p>
     <ul>${snapshot.milestones.map((milestone) => `<li>${escapeHtml(milestone)}</li>`).join('')}</ul>
     <p>${link(BETA_LEVEL_CAP_SOURCE.href, 'Official level-cap source')} · ${link(snapshot.recommendationSource.href, 'Recommendation source')}</p>
   </section>`
@@ -115,20 +118,19 @@ export function renderBetaLevelingSnapshotPrerender(pageId: BetaLevelingPageId):
 export function renderBetaSpecPathPrerender(branch: Branch): string {
   const path = betaSpecPath(branch)
   const archived = path.status === 'archived'
-  return `<section aria-label="${archived ? 'Archived' : 'Current'} Beta talent path">
+  return `<section aria-label="${archived ? 'Archived Beta talent path' : 'Beta talent starting path'}">
     <h2>${escapeHtml(path.title)}</h2>
     ${archived ? `<p>${escapeHtml(path.archiveNotice ?? '')} ${link(BETA_PATCH_REVIEW.officialSource, 'Blizzard September 24 removal notice')}.</p>` : ''}
     <p>Best for: ${path.bestFor.map(escapeHtml).join(' · ')}.</p>
-    <h3>${archived ? 'Archived Level 20 route' : 'Official current cap'}</h3>
+    <h3>${archived ? 'Archived Level 20 route' : 'Level 20 starting route'}</h3>
     <p><strong>Level ${path.current.level} · ${path.current.points} points · ${escapeHtml(path.current.allocation)}</strong></p>
     <p>${archived ? 'Historical community recommendation; not playable after the September 24 talent removal.' : 'Community recommendation.'}</p>
     <ol>${path.current.steps.map((step) => `<li><strong>${escapeHtml(step.levels)}:</strong> ${escapeHtml(step.talent)}</li>`).join('')}</ol>
     <p>${link(betaSpecPlannerHref(branch), archived ? 'Open Calculator without this route' : `Load the Level ${path.current.level} path in the Calculator`)}.</p>
-    <h3>${archived ? 'Archived Level 30 projection' : path.next.status === 'under_review' ? 'Level 30 projection under review' : 'Level 30 plan'}</h3>
-    <p><strong>Level ${path.next.level} · ${path.next.points} points · ${escapeHtml(path.next.allocation)}</strong></p>
+    <h3>Official Level 30 cap · Route pending review</h3>
+    <p><strong>Official cap: Level ${path.next.level} · No reviewed allocation</strong></p>
     <p>${escapeHtml(path.next.note)}</p>
-    <p>${path.next.status === 'under_review' ? 'Not a current build or a verified future-cap recommendation.' : 'Future-cap community route.'} ${escapeHtml(EVIDENCE_STATUS.derived_assumption.label)} editorial route, reviewed ${escapeHtml(path.recommendationSource.updated)}.</p>
-    ${path.next.status === 'under_review' && !archived ? `<p>${link(BETA_PATCH_REVIEW.officialSource, 'Blizzard September 24 removal notice')}</p>` : ''}
+    <p>A ${path.next.points}-point budget follows the one-point-per-level planning assumption; it is not a verified build.</p>
     <p>${archived ? 'Historical' : escapeHtml(EVIDENCE_STATUS.client_verified.label)} talent names, ranks, and positions · Build ${escapeHtml(PALADIN_BETA_STATUS.build)}.</p>
     <p>${link(BETA_LEVEL_CAP_SOURCE.href, 'Official level-cap source')} · ${link(path.recommendationSource.href, 'Recommendation source')}</p>
   </section>`
@@ -150,7 +152,7 @@ function landingSection(section: LandingSection): string {
   }
 
   if (section.kind === 'talent-preview') {
-    return `<section>${heading}<p>${escapeHtml(section.intro)}</p><p>The interactive talent tree on this page requires JavaScript. ${link('/paladin#calculator', 'Open the Paladin Talent Calculator')} to inspect the same allocation.</p></section>`
+    return `<section>${heading}<p>${escapeHtml(section.intro)}</p><p>The interactive talent tree on this page requires JavaScript. ${link('/paladin#calculator', 'Open a blank Paladin Talent Calculator')} to plan a new route; this link does not load the historical preview allocation.</p></section>`
   }
 
   if (section.kind === 'related') {
@@ -296,6 +298,19 @@ const classPageFooterLinks = [
   { href: '/privacy', label: 'BuildForgeTools Privacy Policy' },
 ]
 
+function renderClassOfficialUpdate(classDef: ClassDefinition): string {
+  const change = OFFICIAL_OCTOBER_CHANGES[classDef.id as OfficialOctoberClassId]
+  if (!change) return ''
+  const sources = [link(OCTOBER_OFFICIAL_SOURCE, 'Blizzard October 1 Beta development notes')]
+  if ('additionalSource' in change) sources.push(link(change.additionalSource, 'October 2 Warrior follow-up'))
+
+  return `<section aria-label="${escapeHtml(classDef.name)} official changes"><h2>${escapeHtml(classDef.name)} official changes</h2>
+    <p>The live Beta cap is Level 30. This page presents the older ${escapeHtml(classDef.verifiedBuild)} talent tree; Level 20 routes are 11-point starting snapshots, not reviewed Level 30 allocations. Later official changes have not been fully imported into this tree.</p>
+    <p>Official sources: ${sources.join(' · ')}.</p>
+    <ul>${change.notes.map((note) => `<li>${escapeHtml(note)}</li>`).join('')}</ul>
+  </section>`
+}
+
 /**
  * Static HTML for one class page, rendered from the `ClassDefinition` and its own page record.
  *
@@ -311,23 +326,33 @@ export function renderClassPage<B extends string>(classDef: ClassDefinition<B>, 
   const primaryBuild = page.primaryBuildId ? classDef.builds.find((build) => build.id === page.primaryBuildId) : undefined
   const relatedBuilds = page.relatedBuildIds.flatMap((id) => classDef.builds.filter((build) => build.id === id)).filter((build) => isPublished(build.href))
   const relatedPages = page.relatedPages.filter((related) => isPublished(related.href))
+  const archivedBuild = primaryBuild ? hasRemovedTalentInBuild(classDef, primaryBuild) : false
   const calculatorLink = primaryBuild
-    ? link(classPlannerHref(classDef, encodePlannerBuild(primaryBuild.build), primaryBuild.level), 'Edit this build in Calculator')
+    ? link(classBuildPlannerHref(classDef, primaryBuild), archivedBuild ? 'Open blank Calculator — historical route' : 'Inspect Level 20 snapshot in Calculator')
     : link(classDef.plannerPath, `Open the ${classDef.name} Talent Calculator`)
   const buildEvidence = primaryBuild
-    ? `<p><strong>Build</strong>: Community / Editorial build for the current Beta level cap ${classDef.beta.levelCap}. Allocations are editorial, never client facts.</p>`
+    ? `<p><strong>Build</strong>: Community / Editorial Level ${classDef.beta.levelCap} snapshot. The official Beta cap is now Level ${PALADIN_BETA_STATUS.levelCap} (${link(PALADIN_BETA_STATUS.levelCapSource, 'Blizzard October 1 notes')}). Allocations are editorial, never client facts.${archivedBuild ? ' This historical route includes an officially removed talent; the calculator opens blank.' : ''}</p>`
     : page.kind === 'specPvp'
       ? '<p><strong>Build status</strong>: Pending verification. This page does not publish an allocation until one has been reviewed.</p>'
       : '<p><strong>Build links</strong>: Editorial routes are labeled separately from client talent facts.</p>'
 
   const rankLabel = (talent: ClassTalent<B>) => `${talent.maxRank} rank${talent.maxRank === 1 ? '' : 's'}`
+  const officialTalentLabel = (talent: ClassTalent<B>) => {
+    const notice = officialTalentNotice(classDef.id, talent.name)
+    if (!notice) return ''
+    return ` · <strong>69913 historical record — ${notice.status === 'removed' ? 'Removed' : 'Changed'} in official update.</strong> ${escapeHtml(notice.message)} ${link(notice.source, 'Official update')}`
+  }
+  const officialTalentAttribute = (talent: ClassTalent<B>) => {
+    const notice = officialTalentNotice(classDef.id, talent.name)
+    return notice ? ` data-official-status="${notice.status}"` : ''
+  }
 
   // The calculator has no build of its own: it has to carry the whole dataset instead, so a
   // crawler sees every published node the planner offers.
   const calculatorTrees = page.kind === 'calculator'
     ? classDef.branches.map((branch) => {
       const talents = classDef.talents.filter((talent) => talent.branch === branch)
-      return `<section><h2>${escapeHtml(classDef.branchNames[branch])} ${escapeHtml(classDef.name)} Talents</h2><p>${escapeHtml(classDef.branchTaglines[branch])}</p><ul>${talents.map((talent) => `<li data-class-talent="${escapeHtml(talent.id)}"><strong>${escapeHtml(talent.name)}</strong> — ${rankLabel(talent)} · Row ${talent.row} column ${talent.column}</li>`).join('')}</ul></section>`
+      return `<section><h2>${escapeHtml(classDef.branchNames[branch])} ${escapeHtml(classDef.name)} Talents</h2><p>${escapeHtml(classDef.branchTaglines[branch])}</p><ul>${talents.map((talent) => `<li data-class-talent="${escapeHtml(talent.id)}"${officialTalentAttribute(talent)}><strong>${escapeHtml(talent.name)}</strong> — ${rankLabel(talent)} · Row ${talent.row} column ${talent.column}${officialTalentLabel(talent)}</li>`).join('')}</ul></section>`
     }).join('\n  ')
     : ''
 
@@ -338,11 +363,11 @@ export function renderClassPage<B extends string>(classDef: ClassDefinition<B>, 
       : []
   const talentCatalogue = catalogueBranches.map((branch) => {
     const talents = classDef.talents.filter((talent) => talent.branch === branch)
-    return `<section data-class-catalogue="${escapeHtml(branch)}"><h2>${escapeHtml(classDef.branchNames[branch])} ${escapeHtml(classDef.name)} talent catalogue</h2><p>${escapeHtml(classDef.branchTaglines[branch])}</p><ul>${talents.map((talent) => `<li data-class-talent="${escapeHtml(talent.id)}"><strong>${escapeHtml(talent.name)}</strong> — ${rankLabel(talent)} · Row ${talent.row} column ${talent.column} · ${escapeHtml(talent.changeStatus)}</li>`).join('')}</ul></section>`
+    return `<section data-class-catalogue="${escapeHtml(branch)}"><h2>${escapeHtml(classDef.branchNames[branch])} ${escapeHtml(classDef.name)} talent catalogue</h2><p>${escapeHtml(classDef.branchTaglines[branch])}</p><ul>${talents.map((talent) => `<li data-class-talent="${escapeHtml(talent.id)}"${officialTalentAttribute(talent)}><strong>${escapeHtml(talent.name)}</strong> — ${rankLabel(talent)} · Row ${talent.row} column ${talent.column} · ${escapeHtml(talent.changeStatus)}${officialTalentLabel(talent)}</li>`).join('')}</ul></section>`
   }).join('\n  ')
 
   const primaryBuildSection = primaryBuild
-    ? `<section><h2>${escapeHtml(primaryBuild.title)}</h2><p><strong>${escapeHtml(primaryBuild.allocation)}</strong> · ${primaryBuild.points} / ${primaryBuild.levelCap} points · ${escapeHtml(primaryBuild.phase)}</p><p>${escapeHtml(primaryBuild.role)}</p>${primaryBuild.playstyle.length > 0 ? `<ul>${primaryBuild.playstyle.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul>` : ''}<h3>Talents in this build</h3><ul>${orderedBuildTalents(primaryBuild, classDef).map(({ talent, rank }) => `<li><strong>${escapeHtml(talent.name)}</strong> — ${rank}/${talent.maxRank}</li>`).join('')}</ul><p>Community / Editorial Build · ${escapeHtml(primaryBuild.evidence === 'community_verified' ? 'Community-verified recommendation.' : 'Derived planning assumption.')} Talent positions and ranks remain client data; this allocation is editorial only.</p></section>`
+    ? `<section><h2>${escapeHtml(primaryBuild.title)}</h2><p><strong>${escapeHtml(primaryBuild.allocation)}</strong> · ${primaryBuild.points} / ${primaryBuild.levelCap} points · ${escapeHtml(primaryBuild.phase)}</p><p>${escapeHtml(primaryBuild.role)}</p>${primaryBuild.playstyle.length > 0 ? `<ul>${primaryBuild.playstyle.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul>` : ''}<h3>Talents in this build</h3><ul>${orderedBuildTalents(primaryBuild, classDef).map(({ talent, rank }) => `<li${officialTalentAttribute(talent)}><strong>${escapeHtml(talent.name)}</strong> — ${rank}/${talent.maxRank}${officialTalentLabel(talent)}</li>`).join('')}</ul><p>Community / Editorial Build · ${escapeHtml(primaryBuild.evidence === 'community_verified' ? 'Community-verified recommendation.' : 'Derived planning assumption.')} Talent positions and ranks remain client data; this allocation is editorial only.</p></section>`
     : ''
 
   const relatedBuildSection = relatedBuilds.length > 0
@@ -369,6 +394,7 @@ export function renderClassPage<B extends string>(classDef: ClassDefinition<B>, 
     <p>${escapeHtml(page.description)}</p>
     <p>Reviewed ${escapeHtml(page.updatedAt)} · Client build ${escapeHtml(classDef.verifiedBuild)}.</p>
   </article>
+  ${renderClassOfficialUpdate(classDef)}
   <section><h2>Evidence boundary</h2><p><strong>Talent data</strong>: positions, ranks and branches are client-derived records checked through ${escapeHtml(classDef.verifiedBuild)}; planner-legal fields only.</p>${buildEvidence}</section>
   ${classDef.dataReview ? `<section><h2>Client data and build assumptions</h2><p>${escapeHtml(classDef.dataReview.notice)}</p>${linkList(classDef.sources.map((source) => ({ href: source.url, label: source.label })))}</section>` : ''}
   ${calculatorTrees}
