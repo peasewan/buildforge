@@ -24,12 +24,24 @@ describe('discovery rendering and artifacts', () => {
     expect(featured?.textContent).toContain('Paladin Builds')
     expect(featured?.compareDocumentPosition(intentNav!) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
   })
+  it('helps visitors choose a class and labels older Level 20 examples accurately', () => {
+    const doc = new DOMParser().parseFromString(renderToStaticMarkup(<AppRoute pathname="/wow-forever-classes" />), 'text/html')
+    const guide = doc.querySelector('.sd-class-orientation')
+    expect(guide?.textContent).toContain('not the current Beta level cap')
+    expect(guide?.querySelector('a[href="/wow-forever-builds#pvp"]')).not.toBeNull()
+    expect(guide?.querySelector('a[href="/wow-forever-paladin-leveling-build"]')).not.toBeNull()
+    expect(doc.querySelectorAll('.sd-class-card')).toHaveLength(9)
+    for (const card of doc.querySelectorAll('.sd-class-card')) {
+      expect(card.querySelector('.sd-class-start')?.textContent?.length).toBeGreaterThan(70)
+      expect(card.querySelector('a[href]')).not.toBeNull()
+    }
+  })
   it('dates the edited discovery pages while retaining the classes date', () => {
     const sitemap = new DOMParser().parseFromString(readFileSync('public/sitemap.xml', 'utf8'), 'application/xml')
     const date = (path: string) => [...sitemap.querySelectorAll('url')].find(url => url.querySelector('loc')?.textContent === `https://buildforgetools.com${path}`)?.querySelector('lastmod')?.textContent
     expect(date('/')).toBe('2026-09-27')
     expect(date('/wow-forever-builds')).toBe('2026-09-25')
-    expect(date('/wow-forever-classes')).toBe('2026-09-23')
+    expect(date('/wow-forever-classes')).toBe('2026-10-04')
   })
   it.each(DISCOVERY_PAGES)('serves $path with matching shell and browser metadata', page => {
     const file = page.path === '/' ? 'index.html' : `${page.path.slice(1)}/index.html`
