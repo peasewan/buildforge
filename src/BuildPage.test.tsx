@@ -75,7 +75,7 @@ describe('Holy healing build page', () => {
       render(<BuildPage buildId={buildId} />)
       expect(document.querySelector('.build-hero-copy a.button.primary')?.getAttribute('href')).toBe('/build?id=#calculator')
       expect(document.querySelector('.build-hero-copy')?.textContent).toMatch(/51-point.*historical.*Level 30/i)
-      expect(document.querySelector('.build-inline-cta')?.textContent).toMatch(/blank.*69913.*21 points/i)
+      expect(document.querySelector('.build-inline-cta')?.textContent).toMatch(/blank.*69913.*21-point budget/i)
     },
   )
 
@@ -157,15 +157,15 @@ describe('Holy healing build page', () => {
     expect(document.querySelector('.build-talents .section-heading p')?.textContent).toMatch(/historical.*ranks/i)
   })
 
-  it('shows a Level 20 starter and a pending Level 30 route on the Retribution leveling page', () => {
+  it('shows the community Level 10–30 timeline on the Retribution leveling page', () => {
     render(<BuildPage buildId="retribution-leveling-20-0-31" />)
 
     const snapshot = screen.getByRole('region', { name: 'Beta leveling snapshot' })
-    expect(snapshot.textContent).toContain('Level 20 · 11 points')
-    expect(snapshot.textContent).toContain('0/0/11')
-    expect(snapshot.textContent).toContain('Official Level 30 cap')
-    expect(snapshot.textContent).toContain('No reviewed allocation')
-    expect(snapshot.textContent).not.toContain('0/0/21')
+    expect(snapshot.textContent).toContain('Level 30 · 21 points')
+    expect(snapshot.textContent).toContain('0/0/21')
+    expect(snapshot.textContent).toContain('Current Beta cap reached')
+    expect(snapshot.textContent).toContain('not an official or simulated best build')
+    expect(snapshot.textContent).not.toContain('No reviewed allocation')
     expect(snapshot.textContent).toContain('Community recommendation')
   })
 })

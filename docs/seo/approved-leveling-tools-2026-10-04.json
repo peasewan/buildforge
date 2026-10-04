@@ -1,0 +1,55 @@
+{
+  "reviewedAt": "2026-10-04",
+  "authorization": "User approved the sourced Level 10–30 Retribution timeline, budget-aware Paladin calculator and measured dungeon XP comparison. Only these named existing Paladin surfaces have approved body/link changes. Two descriptions replace manual-budget wording with enforced-budget wording. Leveling Articles and the calculator advance their sitemap modification dates; two leveling Article dates also advance. Titles, H1s, canonicals, robots and URL inventory must remain identical. Three historical build pages only replace the manual-stop instruction with select-Level-30 instruction. Client imports remain 69913; no latest-build verification is claimed.",
+  "pages": {
+    "/paladin": {
+      "rootSha256": "21b328d8dfd6b12dba96f37a2ecf1d139ead6515d2320a053ef0a16639a8f7ec",
+      "linksSha256": "21dde215a19f915c5c47995f0c72b33de3a97ee4493531d5ef0519f547965f95",
+      "headSeoSha256": "26355cb78fcfcc7bec1bcd12e2bc009c2e998655acc9dcd5e7472eacb5e15e5c",
+      "lastmod": "2026-10-04",
+      "description": "Explore the WoW Forever Paladin talent tree in the older 69913 client snapshot. Plan with a 21-point Level 30 budget, review official changes, and share builds."
+    },
+    "/wow-forever-paladin-talents": {
+      "rootSha256": "ff916fb17b6240d64d5db00ecdb7fd174c8d1cfed5e1af26575c2d8c1a584559",
+      "linksSha256": "16f43ada6aba94ba8bf1775f64aafc34bb28a2bed3b2cde274c3ac0b1192fdd8",
+      "headSeoSha256": "3f98a5760cf0787230b68aa3a9c2393104aad88353c8d21ab7be4fc7d91fe022",
+      "lastmod": "2026-09-29",
+      "description": "Explore Holy, Protection, and Retribution talents in the older 69913 snapshot. Plan a 21-point Level 30 idea, or inspect historical 51-point references."
+    },
+    "/wow-forever-paladin-build": {
+      "rootSha256": "477e97eb3f0f6027549a503a6c37b328d70868ddfd4ace122bb71baab3365bac",
+      "linksSha256": "1ff19613ddb2b3a93318c70c2a190e57cc25932c1cac14fcdd69ca70a3d81a41",
+      "headSeoSha256": "a141e3170605ab9843236d09be9e6adb23945ed518a06ffe115080218367b467",
+      "lastmod": "2026-09-29",
+      "description": "Inspect a historical 31/20/0 Holy Paladin healing reference, then start a new build for the live Level 30 Beta cap."
+    },
+    "/wow-forever-protection-paladin-build": {
+      "rootSha256": "100ad8edfa88a883bf3c3759a9fd3abeca00d5222efaf8a710301079460d3cd7",
+      "linksSha256": "780aeaedb7fb3d951668b67b0eb940dd4cc5a8cb64430025fd974dff5eafd985",
+      "headSeoSha256": "7f0c4c6cbc69082b328a80d601d375530a219f04b4a6d0e1a996398f36538e90",
+      "lastmod": "2026-09-29",
+      "description": "Inspect a historical 20/31/0 Protection Paladin tank reference, then start a new build for the live Level 30 Beta cap."
+    },
+    "/wow-forever-retribution-paladin-build": {
+      "rootSha256": "32df41d79ea07474aa5ce1ec340feffcf0853d522c5c8e00816ba6ab7cbff3e8",
+      "linksSha256": "05b4690c32fc257584ee12855d2cfddea3977c7e43ba0b1bbe6b34442ad70a17",
+      "headSeoSha256": "9572de8f8d2ce808f24200045b26f49cda5186cdb0e5a94090d9005a4184d3a8",
+      "lastmod": "2026-09-29",
+      "description": "Review the historical WoW Forever Retribution Paladin 0/20/31 allocation. Crusade is under review after a reported Beta change; start a new build."
+    },
+    "/wow-forever-retribution-paladin-leveling-build": {
+      "rootSha256": "a63e2ba96fd4b56106206f78b96ae9fb850dfd3ec6bc484d15016fa23afa8e2f",
+      "linksSha256": "585c763b53efac2ccd4aa6ef2da8a423c6bf693c6ad0aa8d8d426c205dc95962",
+      "headSeoSha256": "74f13317c7fc7b6cfec665f056ba597d47fbadc4600bbc856e46876bf6b2ae61",
+      "lastmod": "2026-10-04",
+      "description": "Review the historical WoW Forever Retribution Paladin leveling 20/0/31 allocation. Crusade is under review; start a new Level 20 route."
+    },
+    "/wow-forever-paladin-leveling-build": {
+      "rootSha256": "e5d38c5fcc592d3d52882f9422a8d5c080be099a0126b119a445720f5f1b8a13",
+      "linksSha256": "ad905ecf4544c7dacd0c433c2bd51b9f14266fb005250ff7a64e5fd99b55e260",
+      "headSeoSha256": "691251f466b4760b26f5d8e12a2ebafcf90a3056894e30be5f33fad41a8c3a6f",
+      "lastmod": "2026-10-04",
+      "description": "Explore a beginner-friendly WoW Forever Paladin leveling build, follow a flexible talent path from level 10 onward, and customize it in the talent calculator."
+    }
+  }
+}

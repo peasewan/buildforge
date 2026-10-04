@@ -165,20 +165,15 @@ describe('prerender generation', () => {
     expect(html).toContain(points)
   })
 
-  it.each([
-    ['leveling', '0/0/11'],
-    ['retribution-leveling', '0/0/11'],
-  ] as const)('prerenders the %s beta leveling snapshot', (pageId, current) => {
+  it.each(['leveling', 'retribution-leveling'] as const)('prerenders the %s community progression', pageId => {
     const html = renderBetaLevelingSnapshotPrerender(pageId)
-
-    expect(html).toContain('Level 20 starting route')
-    expect(html).toContain('Level 20')
-    expect(html).toContain(current)
-    expect(html).toContain('Official Level 30 cap · Route pending review')
-    expect(html).toContain('No reviewed allocation')
-    expect(html).not.toContain('0/0/21')
-    expect(html).toContain('1.60.1.69913')
-    expect(html).toContain('not a verified build')
+    expect(html).toContain('Paladin Level 10–30 Talent Timeline')
+    expect(html).toContain('0/0/21')
+    expect(html).toContain('Vengeance')
+    expect(html).toContain('level=30#calculator')
+    expect(html).toContain('imported 69913 tree rules')
+    expect(html).toContain('not an official or simulated best build')
+    expect(html).not.toContain('No reviewed allocation')
   })
 
   it('prerenders the old Protection leveling path as archived without its stale build deep link', () => {

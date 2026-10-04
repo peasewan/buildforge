@@ -19,6 +19,7 @@ import forgePilotAccountAmendments from '../docs/seo/approved-forge-pilot-accoun
 import previewReleaseAmendments from '../docs/seo/approved-preview-release-gate-2026-09-29.json'
 import siteConsistencyAmendments from '../docs/seo/approved-site-consistency-2026-09-29.json'
 import betaCapAndFivePagesAmendments from '../docs/seo/approved-beta-level30-truth-2026-10-03.json'
+import levelingToolsAmendments from '../docs/seo/approved-leveling-tools-2026-10-04.json'
 // Explicitly reviewed annotations scope body and sitemap revisions; only named descriptions and head fingerprints can change.
 const frozenPages = baseline.pages.map(page => {
   const archiveAmendment = protectionArchiveAmendments.pages[page.path as keyof typeof protectionArchiveAmendments.pages]
@@ -44,7 +45,9 @@ const frozenPages = baseline.pages.map(page => {
   const accountAmendment = forgePilotAccountAmendments.pages[page.path as keyof typeof forgePilotAccountAmendments.pages]
   const withAccount = accountAmendment ? { ...withForgePilot, ...accountAmendment } : withForgePilot
   const betaCapAmendment = betaCapAndFivePagesAmendments.pages[page.path as keyof typeof betaCapAndFivePagesAmendments.pages]
-  return betaCapAmendment ? { ...withAccount, ...betaCapAmendment } : withAccount
+  const withBeta = betaCapAmendment ? { ...withAccount, ...betaCapAmendment } : withAccount
+  const levelingAmendment = levelingToolsAmendments.pages[page.path as keyof typeof levelingToolsAmendments.pages]
+  return levelingAmendment ? { ...withBeta, ...levelingAmendment } : withBeta
 })
 import vercel from '../vercel.json'
 import { parseSitemap, validateSeo, type Requirement } from './seo/validate'

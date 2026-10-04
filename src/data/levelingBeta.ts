@@ -1,4 +1,5 @@
-import { encodeBuild, type Build } from '../lib/build'
+import { paladinLevelingHref } from './paladinLevelingProgression'
+import { type Build } from '../lib/build'
 import { PALADIN_BETA_SNAPSHOT } from './betaSnapshot'
 
 export type BetaLevelingPageId = 'leveling' | 'protection-leveling' | 'retribution-leveling'
@@ -13,7 +14,7 @@ export interface BetaLevelingSnapshot {
   status: BetaRouteStatus
   archiveNotice?: string
   current: { level: number; points: number; allocation: string; build: Build; note: string }
-  next: { level: number; points: number; note: string; status: 'under_review' }
+  next: { level: number; points: number; note: string; status: 'under_review' | 'community_reviewed' }
   milestones: string[]
   recommendationSource: { label: string; href: string; updated: string }
 }
@@ -44,8 +45,8 @@ const retributionSnapshot = {
   next: {
     level: PALADIN_BETA_SNAPSHOT.phase.levelCap,
     points: PALADIN_BETA_SNAPSHOT.phase.levelCap - 9,
-    note: 'No Level 30 allocation has been reviewed against the updated client tree. The September 24 Crusade report remains unresolved in the imported data.',
-    status: 'under_review' as const,
+    note: 'A community Level 10–30 Retribution timeline was reviewed October 4. It avoids Crusade; the complete updated client tree remains unverified.',
+    status: 'community_reviewed' as const,
   },
   milestones: ['5/5 Benediction', '5/5 Conviction', 'Seal of Command at Level 20', 'Later points pending client reconciliation'],
   recommendationSource: {
@@ -90,7 +91,7 @@ export const betaLevelingSnapshot = (pageId: BetaLevelingPageId) => BETA_LEVELIN
 export const betaLevelingPlannerHref = (pageId: BetaLevelingPageId) =>
   betaLevelingSnapshot(pageId).status === 'archived'
     ? EMPTY_PALADIN_PLANNER_HREF
-    : `/build?id=${encodeBuild(betaLevelingSnapshot(pageId).current.build)}&level=20#calculator`
+    : paladinLevelingHref(30)
 
 export const BETA_LEVEL_CAP_SOURCE = {
   label: 'Blizzard — October 1 Beta development notes',

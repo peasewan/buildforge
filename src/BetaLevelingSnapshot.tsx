@@ -1,4 +1,5 @@
 import { ArrowRight, Check, Route } from 'lucide-react'
+import PaladinLevelingTimeline from './PaladinLevelingTimeline'
 import VerificationBadge from './VerificationBadge'
 import { BETA_LEVEL_CAP_SOURCE, betaLevelingPlannerHref, betaLevelingSnapshot, type BetaLevelingPageId } from './data/levelingBeta'
 import { PALADIN_BETA_SNAPSHOT } from './data/betaSnapshot'
@@ -7,6 +8,7 @@ import { BETA_PATCH_REVIEW } from './data/betaPatchReview'
 export default function BetaLevelingSnapshot({ pageId }: { pageId: BetaLevelingPageId }) {
   const snapshot = betaLevelingSnapshot(pageId)
   const archived = snapshot.status === 'archived'
+  if (!archived) return <PaladinLevelingTimeline />
 
   return (
     <section className="beta-leveling-snapshot shell" aria-label="Beta leveling snapshot">

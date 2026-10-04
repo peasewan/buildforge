@@ -105,7 +105,7 @@ export default function BuildPage({ buildId = HOLY_HEALING_BUILD.id }: { buildId
             </article>
           ))}
         </div>
-        <div className="build-inline-cta"><Shield size={30} /><div><strong>Draft a Beta route</strong><span>Start with a blank older 69913 tree and stop manually at 21 points for the Level 30 budget. This historical 51-point allocation stays here for comparison{underReview ? ' while Crusade IDs are reconciled.' : '.'}</span></div><OpenBuildLink build={build} href={plannerHref} placement="allocation">Start in Calculator <ArrowRight size={15} /></OpenBuildLink></div>
+        <div className="build-inline-cta"><Shield size={30} /><div><strong>Draft a Beta route</strong><span>Start with a blank older 69913 tree and select Level 30 to enforce the 21-point budget. This historical 51-point allocation stays here for comparison{underReview ? ' while Crusade IDs are reconciled.' : '.'}</span></div><OpenBuildLink build={build} href={plannerHref} placement="allocation">Start in Calculator <ArrowRight size={15} /></OpenBuildLink></div>
       </section>
 
       <article className="build-copy shell">

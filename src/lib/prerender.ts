@@ -1,3 +1,6 @@
+import { createElement } from 'react'
+import { renderToStaticMarkup } from 'react-dom/server'
+import PaladinLevelingTimeline from '../PaladinLevelingTimeline'
 import type { Branch } from './build'
 import { escapeHtml } from './html'
 import type { ClassBuild, ClassDefinition, ClassPageDefinition, ClassTalent } from './classPage'
@@ -97,6 +100,7 @@ export function renderBetaAvailabilityPrerender(branch: Branch): string {
 }
 
 export function renderBetaLevelingSnapshotPrerender(pageId: BetaLevelingPageId): string {
+  if (pageId !== 'protection-leveling') return renderToStaticMarkup(createElement(PaladinLevelingTimeline))
   const snapshot = betaLevelingSnapshot(pageId)
   const archived = snapshot.status === 'archived'
   return `<section aria-label="Beta leveling snapshot">

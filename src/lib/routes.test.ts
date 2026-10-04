@@ -13,7 +13,7 @@ import { pageForPath } from './routes'
 const paladinPlannerFallback = {
   kind: 'planner',
   title: 'WoW Forever Paladin Talent Calculator | Beta Build 69913',
-  description: 'Explore the WoW Forever Paladin talent tree in the older 69913 client snapshot. Draft up to 21 points manually for the Level 30 Beta, review official changes, and share builds.',
+  description: 'Explore the WoW Forever Paladin talent tree in the older 69913 client snapshot. Plan with a 21-point Level 30 budget, review official changes, and share builds.',
   canonical: 'https://buildforgetools.com/paladin',
   robots: 'index, follow',
 }
@@ -57,7 +57,7 @@ describe('public page routing', () => {
     expect(pageForPath('/wow-forever-paladin-talents/')).toEqual({
       kind: 'guide',
       title: 'WoW Forever Paladin Talent Guide & Build Planner | BuildForgeTools',
-      description: 'Explore Holy, Protection, and Retribution talents in the older 69913 snapshot. Draft a 21-point Level 30 idea manually, or inspect historical 51-point references.',
+      description: 'Explore Holy, Protection, and Retribution talents in the older 69913 snapshot. Plan a 21-point Level 30 idea, or inspect historical 51-point references.',
       canonical: 'https://buildforgetools.com/wow-forever-paladin-talents',
       robots: 'index, follow',
     })

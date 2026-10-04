@@ -32,8 +32,8 @@ describe('published current Paladin routes', () => {
     }
     expect(betaSpecPlannerHref('holy')).toMatch(/&level=20#calculator$/)
     expect(betaSpecPlannerHref('retribution')).toMatch(/&level=20#calculator$/)
-    expect(betaLevelingPlannerHref('leveling')).toMatch(/&level=20#calculator$/)
-    expect(betaLevelingPlannerHref('retribution-leveling')).toMatch(/&level=20#calculator$/)
+    expect(betaLevelingPlannerHref('leveling')).toMatch(/&level=30#calculator$/)
+    expect(betaLevelingPlannerHref('retribution-leveling')).toMatch(/&level=30#calculator$/)
   })
 
 })

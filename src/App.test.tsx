@@ -87,7 +87,7 @@ describe('Paladin talent calculator page', () => {
     expect(primaryHeading?.textContent).toBe('WoW ForeverPaladin TalentCalculator')
     expect(screen.getByText('Build Paladin talent trees for Holy, Protection, and Retribution.')).toBeTruthy()
     expect(screen.getByRole('heading', { level: 2, name: 'WoW Forever Paladin Talent Tree' })).toBeTruthy()
-    expect(document.querySelector('.summary-card')?.textContent).toMatch(/21-point Level 30 budget is not enforced/i)
+    expect(document.querySelector('.summary-card')?.textContent).toMatch(/Choose Level 30 to enforce a 21-point budget/i)
   })
 
   it('labels curated builds as community examples instead of measured popularity', () => {
@@ -118,7 +118,7 @@ describe('Paladin talent calculator page', () => {
     render(<App />)
 
     const paths = screen.getByRole('region', { name: 'Level 20 Beta starting builds' })
-    expect(paths.textContent).toContain('No Level 30 route has been verified yet')
+    expect(paths.textContent).toContain('community Level 10–30 Retribution timeline')
     expect(paths.textContent).toContain('11/0/0')
     expect(paths.textContent).toContain('2/9/0')
     expect(paths.textContent).toContain('Archived')
@@ -126,7 +126,7 @@ describe('Paladin talent calculator page', () => {
     expect(screen.queryByRole('button', { name: 'Load Protection Level 20 build' })).toBeNull()
 
     fireEvent.click(screen.getByRole('button', { name: 'Load Holy Level 20 build' }))
-    expect(screen.getByText('40 reference points remaining')).toBeTruthy()
+    expect(screen.getByText('0 points remaining at Level 20')).toBeTruthy()
     expect(gtag).toHaveBeenCalledWith('event', 'beta_path_load', { branch: 'holy', level: 20, allocation: '11/0/0' })
     expect(gtag).not.toHaveBeenCalledWith('event', 'beta_path_load', expect.objectContaining({ branch: 'protection' }))
   })
