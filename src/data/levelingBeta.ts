@@ -1,12 +1,11 @@
 import { paladinLevelingHref } from './paladinLevelingProgression'
 import { type Build } from '../lib/build'
 import { PALADIN_BETA_SNAPSHOT } from './betaSnapshot'
+import { PROTECTION_LEVEL_20, PROTECTION_LEVEL_30, PROTECTION_ROUTE_EVIDENCE, protectionPlannerHref } from './protectionCurrentRoute'
 
 export type BetaLevelingPageId = 'leveling' | 'protection-leveling' | 'retribution-leveling'
 export type BetaRouteStatus = 'current' | 'archived'
 export const EMPTY_PALADIN_PLANNER_HREF = '/build?id=#calculator'
-
-export const PROTECTION_ROUTE_ARCHIVE_NOTICE = 'Archived September 24, 2026: Blizzard removed Improved Holy Strike from the Beta talent tree. This 1.60.1.69913-era allocation is historical; a replacement Protection route has not been verified.'
 
 export interface BetaLevelingSnapshot {
   pageId: BetaLevelingPageId
@@ -14,7 +13,7 @@ export interface BetaLevelingSnapshot {
   status: BetaRouteStatus
   archiveNotice?: string
   current: { level: number; points: number; allocation: string; build: Build; note: string }
-  next: { level: number; points: number; note: string; status: 'under_review' | 'community_reviewed' }
+  next: { level: number; points: number; note: string; status: 'under_review' | 'community_reviewed' | 'editorial_reviewed'; allocation?: string; build?: Build }
   milestones: string[]
   recommendationSource: { label: string; href: string; updated: string }
 }
@@ -23,13 +22,6 @@ const retributionCurrent: Build = {
   benediction: 5,
   conviction: 5,
   seal_of_command: 1,
-}
-
-const protectionCurrent: Build = {
-  improved_holy_strike: 2,
-  redoubt: 5,
-  precision: 3,
-  anticipation: 1,
 }
 
 const retributionSnapshot = {
@@ -62,26 +54,27 @@ export const BETA_LEVELING_SNAPSHOTS: Record<BetaLevelingPageId, BetaLevelingSna
   'protection-leveling': {
     pageId: 'protection-leveling',
     title: 'Protection Beta leveling path',
-    status: 'archived',
-    archiveNotice: PROTECTION_ROUTE_ARCHIVE_NOTICE,
+    status: 'current',
     current: {
       level: PALADIN_BETA_SNAPSHOT.phase.routeSnapshotLevelCap,
       points: PALADIN_BETA_SNAPSHOT.phase.routeSnapshotLevelCap - 9,
-      allocation: '2/9/0',
-      build: protectionCurrent,
-      note: 'The pre-September 24 route used 2 points in Improved Holy Strike before Redoubt, Precision, and Anticipation. It is retained only to explain the historical allocation.',
+      allocation: '0/11/0',
+      build: PROTECTION_LEVEL_20,
+      note: 'Standard progression without Legacy: Talented. Spend Toughness 5, Redoubt 5, then Precision 1. These selected nodes were reviewed in the 70170 Trait client tables; this editorial order is not a measured best build.',
     },
     next: {
       level: PALADIN_BETA_SNAPSHOT.phase.levelCap,
       points: PALADIN_BETA_SNAPSHOT.phase.levelCap - 9,
-      note: 'No replacement Level 30 route has been verified after Improved Holy Strike was removed. The old projection is withheld.',
-      status: 'under_review',
+      allocation: '0/21/0',
+      build: PROTECTION_LEVEL_30,
+      note: 'Extend Precision to 3, add Anticipation 5, then Improved Righteous Fury 3. This is a legal editorial 21-point route for standard progression, not an official or performance-tested recommendation. Blizzard changed Redoubt to 4/8/12/16/20% on October 1; the imported 69913 tooltip remains older.',
+      status: 'editorial_reviewed',
     },
-    milestones: ['2/2 Improved Holy Strike', '5/5 Redoubt', '3/3 Precision', 'Shield Specialization → Improved Righteous Fury'],
+    milestones: ['Levels 10–14: Toughness 5/5', 'Levels 15–19: Redoubt 5/5', 'Level 20: Precision 1/3', 'Levels 21–22: Precision 3/3', 'Levels 23–27: Anticipation 5/5', 'Levels 28–30: Improved Righteous Fury 3/3'],
     recommendationSource: {
-      label: 'Mobalytics Protection Paladin Guide',
-      href: 'https://mobalytics.gg/wow-forever/classes/protection-paladin-guide',
-      updated: 'September 19, 2026',
+      label: '70170 Paladin TraitNode source — editorial order by BuildForgeTools',
+      href: PROTECTION_ROUTE_EVIDENCE.traitNodes,
+      updated: PROTECTION_ROUTE_EVIDENCE.reviewedAt,
     },
   },
 }
@@ -89,7 +82,9 @@ export const BETA_LEVELING_SNAPSHOTS: Record<BetaLevelingPageId, BetaLevelingSna
 export const betaLevelingSnapshot = (pageId: BetaLevelingPageId) => BETA_LEVELING_SNAPSHOTS[pageId]
 
 export const betaLevelingPlannerHref = (pageId: BetaLevelingPageId) =>
-  betaLevelingSnapshot(pageId).status === 'archived'
+  pageId === 'protection-leveling'
+    ? protectionPlannerHref(20)
+    : betaLevelingSnapshot(pageId).status === 'archived'
     ? EMPTY_PALADIN_PLANNER_HREF
     : paladinLevelingHref(30)
 

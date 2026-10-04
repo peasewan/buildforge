@@ -4,18 +4,20 @@ import VerificationBadge from './VerificationBadge'
 import { BETA_LEVEL_CAP_SOURCE, betaLevelingPlannerHref, betaLevelingSnapshot, type BetaLevelingPageId } from './data/levelingBeta'
 import { PALADIN_BETA_SNAPSHOT } from './data/betaSnapshot'
 import { BETA_PATCH_REVIEW } from './data/betaPatchReview'
+import { protectionPlannerHref } from './data/protectionCurrentRoute'
+import ProtectionRouteEvidence from './ProtectionRouteEvidence'
 
 export default function BetaLevelingSnapshot({ pageId }: { pageId: BetaLevelingPageId }) {
   const snapshot = betaLevelingSnapshot(pageId)
   const archived = snapshot.status === 'archived'
-  if (!archived) return <PaladinLevelingTimeline />
+  if (pageId !== 'protection-leveling') return <PaladinLevelingTimeline />
 
   return (
     <section className="beta-leveling-snapshot shell" aria-label="Beta leveling snapshot">
       <header>
         <div><Route size={18} /><span>{archived ? 'Archived Beta leveling snapshot' : 'Beta leveling snapshot'}</span></div>
         <h2>{snapshot.title}</h2>
-        <p>{archived ? snapshot.archiveNotice : 'This reviewed Level 20 route is an 11-point start within the current Level 30 Beta cap.'}</p>
+        <p>{archived ? snapshot.archiveNotice : 'Follow a reviewed-node, editorial Protection point order from Level 10 to the current Level 30 Beta cap. Standard progression excludes Legacy: Talented.'}</p>
       </header>
       <div className="beta-leveling-grid">
         <article>
@@ -28,17 +30,19 @@ export default function BetaLevelingSnapshot({ pageId }: { pageId: BetaLevelingP
         <article>
           <div><span>Official Level 30 cap</span><VerificationBadge status="official" /></div>
           <strong>Official cap: Level {snapshot.next.level}</strong>
-          <b>No reviewed allocation</b>
+          <b>{snapshot.next.allocation ?? 'No reviewed allocation'}</b>
           <p>{snapshot.next.note}</p>
-          <small>A {snapshot.next.points}-point budget follows the one-point-per-level planning assumption; it is not a verified build.</small>
+          <small>A {snapshot.next.points}-point budget follows standard one-point-per-level progression without Legacy: Talented; this is an editorial route, not a measured best build.</small>
+          {snapshot.next.build && <a href={protectionPlannerHref(30)}>Open Level 30 route in Calculator <ArrowRight size={14} /></a>}
         </article>
       </div>
       <div className="beta-leveling-evidence">
-        <p><Check size={14} /><span><VerificationBadge status="client_verified" /> {archived ? 'Historical talent names and positions were recorded from' : 'Talent names, ranks, and tree positions checked against'} Beta client Build {PALADIN_BETA_SNAPSHOT.clientBuild}.</span></p>
-        <p><Check size={14} /><span><VerificationBadge status="derived_assumption" /> Community recommendation, last reviewed {snapshot.recommendationSource.updated}.</span></p>
+        <p><Check size={14} /><span><VerificationBadge status="client_verified" /> {archived ? 'Historical talent names and positions were recorded from' : 'Selected Protection node IDs, ranks, and tree positions checked against'} Beta client Build {archived ? PALADIN_BETA_SNAPSHOT.clientBuild : '1.60.1.70170'}.</span></p>
+        <p><Check size={14} /><span><VerificationBadge status="derived_assumption" /> {archived ? 'Historical community recommendation' : 'BuildForgeTools editorial point order'}, last reviewed {snapshot.recommendationSource.updated}.</span></p>
         {archived && <p><Check size={14} /><span><a href={BETA_PATCH_REVIEW.officialSource} target="_blank" rel="noreferrer">Blizzard September 24 removal notice</a> · replacement route pending review.</span></p>}
         <ul>{snapshot.milestones.map((milestone) => <li key={milestone}>{milestone}</li>)}</ul>
-        <div><a href={BETA_LEVEL_CAP_SOURCE.href} target="_blank" rel="noreferrer">Official level-cap source</a><a href={snapshot.recommendationSource.href} target="_blank" rel="noreferrer">Recommendation source</a></div>
+        <div><a href={BETA_LEVEL_CAP_SOURCE.href} target="_blank" rel="noreferrer">Official level-cap source</a><a href={snapshot.recommendationSource.href} target="_blank" rel="noreferrer">{archived ? 'Recommendation source' : 'Protection client node source'}</a></div>
+        {!archived && <ProtectionRouteEvidence />}
       </div>
     </section>
   )

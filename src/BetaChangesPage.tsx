@@ -46,7 +46,7 @@ export default function BetaChangesPage() {
             <div><dt>Tree-ready talents</dt><dd>{betaDataset.talents.length} / {betaDataset.talents.length}</dd></div>
             <div><dt>New in Forever</dt><dd>{snapshot.counts.paladinNewTalents}</dd></div>
             <div><dt>Current level cap</dt><dd>{snapshot.phase.levelCap}</dd></div>
-            <div><dt>Last updated</dt><dd>Sep 20, 2026</dd></div>
+            <div><dt>Last full client import</dt><dd>Sep 20, 2026</dd></div>
           </dl>
         </aside>
       </section>

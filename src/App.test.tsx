@@ -118,17 +118,17 @@ describe('Paladin talent calculator page', () => {
     render(<App />)
 
     const paths = screen.getByRole('region', { name: 'Level 20 Beta starting builds' })
-    expect(paths.textContent).toContain('community Level 10–30 Retribution timeline')
+    expect(paths.textContent).toContain('21-point Level 30 extension')
     expect(paths.textContent).toContain('11/0/0')
-    expect(paths.textContent).toContain('2/9/0')
-    expect(paths.textContent).toContain('Archived')
+    expect(paths.textContent).toContain('0/11/0')
     expect(paths.textContent).toContain('0/0/11')
-    expect(screen.queryByRole('button', { name: 'Load Protection Level 20 build' })).toBeNull()
+    expect(screen.getByRole('button', { name: 'Load Protection Level 20 build' })).toBeTruthy()
 
     fireEvent.click(screen.getByRole('button', { name: 'Load Holy Level 20 build' }))
     expect(screen.getByText('0 points remaining at Level 20')).toBeTruthy()
     expect(gtag).toHaveBeenCalledWith('event', 'beta_path_load', { branch: 'holy', level: 20, allocation: '11/0/0' })
-    expect(gtag).not.toHaveBeenCalledWith('event', 'beta_path_load', expect.objectContaining({ branch: 'protection' }))
+    fireEvent.click(screen.getByRole('button', { name: 'Load Protection Level 20 build' }))
+    expect(gtag).toHaveBeenCalledWith('event', 'beta_path_load', { branch: 'protection', level: 20, allocation: '0/11/0' })
   })
 
   it('keeps the Level 20 starter context in its copied URL and analytics', async () => {

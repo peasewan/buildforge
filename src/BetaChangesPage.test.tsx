@@ -21,6 +21,8 @@ describe('Paladin Beta changes page', () => {
     expect(screen.getByText(/Rank 3:/)).toBeTruthy()
     expect(screen.getByLabelText('Data verification legend')).toBeTruthy()
     expect(screen.getByText('Last fully imported dataset')).toBeTruthy()
+    expect(screen.getByText('Last full client import').nextElementSibling?.textContent).toBe('Sep 20, 2026')
+    expect(screen.queryByText('Last updated')).toBeNull()
     expect(document.body.textContent).not.toContain('Calculator Dataset Verified')
   })
 

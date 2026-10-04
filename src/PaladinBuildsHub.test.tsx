@@ -50,12 +50,12 @@ describe('Paladin builds hub', () => {
     ]) expect(document.querySelector(`a[href="${href}"]`)).toBeTruthy()
   })
 
-  it('labels the retired Protection leveling route before sending readers to it', () => {
+  it('labels the editable Protection leveling route before sending readers to it', () => {
     render(<PaladinBuildsHub />)
 
     const link = document.querySelector('a[href="/wow-forever-protection-paladin-leveling-build"]')
-    expect(link?.closest('.build-card')?.textContent).toMatch(/archived/i)
-    expect(link?.closest('.build-card')?.textContent).toMatch(/removed/i)
+    expect(link?.closest('.build-card')?.textContent).toMatch(/0\/11\/0/i)
+    expect(link?.closest('.build-card')?.textContent).toMatch(/0\/21\/0/i)
   })
 
   it('labels the Ret 51-point leveling example as historical before readers open it', () => {

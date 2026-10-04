@@ -19,7 +19,7 @@ describe('Build landing page template', () => {
     expect(screen.getByRole('button', { name: /Divine Intellect, rank 1 of 5/ })).toBeTruthy()
   })
 
-  it.each(['protection-dungeon', 'protection-leveling', 'protection-pvp', 'retribution-pvp'] as const)(
+  it.each(['protection-dungeon', 'protection-pvp', 'retribution-pvp'] as const)(
     'shows a read-only tree with a visible edit action before the nodes on %s', (pageId) => {
       render(<BuildLandingPage pageId={pageId} />)
 
@@ -51,27 +51,24 @@ describe('Build landing page template', () => {
     render(<BuildLandingPage pageId="protection-leveling" />)
 
     const snapshot = screen.getByRole('region', { name: 'Beta leveling snapshot' })
-    expect(snapshot.textContent).toContain('2/9/0')
-    expect(snapshot.textContent).not.toContain('2/19/0')
-    expect(snapshot.textContent).toContain('No reviewed allocation')
-    expect(snapshot.textContent).toContain('Archived')
-    expect(snapshot.textContent).toContain('Improved Holy Strike')
+    expect(snapshot.textContent).toContain('0/11/0')
+    expect(snapshot.textContent).toContain('0/21/0')
+    expect(snapshot.textContent).toContain('70170')
+    expect(snapshot.textContent).toContain('without Legacy: Talented')
     expect(snapshot.querySelector('a[href*="improved_holy_strike"]')).toBeNull()
-    expect(snapshot.querySelector('a[href="/build?id=#calculator"]')).toBeTruthy()
-    expect(screen.getByRole('link', { name: 'Open Planner' }).getAttribute('href')).toBe('/build?id=#calculator')
+    expect(snapshot.querySelector('a[href*="redoubt.5"][href*="level=20"]')).toBeTruthy()
+    expect(snapshot.querySelector('a[href*="redoubt.5"][href*="level=30"]')).toBeTruthy()
+    expect(screen.getByRole('link', { name: 'Open Planner' }).getAttribute('href')).toContain('level=20')
   })
 
-  it('presents the retired Protection route as history and starts a blank replacement plan', () => {
+  it('presents the node-checked Protection route with an editable calculator CTA', () => {
     render(<BuildLandingPage pageId="protection-leveling" />)
 
     const hero = document.querySelector('.landing-hero')!
-    expect(hero.textContent).toMatch(/archived/i)
-    expect(hero.textContent).toMatch(/no replacement/i)
-    expect(hero.textContent).toMatch(/Status\s*Archived/i)
-    expect(screen.getByRole('heading', { level: 2, name: 'What to Do After the Route Was Archived' })).toBeTruthy()
-    for (const link of screen.getAllByRole('link', { name: /start a blank calculator/i })) {
-      expect(link.getAttribute('href')).toBe('/build?id=#calculator')
-    }
+    expect(hero.textContent).toMatch(/editorial Level 20 Protection route/i)
+    expect(hero.textContent).toMatch(/Status\s*Editorial route/i)
+    expect(screen.getByRole('heading', { level: 2, name: 'Level 10–30 Protection Point Order' })).toBeTruthy()
+    expect(screen.getByRole('link', { name: /Load Level 20 Protection Route/i }).getAttribute('href')).toContain('level=20')
   })
 
   it('reuses the Protection talent tree on the dungeon page', () => {

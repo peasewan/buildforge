@@ -358,7 +358,7 @@ export default function App() {
         <div className="shell">
           <div className="section-heading centered"><div className="eyebrow">Interactive Build Planner</div><h2>WoW Forever Paladin Talent Tree</h2><p>Choose Holy, Protection, or Retribution. The live Beta cap is Level 30; the 51-point canvas is a long-term reference based on the older imported tree.</p></div>
           <section className="current-cap-builds" aria-label="Level 20 Beta starting builds">
-            <div className="popular-builds-heading"><div><span>Starting routes and historical references</span><h2>Level 20 Beta Starting Builds</h2></div><p>Load an 11-point starting snapshot for the Level 30 Beta, or review why an older allocation was retired. A community Level 10–30 Retribution timeline is available on the leveling page; it does not certify a newer client dataset.</p></div>
+            <div className="popular-builds-heading"><div><span>Starting routes and historical references</span><h2>Level 20 Beta Starting Builds</h2></div><p>Load an 11-point starting snapshot for the Level 30 Beta. Protection also has a 21-point Level 30 extension reviewed at the node level; the full 69913 calculator dataset remains separately labeled.</p></div>
             <div className="current-cap-build-grid">
               {BRANCHES.map((item) => {
                 const path = BETA_SPEC_PATHS[item]
@@ -373,7 +373,7 @@ export default function App() {
                 )
               })}
             </div>
-            <p className="current-cap-build-note">Community recommendations, not official or measured best builds. The Protection allocation is archived after the September 24 removal of Improved Holy Strike. Talent data uses client build {PALADIN_BETA_SNAPSHOT.clientBuild}. <a href="/wow-forever-paladin-leveling-build">Follow the Level 10–30 timeline →</a></p>
+            <p className="current-cap-build-note">Editorial starting routes, not official or measured best builds. Selected Protection route nodes were checked against Beta client 70170 and reported unchanged through 70205; the complete calculator still imports client build {PALADIN_BETA_SNAPSHOT.clientBuild}. <a href="/wow-forever-protection-paladin-leveling-build">Review Protection Level 20–30 routes →</a></p>
           </section>
           <div id="calculator" ref={calculatorRef} className="calculator-entry">
             {restoreNotice && <p className="pvp-edit-notice" role="status">{restoreNotice}</p>}

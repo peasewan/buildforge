@@ -95,10 +95,10 @@ describe('public page routing', () => {
     expect(pageForPath(pathname)).toMatchObject({ kind: 'build-landing', landingPageId, title })
   })
 
-  it('does not promise the archived Protection leveling route in the search description', () => {
+  it('describes the current-cap Protection routes without claiming official recommendations', () => {
     const page = pageForPath('/wow-forever-protection-paladin-leveling-build/')
-    expect(page?.description).toMatch(/archived.*Improved Holy Strike/i)
-    expect(page?.description).not.toMatch(/follow the talent path/i)
+    expect(page?.description).toMatch(/11-point Level 20 and 21-point Level 30 Beta routes/i)
+    expect(page?.description).not.toMatch(/official|best build/i)
   })
 
   it('serves the Beta changes page as an indexable tracker', () => {

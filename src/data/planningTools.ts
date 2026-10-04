@@ -6,6 +6,7 @@ import { classPlannerHref, publishedClassPages, type ClassDefinition } from '../
 import { incrementPlannerTalent, encodePlannerBuild, type PlannerBuild } from '../lib/talentPlanner'
 import { progressionForBuild } from '../experiences/buildExperience'
 import { OCTOBER_OFFICIAL_SOURCE, officialTalentNotice } from './officialOctoberChanges'
+import { PROTECTION_ROUTE_EVIDENCE } from './protectionCurrentRoute'
 
 export type ToolRole = 'tank' | 'heal' | 'damage'
 export type ToolStyle = 'melee' | 'ranged' | 'any'
@@ -62,9 +63,9 @@ export function buildCatalogue(classes: ClassDefinition[] = PUBLISHED_CLASSES, i
     })
   })
   if (includePaladin) {
-    // The archived Protection path contains Improved Holy Strike, removed in the Sep 24 notes.
-    // Do not carry that known-obsolete route into a newly published recommendation tool.
-    for (const branch of ['holy','retribution'] as const) {
+    // Current Protection uses only the five route nodes reviewed in the 70170
+    // Trait tables; this does not upgrade the complete 69913 calculator import.
+    for (const branch of ['holy','protection','retribution'] as const) {
       const path = BETA_SPEC_PATHS[branch]
       let allocation: PlannerBuild = {}
       const steps: ToolRoute['steps'] = []
@@ -79,7 +80,7 @@ export function buildCatalogue(classes: ClassDefinition[] = PUBLISHED_CLASSES, i
         }
       }
       if (steps.length !== 11) continue
-      routes.push({id:`paladin-${branch}`,classId:'paladin',className:'Paladin',spec:branch,specName:branchNames[branch],role:branch === 'holy' ? 'heal' : 'damage',style:branch === 'holy' ? 'ranged' : 'melee',activity:branch === 'holy' ? 'dungeon' : 'solo',title:`${branchNames[branch]} Paladin starting route`,href:branch === 'holy' ? '/wow-forever-paladin-build' : '/wow-forever-retribution-paladin-build',image:branch === 'holy' ? '/images/icons/holy-strike.png' : '/images/icons/hammer.png',version:BETA_DATA_VERSION.replace('wow_forever_beta_',''),removedTalentNames:[],steps,calculatorHref: allocation => `/build?id=${encodeBuild(allocation)}&level=20#calculator`})
+      routes.push({id:`paladin-${branch}`,classId:'paladin',className:'Paladin',spec:branch,specName:branchNames[branch],role:branch === 'protection' ? 'tank' : branch === 'holy' ? 'heal' : 'damage',style:branch === 'holy' ? 'ranged' : 'melee',activity:branch === 'holy' || branch === 'protection' ? 'dungeon' : 'solo',title:`${branchNames[branch]} Paladin starting route`,href:branch === 'holy' ? '/wow-forever-paladin-build' : branch === 'protection' ? '/wow-forever-protection-paladin-leveling-build' : '/wow-forever-retribution-paladin-build',image:branch === 'holy' ? '/images/icons/holy-strike.png' : branch === 'protection' ? '/images/icons/shield.png' : '/images/icons/hammer.png',version:branch === 'protection' ? PROTECTION_ROUTE_EVIDENCE.reviewedClientBuild : BETA_DATA_VERSION.replace('wow_forever_beta_',''),removedTalentNames:[],steps,calculatorHref: allocation => `/build?id=${encodeBuild(allocation)}&level=20#calculator`})
     }
   }
   return routes

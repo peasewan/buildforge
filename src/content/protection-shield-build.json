@@ -74,7 +74,7 @@
       "heading": "Using This Build for Solo Leveling",
       "paragraphs": [
         "This 20/31/0 allocation is a historical 51-point planning reference, not a playable Level 30 leveling build. Toughness and Redoubt show one older defensive opening, but the full route exceeds the normal Level 30 point budget modeled by the site. Blizzard also changed Redoubt on October 1, so its imported 69913 rank text is not current tuning.",
-        "For current Protection leveling, start a blank calculator route and check each early point against the live client. No replacement Level 30 Protection progression has been reviewed since Improved Holy Strike was removed. The 51-point reference can still be inspected on this page as a longer-term idea, with its imported 69913 source clearly labeled."
+        "For current Protection leveling, use the separate 0/11/0 Level 20 and 0/21/0 Level 30 editorial routes linked below. Their selected nodes were checked against the 70170 Trait tables, but the point order is not performance-tested and the calculator's complete tree remains the older 69913 import. The 51-point allocation on this page remains a longer-term historical reference."
       ]
     }
   ]

@@ -18,7 +18,7 @@ export interface SpecBuildsHubConfig {
   metaTitle: string
   description: string
   intro: string
-  featured: { title: string; description: string; href: string; role: string; playstyle: string }
+  featured: { title: string; description: string; href: string; role: string; playstyle: string; status: string }
   buildTypes: SpecHubBuildType[]
   editorialSections: { heading: string; paragraphs: string[] }[]
   talents: { label: string; href: string }[]
@@ -44,18 +44,19 @@ export const SPEC_BUILDS_HUBS: SpecBuildsHubConfig[] = [
       href: '/wow-forever-protection-paladin-dungeon-build',
       role: 'Dungeon Tank',
       playstyle: 'Defensive / Utility',
+      status: 'Historical 51-point reference',
     },
     buildTypes: [
       { id: 'dungeon-tank', eyebrow: 'Dungeon Tank', title: 'Protection Paladin Dungeon Tank Build', description: 'A historical full allocation for group tank planning, not a current-cap build.', href: '/wow-forever-protection-paladin-dungeon-build', icon: 'protection' },
-      { id: 'leveling-tank', eyebrow: 'Archived Leveling', title: 'Protection Paladin Leveling Build', description: 'The old Level 20 route used a removed talent. Review its history, then start a blank planner; no replacement is verified.', href: '/wow-forever-protection-paladin-leveling-build', icon: 'leveling' },
+      { id: 'leveling-tank', eyebrow: 'Level 20–30', title: 'Protection Paladin Leveling Build', description: 'Load an editorial 0/11/0 starter or 0/21/0 current-cap route checked against newer Protection client nodes.', href: '/wow-forever-protection-paladin-leveling-build', icon: 'leveling' },
       { id: 'pvp-protection', eyebrow: 'PvP', title: 'Protection Paladin PvP Build', description: 'A defensive route for objectives, survival, control, and team utility.', href: '/wow-forever-protection-paladin-pvp-build', icon: 'pvp' },
     ],
     editorialSections: [
       {
         heading: 'How to Use These Protection Paladin Builds',
         paragraphs: [
-          'The historical Protection example on BuildForgeTools uses a 20/31/0 allocation: 31 points establish a defensive Protection core and 20 supporting points come from Holy. Its full build page lists every selected rank, but the 51 points exceed the live Level 30 cap. Use it to inspect an older tank idea, then start a blank current-cap calculator route.',
-          'The dungeon page explains the jobs a group tank must plan around. The leveling page now preserves an older Level 20 route for comparison: it included Improved Holy Strike, which Blizzard removed on September 24. Do not load that archived allocation as a current route. The separate 20/31/0 example is a longer-term community build, not a verified replacement for Level 20. Talent fields in the planner are from client build 1.60.1.69913 and remain under review against later Beta changes.',
+          'The historical Protection example on BuildForgeTools uses a 20/31/0 allocation: 31 points establish a defensive Protection core and 20 supporting points come from Holy. Its full build page lists every selected rank, but the 51 points exceed the live Level 30 cap. For the active Beta, the separate leveling page now offers editable 0/11/0 and 0/21/0 routes.',
+          'The dungeon page explains the jobs a group tank must plan around. The Protection leveling page uses Toughness, Redoubt, Precision, Anticipation, and Improved Righteous Fury in an editorial order. The selected node IDs, positions, ranks, and prerequisite edges were checked in the 70170 Beta Trait tables; ForeverDiff reports 70205 table records unchanged. This focused route review does not promote the complete calculator beyond its explicitly labeled 69913 snapshot.',
         ],
       },
       {
@@ -68,15 +69,15 @@ export const SPEC_BUILDS_HUBS: SpecBuildsHubConfig[] = [
       {
         heading: 'Dungeon Tank and Leveling Tradeoffs',
         paragraphs: [
-          'A leveling route values consistency across many ordinary fights, while a dungeon route gives more weight to party protection and tools for difficult pulls. The archived Level 20 Protection route included a talent since removed, so it cannot be treated as a verified progression into the separate 20/31/0 tank example. Compare the two pages as different planning records until a replacement early-level path is reviewed.',
-          'Use the archived leveling page to see why the earlier point order was retired, the dungeon page to review the group role, and the historical Shield build to inspect every rank of a separate 51-point example. To plan current leveling, begin with a blank calculator and check each point against the latest client before sharing it. We will publish a new step-by-step Protection route only after its data and allocation are reviewed.',
+          'A leveling route values consistency across many ordinary fights, while a dungeon route gives more weight to party protection and tools for difficult pulls. The current 0/11/0 and 0/21/0 Protection allocations are standard-progression examples without Legacy: Talented. Their selected nodes avoid the prerequisite edges whose required ranks are still inferred by the planner.',
+          'Use the leveling page to load either reviewed-node milestone, the dungeon page to review the group role, and the historical Shield build to inspect a separate 51-point example. Blizzard changed Redoubt to 4/8/12/16/20% on October 1. The imported 69913 tooltips may still show the earlier values, so check the official patch note before evaluating the current route.',
         ],
       },
       {
         heading: 'Protection Data Status',
         paragraphs: [
           'BuildForgeTools separates confirmed information, community-supported information, and details that still need review. Beta client records may confirm a talent or ability name without confirming its tree coordinate, point cost, prerequisite, or final tooltip. New records enter the beta comparison process first, and the public tree changes only after the fields needed by the planner can be reviewed together.',
-          'Protection has several full 51-point historical examples, but none is a reviewed current-cap performance ranking. Check the Beta tracker for later patch notices and client-import status, and use the Feedback button when an in-game value conflicts with the planner.',
+          'Protection has several full 51-point historical examples and one reviewed-node current-cap editorial route. Neither is a measured performance ranking. Check the Beta tracker for later patch notices and client-import status, and use the Feedback button when an in-game value conflicts with the planner.',
         ],
       },
     ],
@@ -102,6 +103,7 @@ export const SPEC_BUILDS_HUBS: SpecBuildsHubConfig[] = [
       href: '/wow-forever-retribution-paladin-build',
       role: 'Melee Damage',
       playstyle: 'Offensive / Support',
+      status: 'Historical 51-point reference',
     },
     buildTypes: [
       { id: 'damage-build', eyebrow: 'Damage Build', title: 'Retribution Paladin Build 0/20/31', description: 'Historical 69913 allocation with 20 Protection points; Crusade awaits review.', href: '/wow-forever-retribution-paladin-build', icon: 'retribution' },

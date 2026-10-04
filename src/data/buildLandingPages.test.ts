@@ -34,7 +34,7 @@ describe('build landing page configurations', () => {
     }
   })
 
-  it('warns readers when a related card opens the archived Protection leveling route', () => {
+  it('labels related links to the current Protection leveling route', () => {
     const cards = BUILD_LANDING_PAGES.flatMap((page) => page.sections.flatMap((section) =>
       section.kind === 'related'
         ? section.items.filter((item) => item.href === '/wow-forever-protection-paladin-leveling-build')
@@ -42,7 +42,7 @@ describe('build landing page configurations', () => {
     ))
 
     expect(cards).toHaveLength(2)
-    for (const card of cards) expect(`${card.title} ${card.body}`).toMatch(/archived/i)
+    for (const card of cards) expect(`${card.title} ${card.body}`).toMatch(/0\/11\/0.*0\/21\/0/i)
   })
 
   it('describes every build as a preview rather than an authoritative best pick', () => {

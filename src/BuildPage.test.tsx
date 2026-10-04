@@ -52,7 +52,7 @@ describe('Holy healing build page', () => {
     ]) {
       expect(nextSteps.querySelector(`a[href="${href}"]`)).toBeTruthy()
     }
-    expect(nextSteps.textContent).toContain('archived Level 20')
+    expect(nextSteps.textContent).toContain('editable Level 20 and Level 30')
   })
 
   it('labels the full Protection allocation as a historical example', () => {
@@ -111,14 +111,15 @@ describe('Holy healing build page', () => {
     expect(path.querySelector(`a[href*="${encodedTalent}"][href$="#calculator"]`)).toBeTruthy()
   })
 
-  it('shows the Protection Level 20 route as historical without a loadable removed talent', () => {
+  it('loads the new Protection Level 20 route without its removed predecessor', () => {
     render(<BuildPage buildId="protection-shield-20-31-0" />)
 
-    const path = screen.getByRole('region', { name: 'Archived Beta talent path' })
-    expect(path.textContent).toContain('2/9/0')
-    expect(path.textContent).toContain('Archived September 24')
+    const path = screen.getByRole('region', { name: 'Beta talent starting path' })
+    expect(path.textContent).toContain('0/11/0')
+    expect(path.textContent).toContain('0/21/0')
+    expect(path.textContent).toContain('70170')
     expect(path.querySelector('a[href*="improved_holy_strike"]')).toBeNull()
-    expect(path.querySelector('a[href="/build?id=#calculator"]')).toBeTruthy()
+    expect(path.querySelector('a[href*="redoubt.5"][href*="level=20"]')).toBeTruthy()
   })
 
   it.each([
@@ -128,8 +129,8 @@ describe('Holy healing build page', () => {
   ] as const)('labels the official fact precisely and carries the current page date on %s', (buildId) => {
     render(<BuildPage buildId={buildId} />)
 
-    const path = screen.getByRole('region', { name: buildId === 'protection-shield-20-31-0' ? 'Archived Beta talent path' : 'Beta talent starting path' })
-    expect(path.querySelector('.beta-leveling-grid article:first-child > div > span')?.textContent).toBe(buildId === 'protection-shield-20-31-0' ? 'Archived Level 20 route' : 'Level 20 starting route')
+    const path = screen.getByRole('region', { name: 'Beta talent starting path' })
+    expect(path.querySelector('.beta-leveling-grid article:first-child > div > span')?.textContent).toBe('Level 20 starting route')
     expect(path.textContent).toContain('Official cap: Level 30')
     expect(document.querySelector('.build-hero-copy small')?.textContent).toBe(`Updated ${buildId === 'retribution-judgment-0-20-31' ? 'September 29' : 'September 20'}, 2026 · Beta client talent data`)
   })

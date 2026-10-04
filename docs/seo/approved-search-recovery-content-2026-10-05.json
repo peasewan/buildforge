@@ -1,0 +1,56 @@
+{
+  "reviewedAt": "2026-10-05",
+  "authorization": "The owner requested a site-wide search recovery. This review scopes the frozen-page changes to eleven existing Paladin URLs: a 52-node, version-labeled talent index and three specialization links; source-checked Protection Level 20/30 route evidence and related calculator CTAs; associated Paladin build/hub links and copy; and accurate historical status on featured 51-point builds. Only the Protection leveling meta description changes to describe its two reviewed point budgets. Materially updated URLs advance sitemap lastmod to October 5, and three affected Article dateModified values are aligned. URLs, titles, H1s, canonicals, robots directives, and the published URL inventory remain unchanged.",
+  "pages": {
+    "/paladin": {
+      "rootSha256": "9911b73d3d983d65e23a40ca4c0b1bf5831704e879c7dcdaecf3b806bd9eb098",
+      "linksSha256": "ef7405308972fa5449fb66ec1da69fa940db7171b1e2f059daca84ec7a7c0181",
+      "lastmod": "2026-10-05"
+    },
+    "/wow-forever-paladin-builds": {
+      "rootSha256": "14917fbc7ade2e1f0762a6f80616b25c692ae35ba6446a28d33cfe3d61ddf87e",
+      "lastmod": "2026-10-05"
+    },
+    "/wow-forever-paladin-talents": {
+      "rootSha256": "4e6dda1778459f78f6057adabc5b33f6376319d19bb642a5acc668b94b904dbb",
+      "linksSha256": "7b76da117a7b4b9362bb946c21e6dca335b9ecac256c1e8ee731d7c289b0c899",
+      "lastmod": "2026-10-05"
+    },
+    "/wow-forever-paladin-build": {
+      "rootSha256": "ea59af2aeb0ce8daf9d51bf0b2aeb48e169f8793a7b934beabdbddf1e9ece3f0"
+    },
+    "/wow-forever-protection-paladin-build": {
+      "rootSha256": "97712b1d0bc9517afd7b5174800a6b54c57b43cb1a93e8f44456344975b6ef8e",
+      "linksSha256": "9afecf31973fef458eb4d084aaf9e7faf439b8a106bc19c3be40936915eda44e",
+      "headSeoSha256": "aa36d54b604c6814569dd2a8ba616d1dc90a108dc63933f171d46c4ff47b0ff6",
+      "lastmod": "2026-10-05"
+    },
+    "/wow-forever-retribution-paladin-build": {
+      "rootSha256": "e114678cfae28ec375752e69b7cd32b44bf67918f76ecef8b5947e1a0b958cdc"
+    },
+    "/wow-forever-paladin-leveling-build": {
+      "rootSha256": "f0497dabb5a76822e9e579eabd0ee968da7ff0896257bccb6f7b4aaaf316962a",
+      "headSeoSha256": "956da732ae5cd14910d93b908774f8beb1050fbb9646c15bcfefdf240d8df66c",
+      "lastmod": "2026-10-05"
+    },
+    "/wow-forever-protection-paladin-dungeon-build": {
+      "rootSha256": "e9327930d55d3c290dd2ba80968a21b6b6db8131cb4b9290bc82701aa229e326",
+      "headSeoSha256": "55b66655721b576a17ab37faecde591af579c42328a745ac9ce7afb738af5f09",
+      "lastmod": "2026-10-05"
+    },
+    "/wow-forever-protection-paladin-builds": {
+      "rootSha256": "8df542ab2bde5249c76aa4f9857b08ad500f595365e95b6ae89c47697d7846fe",
+      "linksSha256": "c158b80e7ac2984447d842e4244f7d2549f8f7c105295ff06921836fc772cdad",
+      "lastmod": "2026-10-05"
+    },
+    "/wow-forever-retribution-paladin-builds": {
+      "rootSha256": "538ff77f4bbf0d3ec4ae63ea42eb61895334080c20d2c6a09261f90d81f3e617",
+      "lastmod": "2026-10-05"
+    },
+    "/wow-forever-protection-paladin-leveling-build": {
+      "description": "Plan a WoW Forever Protection Paladin leveling build with source-checked 11-point Level 20 and 21-point Level 30 Beta routes, then edit either setup.",
+      "rootSha256": "8a1ba780936a2f06ed601589152c5f19b3663ad41fcff51abee54afafb69d571",
+      "linksSha256": "227d73418d7bcd09167ee9072d0087bcf1ad9a9a0860b43cd6f03598bec7c70c"
+    }
+  }
+}

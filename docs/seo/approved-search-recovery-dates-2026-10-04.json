@@ -1,0 +1,17 @@
+{
+  "reviewedAt": "2026-10-04",
+  "authorization": "The owner requested site-wide search recovery. Git history confirms the Songs of Glimmerwick garden was materially updated on October 1 and the Protection builds hub and Paladin Beta Changes page were materially updated on October 3. The Protection leveling route was materially revised on October 5 after a focused 70170 Trait-table node audit; its description, Article dateModified, body, and sitemap lastmod now reflect that editorial route. The 69913 complete calculator import remains labeled as historical. Beta Changes labels September 20 as the last full client import. Existing URLs, titles, H1s, canonicals and robots remain unchanged.",
+  "pages": {
+    "/wow-forever-protection-paladin-builds": {
+      "lastmod": "2026-10-03"
+    },
+    "/wow-forever-protection-paladin-leveling-build": {
+      "lastmod": "2026-10-05",
+      "headSeoSha256": "8c905a828a6f52a2dcb9d3031a86bd5dc8d3f59d636d3fbfff06053ccbc64431"
+    },
+    "/wow-forever-paladin-beta-talent-changes": {
+      "lastmod": "2026-10-03",
+      "rootSha256": "b458229a990a095ae502b279621e3e748f74093398dcc551e3518cbdcd564e7f"
+    }
+  }
+}

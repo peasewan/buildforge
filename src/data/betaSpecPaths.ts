@@ -1,6 +1,7 @@
 import { encodeBuild, type Branch, type Build } from '../lib/build'
 import { PALADIN_BETA_SNAPSHOT } from './betaSnapshot'
-import { BETA_LEVEL_CAP_SOURCE, EMPTY_PALADIN_PLANNER_HREF, PROTECTION_ROUTE_ARCHIVE_NOTICE, type BetaRouteStatus } from './levelingBeta'
+import { BETA_LEVEL_CAP_SOURCE, EMPTY_PALADIN_PLANNER_HREF, type BetaRouteStatus } from './levelingBeta'
+import { PROTECTION_LEVEL_20, PROTECTION_LEVEL_30, PROTECTION_ROUTE_EVIDENCE } from './protectionCurrentRoute'
 
 export interface BetaSpecPath {
   branch: Branch
@@ -15,7 +16,7 @@ export interface BetaSpecPath {
     build: Build
     steps: { levels: string; talent: string }[]
   }
-  next: { level: number; points: number; note: string; status: 'under_review' }
+  next: { level: number; points: number; note: string; status: 'under_review' | 'community_reviewed' | 'editorial_reviewed'; allocation?: string; build?: Build }
   recommendationSource: { label: string; href: string; updated: string }
 }
 
@@ -62,36 +63,31 @@ export const BETA_SPEC_PATHS: Record<Branch, BetaSpecPath> = {
   protection: {
     branch: 'protection',
     title: 'Protection Beta talent path',
-    status: 'archived',
-    archiveNotice: PROTECTION_ROUTE_ARCHIVE_NOTICE,
+    status: 'current',
     bestFor: ['Dungeon tanking', 'Group leveling', 'Defensive play'],
     current: {
       level: currentLevel,
       points: currentPoints,
-      allocation: '2/9/0',
-      build: {
-        improved_holy_strike: 2,
-        redoubt: 5,
-        precision: 3,
-        anticipation: 1,
-      },
+      allocation: '0/11/0',
+      build: PROTECTION_LEVEL_20,
       steps: [
-        { levels: 'Levels 10–11', talent: '2/2 Improved Holy Strike' },
-        { levels: 'Levels 12–16', talent: '5/5 Redoubt' },
-        { levels: 'Levels 17–19', talent: '3/3 Precision' },
-        { levels: 'Level 20', talent: '1/5 Anticipation' },
+        { levels: 'Levels 10–14', talent: '5/5 Toughness' },
+        { levels: 'Levels 15–19', talent: '5/5 Redoubt' },
+        { levels: 'Level 20', talent: '1/3 Precision' },
       ],
     },
     next: {
       level: nextLevel,
       points: nextPoints,
-      note: 'No replacement Level 30 Protection route has been verified after Improved Holy Strike was removed. The old projection is withheld.',
-      status: 'under_review',
+      note: 'Extend Precision to 3/3, add Anticipation 5/5, then Improved Righteous Fury 3/3. This 21-point standard-progression route is editorial, not a tested best build. Redoubt was changed to 4/8/12/16/20% in the October 1 official notes.',
+      allocation: '0/21/0',
+      build: PROTECTION_LEVEL_30,
+      status: 'editorial_reviewed',
     },
     recommendationSource: {
-      label: 'Mobalytics Protection Paladin Guide',
-      href: 'https://mobalytics.gg/wow-forever/classes/protection-paladin-guide',
-      updated: 'September 19, 2026',
+      label: '70170 Paladin TraitNode source — editorial order by BuildForgeTools',
+      href: PROTECTION_ROUTE_EVIDENCE.traitNodes,
+      updated: PROTECTION_ROUTE_EVIDENCE.reviewedAt,
     },
   },
   retribution: {

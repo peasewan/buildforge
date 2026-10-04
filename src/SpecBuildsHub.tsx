@@ -47,12 +47,12 @@ export default function SpecBuildsHub({ spec }: { spec: Branch }) {
 
       <BetaDataStatus />
 
-      {betaStart && <section className="spec-beta-start shell" aria-label={betaStart.status === 'archived' ? 'Archived Beta Protection starting route' : 'Older Beta Protection starting route'}>
+      {betaStart && <section className="spec-beta-start shell" aria-label={betaStart.status === 'archived' ? 'Archived Beta Protection starting route' : 'Current Beta Protection starting route'}>
         <div>
-          <div className="eyebrow">{betaStart.status === 'archived' ? 'Archived Beta Start · Under Review' : 'Level 20 Snapshot · Community recommendation'}</div>
+          <div className="eyebrow">{betaStart.status === 'archived' ? 'Archived Beta Start · Under Review' : 'Level 20 Snapshot · Editorial route'}</div>
           <h2>{betaStart.status === 'archived' ? `Review the former Level ${betaStart.current.level} Protection route` : `Start with the Level ${betaStart.current.level} Protection route`}</h2>
           <p>{betaStart.archiveNotice ?? betaStart.current.note}</p>
-          <small>{betaStart.status === 'archived' ? 'The old allocation remains visible for comparison. A replacement has not been verified; start from a blank calculator while the Beta tree is reconciled.' : 'This Level 20 point allocation is editorial guidance from the older 69913 tree, not a reviewed Level 30 build. The 51-point featured build below is historical.'}</small>
+          <small>{betaStart.status === 'archived' ? 'The old allocation remains visible for comparison. A replacement has not been verified; start from a blank calculator while the Beta tree is reconciled.' : `Selected nodes reviewed in client 70170; the 0/21/0 Level 30 extension is also available on the leveling page. Both routes are editorial, without Legacy: Talented. The complete calculator still imports the 69913 snapshot.`}</small>
         </div>
         <div className="spec-beta-start-actions">
           <strong>{betaStart.current.allocation}</strong>
@@ -66,7 +66,7 @@ export default function SpecBuildsHub({ spec }: { spec: Branch }) {
         <header className="hub-section-heading"><div className="eyebrow">Featured Build</div><h2>{hub.featured.title}</h2><p>{hub.featured.description}</p></header>
         <article>
           <div className="spec-feature-icon">{heroIcons[spec]}</div>
-          <dl><div><dt>Role</dt><dd>{hub.featured.role}</dd></div><div><dt>Playstyle</dt><dd>{hub.featured.playstyle}</dd></div><div><dt>Status</dt><dd>Community Build</dd></div></dl>
+          <dl><div><dt>Role</dt><dd>{hub.featured.role}</dd></div><div><dt>Playstyle</dt><dd>{hub.featured.playstyle}</dd></div><div><dt>Status</dt><dd>{hub.featured.status}</dd></div></dl>
           <a href={hub.featured.href} className="button primary" onClick={link('featured')(hub.featured.href)}>View Build <ArrowRight size={16} /></a>
         </article>
       </section>

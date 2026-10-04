@@ -1,6 +1,7 @@
 import { createElement } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import PaladinLevelingTimeline from '../PaladinLevelingTimeline'
+import ProtectionRouteEvidence from '../ProtectionRouteEvidence'
 import type { Branch } from './build'
 import { escapeHtml } from './html'
 import type { ClassBuild, ClassDefinition, ClassPageDefinition, ClassTalent } from './classPage'
@@ -17,6 +18,7 @@ import { betaAvailabilityFor } from '../data/betaAvailability'
 import { EMBERVILLE_EDITORIAL, EMBERVILLE_PAGES, EMBERVILLE_SOURCES, EMBERVILLE_STATUS, embervillePageById, type EmbervillePageId } from '../data/emberville'
 import { BETA_LEVEL_CAP_SOURCE, betaLevelingPlannerHref, betaLevelingSnapshot, type BetaLevelingPageId } from '../data/levelingBeta'
 import { betaSpecPath, betaSpecPlannerHref } from '../data/betaSpecPaths'
+import { protectionPlannerHref } from '../data/protectionCurrentRoute'
 import { BETA_PATCH_REVIEW } from '../data/betaPatchReview'
 import { EVIDENCE_STATUS } from '../data/verification'
 import { paladinSpellbook } from '../data/paladinSpellbook'
@@ -109,13 +111,15 @@ export function renderBetaLevelingSnapshotPrerender(pageId: BetaLevelingPageId):
     <h3>${archived ? 'Archived Level 20 route' : 'Level 20 starting route'}</h3>
     <p><strong>Level ${snapshot.current.level} · ${snapshot.current.points} points · ${escapeHtml(snapshot.current.allocation)}</strong></p>
     <p>${escapeHtml(snapshot.current.note)} ${link(betaLevelingPlannerHref(pageId), archived ? 'Open Calculator without this route' : 'Open Level 20 start in Calculator')}.</p>
-    <p>${archived ? 'Historical' : escapeHtml(EVIDENCE_STATUS.client_verified.label)} talent data · Imported Build ${escapeHtml(PALADIN_BETA_STATUS.build)}.</p>
-    <h3>Official Level 30 cap · Route pending review</h3>
-    <p><strong>Official cap: Level ${snapshot.next.level} · No reviewed allocation</strong></p>
+    <p>${archived ? 'Historical 69913 snapshot.' : 'Selected Protection node records checked in client 70170; the complete calculator import remains 69913.'}</p>
+    <h3>Official Level 30 cap · ${snapshot.next.build ? 'Editorial Protection route' : 'Route pending review'}</h3>
+    <p><strong>Official cap: Level ${snapshot.next.level} · ${escapeHtml(snapshot.next.allocation ?? 'No reviewed allocation')}</strong></p>
     <p>${escapeHtml(snapshot.next.note)}</p>
-    <p>A ${snapshot.next.points}-point budget follows the one-point-per-level planning assumption; it is not a verified build.</p>
+    <p>A ${snapshot.next.points}-point budget follows standard one-point-per-level planning without Legacy: Talented; the route is editorial, not a tested best build.</p>
+    ${snapshot.next.build ? `<p>${link(protectionPlannerHref(30), 'Open Level 30 Protection route in Calculator')}</p>` : ''}
     <ul>${snapshot.milestones.map((milestone) => `<li>${escapeHtml(milestone)}</li>`).join('')}</ul>
-    <p>${link(BETA_LEVEL_CAP_SOURCE.href, 'Official level-cap source')} · ${link(snapshot.recommendationSource.href, 'Recommendation source')}</p>
+    <p>${link(BETA_LEVEL_CAP_SOURCE.href, 'Official level-cap source')} · ${link(snapshot.recommendationSource.href, archived ? 'Recommendation source' : 'Protection client node source')}</p>
+    ${pageId === 'protection-leveling' && !archived ? renderToStaticMarkup(createElement(ProtectionRouteEvidence)) : ''}
   </section>`
 }
 
@@ -128,15 +132,17 @@ export function renderBetaSpecPathPrerender(branch: Branch): string {
     <p>Best for: ${path.bestFor.map(escapeHtml).join(' · ')}.</p>
     <h3>${archived ? 'Archived Level 20 route' : 'Level 20 starting route'}</h3>
     <p><strong>Level ${path.current.level} · ${path.current.points} points · ${escapeHtml(path.current.allocation)}</strong></p>
-    <p>${archived ? 'Historical community recommendation; not playable after the September 24 talent removal.' : 'Community recommendation.'}</p>
+    <p>${archived ? 'Historical community recommendation; not playable after the September 24 talent removal.' : branch === 'protection' ? 'BuildForgeTools editorial point order; not performance tested.' : 'Community recommendation.'}</p>
     <ol>${path.current.steps.map((step) => `<li><strong>${escapeHtml(step.levels)}:</strong> ${escapeHtml(step.talent)}</li>`).join('')}</ol>
     <p>${link(betaSpecPlannerHref(branch), archived ? 'Open Calculator without this route' : `Load the Level ${path.current.level} path in the Calculator`)}.</p>
-    <h3>Official Level 30 cap · Route pending review</h3>
-    <p><strong>Official cap: Level ${path.next.level} · No reviewed allocation</strong></p>
+    <h3>Official Level 30 cap · ${path.next.build ? 'Editorial Protection route' : 'Route pending review'}</h3>
+    <p><strong>Official cap: Level ${path.next.level} · ${escapeHtml(path.next.allocation ?? 'No reviewed allocation')}</strong></p>
     <p>${escapeHtml(path.next.note)}</p>
-    <p>A ${path.next.points}-point budget follows the one-point-per-level planning assumption; it is not a verified build.</p>
-    <p>${archived ? 'Historical' : escapeHtml(EVIDENCE_STATUS.client_verified.label)} talent names, ranks, and positions · Build ${escapeHtml(PALADIN_BETA_STATUS.build)}.</p>
-    <p>${link(BETA_LEVEL_CAP_SOURCE.href, 'Official level-cap source')} · ${link(path.recommendationSource.href, 'Recommendation source')}</p>
+    <p>A ${path.next.points}-point budget follows standard one-point-per-level planning without Legacy: Talented; it is not a measured best build.</p>
+    ${branch === 'protection' && path.next.build ? `<p>${link(protectionPlannerHref(30), 'Load Level 30 Protection route')}</p>` : ''}
+    <p>${branch === 'protection' && !archived ? 'Selected Protection node IDs, ranks, and positions · client 1.60.1.70170. Complete calculator import remains 69913.' : `${archived ? 'Historical' : escapeHtml(EVIDENCE_STATUS.client_verified.label)} talent names, ranks, and positions · Build ${escapeHtml(PALADIN_BETA_STATUS.build)}.`}</p>
+    <p>${link(BETA_LEVEL_CAP_SOURCE.href, 'Official level-cap source')} · ${link(path.recommendationSource.href, branch === 'protection' && !archived ? 'Protection client node source' : 'Recommendation source')}</p>
+    ${branch === 'protection' && !archived ? renderToStaticMarkup(createElement(ProtectionRouteEvidence)) : ''}
   </section>`
 }
 
@@ -261,7 +267,7 @@ export function renderSpecHubPrerender(spec: Branch): string {
   ${renderBetaStatusPrerender()}
   ${spec === 'protection' ? (() => {
     const snapshot = betaLevelingSnapshot('protection-leveling')
-    return `<section aria-label="Archived Beta Protection starting route"><h2>Archived Level ${snapshot.current.level} Protection route</h2><p>${escapeHtml(snapshot.archiveNotice ?? '')}</p><p>Historical community recommendation · ${snapshot.current.points} points at Level ${snapshot.current.level} · ${escapeHtml(snapshot.current.allocation)}. This 69913-era route is retained for comparison, not offered as a playable build.</p><p>${link(betaLevelingPlannerHref('protection-leveling'), 'Open Calculator without old route')} · ${link('/wow-forever-protection-paladin-leveling-build', 'See the archived level-by-level route')}</p></section>`
+    return `<section aria-label="Current Beta Protection starting route"><h2>Level ${snapshot.current.level} Protection route</h2><p>${escapeHtml(snapshot.current.note)}</p><p>Editorial standard-progression route · ${snapshot.current.points} points at Level ${snapshot.current.level} · ${escapeHtml(snapshot.current.allocation)}. Selected node records were checked in client 70170; the complete calculator still imports 69913.</p><p>${link(betaLevelingPlannerHref('protection-leveling'), 'Load Level 20 Protection route')} · ${link(protectionPlannerHref(30), 'Load Level 30 Protection route')} · ${link('/wow-forever-protection-paladin-leveling-build', 'See the level-by-level route')}</p></section>`
   })() : ''}
   <section><h2>${label} Build Types</h2>${linkList(buildTypes)}</section>
   ${hub.editorialSections.map((section) => `<section><h2>${escapeHtml(section.heading)}</h2>${section.paragraphs.map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join('')}</section>`).join('\n  ')}

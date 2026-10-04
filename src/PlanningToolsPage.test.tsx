@@ -19,9 +19,11 @@ it('opens the confirmed Ruins dungeon with a current-cap route and calculator sn
   expect(screen.getByText('8 talent points')).toBeTruthy()
   expect(screen.getByRole('button',{name:/Excavation Site/i}).hasAttribute('disabled')).toBe(true)
 })
-it('switches dungeon and party roles without offering a stale Protection Paladin route', () => {
+it('offers the node-reviewed Protection route for a dungeon tank', () => {
   render(<PlanningToolsPage tool="dungeon-finder" />)
-  expect(document.querySelector('[data-tool-route="paladin-protection"]')).toBeNull()
+  const protection = document.querySelector('[data-tool-route="paladin-protection"]') as HTMLElement
+  expect(protection).toBeTruthy()
+  expect(within(protection).getByRole('link',{name:/Edit level 20 snapshot/i}).getAttribute('href')).toContain('redoubt.5')
   fireEvent.click(screen.getByRole('button',{name:'Heal'}))
   expect(screen.getByRole('heading',{name:/Ruins of Lordaeron: Heal routes/i})).toBeTruthy()
   fireEvent.click(screen.getByRole('button',{name:/Hall of Thanes/i}))

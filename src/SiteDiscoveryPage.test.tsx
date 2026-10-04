@@ -14,6 +14,7 @@ describe('discovery rendering and artifacts', () => {
     const featured = wowCard!.querySelector('nav[aria-label="Featured Paladin tools"]')
     expect(featured).not.toBeNull()
     expect(featured!.querySelector('a[href="/paladin"]')?.textContent).toContain('WoW Forever Paladin Talent Calculator')
+    expect(featured!.querySelector('a[href="/wow-forever-paladin-talents"]')?.textContent).toContain('Paladin Talent Trees')
     expect(featured!.querySelector('a[href="/wow-forever-paladin-builds"]')?.textContent).toContain('Paladin Builds')
     expect(featured!.compareDocumentPosition(wowCard!.querySelector('.sd-primary')!) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
   })
@@ -23,6 +24,20 @@ describe('discovery rendering and artifacts', () => {
     const intentNav = doc.querySelector('.sd-intent-nav')
     expect(featured?.textContent).toContain('Paladin Builds')
     expect(featured?.compareDocumentPosition(intentNav!) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
+  })
+  it('links to distinct published planning routes from the home page', () => {
+    const doc = new DOMParser().parseFromString(renderToStaticMarkup(<AppRoute pathname="/" />), 'text/html')
+    const section = doc.querySelector('.sd-focused-routes')
+    expect(section?.querySelectorAll('article')).toHaveLength(3)
+    for (const path of [
+      '/wow-forever-warlock-pvp-build',
+      '/wow-forever-frost-mage-aoe-build',
+      '/wow-forever-elemental-vs-enhancement-shaman-leveling',
+    ]) {
+      expect(section?.querySelector(`a[href="${path}"]`)).not.toBeNull()
+      expect(pageForPath(path).canonical).toBe(`https://buildforgetools.com${path}`)
+    }
+    expect(section?.textContent).toContain('not performance rankings')
   })
   it('helps visitors choose a class and labels older Level 20 examples accurately', () => {
     const doc = new DOMParser().parseFromString(renderToStaticMarkup(<AppRoute pathname="/wow-forever-classes" />), 'text/html')
@@ -39,7 +54,7 @@ describe('discovery rendering and artifacts', () => {
   it('dates the edited discovery pages while retaining the classes date', () => {
     const sitemap = new DOMParser().parseFromString(readFileSync('public/sitemap.xml', 'utf8'), 'application/xml')
     const date = (path: string) => [...sitemap.querySelectorAll('url')].find(url => url.querySelector('loc')?.textContent === `https://buildforgetools.com${path}`)?.querySelector('lastmod')?.textContent
-    expect(date('/')).toBe('2026-09-27')
+    expect(date('/')).toBe('2026-10-05')
     expect(date('/wow-forever-builds')).toBe('2026-09-25')
     expect(date('/wow-forever-classes')).toBe('2026-10-04')
   })

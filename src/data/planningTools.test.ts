@@ -3,6 +3,7 @@ import { DUNGEONS, buildCatalogue, dungeonMatches, milestonesForDungeon, nextTal
 import { PUBLISHED_CLASSES } from './classes'
 import { pageForPath } from '../lib/routes'
 import { totalPlannerPoints } from '../lib/talentPlanner'
+import { PROTECTION_ROUTE_EVIDENCE } from './protectionCurrentRoute'
 
 describe('evidence-bounded planning tools', () => {
   it('keeps unreviewed future dungeons locked', () => {
@@ -26,10 +27,13 @@ describe('evidence-bounded planning tools', () => {
     expect(nextTalentAtLevel(route, 20)).toBeUndefined()
     expect(nextTalentAtLevel(route, 20.5)).toBeUndefined()
   })
-  it('offers only published, replayable routes and excludes known obsolete Paladin nodes', () => {
+  it('offers only published, replayable routes, including the reviewed Protection starter', () => {
     const catalogue = buildCatalogue()
     expect(catalogue.length).toBeGreaterThan(20)
-    expect(catalogue.some(b => b.classId === 'paladin' && b.role === 'tank')).toBe(false)
+    const protection = catalogue.find(b => b.id === 'paladin-protection')
+    expect(protection?.role).toBe('tank')
+    expect(protection?.version).toBe(PROTECTION_ROUTE_EVIDENCE.reviewedClientBuild)
+    expect(protection?.removedTalentNames).toEqual([])
     for (const route of catalogue) {
       expect(pageForPath(route.href).canonical).toBe(`https://buildforgetools.com${route.href}`)
       expect(route.steps.length).toBe(11)

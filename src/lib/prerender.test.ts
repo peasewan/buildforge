@@ -176,13 +176,15 @@ describe('prerender generation', () => {
     expect(html).not.toContain('No reviewed allocation')
   })
 
-  it('prerenders the old Protection leveling path as archived without its stale build deep link', () => {
+  it('prerenders the current Protection leveling milestones with editable links', () => {
     const html = renderBetaLevelingSnapshotPrerender('protection-leveling')
-    expect(html).toContain('Archived Level 20 route')
-    expect(html).toContain('2/9/0')
-    expect(html).toContain('Official Level 30 cap · Route pending review')
-    expect(html).toContain('href="/build?id=#calculator"')
-    expect(html).not.toMatch(/href="\/build\?id=[^#"]/)
+    expect(html).toContain('Level 20 starting route')
+    expect(html).toContain('0/11/0')
+    expect(html).toContain('0/21/0')
+    expect(html).toContain('70170')
+    expect(html).toContain('TraitNode CSV')
+    expect(html).toContain('level=20#calculator')
+    expect(html).toContain('level=30#calculator')
   })
 
   it.each([
@@ -203,13 +205,15 @@ describe('prerender generation', () => {
     expect(html).toContain('Community recommendation')
   })
 
-  it('prerenders the archived Protection route with a blank calculator link', () => {
+  it('prerenders the editor-reviewed Protection route without the removed old allocation', () => {
     const html = renderBetaSpecPathPrerender('protection')
-    expect(html).toContain('Archived Beta talent path')
-    expect(html).toContain('2/9/0')
-    expect(html).toContain('Improved Holy Strike')
-    expect(html).toContain('href="/build?id=#calculator"')
-    expect(html).not.toMatch(/href="\/build\?id=[^#"]/)
+    expect(html).toContain('Beta talent starting path')
+    expect(html).toContain('0/11/0')
+    expect(html).toContain('0/21/0')
+    expect(html).toContain('BuildForgeTools editorial point order')
+    expect(html).toContain('level=20#calculator')
+    expect(html).toContain('level=30#calculator')
+    expect(html).not.toContain('improved_holy_strike.2')
   })
 
   it('links every build the hub data declares', () => {
@@ -228,15 +232,15 @@ describe('prerender generation', () => {
     for (const href of specHubHrefs(hub)) expect(html).toContain(`href="${href}"`)
   })
 
-  it('renders the archived Protection Beta route without the old deep link for crawlers', () => {
+  it('renders the Protection Beta route with current-cap planner links for crawlers', () => {
     const html = renderSpecHubPrerender('protection')
     expect(html).toContain('Level 20')
-    expect(html).toContain('2/9/0')
-    expect(html).toContain('Archived')
-    expect(html).toContain(`href="${betaLevelingPlannerHref('protection-leveling')}"`)
-    expect(html).not.toMatch(/href="\/build\?id=[^#"]/)
+    expect(html).toContain('0/11/0')
+    expect(html).toContain('Level 30 Protection route')
+    expect(html).toContain(`href="${betaLevelingPlannerHref('protection-leveling').replaceAll('&', '&amp;')}"`)
+    expect(html).not.toContain('improved_holy_strike.2')
     expect(html).toContain('href="/wow-forever-protection-paladin-leveling-build"')
-    expect(renderSpecHubPrerender('retribution')).not.toContain('2/9/0')
+    expect(renderSpecHubPrerender('retribution')).not.toContain('0/11/0')
   })
 
   it('carries the landing page title as its only h1', () => {

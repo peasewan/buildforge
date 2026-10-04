@@ -65,26 +65,27 @@ describe('specialization builds hub', () => {
     expect(screen.getByText('0 tooltip updates since 69893 in that comparison')).toBeTruthy()
   })
 
-  it('puts the archived Protection route before the complete featured build without loading it', () => {
+  it('puts the editable Protection route before the historical featured build', () => {
     render(<SpecBuildsHub spec="protection" />)
 
-    const route = screen.getByRole('region', { name: 'Archived Beta Protection starting route' })
+    const route = screen.getByRole('region', { name: 'Current Beta Protection starting route' })
     expect(route.textContent).toContain('Level 20')
-    expect(route.textContent).toContain('2/9/0')
-    expect(route.textContent).toContain('Archived')
-    expect(betaLevelingPlannerHref('protection-leveling')).toBe('/build?id=#calculator')
+    expect(route.textContent).toContain('0/11/0')
+    expect(route.textContent).toContain('0/21/0')
+    expect(betaLevelingPlannerHref('protection-leveling')).toContain('level=20')
     expect(route.querySelector('a[href*="improved_holy_strike"]')).toBeNull()
-    expect(route.querySelector('a[href="/build?id=#calculator"]')).toBeTruthy()
+    expect(route.querySelector('a[href*="redoubt.5"][href*="level=20"]')).toBeTruthy()
     expect(route.querySelector('a[href="/wow-forever-protection-paladin-leveling-build"]')).toBeTruthy()
     expect(route.compareDocumentPosition(document.querySelector('#featured-build')!)).toBe(Node.DOCUMENT_POSITION_FOLLOWING)
+    expect(document.querySelector('#featured-build')?.textContent).toContain('Historical 51-point reference')
   })
 
-  it('does not advertise the archived Protection route as a current leveling path', () => {
+  it('advertises the reviewed-node Protection route without an archived label', () => {
     render(<SpecBuildsHub spec="protection" />)
 
     const links = document.querySelectorAll('a[href="/wow-forever-protection-paladin-leveling-build"]')
     expect(links.length).toBeGreaterThan(0)
-    for (const link of links) expect(link.closest('article, .spec-beta-start')?.textContent).toMatch(/archived/i)
+    for (const link of links) expect(link.closest('article, .spec-beta-start')?.textContent).not.toMatch(/archived/i)
   })
 
   it('does not add the Protection starting route to Retribution', () => {
@@ -94,6 +95,7 @@ describe('specialization builds hub', () => {
 
   it('presents the two full Retribution snapshots as under review without promising to load them', () => {
     render(<SpecBuildsHub spec="retribution" />)
+    expect(document.querySelector('#featured-build')?.textContent).toContain('Historical 51-point reference')
     expect(document.body.textContent).toMatch(/0\/20\/31.*historical/i)
     expect(document.body.textContent).toMatch(/Crusade.*70009.*under review/i)
     expect(document.body.textContent).not.toContain('open that exact setup in the calculator')
