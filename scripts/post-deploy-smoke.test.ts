@@ -4,22 +4,25 @@ import { checkProductionDeployment } from './post-deploy-smoke'
 const apex = 'https://buildforgetools.com'
 const pvpPath = '/wow-forever-hunter-pvp-build'
 const protectionPath = '/wow-forever-protection-paladin-leveling-build'
+const talentPath = '/wow-forever-paladin-talents'
 const deepLink = '/hunter?build=hunter-1389.5&level=20#class-calculator'
-const archiveNotice = '<section aria-label="Beta leveling snapshot">Archived September 24, 2026: Blizzard removed Improved Holy Strike from the Beta talent tree.</section>'
+const protectionRoute = '<section aria-label="Beta leveling snapshot">0/11/0 · 0/21/0 · 1.60.1.70170 · editorial<a href="/build?id=route&level=30#calculator">Load Level 30</a></section>'
+const talentIndex = `<section class="guide-talent-index">${Array.from({ length: 52 }, (_, i) => `<div data-talent-id="talent-${i}"></div>`).join('')}</section>`
 
 function html(path: string, body = ''): string {
   return `<html><head><link rel="canonical" href="${apex}${path}"><meta property="og:url" content="${apex}${path}"></head><body>${body}</body></html>`
 }
 
 function fixtures(overrides: Record<string, Response> = {}) {
-  const sitemap = ['paladin', 'hunter', pvpPath.slice(1), protectionPath.slice(1)].map((path) => `<url><loc>${apex}/${path}</loc></url>`).join('')
+  const sitemap = ['paladin', talentPath.slice(1), 'hunter', pvpPath.slice(1), protectionPath.slice(1)].map((path) => `<url><loc>${apex}/${path}</loc></url>`).join('')
   const responses: Record<string, Response> = {
     [`${apex}/sitemap.xml`]: new Response(`<urlset>${sitemap}</urlset>`, { status: 200, headers: { 'content-type': 'application/xml' } }),
     [`${apex}/`]: new Response(html('/'), { status: 200, headers: { 'content-type': 'text/html' } }),
     [`https://www.buildforgetools.com/`]: new Response(null, { status: 308, headers: { location: `${apex}/` } }),
     [`https://www.buildforgetools.com${pvpPath}`]: new Response(null, { status: 308, headers: { location: `${apex}${pvpPath}` } }),
     [`${apex}/paladin`]: new Response(html('/paladin'), { status: 200, headers: { 'content-type': 'text/html' } }),
-    [`${apex}${protectionPath}`]: new Response(html(protectionPath, archiveNotice), { status: 200, headers: { 'content-type': 'text/html' } }),
+    [`${apex}${talentPath}`]: new Response(html(talentPath, talentIndex), { status: 200, headers: { 'content-type': 'text/html' } }),
+    [`${apex}${protectionPath}`]: new Response(html(protectionPath, protectionRoute), { status: 200, headers: { 'content-type': 'text/html' } }),
     [`${apex}/hunter`]: new Response(html('/hunter', '<section id="class-calculator" data-intent-calculator="true"></section>'), { status: 200, headers: { 'content-type': 'text/html' } }),
     [`${apex}${pvpPath}`]: new Response(html(pvpPath, `<a href="${deepLink}">Try these points</a>`), { status: 200, headers: { 'content-type': 'text/html' } }),
     [`${apex}/hunter?build=hunter-1389.5&level=20`]: new Response(html('/hunter', '<section id="class-calculator" data-intent-calculator="true"></section>'), { status: 200, headers: { 'content-type': 'text/html' } }),
@@ -41,7 +44,7 @@ describe('post-deploy smoke gate', () => {
     const { fetchImpl, requested } = fixtures()
     const report = await checkProductionDeployment(fetchImpl)
     expect(report.issues).toEqual([])
-    expect(report.pagesChecked).toBe(4)
+    expect(report.pagesChecked).toBe(5)
     expect(requested).toContain(`${apex}/hunter?build=hunter-1389.5&level=20`)
   })
 
@@ -53,6 +56,7 @@ describe('post-deploy smoke gate', () => {
     expect(report.issues).toContain('Sitemap is missing required page: /paladin')
     expect(report.issues).toContain(`Sitemap is missing required page: ${pvpPath}`)
     expect(report.issues).toContain(`Sitemap is missing required page: ${protectionPath}`)
+    expect(report.issues).toContain(`Sitemap is missing required page: ${talentPath}`)
   })
 
   it('reports a www homepage that still returns 200', async () => {
@@ -83,11 +87,20 @@ describe('post-deploy smoke gate', () => {
     expect(report.issues).toContain('Hunter PvP: no build-loaded Hunter calculator link in rendered HTML')
   })
 
-  it('cannot pass an older Protection Leveling deployment without its archived route notice', async () => {
+  it('cannot pass a deployment without the current Protection route', async () => {
     const { fetchImpl } = fixtures({
       [`${apex}${protectionPath}`]: new Response(html(protectionPath), { status: 200, headers: { 'content-type': 'text/html' } }),
     })
     const report = await checkProductionDeployment(fetchImpl)
-    expect(report.issues).toContain('Protection Leveling: missing current archived-route notice for removed Improved Holy Strike')
+    expect(report.issues).toContain('Protection Leveling: missing current editorial Level 20/30 route and client evidence')
+    expect(report.issues).toContain('Protection Leveling: missing Level 30 calculator deep link')
+  })
+
+  it('cannot pass a deployment without the Paladin talent index', async () => {
+    const { fetchImpl } = fixtures({
+      [`${apex}${talentPath}`]: new Response(html(talentPath), { status: 200, headers: { 'content-type': 'text/html' } }),
+    })
+    const report = await checkProductionDeployment(fetchImpl)
+    expect(report.issues).toContain('Paladin Talents: missing 52-node historical Beta index')
   })
 })

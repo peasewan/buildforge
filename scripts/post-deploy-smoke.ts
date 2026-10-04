@@ -8,8 +8,7 @@ import { fileURLToPath } from 'node:url'
 
 const APEX = 'https://buildforgetools.com'
 const WWW = 'https://www.buildforgetools.com'
-const REQUIRED_PATHS = ['/paladin', '/hunter', '/wow-forever-hunter-pvp-build', '/wow-forever-protection-paladin-leveling-build'] as const
-const PROTECTION_ARCHIVE_NOTICE = 'Archived September 24, 2026: Blizzard removed Improved Holy Strike from the Beta talent tree.'
+const REQUIRED_PATHS = ['/paladin', '/wow-forever-paladin-talents', '/hunter', '/wow-forever-hunter-pvp-build', '/wow-forever-protection-paladin-leveling-build'] as const
 const { JSDOM } = createRequire(import.meta.url)('jsdom') as {
   JSDOM: new (html: string, options?: { contentType?: string }) => { window: { document: Document; close(): void } }
 }
@@ -112,9 +111,17 @@ export async function checkProductionDeployment(fetchImpl: Fetcher = fetch): Pro
     const og = page.doc.querySelector('meta[property="og:url"]')?.getAttribute('content') ?? '(missing)'
     if (canonical !== url) issues.push(`${path}: canonical expected ${url}, got ${canonical}`)
     if (og !== url) issues.push(`${path}: og:url expected ${url}, got ${og}`)
+    if (path === '/wow-forever-paladin-talents') {
+      const index = page.doc.querySelector('.guide-talent-index')
+      if (index?.querySelectorAll('[data-talent-id]').length !== 52) issues.push('Paladin Talents: missing 52-node historical Beta index')
+    }
     if (path === '/wow-forever-protection-paladin-leveling-build') {
-      const notice = page.doc.querySelector('section[aria-label="Beta leveling snapshot"]')?.textContent ?? ''
-      if (!notice.includes(PROTECTION_ARCHIVE_NOTICE)) issues.push('Protection Leveling: missing current archived-route notice for removed Improved Holy Strike')
+      const route = page.doc.querySelector('section[aria-label="Beta leveling snapshot"]')
+      const copy = route?.textContent ?? ''
+      if (!['0/11/0', '0/21/0', '1.60.1.70170', 'editorial'].every(part => copy.includes(part))) {
+        issues.push('Protection Leveling: missing current editorial Level 20/30 route and client evidence')
+      }
+      if (!route?.querySelector('a[href*="level=30#calculator"]')) issues.push('Protection Leveling: missing Level 30 calculator deep link')
     }
     if (path === '/wow-forever-hunter-pvp-build') {
       pvpDocument = page.doc
