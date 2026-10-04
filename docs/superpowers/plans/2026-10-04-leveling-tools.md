@@ -18,5 +18,5 @@ Review focus: current-vs-historical labels, next talent at cap, route deep-link 
 - Lint and production build passed. SEO validator: 159 indexable URLs, 159 sitemap entries, 22 frozen Paladin routes, zero errors and two advisory warnings.
 - Desktop: Level 20/30 timeline selection and exact Level 30 calculator link checked; calculator displays 21/21.
 - Mobile (390 px): timeline and illustrative XP comparison checked; no horizontal overflow.
-- [ ] Push main and verify production HTML and sitemap.
-- [ ] Submit the existing sitemap through GSC MCP and record its actual result.
+- [x] Pushed feature commit `b1155c0` to main; Vercel reported deployment success. All four changed feature URLs returned HTTP 200 with new content; the Level 30 shared-build route and production JS/CSS also returned 200. Sitemap remains 159 URLs with the four changed routes dated 2026-10-04.
+- [x] Attempted existing sitemap submission through GSC MCP (`sc-domain:buildforgetools.com`). The call timed out after 300 seconds. Resubmission is **not confirmed**; live sitemap deployment is confirmed. No new sitemap or URL was introduced.
