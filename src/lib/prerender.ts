@@ -1,3 +1,4 @@
+import { paladinLevelingHref } from '../data/paladinLevelingProgression'
 import { createElement } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import PaladinLevelingTimeline from '../PaladinLevelingTimeline'
@@ -135,11 +136,12 @@ export function renderBetaSpecPathPrerender(branch: Branch): string {
     <p>${archived ? 'Historical community recommendation; not playable after the September 24 talent removal.' : branch === 'protection' ? 'BuildForgeTools editorial point order; not performance tested.' : 'Community recommendation.'}</p>
     <ol>${path.current.steps.map((step) => `<li><strong>${escapeHtml(step.levels)}:</strong> ${escapeHtml(step.talent)}</li>`).join('')}</ol>
     <p>${link(betaSpecPlannerHref(branch), archived ? 'Open Calculator without this route' : `Load the Level ${path.current.level} path in the Calculator`)}.</p>
-    <h3>Official Level 30 cap · ${path.next.build ? 'Editorial Protection route' : 'Route pending review'}</h3>
+    <h3>Official Level 30 cap · ${path.next.build ? (branch === 'protection' ? 'Editorial Protection route' : 'Community Ret route') : 'Route pending review'}</h3>
     <p><strong>Official cap: Level ${path.next.level} · ${escapeHtml(path.next.allocation ?? 'No reviewed allocation')}</strong></p>
     <p>${escapeHtml(path.next.note)}</p>
     <p>A ${path.next.points}-point budget follows standard one-point-per-level planning without Legacy: Talented; it is not a measured best build.</p>
     ${branch === 'protection' && path.next.build ? `<p>${link(protectionPlannerHref(30), 'Load Level 30 Protection route')}</p>` : ''}
+    ${branch === 'retribution' && path.next.build ? `<p>${link(paladinLevelingHref(30), 'Load Level 30 Ret route')}</p>` : ''}
     <p>${branch === 'protection' && !archived ? 'Selected Protection node IDs, ranks, and positions · client 1.60.1.70170. Complete calculator import remains 69913.' : `${archived ? 'Historical' : escapeHtml(EVIDENCE_STATUS.client_verified.label)} talent names, ranks, and positions · Build ${escapeHtml(PALADIN_BETA_STATUS.build)}.`}</p>
     <p>${link(BETA_LEVEL_CAP_SOURCE.href, 'Official level-cap source')} · ${link(path.recommendationSource.href, branch === 'protection' && !archived ? 'Protection client node source' : 'Recommendation source')}</p>
     ${branch === 'protection' && !archived ? renderToStaticMarkup(createElement(ProtectionRouteEvidence)) : ''}

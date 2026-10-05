@@ -39,3 +39,5 @@ import './planning-tools.css'
 import './nivalis.css'
 import './pvpFlow.css'
 import './forgePilot.css'
+
+import './paladin-decisions.css'

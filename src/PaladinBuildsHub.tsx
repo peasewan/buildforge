@@ -36,6 +36,7 @@ export default function PaladinBuildsHub() {
       </section>
 
       <BetaDataStatus />
+      <section className="shell build-decisions"><h2>Compare before choosing a build</h2><p>Replay Ret or Holy Shock planning examples from Level 10 to 30. Check why Twist of Light exceeds the imported 21-point budget, then edit the exact allocation.</p><a className="button primary" href="/wow-forever-paladin-build-comparator">Compare Paladin routes</a> <a className="text-link" href="/wow-forever-paladin-beta-talent-changes#build-impact">See which builds select changed talents →</a></section>
 
       <section className="hub-section shell" id="specializations">
         <header className="hub-section-heading"><div className="eyebrow">Three Talent Paths</div><h2>Choose Your Paladin Specialization</h2><p>Start with the role you want to play, then open a focused build and customize its talent allocation.</p></header>

@@ -40,12 +40,12 @@ describe('published current Paladin routes', () => {
     expect(PALADIN_BETA_SNAPSHOT.phase.officialSource).toContain('2360696/1')
     expect(BETA_SPEC_PATHS.holy.next.status).toBe('under_review')
     expect(BETA_SPEC_PATHS.protection.next.status).toBe('editorial_reviewed')
-    expect(BETA_SPEC_PATHS.retribution.next.status).toBe('under_review')
+    expect(BETA_SPEC_PATHS.retribution.next.status).toBe('community_reviewed')
     for (const path of Object.values(BETA_SPEC_PATHS)) {
       expect(path.current.level).toBe(20)
       expect(path.current.points).toBe(11)
       expect(path.next.level).toBe(30)
-      if (path.branch !== 'protection') expect(path.next).not.toHaveProperty('allocation')
+      if (path.branch === 'holy') expect(path.next).not.toHaveProperty('allocation')
     }
     expect(betaSpecPlannerHref('holy')).toMatch(/&level=20#calculator$/)
     expect(betaSpecPlannerHref('retribution')).toMatch(/&level=20#calculator$/)

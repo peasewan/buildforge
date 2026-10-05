@@ -1,3 +1,4 @@
+import { PALADIN_LEVELING_STEPS } from './paladinLevelingProgression'
 import { encodeBuild, type Branch, type Build } from '../lib/build'
 import { PALADIN_BETA_SNAPSHOT } from './betaSnapshot'
 import { BETA_LEVEL_CAP_SOURCE, EMPTY_PALADIN_PLANNER_HREF, type BetaRouteStatus } from './levelingBeta'
@@ -113,8 +114,10 @@ export const BETA_SPEC_PATHS: Record<Branch, BetaSpecPath> = {
     next: {
       level: nextLevel,
       points: nextPoints,
-      note: 'No Level 30 Retribution allocation has been reviewed against the updated client tree. The earlier projection included removed Improved Holy Strike and is withheld.',
-      status: 'under_review',
+      note: 'The community 0/0/21 route has a complete Level 10–30 timeline. It passes the imported 69913 rules and excludes removed Improved Holy Strike and under-review Crusade. Full current-client validation is separate from this allocation review.',
+      allocation: '0/0/21',
+      build: PALADIN_LEVELING_STEPS.at(-1)!.build,
+      status: 'community_reviewed',
     },
     recommendationSource: {
       label: 'Mobalytics Retribution Paladin Guide',

@@ -1,0 +1,47 @@
+{
+  "reason": "User-authorized search recovery: scoped decision modules, route links, patch membership, four accurate descriptions and actual page modification dates. Existing titles, canonicals and robots remain frozen. One explicit H1 correction: Ret leveling adds Leveling to remove duplication with the general Ret Build page; all other H1s remain protected.",
+  "pages": {
+    "/wow-forever-paladin-builds": {
+      "rootSha256": "a73dfbb5619b00a73c2984c9cf7d12cc178b99692a75f9e0090b341cd1d192f9",
+      "linksSha256": "6038b3ac0e992ebce67de0847083c21e73f92a0edc0e5e149c0c63eea03cf100"
+    },
+    "/wow-forever-paladin-build": {
+      "rootSha256": "7434bec8cc75c6196fd5f5e4c434a1985c570b02cc3673a6126a137a34198987",
+      "linksSha256": "104abd927dca3079054d4cc78e4f1192e70a3d66b9299f932cea142cae333f11",
+      "headSeoSha256": "f1128d3d5532fd25b601a33d2561356999f6824b28a24ce427c3f394e621b9ba",
+      "lastmod": "2026-10-05"
+    },
+    "/wow-forever-protection-paladin-build": {
+      "description": "Plan a Level 30 Protection Paladin tank route, review threat and patch caveats, and open 21 points in the calculator. Includes a historical 20/31/0 reference.",
+      "rootSha256": "0cb4f79c40c2319b437146e73ac42a4ccf5a83dd46fdcfdf5d278b4ccc63b5a6",
+      "linksSha256": "761eec252369026f3d3a44dced82e862d965e74d7bac6f6d19d756b834a1670d",
+      "headSeoSha256": "40469535d2fb5195c1af9c3b1c71c905d4668723029c7d17bdd5bf23390ffe81"
+    },
+    "/wow-forever-retribution-paladin-build": {
+      "description": "Compare Level 30 Ret, Holy Shock and Twist of Light point requirements. Follow an editable leveling route, review Beta changes and inspect the historical build.",
+      "rootSha256": "35aeec5d5d3505b4930b94d9f2d0ba5d5a8685390f5ae7be43e2d77bab25454b",
+      "linksSha256": "32098818e22343c3396835c853bda15dd2ae46b93d265fe2e52ac47fa252390f",
+      "headSeoSha256": "0a8bbc3ad8c37dab6b98d10bad41053722b0769f3d5c7a1003f90ae3271e46c8",
+      "lastmod": "2026-10-05"
+    },
+    "/wow-forever-retribution-paladin-leveling-build": {
+      "description": "Follow a WoW Forever Ret Paladin Level 10–30 talent timeline, see your next point and load the allocation. Includes source limits and a historical build reference.",
+      "rootSha256": "4a2eae51c041ad79fa4d58bde8e6c2942196d4b937f5a2e9cb3bc895d9bb9277",
+      "linksSha256": "82820358258981a68d26b17b838eb409da69b15c345467c93dc26353094aecef",
+      "headSeoSha256": "b500aac1a5183788b80f32040a49e146a5c5b9d1e9ff5e69667a6c09d23a96be",
+      "lastmod": "2026-10-05",
+      "h1": "WoW ForeverRetribution Paladin Leveling Build"
+    },
+    "/wow-forever-protection-paladin-leveling-build": {
+      "rootSha256": "a59cd96a3ea805088110be26b7b302f92f4007dbef454d0fb10a3ded3fd87c62",
+      "linksSha256": "b33a5e267cb40f24e7bb40c13b5d34bed3627d4384fd8fb140ff241aa4bf39db"
+    },
+    "/wow-forever-paladin-beta-talent-changes": {
+      "description": "Review official Paladin Beta changes, affected build examples and historical client diffs. Separate current announcements from the imported 69913 talent snapshot.",
+      "rootSha256": "f16a1c0dd3b913b91d318269a7e9eb3c482df6af9feb31bab1987a08c4db8736",
+      "linksSha256": "eaa0b016d6bbbbb426791c972047b5eb17387d94526953bc807433abd3395480",
+      "headSeoSha256": "af95665af8664f44918a0ca193e1f1034ab4d5dab080709d67bbd477d402b24a",
+      "lastmod": "2026-10-05"
+    }
+  }
+}

@@ -1,4 +1,6 @@
 import { ArrowRight, Check, Route } from 'lucide-react'
+import PaladinRouteTimeline from './PaladinRouteTimeline'
+import { PROTECTION_POINT_STEPS } from './data/paladinDecisionTools'
 import PaladinLevelingTimeline from './PaladinLevelingTimeline'
 import VerificationBadge from './VerificationBadge'
 import { BETA_LEVEL_CAP_SOURCE, betaLevelingPlannerHref, betaLevelingSnapshot, type BetaLevelingPageId } from './data/levelingBeta'
@@ -13,6 +15,8 @@ export default function BetaLevelingSnapshot({ pageId }: { pageId: BetaLevelingP
   if (pageId !== 'protection-leveling') return <PaladinLevelingTimeline />
 
   return (
+    <>
+    <PaladinRouteTimeline steps={PROTECTION_POINT_STEPS} routeId="protection-leveling" title="Protection Level 10–30 Talent Timeline" evidence="Editorial route using five Protection nodes reviewed against 70170. Replay each point in the imported planner; full current-client tooltips and in-game performance remain unverified." />
     <section className="beta-leveling-snapshot shell" aria-label="Beta leveling snapshot">
       <header>
         <div><Route size={18} /><span>{archived ? 'Archived Beta leveling snapshot' : 'Beta leveling snapshot'}</span></div>
@@ -45,5 +49,6 @@ export default function BetaLevelingSnapshot({ pageId }: { pageId: BetaLevelingP
         {!archived && <ProtectionRouteEvidence />}
       </div>
     </section>
+    </>
   )
 }

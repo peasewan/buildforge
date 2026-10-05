@@ -105,7 +105,7 @@ describe('public page routing', () => {
     expect(pageForPath('/wow-forever-paladin-beta-talent-changes/')).toEqual({
       kind: 'beta-changes',
       title: 'WoW Forever Paladin Beta Talent Changes | BuildForgeTools',
-      description: 'Track every WoW Forever Paladin talent change discovered in the Beta, including exact build-to-build diffs and an archived demo comparison.',
+      description: 'Review official Paladin Beta changes, affected build examples and historical client diffs. Separate current announcements from the imported 69913 talent snapshot.',
       canonical: 'https://buildforgetools.com/wow-forever-paladin-beta-talent-changes',
       robots: 'index, follow',
     })

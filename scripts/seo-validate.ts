@@ -1,3 +1,4 @@
+import decisionToolsAmendments from '../docs/seo/approved-paladin-decision-tools-2026-10-05.json'
 import { readFileSync, readdirSync, writeFileSync } from 'node:fs'
 import { resolve, relative } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -53,7 +54,9 @@ const frozenPages = baseline.pages.map(page => {
   const datesAmendment = searchRecoveryDatesAmendments.pages[page.path as keyof typeof searchRecoveryDatesAmendments.pages]
   const withDates = datesAmendment ? { ...withLeveling, ...datesAmendment } : withLeveling
   const contentAmendment = searchRecoveryContentAmendments.pages[page.path as keyof typeof searchRecoveryContentAmendments.pages]
-  return contentAmendment ? { ...withDates, ...contentAmendment } : withDates
+  const withContent = contentAmendment ? { ...withDates, ...contentAmendment } : withDates
+  const decisions = decisionToolsAmendments.pages[page.path as keyof typeof decisionToolsAmendments.pages]
+  return decisions ? { ...withContent, ...decisions } : withContent
 })
 import vercel from '../vercel.json'
 import { parseSitemap, validateSeo, type Requirement } from './seo/validate'
@@ -89,6 +92,7 @@ for (const { classDef, page } of published) requirements[`/${page.slug}`] = {
   hub: `/${published.find(p => p.classDef === classDef && p.page.kind === 'buildsHub')!.page.slug}`,
   unavailableText: unavailable[page.kind],
 }
+requirements['/wow-forever-paladin-build-comparator'] = { selector: '[data-surface="paladin-build-comparator"]' }
 requirements['/songs-of-glimmerwick'] = { selector: '[data-surface="glimmerwick-garden"]' }
 requirements['/songs-of-glimmerwick-first-days'] = { selector: '[data-surface="glimmerwick-first-days"]' }
 requirements['/songs-of-glimmerwick-spellcasting'] = { selector: '[data-surface="glimmerwick-spellcasting"]' }
@@ -105,7 +109,7 @@ for (const file of files) {
 }
 const redirects = Object.fromEntries(vercel.redirects.filter(r => r.permanent && !('has' in r) && !r.source.includes(':')).map(r => [r.source, r.destination]))
 const report = validateSeo({ origin: 'https://buildforgetools.com', pages, sitemap: parseSitemap(readFileSync(resolve(dist, 'sitemap.xml'), 'utf8')),
-  expectedPaths: ['/nivalis-nights-profit-calculator', '/songs-of-glimmerwick', '/songs-of-glimmerwick-first-days', '/songs-of-glimmerwick-spellcasting', '/songs-of-glimmerwick-garden-well', ...baseline.pages.map(p => p.path), ...classPaths, ...DISCOVERY_PAGES.map(p => p.path), ...TRUST_PAGES.map(p => `/${p.slug}`), ...EMBERVILLE_PAGES.map(p => `/${p.slug}`)],
+  expectedPaths: ['/wow-forever-paladin-build-comparator', '/nivalis-nights-profit-calculator', '/songs-of-glimmerwick', '/songs-of-glimmerwick-first-days', '/songs-of-glimmerwick-spellcasting', '/songs-of-glimmerwick-garden-well', ...baseline.pages.map(p => p.path), ...classPaths, ...DISCOVERY_PAGES.map(p => p.path), ...TRUST_PAGES.map(p => `/${p.slug}`), ...EMBERVILLE_PAGES.map(p => `/${p.slug}`)],
   withheldPaths: PUBLISHED_CLASSES.flatMap(c => c.pages.map(p => `/${p.slug}`)).filter(p => !classPaths.includes(p)),
   redirects, aliases: { '/build': '/paladin' }, requirements, frozen: frozenPages,
 })

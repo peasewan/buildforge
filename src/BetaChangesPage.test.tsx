@@ -11,7 +11,7 @@ describe('Paladin Beta changes page', () => {
     expect(screen.getByRole('heading', { level: 1, name: 'WoW Forever Paladin Beta Talent Changes' })).toBeTruthy()
     expect(screen.getByText('October 1 update — Level 30 cap')).toBeTruthy()
     expect(screen.getByRole('heading', { level: 2, name: 'October 1 Beta — Level 30' })).toBeTruthy()
-    expect(screen.getByText(/no Level 30 allocation is treated as reviewed yet/i)).toBeTruthy()
+    expect(screen.getByText(/selected Protection route nodes were reviewed against 70170/i)).toBeTruthy()
     expect(screen.getByRole('link', { name: 'Read Blizzard’s October 1 development notes' }).getAttribute('href')).toContain('2360696/1')
     expect(screen.getByText('52 talents · 21 new in WoW Forever')).toBeTruthy()
     expect(screen.getByText('Holy 9 · Protection 5 · Retribution 7')).toBeTruthy()

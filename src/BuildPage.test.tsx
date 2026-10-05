@@ -132,16 +132,17 @@ describe('Holy healing build page', () => {
     const path = screen.getByRole('region', { name: 'Beta talent starting path' })
     expect(path.querySelector('.beta-leveling-grid article:first-child > div > span')?.textContent).toBe('Level 20 starting route')
     expect(path.textContent).toContain('Official cap: Level 30')
-    expect(document.querySelector('.build-hero-copy small')?.textContent).toBe(`Updated ${buildId === 'retribution-judgment-0-20-31' ? 'September 29' : 'September 20'}, 2026 · Beta client talent data`)
+    expect(document.querySelector('.build-hero-copy small')?.textContent).toBe(`Historical allocation reviewed ${buildId === 'retribution-judgment-0-20-31' ? 'September 29' : 'September 20'}, 2026 · Page updated October 5, 2026`)
   })
 
-  it('keeps the unreviewed Level 30 allocation separate from the executable Level 20 route', () => {
+  it('links the reviewed community Level 30 allocation separately from the Level 20 starter', () => {
     render(<BuildPage buildId="retribution-judgment-0-20-31" />)
 
     const path = screen.getByRole('region', { name: 'Beta talent starting path' })
     expect(path.textContent).toContain('0/0/11')
     expect(path.textContent).toContain('Official Level 30 cap')
-    expect(path.textContent).toContain('No reviewed allocation')
+    expect(path.textContent).toContain('0/0/21')
+    expect(screen.getByRole('link', { name: 'Load Level 30 Ret route' }).getAttribute('href')).toContain('&level=30#calculator')
     expect(path.textContent).not.toContain('2/0/19')
   })
 
@@ -161,6 +162,7 @@ describe('Holy healing build page', () => {
   it('shows the community Level 10–30 timeline on the Retribution leveling page', () => {
     render(<BuildPage buildId="retribution-leveling-20-0-31" />)
 
+    expect(screen.getByRole('heading', { level: 1, name: /WoW Forever\s*Retribution Paladin Leveling Build/ })).toBeTruthy()
     const snapshot = screen.getByRole('region', { name: 'Beta leveling snapshot' })
     expect(snapshot.textContent).toContain('Level 30 · 21 points')
     expect(snapshot.textContent).toContain('0/0/21')

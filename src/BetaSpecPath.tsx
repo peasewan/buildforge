@@ -4,6 +4,7 @@ import { betaSpecPath, betaSpecPlannerHref, BETA_LEVEL_CAP_SOURCE } from './data
 import { PALADIN_BETA_SNAPSHOT } from './data/betaSnapshot'
 import { BETA_PATCH_REVIEW } from './data/betaPatchReview'
 import type { Branch } from './lib/build'
+import { paladinLevelingHref } from './data/paladinLevelingProgression'
 import { protectionPlannerHref } from './data/protectionCurrentRoute'
 import ProtectionRouteEvidence from './ProtectionRouteEvidence'
 
@@ -41,6 +42,8 @@ export default function BetaSpecPath({ branch }: { branch: Branch }) {
           <b>{path.next.allocation ?? 'No reviewed allocation'}</b>
           <p>{path.next.note}</p>
           <small>A {path.next.points}-point budget follows standard one-point-per-level planning without Legacy: Talented; it is not a measured best build.</small>
+          {branch === 'retribution' && path.next.build && <a href={paladinLevelingHref(30)}>Load Level 30 Ret route <ArrowRight size={14} /></a>}
+          {branch === 'holy' && <a href="/wow-forever-paladin-build-comparator">Compare the Holy Shock snapshot example <ArrowRight size={14} /></a>}
           {branch === 'protection' && path.next.build && <a href={protectionPlannerHref(30)}>Load Level 30 route <ArrowRight size={14} /></a>}
         </article>
       </div>

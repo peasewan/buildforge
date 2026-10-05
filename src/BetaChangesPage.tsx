@@ -1,3 +1,4 @@
+import PaladinPatchImpact from './PaladinPatchImpact'
 import BetaPatchNotice from './BetaPatchNotice'
 import { Calculator } from "lucide-react";
 import { PALADIN_BETA_SNAPSHOT } from "./data/betaSnapshot";
@@ -52,6 +53,7 @@ export default function BetaChangesPage() {
       </section>
 
       <section className="beta-diff shell">
+        <PaladinPatchImpact />
         <section className="beta-detail-block">
           <h2>October 1 Beta update · Level 30</h2>
           <p>Blizzard says players can now level to 30. The same official update announces these Paladin tuning changes:</p>
@@ -60,7 +62,7 @@ export default function BetaChangesPage() {
             <li>Holy Shield: Block chance now 30% (was 20%).</li>
             <li>Champion of the Light: Intellect-to-Spell-Damage ratio now 20/40/60% (was 33/66/100%).</li>
           </ul>
-          <p>For Champion of the Light, the Healing increase was a tooltip error, not a live effect. The 69913 rank tooltips have not been updated from this announcement. These official changes are separate from the imported 69913 talent tree; no Level 30 allocation is treated as reviewed yet.</p>
+          <p>For Champion of the Light, the Healing increase was a tooltip error, not a live effect. The 69913 rank tooltips have not been updated from this announcement. These official changes are separate from the imported 69913 talent tree; the selected Protection route nodes were reviewed against 70170, while the full imported tree remains 69913. Ret has a community Level 30 planning route; neither route is performance tested.</p>
           <p><a href={snapshot.phase.officialSource} target="_blank" rel="noreferrer">Read Blizzard’s October 1 development notes</a></p>
         </section>
         <section className="beta-detail-block"><h2>September 24 update · build 70009</h2><p>70009 includes new class changes. The historical calculator dataset below remains 69913 until the full client payload and cross-check agree. “Unchanged in 69913” does not mean unchanged in 70009 or the October 1 update.</p><BetaPatchNotice classId="paladin" expanded /></section>
@@ -80,8 +82,8 @@ export default function BetaChangesPage() {
         </section>
 
         <section className="beta-detail-block beta-phase-block">
-          <div><div className="eyebrow">Live Test Phase</div><h2>October 1 Beta — Level 30</h2><p>The official level cap is now 30. Our published 11-point Level 20 routes remain partial starting snapshots; a reviewed 21-point Level 30 route is pending updated client-tree reconciliation.</p></div>
-          <a href={snapshot.phase.officialSource} target="_blank" rel="noreferrer">Read the official Level 30 update</a>
+          <div><div className="eyebrow">Live Test Phase</div><h2>October 1 Beta — Level 30</h2><p>The official level cap is now 30. Level 20 routes remain useful checkpoints. Follow the 21-point Protection editorial route or the Ret community timeline, and use the comparator to inspect Holy Shock planning limits. Full current-client reconciliation remains separate from route review.</p></div>
+          <a href="/wow-forever-paladin-build-comparator">Compare Level 30 routes</a> · <a href="/wow-forever-protection-paladin-leveling-build">Protection progression</a> · <a href={snapshot.phase.officialSource} target="_blank" rel="noreferrer">Read the official Level 30 update</a>
         </section>
 
         <div className="section-heading centered">

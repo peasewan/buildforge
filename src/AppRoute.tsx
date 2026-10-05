@@ -1,3 +1,4 @@
+import PaladinBuildComparator from './PaladinBuildComparator'
 import BetaPatchNotice from './BetaPatchNotice'
 import PlanningToolsPage from './PlanningToolsPage'
 import SiteDiscoveryPage from './SiteDiscoveryPage'
@@ -38,6 +39,7 @@ function routeElement(pathname: string) {
   if (route.kind === 'class-calculator' && classPage) return <ClassCalculatorPage classDef={classPage.classDef} />
   if (route.kind === 'class-document' && classPage) return <ClassDocumentPage classDef={classPage.classDef} page={classPage.page} />
   if (route.kind === 'emberville') return <EmbervillePage pageId={route.embervillePageId!} />
+  if (route.kind === 'paladin-comparison') return <PaladinBuildComparator />
   if (route.kind === 'guide') return <GuidePage />
   if (route.kind === 'build-guide') return <BuildPage buildId={route.buildId} />
   if (route.kind === 'build-landing') return <BuildLandingPage pageId={route.landingPageId!} />

@@ -11,7 +11,7 @@ import { NIVALIS_PAGE } from '../data/nivalis'
 import { GLIMMERWICK_LAUNCH_PAGES, type GlimmerwickLaunchPageId } from '../data/glimmerwickLaunchPages'
 
 export interface PageDefinition {
-  kind: 'discovery' | 'planner' | 'guide' | 'build-guide' | 'build-landing' | 'build-hub' | 'spec-hub' | 'spec-talents' | 'spellbook' | 'beta-changes' | 'trust' | 'emberville' | 'glimmerwick' | 'glimmerwick-launch' | 'nivalis' | 'class-calculator' | 'class-document'
+  kind: 'paladin-comparison' | 'discovery' | 'planner' | 'guide' | 'build-guide' | 'build-landing' | 'build-hub' | 'spec-hub' | 'spec-talents' | 'spellbook' | 'beta-changes' | 'trust' | 'emberville' | 'glimmerwick' | 'glimmerwick-launch' | 'nivalis' | 'class-calculator' | 'class-document'
   title: string
   description: string
   canonical: string
@@ -56,7 +56,7 @@ const protectionBuildPage: PageDefinition = {
   kind: 'build-guide',
   buildId: 'protection-shield-20-31-0',
   title: 'WoW Forever Protection Paladin Build | BuildForgeTools',
-  description: 'Inspect a historical 20/31/0 Protection Paladin tank reference, then start a new build for the live Level 30 Beta cap.',
+  description: 'Plan a Level 30 Protection Paladin tank route, review threat and patch caveats, and open 21 points in the calculator. Includes a historical 20/31/0 reference.',
   canonical: 'https://buildforgetools.com/wow-forever-protection-paladin-build',
   robots: 'index, follow',
 }
@@ -65,7 +65,7 @@ const retributionBuildPage: PageDefinition = {
   kind: 'build-guide',
   buildId: 'retribution-judgment-0-20-31',
   title: 'WoW Forever Retribution Paladin Build | BuildForgeTools',
-  description: 'Review the historical WoW Forever Retribution Paladin 0/20/31 allocation. Crusade is under review after a reported Beta change; start a new build.',
+  description: 'Compare Level 30 Ret, Holy Shock and Twist of Light point requirements. Follow an editable leveling route, review Beta changes and inspect the historical build.',
   canonical: 'https://buildforgetools.com/wow-forever-retribution-paladin-build',
   robots: 'index, follow',
 }
@@ -74,7 +74,7 @@ const retributionLevelingBuildPage: PageDefinition = {
   kind: 'build-guide',
   buildId: 'retribution-leveling-20-0-31',
   title: 'WoW Forever Retribution Paladin Leveling Build | BuildForgeTools',
-  description: 'Review the historical WoW Forever Retribution Paladin leveling 20/0/31 allocation. Crusade is under review; start a new Level 20 route.',
+  description: 'Follow a WoW Forever Ret Paladin Level 10–30 talent timeline, see your next point and load the allocation. Includes source limits and a historical build reference.',
   canonical: 'https://buildforgetools.com/wow-forever-retribution-paladin-leveling-build',
   robots: 'index, follow',
 }
@@ -90,7 +90,7 @@ const buildsHubPage: PageDefinition = {
 const betaChangesPage: PageDefinition = {
   kind: 'beta-changes',
   title: 'WoW Forever Paladin Beta Talent Changes | BuildForgeTools',
-  description: 'Track every WoW Forever Paladin talent change discovered in the Beta, including exact build-to-build diffs and an archived demo comparison.',
+  description: 'Review official Paladin Beta changes, affected build examples and historical client diffs. Separate current announcements from the imported 69913 talent snapshot.',
   canonical: 'https://buildforgetools.com/wow-forever-paladin-beta-talent-changes',
   robots: 'index, follow',
 }
@@ -125,6 +125,7 @@ export function pageForPath(pathname: string, search = ''): PageDefinition {
     title: embervillePage.metaTitle, description: embervillePage.description,
     canonical: `https://buildforgetools.com/${embervillePage.slug}`, robots: 'index, follow',
   }
+  if (normalized === '/wow-forever-paladin-build-comparator') return { kind: 'paladin-comparison', title: 'WoW Forever Paladin Build Comparator | Ret vs Holy Shock', description: 'Compare Ret and Holy Shock planning examples, Level 10–30 talent order and Twist of Light point gates. Inspect snapshot limits, then edit a route in the calculator.', canonical: 'https://buildforgetools.com/wow-forever-paladin-build-comparator', robots: 'index, follow' }
   if (normalized === '/build') return { ...plannerPage, robots: 'noindex, follow' }
   if (normalized === '/wow-forever-paladin-builds') return buildsHubPage
   const trustPage = TRUST_PAGES.find((page) => normalized === `/${page.slug}`)

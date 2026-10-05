@@ -1,0 +1,5 @@
+import { PALADIN_IMPACT_CHANGES, routesUsingTalent } from './data/paladinBuildImpact'
+import { talents } from './data/talents'
+export default function PaladinPatchImpact() {
+  return <section id="build-impact" className="beta-detail-block patch-impact"><h2>Patch changes → builds using the talent</h2><p>These links are computed from our published allocations. They show which examples select a changed talent, not measured damage, threat or healing changes. Historical examples and current planning routes are labeled separately.</p><div className="decision-grid">{PALADIN_IMPACT_CHANGES.map(change => <article key={change.id}><h3>{talents.find(talent => talent.id === change.id)!.name}</h3><small>Official announcement · {change.date}</small><p>{change.summary}</p><p>{change.impact}</p><ul>{routesUsingTalent(change.id).map(route => <li key={route.id}><a href={route.href}>{route.title}</a><small>{route.historical ? 'Historical snapshot example' : 'Level 30 planning route · not performance tested'}</small></li>)}</ul><a href={change.source} target="_blank" rel="noreferrer">Read the official source →</a></article>)}</div></section>
+}

@@ -11,6 +11,7 @@ import SiteFooter from './SiteFooter'
 import BetaDataStatus from './BetaDataStatus'
 import BetaTalentAvailability from './BetaTalentAvailability'
 import BetaLevelingSnapshot from './BetaLevelingSnapshot'
+import PaladinBuildDecisions from './PaladinBuildDecisions'
 import BetaSpecPath from './BetaSpecPath'
 
 const branches: Branch[] = ['holy', 'protection', 'retribution']
@@ -54,7 +55,7 @@ export default function BuildPage({ buildId = HOLY_HEALING_BUILD.id }: { buildId
     points: branchPoints(build.build, branch, talents),
     talents: talents.filter((talent) => talent.branch === branch && (build.build[talent.id] ?? 0) > 0),
   }))
-  const heroTitle = build.id === HOLY_HEALING_BUILD.id ? 'Paladin Build' : `${buildContent.spec} Paladin Build`
+  const heroTitle = build.id === HOLY_HEALING_BUILD.id ? 'Paladin Build' : build.id === 'retribution-leveling-20-0-31' ? 'Retribution Paladin Leveling Build' : `${buildContent.spec} Paladin Build`
   const isProtection = build.id === 'protection-shield-20-31-0'
   const underReview = build.reviewStatus === 'under_review'
   const plannerHref = examplePlannerHref(build)
@@ -79,7 +80,7 @@ export default function BuildPage({ buildId = HOLY_HEALING_BUILD.id }: { buildId
             <p>{buildContent.dek}</p>
             <p role="status">This 51-point allocation is a long-term historical reference. The live Beta cap is Level 30, so it cannot be played as a complete current Beta build. {underReview && 'Its Crusade node from the reported 70009 client diff remains under review.'}</p>
             <div className="build-actions"><OpenBuildLink build={build} href={plannerHref} placement="hero"><Calculator size={16} /> Start a New Build</OpenBuildLink><a className="text-link" href="#talent-allocation">View selected talents <ArrowRight size={15} /></a></div>
-            <small>Updated {buildContent.updated} · Beta client talent data</small>
+            <small>Historical allocation reviewed {buildContent.updated} · Page updated October 5, 2026</small>
           </div>
           <aside className="build-allocation-card" aria-label="Build allocation">
             <span>Talent allocation</span>
@@ -91,6 +92,7 @@ export default function BuildPage({ buildId = HOLY_HEALING_BUILD.id }: { buildId
       </section>
 
       <BetaDataStatus />
+      <PaladinBuildDecisions branch={specialization} />
       <BetaTalentAvailability branch={specialization} />
       {build.id !== 'retribution-leveling-20-0-31' && <BetaSpecPath branch={specialization} />}
       {build.id === 'retribution-leveling-20-0-31' && <BetaLevelingSnapshot pageId="retribution-leveling" />}

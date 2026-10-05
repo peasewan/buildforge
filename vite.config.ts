@@ -80,6 +80,7 @@ export default defineConfig(({ mode }) => ({
         protectionTalents: resolve(import.meta.dirname, 'wow-forever-protection-paladin-talents/index.html'),
         holyTalents: resolve(import.meta.dirname, 'wow-forever-holy-paladin-talents/index.html'),
         retributionTalents: resolve(import.meta.dirname, 'wow-forever-retribution-paladin-talents/index.html'),
+        paladinComparator: resolve(import.meta.dirname, 'wow-forever-paladin-build-comparator/index.html'),
         betaChanges: resolve(import.meta.dirname, 'wow-forever-paladin-beta-talent-changes/index.html'),
         paladinAbilities: resolve(import.meta.dirname, 'wow-forever-paladin-abilities/index.html'),
         about: resolve(import.meta.dirname, 'about/index.html'),
