@@ -1,0 +1,33 @@
+{
+  "reason": "User-authorized entry and mobile interaction fixes. Body changes are the shared TalentTree data-tip-edge attribute, corrected PvP point-budget explanation, and Holy PvP blank Level 30 link. Only Holy PvP links are amended. Titles, H1, description, canonical, robots, head fingerprint and sitemap remain frozen.",
+  "pages": {
+    "/paladin": {
+      "rootSha256": "fe40360ba831a39a8417ab53d4a20cfab06b5f0b401c146e381a41b9fda86c27"
+    },
+    "/wow-forever-paladin-pvp-build": {
+      "rootSha256": "901c9448e144ced001c925d2f38a495e9e0edc336da24f05884d5e1e8f3f28b4"
+    },
+    "/wow-forever-protection-paladin-dungeon-build": {
+      "rootSha256": "7f0bbd85a1dad4ddcbdaecd68a031396f20c95c020717d3543114ce5b3e86db2"
+    },
+    "/wow-forever-protection-paladin-pvp-build": {
+      "rootSha256": "83aa8cc621be9cb506e459a677eb1c35c4c5f9b1d7c6833e7f8a7e1a52c594dd"
+    },
+    "/wow-forever-retribution-paladin-pvp-build": {
+      "rootSha256": "877db1e02509d960c923cbee36ac72584845b1aba29a9b21a78e0deb5054012c"
+    },
+    "/wow-forever-holy-paladin-pvp-build": {
+      "rootSha256": "22b75cb117ec43cec30212922c97bef9c210a88018bbb9d3c4615e8bc474eb99",
+      "linksSha256": "bafdbf55cb4dff08274c2d1dfab3ab71a392021c0a4add80a9135aabc7739301"
+    },
+    "/wow-forever-holy-paladin-talents": {
+      "rootSha256": "0f11e0071b3ae9afcc511dc7d5e6c4d91d1600b2c1e2d6513b38061cadd635cc"
+    },
+    "/wow-forever-retribution-paladin-talents": {
+      "rootSha256": "8ed434e33bc86a9fb4bd53f772bf4808acf689d361d0152cd5450ebd3f1bf4c8"
+    },
+    "/wow-forever-protection-paladin-talents": {
+      "rootSha256": "ed352af87ac29776a6774755135bd0f4e812fc6ec75ca3a34a56326eb47d2695"
+    }
+  }
+}

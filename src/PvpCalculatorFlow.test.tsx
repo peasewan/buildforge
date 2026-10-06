@@ -40,7 +40,7 @@ afterEach(() => {
   sessionStorage.clear()
 })
 
-function enterPaladinVariant(pageId: 'retribution-pvp' | 'protection-pvp') {
+function enterPaladinVariant(pageId: 'retribution-pvp' | 'protection-pvp' | 'holy-pvp') {
   render(<BuildLandingPage pageId={pageId} />)
   const href = screen.getByRole('link', { name: 'Open Planner' }).getAttribute('href')!
   cleanup()
@@ -75,6 +75,25 @@ function enterWarriorPvp() {
 }
 
 describe('Published PvP route → adjust → share', () => {
+  it('opens Holy PvP as a blank Level 30 Holy plan, overriding a saved build', () => {
+    localStorage.setItem('wow-forever-paladin-build', 'divine_intellect.5')
+    enterPaladinVariant('holy-pvp')
+    expect(document.querySelector('.current-build')?.textContent).toContain('21 points remaining at Level 30')
+    expect(screen.getByRole('tab', { name: /^Holy/ }).getAttribute('aria-selected')).toBe('true')
+    expect(scrollTargets).toContain('calculator')
+  })
+
+  it('explains a full Level 20 Paladin starter and preserves level and spec when reset', () => {
+    enterPaladinPvpStarter()
+    expect(screen.getByText(/All 11 points at Level 20 are spent/)).toBeTruthy()
+    fireEvent.click(screen.getByRole('button', { name: 'Start blank build' }))
+    expect(document.querySelector('.current-build')?.textContent).toContain('11 points remaining at Level 20')
+    cleanup()
+    render(<App />)
+    expect(document.querySelector('.current-build')?.textContent).toContain('11 points remaining at Level 20')
+    expect(screen.getByRole('tab', { name: /^Retribution/ }).getAttribute('aria-selected')).toBe('true')
+  })
+
   it('opens the historical Protection PvP reference on a blank calculator', () => {
     enterPaladinVariant('protection-pvp')
     expect(new URLSearchParams(location.search).get('id')).toBe('')

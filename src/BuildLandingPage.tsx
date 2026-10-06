@@ -88,7 +88,8 @@ export default function BuildLandingPage({ pageId }: { pageId: BuildLandingPageI
   const historicalCta = ctaExample ? isHistoricalExample(ctaExample) : false
   const levelingHref = pageId === 'leveling' || pageId === 'protection-leveling' ? betaLevelingPlannerHref(pageId) : null
   const pvpRouteHref = pageId === 'pvp' ? '#pvp-starting-routes' : null
-  const primaryHref = pvpRouteHref ?? levelingHref ?? (ctaExample ? examplePlannerHref(ctaExample) : '/paladin#calculator')
+  const holyPvpHref = pageId === 'holy-pvp' ? '/build?id=&level=30&spec=holy#calculator' : null
+  const primaryHref = holyPvpHref ?? pvpRouteHref ?? levelingHref ?? (ctaExample ? examplePlannerHref(ctaExample) : '/paladin#calculator')
 
   return (
     <main className="landing-page">

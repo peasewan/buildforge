@@ -117,7 +117,7 @@ export function TalentTree({ branch, build, onAdd, onRemove, readOnly = false, p
         </>
         const nodeClass = `talent-node ${rank ? 'selected' : ''} ${unlocked ? 'available' : 'locked'} ${startingChoice && !readOnly ? 'starting-choice' : ''}`
         return (
-          <div className="talent-position" style={{ left: `${talent.x}%`, top: `${talent.y}%` }} key={talent.id}>
+          <div className="talent-position" data-tip-edge={talent.x < 25 ? 'left' : talent.x > 75 ? 'right' : undefined} style={{ left: `${talent.x}%`, top: `${talent.y}%` }} key={talent.id}>
             {readOnly
               ? <span className={`${nodeClass} read-only`} role="img" tabIndex={0} aria-label={label} aria-describedby={`tip-${talent.id}`}>{nodeContents}</span>
               : <button className={nodeClass} onClick={() => { if (lockReason) setFeedbackTalentId(talent.id); else onAdd?.(talent) }} aria-label={label} aria-describedby={`tip-${talent.id}`}>{nodeContents}</button>}
@@ -165,7 +165,11 @@ export function TalentTree({ branch, build, onAdd, onRemove, readOnly = false, p
 
 export default function App() {
   const [initialPlanner] = useState(initialPlannerState)
-  const [branch, setBranch] = useState<Branch>(() => dominantBranch(initialPlanner.build, talents, 'holy'))
+  const [branch, setBranch] = useState<Branch>(() => {
+    const requested = typeof window === 'undefined' ? null : new URLSearchParams(window.location.search).get('spec')
+    const fallback = BRANCHES.find(item => item === requested) ?? 'holy'
+    return dominantBranch(initialPlanner.build, talents, fallback)
+  })
   const [build, setBuild] = useState<Build>(initialPlanner.build)
   const [forgePilotLevel, setForgePilotLevel] = useState<number | null>(initialPlanner.forgePilotLevel)
   const [showSavedBuild, setShowSavedBuild] = useState(initialPlanner.restored)
@@ -226,10 +230,9 @@ export default function App() {
   const startNewBuild = () => {
     track('start_new_build', { previous_points: points })
     replaceBuild({})
-    setForgePilotLevel(null)
     setShowSavedBuild(false)
     setCopied(false)
-    window.history.replaceState({}, '', '/paladin#calculator')
+    window.history.replaceState({}, '', `/build?id=&level=${planningLevel}&spec=${branch}#calculator`)
   }
 
   const copyBuild = async () => {
@@ -382,7 +385,7 @@ export default function App() {
             <div className="planner-grid">
               <div className="tree-card">
                 <div className="panel-heading"><div><span>{branchNames[branch]} Specialization</span><h3>{branchTaglines[branch]}</h3></div><div className="legend"><i className="dot available" /> Available <i className="dot chosen" /> Selected</div></div>
-                {points === 51 && <p className="pvp-edit-notice" role="status">This historical 51-point reference is full. Remove a rank with the minus button before adding a different talent.</p>}
+                {points === pointCap && <div className="pvp-full-route"><p className="pvp-edit-notice" role="status">{planningLevel === 60 ? 'This historical 51-point reference is full.' : `All ${pointCap} points at Level ${planningLevel} are spent.`} Remove a rank with the minus button before adding a different talent, or start a blank build at the same level.</p><button type="button" className="button secondary" onClick={startNewBuild}>Start blank build</button></div>}
                 <TalentTree branch={branch} build={build} pointCap={pointCap} onAdd={addTalent} onRemove={(talent) => replaceBuild(decrementTalent(build, talent, talents))} />
                 <p className="tree-hint">Click a talent to add a rank. Use the small minus button to remove one.</p>
                 <a className="pvp-review-link" href="#paladin-build-summary">Review &amp; share this build →</a>

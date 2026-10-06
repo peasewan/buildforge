@@ -112,7 +112,7 @@ describe('Build landing page template', () => {
   it('does not auto-load an over-cap Holy reference into a current Beta planner', () => {
     render(<BuildLandingPage pageId="holy-pvp" />)
 
-    const expected = '/build?id=#calculator'
+    const expected = '/build?id=&level=30&spec=holy#calculator'
 
     expect(screen.getByRole('link', { name: 'Open Planner' }).getAttribute('href')).toBe(expected)
     for (const link of screen.getAllByRole('link', { name: /Open Talent Calculator/i })) {
@@ -126,7 +126,7 @@ describe('Build landing page template', () => {
       render(<BuildLandingPage pageId={pageId} />)
       expect(document.querySelector('.landing-hero')?.textContent).toMatch(/historical 51-point.*Level 30/i)
       expect(document.querySelector('.landing-summary-card')?.textContent).toContain('Historical 51-point reference')
-      expect(screen.getByRole('link', { name: 'Open Planner' }).getAttribute('href')).toBe('/build?id=#calculator')
+      expect(screen.getByRole('link', { name: 'Open Planner' }).getAttribute('href')).toBe(pageId === 'holy-pvp' ? '/build?id=&level=30&spec=holy#calculator' : '/build?id=#calculator')
       expect(document.body.textContent).not.toMatch(/reviewed starting allocation|complete calculator preset|open the preset/i)
     },
   )

@@ -16,3 +16,13 @@
 .pvp-manual-share label { display: block; margin-bottom: 7px; color: #ffe8a3; }
 .pvp-manual-share input { box-sizing: border-box; width: 100%; padding: 10px; border: 1px solid rgba(217,164,65,.4); border-radius: 7px; background: #090b10; color: #e6e9ef; font: inherit; }
 @media (max-width: 680px) { .pvp-starting-grid { grid-template-columns: 1fr; }.pvp-starting-grid article { padding: 18px; } }
+
+.pvp-full-route { margin-bottom: 20px; }
+.pvp-full-route .pvp-edit-notice { margin-bottom: 10px; }
+@media (max-width: 600px) {
+  /* Keep edge-column details inside the tree instead of widening the viewport. */
+  .talent-position[data-tip-edge="left"] .talent-tip { left: 0; translate: 0; }
+  .talent-position[data-tip-edge="right"] .talent-tip { left: auto; right: 0; translate: 0; }
+  .rank-minus { width: 44px; height: 44px; left: -14px; bottom: -18px; }
+  .class-rank-minus { width: 44px; height: 44px; left: 0; top: 28px; }
+}

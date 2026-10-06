@@ -1,3 +1,4 @@
+import calculatorEntryAmendments from '../docs/seo/approved-calculator-entry-2026-10-06.json'
 import decisionToolsAmendments from '../docs/seo/approved-paladin-decision-tools-2026-10-05.json'
 import { readFileSync, readdirSync, writeFileSync } from 'node:fs'
 import { resolve, relative } from 'node:path'
@@ -56,7 +57,9 @@ const frozenPages = baseline.pages.map(page => {
   const contentAmendment = searchRecoveryContentAmendments.pages[page.path as keyof typeof searchRecoveryContentAmendments.pages]
   const withContent = contentAmendment ? { ...withDates, ...contentAmendment } : withDates
   const decisions = decisionToolsAmendments.pages[page.path as keyof typeof decisionToolsAmendments.pages]
-  return decisions ? { ...withContent, ...decisions } : withContent
+  const withDecisions = decisions ? { ...withContent, ...decisions } : withContent
+  const entry = calculatorEntryAmendments.pages[page.path as keyof typeof calculatorEntryAmendments.pages]
+  return entry ? { ...withDecisions, ...entry } : withDecisions
 })
 import vercel from '../vercel.json'
 import { parseSitemap, validateSeo, type Requirement } from './seo/validate'
