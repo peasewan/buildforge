@@ -34,6 +34,9 @@
     }
   ],
   "rewrites": [
+    { "source": "/invokyr-how-to-win", "destination": "/invokyr-how-to-win/index.html" },
+    { "source": "/invokyr-multiplayer", "destination": "/invokyr-multiplayer/index.html" },
+    { "source": "/invokyr", "destination": "/invokyr/index.html" },
     { "source": "/wow-forever-dungeon-build-finder", "destination": "/wow-forever-dungeon-build-finder/index.html" },
     { "source": "/wow-forever-class-picker", "destination": "/wow-forever-class-picker/index.html" },
     { "source": "/wow-forever-classes", "destination": "/wow-forever-classes/index.html" },

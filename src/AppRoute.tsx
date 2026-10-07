@@ -1,3 +1,4 @@
+import InvokyrPage from './InvokyrPage'
 import PaladinBuildComparator from './PaladinBuildComparator'
 import BetaPatchNotice from './BetaPatchNotice'
 import PlanningToolsPage from './PlanningToolsPage'
@@ -26,6 +27,7 @@ import { pageForPath } from './lib/routes'
 
 function routeElement(pathname: string) {
   const route = pageForPath(pathname)
+  if (route.kind === 'invokyr') return <InvokyrPage pageId={route.invokyrPageId!} />
   if (route.discoveryId === 'dungeon-finder' || route.discoveryId === 'class-picker') return <PlanningToolsPage tool={route.discoveryId} />
   if (route.kind === 'discovery') return <SiteDiscoveryPage pageId={route.discoveryId!} />
   if (route.kind === 'glimmerwick') return <GlimmerwickPage />
@@ -58,5 +60,5 @@ export default function AppRoute({ pathname }: { pathname: string }) {
   const route = pageForPath(pathname)
   const classPage = publishedClassPage(pathname)
   const classId = classPage?.classDef.id ?? (pathname === '/paladin' || pathname === '/build' || pathname.includes('paladin') ? 'paladin' : undefined)
-  return <>{classId && <BetaPatchNotice classId={classId} />}{routeElement(pathname)}<FeedbackWidget inline={route.kind === 'glimmerwick-launch'} /></>
+  return <>{classId && <BetaPatchNotice classId={classId} />}{routeElement(pathname)}<FeedbackWidget inline={route.kind === 'glimmerwick-launch' || route.kind === 'invokyr'} /></>
 }

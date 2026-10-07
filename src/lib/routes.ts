@@ -1,3 +1,4 @@
+import { INVOKYR_PAGES, type InvokyrPageId } from '../data/invokyr'
 import { DISCOVERY_PAGES, type DiscoveryId } from '../data/siteDiscovery'
 import type { ExampleBuildId } from '../data/builds'
 import { BUILD_LANDING_PAGES, type BuildLandingPageId } from '../data/buildLandingPages'
@@ -11,7 +12,8 @@ import { NIVALIS_PAGE } from '../data/nivalis'
 import { GLIMMERWICK_LAUNCH_PAGES, type GlimmerwickLaunchPageId } from '../data/glimmerwickLaunchPages'
 
 export interface PageDefinition {
-  kind: 'paladin-comparison' | 'discovery' | 'planner' | 'guide' | 'build-guide' | 'build-landing' | 'build-hub' | 'spec-hub' | 'spec-talents' | 'spellbook' | 'beta-changes' | 'trust' | 'emberville' | 'glimmerwick' | 'glimmerwick-launch' | 'nivalis' | 'class-calculator' | 'class-document'
+  kind: 'invokyr' | 'paladin-comparison' | 'discovery' | 'planner' | 'guide' | 'build-guide' | 'build-landing' | 'build-hub' | 'spec-hub' | 'spec-talents' | 'spellbook' | 'beta-changes' | 'trust' | 'emberville' | 'glimmerwick' | 'glimmerwick-launch' | 'nivalis' | 'class-calculator' | 'class-document'
+  invokyrPageId?: InvokyrPageId
   title: string
   description: string
   canonical: string
@@ -113,6 +115,8 @@ const glimmerwickPage: PageDefinition = {
 
 export function pageForPath(pathname: string, search = ''): PageDefinition {
   const normalized = pathname.replace(/\/+$/, '') || '/'
+  const invokyr = INVOKYR_PAGES.find(page => page.path === normalized)
+  if (invokyr) return { kind: 'invokyr', invokyrPageId: invokyr.id, title: invokyr.title, description: invokyr.description, canonical: `https://buildforgetools.com${invokyr.path}`, robots: 'index, follow' }
   if (normalized === '/nivalis-nights-profit-calculator') return { kind: 'nivalis', title: NIVALIS_PAGE.title, description: NIVALIS_PAGE.description, canonical: NIVALIS_PAGE.canonical, robots: 'index, follow' }
   if (normalized === '/songs-of-glimmerwick') return glimmerwickPage
   const glimmerwickLaunchPage = GLIMMERWICK_LAUNCH_PAGES.find(page => page.path === normalized)

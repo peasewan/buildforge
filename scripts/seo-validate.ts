@@ -99,6 +99,9 @@ for (const { classDef, page } of published) requirements[`/${page.slug}`] = {
   unavailableText: unavailable[page.kind],
 }
 requirements['/wow-forever-paladin-build-comparator'] = { selector: '[data-surface="paladin-build-comparator"]' }
+requirements['/invokyr'] = { selector: '[data-surface="invokyr-home"]' }
+requirements['/invokyr-multiplayer'] = { selector: '[data-surface="invokyr-multiplayer"]' }
+requirements['/invokyr-how-to-win'] = { selector: '[data-surface="invokyr-ending"]' }
 requirements['/songs-of-glimmerwick'] = { selector: '[data-surface="glimmerwick-garden"]' }
 requirements['/songs-of-glimmerwick-first-days'] = { selector: '[data-surface="glimmerwick-first-days"]' }
 requirements['/songs-of-glimmerwick-spellcasting'] = { selector: '[data-surface="glimmerwick-spellcasting"]' }
@@ -115,7 +118,7 @@ for (const file of files) {
 }
 const redirects = Object.fromEntries(vercel.redirects.filter(r => r.permanent && !('has' in r) && !r.source.includes(':')).map(r => [r.source, r.destination]))
 const report = validateSeo({ origin: 'https://buildforgetools.com', pages, sitemap: parseSitemap(readFileSync(resolve(dist, 'sitemap.xml'), 'utf8')),
-  expectedPaths: ['/wow-forever-paladin-build-comparator', '/nivalis-nights-profit-calculator', '/songs-of-glimmerwick', '/songs-of-glimmerwick-first-days', '/songs-of-glimmerwick-spellcasting', '/songs-of-glimmerwick-garden-well', ...baseline.pages.map(p => p.path), ...classPaths, ...DISCOVERY_PAGES.map(p => p.path), ...TRUST_PAGES.map(p => `/${p.slug}`), ...EMBERVILLE_PAGES.map(p => `/${p.slug}`)],
+  expectedPaths: ['/invokyr', '/invokyr-multiplayer', '/invokyr-how-to-win', '/wow-forever-paladin-build-comparator', '/nivalis-nights-profit-calculator', '/songs-of-glimmerwick', '/songs-of-glimmerwick-first-days', '/songs-of-glimmerwick-spellcasting', '/songs-of-glimmerwick-garden-well', ...baseline.pages.map(p => p.path), ...classPaths, ...DISCOVERY_PAGES.map(p => p.path), ...TRUST_PAGES.map(p => `/${p.slug}`), ...EMBERVILLE_PAGES.map(p => `/${p.slug}`)],
   withheldPaths: PUBLISHED_CLASSES.flatMap(c => c.pages.map(p => `/${p.slug}`)).filter(p => !classPaths.includes(p)),
   redirects, aliases: { '/build': '/paladin' }, requirements, frozen: frozenPages,
 })

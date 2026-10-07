@@ -55,6 +55,9 @@ export default defineConfig(({ mode }) => ({
   build: {
     rollupOptions: {
       input: {
+        invokyrHome: resolve(import.meta.dirname, 'invokyr/index.html'),
+        invokyrMultiplayer: resolve(import.meta.dirname, 'invokyr-multiplayer/index.html'),
+        invokyrEnding: resolve(import.meta.dirname, 'invokyr-how-to-win/index.html'),
         main: resolve(import.meta.dirname, 'index.html'),
         dungeonFinder: resolve(import.meta.dirname, 'wow-forever-dungeon-build-finder/index.html'),
         classPicker: resolve(import.meta.dirname, 'wow-forever-class-picker/index.html'),
