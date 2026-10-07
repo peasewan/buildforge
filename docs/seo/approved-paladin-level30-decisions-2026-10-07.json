@@ -1,0 +1,21 @@
+{
+  "reason": "Owner approved evidence-scoped Level 30 Paladin decision clarification. Four existing build-page bodies add standard versus Legacy Talented point-budget wording, the reviewed Holy Shield gate, and clearly labeled editorial Holy/Retribution/Protection point choices. The new outbound link cites Blizzard's Legacy system. Titles, H1s, descriptions, canonicals, robots, head SEO signatures, URL inventory and sitemap dates remain frozen; the 69913 production talent snapshot is not relabeled as 70245.",
+  "pages": {
+    "/wow-forever-paladin-build": {
+      "rootSha256": "3acc5a69517c7cd0db5212958616ab5f72d41e1cda2e2f3c5f225a0778ed6f65",
+      "linksSha256": "ad10f91944af53b38f2b3dc88d1739b0a62c21ce8294c54117671b48c47f8ebd"
+    },
+    "/wow-forever-protection-paladin-build": {
+      "rootSha256": "3f8e591141d04b580ac75778198ca0d271db26b4eb188610af9e71c770126b68",
+      "linksSha256": "1d47b1a218d9ce312fa239a12a6ee1a736c035f1dac110aa3a714006f0686103"
+    },
+    "/wow-forever-retribution-paladin-build": {
+      "rootSha256": "b8ea4cfdcf2aa4f77865e5352d95dd931ba7d583d8d7d291956b6272571ba9ed",
+      "linksSha256": "aca0a9252a6a2f795f9a3e590d619ea828ad7607dde82e931f86073c38464967"
+    },
+    "/wow-forever-retribution-paladin-leveling-build": {
+      "rootSha256": "5198de2b58aeb4322fe1e47be95ffc23ad1a32f69d7a7ca5e9ddf4c467e06035",
+      "linksSha256": "2d70179eec8161970d8f1a3ed81c703b1489b753ffecd44f78646bc3a5227f70"
+    }
+  }
+}

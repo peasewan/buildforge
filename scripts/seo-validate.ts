@@ -1,5 +1,6 @@
 import calculatorEntryAmendments from '../docs/seo/approved-calculator-entry-2026-10-06.json'
 import wowUtilityAmendments from '../docs/seo/approved-wow-utility-tools-2026-10-07.json'
+import paladinLevel30Amendments from '../docs/seo/approved-paladin-level30-decisions-2026-10-07.json'
 import decisionToolsAmendments from '../docs/seo/approved-paladin-decision-tools-2026-10-05.json'
 import { readFileSync, readdirSync, writeFileSync } from 'node:fs'
 import { resolve, relative } from 'node:path'
@@ -62,7 +63,9 @@ const frozenPages = baseline.pages.map(page => {
   const entry = calculatorEntryAmendments.pages[page.path as keyof typeof calculatorEntryAmendments.pages]
   const withEntry = entry ? { ...withDecisions, ...entry } : withDecisions
   const utility = wowUtilityAmendments.pages[page.path as keyof typeof wowUtilityAmendments.pages]
-  return utility ? { ...withEntry, ...utility } : withEntry
+  const withUtility = utility ? { ...withEntry, ...utility } : withEntry
+  const level30 = paladinLevel30Amendments.pages[page.path as keyof typeof paladinLevel30Amendments.pages]
+  return level30 ? { ...withUtility, ...level30 } : withUtility
 })
 import vercel from '../vercel.json'
 import { parseSitemap, validateSeo, type Requirement } from './seo/validate'

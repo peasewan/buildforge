@@ -35,3 +35,7 @@ The user explicitly requested a 70009 review and necessary webpage updates. `app
 ## October 7 WoW utility amendment
 
 `approved-wow-utility-tools-2026-10-07.json` records only rendered body and affected link hashes for the owner-requested official change review and local 1–30 checklist on ten existing Paladin pages. No page title, H1, description, canonical, robots, head SEO signature, URL inventory or sitemap date was amended. The hash gate continues to reject unrelated changes.
+
+## October 7 Level 30 decision amendment
+
+`approved-paladin-level30-decisions-2026-10-07.json` records the reviewed rendered body and link hashes for four existing Paladin build pages. The change distinguishes 21 standard Level 30 points from the conditional Legacy: Talented point model, explains the current Holy Shield gate and labels editorial point paths and source scope. Titles, H1s, descriptions, canonicals, robots, head SEO signatures, URL inventory and sitemap dates remain frozen. The complete production tree remains the 69913 snapshot; the 70245 candidate is reviewed separately and is not promoted by this amendment.

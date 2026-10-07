@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { compareDungeonXp, type DungeonXpMeasurement } from './lib/dungeonXp'
 import { track } from './lib/analytics'
+import type { RunPrepFaction } from './data/runPrep'
+import type { ToolRole } from './data/planningTools'
 const fields: Array<{key:keyof DungeonXpMeasurement;label:string;min:number}> = [
   {key:'firstRunXp',label:'First-run total XP',min:0}, {key:'repeatRunXp',label:'Repeat-run total XP',min:0},
   {key:'waitMinutes',label:'Group wait (minutes)',min:0}, {key:'travelMinutes',label:'Round-trip travel (minutes)',min:0},
@@ -10,7 +12,14 @@ const fields: Array<{key:keyof DungeonXpMeasurement;label:string;min:number}> = 
 const blank = Object.fromEntries(fields.map(({key})=>[key,''])) as Record<keyof DungeonXpMeasurement,string>
 const sample = { firstRunXp:'12000',repeatRunXp:'3000',waitMinutes:'10',travelMinutes:'5',runMinutes:'25',turnInMinutes:'5',questXp:'6000',questMinutes:'30' }
 const format = (n:number) => n.toLocaleString('en-US',{maximumFractionDigits:0})
-export default function DungeonXpCompare() {
+interface DungeonXpCompareProps {
+  dungeonName: string
+  level: number
+  role: ToolRole
+  faction: 'all' | RunPrepFaction
+}
+
+export default function DungeonXpCompare({dungeonName, level, role, faction}: DungeonXpCompareProps) {
   const [values,setValues] = useState({...blank})
   const [isSample,setIsSample] = useState(false)
   const [submitted,setSubmitted] = useState(false)
@@ -22,7 +31,7 @@ export default function DungeonXpCompare() {
     return wait===null ? 'Below your questing rate even with no group wait.' : `Up to ${format(wait)} minutes of group wait to match your questing rate.`
   }
   return <section className="pt-evidence dungeon-xp" id="xp-compare" aria-labelledby="xp-heading">
-    <p className="pt-kicker">MEASURE YOUR OWN RUNS</p><h2 id="xp-heading">Dungeon leveling XP comparison</h2><p>Compare your first run, a repeat run and questing using measured XP and time. Include all kill and quest XP in each total once. First-run quests are not automatically added to a repeat run.</p>
+    <p className="pt-kicker">MEASURE YOUR OWN RUNS</p><h2 id="xp-heading">Dungeon leveling XP comparison</h2><p className="xp-context">{dungeonName} · Level {level} · {role === 'damage' ? 'DPS' : role === 'heal' ? 'Heal' : 'Tank'} · {faction === 'all' ? 'All factions' : faction === 'alliance' ? 'Alliance' : 'Horde'}</p><p>Compare your first run, a repeat run and questing using measured XP and time. Include all kill and quest XP in each total once. First-run quests are not automatically added to a repeat run.</p>
     <p>Use measurements from the same character level, rest state and party conditions. Tank / healer / DPS affects your observed wait and clear time; no role bonus, repeat penalty or high-level party formula is assumed.</p>
     <form onSubmit={event=>{event.preventDefault();setSubmitted(true);if(compareDungeonXp(numbers))track('dungeon_xp_compare',{input_source:isSample ? 'illustrative' : 'user_measurement'})}}>
       <div className="xp-fields">{fields.map(({key,label,min})=><label key={key} htmlFor={`xp-${key}`}>{label}<input id={`xp-${key}`} type="number" inputMode="decimal" min={min} step="any" required value={values[key]} onChange={event=>{setValues({...values,[key]:event.target.value});setSubmitted(false)}}/></label>)}</div>

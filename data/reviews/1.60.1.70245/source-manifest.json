@@ -1,0 +1,91 @@
+{
+  "build": "1.60.1.70245",
+  "resolvedRankSourceBuild": "1.60.1.70170",
+  "resolvedRankSourceUrl": "https://talentsforever.com/data.json",
+  "resolvedRankLicense": "CC-BY-4.0",
+  "resolvedRankLicenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "resolvedRankAttribution": "Data from talentsforever.com (https://talentsforever.com)",
+  "adaptationNotice": "Rank descriptions adapted from the Talents Forever export for BuildForgeTools; selected tuning checked against Blizzard Beta notes, with unresolved discrepancies recorded in the review.",
+  "resolvedRankExportSha256": "70f11320afcba566f795be550a52c90a71f37b8ae33c208a560da80951b057d9",
+  "upstreamExportSha256": "d7a59075215c06db113b62880655c5ee134ad16b1fe804de263fa3df6b185a2a",
+  "tableEvidence": [
+    {
+      "table": "SkillLineXTraitTree",
+      "sourceUrl": "https://wago.tools/db2/SkillLineXTraitTree/csv?build=1.60.1.70245",
+      "resolvedClientUrl": "https://wago.tools/db2/SkillLineXTraitTree/csv?build=1.60.1.70170",
+      "sha256": "e6774240ba1fda84bef060fda0d0b23e42d5ae9b4d8ae3323f7ccb31f38c5760",
+      "bytes": 167
+    },
+    {
+      "table": "TraitNode",
+      "sourceUrl": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70245",
+      "resolvedClientUrl": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70170",
+      "sha256": "d7fe3ae75eb66a57deeb617a0386b98bf4e94f18ef214c1966e372f67bcda578",
+      "bytes": 15748
+    },
+    {
+      "table": "TraitNodeXTraitNodeEntry",
+      "sourceUrl": "https://wago.tools/db2/TraitNodeXTraitNodeEntry/csv?build=1.60.1.70245",
+      "resolvedClientUrl": "https://wago.tools/db2/TraitNodeXTraitNodeEntry/csv?build=1.60.1.70170",
+      "sha256": "16709d05384c943737d12deeb4f2d9880018027b88e752f07a5c97f8e4340a91",
+      "bytes": 14071
+    },
+    {
+      "table": "TraitNodeEntry",
+      "sourceUrl": "https://wago.tools/db2/TraitNodeEntry/csv?build=1.60.1.70245",
+      "resolvedClientUrl": "https://wago.tools/db2/TraitNodeEntry/csv?build=1.60.1.70170",
+      "sha256": "1e735d373aac6364f0775f97212348fa9454e7bce9368f6a9855872e84a9db4a",
+      "bytes": 13194
+    },
+    {
+      "table": "TraitDefinition",
+      "sourceUrl": "https://wago.tools/db2/TraitDefinition/csv?build=1.60.1.70245",
+      "resolvedClientUrl": "https://wago.tools/db2/TraitDefinition/csv?build=1.60.1.70170",
+      "sha256": "c1f174daca9869e30308f7b197d2dd384810ae1a7c11e60003a1d5e732c58e90",
+      "bytes": 14956
+    },
+    {
+      "table": "SpellName",
+      "sourceUrl": "https://wago.tools/db2/SpellName/csv?build=1.60.1.70245",
+      "resolvedClientUrl": "https://wago.tools/db2/SpellName/csv?build=1.60.1.70170",
+      "sha256": "b0afb64d7d256bdb5be7ba5fdc594ca7e93959579d0a1259faff454de7c47d21",
+      "bytes": 832901
+    },
+    {
+      "table": "Spell",
+      "sourceUrl": "https://wago.tools/db2/Spell/csv?build=1.60.1.70245",
+      "resolvedClientUrl": "https://wago.tools/db2/Spell/csv?build=1.60.1.70170",
+      "sha256": "24ac370c86e0cad3036e775691630c0161aa89c56a1b33d4193bf07ab20b8354",
+      "bytes": 2187269
+    },
+    {
+      "table": "TraitEdge",
+      "sourceUrl": "https://wago.tools/db2/TraitEdge/csv?build=1.60.1.70245",
+      "resolvedClientUrl": "https://wago.tools/db2/TraitEdge/csv?build=1.60.1.70170",
+      "sha256": "480f70a62e9a274655eb2a6468f8d27dc8f147021ab623a7cf958cac6e1987f5",
+      "bytes": 2503
+    },
+    {
+      "table": "SpellEffect",
+      "sourceUrl": "https://wago.tools/db2/SpellEffect/csv?build=1.60.1.70245",
+      "resolvedClientUrl": "https://wago.tools/db2/SpellEffect/csv?build=1.60.1.70170",
+      "sha256": "4df9522a8c8ae84ff3454642b5d2925124974b700ece2d13053ad90405a02416",
+      "bytes": 3824663
+    },
+    {
+      "table": "SpellAuraOptions",
+      "sourceUrl": "https://wago.tools/db2/SpellAuraOptions/csv?build=1.60.1.70245",
+      "resolvedClientUrl": "https://wago.tools/db2/SpellAuraOptions/csv?build=1.60.1.70170",
+      "sha256": "803a2e4fd1e4cf59078cf97e5ae102a1b4e45a68a3e0855f7e3f755b0da2615f",
+      "bytes": 404945
+    }
+  ],
+  "sourceVocabulary": {
+    "structure": "client_verified",
+    "rankText": "community_verified",
+    "officialTuning": "official",
+    "prerequisiteRank": "derived_assumption"
+  },
+  "officialChangesUrl": "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-1/2360696",
+  "promotionStatus": "candidate_only"
+}

@@ -1,0 +1,471 @@
+{
+  "from": "1.60.1.69913",
+  "to": "1.60.1.70245",
+  "summary": {
+    "added": 0,
+    "removed": 2,
+    "moved": 0,
+    "rank_changed": 0,
+    "tooltip_changed": 14,
+    "prerequisite_changed": 0,
+    "unchanged": 36
+  },
+  "added": [],
+  "removed": [
+    {
+      "id": "improved_holy_strike",
+      "name": "Improved Holy Strike",
+      "nodeId": 105328
+    },
+    {
+      "id": "crusade",
+      "name": "Crusade",
+      "nodeId": 110883
+    }
+  ],
+  "moved": [],
+  "rank_changed": [],
+  "tooltip_changed": [
+    {
+      "id": "voice_of_truth",
+      "name": "Voice of Truth",
+      "nodeId": 105330,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Grants you immunity to Silence and Interrupt effects. Lasts 6 sec.",
+          "after": "Grants you immunity to Silence and Interrupt effects for 6 sec."
+        }
+      ]
+    },
+    {
+      "id": "infusion_of_light",
+      "name": "Infusion of Light",
+      "nodeId": 110873,
+      "ranks": [
+        {
+          "rank": 2,
+          "before": "Your Holy Shock and Flash of Light critical hits reduce the cast time of your next Holy Light cast within 15 sec by 1 sec.",
+          "after": "Your Holy Shock and Flash of Light critical hits reduce the cast time of your next Holy Light cast within 15 sec by 1.0 sec."
+        }
+      ]
+    },
+    {
+      "id": "holy_power",
+      "name": "Holy Power",
+      "nodeId": 105321,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Increases the critical strike chance of your Holy Shock spell by 3%, and all other spells by 1%.",
+          "after": "Increases the critical strike chance of your Holy Shock and Holy Strike spells by 3%, and all other spells by 1%."
+        },
+        {
+          "rank": 2,
+          "before": "Increases the critical strike chance of your Holy Shock spell by 6%, and all other spells by 2%.",
+          "after": "Increases the critical strike chance of your Holy Shock and Holy Strike spells by 6%, and all other spells by 2%."
+        },
+        {
+          "rank": 3,
+          "before": "Increases the critical strike chance of your Holy Shock spell by 9%, and all other spells by 3%.",
+          "after": "Increases the critical strike chance of your Holy Shock and Holy Strike spells by 9%, and all other spells by 3%."
+        },
+        {
+          "rank": 4,
+          "before": "Increases the critical strike chance of your Holy Shock spell by 12%, and all other spells by 4%.",
+          "after": "Increases the critical strike chance of your Holy Shock and Holy Strike spells by 12%, and all other spells by 4%."
+        },
+        {
+          "rank": 5,
+          "before": "Increases the critical strike chance of your Holy Shock spell by 15%, and all other spells by 5%.",
+          "after": "Increases the critical strike chance of your Holy Shock and Holy Strike spells by 15%, and all other spells by 5%."
+        }
+      ]
+    },
+    {
+      "id": "light_s_vigil",
+      "name": "Light's Vigil",
+      "nodeId": 105320,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Applies Light's Vigil to the target for 30 sec. Your next Holy Shock cast on them triggers no cooldown and causes friendly targets to heal their party for 325 to 344, or enemy targets to suffer 175 to 189 Holy damage and refund 75% of Light's Vigil's Mana cost. You may only have 1 Light's Vigil active per Paladin, per party.",
+          "after": "Applies Light's Vigil to the target for 30 sec. Your next Holy Shock cast on them triggers no cooldown and causes enemy targets to suffer 175 to 189 Holy damage and refund 75% of Light's Vigil's Mana cost, or allied targets to heal their party for 325 to 343. You may only have one Light's Vigil active per party."
+        }
+      ]
+    },
+    {
+      "id": "redoubt",
+      "name": "Redoubt",
+      "nodeId": 105626,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Damaging melee attacks against you have a 10% chance to increase your chance to block by 6%. Lasts 10 sec or 5 blocks.",
+          "after": "Damaging melee attacks against you have a 10% chance to increase your chance to block by 4%. Lasts 10 sec or 5 blocks."
+        },
+        {
+          "rank": 2,
+          "before": "Damaging melee attacks against you have a 10% chance to increase your chance to block by 12%. Lasts 10 sec or 5 blocks.",
+          "after": "Damaging melee attacks against you have a 10% chance to increase your chance to block by 8%. Lasts 10 sec or 5 blocks."
+        },
+        {
+          "rank": 3,
+          "before": "Damaging melee attacks against you have a 10% chance to increase your chance to block by 18%. Lasts 10 sec or 5 blocks.",
+          "after": "Damaging melee attacks against you have a 10% chance to increase your chance to block by 12%. Lasts 10 sec or 5 blocks."
+        },
+        {
+          "rank": 4,
+          "before": "Damaging melee attacks against you have a 10% chance to increase your chance to block by 24%. Lasts 10 sec or 5 blocks.",
+          "after": "Damaging melee attacks against you have a 10% chance to increase your chance to block by 16%. Lasts 10 sec or 5 blocks."
+        },
+        {
+          "rank": 5,
+          "before": "Damaging melee attacks against you have a 10% chance to increase your chance to block by 30%. Lasts 10 sec or 5 blocks.",
+          "after": "Damaging melee attacks against you have a 10% chance to increase your chance to block by 20%. Lasts 10 sec or 5 blocks."
+        }
+      ]
+    },
+    {
+      "id": "iron_creed",
+      "name": "Iron Creed",
+      "nodeId": 110879,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Increases the threat generated by your Holy Strike ability 5%. While Righteous Fury is active, Holy Strike also reduces your damage taken by 2% for 6 sec.",
+          "after": "Increases the threat generated by your Holy Strike ability by 5%. While Righteous Fury is active, Holy Strike also reduces your damage taken by 2% for 6 sec."
+        },
+        {
+          "rank": 2,
+          "before": "Increases the threat generated by your Holy Strike ability 10%. While Righteous Fury is active, Holy Strike also reduces your damage taken by 4% for 6 sec.",
+          "after": "Increases the threat generated by your Holy Strike ability by 10%. While Righteous Fury is active, Holy Strike also reduces your damage taken by 4% for 6 sec."
+        },
+        {
+          "rank": 3,
+          "before": "Increases the threat generated by your Holy Strike ability 15%. While Righteous Fury is active, Holy Strike also reduces your damage taken by 6% for 6 sec.",
+          "after": "Increases the threat generated by your Holy Strike ability by 15%. While Righteous Fury is active, Holy Strike also reduces your damage taken by 6% for 6 sec."
+        },
+        {
+          "rank": 4,
+          "before": "Increases the threat generated by your Holy Strike ability 20%. While Righteous Fury is active, Holy Strike also reduces your damage taken by 8% for 6 sec.",
+          "after": "Increases the threat generated by your Holy Strike ability by 20%. While Righteous Fury is active, Holy Strike also reduces your damage taken by 8% for 6 sec."
+        },
+        {
+          "rank": 5,
+          "before": "Increases the threat generated by your Holy Strike ability 25%. While Righteous Fury is active, Holy Strike also reduces your damage taken by 10% for 6 sec.",
+          "after": "Increases the threat generated by your Holy Strike ability by 25%. While Righteous Fury is active, Holy Strike also reduces your damage taken by 10% for 6 sec."
+        }
+      ]
+    },
+    {
+      "id": "holy_shield",
+      "name": "Holy Shield",
+      "nodeId": 105628,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Increases chance to block by 20% for 10 sec, and deals 110 Holy damage for each attack blocked while active. Damage caused by Holy Shield causes 20% additional threat. Each block expends a charge. 4 charges.",
+          "after": "Increases chance to block by 30% for 10 sec, and deals 110 Holy damage for each attack blocked while active. Damage caused by Holy Shield causes 20% additional threat. Each block expends a charge. 4 charges."
+        }
+      ]
+    },
+    {
+      "id": "seal_of_command",
+      "name": "Seal of Command",
+      "nodeId": 105696,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Gives the Paladin a chance to deal additional Holy damage equal to 70% of normal weapon damage. Only one Seal can be active on the Paladin at any one time. Lasts 30 sec. Unleashing this Seal's energy will judge an enemy, instantly causing 68 to 74 Holy damage, 136 to 148 if the target is stunned or incapacitated.",
+          "after": "Gives the Paladin a chance to deal additional Holy damage equal to 70% of normal weapon damage. Only one Seal can be active on the Paladin at any one time. Lasts 30 sec.\n\nUnleashing this Seal's energy will judge an enemy, instantly causing 68 to 73 Holy damage, 137 to 145 if the target is stunned or incapacitated."
+        }
+      ]
+    },
+    {
+      "id": "sacred_arbiter",
+      "name": "Sacred Arbiter",
+      "nodeId": 105700,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Increases the damage of your Holy Strike ability by 10% and causes it to refresh all Judgement effects on the target.",
+          "after": "Increases the damage of your Holy Strike ability by 20% and causes it to refresh all Judgement effects on the target."
+        }
+      ]
+    },
+    {
+      "id": "two_handed_weapon_specialization",
+      "name": "Two-Handed Weapon Specialization",
+      "nodeId": 105697,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Increases the damage you deal with two-handed melee weapons by 3%.",
+          "after": "Increases the damage you deal with two-handed melee weapons by 2%."
+        },
+        {
+          "rank": 2,
+          "before": "Increases the damage you deal with two-handed melee weapons by 6%.",
+          "after": "Increases the damage you deal with two-handed melee weapons by 4%."
+        },
+        {
+          "rank": 3,
+          "before": "Increases the damage you deal with two-handed melee weapons by 9%.",
+          "after": "Increases the damage you deal with two-handed melee weapons by 6%."
+        }
+      ]
+    },
+    {
+      "id": "vengeance",
+      "name": "Vengeance",
+      "nodeId": 105693,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Increases your Physical and Holy damage dealt by 1% for 30 sec after landing a critical strike. Stacks up to 5 times.",
+          "after": "Increases your Physical and Holy damage dealt by 1% for 30 sec after landing a non-periodic critical strike. Stacks up to 3 times."
+        },
+        {
+          "rank": 2,
+          "before": "Increases your Physical and Holy damage dealt by 2% for 30 sec after landing a critical strike. Stacks up to 5 times.",
+          "after": "Increases your Physical and Holy damage dealt by 2% for 30 sec after landing a non-periodic critical strike. Stacks up to 3 times."
+        },
+        {
+          "rank": 3,
+          "before": "Increases your Physical and Holy damage dealt by 3% for 30 sec after landing a critical strike. Stacks up to 5 times.",
+          "after": "Increases your Physical and Holy damage dealt by 3% for 30 sec after landing a non-periodic critical strike. Stacks up to 3 times."
+        }
+      ]
+    },
+    {
+      "id": "champion_of_the_light",
+      "name": "Champion of the Light",
+      "nodeId": 110882,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Increases your spell damage and healing by up to 33% of your Intellect.",
+          "after": "Increases your spell damage by up to 20% of your Intellect."
+        },
+        {
+          "rank": 2,
+          "before": "Increases your spell damage and healing by up to 66% of your Intellect.",
+          "after": "Increases your spell damage by up to 40% of your Intellect."
+        },
+        {
+          "rank": 3,
+          "before": "Increases your spell damage and healing by up to 100% of your Intellect.",
+          "after": "Increases your spell damage by up to 60% of your Intellect."
+        }
+      ]
+    },
+    {
+      "id": "instrument_of_law",
+      "name": "Instrument of Law",
+      "nodeId": 110880,
+      "ranks": [
+        {
+          "rank": 2,
+          "before": "Reduces the cast time of your Hammer of Wrath by 1 sec, and reduces all threat you generate by 20% while Righteous Fury is not active.",
+          "after": "Reduces the cast time of your Hammer of Wrath by 1.0 sec, and reduces all threat you generate by 20% while Righteous Fury is not active."
+        }
+      ]
+    },
+    {
+      "id": "twist_of_light",
+      "name": "Twist of Light",
+      "nodeId": 105692,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "When you replace your Seal of Command, Seal of Righteousness, Seal of Fury, or Seal of Justice with a different Seal, gain an Echo. Your next melee attack applies the replaced Seal's effects, consuming the Echo.",
+          "after": "Reduces the Mana cost of your Seal spells by 20%, and when you replace your Seal of Command, Seal of Righteousness, Seal of Fury, or Seal of Justice with a different Seal, you gain an Echo of that Seal. Your next melee attack applies the replaced Seal's effects, consuming the Echo."
+        }
+      ]
+    }
+  ],
+  "prerequisite_changed": [],
+  "unchanged": [
+    {
+      "id": "divine_strength",
+      "name": "Divine Strength",
+      "nodeId": 105639
+    },
+    {
+      "id": "divine_intellect",
+      "name": "Divine Intellect",
+      "nodeId": 105332
+    },
+    {
+      "id": "healing_light",
+      "name": "Healing Light",
+      "nodeId": 105333
+    },
+    {
+      "id": "spiritual_focus",
+      "name": "Spiritual Focus",
+      "nodeId": 105335
+    },
+    {
+      "id": "improved_seals",
+      "name": "Improved Seals",
+      "nodeId": 105334
+    },
+    {
+      "id": "unyielding_faith",
+      "name": "Unyielding Faith",
+      "nodeId": 105331
+    },
+    {
+      "id": "reverence",
+      "name": "Reverence",
+      "nodeId": 110871
+    },
+    {
+      "id": "purifying_power",
+      "name": "Purifying Power",
+      "nodeId": 105327
+    },
+    {
+      "id": "illumination",
+      "name": "Illumination",
+      "nodeId": 105329
+    },
+    {
+      "id": "divine_favor",
+      "name": "Divine Favor",
+      "nodeId": 105325
+    },
+    {
+      "id": "divine_precision",
+      "name": "Divine Precision",
+      "nodeId": 105324
+    },
+    {
+      "id": "holy_shock",
+      "name": "Holy Shock",
+      "nodeId": 105323
+    },
+    {
+      "id": "consecrated_ground",
+      "name": "Consecrated Ground",
+      "nodeId": 110872
+    },
+    {
+      "id": "toughness",
+      "name": "Toughness",
+      "nodeId": 105630
+    },
+    {
+      "id": "precision",
+      "name": "Precision",
+      "nodeId": 105638
+    },
+    {
+      "id": "guardian_s_favor",
+      "name": "Guardian's Favor",
+      "nodeId": 105637
+    },
+    {
+      "id": "anticipation",
+      "name": "Anticipation",
+      "nodeId": 105636
+    },
+    {
+      "id": "improved_seal_of_fury",
+      "name": "Improved Seal of Fury",
+      "nodeId": 110875
+    },
+    {
+      "id": "improved_righteous_fury",
+      "name": "Improved Righteous Fury",
+      "nodeId": 105634
+    },
+    {
+      "id": "shield_specialization",
+      "name": "Shield Specialization",
+      "nodeId": 110874
+    },
+    {
+      "id": "sacred_duty",
+      "name": "Sacred Duty",
+      "nodeId": 105632
+    },
+    {
+      "id": "swift_judgement",
+      "name": "Swift Judgement",
+      "nodeId": 110878
+    },
+    {
+      "id": "one_handed_weapon_specialization",
+      "name": "One-Handed Weapon Specialization",
+      "nodeId": 105629
+    },
+    {
+      "id": "improved_hammer_of_justice",
+      "name": "Improved Hammer of Justice",
+      "nodeId": 105633
+    },
+    {
+      "id": "templar_s_bulwark",
+      "name": "Templar's Bulwark",
+      "nodeId": 105625
+    },
+    {
+      "id": "reckoning",
+      "name": "Reckoning",
+      "nodeId": 105627
+    },
+    {
+      "id": "deflection",
+      "name": "Deflection",
+      "nodeId": 105707
+    },
+    {
+      "id": "benediction",
+      "name": "Benediction",
+      "nodeId": 105706
+    },
+    {
+      "id": "improved_judgement",
+      "name": "Improved Judgement",
+      "nodeId": 105705
+    },
+    {
+      "id": "holy_conduit",
+      "name": "Holy Conduit",
+      "nodeId": 105704
+    },
+    {
+      "id": "conviction",
+      "name": "Conviction",
+      "nodeId": 105703
+    },
+    {
+      "id": "vindication",
+      "name": "Vindication",
+      "nodeId": 105702
+    },
+    {
+      "id": "sanctified_judgement",
+      "name": "Sanctified Judgement",
+      "nodeId": 105701
+    },
+    {
+      "id": "pursuit_of_justice",
+      "name": "Pursuit of Justice",
+      "nodeId": 105699
+    },
+    {
+      "id": "eye_for_an_eye",
+      "name": "Eye for an Eye",
+      "nodeId": 105698
+    },
+    {
+      "id": "repentance",
+      "name": "Repentance",
+      "nodeId": 105694
+    }
+  ]
+}
