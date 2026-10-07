@@ -32,6 +32,7 @@ createRoot(root).render(app)
 
 import './site-discovery.css'
 import './glimmerwick.css'
+import './glimmerwick-help.css'
 import './glimmerwick-first-days.css'
 import './glimmerwick-spellcasting.css'
 import './glimmerwick-well.css'

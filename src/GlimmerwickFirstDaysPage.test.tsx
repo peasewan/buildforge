@@ -1,4 +1,4 @@
-import { cleanup, fireEvent, render, screen } from '@testing-library/react'
+import { cleanup, fireEvent, render, screen, within } from '@testing-library/react'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import GlimmerwickFirstDaysPage from './GlimmerwickFirstDaysPage'
 
@@ -53,5 +53,31 @@ describe('Glimmerwick first-days checklist', () => {
     fireEvent.click(screen.getByRole('checkbox', { name: 'Collected Flute' }))
     expect(screen.getByText('1 of 5 supplies ready')).toBeTruthy()
     expect(screen.getByRole('status').textContent).toContain('not saved')
+  })
+})
+
+
+describe('first-days next step', () => {
+  beforeEach(() => localStorage.clear())
+  afterEach(cleanup)
+
+  it('advances to an unchecked task, restores progress, and offers tools after completion', () => {
+    const view = render(<GlimmerwickFirstDaysPage />)
+    let next = screen.getByRole('region', { name: 'Continue your first days' })
+    expect(within(next).getByRole('link', { name: /Go to next step/ }).getAttribute('href')).toBe('#step-flute')
+    fireEvent.click(screen.getByRole('checkbox', { name: 'Collected Flute' }))
+    expect(within(next).getByRole('link', { name: /Go to next step/ }).getAttribute('href')).toBe('#step-robe')
+    view.unmount()
+    render(<GlimmerwickFirstDaysPage />)
+    next = screen.getByRole('region', { name: 'Continue your first days' })
+    expect(within(next).getByText(/1 of 9 milestones/)).toBeTruthy()
+    for (const box of screen.getAllByRole('checkbox')) {
+      if (!(box as HTMLInputElement).checked) fireEvent.click(box)
+    }
+    expect(within(next).getByText(/9 of 9 milestones/)).toBeTruthy()
+    expect(within(next).queryByRole('link', { name: /Go to next step/ })).toBeNull()
+    expect(within(next).getByRole('link', { name: /Plan your garden/ }).getAttribute('href')).toBe('/songs-of-glimmerwick')
+    fireEvent.click(screen.getByRole('button', { name: 'Clear checklist' }))
+    expect(within(next).getByRole('link', { name: /Go to next step/ }).getAttribute('href')).toBe('#step-flute')
   })
 })

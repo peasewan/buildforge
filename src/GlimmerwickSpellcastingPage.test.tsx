@@ -39,3 +39,18 @@ describe('Songs of Glimmerwick spellcasting help', () => {
     expect(screen.getByText(/not a complete song catalog/i)).toBeTruthy()
   })
 })
+
+
+it('routes short-song and score problems to different version-scoped advice', () => {
+  render(<GlimmerwickSpellcastingPage />)
+  fireEvent.click(screen.getByRole('button', { name: 'No practice version' }))
+  let answer = screen.getByRole('region', { name: 'Spellcasting help result' })
+  expect(within(answer).getByText(/Alchemical Resonance/)).toBeTruthy()
+  expect(within(answer).getByRole('link', { name: /Developer update 1.03/ }).getAttribute('href')).toBe('https://steamcommunity.com/games/1706510/announcements/detail/680763661892976649')
+  fireEvent.click(screen.getByRole('button', { name: 'I cannot earn stars' }))
+  answer = screen.getByRole('region', { name: 'Spellcasting help result' })
+  expect(within(answer).queryByText(/Alchemical Resonance/)).toBeNull()
+  expect(within(answer).getByRole('link', { name: /Demo update 0.466/ })).toBeTruthy()
+  fireEvent.click(screen.getByRole('button', { name: 'Something else' }))
+  expect(within(answer).getByText(/not enough verified information/i)).toBeTruthy()
+})
