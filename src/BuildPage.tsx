@@ -13,6 +13,8 @@ import BetaTalentAvailability from './BetaTalentAvailability'
 import BetaLevelingSnapshot from './BetaLevelingSnapshot'
 import PaladinBuildDecisions from './PaladinBuildDecisions'
 import BetaSpecPath from './BetaSpecPath'
+import OfficialBuildChangeSummary from './OfficialBuildChangeSummary'
+import { PALADIN_BETA_SNAPSHOT } from './data/betaSnapshot'
 
 const branches: Branch[] = ['holy', 'protection', 'retribution']
 
@@ -93,6 +95,7 @@ export default function BuildPage({ buildId = HOLY_HEALING_BUILD.id }: { buildId
 
       <BetaDataStatus />
       <PaladinBuildDecisions branch={specialization} />
+      <div className="shell"><OfficialBuildChangeSummary className="paladin" buildVersion={PALADIN_BETA_SNAPSHOT.clientBuild} selectedTalents={selectedByBranch.flatMap(({ talents: selected }) => selected.map((talent) => ({ name: talent.name, rank: build.build[talent.id] ?? 0 })))} /></div>
       <BetaTalentAvailability branch={specialization} />
       {build.id !== 'retribution-leveling-20-0-31' && <BetaSpecPath branch={specialization} />}
       {build.id === 'retribution-leveling-20-0-31' && <BetaLevelingSnapshot pageId="retribution-leveling" />}

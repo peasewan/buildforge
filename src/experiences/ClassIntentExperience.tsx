@@ -20,6 +20,7 @@ import {
   type PlannerBuild,
 } from '../lib/talentPlanner'
 import VerificationBadge from '../VerificationBadge'
+import OfficialBuildChangeSummary from '../OfficialBuildChangeSummary'
 import { OCTOBER_OFFICIAL_SOURCE, officialTalentNotice } from '../data/officialOctoberChanges'
 import {
   buildsUsingTalent,
@@ -281,6 +282,7 @@ function Progression({ classDef: def, page }: Props) {
             value={current}
             onChange={(e) => setLevel(Number(e.target.value))}
           />
+          <OfficialBuildChangeSummary className={def.id} buildVersion={build.verifiedThroughBuild} selectedTalents={def.talents.filter((talent) => (points[talent.id] ?? 0) > 0).map((talent) => ({ name: talent.name, rank: points[talent.id] ?? 0 }))} />
           <p data-testid="progression-current">
             <b>{totalPlannerPoints(points)} {totalPlannerPoints(points) === 1 ? 'point' : 'points'}</b> ·{' '}
             {allocation(def, points)}
@@ -360,6 +362,7 @@ function BuildWorkbench({ classDef: def, page }: Props) {
         <article className="ix-panel ix-build-target">
           <p className="ix-eyebrow">TARGET ALLOCATION</p>
           <strong className="ix-allocation">{build.allocation}</strong>
+          <OfficialBuildChangeSummary className={def.id} buildVersion={build.verifiedThroughBuild} selectedTalents={def.talents.filter((talent) => (build.build[talent.id] ?? 0) > 0).map((talent) => ({ name: talent.name, rank: build.build[talent.id] ?? 0 }))} />
           <p>
             Level {build.level} · {totalPlannerPoints(build.build)} points ·
             Editorial example

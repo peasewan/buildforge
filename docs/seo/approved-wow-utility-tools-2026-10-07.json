@@ -1,0 +1,44 @@
+{
+  "reason": "Owner-authorized WoW utility expansion: source-linked official change reviews on existing Paladin build/PvP/leveling routes and a local-only 1–30 spell-unlock checklist on the existing leveling page. Only the named rendered body and resulting source/plan links change. Titles, H1s, descriptions, canonicals, robots, head SEO signatures, URL inventory and sitemap lastmod remain frozen.",
+  "pages": {
+    "/wow-forever-paladin-build": {
+      "rootSha256": "599825fd45d3e9d92de2b0f0f91b1141dbfb87740834d6841799377a6e57bb06",
+      "linksSha256": "8c6f2cc2bc11da33155dcbfd9f25b8cc79a6fa18a26f732710ab8785fe77df2c"
+    },
+    "/wow-forever-protection-paladin-build": {
+      "rootSha256": "cda02941d60108618f16fd77a27e4dc6fad3ae693b8560aa9f351d341ce92b66",
+      "linksSha256": "bc15d7d1c9ca43a99f0c6c2c5652c5ae0c14540d1e702d390f011ad5fc69015c"
+    },
+    "/wow-forever-retribution-paladin-build": {
+      "rootSha256": "10c0d75daebd88bc3efbb1c9576f0fc9b1154c68f018465bf8b1250b425f5954",
+      "linksSha256": "77b13f1ede5c75984c74e056c0671e63b53b7884fbacbbfdc043b201a769517c"
+    },
+    "/wow-forever-retribution-paladin-leveling-build": {
+      "rootSha256": "4e493159c6ce4f334c8001772e196f313a872d064dfd071eb66fc856978ca993",
+      "linksSha256": "3fe46da0dbea7b2ba2051c9a376f6704fbe3c57851d6908f5181d4dd7d77c554"
+    },
+    "/wow-forever-paladin-leveling-build": {
+      "rootSha256": "5228fd1cbf285ccaed87e8ad26afcb555e4012b526f4ae4a665c294439f31384",
+      "linksSha256": "d25067d0a182b9a519a27880ad84548dff0fe24835aab80633bf3b95e5ef5e45"
+    },
+    "/wow-forever-paladin-pvp-build": {
+      "rootSha256": "06387e233c3a094a8dc899cb707a0acb1b44e8b374ee610e2e2ab932d8deb6f6"
+    },
+    "/wow-forever-protection-paladin-leveling-build": {
+      "rootSha256": "cd628c14b207f922029a2e58c7455ec5360007d90293c89c37bff54ac1c00949",
+      "linksSha256": "f027741ca1c85e96c51e37fe41a3daf5dd197cffb1d95560d6d42d4e673dc4b1"
+    },
+    "/wow-forever-protection-paladin-pvp-build": {
+      "rootSha256": "5b25ae7f9170ccc6d81539b70d49a8d57a4603e48af43ce77d2c5d3b7e10ae86",
+      "linksSha256": "f8551297a46afdbe5733807f75f7383911cb98b08b3c87ab4e0af4c3bb3328e1"
+    },
+    "/wow-forever-retribution-paladin-pvp-build": {
+      "rootSha256": "1948d3e26082349998c15d6689ff58fbf435709b1d81f34664f86b97adb45372",
+      "linksSha256": "0cca22b857b208394facf3b5ba7271687370b980bf8e6311073b601a1dee2a83"
+    },
+    "/wow-forever-holy-paladin-pvp-build": {
+      "rootSha256": "bed0a59a4b685c9b9e8205769e0649a265d668805225e1e88385685118217fbe",
+      "linksSha256": "75ce66459a5194da28c13f68d684d527acb46d0478b65ab5828a117aa2894df8"
+    }
+  }
+}

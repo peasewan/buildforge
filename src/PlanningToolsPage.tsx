@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { ArrowRight, Compass, Shield, Sparkles, Swords, Lock, MapPin } from 'lucide-react'
 import DungeonXpCompare from './DungeonXpCompare'
+import RunPrepBoard from './RunPrepBoard'
 import SiteFooter from './SiteFooter'
 import { DISCOVERY_PAGES } from './data/siteDiscovery'
 import { DUNGEONS, DUNGEON_SOURCES, TOOL_CLASSES, dungeonMatches, milestonesForDungeon, nextTalentAtLevel, pickSpecs, snapshotAtLevel, type ToolRole, type ToolActivity, type ToolStyle, type ToolRoute } from './data/planningTools'
@@ -56,7 +57,7 @@ export default function PlanningToolsPage({tool}:{tool:'dungeon-finder'|'class-p
         {matches.length ? <><div className="pt-route-grid">{(showAll?matches:matches.slice(0,3)).map(({route,reasons})=><RouteCard key={route.id} route={route} level={20} reasons={reasons}/>)}</div>{matches.length>3 && <button className="pt-more" type="button" onClick={()=>setShowAll(!showAll)}>{showAll?'Show first three':`Compare all ${matches.length} matches`}</button>}</> : <div className="pt-empty" role="status"><h3>No published route matches all three choices</h3><p>This is a catalogue coverage limit, not proof that a class cannot play this way.</p><button type="button" onClick={()=>{setActivity('solo');setPickerRole('damage');setStyle('any');setShowAll(false)}}>Reset preferences</button></div>}
         <aside className="pt-time-note"><h2>Short on play time?</h2><p>Start with one route, spend its points and keep the build link. We do not estimate leveling hours or call one class more time-efficient without measured evidence.</p><a href="/wow-forever-builds">Browse published playstyle routes <ArrowRight size={15}/></a></aside>
       </>}
-      {tool === 'dungeon-finder' && <DungeonXpCompare/>}
+      {tool === 'dungeon-finder' && <><RunPrepBoard/><DungeonXpCompare/></>}
       <EvidenceNotes/>
     </main><SiteFooter discovery/>
   </div>

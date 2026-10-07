@@ -31,3 +31,7 @@ The user explicitly requested a 70009 review and necessary webpage updates. `app
 ## September 29 site-consistency amendment
 
 `approved-site-consistency-2026-09-29.json` records the reviewed body, link, head and sitemap changes for 21 affected Paladin pages. Their title, H1, canonical and robots values remain unchanged. The amendment covers the read-only previews, retired-build notices, official removal labeling and historical Retribution allocation handling. It does not relax the baseline checks for other pages.
+
+## October 7 WoW utility amendment
+
+`approved-wow-utility-tools-2026-10-07.json` records only rendered body and affected link hashes for the owner-requested official change review and local 1–30 checklist on ten existing Paladin pages. No page title, H1, description, canonical, robots, head SEO signature, URL inventory or sitemap date was amended. The hash gate continues to reject unrelated changes.

@@ -99,7 +99,20 @@ export type OfficialTalentNotice = { status: 'removed' | 'changed'; message: str
 
 /** Older 69913 calculator nodes directly affected by later official announcements. */
 type AnnouncedNodeChange = Omit<OfficialTalentNotice, 'source'> & { source?: string }
-const AFFECTED_TALENTS: Partial<Record<OfficialOctoberClassId, Record<string, AnnouncedNodeChange>>> = {
+type NoticeClassId = OfficialOctoberClassId | 'paladin'
+const AFFECTED_TALENTS: Partial<Record<NoticeClassId, Record<string, AnnouncedNodeChange>>> = {
+  paladin: {
+    'Improved Holy Strike': { status: 'removed', message: 'Removed from the Holy talent tree; its cooldown reduction became baseline.', source: SEPTEMBER_24_OFFICIAL_SOURCE },
+    'Holy Power': { status: 'changed', message: 'Now also increases Holy Strike critical strike chance by 15%.', source: SEPTEMBER_24_OFFICIAL_SOURCE },
+    Redoubt: { status: 'changed', message: 'Block chance changed from 6/12/18/24/30% to 4/8/12/16/20%.' },
+    'Holy Shield': { status: 'changed', message: 'Block chance changed from 20% to 30%.' },
+    Vengeance: { status: 'changed', message: 'Uses non-periodic critical effects, with three stacks.', source: SEPTEMBER_24_OFFICIAL_SOURCE },
+    'Two-Handed Weapon Specialization': { status: 'changed', message: 'Damage increase reduced to 2/4/6% from 3/6/9%.', source: SEPTEMBER_24_OFFICIAL_SOURCE },
+    'Sacred Arbiter': { status: 'changed', message: 'Official update sets Sacred Arbiter to 20%.', source: SEPTEMBER_24_OFFICIAL_SOURCE },
+    'Champion of the Light': { status: 'changed', message: 'The official update removed a tooltip claim that this talent increased healing.' },
+    'Twist of Light': { status: 'changed', message: 'Adds 20% Seal mana-cost reduction.', source: SEPTEMBER_24_OFFICIAL_SOURCE },
+    "Light's Vigil": { status: 'changed', message: 'Text clarifies that only damage returns mana.', source: SEPTEMBER_24_OFFICIAL_SOURCE },
+  },
   druid: {
     'King of the Jungle': { status: 'removed', message: 'Removed from the Feral tree in the October 1 announcement.' },
     'Tiger’s Fury': { status: 'removed', message: 'Removed in the October 1 announcement.' },
@@ -163,7 +176,7 @@ const AFFECTED_TALENTS: Partial<Record<OfficialOctoberClassId, Record<string, An
 }
 
 export function officialTalentNotice(classId: string, talentName: string): OfficialTalentNotice | undefined {
-  const notices = AFFECTED_TALENTS[classId as OfficialOctoberClassId]
+  const notices = AFFECTED_TALENTS[classId as NoticeClassId]
   const notice = notices?.[talentName]
   if (!notice) return undefined
   return { ...notice, source: notice.source ?? (classId === 'warrior' ? WARRIOR_OCTOBER_2_SOURCE : OCTOBER_OFFICIAL_SOURCE) }

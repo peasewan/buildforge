@@ -1,7 +1,8 @@
 import { BETA_SPEC_PATHS, betaSpecPlannerHref } from './data/betaSpecPaths'
 import { PALADIN_BETA_SNAPSHOT } from './data/betaSnapshot'
 import { BETA_PATCH_REVIEW } from './data/betaPatchReview'
-import { branchNames } from './data/talents'
+import { branchNames, talents } from './data/talents'
+import OfficialBuildChangeSummary from './OfficialBuildChangeSummary'
 import { track } from './lib/analytics'
 
 /** Reuse the published routes as editable starts, without claiming measured PvP performance. */
@@ -20,6 +21,7 @@ export default function PaladinPvpRoutes() {
         <strong>{path.current.allocation}</strong>
         <p>{branch === 'holy' ? 'Start from the published healing path and review its support choices for your matchup.' : 'Start from the published damage path and review its pressure and utility choices for your matchup.'}</p>
         <ol>{path.current.steps.map(step => <li key={step.talent}>{step.talent}</li>)}</ol>
+        <OfficialBuildChangeSummary className="paladin" buildVersion={PALADIN_BETA_SNAPSHOT.clientBuild} contextLabel={`${branchNames[branch]} Level 20 starting route`} selectedTalents={talents.filter(talent => (path.current.build[talent.id] ?? 0) > 0).map(talent => ({ name: talent.name, rank: path.current.build[talent.id] ?? 0 }))} />
         <a className="button primary" href={betaSpecPlannerHref(branch)} onClick={() => track('build_landing_cta_click', { page_id: 'pvp', placement: 'editorial-route', branch })}>Load {branchNames[branch]} route →</a>
         <small>Adapted from <a href={path.recommendationSource.href} target="_blank" rel="noreferrer">{path.recommendationSource.label}</a>; a guide recommendation, not a client fact.</small>
       </article>

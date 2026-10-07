@@ -7,8 +7,15 @@ import { track } from './lib/analytics'
 import SiteFooter from './SiteFooter'
 import BetaDataStatus from './BetaDataStatus'
 import BetaLevelingSnapshot from './BetaLevelingSnapshot'
+import PaladinLevelingChecklist from './PaladinLevelingChecklist'
 import { betaLevelingPlannerHref } from './data/levelingBeta'
 import PaladinPvpRoutes from './PaladinPvpRoutes'
+import OfficialBuildChangeSummary from './OfficialBuildChangeSummary'
+import { PALADIN_BETA_SNAPSHOT } from './data/betaSnapshot'
+import { talents } from './data/talents'
+import { paladinLevelingStep } from './data/paladinLevelingProgression'
+import { PROTECTION_LEVEL_30 } from './data/protectionCurrentRoute'
+import type { Build } from './lib/build'
 
 const icons: Record<LandingIcon, ReactNode> = {
   sword: <Swords size={24} />,
@@ -21,6 +28,10 @@ const icons: Record<LandingIcon, ReactNode> = {
 
 function TrackedLink({ href, pageId, placement, className, children }: { href: string; pageId: string; placement: string; className?: string; children: ReactNode }) {
   return <a href={href} className={className} onClick={() => track('build_landing_cta_click', { page_id: pageId, placement })}>{children}</a>
+}
+
+function selectedTalentsIn(build: Build) {
+  return talents.filter(talent => (build[talent.id] ?? 0) > 0).map(talent => ({ name: talent.name, rank: build[talent.id] ?? 0 }))
 }
 
 function LandingSectionView({ section, pageId }: { section: LandingSection; pageId: BuildLandingPageId }) {
@@ -90,6 +101,8 @@ export default function BuildLandingPage({ pageId }: { pageId: BuildLandingPageI
   const pvpRouteHref = pageId === 'pvp' ? '#pvp-starting-routes' : null
   const holyPvpHref = pageId === 'holy-pvp' ? '/build?id=&level=30&spec=holy#calculator' : null
   const primaryHref = holyPvpHref ?? pvpRouteHref ?? levelingHref ?? (ctaExample ? examplePlannerHref(ctaExample) : '/paladin#calculator')
+  const currentReview = pageId === 'leveling' ? paladinLevelingStep(30)?.build : pageId === 'protection-leveling' ? PROTECTION_LEVEL_30 : null
+  const historicalReview = (pageId === 'holy-pvp' || pageId === 'protection-pvp' || pageId === 'retribution-pvp') ? ctaExample : null
 
   return (
     <main className="landing-page">
@@ -119,6 +132,9 @@ export default function BuildLandingPage({ pageId }: { pageId: BuildLandingPageI
       <BetaDataStatus />
       {pageId === 'pvp' && <PaladinPvpRoutes />}
       {(pageId === 'leveling' || pageId === 'protection-leveling') && <BetaLevelingSnapshot pageId={pageId} />}
+      {currentReview && <div className="shell"><OfficialBuildChangeSummary className="paladin" buildVersion={PALADIN_BETA_SNAPSHOT.clientBuild} contextLabel={`${pageId === 'leveling' ? 'Retribution' : 'Protection'} Level 30 leveling route`} selectedTalents={selectedTalentsIn(currentReview)} /></div>}
+      {historicalReview && <div className="shell"><OfficialBuildChangeSummary className="paladin" buildVersion={PALADIN_BETA_SNAPSHOT.clientBuild} contextLabel="Historical 51-point PvP example" selectedTalents={selectedTalentsIn(historicalReview.build)} /></div>}
+      {pageId === 'leveling' && <PaladinLevelingChecklist />}
 
       <div className="shell landing-content" id="build-content">
         {page.sections.map((section) => <LandingSectionView key={section.title} section={section} pageId={pageId} />)}

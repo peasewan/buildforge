@@ -47,6 +47,43 @@ describe('Build landing page template', () => {
     expect(snapshot.textContent).toContain('Community recommendation')
   })
 
+  it('lets a Paladin player track first-unlock reminders without claiming current trainer ranks', () => {
+    window.localStorage.clear()
+    render(<BuildLandingPage pageId="leveling" />)
+
+    const checklist = screen.getByRole('region', { name: 'Paladin 1–30 checklist' })
+    expect(checklist.textContent).toContain('69893 snapshot')
+    expect(checklist.textContent).toContain('Current Beta trainer data needs review')
+    const holyLight = within(checklist).getByRole('checkbox', { name: /Holy Light/i }) as HTMLInputElement
+    fireEvent.click(holyLight)
+    expect(holyLight.checked).toBe(true)
+    expect(window.localStorage.getItem('buildforge:paladin-leveling-checklist:69893')).toContain('holy_light')
+    const firstTalent = within(checklist).getByRole('checkbox', { name: /Level 10: Benediction 1/i }) as HTMLInputElement
+    fireEvent.click(firstTalent)
+    expect(firstTalent.checked).toBe(true)
+    expect(window.localStorage.getItem('buildforge:paladin-leveling-checklist:69893')).toContain('talent:10')
+    fireEvent.change(within(checklist).getByLabelText('Your checklist level'), { target: { value: '20' } })
+    expect(within(checklist).getByText('Consecration')).toBeTruthy()
+    expect(checklist.textContent).not.toMatch(/rank 2 available/i)
+  })
+
+  it('reviews the actual Level 30 leveling allocation instead of a different preset', () => {
+    render(<BuildLandingPage pageId="leveling" />)
+    const review = screen.getByRole('complementary', { name: 'Official change review' })
+    expect(review.textContent).toContain('Retribution Level 30 leveling route')
+    expect(review.textContent).toContain('Vengeance')
+    expect(review.textContent).toContain('Sacred Arbiter')
+  })
+
+  it('keeps each PvP route change review attached to its own selected talents', () => {
+    render(<BuildLandingPage pageId="pvp" />)
+    const reviews = screen.getAllByRole('complementary', { name: 'Official change review' })
+    expect(reviews).toHaveLength(2)
+    expect(reviews[0].textContent).toContain('Retribution Level 20 starting route')
+    expect(reviews[1].textContent).toContain('Holy Level 20 starting route')
+    expect(reviews[0].textContent).not.toContain('Holy Power')
+  })
+
   it('shows the Protection level 20 and level 30 paths on the existing leveling page', () => {
     render(<BuildLandingPage pageId="protection-leveling" />)
 

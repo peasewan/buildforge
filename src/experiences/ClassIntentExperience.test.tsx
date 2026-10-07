@@ -558,3 +558,17 @@ it('keeps specialization and playstyle discovery gated and search interactive', 
   expect(screen.getByText('No route matches that search.')).toBeTruthy()
   expect(container.querySelector('.ix-hub-discovery a')).toBeTruthy()
 })
+
+
+it('shows the selected route change summary on PvP and leveling surfaces', () => {
+  const pvp = warriorClass.pages.find((candidate) => candidate.slug === 'wow-forever-arms-warrior-pvp-build')!
+  const pvpView = render(<ClassIntentExperience classDef={warriorClass} page={pvp} />)
+  const pvpSummary = pvpView.container.querySelector('[aria-label="Official change review"]')
+  expect(pvpSummary).toBeTruthy()
+  expect(pvpSummary?.getAttribute('data-build-version')).toBeTruthy()
+  pvpView.unmount()
+
+  const leveling = warriorClass.pages.find((candidate) => candidate.slug === 'wow-forever-fury-warrior-leveling-build')!
+  const levelingView = render(<ClassIntentExperience classDef={warriorClass} page={leveling} />)
+  expect(levelingView.container.querySelector('[aria-label="Official change review"]')).toBeTruthy()
+})

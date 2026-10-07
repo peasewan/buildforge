@@ -6,6 +6,7 @@ import { classBuildPlannerHref, hasRemovedTalentInBuild } from '../lib/archivedC
 import { officialTalentNotice } from '../data/officialOctoberChanges'
 import { EVIDENCE_STATUS } from '../data/verification'
 import { diffBuilds } from './buildExperience'
+import OfficialBuildChangeSummary from '../OfficialBuildChangeSummary'
 
 export type RoleSurfaceProps = { classDef: ClassDefinition; page: ClassPageDefinition }
 
@@ -191,6 +192,7 @@ export function PvpPlanner({ classDef: def, page }: RoleSurfaceProps) {
         <div className="rs-pvp-details">
           <div>
             <RouteChooser builds={routes} selected={build} onChange={setId} label="PvP route" />
+            <OfficialBuildChangeSummary className={def.id} buildVersion={build.verifiedThroughBuild} selectedTalents={def.talents.filter((talent) => (build.build[talent.id] ?? 0) > 0).map((talent) => ({ name: talent.name, rank: build.build[talent.id] ?? 0 }))} />
             <Allocation def={def} build={build} heading="Starting route" />
           </div>
           <div className="rs-role-support">
