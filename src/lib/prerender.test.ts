@@ -51,7 +51,7 @@ const allPrerendered = () => [
 describe('prerender generation', () => {
   it('marks every published class static page as an older Level 20 snapshot beneath the live Level 30 cap', () => {
     const pages = publishedClassPages(PUBLISHED_CLASSES)
-    expect(pages).toHaveLength(100)
+    expect(pages).toHaveLength(99)
     for (const { classDef, page } of pages) {
       const html = renderClassPage(classDef, page)
       expect(html, page.slug).toContain('live Beta cap is Level 30')

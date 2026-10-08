@@ -28,3 +28,7 @@ Warrior/Mage/Hunter have no complete reviewed current candidate: retain explicit
 ## Evidence correction
 
 Current Hunter Pet page already has a functioning official 18-family lookup. Preserve it; the stale ZIP assertion does not justify retirement. Total reviewed consolidations: 20; six-class active pages: 70.
+
+## Concurrent main integration
+
+Remote main c9ff3c6 independently consolidated Warrior dungeon, Emberville builds and Invokyr ending pages. Preserve those improvements and both clean/static aliases. Final scope: 140 indexed pages, 21 generated class consolidations and 2 standalone consolidations. Six expansion classes remain 70 pages. The historical 150-page rollout ledger remains acquisition history, not the current published inventory.

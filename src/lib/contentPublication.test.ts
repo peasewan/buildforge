@@ -42,10 +42,10 @@ describe('content publication contract', () => {
 })
 
 describe('reviewed consolidation artifacts', () => {
-  it('redirects twenty reviewed entry pages directly to working tasks, including static aliases', () => {
+  it('redirects twenty-one reviewed class entry pages directly to working tasks, including static aliases', () => {
     const paths = new Set(classPagePaths())
     const redirects = classPageRedirects()
-    expect(redirects).toHaveLength(40)
+    expect(redirects).toHaveLength(42)
     const config = JSON.parse(readFileSync('vercel.json', 'utf8'))
     const sitemap = readFileSync('public/sitemap.xml', 'utf8')
     for (const redirect of redirects) {

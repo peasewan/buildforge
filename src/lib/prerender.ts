@@ -74,8 +74,7 @@ export function renderEmbervillePrerender(pageId: EmbervillePageId): string {
   const page = embervillePageById(pageId)
   const related = EMBERVILLE_PAGES.filter((item) => item.id !== pageId).map((item) => ({ href: `/${item.slug}`, label: item.title }))
   const pageCopy: Record<EmbervillePageId, string> = {
-    planner: '<h2>Plan with confirmed systems</h2><p>Choose a melee, magic, ranged, or hybrid combat direction. Class, weapon, and skill records remain locked until reliable identifiers and rules are confirmed.</p>',
-    builds: '<h2>Explore build directions</h2><p>Compare melee, magic, ranged, and hybrid planning categories without claiming final balance or a best build.</p>',
+    planner: '<h2>Plan with confirmed systems</h2><p>Choose a melee, magic, ranged, or hybrid combat direction. Compare planning directions, then select reviewed class and weapon names while leaving unverified compatibility open.</p>',
     classes: '<h2>What we know before Early Access</h2><p>Emberville has a combat class system, classes can be changed, and learned classes can contribute active and passive skills. Exact class records remain in review.</p>',
     inheritance: '<h2>How skill inheritance shapes a build</h2><p>Learn another class, inherit confirmed active or passive skills, and use those options to shape a build direction. Slot limits, costs, and compatibility rules remain under review.</p>',
   }

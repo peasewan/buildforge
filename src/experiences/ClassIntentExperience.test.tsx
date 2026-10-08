@@ -160,6 +160,51 @@ it('changes the current allocation and next point with the leveling control', ()
   expect(link).not.toContain('unbridled-wrath.5')
 })
 
+it('renders every legal editorial point-order step in the initial leveling page content', () => {
+  const fury = render(
+    <ClassIntentExperience
+      classDef={warriorClass}
+      page={page('wow-forever-fury-warrior-leveling-build')}
+    />,
+  )
+  const route = within(fury.container).getByRole('list', { name: 'Full point-by-point route' })
+  const steps = within(route).getAllByRole('listitem')
+  expect(steps).toHaveLength(11)
+  expect(steps[0].textContent).toContain('Level 10')
+  expect(steps[0].textContent).toContain('Cruelty')
+  expect(steps[10].textContent).toContain('Level 20')
+  expect(route.textContent).toContain('Unbridled Wrath')
+  expect(fury.container.textContent).toContain('one point per level from 10')
+  fury.unmount()
+
+  const arms = render(
+    <ClassIntentExperience
+      classDef={warriorClass}
+      page={page('wow-forever-arms-warrior-leveling-build')}
+    />,
+  )
+  const armsRoute = within(arms.container).getByRole('list', { name: 'Full point-by-point route' })
+  expect(armsRoute.textContent).not.toContain('Unbridled Wrath')
+  expect(armsRoute.textContent).toContain('Improved Rend')
+})
+
+it('puts each specialization route on the general Warrior leveling page before a route is selected', () => {
+  const { container } = render(
+    <ClassIntentExperience
+      classDef={warriorClass}
+      page={page('wow-forever-warrior-leveling-build')}
+    />,
+  )
+  const choices = within(container).getByRole('region', { name: 'Compare leveling routes' })
+  for (const spec of ['Arms', 'Fury', 'Protection']) {
+    expect(within(choices).getByRole('heading', { name: `${spec} Warrior` })).toBeTruthy()
+  }
+  expect(choices.textContent).toContain('Anger Management')
+  expect(choices.textContent).toContain('Piercing Howl')
+  expect(choices.textContent).toContain('Last Stand')
+  expect(within(choices).getAllByRole('link')).toHaveLength(3)
+})
+
 it('shows a clearly modeled Talented timing comparison without adding unverified points', () => {
   render(
     <ClassIntentExperience
@@ -642,4 +687,19 @@ it('keeps endpoint inspection and point-by-point progression together on an expa
   expect(target.searchParams.get('build')).toContain('rogue-201.2')
   expect(target.searchParams.get('build')).toContain('rogue-186.3')
   expect(target.searchParams.get('build')).not.toContain('rogue-204')
+})
+
+it.each([
+  ['priest', 'wow-forever-holy-priest-leveling-build'],
+  ['warlock', 'wow-forever-demonology-warlock-leveling-build'],
+])('preserves endpoint comparison and full progression on the retained %s leveling entry', (id, slug) => {
+  const def = PUBLISHED_CLASSES.find((candidate) => candidate.id === id)!
+  const route = def.pages.find((candidate) => candidate.slug === slug)!
+  const { container } = render(<ClassIntentExperience classDef={def} page={route} />)
+  expect(container.querySelector('[data-surface="build-workbench"]')).toBeTruthy()
+  const progression = within(screen.getByRole('region', { name: 'Talent progression' }))
+  expect(progression.getByRole('list', { name: 'Full point-by-point route' })).toBeTruthy()
+  expect(within(progression.getByRole('list', { name: 'Full point-by-point route' })).getAllByRole('listitem')).toHaveLength(11)
+  const picker = progression.getByLabelText('Progression route') as HTMLSelectElement
+  expect([...picker.options].every((option) => def.builds.find((build) => build.id === option.value)?.spec === route.spec)).toBe(true)
 })

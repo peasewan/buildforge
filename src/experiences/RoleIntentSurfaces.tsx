@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { ArrowRight, Check, Compass, HeartPulse, PawPrint, Shield, Swords, Waypoints } from 'lucide-react'
 import type { ClassBuild, ClassDefinition, ClassPageDefinition, ClassTalent } from '../lib/classPage'
-import { publishedClassPages } from '../lib/classPage'
+import { allocationSignature, publishedClassPages } from '../lib/classPage'
 import { classBuildPlannerHref, hasRemovedTalentInBuild } from '../lib/archivedClassBuild'
 import { officialTalentNotice } from '../data/officialOctoberChanges'
 import { EVIDENCE_STATUS } from '../data/verification'
@@ -55,8 +55,8 @@ function Unavailable({ def, page }: { def: ClassDefinition; page: ClassPageDefin
   )
 }
 
-function RouteChooser({ builds, selected, onChange, label }: { builds: ClassBuild[]; selected: ClassBuild; onChange: (id: string) => void; label: string }) {
-  if (builds.length < 2) return null
+function RouteChooser({ builds, selected, onChange, label, showSingle = false }: { builds: ClassBuild[]; selected: ClassBuild; onChange: (id: string) => void; label: string; showSingle?: boolean }) {
+  if (builds.length < 2 && !showSingle) return null
   return (
     <label className="rs-route-picker">
       {label}
@@ -199,7 +199,13 @@ function HunterPvpStartingPoints({ def, pvpBuild }: { def: ClassDefinition; pvpB
 
 export function PvpPlanner({ classDef: def, page }: RoleSurfaceProps) {
   const { condition, setCondition } = useRoleCondition(page)
-  const routes = routesFor(def, page)
+  const routeRecords = routesFor(def, page)
+  const uniqueRoutes = new Map<string, ClassBuild>()
+  for (const candidate of routeRecords) {
+    const signature = allocationSignature(candidate.build)
+    if (!uniqueRoutes.has(signature) || candidate.id === page.primaryBuildId) uniqueRoutes.set(signature, candidate)
+  }
+  const routes = [...uniqueRoutes.values()]
   const [id, setId] = useState(routes.find((build) => build.id === page.primaryBuildId)?.id ?? routes[0]?.id)
   const [focus, setFocus] = useState('Opening position')
   const build = routes.find((route) => route.id === id)
@@ -225,7 +231,7 @@ export function PvpPlanner({ classDef: def, page }: RoleSurfaceProps) {
       {build ? (
         <div className="rs-pvp-details">
           <div>
-            <RouteChooser builds={routes} selected={build} onChange={setId} label="PvP route" />
+            <RouteChooser builds={routes} selected={build} onChange={setId} label="PvP route" showSingle={routeRecords.length > routes.length} />
             <OfficialBuildChangeSummary className={def.id} buildVersion={build.verifiedThroughBuild} selectedTalents={def.talents.filter((talent) => (build.build[talent.id] ?? 0) > 0).map((talent) => ({ name: talent.name, rank: build.build[talent.id] ?? 0 }))} />
             <Allocation def={def} build={build} heading="Starting route" />
           </div>
@@ -237,6 +243,28 @@ export function PvpPlanner({ classDef: def, page }: RoleSurfaceProps) {
         </div>
       ) : <Unavailable def={def} page={page} />}
       {def.id === 'hunter' && page.kind === 'pvp' && build && <HunterPvpStartingPoints def={def} pvpBuild={build} />}
+      {page.kind === 'pvp' && routes.length > 1 && (
+        <section className="rs-pvp-route-choices" aria-label="Compare PvP routes">
+          <h2>Compare {def.name} PvP starting routes</h2>
+          <p className="rs-small">These are separate editorial tests at the same point budget. Pick the toolkit you want to evaluate; neither route carries a win-rate or performance claim.</p>
+          <div>
+            {routes.map((candidate) => (
+              <article key={candidate.id}>
+                <h3>{def.branchNames[candidate.spec]} {def.name}</h3>
+                <strong>{candidate.allocation} · {candidate.role}</strong>
+                <p>{candidate.playstyle[0]}</p>
+                <ul>
+                  {candidate.keyTalentIds.map((talentId) => {
+                    const talent = def.talents.find((entry) => entry.id === talentId)
+                    return talent ? <li key={talentId}>{talent.name} {candidate.build[talentId]}/{talent.maxRank}</li> : null
+                  })}
+                </ul>
+                <a href={candidate.href}>Review {def.branchNames[candidate.spec]} PvP route <ArrowRight size={14} aria-hidden="true" /></a>
+              </article>
+            ))}
+          </div>
+        </section>
+      )}
       {board}
       {build && <TalentInventory def={def} build={build} talentIds={condition?.talentIds} />}
     </section>

@@ -1,4 +1,4 @@
-export type EmbervillePageId = 'planner' | 'builds' | 'classes' | 'inheritance'
+export type EmbervillePageId = 'planner' | 'classes' | 'inheritance'
 
 export const EMBERVILLE_STATUS = {
   phase: 'Pre-Early Access',
@@ -38,7 +38,6 @@ export interface EmbervilleEditorialSection {
 
 export const EMBERVILLE_PAGES: EmbervillePageRecord[] = [
   { id: 'planner', slug: 'emberville', title: 'Emberville Build Planner', metaTitle: 'Emberville Build Planner | BuildForgeTools', description: 'Plan an Emberville build direction around class, weapon, and skill inheritance systems using confirmed pre-Early Access information.', eyebrow: 'A world rebuilds in ash', heroImage: '/images/emberville/planner-hero.jpg' },
-  { id: 'builds', slug: 'emberville-builds', title: 'Emberville Builds', metaTitle: 'Emberville Builds | Build Planner & Ideas', description: 'Explore confirmed Emberville build mechanics for melee, magic, ranged, and hybrid playstyles before Early Access.', eyebrow: 'BuildForgeTools', heroImage: '/images/emberville/builds-hero.jpg' },
   { id: 'classes', slug: 'emberville-classes', title: 'Emberville Classes', metaTitle: 'Emberville Classes | Confirmed Systems & Planning', description: 'Learn what is officially confirmed about Emberville classes, switching classes, weapons, and progression before Early Access.', eyebrow: 'Choose a foundation', heroImage: '/images/emberville/classes-hero.jpg' },
   { id: 'inheritance', slug: 'emberville-skill-inheritance', title: 'Emberville Skill Inheritance Guide', metaTitle: 'Emberville Skill Inheritance Guide | BuildForgeTools', description: 'Understand how confirmed active and passive skill inheritance can shape an Emberville build.', eyebrow: 'Different classes, brighter builds', heroImage: '/images/emberville/inheritance-hero.jpg' },
 ]
@@ -64,8 +63,6 @@ export const EMBERVILLE_EDITORIAL: Record<EmbervillePageId, EmbervilleEditorialS
         'Inheritance choices need confirmed compatibility rules before the planner connects them.',
       ],
     },
-  ],
-  builds: [
     {
       heading: 'Choose a build direction before choosing details',
       paragraphs: [
@@ -76,7 +73,7 @@ export const EMBERVILLE_EDITORIAL: Record<EmbervillePageId, EmbervilleEditorialS
     {
       heading: 'From direction to a testable build',
       paragraphs: [
-        'Start with a combat direction, then connect it to a class and weapon category once those records are verified. Weapon-bound combos make weapon choice part of the build structure, while the class system supplies a changing pool of abilities. Skill inheritance can then extend that foundation with options learned through other classes.',
+        'Start with a combat direction, then use reviewed class and weapon names as tentative references. Weapon-bound combos make weapon choice part of the build structure, while the class system supplies a changing pool of abilities. Connect a particular class, weapon, or inherited skill only when compatibility is verified.',
         'The final step is testing. Emberville is entering Early Access, so balance, availability, and interactions can evolve with player feedback. A build should be treated as a versioned setup that can be revised when the game changes.',
       ],
       bullets: [

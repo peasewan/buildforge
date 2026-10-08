@@ -123,3 +123,5 @@ Use the same daily comparison fields so decisions are based on trends rather tha
 - Preserve the current Hunter Pet page: it has an official 18-family ability lookup. Older source audits that say it cannot select families are outdated.
 - Run `npm run content:audit` and the publication/artifact regressions before publishing new intent pages. Fix missing task data rather than bypassing the gate.
 - Emberville is a preview research notebook with working saved notes; it cannot validate skill inheritance or game builds. Its incomplete planner is excluded from AdSense injection; useful mechanics guides remain accessible.
+
+- October 9 integration keeps main c9ff3c6 content consolidation: 140 current sitemap pages, 21 generated class retirements (clean + index.html aliases), plus Emberville builds and Invokyr ending merged into their working tools. The original 150-page rollout ledger and its check-intent scripts describe a historical release; use current npm build / content:audit / smoke:production for current inventory verification.

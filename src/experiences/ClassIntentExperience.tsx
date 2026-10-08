@@ -344,6 +344,60 @@ function Progression({ classDef: def, page }: Props) {
             </button>
           ))}
       </div>
+      {page.kind === 'leveling' && (
+        <section className="ix-route-choices" aria-label="Compare leveling routes">
+          <h2>Compare {def.name} leveling starts</h2>
+          <p className="ix-note">These routes spend the same eleven-point starter budget. Choose by the role and talent sequence you want to test; no route is labeled fastest.</p>
+          <div>
+            {routes.filter((candidate) => candidate.intent === 'leveling').map((candidate) => {
+              const candidateSteps = progressionForBuild(def, candidate).steps
+              if (!candidateSteps.length) return null
+              const opening = candidateSteps[0], midpoint = candidateSteps[Math.min(5, candidateSteps.length - 1)], endpoint = candidateSteps.at(-1)!
+              const talentName = (talentId: string) => def.talents.find((talent) => talent.id === talentId)?.name ?? talentId
+              return (
+                <article key={candidate.id} className="ix-panel">
+                  <h3>{def.branchNames[candidate.spec]} {def.name}</h3>
+                  <strong>{candidate.allocation} · {candidate.role}</strong>
+                  <p>{candidate.playstyle[0]}</p>
+                  <ol>
+                    <li>Level 10: {talentName(opening.talentId)} {opening.rank}</li>
+                    <li>Level 15: {talentName(midpoint.talentId)} {midpoint.rank}</li>
+                    <li>Level {endpoint.level}: {talentName(endpoint.talentId)} {endpoint.rank}</li>
+                  </ol>
+                  <a href={candidate.href}>Review {def.branchNames[candidate.spec]} route <ArrowRight size={14} aria-hidden="true" /></a>
+                  {hasRemovedTalentInBuild(def, candidate) && <small>Historical allocation · removed talent. Current calculator starts blank.</small>}
+                </article>
+              )
+            })}
+          </div>
+        </section>
+      )}
+      <section className="ix-point-order ix-panel" aria-labelledby="ix-point-order-title">
+        <div className="ix-point-order-heading">
+          <div>
+            <p className="ix-eyebrow">THE COMPLETE ROUTE</p>
+            <h2 id="ix-point-order-title">Level 10–{end} point order · {build.shortTitle}</h2>
+          </div>
+          <span>{result.orderStatus === 'editorial' ? 'Recorded editorial order' : 'Order derived from allocation'}</span>
+        </div>
+        <p className="ix-note">
+          Level labels assume one point per level from 10. The order is a planning example, not a verified Beta unlock schedule or performance recommendation.
+          {hasRemovedTalentInBuild(def, build) && ' This is a historical route with an officially removed talent; use a blank calculator for the current tree.'}
+        </p>
+        <ol className="ix-point-order-list" aria-label="Full point-by-point route">
+          {result.steps.map((routeStep) => {
+            const talent = def.talents.find((candidate) => candidate.id === routeStep.talentId)!
+            return (
+              <li key={`${routeStep.level}-${routeStep.talentId}`} aria-current={step?.level === routeStep.level ? 'step' : undefined}>
+                <span>Level {routeStep.level}</span>
+                <strong>{talent.name}</strong>
+                <span>Rank {routeStep.rank}/{talent.maxRank}</span>
+                <small>{allocation(def, routeStep.allocation)} points</small>
+              </li>
+            )
+          })}
+        </ol>
+      </section>
     </section>
   )
 }

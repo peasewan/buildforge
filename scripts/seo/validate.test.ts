@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { fingerprint, validateSeo, type SeoInput } from './validate'
+import { collectSeoRedirects, fingerprint, validateSeo, type SeoInput } from './validate'
 const origin = 'https://buildforgetools.com'
 const html = (path: string, links: string) => `<html><head><title>Title ${path}</title><meta name="description" content="Description ${path}"><link rel="canonical" href="${origin}${path}"></head><body><div id="root"><h1>Heading ${path}</h1><p id="details">Distinct content ${path}</p>${links}</div></body></html>`
 function fixture(): SeoInput {
@@ -7,6 +7,15 @@ function fixture(): SeoInput {
 }
 const errors = (input: SeoInput) => validateSeo(input).errors.join('\n')
 describe('rendered SEO release gate', () => {
+  it('collects static permanent redirects including explicit HTTP 301 rules', () => {
+    expect(collectSeoRedirects([
+      { source: '/old', destination: '/guide', statusCode: 301 },
+      { source: '/legacy', destination: '/guide', permanent: true },
+      { source: '/temporary', destination: '/guide', statusCode: 307 },
+      { source: '/:path*', destination: '/guide', permanent: true },
+      { source: '/host', destination: '/guide', permanent: true, has: [{ type: 'host', value: 'www.buildforgetools.com' }] },
+    ])).toEqual({ '/old': '/guide', '/legacy': '/guide' })
+  })
   it('accepts a linked, indexable inventory', () => expect(errors(fixture())).toBe(''))
   it.each([
     ['missing canonical', /<link[^>]+>/, '', 'canonical'],

@@ -1,0 +1,177 @@
+{
+  "classes": [
+    {
+      "classId": "mage",
+      "dataset": "1.60.1.69913",
+      "contentPolicy": "legacy",
+      "defined": 15,
+      "published": 11,
+      "retired": 0,
+      "namedBuildRecords": 9,
+      "distinctAllocations": 8,
+      "readableRankTexts": 33,
+      "recordedRanks": 93,
+      "failures": [
+        {
+          "path": "/wow-forever-fire-mage-build",
+          "unmet": [
+            "legalBuild:fire"
+          ],
+          "issues": [],
+          "invalidBuilds": []
+        },
+        {
+          "path": "/wow-forever-fire-mage-leveling-build",
+          "unmet": [
+            "legalBuild:fire"
+          ],
+          "issues": [],
+          "invalidBuilds": []
+        },
+        {
+          "path": "/wow-forever-mage-pvp-build",
+          "unmet": [
+            "legalBuild:fire"
+          ],
+          "issues": [],
+          "invalidBuilds": []
+        },
+        {
+          "path": "/wow-forever-frost-vs-fire-mage-leveling",
+          "unmet": [
+            "legalBuild:fire"
+          ],
+          "issues": [],
+          "invalidBuilds": []
+        }
+      ],
+      "duplicateSpecTasks": []
+    },
+    {
+      "classId": "warrior",
+      "dataset": "1.60.1.69913",
+      "contentPolicy": "legacy",
+      "defined": 20,
+      "published": 18,
+      "retired": 1,
+      "namedBuildRecords": 9,
+      "distinctAllocations": 3,
+      "readableRankTexts": 154,
+      "recordedRanks": 154,
+      "failures": [],
+      "duplicateSpecTasks": [
+        [
+          "/wow-forever-arms-warrior-build",
+          "/wow-forever-arms-warrior-leveling-build"
+        ],
+        [
+          "/wow-forever-fury-warrior-build",
+          "/wow-forever-fury-warrior-leveling-build"
+        ],
+        [
+          "/wow-forever-protection-warrior-build",
+          "/wow-forever-protection-warrior-leveling-build"
+        ]
+      ]
+    },
+    {
+      "classId": "rogue",
+      "dataset": "1.60.1.69913",
+      "contentPolicy": "intent_tasks_v1",
+      "defined": 15,
+      "published": 11,
+      "retired": 4,
+      "namedBuildRecords": 9,
+      "distinctAllocations": 3,
+      "readableRankTexts": 52,
+      "recordedRanks": 155,
+      "failures": [],
+      "duplicateSpecTasks": []
+    },
+    {
+      "classId": "priest",
+      "dataset": "1.60.1.69913",
+      "contentPolicy": "intent_tasks_v1",
+      "defined": 15,
+      "published": 11,
+      "retired": 4,
+      "namedBuildRecords": 9,
+      "distinctAllocations": 3,
+      "readableRankTexts": 52,
+      "recordedRanks": 144,
+      "failures": [],
+      "duplicateSpecTasks": []
+    },
+    {
+      "classId": "druid",
+      "dataset": "1.60.1.69913",
+      "contentPolicy": "intent_tasks_v1",
+      "defined": 15,
+      "published": 12,
+      "retired": 3,
+      "namedBuildRecords": 9,
+      "distinctAllocations": 3,
+      "readableRankTexts": 60,
+      "recordedRanks": 151,
+      "failures": [],
+      "duplicateSpecTasks": []
+    },
+    {
+      "classId": "warlock",
+      "dataset": "1.60.1.69913",
+      "contentPolicy": "intent_tasks_v1",
+      "defined": 15,
+      "published": 12,
+      "retired": 3,
+      "namedBuildRecords": 9,
+      "distinctAllocations": 3,
+      "readableRankTexts": 62,
+      "recordedRanks": 154,
+      "failures": [],
+      "duplicateSpecTasks": []
+    },
+    {
+      "classId": "hunter",
+      "dataset": "1.60.1.69913",
+      "contentPolicy": "intent_tasks_v1",
+      "defined": 15,
+      "published": 12,
+      "retired": 3,
+      "namedBuildRecords": 9,
+      "distinctAllocations": 3,
+      "readableRankTexts": 49,
+      "recordedRanks": 148,
+      "failures": [],
+      "duplicateSpecTasks": []
+    },
+    {
+      "classId": "shaman",
+      "dataset": "1.60.1.69913",
+      "contentPolicy": "intent_tasks_v1",
+      "defined": 15,
+      "published": 12,
+      "retired": 3,
+      "namedBuildRecords": 9,
+      "distinctAllocations": 3,
+      "readableRankTexts": 57,
+      "recordedRanks": 150,
+      "failures": [],
+      "duplicateSpecTasks": []
+    }
+  ],
+  "publishedClassPages": 99,
+  "consolidationRedirects": 42,
+  "limits": "Structural task/data checks do not establish AdSense approval or live performance. Older datasets remain explicitly historical.",
+  "reviewedAt": "2026-10-09",
+  "siteSitemapPages": 140,
+  "standaloneConsolidations": [
+    {
+      "source": "/emberville-builds",
+      "destination": "/emberville"
+    },
+    {
+      "source": "/invokyr-how-to-win",
+      "destination": "/invokyr"
+    }
+  ]
+}

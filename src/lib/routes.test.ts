@@ -32,7 +32,6 @@ describe('public page routing', () => {
 
   it.each([
     ['/emberville', 'planner', 'Emberville Build Planner | BuildForgeTools'],
-    ['/emberville-builds', 'builds', 'Emberville Builds | Build Planner & Ideas'],
     ['/emberville-classes', 'classes', 'Emberville Classes | Confirmed Systems & Planning'],
     ['/emberville-skill-inheritance', 'inheritance', 'Emberville Skill Inheritance Guide | BuildForgeTools'],
   ])('serves %s as an indexable Emberville page', (pathname, embervillePageId, title) => {

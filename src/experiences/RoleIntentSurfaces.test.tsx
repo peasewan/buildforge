@@ -1,6 +1,7 @@
 import { cleanup, fireEvent, render, screen, within } from '@testing-library/react'
 import { afterEach, expect, it } from 'vitest'
 import { warriorClass } from '../data/classes/warrior'
+import { rogueClass } from '../data/classes/rogue'
 import { druidClass } from '../data/classes/druid'
 import { priestClass } from '../data/classes/priest'
 import { warlockClass } from '../data/classes/warlock'
@@ -53,6 +54,38 @@ it('offers a PvP encounter focus and preserves a legal editable route', () => {
   const link = screen.getByRole('link', { name: 'Edit in Calculator' })
   expect(new URL(link.getAttribute('href')!, 'https://buildforgetools.com').searchParams.get('build')).toContain('warrior-arms')
   expect(screen.getByText(/same talent allocation/)).toBeTruthy()
+})
+
+it('shows both Warrior PvP starting routes on the general page before selecting either one', () => {
+  const { container } = render(
+    <PvpPlanner classDef={warriorClass} page={page(warriorClass, 'wow-forever-warrior-pvp-build')} />,
+  )
+  const choices = within(container).getByRole('region', { name: 'Compare PvP routes' })
+  expect(within(choices).getByRole('heading', { name: 'Arms Warrior' })).toBeTruthy()
+  expect(within(choices).getByRole('heading', { name: 'Fury Warrior' })).toBeTruthy()
+  expect(choices.textContent).toContain('Anger Management')
+  expect(choices.textContent).toContain('Piercing Howl')
+  expect(within(choices).getByRole('link', { name: 'Review Arms PvP route' }).getAttribute('href')).toBe('/wow-forever-arms-warrior-pvp-build')
+  expect(within(choices).getByRole('link', { name: 'Review Fury PvP route' }).getAttribute('href')).toBe('/wow-forever-fury-warrior-pvp-build')
+  const picker = screen.getByLabelText('PvP route') as HTMLSelectElement
+  expect([...picker.options].map((option) => option.value)).toEqual(['warrior-arms-pvp', 'warrior-fury-pvp'])
+})
+
+it('does not present identical Rogue allocations as different PvP toolkit comparisons', () => {
+  const routes = rogueClass.builds.filter((build) => build.intent === 'pvp')
+  expect(routes).toHaveLength(2)
+  expect(routes[0].build).toEqual(routes[1].build)
+  const pvpPage = page(rogueClass, 'wow-forever-rogue-pvp-build')
+  const primary = routes.find((build) => build.id === pvpPage.primaryBuildId)!
+  render(<PvpPlanner classDef={{ ...rogueClass, builds: [...rogueClass.builds].reverse() }} page={pvpPage} />)
+  const picker = screen.getByLabelText('PvP route') as HTMLSelectElement
+  expect([...picker.options].map((option) => option.value)).toEqual([primary.id])
+  expect(picker.options[0].textContent).toBe(primary.title)
+  expect(picker.value).toBe(primary.id)
+  expect(screen.queryByRole('region', { name: 'Compare PvP routes' })).toBeNull()
+  expect(screen.getByRole('region', { name: 'Rogue role conditions' })).toBeTruthy()
+  fireEvent.click(screen.getByRole('button', { name: 'Prolonged open combat' }))
+  expect(screen.getByRole('button', { name: 'Prolonged open combat' }).getAttribute('aria-pressed')).toBe('true')
 })
 
 it('shows the Hunter PvP build and calculator link before optional encounter prompts', () => {

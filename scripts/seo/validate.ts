@@ -11,6 +11,13 @@ export interface SeoInput {
   expectedPaths: string[]; withheldPaths: string[]; redirects: Record<string, string>; aliases: Record<string, string>
   requirements: Record<string, Requirement>; frozen: FrozenPage[]
 }
+interface SeoRedirectRule { source: string; destination: string; permanent?: boolean; statusCode?: number; has?: unknown }
+export function collectSeoRedirects(rules: readonly SeoRedirectRule[]): Record<string, string> {
+  return Object.fromEntries(rules.filter(rule =>
+    (rule.permanent || rule.statusCode === 301 || rule.statusCode === 308)
+    && !('has' in rule) && !rule.source.includes(':')
+  ).map(rule => [rule.source, rule.destination]))
+}
 const hash = (value: string) => createHash('sha256').update(value).digest('hex')
 const normalize = (path: string) => path.replace(/\/+$/, '') || '/'
 const clean = (s: string) => s.replace(/\s+/g, ' ').trim()

@@ -10,7 +10,7 @@ const gate = vi.hoisted(() => ({ enabled: true }))
 vi.mock('./rollout', () => ({ experienceEnabled: () => gate.enabled }))
 afterEach(() => { cleanup(); gate.enabled = true })
 
-const paths = ['/emberville', '/emberville-builds', '/emberville-classes', '/emberville-skill-inheritance', '/about', '/contact', '/privacy']
+const paths = ['/emberville', '/emberville-classes', '/emberville-skill-inheritance', '/about', '/contact', '/privacy']
 
 describe('Emberville and trust intent tasks', () => {
   it.each(paths)('renders a useful task for enabled %s and nothing for an inactive path', (path) => {
@@ -28,12 +28,13 @@ describe('Emberville and trust intent tasks', () => {
   })
 
   it('compares directions honestly, including identical choices', () => {
-    render(<LegacyIntentExperience path="/emberville-builds" />)
+    render(<LegacyIntentExperience path="/emberville" />)
     fireEvent.change(screen.getByLabelText('First direction'), { target: { value: 'Hybrid' } })
     expect(screen.getByRole('status').textContent).toContain('Depends on confirmed inheritance compatibility')
     fireEvent.change(screen.getByLabelText('Second direction'), { target: { value: 'Hybrid' } })
     expect(screen.getByRole('status').textContent).toContain('Same direction selected')
     expect(screen.getByText(/Exact class, weapon and skill combinations remain unknown/)).toBeTruthy()
+    expect(screen.getByRole('link', { name: 'Record this direction in the planner' }).getAttribute('href')).toBe('#planner')
   })
 
   it('switches class evidence between distinct supported systems', () => {
@@ -57,7 +58,9 @@ describe('Emberville and trust intent tasks', () => {
     const task = screen.getByRole('region', { name: 'Page planning task' })
     expect(within(task).getByRole('link', { name: 'Choose a direction and write local notes' }).getAttribute('href')).toBe('#planner')
     expect(document.querySelector('#planner textarea')).toBeTruthy()
-    expect(within(task).getAllByRole('link')).toHaveLength(4)
+    const nav = within(task).getByRole('navigation', { name: 'Emberville planning tasks' })
+    expect(within(nav).getByRole('link', { name: 'Compare two combat directions' }).getAttribute('href')).toBe('#direction-compare')
+    expect(document.getElementById('direction-compare')).toBeTruthy()
   })
 
   it('tailors report instructions and opens the existing private form', () => {
