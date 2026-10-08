@@ -1,4 +1,5 @@
 import { readFileSync } from 'node:fs'
+import { parseSitemap } from '../../scripts/seo/validate'
 import { describe, expect, it } from 'vitest'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { pageForPath } from './routes'
@@ -24,5 +25,14 @@ describe('Invokyr publishing', () => {
     const sitemap = readFileSync('public/sitemap.xml', 'utf8')
     expect(sitemap).not.toContain('/invokyr-dice')
     expect(sitemap).not.toContain('/invokyr-monsters')
+  })
+  it('publishes the ending answer on the companion and retires the thin ending route', () => {
+    const rendered = new DOMParser().parseFromString(renderToStaticMarkup(<AppRoute pathname="/invokyr"/>), 'text/html')
+    expect(rendered.querySelector('[data-surface="invokyr-ending"]')?.textContent).toContain('Carry the board game into the end room')
+    expect(rendered.querySelector('a[href="/invokyr-how-to-win"]')).toBeNull()
+    expect(config.redirects).toContainEqual({ source: '/invokyr-how-to-win', destination: '/invokyr', statusCode: 301 })
+    expect(config.rewrites.some(rule => rule.source === '/invokyr-how-to-win')).toBe(false)
+    expect(readFileSync('public/sitemap.xml', 'utf8')).not.toContain('<loc>https://buildforgetools.com/invokyr-how-to-win</loc>')
+    expect(parseSitemap(readFileSync('public/sitemap.xml', 'utf8')).find((row) => row.url === 'https://buildforgetools.com/invokyr')?.lastmod).toBe('2026-10-08')
   })
 })

@@ -348,7 +348,7 @@ function pageBuildsValid<B extends string>(classDef: ClassDefinition<B>, page: C
   // A page promising a concrete route needs a route of its own. Without this, an empty array of
   // related builds passes `every()` and can publish a "build pending verification" placeholder.
   const primaryKinds = new Set<ClassPageKind>([
-    'specBuild', 'leveling', 'specLeveling', 'specPvp', 'specDungeon',
+    'specBuild', 'leveling', 'specLeveling', 'specPvp', 'dungeon', 'specDungeon',
     'aoe', 'tank', 'healing', 'pet', 'totem',
   ])
   const primary = classDef.builds.find((candidate) => candidate.id === page.primaryBuildId)

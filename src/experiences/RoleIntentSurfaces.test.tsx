@@ -54,6 +54,19 @@ it('offers a PvP encounter focus and preserves a legal editable route', () => {
   expect(screen.getByText(/same talent allocation/)).toBeTruthy()
 })
 
+it('shows both Warrior PvP starting routes on the general page before selecting either one', () => {
+  const { container } = render(
+    <PvpPlanner classDef={warriorClass} page={page(warriorClass, 'wow-forever-warrior-pvp-build')} />,
+  )
+  const choices = within(container).getByRole('region', { name: 'Compare PvP routes' })
+  expect(within(choices).getByRole('heading', { name: 'Arms Warrior' })).toBeTruthy()
+  expect(within(choices).getByRole('heading', { name: 'Fury Warrior' })).toBeTruthy()
+  expect(choices.textContent).toContain('Anger Management')
+  expect(choices.textContent).toContain('Piercing Howl')
+  expect(within(choices).getByRole('link', { name: 'Review Arms PvP route' }).getAttribute('href')).toBe('/wow-forever-arms-warrior-pvp-build')
+  expect(within(choices).getByRole('link', { name: 'Review Fury PvP route' }).getAttribute('href')).toBe('/wow-forever-fury-warrior-pvp-build')
+})
+
 it('shows the Hunter PvP build and calculator link before optional encounter prompts', () => {
   const { container } = render(
     <PvpPlanner

@@ -177,6 +177,15 @@
 .intent-experience .rs-pvp-board > p { grid-column: 2; grid-row: 2 / span 2; align-self: center; font-size: 16px; }
 .intent-experience .rs-pvp-board > p.rs-small { grid-row: 4; font-size: 12px; }
 .intent-experience .rs-pvp-details { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; }
+.intent-experience .rs-pvp-route-choices { margin-top: 22px; padding: 22px; border: 1px solid #d88d6a65; border-radius: 18px; background: linear-gradient(135deg, #221a20, #101722); }
+.intent-experience .rs-pvp-route-choices h2 { margin: 0 0 7px; }
+.intent-experience .rs-pvp-route-choices > div { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 12px; margin-top: 17px; }
+.intent-experience .rs-pvp-route-choices article { display: flex; flex-direction: column; padding: 18px; border: 1px solid #ffffff2a; border-radius: 12px; background: #0c121bba; }
+.intent-experience .rs-pvp-route-choices h3 { margin: 0 0 10px; }
+.intent-experience .rs-pvp-route-choices strong { color: #f0ca9d; }
+.intent-experience .rs-pvp-route-choices p, .intent-experience .rs-pvp-route-choices ul { color: #bdc6d2; }
+.intent-experience .rs-pvp-route-choices ul { padding-left: 20px; }
+.intent-experience .rs-pvp-route-choices a { display: inline-flex; align-items: center; gap: 5px; margin-top: auto; color: #f1b17f; }
 .intent-experience .rs-hunter-directions { padding: 25px; border: 1px solid #d88d6a65; border-radius: 18px; background: linear-gradient(135deg, #221a20, #101722); }
 .intent-experience .rs-hunter-directions > p { max-width: 850px; color: #bdc6d2; }
 .intent-experience .rs-hunter-directions-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 18px 0; }

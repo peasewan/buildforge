@@ -30,17 +30,19 @@ const EXPECTED_PAGES: { slug: string; kind: ClassPageKind; title: string; h1: st
   { slug: 'wow-forever-protection-warrior-talents', kind: 'specTalents', title: 'WoW Forever Protection Warrior Talents', h1: 'WoW Forever Protection Warrior Talents' },
 ]
 const WITHHELD_PVP = 'wow-forever-protection-warrior-pvp-build'
+const RETIRED_DUNGEON = 'wow-forever-warrior-dungeon-build'
+const withheldSlugs = new Set([WITHHELD_PVP, RETIRED_DUNGEON])
 
 describe('Warrior ClassDefinition', () => {
-  it('defines 20 Warrior routes but publishes only the 19 with a primary value', () => {
+  it('defines 20 Warrior records but publishes only the 18 with a distinct supported task', () => {
     expect(warriorClass.pages).toHaveLength(20)
     expect(warriorClass.pages.map((page) => page.slug).sort()).toEqual(EXPECTED_PAGES.map((page) => page.slug).sort())
-    expect(publishedClassPages([warriorClass]).map(({ page }) => page.slug).sort()).toEqual(EXPECTED_PAGES.filter((page) => page.slug !== WITHHELD_PVP).map((page) => page.slug).sort())
+    expect(publishedClassPages([warriorClass]).map(({ page }) => page.slug).sort()).toEqual(EXPECTED_PAGES.filter((page) => !withheldSlugs.has(page.slug)).map((page) => page.slug).sort())
     for (const expected of EXPECTED_PAGES) {
       const page = warriorClass.pages.find((candidate) => candidate.slug === expected.slug)
       expect(page, expected.slug).toMatchObject(expected)
       expect(page?.canonical).toBe(`https://buildforgetools.com/${expected.slug}`)
-      expect(pageFromPublishedClasses(expected.slug, [warriorClass])).toBe(expected.slug === WITHHELD_PVP ? undefined : page)
+      expect(pageFromPublishedClasses(expected.slug, [warriorClass])).toBe(withheldSlugs.has(expected.slug) ? undefined : page)
     }
   })
 
@@ -110,6 +112,24 @@ describe('Warrior ClassDefinition', () => {
     expect(config.redirects).toContainEqual({ source: `/${WITHHELD_PVP}`, destination: '/wow-forever-warrior-pvp-build', permanent: true })
   })
 
+  it('consolidates Warrior dungeon choices into the Protection page and redirects the retired hub', () => {
+    const retired = warriorClass.pages.find((page) => page.slug === RETIRED_DUNGEON)!
+    const destination = warriorClass.pages.find((page) => page.slug === 'wow-forever-protection-warrior-dungeon-build')!
+    const destinationText = destination.sections.flatMap((section) => [section.heading, ...section.paragraphs]).join(' ')
+    expect(retired.primaryBuildId).toBeUndefined()
+    expect(pageFromPublishedClasses(`/${RETIRED_DUNGEON}`, [warriorClass])).toBeUndefined()
+    expect(destination.primaryBuildId).toBe('warrior-protection-dungeon')
+    expect(destinationText).toMatch(/Protection.*tank/i)
+    expect(destinationText).toMatch(/Arms.*Fury.*damage/i)
+    expect(destination.relatedPages).toEqual(expect.arrayContaining([
+      { href: '/wow-forever-arms-warrior-build', label: expect.stringContaining('Arms') },
+      { href: '/wow-forever-fury-warrior-build', label: expect.stringContaining('Fury') },
+    ]))
+    expect(existsSync(join(process.cwd(), RETIRED_DUNGEON))).toBe(false)
+    const config = JSON.parse(readFileSync(join(process.cwd(), 'vercel.json'), 'utf8')) as { redirects: { source: string; destination: string; statusCode?: number }[] }
+    expect(config.redirects).toContainEqual({ source: `/${RETIRED_DUNGEON}`, destination: '/wow-forever-protection-warrior-dungeon-build', statusCode: 301 })
+  })
+
   it('keeps every page record unique and every internal page link inside the published Warrior cluster', () => {
     const slugs = new Set(warriorClass.pages.map((page) => page.slug))
     for (const key of ['intent', 'title', 'h1', 'canonical'] as const) {
@@ -121,7 +141,7 @@ describe('Warrior ClassDefinition', () => {
       expect(page.sections.length, page.slug).toBeGreaterThan(0)
       for (const related of page.relatedPages) {
         expect(slugs.has(related.href.slice(1)), `${page.slug} -> ${related.href}`).toBe(true)
-        if (page.slug !== WITHHELD_PVP) expect(publishedSlugs.has(related.href.slice(1)), `${page.slug} -> withheld ${related.href}`).toBe(true)
+        if (!withheldSlugs.has(page.slug)) expect(publishedSlugs.has(related.href.slice(1)), `${page.slug} -> withheld ${related.href}`).toBe(true)
       }
     }
   })
@@ -131,7 +151,7 @@ describe('Warrior ClassDefinition', () => {
   })
 
   it('routes every Warrior URL through the generic class renderer', () => {
-    for (const expected of EXPECTED_PAGES.filter((page) => page.slug !== WITHHELD_PVP)) {
+    for (const expected of EXPECTED_PAGES.filter((page) => !withheldSlugs.has(page.slug))) {
       const route = pageForPath(`/${expected.slug}`)
       expect(route.kind, expected.slug).toBe(expected.kind === 'calculator' ? 'class-calculator' : 'class-document')
       expect(route.title).toBe(expected.title)

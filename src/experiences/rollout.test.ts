@@ -9,15 +9,15 @@ import { calculatorLinkIssues, comparePageHtml, partitionAssetIssues } from '../
 
 const sitemap = readFileSync(new URL('../../public/sitemap.xml', import.meta.url), 'utf8')
 const paths = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) => new URL(match[1]).pathname)
-const retiredPaths = ['/wow-forever-protection-warrior-pvp-build']
-const independentToolPaths = ['/invokyr', '/invokyr-multiplayer', '/invokyr-how-to-win', '/wow-forever-paladin-build-comparator', '/songs-of-glimmerwick', '/songs-of-glimmerwick-first-days', '/songs-of-glimmerwick-spellcasting', '/songs-of-glimmerwick-garden-well', '/nivalis-nights-profit-calculator']
+const retiredPaths = ['/wow-forever-protection-warrior-pvp-build', '/emberville-builds', '/wow-forever-warrior-dungeon-build']
+const independentToolPaths = ['/invokyr', '/invokyr-multiplayer', '/wow-forever-paladin-build-comparator', '/songs-of-glimmerwick', '/songs-of-glimmerwick-first-days', '/songs-of-glimmerwick-spellcasting', '/songs-of-glimmerwick-garden-well', '/nivalis-nights-profit-calculator']
 // Independent of the ledger's editable class/status fields: these paths are frozen by the scope amendment.
 const protectedPaths = paths.filter((path) => path.includes('paladin') && !independentToolPaths.includes(path))
 
 describe('intent rollout scope', () => {
   it('retains the historical rollout ledger while withholding an unfinished build page', () => {
     const discoveryPaths = ['/', '/wow-forever-classes', '/wow-forever-builds', '/wow-forever-dungeon-build-finder', '/wow-forever-class-picker']
-    expect(paths).toHaveLength(163)
+    expect(paths).toHaveLength(160)
     expect(paths.filter(path => discoveryPaths.includes(path)).sort()).toEqual([...discoveryPaths].sort())
     expect(new Set(ledger.pages.map((page) => page.path)).size).toBe(150)
     expect(ledger.pages.map((page) => page.path).sort()).toEqual([...paths.filter(path => !discoveryPaths.includes(path) && !independentToolPaths.includes(path)), ...retiredPaths].sort())

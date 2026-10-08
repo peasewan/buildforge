@@ -31,7 +31,7 @@ const read = (file: string) => readFileSync(join(process.cwd(), file), 'utf8')
 
 const committedSitemap = read('public/sitemap.xml')
 const committedVercel = JSON.parse(read('vercel.json')) as {
-  redirects: { source: string }[]
+  redirects: { source: string; destination?: string; permanent?: boolean; statusCode?: number }[]
   headers: { source: string; headers: { key: string; value: string }[] }[]
   rewrites: { source: string; destination: string }[]
 }
@@ -40,6 +40,7 @@ const published = publishedClassPages()
 const publishedSlugs = published.map(({ page }) => page.slug)
 const withheldSlugs = mageClass.pages.map((page) => page.slug).filter((slug) => !publishedSlugs.includes(slug))
 const unfinishedWarriorSlug = 'wow-forever-protection-warrior-pvp-build'
+const retiredWarriorDungeonSlug = 'wow-forever-warrior-dungeon-build'
 
 /** A second registry whose gate answers differently, so a literal Mage list cannot pass. */
 const hunterWithAWithheldPage: ClassDefinition = {
@@ -72,11 +73,12 @@ describe('generated class-page artifacts', () => {
   })
 
   it('publishes data-ready class pages and withholds unfinished build promises', () => {
-    expect(published).toHaveLength(120)
+    expect(published).toHaveLength(119)
     expect(withheldSlugs).toHaveLength(4)
     expect(classPagePaths()).toEqual(publishedSlugs.map((slug) => `/${slug}`))
     for (const slug of withheldSlugs) expect(classPagePaths()).not.toContain(`/${slug}`)
     expect(classPagePaths()).not.toContain(`/${unfinishedWarriorSlug}`)
+    expect(classPagePaths()).not.toContain(`/${retiredWarriorDungeonSlug}`)
   })
 
   it('answers from whatever registry it is given, never from a hand-written slug list', () => {
@@ -221,6 +223,7 @@ describe('generated class-page artifacts', () => {
   it('keeps every withheld path out of the sitemap', () => {
     for (const slug of withheldSlugs) expect(committedSitemap, slug).not.toContain(`/${slug}<`)
     expect(committedSitemap).not.toContain(`/${unfinishedWarriorSlug}<`)
+    expect(committedSitemap).not.toContain(`/${retiredWarriorDungeonSlug}<`)
   })
 
   it('rewrites one path per published page and leaves the existing deployment config alone', () => {
@@ -235,13 +238,35 @@ describe('generated class-page artifacts', () => {
       '/',
       '/:path*',
       '/wow-forever-paladin-beta',
+      '/invokyr-how-to-win',
+      '/emberville-builds',
       '/wow-forever-holy-paladin-build',
       '/wow-forever-protection-warrior-pvp-build',
+      '/wow-forever-warrior-dungeon-build',
     ])
     expect(committedVercel.headers).toContainEqual({
       source: '/build',
       headers: [{ key: 'X-Robots-Tag', value: 'noindex, follow' }],
     })
+  })
+
+  it('permanently routes the retired Emberville builds URL to the planner', () => {
+    expect(committedVercel.redirects).toContainEqual({ source: '/emberville-builds', destination: '/emberville', statusCode: 301 })
+    expect(committedVercel.rewrites.some(({ source }) => source === '/emberville-builds')).toBe(false)
+    expect(committedSitemap).not.toContain('<loc>https://buildforgetools.com/emberville-builds</loc>')
+    expect(committedSitemap).toContain('<loc>https://buildforgetools.com/emberville-classes</loc>')
+    expect(committedSitemap).toContain('<loc>https://buildforgetools.com/emberville-skill-inheritance</loc>')
+  })
+
+  it('permanently routes the retired Warrior dungeon hub to the published Protection route', () => {
+    expect(committedVercel.redirects).toContainEqual({
+      source: '/wow-forever-warrior-dungeon-build',
+      destination: '/wow-forever-protection-warrior-dungeon-build',
+      statusCode: 301,
+    })
+    expect(committedVercel.rewrites.some(({ source }) => source === '/wow-forever-warrior-dungeon-build')).toBe(false)
+    expect(committedSitemap).not.toContain('<loc>https://buildforgetools.com/wow-forever-warrior-dungeon-build</loc>')
+    expect(committedSitemap).toContain('<loc>https://buildforgetools.com/wow-forever-protection-warrior-dungeon-build</loc>')
   })
 
   it('only ever generates paths that a published class declares', () => {

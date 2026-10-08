@@ -129,7 +129,7 @@ const warriorPages: ClassPageDefinition[] = [
     title: 'WoW Forever Warrior Builds & Talent Calculator | BuildForgeTools', h1: 'WoW Forever Warrior Builds',
     description: 'Explore Level 20 Warrior starter builds for Arms, Fury, and Protection, then customize the 11-point snapshots in the talent calculator.', eyebrow: 'Level 20 Starter Builds',
     relatedBuildIds: warriorBuilds.map((build) => build.id),
-    relatedPages: [['/warrior', 'Warrior Talent Calculator'], ['/wow-forever-warrior-leveling-build', 'Warrior Leveling Build'], ['/wow-forever-warrior-pvp-build', 'Warrior PvP Builds'], ['/wow-forever-warrior-dungeon-build', 'Warrior Dungeon Builds']],
+    relatedPages: [['/warrior', 'Warrior Talent Calculator'], ['/wow-forever-warrior-leveling-build', 'Warrior Leveling Build'], ['/wow-forever-warrior-pvp-build', 'Warrior PvP Builds'], ['/wow-forever-protection-warrior-dungeon-build', 'Protection Dungeon Build']],
     sections: [{ heading: 'Choose a Warrior route', paragraphs: ['Arms, Fury and Protection offer different ways to test the 11-point opening. Use the role and intent labels to choose a starting route, then edit its exact allocation in the calculator.', EVIDENCE_NOTE] }],
     publishRequirements: ['level20Builds'],
   }),
@@ -238,7 +238,9 @@ const warriorPages: ClassPageDefinition[] = [
   page({
     kind: 'dungeon', slug: 'wow-forever-warrior-dungeon-build', intent: 'Warrior Dungeon Hub',
     title: 'WoW Forever Warrior Dungeon Builds', h1: 'WoW Forever Warrior Dungeon Builds',
-    description: 'Compare Warrior dungeon roles and open the 11-point Protection tank starter in the talent calculator.', eyebrow: 'Dungeon Role Starters', primaryBuildId: 'warrior-protection-dungeon',
+    // Retired: the role choice now lives on the Protection dungeon page. A dungeon page
+    // without its own primary route is withheld by the shared publication gate.
+    description: 'Compare Warrior dungeon roles and open the 11-point Protection tank starter in the talent calculator.', eyebrow: 'Dungeon Role Starters',
     relatedBuildIds: ['warrior-arms-build', 'warrior-fury-build'],
     relatedPages: [['/wow-forever-protection-warrior-dungeon-build', 'Protection Dungeon Tank'], ['/wow-forever-protection-warrior-build', 'Protection Build'], ['/wow-forever-warrior-leveling-build', 'Warrior Leveling']],
     sections: [{ heading: 'Warrior dungeon roles', paragraphs: ['Protection supplies the dedicated tank route. Arms and Fury remain damage-oriented alternatives when another player tanks the group.', 'This hub separates the role choice from the client facts and links the shield route directly into the calculator.'] }],
@@ -248,8 +250,14 @@ const warriorPages: ClassPageDefinition[] = [
     kind: 'specDungeon', slug: 'wow-forever-protection-warrior-dungeon-build', intent: 'Protection Dungeon Tank',
     title: 'WoW Forever Protection Warrior Dungeon Build', h1: 'WoW Forever Protection Warrior Dungeon Build',
     description: 'Use an editable Level 20 Protection Warrior dungeon tank route with shield, Rage, multi-target control, and Last Stand planning.', eyebrow: 'Level 20 Dungeon Tank', spec: 'protection', primaryBuildId: 'warrior-protection-dungeon',
-    relatedPages: [['/wow-forever-warrior-dungeon-build', 'Warrior Dungeon Builds'], ['/wow-forever-protection-warrior-leveling-build', 'Protection Leveling'], ['/wow-forever-protection-warrior-talents', 'Protection Talents']],
-    sections: [{ heading: 'Threat, Rage and pulling', paragraphs: ['Enter a pull with a plan for Bloodrage and Thunder Clap instead of spending Rage reactively. Keep a shield equipped so Shield Specialization is part of the test.', 'Talent allocation alone does not prove threat output. Compare similar packs and record when Rage or survivability becomes the limiting factor.'] }, { heading: 'Survivability at Level 20', paragraphs: ['Last Stand is the route endpoint and emergency button. It does not replace pacing, positioning or healer awareness.', EVIDENCE_NOTE] }],
+    relatedPages: [['/wow-forever-arms-warrior-build', 'Arms damage starter'], ['/wow-forever-fury-warrior-build', 'Fury damage starter'], ['/wow-forever-protection-warrior-leveling-build', 'Protection Leveling'], ['/wow-forever-protection-warrior-talents', 'Protection Talents']],
+    sections: [{ heading: 'Threat, Rage and pulling', paragraphs: ['Enter a pull with a plan for Bloodrage and Thunder Clap instead of spending Rage reactively. Keep a shield equipped so Shield Specialization is part of the test.', 'Talent allocation alone does not prove threat output. Compare similar packs and record when Rage or survivability becomes the limiting factor.'] }, { heading: 'Choose the party job before the route', paragraphs: ['Choose Protection when assigned to tank: this page loads the 0/0/11 shield starter for pull control and survival. If another player tanks, Arms and Fury are available as separate 11-point damage starters; their general build pages let you inspect the exact ranks before editing a route.', 'The Arms and Fury starters are not reviewed dungeon damage rankings. Keep the same group, target packs and weapon conditions when comparing them, and record Rage flow, control and recovery instead of assuming either route performs better.'] }, { heading: 'Survivability at Level 20', paragraphs: ['Last Stand is the route endpoint and emergency button. It does not replace pacing, positioning or healer awareness.', EVIDENCE_NOTE] }],
+    comparison: { columns: ['Tank assignment', 'Damage assignment'], rows: [
+      { label: 'Published starting point', values: ['Protection 0/0/11 dungeon tank route', 'Arms 11/0/0 or Fury 0/11/0 general starter'] },
+      { label: 'Question to test', values: ['Does shield, Rage and Thunder Clap planning keep the pull controlled?', 'Can the chosen starter sustain useful attacks without disrupting the tank?'] },
+      { label: 'Evidence limit', values: ['Editorial Level 20 route, not a verified Level 30 tank recommendation', 'General Level 20 routes, not measured dungeon damage rankings'] },
+    ] },
+    updatedAt: '2026-10-08',
     publishRequirements: ['legalBuild:protection'],
   }),
   page({

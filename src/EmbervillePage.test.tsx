@@ -1,4 +1,4 @@
-import { cleanup, fireEvent, render, screen } from '@testing-library/react'
+import { cleanup, fireEvent, render, screen, within } from '@testing-library/react'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import EmbervillePage from './EmbervillePage'
 
@@ -7,7 +7,7 @@ describe('Emberville public pages', () => {
   afterEach(() => cleanup())
 
   it.each([
-    ['planner', 'Emberville Build Planner'], ['builds', 'Emberville Builds'], ['classes', 'Emberville Classes'], ['inheritance', 'Emberville Skill Inheritance Guide'],
+    ['planner', 'Emberville Build Planner'], ['classes', 'Emberville Classes'], ['inheritance', 'Emberville Skill Inheritance Guide'],
   ] as const)('renders %s with one clear H1 and sources', (id, heading) => {
     const { container } = render(<EmbervillePage pageId={id} />)
     expect(screen.getByRole('heading', { level: 1, name: heading })).toBeTruthy()
@@ -18,12 +18,19 @@ describe('Emberville public pages', () => {
 
   it.each([
     ['planner', 'How planner data becomes available'],
-    ['builds', 'Choose a build direction before choosing details'],
     ['classes', 'Class, weapon, and progression data status'],
     ['inheritance', 'Future compatibility matrix'],
   ] as const)('renders unique %s editorial content', (id, heading) => {
     render(<EmbervillePage pageId={id} />)
     expect(screen.getByRole('heading', { name: heading })).toBeTruthy()
+  })
+
+  it('keeps build-direction cards and a practical planning sequence on the planner', () => {
+    render(<EmbervillePage pageId="planner" />)
+    expect(screen.getByRole('heading', { name: 'Explore a playstyle' })).toBeTruthy()
+    expect(screen.getByRole('heading', { name: 'Hybrid direction' })).toBeTruthy()
+    expect(screen.getByRole('heading', { name: 'Build planning principles' })).toBeTruthy()
+    expect(screen.getByRole('heading', { name: 'From direction to a testable build' })).toBeTruthy()
   })
 
   it('shows source-backed class records and explicit unknown compatibility', () => {
@@ -44,7 +51,7 @@ describe('Emberville public pages', () => {
     window.gtag = gtag
     render(<EmbervillePage pageId="planner" />)
     fireEvent.click(screen.getByRole('button', { name: /Magic/ }))
-    expect(screen.getByRole('heading', { name: 'Magic direction' })).toBeTruthy()
+    expect(within(screen.getByRole('complementary')).getByRole('heading', { name: 'Magic direction' })).toBeTruthy()
     fireEvent.click(screen.getByRole('button', { name: /Skill inheritance/ }))
     expect(screen.getByText('Test active and passive skills learned through other classes.')).toBeTruthy()
     expect(screen.queryByText('Skill slots coming soon')).toBeNull()

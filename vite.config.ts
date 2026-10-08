@@ -57,7 +57,6 @@ export default defineConfig(({ mode }) => ({
       input: {
         invokyrHome: resolve(import.meta.dirname, 'invokyr/index.html'),
         invokyrMultiplayer: resolve(import.meta.dirname, 'invokyr-multiplayer/index.html'),
-        invokyrEnding: resolve(import.meta.dirname, 'invokyr-how-to-win/index.html'),
         main: resolve(import.meta.dirname, 'index.html'),
         dungeonFinder: resolve(import.meta.dirname, 'wow-forever-dungeon-build-finder/index.html'),
         classPicker: resolve(import.meta.dirname, 'wow-forever-class-picker/index.html'),
@@ -95,7 +94,6 @@ export default defineConfig(({ mode }) => ({
         glimmerwickGardenWell: resolve(import.meta.dirname, 'songs-of-glimmerwick-garden-well/index.html'),
         nivalisProfit: resolve(import.meta.dirname, 'nivalis-nights-profit-calculator/index.html'),
         emberville: resolve(import.meta.dirname, 'emberville/index.html'),
-        embervilleBuilds: resolve(import.meta.dirname, 'emberville-builds/index.html'),
         embervilleClasses: resolve(import.meta.dirname, 'emberville-classes/index.html'),
         embervilleInheritance: resolve(import.meta.dirname, 'emberville-skill-inheritance/index.html'),
         ...classInputs,

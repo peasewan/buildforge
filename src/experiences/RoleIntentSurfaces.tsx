@@ -203,6 +203,28 @@ export function PvpPlanner({ classDef: def, page }: RoleSurfaceProps) {
         </div>
       ) : <Unavailable def={def} page={page} />}
       {def.id === 'hunter' && page.kind === 'pvp' && build && <HunterPvpStartingPoints def={def} pvpBuild={build} />}
+      {page.kind === 'pvp' && routes.length > 1 && (
+        <section className="rs-pvp-route-choices" aria-label="Compare PvP routes">
+          <h2>Compare {def.name} PvP starting routes</h2>
+          <p className="rs-small">These are separate editorial tests at the same point budget. Pick the toolkit you want to evaluate; neither route carries a win-rate or performance claim.</p>
+          <div>
+            {routes.map((candidate) => (
+              <article key={candidate.id}>
+                <h3>{def.branchNames[candidate.spec]} {def.name}</h3>
+                <strong>{candidate.allocation} · {candidate.role}</strong>
+                <p>{candidate.playstyle[0]}</p>
+                <ul>
+                  {candidate.keyTalentIds.map((talentId) => {
+                    const talent = def.talents.find((entry) => entry.id === talentId)
+                    return talent ? <li key={talentId}>{talent.name} {candidate.build[talentId]}/{talent.maxRank}</li> : null
+                  })}
+                </ul>
+                <a href={candidate.href}>Review {def.branchNames[candidate.spec]} PvP route <ArrowRight size={14} aria-hidden="true" /></a>
+              </article>
+            ))}
+          </div>
+        </section>
+      )}
       {board}
       {build && <TalentInventory def={def} build={build} />}
     </section>

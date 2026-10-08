@@ -17,8 +17,11 @@
       "permanent": true
     },
     { "source": "/wow-forever-paladin-beta", "destination": "/wow-forever-paladin-beta-talent-changes", "permanent": true },
+    { "source": "/invokyr-how-to-win", "destination": "/invokyr", "statusCode": 301 },
+    { "source": "/emberville-builds", "destination": "/emberville", "statusCode": 301 },
     { "source": "/wow-forever-holy-paladin-build", "destination": "/wow-forever-paladin-build", "permanent": true },
-    { "source": "/wow-forever-protection-warrior-pvp-build", "destination": "/wow-forever-warrior-pvp-build", "permanent": true }
+    { "source": "/wow-forever-protection-warrior-pvp-build", "destination": "/wow-forever-warrior-pvp-build", "permanent": true },
+    { "source": "/wow-forever-warrior-dungeon-build", "destination": "/wow-forever-protection-warrior-dungeon-build", "statusCode": 301 }
   ],
   "headers": [
     {
@@ -34,7 +37,6 @@
     }
   ],
   "rewrites": [
-    { "source": "/invokyr-how-to-win", "destination": "/invokyr-how-to-win/index.html" },
     { "source": "/invokyr-multiplayer", "destination": "/invokyr-multiplayer/index.html" },
     { "source": "/invokyr", "destination": "/invokyr/index.html" },
     { "source": "/wow-forever-dungeon-build-finder", "destination": "/wow-forever-dungeon-build-finder/index.html" },
@@ -47,7 +49,6 @@
     { "source": "/songs-of-glimmerwick-garden-well", "destination": "/songs-of-glimmerwick-garden-well/index.html" },
     { "source": "/nivalis-nights-profit-calculator", "destination": "/nivalis-nights-profit-calculator/index.html" },
     { "source": "/emberville", "destination": "/emberville/index.html" },
-    { "source": "/emberville-builds", "destination": "/emberville-builds/index.html" },
     { "source": "/emberville-classes", "destination": "/emberville-classes/index.html" },
     { "source": "/emberville-skill-inheritance", "destination": "/emberville-skill-inheritance/index.html" },
     { "source": "/wow-forever-paladin-build-comparator", "destination": "/wow-forever-paladin-build-comparator/index.html" },
@@ -98,7 +99,6 @@
     { "source": "/wow-forever-warrior-pvp-build", "destination": "/wow-forever-warrior-pvp-build/index.html" },
     { "source": "/wow-forever-arms-warrior-pvp-build", "destination": "/wow-forever-arms-warrior-pvp-build/index.html" },
     { "source": "/wow-forever-fury-warrior-pvp-build", "destination": "/wow-forever-fury-warrior-pvp-build/index.html" },
-    { "source": "/wow-forever-warrior-dungeon-build", "destination": "/wow-forever-warrior-dungeon-build/index.html" },
     { "source": "/wow-forever-protection-warrior-dungeon-build", "destination": "/wow-forever-protection-warrior-dungeon-build/index.html" },
     { "source": "/wow-forever-warrior-level-20-build", "destination": "/wow-forever-warrior-level-20-build/index.html" },
     { "source": "/wow-forever-arms-vs-fury-warrior-leveling", "destination": "/wow-forever-arms-vs-fury-warrior-leveling/index.html" },

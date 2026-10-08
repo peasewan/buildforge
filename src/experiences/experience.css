@@ -417,6 +417,95 @@
   font-size: 10px;
   letter-spacing: 0.12em;
 }
+.intent-experience .ix-route-choices {
+  margin-top: 24px;
+}
+.intent-experience .ix-route-choices > h2 {
+  margin-bottom: 6px;
+}
+.intent-experience .ix-route-choices > div {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+.intent-experience .ix-route-choices article {
+  display: flex;
+  flex-direction: column;
+}
+.intent-experience .ix-route-choices article h3 {
+  margin: 0 0 10px;
+}
+.intent-experience .ix-route-choices article > strong {
+  color: #ffe8a3;
+}
+.intent-experience .ix-route-choices article > p {
+  color: #c6ced8;
+}
+.intent-experience .ix-route-choices article ol {
+  margin: 0 0 16px;
+  padding-left: 20px;
+  color: #c6ced8;
+}
+.intent-experience .ix-route-choices article a {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: auto;
+  color: #f4c678;
+}
+.intent-experience .ix-route-choices article small {
+  display: block;
+  margin-top: 10px;
+  color: #f0b39f;
+}
+.intent-experience .ix-point-order {
+  margin-top: 18px;
+}
+.intent-experience .ix-point-order-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 16px;
+}
+.intent-experience .ix-point-order-heading h2 {
+  margin: 4px 0 0;
+}
+.intent-experience .ix-point-order-heading > span {
+  color: #c7a865;
+  font-size: 12px;
+  white-space: nowrap;
+}
+.intent-experience .ix-point-order-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 8px;
+  padding: 0;
+  margin: 16px 0 0;
+  list-style: none;
+}
+.intent-experience .ix-point-order-list li {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 3px 10px;
+  padding: 11px 13px;
+  border: 1px solid #ffffff20;
+  border-radius: 8px;
+  background: #111720;
+  color: #cbd1d9;
+}
+.intent-experience .ix-point-order-list li[aria-current='step'] {
+  border-color: #d9a441;
+  background: #2a2317;
+}
+.intent-experience .ix-point-order-list strong {
+  grid-column: 1/-1;
+  color: #fff2d0;
+}
+.intent-experience .ix-point-order-list small {
+  text-align: right;
+  color: #b8ad95;
+}
 .intent-experience .ix-role-heading {
   display: flex;
   gap: 18px;
@@ -829,6 +918,16 @@
   .intent-experience .ix-milestones span {
     font-size: 11px;
     overflow-wrap: anywhere;
+  }
+  .intent-experience .ix-point-order-heading {
+    display: block;
+  }
+  .intent-experience .ix-point-order-heading > span {
+    display: block;
+    margin-top: 8px;
+  }
+  .intent-experience .ix-point-order-list {
+    grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
   }
   .intent-experience .ix-cap-stats {
     grid-template-columns: 1fr 1fr;

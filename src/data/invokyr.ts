@@ -1,8 +1,7 @@
-export type InvokyrPageId = 'home' | 'multiplayer' | 'ending'
+export type InvokyrPageId = 'home' | 'multiplayer'
 export const INVOKYR_PAGES = [
-  { id: 'home', path: '/invokyr', title: 'Invokyr Companion — Co-op & Demo Ending Tools | BuildForgeTools', h1: 'Invokyr Companion', description: 'Check your Invokyr party size by version, or troubleshoot the Demo ending with spoiler controls and source-linked developer guidance.' },
+  { id: 'home', path: '/invokyr', title: 'Invokyr Companion — Co-op & Demo Ending Tools | BuildForgeTools', h1: 'Invokyr Companion', description: 'Check your Invokyr party size by version, read the source-linked Demo ending answer, and share the step where you are stuck.' },
   { id: 'multiplayer', path: '/invokyr-multiplayer', title: 'Invokyr Co-op Checker — How Many Players? | BuildForgeTools', h1: 'Invokyr Co-op Checker', description: 'Can five players join Invokyr? Check the 4-player Demo limit against announced 6-player Early Access support, with version-specific answers.' },
-  { id: 'ending', path: '/invokyr-how-to-win', title: 'Invokyr How to Win — Demo Ending Troubleshooter | BuildForgeTools', h1: 'Invokyr Demo Ending Troubleshooter', description: 'Stuck at the Invokyr Demo ending? Reveal a source-linked developer hint, separate player suggestions, and track the step where you are stuck.' },
 ] as const
 
 export interface InvokyrEvidence {
