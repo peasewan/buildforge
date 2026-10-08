@@ -13,13 +13,13 @@ const csv = (name: string) => parseClientCsv(readFileSync(`${dir}/${name}.csv`, 
 const masks: Record<string, number> = { rogue: 8, priest: 16, druid: 1024, warlock: 256, hunter: 4, shaman: 64 }
 
 describe('six-class release', () => {
-  it('has ninety distinct pages and six independently sourced datasets', () => {
+  it('keeps reviewed task pages and explicit consolidations across six independently sourced datasets', () => {
     expect(classes).toHaveLength(6)
     const pages = classes.flatMap((c) => c.pages)
     expect(pages).toHaveLength(90)
-    expect(new Set(pages.map((p) => p.description)).size).toBe(90)
     assertUniquePageIntents(pages)
-    expect(publishedClassPages(classes)).toHaveLength(90)
+    expect(publishedClassPages(classes)).toHaveLength(70)
+    expect(pages.filter(page => page.retiredTo)).toHaveLength(20)
   })
   it('keeps the Hunter builds hub focused on read-only historical routes, without claiming old allocations can be edited', () => {
     const hunter = classes.find((candidate) => candidate.id === 'hunter')!
@@ -62,10 +62,11 @@ describe('six-class release', () => {
       }
     })
     it(`${c.name}: published pages contain actual builds/catalogue content, sources and working local assets`, () => {
-      const slugs = new Set(c.pages.map((page) => `/${page.slug}`))
+      const active = publishedClassPages([c]).map(({page}) => page)
+      const slugs = new Set(active.map((page) => `/${page.slug}`))
       expect(existsSync(`public${c.ogImage}`)).toBe(true)
       for (const talent of c.talents) if (talent.icon) expect(existsSync(`public${talent.icon}`), talent.icon).toBe(true)
-      for (const page of c.pages) {
+      for (const page of active) {
         const html = renderClassPage(c, page)
         expect(html).toContain('<h1>')
         expect(html).toContain('planning assumptions')

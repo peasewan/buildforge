@@ -7,6 +7,7 @@ import { officialTalentNotice } from '../data/officialOctoberChanges'
 import { EVIDENCE_STATUS } from '../data/verification'
 import { diffBuilds } from './buildExperience'
 import OfficialBuildChangeSummary from '../OfficialBuildChangeSummary'
+import type { RoleDecision } from '../data/expansion/roleDecisions'
 
 export type RoleSurfaceProps = { classDef: ClassDefinition; page: ClassPageDefinition }
 
@@ -28,11 +29,11 @@ function selectedTalents(def: ClassDefinition, build: ClassBuild): ClassTalent<s
   return def.talents.filter((talent) => (build.build[talent.id] ?? 0) > 0)
 }
 
-function EditLink({ def, build }: { def: ClassDefinition; build: ClassBuild }) {
+function EditLink({ def, build, label = 'Edit in Calculator' }: { def: ClassDefinition; build: ClassBuild; label?: string }) {
   const archived = hasRemovedTalentInBuild(def, build)
   return (
     <a className="ix-action" href={classBuildPlannerHref(def, build)}>
-      {archived ? 'Open blank Calculator · archived route' : 'Edit in Calculator'} <ArrowRight size={16} aria-hidden="true" />
+      {archived ? 'Open blank Calculator · archived route' : label} <ArrowRight size={16} aria-hidden="true" />
     </a>
   )
 }
@@ -81,8 +82,8 @@ function Allocation({ def, build, heading = 'Editable allocation' }: { def: Clas
   )
 }
 
-function TalentInventory({ def, build, heading = 'Selected talent ranks', filter }: { def: ClassDefinition; build: ClassBuild; heading?: string; filter?: (talent: ClassTalent<string>) => boolean }) {
-  const talents = selectedTalents(def, build).filter(filter ?? (() => true))
+function TalentInventory({ def, build, heading = 'Selected talent ranks', filter, talentIds }: { def: ClassDefinition; build: ClassBuild; heading?: string; filter?: (talent: ClassTalent<string>) => boolean; talentIds?: string[] }) {
+  const talents = selectedTalents(def, build).filter((talent) => talentIds === undefined || talentIds.includes(talent.id)).filter(filter ?? (() => true))
   return (
     <article className="rs-evidence">
       <h3>{heading}</h3>
@@ -117,6 +118,36 @@ function TalentInventory({ def, build, heading = 'Selected talent ranks', filter
         </ul>
       ) : <p>No selected talent in this allocation has a verified record for this view.</p>}
     </article>
+  )
+}
+
+function useRoleCondition(page: ClassPageDefinition) {
+  const [id, setCondition] = useState(page.roleDecision?.options[0]?.id)
+  const condition = page.roleDecision?.options.find((option) => option.id === id) ?? page.roleDecision?.options[0]
+  return { condition, setCondition }
+}
+
+function RoleConditionPanel({ def, decision, condition, onChange }: {
+  def: ClassDefinition
+  decision: RoleDecision
+  condition: RoleDecision['options'][number]
+  onChange: (id: string) => void
+}) {
+  const alternative = def.builds.find((build) => build.id === condition.alternativeBuildId)
+  return (
+    <section className="rs-first rs-condition" aria-label={`${def.name} role conditions`}>
+      <div className="rs-kicker">{def.name.toUpperCase()} / ROLE CONDITIONS</div>
+      <h2>{decision.question}</h2>
+      <div className="rs-options" role="group" aria-label="Encounter conditions">
+        {decision.options.map((option) => (
+          <button key={option.id} type="button" aria-pressed={condition.id === option.id} onClick={() => onChange(option.id)}>{option.label}</button>
+        ))}
+      </div>
+      <p aria-live="polite">{condition.explanation}</p>
+      <p className="rs-small">The selected condition focuses the talent evidence below. These are editorial comparisons of a recorded allocation.</p>
+      {alternative && <EditLink def={def} build={alternative} label={`Compare ${def.branchNames[alternative.spec]} in Calculator`} />}
+      <ul className="rs-small">{decision.sources.map((source) => <li key={source.url}><a href={source.url} target="_blank" rel="noreferrer">{source.label}</a></li>)}</ul>
+    </section>
   )
 }
 
@@ -167,6 +198,7 @@ function HunterPvpStartingPoints({ def, pvpBuild }: { def: ClassDefinition; pvpB
 }
 
 export function PvpPlanner({ classDef: def, page }: RoleSurfaceProps) {
+  const { condition, setCondition } = useRoleCondition(page)
   const routes = routesFor(def, page)
   const [id, setId] = useState(routes.find((build) => build.id === page.primaryBuildId)?.id ?? routes[0]?.id)
   const [focus, setFocus] = useState('Opening position')
@@ -177,7 +209,9 @@ export function PvpPlanner({ classDef: def, page }: RoleSurfaceProps) {
     'Sustained pressure': 'Compare repeatable actions and recovery during the full encounter; one opening hit is not an outcome measure.',
     'Recovery and exit': 'Note whether you can reset or support the next exchange after pressure changes.',
   }
-  const board = (
+  const board = condition && page.roleDecision ? (
+    <RoleConditionPanel def={def} decision={page.roleDecision} condition={condition} onChange={setCondition} />
+  ) : (
     <div className="rs-first rs-pvp-board">
       <div className="rs-kicker"><Swords aria-hidden="true" /> PVP TEST PLAN</div>
       <h2>Set the encounter focus</h2>
@@ -204,12 +238,13 @@ export function PvpPlanner({ classDef: def, page }: RoleSurfaceProps) {
       ) : <Unavailable def={def} page={page} />}
       {def.id === 'hunter' && page.kind === 'pvp' && build && <HunterPvpStartingPoints def={def} pvpBuild={build} />}
       {board}
-      {build && <TalentInventory def={def} build={build} />}
+      {build && <TalentInventory def={def} build={build} talentIds={condition?.talentIds} />}
     </section>
   )
 }
 
 export function DungeonPlanner({ classDef: def, page }: RoleSurfaceProps) {
+  const { condition, setCondition } = useRoleCondition(page)
   const routes = routesFor(def, page)
   const [id, setId] = useState(routes.find((route) => route.id === page.primaryBuildId)?.id ?? routes[0]?.id)
   const [phase, setPhase] = useState('Before the pull')
@@ -219,7 +254,9 @@ export function DungeonPlanner({ classDef: def, page }: RoleSurfaceProps) {
     'During the pull': 'Watch target selection, positioning and any interruption or control loss. Record what actually happened.',
     'After the pull': 'Separate recovery, missed actions and uncontrolled enemies before changing a talent rank.',
   }
-  const board = (
+  const board = condition && page.roleDecision ? (
+    <RoleConditionPanel def={def} decision={page.roleDecision} condition={condition} onChange={setCondition} />
+  ) : (
     <div className="rs-first rs-dungeon-timeline">
       <div className="rs-kicker"><Waypoints aria-hidden="true" /> GROUP PULL</div>
       <h2>Prepare a pull</h2>
@@ -238,12 +275,13 @@ export function DungeonPlanner({ classDef: def, page }: RoleSurfaceProps) {
         </div>
       ) : <Unavailable def={def} page={page} />}
       {board}
-      {build && <TalentInventory def={def} build={build} />}
+      {build && <TalentInventory def={def} build={build} talentIds={condition?.talentIds} />}
     </section>
   )
 }
 
 export function TankPlanner({ classDef: def, page }: RoleSurfaceProps) {
+  const { condition, setCondition } = useRoleCondition(page)
   const routes = routesFor(def, page)
   const build = routes.find((route) => route.id === page.primaryBuildId) ?? routes[0]
   const [focus, setFocus] = useState('Enemy control')
@@ -252,7 +290,9 @@ export function TankPlanner({ classDef: def, page }: RoleSurfaceProps) {
     'Incoming damage': 'Compare damage received across similar pulls and note healer recovery separately.',
     'Healer recovery': 'Record the group’s recovery time after comparable pulls before changing the allocation.',
   }
-  const board = (
+  const board = condition && page.roleDecision ? (
+    <RoleConditionPanel def={def} decision={page.roleDecision} condition={condition} onChange={setCondition} />
+  ) : (
     <div className="rs-first rs-tank-ledger">
       <div className="rs-kicker"><Shield aria-hidden="true" /> TANK REVIEW</div>
       <h2>Tank review ledger</h2>
@@ -270,12 +310,13 @@ export function TankPlanner({ classDef: def, page }: RoleSurfaceProps) {
         </div>
       ) : <Unavailable def={def} page={page} />}
       {board}
-      {build && <TalentInventory def={def} build={build} />}
+      {build && <TalentInventory def={def} build={build} talentIds={condition?.talentIds} />}
     </section>
   )
 }
 
 export function HealingPlanner({ classDef: def, page }: RoleSurfaceProps) {
+  const { condition, setCondition } = useRoleCondition(page)
   const routes = routesFor(def, page)
   const build = routes.find((route) => route.id === page.primaryBuildId) ?? routes[0]
   const [lens, setLens] = useState('Mana and recovery')
@@ -283,7 +324,9 @@ export function HealingPlanner({ classDef: def, page }: RoleSurfaceProps) {
     'Mana and recovery': 'Track remaining mana and time needed before the next comparable pull.',
     'Group support': 'Track missed support opportunities and whether movement or line of sight limited the group.',
   }
-  const board = (
+  const board = condition && page.roleDecision ? (
+    <RoleConditionPanel def={def} decision={page.roleDecision} condition={condition} onChange={setCondition} />
+  ) : (
     <div className="rs-first rs-healing-pulse">
       <div className="rs-kicker"><HeartPulse aria-hidden="true" /> HEALING TEST</div>
       <h2>Compare the healing job</h2>
@@ -301,16 +344,19 @@ export function HealingPlanner({ classDef: def, page }: RoleSurfaceProps) {
         </div>
       ) : <Unavailable def={def} page={page} />}
       {board}
-      {build && <TalentInventory def={def} build={build} />}
+      {build && <TalentInventory def={def} build={build} talentIds={condition?.talentIds} />}
     </section>
   )
 }
 
 export function PetPlanner({ classDef: def, page }: RoleSurfaceProps) {
+  const { condition, setCondition } = useRoleCondition(page)
   const routes = routesFor(def, page)
   const build = routes.find((route) => route.id === page.primaryBuildId) ?? routes[0]
   const [view, setView] = useState('Selected talents')
-  const board = (
+  const board = condition && page.roleDecision ? (
+    <RoleConditionPanel def={def} decision={page.roleDecision} condition={condition} onChange={setCondition} />
+  ) : (
     <div className="rs-first rs-pet-chain">
       <div className="rs-kicker"><PawPrint aria-hidden="true" /> PET SUPPORT</div>
       <h2>Selected support talents</h2>
@@ -332,16 +378,19 @@ export function PetPlanner({ classDef: def, page }: RoleSurfaceProps) {
         </div>
       ) : <Unavailable def={def} page={page} />}
       {board}
-      {build && <TalentInventory def={def} build={build} heading="Player talent records" />}
+      {build && <TalentInventory def={def} build={build} heading="Player talent records" talentIds={condition?.talentIds} />}
     </section>
   )
 }
 
 export function TotemPlanner({ classDef: def, page }: RoleSurfaceProps) {
+  const { condition, setCondition } = useRoleCondition(page)
   const routes = routesFor(def, page)
   const build = routes.find((route) => route.id === page.primaryBuildId) ?? routes[0]
   const [view, setView] = useState('Talent coverage')
-  const board = (
+  const board = condition && page.roleDecision ? (
+    <RoleConditionPanel def={def} decision={page.roleDecision} condition={condition} onChange={setCondition} />
+  ) : (
     <div className="rs-first rs-totem-field">
       <div className="rs-kicker"><Compass aria-hidden="true" /> TOTEM PLANNING</div>
       <h2>Totem talent coverage</h2>
@@ -361,7 +410,7 @@ export function TotemPlanner({ classDef: def, page }: RoleSurfaceProps) {
         </div>
       ) : <Unavailable def={def} page={page} />}
       {board}
-      {build && <TalentInventory def={def} build={build} heading="Totem-related selected ranks" filter={(talent) => /totem/i.test(talent.name)} />}
+      {build && <TalentInventory def={def} build={build} heading="Totem-related selected ranks" talentIds={condition?.talentIds} filter={condition ? undefined : (talent) => /totem/i.test(talent.name)} />}
       <p className="rs-source-line"><Check size={14} aria-hidden="true" /> Talent ranks come from the class dataset; spell coverage requires separate verification.</p>
     </section>
   )

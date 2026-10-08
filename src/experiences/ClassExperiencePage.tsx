@@ -138,6 +138,7 @@ export default function ClassExperiencePage({
           <p className="ix-eyebrow">{experienceLabel(page.kind)}</p>
           <h1>{page.h1}</h1>
           <p className="ix-dek">{page.description}</p>
+          {def.contentPolicy === 'intent_tasks_v1' && <p className="ix-note" role="note">Historical {def.verifiedBuild} talent snapshot · Level 20 reference. The live Beta cap is Level 30; a current 21-point allocation has not been verified for this class here. Use the source-linked ranks and progression as a historical comparison.</p>}
           {plannerPublished && (
             <div className="class-hero-actions">
               <a className="button class-primary" href={calculatorHref}>

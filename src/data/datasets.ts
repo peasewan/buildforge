@@ -1,6 +1,6 @@
 import type { Branch } from "../lib/build";
 import type { Talent } from "./talents";
-import { betaTalents, communityPreviewTalents, initialBetaTalents, previousBetaTalents } from "./talents";
+import { betaTalents, archivedBetaTalents, communityPreviewTalents, initialBetaTalents, previousBetaTalents } from "./talents";
 
 // The archived public-demo dataset is retained only for historical diffs.
 // Production uses the complete Beta client dataset.
@@ -28,11 +28,17 @@ export const communityPreviewDataset: TalentDataset = {
 
 export const betaDataset: TalentDataset = {
   role: "beta",
-  sourceVersion: "wow_forever_beta_1.60.1.69913",
-  label: "WoW Forever Beta · 1.60.1.69913",
+  sourceVersion: "wow_forever_beta_1.60.1.70245",
+  label: "WoW Forever Beta · 1.60.1.70245",
   status: "complete",
   coverage: { holy: "complete", protection: "complete", retribution: "complete" },
   talents: betaTalents,
+};
+
+export const archivedBetaDataset: TalentDataset = {
+  role: "beta", sourceVersion: "wow_forever_beta_1.60.1.69913", label: "Historical Paladin · 1.60.1.69913",
+  status: "complete", coverage: { holy: "complete", protection: "complete", retribution: "complete" },
+  talents: archivedBetaTalents,
 };
 
 export const previousBetaDataset: TalentDataset = {

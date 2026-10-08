@@ -11,7 +11,7 @@ const cases = [
   { id: 'warrior', feature: 'pvp', core: 'arms', pattern: 'rage-cycle', question: /rage/i, heading: 'Where does the Rage go?' },
   { id: 'mage', feature: 'aoe', core: 'frost', pattern: 'cast-window', question: /mana|control/i, heading: 'Control the next cast window' },
   { id: 'rogue', feature: 'pvp', core: 'combat', pattern: 'opener-cycle', question: /opener|energy/i, heading: 'Can the opener survive the whole fight?' },
-  { id: 'priest', feature: 'healing', core: 'shadow', pattern: 'recovery-ledger', question: /mana|recovery/i, heading: 'What happens after the cast?' },
+  { id: 'priest', feature: 'healing', core: 'shadow', pattern: 'recovery-ledger', question: /mana|recovery/i, heading: 'What happens after the cast?', retiredFeatureTo: '/wow-forever-holy-priest-dungeon-build' },
   { id: 'druid', feature: 'tank', core: 'feral', pattern: 'form-switch', question: /form|bear/i, heading: 'Which form is this build for?' },
   { id: 'warlock', feature: 'pet', core: 'affliction', pattern: 'pet-compact', question: /pet|demon/i, heading: 'What does the demon contribute?' },
   { id: 'hunter', feature: 'pet', core: 'beast-mastery', pattern: 'distance-track', question: /pet|range/i, heading: 'Can you keep useful range?' },
@@ -19,13 +19,20 @@ const cases = [
 ] as const
 
 for (const item of cases) {
-  it(`${item.id} shows a sourced, class-specific planning module on its four entry routes`, () => {
+  it(`${item.id} shows a sourced, class-specific planning module on its published entry routes`, () => {
     const classDef = PUBLISHED_CLASSES.find((def) => def.id === item.id)!
     const pages = publishedClassPages([classDef]).map(({ page }) => page)
+    const featurePage = classDef.pages.find((page) => page.kind === item.feature)!
+    const retiredFeatureTo = 'retiredFeatureTo' in item ? item.retiredFeatureTo : undefined
+    expect(featurePage.retiredTo).toBe(retiredFeatureTo)
+    if (retiredFeatureTo) {
+      expect(pages).not.toContain(featurePage)
+      expect(pages.some((page) => `/${page.slug}` === retiredFeatureTo)).toBe(true)
+    }
     const entryPages = [
       pages.find((page) => page.kind === 'buildsHub'),
       pages.find((page) => page.kind === 'leveling'),
-      pages.find((page) => page.kind === item.feature),
+      ...(retiredFeatureTo ? [] : [pages.find((page) => page.kind === item.feature)]),
       pages.find((page) => page.kind === 'specBuild' && page.spec === item.core),
     ]
     expect(entryPages.every(Boolean)).toBe(true)
@@ -53,7 +60,7 @@ for (const item of cases) {
       expect(screen.getByText(/Editorial test prompt/i)).toBeTruthy()
       unmount()
     }
-    expect(new Set(routeCopy).size).toBe(4)
+    expect(new Set(routeCopy).size).toBe(retiredFeatureTo ? 3 : 4)
   })
 }
 

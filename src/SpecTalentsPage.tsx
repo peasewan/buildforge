@@ -48,7 +48,7 @@ export default function SpecTalentsPage({ spec }: { spec: Branch }) {
       <BetaDataStatus />
 
       <section className="spec-tree-section shell" id="talent-tree" aria-label={`${branchNames[spec]} talent preview`}>
-        <header className="hub-section-heading"><div className="eyebrow">Beta Talent Data</div><h2>{page.title.replace('WoW Forever ', '')} Beta Talent Tree</h2><p>This read-only preview highlights a historical 51-point {page.allocation.value} reference from imported client build 1.60.1.69913. The live Beta cap is Level 30, so this is not a complete current build. {example.reviewStatus === 'under_review' ? 'Crusade also appears in a reported 70009 removal but its node identity is under review.' : 'Start a new calculator route to plan within the live Beta cap.'}</p></header>
+        <header className="hub-section-heading"><div className="eyebrow">Beta Talent Data</div><h2>{page.title.replace('WoW Forever ', '')} Beta Talent Tree</h2><p>This read-only preview highlights a historical 51-point {page.allocation.value} reference from imported client build 1.60.1.69913. The live Beta cap is Level 30, so this is not a complete current build. {example.reviewStatus === 'under_review' ? 'Crusade is client-confirmed absent from the reviewed 70245 tree.' : 'Start a new calculator route to plan within the live Beta cap.'}</p></header>
         <div className="spec-tree-layout">
           <div className="tree-card"><TalentTree branch={spec} build={example.build} readOnly /></div>
           <aside>

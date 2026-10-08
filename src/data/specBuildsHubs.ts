@@ -56,7 +56,7 @@ export const SPEC_BUILDS_HUBS: SpecBuildsHubConfig[] = [
         heading: 'How to Use These Protection Paladin Builds',
         paragraphs: [
           'The historical Protection example on BuildForgeTools uses a 20/31/0 allocation: 31 points establish a defensive Protection core and 20 supporting points come from Holy. Its full build page lists every selected rank, but the 51 points exceed the live Level 30 cap. For the active Beta, the separate leveling page now offers editable 0/11/0 and 0/21/0 routes.',
-          'The dungeon page explains the jobs a group tank must plan around. The Protection leveling page uses Toughness, Redoubt, Precision, Anticipation, and Improved Righteous Fury in an editorial order. The selected node IDs, positions, ranks, and prerequisite edges were checked in the 70170 Beta Trait tables; ForeverDiff reports 70205 table records unchanged. This focused route review does not promote the complete calculator beyond its explicitly labeled 69913 snapshot.',
+          'The dungeon page explains the jobs a group tank must plan around. The Protection leveling page uses Toughness, Redoubt, Precision, Anticipation, and Improved Righteous Fury in an editorial order. The selected node IDs, positions, ranks, and prerequisite edges were checked in the 70170 Beta Trait tables; ForeverDiff reports 70205 table records unchanged. The later complete 70245 review now supplies the calculator structure, with separately sourced community rank text.',
         ],
       },
       {
@@ -70,7 +70,7 @@ export const SPEC_BUILDS_HUBS: SpecBuildsHubConfig[] = [
         heading: 'Dungeon Tank and Leveling Tradeoffs',
         paragraphs: [
           'A leveling route values consistency across many ordinary fights, while a dungeon route gives more weight to party protection and tools for difficult pulls. The current 0/11/0 and 0/21/0 Protection allocations are standard-progression examples without Legacy: Talented. Their selected nodes avoid the prerequisite edges whose required ranks are still inferred by the planner.',
-          'Use the leveling page to load either reviewed-node milestone, the dungeon page to review the group role, and the historical Shield build to inspect a separate 51-point example. Blizzard changed Redoubt to 4/8/12/16/20% on October 1. The imported 69913 tooltips may still show the earlier values, so check the official patch note before evaluating the current route.',
+          'Use the leveling page to load either reviewed-node milestone, the dungeon page to review the group role, and the historical Shield build to inspect a separate 51-point example. Blizzard changed Redoubt to 4/8/12/16/20% on October 1. Historical 69913 tooltips preserve the earlier values; current resolved descriptions have separate community evidence and the official notes remain linked.',
         ],
       },
       {
@@ -99,14 +99,14 @@ export const SPEC_BUILDS_HUBS: SpecBuildsHubConfig[] = [
     intro: 'Explore Retribution Paladin damage builds, leveling routes, and PvP setups for WoW Forever.',
     featured: {
       title: 'Retribution Paladin Build 0/20/31',
-      description: 'A historical 69913-era allocation; its Crusade ranks await 70009 identity review.',
+      description: 'A historical 69913-era allocation; its Crusade ranks remain readable but the node is absent from 70245.',
       href: '/wow-forever-retribution-paladin-build',
       role: 'Melee Damage',
       playstyle: 'Offensive / Support',
       status: 'Historical 51-point reference',
     },
     buildTypes: [
-      { id: 'damage-build', eyebrow: 'Damage Build', title: 'Retribution Paladin Build 0/20/31', description: 'Historical 69913 allocation with 20 Protection points; Crusade awaits review.', href: '/wow-forever-retribution-paladin-build', icon: 'retribution' },
+      { id: 'damage-build', eyebrow: 'Damage Build', title: 'Retribution Paladin Build 0/20/31', description: 'Historical 69913 allocation with 20 Protection points; Crusade is absent from the reviewed current tree.', href: '/wow-forever-retribution-paladin-build', icon: 'retribution' },
       { id: 'leveling', eyebrow: 'Leveling', title: 'Retribution Paladin Leveling Build', description: 'Historical 20/0/31 route with Holy support; its Crusade ranks await review.', href: '/wow-forever-retribution-paladin-leveling-build', icon: 'leveling' },
       { id: 'pvp', eyebrow: 'PvP', title: 'Retribution Paladin PvP Build', description: 'A burst-oriented setup built around short damage windows and utility.', href: '/wow-forever-retribution-paladin-pvp-build', icon: 'pvp' },
     ],
@@ -114,7 +114,7 @@ export const SPEC_BUILDS_HUBS: SpecBuildsHubConfig[] = [
       {
         heading: 'Compare the Retribution Paladin Routes',
         paragraphs: [
-          'BuildForgeTools preserves two complete 51-point Retribution examples from the imported 69913 snapshot. The 0/20/31 Judgment build used 31 Retribution points and 20 Protection points for defensive support. The 20/0/31 leveling example used the same deep Retribution route with Holy support. Both selected Crusade. A reported 70009 client removal names Crusade but its node ID conflicts with the imported record, so these two allocations are historical and under review. Their individual pages list the old ranks for comparison but start a blank calculator instead of loading them as current builds.',
+          'BuildForgeTools preserves two complete 51-point Retribution examples from the imported 69913 snapshot. The 0/20/31 Judgment build used 31 Retribution points and 20 Protection points for defensive support. The 20/0/31 leveling example used the same deep Retribution route with Holy support. Both selected Crusade. Crusade node 110883 is absent from the reviewed 70245 client tree, so both original allocations remain historical. Their individual pages list the old ranks for comparison but start a blank calculator instead of loading them as current builds.',
           'The Retribution PvP page is also a planning discussion, not a fully verified PvP allocation. Its 51-point preview shares that under-review Crusade branch and is visibly marked historical. The separate Level 20 starting snapshot is an editable 11-point route under the official Level 30 cap, not a completed current-cap build. Start a blank tree for a fresh PvP setup.',
         ],
       },
@@ -129,13 +129,13 @@ export const SPEC_BUILDS_HUBS: SpecBuildsHubConfig[] = [
         heading: 'Planning the Retribution Talent Core',
         paragraphs: [
           'A useful Retribution plan begins with the role of the build: solo leveling, general damage, or PvP pressure. Spend toward the talents that serve that role, then check whether prerequisite ranks and tree-point thresholds leave enough room for the supporting branch. Familiar landmarks such as Benediction, Conviction, Seal of Command, Vengeance, and Repentance help readers follow the path, while Forever-specific or changed talents require stronger source notes.',
-          'The interface enforces the imported 69913 snapshot’s rank limits and unlocking rules, with the official September 24 removal blocked separately. That prevents some internally invalid paths, but it cannot prove that all later tuning has been reconciled or that any allocation performs best. Treat each selected rank as a planning model and compare it with the latest game client.',
+          'The current interface uses reviewed 70245 positions and rank caps, with full-rank prerequisite requirements still labeled as assumptions. That prevents some internally invalid paths, but it cannot prove that all later tuning has been reconciled or that any allocation performs best. Treat each selected rank as a planning model and compare it with the latest game client.',
         ],
       },
       {
         heading: 'Retribution Data Status',
         paragraphs: [
-          'Retribution mixes recognizable inherited talents with WoW Forever additions and revisions. The calculator reads ranks, positions, prerequisite links, and effects from the last fully imported Beta client build 1.60.1.69913; later patch notes are shown separately until their client identities reconcile.',
+          'Retribution mixes recognizable inherited talents with WoW Forever additions and revisions. The current calculator reads structural fields from client 70245 and adapted rank text from the Talents Forever 70170 export with community verification. The historical 69913 allocations and later official server notes remain distinct evidence.',
           'The Beta tracker compares each reviewed client build with the previous dataset before production changes. Players can report conflicting tooltips or positions through the Feedback button so a correction enters the same review process.',
         ],
       },

@@ -26,7 +26,7 @@ export function createPointSteps(sequence: ReadonlyArray<readonly [string, numbe
 export const PROTECTION_POINT_STEPS = createPointSteps([
   ['toughness', 5], ['redoubt', 5], ['precision', 3], ['anticipation', 5], ['improved_righteous_fury', 3],
 ])
-// Editorial example in the imported 69913 tree, NOT a newly verified live-Beta build.
+// Preserve the existing editorial allocation; replay it against current structural rules, without claiming performance.
 export const HOLY_SHOCK_POINT_STEPS = createPointSteps([
   ['divine_intellect', 5], ['healing_light', 3], ['spiritual_focus', 2], ['reverence', 3],
   ['purifying_power', 2], ['divine_favor', 1], ['illumination', 4], ['holy_shock', 1],
@@ -48,7 +48,7 @@ export const PALADIN_COMPARISON_ROUTES = [
     style: 'Melee-first planning with Seal of Command. This route does not allocate Twist of Light.',
     weapon: 'Start by comparing your actual two-handed weapon options; no weapon DPS ranking is implied.',
     stats: 'Compare weapon damage and your measured attack performance. No Strength-to-DPS coefficient is assumed.',
-    evidence: 'Community leveling allocation reviewed October 4; legal in our 69913 snapshot, not a full current-client verification.',
+    evidence: 'Community allocation reviewed October 4 and replayed against reviewed 70245 structure. Rank text remains community evidence; performance is unverified.',
   },
   {
     id: 'shockadin', label: 'Holy Shock example', allocation: '21/0/0',
@@ -56,6 +56,6 @@ export const PALADIN_COMPARISON_ROUTES = [
     style: 'An editorial Holy route for comparing access to Holy Shock and healing support. It is not a tested Shockadin damage build.',
     weapon: 'Record the spell and melee gear you actually own before comparing results; this tool does not prescribe a best weapon.',
     stats: 'Intellect and mana use matter to this comparison. The October 1 Champion of the Light change is not a universal Intellect conversion.',
-    evidence: 'Planning example constructed October 5 in the historical 69913 tree. Current-client position, spell values and performance remain unverified.',
+    evidence: 'Existing editorial example constructed October 5 in the 69913 tree and replayed against reviewed 70245 structure. Rank text remains community evidence; performance is unverified.',
   },
 ] as const

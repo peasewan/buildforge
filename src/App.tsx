@@ -6,7 +6,7 @@ import BuildCard from './BuildCard'
 import { PALADIN_BETA_SNAPSHOT } from './data/betaSnapshot'
 import { PALADIN_BETA_STATUS } from './data/betaStatus'
 import { BETA_SPEC_PATHS } from './data/betaSpecPaths'
-import { branchNames, branchTaglines, DATA_SOURCES, talentEvidenceLabel, talents, type Talent } from './data/talents'
+import { branchNames, branchTaglines, DATA_SOURCES, historicalTalents, removedPaladinTalents, talentEvidenceLabel, talents, type Talent } from './data/talents'
 import { betaDataset } from './data/datasets'
 import { BRANCHES, MAX_TALENT_POINTS, branchPoints, decrementTalent, dominantBranch, encodeBuild, totalPoints, type Branch, type Build, type TalentLockReason } from './lib/build'
 import { canIncrementPlannerTalent, plannerLockReason, incrementPlannerTalent, decodeValidatedPlannerBuild } from './lib/talentPlanner'
@@ -18,6 +18,8 @@ import SiteFooter from './SiteFooter'
 import BetaDataStatus from './BetaDataStatus'
 import VerificationBadge from './VerificationBadge'
 import ForgePilotPanel from './ForgePilotPanel'
+import PaladinRankAttribution from './PaladinRankAttribution'
+import { inspectPaladinBuildArchive } from './lib/paladinBuildArchive'
 
 const branchIcons: Record<Branch, string> = {
   holy: '/images/icons/holy-strike.png',
@@ -36,12 +38,14 @@ const OFFICIAL_OCTOBER_TALENT_NOTES: Record<string, string> = {
   'Champion of the Light': 'Blizzard changed the Intellect-to-Spell-Damage ratio to 20/40/60% on October 1 and corrected a Healing tooltip error. The rank text below is from the older 69913 client snapshot.',
 }
 
-function initialPlannerState(): { build: Build; restored: boolean; forgePilotLevel: number | null; notice?: string } {
+function initialPlannerState(): { build: Build; restored: boolean; forgePilotLevel: number | null; notice?: string; archive?: NonNullable<ReturnType<typeof inspectPaladinBuildArchive>> } {
   if (typeof window === 'undefined') return { build: {}, restored: false, forgePilotLevel: null }
   const params = new URLSearchParams(window.location.search)
   const shared = params.get('id')
   const config = { branches: BRANCHES, pointCap: MAX_TALENT_POINTS }
   if (params.has('id')) {
+    const archive = inspectPaladinBuildArchive(shared ?? '')
+    if (archive) return { build: {}, restored: false, forgePilotLevel: null, archive, notice: 'This shared allocation contains talents removed from the reviewed 70245 tree. Its original ranks are preserved below; no part was imported into the current calculator.' }
     const build = decodeValidatedPlannerBuild(shared ?? '', talents, config)
     if (!build) return { build: {}, restored: false, forgePilotLevel: null, notice: 'This shared build is invalid or outdated. Start a new build with the current talent rules.' }
     const requestedLevel = Number(params.get('level'))
@@ -51,6 +55,8 @@ function initialPlannerState(): { build: Build; restored: boolean; forgePilotLev
   }
   try {
     const code = localStorage.getItem('wow-forever-paladin-build') ?? ''
+    const archive = inspectPaladinBuildArchive(code)
+    if (archive) return { build: {}, restored: false, forgePilotLevel: null, archive, notice: 'Your saved allocation contains talents removed from the reviewed 70245 tree. Its original ranks and saved code are preserved until you start a current build.' }
     const build = decodeValidatedPlannerBuild(code, talents, config)
     if (!build) {
       localStorage.removeItem('wow-forever-paladin-build')
@@ -70,18 +76,20 @@ type TalentTreeProps = { branch: Branch; build: Build; pointCap?: number } & (
 )
 
 export function TalentTree({ branch, build, onAdd, onRemove, readOnly = false, pointCap = 51 }: TalentTreeProps) {
-  const branchTalents = talents.filter((talent) => talent.branch === branch)
-  const spentInBranch = branchPoints(build, branch, talents)
+  const treeTalents = readOnly ? historicalTalents : talents
+  const branchTalents = treeTalents.filter((talent) => talent.branch === branch)
+  const spentInBranch = branchPoints(build, branch, treeTalents)
   const [feedbackTalentId, setFeedbackTalentId] = useState<string | null>(null)
 
   const lockMessage = (reason: TalentLockReason) => {
     if (reason.type === 'removed-official') return 'Removed by the September 24 Beta update. This historical client node cannot be added to a current build.'
+    if (reason.type === 'removed-client-verified') return 'Absent from the reviewed 70245 client tree. This historical node cannot be added to a current build.'
     if (reason.type === 'pending-client-review') return 'A 70009 client diff reports this talent removed, but its node identity is under review. This historical 69913 node cannot be added to a current build.'
     if (reason.type === 'point-cap') return `All ${pointCap} talent points are already spent.`
     if (reason.type === 'branch-points') {
       return `Requires ${reason.required} points in ${branchNames[branch]} (${reason.current}/${reason.required}).`
     }
-    const prerequisite = talents.find((candidate) => candidate.id === reason.talentId)
+    const prerequisite = treeTalents.find((candidate) => candidate.id === reason.talentId)
     return `Requires ${prerequisite?.name ?? 'the prerequisite talent'} at rank ${reason.required} (${reason.current}/${reason.required}).`
   }
 
@@ -91,7 +99,7 @@ export function TalentTree({ branch, build, onAdd, onRemove, readOnly = false, p
       <svg className="tree-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
         {branchTalents.flatMap((talent) =>
           (talent.prerequisite ?? []).map((requirement) => {
-            const prerequisite = talents.find((candidate) => candidate.id === requirement.talentId)
+            const prerequisite = treeTalents.find((candidate) => candidate.id === requirement.talentId)
             if (!prerequisite) return null
             return <line key={`${talent.id}-${requirement.talentId}`} x1={prerequisite.x} y1={prerequisite.y} x2={talent.x} y2={talent.y} />
           })
@@ -99,9 +107,9 @@ export function TalentTree({ branch, build, onAdd, onRemove, readOnly = false, p
       </svg>
       {branchTalents.map((talent) => {
         const rank = build[talent.id] ?? 0
-        const canAdd = canIncrementPlannerTalent(build, talent, talents, { branches: BRANCHES, pointCap })
+        const canAdd = canIncrementPlannerTalent(build, talent, treeTalents, { branches: BRANCHES, pointCap })
         const unlocked = canAdd || rank > 0
-        const lockReason = rank === 0 ? plannerLockReason(build, talent, talents, { branches: BRANCHES, pointCap }) : null
+        const lockReason = rank === 0 ? plannerLockReason(build, talent, treeTalents, { branches: BRANCHES, pointCap }) : null
         const startingChoice = spentInBranch === 0 && talent.requiredTreePoints === 0 && rank === 0
         const displayedRank = Math.max(1, rank)
         const rankDescription = talent.rankDescriptions?.[displayedRank - 1] ?? talent.description
@@ -124,12 +132,13 @@ export function TalentTree({ branch, build, onAdd, onRemove, readOnly = false, p
             {rank > 0 && onRemove && !readOnly && <button className="rank-minus" onClick={() => onRemove(talent)} aria-label={`Remove one rank from ${talent.name}`}><Minus size={12} /></button>}
             <div className="talent-tip" id={`tip-${talent.id}`}>
               <strong>{talent.name}</strong>
-              {OFFICIAL_OCTOBER_TALENT_NOTES[talent.name] && <span className="talent-october-notice">{OFFICIAL_OCTOBER_TALENT_NOTES[talent.name]} <a href={PALADIN_BETA_STATUS.levelCapSource} target="_blank" rel="noreferrer">Official update</a></span>}
+              {readOnly && OFFICIAL_OCTOBER_TALENT_NOTES[talent.name] && <span className="talent-october-notice">{OFFICIAL_OCTOBER_TALENT_NOTES[talent.name]} <a href={PALADIN_BETA_STATUS.levelCapSource} target="_blank" rel="noreferrer">Official update</a></span>}
               <span>{rankDescription}</span>
               {lockReason && <span className="talent-lock-message" role={feedbackTalentId === talent.id ? 'status' : undefined}>{lockMessage(lockReason)}</span>}
               <em>
                 <span>{talentEvidenceLabel(talent)}</span>
-                <VerificationBadge status={OFFICIAL_OCTOBER_TALENT_NOTES[talent.name] || talent.currentBetaAvailability === 'reported_removed_under_review' ? 'needs_review' : 'client_verified'} />
+                <span>Structure <VerificationBadge status="client_verified" /></span>
+                <span>Rank text <VerificationBadge status={talent.verification.description === 'community_verified' ? 'community_verified' : 'client_verified'} /></span>
                 {talent.prerequisite?.length ? <span className="verification-inline">Prerequisite link <VerificationBadge status="client_verified" /> Required rank <VerificationBadge status="derived_assumption" /></span> : null}
                 <span className="talent-sources">
                   Sources:{' '}
@@ -151,7 +160,7 @@ export function TalentTree({ branch, build, onAdd, onRemove, readOnly = false, p
                 <b>Builds using this talent</b>
                 {matchingBuilds.length ? matchingBuilds.map((example) => (
                   <a key={example.id} href={`/${example.slug}`} aria-label={`Open build example ${example.allocation}`} onClick={() => track('talent_build_click', { talent_id: talent.id, build_id: example.id })}>
-                    {example.name} <small>{example.allocation}{'reviewStatus' in example && example.reviewStatus === 'under_review' ? ' · Under review' : ''}</small>
+                    {example.name} <small>{example.allocation}{'reviewStatus' in example && example.reviewStatus === 'under_review' ? ' · Historical removal' : ''}</small>
                   </a>
                 )) : <span>No published example yet</span>}
               </div>
@@ -188,13 +197,14 @@ export default function App() {
   const currentBranch = dominantBranch(build, talents, branch)
 
   useEffect(() => {
+    if (initialPlanner.archive && restoreNotice) return
     try {
       localStorage.setItem('wow-forever-paladin-build', encodeBuild(build))
       localStorage.setItem(LEVEL_STORAGE_KEY, String(planningLevel))
     } catch {
       // The calculator remains editable when browser storage is unavailable.
     }
-  }, [build, planningLevel])
+  }, [build, planningLevel, initialPlanner.archive, restoreNotice])
 
   useEffect(() => {
     if (window.location.hash === '#calculator') {
@@ -312,12 +322,12 @@ export default function App() {
             <div className="eyebrow"><Sparkles size={14} /> Paladin Talent Tool</div>
             <h1>WoW Forever<br /><span>Paladin Talent</span><br />Calculator</h1>
             <p className="lead">Build Paladin talent trees for Holy, Protection, and Retribution.</p>
-            <p className="hero-disclaimer">Live Beta cap: Level 30. This planner can also inspect long-term 51-point references using the older {PALADIN_BETA_SNAPSHOT.clientBuild} client tree; later official changes are marked separately.</p>
+            <p className="hero-disclaimer">Live Beta cap: Level 30. This planner can also inspect long-term 51-point references using the reviewed {PALADIN_BETA_SNAPSHOT.clientBuild} client structure; resolved rank text has separate community evidence.</p>
             <p className="hero-actions-copy">Preview talents. <span /> Create builds. <span /> Share your setup.</p>
             <div className="button-row"><button className="button primary" onClick={() => openTool()}>Open Talent Calculator</button><button className="button secondary" onClick={() => openTool('holy')}>View Talents <ChevronDown size={16} /></button></div>
           </div>
           <aside className="hud-card">
-            <div className="hud-top"><span>Beta Talent Tree</span><i>69913 snapshot</i></div>
+            <div className="hud-top"><span>Beta Talent Tree</span><i>70245 structure</i></div>
             <div className="hud-tabs">{BRANCHES.map((item) => <button key={item} onClick={() => openTool(item)} className={item === branch ? 'active' : ''}>{branchNames[item]}</button>)}</div>
             <div className="hud-emblem"><div className="emblem-rings" /><img src="/images/icons/paladin-shield.png" alt="Paladin shield emblem" /></div>
             <div className="hud-points"><span>Long-term reference points</span><strong>{points} <small>/ 51</small></strong></div>
@@ -340,10 +350,10 @@ export default function App() {
           <h2>WoW Forever Paladin Talents</h2>
           <div className="data-card" role="note">
             <div className="data-card-title">Talent Data</div>
-            <p className="data-card-line"><span>✓</span> {talents.length} records imported from the 69913 client snapshot; Improved Holy Strike was later removed and Crusade awaits 70009 review — {DATA_SOURCES.join(', ')}</p>
-            <p className="data-card-progress">All three Paladin trees include client coordinates, prerequisite links, rank caps, and every rank tooltip. Required prerequisite ranks are not present in the client tables, so the planner labels its Classic max-rank fallback as an assumption.</p>
+            <p className="data-card-line"><span>✓</span> {talents.length} current nodes from client 70245; the two removed 69913 records remain in the historical index — {DATA_SOURCES.join(', ')}</p>
+            <p className="data-card-progress">All three Paladin trees include client-verified coordinates, prerequisite links and rank caps, with community-verified text for every rank. Required prerequisite ranks are not present in the client tables, so the planner labels its Classic max-rank fallback as an assumption.</p>
             <p className="data-card-progress">{betaDataset.label} · <a href="/wow-forever-paladin-beta-talent-changes">Review Beta changes</a> · <a href="/wow-forever-paladin-abilities">Browse 45 Paladin abilities</a></p>
-          </div>
+          <PaladinRankAttribution /></div>
           <p className="spec-cta">Choose your specialization:</p>
           <div className="spec-choices">
             {BRANCHES.map((item) => (
@@ -359,9 +369,9 @@ export default function App() {
 
       <section className="planner-section" id="planner">
         <div className="shell">
-          <div className="section-heading centered"><div className="eyebrow">Interactive Build Planner</div><h2>WoW Forever Paladin Talent Tree</h2><p>Choose Holy, Protection, or Retribution. The live Beta cap is Level 30; the 51-point canvas is a long-term reference based on the older imported tree.</p></div>
+          <div className="section-heading centered"><div className="eyebrow">Interactive Build Planner</div><h2>WoW Forever Paladin Talent Tree</h2><p>Choose Holy, Protection, or Retribution. The live Beta cap is Level 30; the 51-point canvas is a long-term reference using the reviewed 70245 structure.</p></div>
           <section className="current-cap-builds" aria-label="Level 20 Beta starting builds">
-            <div className="popular-builds-heading"><div><span>Starting routes and historical references</span><h2>Level 20 Beta Starting Builds</h2></div><p>Load an 11-point starting snapshot for the Level 30 Beta. Protection also has a 21-point Level 30 extension reviewed at the node level; the full 69913 calculator dataset remains separately labeled.</p></div>
+            <div className="popular-builds-heading"><div><span>Starting routes and historical references</span><h2>Level 20 Beta Starting Builds</h2></div><p>Load an 11-point starting snapshot for the Level 30 Beta. Protection also has a 21-point Level 30 extension reviewed at the node level; the full calculator now uses reviewed 70245 structure with separately sourced rank text.</p></div>
             <div className="current-cap-build-grid">
               {BRANCHES.map((item) => {
                 const path = BETA_SPEC_PATHS[item]
@@ -376,10 +386,17 @@ export default function App() {
                 )
               })}
             </div>
-            <p className="current-cap-build-note">Editorial starting routes, not official or measured best builds. Selected Protection route nodes were checked against Beta client 70170 and reported unchanged through 70205; the complete calculator still imports client build {PALADIN_BETA_SNAPSHOT.clientBuild}. <a href="/wow-forever-protection-paladin-leveling-build">Review Protection Level 20–30 routes →</a></p>
+            <p className="current-cap-build-note">Editorial starting routes, not official or measured best builds. Selected Protection route nodes were checked against Beta client 70170 and reported unchanged through 70205; the complete calculator now uses reviewed structure from {PALADIN_BETA_SNAPSHOT.clientBuild} and community-resolved rank text. <a href="/wow-forever-protection-paladin-leveling-build">Review Protection Level 20–30 routes →</a></p>
           </section>
           <div id="calculator" ref={calculatorRef} className="calculator-entry">
             {restoreNotice && <p className="pvp-edit-notice" role="status">{restoreNotice}</p>}
+            {restoreNotice && initialPlanner.archive && <section aria-label="Historical Paladin allocation" className="saved-build-notice paladin-build-archive">
+              <div><strong>Read-only 69913 allocation</strong><p>Improved Holy Strike was officially removed. Crusade is absent from the reviewed 70245 client tree; no official Crusade removal note is claimed.</p>
+                <ul>{initialPlanner.archive.ranks.map(({ talent, rank }) => <li key={talent.id}>{talent.name} {rank}/{talent.maxRank}{talent.id === 'improved_holy_strike' ? ' · Official removal' : talent.id === 'crusade' ? ' · Client-confirmed removal' : ''}</li>)}</ul>
+                <details><summary>Preserved original build code</summary><code>{initialPlanner.archive.code}</code></details>
+                <p>Start a new current build before choosing a planning level.</p>
+              </div><button type="button" onClick={startNewBuild}>Start a new current build</button>
+            </section>}
             {showSavedBuild && <div className="saved-build-notice" role="status"><div><strong>Saved build loaded</strong><span>Your previous talent setup is ready to continue.</span></div><button type="button" onClick={startNewBuild}><RotateCcw size={14} /> Start New Build</button></div>}
             <div className="planner-tabs" ref={viewMarker} role="tablist">{BRANCHES.map((item) => <button key={item} role="tab" aria-selected={branch === item} className={branch === item ? 'active' : ''} onClick={() => { setBranch(item); track('spec_select', { branch: item }) }}><img src={branchIcons[item]} alt="" /><span>{branchNames[item]}<small>{branchPoints(build, item, talents)} points</small></span></button>)}</div>
             <div className="planner-grid">
@@ -392,7 +409,8 @@ export default function App() {
               </div>
               <aside className="summary-card" id="paladin-build-summary">
                 <div className="summary-title"><span>Build Summary</span><button onClick={startNewBuild}><RotateCcw size={14} /> Reset</button></div>
-                <label className="planning-level-select">Planning level<select aria-label="Planning level" value={planningLevel} onChange={event=>{
+                <label className="planning-level-select">Planning level<select aria-label="Planning level" disabled={Boolean(initialPlanner.archive && restoreNotice)} value={planningLevel} onChange={event=>{
+                  if (initialPlanner.archive && restoreNotice) return
                   const level=Number(event.target.value)
                   if (!PALADIN_POINT_CAPS[level] || points>PALADIN_POINT_CAPS[level]) return
                   setForgePilotLevel(level)
@@ -401,11 +419,11 @@ export default function App() {
                   window.history.replaceState({},'',`/build${url.search}#calculator`)
                 }}>{Object.entries(PALADIN_POINT_CAPS).map(([level,cap])=><option key={level} value={level} disabled={points>cap}>Level {level} · {cap} points{level==='60' ? ' (historical reference)' : ''}</option>)}</select></label>
                 <div className="points-orb"><strong>{points}</strong><span>/ {pointCap}</span><small>{planningLevel<=30 ? `Level ${planningLevel} point budget` : 'Long-term reference budget'}</small></div>
-                <p className="share-note">Choose Level 30 to enforce a 21-point budget, or another level to edit a partial route. The tree and tooltip snapshot is still 69913; budget enforcement does not verify later talent changes.</p>
+                <p className="share-note">Choose Level 30 to enforce a 21-point budget, or another level to edit a partial route. The reviewed 70245 structure and community-resolved rank text are separate evidence; point budgets do not verify performance.</p>
                 <div className="current-build"><span>Planner allocation</span><strong>{branchNames[currentBranch]} Paladin</strong><small>{planningLevel<=30 ? `${pointCap-points} points remaining at Level ${planningLevel}` : points === 51 ? '51-point reference complete' : `${51 - points} reference points remaining`}</small></div>
                 <div className="selected-list"><span>Selected Talents</span>{selected.length ? selected.map((talent) => <button key={talent.id} onClick={() => replaceBuild(decrementTalent(build, talent, talents))}><img src={talent.icon} alt="" /><span>{talent.name}<small>{branchNames[talent.branch]}</small></span><b>{build[talent.id]}/{talent.maxRank}</b></button>) : <div className="empty-selection"><Sparkles size={18} /> Your chosen talents will appear here.</div>}</div>
                 <button className="copy-button" disabled={!points} onClick={copyBuild}>{copied ? <Check size={17} /> : <Clipboard size={17} />}{copied ? 'Link copied' : 'Copy Build Link'}</button>
-                <ForgePilotPanel classId="paladin" className="Paladin" dataVersion={betaDataset.sourceVersion} level={forgePilotLevel} pointCaps={PALADIN_POINT_CAPS} points={points} buildCode={encodeBuild(build)} defaultName={`${branchNames[currentBranch]} Paladin build`} talents={talents} config={{ branches: BRANCHES, pointCap }} />
+                <ForgePilotPanel classId="paladin" className="Paladin" dataVersion={betaDataset.sourceVersion} level={forgePilotLevel} pointCaps={PALADIN_POINT_CAPS} points={points} buildCode={encodeBuild(build)} defaultName={`${branchNames[currentBranch]} Paladin build`} talents={talents} removedTalents={removedPaladinTalents} config={{ branches: BRANCHES, pointCap }} />
                 <p className="share-note">Creates a link that opens this exact setup.</p>
                 {manualShareUrl && <div className="pvp-manual-share"><p role="status">Clipboard access was unavailable. Select and copy this link manually.</p><label htmlFor="paladin-manual-share">Build link for manual copy</label><input id="paladin-manual-share" readOnly value={manualShareUrl} onFocus={(event) => event.currentTarget.select()} /></div>}
               </aside>
@@ -434,7 +452,7 @@ export default function App() {
 
       <section className="benefits shell" id="about"><div className="section-heading centered"><div className="eyebrow">Built by BuildForge</div><h2>One Place to Plan, Refine, and Share</h2></div><div className="benefit-grid"><article><img src="/images/icons/shield.png" alt="" /><span>01</span><h3>Plan Your Build</h3><p>Try different talent paths before committing.</p></article><article><img src="/images/icons/hammer.png" alt="" /><span>02</span><h3>Share Builds</h3><p>Create and share your Paladin setup.</p></article><article><img src="/images/icons/paladin-shield.png" alt="" /><span>03</span><h3>Community Driven</h3><p>Improve talent data together.</p></article></div></section>
 
-      <section className="seo-section"><div className="shell seo-grid"><div><div className="eyebrow">The tool, explained</div><h2>WoW Forever Talents Calculator</h2></div><div className="seo-copy"><p>The <strong>wow forever paladin talent calculator</strong> is a focused planning space for players who want to explore a Paladin setup before they commit points in game. Start by choosing Holy, Protection, or Retribution, then select any available talent node. Each click adds one rank, updates the total immediately, and unlocks deeper rows when the branch has enough points. Selected talents are kept in the summary beside the tree, so the shape of the build stays easy to read while you experiment.</p><p>This first release is designed around the simple actions players repeat most: opening the tree, testing a path, changing a few ranks, and sending the result to someone else. The point counter enforces the selected level budget: 21 points at the live Level 30 cap, or 51 in historical reference mode. Community allocations and the underlying client snapshot are reviewed separately. If a later talent depends on an earlier one, the interface keeps that dependency visible and prevents an invalid allocation. Removing a required rank also clears talents that can no longer stay active, keeping every shared setup consistent.</p><p>When your <strong>wow forever paladin build</strong> is ready, the Copy Build Link button turns the selected ranks into a compact URL. Anyone opening that link sees the same choices without creating an account. The current build is also stored in the browser as you work, making it easier to return and continue after closing the page. Reset clears the planner when you want to start a completely different idea.</p><p>The planner starts from an imported client snapshot of WoW Forever Beta build 1.60.1.69913 for all 52 Paladin talents, including positions, rank limits, prerequisite links, icons, and every rank tooltip. The September 24 official update removed Improved Holy Strike, which remains visible as historical data but cannot receive points in a new build. The client tables do not state how many ranks a prerequisite requires, so the planner applies the Classic max-rank rule and labels that rule as an assumption. BuildForgeTools keeps later official notices separate from a fully imported and reviewed client dataset.</p><p>The goal of this tool is to make <strong>wow forever talents</strong> quick to inspect and easy to discuss. The talent data reflects the imported 69913 snapshot and separately reviewed later changes; examples under review stay visible as history but are not loaded as current recommendations. Use the planner to compare paths, preserve an idea, or give another player a precise starting point for testing.</p></div></div></section>
+      <section className="seo-section"><div className="shell seo-grid"><div><div className="eyebrow">The tool, explained</div><h2>WoW Forever Talents Calculator</h2></div><div className="seo-copy"><p>The <strong>wow forever paladin talent calculator</strong> is a focused planning space for players who want to explore a Paladin setup before they commit points in game. Start by choosing Holy, Protection, or Retribution, then select any available talent node. Each click adds one rank, updates the total immediately, and unlocks deeper rows when the branch has enough points. Selected talents are kept in the summary beside the tree, so the shape of the build stays easy to read while you experiment.</p><p>This first release is designed around the simple actions players repeat most: opening the tree, testing a path, changing a few ranks, and sending the result to someone else. The point counter enforces the selected level budget: 21 points at the live Level 30 cap, or 51 in historical reference mode. Community allocations and the underlying client snapshot are reviewed separately. If a later talent depends on an earlier one, the interface keeps that dependency visible and prevents an invalid allocation. Removing a required rank also clears talents that can no longer stay active, keeping every shared setup consistent.</p><p>When your <strong>wow forever paladin build</strong> is ready, the Copy Build Link button turns the selected ranks into a compact URL. Anyone opening that link sees the same choices without creating an account. The current build is also stored in the browser as you work, making it easier to return and continue after closing the page. Reset clears the planner when you want to start a completely different idea.</p><p>The planner starts from an imported client snapshot of WoW Forever Beta build 1.60.1.70245 for all 50 current Paladin talents, including positions, rank limits, prerequisite links and icons. Every rank tooltip is adapted from the community-resolved 70170 export with its evidence and license shown. The September 24 official update removed Improved Holy Strike, and the 70245 client tree also omits Crusade. Both remain readable in the historical index and old shared allocations, and cannot receive points in a new build. The client tables do not state how many ranks a prerequisite requires, so the planner applies the Classic max-rank rule and labels that rule as an assumption. BuildForgeTools keeps later official notices separate from a fully imported and reviewed client dataset.</p><p>The goal of this tool is to make <strong>wow forever talents</strong> quick to inspect and easy to discuss. The talent data reflects the reviewed 70245 structure, community-resolved rank text and official tuning; historical examples stay visible for comparison but are not loaded as current recommendations. Use the planner to compare paths, preserve an idea, or give another player a precise starting point for testing.</p></div></div></section>
 
       <section className="seo-continuation" aria-label="More about the BuildForge talent calculator"><div className="shell"><p>BuildForge keeps every action visible and reversible. A locked node shows that the current branch needs more points or a completed prerequisite. An illuminated node shows a rank already chosen. The summary lists those choices by specialization and lets you remove a rank without hunting for its position in the tree. Because the URL contains only talent identifiers and ranks, it stays compact enough to paste into a chat, forum, or build discussion.</p><p>The planning loop remains open without registration and saves the latest local setup automatically. An optional ForgePilot account adds cloud saves for players who want their named builds on another device. Players can test a Holy core with Protection support, compare a Retribution route, or clear everything and begin again. The structure is ready for new class trees later, while the Paladin calculator remains a clear standalone page for search visitors who want to build immediately.</p></div></section>
 

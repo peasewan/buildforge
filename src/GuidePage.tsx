@@ -1,11 +1,12 @@
 import { ArrowRight, BookOpen, Calculator, ExternalLink, Shield, Sparkles, Swords } from 'lucide-react'
 import { Fragment } from 'react'
 import guide from './content/paladin-guide.json'
-import { BETA_DATA_VERSION, branchNames, talents, type Talent } from './data/talents'
+import { BETA_DATA_VERSION, branchNames, paladinTalentIndex, talents, type Talent } from './data/talents'
 import type { Branch } from './lib/build'
 import { track } from './lib/analytics'
 import SiteFooter from './SiteFooter'
 import BetaDataStatus from './BetaDataStatus'
+import PaladinRankAttribution from './PaladinRankAttribution'
 
 const branches: Branch[] = ['holy', 'protection', 'retribution']
 const octoberTunedIds = new Set(['redoubt', 'holy_shield', 'champion_of_the_light'])
@@ -19,6 +20,7 @@ const specCards = [
 
 function talentStatus(talent: Talent) {
   if (talent.currentBetaAvailability === 'removed_official') return { label: 'Removed Sep 24', className: 'removed' }
+  if (talent.currentBetaAvailability === 'removed_client_verified') return { label: 'Client-confirmed removal', className: 'removed' }
   if (talent.currentBetaAvailability === 'reported_removed_under_review') return { label: 'Removal under review', className: 'review' }
   if (octoberTunedIds.has(talent.id)) return { label: 'Oct 1 tuning', className: 'tuned' }
   return null
@@ -27,14 +29,14 @@ function talentStatus(talent: Talent) {
 function TalentIndex() {
   return (
     <section id="talent-index" className="guide-talent-index" aria-labelledby="talent-index-heading">
-      <div className="eyebrow">{talents.length} imported nodes · Holy / Protection / Retribution</div>
+      <div className="eyebrow">{talents.length} current talents · 2 historical removals · Holy / Protection / Retribution</div>
       <h2 id="talent-index-heading">Paladin talent tree index</h2>
-      <p>This index shows names, tree rows, and rank caps from the last fully imported WoW Forever Beta client build {importedBuild}. It is a historical client snapshot, not a fully reconciled current tree or a recommended point order. The live Level 30 Beta grants 21 talent points. Rows requiring 25 or 30 points in one tree are beyond the current 21-point budget.</p>
+      <p>This index shows names, tree rows, and rank caps from the last fully imported WoW Forever Beta client build {importedBuild}. The 50 current nodes are structurally checked; two removed rows preserve the 52-node historical index. This is not a recommended point order. The live Level 30 Beta grants 21 talent points. Rows requiring 25 or 30 points in one tree are beyond the current 21-point budget.</p>
       <nav className="guide-index-jump" aria-label="Jump to Paladin talent tree">
         {branches.map((branch) => <a key={branch} href={`#${branch}-talent-index`}>{branchNames[branch]} <ArrowRight size={14} /></a>)}
       </nav>
       {branches.map((branch) => {
-        const branchTalents = talents.filter((talent) => talent.branch === branch)
+        const branchTalents = paladinTalentIndex.filter((talent) => talent.branch === branch)
         const rows = [...new Set(branchTalents.map((talent) => talent.row))].sort((a, b) => a - b)
         return (
           <section id={`${branch}-talent-index`} className="guide-index-tree" aria-labelledby={`${branch}-talent-heading`} key={branch}>
@@ -66,7 +68,8 @@ function TalentIndex() {
           </section>
         )
       })}
-      <p className="guide-index-caveat">Improved Holy Strike was removed by Blizzard on September 24; Crusade has a later client removal report with unresolved node identity. Blizzard also tuned Redoubt, Holy Shield, and Champion of the Light on October 1, so their 69913 tooltips may be stale. <a href="/wow-forever-paladin-beta-talent-changes">Review the dated Beta changes <ArrowRight size={14} /></a></p>
+      <p className="guide-index-caveat">Improved Holy Strike was removed by Blizzard on September 24. Crusade’s absence is client-confirmed in the reviewed 70245 tree, without an official removal claim. Historical rows remain clearly marked. The current calculator separates client structure from community-resolved rank text. <a href="/wow-forever-paladin-beta-talent-changes">Review the dated Beta changes <ArrowRight size={14} /></a></p>
+      <PaladinRankAttribution />
     </section>
   )
 }
@@ -119,7 +122,7 @@ export default function GuidePage() {
               {section.id === 'paladin-talents' && <TalentIndex />}
             </Fragment>
           ))}
-          <aside className="guide-note"><strong>Beta talent data</strong><p>Talent positions, ranks, prerequisite links, and tooltips use Beta client build 1.60.1.69913. The client does not specify the required prerequisite rank, so the planner currently applies the Classic rule that the prerequisite must be maxed. Build recommendations remain community planning examples.</p></aside>
+          <aside className="guide-note"><strong>Beta talent data</strong><p>Talent positions, rank caps and prerequisite links use reviewed client build 1.60.1.70245. Rank descriptions are adapted from the Talents Forever 70170 export under CC BY 4.0 with community verification. The client does not specify the required prerequisite rank, so the planner currently applies the Classic rule that the prerequisite must be maxed. Build recommendations remain community planning examples.</p></aside>
           <div className="guide-final-cta"><img src="/images/icons/paladin-shield.png" alt="" /><div><span>Ready to test a build?</span><h2>Plan a Level 30 Beta route or inspect a long-term 51-point reference.</h2></div><a className="button primary" href="/paladin#calculator" onClick={() => track('guide_cta_click', { placement: 'footer' })}>Create your WoW Forever Paladin build <ArrowRight size={15} /></a></div>
         </article>
       </div>

@@ -44,5 +44,6 @@ import './pvpFlow.css'
 import './forgePilot.css'
 
 import './paladin-decisions.css'
+import './paladin-archive.css'
 
 import './invokyr.css'

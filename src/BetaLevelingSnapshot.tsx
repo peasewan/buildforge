@@ -16,7 +16,7 @@ export default function BetaLevelingSnapshot({ pageId }: { pageId: BetaLevelingP
 
   return (
     <>
-    <PaladinRouteTimeline steps={PROTECTION_POINT_STEPS} routeId="protection-leveling" title="Protection Level 10–30 Talent Timeline" evidence="Editorial route using five Protection nodes reviewed against 70170. Replay each point in the imported planner; full current-client tooltips and in-game performance remain unverified." />
+    <PaladinRouteTimeline steps={PROTECTION_POINT_STEPS} routeId="protection-leveling" title="Protection Level 10–30 Talent Timeline" evidence="Editorial route using five Protection nodes reviewed against 70170. Replay each point against reviewed 70245 structure; rank text remains community-verified and in-game performance is unverified." />
     <section className="beta-leveling-snapshot shell" aria-label="Beta leveling snapshot">
       <header>
         <div><Route size={18} /><span>{archived ? 'Archived Beta leveling snapshot' : 'Beta leveling snapshot'}</span></div>

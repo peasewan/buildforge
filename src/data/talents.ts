@@ -1,21 +1,23 @@
 import type { Branch, TalentDefinition } from "../lib/build";
-import betaTalentData from "./paladin-beta-1.60.1.69913.json";
+import betaTalentData from "./paladin-beta-1.60.1.70245.json";
+import archivedBetaTalentData from "./paladin-beta-1.60.1.69913.json";
 import previousBetaTalentData from "./paladin-beta-1.60.1.69893.json";
 import initialBetaTalentData from "./paladin-beta-1.60.1.69876.json";
 
 // The archived demo transcription remains available for historical comparisons.
 // Production uses the latest reviewed Beta client dataset below.
 export const PREVIEW_DATA_VERSION = "wow_forever_demo_2026-09-13";
-export const BETA_DATA_VERSION = "wow_forever_beta_1.60.1.69913";
+export const BETA_DATA_VERSION = "wow_forever_beta_1.60.1.70245";
+export const ARCHIVED_BETA_DATA_VERSION = "wow_forever_beta_1.60.1.69913";
 export const DATA_VERSION = BETA_DATA_VERSION;
 export type TalentDataVersion =
   | typeof PREVIEW_DATA_VERSION
   | typeof BETA_DATA_VERSION
   | `wow_forever_beta_${string}`;
 export const DATA_SOURCES: string[] = [
-  "WoW Forever Beta client build 1.60.1.69913",
-  "Verified unchanged from the reviewed 1.60.1.69893 Paladin dataset",
-  "WoW Classic Forever client-data export",
+  "WoW Forever Beta client build 1.60.1.70245 — structure",
+  "Talents Forever build 1.60.1.70170 — resolved rank text (CC BY 4.0)",
+  "Blizzard Beta notes — selected server tuning",
 ];
 
 export type ChangeType = "classic_unchanged" | "moved" | "updated" | "new";
@@ -25,6 +27,7 @@ export type VerificationStatus =
   | "client_verified"
   | "ingame_verified"
   | "community_correlated"
+  | "community_verified"
   | "derived_assumption"
   | "estimated"
   | "needs_review";
@@ -73,7 +76,7 @@ export interface Talent extends TalentDefinition {
   y: number;
   sources: TalentSource[];
   /** September 24 official removal is applied to the interactive view, not the preserved 69913 snapshot. */
-  currentBetaAvailability?: 'available' | 'removed_official' | 'reported_removed_under_review';
+  currentBetaAvailability?: 'available' | 'removed_official' | 'removed_client_verified' | 'reported_removed_under_review';
 }
 
 export const branchNames: Record<Branch, string> = {
@@ -849,12 +852,13 @@ export const communityPreviewTalents: Talent[] = [
 
 type BetaTalentRecord =
   | (typeof betaTalentData.talents)[number]
+  | (typeof archivedBetaTalentData.talents)[number]
   | (typeof previousBetaTalentData.talents)[number]
   | (typeof initialBetaTalentData.talents)[number];
 
 function toBetaTalent(
   record: BetaTalentRecord,
-  source: { dataVersion: TalentDataVersion; clientBuild: string; url: string; label: string },
+  source: { dataVersion: TalentDataVersion; clientBuild: string; url: string; label: string; rankSourceUrl?: string },
 ): Talent {
   const branch = record.branch as Branch;
   const sources: TalentSource[] = [
@@ -867,7 +871,7 @@ function toBetaTalent(
     {
       type: "community_transcription",
       label: source.label,
-      url: source.url,
+      url: source.rankSourceUrl ?? source.url,
     },
   ];
 
@@ -908,7 +912,7 @@ function toBetaTalent(
       name: "client_verified",
       maxRank: "client_verified",
       tier: "client_verified",
-      description: "client_verified",
+      description: "rankTextVerification" in record ? record.rankTextVerification as VerificationStatus : "client_verified",
       prerequisiteLink: "client_verified",
       prerequisiteRule: "derived_assumption",
     },
@@ -930,10 +934,29 @@ export const betaTalents: Talent[] = betaTalentData.talents.map((record) =>
   toBetaTalent(record, {
     dataVersion: BETA_DATA_VERSION,
     clientBuild: betaTalentData.clientBuild,
+    url: betaTalentData.sourceUrl,
+    label: "Talents Forever resolved rank descriptions · source build 70170 · CC BY 4.0",
+    rankSourceUrl: betaTalentData.resolvedRankSourceUrl,
+  }),
+);
+
+/** Immutable 52-node import, retained for historical routes and exact diffs. */
+export const archivedBetaTalents: Talent[] = archivedBetaTalentData.talents.map((record) =>
+  toBetaTalent(record, {
+    dataVersion: ARCHIVED_BETA_DATA_VERSION,
+    clientBuild: archivedBetaTalentData.clientBuild,
     url: BETA_DATA_URL,
     label: "WoW Classic Forever client-data export",
   }),
 );
+
+export const PALADIN_RANK_TEXT_SOURCE = {
+  url: betaTalentData.resolvedRankSourceUrl,
+  sourceBuild: betaTalentData.resolvedRankSourceBuild,
+  licenseUrl: betaTalentData.resolvedRankLicenseUrl,
+  attribution: betaTalentData.attribution,
+  adaptationNotice: betaTalentData.resolvedRankAdaptationNotice,
+};
 
 export const previousBetaTalents: Talent[] = previousBetaTalentData.talents.map((record) =>
   toBetaTalent(record, {
@@ -953,40 +976,35 @@ export const initialBetaTalents: Talent[] = initialBetaTalentData.talents.map((r
   }),
 );
 
-// Preserve all 52 imported 69913 rows for exact historical diffs. The
-// interactive view overlays the later official removal without pretending
-// the unreconciled 70009 client payload has been imported.
-export const talents: Talent[] = betaTalents.map((talent) => talent.id === 'improved_holy_strike'
-  ? {
-      ...talent,
-      currentBetaAvailability: 'removed_official',
-      sources: [...talent.sources, {
-        type: 'official',
-        label: 'Blizzard September 24 Beta development notes — talent removed',
-        url: 'https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-september-24/2360696',
-      }],
-    }
+// Current interactive tree contains only the fifty reviewed 70245 nodes.
+export const talents: Talent[] = betaTalents;
+
+/** Removed rows stay searchable/readable, but never enter the interactive tree. */
+export const historicalTalents: Talent[] = archivedBetaTalents.map((talent) => talent.id === 'improved_holy_strike'
+  ? { ...talent, currentBetaAvailability: 'removed_official', sources: [...talent.sources, {
+      type: 'official', label: 'Blizzard September 24 — Improved Holy Strike removed',
+      url: 'https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-september-24/2360696',
+    }] }
   : talent.id === 'crusade'
-    ? {
-        ...talent,
-        currentBetaAvailability: 'reported_removed_under_review',
-        sources: [...talent.sources, {
-          type: 'beta_client',
-          label: '70009 client diff — Crusade removal reported; node identity unresolved',
-          url: 'https://foreverdiff.com/compare/1.60.1.69977__1.60.1.70009/',
-        }],
-      }
+    ? { ...talent, currentBetaAvailability: 'removed_client_verified', sources: [...talent.sources, {
+        type: 'beta_client', label: 'Client 70245 TraitTree 1100 — Crusade node 110883 absent',
+        url: betaTalentData.sourceUrl,
+      }] }
     : { ...talent });
+export const removedPaladinTalents = historicalTalents.filter(talent => talent.currentBetaAvailability);
+const currentById = new Map(talents.map(talent => [talent.id, talent]));
+export const paladinTalentIndex = historicalTalents.map(talent => currentById.get(talent.id) ?? talent);
 
 export function talentEvidenceLabel(talent: Talent): string {
   if (talent.currentBetaAvailability === 'removed_official') {
     return 'Historical 69913 entry · removed September 24 by Blizzard';
   }
+  if (talent.currentBetaAvailability === 'removed_client_verified') return 'Historical 69913 entry · client-confirmed removal in 70245';
   if (talent.currentBetaAvailability === 'reported_removed_under_review') {
     return 'Historical 69913 entry · 70009 removal report under review';
   }
   if (talent.verificationStatus === "client_verified") {
-    return "Verified from Beta client data";
+    return talent.verification.description === "community_verified" ? "Client-verified structure · community-verified rank text" : "Verified from Beta client data";
   }
   if (talent.verification.name === "official_confirmed") {
     return "Officially confirmed name · Demo-verified details";

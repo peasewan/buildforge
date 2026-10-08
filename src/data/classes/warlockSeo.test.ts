@@ -39,17 +39,24 @@ describe('Warlock PvP SEO pilot', () => {
     expect(document.querySelector('link[rel="canonical"]')?.getAttribute('href')).toBe(page.canonical)
   })
 
-  it('confines the new editorial section and release date to this URL', () => {
+  it('keeps the October 2 pilot editorial copy unique after the October 9 role remediation', () => {
     const pages = PUBLISHED_CLASSES.flatMap((classDef) => classDef.pages)
     const withPilotCopy = pages.filter((candidate) => candidate.sections.some((section) =>
       section.paragraphs.some((paragraph) => paragraph.includes('For comparable PvP encounters'))))
     expect(withPilotCopy.map((candidate) => candidate.slug)).toEqual([slug])
-    expect(page.updatedAt).toBe('2026-10-02')
+    const rolePages = warlockClass.pages.filter((candidate) => candidate.roleDecision)
+    expect(rolePages.map((candidate) => candidate.slug)).toEqual([
+      slug, 'wow-forever-warlock-pet-build', 'wow-forever-warlock-dungeon-build',
+    ])
+    expect(rolePages.every((candidate) => candidate.updatedAt === '2026-10-09')).toBe(true)
 
     const sitemap = readFileSync(`${process.cwd()}/public/sitemap.xml`, 'utf8')
     expect(withClassPageSitemapBlock(sitemap)).toBe(sitemap)
-    const warlockRows = [...classPageSitemapBlock().matchAll(/<loc>([^<]+warlock[^<]*)<\/loc>\s*<lastmod>2026-10-02<\/lastmod>/g)]
-      .map((match) => match[1])
-    expect(warlockRows).toEqual([page.canonical])
+    const document = new DOMParser().parseFromString(`<urlset>${classPageSitemapBlock()}</urlset>`, 'application/xml')
+    for (const rolePage of rolePages) {
+      const row = [...document.querySelectorAll('url')]
+        .find((candidate) => candidate.querySelector('loc')?.textContent === rolePage.canonical)
+      expect(row?.querySelector('lastmod')?.textContent, rolePage.slug).toBe('2026-10-09')
+    }
   })
 })

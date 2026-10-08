@@ -278,7 +278,7 @@ describe('Published PvP route → adjust → share', () => {
     render(<BuildLandingPage pageId="pvp" />)
     const section = screen.getByRole('region', { name: 'Paladin PvP starting routes' })
     expect(section.textContent).toContain('Editorial')
-    expect(section.textContent).toContain('1.60.1.69913')
+    expect(section.textContent).toContain('1.60.1.70245')
     expect(section.textContent).toContain('70009')
     expect(within(section).queryByRole('link', { name: /Load Protection/ })).toBeNull()
     const links = within(section).getAllByRole('link', { name: /Load.*route/ })

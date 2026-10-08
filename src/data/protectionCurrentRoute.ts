@@ -3,8 +3,8 @@ import { encodeBuild, type Build } from '../lib/build'
 /**
  * The five selected nodes were checked against the Paladin TraitTree (1100) in
  * the 70170 Beta client. ForeverDiff reports the 70205 client tables identical
- * to 70170. This is route evidence, not a replacement for the imported 69913
- * all-tree snapshot or an in-game performance test.
+ * to 70170. This preserves the earlier route evidence. The current full tree has a
+ * separate 70245 review; neither review establishes in-game performance.
  */
 export const PROTECTION_ROUTE_EVIDENCE = {
   treeId: 1100,

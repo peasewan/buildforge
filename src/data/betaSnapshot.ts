@@ -11,10 +11,10 @@ export interface ConfirmedPaladinChange {
 
 export const PALADIN_BETA_SNAPSHOT = {
   status: "tree-data-verified" as const,
-  clientBuild: "1.60.1.69913",
-  talentPayloadBuild: "1.60.1.69893",
+  clientBuild: "1.60.1.70245",
+  talentPayloadBuild: "1.60.1.70170",
   comparedWithBuild: "1.15.9.69722",
-  updatedAt: "2026-09-20",
+  updatedAt: "2026-10-07",
   betaStartsAt: "2026-09-17",
   betaEndsAt: "2026-10-21",
   phase: {
@@ -25,12 +25,12 @@ export const PALADIN_BETA_SNAPSHOT = {
     officialSource: "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-1/2360696/1",
   },
   counts: {
-    paladinTalents: 52,
-    paladinNewTalents: 21,
+    paladinTalents: 50,
+    paladinNewTalents: 19,
     newTalentsByBranch: {
-      holy: 9,
+      holy: 8,
       protection: 5,
-      retribution: 7,
+      retribution: 6,
     },
     allClassTalentSpells: 60,
     paladinTalentSpells: 16,
@@ -57,6 +57,8 @@ export const PALADIN_BETA_SNAPSHOT = {
     },
   ] satisfies ConfirmedPaladinChange[],
   sources: [
+    { label: "Wago DB2 — 70245 Paladin TraitTree 1100 structure", url: "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70245", kind: "datamine" },
+    { label: "Talents Forever — resolved 70170 rank text, CC BY 4.0", url: "https://talentsforever.com/data.json", kind: "datamine" },
     {
       label: "Blizzard — October 1 Beta development notes and Level 30 cap",
       url: "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-1/2360696/1",

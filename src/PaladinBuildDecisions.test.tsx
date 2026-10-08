@@ -11,8 +11,8 @@ describe('Level 30 Paladin build decisions', () => {
     const section = document.querySelector('#beta-build-decisions')!
     expect(section.textContent).toMatch(/Level 30.*21 standard points/i)
     expect(section.textContent).toMatch(/Legacy: Talented.*up to 26/i)
-    expect(section.textContent).toMatch(/69913.*full.*tree/i)
-    expect(section.textContent).toMatch(/70170.*selected Protection.*nodes/i)
+    expect(section.textContent).toMatch(/full.*50-node.*70245.*tree/i)
+    expect(section.textContent).toMatch(/70170.*selected Protection.*route nodes/i)
     expect(section.querySelector('a[href="https://news.blizzard.com/en-us/article/24307383/get-to-know-the-world-of-warcraft-forever-legacy-system"]')).toBeTruthy()
   })
 

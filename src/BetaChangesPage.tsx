@@ -2,22 +2,24 @@ import PaladinPatchImpact from './PaladinPatchImpact'
 import BetaPatchNotice from './BetaPatchNotice'
 import { Calculator } from "lucide-react";
 import { PALADIN_BETA_SNAPSHOT } from "./data/betaSnapshot";
-import { betaDataset, communityPreviewDataset, initialBetaDataset, previousBetaDataset } from "./data/datasets";
+import { betaDataset, archivedBetaDataset, communityPreviewDataset, initialBetaDataset, previousBetaDataset } from "./data/datasets";
 import { branchNames } from "./data/talents";
 import { compareTalentVersions } from "./lib/talentDiff";
 import { track } from "./lib/analytics";
 import SiteFooter from "./SiteFooter";
+import PaladinRankAttribution from './PaladinRankAttribution';
 import { VerificationLegend } from "./VerificationBadge";
 
 export default function BetaChangesPage() {
-  const latestDiff = compareTalentVersions(previousBetaDataset, betaDataset);
+  const latestDiff = compareTalentVersions(previousBetaDataset, archivedBetaDataset);
+  const currentDiff = compareTalentVersions(archivedBetaDataset, betaDataset);
   const priorDiff = compareTalentVersions(initialBetaDataset, previousBetaDataset);
-  const archiveDiff = compareTalentVersions(communityPreviewDataset, betaDataset);
+  const archiveDiff = compareTalentVersions(communityPreviewDataset, archivedBetaDataset);
   const snapshot = PALADIN_BETA_SNAPSHOT;
-  const newTalents = betaDataset.talents.filter((talent) => talent.changeType === "new");
-  const movedFromClassic = betaDataset.talents.filter((talent) => talent.changeType === "moved");
-  const changedFromClassic = betaDataset.talents.filter((talent) => talent.changeType === "updated");
-  const unchangedFromClassic = betaDataset.talents.filter((talent) => talent.changeType === "classic_unchanged");
+  const newTalents = archivedBetaDataset.talents.filter((talent) => talent.changeType === "new");
+  const movedFromClassic = archivedBetaDataset.talents.filter((talent) => talent.changeType === "moved");
+  const changedFromClassic = archivedBetaDataset.talents.filter((talent) => talent.changeType === "updated");
+  const unchangedFromClassic = archivedBetaDataset.talents.filter((talent) => talent.changeType === "classic_unchanged");
   const previewMoved = archiveDiff.changed.filter((change) => change.changes.row || change.changes.column || change.changes.branch);
   const previewRankChanged = archiveDiff.changed.filter((change) => change.changes.maxRank);
   const previewPrerequisitesChanged = archiveDiff.changed.filter((change) => change.changes.prerequisite);
@@ -43,11 +45,11 @@ export default function BetaChangesPage() {
           <strong>Last fully imported dataset</strong>
           <dl>
             <div><dt>Imported client build</dt><dd>{snapshot.clientBuild}</dd></div>
-            <div><dt>Previous build</dt><dd>1.60.1.69893</dd></div>
+            <div><dt>Previous build</dt><dd>1.60.1.69913</dd></div>
             <div><dt>Tree-ready talents</dt><dd>{betaDataset.talents.length} / {betaDataset.talents.length}</dd></div>
             <div><dt>New in Forever</dt><dd>{snapshot.counts.paladinNewTalents}</dd></div>
             <div><dt>Current level cap</dt><dd>{snapshot.phase.levelCap}</dd></div>
-            <div><dt>Last full client import</dt><dd>Sep 20, 2026</dd></div>
+            <div><dt>Last full client import</dt><dd>Oct 7, 2026</dd></div>
           </dl>
         </aside>
       </section>
@@ -62,12 +64,12 @@ export default function BetaChangesPage() {
             <li>Holy Shield: Block chance now 30% (was 20%).</li>
             <li>Champion of the Light: Intellect-to-Spell-Damage ratio now 20/40/60% (was 33/66/100%).</li>
           </ul>
-          <p>For Champion of the Light, the Healing increase was a tooltip error, not a live effect. The 69913 rank tooltips have not been updated from this announcement. These official changes are separate from the imported 69913 talent tree; the selected Protection route nodes were reviewed against 70170, while the full imported tree remains 69913. Ret has a community Level 30 planning route; neither route is performance tested.</p>
+          <p>For Champion of the Light, the Healing increase was a tooltip error, not a live effect. The preserved 69913 rank tooltips remain historical. Current 70245 structure and community-resolved rank text are separate evidence from these official server announcements; the selected Protection route nodes were reviewed against 70170 before the full structure review. Ret has a community Level 30 planning route; neither route is performance tested.</p>
           <p><a href={snapshot.phase.officialSource} target="_blank" rel="noreferrer">Read Blizzard’s October 1 development notes</a></p>
         </section>
-        <section className="beta-detail-block"><h2>September 24 update · build 70009</h2><p>70009 includes new class changes. The historical calculator dataset below remains 69913 until the full client payload and cross-check agree. “Unchanged in 69913” does not mean unchanged in 70009 or the October 1 update.</p><BetaPatchNotice classId="paladin" expanded /></section>
+        <section className="beta-detail-block"><h2>September 24 update · build 70009</h2><p>70009 includes new class changes. The historical comparison below preserves 69913; the current calculator now uses the fully reviewed 70245 structure and separately sourced rank text. “Unchanged in 69913” does not mean unchanged in 70009 or the October 1 update.</p><BetaPatchNotice classId="paladin" expanded /></section>
         <section className="beta-detail-block">
-          <div><div className="eyebrow">Imported 69913 snapshot</div><h2>52 talents · 21 new in WoW Forever</h2><p>Client build {snapshot.clientBuild} contains the last fully imported Holy, Protection, and Retribution trees. The September 24 official removal is applied as a separate calculator availability overlay while the later client payload awaits reconciliation.</p></div>
+          <div><div className="eyebrow">Imported 69913 snapshot</div><h2>52 talents · 21 new in WoW Forever</h2><p>Historical client build 1.60.1.69913 contained 52 Holy, Protection, and Retribution nodes. It is preserved for exact comparisons and read-only old allocations; the current calculator uses 50 nodes from 70245.</p></div>
           <div className="beta-signal-grid">
             <article><strong>{newTalents.length}</strong><span>New talents versus Classic</span></article>
             <article><strong>{changedFromClassic.length}</strong><span>Changed talents versus Classic</span></article>
@@ -82,10 +84,18 @@ export default function BetaChangesPage() {
         </section>
 
         <section className="beta-detail-block beta-phase-block">
-          <div><div className="eyebrow">Live Test Phase</div><h2>October 1 Beta — Level 30</h2><p>The official level cap is now 30. Level 20 routes remain useful checkpoints. Follow the 21-point Protection editorial route or the Ret community timeline, and use the comparator to inspect Holy Shock planning limits. Full current-client reconciliation remains separate from route review.</p></div>
+          <div><div className="eyebrow">Live Test Phase</div><h2>October 1 Beta — Level 30</h2><p>The official level cap is now 30. Level 20 routes remain useful checkpoints. Follow the 21-point Protection editorial route or the Ret community timeline, and use the comparator to inspect Holy Shock planning limits. The complete 70245 structure is now reconciled; route effectiveness and every rendered rank value remain separate evidence.</p></div>
           <a href="/wow-forever-paladin-build-comparator">Compare Level 30 routes</a> · <a href="/wow-forever-protection-paladin-leveling-build">Protection progression</a> · <a href={snapshot.phase.officialSource} target="_blank" rel="noreferrer">Read the official Level 30 update</a>
         </section>
 
+        <section className="beta-talent-section" aria-label="Reviewed 70245 Paladin changes">
+          <h2>1.60.1.69913 → 1.60.1.70245</h2>
+          <p>50 current talents; 0 added, 2 removed, 0 moved, 0 rank-cap changes and 0 prerequisite-link changes. Fourteen talents have 32 changed resolved rank strings. The ten checked client tables are identical between 70170 and 70245; this is accumulated reconciliation with 69913, not a new 70245 patch announcement.</p>
+          <p>Improved Holy Strike was officially removed. Crusade’s node 110883 is absent from the checked client tree; no official removal note is claimed.</p>
+          <PaladinRankAttribution />
+          <p>Redoubt retains a raw-client proc-value discrepancy. Seal of Command’s rendered range correction and the Light’s Vigil upper-bound digit are resolved-export evidence, not independently verified gameplay changes.</p>
+          {currentDiff.changed.map(change => <article key={change.id}><h3>{change.name}</h3>{change.changes.rankDescriptions?.map(rank => <p key={rank.rank}>Rank {rank.rank}: <span className="beta-old">{rank.before}</span> → <span className="beta-new">{rank.after}</span></p>)}</article>)}
+        </section>
         <div className="section-heading centered">
           <div className="eyebrow">Last Imported Build Diff · Historical</div>
           <h2>1.60.1.69893 → 1.60.1.69913</h2>
@@ -97,7 +107,7 @@ export default function BetaChangesPage() {
           <p><strong>Changed:</strong> {latestDiff.changed.length}</p>
           <p><strong>Unchanged:</strong> {latestDiff.unchanged.length}</p>
         </div>
-        <p className="beta-footnote">Build 69913 was checked against the preserved 69893 payload. Those zero-change counts refer only to that historical comparison; the later September 24 Improved Holy Strike removal is tracked separately and cannot be selected in a new build.</p>
+        <p className="beta-footnote">Build 69913 was checked against the preserved 69893 payload. Those zero-change counts refer only to that historical comparison; the later Improved Holy Strike and Crusade removals are represented in the current 50-node tree and preserved historical records.</p>
 
         <section className="beta-talent-section">
           <h2>Updated in 69893</h2>
@@ -135,7 +145,7 @@ export default function BetaChangesPage() {
           <VerificationLegend />
           <ul>{snapshot.sources.map((source) => <li key={source.url}><span>{source.kind === "official" ? "Official" : "Datamine"}</span><a href={source.url} target="_blank" rel="noreferrer">{source.label}</a></li>)}</ul>
         </section>
-        <p className="beta-footnote">Client build {snapshot.clientBuild}, compared with previous Beta build 1.60.1.69893 and Classic Era build {snapshot.comparedWithBuild}. Beta values may change in later builds.</p>
+        <p className="beta-footnote">Client build {snapshot.clientBuild}, compared with historical Beta build 1.60.1.69913 and Classic Era build {snapshot.comparedWithBuild}. Beta values may change in later builds.</p>
       </section>
 
       <SiteFooter links={[{ href: '/paladin', label: 'Talent Calculator' }, { href: '/wow-forever-paladin-builds', label: 'All Paladin Builds' }, { href: '/wow-forever-paladin-talents', label: 'Paladin Talents' }]} />

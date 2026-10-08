@@ -4,7 +4,7 @@ import protectionContent from './content/protection-shield-build.json'
 import retributionContent from './content/retribution-judgment-build.json'
 import retributionLevelingContent from './content/retribution-leveling-build.json'
 import { exampleBuildById, examplePlannerHref, HOLY_HEALING_BUILD, type ExampleBuild, type ExampleBuildId } from './data/builds'
-import { branchNames, talents } from './data/talents'
+import { branchNames, historicalTalents as talents } from './data/talents'
 import { branchPoints, type Branch } from './lib/build'
 import { track } from './lib/analytics'
 import SiteFooter from './SiteFooter'
@@ -14,7 +14,6 @@ import BetaLevelingSnapshot from './BetaLevelingSnapshot'
 import PaladinBuildDecisions from './PaladinBuildDecisions'
 import BetaSpecPath from './BetaSpecPath'
 import OfficialBuildChangeSummary from './OfficialBuildChangeSummary'
-import { PALADIN_BETA_SNAPSHOT } from './data/betaSnapshot'
 
 const branches: Branch[] = ['holy', 'protection', 'retribution']
 
@@ -80,7 +79,7 @@ export default function BuildPage({ buildId = HOLY_HEALING_BUILD.id }: { buildId
             <h1>WoW Forever<br /><span>{heroTitle}</span></h1>
             <h2>{buildContent.heroHeading}</h2>
             <p>{buildContent.dek}</p>
-            <p role="status">This 51-point allocation is a long-term historical reference. The live Beta cap is Level 30, so it cannot be played as a complete current Beta build. {underReview && 'Its Crusade node from the reported 70009 client diff remains under review.'}</p>
+            <p role="status">This 51-point allocation is a long-term historical reference. The live Beta cap is Level 30, so it cannot be played as a complete current Beta build. {underReview && 'Its historical Crusade node is absent from the reviewed 70245 client tree.'}</p>
             <div className="build-actions"><OpenBuildLink build={build} href={plannerHref} placement="hero"><Calculator size={16} /> Start a New Build</OpenBuildLink><a className="text-link" href="#talent-allocation">View selected talents <ArrowRight size={15} /></a></div>
             <small>Historical allocation reviewed {buildContent.updated} · Page updated October 5, 2026</small>
           </div>
@@ -95,7 +94,7 @@ export default function BuildPage({ buildId = HOLY_HEALING_BUILD.id }: { buildId
 
       <BetaDataStatus />
       <PaladinBuildDecisions branch={specialization} />
-      <div className="shell"><OfficialBuildChangeSummary className="paladin" buildVersion={PALADIN_BETA_SNAPSHOT.clientBuild} selectedTalents={selectedByBranch.flatMap(({ talents: selected }) => selected.map((talent) => ({ name: talent.name, rank: build.build[talent.id] ?? 0 })))} /></div>
+      <div className="shell"><OfficialBuildChangeSummary className="paladin" buildVersion="1.60.1.69913" selectedTalents={selectedByBranch.flatMap(({ talents: selected }) => selected.map((talent) => ({ name: talent.name, rank: build.build[talent.id] ?? 0 })))} /></div>
       <BetaTalentAvailability branch={specialization} />
       {build.id !== 'retribution-leveling-20-0-31' && <BetaSpecPath branch={specialization} />}
       {build.id === 'retribution-leveling-20-0-31' && <BetaLevelingSnapshot pageId="retribution-leveling" />}
@@ -110,13 +109,13 @@ export default function BuildPage({ buildId = HOLY_HEALING_BUILD.id }: { buildId
             </article>
           ))}
         </div>
-        <div className="build-inline-cta"><Shield size={30} /><div><strong>Draft a Beta route</strong><span>Start with a blank older 69913 tree and select Level 30 to enforce the 21-point budget. This historical 51-point allocation stays here for comparison{underReview ? ' while Crusade IDs are reconciled.' : '.'}</span></div><OpenBuildLink build={build} href={plannerHref} placement="allocation">Start in Calculator <ArrowRight size={15} /></OpenBuildLink></div>
+        <div className="build-inline-cta"><Shield size={30} /><div><strong>Draft a Beta route</strong><span>Start with a blank reviewed 70245 tree and select Level 30 to enforce the 21-point budget. This historical 51-point allocation stays here for comparison{underReview ? ' because Crusade is absent from the current tree.' : '.'}</span></div><OpenBuildLink build={build} href={plannerHref} placement="allocation">Start in Calculator <ArrowRight size={15} /></OpenBuildLink></div>
       </section>
 
       <article className="build-copy shell">
         {buildContent.sections.map((section) => <section id={section.id} key={section.id}><h2>{section.heading}</h2>{section.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</section>)}
         {isProtection && <section className="protection-build-more" aria-label="Continue with Protection"><h2>Continue with Protection</h2><p>Compare this historical 51-point example with the editable Level 20 and Level 30 Protection leveling routes, a dungeon setup, or the talent reference.</p><div className="protection-next-links"><a href="/wow-forever-protection-paladin-dungeon-build">Dungeon Tank Build <ArrowRight size={15} /></a><a href="/wow-forever-protection-paladin-leveling-build">Protection Leveling Routes <ArrowRight size={15} /></a><a href="/wow-forever-protection-paladin-talents">Protection Talents <ArrowRight size={15} /></a><a href="/paladin#calculator">Open Talent Calculator <ArrowRight size={15} /></a></div><a className="protection-hub-link" href="/wow-forever-protection-paladin-builds">Browse the Protection Builds Hub <ArrowRight size={15} /></a></section>}
-        <aside className="guide-note"><strong>Historical community build example</strong><p>{underReview ? 'This selected allocation comes from the 1.60.1.69913 client snapshot. The reported 70009 Crusade removal has a conflicting node ID, so the example is retained for comparison and withheld from current calculator presets.' : 'The 51-point allocation exceeds the live Level 30 Beta cap. Its talent tree and tooltips use client build 1.60.1.69913 and may not reflect later official tuning; inspect it as a long-term reference, not a current recommendation.'}</p></aside>
+        <aside className="guide-note"><strong>Historical community build example</strong><p>{underReview ? 'This selected allocation comes from the 1.60.1.69913 client snapshot. The reviewed 70245 client tree confirms Crusade is absent; no official removal note is claimed. The example is retained for comparison and withheld from current calculator presets.' : 'The 51-point allocation exceeds the live Level 30 Beta cap. Its talent tree and tooltips use client build 1.60.1.69913 and may not reflect later official tuning; inspect it as a long-term reference, not a current recommendation.'}</p></aside>
         <div className="guide-final-cta"><img src="/images/icons/paladin-shield.png" alt="" /><div><span>Ready to plan a current route?</span><h2>Start from a blank Paladin tree.</h2></div><OpenBuildLink build={build} href={plannerHref} placement="footer">Open Calculator <ArrowRight size={15} /></OpenBuildLink></div>
         <p className="build-calc-anchor">{calculatorCta[build.id].prompt} <a href="/paladin#calculator">{calculatorCta[build.id].anchor} <ArrowRight size={14} /></a></p>
       </article>

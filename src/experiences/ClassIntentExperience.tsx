@@ -17,6 +17,7 @@ import { publishedClassPages, unallocatableBranches } from '../lib/classPage'
 import { classBuildPlannerHref, hasRemovedTalentInBuild } from '../lib/archivedClassBuild'
 import {
   totalPlannerPoints,
+  plannerBranchPoints,
   type PlannerBuild,
 } from '../lib/talentPlanner'
 import VerificationBadge from '../VerificationBadge'
@@ -75,7 +76,7 @@ function RankList({
   points: PlannerBuild
 }) {
   return (
-    <ul className="ix-ranks">
+    <ul className="ix-ranks" aria-label="Selected talent ranks">
       {def.talents
         .filter((t) => (points[t.id] ?? 0) > 0)
         .map((t) => {
@@ -208,12 +209,16 @@ function Comparison({ classDef: def, page }: Props) {
   )
 }
 function Progression({ classDef: def, page }: Props) {
-  const all = availableBuilds(def),
-    initial = all.find((b) => b.id === page.primaryBuildId) ?? all[0]
+  const routes = availableBuilds(def).filter((build) =>
+    (!['specLeveling', 'specBuild'].includes(page.kind) || build.spec === page.spec)
+    && (page.kind !== 'specBuild' || build.id === page.primaryBuildId)
+    && (build.intent === 'leveling' || build.id === page.primaryBuildId),
+  ),
+    initial = routes.find((build) => build.id === page.primaryBuildId) ?? routes[0]
   const [id, setId] = useState(initial?.id),
     [level, setLevel] = useState(10),
     [talentedPreview, setTalentedPreview] = useState(false)
-  const build = all.find((b) => b.id === id)
+  const build = routes.find((build) => build.id === id)
   if (!build)
     return <p>A reviewed point-by-point route is not available yet.</p>
   const result = progressionForBuild(def, build)
@@ -241,12 +246,7 @@ function Progression({ classDef: def, page }: Props) {
           <p className="ix-eyebrow">YOUR NEXT POINT</p>
           <RoutePicker
             label="Progression route"
-            builds={all.filter(
-              (b) =>
-                b.intent === 'leveling' ||
-                b.id === page.primaryBuildId ||
-                b.id === id,
-            )}
+            builds={routes}
             value={id!}
             onChange={setId}
           />
@@ -352,7 +352,9 @@ function BuildWorkbench({ classDef: def, page }: Props) {
     build = builds.find((b) => b.id === page.primaryBuildId) ?? builds[0],
     alternatives = builds.filter((b) => b.id !== build?.id)
   const [otherId, setOther] = useState(
-    alternatives.find((b) => b.spec === build?.spec)?.id ?? alternatives[0]?.id,
+    alternatives.find((other) => build && other.spec === build.spec && diffBuilds(def, build, other).length > 0)?.id
+      ?? alternatives.find((other) => build && diffBuilds(def, build, other).length > 0)?.id
+      ?? alternatives[0]?.id,
   )
   if (!build) return <p>No reviewed allocation is available for this page.</p>
   const other = alternatives.find((b) => b.id === otherId)
@@ -622,6 +624,35 @@ function Hub({ classDef: def }: Props) {
     </section>
   )
 }
+function CapBudgetBoundary({ def, build }: { def: ClassDefinition; build: ClassBuild }) {
+  const spent = totalPlannerPoints(build.build)
+  const branchPoints = plannerBranchPoints(build.build, build.spec, def.talents)
+  const endpoint = progressionForBuild(def, build).steps.at(-1)
+  const endpointTalent = def.talents.find((talent) => talent.id === endpoint?.talentId)
+  const deeper = def.talents.filter((talent) =>
+    talent.branch === build.spec
+    && talent.requiredTreePoints > branchPoints
+    && talent.currentBetaAvailability !== 'removed_official'
+    && officialTalentNotice(def.id, talent.name)?.status !== 'removed',
+  )
+  const nextTierPoints = Math.min(...deeper.map((talent) => talent.requiredTreePoints))
+  const nextTier = deeper.filter((talent) => talent.requiredTreePoints === nextTierPoints)
+  const deficit = nextTierPoints - branchPoints
+  return (
+    <div className="ix-cap-boundary">
+      <p><b>{spent} of {def.beta.pointsAtCap} points spent</b> · {Math.max(0, def.beta.pointsAtCap - spent)} remaining in this snapshot.</p>
+      {endpointTalent && endpoint && <p>Recorded endpoint: {endpointTalent.name} {endpoint.rank}/{endpointTalent.maxRank}</p>}
+      <h3>Beyond this point budget</h3>
+      {nextTier.length > 0 ? (
+        <>
+          <p>The next recorded tier requires {nextTierPoints} {def.branchNames[build.spec]} points. This route has {branchPoints}: {deficit} more in this branch before the first rank, then one point for that rank — at least {deficit + 1} additional points. Other prerequisites can add constraints.</p>
+          <ul>{nextTier.map((talent) => <li key={talent.id}>{talent.name}</li>)}</ul>
+        </>
+      ) : <p>No deeper tier boundary is available in this snapshot.</p>}
+      <p className="ix-note">Tree-point gates are a planning assumption. These records explain why this allocation stops; they do not extend it into a reviewed Level 30 route.</p>
+    </div>
+  )
+}
 function CapSnapshot({ classDef: def, page }: Props) {
   const all = availableBuilds(def),
     builds = page.relatedBuildIds.flatMap(
@@ -658,6 +689,7 @@ function CapSnapshot({ classDef: def, page }: Props) {
             <strong className="ix-allocation">{b.allocation}</strong>
             <p>{b.role}</p>
             <RankList def={def} points={b.build} />
+            <CapBudgetBoundary def={def} build={b} />
             <EditLink def={def} build={b} label="Inspect Level 20 snapshot" />
           </article>
         ))}
@@ -671,8 +703,14 @@ export default function ClassIntentExperience(props: Props) {
   if (k === 'buildsHub') body = <Hub {...props} />
   else if (k === 'talents' || k === 'specTalents')
     body = <TalentReference {...props} />
-  else if (k === 'leveling' || k === 'specLeveling' || k === 'aoe')
-    body = <Progression {...props} />
+  else if ((k === 'specBuild' || k === 'specLeveling') && props.classDef.contentPolicy === 'intent_tasks_v1') body = (
+    <>
+      <BuildWorkbench {...props} />
+      <h2>Point-by-point progression</h2>
+      <Progression {...props} />
+    </>
+  )
+  else if (k === 'leveling' || k === 'specLeveling' || k === 'aoe') body = <Progression {...props} />
   else if (k === 'comparison') body = <Comparison {...props} />
   else if (k === 'levelCap') body = <CapSnapshot {...props} />
   else if (k === 'pvp' || k === 'specPvp') body = <PvpPlanner {...props} />

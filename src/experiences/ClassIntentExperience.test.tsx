@@ -572,3 +572,74 @@ it('shows the selected route change summary on PvP and leveling surfaces', () =>
   const levelingView = render(<ClassIntentExperience classDef={warriorClass} page={leveling} />)
   expect(levelingView.container.querySelector('[aria-label="Official change review"]')).toBeTruthy()
 })
+
+
+it('starts a spec workbench with a different allocation and still explains an explicitly selected duplicate', () => {
+  const route = rogueClass.pages.find((candidate) => candidate.slug === 'wow-forever-combat-rogue-build')!
+  const { container } = render(<ClassIntentExperience classDef={rogueClass} page={route} />)
+  const chooser = screen.getByLabelText('Alternative build') as HTMLSelectElement
+  expect(chooser.value).toBe('rogue-assassination-starter')
+  expect(container.querySelector('.ix-diff table')).toBeTruthy()
+  expect(screen.queryByText(/These routes use the same talent allocation/)).toBeNull()
+
+  fireEvent.change(chooser, { target: { value: 'rogue-combat-leveling' } })
+  expect(container.querySelector('.ix-diff table')).toBeNull()
+  expect(screen.getByText(/These routes use the same talent allocation/)).toBeTruthy()
+})
+
+it('keeps specialization leveling focused on that specialization rather than offering every class route', () => {
+  const route = rogueClass.pages.find((candidate) => candidate.slug === 'wow-forever-combat-rogue-leveling-build')!
+  render(<ClassIntentExperience classDef={rogueClass} page={route} />)
+  const chooser = screen.getByLabelText('Progression route') as HTMLSelectElement
+  expect(Array.from(chooser.options).map((option) => option.value)).toEqual(['rogue-combat-leveling'])
+  fireEvent.change(screen.getByLabelText('Your level'), { target: { value: '20' } })
+  expect(screen.getByTestId('progression-current').textContent).toContain('0/11/0')
+  expect(screen.getByRole('heading', { name: 'Your allocation at level 20' })).toBeTruthy()
+})
+
+it('lets class leveling choose another specialization and updates its exact points', () => {
+  const route = rogueClass.pages.find((candidate) => candidate.kind === 'leveling')!
+  render(<ClassIntentExperience classDef={rogueClass} page={route} />)
+  const chooser = screen.getByLabelText('Progression route') as HTMLSelectElement
+  expect(Array.from(chooser.options).map((option) => option.value)).toEqual([
+    'rogue-assassination-leveling', 'rogue-combat-leveling', 'rogue-subtlety-leveling',
+  ])
+  fireEvent.change(screen.getByLabelText('Your level'), { target: { value: '20' } })
+  fireEvent.change(chooser, { target: { value: 'rogue-assassination-leveling' } })
+  expect(screen.getByTestId('progression-current').textContent).toContain('11/0/0')
+  const target = new URL(screen.getByRole('link', { name: 'Edit this level in Calculator' }).getAttribute('href')!, 'https://buildforgetools.com')
+  expect(target.searchParams.get('build')).toContain('rogue-281.1')
+  expect(target.searchParams.get('build')).not.toContain('rogue-204')
+})
+
+it('explains the cap endpoint and why the next recorded tier cannot fit this budget', () => {
+  const route = rogueClass.pages.find((candidate) => candidate.kind === 'levelCap')!
+  const { container } = render(<ClassIntentExperience classDef={rogueClass} page={route} />)
+  const combat = Array.from(container.querySelectorAll('.ix-cap-routes article'))
+    .find((candidate) => candidate.querySelector('h2')?.textContent === 'Combat') as HTMLElement
+  expect(combat.textContent).toContain('11 of 11 points spent')
+  expect(combat.textContent).toContain('Recorded endpoint: Endurance 1/2')
+  expect(combat.textContent).toContain('Improved Kick')
+  expect(combat.textContent).toContain('15 Combat points')
+  expect(combat.textContent).toContain('4 more in this branch before the first rank')
+  expect(combat.textContent).toContain('5 additional points')
+  expect(combat.textContent).toMatch(/planning assumption/i)
+  const allocation = decodePlannerBuild(new URL(within(combat).getByRole('link', { name: 'Inspect Level 20 snapshot' }).getAttribute('href')!, 'https://buildforgetools.com').searchParams.get('build')!, rogueClass.talents)
+  expect(allocation['rogue-204']).toBe(1)
+  expect(allocation['rogue-206']).toBeUndefined()
+})
+
+
+it('keeps endpoint inspection and point-by-point progression together on an expansion spec build', () => {
+  const route = rogueClass.pages.find((candidate) => candidate.slug === 'wow-forever-combat-rogue-build')!
+  const { container } = render(<ClassIntentExperience classDef={rogueClass} page={route} />)
+  expect(container.querySelector('[data-surface="build-workbench"]')).toBeTruthy()
+  expect(container.querySelector('[data-surface="level-progression"]')).toBeTruthy()
+  fireEvent.change(screen.getByLabelText('Your level'), { target: { value: '14' } })
+  expect(screen.getByTestId('progression-current').textContent).toContain('5 points')
+  expect(screen.getByTestId('progression-current').textContent).toContain('0/5/0')
+  const target = new URL(screen.getByRole('link', { name: 'Edit this level in Calculator' }).getAttribute('href')!, 'https://buildforgetools.com')
+  expect(target.searchParams.get('build')).toContain('rogue-201.2')
+  expect(target.searchParams.get('build')).toContain('rogue-186.3')
+  expect(target.searchParams.get('build')).not.toContain('rogue-204')
+})

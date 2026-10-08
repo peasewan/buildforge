@@ -47,7 +47,7 @@ export const HUB_PLAYSTYLE_SECTIONS: HubPlaystyleSection[] = [
     builds: [
       { id: 'paladin-leveling', title: 'Paladin Leveling Build', description: 'A flexible solo path from level 10 onward, focused on steady progression and survivability.', href: '/wow-forever-paladin-leveling-build', icon: 'leveling' },
       { id: 'protection-leveling', title: 'Protection Paladin Leveling Build', description: 'Editable 0/11/0 Level 20 and 0/21/0 Level 30 editorial routes, with source-checked Protection nodes.', href: '/wow-forever-protection-paladin-leveling-build', icon: 'protection' },
-      { id: 'retribution-leveling', title: 'Retribution Paladin Leveling Build', description: 'Editable Level 20 route plus a historical 51-point example; its Crusade ranks remain under review.', href: '/wow-forever-retribution-paladin-leveling-build', icon: 'retribution' },
+      { id: 'retribution-leveling', title: 'Retribution Paladin Leveling Build', description: 'Editable Level 20 route plus a historical 51-point example; its Crusade ranks are historical because the node is absent from 70245.', href: '/wow-forever-retribution-paladin-leveling-build', icon: 'retribution' },
     ],
   },
   {

@@ -453,6 +453,7 @@ const pageSeeds: PageSeed[] = [
     h1: 'WoW Forever Hunter PvP Build',
     description: 'Fixture PvP hub with one tab per spec that has a PvP preset.',
     eyebrow: 'Fixture PvP',
+    primaryBuildId: 'hunter-mm-pvp',
     relatedBuildIds: [...HUNTER_FIXTURE_PVP_BUILD_IDS],
     relatedPages: [{ href: '/hunter', label: 'Hunter Calculator' }],
   },

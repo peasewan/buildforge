@@ -5,50 +5,48 @@ import BetaChangesPage from '../BetaChangesPage'
 import { renderBetaStatusPrerender } from '../lib/prerender'
 import { BETA_LEVELING_SNAPSHOTS } from './levelingBeta'
 import { BETA_SPEC_PATHS } from './betaSpecPaths'
-import { betaTalents, talentEvidenceLabel, talents } from './talents'
+import { archivedBetaTalents, historicalTalents, talentEvidenceLabel, talents } from './talents'
 
-describe('Paladin snapshot and September 24 patch truth', () => {
-  it('keeps the 69913 import intact but identifies the officially removed talent in the current planner', () => {
-    const historical = betaTalents.find((talent) => talent.id === 'improved_holy_strike')
-    const planner = talents.find((talent) => talent.id === 'improved_holy_strike')
-
-    expect(historical).toBeDefined()
-    expect(historical?.currentBetaAvailability).toBeUndefined()
-    expect(planner?.currentBetaAvailability).toBe('removed_official')
-    expect(talentEvidenceLabel(planner!)).toMatch(/removed.*September 24/i)
-    const crusade = talents.find((talent) => talent.id === 'crusade')
-    expect(betaTalents.find((talent) => talent.id === 'crusade')?.currentBetaAvailability).toBeUndefined()
-    expect(crusade?.currentBetaAvailability).toBe('reported_removed_under_review')
-    expect(talentEvidenceLabel(crusade!)).toMatch(/70009.*under review/i)
+describe('Paladin current structure and preserved patch history', () => {
+  it('preserves the 69913 archive and keeps both removals outside the current tree', () => {
+    expect(archivedBetaTalents).toHaveLength(52)
+    expect(talents).toHaveLength(50)
+    for (const id of ['improved_holy_strike', 'crusade']) {
+      expect(archivedBetaTalents.find(talent => talent.id === id)?.currentBetaAvailability).toBeUndefined()
+      expect(talents.find(talent => talent.id === id)).toBeUndefined()
+    }
+    const strike = historicalTalents.find(talent => talent.id === 'improved_holy_strike')!
+    const crusade = historicalTalents.find(talent => talent.id === 'crusade')!
+    expect(strike.currentBetaAvailability).toBe('removed_official')
+    expect(talentEvidenceLabel(strike)).toMatch(/removed.*September 24/i)
+    expect(crusade.currentBetaAvailability).toBe('removed_client_verified')
+    expect(talentEvidenceLabel(crusade)).toMatch(/client-confirmed removal in 70245/i)
+    expect(crusade.sources.some(source => source.type === 'official' && /removed/i.test(source.label))).toBe(false)
   })
 
-  it('labels the zero-change count as only the 69893-to-69913 snapshot comparison', () => {
+  it('shows the current diff while preserving the older zero-change comparison', () => {
     const html = renderToStaticMarkup(<BetaDataStatus />)
-
-    expect(html).toContain('Imported client snapshot')
-    expect(html).toContain('1.60.1.69893 → 1.60.1.69913')
-    expect(html).toContain('September 24')
-    expect(html).not.toContain('Current talent dataset')
+    expect(html).toContain('1.60.1.69913 → 1.60.1.70245')
+    expect(html).toContain('14 talents with 32 changed rank strings')
+    expect(html).toContain('2 removed')
     const prerender = renderBetaStatusPrerender()
-    expect(prerender).toContain('1.60.1.69893 → 1.60.1.69913')
-    expect(prerender).not.toContain('latest client diff')
+    expect(prerender).toContain('1.60.1.69913 → 1.60.1.70245')
+    expect(prerender).toContain('CC BY 4.0')
     const changes = renderToStaticMarkup(<BetaChangesPage />)
-    expect(changes).not.toContain('Current Beta Baseline')
-    expect(changes).toContain('Imported 69913 snapshot')
+    expect(changes).toContain('1.60.1.69893 → 1.60.1.69913')
+    expect(changes).toContain('No Paladin talent changes were detected in build 69913')
   })
 
-  it('warns every shared Paladin status panel about the October 1 tuning boundary', () => {
+  it('keeps official tuning separate from reviewed client structure and community rank text', () => {
     const html = renderToStaticMarkup(<BetaDataStatus />)
-
     expect(html).toContain('October 1 official tuning')
-    expect(html).toContain('Redoubt')
-    expect(html).toContain('Holy Shield')
-    expect(html).toContain('Champion of the Light')
-    expect(html).toContain('69913 tooltips may be stale')
+    for (const name of ['Redoubt', 'Holy Shield', 'Champion of the Light']) expect(html).toContain(name)
+    expect(html).toContain('rank text remains community-verified')
     expect(html).toContain('2360696/1')
+    expect(html).not.toContain('69913 tooltips may be stale')
   })
 
-  it('shows one consistent Level 20 Retribution route in leveling and spec entry points', () => {
+  it('keeps the reviewed Level 30 Retribution route consistent across entry points', () => {
     expect(BETA_LEVELING_SNAPSHOTS.leveling.current.build).toEqual(BETA_SPEC_PATHS.retribution.current.build)
     expect(BETA_LEVELING_SNAPSHOTS['retribution-leveling'].current.build).toEqual(BETA_SPEC_PATHS.retribution.current.build)
     expect(BETA_LEVELING_SNAPSHOTS.leveling.current.note).toContain('Seal of Command')

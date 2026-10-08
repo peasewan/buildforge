@@ -83,7 +83,7 @@ export default function SpellbookPage() {
 
       <section className="spellbook-boundary shell" aria-label="Data version note">
         <ShieldCheck size={22} />
-        <div><strong>Beta client 1.60.1.69893</strong><p>This spellbook snapshot remains versioned separately from the 69913 talent tree and the October 1 update. Level filters show first trainer levels in that imported snapshot; current spell availability needs a newer client review. Exact rank tooltips are added only when reviewed source data is available. <a href={PALADIN_BETA_SNAPSHOT.phase.officialSource} target="_blank" rel="noreferrer">Blizzard’s Level 30 update</a></p></div>
+        <div><strong>Beta client 1.60.1.69893</strong><p>This spellbook snapshot remains versioned separately from the reviewed 70245 talent tree and the October 1 update. Level filters show first trainer levels in that imported snapshot; current spell availability needs a newer client review. Exact rank tooltips are added only when reviewed source data is available. <a href={PALADIN_BETA_SNAPSHOT.phase.officialSource} target="_blank" rel="noreferrer">Blizzard’s Level 30 update</a></p></div>
       </section>
 
       <section className="spellbook-browser shell" id="abilities">

@@ -26,11 +26,11 @@ describe('specialization talent guide', () => {
     expect(screen.queryByLabelText('Holy talent tree')).toBeNull()
   })
 
-  it('labels the Ret 69913 preview as historical while Crusade identity is unresolved', () => {
+  it('labels the Ret 69913 preview as historical with Crusade client-confirmed absent', () => {
     render(<SpecTalentsPage spec="retribution" />)
 
     const preview = screen.getByRole('region', { name: 'Retribution talent preview' })
-    expect(preview.textContent).toMatch(/historical.*Crusade.*under review/i)
+    expect(preview.textContent).toMatch(/historical.*Crusade.*absent.*70245/i)
     expect(preview.querySelector('a[href="/build?id=#calculator"]')).toBeTruthy()
     expect(document.body.textContent).not.toContain('current structure and rank tooltips')
     expect(screen.getAllByRole('link', { name: /Start a new build/i })).toHaveLength(2)
@@ -52,9 +52,9 @@ describe('specialization talent guide', () => {
   it('keeps the imported client version distinct from live-cap builds', () => {
     render(<SpecTalentsPage spec="holy" />)
 
-    expect(screen.getByText('Beta build 1.60.1.69913')).toBeTruthy()
-    expect(screen.getByText('69913 snapshot reviewed September 20, 2026')).toBeTruthy()
-    expect(screen.getByText('0 tooltip updates since 69893 in that comparison')).toBeTruthy()
+    expect(screen.getByText('Beta build 1.60.1.70245')).toBeTruthy()
+    expect(screen.getByText('70245 structure reviewed October 7, 2026')).toBeTruthy()
+    expect(screen.getByText('14 talents with 32 changed rank strings since 69913 in that comparison')).toBeTruthy()
     expect(screen.getByText('Historical 51-point reference')).toBeTruthy()
     expect(screen.getByRole('heading', { level: 2, name: 'Holy Paladin Talents Beta Talent Tree' })).toBeTruthy()
   })

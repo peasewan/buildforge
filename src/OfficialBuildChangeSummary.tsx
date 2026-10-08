@@ -20,7 +20,7 @@ export default function OfficialBuildChangeSummary({
   })
   return <aside className="ix-official-build-summary" aria-label="Official change review" data-build-version={buildVersion}>
     <strong>Official change review{contextLabel ? ` · ${contextLabel}` : ''}</strong>
-    <p>Talent tree source: client {buildVersion}. The selected allocation is a community or editorial example, not client data. This checks named talents against tracked official announcements through October 2, 2026; it is not an exhaustive patch history. The full newer-client tree remains unreconciled.</p>
+    <p>Talent tree source: client {buildVersion}. The selected allocation is a community or editorial example, not client data. This checks named talents against tracked official announcements through October 2, 2026; it is not an exhaustive patch history. {className.toLowerCase() === 'paladin' ? 'The current Paladin structure is reviewed through 70245; its rank text has separate community evidence. Historical allocations retain their original client records.' : 'The full newer-client tree remains unreconciled.'}</p>
     {matches.length ? <ul>{matches.map(({ name, rank, notice }) => <li key={name}>
       <b>{name} · {rank} selected</b> — {notice.status === 'removed' ? 'Removed' : 'Changed'} in official update. {notice.message}{' '}
       <a href={notice.source} target="_blank" rel="noreferrer">Source</a>

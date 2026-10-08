@@ -280,7 +280,7 @@ describe('ClassDocumentPage intent-enabled semantic content', () => {
       expect(card.getByText(build.allocation)).toBeTruthy()
       expect(card.getByText(build.role)).toBeTruthy()
       const selectedTalents = warriorClass.talents.filter(talent => (build.build[talent.id] ?? 0) > 0)
-      const ranks = card.getAllByRole('listitem')
+      const ranks = within(card.getByRole('list', { name: 'Selected talent ranks' })).getAllByRole('listitem')
       expect(ranks).toHaveLength(selectedTalents.length)
       for (const [rankIndex, talent] of selectedTalents.entries()) {
         expect(within(ranks[rankIndex]).getByText(talent.name)).toBeTruthy()

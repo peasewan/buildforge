@@ -5,7 +5,7 @@ import { DATA_VERSION as PALADIN_DATA_VERSION } from '../data/talents'
 let handler: (typeof import('../../api/forge-pilot-explain'))['default']
 
 const endpoint = 'https://buildforgetools.com/api/forge-pilot-explain'
-const currentDataVersion = 'wow_forever_beta_1.60.1.69913'
+const currentDataVersion = PALADIN_DATA_VERSION
 
 function request(body: unknown, origin = 'https://buildforgetools.com', ip = '198.51.100.10') {
   return new Request(endpoint, {
@@ -44,7 +44,7 @@ describe('ForgePilot explanation API', () => {
     }
   })
 
-  it('explains that a saved build matches the published dataset while a newer patch is pending review', async () => {
+  it('explains that a saved build matches the published dataset with separate structural and rank-text evidence', async () => {
     vi.stubEnv('DEEPSEEK_API_KEY', '')
     const response = await handler.fetch(request({
       classId: 'paladin',
@@ -56,10 +56,10 @@ describe('ForgePilot explanation API', () => {
     expect(response.headers.get('cache-control')).toBe('no-store')
     expect(await response.json()).toEqual(expect.objectContaining({
       status: 'same_dataset',
-      patchStatus: 'pending_reconciliation',
+      patchStatus: 'structure_reviewed',
       generatedBy: 'fallback',
       sourceUrl: 'https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-september-24/2360696',
-      explanation: expect.stringContaining('70009'),
+      explanation: expect.stringContaining('70245 structure was reviewed'),
     }))
   })
 
@@ -75,7 +75,7 @@ describe('ForgePilot explanation API', () => {
     const body = await response.json()
     expect(body.status).toBe('needs_review')
     expect(body.explanation).toContain('older or unknown talent data version')
-    expect(body.explanation).toContain('cannot yet be determined')
+    expect(body.explanation).toContain('removed-talent review')
   })
 
   it('accepts an unknown legacy source version without guessing which patch changed it', async () => {
@@ -163,7 +163,7 @@ describe('ForgePilot explanation API', () => {
     const body = await response.json()
     expect(body.generatedBy).toBe('fallback')
     expect(body.explanation).not.toContain('This build is valid')
-    expect(body.explanation).toContain('pending reconciliation')
+    expect(body.explanation).toContain('rank descriptions have community evidence')
   })
 
   it('falls back after an upstream network failure', async () => {

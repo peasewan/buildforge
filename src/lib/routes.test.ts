@@ -12,8 +12,8 @@ import { pageForPath } from './routes'
  */
 const paladinPlannerFallback = {
   kind: 'planner',
-  title: 'WoW Forever Paladin Talent Calculator | Beta Build 69913',
-  description: 'Explore the WoW Forever Paladin talent tree in the older 69913 client snapshot. Plan with a 21-point Level 30 budget, review official changes, and share builds.',
+  title: 'WoW Forever Paladin Talent Calculator | Beta Build 70245',
+  description: 'Explore the reviewed 70245 Paladin talent tree with separately sourced community rank text. Plan a 21-point Level 30 build, review removals, and share your route.',
   canonical: 'https://buildforgetools.com/paladin',
   robots: 'index, follow',
 }
@@ -41,8 +41,8 @@ describe('public page routing', () => {
   it('serves the calculator for the canonical tool path and shared builds', () => {
     expect(pageForPath('/paladin')).toMatchObject({
       kind: 'planner',
-      title: 'WoW Forever Paladin Talent Calculator | Beta Build 69913',
-      description: expect.stringContaining('WoW Forever Paladin talent tree'),
+      title: 'WoW Forever Paladin Talent Calculator | Beta Build 70245',
+      description: expect.stringContaining('70245 Paladin talent tree'),
       canonical: 'https://buildforgetools.com/paladin',
     })
     expect(pageForPath('/build')).toMatchObject({
@@ -57,7 +57,7 @@ describe('public page routing', () => {
     expect(pageForPath('/wow-forever-paladin-talents/')).toEqual({
       kind: 'guide',
       title: 'WoW Forever Paladin Talent Guide & Build Planner | BuildForgeTools',
-      description: 'Explore Holy, Protection, and Retribution talents in the older 69913 snapshot. Plan a 21-point Level 30 idea, or inspect historical 51-point references.',
+      description: 'Explore 50 Paladin talents in the reviewed 70245 tree and two historical removals. Plan a Level 30 route or inspect archived 51-point references.',
       canonical: 'https://buildforgetools.com/wow-forever-paladin-talents',
       robots: 'index, follow',
     })
@@ -105,7 +105,7 @@ describe('public page routing', () => {
     expect(pageForPath('/wow-forever-paladin-beta-talent-changes/')).toEqual({
       kind: 'beta-changes',
       title: 'WoW Forever Paladin Beta Talent Changes | BuildForgeTools',
-      description: 'Review official Paladin Beta changes, affected build examples and historical client diffs. Separate current announcements from the imported 69913 talent snapshot.',
+      description: 'Review the 69913 to 70245 Paladin diff, two removals and 32 changed rank strings. Separate client structure, community rank text and official tuning.',
       canonical: 'https://buildforgetools.com/wow-forever-paladin-beta-talent-changes',
       robots: 'index, follow',
     })

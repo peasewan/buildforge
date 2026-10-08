@@ -1,23 +1,23 @@
 import { describe, expect, it } from "vitest";
-import { betaTalents, DATA_VERSION, initialBetaTalents, previousBetaTalents, talents } from "./talents";
+import { archivedBetaTalents, DATA_VERSION, initialBetaTalents, previousBetaTalents, talents } from "./talents";
 import { compareTalentVersions } from "../lib/talentDiff";
 import type { TalentDataset } from "./datasets";
 import { existsSync } from "node:fs";
 import { join } from "node:path";
 
 describe("WoW Forever Paladin talent data", () => {
-  it("contains the complete 52-node Beta client dataset", () => {
-    expect(DATA_VERSION).toBe("wow_forever_beta_1.60.1.69913");
-    expect(talents).toHaveLength(52);
+  it("contains the complete reviewed 50-node 70245 dataset", () => {
+    expect(DATA_VERSION).toBe("wow_forever_beta_1.60.1.70245");
+    expect(talents).toHaveLength(50);
     expect(talents.filter((talent) => talent.branch === "holy")).toHaveLength(
-      18,
+      17,
     );
     expect(
       talents.filter((talent) => talent.branch === "protection"),
     ).toHaveLength(16);
     expect(
       talents.filter((talent) => talent.branch === "retribution"),
-    ).toHaveLength(18);
+    ).toHaveLength(17);
   });
 
   it("records 69913 as a reviewed zero-change Paladin build", () => {
@@ -31,7 +31,7 @@ describe("WoW Forever Paladin talent data", () => {
     });
     const diff = compareTalentVersions(
       dataset("wow_forever_beta_1.60.1.69893", previousBetaTalents),
-      dataset(DATA_VERSION, betaTalents),
+      dataset("wow_forever_beta_1.60.1.69913", archivedBetaTalents),
     );
 
     expect(diff.added).toHaveLength(0);
@@ -42,7 +42,7 @@ describe("WoW Forever Paladin talent data", () => {
   });
 
   it("maps every Beta iconName to a distinct local game icon asset", () => {
-    expect(new Set(talents.map((talent) => talent.iconName)).size).toBe(52);
+    expect(new Set(talents.map((talent) => talent.iconName)).size).toBe(50);
 
     for (const talent of talents) {
       expect(talent.iconName).toBeTruthy();
@@ -52,8 +52,8 @@ describe("WoW Forever Paladin talent data", () => {
     }
   });
 
-  it("classifies the 21 Forever talents by specialization", () => {
-    const newTalents = betaTalents.filter((talent) => talent.changeType === "new");
+  it("preserves the 21 historical Forever talents by specialization", () => {
+    const newTalents = archivedBetaTalents.filter((talent) => talent.changeType === "new");
 
     expect(newTalents).toHaveLength(21);
     expect(newTalents.filter((talent) => talent.branch === "holy")).toHaveLength(9);
@@ -116,7 +116,7 @@ describe("WoW Forever Paladin talent data", () => {
     for (const id of officiallyNamed) {
       const talent = talents.find((candidate) => candidate.id === id);
       expect(talent?.verification.name).toBe("client_verified");
-      expect(talent?.verification.description).toBe("client_verified");
+      expect(talent?.verification.description).toBe("community_verified");
       expect(talent?.sources.some((source) => source.type === "official")).toBe(
         true,
       );

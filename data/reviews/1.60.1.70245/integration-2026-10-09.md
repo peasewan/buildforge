@@ -1,0 +1,11 @@
+# Paladin 70245 integration decision — October 9, 2026
+
+The local current Paladin dataset now imports the reviewed 70245 candidate. Release and production publication remain a separate step. The original October 7 source-manifest and manual review are preserved unchanged as acquisition history.
+
+Current structure has 50 talents (Holy 17, Protection 16, Retribution 17); the 52-node 69913 payload remains the archived comparison and allocation source. There are no additions, moves, rank-cap changes or prerequisite-link changes. Fourteen talents have 32 changed rank strings, and 36 remaining talents are unchanged. Current `new` tags total 19; the 69913 archive retains its original 21 tags.
+
+Improved Holy Strike (node 105328, spell 1310902) has an official September 24 removal source. Crusade (node 110883, spell 1311083) is absent from reviewed client TraitTree 1100; this is client-confirmed absence, without a reviewed official removal claim. Both rows stay searchable in the talent index. Shared and saved allocations containing either row retain their original codes and known archived ranks in read-only history; no partial allocation enters the current planner.
+
+Names, stable IDs, positions, rank caps and prerequisite links carry client verification. Rank descriptions are adapted from the Talents Forever 70170 export under CC BY 4.0 and carry community verification, with visible attribution, license link and adaptation notice. Required prerequisite ranks and level point budgets remain derived assumptions. Existing editorial and community allocations are replayed against current structure; no new allocation or performance ranking is introduced.
+
+Verification reran from preserved local raw CSVs: all ten 70245 tables match the SHA-256 digests and byte counts in the source-manifest and are byte-identical to their 70170 counterparts. The resolved export matches its recorded SHA-256 digest. Independent raw TraitNode membership validation passes, and regenerating the candidate reproduces the saved payload except its generation date. This is a fresh check of preserved evidence, not a fresh network download or in-game verification. The manual review's Redoubt proc discrepancy, Seal of Command rendered-range limitation and Light's Vigil rounding boundary remain applicable.

@@ -11,11 +11,12 @@ describe('Emberville sourced planning workspace', () => {
     render(<EmbervillePlanner />)
     expect(screen.getByRole('combobox', { name: 'Base class' })).toBeTruthy()
     expect(screen.getByRole('combobox', { name: 'Weapon category' })).toBeTruthy()
-    expect(screen.getByRole('heading', { name: 'Inherited active skills' })).toBeTruthy()
-    expect(screen.getByRole('heading', { name: 'Inherited passive skills' })).toBeTruthy()
+    expect(screen.queryByRole('heading', { name: 'Inherited active skills' })).toBeNull()
+    expect(screen.queryByRole('heading', { name: 'Inherited passive skills' })).toBeNull()
     expect(screen.getByText('Needs verification', { exact: true })).toBeTruthy()
     expect(screen.queryByText('Confirmed compatible', { exact: true })).toBeNull()
-    expect(screen.getByText(/No reviewed active skill records/)).toBeTruthy()
+    expect(screen.getByRole('note').textContent).toMatch(/no reviewed active or passive skills/i)
+    expect(screen.getByRole('textbox', { name: /Build notes/ })).toBeTruthy()
   })
 
   it('retains old notes and saves a versioned draft without sending note text to analytics', () => {

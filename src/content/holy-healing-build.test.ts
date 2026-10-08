@@ -6,7 +6,7 @@ import retributionLevelingContent from './retribution-leveling-build.json'
 import { SPEC_BUILDS_HUBS } from '../data/specBuildsHubs'
 import { HOLY_HEALING_BUILD, PROTECTION_SHIELD_BUILD, RETRIBUTION_JUDGMENT_BUILD } from '../data/builds'
 import { decodeBuild } from '../lib/build'
-import { talents } from '../data/talents'
+import { historicalTalents as talents } from '../data/talents'
 
 const pages = [
   [holyContent, HOLY_HEALING_BUILD],

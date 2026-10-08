@@ -1,6 +1,8 @@
 import { assertUniquePageIntents, type ClassBuild, type ClassDefinition, type ClassPageDefinition, type ClassPageKind, type ClassTalent } from '../../lib/classPage'
 import { canIncrementPlannerTalent, incrementPlannerTalent, type PlannerBuild } from '../../lib/talentPlanner'
 import type { ExpansionProfile, SpecProfile } from './profiles'
+import { buildRoleDecision } from './roleDecisions'
+import { allocationSignature } from '../../lib/classPage'
 import { hasRemovedTalentInBuild } from '../../lib/archivedClassBuild'
 
 interface Dataset {
@@ -126,9 +128,52 @@ export function createExpansionClass(profile: ExpansionProfile, dataset: Dataset
     ].includes(candidate.slug))) page.updatedAt = '2026-10-01'
     pages.find((candidate) => candidate.slug === 'wow-forever-beast-mastery-vs-marksmanship-hunter-leveling')!.updatedAt = '2026-10-02'
   }
-  if (pages.length !== 15) throw new Error(`${id}: expected 15 page definitions`)
+  // Reviewed against GSC final 2026-09-11..2026-10-06. Same endpoint + same
+  // progression now live together; keep clicked leveling entries where applicable.
+  const consolidations = new Map<string, string>()
+  for (const spec of specs) {
+    const endpoint = pages.find(page => page.kind === 'specBuild' && page.spec === spec.id)!
+    const progression = pages.find(page => page.kind === 'specLeveling' && page.spec === spec.id)!
+    const keepProgression = (id === 'priest' && spec.id === 'holy') || (id === 'warlock' && spec.id === 'demonology')
+    const destination = keepProgression ? progression : endpoint
+    const source = keepProgression ? endpoint : progression
+    const a = builds.find(build => build.id === source.primaryBuildId)!
+    const b = builds.find(build => build.id === destination.primaryBuildId)!
+    if (allocationSignature(a.build) !== allocationSignature(b.build)) throw new Error(`Consolidation requires reviewed identical route: ${source.slug}`)
+    consolidations.set(`/${source.slug}`, `/${destination.slug}`)
+  }
+  const extrasToMerge: Record<string, [string, string]> = {
+    rogue: ['subtlety-rogue-pvp-build', 'rogue-pvp-build'],
+    priest: ['priest-healing-build', 'holy-priest-dungeon-build'],
+  }
+  const extra = extrasToMerge[id]
+  if (extra) consolidations.set(href(extra[0]), href(extra[1]))
+  for (const [sourcePath, destinationPath] of consolidations) {
+    const source = pages.find(page => `/${page.slug}` === sourcePath)!
+    const destination = pages.find(page => `/${page.slug}` === destinationPath)!
+    source.retiredTo = destinationPath
+    const paragraphs = new Set(destination.sections.flatMap(section => section.paragraphs))
+    for (const section of source.sections) {
+      const added = section.paragraphs.filter(paragraph => !paragraphs.has(paragraph))
+      if (added.length) destination.sections.push({...section, paragraphs:added})
+      added.forEach(paragraph => paragraphs.add(paragraph))
+    }
+  }
+  pages.find(page => page.kind === 'buildsHub')!.relatedBuildIds = Object.values(specBuilds)
+  const resolveHref = (value: string) => consolidations.get(value) ?? value
+  for (const build of builds) build.href = resolveHref(build.href)
+  for (const page of pages) {
+    page.relatedPages = page.relatedPages.map(link => ({...link, href:resolveHref(link.href)}))
+      .filter((link, index, all) => link.href !== resolveHref(`/${page.slug}`) && all.findIndex(candidate => candidate.href === link.href) === index)
+    if (!page.retiredTo) {
+      page.roleDecision = buildRoleDecision(profile, page, talents, builds)
+      page.updatedAt = '2026-10-09'
+    }
+  }
+
   assertUniquePageIntents(pages)
   return {
+    contentPolicy: 'intent_tasks_v1',
     id, name, plannerPath: `/${id}`, ogImage: `/images/${id}/${id}-hero-v1.jpg`, branches,
     branchIcons: Object.fromEntries(branches.map((branch) => [branch, talents.find((t) => t.branch === branch && t.icon)?.icon])),
     branchNames: Object.fromEntries(specs.map((spec) => [spec.id, spec.name])), branchTaglines: Object.fromEntries(specs.map((spec) => [spec.id, spec.role])),

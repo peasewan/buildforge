@@ -140,24 +140,12 @@
     "file": "wow-forever-assassination-rogue-build/index.html"
   },
   {
-    "name": "rogue-wow-forever-assassination-rogue-leveling-build",
-    "file": "wow-forever-assassination-rogue-leveling-build/index.html"
-  },
-  {
     "name": "rogue-wow-forever-combat-rogue-build",
     "file": "wow-forever-combat-rogue-build/index.html"
   },
   {
-    "name": "rogue-wow-forever-combat-rogue-leveling-build",
-    "file": "wow-forever-combat-rogue-leveling-build/index.html"
-  },
-  {
     "name": "rogue-wow-forever-subtlety-rogue-build",
     "file": "wow-forever-subtlety-rogue-build/index.html"
-  },
-  {
-    "name": "rogue-wow-forever-subtlety-rogue-leveling-build",
-    "file": "wow-forever-subtlety-rogue-leveling-build/index.html"
   },
   {
     "name": "rogue-wow-forever-rogue-pvp-build",
@@ -166,10 +154,6 @@
   {
     "name": "rogue-wow-forever-rogue-level-20-build",
     "file": "wow-forever-rogue-level-20-build/index.html"
-  },
-  {
-    "name": "rogue-wow-forever-subtlety-rogue-pvp-build",
-    "file": "wow-forever-subtlety-rogue-pvp-build/index.html"
   },
   {
     "name": "rogue-wow-forever-combat-vs-assassination-rogue-leveling",
@@ -200,14 +184,6 @@
     "file": "wow-forever-discipline-priest-build/index.html"
   },
   {
-    "name": "priest-wow-forever-discipline-priest-leveling-build",
-    "file": "wow-forever-discipline-priest-leveling-build/index.html"
-  },
-  {
-    "name": "priest-wow-forever-holy-priest-build",
-    "file": "wow-forever-holy-priest-build/index.html"
-  },
-  {
     "name": "priest-wow-forever-holy-priest-leveling-build",
     "file": "wow-forever-holy-priest-leveling-build/index.html"
   },
@@ -216,20 +192,12 @@
     "file": "wow-forever-shadow-priest-build/index.html"
   },
   {
-    "name": "priest-wow-forever-shadow-priest-leveling-build",
-    "file": "wow-forever-shadow-priest-leveling-build/index.html"
-  },
-  {
     "name": "priest-wow-forever-priest-pvp-build",
     "file": "wow-forever-priest-pvp-build/index.html"
   },
   {
     "name": "priest-wow-forever-priest-level-20-build",
     "file": "wow-forever-priest-level-20-build/index.html"
-  },
-  {
-    "name": "priest-wow-forever-priest-healing-build",
-    "file": "wow-forever-priest-healing-build/index.html"
   },
   {
     "name": "priest-wow-forever-holy-priest-dungeon-build",
@@ -260,24 +228,12 @@
     "file": "wow-forever-balance-druid-build/index.html"
   },
   {
-    "name": "druid-wow-forever-balance-druid-leveling-build",
-    "file": "wow-forever-balance-druid-leveling-build/index.html"
-  },
-  {
     "name": "druid-wow-forever-feral-druid-build",
     "file": "wow-forever-feral-druid-build/index.html"
   },
   {
-    "name": "druid-wow-forever-feral-druid-leveling-build",
-    "file": "wow-forever-feral-druid-leveling-build/index.html"
-  },
-  {
     "name": "druid-wow-forever-restoration-druid-build",
     "file": "wow-forever-restoration-druid-build/index.html"
-  },
-  {
-    "name": "druid-wow-forever-restoration-druid-leveling-build",
-    "file": "wow-forever-restoration-druid-leveling-build/index.html"
   },
   {
     "name": "druid-wow-forever-druid-pvp-build",
@@ -320,24 +276,12 @@
     "file": "wow-forever-affliction-warlock-build/index.html"
   },
   {
-    "name": "warlock-wow-forever-affliction-warlock-leveling-build",
-    "file": "wow-forever-affliction-warlock-leveling-build/index.html"
-  },
-  {
-    "name": "warlock-wow-forever-demonology-warlock-build",
-    "file": "wow-forever-demonology-warlock-build/index.html"
-  },
-  {
     "name": "warlock-wow-forever-demonology-warlock-leveling-build",
     "file": "wow-forever-demonology-warlock-leveling-build/index.html"
   },
   {
     "name": "warlock-wow-forever-destruction-warlock-build",
     "file": "wow-forever-destruction-warlock-build/index.html"
-  },
-  {
-    "name": "warlock-wow-forever-destruction-warlock-leveling-build",
-    "file": "wow-forever-destruction-warlock-leveling-build/index.html"
   },
   {
     "name": "warlock-wow-forever-warlock-pvp-build",
@@ -380,24 +324,12 @@
     "file": "wow-forever-beast-mastery-hunter-build/index.html"
   },
   {
-    "name": "hunter-wow-forever-beast-mastery-hunter-leveling-build",
-    "file": "wow-forever-beast-mastery-hunter-leveling-build/index.html"
-  },
-  {
     "name": "hunter-wow-forever-marksmanship-hunter-build",
     "file": "wow-forever-marksmanship-hunter-build/index.html"
   },
   {
-    "name": "hunter-wow-forever-marksmanship-hunter-leveling-build",
-    "file": "wow-forever-marksmanship-hunter-leveling-build/index.html"
-  },
-  {
     "name": "hunter-wow-forever-survival-hunter-build",
     "file": "wow-forever-survival-hunter-build/index.html"
-  },
-  {
-    "name": "hunter-wow-forever-survival-hunter-leveling-build",
-    "file": "wow-forever-survival-hunter-leveling-build/index.html"
   },
   {
     "name": "hunter-wow-forever-hunter-pvp-build",
@@ -440,24 +372,12 @@
     "file": "wow-forever-elemental-shaman-build/index.html"
   },
   {
-    "name": "shaman-wow-forever-elemental-shaman-leveling-build",
-    "file": "wow-forever-elemental-shaman-leveling-build/index.html"
-  },
-  {
     "name": "shaman-wow-forever-enhancement-shaman-build",
     "file": "wow-forever-enhancement-shaman-build/index.html"
   },
   {
-    "name": "shaman-wow-forever-enhancement-shaman-leveling-build",
-    "file": "wow-forever-enhancement-shaman-leveling-build/index.html"
-  },
-  {
     "name": "shaman-wow-forever-restoration-shaman-build",
     "file": "wow-forever-restoration-shaman-build/index.html"
-  },
-  {
-    "name": "shaman-wow-forever-restoration-shaman-leveling-build",
-    "file": "wow-forever-restoration-shaman-leveling-build/index.html"
   },
   {
     "name": "shaman-wow-forever-shaman-pvp-build",

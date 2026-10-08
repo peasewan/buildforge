@@ -1,3 +1,4 @@
+import paladin70245Amendments from '../docs/seo/approved-paladin-70245-remediation-2026-10-09.json'
 import calculatorEntryAmendments from '../docs/seo/approved-calculator-entry-2026-10-06.json'
 import wowUtilityAmendments from '../docs/seo/approved-wow-utility-tools-2026-10-07.json'
 import paladinLevel30Amendments from '../docs/seo/approved-paladin-level30-decisions-2026-10-07.json'
@@ -65,7 +66,9 @@ const frozenPages = baseline.pages.map(page => {
   const utility = wowUtilityAmendments.pages[page.path as keyof typeof wowUtilityAmendments.pages]
   const withUtility = utility ? { ...withEntry, ...utility } : withEntry
   const level30 = paladinLevel30Amendments.pages[page.path as keyof typeof paladinLevel30Amendments.pages]
-  return level30 ? { ...withUtility, ...level30 } : withUtility
+  const withLevel30 = level30 ? { ...withUtility, ...level30 } : withUtility
+  const promotion = paladin70245Amendments.pages[page.path as keyof typeof paladin70245Amendments.pages]
+  return promotion ? { ...withLevel30, ...promotion } : withLevel30
 })
 import vercel from '../vercel.json'
 import { parseSitemap, validateSeo, type Requirement } from './seo/validate'

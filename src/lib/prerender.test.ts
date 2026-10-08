@@ -51,7 +51,7 @@ const allPrerendered = () => [
 describe('prerender generation', () => {
   it('marks every published class static page as an older Level 20 snapshot beneath the live Level 30 cap', () => {
     const pages = publishedClassPages(PUBLISHED_CLASSES)
-    expect(pages.length).toBeGreaterThan(100)
+    expect(pages).toHaveLength(100)
     for (const { classDef, page } of pages) {
       const html = renderClassPage(classDef, page)
       expect(html, page.slug).toContain('live Beta cap is Level 30')
@@ -159,7 +159,8 @@ describe('prerender generation', () => {
 
     expect(html).toContain('Official level cap 30')
     expect(html).toContain('21 points under the one-point-per-level planning assumption')
-    expect(html).toContain('current talent availability is not confirmed')
+    expect(html).toContain('Structural fields were checked in 70245')
+    expect(html).toContain('prerequisite rank requirements remain derived assumptions')
     expect(html).toContain(talent)
     expect(html).toContain(status)
     expect(html).toContain(points)
@@ -171,7 +172,8 @@ describe('prerender generation', () => {
     expect(html).toContain('0/0/21')
     expect(html).toContain('Vengeance')
     expect(html).toContain('level=30#calculator')
-    expect(html).toContain('imported 69913 tree rules')
+    expect(html).toContain('reviewed 70245 structure')
+    expect(html).toContain('Rank text has separate community evidence')
     expect(html).toContain('not an official or simulated best build')
     expect(html).not.toContain('No reviewed allocation')
   })

@@ -37,8 +37,9 @@ export default defineConfig(({ mode }) => ({
       transformIndexHtml(_html, context) {
         if (process.env.VERCEL_ENV === 'preview') return []
         const publisher = 'ca-pub-4279730688530289'
-        // Keep the linked privacy policy free of ad and CMP scripts.
-        if (/^\/privacy(?:\/index\.html|\/)?$/.test(context.path)) return []
+        // Keep the consent policy readable and the incomplete preview notebook unmonetized.
+        // The separate sourced Emberville mechanics guides retain their ad eligibility.
+        if (/^\/(?:privacy|emberville)(?:\/index\.html|\/)?$/.test(context.path)) return []
         return [{
           tag: 'script',
           attrs: {

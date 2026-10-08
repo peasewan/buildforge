@@ -7,6 +7,7 @@ import {
   CLASS_PAGE_SITEMAP_MARKERS,
   classPageManifestContent,
   classPageRewrites,
+  classPageRedirects,
   classPageShellHtml,
   classPageSitemapBlock,
   publishedClassPages,
@@ -62,6 +63,19 @@ function withClassPageRewrites(config: string, rewrites: Rewrite[]): string {
   return `${config.slice(0, opening)}${body}${config.slice(closing + '\n  ]'.length)}`
 }
 
+function withClassPageRedirects(config: string): string {
+  const redirects = (JSON.parse(config) as {redirects: {source:string}[]}).redirects
+  const generatedSources = new Set(PUBLISHED_CLASSES.flatMap(def => def.pages.flatMap(page => [`/${page.slug}`, `/${page.slug}/index.html`])))
+  // Preserve only the established hand-authored alias; every other class redirect is owned here.
+  const manualAliases = new Set(['/wow-forever-protection-warrior-pvp-build'])
+  const kept = redirects.filter(redirect => !generatedSources.has(redirect.source) || manualAliases.has(redirect.source))
+  const value = JSON.stringify([...kept, ...classPageRedirects()], null, 2).split('\n').map((line, index) => index ? `  ${line}` : line).join('\n')
+  const opening = config.indexOf('"redirects": [')
+  const closing = config.indexOf('\n  ],', opening)
+  if (opening < 0 || closing < 0) throw new Error('vercel.json redirects array unavailable')
+  return config.slice(0, opening) + `"redirects": ${value}` + config.slice(closing + '\n  ]'.length)
+}
+
 const expectedShell = (entry: PublishedClassPage) => classPageShellHtml(entry.classDef, entry.page)
 
 /** Everything the generator would change, as human-readable lines. Empty means in sync. */
@@ -89,7 +103,7 @@ async function drift(): Promise<string[]> {
   // guard for vercel.json; the cloud build verifies every artifact it still owns at this stage.
   if (shouldVerifyVercelRewrites(process.env)) {
     const config = await readVercel()
-    if (withClassPageRewrites(config, classPageRewrites()) !== config) problems.push('stale class page rewrites in vercel.json')
+    if (withClassPageRedirects(withClassPageRewrites(config, classPageRewrites())) !== config) problems.push('stale class page redirects/rewrites in vercel.json')
   }
 
   if (!existsSync(manifestPath)) problems.push(`missing ${CLASS_PAGE_MANIFEST_FILENAME}`)
@@ -121,7 +135,7 @@ async function write(): Promise<void> {
   await writeFile(sitemapPath, withClassPageSitemapBlock(await readFile(sitemapPath, 'utf8'), classPageSitemapBlock()))
   console.log(`Updated the ${CLASS_PAGE_SITEMAP_MARKERS.start} block in public/sitemap.xml.`)
 
-  await writeFile(vercelPath, withClassPageRewrites(await readVercel(), classPageRewrites()))
+  await writeFile(vercelPath, withClassPageRedirects(withClassPageRewrites(await readVercel(), classPageRewrites())))
   console.log('Updated the class page rewrites in vercel.json.')
 
   await writeFile(manifestPath, classPageManifestContent())

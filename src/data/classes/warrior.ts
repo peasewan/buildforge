@@ -205,7 +205,7 @@ const warriorPages: ClassPageDefinition[] = [
   page({
     kind: 'pvp', slug: 'wow-forever-warrior-pvp-build', intent: 'Warrior PvP Hub',
     title: 'WoW Forever Warrior PvP Builds', h1: 'WoW Forever Warrior PvP Builds',
-    description: 'Compare 11-point Arms and Fury Warrior PvP starter routes and review Protection options awaiting a recommended allocation.', eyebrow: 'Level 20 PvP Snapshots',
+    description: 'Compare 11-point Arms and Fury Warrior PvP starter routes and review Protection options awaiting a recommended allocation.', eyebrow: 'Level 20 PvP Snapshots', primaryBuildId: 'warrior-arms-pvp',
     relatedBuildIds: ['warrior-arms-pvp', 'warrior-fury-pvp'],
     relatedPages: [['/wow-forever-arms-warrior-pvp-build', 'Arms PvP'], ['/wow-forever-fury-warrior-pvp-build', 'Fury PvP'], ['/wow-forever-protection-warrior-talents', 'Protection Talents'], ['/warrior', 'Warrior Calculator']],
     sections: [{ heading: 'Choose a PvP playstyle', paragraphs: ['Arms emphasizes weapon pressure and stance decisions. Fury uses critical strikes, Rage flow and Piercing Howl. Protection has verified talent data but no recommended PvP allocation yet.', EVIDENCE_NOTE] }],

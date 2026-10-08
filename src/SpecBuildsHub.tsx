@@ -52,7 +52,7 @@ export default function SpecBuildsHub({ spec }: { spec: Branch }) {
           <div className="eyebrow">{betaStart.status === 'archived' ? 'Archived Beta Start · Under Review' : 'Level 20 Snapshot · Editorial route'}</div>
           <h2>{betaStart.status === 'archived' ? `Review the former Level ${betaStart.current.level} Protection route` : `Start with the Level ${betaStart.current.level} Protection route`}</h2>
           <p>{betaStart.archiveNotice ?? betaStart.current.note}</p>
-          <small>{betaStart.status === 'archived' ? 'The old allocation remains visible for comparison. A replacement has not been verified; start from a blank calculator while the Beta tree is reconciled.' : `Selected nodes reviewed in client 70170; the 0/21/0 Level 30 extension is also available on the leveling page. Both routes are editorial, without Legacy: Talented. The complete calculator still imports the 69913 snapshot.`}</small>
+          <small>{betaStart.status === 'archived' ? 'The old allocation remains visible for comparison. A replacement has not been verified; start from a blank calculator while the Beta tree is reconciled.' : `Selected nodes reviewed in client 70170; the 0/21/0 Level 30 extension is also available on the leveling page. Both routes are editorial, without Legacy: Talented. The complete calculator uses reviewed 70245 structure and community-resolved rank text.`}</small>
         </div>
         <div className="spec-beta-start-actions">
           <strong>{betaStart.current.allocation}</strong>
@@ -85,7 +85,7 @@ export default function SpecBuildsHub({ spec }: { spec: Branch }) {
         <a href="/paladin#calculator" className="button primary" onClick={link('calculator')('/paladin#calculator')}><Calculator size={18} /> Open Paladin Talent Calculator</a>
       </section>
 
-      <section className="hub-data shell" id="talents"><div><div className="eyebrow">{spec.charAt(0).toUpperCase() + spec.slice(1)} Talent Tree</div><h2>{spec.charAt(0).toUpperCase() + spec.slice(1)} Paladin Talents</h2></div>{hub.talents.map((item) => <div key={item.href}><p>Explore {spec} talent choices, key talents, and recommended paths before committing to a build.</p><p>The dedicated talent page uses the imported 69913 client snapshot, labels later patch conflicts, and connects reviewed routes to the interactive calculator.</p><a href={item.href} onClick={link('talents')(item.href)}>{item.label} <ArrowRight size={15} /></a></div>)}</section>
+      <section className="hub-data shell" id="talents"><div><div className="eyebrow">{spec.charAt(0).toUpperCase() + spec.slice(1)} Talent Tree</div><h2>{spec.charAt(0).toUpperCase() + spec.slice(1)} Paladin Talents</h2></div>{hub.talents.map((item) => <div key={item.href}><p>Explore {spec} talent choices, key talents, and recommended paths before committing to a build.</p><p>The dedicated talent page preserves its historical 69913 preview, labels official and client-confirmed removals, and connects reviewed routes to the current 70245 calculator.</p><a href={item.href} onClick={link('talents')(item.href)}>{item.label} <ArrowRight size={15} /></a></div>)}</section>
 
       <section className="hub-resources shell"><div className="eyebrow">Keep Exploring</div><h2>More Paladin Builds</h2><nav>{hub.related.map((item) => <a href={item.href} key={item.href} onClick={link('related')(item.href)}><span>{item.label}</span><ArrowRight size={17} /></a>)}</nav></section>
 

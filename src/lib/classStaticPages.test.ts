@@ -13,6 +13,7 @@ import {
   SITE_THEME_COLOR,
   classPageManifestContent,
   classPagePaths,
+  classPageRedirects,
   classPageRewrites,
   classPageShellHtml,
   classPageSitemapBlock,
@@ -31,7 +32,7 @@ const read = (file: string) => readFileSync(join(process.cwd(), file), 'utf8')
 
 const committedSitemap = read('public/sitemap.xml')
 const committedVercel = JSON.parse(read('vercel.json')) as {
-  redirects: { source: string }[]
+  redirects: { source: string; destination: string; permanent: boolean; has?: { type: string; value: string }[] }[]
   headers: { source: string; headers: { key: string; value: string }[] }[]
   rewrites: { source: string; destination: string }[]
 }
@@ -72,7 +73,13 @@ describe('generated class-page artifacts', () => {
   })
 
   it('publishes data-ready class pages and withholds unfinished build promises', () => {
-    expect(published).toHaveLength(120)
+    expect(published).toHaveLength(100)
+    const retired = PUBLISHED_CLASSES.flatMap((def) => def.pages.filter((page) => page.retiredTo))
+    expect(retired).toHaveLength(20)
+    for (const page of retired) {
+      expect(classPagePaths()).not.toContain(`/${page.slug}`)
+      expect(classPagePaths()).toContain(page.retiredTo)
+    }
     expect(withheldSlugs).toHaveLength(4)
     expect(classPagePaths()).toEqual(publishedSlugs.map((slug) => `/${slug}`))
     for (const slug of withheldSlugs) expect(classPagePaths()).not.toContain(`/${slug}`)
@@ -231,13 +238,21 @@ describe('generated class-page artifacts', () => {
     for (const source of ['/warrior', '/paladin', '/build', '/emberville', '/wow-forever-paladin-talents', '/wow-forever-warrior-builds']) {
       expect(committedVercel.rewrites.map((rewrite) => rewrite.source)).toContain(source)
     }
-    expect(committedVercel.redirects.map((redirect) => redirect.source)).toEqual([
-      '/',
-      '/:path*',
-      '/wow-forever-paladin-beta',
-      '/wow-forever-holy-paladin-build',
-      '/wow-forever-protection-warrior-pvp-build',
-    ])
+    const manualRedirects = [
+      { source: '/', has: [{ type: 'host', value: 'www.buildforgetools.com' }], destination: 'https://buildforgetools.com/', permanent: true },
+      { source: '/:path*', has: [{ type: 'host', value: 'www.buildforgetools.com' }], destination: 'https://buildforgetools.com/:path*', permanent: true },
+      { source: '/wow-forever-paladin-beta', destination: '/wow-forever-paladin-beta-talent-changes', permanent: true },
+      { source: '/wow-forever-holy-paladin-build', destination: '/wow-forever-paladin-build', permanent: true },
+      { source: '/wow-forever-protection-warrior-pvp-build', destination: '/wow-forever-warrior-pvp-build', permanent: true },
+    ]
+    const generatedRedirects = classPageRedirects()
+    expect(generatedRedirects).toHaveLength(40)
+    expect(committedVercel.redirects).toEqual([...manualRedirects, ...generatedRedirects])
+    expect(new Set(committedVercel.redirects.map((redirect) => redirect.source)).size).toBe(committedVercel.redirects.length)
+    for (const redirect of generatedRedirects) {
+      expect(committedVercel.rewrites.some((rewrite) => rewrite.source === redirect.source), redirect.source).toBe(false)
+      expect(classPagePaths(), redirect.source).toContain(redirect.destination)
+    }
     expect(committedVercel.headers).toContainEqual({
       source: '/build',
       headers: [{ key: 'X-Robots-Tag', value: 'noindex, follow' }],

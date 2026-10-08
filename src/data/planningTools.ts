@@ -63,8 +63,8 @@ export function buildCatalogue(classes: ClassDefinition[] = PUBLISHED_CLASSES, i
     })
   })
   if (includePaladin) {
-    // Current Protection uses only the five route nodes reviewed in the 70170
-    // Trait tables; this does not upgrade the complete 69913 calculator import.
+    // Preserve the existing route allocations and selected-node source review;
+    // the current Paladin planner separately imports reviewed 70245 structure.
     for (const branch of ['holy','protection','retribution'] as const) {
       const path = BETA_SPEC_PATHS[branch]
       let allocation: PlannerBuild = {}

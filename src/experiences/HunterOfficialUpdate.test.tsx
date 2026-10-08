@@ -110,11 +110,7 @@ it('lets readers search and select all 18 official pet families without ranking 
   expect(note.getByText(/no scaling formula/i)).toBeTruthy()
 })
 
-it('dates the two updated Hunter intent pages Oct 2 without redating unrelated pages', () => {
-  const changed = hunterClass.pages.filter((page) => page.updatedAt === '2026-10-02').map((page) => page.slug)
-  expect(changed.sort()).toEqual([
-    'wow-forever-beast-mastery-vs-marksmanship-hunter-leveling',
-    'wow-forever-hunter-pvp-build',
-  ])
-  expect(hunterClass.pages.find((page) => page.slug === 'wow-forever-hunter-pet-build')?.updatedAt).toBe('2026-10-01')
+it('dates reviewed active Hunter tasks while retaining explicit consolidation history', () => {
+  for (const page of hunterClass.pages.filter(page => !page.retiredTo)) expect(page.updatedAt).toBe('2026-10-09')
+  expect(hunterClass.pages.find(page => page.slug === 'wow-forever-hunter-pet-build')?.retiredTo).toBeUndefined()
 })

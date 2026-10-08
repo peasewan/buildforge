@@ -37,10 +37,10 @@ const retributionSnapshot = {
   next: {
     level: PALADIN_BETA_SNAPSHOT.phase.levelCap,
     points: PALADIN_BETA_SNAPSHOT.phase.levelCap - 9,
-    note: 'A community Level 10–30 Retribution timeline was reviewed October 4. It avoids Crusade; the complete updated client tree remains unverified.',
+    note: 'A community Level 10–30 Retribution timeline was reviewed October 4. It avoids both removed nodes and passes the reviewed 70245 structural rules; rank text remains community evidence and performance is unverified.',
     status: 'community_reviewed' as const,
   },
-  milestones: ['5/5 Benediction', '5/5 Conviction', 'Seal of Command at Level 20', 'Later points pending client reconciliation'],
+  milestones: ['5/5 Benediction', '5/5 Conviction', 'Seal of Command at Level 20', 'Reviewed Level 30 timeline available'],
   recommendationSource: {
     label: 'Mobalytics Paladin Leveling Guide (Level 1–30)',
     href: 'https://mobalytics.gg/wow-forever/classes/paladin-leveling-guide',
@@ -67,7 +67,7 @@ export const BETA_LEVELING_SNAPSHOTS: Record<BetaLevelingPageId, BetaLevelingSna
       points: PALADIN_BETA_SNAPSHOT.phase.levelCap - 9,
       allocation: '0/21/0',
       build: PROTECTION_LEVEL_30,
-      note: 'Extend Precision to 3, add Anticipation 5, then Improved Righteous Fury 3. This is a legal editorial 21-point route for standard progression, not an official or performance-tested recommendation. Blizzard changed Redoubt to 4/8/12/16/20% on October 1; the imported 69913 tooltip remains older.',
+      note: 'Extend Precision to 3, add Anticipation 5, then Improved Righteous Fury 3. This is a legal editorial 21-point route for standard progression, not an official or performance-tested recommendation. Blizzard changed Redoubt to 4/8/12/16/20% on October 1; the current resolved text reflects the announcement; historical 69913 text remains archived.',
       status: 'editorial_reviewed',
     },
     milestones: ['Levels 10–14: Toughness 5/5', 'Levels 15–19: Redoubt 5/5', 'Level 20: Precision 1/3', 'Levels 21–22: Precision 3/3', 'Levels 23–27: Anticipation 5/5', 'Levels 28–30: Improved Righteous Fury 3/3'],

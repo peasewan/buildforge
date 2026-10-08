@@ -74,7 +74,7 @@ function LandingSectionView({ section, pageId }: { section: LandingSection; page
     const historical = isHistoricalExample(example)
     return (
       <section className="landing-content-section landing-talent-preview">
-        <header><div className="eyebrow">Historical Talent Tree</div><h2>{section.title}</h2><p>{section.intro}</p>{historical && <p>This historical 51-point 69913 preview exceeds the live Level 30 Beta cap. {example.reviewStatus === 'under_review' && 'Crusade is reported removed in 70009, but its node identity remains under review.'} Start a blank build instead of loading this allocation.</p>}</header>
+        <header><div className="eyebrow">Historical Talent Tree</div><h2>{section.title}</h2><p>{section.intro}</p>{historical && <p>This historical 51-point 69913 preview exceeds the live Level 30 Beta cap. {example.reviewStatus === 'under_review' && 'Crusade is client-confirmed absent from the reviewed 70245 tree.'} Start a blank build instead of loading this allocation.</p>}</header>
         <div className="landing-preview-actions"><p>Read-only preview. Focus or hover a talent to inspect it; change ranks in the calculator.</p><TrackedLink href={editHref} pageId={pageId} placement="talent-preview-top" className="button primary">{historical ? 'Start a new build' : 'Open editable calculator'} <ArrowRight size={16} /></TrackedLink></div>
         <div className="landing-tree-card"><TalentTree branch={specializationOfBuild(example)} build={example.build} readOnly /></div>
         <TrackedLink href={editHref} pageId={pageId} placement="talent-preview" className="button primary">{historical ? 'Start a new build' : 'Edit this build'} <ArrowRight size={16} /></TrackedLink>
@@ -119,7 +119,7 @@ export default function BuildLandingPage({ pageId }: { pageId: BuildLandingPageI
             <div className="eyebrow"><Sparkles size={14} /> {page.eyebrow}</div>
             <h1>{page.title}</h1>
             <p>{page.subtitle}</p>
-            <span>{pageId === 'protection-leveling' ? 'Load an editorial Level 20 Protection route built from nodes reviewed in Beta client 70170. The full calculator still uses its separately labeled 69913 snapshot.' : historicalCta ? `Historical 51-point 69913 reference; the live Beta cap is Level 30. ${ctaExample?.reviewStatus === 'under_review' ? 'Crusade also awaits 70009 identity review. ' : ''}Start a new plan instead of loading this full allocation.` : 'Community build example using the imported WoW Forever Beta talent snapshot.'}</span>
+            <span>{pageId === 'protection-leveling' ? 'Load an editorial Level 20 Protection route built from nodes reviewed in Beta client 70170. The full calculator now uses reviewed 70245 structure and community-resolved rank text.' : historicalCta ? `Historical 51-point 69913 reference; the live Beta cap is Level 30. ${ctaExample?.reviewStatus === 'under_review' ? 'Crusade is absent from the reviewed 70245 tree. ' : ''}Start a new plan instead of loading this full allocation.` : 'Community build example using the imported WoW Forever Beta talent snapshot.'}</span>
             <div className="button-row"><TrackedLink href={primaryHref} pageId={pageId} placement="hero" className="button primary">{pvpRouteHref ? 'Choose a PvP Route' : pageId === 'protection-leveling' ? 'Load Level 20 Protection Route' : historicalCta ? 'Start a Blank Calculator' : 'Open Talent Calculator'}</TrackedLink>{preview && <a href="#build-content" className="button secondary">View Talent Tree <ArrowRight size={15} /></a>}</div>
           </div>
           <aside className="landing-summary-card" aria-label="Build summary">
@@ -133,7 +133,7 @@ export default function BuildLandingPage({ pageId }: { pageId: BuildLandingPageI
       {pageId === 'pvp' && <PaladinPvpRoutes />}
       {(pageId === 'leveling' || pageId === 'protection-leveling') && <BetaLevelingSnapshot pageId={pageId} />}
       {currentReview && <div className="shell"><OfficialBuildChangeSummary className="paladin" buildVersion={PALADIN_BETA_SNAPSHOT.clientBuild} contextLabel={`${pageId === 'leveling' ? 'Retribution' : 'Protection'} Level 30 leveling route`} selectedTalents={selectedTalentsIn(currentReview)} /></div>}
-      {historicalReview && <div className="shell"><OfficialBuildChangeSummary className="paladin" buildVersion={PALADIN_BETA_SNAPSHOT.clientBuild} contextLabel="Historical 51-point PvP example" selectedTalents={selectedTalentsIn(historicalReview.build)} /></div>}
+      {historicalReview && <div className="shell"><OfficialBuildChangeSummary className="paladin" buildVersion="1.60.1.69913" contextLabel="Historical 51-point PvP example" selectedTalents={selectedTalentsIn(historicalReview.build)} /></div>}
       {pageId === 'leveling' && <PaladinLevelingChecklist />}
 
       <div className="shell landing-content" id="build-content">

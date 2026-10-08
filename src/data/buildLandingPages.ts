@@ -68,7 +68,7 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
         intro: 'Use these milestones as a simple framework while you learn the class. The exact order can change as the WoW Forever talent data is verified.',
         items: [
           { title: 'Level 10–20', body: 'Focus on early survivability and efficient solo play. Reliable opening talents make ordinary fights more forgiving and reduce time spent recovering.' },
-          { title: 'Level 20–30', body: 'The live Beta currently reaches Level 30. Compare damage, durability, and support as you spend the next points; our 69913 snapshot still needs later tuning review.' },
+          { title: 'Level 20–30', body: 'The live Beta currently reaches Level 30. Compare damage, durability, and support as you spend the next points; the reviewed 70245 structure uses community-resolved rank text, with in-game performance still unverified.' },
           { title: 'Beyond Level 30', body: 'Treat deeper 51-point allocations as long-term historical references. Revisit them only when later levels and updated talent data are available.' },
         ],
       },
@@ -86,14 +86,14 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
         kind: 'bullets',
         title: 'How to Use This Beta Example',
         intro: 'Open the planner, choose the branch that matches your current playstyle, and spend points in the order they become available. Keep a share link whenever you reach a useful milestone.',
-        items: ['Compare Holy, Protection, and Retribution paths.', 'Watch prerequisites before planning deeper talents.', 'Talent details use the imported 69913 snapshot; later official removals are marked separately.'],
+        items: ['Compare Holy, Protection, and Retribution paths.', 'Watch prerequisites before planning deeper talents.', 'The current calculator uses reviewed 70245 structure and community rank text; historical removals remain readable.'],
       },
       {
         kind: 'copy',
         title: 'Choose a Leveling Direction',
         intro: 'The class-wide page helps you choose a route before it sends you to a complete specialization example.',
         paragraphs: [
-          'The Retribution leveling page includes a community Level 10–30 point-by-point timeline alongside a separate historical 51-point allocation. Use the timeline for an exact level snapshot and the next suggested talent. The later example selects Crusade and is withheld from current presets while the reported 70009 removal is reconciled. Protection now has a separate BuildForgeTools editorial Level 20 and Level 30 route based on selected nodes checked in the 70170 client Trait tables. The older Protection route that spent points in removed Improved Holy Strike remains historical; its 51-point Shield example is not a current-level preset.',
+          'The Retribution leveling page includes a community Level 10–30 point-by-point timeline alongside a separate historical 51-point allocation. Use the timeline for an exact level snapshot and the next suggested talent. The later example selects Crusade and is withheld from current presets because Crusade is absent from the reviewed 70245 tree. Protection now has a separate BuildForgeTools editorial Level 20 and Level 30 route based on selected nodes checked in the 70170 client Trait tables. The older Protection route that spent points in removed Improved Holy Strike remains historical; its 51-point Shield example is not a current-level preset.',
           'There is no dedicated Holy leveling allocation on the site yet. A player who wants to level through healing or group support should start with an empty calculator, choose the talents that solve the current leveling problem, and save milestone links instead of treating the 31/20/0 Holy healing build as a proven leveling route. The related pages below make the available evidence clear before you commit to one specialization.',
         ],
       },
@@ -175,7 +175,7 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
         title: 'What This PvP Page Can Confirm',
         intro: 'Use the page to compare roles and planning questions, while keeping the current evidence boundary visible.',
         paragraphs: [
-          'The Retribution PvP page displays the historical 0/20/31 Judgment tree, but does not load that Crusade-containing allocation while its 70009 identity remains under review. Holy shows a 31/20/0 healing example and Protection a separate 20/31/0 shield example. Their PvP interpretations remain community planning directions; the site does not have enough verified match data to call any allocation a finished PvP standard.',
+          'The Retribution PvP page displays the historical 0/20/31 Judgment tree, but does not load that Crusade-containing allocation because Crusade is absent from the reviewed 70245 tree. Holy shows a 31/20/0 healing example and Protection a separate 20/31/0 shield example. Their PvP interpretations remain community planning directions; the site does not have enough verified match data to call any allocation a finished PvP standard.',
           'That distinction prevents a familiar talent name or a complete 51-point total from becoming unsupported competitive advice. Use the specialization pages to inspect which full build is being adapted, then change the ranks for the team size and objective you expect. Confirm important control, defensive, and damage effects in the current client before sharing the result as a recommendation.',
         ],
       },
@@ -249,7 +249,7 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
         title: 'Use Published Builds as Role References',
         intro: 'Three historical 51-point examples provide planning references, not current Level 30 raid allocations.',
         paragraphs: [
-          'The Holy 31/20/0 page lists every selected rank in a healing-oriented historical reference. Protection has a separate 20/31/0 Shield example for a defensive group role. Retribution retains a 0/20/31 Judgment allocation for comparison, but its Crusade ranks are under review after the reported 70009 change. All three exceed the live Level 30 cap, so their current-plan buttons start a blank calculator rather than loading those 51 points.',
+          'The Holy 31/20/0 page lists every selected rank in a healing-oriented historical reference. Protection has a separate 20/31/0 Shield example for a defensive group role. Retribution retains a historical 0/20/31 Judgment allocation for comparison; its Crusade ranks refer to a node absent from the reviewed 70245 tree. All three exceed the live Level 30 cap, so their current-plan buttons start a blank calculator rather than loading those 51 points.',
           'These examples are not encounter-tested raid standards or currently playable complete Beta builds. The imported 69913 dataset and later official changes are shown separately. Treat the full allocations as historical references, check the talents relevant to your group in the current client, and plan within the level currently available.',
         ],
       },
@@ -369,7 +369,7 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
         kind: 'copy',
         title: 'Client Facts and Editorial Choices',
         paragraphs: [
-          'The selected nodes have the same IDs, rank caps, positions, and absence of required predecessor links in Paladin TraitTree 1100 from client build 1.60.1.70170. ForeverDiff reports that build 1.60.1.70205 has identical client table records. Those checks cover this five-node route only; the site-wide calculator still imports the 52-node 69913 snapshot and has not been promoted to a newer complete dataset.',
+          'The selected nodes have the same IDs, rank caps, positions, and absence of required predecessor links in Paladin TraitTree 1100 from client build 1.60.1.70170. ForeverDiff reports that build 1.60.1.70205 has identical client table records. Those earlier checks cover this five-node route only. A separate full review now supports the 50-node 70245 calculator structure, with rank text attributed to the community-resolved 70170 export.',
           'The 11-point and 21-point allocations assume ordinary one-point-per-level progression from Level 10. Legacy: Talented can change when a player receives points, so use your own available budget when loading a link. This route is a planning example, not Blizzard advice or proof of tanking speed, survival, or dungeon suitability.',
         ],
       },
@@ -491,7 +491,7 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
       {
         kind: 'talent-preview',
         title: 'Retribution Beta Talent Tree',
-        intro: 'The 0/20/31 tree below is a historical 69913 preview. Its Crusade ranks are under review against a reported 70009 removal, so start a new calculator route instead of loading this exact allocation.',
+        intro: 'The 0/20/31 tree below is a historical 69913 preview. Its Crusade ranks refer to a node absent from the reviewed 70245 tree, so start a new calculator route instead of loading this exact allocation.',
         buildId: 'retribution-judgment-0-20-31',
       },
       {
@@ -509,7 +509,7 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
         title: 'What the 0/20/31 PvP Preview Represents',
         intro: 'The tree preview records 69913; its current availability and PvP value remain unverified.',
         paragraphs: [
-          'The highlighted tree records the complete 69913-era 0/20/31 Retribution Judgment allocation. It committed 31 points to Retribution and used 20 Protection points for a sturdier secondary branch. The calculator can verify those historical ranks against the imported tree, but the Crusade identity conflict means it cannot certify the same 51 points as current. Nor does the snapshot prove PvP effectiveness against any opponent.',
+          'The highlighted tree records the complete 69913-era 0/20/31 Retribution Judgment allocation. It committed 31 points to Retribution and used 20 Protection points for a sturdier secondary branch. The calculator can verify those historical ranks against the imported tree, but the confirmed Crusade absence means the same 51 points cannot be loaded as current. Nor does the snapshot prove PvP effectiveness against any opponent.',
           'Use this preview to inspect the old tradeoffs, then start a blank planner for present Beta testing. Review Protection support points as carefully as deep Retribution talents, and check each selected rank against the latest client before sharing a new allocation.',
         ],
       },

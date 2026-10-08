@@ -20,7 +20,7 @@ export default function BetaTalentAvailability({ branch }: { branch: Branch }) {
         </div>
         <b>{available ? <Check size={14} /> : <LockKeyhole size={14} />}{available ? 'Within level range' : 'Above level range'}</b>
       </article>
-      <p>Level 30 is official. The point budget assumes one point per level from 10; talent requirements come from the older 69913 client tree and need reconciliation before current availability can be confirmed.</p>
+      <p>Level 30 is official. The point budget assumes one point per level from 10; talent structure comes from the reviewed 70245 client tree. Full-rank prerequisite rules remain derived assumptions, and the level-range check does not establish build performance.</p>
     </section>
   )
 }

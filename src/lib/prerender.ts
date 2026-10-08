@@ -3,6 +3,8 @@ import { createElement } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import PaladinLevelingTimeline from '../PaladinLevelingTimeline'
 import ProtectionRouteEvidence from '../ProtectionRouteEvidence'
+import BetaDataStatus from '../BetaDataStatus'
+import PaladinRankAttribution from '../PaladinRankAttribution'
 import type { Branch } from './build'
 import { escapeHtml } from './html'
 import type { ClassBuild, ClassDefinition, ClassPageDefinition, ClassTalent } from './classPage'
@@ -51,7 +53,7 @@ export function renderSpellbookPrerender(): string {
     <h1>WoW Forever Paladin Abilities &amp; Spellbook</h1>
     <p>Browse all 45 reviewed WoW Forever Paladin abilities, skills, and spells by specialization and trainer level.</p>
     <p>Beta client ${escapeHtml(paladinSpellbook.clientBuild)} · Reviewed ${escapeHtml(paladinSpellbook.reviewedAt)} · Trainer spell groups.</p>
-    <p>This spellbook snapshot remains versioned separately from the 69913 talent tree. It records spell presence, first trainer level, maximum rank, and change state.</p>
+    <p>This spellbook snapshot remains versioned separately from the separately reviewed 70245 talent tree. It records spell presence, first trainer level, maximum rank, and change state.</p>
     <p>The official Beta cap rose to Level ${PALADIN_BETA_STATUS.levelCap} on October 1. Level filters use this older client snapshot; current spell availability requires a newer review. ${link(PALADIN_BETA_STATUS.levelCapSource, 'Blizzard October 1 notes')}.</p>
   </article>
   <section><h2>Paladin spellbook entries</h2>${entries}</section>
@@ -82,14 +84,7 @@ export function renderEmbervillePrerender(pageId: EmbervillePageId): string {
 }
 
 export function renderBetaStatusPrerender(): string {
-  const status = PALADIN_BETA_STATUS
-  return `<section aria-label="WoW Forever Beta data status">
-    <h2>Beta build ${escapeHtml(status.build)}</h2>
-    <p>Imported 69913 snapshot reviewed ${escapeHtml(status.updated)} · ${status.talentCount} talent nodes · ${status.newTalentCount} new in WoW Forever.</p>
-    <p>${escapeHtml(status.phaseLabel)} · Official level cap ${status.levelCap}. ${link(status.levelCapSource, 'Blizzard October 1 notes')}. Level ${status.routeSnapshotLevelCap} routes remain 11-point starting snapshots.</p>
-    <p>${escapeHtml(status.comparisonLabel)} imported snapshot comparison: ${status.added} added · ${status.updatedTalents} updated · ${status.removed} removed.</p>
-    <p>September 24 official removal: Improved Holy Strike is unavailable in new builds. ${status.patchBuild} client records await reconciliation. ${link(status.changelogHref, 'Review Beta changes')}.</p>
-  </section>`
+  return renderToStaticMarkup(createElement(BetaDataStatus)) + renderToStaticMarkup(createElement(PaladinRankAttribution))
 }
 
 export function renderBetaAvailabilityPrerender(branch: Branch): string {
@@ -97,8 +92,8 @@ export function renderBetaAvailabilityPrerender(branch: Branch): string {
   return `<section aria-label="Beta level-range check">
     <h2>Beta level-range check</h2>
     <p>Official level cap ${availability.levelCap} · ${availability.availablePoints} points under the one-point-per-level planning assumption.</p>
-    <p><strong>${escapeHtml(availability.talent.name)}: ${availability.available ? 'Within level range' : 'Above level range'}.</strong> The imported 69913 tree requires ${availability.requiredPoints} talent points and character level ${availability.minimumLevel}.</p>
-    <p>The October 1 client tree has not been reconciled; current talent availability is not confirmed. ${link(PALADIN_BETA_STATUS.levelCapSource, 'Blizzard October 1 notes')}.</p>
+    <p><strong>${escapeHtml(availability.talent.name)}: ${availability.available ? 'Within level range' : 'Above level range'}.</strong> The reviewed 70245 tree requires ${availability.requiredPoints} talent points and character level ${availability.minimumLevel}.</p>
+    <p>Structural fields were checked in 70245; prerequisite rank requirements remain derived assumptions. ${link(PALADIN_BETA_STATUS.levelCapSource, 'Blizzard October 1 notes')}.</p>
   </section>`
 }
 
@@ -112,7 +107,7 @@ export function renderBetaLevelingSnapshotPrerender(pageId: BetaLevelingPageId):
     <h3>${archived ? 'Archived Level 20 route' : 'Level 20 starting route'}</h3>
     <p><strong>Level ${snapshot.current.level} · ${snapshot.current.points} points · ${escapeHtml(snapshot.current.allocation)}</strong></p>
     <p>${escapeHtml(snapshot.current.note)} ${link(betaLevelingPlannerHref(pageId), archived ? 'Open Calculator without this route' : 'Open Level 20 start in Calculator')}.</p>
-    <p>${archived ? 'Historical 69913 snapshot.' : 'Selected Protection node records checked in client 70170; the complete calculator import remains 69913.'}</p>
+    <p>${archived ? 'Historical 69913 snapshot.' : 'Selected Protection node records checked in client 70170; the complete calculator now uses reviewed 70245 structure.'}</p>
     <h3>Official Level 30 cap · ${snapshot.next.build ? 'Editorial Protection route' : 'Route pending review'}</h3>
     <p><strong>Official cap: Level ${snapshot.next.level} · ${escapeHtml(snapshot.next.allocation ?? 'No reviewed allocation')}</strong></p>
     <p>${escapeHtml(snapshot.next.note)}</p>
@@ -142,7 +137,7 @@ export function renderBetaSpecPathPrerender(branch: Branch): string {
     <p>A ${path.next.points}-point budget follows standard one-point-per-level planning without Legacy: Talented; it is not a measured best build.</p>
     ${branch === 'protection' && path.next.build ? `<p>${link(protectionPlannerHref(30), 'Load Level 30 Protection route')}</p>` : ''}
     ${branch === 'retribution' && path.next.build ? `<p>${link(paladinLevelingHref(30), 'Load Level 30 Ret route')}</p>` : ''}
-    <p>${branch === 'protection' && !archived ? 'Selected Protection node IDs, ranks, and positions · client 1.60.1.70170. Complete calculator import remains 69913.' : `${archived ? 'Historical' : escapeHtml(EVIDENCE_STATUS.client_verified.label)} talent names, ranks, and positions · Build ${escapeHtml(PALADIN_BETA_STATUS.build)}.`}</p>
+    <p>${branch === 'protection' && !archived ? 'Selected Protection node IDs, ranks, and positions · client 1.60.1.70170. Complete calculator structure is reviewed through 70245.' : `${archived ? 'Historical' : escapeHtml(EVIDENCE_STATUS.client_verified.label)} talent names, ranks, and positions · Build ${escapeHtml(PALADIN_BETA_STATUS.build)}.`}</p>
     <p>${link(BETA_LEVEL_CAP_SOURCE.href, 'Official level-cap source')} · ${link(path.recommendationSource.href, branch === 'protection' && !archived ? 'Protection client node source' : 'Recommendation source')}</p>
     ${branch === 'protection' && !archived ? renderToStaticMarkup(createElement(ProtectionRouteEvidence)) : ''}
   </section>`
@@ -269,7 +264,7 @@ export function renderSpecHubPrerender(spec: Branch): string {
   ${renderBetaStatusPrerender()}
   ${spec === 'protection' ? (() => {
     const snapshot = betaLevelingSnapshot('protection-leveling')
-    return `<section aria-label="Current Beta Protection starting route"><h2>Level ${snapshot.current.level} Protection route</h2><p>${escapeHtml(snapshot.current.note)}</p><p>Editorial standard-progression route · ${snapshot.current.points} points at Level ${snapshot.current.level} · ${escapeHtml(snapshot.current.allocation)}. Selected node records were checked in client 70170; the complete calculator still imports 69913.</p><p>${link(betaLevelingPlannerHref('protection-leveling'), 'Load Level 20 Protection route')} · ${link(protectionPlannerHref(30), 'Load Level 30 Protection route')} · ${link('/wow-forever-protection-paladin-leveling-build', 'See the level-by-level route')}</p></section>`
+    return `<section aria-label="Current Beta Protection starting route"><h2>Level ${snapshot.current.level} Protection route</h2><p>${escapeHtml(snapshot.current.note)}</p><p>Editorial standard-progression route · ${snapshot.current.points} points at Level ${snapshot.current.level} · ${escapeHtml(snapshot.current.allocation)}. Selected node records were checked in client 70170; the complete calculator now uses reviewed 70245 structure.</p><p>${link(betaLevelingPlannerHref('protection-leveling'), 'Load Level 20 Protection route')} · ${link(protectionPlannerHref(30), 'Load Level 30 Protection route')} · ${link('/wow-forever-protection-paladin-leveling-build', 'See the level-by-level route')}</p></section>`
   })() : ''}
   <section><h2>${label} Build Types</h2>${linkList(buildTypes)}</section>
   ${hub.editorialSections.map((section) => `<section><h2>${escapeHtml(section.heading)}</h2>${section.paragraphs.map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join('')}</section>`).join('\n  ')}

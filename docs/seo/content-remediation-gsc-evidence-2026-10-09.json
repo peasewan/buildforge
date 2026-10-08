@@ -1,0 +1,67 @@
+{
+  "property": "sc-domain:buildforgetools.com",
+  "dataState": "final",
+  "dateRange": {
+    "start": "2026-09-11",
+    "end": "2026-10-06"
+  },
+  "source": "Connected GSC MCP, fetched 2026-10-09",
+  "rows": [
+    {
+      "page": "https://buildforgetools.com/wow-forever-hunter-pvp-build",
+      "clicks": 31,
+      "impressions": 242,
+      "ctr": 0.1281,
+      "position": 7.8
+    },
+    {
+      "page": "https://buildforgetools.com/wow-forever-warlock-pvp-build",
+      "clicks": 19,
+      "impressions": 273,
+      "ctr": 0.0696,
+      "position": 8.2
+    },
+    {
+      "page": "https://buildforgetools.com/wow-forever-affliction-vs-demonology-warlock-leveling",
+      "clicks": 8,
+      "impressions": 53,
+      "ctr": 0.1509,
+      "position": 7.3
+    },
+    {
+      "page": "https://buildforgetools.com/wow-forever-rogue-pvp-build",
+      "clicks": 3,
+      "impressions": 46,
+      "ctr": 0.0652,
+      "position": 9.8
+    },
+    {
+      "page": "https://buildforgetools.com/wow-forever-demonology-warlock-leveling-build",
+      "clicks": 1,
+      "impressions": 11,
+      "ctr": 0.0909,
+      "position": 26.4
+    },
+    {
+      "page": "https://buildforgetools.com/wow-forever-holy-priest-leveling-build",
+      "clicks": 1,
+      "impressions": 9,
+      "ctr": 0.1111,
+      "position": 29.1
+    },
+    {
+      "page": "https://buildforgetools.com/wow-forever-subtlety-rogue-pvp-build",
+      "clicks": 1,
+      "impressions": 51,
+      "ctr": 0.0196,
+      "position": 8.5
+    },
+    {
+      "page": "https://buildforgetools.com/wow-forever-hunter-pet-build",
+      "clicks": 0,
+      "impressions": 14,
+      "ctr": 0,
+      "position": 36.3
+    }
+  ]
+}

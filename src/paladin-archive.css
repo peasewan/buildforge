@@ -1,0 +1,7 @@
+.paladin-build-archive { align-items: flex-start; margin-bottom: 20px; }
+.paladin-build-archive > div { min-width: 0; }
+.paladin-build-archive p, .paladin-build-archive li, .paladin-build-archive summary { color: #c6c0b3; font-size: 12px; line-height: 1.6; }
+.paladin-build-archive ul { padding-left: 18px; columns: 2; column-gap: 28px; }
+.paladin-build-archive li { break-inside: avoid; }
+.paladin-build-archive code { display: block; overflow-wrap: anywhere; color: #e8e3d6; font-size: 12px; }
+@media (max-width: 700px) { .paladin-build-archive ul { columns: 1; } }

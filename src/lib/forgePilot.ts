@@ -31,7 +31,7 @@ export type ForgePilotCreateResult =
 
 export type ForgePilotInspection =
   | { status: 'ready'; allocation: PlannerBuild; points: number }
-  | { status: 'needs_review'; reason: 'dataset_changed' | 'removed_official' | 'reported_removed_under_review'; talentId?: string }
+  | { status: 'needs_review'; reason: 'dataset_changed' | 'removed_official' | 'removed_client_verified' | 'reported_removed_under_review'; talentId?: string }
   | { status: 'invalid'; reason: 'class_mismatch' | 'malformed_code' | 'unknown_talent' | 'rank_out_of_range' | 'duplicate_talent' | 'illegal_allocation'; talentId?: string }
 
 function localUrl(input: string): URL | null {
@@ -116,14 +116,20 @@ export function createForgePilotSavedBuild(input: ForgePilotCreateInput): ForgeP
 /** Never reinterpret an older code using the current tree. The user must review it first. */
 export function inspectForgePilotSavedBuild<B extends string>(
   saved: ForgePilotSavedBuild,
-  current: { classId: string; dataVersion: string; talents: PlannerTalent<B>[]; config: PlannerConfig<B> },
+  current: { classId: string; dataVersion: string; talents: PlannerTalent<B>[]; removedTalents?: PlannerTalent<B>[]; config: PlannerConfig<B> },
 ): ForgePilotInspection {
   if (saved.classId !== current.classId) return { status: 'invalid', reason: 'class_mismatch' }
+  for (const talent of current.removedTalents ?? []) {
+    const token = saved.originalCode.split('~').find(token => token.slice(0, token.lastIndexOf('.')) === talent.id)
+    if (token && /^[1-9]\d*$/.test(token.slice(token.lastIndexOf('.') + 1))) {
+      return { status: 'needs_review', reason: talent.currentBetaAvailability === 'removed_official' ? 'removed_official' : 'removed_client_verified', talentId: talent.id }
+    }
+  }
   if (saved.dataVersion !== current.dataVersion) return { status: 'needs_review', reason: 'dataset_changed' }
 
   const byId = new Map(current.talents.map((talent) => [talent.id, talent]))
   const target: PlannerBuild = {}
-  let unavailable: { reason: 'removed_official' | 'reported_removed_under_review'; talentId: string } | null = null
+  let unavailable: { reason: 'removed_official' | 'removed_client_verified' | 'reported_removed_under_review'; talentId: string } | null = null
   for (const token of saved.originalCode.split('~')) {
     const separator = token.lastIndexOf('.')
     if (separator < 1 || separator === token.length - 1) return { status: 'invalid', reason: 'malformed_code' }
@@ -135,7 +141,7 @@ export function inspectForgePilotSavedBuild<B extends string>(
     if (!talent) return { status: 'invalid', reason: 'unknown_talent', talentId: id }
     const rank = Number(rankText)
     if (!Number.isSafeInteger(rank) || rank > talent.maxRank) return { status: 'invalid', reason: 'rank_out_of_range', talentId: id }
-    if (!unavailable && (talent.currentBetaAvailability === 'removed_official' || talent.currentBetaAvailability === 'reported_removed_under_review')) {
+    if (!unavailable && (talent.currentBetaAvailability === 'removed_official' || talent.currentBetaAvailability === 'removed_client_verified' || talent.currentBetaAvailability === 'reported_removed_under_review')) {
       unavailable = { reason: talent.currentBetaAvailability, talentId: id }
     }
     target[id] = rank

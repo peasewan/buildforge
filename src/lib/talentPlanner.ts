@@ -11,7 +11,7 @@ export interface PlannerTalent<B extends string> {
   maxRank: number
   requiredTreePoints: number
   prerequisite?: PlannerPrerequisite[]
-  currentBetaAvailability?: 'available' | 'removed_official' | 'reported_removed_under_review'
+  currentBetaAvailability?: 'available' | 'removed_official' | 'removed_client_verified' | 'reported_removed_under_review'
 }
 
 export interface PlannerConfig<B extends string> {
@@ -21,6 +21,7 @@ export interface PlannerConfig<B extends string> {
 
 export type PlannerLockReason =
   | { type: 'removed-official' }
+  | { type: 'removed-client-verified' }
   | { type: 'pending-client-review' }
   | { type: 'branch-points'; current: number; required: number }
   | { type: 'prerequisite'; talentId: string; current: number; required: number }
@@ -40,6 +41,7 @@ export function dominantPlannerBranch<B extends string>(build: PlannerBuild, tal
 
 export function plannerLockReason<B extends string>(build: PlannerBuild, talent: PlannerTalent<B>, talents: PlannerTalent<B>[], config: PlannerConfig<B>): PlannerLockReason | null {
   if (talent.currentBetaAvailability === 'removed_official') return { type: 'removed-official' }
+  if (talent.currentBetaAvailability === 'removed_client_verified') return { type: 'removed-client-verified' }
   if (talent.currentBetaAvailability === 'reported_removed_under_review') return { type: 'pending-client-review' }
   if (totalPlannerPoints(build) >= config.pointCap) return { type: 'point-cap' }
   const current = plannerBranchPoints(build, talent.branch, talents)

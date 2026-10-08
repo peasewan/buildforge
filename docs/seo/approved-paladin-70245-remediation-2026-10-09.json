@@ -1,0 +1,120 @@
+{
+  "reason": "Owner authorized October 9 AdSense remediation and reviewed Paladin 70245 promotion. Current structure has 50 nodes; the 52-node 69913 history and original shared/saved codes are retained. Body and named link differences reflect source attribution, changed/removed talent status and current-versus-archive boundaries. Only the calculator version title and three outdated descriptions change. Content lastmod and existing Article dateModified advance to the actual publication date. H1s, URLs, canonicals, robots and all other titles/descriptions remain frozen. Rank text is community-verified; prerequisite rank rules remain derived assumptions. Raw-source acquisition/review dates remain October 7, without a claim of a fresh client download.",
+  "pages": {
+    "/paladin": {
+      "title": "WoW Forever Paladin Talent Calculator | Beta Build 70245",
+      "description": "Explore the reviewed 70245 Paladin talent tree with separately sourced community rank text. Plan a 21-point Level 30 build, review removals, and share your route.",
+      "rootSha256": "70ddf641745db81ae9afbc88cc9f4c5e4151e31765e833ed0c2abc6594f21b44",
+      "linksSha256": "0333fb1ead67b52b26b9eebd6c4f67eeee3643ca1588e0ee2e31d5cde6ea0072",
+      "headSeoSha256": "2ec1dc905b6004eb0967d0a6d9801beaeba96c9d90967be86daae97b427f1ecd",
+      "lastmod": "2026-10-09"
+    },
+    "/wow-forever-paladin-builds": {
+      "rootSha256": "d967fe86b786f0fc56125beabac9285397beb9ce3d2d61eb3dac917f0b7c1952",
+      "lastmod": "2026-10-09"
+    },
+    "/wow-forever-paladin-talents": {
+      "description": "Explore 50 Paladin talents in the reviewed 70245 tree and two historical removals. Plan a Level 30 route or inspect archived 51-point references.",
+      "rootSha256": "dca7e056b6d8a351be7a7cb50cdf99cdf7fd4d75001099eb3c89d8b5c6ffcd5c",
+      "linksSha256": "d3c37ede76e54672867b948ab7628c7d2d2d664dae74b92d912d85a40a4f3888",
+      "headSeoSha256": "ee5a1862d14ebd57932fc2491bdb09910561159bc3aafbc0f3dffd7b01038078",
+      "lastmod": "2026-10-09"
+    },
+    "/wow-forever-paladin-build": {
+      "rootSha256": "4cc4c54cf4c5b4471e0dd533b2360ff22365c632038cb4bd7d1d8dce4d8a209a",
+      "headSeoSha256": "556331f0de1bd46e970c444c9122e55b5c3160e47a9f97c118aae0833121dc94",
+      "lastmod": "2026-10-09"
+    },
+    "/wow-forever-protection-paladin-build": {
+      "rootSha256": "e7cbf5935cfdaa254f088cc9452f2cfa0d4fc2e5138ea06f3d2d0eda646cf83f",
+      "headSeoSha256": "e4f24d64764f07150cb0be7166030562a364ed697be887cf3815af3ed7d79c96",
+      "lastmod": "2026-10-09"
+    },
+    "/wow-forever-retribution-paladin-build": {
+      "rootSha256": "a2d7d3b91386668e638c4b2d442dd353882259e275fc98c756f7d92afb9228a7",
+      "headSeoSha256": "0f642792be3f8e1b4372fb81be07974621e85a36d3bdf0eb808f5fa35745bbac",
+      "lastmod": "2026-10-09"
+    },
+    "/wow-forever-retribution-paladin-leveling-build": {
+      "rootSha256": "722e5586e670a5a0ff1498de61b7596dda31e029aa9ff9152eda80e66e0508cb",
+      "headSeoSha256": "a6233307d844e17318a7b15d3fb1a0efa4cb412d28a79c9d3b964e5d2fbe9068",
+      "lastmod": "2026-10-09"
+    },
+    "/wow-forever-paladin-leveling-build": {
+      "rootSha256": "3775199bc98b02cbe1b68ddb3c7f0ad0d722211630aeed551a57ba373d77bea9",
+      "headSeoSha256": "1acccd85a2142504de258e48b7dd18c1c8604dfc059655892dc3989c4994e139",
+      "lastmod": "2026-10-09"
+    },
+    "/wow-forever-paladin-pvp-build": {
+      "rootSha256": "0c39ec2702988702d832053d10777eec7a9c3c0869be4d038f0f8dbfcf597759",
+      "headSeoSha256": "0afbbd09621bbbd3f8d0bf833ad1fad6267d9c198849cb1d716af998d821848a",
+      "lastmod": "2026-10-09"
+    },
+    "/wow-forever-paladin-raid-build": {
+      "rootSha256": "e460167d87f6956d99aae96f363f7cc9c5c603b1ad3dcbbc0c943a37b2ec6e17",
+      "headSeoSha256": "ef8d5d8c667493febe5c9c601db2425054076c6a7e4bbe60b0c29f61767066c8",
+      "lastmod": "2026-10-09"
+    },
+    "/wow-forever-protection-paladin-dungeon-build": {
+      "rootSha256": "4422b9fd588c927953594525fc5ed6f512686f1a3220af6c14f1422a6e65d7a4",
+      "headSeoSha256": "05b18be0614dcb57d656c3743158f13eeb09a1b04d8b761931a6c210912df5b9",
+      "lastmod": "2026-10-09"
+    },
+    "/wow-forever-retribution-paladin-builds": {
+      "rootSha256": "12e8f0cc4653331af65611b085837d070178ac762dcbbe6100b43f1476fce556",
+      "lastmod": "2026-10-09"
+    },
+    "/wow-forever-protection-paladin-builds": {
+      "rootSha256": "d0594f0fbe815b40e2192953383d44abb92bb69e72bbe139dda995f044edabcf",
+      "lastmod": "2026-10-09"
+    },
+    "/wow-forever-protection-paladin-leveling-build": {
+      "rootSha256": "ede9290758c88264e673acf510f30a0f58ab044d071f7765ce9978067f59868a",
+      "headSeoSha256": "f8b8bfba165217911872909b5afd45812cfc8e4536a8d04fffa8dc7bd8271af0",
+      "lastmod": "2026-10-09"
+    },
+    "/wow-forever-protection-paladin-pvp-build": {
+      "rootSha256": "ffc067d0218d0c8bb8d5288f455a93df7f0164d52c0f930309723d00b812bfd6",
+      "headSeoSha256": "daea6770423a57fca38c0421e717ca6a4d74c7a8c2b3d94a79f7d9eded45b5e3",
+      "lastmod": "2026-10-09"
+    },
+    "/wow-forever-retribution-paladin-pvp-build": {
+      "rootSha256": "1214607fddadb1f4a270a86cd6a1f8709f5223d0fd4c018e58b91af03fd77883",
+      "linksSha256": "313cee41cd6d8d3b6e587e119e236cf53111fb0606b4ba563c402424e251455f",
+      "headSeoSha256": "d605a455e00d45a819f2f8480fbbfa6eaa19f9089f0306707e14ddfb39ce2598",
+      "lastmod": "2026-10-09"
+    },
+    "/wow-forever-holy-paladin-pvp-build": {
+      "rootSha256": "4631d8de882d41f7833a4f5deab9684f604bda85e10d787c1cfc17d360399a43",
+      "headSeoSha256": "aadbd8a5d79637678d1233b44baac33d06f80ff44a3b116079922ab1d932699a",
+      "lastmod": "2026-10-09"
+    },
+    "/wow-forever-holy-paladin-talents": {
+      "rootSha256": "ebae79b93cf4090184f9317081fd2f6337b48cc683f70abd583e7ad78a11b5dc",
+      "headSeoSha256": "312edefd9fb7fd31bfc26d721ac7a1bd57da3fc384b81e4d55c62be045c9cc7a",
+      "lastmod": "2026-10-09"
+    },
+    "/wow-forever-retribution-paladin-talents": {
+      "rootSha256": "35c1b76f5047e593575e3f23392b9a680aa51d967f4094fe796c0af3b2f545af",
+      "linksSha256": "7247d631527fcd8510277f9ef415978cbae8a13fc653859b120b9826ac5fd9e8",
+      "headSeoSha256": "64fa6089962fcfda6b740b87bec65d0c95fc4b8053285c81b792bd92156de702",
+      "lastmod": "2026-10-09"
+    },
+    "/wow-forever-protection-paladin-talents": {
+      "rootSha256": "802dbc0872c2dc3d3c3774c4e64adce2c3eb293f2285d7390cd6f698d0682efc",
+      "headSeoSha256": "bc42e47a18c54ac0eb27cab84cd057e52b665a21404e66072c3a912e76db82ab",
+      "lastmod": "2026-10-09"
+    },
+    "/wow-forever-paladin-beta-talent-changes": {
+      "description": "Review the 69913 to 70245 Paladin diff, two removals and 32 changed rank strings. Separate client structure, community rank text and official tuning.",
+      "rootSha256": "d371fd24edf2154cb91bb8d2edc233c77f496d56c16d235def7257686930208f",
+      "linksSha256": "1e42e0a000e12640a62e662b578299ffeef7558c686cd06bfed4d613ad0c25e6",
+      "headSeoSha256": "768d3ddeda682bf09335c6bfbcbb967182b19f0c505ba706fb73dd9f441913b5",
+      "lastmod": "2026-10-09"
+    },
+    "/wow-forever-paladin-abilities": {
+      "rootSha256": "92b8467c3af07833696ed2d9ba019a7f40b4c617d751188cd03a842bc36e1c1f",
+      "lastmod": "2026-10-09"
+    }
+  }
+}

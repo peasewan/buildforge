@@ -14,7 +14,7 @@
 
 ## Current Beta data baseline
 
-- Production Paladin talent dataset: WoW Forever client build `1.60.1.69913`, 52 talents, verified unchanged from `1.60.1.69893`.
+- Production Paladin talent dataset: reviewed client build `1.60.1.70245`, 50 talents. Raw structural fields are `client_verified`; reconciled rank text is `community_verified` with Talents Forever CC BY 4.0 attribution. Preserve the 52-node `69913` archive and explicit removed-ID share handling.
 - Internal Paladin spellbook baseline: build `1.60.1.69893`, 45 trainer spell groups.
 - Spellbook is currently an internal data capability. Do not add a public/indexable route unless explicitly requested.
 - A later upstream build number alone is not evidence of Paladin changes. The exact `69893 → 69913` review found no Paladin additions, removals, moves, rank changes, prerequisite changes, or per-rank tooltip changes.
@@ -115,3 +115,11 @@ Use the same daily comparison fields so decisions are based on trends rather tha
 - `/privacy` must remain free of AdSense/CMP and GA scripts so the policy linked from the consent message can be read without consent.
 - The analytics bootstrap queues EEA/UK/Switzerland defaults of `denied` for `ad_storage`, `ad_user_data`, `ad_personalization`, and `analytics_storage` before measurement configuration. This is advanced consent mode, which may send cookieless measurements; it is not a complete network block.
 - Google Privacy & messaging controls the certified CMP. The owner must publish the European message for `buildforgetools.com`, use `https://buildforgetools.com/privacy`, and enable consent mode for both advertising and analytics. Code deployment alone does not publish the account-side message or submit AdSense review. Do not claim either is complete without verifying it in the account.
+
+## Content publication remediation (October 9)
+
+- Six expansion classes opt into `intent_tasks_v1`: valid ranks/point totals/supported modes, executable progression, distinct comparisons and sourced role decisions are required. Titles or page counts do not establish usefulness.
+- Twenty reviewed duplicate entry pages redirect permanently to retained endpoint-plus-progression/role pages. Retirement is explicit in `retiredTo`; `classes:sync` derives redirects, artifacts and sitemap together. No blanket noindex strategy.
+- Preserve the current Hunter Pet page: it has an official 18-family ability lookup. Older source audits that say it cannot select families are outdated.
+- Run `npm run content:audit` and the publication/artifact regressions before publishing new intent pages. Fix missing task data rather than bypassing the gate.
+- Emberville is a preview research notebook with working saved notes; it cannot validate skill inheritance or game builds. Its incomplete planner is excluded from AdSense injection; useful mechanics guides remain accessible.

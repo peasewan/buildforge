@@ -1,7 +1,7 @@
 {
   "eyebrow": "Community Build Example",
   "title": "WoW Forever Retribution Paladin Build – Judgment 0/20/31",
-  "dek": "Review this historical 69913-era Retribution allocation. Its Crusade ranks are under review against the reported 70009 change; start a new build in the calculator.",
+  "dek": "Review this historical 69913-era Retribution allocation. Its Crusade ranks are from a node absent in the reviewed 70245 tree; start a new build in the calculator.",
   "updated": "September 29, 2026",
   "spec": "Retribution",
   "heroHeading": "WoW Forever Retribution Paladin Build (0/20/31)",
@@ -33,7 +33,7 @@
       "id": "build-overview",
       "heading": "WoW Forever Retribution Paladin Build Overview",
       "paragraphs": [
-        "This historical WoW Forever Retribution Paladin example spent 31 points in Retribution and 20 points in Protection, with no points in Holy. It reached Twist of Light through the 69913-era talent tree and used a defensive secondary branch. Crusade appears in a reported 70009 client removal, but the node ID conflicts with the imported record, so this allocation is retained only for comparison while its identity is reviewed.",
+        "This historical WoW Forever Retribution Paladin example spent 31 points in Retribution and 20 points in Protection, with no points in Holy. It reached Twist of Light through the 69913-era talent tree and used a defensive secondary branch. The reviewed 70245 client tree confirms Crusade node 110883 is absent; no official removal note is claimed. This allocation retains its original ranks only for historical comparison.",
         "The 0/20/31 ranks below show what the earlier client snapshot supported. The current calculator opens blank from this page instead of loading a potentially obsolete 51-point allocation. Players can start a new build and share its legal ranks after reviewing the latest patch notes."
       ]
     },
@@ -42,7 +42,7 @@
       "heading": "What the 31 Retribution Points Include",
       "paragraphs": [
         "The Retribution route begins with Deflection and Benediction before adding Improved Judgement, Holy Conduit, and Conviction. Sanctified Judgement, Seal of Command, and Pursuit of Justice continue the path through the middle rows. Sacred Arbiter and Crusade add more offensive choices, followed by one rank each in Two-Handed Weapon Specialization and Vengeance before the allocation reaches Twist of Light.",
-        "Twist of Light was the deepest selected talent in this example and one of the new entries shown in the WoW Forever Beta client data. Its wording and surrounding path here come from Beta client build 1.60.1.69913. The later Crusade report has not been reconciled to the same stable talent ID, so no current 51-point recommendation is implied."
+        "Twist of Light was the deepest selected talent in this example and one of the new entries shown in the WoW Forever Beta client data. Its wording and surrounding path here come from Beta client build 1.60.1.69913. Crusade is absent from the reviewed 70245 tree, so no current 51-point recommendation is implied."
       ]
     },
     {
@@ -58,7 +58,7 @@
       "heading": "Edit and Share This Retribution Paladin Build",
       "paragraphs": [
         "The selected talents list preserves every rank of the earlier 0/20/31 setup so readers can inspect what changed. Open Calculator now starts a blank route rather than importing the under-review Crusade points.",
-        "After testing a legal combination, Copy Build Link stores the new selected talent identifiers and ranks. This page keeps the 69913-era example as an auditable record while later Beta client identities are reconciled."
+        "After testing a legal combination, Copy Build Link stores the new selected talent identifiers and ranks. This page keeps the 69913-era example as an auditable record with its original ranks preserved."
       ]
     }
   ]

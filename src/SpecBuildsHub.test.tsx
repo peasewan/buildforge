@@ -60,9 +60,9 @@ describe('specialization builds hub', () => {
   it('shows the reviewed Beta version on specialization hubs', () => {
     render(<SpecBuildsHub spec="retribution" />)
 
-    expect(screen.getByText('Beta build 1.60.1.69913')).toBeTruthy()
-    expect(screen.getByText('69913 snapshot reviewed September 20, 2026')).toBeTruthy()
-    expect(screen.getByText('0 tooltip updates since 69893 in that comparison')).toBeTruthy()
+    expect(screen.getByText('Beta build 1.60.1.70245')).toBeTruthy()
+    expect(screen.getByText('70245 structure reviewed October 7, 2026')).toBeTruthy()
+    expect(screen.getByText('14 talents with 32 changed rank strings since 69913 in that comparison')).toBeTruthy()
   })
 
   it('puts the editable Protection route before the historical featured build', () => {
@@ -93,11 +93,11 @@ describe('specialization builds hub', () => {
     expect(screen.queryByRole('region', { name: 'Archived Beta Protection starting route' })).toBeNull()
   })
 
-  it('presents the two full Retribution snapshots as under review without promising to load them', () => {
+  it('presents the two full Retribution snapshots as historical removals without promising to load them', () => {
     render(<SpecBuildsHub spec="retribution" />)
     expect(document.querySelector('#featured-build')?.textContent).toContain('Historical 51-point reference')
     expect(document.body.textContent).toMatch(/0\/20\/31.*historical/i)
-    expect(document.body.textContent).toMatch(/Crusade.*70009.*under review/i)
+    expect(document.body.textContent).toMatch(/Crusade.*absent.*70245/i)
     expect(document.body.textContent).not.toContain('open that exact setup in the calculator')
   })
 

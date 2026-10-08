@@ -1,12 +1,12 @@
-import { betaDataset, previousBetaDataset } from "../src/data/datasets";
+import { betaDataset, archivedBetaDataset } from "../src/data/datasets";
 import { compareTalentVersions } from "../src/lib/talentDiff";
 import type { Branch } from "../src/lib/build";
 
-const diff = compareTalentVersions(previousBetaDataset, betaDataset);
+const diff = compareTalentVersions(archivedBetaDataset, betaDataset);
 
 if (process.argv.includes("--json")) {
   console.log(JSON.stringify({
-    from: previousBetaDataset.sourceVersion,
+    from: archivedBetaDataset.sourceVersion,
     to: betaDataset.sourceVersion,
     summary: {
       added: diff.added.length,
@@ -22,7 +22,7 @@ if (process.argv.includes("--json")) {
 }
 
 console.log("Paladin Talent Diff");
-console.log(`${previousBetaDataset.label} → ${betaDataset.label}`);
+console.log(`${archivedBetaDataset.label} → ${betaDataset.label}`);
 console.log("");
 
 if (diff.status === "waiting") {

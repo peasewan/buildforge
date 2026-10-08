@@ -3,7 +3,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import App, { TalentTree } from './App'
 import { encodeBuild } from './lib/build'
 import { EXAMPLE_BUILDS, HOLY_HEALING_BUILD, type ExampleBuild } from './data/builds'
-import { talents } from './data/talents'
+import { historicalTalents } from './data/talents'
 import { createForgePilotSavedBuild } from './lib/forgePilot'
 
 beforeEach(() => { HTMLElement.prototype.scrollIntoView = vi.fn() })
@@ -170,7 +170,7 @@ describe('Paladin talent calculator page', () => {
     render(<App />)
 
     expect(screen.getByText("Light's Vigil")).toBeTruthy()
-    expect(screen.getAllByText('Verified from Beta client data').length).toBeGreaterThan(0)
+    expect(screen.getAllByText('Client-verified structure · community-verified rank text').length).toBeGreaterThan(0)
     expect(screen.getAllByText('Client verified').length).toBeGreaterThan(0)
     const source = screen.getAllByRole('link', { name: 'Blizzard WoW Forever Deep Dive' })[0]
     expect(source.getAttribute('href')).toContain('worldofwarcraft.blizzard.com')
@@ -204,28 +204,24 @@ describe('Paladin talent calculator page', () => {
     expect(screen.getAllByText('15 pts').length).toBeGreaterThan(0)
   })
 
-  it('keeps an officially removed talent visible but blocks adding it with an explanation', () => {
-    const retired = talents.find(talent => talent.id === 'improved_holy_strike')!
-    const previous = retired.currentBetaAvailability
-    retired.currentBetaAvailability = 'removed_official'
+  it('keeps the officially removed talent readable only in historical trees', () => {
     const add = vi.fn()
-    try {
-      render(<TalentTree branch="holy" build={{}} onAdd={add} />)
-      fireEvent.click(screen.getByRole('button', { name: /Improved Holy Strike/ }))
-      expect(add).not.toHaveBeenCalled()
-      expect(screen.getByRole('status').textContent).toMatch(/removed.*September 24/i)
-    } finally {
-      retired.currentBetaAvailability = previous
-    }
+    const current = render(<TalentTree branch="holy" build={{}} onAdd={add} />)
+    expect(screen.queryByRole('button', { name: /Improved Holy Strike/ })).toBeNull()
+    current.unmount()
+    render(<TalentTree branch="holy" build={{ improved_holy_strike: 1 }} readOnly />)
+    expect(screen.getByRole('img', { name: /Improved Holy Strike, rank 1 of 2/ })).toBeTruthy()
+    expect(document.getElementById('tip-improved_holy_strike')?.textContent).toMatch(/removed.*September 24/i)
+    expect(add).not.toHaveBeenCalled()
   })
 
-  it('keeps Crusade visible as a 69913 record but withholds it pending 70009 identity review', () => {
-    const add = vi.fn()
-    render(<TalentTree branch="retribution" build={{}} onAdd={add} />)
-    fireEvent.click(screen.getByRole('button', { name: /Crusade/ }))
-    expect(add).not.toHaveBeenCalled()
-    expect(screen.getByRole('status').textContent).toMatch(/70009.*under review/i)
-    expect(screen.getAllByText('Needs review').length).toBeGreaterThan(0)
+  it('keeps Crusade readable as history with client-confirmed removal evidence', () => {
+    const current = render(<TalentTree branch="retribution" build={{}} onAdd={vi.fn()} />)
+    expect(screen.queryByRole('button', { name: /Crusade/ })).toBeNull()
+    current.unmount()
+    render(<TalentTree branch="retribution" build={{ crusade: 2 }} readOnly />)
+    expect(screen.getByRole('img', { name: /Crusade, rank 2 of 2/ })).toBeTruthy()
+    expect(document.getElementById('tip-crusade')?.textContent).toMatch(/client-confirmed removal in 70245/i)
   })
 
   it('marks October 1 Paladin tooltip changes as older client text', () => {
@@ -238,7 +234,7 @@ describe('Paladin talent calculator page', () => {
   })
 
   it('keeps multiple official references for the same talent without duplicate React keys', () => {
-    const talent = talents.find(candidate => candidate.id === 'improved_holy_strike')!
+    const talent = historicalTalents.find(candidate => candidate.id === 'improved_holy_strike')!
     const previous = talent.sources
     const official = previous.find(source => source.type === 'official')!
     talent.sources = [...previous, { ...official, label: 'Later official patch', url: 'https://example.test/patch' }]
@@ -253,25 +249,20 @@ describe('Paladin talent calculator page', () => {
     }
   })
 
-  it('refuses retired talent ranks from both shared URLs and browser storage', () => {
-    const retired = talents.find(talent => talent.id === 'improved_holy_strike')!
-    const previous = retired.currentBetaAvailability
-    retired.currentBetaAvailability = 'removed_official'
-    try {
-      history.replaceState({}, '', '/build?id=improved_holy_strike.1#calculator')
-      render(<App />)
-      expect(screen.getByText(/shared build.*invalid/i)).toBeTruthy()
-      expect(screen.getByText('51 reference points remaining')).toBeTruthy()
-      cleanup()
+  it('preserves retired talent ranks from both shared URLs and browser storage for review', () => {
+    history.replaceState({}, '', '/build?id=improved_holy_strike.1#calculator')
+    render(<App />)
+    expect(screen.getByText(/shared allocation.*removed/i)).toBeTruthy()
+    expect(screen.getByRole('region', { name: 'Historical Paladin allocation' }).textContent).toContain('Improved Holy Strike 1/2')
+    expect(screen.getByText('51 reference points remaining')).toBeTruthy()
+    cleanup()
 
-      history.replaceState({}, '', '/paladin')
-      localStorage.setItem('wow-forever-paladin-build', 'improved_holy_strike.1')
-      render(<App />)
-      expect(screen.getByText(/saved build.*invalid/i)).toBeTruthy()
-      expect(screen.getByText('51 reference points remaining')).toBeTruthy()
-    } finally {
-      retired.currentBetaAvailability = previous
-    }
+    history.replaceState({}, '', '/paladin')
+    localStorage.setItem('wow-forever-paladin-build', 'improved_holy_strike.1')
+    render(<App />)
+    expect(screen.getByText(/saved allocation.*removed/i)).toBeTruthy()
+    expect(localStorage.getItem('wow-forever-paladin-build')).toBe('improved_holy_strike.1')
+    expect(screen.getByText('51 reference points remaining')).toBeTruthy()
   })
 
   it('leaves a Ret example under review visible without offering it as a current preset', () => {
@@ -285,7 +276,7 @@ describe('Paladin talent calculator page', () => {
       expect(card.textContent).toContain('Historical 51-point reference')
       expect(screen.getByText('51 reference points remaining')).toBeTruthy()
       fireEvent.click(screen.getByRole('tab', { name: /Retribution/ }))
-      expect(document.querySelector('#tip-crusade .talent-builds')?.textContent).toContain('Under review')
+      expect(document.querySelector('#tip-crusade')).toBeNull()
     } finally {
       example.reviewStatus = previous
     }
@@ -301,9 +292,9 @@ describe('Paladin talent calculator page', () => {
   it('shows the current Beta build status and changelog summary', () => {
     render(<App />)
 
-    expect(screen.getByText('Beta build 1.60.1.69913')).toBeTruthy()
-    expect(screen.getByText('69913 snapshot reviewed September 20, 2026')).toBeTruthy()
-    expect(screen.getByText('0 tooltip updates since 69893 in that comparison')).toBeTruthy()
+    expect(screen.getByText('Beta build 1.60.1.70245')).toBeTruthy()
+    expect(screen.getByText('70245 structure reviewed October 7, 2026')).toBeTruthy()
+    expect(screen.getByText('14 talents with 32 changed rank strings since 69913 in that comparison')).toBeTruthy()
     expect(screen.getByText(/October 1 Beta update · Official level cap 30/)).toBeTruthy()
     const status = screen.getByRole('region', { name: 'WoW Forever Beta data status' })
     expect(status.textContent).toContain('Level 20 routes are 11-point starting snapshots')
@@ -311,7 +302,7 @@ describe('Paladin talent calculator page', () => {
     expect(status.querySelector('a[href="/wow-forever-paladin-beta-talent-changes"]')).toBeTruthy()
   })
 
-  it('describes 69913 as an imported snapshot rather than the fully current Beta dataset', () => {
+  it('describes current structure and community rank text separately from preserved removals', () => {
     render(<App />)
     const explanation = document.querySelector('.seo-copy')?.textContent ?? ''
     expect(explanation).toContain('imported client snapshot')

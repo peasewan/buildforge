@@ -101,6 +101,16 @@ export function classPageManifestContent(classes: ClassDefinition[] = PUBLISHED_
   return `${JSON.stringify(classPageViteInputs(classes), null, 2)}\n`
 }
 
+/** Explicit retired routes must resolve directly to a published destination, never a chain. */
+export function classPageRedirects(classes: ClassDefinition[] = PUBLISHED_CLASSES): { source: string; destination: string; permanent: true }[] {
+  const paths = new Set(classPagePaths(classes))
+  return classes.flatMap(def => def.pages.flatMap(page => {
+    if (!page.retiredTo) return []
+    if (!paths.has(page.retiredTo) || page.retiredTo === `/${page.slug}`) throw new Error(`Invalid consolidation destination: ${page.slug} -> ${page.retiredTo}`)
+    return [`/${page.slug}`, `/${page.slug}/index.html`].map(source => ({ source, destination:page.retiredTo!, permanent:true as const }))
+  }))
+}
+
 /** Vercel serves the shell for the clean URL, exactly as the hand-written class routes do. */
 export function classPageRewrites(classes: ClassDefinition[] = PUBLISHED_CLASSES): { source: string; destination: string }[] {
   return publishedClassPages(classes).map(({ page }) => ({ source: classPagePath(page), destination: `${classPagePath(page)}/index.html` }))

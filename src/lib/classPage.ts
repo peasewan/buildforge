@@ -1,3 +1,5 @@
+import type { RoleDecision } from '../data/expansion/roleDecisions'
+import { progressionForBuild } from '../experiences/buildExperience'
 import type { EvidenceStatus } from '../data/verification'
 import { canIncrementPlannerTalent, incrementPlannerTalent } from './talentPlanner'
 import type { PlannerBuild, PlannerConfig, PlannerTalent } from './talentPlanner'
@@ -132,6 +134,9 @@ export interface ClassPageDefinition {
    * only lists or explains talents needs no declaration. See `satisfiedRequirements`.
    */
   publishRequirements?: PublishRequirement[]
+  /** Explicitly reviewed consolidation, never inferred from a matching allocation alone. */
+  retiredTo?: string
+  roleDecision?: RoleDecision
 }
 
 /**
@@ -170,6 +175,7 @@ export interface ClassDefinition<B extends string = string> {
   dataVersion: string
   verifiedBuild: string
   talentCount: number
+  contentPolicy?: 'intent_tasks_v1'
   dataReview?: { ready: boolean; notice: string }
   beta: { phaseLabel: string; levelCap: number; pointsAtCap: number }
   plannerModes: { level: PlannerLevel; points: number; label: string }[]
@@ -215,12 +221,13 @@ const isDualSourceVerified = <B extends string>(talent: ClassTalent<B>): boolean
  * be met at the rank the plan claims, and the whole allocation has to fit the current cap's budget.
  */
 export function isLegalAllocation<B extends string>(build: PlannerBuild, talents: ClassTalent<B>[], config: PlannerConfig<B>, pointsAtCap: number): boolean {
+  if (!Number.isInteger(pointsAtCap) || pointsAtCap < 1) return false
   const byId = new Map(talents.map((talent) => [talent.id, talent]))
   const wanted = new Map<string, number>()
   for (const [id, rank] of Object.entries(build)) {
-    if (!Number.isInteger(rank) || rank <= 0) continue
     const talent = byId.get(id)
-    if (!talent || rank > talent.maxRank) return false
+    if (!talent || !Number.isInteger(rank) || rank < 0 || rank > talent.maxRank) return false
+    if (rank === 0) continue
     wanted.set(id, rank)
   }
   // A page promising a build has to promise a build: an allocation that spends nothing is not one.
@@ -255,7 +262,7 @@ function hasLegalBuildAtCap<B extends string>(classDef: ClassDefinition<B>, bran
   return classDef.builds.some((build) =>
     build.level === classDef.beta.levelCap
     && (branch === undefined || build.spec === branch)
-    && isLegalAllocation(build.build, classDef.talents, classDef.plannerConfig, classDef.beta.pointsAtCap)
+    && validClassBuild(classDef, build)
   )
 }
 
@@ -343,18 +350,63 @@ export function sitemapLastmod(page: Pick<ClassPageDefinition, 'updatedAt'>): st
   return page.updatedAt
 }
 
+export function validClassBuild<B extends string>(classDef: ClassDefinition<B>, build: ClassBuild): boolean {
+  const mode = classDef.plannerModes.find(mode => mode.level === build.level)
+  const total = Object.values(build.build).reduce((sum, rank) => sum + rank, 0)
+  // Historical records use levelCap for either a level or a point budget; bound both.
+  return !!mode && Number.isInteger(build.points) && total === build.points
+    && build.points <= Math.min(mode.points, build.levelCap, build.level - 9)
+    && isLegalAllocation(build.build, classDef.talents, classDef.plannerConfig, mode.points)
+}
+
+const ROLE_KINDS = new Set<ClassPageKind>(['pvp', 'specPvp', 'dungeon', 'specDungeon', 'tank', 'healing', 'pet', 'totem'])
+
+/** Checks executable tasks rather than word counts or unique titles. */
+export function contentTaskIssues<B extends string>(def: ClassDefinition<B>, page: ClassPageDefinition): string[] {
+  if (def.contentPolicy !== 'intent_tasks_v1') return []
+  const primary = def.builds.find(build => build.id === page.primaryBuildId)
+  const builds = [...new Set([page.primaryBuildId, ...page.relatedBuildIds].filter((id): id is string => !!id))]
+    .flatMap(id => { const build = def.builds.find(build => build.id === id); return build ? [build] : [] })
+  const issues: string[] = []
+  if (page.kind === 'calculator' && !satisfiedRequirements(def).has('completeClassPlanner')) issues.push('Planner has no usable entry for every branch')
+  if (['talents', 'specTalents'].includes(page.kind) && !def.talents.some(t => !page.spec || t.branch === page.spec)) issues.push('No talent records to query')
+  if (['buildsHub', 'levelCap'].includes(page.kind) && new Set(builds.map(b => allocationSignature(b.build))).size < 2) issues.push('No distinct allocations to choose or compare')
+  if (['leveling', 'specLeveling', 'specBuild'].includes(page.kind)) {
+    if (!primary || progressionForBuild(def, primary).error) issues.push('No executable endpoint and progression')
+  }
+  if (ROLE_KINDS.has(page.kind)) {
+    const decision = page.roleDecision
+    if (!decision || !decision.question.trim() || decision.options.length < 2 || !decision.sources.length) issues.push('Role task lacks sourced conditions')
+    else {
+      const signatures = new Set(decision.options.map(option => option.talentIds.slice().sort().join(',')))
+      if (new Set(decision.options.map(option => option.id)).size !== decision.options.length || signatures.size < 2) issues.push('Conditions do not change the talent evidence')
+      for (const option of decision.options) {
+        if (!option.label.trim() || !option.explanation.trim() || !option.talentIds.length
+          || option.talentIds.some(id => !def.talents.some(t => t.id === id) || !primary?.build[id])) issues.push('Condition references missing or unselected talent evidence')
+        if (option.alternativeBuildId && !def.builds.some(build => build.id === option.alternativeBuildId && validClassBuild(def, build))) issues.push('Condition references an unavailable alternative')
+      }
+      if (decision.sources.some(source => !/^https:\/\//.test(source.url) || !source.label.trim())) issues.push('Condition source is missing')
+    }
+  }
+  return [...new Set(issues)]
+}
+
+export function allocationSignature(build: PlannerBuild): string {
+  return JSON.stringify(Object.entries(build).filter(([,rank]) => rank > 0).sort(([a],[b]) => a.localeCompare(b)))
+}
+
 function pageBuildsValid<B extends string>(classDef: ClassDefinition<B>, page: ClassPageDefinition): boolean {
-  if (classDef.dataReview?.ready === false) return false
+  if (page.retiredTo || classDef.dataReview?.ready === false) return false
   // A page promising a concrete route needs a route of its own. Without this, an empty array of
   // related builds passes `every()` and can publish a "build pending verification" placeholder.
   const primaryKinds = new Set<ClassPageKind>([
-    'specBuild', 'leveling', 'specLeveling', 'specPvp', 'specDungeon',
+    'specBuild', 'leveling', 'specLeveling', 'pvp', 'dungeon', 'specPvp', 'specDungeon',
     'aoe', 'tank', 'healing', 'pet', 'totem',
   ])
   const primary = classDef.builds.find((candidate) => candidate.id === page.primaryBuildId)
   if (primaryKinds.has(page.kind) && !primary) return false
   if (primary && page.spec && primary.spec !== page.spec) return false
-  if (page.kind === 'specPvp' && primary?.intent !== 'pvp') return false
+  if (['pvp', 'specPvp'].includes(page.kind) && primary?.intent !== 'pvp') return false
 
   // A comparison with two labels but identical points offers no actual talent difference.
   if (page.kind === 'comparison') {
@@ -363,9 +415,10 @@ function pageBuildsValid<B extends string>(classDef: ClassDefinition<B>, page: C
     const signatures = compared.map((build) => JSON.stringify(Object.entries(build!.build).sort(([left], [right]) => left.localeCompare(right))))
     if (new Set(signatures).size < 2) return false
   }
+  if (contentTaskIssues(classDef, page).length) return false
   const ids = [...page.relatedBuildIds, ...(page.primaryBuildId ? [page.primaryBuildId] : [])]
   return ids.every((id) => {
     const build = classDef.builds.find((candidate) => candidate.id === id)
-    return !!build && isLegalAllocation(build.build, classDef.talents, classDef.plannerConfig, build.points)
+    return !!build && validClassBuild(classDef, build)
   })
 }

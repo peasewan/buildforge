@@ -4,7 +4,7 @@ import {
   inspectForgePilotSavedBuild,
 } from './forgePilot'
 import type { PlannerTalent } from './talentPlanner'
-import { talents as publishedPaladinTalents } from '../data/talents'
+import { talents as publishedPaladinTalents, removedPaladinTalents, DATA_VERSION as PALADIN_DATA_VERSION } from '../data/talents'
 import { BRANCHES } from './build'
 
 const CURRENT_VERSION = 'wow_forever_beta_1.60.1.69913'
@@ -117,17 +117,17 @@ describe('ForgePilot saved builds', () => {
     expect(old.originalCode).toBe('capstone.1~root.5')
   })
 
-  it('keeps officially removed and client-reported Paladin nodes as historical review records', () => {
+  it('keeps official and client-confirmed Paladin removals as historical review records', () => {
     const published = {
-      classId: 'paladin', dataVersion: CURRENT_VERSION,
-      talents: publishedPaladinTalents,
+      classId: 'paladin', dataVersion: PALADIN_DATA_VERSION,
+      talents: publishedPaladinTalents, removedTalents: removedPaladinTalents,
       config: { branches: BRANCHES, pointCap: 51 },
     }
     expect(inspectForgePilotSavedBuild(savedBuild('improved_holy_strike.1'), published)).toEqual({
       status: 'needs_review', reason: 'removed_official', talentId: 'improved_holy_strike',
     })
     expect(inspectForgePilotSavedBuild(savedBuild('crusade.1'), published)).toEqual({
-      status: 'needs_review', reason: 'reported_removed_under_review', talentId: 'crusade',
+      status: 'needs_review', reason: 'removed_client_verified', talentId: 'crusade',
     })
   })
 

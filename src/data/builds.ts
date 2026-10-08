@@ -1,5 +1,5 @@
 import { dominantBranch, encodeBuild, totalPoints, type Branch, type Build } from '../lib/build'
-import { talents } from './talents'
+import { historicalTalents as talents } from './talents'
 
 export interface ExampleBuild {
   id: string
@@ -8,7 +8,7 @@ export interface ExampleBuild {
   allocation: string
   description: string
   build: Build
-  /** Source-linked 70009 report conflicts with imported node identity; retain the 69913 allocation as history. */
+  /** The original 69913 allocation selects Crusade, absent from reviewed 70245; preserve it as history. */
   reviewStatus?: 'under_review'
 }
 
@@ -75,7 +75,7 @@ export const RETRIBUTION_JUDGMENT_BUILD: ExampleBuild = {
   slug: 'wow-forever-retribution-paladin-build',
   name: 'Retribution Paladin Judgment Build',
   allocation: '0/20/31',
-  description: 'Historical 69913-era offensive preview. Its Crusade ranks await 70009 identity reconciliation.',
+  description: 'Historical 69913-era offensive preview. Its Crusade ranks refer to a node absent from the reviewed 70245 tree.',
   reviewStatus: 'under_review',
   build: {
     toughness: 5,
@@ -104,7 +104,7 @@ export const RETRIBUTION_LEVELING_BUILD: ExampleBuild = {
   slug: 'wow-forever-retribution-paladin-leveling-build',
   name: 'Retribution Paladin Leveling Build',
   allocation: '20/0/31',
-  description: 'Historical 69913-era solo-leveling preview. Its Crusade ranks await 70009 identity reconciliation.',
+  description: 'Historical 69913-era solo-leveling preview. Its Crusade ranks refer to a node absent from the reviewed 70245 tree.',
   reviewStatus: 'under_review',
   build: {
     divine_strength: 5,

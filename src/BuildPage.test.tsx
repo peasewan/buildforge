@@ -65,9 +65,9 @@ describe('Holy healing build page', () => {
   it('shows the current Beta dataset on a ranked build page', () => {
     render(<BuildPage buildId="protection-shield-20-31-0" />)
 
-    expect(screen.getByText('Beta build 1.60.1.69913')).toBeTruthy()
-    expect(screen.getByText('69913 snapshot reviewed September 20, 2026')).toBeTruthy()
-    expect(screen.getByText('0 tooltip updates since 69893 in that comparison')).toBeTruthy()
+    expect(screen.getByText('Beta build 1.60.1.70245')).toBeTruthy()
+    expect(screen.getByText('70245 structure reviewed October 7, 2026')).toBeTruthy()
+    expect(screen.getByText('14 talents with 32 changed rank strings since 69913 in that comparison')).toBeTruthy()
   })
 
   it.each(['holy-healing-31-20-0', 'protection-shield-20-31-0'] as const)(
@@ -75,7 +75,7 @@ describe('Holy healing build page', () => {
       render(<BuildPage buildId={buildId} />)
       expect(document.querySelector('.build-hero-copy a.button.primary')?.getAttribute('href')).toBe('/build?id=#calculator')
       expect(document.querySelector('.build-hero-copy')?.textContent).toMatch(/51-point.*historical.*Level 30/i)
-      expect(document.querySelector('.build-inline-cta')?.textContent).toMatch(/blank.*69913.*21-point budget/i)
+      expect(document.querySelector('.build-inline-cta')?.textContent).toMatch(/blank.*70245.*21-point budget/i)
     },
   )
 
@@ -89,7 +89,7 @@ describe('Holy healing build page', () => {
     const availability = screen.getByRole('region', { name: 'Beta level-range check' })
     expect(availability.textContent).toContain('Level cap 30')
     expect(availability.textContent).toContain('Up to 21 points under the leveling assumption')
-    expect(availability.textContent).toContain('older 69913 client tree')
+    expect(availability.textContent).toContain('reviewed 70245 client tree')
     expect(availability.textContent).toContain(talentName)
     expect(availability.textContent).toContain(requiredPoints)
     expect(availability.textContent).toContain(status)
@@ -146,10 +146,10 @@ describe('Holy healing build page', () => {
     expect(path.textContent).not.toContain('2/0/19')
   })
 
-  it.each(['retribution-judgment-0-20-31', 'retribution-leveling-20-0-31'] as const)('treats %s as a historical 69913 allocation while Crusade is under review', (buildId) => {
+  it.each(['retribution-judgment-0-20-31', 'retribution-leveling-20-0-31'] as const)('treats %s as a historical 69913 allocation with Crusade absent from the current tree', (buildId) => {
     render(<BuildPage buildId={buildId} />)
 
-    expect(screen.getByRole('status').textContent).toMatch(/Crusade.*70009.*review/i)
+    expect(screen.getByRole('status').textContent).toMatch(/Crusade.*absent.*70245/i)
     expect(document.querySelector('.build-hero-copy a.button.primary')?.getAttribute('href')).toBe('/build?id=#calculator')
     expect(document.querySelector('a[href*="crusade.2"]')).toBeNull()
     expect(document.body.textContent).not.toContain('Selecting Open This Build loads all 51 points')

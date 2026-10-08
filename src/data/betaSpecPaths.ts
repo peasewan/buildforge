@@ -52,7 +52,7 @@ export const BETA_SPEC_PATHS: Record<Branch, BetaSpecPath> = {
     next: {
       level: nextLevel,
       points: nextPoints,
-      note: 'No Level 30 Holy allocation has been reviewed against the updated client tree. The Level 20 route is only a starting snapshot.',
+      note: 'This healing starter has no reviewed Level 30 healing extension. A separate existing Holy Shock editorial example is replayable in the comparator against reviewed 70245 structure; its performance is unverified.',
       status: 'under_review',
     },
     recommendationSource: {
@@ -114,7 +114,7 @@ export const BETA_SPEC_PATHS: Record<Branch, BetaSpecPath> = {
     next: {
       level: nextLevel,
       points: nextPoints,
-      note: 'The community 0/0/21 route has a complete Level 10–30 timeline. It passes the imported 69913 rules and excludes removed Improved Holy Strike and under-review Crusade. Full current-client validation is separate from this allocation review.',
+      note: 'The community 0/0/21 route has a complete Level 10–30 timeline. Its surviving node positions and rank caps match the reviewed 70245 structure and it excludes Improved Holy Strike and Crusade. Prerequisite-rank rules remain assumptions; performance is not verified.',
       allocation: '0/0/21',
       build: PALADIN_LEVELING_STEPS.at(-1)!.build,
       status: 'community_reviewed',

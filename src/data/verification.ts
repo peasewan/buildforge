@@ -21,7 +21,7 @@ export const EVIDENCE_STATUS = {
   },
   community_verified: {
     label: "Community verified",
-    description: "Corroborated by multiple public community references.",
+    description: "Reviewed public community source; source-specific limits remain visible.",
   },
   derived_assumption: {
     label: "Derived assumption",

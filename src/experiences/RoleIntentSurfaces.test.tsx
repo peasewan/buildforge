@@ -6,6 +6,7 @@ import { priestClass } from '../data/classes/priest'
 import { warlockClass } from '../data/classes/warlock'
 import { hunterClass } from '../data/classes/hunter'
 import { shamanClass } from '../data/classes/shaman'
+import type { ClassDefinition } from '../lib/classPage'
 import {
   DungeonPlanner,
   HealingPlanner,
@@ -17,7 +18,7 @@ import {
 
 afterEach(cleanup)
 
-function page<T extends { pages: { slug: string }[] }>(def: T, slug: string) {
+function page(def: ClassDefinition, slug: string) {
   const result = def.pages.find((candidate) => candidate.slug === slug)
   if (!result) throw new Error(`Missing fixture page: ${slug}`)
   return result
@@ -68,8 +69,10 @@ it('shows the Hunter PvP build and calculator link before optional encounter pro
   expect(url.pathname).toBe('/hunter')
   expect(url.searchParams.get('level')).toBe('20')
   expect(url.searchParams.get('build')).toContain('hunter-')
-  fireEvent.click(screen.getByRole('button', { name: 'Recovery and exit' }))
-  expect(screen.getByRole('button', { name: 'Recovery and exit' }).getAttribute('aria-pressed')).toBe('true')
+  fireEvent.click(screen.getByRole('button', { name: 'Trap window preserves distance' }))
+  expect(screen.getByRole('button', { name: 'Trap window preserves distance' }).getAttribute('aria-pressed')).toBe('true')
+  expect(container.querySelector('.rs-evidence')?.textContent).toContain('Entrapment')
+  expect(container.querySelector('.rs-evidence')?.textContent).not.toContain('Deterrence')
 })
 
 it('compares the three Hunter Level 20 directions without labeling ordinary routes as PvP-tested', () => {
@@ -100,6 +103,7 @@ it.each([
   const action = container.querySelector('.rs-allocation .ix-action') as HTMLAnchorElement
   expect(action.getAttribute('href')).toBe('/hunter?build=#class-calculator')
   expect(action.textContent).toMatch(/archived route/i)
+  if (slug === 'wow-forever-hunter-dungeon-build') fireEvent.click(screen.getByRole('button', { name: 'Close-range or uncontrolled pulls' }))
   const row = [...container.querySelectorAll('.rs-evidence li')].find((candidate) => candidate.textContent?.includes(removedTalent))
   expect(row?.textContent).toContain('Removed in official update')
   expect(row?.querySelector('a[href*="news.blizzard.com"]')).toBeTruthy()
@@ -110,7 +114,7 @@ it('connects Hunter leveling, comparison and pet decisions back to the PvP page'
   for (const slug of ['wow-forever-hunter-leveling-build', 'wow-forever-beast-mastery-vs-marksmanship-hunter-leveling', 'wow-forever-hunter-pet-build']) {
     expect(page(hunterClass, slug).relatedPages.some((link) => link.href === pvp)).toBe(true)
   }
-  expect(page(hunterClass, 'wow-forever-hunter-pvp-build').relatedPages.some((link) => link.href === '/wow-forever-hunter-pet-build')).toBe(true)
+  expect(page(hunterClass, 'wow-forever-hunter-pvp-build').relatedPages.some((link) => link.href === '/wow-forever-beast-mastery-hunter-build')).toBe(true)
 })
 
 it('keeps a PvP page with no legal allocation explicit and unlinked', () => {
@@ -179,25 +183,45 @@ it('starts the tank route with threat and mitigation review, then lists selected
   )
   expect(container.querySelector('[data-surface="tank-inventory"]')).toBeTruthy()
   expectBuildBeforeGuidance(container)
-  expect(screen.getByRole('heading', { name: 'Tank review ledger' })).toBeTruthy()
-  fireEvent.click(screen.getByRole('button', { name: 'Incoming damage' }))
-  expect(screen.getByRole('button', { name: 'Incoming damage' }).getAttribute('aria-pressed')).toBe('true')
+  expect(screen.getByRole('region', { name: 'Druid role conditions' })).toBeTruthy()
+  fireEvent.click(screen.getByRole('button', { name: 'Cat positioning' }))
+  expect(screen.getByRole('button', { name: 'Cat positioning' }).getAttribute('aria-pressed')).toBe('true')
+  expect(container.querySelector('.rs-evidence')?.textContent).not.toContain('Feral Charge (Bear)')
   expect(screen.getByRole('heading', { name: 'Selected talent ranks' })).toBeTruthy()
   expect(screen.getByRole('link', { name: 'Edit in Calculator' })).toBeTruthy()
 })
 
-it('makes mana and group support the first healing comparison', () => {
+it('preserves Priest healing decisions on the retained Holy dungeon page', () => {
+  const { container } = render(
+    <DungeonPlanner
+      classDef={priestClass}
+      page={page(priestClass, 'wow-forever-holy-priest-dungeon-build')}
+    />,
+  )
+  expect(container.querySelector('[data-surface="dungeon-pull"]')).toBeTruthy()
+  expectBuildBeforeGuidance(container)
+  expect(screen.getByRole('heading', { name: 'What limits this Priest healing pull?' })).toBeTruthy()
+  fireEvent.click(screen.getByRole('button', { name: 'Mana recovery limits the next pull' }))
+  expect(screen.getByRole('button', { name: 'Mana recovery limits the next pull' }).getAttribute('aria-pressed')).toBe('true')
+  expect(container.querySelector('.rs-evidence')?.textContent).toContain('Holy Nova')
+  expect(container.querySelector('.rs-evidence')?.textContent).not.toContain('Divine Fury')
+  expect(screen.getByRole('link', { name: 'Edit in Calculator' })).toBeTruthy()
+})
+
+it('compares Shaman healing casts with moving group support', () => {
   const { container } = render(
     <HealingPlanner
-      classDef={priestClass}
-      page={page(priestClass, 'wow-forever-priest-healing-build')}
+      classDef={shamanClass}
+      page={page(shamanClass, 'wow-forever-restoration-shaman-healing-build')}
     />,
   )
   expect(container.querySelector('[data-surface="healing-compare"]')).toBeTruthy()
   expectBuildBeforeGuidance(container)
-  expect(screen.getByRole('heading', { name: 'Compare the healing job' })).toBeTruthy()
-  fireEvent.click(screen.getByRole('button', { name: 'Group support' }))
-  expect(screen.getByRole('button', { name: 'Group support' }).getAttribute('aria-pressed')).toBe('true')
+  expect(screen.getByRole('heading', { name: 'What limits this Shaman healing pull?' })).toBeTruthy()
+  expect(container.querySelector('.rs-evidence')?.textContent).toContain('Improved Healing Wave')
+  fireEvent.click(screen.getByRole('button', { name: 'Moving group needs support' }))
+  expect(container.querySelector('.rs-evidence')?.textContent).toContain('Totemic Mastery')
+  expect(container.querySelector('.rs-evidence')?.textContent).not.toContain('Improved Healing Wave')
   expect(screen.getByRole('link', { name: 'Edit in Calculator' })).toBeTruthy()
 })
 
@@ -210,11 +234,12 @@ it('shows selected pet-support ranks without inventing a pet-family dataset', ()
   )
   expect(container.querySelector('[data-surface="pet-support"]')).toBeTruthy()
   expectBuildBeforeGuidance(container)
-  expect(screen.getByRole('heading', { name: 'Selected support talents' })).toBeTruthy()
+  expect(screen.getByRole('heading', { name: 'Which demon is part of this Warlock test?' })).toBeTruthy()
   expect(container.querySelector('.rs-evidence')?.textContent).toContain('Improved Voidwalker')
-  expect(screen.getByText(/No verified pet-family comparison/)).toBeTruthy()
-  fireEvent.click(screen.getByRole('button', { name: 'Evidence gaps' }))
-  expect(screen.getByText(/pet talent tree or pet scaling calculation/)).toBeTruthy()
+  expect(screen.getByText(/No pet scaling coefficient or best-pet ranking is verified/)).toBeTruthy()
+  fireEvent.click(screen.getByRole('button', { name: 'Another demon is needed' }))
+  expect(container.querySelector('.rs-evidence')?.textContent).toContain('Fel Domination')
+  expect(container.querySelector('.rs-evidence')?.textContent).not.toContain('Improved Voidwalker')
   expect(screen.getByRole('link', { name: 'Edit in Calculator' })).toBeTruthy()
 })
 
@@ -225,12 +250,12 @@ it('distinguishes verified talent records from unavailable and datamined rank to
       page={page(warlockClass, 'wow-forever-warlock-pet-build')}
     />,
   )
-  const rows = Array.from(container.querySelectorAll('.rs-evidence li'))
-  const row = (name: string) => rows.find((item) => item.querySelector('strong')?.textContent?.includes(name))
+  const row = (name: string) => Array.from(container.querySelectorAll('.rs-evidence li')).find((item) => item.querySelector('strong')?.textContent?.includes(name))
   expect(row('Improved Voidwalker')?.querySelector('small')?.textContent)
     .toBe('Talent record: Client verified · Rank tooltip: Unavailable')
   expect(row('Improved Voidwalker')?.querySelector('p')?.textContent)
     .toBe('General description (not rank-specific): Exact text for this rank is not available in the reviewed client transcription.')
+  fireEvent.click(screen.getByRole('button', { name: 'Another demon is needed' }))
   expect(row('Fel Domination')?.querySelector('small')?.textContent)
     .toBe('Talent record: Client verified · Rank tooltip: Client datamined')
   expect(row('Fel Domination')?.querySelector('p')?.textContent)
@@ -247,6 +272,7 @@ it('marks an existing rank text unverified when its field evidence is unknown', 
       page={page(warlockClass, 'wow-forever-warlock-pet-build')}
     />,
   )
+  fireEvent.click(screen.getByRole('button', { name: 'Another demon is needed' }))
   const row = Array.from(container.querySelectorAll('.rs-evidence li'))
     .find((item) => item.querySelector('strong')?.textContent?.includes('Fel Domination'))
   expect(row?.querySelector('small')?.textContent)
@@ -262,10 +288,40 @@ it('shows totem talent coverage and marks spell loadout as unverified', () => {
   )
   expect(container.querySelector('[data-surface="totem-coverage"]')).toBeTruthy()
   expectBuildBeforeGuidance(container)
-  expect(screen.getByRole('heading', { name: 'Totem talent coverage' })).toBeTruthy()
+  expect(screen.getByRole('heading', { name: 'How does the party use this Shaman’s placement?' })).toBeTruthy()
   expect(container.querySelector('.rs-evidence')?.textContent).toContain('Totemic Focus')
-  expect(screen.getByText(/Totem spell loadout is not verified/)).toBeTruthy()
-  fireEvent.click(screen.getByRole('button', { name: 'Spell loadout limits' }))
-  expect(screen.getByText(/does not assign totems to slots/)).toBeTruthy()
+  expect(screen.getByText(/loadout.*remain unverified/)).toBeTruthy()
+  fireEvent.click(screen.getByRole('button', { name: 'Movement and healing dominate' }))
+  expect(container.querySelector('.rs-evidence')?.textContent).toContain('Improved Healing Wave')
+  expect(container.querySelector('.rs-evidence')?.textContent).not.toContain('Totemic Focus')
   expect(screen.getByRole('link', { name: 'Edit in Calculator' })).toBeTruthy()
+})
+
+
+it('changes the pet rank evidence and alternate calculator when the demon condition changes', () => {
+  const route = {
+    ...page(warlockClass, 'wow-forever-warlock-pet-build'),
+    roleDecision: {
+      question: 'Which demon is active?',
+      options: [
+        { id: 'voidwalker', label: 'Voidwalker active', explanation: 'Review the Voidwalker-specific rank before crediting the pet package.', talentIds: ['warlock-1225'] },
+        { id: 'other', label: 'Another demon active', explanation: 'Improved Voidwalker is conditional on its named demon. Compare summon support and the Affliction starter.', talentIds: ['warlock-1226'], alternativeBuildId: 'warlock-affliction-starter' },
+      ],
+      sources: [{ label: 'Client talent table', url: 'https://wago.tools/db2/Talent?build=1.60.1.69913' }],
+    },
+  }
+  const { container } = render(<PetPlanner classDef={warlockClass} page={route} />)
+  const inventory = container.querySelector('.rs-evidence') as HTMLElement
+  expect(inventory.textContent).toContain('Improved Voidwalker')
+  expect(inventory.textContent).not.toContain('Fel Domination')
+  const conditions = within(screen.getByRole('region', { name: 'Warlock role conditions' }))
+  expect(conditions.queryByRole('link', { name: 'Compare Affliction in Calculator' })).toBeNull()
+  fireEvent.click(conditions.getByRole('button', { name: 'Another demon active' }))
+  expect(inventory.textContent).toContain('Fel Domination')
+  expect(inventory.textContent).not.toContain('Improved Voidwalker')
+  expect(conditions.getByText(/Improved Voidwalker is conditional/)).toBeTruthy()
+  const target = new URL(conditions.getByRole('link', { name: 'Compare Affliction in Calculator' }).getAttribute('href')!, 'https://buildforgetools.com')
+  expect(target.pathname).toBe('/warlock')
+  expect(target.searchParams.get('build')).toContain('warlock-1003.5')
+  expect(conditions.getByRole('link', { name: 'Client talent table' }).getAttribute('href')).toBe('https://wago.tools/db2/Talent?build=1.60.1.69913')
 })

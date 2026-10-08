@@ -4,9 +4,11 @@ import { isIP } from 'node:net'
 // The published class imports currently share this reviewed client baseline. Keep this
 // serverless route lightweight; a test checks the value against every published class.
 const CURRENT_DATA_VERSION = 'wow_forever_beta_1.60.1.69913'
+const PALADIN_DATA_VERSION = 'wow_forever_beta_1.60.1.70245'
 const CLASS_DATA_VERSION = 'WoW Forever Beta 1.60.1.69913'
 const KNOWN_SOURCE_VERSIONS = new Set([
   CURRENT_DATA_VERSION,
+  PALADIN_DATA_VERSION,
   CLASS_DATA_VERSION,
   'wow_forever_beta_1.60.1.69893',
   'wow_forever_beta_1.60.1.69876',
@@ -78,7 +80,7 @@ function parseInput(raw: unknown): ExplainInput | null {
   const input = raw as Record<string, unknown>
   if (Object.keys(input).sort().join(',') !== 'classId,currentDataVersion,sourceDataVersion') return null
   if (typeof input.classId !== 'string' || !Object.hasOwn(BETA_PATCH_REVIEW.notes, input.classId)) return null
-  const publishedVersion = ['paladin', 'mage', 'warrior'].includes(input.classId)
+  const publishedVersion = input.classId === 'paladin' ? PALADIN_DATA_VERSION : ['mage', 'warrior'].includes(input.classId)
     ? CURRENT_DATA_VERSION
     : CLASS_DATA_VERSION
   if (input.currentDataVersion !== publishedVersion) return null
@@ -94,6 +96,7 @@ function baselineExplanation(input: ExplainInput) {
   const versionStatement = input.sourceDataVersion === input.currentDataVersion
     ? `This saved ${className} build uses the same ${currentBuild} talent dataset as the currently published calculator.`
     : `This saved ${className} build has an older or unknown talent data version, so it needs review against the currently published ${currentBuild} dataset.`
+  if (input.classId === 'paladin') return `${versionStatement} Matching versions do not prove in-game compatibility. The complete 70245 structure was reviewed; rank descriptions have community evidence and prerequisite-rank rules remain assumptions. Historical saved allocations need a removed-talent review before reopening.`
   return `${versionStatement} A matching data version does not establish whether a build is usable in game. The ${announcedBuild} client talent dataset is pending reconciliation; this saved build's impact from that patch cannot yet be determined.`
 }
 
@@ -185,7 +188,7 @@ export default {
 
     return json({
       status: input.sourceDataVersion === input.currentDataVersion ? 'same_dataset' : 'needs_review',
-      patchStatus: BETA_PATCH_REVIEW.datasetStatus,
+      patchStatus: input.classId === 'paladin' ? 'structure_reviewed' : BETA_PATCH_REVIEW.datasetStatus,
       explanation: base + note,
       sourceUrl: BETA_PATCH_REVIEW.officialSource,
       generatedBy: selected ? 'deepseek' : 'fallback',

@@ -18,6 +18,7 @@ interface ForgePilotPanelProps<B extends string> {
   points: number
   buildCode: string
   defaultName: string
+  removedTalents?: PlannerTalent<B>[]
   talents: PlannerTalent<B>[]
   config: PlannerConfig<B>
 }
@@ -54,7 +55,7 @@ function newBuildId(): string {
   return globalThis.crypto?.randomUUID?.() ?? `build-${Date.now()}-${Math.random().toString(36).slice(2)}`
 }
 
-function ForgePilotPanelContent<B extends string>({ classId, className, dataVersion, level, pointCaps, points, buildCode, defaultName, talents, config }: ForgePilotPanelProps<B>) {
+function ForgePilotPanelContent<B extends string>({ classId, className, dataVersion, level, pointCaps, points, buildCode, defaultName, talents, removedTalents, config }: ForgePilotPanelProps<B>) {
   const auth = useForgePilotAuth()
   const cloudClient = useMemo(() => createForgePilotCloudClient(auth.getToken, fetch, auth.userId ?? undefined), [auth.getToken, auth.userId])
   const [initialStorage] = useState(() => typeof window === 'undefined' ? { ok: true as const, builds: [] as ForgePilotSavedBuild[] } : readForgePilotSavedBuilds(browserStorage()))
@@ -290,7 +291,7 @@ function ForgePilotPanelContent<B extends string>({ classId, className, dataVers
       track('build_patch_explain', { class: classId, source_version: saved.dataVersion })
     } catch {
       if (source === 'cloud' && (!owner || !isCurrentSession(owner, generation))) return
-      setExplanation({ key: `${source}:${saved.id}`, text: `The site's published talent data is ${dataVersion}. The ${BETA_PATCH_REVIEW.clientBuild} announcement is still pending dataset reconciliation, so this build cannot yet be checked against that client build.` })
+      setExplanation({ key: `${source}:${saved.id}`, text: classId === 'paladin' ? `The current Paladin dataset is ${dataVersion}: reviewed 70245 structure with separate community rank text. Check the saved allocation for removed talents; this unavailable explanation service does not verify in-game compatibility.` : `The site's published talent data is ${dataVersion}. The ${BETA_PATCH_REVIEW.clientBuild} announcement is still pending dataset reconciliation, so this build cannot yet be checked against that client build.` })
     } finally {
       if (source === 'local' || (owner && isCurrentSession(owner, generation))) setExplaining(false)
     }
@@ -302,7 +303,7 @@ function ForgePilotPanelContent<B extends string>({ classId, className, dataVers
     : <ul className="forge-pilot-list">{records.map((saved) => {
       const cap = saved.level === null ? config.pointCap : pointCaps[saved.level]
       const inspection = cap === undefined ? { status: 'needs_review' as const, reason: 'dataset_changed' as const } : inspectForgePilotSavedBuild(saved, {
-        classId, dataVersion, talents, config: { ...config, pointCap: cap },
+        classId, dataVersion, talents, removedTalents, config: { ...config, pointCap: cap },
       })
       const key = `${source}:${saved.id}`
       return <li key={key}>
@@ -310,12 +311,14 @@ function ForgePilotPanelContent<B extends string>({ classId, className, dataVers
         <p className="forge-pilot-status">{inspection.status === 'ready' ? `Matches published ${dataVersion} talent data`
           : inspection.status === 'invalid' ? 'Saved allocation needs correction'
           : inspection.reason === 'removed_official' ? 'Historical allocation: a talent was officially removed. This snapshot cannot reopen under current rules.'
+          : inspection.reason === 'removed_client_verified' ? 'Historical allocation: a selected node is absent from the reviewed 70245 client tree. The original ranks remain preserved.'
           : inspection.reason === 'reported_removed_under_review' ? 'Historical allocation: a client diff reports a removed talent, pending identity review. This snapshot cannot reopen under current rules.'
           : 'Version needs review before reopening'}</p>
         {inspection.status === 'needs_review' && inspection.reason === 'removed_official' && <a className="forge-pilot-evidence" href={BETA_PATCH_REVIEW.officialSource} target="_blank" rel="noreferrer">Official patch notes</a>}
         {inspection.status === 'needs_review' && inspection.reason === 'reported_removed_under_review' && <a className="forge-pilot-evidence" href={BETA_PATCH_REVIEW.clientDiffSource} target="_blank" rel="noreferrer">Client diff under review</a>}
+        {inspection.status === 'needs_review' && inspection.reason === 'removed_client_verified' && <a className="forge-pilot-evidence" href="https://wago.tools/db2/TraitNode/csv?build=1.60.1.70245" target="_blank" rel="noreferrer">Reviewed client tree</a>}
         {saved.sourceUrl && <details className="forge-pilot-original"><summary>Original share link</summary><code>{saved.sourceUrl}</code></details>}
-        {saved.sourceUrl && inspection.status === 'needs_review' && <p className="forge-pilot-review-link">The original version is unknown. Opening this link uses the current calculator; compare its talents before saving a new snapshot. <a href={saved.sourceUrl} target="_blank" rel="noopener noreferrer">Open original link for review</a></p>}
+        {saved.sourceUrl && inspection.status === 'needs_review' && <p className="forge-pilot-review-link">The original snapshot remains preserved. Opening this link compares it with the current calculator; review its talents before saving a new snapshot. <a href={saved.sourceUrl} target="_blank" rel="noopener noreferrer">Open original link for review</a></p>}
         {editingKey === key && <div className="forge-pilot-edit">
           <label htmlFor={`forge-pilot-edit-${source}-${saved.id}`}>New build name</label>
           <input id={`forge-pilot-edit-${source}-${saved.id}`} value={editName} maxLength={120} onChange={(event) => setEditName(event.target.value)} />
@@ -329,7 +332,7 @@ function ForgePilotPanelContent<B extends string>({ classId, className, dataVers
           <button type="button" disabled={source === 'cloud' && cloudBusy} onClick={() => { if (removingKey === key) void remove(saved.id, source); else setRemovingKey(key) }}><Trash2 size={13} /> {removingKey === key ? 'Confirm remove' : 'Remove'}</button>
           <button type="button" disabled={explaining} onClick={() => void explain(saved, source)}>{explaining ? 'Checking…' : 'Explain patch status'}</button>
         </div>
-        {explanation?.key === key && <p role="status" className="forge-pilot-explanation">{explanation.text} <a href={BETA_PATCH_REVIEW.officialSource} target="_blank" rel="noreferrer">Source: Blizzard Beta notes</a></p>}
+        {explanation?.key === key && <p role="status" className="forge-pilot-explanation">{explanation.text} {classId === 'paladin' && <><a href="https://wago.tools/db2/TraitNode/csv?build=1.60.1.70245" target="_blank" rel="noreferrer">Source: reviewed client structure</a>{' · '}</>}<a href={BETA_PATCH_REVIEW.officialSource} target="_blank" rel="noreferrer">Source: Blizzard Beta notes</a></p>}
       </li>
     })}</ul>
 

@@ -14,7 +14,7 @@ describe('Paladin abilities spellbook page', () => {
     expect(screen.getByRole('heading', { level: 1, name: 'WoW Forever Paladin Abilities & Spellbook' })).toBeTruthy()
     expect(screen.getByText('45 abilities')).toBeTruthy()
     expect(screen.getAllByText('Beta client 1.60.1.69893').length).toBeGreaterThan(0)
-    expect(screen.getByText(/This spellbook snapshot remains versioned separately from the 69913 talent tree/)).toBeTruthy()
+    expect(screen.getByText(/This spellbook snapshot remains versioned separately from the reviewed 70245 talent tree/)).toBeTruthy()
     expect(screen.getByText('30 spell groups')).toBeTruthy()
     expect(screen.getByText(/Blizzard raised the Beta cap to Level 30 on October 1/)).toBeTruthy()
     expect(screen.getByText('Seal of Fury')).toBeTruthy()
