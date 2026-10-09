@@ -15,7 +15,7 @@ export default function OfficialBuildChangeSummary({
   selectedTalents: SelectedTalent[]
   contextLabel?: string
 }) {
-  const reviewedClass = (className === 'hunter' || className === 'warrior') && buildVersion === '1.60.1.70291'
+  const reviewedClass = buildVersion === '1.60.1.70291'
     ? PUBLISHED_CLASSES.find(classDef => classDef.id === className && classDef.dataReview?.current
       && classDef.dataReview.ready && classDef.verifiedBuild === buildVersion)
     : undefined

@@ -1,8 +1,12 @@
 import { describe, expect, it } from 'vitest'
+import { createElement } from 'react'
+import { renderToStaticMarkup } from 'react-dom/server'
 import { checkProductionDeployment } from './post-deploy-smoke'
 import { DATA_VERSION, removedPaladinTalents, talents } from '../src/data/talents'
 import { hunterClass } from '../src/data/classes/hunter'
 import { warriorClass } from '../src/data/classes/warrior'
+import { PUBLISHED_CLASSES } from '../src/data/classes'
+import ClassIntentExperience from '../src/experiences/ClassIntentExperience'
 import { classBuildPlannerHref } from '../src/lib/archivedClassBuild'
 import { protectionPlannerHref } from '../src/data/protectionCurrentRoute'
 import { renderBetaLevelingSnapshotPrerender } from '../src/lib/prerender'
@@ -18,7 +22,11 @@ const currentPaladinBuild = DATA_VERSION.replace('wow_forever_beta_', '')
 const protectionRoute = renderBetaLevelingSnapshotPrerender('protection-leveling')
 const talentIndex = `<section class="guide-talent-index">Current structure ${currentPaladinBuild}${talents.map(talent => `<li data-talent-id="${talent.id}" class="guide-index-node"></li>`).join('')}${removedPaladinTalents.map(talent => `<li data-talent-id="${talent.id}" class="guide-index-node removed">${talent.currentBetaAvailability === 'removed_official' ? 'Removed Sep 24' : 'Client-confirmed removal'}</li>`).join('')}</section>`
 
-const currentClasses = [hunterClass, warriorClass]
+const currentClasses = PUBLISHED_CLASSES.filter(classDef => classDef.dataReview?.current && classDef.dataReview.ready && classDef.verifiedBuild === '1.60.1.70291')
+const newlyReviewedClasses = currentClasses.filter(classDef => !['hunter', 'warrior'].includes(classDef.id))
+const pvpPage = (classDef: ClassDefinition) => classDef.pages.find(page => page.kind === 'pvp')!
+const pvpBody = (classDef: ClassDefinition) => renderToStaticMarkup(createElement(ClassIntentExperience, { classDef, page: pvpPage(classDef) }))
+const requiredPaths = ['/paladin', talentPath, protectionPath, ...currentClasses.flatMap(classDef => [classDef.plannerPath, `/${pvpPage(classDef).slug}`])]
 const pvpHref = (classDef: ClassDefinition) => {
   const page = classDef.pages.find(page => page.kind === 'pvp')!
   const build = classDef.builds.find(build => build.id === page.primaryBuildId)!
@@ -37,7 +45,7 @@ function htmlResponse(path: string, body = '') {
 }
 
 function fixtures(overrides: Record<string, Response> = {}) {
-  const sitemap = ['/paladin', talentPath, '/hunter', pvpPath, '/warrior', warriorPvpPath, protectionPath].map(path => `<url><loc>${apex}${path}</loc></url>`).join('')
+  const sitemap = requiredPaths.map(path => `<url><loc>${apex}${path}</loc></url>`).join('')
   const responses: Record<string, Response> = {
     [`${apex}/sitemap.xml`]: new Response(`<urlset>${sitemap}</urlset>`, { status: 200, headers: { 'content-type': 'application/xml' } }),
     [`${apex}/`]: htmlResponse('/'),
@@ -46,12 +54,14 @@ function fixtures(overrides: Record<string, Response> = {}) {
     [`${apex}/paladin`]: htmlResponse('/paladin', `<p>Current structure ${currentPaladinBuild}</p><section id="calculator"></section>`),
     [`${apex}${talentPath}`]: htmlResponse(talentPath, talentIndex),
     [`${apex}${protectionPath}`]: htmlResponse(protectionPath, protectionRoute),
-    [`${apex}/hunter`]: htmlResponse('/hunter', calculator(hunterClass)),
-    [`${apex}/warrior`]: htmlResponse('/warrior', calculator(warriorClass)),
-    [`${apex}${pvpPath}`]: htmlResponse(pvpPath, `<a href="${deepLink}">Try these points</a>`),
-    [`${apex}${warriorPvpPath}`]: htmlResponse(warriorPvpPath, `<a href="${warriorDeepLink}">Try these points</a>`),
-    [requestUrl(deepLink)]: htmlResponse('/hunter', calculator(hunterClass)),
-    [requestUrl(warriorDeepLink)]: htmlResponse('/warrior', calculator(warriorClass)),
+    ...Object.fromEntries(currentClasses.flatMap(classDef => {
+      const path = `/${pvpPage(classDef).slug}`
+      return [
+        [`${apex}${classDef.plannerPath}`, htmlResponse(classDef.plannerPath, calculator(classDef))],
+        [`${apex}${path}`, htmlResponse(path, pvpBody(classDef))],
+        [requestUrl(pvpHref(classDef)), htmlResponse(classDef.plannerPath, calculator(classDef))],
+      ]
+    })),
     ...overrides,
   }
   const requested: string[] = []
@@ -63,6 +73,7 @@ function fixtures(overrides: Record<string, Response> = {}) {
     if (url === `${apex}${apiPath}`) {
       expect(init?.method).toBe('POST')
       expect(new Headers(init?.headers).get('origin')).toBe(apex)
+      expect(new Headers(init?.headers).get('x-buildforge-explanation-mode')).toBe('metadata-only')
       const body = JSON.parse(String(init?.body))
       apiInputs.push(body)
       const current = body.classId === 'paladin' ? DATA_VERSION : currentClasses.find(classDef => classDef.id === body.classId)?.dataVersion
@@ -70,6 +81,7 @@ function fixtures(overrides: Record<string, Response> = {}) {
       return new Response(JSON.stringify({
         status: body.sourceDataVersion === current ? 'same_dataset' : 'needs_review',
         patchStatus: 'structure_reviewed',
+        generatedBy: 'fallback',
         explanation: 'Client structure and community rank text are separate; planning rules are derived.',
         sourceUrl: body.classId === 'paladin' ? 'https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-september-24/2360696' : `https://wago.tools/db2/TraitNode/csv?build=${currentClasses.find(classDef => classDef.id === body.classId)!.verifiedBuild}`,
       }), { status: 200, headers: { 'content-type': 'application/json', 'cache-control': 'no-store' } })
@@ -80,11 +92,15 @@ function fixtures(overrides: Record<string, Response> = {}) {
 }
 
 describe('post-deploy smoke gate', () => {
-  it('checks current dataset truth, redirects, metadata, both current class deep links and read-only API explanations', async () => {
+  it('checks all seven current classes, redirects, metadata, legal deep links and metadata-only API explanations', async () => {
     const { fetchImpl, requested, apiInputs } = fixtures()
     const report = await checkProductionDeployment(fetchImpl)
     expect(report.issues).toEqual([])
-    expect(report.pagesChecked).toBe(7)
+    expect(currentClasses.map(classDef => classDef.id).sort()).toEqual(['druid', 'hunter', 'priest', 'rogue', 'shaman', 'warlock', 'warrior'])
+    expect(report.pagesChecked).toBe(17)
+    expect(report.sitemapCount).toBe(17)
+    expect(report.deepLinks).toEqual(currentClasses.map(classDef => new URL(pvpHref(classDef), apex).href))
+    for (const classDef of currentClasses) expect(requested).toContain(requestUrl(pvpHref(classDef)))
     expect(requested).toContain(requestUrl(deepLink))
     expect(requested).toContain(requestUrl(warriorDeepLink))
     expect(apiInputs).toEqual(expect.arrayContaining([
@@ -94,13 +110,14 @@ describe('post-deploy smoke gate', () => {
         { classId: classDef.id, currentDataVersion: classDef.dataVersion, sourceDataVersion: classDef.historicalSnapshots![0].dataVersion },
       ]),
     ]))
-    expect(apiInputs).toHaveLength(5)
+    expect(apiInputs).toHaveLength(15)
+    expect(report.apiChecks).toBe(15)
   })
 
   it('fails clearly when the sitemap omits a critical live page', async () => {
     const { fetchImpl } = fixtures({ [`${apex}/sitemap.xml`]: new Response(`<urlset><url><loc>${apex}/hunter</loc></url></urlset>`, { status: 200 }) })
     const report = await checkProductionDeployment(fetchImpl)
-    for (const path of ['/paladin', pvpPath, protectionPath, talentPath, '/warrior', warriorPvpPath]) expect(report.issues).toContain(`Sitemap is missing required page: ${path}`)
+    for (const path of requiredPaths.filter(path => path !== '/hunter')) expect(report.issues).toContain(`Sitemap is missing required page: ${path}`)
   })
 
   it('reports a www homepage that still returns 200', async () => {
@@ -110,13 +127,13 @@ describe('post-deploy smoke gate', () => {
 
   it('reports wrong canonical and a broken Hunter calculator target', async () => {
     const { fetchImpl } = fixtures({
-      [`${apex}${pvpPath}`]: htmlResponse('/wrong', `<a href="${deepLink}">Try these points</a>`),
+      [`${apex}${pvpPath}`]: htmlResponse('/wrong', pvpBody(hunterClass)),
       [requestUrl(deepLink)]: htmlResponse('/hunter'),
     })
     const report = await checkProductionDeployment(fetchImpl)
     expect(report.issues).toContain(`${pvpPath}: canonical expected ${apex}${pvpPath}, got ${apex}/wrong`)
     expect(report.issues).toContain('Hunter calculator deep link: missing prerendered #class-calculator target')
-    expect(report.deepLinks).toEqual([new URL(warriorDeepLink, apex).href])
+    expect(report.deepLinks).toEqual(currentClasses.filter(classDef => classDef.id !== 'hunter').map(classDef => new URL(pvpHref(classDef), apex).href))
   })
 
   it('reports wrong OG URL, an inner redirect miss and an absent current build link', async () => {
@@ -157,6 +174,45 @@ describe('post-deploy smoke gate', () => {
     expect(report.issues).toContain(`/warrior: canonical expected ${apex}/warrior, got ${apex}/wrong`)
     expect(report.issues).toContain('/warrior: missing current reviewed Warrior dataset')
     expect(report.issues).toContain('Warrior PvP: missing reviewed Level 30 current-dataset calculator link')
+  })
+
+  it.each(newlyReviewedClasses)('$name: rejects missing or stale calculator datasets', async classDef => {
+    for (const body of ['', calculator(classDef).replaceAll(classDef.verifiedBuild, '1.60.1.69913')]) {
+      const { fetchImpl } = fixtures({ [`${apex}${classDef.plannerPath}`]: htmlResponse(classDef.plannerPath, body) })
+      expect((await checkProductionDeployment(fetchImpl)).issues).toContain(`${classDef.plannerPath}: missing current reviewed ${classDef.name} dataset`)
+    }
+  })
+
+  it.each(newlyReviewedClasses)('$name: rejects absent exact selected-rank text and stale effect versions', async classDef => {
+    const page = pvpPage(classDef)
+    const build = classDef.builds.find(build => build.id === page.primaryBuildId)!
+    const selectedId = page.roleDecision?.options[0].talentIds[0] ?? Object.keys(build.build)[0]
+    const talent = classDef.talents.find(talent => talent.id === selectedId)!
+    const effect = talent.rankDescriptions![build.build[selectedId] - 1]
+    const body = pvpBody(classDef)
+    const escapedEffect = renderToStaticMarkup(createElement('p', {}, effect)).slice(3, -4)
+    for (const invalid of [body.replaceAll(escapedEffect, 'Unsupported effect'), body.replaceAll(`Client build ${classDef.verifiedBuild}`, 'Client build 1.60.1.69913')]) {
+      expect(invalid).not.toBe(body)
+      const { fetchImpl } = fixtures({ [`${apex}/${page.slug}`]: htmlResponse(`/${page.slug}`, invalid) })
+      expect((await checkProductionDeployment(fetchImpl)).issues).toContain(`${classDef.name} PvP: missing reviewed selected-rank effects for client ${classDef.verifiedBuild}`)
+    }
+  })
+
+  it.each(newlyReviewedClasses)('$name: rejects historical, unversioned and partial current PvP links', async classDef => {
+    const path = `/${pvpPage(classDef).slug}`
+    const expected = new URL(pvpHref(classDef), apex)
+    const historical = new URL(expected); historical.searchParams.set('dataset', '1.60.1.69913')
+    const versionless = new URL(expected); versionless.searchParams.delete('dataset')
+    const partial = new URL(expected); partial.searchParams.set('build', `${classDef.talents.find(talent => talent.requiredTreePoints === 0)!.id}.1`)
+    for (const url of [historical, versionless, partial]) {
+      const { fetchImpl } = fixtures({ [`${apex}${path}`]: htmlResponse(path, `<a href="${url}">Incomplete route</a>`) })
+      expect((await checkProductionDeployment(fetchImpl)).issues).toContain(`${classDef.name} PvP: missing reviewed Level 30 current-dataset calculator link`)
+    }
+  })
+
+  it('rejects an API response that used DeepSeek during the metadata-only smoke query', async () => {
+    const { fetchImpl } = fixtures({ [`${apex}${apiPath}`]: new Response(JSON.stringify({ status: 'same_dataset', patchStatus: 'structure_reviewed', explanation: 'Reviewed', sourceUrl: 'https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291', generatedBy: 'deepseek' }), { status: 200, headers: { 'content-type': 'application/json', 'cache-control': 'no-store' } }) })
+    expect((await checkProductionDeployment(fetchImpl)).issues).toContain('ForgePilot hunter current explanation: incorrect reviewed-version response')
   })
 
   it('reports failed or incorrect API responses without accepting HTTP errors', async () => {

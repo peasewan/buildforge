@@ -1,5 +1,7 @@
 # October 9 AdSense content follow-up
 
+Historical checkpoint: selected-rank gaps reported below are superseded by [the source-backed completion](2026-10-09-selected-rank-completion.md). Preserve this earlier review as the before-state, not the present release status.
+
 This is a source/evidence review, not a claim about Google’s internal rejection reasons or future approval. No AdSense application is submitted by this task.
 
 ## Current-data release already verified

@@ -22,7 +22,7 @@ describe('six-class release', () => {
     expect(publishedClassPages(classes)).toHaveLength(70)
     expect(pages.filter(page => page.retiredTo)).toHaveLength(20)
   })
-  it('updates the reviewed Hunter hub to Level 30 routes while preserving the other five starter datasets', () => {
+  it('updates all reviewed expansion hubs to Level 30 while retaining source archives', () => {
     const hunter = classes.find((candidate) => candidate.id === 'hunter')!
     const hub = hunter.pages.find((page) => page.kind === 'buildsHub')!
     expect(hub.description).toContain('Level 30')
@@ -31,13 +31,13 @@ describe('six-class release', () => {
     expect(hub.sections.flatMap((section) => section.paragraphs).join(' ')).toContain('21 points at Level 30')
     expect(hub.sections.flatMap((section) => section.paragraphs).join(' ')).not.toContain('open a blank calculator')
     const rogue = classes.find((candidate) => candidate.id === 'rogue')!
-    expect(rogue.pages.find((page) => page.kind === 'buildsHub')?.description).toContain('Compare exact eleven-point allocations before editing')
+    expect(rogue.pages.find((page) => page.kind === 'buildsHub')?.description).toContain('21-point')
   })
   for (const c of classes) {
     it(`${c.name}: preserves the checked-in 69913 snapshot from archived primary and cross-check records`, () => {
-      const imported = importClientClass({ classId: c.id, classMask: masks[c.id], build: c.id === 'hunter' ? HUNTER_HISTORICAL_BUILD : c.verifiedBuild, talents: csv('Talent'), tabs: csv('TalentTab'), spells: csv('SpellName'), crosscheck: JSON.parse(readFileSync(`${dir}/${c.id}-db.json`, 'utf8')) })
+      const imported = importClientClass({ classId: c.id, classMask: masks[c.id], build: HUNTER_HISTORICAL_BUILD, talents: csv('Talent'), tabs: csv('TalentTab'), spells: csv('SpellName'), crosscheck: JSON.parse(readFileSync(`${dir}/${c.id}-db.json`, 'utf8')) })
       expect(imported.ready).toBe(true)
-      const checkedTalents = c.id === 'hunter' ? hunterHistoricalTalents : c.talents
+      const checkedTalents = c.id === 'hunter' ? hunterHistoricalTalents : c.historicalSnapshots![0].talents
       expect(imported.talents).toEqual(checkedTalents)
       expect(c.talentCount).toBe(c.talents.length)
       for (const talent of checkedTalents) {
@@ -58,11 +58,11 @@ describe('six-class release', () => {
           }
         }
         expect(allocation).toEqual(build.build)
-        const budget = c.id === 'hunter' ? build.level - 9 : 11
+        const budget = build.level - 9
         expect(Object.values(allocation).reduce((a, b) => a + b, 0)).toBe(budget)
         expect(build.points).toBe(budget)
         expect(build.levelCap).toBe(budget)
-        if (c.id !== 'hunter') expect(build.level).toBe(20)
+        expect([20, 30]).toContain(build.level)
         expect(isLegalAllocation(build.build, c.talents, c.plannerConfig, budget)).toBe(true)
         expect(decodePlannerBuild(encodePlannerBuild(allocation), c.talents)).toEqual(allocation)
         const href = classPlannerHref(c, encodePlannerBuild(allocation), build.level)
@@ -79,8 +79,8 @@ describe('six-class release', () => {
         const html = renderClassPage(c, page)
         expect(html).toContain('<h1>')
         expect(html).toContain('planning assumptions')
-        expect(html).toContain(c.id === 'hunter' ? 'https://wago.tools/db2/TraitNode' : 'https://wago.tools/db2/Talent')
-        if (c.id === 'hunter') {
+        expect(html).toContain('https://wago.tools/db2/TraitNode')
+        if (c.dataReview?.current) {
           expect(html).not.toContain('not reviewed Level 30 allocations')
           expect(html).not.toContain('1.60.1.69913 client-table route')
           expect(html).not.toContain('does not verify a Level 30 allocation')

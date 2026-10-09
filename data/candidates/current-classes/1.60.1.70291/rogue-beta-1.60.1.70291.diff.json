@@ -1,0 +1,1238 @@
+{
+  "from": "1.60.1.69913",
+  "to": "1.60.1.70291",
+  "summary": {
+    "added": 8,
+    "removed": 6,
+    "moved": 13,
+    "rank_changed": 6,
+    "tooltip_changed": 40,
+    "prerequisite_changed": 2,
+    "unchanged": 3
+  },
+  "added": [
+    {
+      "id": "rogue-assassination-mutilate",
+      "name": "Mutilate",
+      "nodeId": 105709
+    },
+    {
+      "id": "rogue-assassination-venom",
+      "name": "Venom",
+      "nodeId": 105712
+    },
+    {
+      "id": "rogue-combat-flawless-execution",
+      "name": "Flawless Execution",
+      "nodeId": 108100
+    },
+    {
+      "id": "rogue-subtlety-dirty-tricks",
+      "name": "Dirty Tricks",
+      "nodeId": 105757
+    },
+    {
+      "id": "rogue-subtlety-improved-distract",
+      "name": "Improved Distract",
+      "nodeId": 110868
+    },
+    {
+      "id": "rogue-subtlety-quietus",
+      "name": "Quietus",
+      "nodeId": 110867
+    },
+    {
+      "id": "rogue-subtlety-cutthroat",
+      "name": "Cutthroat",
+      "nodeId": 105750
+    },
+    {
+      "id": "rogue-subtlety-thousand-cuts",
+      "name": "Thousand Cuts",
+      "nodeId": 110866
+    }
+  ],
+  "removed": [
+    {
+      "id": "rogue-182",
+      "name": "Hack and Slash",
+      "nodeId": 182
+    },
+    {
+      "id": "rogue-184",
+      "name": "Hack and Slash",
+      "nodeId": 184
+    },
+    {
+      "id": "rogue-183",
+      "name": "Fist Weapon Specialization",
+      "nodeId": 183
+    },
+    {
+      "id": "rogue-1700",
+      "name": "Sleight of Hand",
+      "nodeId": 1700
+    },
+    {
+      "id": "rogue-262",
+      "name": "Improved Sap",
+      "nodeId": 262
+    },
+    {
+      "id": "rogue-1702",
+      "name": "Deadliness",
+      "nodeId": 1702
+    }
+  ],
+  "moved": [
+    {
+      "id": "rogue-203",
+      "name": "Improved Gouge",
+      "nodeId": 105742,
+      "before": {
+        "branch": "combat",
+        "row": 1,
+        "column": 1,
+        "requiredTreePoints": 0
+      },
+      "after": {
+        "branch": "assassination",
+        "row": 1,
+        "column": 1,
+        "requiredTreePoints": 0
+      }
+    },
+    {
+      "id": "rogue-682",
+      "name": "Vile Poisons",
+      "nodeId": 105714,
+      "before": {
+        "branch": "assassination",
+        "row": 4,
+        "column": 2,
+        "requiredTreePoints": 15
+      },
+      "after": {
+        "branch": "assassination",
+        "row": 4,
+        "column": 1,
+        "requiredTreePoints": 15
+      }
+    },
+    {
+      "id": "rogue-280",
+      "name": "Cold Blood",
+      "nodeId": 105715,
+      "before": {
+        "branch": "assassination",
+        "row": 5,
+        "column": 2,
+        "requiredTreePoints": 20
+      },
+      "after": {
+        "branch": "assassination",
+        "row": 4,
+        "column": 2,
+        "requiredTreePoints": 15
+      }
+    },
+    {
+      "id": "rogue-382",
+      "name": "Vigor",
+      "nodeId": 105718,
+      "before": {
+        "branch": "assassination",
+        "row": 7,
+        "column": 2,
+        "requiredTreePoints": 30
+      },
+      "after": {
+        "branch": "assassination",
+        "row": 5,
+        "column": 1,
+        "requiredTreePoints": 20
+      }
+    },
+    {
+      "id": "rogue-283",
+      "name": "Seal Fate",
+      "nodeId": 105710,
+      "before": {
+        "branch": "assassination",
+        "row": 6,
+        "column": 2,
+        "requiredTreePoints": 25
+      },
+      "after": {
+        "branch": "assassination",
+        "row": 6,
+        "column": 3,
+        "requiredTreePoints": 25
+      }
+    },
+    {
+      "id": "rogue-276",
+      "name": "Improved Eviscerate",
+      "nodeId": 105708,
+      "before": {
+        "branch": "assassination",
+        "row": 1,
+        "column": 1,
+        "requiredTreePoints": 0
+      },
+      "after": {
+        "branch": "combat",
+        "row": 1,
+        "column": 1,
+        "requiredTreePoints": 0
+      }
+    },
+    {
+      "id": "rogue-244",
+      "name": "Camouflage",
+      "nodeId": 105756,
+      "before": {
+        "branch": "subtlety",
+        "row": 2,
+        "column": 3,
+        "requiredTreePoints": 5
+      },
+      "after": {
+        "branch": "subtlety",
+        "row": 1,
+        "column": 1,
+        "requiredTreePoints": 0
+      }
+    },
+    {
+      "id": "rogue-246",
+      "name": "Setup",
+      "nodeId": 105751,
+      "before": {
+        "branch": "subtlety",
+        "row": 4,
+        "column": 1,
+        "requiredTreePoints": 15
+      },
+      "after": {
+        "branch": "subtlety",
+        "row": 2,
+        "column": 1,
+        "requiredTreePoints": 5
+      }
+    },
+    {
+      "id": "rogue-263",
+      "name": "Improved Ambush",
+      "nodeId": 105749,
+      "before": {
+        "branch": "subtlety",
+        "row": 3,
+        "column": 3,
+        "requiredTreePoints": 10
+      },
+      "after": {
+        "branch": "subtlety",
+        "row": 2,
+        "column": 4,
+        "requiredTreePoints": 5
+      }
+    },
+    {
+      "id": "rogue-1701",
+      "name": "Heightened Senses",
+      "nodeId": 105747,
+      "before": {
+        "branch": "subtlety",
+        "row": 5,
+        "column": 1,
+        "requiredTreePoints": 20
+      },
+      "after": {
+        "branch": "subtlety",
+        "row": 4,
+        "column": 1,
+        "requiredTreePoints": 15
+      }
+    },
+    {
+      "id": "rogue-381",
+      "name": "Premeditation",
+      "nodeId": 105743,
+      "before": {
+        "branch": "subtlety",
+        "row": 7,
+        "column": 2,
+        "requiredTreePoints": 30
+      },
+      "after": {
+        "branch": "subtlety",
+        "row": 4,
+        "column": 2,
+        "requiredTreePoints": 15
+      }
+    },
+    {
+      "id": "rogue-265",
+      "name": "Dirty Deeds",
+      "nodeId": 105745,
+      "before": {
+        "branch": "subtlety",
+        "row": 5,
+        "column": 3,
+        "requiredTreePoints": 20
+      },
+      "after": {
+        "branch": "subtlety",
+        "row": 5,
+        "column": 1,
+        "requiredTreePoints": 20
+      }
+    },
+    {
+      "id": "rogue-681",
+      "name": "Hemorrhage",
+      "nodeId": 105748,
+      "before": {
+        "branch": "subtlety",
+        "row": 5,
+        "column": 4,
+        "requiredTreePoints": 20
+      },
+      "after": {
+        "branch": "subtlety",
+        "row": 5,
+        "column": 3,
+        "requiredTreePoints": 20
+      }
+    }
+  ],
+  "rank_changed": [
+    {
+      "id": "rogue-382",
+      "name": "Vigor",
+      "nodeId": 105718,
+      "before": 1,
+      "after": 2
+    },
+    {
+      "id": "rogue-279",
+      "name": "Improved Kidney Shot",
+      "nodeId": 105711,
+      "before": 3,
+      "after": 2
+    },
+    {
+      "id": "rogue-187",
+      "name": "Deflection",
+      "nodeId": 105738,
+      "before": 5,
+      "after": 3
+    },
+    {
+      "id": "rogue-181",
+      "name": "Precision",
+      "nodeId": 105737,
+      "before": 5,
+      "after": 3
+    },
+    {
+      "id": "rogue-241",
+      "name": "Master of Deception",
+      "nodeId": 105761,
+      "before": 5,
+      "after": 3
+    },
+    {
+      "id": "rogue-261",
+      "name": "Opportunity",
+      "nodeId": 105760,
+      "before": 5,
+      "after": 2
+    }
+  ],
+  "tooltip_changed": [
+    {
+      "id": "rogue-203",
+      "name": "Improved Gouge",
+      "nodeId": 105742,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Increases the duration of your Gouge ability by 1.5 sec.",
+          "after": "Increases the duration of your Gouge ability by 0.5 sec."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases the duration of your Gouge ability by 1 sec."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Increases the duration of your Gouge ability by 1.5 sec."
+        }
+      ]
+    },
+    {
+      "id": "rogue-272",
+      "name": "Remorseless Attacks",
+      "nodeId": 105723,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "",
+          "after": "After killing a non-trivial enemy, gives you a 20% increased critical strike chance on your next Sinister Strike, Backstab, Ambush, Mutilate, or Ghostly Strike. Lasts 20 sec."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "After killing a non-trivial enemy, gives you a 40% increased critical strike chance on your next Sinister Strike, Backstab, Ambush, Mutilate, or Ghostly Strike. Lasts 20 sec."
+        }
+      ]
+    },
+    {
+      "id": "rogue-270",
+      "name": "Malice",
+      "nodeId": 105722,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Increases your critical strike chance with all attacks and Poisons by 5%.",
+          "after": "Increases your critical strike chance with all attacks and Poisons by 1%."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases your critical strike chance with all attacks and Poisons by 2%."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Increases your critical strike chance with all attacks and Poisons by 3%."
+        },
+        {
+          "rank": 4,
+          "before": "",
+          "after": "Increases your critical strike chance with all attacks and Poisons by 4%."
+        },
+        {
+          "rank": 5,
+          "before": "",
+          "after": "Increases your critical strike chance with all attacks and Poisons by 5%."
+        }
+      ]
+    },
+    {
+      "id": "rogue-273",
+      "name": "Ruthlessness",
+      "nodeId": 105721,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Gives your finishing moves a 60% chance to add a Combo Point to your target.",
+          "after": "Gives your finishing moves a 20% chance to add a Combo Point to your target."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Gives your finishing moves a 40% chance to add a Combo Point to your target."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Gives your finishing moves a 60% chance to add a Combo Point to your target."
+        }
+      ]
+    },
+    {
+      "id": "rogue-274",
+      "name": "Murder",
+      "nodeId": 105720,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Increases all damage dealt by 4% against Humanoid and Giant targets.",
+          "after": "Increases all damage dealt by 2% against Humanoid and Giant targets."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases all damage dealt by 4% against Humanoid and Giant targets."
+        }
+      ]
+    },
+    {
+      "id": "rogue-277",
+      "name": "Improved Slice and Dice",
+      "nodeId": 105739,
+      "ranks": [
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases the duration of your Slice and Dice ability by 30%."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Increases the duration of your Slice and Dice ability by 45%."
+        }
+      ]
+    },
+    {
+      "id": "rogue-281",
+      "name": "Relentless Strikes",
+      "nodeId": 105759,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "",
+          "after": "Your finishing moves have a 20% chance per Combo Point to restore 25 Energy."
+        }
+      ]
+    },
+    {
+      "id": "rogue-278",
+      "name": "Improved Expose Armor",
+      "nodeId": 105717,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Reduces the Energy cost of your Expose Armor ability by 10, and refunds 2 Combo Points when cast with 5 Combo Points.",
+          "after": "Reduces the Energy cost of your Expose Armor ability by 5, and refunds 1 Combo Point when cast with 5 Combo Points."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Reduces the Energy cost of your Expose Armor ability by 10, and refunds 2 Combo Points when cast with 5 Combo Points."
+        }
+      ]
+    },
+    {
+      "id": "rogue-269",
+      "name": "Lethality",
+      "nodeId": 105716,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Increases the critical strike damage bonus of your Sinister Strike, Gouge, Backstab, Mutilate, Ghostly Strike, and Hemorrhage abilities by 6%.",
+          "after": "Increases the critical strike damage bonus of your Sinister Strike, Gouge, Backstab, Mutilate, Ghostly Strike, and Hemorrhage abilities by 4%."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases the critical strike damage bonus of your Sinister Strike, Gouge, Backstab, Mutilate, Ghostly Strike, and Hemorrhage abilities by 8%."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Increases the critical strike damage bonus of your Sinister Strike, Gouge, Backstab, Mutilate, Ghostly Strike, and Hemorrhage abilities by 12%."
+        },
+        {
+          "rank": 4,
+          "before": "",
+          "after": "Increases the critical strike damage bonus of your Sinister Strike, Gouge, Backstab, Mutilate, Ghostly Strike, and Hemorrhage abilities by 16%."
+        },
+        {
+          "rank": 5,
+          "before": "",
+          "after": "Increases the critical strike damage bonus of your Sinister Strike, Gouge, Backstab, Mutilate, Ghostly Strike, and Hemorrhage abilities by 20%."
+        }
+      ]
+    },
+    {
+      "id": "rogue-682",
+      "name": "Vile Poisons",
+      "nodeId": 105714,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Increases the damage dealt by your poisons by 20% and gives your poisons an additional 40% chance to resist dispel effects.",
+          "after": "Increases the damage dealt by your poisons by 4% and gives your poisons an additional 8% chance to resist dispel effects."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases the damage dealt by your poisons by 8% and gives your poisons an additional 16% chance to resist dispel effects."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Increases the damage dealt by your poisons by 12% and gives your poisons an additional 24% chance to resist dispel effects."
+        },
+        {
+          "rank": 4,
+          "before": "",
+          "after": "Increases the damage dealt by your poisons by 16% and gives your poisons an additional 32% chance to resist dispel effects."
+        },
+        {
+          "rank": 5,
+          "before": "",
+          "after": "Increases the damage dealt by your poisons by 20% and gives your poisons an additional 40% chance to resist dispel effects."
+        }
+      ]
+    },
+    {
+      "id": "rogue-268",
+      "name": "Improved Poisons",
+      "nodeId": 105713,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Increases the chance to apply Poisons to your target by 10%, and gives Poison applications a 50% chance to not consume a charge.",
+          "after": "Increases the chance to apply Poisons to your target by 2%, and gives Poison applications a 10% chance to not consume a charge."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases the chance to apply Poisons to your target by 4%, and gives Poison applications a 20% chance to not consume a charge."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Increases the chance to apply Poisons to your target by 6%, and gives Poison applications a 30% chance to not consume a charge."
+        },
+        {
+          "rank": 4,
+          "before": "",
+          "after": "Increases the chance to apply Poisons to your target by 8%, and gives Poison applications a 40% chance to not consume a charge."
+        },
+        {
+          "rank": 5,
+          "before": "",
+          "after": "Increases the chance to apply Poisons to your target by 10%, and gives Poison applications a 50% chance to not consume a charge."
+        }
+      ]
+    },
+    {
+      "id": "rogue-382",
+      "name": "Vigor",
+      "nodeId": 105718,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Increases your maximum Energy by 10.",
+          "after": "Increases your maximum Energy by 5."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases your maximum Energy by 10."
+        }
+      ]
+    },
+    {
+      "id": "rogue-279",
+      "name": "Improved Kidney Shot",
+      "nodeId": 105711,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Enemies Stunned by your Kidney Shot ability take 10% increased damage from your poisons and attacks.",
+          "after": "Enemies Stunned by your Kidney Shot ability take 5% increased damage from your poisons and attacks."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Enemies Stunned by your Kidney Shot ability take 10% increased damage from your poisons and attacks."
+        }
+      ]
+    },
+    {
+      "id": "rogue-283",
+      "name": "Seal Fate",
+      "nodeId": 105710,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "",
+          "after": "Your critical strikes from abilities that add Combo Points have a 20% chance to add an additional Combo Point."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Your critical strikes from abilities that add Combo Points have a 40% chance to add an additional Combo Point."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Your critical strikes from abilities that add Combo Points have a 60% chance to add an additional Combo Point."
+        },
+        {
+          "rank": 4,
+          "before": "",
+          "after": "Your critical strikes from abilities that add Combo Points have a 80% chance to add an additional Combo Point."
+        },
+        {
+          "rank": 5,
+          "before": "",
+          "after": "Your critical strikes from abilities that add Combo Points have a 100% chance to add an additional Combo Point."
+        }
+      ]
+    },
+    {
+      "id": "rogue-276",
+      "name": "Improved Eviscerate",
+      "nodeId": 105708,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Increases the damage done by your Eviscerate ability by 20%.",
+          "after": "Increases the damage done by your Eviscerate ability by 7%."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases the damage done by your Eviscerate ability by 13%."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Increases the damage done by your Eviscerate ability by 20%."
+        }
+      ]
+    },
+    {
+      "id": "rogue-201",
+      "name": "Improved Sinister Strike",
+      "nodeId": 105741,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Reduces the Energy cost of your Sinister Strike ability by 5.",
+          "after": "Reduces the Energy cost of your Sinister Strike ability by 3."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Reduces the Energy cost of your Sinister Strike ability by 5."
+        }
+      ]
+    },
+    {
+      "id": "rogue-186",
+      "name": "Lightning Reflexes",
+      "nodeId": 113398,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Increases your Dodge chance by 5%.",
+          "after": "Increases your Dodge chance by 1%."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases your Dodge chance by 2%."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Increases your Dodge chance by 3%."
+        },
+        {
+          "rank": 4,
+          "before": "",
+          "after": "Increases your Dodge chance by 4%."
+        },
+        {
+          "rank": 5,
+          "before": "",
+          "after": "Increases your Dodge chance by 5%."
+        }
+      ]
+    },
+    {
+      "id": "rogue-202",
+      "name": "Puncturing Wounds",
+      "nodeId": 105719,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "",
+          "after": "Increases the critical strike chance of your Backstab by 10% and your Mutilate by 5%, and gives Backstab a 15% chance to add an additional Combo Point."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases the critical strike chance of your Backstab by 20% and your Mutilate by 10%, and gives Backstab a 30% chance to add an additional Combo Point."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Increases the critical strike chance of your Backstab by 30% and your Mutilate by 15%, and gives Backstab a 45% chance to add an additional Combo Point."
+        }
+      ]
+    },
+    {
+      "id": "rogue-187",
+      "name": "Deflection",
+      "nodeId": 105738,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Increases your Parry chance by 1%.",
+          "after": "Increases your Parry chance by 2%."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases your Parry chance by 4%."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Increases your Parry chance by 6%."
+        }
+      ]
+    },
+    {
+      "id": "rogue-181",
+      "name": "Precision",
+      "nodeId": 105737,
+      "ranks": [
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Improves your chance to hit by 2%."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Improves your chance to hit by 3%."
+        }
+      ]
+    },
+    {
+      "id": "rogue-204",
+      "name": "Endurance",
+      "nodeId": 105736,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Reduces the cooldown of your Sprint and Evasion abilities by 60%.",
+          "after": "Reduces the cooldown of your Sprint and Evasion abilities by 30%."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Reduces the cooldown of your Sprint and Evasion abilities by 60%."
+        }
+      ]
+    },
+    {
+      "id": "rogue-301",
+      "name": "Riposte",
+      "nodeId": 105735,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "A strike that becomes active after parrying an opponent's attack. This attack deals 150% weapon damage and disarms the target.",
+          "after": "A strike that becomes active after parrying an opponent's attack. This attack deals 150% weapon damage and disarms the target for 6 sec."
+        }
+      ]
+    },
+    {
+      "id": "rogue-222",
+      "name": "Improved Sprint",
+      "nodeId": 105732,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Gives a 100% chance to remove all movement impairing effects when you activate your Sprint ability.",
+          "after": "Gives a 50% chance to remove all movement impairing effects when you activate your Sprint ability."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Gives a 100% chance to remove all movement impairing effects when you activate your Sprint ability."
+        }
+      ]
+    },
+    {
+      "id": "rogue-206",
+      "name": "Improved Kick",
+      "nodeId": 105733,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Gives your Kick ability a 100% chance to Silence the target for 2 sec.",
+          "after": "Gives your Kick ability a 50% chance to Silence the target for 2 sec."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Gives your Kick ability a 100% chance to Silence the target for 2 sec."
+        }
+      ]
+    },
+    {
+      "id": "rogue-221",
+      "name": "Dual Wield Specialization",
+      "nodeId": 105740,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Increases the damage done by your off-hand weapon by 50%.",
+          "after": "Increases the damage done by your off-hand weapon by 5%."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases the damage done by your off-hand weapon by 10%."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Increases the damage done by your off-hand weapon by 15%."
+        },
+        {
+          "rank": 4,
+          "before": "",
+          "after": "Increases the damage done by your off-hand weapon by 20%."
+        },
+        {
+          "rank": 5,
+          "before": "",
+          "after": "Increases the damage done by your off-hand weapon by 25%."
+        }
+      ]
+    },
+    {
+      "id": "rogue-242",
+      "name": "Hack and Slash",
+      "nodeId": 105727,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Gives your melee weapon attacks a benefit depending on the weapon.\n\n Axe/Sword: Your successful\n melee attacks have a 5% chance\n to trigger an extra attack on the \n target.\n\n Dagger/Fist: Increases your\n critical strike chance by 5%.\n\n Mace: Your attacks ignore 15% of\n your target's armor.",
+          "after": "Gives your melee weapon attacks a benefit depending on the weapon.\n\n Axe/Sword: Your successful\n melee attacks have a 1% chance\n to trigger an extra attack on the \n target.\n\n Dagger/Fist: Increases your\n critical strike chance by 1%.\n\n Mace: Your attacks ignore 3% of\n your target's armor."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Gives your melee weapon attacks a benefit depending on the weapon.\n\n Axe/Sword: Your successful\n melee attacks have a 2% chance\n to trigger an extra attack on the \n target.\n\n Dagger/Fist: Increases your\n critical strike chance by 2%.\n\n Mace: Your attacks ignore 6% of\n your target's armor."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Gives your melee weapon attacks a benefit depending on the weapon.\n\n Axe/Sword: Your successful\n melee attacks have a 3% chance\n to trigger an extra attack on the \n target.\n\n Dagger/Fist: Increases your\n critical strike chance by 3%.\n\n Mace: Your attacks ignore 9% of\n your target's armor."
+        },
+        {
+          "rank": 4,
+          "before": "",
+          "after": "Gives your melee weapon attacks a benefit depending on the weapon.\n\n Axe/Sword: Your successful\n melee attacks have a 4% chance\n to trigger an extra attack on the \n target.\n\n Dagger/Fist: Increases your\n critical strike chance by 4%.\n\n Mace: Your attacks ignore 12% of\n your target's armor."
+        },
+        {
+          "rank": 5,
+          "before": "",
+          "after": "Gives your melee weapon attacks a benefit depending on the weapon.\n\n Axe/Sword: Your successful\n melee attacks have a 5% chance\n to trigger an extra attack on the \n target.\n\n Dagger/Fist: Increases your\n critical strike chance by 5%.\n\n Mace: Your attacks ignore 15% of\n your target's armor."
+        }
+      ]
+    },
+    {
+      "id": "rogue-1703",
+      "name": "Weapon Expertise",
+      "nodeId": 105726,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Reduces the chance for your attacks to be Dodged or Parried by 2%.",
+          "after": "Reduces the chance for your attacks to be Dodged or Parried by 1%."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Reduces the chance for your attacks to be Dodged or Parried by 2%."
+        }
+      ]
+    },
+    {
+      "id": "rogue-1122",
+      "name": "Aggression",
+      "nodeId": 105730,
+      "ranks": [
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases the damage of your Sinister Strike, Backstab, and Eviscerate abilities by 4%."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Increases the damage of your Sinister Strike, Backstab, and Eviscerate abilities by 6%."
+        }
+      ]
+    },
+    {
+      "id": "rogue-244",
+      "name": "Camouflage",
+      "nodeId": 105756,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Reduces your speed penalty from your Stealth ability by 15% and reduces its cooldown by 6 sec.",
+          "after": "Reduces your speed penalty from your Stealth ability by 3% and reduces its cooldown by 2 sec."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Reduces your speed penalty from your Stealth ability by 6% and reduces its cooldown by 3 sec."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Reduces your speed penalty from your Stealth ability by 9% and reduces its cooldown by 4 sec."
+        },
+        {
+          "rank": 4,
+          "before": "",
+          "after": "Reduces your speed penalty from your Stealth ability by 12% and reduces its cooldown by 5 sec."
+        },
+        {
+          "rank": 5,
+          "before": "",
+          "after": "Reduces your speed penalty from your Stealth ability by 15% and reduces its cooldown by 6 sec."
+        }
+      ]
+    },
+    {
+      "id": "rogue-241",
+      "name": "Master of Deception",
+      "nodeId": 105761,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Reduces the chance enemies have to detect you while in Stealth mode as if you were 3 levels higher.",
+          "after": "Reduces the chance enemies have to detect you while in Stealth mode as if you were 1 level higher."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Reduces the chance enemies have to detect you while in Stealth mode as if you were 2 levels higher."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Reduces the chance enemies have to detect you while in Stealth mode as if you were 3 levels higher."
+        }
+      ]
+    },
+    {
+      "id": "rogue-261",
+      "name": "Opportunity",
+      "nodeId": 105760,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Increases the damage dealt by your Backstab, Garrote, Ambush, and Mutilate abilities by 10%.",
+          "after": "Increases the damage dealt by your Backstab, Garrote, Ambush, and Mutilate abilities by 5%."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases the damage dealt by your Backstab, Garrote, Ambush, and Mutilate abilities by 10%."
+        }
+      ]
+    },
+    {
+      "id": "rogue-246",
+      "name": "Setup",
+      "nodeId": 105751,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "",
+          "after": "Gives you a 33% chance to add a Combo Point to your target after Dodging one of their attacks or fully resisting one of their spells."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Gives you a 67% chance to add a Combo Point to your target after Dodging one of their attacks or fully resisting one of their spells."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Gives you a 100% chance to add a Combo Point to your target after Dodging one of their attacks or fully resisting one of their spells."
+        }
+      ]
+    },
+    {
+      "id": "rogue-247",
+      "name": "Elusiveness",
+      "nodeId": 105753,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Reduces the cooldown of your Vanish and Blind abilities by 90 sec.",
+          "after": "Reduces the cooldown of your Vanish and Blind abilities by 45 sec."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Reduces the cooldown of your Vanish and Blind abilities by 90 sec."
+        }
+      ]
+    },
+    {
+      "id": "rogue-263",
+      "name": "Improved Ambush",
+      "nodeId": 105749,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Increases the critical strike chance of your Ambush ability by 45%.",
+          "after": "Increases the critical strike chance of your Ambush ability by 15%."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases the critical strike chance of your Ambush ability by 30%."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Increases the critical strike chance of your Ambush ability by 45%."
+        }
+      ]
+    },
+    {
+      "id": "rogue-245",
+      "name": "Initiative",
+      "nodeId": 105755,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Gives you a 100% chance to add an additional combo point to your target when using your Ambush, Garrote, or Cheap Shot ability.",
+          "after": "Gives you a 33% chance to add an additional combo point to your target when using your Ambush, Garrote, or Cheap Shot ability."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Gives you a 67% chance to add an additional combo point to your target when using your Ambush, Garrote, or Cheap Shot ability."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Gives you a 100% chance to add an additional combo point to your target when using your Ambush, Garrote, or Cheap Shot ability."
+        }
+      ]
+    },
+    {
+      "id": "rogue-303",
+      "name": "Ghostly Strike",
+      "nodeId": 105754,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "A strike that deals 125% (180% if a Dagger is equipped in your Main Hand) weapon damage and increases your chance to dodge by 15% for 7 sec. Awards 1 combo points.",
+          "after": "A strike that deals 125% (180% if a Dagger is equipped in your Main Hand) weapon damage and increases your chance to dodge by 15% for 7 sec. Awards 1 combo point."
+        }
+      ]
+    },
+    {
+      "id": "rogue-1701",
+      "name": "Heightened Senses",
+      "nodeId": 105747,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Increases your Stealth detection as if you were 3 levels higher and reduces your chance to be hit by spells and ranged attacks by 6%.",
+          "after": "Increases your Stealth detection as if you were 1 level higher and reduces your chance to be hit by spells and ranged attacks by 2%."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases your Stealth detection as if you were 3 levels higher and reduces your chance to be hit by spells and ranged attacks by 4%."
+        }
+      ]
+    },
+    {
+      "id": "rogue-1123",
+      "name": "Serrated Blades",
+      "nodeId": 105752,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Causes your attacks to ignore 9% of your target's Armor and increases the damage dealt by your Rupture ability by 30%.",
+          "after": "Causes your attacks to ignore 3% of your target's Armor and increases the damage dealt by your Rupture ability by 10%."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Causes your attacks to ignore 6% of your target's Armor and increases the damage dealt by your Rupture ability by 20%."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Causes your attacks to ignore 9% of your target's Armor and increases the damage dealt by your Rupture ability by 30%."
+        }
+      ]
+    },
+    {
+      "id": "rogue-265",
+      "name": "Dirty Deeds",
+      "nodeId": 105745,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Reduces the Energy cost of your Cheap Shot and Garrote abilities by 20, and your Garrote ability no longer requires you to be behind your target.",
+          "after": "Reduces the Energy cost of your Cheap Shot and Garrote abilities by 10, and your Garrote ability no longer requires you to be behind your target."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Reduces the Energy cost of your Cheap Shot and Garrote abilities by 20, and your Garrote ability no longer requires you to be behind your target."
+        }
+      ]
+    },
+    {
+      "id": "rogue-681",
+      "name": "Hemorrhage",
+      "nodeId": 105748,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "An instant strike that deals 100% weapon damage (145% if a Dagger is equipped) and causes the target to take 15% increased Rupture damage from the Rogue. Lasts 15 sec. Awards 1 Combo Points.",
+          "after": "An instant strike that deals 100% weapon damage (145% if a Dagger is equipped) and causes the target to take 15% increased Rupture damage from the Rogue. Lasts 15 sec. Awards 1 Combo Point."
+        }
+      ]
+    }
+  ],
+  "prerequisite_changed": [
+    {
+      "id": "rogue-283",
+      "name": "Seal Fate",
+      "nodeId": 105710,
+      "before": [
+        "rogue-280"
+      ],
+      "after": []
+    },
+    {
+      "id": "rogue-381",
+      "name": "Premeditation",
+      "nodeId": 105743,
+      "before": [
+        "rogue-284"
+      ],
+      "after": []
+    }
+  ],
+  "unchanged": [
+    {
+      "id": "rogue-223",
+      "name": "Blade Flurry",
+      "nodeId": 105728
+    },
+    {
+      "id": "rogue-205",
+      "name": "Adrenaline Rush",
+      "nodeId": 105724
+    },
+    {
+      "id": "rogue-284",
+      "name": "Preparation",
+      "nodeId": 105746
+    }
+  ]
+}

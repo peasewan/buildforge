@@ -1,4 +1,6 @@
-import dataset from '../expansion/rogue-1.60.1.69913.json'
-import { createExpansionClass } from '../expansion/createClass'
+import dataset from '../rogue-beta-1.60.1.70291.json'
+import historicalDataset from '../expansion/rogue-1.60.1.69913.json'
+import { createReviewedExpansionClass } from '../expansion/reviewedExpansionClass'
 import { expansionProfiles } from '../expansion/profiles'
-export const rogueClass = createExpansionClass(expansionProfiles.find((profile) => profile.id === 'rogue')!, dataset)
+import type { CurrentClassSnapshot } from '../../lib/currentClassClientReconcile'
+export const rogueClass = createReviewedExpansionClass(expansionProfiles.find(profile => profile.id === 'rogue')!, dataset as CurrentClassSnapshot, historicalDataset)

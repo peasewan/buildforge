@@ -1,0 +1,56 @@
+{
+  "reviewedAt": "2026-10-09",
+  "review": "Raw client membership, identity, rank caps, complete licensed text, exact exceptions and legacy identity maps independently checked before promotion. Original source manifests retain acquisition status.",
+  "classes": [
+    {
+      "classId": "rogue",
+      "sourceClientBuild": "1.60.1.70291",
+      "path": "src/data/rogue-beta-1.60.1.70291.json",
+      "sha256": "19deec8f93c5d60b8eb9c7fa55ad3cca6e5125f2020a5160578204bdc32c6486",
+      "nodes": 53,
+      "rankDescriptions": 139,
+      "reviewStatus": "reviewed_promotion",
+      "rawSourcesPreserved": true
+    },
+    {
+      "classId": "priest",
+      "sourceClientBuild": "1.60.1.70291",
+      "path": "src/data/priest-beta-1.60.1.70291.json",
+      "sha256": "5ab114a088c9f09dec1162dedab4032b429fffef85b05da3fa8baeab7c918f71",
+      "nodes": 53,
+      "rankDescriptions": 148,
+      "reviewStatus": "reviewed_promotion",
+      "rawSourcesPreserved": true
+    },
+    {
+      "classId": "druid",
+      "sourceClientBuild": "1.60.1.70291",
+      "path": "src/data/druid-beta-1.60.1.70291.json",
+      "sha256": "51b1262868d4065f006899371940a79ce97c6c2416c4eae3b1752fa1c1b2006f",
+      "nodes": 52,
+      "rankDescriptions": 148,
+      "reviewStatus": "reviewed_promotion",
+      "rawSourcesPreserved": true
+    },
+    {
+      "classId": "warlock",
+      "sourceClientBuild": "1.60.1.70291",
+      "path": "src/data/warlock-beta-1.60.1.70291.json",
+      "sha256": "f37c43b89cae207a3a427bdbeafada0b6f67e5b3bad0e329ee43076adff1046b",
+      "nodes": 52,
+      "rankDescriptions": 149,
+      "reviewStatus": "reviewed_promotion",
+      "rawSourcesPreserved": true
+    },
+    {
+      "classId": "shaman",
+      "sourceClientBuild": "1.60.1.70291",
+      "path": "src/data/shaman-beta-1.60.1.70291.json",
+      "sha256": "a65bb9d5b27309c4c2872fb0d4f84ac079aadc4c29ecee9ef7765f13b774a378",
+      "nodes": 50,
+      "rankDescriptions": 148,
+      "reviewStatus": "reviewed_promotion",
+      "rawSourcesPreserved": true
+    }
+  ]
+}

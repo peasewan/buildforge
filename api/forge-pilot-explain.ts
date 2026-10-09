@@ -16,15 +16,18 @@ const CLASS_VERSIONS: Record<ClassId, { current: string; historical: readonly st
   hunter: { current: 'WoW Forever Beta 1.60.1.70291', historical: [BASELINE_CLASS_LABEL] },
   warrior: { current: 'wow_forever_beta_1.60.1.70291', historical: [BASELINE_DATA_VERSION] },
   mage: { current: BASELINE_DATA_VERSION, historical: [] },
-  druid: { current: BASELINE_CLASS_LABEL, historical: [] },
-  priest: { current: BASELINE_CLASS_LABEL, historical: [] },
-  rogue: { current: BASELINE_CLASS_LABEL, historical: [] },
-  shaman: { current: BASELINE_CLASS_LABEL, historical: [] },
-  warlock: { current: BASELINE_CLASS_LABEL, historical: [] },
+  druid: { current: 'WoW Forever Beta 1.60.1.70291', historical: [BASELINE_CLASS_LABEL] },
+  priest: { current: 'WoW Forever Beta 1.60.1.70291', historical: [BASELINE_CLASS_LABEL] },
+  rogue: { current: 'WoW Forever Beta 1.60.1.70291', historical: [BASELINE_CLASS_LABEL] },
+  shaman: { current: 'WoW Forever Beta 1.60.1.70291', historical: [BASELINE_CLASS_LABEL] },
+  warlock: { current: 'WoW Forever Beta 1.60.1.70291', historical: [BASELINE_CLASS_LABEL] },
 }
 const CURRENT_CLASS_SOURCE = 'https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291'
 const RANK_TEXT_SOURCE = 'https://talentsforever.com/data.json'
 const RANK_TEXT_LICENSE = 'https://creativecommons.org/licenses/by/4.0/'
+const REVIEWED_EXPANSION_COUNTS: Partial<Record<ClassId, { nodes: number; ranks: number }>> = {
+  rogue: { nodes: 53, ranks: 139 }, priest: { nodes: 53, ranks: 148 }, druid: { nodes: 52, ranks: 148 }, warlock: { nodes: 52, ranks: 149 }, shaman: { nodes: 50, ranks: 148 },
+}
 
 const responseHeaders = {
   'cache-control': 'no-store',
@@ -111,6 +114,11 @@ function baselineExplanation(input: ExplainInput) {
   const planningBoundary = 'Matching versions do not prove in-game compatibility. Point budgets, tier costs and prerequisite-rank rules are derived planning assumptions. Version metadata alone does not assess the saved allocation. Historical saved allocations need a removed-talent and changed-link review before reopening.'
   if (input.classId === 'hunter') return `${versionStatement} The 50 visible nodes of the 70291 tree use client records with community-reviewed membership: two off-grid records are excluded, and Intimidation's prerequisite direction has community evidence. All 148 rank descriptions are adapted from Talents Forever under CC BY 4.0 with community evidence. ${planningBoundary}`
   if (input.classId === 'warrior') return `${versionStatement} The complete 52-node 70291 client structure was reviewed. All 150 rank descriptions are adapted from Talents Forever under CC BY 4.0 with community evidence. ${planningBoundary}`
+  const coverage = REVIEWED_EXPANSION_COUNTS[input.classId]
+  if (coverage) {
+    const exceptions = input.classId === 'priest' ? ' One exact off-grid duplicate is excluded with community-reviewed visible membership.' : input.classId === 'warlock' ? ' Two active row/column mappings have community evidence; original raw coordinates are preserved.' : input.classId === 'druid' ? ' The Nature’s Majesty–Nature’s Splendor prerequisite direction has community evidence; exact raw edge records are preserved.' : ''
+    return `${versionStatement} The ${coverage.nodes}-node 70291 structure was reconciled against client records.${exceptions} All ${coverage.ranks} rank descriptions are adapted from Talents Forever under CC BY 4.0 with community evidence. ${planningBoundary}`
+  }
   return `${versionStatement} A matching data version does not establish whether a build is usable in game. The ${announcedBuild} client talent dataset is pending reconciliation; this saved build's impact from that patch cannot yet be determined.`
 }
 
@@ -194,9 +202,9 @@ export default {
     if (!input) return json({ error: 'Unsupported explanation request.' }, 400)
 
     const base = baselineExplanation(input)
-    const key = process.env.DEEPSEEK_API_KEY
+    const key = request.headers.get('x-buildforge-explanation-mode') === 'metadata-only' ? undefined : process.env.DEEPSEEK_API_KEY
     const selected = key ? await cachedReviewedFacts(input, key) : null
-    const currentClassReview = input.classId === 'hunter' || input.classId === 'warrior'
+    const currentClassReview = input.classId === 'hunter' || input.classId === 'warrior' || Boolean(REVIEWED_EXPANSION_COUNTS[input.classId])
     const noteLabel = currentClassReview ? 'Historical September 24 official' : 'Reviewed official'
     const note = selected?.length
       ? ` ${noteLabel} ${input.classId} notes mention: ${selected.map((index) => BETA_PATCH_REVIEW.notes[input.classId][index]).join(' ')} These class-level notes do not prove that the saved allocation uses an affected talent.`

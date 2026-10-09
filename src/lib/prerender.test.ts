@@ -73,7 +73,7 @@ const allPrerendered = () => [
 ] as const
 
 describe('prerender generation', () => {
-  it('uses current 70291 boundaries for Hunter and Warrior while keeping other classes as historical Level 20 snapshots', () => {
+  it('uses reviewed 70291 boundaries for current classes while retaining historical Mage scope', () => {
     const pages = publishedClassPages(PUBLISHED_CLASSES)
     expect(pages).toHaveLength(99)
     for (const { classDef, page } of pages) {
@@ -82,7 +82,7 @@ describe('prerender generation', () => {
       expect(html, page.slug).toContain(escapeHtml(page.description))
       expect(html, page.slug).toContain('2360696/1')
       expect(html, page.slug).toContain(`${classDef.name} official changes`)
-      if (classDef.id === 'hunter' || classDef.id === 'warrior') {
+      if (classDef.dataReview?.current) {
         expect(classDef.dataReview?.current, classDef.id).toBe(true)
         expect(classDef.verifiedBuild).toBe('1.60.1.70291')
         expect(html, page.slug).toContain('Reviewed talent structure through 1.60.1.70291')

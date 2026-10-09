@@ -3,6 +3,8 @@ import { join } from 'node:path'
 import { cleanup, fireEvent, render, screen, within } from '@testing-library/react'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import ClassCalculatorPage from './ClassCalculatorPage'
+import { priestClass } from './data/classes/priest'
+import { encodePlannerBuild } from './lib/talentPlanner'
 import { hunterClass } from './data/classes/hunter'
 import { HUNTER_FIXTURE_AOE_BUILD_ID, HUNTER_FIXTURE_STORAGE_KEY, hunterClassFixture } from './data/fixtures/hunterClass.fixture'
 import { assertUniquePageIntents } from './lib/classPage'
@@ -58,7 +60,9 @@ describe('ClassCalculatorPage renders any class from ClassDefinition', () => {
     const recovery = screen.getByRole('complementary', {name:'Historical build recovery'})
     expect(recovery.textContent).toContain('Earlier talent 2/5')
     expect(screen.getAllByText('0 / 11').length).toBeGreaterThan(0)
+    expect(screen.getByRole('button', {name:/Add rank to Fixture Tracking/i}).hasAttribute('disabled')).toBe(true)
     fireEvent.click(screen.getByRole('button', {name:/Add rank to Fixture Tracking/i}))
+    expect(screen.getAllByText('0 / 11').length).toBeGreaterThan(0)
     expect(location.search).toContain('old-node.2')
     expect(within(recovery).getByRole('link').getAttribute('href')).toContain('dataset=old-build')
     fireEvent.click(screen.getByRole('button', {name:'Start a new current build'}))
@@ -404,5 +408,35 @@ describe('Hunter fixture shape', () => {
     for (const id of hunterClassFixture.recommendedBuildIds) {
       expect(hunterClassFixture.builds.map((build) => build.id)).toContain(id)
     }
+  })
+})
+
+
+describe('current Priest and historical shared-rank identity', () => {
+  beforeEach(() => { localStorage.clear(); history.replaceState({}, '', '/priest'); HTMLElement.prototype.scrollIntoView = vi.fn() })
+  afterEach(cleanup)
+  it('archives a versionless old code even when unchanged IDs are legal in the new tree', () => {
+    const code = 'priest-465.5~priest-482.2~priest-463.3~priest-501.1'
+    history.replaceState({}, '', `/priest?build=${code}&level=20`)
+    render(<ClassCalculatorPage classDef={priestClass} />)
+    expect(screen.getByRole('complementary', { name: 'Historical build recovery' }).textContent).toContain('1.60.1.69913')
+    const starter = priestClass.talents.find(talent => talent.requiredTreePoints === 0 && !talent.prerequisite?.length)!
+    expect(screen.getByRole('button', { name: `Add rank to ${starter.name}` }).hasAttribute('disabled')).toBe(true)
+    fireEvent.click(screen.getByRole('button', { name: 'Start a new current build' }))
+    expect(screen.queryByRole('complementary', { name: 'Historical build recovery' })).toBeNull()
+    expect(new URLSearchParams(location.search).get('dataset')).toBe('1.60.1.70291')
+    fireEvent.click(screen.getByRole('button', { name: `Add rank to ${starter.name}` }))
+    expect(new URLSearchParams(location.search).get('build')).toBe(encodePlannerBuild({ [starter.id]: 1 }))
+    cleanup()
+    render(<ClassCalculatorPage classDef={priestClass} />)
+    expect(screen.queryByRole('complementary', { name: 'Historical build recovery' })).toBeNull()
+    expect(screen.getAllByText('1 / 11').length).toBeGreaterThan(0)
+  })
+  it('loads an explicitly current, version-tagged code instead of its historical interpretation', () => {
+    const build = priestClass.builds.find(build => build.level === 20)!
+    history.replaceState({}, '', `/priest?build=${encodePlannerBuild(build.build)}&level=20&dataset=1.60.1.70291`)
+    render(<ClassCalculatorPage classDef={priestClass} />)
+    expect(screen.queryByRole('complementary', { name: 'Historical build recovery' })).toBeNull()
+    expect(screen.getAllByText('11 / 11').length).toBeGreaterThan(0)
   })
 })

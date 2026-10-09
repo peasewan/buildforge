@@ -1,0 +1,1201 @@
+{
+  "from": "1.60.1.69913",
+  "to": "1.60.1.70291",
+  "summary": {
+    "added": 13,
+    "removed": 7,
+    "moved": 14,
+    "rank_changed": 7,
+    "tooltip_changed": 34,
+    "prerequisite_changed": 3,
+    "unchanged": 3
+  },
+  "added": [
+    {
+      "id": "priest-discipline-power-in-light",
+      "name": "Power in Light",
+      "nodeId": 110853
+    },
+    {
+      "id": "priest-discipline-twin-disciplines",
+      "name": "Twin Disciplines",
+      "nodeId": 105849
+    },
+    {
+      "id": "priest-discipline-holy-precision",
+      "name": "Holy Precision",
+      "nodeId": 110852
+    },
+    {
+      "id": "priest-discipline-soul-warding",
+      "name": "Soul Warding",
+      "nodeId": 105839
+    },
+    {
+      "id": "priest-discipline-penance",
+      "name": "Penance",
+      "nodeId": 105834
+    },
+    {
+      "id": "priest-discipline-renewed-hope",
+      "name": "Renewed Hope",
+      "nodeId": 105835
+    },
+    {
+      "id": "priest-discipline-divine-aegis",
+      "name": "Divine Aegis",
+      "nodeId": 105840
+    },
+    {
+      "id": "priest-holy-binding-heal",
+      "name": "Binding Heal",
+      "nodeId": 105856
+    },
+    {
+      "id": "priest-holy-litany-of-light",
+      "name": "Litany of Light",
+      "nodeId": 105855
+    },
+    {
+      "id": "priest-holy-prayer-of-mending",
+      "name": "Prayer of Mending",
+      "nodeId": 105851
+    },
+    {
+      "id": "priest-shadow-improved-mind-flay",
+      "name": "Improved Mind Flay",
+      "nodeId": 105825
+    },
+    {
+      "id": "priest-shadow-devouring-contagion",
+      "name": "Devouring Contagion",
+      "nodeId": 105819
+    },
+    {
+      "id": "priest-shadow-early-demise",
+      "name": "Early Demise",
+      "nodeId": 110854
+    }
+  ],
+  "removed": [
+    {
+      "id": "priest-342",
+      "name": "Unbreakable Will",
+      "nodeId": 342
+    },
+    {
+      "id": "priest-344",
+      "name": "Improved Power Word: Fortitude",
+      "nodeId": 344
+    },
+    {
+      "id": "priest-351",
+      "name": "Divine Spirit",
+      "nodeId": 351
+    },
+    {
+      "id": "priest-1202",
+      "name": "Force of Will",
+      "nodeId": 1202
+    },
+    {
+      "id": "priest-413",
+      "name": "Improved Prayer of Healing",
+      "nodeId": 413
+    },
+    {
+      "id": "priest-1637",
+      "name": "Lightwell",
+      "nodeId": 1637
+    },
+    {
+      "id": "priest-1638",
+      "name": "Improved Vampiric Embrace",
+      "nodeId": 1638
+    }
+  ],
+  "moved": [
+    {
+      "id": "priest-345",
+      "name": "Wand Specialization",
+      "nodeId": 105850,
+      "before": {
+        "branch": "discipline",
+        "row": 1,
+        "column": 3,
+        "requiredTreePoints": 0
+      },
+      "after": {
+        "branch": "discipline",
+        "row": 1,
+        "column": 2,
+        "requiredTreePoints": 0
+      }
+    },
+    {
+      "id": "priest-341",
+      "name": "Mental Agility",
+      "nodeId": 105842,
+      "before": {
+        "branch": "discipline",
+        "row": 4,
+        "column": 2,
+        "requiredTreePoints": 15
+      },
+      "after": {
+        "branch": "discipline",
+        "row": 3,
+        "column": 1,
+        "requiredTreePoints": 10
+      }
+    },
+    {
+      "id": "priest-347",
+      "name": "Meditation",
+      "nodeId": 105843,
+      "before": {
+        "branch": "discipline",
+        "row": 3,
+        "column": 3,
+        "requiredTreePoints": 10
+      },
+      "after": {
+        "branch": "discipline",
+        "row": 3,
+        "column": 4,
+        "requiredTreePoints": 10
+      }
+    },
+    {
+      "id": "priest-1201",
+      "name": "Mental Strength",
+      "nodeId": 105837,
+      "before": {
+        "branch": "discipline",
+        "row": 5,
+        "column": 2,
+        "requiredTreePoints": 20
+      },
+      "after": {
+        "branch": "discipline",
+        "row": 4,
+        "column": 2,
+        "requiredTreePoints": 15
+      }
+    },
+    {
+      "id": "priest-463",
+      "name": "Shadow Focus",
+      "nodeId": 110851,
+      "before": {
+        "branch": "shadow",
+        "row": 2,
+        "column": 3,
+        "requiredTreePoints": 5
+      },
+      "after": {
+        "branch": "shadow",
+        "row": 1,
+        "column": 1,
+        "requiredTreePoints": 0
+      }
+    },
+    {
+      "id": "priest-464",
+      "name": "Blackout",
+      "nodeId": 105832,
+      "before": {
+        "branch": "shadow",
+        "row": 1,
+        "column": 3,
+        "requiredTreePoints": 0
+      },
+      "after": {
+        "branch": "shadow",
+        "row": 1,
+        "column": 2,
+        "requiredTreePoints": 0
+      }
+    },
+    {
+      "id": "priest-465",
+      "name": "Spirit Tap",
+      "nodeId": 105833,
+      "before": {
+        "branch": "shadow",
+        "row": 1,
+        "column": 2,
+        "requiredTreePoints": 0
+      },
+      "after": {
+        "branch": "shadow",
+        "row": 1,
+        "column": 3,
+        "requiredTreePoints": 0
+      }
+    },
+    {
+      "id": "priest-482",
+      "name": "Improved Shadow Word: Pain",
+      "nodeId": 105830,
+      "before": {
+        "branch": "shadow",
+        "row": 2,
+        "column": 2,
+        "requiredTreePoints": 5
+      },
+      "after": {
+        "branch": "shadow",
+        "row": 2,
+        "column": 3,
+        "requiredTreePoints": 5
+      }
+    },
+    {
+      "id": "priest-881",
+      "name": "Shadow Reach",
+      "nodeId": 105829,
+      "before": {
+        "branch": "shadow",
+        "row": 4,
+        "column": 3,
+        "requiredTreePoints": 15
+      },
+      "after": {
+        "branch": "shadow",
+        "row": 2,
+        "column": 4,
+        "requiredTreePoints": 5
+      }
+    },
+    {
+      "id": "priest-481",
+      "name": "Improved Mind Blast",
+      "nodeId": 105827,
+      "before": {
+        "branch": "shadow",
+        "row": 3,
+        "column": 2,
+        "requiredTreePoints": 10
+      },
+      "after": {
+        "branch": "shadow",
+        "row": 3,
+        "column": 1,
+        "requiredTreePoints": 10
+      }
+    },
+    {
+      "id": "priest-542",
+      "name": "Improved Psychic Scream",
+      "nodeId": 105828,
+      "before": {
+        "branch": "shadow",
+        "row": 3,
+        "column": 1,
+        "requiredTreePoints": 10
+      },
+      "after": {
+        "branch": "shadow",
+        "row": 3,
+        "column": 2,
+        "requiredTreePoints": 10
+      }
+    },
+    {
+      "id": "priest-483",
+      "name": "Improved Fade",
+      "nodeId": 105823,
+      "before": {
+        "branch": "shadow",
+        "row": 4,
+        "column": 2,
+        "requiredTreePoints": 15
+      },
+      "after": {
+        "branch": "shadow",
+        "row": 4,
+        "column": 1,
+        "requiredTreePoints": 15
+      }
+    },
+    {
+      "id": "priest-484",
+      "name": "Vampiric Embrace",
+      "nodeId": 105820,
+      "before": {
+        "branch": "shadow",
+        "row": 5,
+        "column": 2,
+        "requiredTreePoints": 20
+      },
+      "after": {
+        "branch": "shadow",
+        "row": 4,
+        "column": 2,
+        "requiredTreePoints": 15
+      }
+    },
+    {
+      "id": "priest-461",
+      "name": "Shadow Weaving",
+      "nodeId": 105821,
+      "before": {
+        "branch": "shadow",
+        "row": 4,
+        "column": 4,
+        "requiredTreePoints": 15
+      },
+      "after": {
+        "branch": "shadow",
+        "row": 4,
+        "column": 3,
+        "requiredTreePoints": 15
+      }
+    }
+  ],
+  "rank_changed": [
+    {
+      "id": "priest-345",
+      "name": "Wand Specialization",
+      "nodeId": 105850,
+      "before": 5,
+      "after": 2
+    },
+    {
+      "id": "priest-352",
+      "name": "Silent Resolve",
+      "nodeId": 105848,
+      "before": 5,
+      "after": 3
+    },
+    {
+      "id": "priest-341",
+      "name": "Mental Agility",
+      "nodeId": 105842,
+      "before": 5,
+      "after": 3
+    },
+    {
+      "id": "priest-410",
+      "name": "Twilight Focus",
+      "nodeId": 105867,
+      "before": 2,
+      "after": 3
+    },
+    {
+      "id": "priest-404",
+      "name": "Spiritual Healing",
+      "nodeId": 105852,
+      "before": 5,
+      "after": 3
+    },
+    {
+      "id": "priest-881",
+      "name": "Shadow Reach",
+      "nodeId": 105829,
+      "before": 3,
+      "after": 2
+    },
+    {
+      "id": "priest-461",
+      "name": "Shadow Weaving",
+      "nodeId": 105821,
+      "before": 5,
+      "after": 3
+    }
+  ],
+  "tooltip_changed": [
+    {
+      "id": "priest-345",
+      "name": "Wand Specialization",
+      "nodeId": 105850,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Increases your damage with Wands by 25%.",
+          "after": "Increases your damage with Wands by 13%."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases your damage with Wands by 25%."
+        }
+      ]
+    },
+    {
+      "id": "priest-352",
+      "name": "Silent Resolve",
+      "nodeId": 105848,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Reduces the threat generated by your Holy spells by 30% and reduces the duration of Stun, Fear, and Silence effects inflicted on you by 15%.",
+          "after": "Reduces the threat generated by your Holy spells by 10% and reduces the duration of Stun, Fear, and Silence effects inflicted on you by 5%."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Reduces the threat generated by your Holy spells by 20% and reduces the duration of Stun, Fear, and Silence effects inflicted on you by 10%."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Reduces the threat generated by your Holy spells by 30% and reduces the duration of Stun, Fear, and Silence effects inflicted on you by 15%."
+        }
+      ]
+    },
+    {
+      "id": "priest-343",
+      "name": "Improved Power Word: Shield",
+      "nodeId": 105846,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Increases the damage absorbed by your Power Word: Shield by 20%.",
+          "after": "Increases the damage absorbed by your Power Word: Shield by 7%."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases the damage absorbed by your Power Word: Shield by 14%."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Increases the damage absorbed by your Power Word: Shield by 20%."
+        }
+      ]
+    },
+    {
+      "id": "priest-321",
+      "name": "Martyrdom",
+      "nodeId": 105845,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "",
+          "after": "Gives you a 50% chance to gain Focused Casting for 6 sec after being the victim of a melee or ranged critical strike. The Focused Casting effect prevents you from losing casting time when taking damage and increases your resistance to Interrupt effects by 20%."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Gives you a 100% chance to gain Focused Casting for 6 sec after being the victim of a melee or ranged critical strike. The Focused Casting effect prevents you from losing casting time when taking damage and increases your resistance to Interrupt effects by 20%."
+        }
+      ]
+    },
+    {
+      "id": "priest-341",
+      "name": "Mental Agility",
+      "nodeId": 105842,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Reduces the mana cost of your Smite, Holy Fire, and instant cast spells by 10%.",
+          "after": "Reduces the mana cost of your Smite, Holy Fire, and instant cast spells by 3%."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Reduces the mana cost of your Smite, Holy Fire, and instant cast spells by 7%."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Reduces the mana cost of your Smite, Holy Fire, and instant cast spells by 10%."
+        }
+      ]
+    },
+    {
+      "id": "priest-348",
+      "name": "Inner Focus",
+      "nodeId": 105844,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "When activated, reduces the Mana cost of your next spell by 100% and increases its critical effect chance by 25% if it is capable of a critical effect.",
+          "after": "When activated, reduces the Mana cost of your next spell by 100% and increases its critical effect chance by 25% if it is a non-periodic spell and capable of a critical effect."
+        }
+      ]
+    },
+    {
+      "id": "priest-347",
+      "name": "Meditation",
+      "nodeId": 105843,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Allows 50% of your Mana regeneration to continue while casting.",
+          "after": "Allows 17% of your Mana regeneration to continue while casting."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Allows 33% of your Mana regeneration to continue while casting."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Allows 50% of your Mana regeneration to continue while casting."
+        }
+      ]
+    },
+    {
+      "id": "priest-346",
+      "name": "Improved Inner Fire",
+      "nodeId": 105841,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Increases the Armor bonus of your Inner Fire spell by 45% and increases its total charges by 12.",
+          "after": "Increases the Armor bonus of your Inner Fire spell by 15% and increases its total charges by 4."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases the Armor bonus of your Inner Fire spell by 30% and increases its total charges by 8."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Increases the Armor bonus of your Inner Fire spell by 45% and increases its total charges by 12."
+        }
+      ]
+    },
+    {
+      "id": "priest-1201",
+      "name": "Mental Strength",
+      "nodeId": 105837,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Increases your total Intellect by 15%.",
+          "after": "Increases your total Intellect by 3%."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases your total Intellect by 6%."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Increases your total Intellect by 9%."
+        },
+        {
+          "rank": 4,
+          "before": "",
+          "after": "Increases your total Intellect by 12%."
+        },
+        {
+          "rank": 5,
+          "before": "",
+          "after": "Increases your total Intellect by 15%."
+        }
+      ]
+    },
+    {
+      "id": "priest-350",
+      "name": "Improved Mana Burn",
+      "nodeId": 105838,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Reduces the casting time of your Mana Burn spell by 1.1 sec.",
+          "after": "Reduces the casting time of your Mana Burn spell by 0.5 sec."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Reduces the casting time of your Mana Burn spell by 1.0 sec."
+        }
+      ]
+    },
+    {
+      "id": "priest-410",
+      "name": "Twilight Focus",
+      "nodeId": 105867,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Gives you a 70% chance to avoid interruption caused by damage while casting any spell.",
+          "after": "Gives you a 23% chance to avoid interruption caused by damage while casting any spell."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Gives you a 47% chance to avoid interruption caused by damage while casting any spell."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Gives you a 70% chance to avoid interruption caused by damage while casting any spell."
+        }
+      ]
+    },
+    {
+      "id": "priest-406",
+      "name": "Improved Renew",
+      "nodeId": 105866,
+      "ranks": [
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases the amount healed by your Renew spell by 10%."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Increases the amount healed by your Renew spell by 15%."
+        }
+      ]
+    },
+    {
+      "id": "priest-401",
+      "name": "Holy Specialization",
+      "nodeId": 110855,
+      "ranks": [
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases the critical effect chance of your Holy spells by 2%."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Increases the critical effect chance of your Holy spells by 3%."
+        },
+        {
+          "rank": 4,
+          "before": "",
+          "after": "Increases the critical effect chance of your Holy spells by 4%."
+        },
+        {
+          "rank": 5,
+          "before": "",
+          "after": "Increases the critical effect chance of your Holy spells by 5%."
+        }
+      ]
+    },
+    {
+      "id": "priest-411",
+      "name": "Spell Warding",
+      "nodeId": 105864,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Reduces all spell damage taken by 10%.",
+          "after": "Reduces all spell damage taken by 2%."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Reduces all spell damage taken by 4%."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Reduces all spell damage taken by 6%."
+        },
+        {
+          "rank": 4,
+          "before": "",
+          "after": "Reduces all spell damage taken by 8%."
+        },
+        {
+          "rank": 5,
+          "before": "",
+          "after": "Reduces all spell damage taken by 10%."
+        }
+      ]
+    },
+    {
+      "id": "priest-1181",
+      "name": "Divine Fury",
+      "nodeId": 105863,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Reduces the casting time of your Smite, Holy Fire, Heal, and Greater Heal spells by 0.5 sec.",
+          "after": "Reduces the casting time of your Smite, Holy Fire, Heal, and Greater Heal spells by 0.1 sec."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Reduces the casting time of your Smite, Holy Fire, Heal, and Greater Heal spells by 0.2 sec."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Reduces the casting time of your Smite, Holy Fire, Heal, and Greater Heal spells by 0.3 sec."
+        },
+        {
+          "rank": 4,
+          "before": "",
+          "after": "Reduces the casting time of your Smite, Holy Fire, Heal, and Greater Heal spells by 0.4 sec."
+        },
+        {
+          "rank": 5,
+          "before": "",
+          "after": "Reduces the casting time of your Smite, Holy Fire, Heal, and Greater Heal spells by 0.5 sec."
+        }
+      ]
+    },
+    {
+      "id": "priest-442",
+      "name": "Holy Nova",
+      "nodeId": 105862,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Causes an explosion of holy light around the caster, causing 27 Holy damage to all enemy targets within yards and healing all party members within 10 yards for 51. These effects cause no threat.",
+          "after": "Causes an explosion of holy light around the caster, causing 26 to 30 Holy damage to all enemy targets within 10 yards and healing all party members within 10 yards for 49 to 57. These effects cause no threat."
+        }
+      ]
+    },
+    {
+      "id": "priest-1636",
+      "name": "Blessed Recovery",
+      "nodeId": 105861,
+      "ranks": [
+        {
+          "rank": 2,
+          "before": "",
+          "after": "After being struck by a melee or ranged critical hit, or suffering more than 30% of your maximum Health from a single attack, heal 17% of the damage taken over 6 sec. Refreshing this effect carries over any remaining healing."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "After being struck by a melee or ranged critical hit, or suffering more than 30% of your maximum Health from a single attack, heal 25% of the damage taken over 6 sec. Refreshing this effect carries over any remaining healing."
+        }
+      ]
+    },
+    {
+      "id": "priest-361",
+      "name": "Inspiration",
+      "nodeId": 105860,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "",
+          "after": "Your non-periodic critical heals increase your target's Armor by 8% for 15 sec."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Your non-periodic critical heals increase your target's Armor by 17% for 15 sec."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Your non-periodic critical heals increase your target's Armor by 25% for 15 sec."
+        }
+      ]
+    },
+    {
+      "id": "priest-1635",
+      "name": "Holy Reach",
+      "nodeId": 105859,
+      "ranks": [
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases the range of your Smite and Holy Fire spells and the radius of your Prayer of Healing and Holy Nova spells by 20%."
+        }
+      ]
+    },
+    {
+      "id": "priest-408",
+      "name": "Improved Healing",
+      "nodeId": 105858,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Reduces the Mana cost of your Lesser Heal, Heal, Greater Heal, Penance, and Prayer of Mending spells by 15%.",
+          "after": "Reduces the Mana cost of your Lesser Heal, Heal, Greater Heal, Penance, and Prayer of Mending spells by 5%."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Reduces the Mana cost of your Lesser Heal, Heal, Greater Heal, Penance, and Prayer of Mending spells by 10%."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Reduces the Mana cost of your Lesser Heal, Heal, Greater Heal, Penance, and Prayer of Mending spells by 15%."
+        }
+      ]
+    },
+    {
+      "id": "priest-403",
+      "name": "Searing Light",
+      "nodeId": 105857,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Increases your Holy damage done by 10%, and gives a 10% chance each time your Holy Fire spell deals periodic damage for your next Holy Nova to cost no Mana.",
+          "after": "Increases your Holy damage done by 2%, and gives a 5% chance each time your Holy Fire spell deals periodic damage for your next Holy Nova to cost no Mana."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases your Holy damage done by 5%, and gives a 10% chance each time your Holy Fire spell deals periodic damage for your next Holy Nova to cost no Mana."
+        }
+      ]
+    },
+    {
+      "id": "priest-402",
+      "name": "Spiritual Guidance",
+      "nodeId": 105853,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Increases your spell healing by up to 25% of your total Spirit and your spell damage by up to 8% of your total Spirit.",
+          "after": "Increases your spell healing by up to 5% of your total Spirit and your spell damage by up to 1% of your total Spirit."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases your spell healing by up to 10% of your total Spirit and your spell damage by up to 3% of your total Spirit."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Increases your spell healing by up to 15% of your total Spirit and your spell damage by up to 5% of your total Spirit."
+        },
+        {
+          "rank": 4,
+          "before": "",
+          "after": "Increases your spell healing by up to 20% of your total Spirit and your spell damage by up to 6% of your total Spirit."
+        },
+        {
+          "rank": 5,
+          "before": "",
+          "after": "Increases your spell healing by up to 25% of your total Spirit and your spell damage by up to 8% of your total Spirit."
+        }
+      ]
+    },
+    {
+      "id": "priest-404",
+      "name": "Spiritual Healing",
+      "nodeId": 105852,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Increases the amount healed by your spells by 2%.",
+          "after": "Increases the amount healed by your spells by 3%."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases the amount healed by your spells by 7%."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Increases the amount healed by your spells by 10%."
+        }
+      ]
+    },
+    {
+      "id": "priest-463",
+      "name": "Shadow Focus",
+      "nodeId": 110851,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Improves your chance to hit with Shadow spells by 5%.",
+          "after": "Improves your chance to hit with Shadow spells by 1%."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Improves your chance to hit with Shadow spells by 2%."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Improves your chance to hit with Shadow spells by 3%."
+        },
+        {
+          "rank": 4,
+          "before": "",
+          "after": "Improves your chance to hit with Shadow spells by 4%."
+        },
+        {
+          "rank": 5,
+          "before": "",
+          "after": "Improves your chance to hit with Shadow spells by 5%."
+        }
+      ]
+    },
+    {
+      "id": "priest-465",
+      "name": "Spirit Tap",
+      "nodeId": 105833,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "",
+          "after": "Gives you a 20% chance to increase your Spirit by 100% for 15 sec after killing a non-trivial target or when an enemy afflicted by your Vampiric Embrace dies. For the duration, 50% of your Mana regeneration will continue while casting."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Gives you a 40% chance to increase your Spirit by 100% for 15 sec after killing a non-trivial target or when an enemy afflicted by your Vampiric Embrace dies. For the duration, 50% of your Mana regeneration will continue while casting."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Gives you a 60% chance to increase your Spirit by 100% for 15 sec after killing a non-trivial target or when an enemy afflicted by your Vampiric Embrace dies. For the duration, 50% of your Mana regeneration will continue while casting."
+        },
+        {
+          "rank": 4,
+          "before": "",
+          "after": "Gives you a 80% chance to increase your Spirit by 100% for 15 sec after killing a non-trivial target or when an enemy afflicted by your Vampiric Embrace dies. For the duration, 50% of your Mana regeneration will continue while casting."
+        },
+        {
+          "rank": 5,
+          "before": "",
+          "after": "Gives you a 100% chance to increase your Spirit by 100% for 15 sec after killing a non-trivial target or when an enemy afflicted by your Vampiric Embrace dies. For the duration, 50% of your Mana regeneration will continue while casting."
+        }
+      ]
+    },
+    {
+      "id": "priest-466",
+      "name": "Shadow Affinity",
+      "nodeId": 105831,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Reduces the threat generated by your Shadow spells by 8%.",
+          "after": "Reduces the threat generated by your Shadow spells by 10%."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Reduces the threat generated by your Shadow spells by 20%."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Reduces the threat generated by your Shadow spells by 30%."
+        }
+      ]
+    },
+    {
+      "id": "priest-482",
+      "name": "Improved Shadow Word: Pain",
+      "nodeId": 105830,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Increases the duration of your Shadow Word: Pain spell by 6 sec.",
+          "after": "Increases the duration of your Shadow Word: Pain spell by 3 sec."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases the duration of your Shadow Word: Pain spell by 6 sec."
+        }
+      ]
+    },
+    {
+      "id": "priest-881",
+      "name": "Shadow Reach",
+      "nodeId": 105829,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Increases the range of your offensive Shadow spells by 20%.",
+          "after": "Increases the range of your offensive Shadow spells by 10%."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases the range of your offensive Shadow spells by 20%."
+        }
+      ]
+    },
+    {
+      "id": "priest-481",
+      "name": "Improved Mind Blast",
+      "nodeId": 105827,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Reduces the cooldown of your Mind Blast spell by 2.5 sec.",
+          "after": "Reduces the cooldown of your Mind Blast spell by 0.5 sec."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Reduces the cooldown of your Mind Blast spell by 1 sec."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Reduces the cooldown of your Mind Blast spell by 1.5 sec."
+        },
+        {
+          "rank": 4,
+          "before": "",
+          "after": "Reduces the cooldown of your Mind Blast spell by 2 sec."
+        },
+        {
+          "rank": 5,
+          "before": "",
+          "after": "Reduces the cooldown of your Mind Blast spell by 2.5 sec."
+        }
+      ]
+    },
+    {
+      "id": "priest-542",
+      "name": "Improved Psychic Scream",
+      "nodeId": 105828,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Reduces the cooldown of your Psychic Scream spell by 4 sec.",
+          "after": "Reduces the cooldown of your Psychic Scream spell by 2 sec."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Reduces the cooldown of your Psychic Scream spell by 4 sec."
+        }
+      ]
+    },
+    {
+      "id": "priest-483",
+      "name": "Improved Fade",
+      "nodeId": 105823,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Decreases the cooldown of your Fade ability by 6 sec.",
+          "after": "Decreases the cooldown of your Fade ability by 3 sec."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Decreases the cooldown of your Fade ability by 6 sec."
+        }
+      ]
+    },
+    {
+      "id": "priest-484",
+      "name": "Vampiric Embrace",
+      "nodeId": 105820,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Afflicts your target with Shadow energy that causes all party members to be healed for 20% of any Shadow spell damage you deal for 30 sec. Vampiric Embrace also grants a chance for your Spirit Tap talent to trigger when enemies afflicted by it die.",
+          "after": "Afflicts your target with Shadow energy that causes all party members to be healed for 20% of any Shadow spell damage you deal for 30 sec."
+        }
+      ]
+    },
+    {
+      "id": "priest-461",
+      "name": "Shadow Weaving",
+      "nodeId": 105821,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Your Shadow damage spells have a 100% chance to increase the Shadow damage you deal by 2% for 15 sec, stacking up to 5 times.",
+          "after": "Your Shadow damage spells have a 33% chance to increase the Shadow damage you deal by 2% for 15 sec, stacking up to 5 times."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Your Shadow damage spells have a 67% chance to increase the Shadow damage you deal by 2% for 15 sec, stacking up to 5 times."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Your Shadow damage spells have a 100% chance to increase the Shadow damage you deal by 2% for 15 sec, stacking up to 5 times."
+        }
+      ]
+    },
+    {
+      "id": "priest-462",
+      "name": "Darkness",
+      "nodeId": 105818,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Increases your Shadow damage done by 10%.",
+          "after": "Increases your Shadow damage done by 2%."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases your Shadow damage done by 4%."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Increases your Shadow damage done by 6%."
+        },
+        {
+          "rank": 4,
+          "before": "",
+          "after": "Increases your Shadow damage done by 8%."
+        },
+        {
+          "rank": 5,
+          "before": "",
+          "after": "Increases your Shadow damage done by 10%."
+        }
+      ]
+    }
+  ],
+  "prerequisite_changed": [
+    {
+      "id": "priest-322",
+      "name": "Power Infusion",
+      "nodeId": 105836,
+      "before": [
+        "priest-1201"
+      ],
+      "after": [
+        "priest-discipline-penance"
+      ]
+    },
+    {
+      "id": "priest-542",
+      "name": "Improved Psychic Scream",
+      "nodeId": 105828,
+      "before": [],
+      "after": [
+        "priest-464"
+      ]
+    },
+    {
+      "id": "priest-541",
+      "name": "Silence",
+      "nodeId": 105824,
+      "before": [
+        "priest-542"
+      ],
+      "after": []
+    }
+  ],
+  "unchanged": [
+    {
+      "id": "priest-1561",
+      "name": "Spirit of Redemption",
+      "nodeId": 105854
+    },
+    {
+      "id": "priest-501",
+      "name": "Mind Flay",
+      "nodeId": 105826
+    },
+    {
+      "id": "priest-521",
+      "name": "Shadowform",
+      "nodeId": 105817
+    }
+  ]
+}

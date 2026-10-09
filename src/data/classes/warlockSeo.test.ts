@@ -7,7 +7,7 @@ import { renderClassPage } from '../../lib/prerender'
 
 const slug = 'wow-forever-warlock-pvp-build'
 const page = warlockClass.pages.find((candidate) => candidate.slug === slug)!
-const route = 'Improved Corruption 5/5 → Improved Life Tap 2/2 → Soul Siphon 3/5 → Amplify Curse 1/1'
+const route = warlockClass.builds.find(build => build.id === page.primaryBuildId)!
 
 describe('Warlock PvP SEO pilot', () => {
   it('keeps the existing search-facing identity and gives the public page a specific preview', () => {
@@ -21,10 +21,15 @@ describe('Warlock PvP SEO pilot', () => {
     expect(page.description.length).toBeLessThanOrEqual(160)
 
     const html = renderClassPage(warlockClass, page)
-    expect(page.surfaceDescription).toContain(route)
-    expect(page.surfaceDescription).toContain('Level 20 starting snapshot')
-    expect(page.surfaceDescription).toContain('live Beta cap is Level 30')
-    expect(html).not.toContain(route)
+    expect(route.level).toBe(30)
+    expect(route.points).toBe(21)
+    expect(page.surfaceDescription).toContain('current Level 30 Beta')
+    expect(warlockClass.verifiedBuild).toBe('1.60.1.70291')
+    for (const [id, rank] of Object.entries(route.build)) {
+      const talent = warlockClass.talents.find(talent => talent.id === id)!
+      expect(talent.rankDescriptions?.[rank - 1]).toBeTruthy()
+      expect(talent.verifiedThroughBuild).toBe(warlockClass.verifiedBuild)
+    }
     expect(html).toContain('Level 30 Beta')
     expect(html).toContain('a PvP check needs to include the opponent')
     expect(html).toContain('opponent level and equipment')

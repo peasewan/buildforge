@@ -1,0 +1,3745 @@
+{
+  "classId": "priest",
+  "build": "1.60.1.70291",
+  "clientBuild": "1.60.1.70291",
+  "sourceVersion": "wow_forever_beta_1.60.1.70291",
+  "generated": "2026-10-09",
+  "branches": [
+    "discipline",
+    "holy",
+    "shadow"
+  ],
+  "treeId": 1114,
+  "skillLineId": 613,
+  "basedOnBuild": "1.60.1.69913",
+  "sourceUrl": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291",
+  "resolvedRankSourceUrl": "https://talentsforever.com/data.json",
+  "resolvedRankSourceBuild": "1.60.1.70291",
+  "resolvedRankLicense": "CC-BY-4.0",
+  "resolvedRankLicenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "resolvedRankAdaptationNotice": "Rank descriptions and icon names adapted from Talents Forever for BuildForgeTools under CC BY 4.0. Structure is reconciled field by field from Wago DB2, with explicit community-reviewed exceptions for visible membership, display positions or connection roles where recorded; original raw records are preserved.",
+  "license": "Game client factual data; rank descriptions and icon names adapted under CC-BY-4.0",
+  "attribution": "Resolved rank text and icon names adapted from Talents Forever (talentsforever.com, CC-BY-4.0); client structure from Wago DB2 1.60.1.70291",
+  "verificationSummary": "1.60.1.70291 Priest: 53 nodes and 148 complete rank descriptions; compared with 1.60.1.69913: 13 added, 7 removed, 14 moved, 7 rank-cap changes, 34 talents with rank-description changes, 3 prerequisite-link changes. Structural provenance is recorded per field: client identity, rank caps and exact raw geometry are client_verified; explicit reviewed exceptions and resolved text are community_verified; tier costs and prerequisite required ranks remain derived_assumption. Raw TraitTree contains 54 records; 1 exact off-grid remnants are quarantined under an explicit source review, leaving 53 community-reconciled visible nodes. No invalid coordinates are corrected or promoted as client facts.",
+  "verificationSources": [
+    {
+      "label": "Wago DB2 — Priest client structure 1.60.1.70291",
+      "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+    },
+    {
+      "label": "Talents Forever — Priest resolved rank descriptions (CC BY 4.0)",
+      "url": "https://talentsforever.com/data.json"
+    }
+  ],
+  "sources": [
+    {
+      "label": "Wago DB2 — Priest client structure 1.60.1.70291",
+      "type": "beta_client",
+      "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+    },
+    {
+      "label": "Talents Forever — Priest resolved rank descriptions (CC BY 4.0)",
+      "type": "beta_client_crosscheck",
+      "url": "https://talentsforever.com/data.json"
+    }
+  ],
+  "ready": true,
+  "conflicts": [],
+  "talents": [
+    {
+      "id": "priest-discipline-power-in-light",
+      "name": "Power in Light",
+      "branch": "discipline",
+      "row": 1,
+      "column": 1,
+      "maxRank": 5,
+      "nodeId": 110853,
+      "spellId": 1309969,
+      "rawPosX": 1020,
+      "rawPosY": 2130,
+      "requiredTreePoints": 0,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Your Smite and Penance spells deal 2% increased damage to targets afflicted with your Holy Fire.",
+        "Your Smite and Penance spells deal 4% increased damage to targets afflicted with your Holy Fire.",
+        "Your Smite and Penance spells deal 6% increased damage to targets afflicted with your Holy Fire.",
+        "Your Smite and Penance spells deal 8% increased damage to targets afflicted with your Holy Fire.",
+        "Your Smite and Penance spells deal 10% increased damage to targets afflicted with your Holy Fire."
+      ],
+      "description": "Your Smite and Penance spells deal 10% increased damage to targets afflicted with your Holy Fire.",
+      "x": 12.5,
+      "y": 7.142857142857142,
+      "iconName": "spell_holy_searinglight",
+      "icon": "/images/class-talents/spell_holy_searinglight.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Priest client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Priest resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "priest-345",
+      "name": "Wand Specialization",
+      "branch": "discipline",
+      "row": 1,
+      "column": 2,
+      "maxRank": 2,
+      "nodeId": 105850,
+      "spellId": 14524,
+      "rawPosX": 1620,
+      "rawPosY": 2130,
+      "sourceTalentId": 345,
+      "requiredTreePoints": 0,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases your damage with Wands by 13%.",
+        "Increases your damage with Wands by 25%."
+      ],
+      "description": "Increases your damage with Wands by 25%.",
+      "x": 37.5,
+      "y": 7.142857142857142,
+      "iconName": "inv_wand_01",
+      "icon": "/images/class-talents/inv_wand_01.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Priest client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Priest resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "priest-discipline-twin-disciplines",
+      "name": "Twin Disciplines",
+      "branch": "discipline",
+      "row": 1,
+      "column": 3,
+      "maxRank": 5,
+      "nodeId": 105849,
+      "spellId": 1225132,
+      "rawPosX": 2220,
+      "rawPosY": 2130,
+      "requiredTreePoints": 0,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases the damage and healing of your instant cast spells by 1%.",
+        "Increases the damage and healing of your instant cast spells by 2%.",
+        "Increases the damage and healing of your instant cast spells by 3%.",
+        "Increases the damage and healing of your instant cast spells by 4%.",
+        "Increases the damage and healing of your instant cast spells by 5%."
+      ],
+      "description": "Increases the damage and healing of your instant cast spells by 5%.",
+      "x": 62.5,
+      "y": 7.142857142857142,
+      "iconName": "spell_holy_sealofvengeance",
+      "icon": "/images/class-talents/spell_holy_sealofvengeance.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Priest client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Priest resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "priest-352",
+      "name": "Silent Resolve",
+      "branch": "discipline",
+      "row": 2,
+      "column": 1,
+      "maxRank": 3,
+      "nodeId": 105848,
+      "spellId": 14523,
+      "rawPosX": 1020,
+      "rawPosY": 2730,
+      "sourceTalentId": 352,
+      "requiredTreePoints": 5,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Reduces the threat generated by your Holy spells by 10% and reduces the duration of Stun, Fear, and Silence effects inflicted on you by 5%.",
+        "Reduces the threat generated by your Holy spells by 20% and reduces the duration of Stun, Fear, and Silence effects inflicted on you by 10%.",
+        "Reduces the threat generated by your Holy spells by 30% and reduces the duration of Stun, Fear, and Silence effects inflicted on you by 15%."
+      ],
+      "description": "Reduces the threat generated by your Holy spells by 30% and reduces the duration of Stun, Fear, and Silence effects inflicted on you by 15%.",
+      "x": 12.5,
+      "y": 21.428571428571427,
+      "iconName": "spell_nature_manaregentotem",
+      "icon": "/images/class-talents/spell_nature_manaregentotem.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Priest client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Priest resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "priest-discipline-holy-precision",
+      "name": "Holy Precision",
+      "branch": "discipline",
+      "row": 2,
+      "column": 2,
+      "maxRank": 3,
+      "nodeId": 110852,
+      "spellId": 1309957,
+      "rawPosX": 1620,
+      "rawPosY": 2730,
+      "requiredTreePoints": 5,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Improves your chance to hit with Holy spells by 6%.",
+        "Improves your chance to hit with Holy spells by 12%.",
+        "Improves your chance to hit with Holy spells by 18%."
+      ],
+      "description": "Improves your chance to hit with Holy spells by 18%.",
+      "x": 37.5,
+      "y": 21.428571428571427,
+      "iconName": "spell_holy_divineillumination",
+      "icon": "/images/class-talents/spell_holy_divineillumination.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Priest client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Priest resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "priest-343",
+      "name": "Improved Power Word: Shield",
+      "branch": "discipline",
+      "row": 2,
+      "column": 3,
+      "maxRank": 3,
+      "nodeId": 105846,
+      "spellId": 14748,
+      "rawPosX": 2220,
+      "rawPosY": 2730,
+      "sourceTalentId": 343,
+      "requiredTreePoints": 5,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases the damage absorbed by your Power Word: Shield by 7%.",
+        "Increases the damage absorbed by your Power Word: Shield by 14%.",
+        "Increases the damage absorbed by your Power Word: Shield by 20%."
+      ],
+      "description": "Increases the damage absorbed by your Power Word: Shield by 20%.",
+      "x": 62.5,
+      "y": 21.428571428571427,
+      "iconName": "spell_holy_powerwordshield",
+      "icon": "/images/class-talents/spell_holy_powerwordshield.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Priest client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Priest resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "priest-321",
+      "name": "Martyrdom",
+      "branch": "discipline",
+      "row": 2,
+      "column": 4,
+      "maxRank": 2,
+      "nodeId": 105845,
+      "spellId": 14531,
+      "rawPosX": 2820,
+      "rawPosY": 2730,
+      "sourceTalentId": 321,
+      "requiredTreePoints": 5,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Gives you a 50% chance to gain Focused Casting for 6 sec after being the victim of a melee or ranged critical strike. The Focused Casting effect prevents you from losing casting time when taking damage and increases your resistance to Interrupt effects by 20%.",
+        "Gives you a 100% chance to gain Focused Casting for 6 sec after being the victim of a melee or ranged critical strike. The Focused Casting effect prevents you from losing casting time when taking damage and increases your resistance to Interrupt effects by 20%."
+      ],
+      "description": "Gives you a 100% chance to gain Focused Casting for 6 sec after being the victim of a melee or ranged critical strike. The Focused Casting effect prevents you from losing casting time when taking damage and increases your resistance to Interrupt effects by 20%.",
+      "x": 87.5,
+      "y": 21.428571428571427,
+      "iconName": "spell_nature_tranquility",
+      "icon": "/images/class-talents/spell_nature_tranquility.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Priest client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Priest resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "priest-341",
+      "name": "Mental Agility",
+      "branch": "discipline",
+      "row": 3,
+      "column": 1,
+      "maxRank": 3,
+      "nodeId": 105842,
+      "spellId": 14520,
+      "rawPosX": 1020,
+      "rawPosY": 3330,
+      "sourceTalentId": 341,
+      "requiredTreePoints": 10,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Reduces the mana cost of your Smite, Holy Fire, and instant cast spells by 3%.",
+        "Reduces the mana cost of your Smite, Holy Fire, and instant cast spells by 7%.",
+        "Reduces the mana cost of your Smite, Holy Fire, and instant cast spells by 10%."
+      ],
+      "description": "Reduces the mana cost of your Smite, Holy Fire, and instant cast spells by 10%.",
+      "x": 12.5,
+      "y": 35.714285714285715,
+      "iconName": "ability_hibernation",
+      "icon": "/images/class-talents/ability_hibernation.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Priest client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Priest resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "priest-348",
+      "name": "Inner Focus",
+      "branch": "discipline",
+      "row": 3,
+      "column": 2,
+      "maxRank": 1,
+      "nodeId": 105844,
+      "spellId": 14751,
+      "rawPosX": 1620,
+      "rawPosY": 3330,
+      "sourceTalentId": 348,
+      "requiredTreePoints": 10,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "When activated, reduces the Mana cost of your next spell by 100% and increases its critical effect chance by 25% if it is a non-periodic spell and capable of a critical effect."
+      ],
+      "description": "When activated, reduces the Mana cost of your next spell by 100% and increases its critical effect chance by 25% if it is a non-periodic spell and capable of a critical effect.",
+      "x": 37.5,
+      "y": 35.714285714285715,
+      "iconName": "spell_frost_windwalkon",
+      "icon": "/images/class-talents/spell_frost_windwalkon.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Priest client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Priest resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "priest-347",
+      "name": "Meditation",
+      "branch": "discipline",
+      "row": 3,
+      "column": 4,
+      "maxRank": 3,
+      "nodeId": 105843,
+      "spellId": 14521,
+      "rawPosX": 2820,
+      "rawPosY": 3330,
+      "sourceTalentId": 347,
+      "requiredTreePoints": 10,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Allows 17% of your Mana regeneration to continue while casting.",
+        "Allows 33% of your Mana regeneration to continue while casting.",
+        "Allows 50% of your Mana regeneration to continue while casting."
+      ],
+      "description": "Allows 50% of your Mana regeneration to continue while casting.",
+      "x": 87.5,
+      "y": 35.714285714285715,
+      "iconName": "spell_nature_sleep",
+      "icon": "/images/class-talents/spell_nature_sleep.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Priest client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Priest resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "priest-346",
+      "name": "Improved Inner Fire",
+      "branch": "discipline",
+      "row": 4,
+      "column": 1,
+      "maxRank": 3,
+      "nodeId": 105841,
+      "spellId": 14747,
+      "rawPosX": 1020,
+      "rawPosY": 3930,
+      "sourceTalentId": 346,
+      "requiredTreePoints": 15,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases the Armor bonus of your Inner Fire spell by 15% and increases its total charges by 4.",
+        "Increases the Armor bonus of your Inner Fire spell by 30% and increases its total charges by 8.",
+        "Increases the Armor bonus of your Inner Fire spell by 45% and increases its total charges by 12."
+      ],
+      "description": "Increases the Armor bonus of your Inner Fire spell by 45% and increases its total charges by 12.",
+      "x": 12.5,
+      "y": 50,
+      "iconName": "spell_holy_innerfire",
+      "icon": "/images/class-talents/spell_holy_innerfire.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Priest client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Priest resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "priest-1201",
+      "name": "Mental Strength",
+      "branch": "discipline",
+      "row": 4,
+      "column": 2,
+      "maxRank": 5,
+      "nodeId": 105837,
+      "spellId": 18551,
+      "rawPosX": 1620,
+      "rawPosY": 3930,
+      "sourceTalentId": 1201,
+      "requiredTreePoints": 15,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases your total Intellect by 3%.",
+        "Increases your total Intellect by 6%.",
+        "Increases your total Intellect by 9%.",
+        "Increases your total Intellect by 12%.",
+        "Increases your total Intellect by 15%."
+      ],
+      "description": "Increases your total Intellect by 15%.",
+      "x": 37.5,
+      "y": 50,
+      "iconName": "spell_nature_enchantarmor",
+      "icon": "/images/class-talents/spell_nature_enchantarmor.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Priest client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Priest resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "priest-discipline-soul-warding",
+      "name": "Soul Warding",
+      "branch": "discipline",
+      "row": 4,
+      "column": 3,
+      "maxRank": 1,
+      "nodeId": 105839,
+      "spellId": 402000,
+      "rawPosX": 2220,
+      "rawPosY": 3930,
+      "requiredTreePoints": 15,
+      "prerequisite": [
+        "priest-343"
+      ],
+      "rankDescriptions": [
+        "Reduces the cooldown on your Power Word: Shield spell by 4 sec and reduces its mana cost by 15%."
+      ],
+      "description": "Reduces the cooldown on your Power Word: Shield spell by 4 sec and reduces its mana cost by 15%.",
+      "x": 62.5,
+      "y": 50,
+      "iconName": "spell_holy_pureofheart",
+      "icon": "/images/class-talents/spell_holy_pureofheart.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Priest client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Priest resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "priest-350",
+      "name": "Improved Mana Burn",
+      "branch": "discipline",
+      "row": 4,
+      "column": 4,
+      "maxRank": 2,
+      "nodeId": 105838,
+      "spellId": 14750,
+      "rawPosX": 2820,
+      "rawPosY": 3930,
+      "sourceTalentId": 350,
+      "requiredTreePoints": 15,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Reduces the casting time of your Mana Burn spell by 0.5 sec.",
+        "Reduces the casting time of your Mana Burn spell by 1.0 sec."
+      ],
+      "description": "Reduces the casting time of your Mana Burn spell by 1.0 sec.",
+      "x": 87.5,
+      "y": 50,
+      "iconName": "spell_shadow_manaburn",
+      "icon": "/images/class-talents/spell_shadow_manaburn.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Priest client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Priest resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "priest-discipline-penance",
+      "name": "Penance",
+      "branch": "discipline",
+      "row": 5,
+      "column": 2,
+      "maxRank": 1,
+      "nodeId": 105834,
+      "spellId": 402174,
+      "rawPosX": 1620,
+      "rawPosY": 4530,
+      "requiredTreePoints": 20,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Launches a volley of holy light at the target, causing 44 Holy damage to an enemy, or 133 healing to an ally, instantly and every 1 sec for 2 sec."
+      ],
+      "description": "Launches a volley of holy light at the target, causing 44 Holy damage to an enemy, or 133 healing to an ally, instantly and every 1 sec for 2 sec.",
+      "x": 37.5,
+      "y": 64.28571428571429,
+      "iconName": "spell_holy_penance",
+      "icon": "/images/class-talents/spell_holy_penance.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Priest client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Priest resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "priest-discipline-renewed-hope",
+      "name": "Renewed Hope",
+      "branch": "discipline",
+      "row": 5,
+      "column": 3,
+      "maxRank": 5,
+      "nodeId": 105835,
+      "spellId": 425280,
+      "rawPosX": 2220,
+      "rawPosY": 4530,
+      "requiredTreePoints": 20,
+      "prerequisite": [
+        "priest-discipline-soul-warding"
+      ],
+      "rankDescriptions": [
+        "Your heals from Flash Heal, Binding Heal, Lesser Heal, Heal, Greater Heal, and Penance gain 2% increased critical strike chance when cast on targets with Weakened Soul, and reduce the remaining duration of Weakened Soul on their target by 1 sec.",
+        "Your heals from Flash Heal, Binding Heal, Lesser Heal, Heal, Greater Heal, and Penance gain 4% increased critical strike chance when cast on targets with Weakened Soul, and reduce the remaining duration of Weakened Soul on their target by 2 sec.",
+        "Your heals from Flash Heal, Binding Heal, Lesser Heal, Heal, Greater Heal, and Penance gain 6% increased critical strike chance when cast on targets with Weakened Soul, and reduce the remaining duration of Weakened Soul on their target by 3 sec.",
+        "Your heals from Flash Heal, Binding Heal, Lesser Heal, Heal, Greater Heal, and Penance gain 8% increased critical strike chance when cast on targets with Weakened Soul, and reduce the remaining duration of Weakened Soul on their target by 4 sec.",
+        "Your heals from Flash Heal, Binding Heal, Lesser Heal, Heal, Greater Heal, and Penance gain 10% increased critical strike chance when cast on targets with Weakened Soul, and reduce the remaining duration of Weakened Soul on their target by 5 sec."
+      ],
+      "description": "Your heals from Flash Heal, Binding Heal, Lesser Heal, Heal, Greater Heal, and Penance gain 10% increased critical strike chance when cast on targets with Weakened Soul, and reduce the remaining duration of Weakened Soul on their target by 5 sec.",
+      "x": 62.5,
+      "y": 64.28571428571429,
+      "iconName": "spell_holy_holyprotection",
+      "icon": "/images/class-talents/spell_holy_holyprotection.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Priest client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Priest resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "priest-discipline-divine-aegis",
+      "name": "Divine Aegis",
+      "branch": "discipline",
+      "row": 6,
+      "column": 3,
+      "maxRank": 3,
+      "nodeId": 105840,
+      "spellId": 431622,
+      "rawPosX": 2220,
+      "rawPosY": 5130,
+      "requiredTreePoints": 25,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Your critical heals create a protective shield on the target, absorbing 5% of the amount healed. Lasts 12 sec.",
+        "Your critical heals create a protective shield on the target, absorbing 10% of the amount healed. Lasts 12 sec.",
+        "Your critical heals create a protective shield on the target, absorbing 15% of the amount healed. Lasts 12 sec."
+      ],
+      "description": "Your critical heals create a protective shield on the target, absorbing 15% of the amount healed. Lasts 12 sec.",
+      "x": 62.5,
+      "y": 78.57142857142857,
+      "iconName": "spell_holy_devineaegis",
+      "icon": "/images/class-talents/spell_holy_devineaegis.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Priest client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Priest resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "priest-322",
+      "name": "Power Infusion",
+      "branch": "discipline",
+      "row": 7,
+      "column": 2,
+      "maxRank": 1,
+      "nodeId": 105836,
+      "spellId": 10060,
+      "rawPosX": 1620,
+      "rawPosY": 5730,
+      "sourceTalentId": 322,
+      "requiredTreePoints": 30,
+      "prerequisite": [
+        "priest-discipline-penance"
+      ],
+      "rankDescriptions": [
+        "Infuses the target with power, increasing their spell damage and healing done by 20% for 15 sec."
+      ],
+      "description": "Infuses the target with power, increasing their spell damage and healing done by 20% for 15 sec.",
+      "x": 37.5,
+      "y": 92.85714285714286,
+      "iconName": "spell_holy_powerinfusion",
+      "icon": "/images/class-talents/spell_holy_powerinfusion.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Priest client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Priest resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "priest-410",
+      "name": "Twilight Focus",
+      "branch": "holy",
+      "row": 1,
+      "column": 1,
+      "maxRank": 3,
+      "nodeId": 105867,
+      "spellId": 14913,
+      "rawPosX": 5020,
+      "rawPosY": 2130,
+      "sourceTalentId": 410,
+      "requiredTreePoints": 0,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Gives you a 23% chance to avoid interruption caused by damage while casting any spell.",
+        "Gives you a 47% chance to avoid interruption caused by damage while casting any spell.",
+        "Gives you a 70% chance to avoid interruption caused by damage while casting any spell."
+      ],
+      "description": "Gives you a 70% chance to avoid interruption caused by damage while casting any spell.",
+      "x": 12.5,
+      "y": 7.142857142857142,
+      "iconName": "spell_holy_healingfocus",
+      "icon": "/images/class-talents/spell_holy_healingfocus.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Priest client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Priest resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "priest-406",
+      "name": "Improved Renew",
+      "branch": "holy",
+      "row": 1,
+      "column": 2,
+      "maxRank": 3,
+      "nodeId": 105866,
+      "spellId": 14908,
+      "rawPosX": 5620,
+      "rawPosY": 2130,
+      "sourceTalentId": 406,
+      "requiredTreePoints": 0,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases the amount healed by your Renew spell by 5%.",
+        "Increases the amount healed by your Renew spell by 10%.",
+        "Increases the amount healed by your Renew spell by 15%."
+      ],
+      "description": "Increases the amount healed by your Renew spell by 15%.",
+      "x": 37.5,
+      "y": 7.142857142857142,
+      "iconName": "spell_holy_renew",
+      "icon": "/images/class-talents/spell_holy_renew.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "same",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Priest client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Priest resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "priest-401",
+      "name": "Holy Specialization",
+      "branch": "holy",
+      "row": 1,
+      "column": 3,
+      "maxRank": 5,
+      "nodeId": 110855,
+      "spellId": 14889,
+      "rawPosX": 6220,
+      "rawPosY": 2130,
+      "sourceTalentId": 401,
+      "requiredTreePoints": 0,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases the critical effect chance of your Holy spells by 1%.",
+        "Increases the critical effect chance of your Holy spells by 2%.",
+        "Increases the critical effect chance of your Holy spells by 3%.",
+        "Increases the critical effect chance of your Holy spells by 4%.",
+        "Increases the critical effect chance of your Holy spells by 5%."
+      ],
+      "description": "Increases the critical effect chance of your Holy spells by 5%.",
+      "x": 62.5,
+      "y": 7.142857142857142,
+      "iconName": "spell_holy_sealofsalvation",
+      "icon": "/images/class-talents/spell_holy_sealofsalvation.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "same",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Priest client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Priest resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "priest-411",
+      "name": "Spell Warding",
+      "branch": "holy",
+      "row": 2,
+      "column": 2,
+      "maxRank": 5,
+      "nodeId": 105864,
+      "spellId": 27900,
+      "rawPosX": 5620,
+      "rawPosY": 2730,
+      "sourceTalentId": 411,
+      "requiredTreePoints": 5,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Reduces all spell damage taken by 2%.",
+        "Reduces all spell damage taken by 4%.",
+        "Reduces all spell damage taken by 6%.",
+        "Reduces all spell damage taken by 8%.",
+        "Reduces all spell damage taken by 10%."
+      ],
+      "description": "Reduces all spell damage taken by 10%.",
+      "x": 37.5,
+      "y": 21.428571428571427,
+      "iconName": "spell_holy_spellwarding",
+      "icon": "/images/class-talents/spell_holy_spellwarding.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "same",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Priest client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Priest resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "priest-1181",
+      "name": "Divine Fury",
+      "branch": "holy",
+      "row": 2,
+      "column": 3,
+      "maxRank": 5,
+      "nodeId": 105863,
+      "spellId": 18530,
+      "rawPosX": 6220,
+      "rawPosY": 2730,
+      "sourceTalentId": 1181,
+      "requiredTreePoints": 5,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Reduces the casting time of your Smite, Holy Fire, Heal, and Greater Heal spells by 0.1 sec.",
+        "Reduces the casting time of your Smite, Holy Fire, Heal, and Greater Heal spells by 0.2 sec.",
+        "Reduces the casting time of your Smite, Holy Fire, Heal, and Greater Heal spells by 0.3 sec.",
+        "Reduces the casting time of your Smite, Holy Fire, Heal, and Greater Heal spells by 0.4 sec.",
+        "Reduces the casting time of your Smite, Holy Fire, Heal, and Greater Heal spells by 0.5 sec."
+      ],
+      "description": "Reduces the casting time of your Smite, Holy Fire, Heal, and Greater Heal spells by 0.5 sec.",
+      "x": 62.5,
+      "y": 21.428571428571427,
+      "iconName": "spell_holy_sealofwrath",
+      "icon": "/images/class-talents/spell_holy_sealofwrath.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "same",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Priest client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Priest resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "priest-442",
+      "name": "Holy Nova",
+      "branch": "holy",
+      "row": 3,
+      "column": 1,
+      "maxRank": 1,
+      "nodeId": 105862,
+      "spellId": 15237,
+      "rawPosX": 5020,
+      "rawPosY": 3330,
+      "sourceTalentId": 442,
+      "requiredTreePoints": 10,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Causes an explosion of holy light around the caster, causing 26 to 30 Holy damage to all enemy targets within 10 yards and healing all party members within 10 yards for 49 to 57. These effects cause no threat."
+      ],
+      "description": "Causes an explosion of holy light around the caster, causing 26 to 30 Holy damage to all enemy targets within 10 yards and healing all party members within 10 yards for 49 to 57. These effects cause no threat.",
+      "x": 12.5,
+      "y": 35.714285714285715,
+      "iconName": "spell_holy_holynova",
+      "icon": "/images/class-talents/spell_holy_holynova.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Priest client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Priest resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "priest-1636",
+      "name": "Blessed Recovery",
+      "branch": "holy",
+      "row": 3,
+      "column": 2,
+      "maxRank": 3,
+      "nodeId": 105861,
+      "spellId": 27811,
+      "rawPosX": 5620,
+      "rawPosY": 3330,
+      "sourceTalentId": 1636,
+      "requiredTreePoints": 10,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "After being struck by a melee or ranged critical hit, or suffering more than 30% of your maximum Health from a single attack, heal 8% of the damage taken over 6 sec. Refreshing this effect carries over any remaining healing.",
+        "After being struck by a melee or ranged critical hit, or suffering more than 30% of your maximum Health from a single attack, heal 17% of the damage taken over 6 sec. Refreshing this effect carries over any remaining healing.",
+        "After being struck by a melee or ranged critical hit, or suffering more than 30% of your maximum Health from a single attack, heal 25% of the damage taken over 6 sec. Refreshing this effect carries over any remaining healing."
+      ],
+      "description": "After being struck by a melee or ranged critical hit, or suffering more than 30% of your maximum Health from a single attack, heal 25% of the damage taken over 6 sec. Refreshing this effect carries over any remaining healing.",
+      "x": 37.5,
+      "y": 35.714285714285715,
+      "iconName": "spell_holy_blessedrecovery",
+      "icon": "/images/class-talents/spell_holy_blessedrecovery.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Priest client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Priest resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "priest-361",
+      "name": "Inspiration",
+      "branch": "holy",
+      "row": 3,
+      "column": 4,
+      "maxRank": 3,
+      "nodeId": 105860,
+      "spellId": 14892,
+      "rawPosX": 6820,
+      "rawPosY": 3330,
+      "sourceTalentId": 361,
+      "requiredTreePoints": 10,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Your non-periodic critical heals increase your target's Armor by 8% for 15 sec.",
+        "Your non-periodic critical heals increase your target's Armor by 17% for 15 sec.",
+        "Your non-periodic critical heals increase your target's Armor by 25% for 15 sec."
+      ],
+      "description": "Your non-periodic critical heals increase your target's Armor by 25% for 15 sec.",
+      "x": 87.5,
+      "y": 35.714285714285715,
+      "iconName": "spell_holy_layonhands",
+      "icon": "/images/class-talents/spell_holy_layonhands.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Priest client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Priest resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "priest-1635",
+      "name": "Holy Reach",
+      "branch": "holy",
+      "row": 4,
+      "column": 1,
+      "maxRank": 2,
+      "nodeId": 105859,
+      "spellId": 27789,
+      "rawPosX": 5020,
+      "rawPosY": 3930,
+      "sourceTalentId": 1635,
+      "requiredTreePoints": 15,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases the range of your Smite and Holy Fire spells and the radius of your Prayer of Healing and Holy Nova spells by 10%.",
+        "Increases the range of your Smite and Holy Fire spells and the radius of your Prayer of Healing and Holy Nova spells by 20%."
+      ],
+      "description": "Increases the range of your Smite and Holy Fire spells and the radius of your Prayer of Healing and Holy Nova spells by 20%.",
+      "x": 12.5,
+      "y": 50,
+      "iconName": "spell_holy_purify",
+      "icon": "/images/class-talents/spell_holy_purify.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "same",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Priest client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Priest resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "priest-408",
+      "name": "Improved Healing",
+      "branch": "holy",
+      "row": 4,
+      "column": 2,
+      "maxRank": 3,
+      "nodeId": 105858,
+      "spellId": 14912,
+      "rawPosX": 5620,
+      "rawPosY": 3930,
+      "sourceTalentId": 408,
+      "requiredTreePoints": 15,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Reduces the Mana cost of your Lesser Heal, Heal, Greater Heal, Penance, and Prayer of Mending spells by 5%.",
+        "Reduces the Mana cost of your Lesser Heal, Heal, Greater Heal, Penance, and Prayer of Mending spells by 10%.",
+        "Reduces the Mana cost of your Lesser Heal, Heal, Greater Heal, Penance, and Prayer of Mending spells by 15%."
+      ],
+      "description": "Reduces the Mana cost of your Lesser Heal, Heal, Greater Heal, Penance, and Prayer of Mending spells by 15%.",
+      "x": 37.5,
+      "y": 50,
+      "iconName": "spell_holy_heal02",
+      "icon": "/images/class-talents/spell_holy_heal02.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Priest client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Priest resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "priest-403",
+      "name": "Searing Light",
+      "branch": "holy",
+      "row": 4,
+      "column": 3,
+      "maxRank": 2,
+      "nodeId": 105857,
+      "spellId": 14909,
+      "rawPosX": 6220,
+      "rawPosY": 3930,
+      "sourceTalentId": 403,
+      "requiredTreePoints": 15,
+      "prerequisite": [
+        "priest-1181"
+      ],
+      "rankDescriptions": [
+        "Increases your Holy damage done by 2%, and gives a 5% chance each time your Holy Fire spell deals periodic damage for your next Holy Nova to cost no Mana.",
+        "Increases your Holy damage done by 5%, and gives a 10% chance each time your Holy Fire spell deals periodic damage for your next Holy Nova to cost no Mana."
+      ],
+      "description": "Increases your Holy damage done by 5%, and gives a 10% chance each time your Holy Fire spell deals periodic damage for your next Holy Nova to cost no Mana.",
+      "x": 62.5,
+      "y": 50,
+      "iconName": "spell_holy_searinglightpriest",
+      "icon": "/images/class-talents/spell_holy_searinglightpriest.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Priest client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Priest resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "priest-holy-binding-heal",
+      "name": "Binding Heal",
+      "branch": "holy",
+      "row": 4,
+      "column": 4,
+      "maxRank": 1,
+      "nodeId": 105856,
+      "spellId": 401937,
+      "rawPosX": 6820,
+      "rawPosY": 3930,
+      "requiredTreePoints": 15,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Heals a friendly target and the caster for 236 to 284. Low threat."
+      ],
+      "description": "Heals a friendly target and the caster for 236 to 284. Low threat.",
+      "x": 87.5,
+      "y": 50,
+      "iconName": "spell_holy_blindingheal",
+      "icon": "/images/class-talents/spell_holy_blindingheal.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Priest client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Priest resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "priest-holy-litany-of-light",
+      "name": "Litany of Light",
+      "branch": "holy",
+      "row": 5,
+      "column": 1,
+      "maxRank": 2,
+      "nodeId": 105855,
+      "spellId": 1317006,
+      "rawPosX": 5020,
+      "rawPosY": 4530,
+      "requiredTreePoints": 20,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "When you cast a healing spell, gain Mana equal to 5% of the base cost of the spell if your previous heal was a different spell.",
+        "When you cast a healing spell, gain Mana equal to 10% of the base cost of the spell if your previous heal was a different spell."
+      ],
+      "description": "When you cast a healing spell, gain Mana equal to 10% of the base cost of the spell if your previous heal was a different spell.",
+      "x": 12.5,
+      "y": 64.28571428571429,
+      "iconName": "inv_scroll_07",
+      "icon": "/images/class-talents/inv_scroll_07.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Priest client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Priest resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "priest-1561",
+      "name": "Spirit of Redemption",
+      "branch": "holy",
+      "row": 5,
+      "column": 2,
+      "maxRank": 1,
+      "nodeId": 105854,
+      "spellId": 20711,
+      "rawPosX": 5620,
+      "rawPosY": 4530,
+      "sourceTalentId": 1561,
+      "requiredTreePoints": 20,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Upon death, the priest becomes the Spirit of Redemption for 15 sec. The Spirit of Redemption cannot move, attack, be attacked or targeted by any spells or effects. While in this form the priest can cast any healing spell free of cost. When the effect ends, the priest dies."
+      ],
+      "description": "Upon death, the priest becomes the Spirit of Redemption for 15 sec. The Spirit of Redemption cannot move, attack, be attacked or targeted by any spells or effects. While in this form the priest can cast any healing spell free of cost. When the effect ends, the priest dies.",
+      "x": 37.5,
+      "y": 64.28571428571429,
+      "iconName": "inv_enchant_essenceeternallarge",
+      "icon": "/images/class-talents/inv_enchant_essenceeternallarge.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Priest client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Priest resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "priest-402",
+      "name": "Spiritual Guidance",
+      "branch": "holy",
+      "row": 5,
+      "column": 3,
+      "maxRank": 5,
+      "nodeId": 105853,
+      "spellId": 14901,
+      "rawPosX": 6220,
+      "rawPosY": 4530,
+      "sourceTalentId": 402,
+      "requiredTreePoints": 20,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases your spell healing by up to 5% of your total Spirit and your spell damage by up to 1% of your total Spirit.",
+        "Increases your spell healing by up to 10% of your total Spirit and your spell damage by up to 3% of your total Spirit.",
+        "Increases your spell healing by up to 15% of your total Spirit and your spell damage by up to 5% of your total Spirit.",
+        "Increases your spell healing by up to 20% of your total Spirit and your spell damage by up to 6% of your total Spirit.",
+        "Increases your spell healing by up to 25% of your total Spirit and your spell damage by up to 8% of your total Spirit."
+      ],
+      "description": "Increases your spell healing by up to 25% of your total Spirit and your spell damage by up to 8% of your total Spirit.",
+      "x": 62.5,
+      "y": 64.28571428571429,
+      "iconName": "spell_holy_spiritualguidence",
+      "icon": "/images/class-talents/spell_holy_spiritualguidence.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Priest client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Priest resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "priest-404",
+      "name": "Spiritual Healing",
+      "branch": "holy",
+      "row": 6,
+      "column": 3,
+      "maxRank": 3,
+      "nodeId": 105852,
+      "spellId": 14898,
+      "rawPosX": 6220,
+      "rawPosY": 5130,
+      "sourceTalentId": 404,
+      "requiredTreePoints": 25,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases the amount healed by your spells by 3%.",
+        "Increases the amount healed by your spells by 7%.",
+        "Increases the amount healed by your spells by 10%."
+      ],
+      "description": "Increases the amount healed by your spells by 10%.",
+      "x": 62.5,
+      "y": 78.57142857142857,
+      "iconName": "spell_nature_moonglow",
+      "icon": "/images/class-talents/spell_nature_moonglow.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Priest client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Priest resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "priest-holy-prayer-of-mending",
+      "name": "Prayer of Mending",
+      "branch": "holy",
+      "row": 7,
+      "column": 2,
+      "maxRank": 1,
+      "nodeId": 105851,
+      "spellId": 401859,
+      "rawPosX": 5620,
+      "rawPosY": 5730,
+      "requiredTreePoints": 30,
+      "prerequisite": [
+        "priest-1561"
+      ],
+      "rankDescriptions": [
+        "Places a spell on the target that heals them for 172 the next time they take damage or receive non-periodic healing. When the heal occurs, Prayer of Mending jumps to a party or raid member within 20 yards. Jumps up to 5 times and lasts 30 sec after each jump. This spell can only be placed on one target at a time per caster."
+      ],
+      "description": "Places a spell on the target that heals them for 172 the next time they take damage or receive non-periodic healing. When the heal occurs, Prayer of Mending jumps to a party or raid member within 20 yards. Jumps up to 5 times and lasts 30 sec after each jump. This spell can only be placed on one target at a time per caster.",
+      "x": 37.5,
+      "y": 92.85714285714286,
+      "iconName": "spell_holy_prayerofmendingtga",
+      "icon": "/images/class-talents/spell_holy_prayerofmendingtga.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Priest client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Priest resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "priest-463",
+      "name": "Shadow Focus",
+      "branch": "shadow",
+      "row": 1,
+      "column": 1,
+      "maxRank": 5,
+      "nodeId": 110851,
+      "spellId": 15260,
+      "rawPosX": 9080,
+      "rawPosY": 2130,
+      "sourceTalentId": 463,
+      "requiredTreePoints": 0,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Improves your chance to hit with Shadow spells by 1%.",
+        "Improves your chance to hit with Shadow spells by 2%.",
+        "Improves your chance to hit with Shadow spells by 3%.",
+        "Improves your chance to hit with Shadow spells by 4%.",
+        "Improves your chance to hit with Shadow spells by 5%."
+      ],
+      "description": "Improves your chance to hit with Shadow spells by 5%.",
+      "x": 12.5,
+      "y": 7.142857142857142,
+      "iconName": "spell_shadow_burningspirit",
+      "icon": "/images/class-talents/spell_shadow_burningspirit.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Priest client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Priest resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "priest-464",
+      "name": "Blackout",
+      "branch": "shadow",
+      "row": 1,
+      "column": 2,
+      "maxRank": 5,
+      "nodeId": 105832,
+      "spellId": 15326,
+      "rawPosX": 9680,
+      "rawPosY": 2130,
+      "sourceTalentId": 464,
+      "requiredTreePoints": 0,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Gives your Shadow damage spells a 2% chance to stun the target for 3 sec.",
+        "Gives your Shadow damage spells a 4% chance to stun the target for 3 sec.",
+        "Gives your Shadow damage spells a 6% chance to stun the target for 3 sec.",
+        "Gives your Shadow damage spells a 8% chance to stun the target for 3 sec.",
+        "Gives your Shadow damage spells a 10% chance to stun the target for 3 sec."
+      ],
+      "description": "Gives your Shadow damage spells a 10% chance to stun the target for 3 sec.",
+      "x": 37.5,
+      "y": 7.142857142857142,
+      "iconName": "spell_shadow_gathershadows",
+      "icon": "/images/class-talents/spell_shadow_gathershadows.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Priest client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Priest resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "priest-465",
+      "name": "Spirit Tap",
+      "branch": "shadow",
+      "row": 1,
+      "column": 3,
+      "maxRank": 5,
+      "nodeId": 105833,
+      "spellId": 15270,
+      "rawPosX": 10280,
+      "rawPosY": 2130,
+      "sourceTalentId": 465,
+      "requiredTreePoints": 0,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Gives you a 20% chance to increase your Spirit by 100% for 15 sec after killing a non-trivial target or when an enemy afflicted by your Vampiric Embrace dies. For the duration, 50% of your Mana regeneration will continue while casting.",
+        "Gives you a 40% chance to increase your Spirit by 100% for 15 sec after killing a non-trivial target or when an enemy afflicted by your Vampiric Embrace dies. For the duration, 50% of your Mana regeneration will continue while casting.",
+        "Gives you a 60% chance to increase your Spirit by 100% for 15 sec after killing a non-trivial target or when an enemy afflicted by your Vampiric Embrace dies. For the duration, 50% of your Mana regeneration will continue while casting.",
+        "Gives you a 80% chance to increase your Spirit by 100% for 15 sec after killing a non-trivial target or when an enemy afflicted by your Vampiric Embrace dies. For the duration, 50% of your Mana regeneration will continue while casting.",
+        "Gives you a 100% chance to increase your Spirit by 100% for 15 sec after killing a non-trivial target or when an enemy afflicted by your Vampiric Embrace dies. For the duration, 50% of your Mana regeneration will continue while casting."
+      ],
+      "description": "Gives you a 100% chance to increase your Spirit by 100% for 15 sec after killing a non-trivial target or when an enemy afflicted by your Vampiric Embrace dies. For the duration, 50% of your Mana regeneration will continue while casting.",
+      "x": 62.5,
+      "y": 7.142857142857142,
+      "iconName": "spell_shadow_requiem",
+      "icon": "/images/class-talents/spell_shadow_requiem.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Priest client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Priest resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "priest-466",
+      "name": "Shadow Affinity",
+      "branch": "shadow",
+      "row": 2,
+      "column": 1,
+      "maxRank": 3,
+      "nodeId": 105831,
+      "spellId": 15318,
+      "rawPosX": 9080,
+      "rawPosY": 2730,
+      "sourceTalentId": 466,
+      "requiredTreePoints": 5,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Reduces the threat generated by your Shadow spells by 10%.",
+        "Reduces the threat generated by your Shadow spells by 20%.",
+        "Reduces the threat generated by your Shadow spells by 30%."
+      ],
+      "description": "Reduces the threat generated by your Shadow spells by 30%.",
+      "x": 12.5,
+      "y": 21.428571428571427,
+      "iconName": "spell_shadow_shadowward",
+      "icon": "/images/class-talents/spell_shadow_shadowward.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Priest client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Priest resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "priest-482",
+      "name": "Improved Shadow Word: Pain",
+      "branch": "shadow",
+      "row": 2,
+      "column": 3,
+      "maxRank": 2,
+      "nodeId": 105830,
+      "spellId": 15275,
+      "rawPosX": 10280,
+      "rawPosY": 2730,
+      "sourceTalentId": 482,
+      "requiredTreePoints": 5,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases the duration of your Shadow Word: Pain spell by 3 sec.",
+        "Increases the duration of your Shadow Word: Pain spell by 6 sec."
+      ],
+      "description": "Increases the duration of your Shadow Word: Pain spell by 6 sec.",
+      "x": 62.5,
+      "y": 21.428571428571427,
+      "iconName": "spell_shadow_shadowwordpain",
+      "icon": "/images/class-talents/spell_shadow_shadowwordpain.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Priest client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Priest resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "priest-881",
+      "name": "Shadow Reach",
+      "branch": "shadow",
+      "row": 2,
+      "column": 4,
+      "maxRank": 2,
+      "nodeId": 105829,
+      "spellId": 17322,
+      "rawPosX": 10880,
+      "rawPosY": 2730,
+      "sourceTalentId": 881,
+      "requiredTreePoints": 5,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases the range of your offensive Shadow spells by 10%.",
+        "Increases the range of your offensive Shadow spells by 20%."
+      ],
+      "description": "Increases the range of your offensive Shadow spells by 20%.",
+      "x": 87.5,
+      "y": 21.428571428571427,
+      "iconName": "spell_shadow_chilltouch",
+      "icon": "/images/class-talents/spell_shadow_chilltouch.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Priest client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Priest resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "priest-481",
+      "name": "Improved Mind Blast",
+      "branch": "shadow",
+      "row": 3,
+      "column": 1,
+      "maxRank": 5,
+      "nodeId": 105827,
+      "spellId": 15273,
+      "rawPosX": 9080,
+      "rawPosY": 3330,
+      "sourceTalentId": 481,
+      "requiredTreePoints": 10,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Reduces the cooldown of your Mind Blast spell by 0.5 sec.",
+        "Reduces the cooldown of your Mind Blast spell by 1 sec.",
+        "Reduces the cooldown of your Mind Blast spell by 1.5 sec.",
+        "Reduces the cooldown of your Mind Blast spell by 2 sec.",
+        "Reduces the cooldown of your Mind Blast spell by 2.5 sec."
+      ],
+      "description": "Reduces the cooldown of your Mind Blast spell by 2.5 sec.",
+      "x": 12.5,
+      "y": 35.714285714285715,
+      "iconName": "spell_shadow_unholyfrenzy",
+      "icon": "/images/class-talents/spell_shadow_unholyfrenzy.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Priest client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Priest resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "priest-542",
+      "name": "Improved Psychic Scream",
+      "branch": "shadow",
+      "row": 3,
+      "column": 2,
+      "maxRank": 2,
+      "nodeId": 105828,
+      "spellId": 15392,
+      "rawPosX": 9680,
+      "rawPosY": 3330,
+      "sourceTalentId": 542,
+      "requiredTreePoints": 10,
+      "prerequisite": [
+        "priest-464"
+      ],
+      "rankDescriptions": [
+        "Reduces the cooldown of your Psychic Scream spell by 2 sec.",
+        "Reduces the cooldown of your Psychic Scream spell by 4 sec."
+      ],
+      "description": "Reduces the cooldown of your Psychic Scream spell by 4 sec.",
+      "x": 37.5,
+      "y": 35.714285714285715,
+      "iconName": "spell_shadow_psychicscream",
+      "icon": "/images/class-talents/spell_shadow_psychicscream.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Priest client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Priest resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "priest-501",
+      "name": "Mind Flay",
+      "branch": "shadow",
+      "row": 3,
+      "column": 3,
+      "maxRank": 1,
+      "nodeId": 105826,
+      "spellId": 15407,
+      "rawPosX": 10280,
+      "rawPosY": 3330,
+      "sourceTalentId": 501,
+      "requiredTreePoints": 10,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Assault the target's mind with Shadow energy, causing 63 Shadow damage over 3 sec and slowing their movement speed by 50%."
+      ],
+      "description": "Assault the target's mind with Shadow energy, causing 63 Shadow damage over 3 sec and slowing their movement speed by 50%.",
+      "x": 62.5,
+      "y": 35.714285714285715,
+      "iconName": "spell_shadow_siphonmana",
+      "icon": "/images/class-talents/spell_shadow_siphonmana.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Priest client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Priest resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "priest-shadow-improved-mind-flay",
+      "name": "Improved Mind Flay",
+      "branch": "shadow",
+      "row": 3,
+      "column": 4,
+      "maxRank": 2,
+      "nodeId": 105825,
+      "spellId": 1225139,
+      "rawPosX": 10880,
+      "rawPosY": 3330,
+      "requiredTreePoints": 10,
+      "prerequisite": [
+        "priest-501"
+      ],
+      "rankDescriptions": [
+        "Your Mind Flay now deals 10% more damage, gains 5 yards increased range, but slows the target's movement speed by 35%.",
+        "Your Mind Flay now deals 20% more damage, gains 10 yards increased range, but slows the target's movement speed by 20%."
+      ],
+      "description": "Your Mind Flay now deals 20% more damage, gains 10 yards increased range, but slows the target's movement speed by 20%.",
+      "x": 87.5,
+      "y": 35.714285714285715,
+      "iconName": "spell_shadow_soulleech_2",
+      "icon": "/images/class-talents/spell_shadow_soulleech_2.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Priest client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Priest resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "priest-483",
+      "name": "Improved Fade",
+      "branch": "shadow",
+      "row": 4,
+      "column": 1,
+      "maxRank": 2,
+      "nodeId": 105823,
+      "spellId": 15274,
+      "rawPosX": 9080,
+      "rawPosY": 3930,
+      "sourceTalentId": 483,
+      "requiredTreePoints": 15,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Decreases the cooldown of your Fade ability by 3 sec.",
+        "Decreases the cooldown of your Fade ability by 6 sec."
+      ],
+      "description": "Decreases the cooldown of your Fade ability by 6 sec.",
+      "x": 12.5,
+      "y": 50,
+      "iconName": "spell_magic_lesserinvisibilty",
+      "icon": "/images/class-talents/spell_magic_lesserinvisibilty.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Priest client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Priest resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "priest-484",
+      "name": "Vampiric Embrace",
+      "branch": "shadow",
+      "row": 4,
+      "column": 2,
+      "maxRank": 1,
+      "nodeId": 105820,
+      "spellId": 15286,
+      "rawPosX": 9680,
+      "rawPosY": 3930,
+      "sourceTalentId": 484,
+      "requiredTreePoints": 15,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Afflicts your target with Shadow energy that causes all party members to be healed for 20% of any Shadow spell damage you deal for 30 sec."
+      ],
+      "description": "Afflicts your target with Shadow energy that causes all party members to be healed for 20% of any Shadow spell damage you deal for 30 sec.",
+      "x": 37.5,
+      "y": 50,
+      "iconName": "spell_shadow_unsummonbuilding",
+      "icon": "/images/class-talents/spell_shadow_unsummonbuilding.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Priest client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Priest resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "priest-461",
+      "name": "Shadow Weaving",
+      "branch": "shadow",
+      "row": 4,
+      "column": 3,
+      "maxRank": 3,
+      "nodeId": 105821,
+      "spellId": 15257,
+      "rawPosX": 10280,
+      "rawPosY": 3930,
+      "sourceTalentId": 461,
+      "requiredTreePoints": 15,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Your Shadow damage spells have a 33% chance to increase the Shadow damage you deal by 2% for 15 sec, stacking up to 5 times.",
+        "Your Shadow damage spells have a 67% chance to increase the Shadow damage you deal by 2% for 15 sec, stacking up to 5 times.",
+        "Your Shadow damage spells have a 100% chance to increase the Shadow damage you deal by 2% for 15 sec, stacking up to 5 times."
+      ],
+      "description": "Your Shadow damage spells have a 100% chance to increase the Shadow damage you deal by 2% for 15 sec, stacking up to 5 times.",
+      "x": 62.5,
+      "y": 50,
+      "iconName": "spell_shadow_blackplague",
+      "icon": "/images/class-talents/spell_shadow_blackplague.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Priest client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Priest resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "priest-541",
+      "name": "Silence",
+      "branch": "shadow",
+      "row": 5,
+      "column": 1,
+      "maxRank": 1,
+      "nodeId": 105824,
+      "spellId": 15487,
+      "rawPosX": 9080,
+      "rawPosY": 4530,
+      "sourceTalentId": 541,
+      "requiredTreePoints": 20,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Silences the target, preventing them from casting spells for 5 sec and interrupting their spellcasts for 3 sec."
+      ],
+      "description": "Silences the target, preventing them from casting spells for 5 sec and interrupting their spellcasts for 3 sec.",
+      "x": 12.5,
+      "y": 64.28571428571429,
+      "iconName": "spell_shadow_impphaseshift",
+      "icon": "/images/class-talents/spell_shadow_impphaseshift.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Priest client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Priest resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "priest-shadow-devouring-contagion",
+      "name": "Devouring Contagion",
+      "branch": "shadow",
+      "row": 5,
+      "column": 3,
+      "maxRank": 2,
+      "nodeId": 105819,
+      "spellId": 1309950,
+      "rawPosX": 10280,
+      "rawPosY": 4530,
+      "requiredTreePoints": 20,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Reduces the mana cost of your Devouring Plague by 25%.\n\nTargets that die while Devouring Plague is active spreads it, jumping to a nearby enemy within 5 yds for the remaining duration.",
+        "Reduces the mana cost of your Devouring Plague by 50%.\n\nTargets that die while Devouring Plague is active spreads it, jumping to a nearby enemy within 10 yds for the remaining duration."
+      ],
+      "description": "Reduces the mana cost of your Devouring Plague by 50%.\n\nTargets that die while Devouring Plague is active spreads it, jumping to a nearby enemy within 10 yds for the remaining duration.",
+      "x": 62.5,
+      "y": 64.28571428571429,
+      "iconName": "spell_shadow_devouringplague",
+      "icon": "/images/class-talents/spell_shadow_devouringplague.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Priest client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Priest resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "priest-shadow-early-demise",
+      "name": "Early Demise",
+      "branch": "shadow",
+      "row": 6,
+      "column": 1,
+      "maxRank": 2,
+      "nodeId": 110854,
+      "spellId": 1310076,
+      "rawPosX": 9080,
+      "rawPosY": 5130,
+      "requiredTreePoints": 25,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases Shadow Word: Death's critical strike chance on targets at or below 20% health by 15%.",
+        "Increases Shadow Word: Death's critical strike chance on targets at or below 20% health by 30%."
+      ],
+      "description": "Increases Shadow Word: Death's critical strike chance on targets at or below 20% health by 30%.",
+      "x": 12.5,
+      "y": 78.57142857142857,
+      "iconName": "spell_shadow_demonicfortitude",
+      "icon": "/images/class-talents/spell_shadow_demonicfortitude.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Priest client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Priest resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "priest-462",
+      "name": "Darkness",
+      "branch": "shadow",
+      "row": 6,
+      "column": 3,
+      "maxRank": 5,
+      "nodeId": 105818,
+      "spellId": 15259,
+      "rawPosX": 10280,
+      "rawPosY": 5130,
+      "sourceTalentId": 462,
+      "requiredTreePoints": 25,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases your Shadow damage done by 2%.",
+        "Increases your Shadow damage done by 4%.",
+        "Increases your Shadow damage done by 6%.",
+        "Increases your Shadow damage done by 8%.",
+        "Increases your Shadow damage done by 10%."
+      ],
+      "description": "Increases your Shadow damage done by 10%.",
+      "x": 62.5,
+      "y": 78.57142857142857,
+      "iconName": "spell_shadow_twilight",
+      "icon": "/images/class-talents/spell_shadow_twilight.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Priest client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Priest resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "priest-521",
+      "name": "Shadowform",
+      "branch": "shadow",
+      "row": 7,
+      "column": 2,
+      "maxRank": 1,
+      "nodeId": 105817,
+      "spellId": 15473,
+      "rawPosX": 9680,
+      "rawPosY": 5730,
+      "sourceTalentId": 521,
+      "requiredTreePoints": 30,
+      "prerequisite": [
+        "priest-484"
+      ],
+      "rankDescriptions": [
+        "Assume Shadowform, increasing your Shadow damage by 10%, reducing the Mana cost of all Shadow spells by 50%, increasing the critical strike damage bonus of your Shadow spells by 100%, and reducing Physical damage taken by you by 15%. However, you may not cast healing spells while in this form."
+      ],
+      "description": "Assume Shadowform, increasing your Shadow damage by 10%, reducing the Mana cost of all Shadow spells by 50%, increasing the critical strike damage bonus of your Shadow spells by 100%, and reducing Physical damage taken by you by 15%. However, you may not cast healing spells while in this form.",
+      "x": 37.5,
+      "y": 92.85714285714286,
+      "iconName": "spell_shadow_shadowform",
+      "icon": "/images/class-talents/spell_shadow_shadowform.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Priest client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Priest resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    }
+  ],
+  "rawClientNodeCount": 54,
+  "quarantinedClientNodes": [
+    {
+      "nodeId": 105865,
+      "name": "Holy Specialization",
+      "spellId": 14889,
+      "posX": 9280,
+      "posY": 21300,
+      "replacementNodeId": 110855,
+      "reason": "Exact off-grid duplicate has the same name/SpellID as active on-grid Holy row1/column3 node110855; licensed current visible-tree membership contains only the active copy. Original malformed coordinates remain archived.",
+      "sourceUrl": "https://talentsforever.com/data.json"
+    }
+  ],
+  "activeMembershipVerification": "community_verified",
+  "quarantinedClientEdges": [],
+  "reviewedGridPositions": [],
+  "reviewedEdgeInterpretations": []
+}

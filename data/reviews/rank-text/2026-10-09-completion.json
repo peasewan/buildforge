@@ -1,0 +1,101 @@
+{
+  "scope": "Published ClassDefinition pages only. Paladin uses a separate dataset validator and is outside this registry report.",
+  "limits": "Text availability is not proof of mechanic correctness, recommendation quality or AdSense approval. Unknown effects are never filled from a generic description or another rank. No page is published or retired by this review.",
+  "summary": {
+    "publishedPages": 99,
+    "primaryBuildPages": 64,
+    "primaryPagesWithGaps": 0,
+    "allReferencedPagesWithGaps": 0
+  },
+  "classes": [
+    {
+      "classId": "mage",
+      "clientBuild": "1.60.1.69913",
+      "structuralTaskGate": "legacy",
+      "publishedPages": 11,
+      "primaryBuildPages": 7,
+      "primaryPagesWithGaps": 0,
+      "allReferencedPagesWithGaps": 0,
+      "primarySelectedEndpoints": 22,
+      "primaryResolvedEndpoints": 22
+    },
+    {
+      "classId": "warrior",
+      "clientBuild": "1.60.1.70291",
+      "structuralTaskGate": "legacy",
+      "publishedPages": 18,
+      "primaryBuildPages": 11,
+      "primaryPagesWithGaps": 0,
+      "allReferencedPagesWithGaps": 0,
+      "primarySelectedEndpoints": 98,
+      "primaryResolvedEndpoints": 98
+    },
+    {
+      "classId": "rogue",
+      "clientBuild": "1.60.1.70291",
+      "structuralTaskGate": "intent_tasks_v1",
+      "publishedPages": 11,
+      "primaryBuildPages": 7,
+      "primaryPagesWithGaps": 0,
+      "allReferencedPagesWithGaps": 0,
+      "primarySelectedEndpoints": 72,
+      "primaryResolvedEndpoints": 72
+    },
+    {
+      "classId": "priest",
+      "clientBuild": "1.60.1.70291",
+      "structuralTaskGate": "intent_tasks_v1",
+      "publishedPages": 11,
+      "primaryBuildPages": 7,
+      "primaryPagesWithGaps": 0,
+      "allReferencedPagesWithGaps": 0,
+      "primarySelectedEndpoints": 67,
+      "primaryResolvedEndpoints": 67
+    },
+    {
+      "classId": "druid",
+      "clientBuild": "1.60.1.70291",
+      "structuralTaskGate": "intent_tasks_v1",
+      "publishedPages": 12,
+      "primaryBuildPages": 8,
+      "primaryPagesWithGaps": 0,
+      "allReferencedPagesWithGaps": 0,
+      "primarySelectedEndpoints": 71,
+      "primaryResolvedEndpoints": 71
+    },
+    {
+      "classId": "warlock",
+      "clientBuild": "1.60.1.70291",
+      "structuralTaskGate": "intent_tasks_v1",
+      "publishedPages": 12,
+      "primaryBuildPages": 8,
+      "primaryPagesWithGaps": 0,
+      "allReferencedPagesWithGaps": 0,
+      "primarySelectedEndpoints": 76,
+      "primaryResolvedEndpoints": 76
+    },
+    {
+      "classId": "hunter",
+      "clientBuild": "1.60.1.70291",
+      "structuralTaskGate": "intent_tasks_v1",
+      "publishedPages": 12,
+      "primaryBuildPages": 8,
+      "primaryPagesWithGaps": 0,
+      "allReferencedPagesWithGaps": 0,
+      "primarySelectedEndpoints": 62,
+      "primaryResolvedEndpoints": 62
+    },
+    {
+      "classId": "shaman",
+      "clientBuild": "1.60.1.70291",
+      "structuralTaskGate": "intent_tasks_v1",
+      "publishedPages": 12,
+      "primaryBuildPages": 8,
+      "primaryPagesWithGaps": 0,
+      "allReferencedPagesWithGaps": 0,
+      "primarySelectedEndpoints": 71,
+      "primaryResolvedEndpoints": 71
+    }
+  ],
+  "pagesNeedingRankText": []
+}

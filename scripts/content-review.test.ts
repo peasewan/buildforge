@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest'
+import { PUBLISHED_CLASSES } from '../src/data/classes'
 import { warriorClass } from '../src/data/classes/warrior'
 import { rankCoverageForPage, reviewPublishedRankEvidence } from './content-review'
 
@@ -68,4 +69,23 @@ describe('published selected-rank evidence review', () => {
     expect(report.classes[0].structuralTaskGate).toBe('legacy')
     expect(JSON.stringify(warriorClass)).toBe(before)
   })
+})
+
+
+it('rejects unresolved macros and version relabeling even with nonempty rank text', () => {
+  for (const issue of ['rank_text_unresolved', 'rank_source_mismatch'] as const) {
+    const def = structuredClone(warriorClass)
+    const page = def.pages.find(page => page.primaryBuildId)!
+    const build = def.builds.find(build => build.id === page.primaryBuildId)!
+    const [id, rank] = Object.entries(build.build).find(([, rank]) => rank > 0)!
+    const talent = def.talents.find(talent => talent.id === id)!
+    if (issue === 'rank_text_unresolved') talent.rankDescriptions![rank - 1] = 'Increases the effect by $s1%.'
+    else talent.verifiedThroughBuild = '1.60.1.69913'
+    expect(rankCoverageForPage(def, page).primary?.missing).toContainEqual(expect.objectContaining({ talentId: id, rank, reason: issue }))
+  }
+})
+
+it('keeps all actual published primary and related selected ranks complete', () => {
+  const report = reviewPublishedRankEvidence(PUBLISHED_CLASSES)
+  expect(report.summary).toMatchObject({ publishedPages: 99, primaryBuildPages: 64, primaryPagesWithGaps: 0, allReferencedPagesWithGaps: 0 })
 })

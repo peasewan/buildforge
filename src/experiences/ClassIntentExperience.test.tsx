@@ -6,6 +6,8 @@ import { rogueClass } from '../data/classes/rogue'
 import { warlockClass } from '../data/classes/warlock'
 import { hunterClass, hunterHistoricalTalents } from '../data/classes/hunter'
 import historicalHunterDataset from '../data/expansion/hunter-1.60.1.69913.json'
+import historicalPriestDataset from '../data/expansion/priest-1.60.1.69913.json'
+import historicalWarlockDataset from '../data/expansion/warlock-1.60.1.69913.json'
 import { createExpansionClass } from '../data/expansion/createClass'
 import { expansionProfiles } from '../data/expansion/profiles'
 import { validClassBuild, type ClassBuild, type ClassDefinition } from '../lib/classPage'
@@ -20,6 +22,8 @@ const experienceStyles = readFileSync('src/experiences/experience.css', 'utf8')
 afterEach(cleanup)
 const page = (slug: string) => warriorClass.pages.find((p) => p.slug === slug)!
 const historicalHunterClass = createExpansionClass(expansionProfiles.find(profile => profile.id === 'hunter')!, historicalHunterDataset)
+const historicalPriestClass = createExpansionClass(expansionProfiles.find(profile => profile.id === 'priest')!, historicalPriestDataset)
+const historicalWarlockClass = createExpansionClass(expansionProfiles.find(profile => profile.id === 'warlock')!, historicalWarlockDataset)
 function historicalCatalog(def: ClassDefinition): ClassDefinition {
   const snapshot = def.historicalSnapshots?.find(snapshot => snapshot.clientBuild === '1.60.1.69913')
   return snapshot ? { ...def, verifiedBuild: snapshot.clientBuild, dataVersion: snapshot.dataVersion, talents: snapshot.talents, talentCount: snapshot.talents.length, dataReview: { ready: true, current: false, notice: 'Preserved 69913 historical catalog fixture.' } } : def
@@ -28,6 +32,7 @@ function expectCurrentRouteLink(anchor: HTMLElement, def: ClassDefinition, build
   const url = new URL(anchor.getAttribute('href')!, 'https://buildforgetools.com')
   expect(url.pathname).toBe(def.plannerPath)
   expect(url.searchParams.get('level')).toBe('30')
+  expect(url.searchParams.get('dataset')).toBe(def.verifiedBuild)
   const allocation = decodeValidatedPlannerBuild(url.searchParams.get('build')!, def.talents, { ...def.plannerConfig, pointCap: 21 })
   expect(allocation).toEqual(build.build)
   expect(validClassBuild(def, { ...build, build: allocation! })).toBe(true)
@@ -130,12 +135,25 @@ it('opens a blank calculator from a talent reference with no selected build', ()
   const link = within(hero as HTMLElement).getByRole('link', { name: 'Open Warrior Calculator' })
   expect(link.getAttribute('href')).toBe('/warrior')
 })
-it('gives Warlock PvP a distinct editorial note instead of repeating the route paragraph', () => {
-  const warlockPvp = warlockClass.pages.find(p => p.slug === 'wow-forever-warlock-pvp-build')!
-  const { container } = render(<ClassExperiencePage classDef={warlockClass} page={warlockPvp} />)
+it('keeps the historical 69913 Warlock PvP editorial note distinct from the route paragraph', () => {
+  const warlockPvp = historicalWarlockClass.pages.find(p => p.slug === 'wow-forever-warlock-pvp-build')!
+  const { container } = render(<ClassExperiencePage classDef={historicalWarlockClass} page={warlockPvp} />)
   const text = container.textContent ?? ''
   expect(text.split('This Level 20 starting snapshot spends').length - 1).toBe(1)
   expect(text).toContain('a PvP check needs to include the opponent')
+})
+it('renders the current Warlock PvP route with sourced encounter limits and an editable 21-point allocation', () => {
+  const warlockPvp = warlockClass.pages.find(p => p.slug === 'wow-forever-warlock-pvp-build')!
+  const primary = warlockClass.builds.find(build => build.id === warlockPvp.primaryBuildId)!
+  const { container } = render(<ClassExperiencePage classDef={warlockClass} page={warlockPvp} />)
+  const text = container.textContent ?? ''
+  expect(warlockClass.verifiedBuild).toBe('1.60.1.70291')
+  expect(primary.points).toBe(21)
+  expect(text.split(warlockPvp.sections[0].paragraphs[0]).length - 1).toBe(1)
+  expect(text).toContain('Soul Harvest needs a non-trivial Drain Soul kill')
+  expect(text).not.toContain('This Level 20 starting snapshot spends')
+  const hero = container.querySelector('.ix-hero') as HTMLElement
+  expectCurrentRouteLink(within(hero).getByRole('link', { name: 'Inspect Level 30 route in Calculator' }), warlockClass, primary)
 })
 it.each([
   ['wow-forever-warrior-builds', 'build-discovery', 'a[href]'],
@@ -343,11 +361,13 @@ it('searches talent names and displays only matching evidence records', () => {
   )
 })
 
-it('shows an unavailable tooltip for the empty Remorseless Attacks rank record', () => {
+it('preserves the unavailable Remorseless Attacks tooltip in the explicit 69913 catalog', () => {
+  const def = historicalCatalog(rogueClass)
+  expect(def.verifiedBuild).toBe('1.60.1.69913')
   render(
     <ClassIntentExperience
-      classDef={rogueClass}
-      page={rogueClass.pages.find((p) => p.kind === 'talents')!}
+      classDef={def}
+      page={def.pages.find((p) => p.kind === 'talents')!}
     />,
   )
   fireEvent.change(screen.getByLabelText('Search talents'), {
@@ -361,6 +381,22 @@ it('shows an unavailable tooltip for the empty Remorseless Attacks rank record',
   ).toBeTruthy()
 })
 
+it('shows both resolved current Remorseless Attacks ranks with their community source evidence', () => {
+  const talent = rogueClass.talents.find(talent => talent.name === 'Remorseless Attacks')!
+  expect(talent.verifiedThroughBuild).toBe('1.60.1.70291')
+  expect(talent.maxRank).toBe(2)
+  expect(talent.fieldEvidence?.rankDescriptions).toBe('community_verified')
+  render(<ClassIntentExperience classDef={rogueClass} page={rogueClass.pages.find(page => page.kind === 'talents')!} />)
+  fireEvent.change(screen.getByLabelText('Search talents'), { target: { value: talent.name } })
+  const record = screen.getByTestId('talent-record')
+  for (const rank of [1, 2]) {
+    fireEvent.change(within(record).getByLabelText('Tooltip rank for Remorseless Attacks'), { target: { value: String(rank) } })
+    expect(within(record).getByText(talent.rankDescriptions![rank - 1])).toBeTruthy()
+    expect(record.textContent).not.toContain('This rank’s tooltip is not available')
+  }
+  expect(within(record).getByRole('link', { name: /Talents Forever.*CC BY 4.0/ }).getAttribute('href')).toBe('https://talentsforever.com/data.json')
+  expect(within(record).getByRole('link', { name: /Wago DB2.*70291/ }).getAttribute('href')).toContain('build=1.60.1.70291')
+})
 it.each([undefined, '', ' \n\t '])(
   'shows an unavailable notice for missing or blank rank text (%j)',
   (rankText) => {
@@ -756,21 +792,53 @@ it('keeps endpoint inspection and point-by-point progression together on an expa
   expect(screen.getByTestId('progression-current').textContent).toContain('0/5/0')
   const target = new URL(screen.getByRole('link', { name: 'Edit this level in Calculator' }).getAttribute('href')!, 'https://buildforgetools.com')
   expect(target.searchParams.get('build')).toContain('rogue-201.2')
-  expect(target.searchParams.get('build')).toContain('rogue-186.3')
+  expect(target.searchParams.get('level')).toBe('30')
+  expect(target.searchParams.get('dataset')).toBe(rogueClass.verifiedBuild)
+  expect(decodeValidatedPlannerBuild(target.searchParams.get('build')!, rogueClass.talents, rogueClass.plannerConfig)).toEqual({ 'rogue-201': 2, 'rogue-276': 3 })
+  expect(rogueClass.talents.find(talent => talent.id === 'rogue-276')?.name).toBe('Improved Eviscerate')
   expect(target.searchParams.get('build')).not.toContain('rogue-204')
 })
 
 it.each([
-  ['priest', 'wow-forever-holy-priest-leveling-build'],
-  ['warlock', 'wow-forever-demonology-warlock-leveling-build'],
-])('preserves endpoint comparison and full progression on the retained %s leveling entry', (id, slug) => {
+  ['priest', 'wow-forever-holy-priest-leveling-build', 'Holy Nova'],
+  ['warlock', 'wow-forever-demonology-warlock-leveling-build', 'Master Summoner'],
+])('preserves endpoint comparison and all 21 current progression steps on the retained %s leveling entry', (id, slug, level20TalentName) => {
   const def = PUBLISHED_CLASSES.find((candidate) => candidate.id === id)!
   const route = def.pages.find((candidate) => candidate.slug === slug)!
+  const primary = def.builds.find(build => build.id === route.primaryBuildId)!
   const { container } = render(<ClassIntentExperience classDef={def} page={route} />)
+  expect(def.verifiedBuild).toBe('1.60.1.70291')
+  expect(primary.points).toBe(21)
   expect(container.querySelector('[data-surface="build-workbench"]')).toBeTruthy()
   const progression = within(screen.getByRole('region', { name: 'Talent progression' }))
-  expect(progression.getByRole('list', { name: 'Full point-by-point route' })).toBeTruthy()
-  expect(within(progression.getByRole('list', { name: 'Full point-by-point route' })).getAllByRole('listitem')).toHaveLength(11)
+  expect(within(progression.getByRole('list', { name: 'Full point-by-point route' })).getAllByRole('listitem')).toHaveLength(21)
   const picker = progression.getByLabelText('Progression route') as HTMLSelectElement
   expect([...picker.options].every((option) => def.builds.find((build) => build.id === option.value)?.spec === route.spec)).toBe(true)
+  const levelInput = progression.getByLabelText('Your level')
+  expect(levelInput.getAttribute('max')).toBe('30')
+  fireEvent.change(levelInput, { target: { value: '20' } })
+  expect(progression.getByTestId('progression-current').textContent).toContain('11 points')
+  const stageUrl = new URL(progression.getByRole('link', { name: 'Edit this level in Calculator' }).getAttribute('href')!, 'https://buildforgetools.com')
+  const stage = decodeValidatedPlannerBuild(stageUrl.searchParams.get('build')!, def.talents, def.plannerConfig)
+  expect(stage).not.toBeNull()
+  expect(Object.values(stage!).reduce((sum, rank) => sum + rank, 0)).toBe(11)
+  expect(stage![def.talents.find(talent => talent.name === level20TalentName)!.id]).toBe(1)
+  fireEvent.change(levelInput, { target: { value: '30' } })
+  expect(progression.getByTestId('progression-current').textContent).toContain('21 points')
+  expectCurrentRouteLink(progression.getByRole('link', { name: 'Edit this level in Calculator' }), def, primary)
+})
+
+it.each([
+  [historicalPriestClass, 'wow-forever-holy-priest-leveling-build'],
+  [historicalWarlockClass, 'wow-forever-demonology-warlock-leveling-build'],
+] as const)('preserves the explicit 69913 %s retained leveling entry as an eleven-point historical route', (def, slug) => {
+  const route = def.pages.find(page => page.slug === slug)!
+  const primary = def.builds.find(build => build.id === route.primaryBuildId)!
+  const { container } = render(<ClassIntentExperience classDef={def} page={route} />)
+  expect(def.verifiedBuild).toBe('1.60.1.69913')
+  expect(primary.points).toBe(11)
+  expect(container.querySelector('[data-surface="build-workbench"]')).toBeTruthy()
+  const progression = within(screen.getByRole('region', { name: 'Talent progression' }))
+  expect(within(progression.getByRole('list', { name: 'Full point-by-point route' })).getAllByRole('listitem')).toHaveLength(11)
+  expect(progression.getByLabelText('Your level').getAttribute('max')).toBe('20')
 })

@@ -1,0 +1,470 @@
+{
+  "reviewedAt": "2026-10-09",
+  "scope": "Only missing exact icon slugs from the reviewed five-class 70291 export. No visual substitutes.",
+  "records": [
+    {
+      "iconName": "ability_backstab",
+      "path": "public/images/class-talents/ability_backstab.jpg",
+      "sourceUrl": "https://wow.zamimg.com/images/wow/icons/large/ability_backstab.jpg",
+      "acquisition": "existing_local_exact_slug",
+      "sha256": "f7580d68020bf7410230bc9b59b1064333c44c9cbb1f008635dbe399e6041d7e",
+      "bytes": 2612
+    },
+    {
+      "iconName": "ability_deathknight_hemorrhagicfever",
+      "path": "public/images/class-talents/ability_deathknight_hemorrhagicfever.jpg",
+      "sourceUrl": "https://wow.zamimg.com/images/wow/icons/large/ability_deathknight_hemorrhagicfever.jpg",
+      "acquisition": "cdn_download",
+      "sha256": "120982d53933e48f7e1c4cead17179cd193bbef2cb3a6fc6b616664ec84f10bb",
+      "bytes": 2075
+    },
+    {
+      "iconName": "ability_demonhunter_chaoticimprint_fire",
+      "path": "public/images/class-talents/ability_demonhunter_chaoticimprint_fire.jpg",
+      "sourceUrl": "https://wow.zamimg.com/images/wow/icons/large/ability_demonhunter_chaoticimprint_fire.jpg",
+      "acquisition": "cdn_download",
+      "sha256": "8316ea94a33d8912238559cd9d1e38854fb0924cc2a52061ab9b9ad980ea2c58",
+      "bytes": 2208
+    },
+    {
+      "iconName": "ability_druid_berserk",
+      "path": "public/images/class-talents/ability_druid_berserk.jpg",
+      "sourceUrl": "https://wow.zamimg.com/images/wow/icons/large/ability_druid_berserk.jpg",
+      "acquisition": "cdn_download",
+      "sha256": "838272a8bcf0e7ef97daa2e144b119f5dc70c6e5b37612a51daabb7108404b38",
+      "bytes": 1761
+    },
+    {
+      "iconName": "ability_druid_eclipse",
+      "path": "public/images/class-talents/ability_druid_eclipse.jpg",
+      "sourceUrl": "https://wow.zamimg.com/images/wow/icons/large/ability_druid_eclipse.jpg",
+      "acquisition": "cdn_download",
+      "sha256": "cf5b5452bfbfdee292c053b5c3f94271ff5bacb1c168d1c958406cf167b4eac5",
+      "bytes": 1090
+    },
+    {
+      "iconName": "ability_druid_flourish",
+      "path": "public/images/class-talents/ability_druid_flourish.jpg",
+      "sourceUrl": "https://wow.zamimg.com/images/wow/icons/large/ability_druid_flourish.jpg",
+      "acquisition": "cdn_download",
+      "sha256": "1db5eef9a8832f2f0695f0965b03cb58b3e375e1291f5e1535496864a35452c2",
+      "bytes": 2160
+    },
+    {
+      "iconName": "ability_druid_predatoryinstincts",
+      "path": "public/images/class-talents/ability_druid_predatoryinstincts.jpg",
+      "sourceUrl": "https://wow.zamimg.com/images/wow/icons/large/ability_druid_predatoryinstincts.jpg",
+      "acquisition": "cdn_download",
+      "sha256": "fa99d26996389aac9e4d81ad0a8dcd1f74d89f3459090a8bbe44be1fccb012ec",
+      "bytes": 1572
+    },
+    {
+      "iconName": "ability_druid_primalagression",
+      "path": "public/images/class-talents/ability_druid_primalagression.jpg",
+      "sourceUrl": "https://wow.zamimg.com/images/wow/icons/large/ability_druid_primalagression.jpg",
+      "acquisition": "cdn_download",
+      "sha256": "07a384db54d438fbcd51e17ea7016c23a0ee7e893d49db02c4e15782699d0453",
+      "bytes": 2135
+    },
+    {
+      "iconName": "ability_hunter_aspectmastery",
+      "path": "public/images/class-talents/ability_hunter_aspectmastery.jpg",
+      "sourceUrl": "https://wow.zamimg.com/images/wow/icons/large/ability_hunter_aspectmastery.jpg",
+      "acquisition": "cdn_download",
+      "sha256": "ded7d45ce9299860c258f429e7d999e4139df86d7331eb1ec34e4ff08887127e",
+      "bytes": 2103
+    },
+    {
+      "iconName": "ability_mage_moltenarmor",
+      "path": "public/images/class-talents/ability_mage_moltenarmor.jpg",
+      "sourceUrl": "https://wow.zamimg.com/images/wow/icons/large/ability_mage_moltenarmor.jpg",
+      "acquisition": "cdn_download",
+      "sha256": "e39a6a423c5be21031cffa44bd4ad46b15cbf0be8904c5296849c02fa058109d",
+      "bytes": 2329
+    },
+    {
+      "iconName": "ability_rogue_deadlybrew",
+      "path": "public/images/class-talents/ability_rogue_deadlybrew.jpg",
+      "sourceUrl": "https://wow.zamimg.com/images/wow/icons/large/ability_rogue_deadlybrew.jpg",
+      "acquisition": "cdn_download",
+      "sha256": "d5b9ce466bd1f9e88e6d52d88925babf6991166543040e8aa8f34c1d21045666",
+      "bytes": 2127
+    },
+    {
+      "iconName": "ability_rogue_distract",
+      "path": "public/images/class-talents/ability_rogue_distract.jpg",
+      "sourceUrl": "https://wow.zamimg.com/images/wow/icons/large/ability_rogue_distract.jpg",
+      "acquisition": "cdn_download",
+      "sha256": "16512f7f2cf47df222cd335cfdfc2b0846e331efdb70ec18653712be680da806",
+      "bytes": 1668
+    },
+    {
+      "iconName": "ability_rogue_garrote",
+      "path": "public/images/class-talents/ability_rogue_garrote.jpg",
+      "sourceUrl": "https://wow.zamimg.com/images/wow/icons/large/ability_rogue_garrote.jpg",
+      "acquisition": "cdn_download",
+      "sha256": "2ceb5fbbc5c81c1f5fd31999c9d3d4d6e2179332ef0f21abddfa6f46efa3f892",
+      "bytes": 1382
+    },
+    {
+      "iconName": "ability_rogue_rupture",
+      "path": "public/images/class-talents/ability_rogue_rupture.jpg",
+      "sourceUrl": "https://wow.zamimg.com/images/wow/icons/large/ability_rogue_rupture.jpg",
+      "acquisition": "cdn_download",
+      "sha256": "0117c0d23d24a4f0dcd0553ef6bd2d249c415d38b132e8233b036f34655e0164",
+      "bytes": 2078
+    },
+    {
+      "iconName": "ability_shaman_watershield",
+      "path": "public/images/class-talents/ability_shaman_watershield.jpg",
+      "sourceUrl": "https://wow.zamimg.com/images/wow/icons/large/ability_shaman_watershield.jpg",
+      "acquisition": "cdn_download",
+      "sha256": "bcfb4a3593026ac6e5eba56c24baea732d5b3fddb44718512e5262e519c89034",
+      "bytes": 2011
+    },
+    {
+      "iconName": "ability_warlock_baneofhavoc",
+      "path": "public/images/class-talents/ability_warlock_baneofhavoc.jpg",
+      "sourceUrl": "https://wow.zamimg.com/images/wow/icons/large/ability_warlock_baneofhavoc.jpg",
+      "acquisition": "cdn_download",
+      "sha256": "a5d1266782ddd9d1f0ede701de717ee2ad40ab76f5a6d54b0c76eda1523807d2",
+      "bytes": 1997
+    },
+    {
+      "iconName": "classicon_rogue",
+      "path": "public/images/class-talents/classicon_rogue.jpg",
+      "sourceUrl": "https://wow.zamimg.com/images/wow/icons/large/classicon_rogue.jpg",
+      "acquisition": "cdn_download",
+      "sha256": "00f1e760e8ca463beb8c93d47b303c9df1e2c5c43c6e94c3e00362f7c3ad6b7e",
+      "bytes": 1946
+    },
+    {
+      "iconName": "inv_ability_soulharvesterwarlock_demonicsoul",
+      "path": "public/images/class-talents/inv_ability_soulharvesterwarlock_demonicsoul.jpg",
+      "sourceUrl": "https://wow.zamimg.com/images/wow/icons/large/inv_ability_soulharvesterwarlock_demonicsoul.jpg",
+      "acquisition": "cdn_download",
+      "sha256": "8d28f5dda489e6bded3b1f0097b5c8e3b387aebecfcbd3de145737dcee939273",
+      "bytes": 2087
+    },
+    {
+      "iconName": "inv_elemental_primal_shadow",
+      "path": "public/images/class-talents/inv_elemental_primal_shadow.jpg",
+      "sourceUrl": "https://wow.zamimg.com/images/wow/icons/large/inv_elemental_primal_shadow.jpg",
+      "acquisition": "cdn_download",
+      "sha256": "e6594a4908fc46e3df88b2a650b705d67cb987d31181811d84d3d5242f267733",
+      "bytes": 1501
+    },
+    {
+      "iconName": "inv_scroll_07",
+      "path": "public/images/class-talents/inv_scroll_07.jpg",
+      "sourceUrl": "https://wow.zamimg.com/images/wow/icons/large/inv_scroll_07.jpg",
+      "acquisition": "cdn_download",
+      "sha256": "123acbf43dde098a98f9a71b385b573b9415df2879e60169a09032e922f4a17b",
+      "bytes": 1942
+    },
+    {
+      "iconName": "inv_sword_31",
+      "path": "public/images/class-talents/inv_sword_31.jpg",
+      "sourceUrl": "https://wow.zamimg.com/images/wow/icons/large/inv_sword_31.jpg",
+      "acquisition": "cdn_download",
+      "sha256": "68b53636cb8c853a7774665821725c1e7e4018b27d48a31c01031948458f039c",
+      "bytes": 1623
+    },
+    {
+      "iconName": "inv_sword_35",
+      "path": "public/images/class-talents/inv_sword_35.jpg",
+      "sourceUrl": "https://wow.zamimg.com/images/wow/icons/large/inv_sword_35.jpg",
+      "acquisition": "cdn_download",
+      "sha256": "3107747081f5b3a06cd8b4a54abf72e0685358381fff540f996d17c7a93a56e0",
+      "bytes": 1991
+    },
+    {
+      "iconName": "spell_arcane_arcane03",
+      "path": "public/images/class-talents/spell_arcane_arcane03.jpg",
+      "sourceUrl": "https://wow.zamimg.com/images/wow/icons/large/spell_arcane_arcane03.jpg",
+      "acquisition": "cdn_download",
+      "sha256": "5765fa311e3655568116e14746334201cb77838978392b3557e62d65620c5b9e",
+      "bytes": 1657
+    },
+    {
+      "iconName": "spell_druid_displacement",
+      "path": "public/images/class-talents/spell_druid_displacement.jpg",
+      "sourceUrl": "https://wow.zamimg.com/images/wow/icons/large/spell_druid_displacement.jpg",
+      "acquisition": "cdn_download",
+      "sha256": "b9daf65b4461d07de9afc1390a9f601458b010ff98807b249b15413e96b3c0e5",
+      "bytes": 1843
+    },
+    {
+      "iconName": "spell_fire_burnout",
+      "path": "public/images/class-talents/spell_fire_burnout.jpg",
+      "sourceUrl": "https://wow.zamimg.com/images/wow/icons/large/spell_fire_burnout.jpg",
+      "acquisition": "cdn_download",
+      "sha256": "9b378683dc8c35bb8db33e852ace38a1382d6f40d338c0e1bc7e7385a7ce37cb",
+      "bytes": 1582
+    },
+    {
+      "iconName": "spell_fire_fireball02",
+      "path": "public/images/class-talents/spell_fire_fireball02.jpg",
+      "sourceUrl": "https://wow.zamimg.com/images/wow/icons/large/spell_fire_fireball02.jpg",
+      "acquisition": "existing_local_exact_slug",
+      "sha256": "dd97b4014fee2d49241c4213e04a35de5c884c8d9a33b2634a2ac4abb8852476",
+      "bytes": 2627
+    },
+    {
+      "iconName": "spell_fire_meteorstorm",
+      "path": "public/images/class-talents/spell_fire_meteorstorm.jpg",
+      "sourceUrl": "https://wow.zamimg.com/images/wow/icons/large/spell_fire_meteorstorm.jpg",
+      "acquisition": "cdn_download",
+      "sha256": "59575f671e94c0b16689a23ea832609daefd1feea64d3157275801cfe4ecf951",
+      "bytes": 1630
+    },
+    {
+      "iconName": "spell_fire_playingwithfire",
+      "path": "public/images/class-talents/spell_fire_playingwithfire.jpg",
+      "sourceUrl": "https://wow.zamimg.com/images/wow/icons/large/spell_fire_playingwithfire.jpg",
+      "acquisition": "cdn_download",
+      "sha256": "8dcb756a747e465c3005b35b55382cc608e3610f3b6549d703f0f7237a2f0b6f",
+      "bytes": 1815
+    },
+    {
+      "iconName": "spell_holy_blindingheal",
+      "path": "public/images/class-talents/spell_holy_blindingheal.jpg",
+      "sourceUrl": "https://wow.zamimg.com/images/wow/icons/large/spell_holy_blindingheal.jpg",
+      "acquisition": "cdn_download",
+      "sha256": "cc2c6422b7fb6947afbb855034ed99695c2b0ecd44ff96804a37b46a30e0fb72",
+      "bytes": 1728
+    },
+    {
+      "iconName": "spell_holy_devineaegis",
+      "path": "public/images/class-talents/spell_holy_devineaegis.jpg",
+      "sourceUrl": "https://wow.zamimg.com/images/wow/icons/large/spell_holy_devineaegis.jpg",
+      "acquisition": "existing_local_exact_slug",
+      "sha256": "cf77fc6f15766f3c12f8466508e8a17eede519aa4fd75a04dc951838c2767f9f",
+      "bytes": 2703
+    },
+    {
+      "iconName": "spell_holy_divineillumination",
+      "path": "public/images/class-talents/spell_holy_divineillumination.jpg",
+      "sourceUrl": "https://wow.zamimg.com/images/wow/icons/large/spell_holy_divineillumination.jpg",
+      "acquisition": "existing_local_exact_slug",
+      "sha256": "a8abb3a3b05d1b023a97ecc58eb8977e018ce92f7ac665dd8e6148197a5e27de",
+      "bytes": 2086
+    },
+    {
+      "iconName": "spell_holy_holyprotection",
+      "path": "public/images/class-talents/spell_holy_holyprotection.jpg",
+      "sourceUrl": "https://wow.zamimg.com/images/wow/icons/large/spell_holy_holyprotection.jpg",
+      "acquisition": "cdn_download",
+      "sha256": "326f406f6ad99490e83b7ed0342983529c622a98947d927ceeebd6690c715809",
+      "bytes": 2671
+    },
+    {
+      "iconName": "spell_holy_penance",
+      "path": "public/images/class-talents/spell_holy_penance.jpg",
+      "sourceUrl": "https://wow.zamimg.com/images/wow/icons/large/spell_holy_penance.jpg",
+      "acquisition": "cdn_download",
+      "sha256": "713f2794be4d6830c822f53f3d540ebedc1369e8c620a5f9beb8b1e62fb3ad44",
+      "bytes": 1318
+    },
+    {
+      "iconName": "spell_holy_prayerofmendingtga",
+      "path": "public/images/class-talents/spell_holy_prayerofmendingtga.jpg",
+      "sourceUrl": "https://wow.zamimg.com/images/wow/icons/large/spell_holy_prayerofmendingtga.jpg",
+      "acquisition": "cdn_download",
+      "sha256": "3d29888caa38575b32d6323d5a3b9b6dad7139f3c5ee1b1ce801c8ce812e9dc9",
+      "bytes": 1976
+    },
+    {
+      "iconName": "spell_holy_pureofheart",
+      "path": "public/images/class-talents/spell_holy_pureofheart.jpg",
+      "sourceUrl": "https://wow.zamimg.com/images/wow/icons/large/spell_holy_pureofheart.jpg",
+      "acquisition": "cdn_download",
+      "sha256": "046a26cc7c7bcef479174ee4c86734fd3b99d00adaa1e41186f8122c260f3b16",
+      "bytes": 1845
+    },
+    {
+      "iconName": "spell_holy_sealofvengeance",
+      "path": "public/images/class-talents/spell_holy_sealofvengeance.jpg",
+      "sourceUrl": "https://wow.zamimg.com/images/wow/icons/large/spell_holy_sealofvengeance.jpg",
+      "acquisition": "cdn_download",
+      "sha256": "2d653d0b6fcada12ad90c087a97920718f8520c0805bd4a6c409300a356cd1c6",
+      "bytes": 2139
+    },
+    {
+      "iconName": "spell_holy_searinglight",
+      "path": "public/images/class-talents/spell_holy_searinglight.jpg",
+      "sourceUrl": "https://wow.zamimg.com/images/wow/icons/large/spell_holy_searinglight.jpg",
+      "acquisition": "existing_local_exact_slug",
+      "sha256": "65b002efa5703e2806534d14d9b1adeb5db43c8c3f1f9d62c2ebcfa3b7571026",
+      "bytes": 2366
+    },
+    {
+      "iconName": "spell_nature_bloodlust",
+      "path": "public/images/class-talents/spell_nature_bloodlust.jpg",
+      "sourceUrl": "https://wow.zamimg.com/images/wow/icons/large/spell_nature_bloodlust.jpg",
+      "acquisition": "existing_local_exact_slug",
+      "sha256": "d071c700739826e2d32e60b88438650d2785b10e13261ecd4209f0dae8527f99",
+      "bytes": 2895
+    },
+    {
+      "iconName": "spell_nature_callstorm",
+      "path": "public/images/class-talents/spell_nature_callstorm.jpg",
+      "sourceUrl": "https://wow.zamimg.com/images/wow/icons/large/spell_nature_callstorm.jpg",
+      "acquisition": "cdn_download",
+      "sha256": "2a8ec7c41ed3d3e616df5d89bb2171f456d6478fe51bcdf33d39d49b87a16789",
+      "bytes": 1870
+    },
+    {
+      "iconName": "spell_nature_elementalabsorption",
+      "path": "public/images/class-talents/spell_nature_elementalabsorption.jpg",
+      "sourceUrl": "https://wow.zamimg.com/images/wow/icons/large/spell_nature_elementalabsorption.jpg",
+      "acquisition": "cdn_download",
+      "sha256": "1aecd53cc1172aed27ef16735c3d393dbc95d56de8786d1020237c818f4d9a69",
+      "bytes": 2172
+    },
+    {
+      "iconName": "spell_nature_giftofthewaterspirit",
+      "path": "public/images/class-talents/spell_nature_giftofthewaterspirit.jpg",
+      "sourceUrl": "https://wow.zamimg.com/images/wow/icons/large/spell_nature_giftofthewaterspirit.jpg",
+      "acquisition": "cdn_download",
+      "sha256": "e8d57687c0572b5e035576eaccd541379bdb71308720551bcc53c04edd436959",
+      "bytes": 2132
+    },
+    {
+      "iconName": "spell_nature_lightningoverload",
+      "path": "public/images/class-talents/spell_nature_lightningoverload.jpg",
+      "sourceUrl": "https://wow.zamimg.com/images/wow/icons/large/spell_nature_lightningoverload.jpg",
+      "acquisition": "cdn_download",
+      "sha256": "fd84e32cc97cb0e0c615af21b7e78e44fc02d5fa0b3e51052de46bc7490265eb",
+      "bytes": 1902
+    },
+    {
+      "iconName": "spell_nature_mentalquickness",
+      "path": "public/images/class-talents/spell_nature_mentalquickness.jpg",
+      "sourceUrl": "https://wow.zamimg.com/images/wow/icons/large/spell_nature_mentalquickness.jpg",
+      "acquisition": "cdn_download",
+      "sha256": "43b0cc24eac6b0281ad61fe49989b00ff2fffe2af34d05b6990198e7bbacc969",
+      "bytes": 2100
+    },
+    {
+      "iconName": "spell_nature_natureresistancetotem",
+      "path": "public/images/class-talents/spell_nature_natureresistancetotem.jpg",
+      "sourceUrl": "https://wow.zamimg.com/images/wow/icons/large/spell_nature_natureresistancetotem.jpg",
+      "acquisition": "cdn_download",
+      "sha256": "c35604d1f912370655429af70f15ed303e9c66eefc8f4f712f4001dda826d5d2",
+      "bytes": 2146
+    },
+    {
+      "iconName": "spell_nature_riptide",
+      "path": "public/images/class-talents/spell_nature_riptide.jpg",
+      "sourceUrl": "https://wow.zamimg.com/images/wow/icons/large/spell_nature_riptide.jpg",
+      "acquisition": "cdn_download",
+      "sha256": "e64e542bc3af8a77d53c658038db4cb8a1c328f4a13474ef39c66ec7dc73d48e",
+      "bytes": 1887
+    },
+    {
+      "iconName": "spell_shadow_curseofachimonde",
+      "path": "public/images/class-talents/spell_shadow_curseofachimonde.jpg",
+      "sourceUrl": "https://wow.zamimg.com/images/wow/icons/large/spell_shadow_curseofachimonde.jpg",
+      "acquisition": "cdn_download",
+      "sha256": "56a88e3f0fd1ff4142e319d4cfb27a63edba28feac721fde8e596c68aca499c5",
+      "bytes": 2042
+    },
+    {
+      "iconName": "spell_shadow_demonicfortitude",
+      "path": "public/images/class-talents/spell_shadow_demonicfortitude.jpg",
+      "sourceUrl": "https://wow.zamimg.com/images/wow/icons/large/spell_shadow_demonicfortitude.jpg",
+      "acquisition": "cdn_download",
+      "sha256": "a39c5eaa279a267e31b1a5c54e24c343ddfbe52fa87646178674354dced41bc4",
+      "bytes": 2185
+    },
+    {
+      "iconName": "spell_shadow_devouringplague",
+      "path": "public/images/class-talents/spell_shadow_devouringplague.jpg",
+      "sourceUrl": "https://wow.zamimg.com/images/wow/icons/large/spell_shadow_devouringplague.jpg",
+      "acquisition": "cdn_download",
+      "sha256": "def72827351afbb21291c82ddcd7228846ef527402546501da4709e4b6ecb751",
+      "bytes": 1759
+    },
+    {
+      "iconName": "spell_shadow_felmending",
+      "path": "public/images/class-talents/spell_shadow_felmending.jpg",
+      "sourceUrl": "https://wow.zamimg.com/images/wow/icons/large/spell_shadow_felmending.jpg",
+      "acquisition": "cdn_download",
+      "sha256": "59b83f1d2a0f36611c6801156260a9e0428f6c8c3833e16e657fed1e0ab45d7a",
+      "bytes": 1509
+    },
+    {
+      "iconName": "spell_shadow_focusedpower",
+      "path": "public/images/class-talents/spell_shadow_focusedpower.jpg",
+      "sourceUrl": "https://wow.zamimg.com/images/wow/icons/large/spell_shadow_focusedpower.jpg",
+      "acquisition": "cdn_download",
+      "sha256": "d2c9fdc879cfed75fdc54b2b46c95d9527d237dec2b263b51403ec4fd3f6e7eb",
+      "bytes": 1279
+    },
+    {
+      "iconName": "spell_shadow_haunting",
+      "path": "public/images/class-talents/spell_shadow_haunting.jpg",
+      "sourceUrl": "https://wow.zamimg.com/images/wow/icons/large/spell_shadow_haunting.jpg",
+      "acquisition": "cdn_download",
+      "sha256": "cca7ceac5d5bea1208956ddfe01d434ee53a7aadb0f9d663616541ab24cbd8a3",
+      "bytes": 1633
+    },
+    {
+      "iconName": "spell_shadow_ragingscream",
+      "path": "public/images/class-talents/spell_shadow_ragingscream.jpg",
+      "sourceUrl": "https://wow.zamimg.com/images/wow/icons/large/spell_shadow_ragingscream.jpg",
+      "acquisition": "cdn_download",
+      "sha256": "15503d7228fe47caca6290be201a389e2872b7f5ce5ad7cf3fb093492db83439",
+      "bytes": 1832
+    },
+    {
+      "iconName": "spell_shadow_soulleech_2",
+      "path": "public/images/class-talents/spell_shadow_soulleech_2.jpg",
+      "sourceUrl": "https://wow.zamimg.com/images/wow/icons/large/spell_shadow_soulleech_2.jpg",
+      "acquisition": "cdn_download",
+      "sha256": "02476e531ef6563d9ed9b1cf162831755ca1642299de84eceeeb44bfd591639d",
+      "bytes": 1759
+    },
+    {
+      "iconName": "spell_shadow_summonfelhunter",
+      "path": "public/images/class-talents/spell_shadow_summonfelhunter.jpg",
+      "sourceUrl": "https://wow.zamimg.com/images/wow/icons/large/spell_shadow_summonfelhunter.jpg",
+      "acquisition": "cdn_download",
+      "sha256": "3c98bd02305beabadaad484ebc3e37d29e3ecf4e5e94695a42d740da2dc42e85",
+      "bytes": 1884
+    },
+    {
+      "iconName": "spell_shadow_unstableaffliction_2",
+      "path": "public/images/class-talents/spell_shadow_unstableaffliction_2.jpg",
+      "sourceUrl": "https://wow.zamimg.com/images/wow/icons/large/spell_shadow_unstableaffliction_2.jpg",
+      "acquisition": "cdn_download",
+      "sha256": "93a5517ac8d5f9bfaadbee2b90ef0fce16073a05feda40b3a7656dbb697d3029",
+      "bytes": 2479
+    },
+    {
+      "iconName": "spell_shaman_improvedstormstrike",
+      "path": "public/images/class-talents/spell_shaman_improvedstormstrike.jpg",
+      "sourceUrl": "https://wow.zamimg.com/images/wow/icons/large/spell_shaman_improvedstormstrike.jpg",
+      "acquisition": "cdn_download",
+      "sha256": "d98dcbf394cdbad1203ee869d8b22d084e2c11ed1f098d1b34bd01964a224d80",
+      "bytes": 2277
+    },
+    {
+      "iconName": "spell_shaman_lavaburst",
+      "path": "public/images/class-talents/spell_shaman_lavaburst.jpg",
+      "sourceUrl": "https://wow.zamimg.com/images/wow/icons/large/spell_shaman_lavaburst.jpg",
+      "acquisition": "cdn_download",
+      "sha256": "ff1070dbcd8d7c192c85c051212fd4e9942d0bdd25979beecbacb8bd1408f19c",
+      "bytes": 1881
+    },
+    {
+      "iconName": "spell_shaman_maelstromweapon",
+      "path": "public/images/class-talents/spell_shaman_maelstromweapon.jpg",
+      "sourceUrl": "https://wow.zamimg.com/images/wow/icons/large/spell_shaman_maelstromweapon.jpg",
+      "acquisition": "cdn_download",
+      "sha256": "f42679d41b3f73547bf4cbf552c0e4d7abde19f9074b486c4f147b2005a9ad28",
+      "bytes": 1805
+    }
+  ]
+}

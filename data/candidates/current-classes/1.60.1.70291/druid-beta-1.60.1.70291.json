@@ -1,0 +1,3695 @@
+{
+  "classId": "druid",
+  "build": "1.60.1.70291",
+  "clientBuild": "1.60.1.70291",
+  "sourceVersion": "wow_forever_beta_1.60.1.70291",
+  "generated": "2026-10-09",
+  "branches": [
+    "balance",
+    "feral",
+    "restoration"
+  ],
+  "treeId": 1089,
+  "skillLineId": 574,
+  "basedOnBuild": "1.60.1.69913",
+  "sourceUrl": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291",
+  "resolvedRankSourceUrl": "https://talentsforever.com/data.json",
+  "resolvedRankSourceBuild": "1.60.1.70291",
+  "resolvedRankLicense": "CC-BY-4.0",
+  "resolvedRankLicenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "resolvedRankAdaptationNotice": "Rank descriptions and icon names adapted from Talents Forever for BuildForgeTools under CC BY 4.0. Structure is reconciled field by field from Wago DB2, with explicit community-reviewed exceptions for visible membership, display positions or connection roles where recorded; original raw records are preserved.",
+  "license": "Game client factual data; rank descriptions and icon names adapted under CC-BY-4.0",
+  "attribution": "Resolved rank text and icon names adapted from Talents Forever (talentsforever.com, CC-BY-4.0); client structure from Wago DB2 1.60.1.70291",
+  "verificationSummary": "1.60.1.70291 Druid: 52 nodes and 148 complete rank descriptions; compared with 1.60.1.69913: 14 added, 9 removed, 24 moved, 7 rank-cap changes, 33 talents with rank-description changes, 6 prerequisite-link changes. Structural provenance is recorded per field: client identity, rank caps and exact raw geometry are client_verified; explicit reviewed exceptions and resolved text are community_verified; tier costs and prerequisite required ranks remain derived_assumption. 2 exact nonstandard connection records have explicit community-reviewed roles; raw IDs, types and direction are retained without treating interpreted prerequisite direction as client-only proof.",
+  "verificationSources": [
+    {
+      "label": "Wago DB2 — Druid client structure 1.60.1.70291",
+      "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+    },
+    {
+      "label": "Talents Forever — Druid resolved rank descriptions (CC BY 4.0)",
+      "url": "https://talentsforever.com/data.json"
+    }
+  ],
+  "sources": [
+    {
+      "label": "Wago DB2 — Druid client structure 1.60.1.70291",
+      "type": "beta_client",
+      "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+    },
+    {
+      "label": "Talents Forever — Druid resolved rank descriptions (CC BY 4.0)",
+      "type": "beta_client_crosscheck",
+      "url": "https://talentsforever.com/data.json"
+    }
+  ],
+  "ready": true,
+  "conflicts": [],
+  "talents": [
+    {
+      "id": "druid-762",
+      "name": "Improved Wrath",
+      "branch": "balance",
+      "row": 1,
+      "column": 2,
+      "maxRank": 5,
+      "nodeId": 104923,
+      "spellId": 16814,
+      "rawPosX": 1620,
+      "rawPosY": 2130,
+      "sourceTalentId": 762,
+      "requiredTreePoints": 0,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Reduces the cast time of your Wrath spell by 0.1 sec and its Mana cost by 10%.",
+        "Reduces the cast time of your Wrath spell by 0.2 sec and its Mana cost by 20%.",
+        "Reduces the cast time of your Wrath spell by 0.3 sec and its Mana cost by 30%.",
+        "Reduces the cast time of your Wrath spell by 0.4 sec and its Mana cost by 40%.",
+        "Reduces the cast time of your Wrath spell by 0.5 sec and its Mana cost by 50%."
+      ],
+      "description": "Reduces the cast time of your Wrath spell by 0.5 sec and its Mana cost by 50%.",
+      "x": 37.5,
+      "y": 7.142857142857142,
+      "iconName": "spell_nature_abolishmagic",
+      "icon": "/images/class-talents/spell_nature_abolishmagic.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Druid client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Druid resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "druid-balance-genesis",
+      "name": "Genesis",
+      "branch": "balance",
+      "row": 1,
+      "column": 3,
+      "maxRank": 5,
+      "nodeId": 104924,
+      "spellId": 1223081,
+      "rawPosX": 2220,
+      "rawPosY": 2130,
+      "requiredTreePoints": 0,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases the periodic damage and healing done by your spells and abilities by 1%.",
+        "Increases the periodic damage and healing done by your spells and abilities by 2%.",
+        "Increases the periodic damage and healing done by your spells and abilities by 3%.",
+        "Increases the periodic damage and healing done by your spells and abilities by 4%.",
+        "Increases the periodic damage and healing done by your spells and abilities by 5%."
+      ],
+      "description": "Increases the periodic damage and healing done by your spells and abilities by 5%.",
+      "x": 62.5,
+      "y": 7.142857142857142,
+      "iconName": "spell_arcane_arcane03",
+      "icon": "/images/class-talents/spell_arcane_arcane03.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Druid client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Druid resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "druid-783",
+      "name": "Moonglow",
+      "branch": "balance",
+      "row": 2,
+      "column": 1,
+      "maxRank": 3,
+      "nodeId": 104925,
+      "spellId": 16845,
+      "rawPosX": 1020,
+      "rawPosY": 2730,
+      "sourceTalentId": 783,
+      "requiredTreePoints": 5,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Reduces the Mana cost of your damaging spells by 8%.",
+        "Reduces the Mana cost of your damaging spells by 17%.",
+        "Reduces the Mana cost of your damaging spells by 25%."
+      ],
+      "description": "Reduces the Mana cost of your damaging spells by 25%.",
+      "x": 12.5,
+      "y": 21.428571428571427,
+      "iconName": "spell_nature_sentinal",
+      "icon": "/images/class-talents/spell_nature_sentinal.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Druid client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Druid resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "druid-763",
+      "name": "Improved Moonfire",
+      "branch": "balance",
+      "row": 2,
+      "column": 2,
+      "maxRank": 2,
+      "nodeId": 104931,
+      "spellId": 16821,
+      "rawPosX": 1620,
+      "rawPosY": 2730,
+      "sourceTalentId": 763,
+      "requiredTreePoints": 5,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases the damage and critical strike chance of your Moonfire spell by 5%.",
+        "Increases the damage and critical strike chance of your Moonfire spell by 10%."
+      ],
+      "description": "Increases the damage and critical strike chance of your Moonfire spell by 10%.",
+      "x": 37.5,
+      "y": 21.428571428571427,
+      "iconName": "spell_nature_starfall",
+      "icon": "/images/class-talents/spell_nature_starfall.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Druid client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Druid resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "druid-balance-nature-s-majesty",
+      "name": "Nature's Majesty",
+      "branch": "balance",
+      "row": 2,
+      "column": 3,
+      "maxRank": 2,
+      "nodeId": 104927,
+      "spellId": 1223082,
+      "rawPosX": 2220,
+      "rawPosY": 2730,
+      "requiredTreePoints": 5,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases your critical strike chance with spells and melee attacks by 2%.",
+        "Increases your critical strike chance with spells and melee attacks by 4%."
+      ],
+      "description": "Increases your critical strike chance with spells and melee attacks by 4%.",
+      "x": 62.5,
+      "y": 21.428571428571427,
+      "iconName": "inv_staff_01",
+      "icon": "/images/class-talents/inv_staff_01.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "community_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Druid client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Druid resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "An exact nonstandard client connection was reconciled after comparison with the licensed visible tree; prerequisite direction is community reviewed, not client-only proof.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "druid-764",
+      "name": "Nature's Reach",
+      "branch": "balance",
+      "row": 2,
+      "column": 4,
+      "maxRank": 2,
+      "nodeId": 104929,
+      "spellId": 16819,
+      "rawPosX": 2820,
+      "rawPosY": 2730,
+      "sourceTalentId": 764,
+      "requiredTreePoints": 5,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases the range of your offensive Balance spells by 10% and improves your chance to hit by 2%.",
+        "Increases the range of your offensive Balance spells by 20% and improves your chance to hit by 4%."
+      ],
+      "description": "Increases the range of your offensive Balance spells by 20% and improves your chance to hit by 4%.",
+      "x": 87.5,
+      "y": 21.428571428571427,
+      "iconName": "spell_nature_naturetouchgrow",
+      "icon": "/images/class-talents/spell_nature_naturetouchgrow.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Druid client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Druid resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "druid-787",
+      "name": "Improved Entangling Roots",
+      "branch": "balance",
+      "row": 3,
+      "column": 1,
+      "maxRank": 3,
+      "nodeId": 104926,
+      "spellId": 16918,
+      "rawPosX": 1020,
+      "rawPosY": 3330,
+      "sourceTalentId": 787,
+      "requiredTreePoints": 10,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases the damage done by your Entangling Roots spell by 25%, and its victims can take up to 25% more damage without interrupting the effect.",
+        "Increases the damage done by your Entangling Roots spell by 50%, and its victims can take up to 50% more damage without interrupting the effect.",
+        "Increases the damage done by your Entangling Roots spell by 75%, and its victims can take up to 75% more damage without interrupting the effect."
+      ],
+      "description": "Increases the damage done by your Entangling Roots spell by 75%, and its victims can take up to 75% more damage without interrupting the effect.",
+      "x": 12.5,
+      "y": 35.714285714285715,
+      "iconName": "spell_nature_stranglevines",
+      "icon": "/images/class-talents/spell_nature_stranglevines.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Druid client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Druid resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "druid-balance-nature-s-splendor",
+      "name": "Nature's Splendor",
+      "branch": "balance",
+      "row": 3,
+      "column": 3,
+      "maxRank": 1,
+      "nodeId": 104928,
+      "spellId": 1223083,
+      "rawPosX": 2220,
+      "rawPosY": 3330,
+      "requiredTreePoints": 10,
+      "prerequisite": [
+        "druid-balance-nature-s-majesty"
+      ],
+      "rankDescriptions": [
+        "Increases the duration of your Moonfire and Rejuvenation spells by 3 sec, your Regrowth spell by 6 sec, and your Insect Swarm spell by 2 sec."
+      ],
+      "description": "Increases the duration of your Moonfire and Rejuvenation spells by 3 sec, your Regrowth spell by 6 sec, and your Insect Swarm spell by 2 sec.",
+      "x": 62.5,
+      "y": 35.714285714285715,
+      "iconName": "spell_nature_natureresistancetotem",
+      "icon": "/images/class-talents/spell_nature_natureresistancetotem.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "community_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Druid client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Druid resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "An exact nonstandard client connection was reconciled after comparison with the licensed visible tree; prerequisite direction is community reviewed, not client-only proof.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "druid-827",
+      "name": "Insect Swarm",
+      "branch": "balance",
+      "row": 4,
+      "column": 1,
+      "maxRank": 1,
+      "nodeId": 104930,
+      "spellId": 5570,
+      "rawPosX": 1020,
+      "rawPosY": 3930,
+      "sourceTalentId": 827,
+      "requiredTreePoints": 15,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "The enemy target is swarmed by insects, decreasing their chance to hit with attacks by 2% and causing 48 Nature damage over 12 sec."
+      ],
+      "description": "The enemy target is swarmed by insects, decreasing their chance to hit with attacks by 2% and causing 48 Nature damage over 12 sec.",
+      "x": 12.5,
+      "y": 50,
+      "iconName": "spell_nature_insectswarm",
+      "icon": "/images/class-talents/spell_nature_insectswarm.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Druid client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Druid resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "druid-792",
+      "name": "Vengeance",
+      "branch": "balance",
+      "row": 4,
+      "column": 2,
+      "maxRank": 5,
+      "nodeId": 104932,
+      "spellId": 16909,
+      "rawPosX": 1620,
+      "rawPosY": 3930,
+      "sourceTalentId": 792,
+      "requiredTreePoints": 15,
+      "prerequisite": [
+        "druid-763"
+      ],
+      "rankDescriptions": [
+        "Increases the critical strike damage bonus of your Arcane and Nature spells by 20%.",
+        "Increases the critical strike damage bonus of your Arcane and Nature spells by 40%.",
+        "Increases the critical strike damage bonus of your Arcane and Nature spells by 60%.",
+        "Increases the critical strike damage bonus of your Arcane and Nature spells by 80%.",
+        "Increases the critical strike damage bonus of your Arcane and Nature spells by 100%."
+      ],
+      "description": "Increases the critical strike damage bonus of your Arcane and Nature spells by 100%.",
+      "x": 37.5,
+      "y": 50,
+      "iconName": "spell_nature_purge",
+      "icon": "/images/class-talents/spell_nature_purge.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Druid client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Druid resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "druid-784",
+      "name": "Improved Starfire",
+      "branch": "balance",
+      "row": 4,
+      "column": 3,
+      "maxRank": 5,
+      "nodeId": 104933,
+      "spellId": 16850,
+      "rawPosX": 2220,
+      "rawPosY": 3930,
+      "sourceTalentId": 784,
+      "requiredTreePoints": 15,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Reduces the cast time of Starfire by 0.1 sec and Starfire has a 3% chance to stun its target for 3 sec.",
+        "Reduces the cast time of Starfire by 0.2 sec and Starfire has a 6% chance to stun its target for 3 sec.",
+        "Reduces the cast time of Starfire by 0.3 sec and Starfire has a 9% chance to stun its target for 3 sec.",
+        "Reduces the cast time of Starfire by 0.4 sec and Starfire has a 12% chance to stun its target for 3 sec.",
+        "Reduces the cast time of Starfire by 0.5 sec and Starfire has a 15% chance to stun its target for 3 sec."
+      ],
+      "description": "Reduces the cast time of Starfire by 0.5 sec and Starfire has a 15% chance to stun its target for 3 sec.",
+      "x": 62.5,
+      "y": 50,
+      "iconName": "spell_arcane_starfire",
+      "icon": "/images/class-talents/spell_arcane_starfire.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Druid client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Druid resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "druid-921",
+      "name": "Overgrowth",
+      "branch": "balance",
+      "row": 5,
+      "column": 1,
+      "maxRank": 2,
+      "nodeId": 110844,
+      "spellId": 17245,
+      "rawPosX": 1020,
+      "rawPosY": 4530,
+      "sourceTalentId": 921,
+      "requiredTreePoints": 20,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases the maximum number of targets you may have affected by Entangling Roots by 1.",
+        "Increases the maximum number of targets you may have affected by Entangling Roots by 2."
+      ],
+      "description": "Increases the maximum number of targets you may have affected by Entangling Roots by 2.",
+      "x": 12.5,
+      "y": 64.28571428571429,
+      "iconName": "inv_misc_herb_15",
+      "icon": "/images/class-talents/inv_misc_herb_15.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Druid client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Druid resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "druid-789",
+      "name": "Nature's Grace",
+      "branch": "balance",
+      "row": 5,
+      "column": 2,
+      "maxRank": 1,
+      "nodeId": 104934,
+      "spellId": 16880,
+      "rawPosX": 1620,
+      "rawPosY": 4530,
+      "sourceTalentId": 789,
+      "requiredTreePoints": 20,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "All non-periodic spell criticals grace you with a blessing of nature, increasing your spellcasting speed and reducing your global cooldown by 10% for 3 sec."
+      ],
+      "description": "All non-periodic spell criticals grace you with a blessing of nature, increasing your spellcasting speed and reducing your global cooldown by 10% for 3 sec.",
+      "x": 37.5,
+      "y": 64.28571428571429,
+      "iconName": "spell_nature_naturesblessing",
+      "icon": "/images/class-talents/spell_nature_naturesblessing.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Druid client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Druid resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "druid-balance-eclipse",
+      "name": "Eclipse",
+      "branch": "balance",
+      "row": 5,
+      "column": 3,
+      "maxRank": 3,
+      "nodeId": 104935,
+      "spellId": 408248,
+      "rawPosX": 2220,
+      "rawPosY": 4530,
+      "requiredTreePoints": 20,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Your Wrath spell reduces the cast time of your next 2 Starfire spells by 0.17 sec. Stores up to 4 charges. Lasts 15 sec.",
+        "Your Wrath spell reduces the cast time of your next 2 Starfire spells by 0.33 sec. Stores up to 4 charges. Lasts 15 sec.",
+        "Your Wrath spell reduces the cast time of your next 2 Starfire spells by 0.50 sec. Stores up to 4 charges. Lasts 15 sec."
+      ],
+      "description": "Your Wrath spell reduces the cast time of your next 2 Starfire spells by 0.50 sec. Stores up to 4 charges. Lasts 15 sec.",
+      "x": 62.5,
+      "y": 64.28571428571429,
+      "iconName": "ability_druid_eclipse",
+      "icon": "/images/class-talents/ability_druid_eclipse.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Druid client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Druid resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "druid-790",
+      "name": "Moonfury",
+      "branch": "balance",
+      "row": 6,
+      "column": 2,
+      "maxRank": 5,
+      "nodeId": 104936,
+      "spellId": 16896,
+      "rawPosX": 1620,
+      "rawPosY": 5130,
+      "sourceTalentId": 790,
+      "requiredTreePoints": 25,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases the damage done by your Arcane and Nature spells by 2%.",
+        "Increases the damage done by your Arcane and Nature spells by 4%.",
+        "Increases the damage done by your Arcane and Nature spells by 6%.",
+        "Increases the damage done by your Arcane and Nature spells by 8%.",
+        "Increases the damage done by your Arcane and Nature spells by 10%."
+      ],
+      "description": "Increases the damage done by your Arcane and Nature spells by 10%.",
+      "x": 37.5,
+      "y": 78.57142857142857,
+      "iconName": "spell_nature_moonglow",
+      "icon": "/images/class-talents/spell_nature_moonglow.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Druid client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Druid resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "druid-793",
+      "name": "Moonkin Form",
+      "branch": "balance",
+      "row": 7,
+      "column": 2,
+      "maxRank": 1,
+      "nodeId": 104937,
+      "spellId": 24858,
+      "rawPosX": 1620,
+      "rawPosY": 5730,
+      "sourceTalentId": 793,
+      "requiredTreePoints": 30,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Shapeshift into Moonkin Form, increasing Omen of Clarity's chance to trigger by 100%, Armor contribution from items by 360%, and all party members within 45 yards have their Critical Strike chance increased by 3%, exclusive with Leader of the Pack. Also protects the caster from Polymorph effects and prevents the use of healing spells.\n\nThe act of shapeshifting frees the caster of Polymorph and Movement Impairing effects."
+      ],
+      "description": "Shapeshift into Moonkin Form, increasing Omen of Clarity's chance to trigger by 100%, Armor contribution from items by 360%, and all party members within 45 yards have their Critical Strike chance increased by 3%, exclusive with Leader of the Pack. Also protects the caster from Polymorph effects and prevents the use of healing spells.\n\nThe act of shapeshifting frees the caster of Polymorph and Movement Impairing effects.",
+      "x": 37.5,
+      "y": 92.85714285714286,
+      "iconName": "spell_nature_forceofnature",
+      "icon": "/images/class-talents/spell_nature_forceofnature.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Druid client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Druid resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "druid-796",
+      "name": "Ferocity",
+      "branch": "feral",
+      "row": 1,
+      "column": 2,
+      "maxRank": 5,
+      "nodeId": 104938,
+      "spellId": 16934,
+      "rawPosX": 5620,
+      "rawPosY": 2130,
+      "sourceTalentId": 796,
+      "requiredTreePoints": 0,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Reduces the cost of your Maul, Primal Bite, Swipe, Claw, and Rake abilities by 1 Rage or Energy.",
+        "Reduces the cost of your Maul, Primal Bite, Swipe, Claw, and Rake abilities by 2 Rage or Energy.",
+        "Reduces the cost of your Maul, Primal Bite, Swipe, Claw, and Rake abilities by 3 Rage or Energy.",
+        "Reduces the cost of your Maul, Primal Bite, Swipe, Claw, and Rake abilities by 4 Rage or Energy.",
+        "Reduces the cost of your Maul, Primal Bite, Swipe, Claw, and Rake abilities by 5 Rage or Energy."
+      ],
+      "description": "Reduces the cost of your Maul, Primal Bite, Swipe, Claw, and Rake abilities by 5 Rage or Energy.",
+      "x": 37.5,
+      "y": 7.142857142857142,
+      "iconName": "ability_hunter_pet_hyena",
+      "icon": "/images/class-talents/ability_hunter_pet_hyena.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Druid client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Druid resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "druid-808",
+      "name": "Heart of the Wild",
+      "branch": "feral",
+      "row": 1,
+      "column": 3,
+      "maxRank": 5,
+      "nodeId": 104939,
+      "spellId": 17003,
+      "rawPosX": 6220,
+      "rawPosY": 2130,
+      "sourceTalentId": 808,
+      "requiredTreePoints": 0,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases your Intellect by 2%. In addition, while in Bear Form or Dire Bear Form your Stamina is increased by 4% and while in Cat Form your Strength is increased by 2%.",
+        "Increases your Intellect by 4%. In addition, while in Bear Form or Dire Bear Form your Stamina is increased by 8% and while in Cat Form your Strength is increased by 4%.",
+        "Increases your Intellect by 6%. In addition, while in Bear Form or Dire Bear Form your Stamina is increased by 12% and while in Cat Form your Strength is increased by 6%.",
+        "Increases your Intellect by 8%. In addition, while in Bear Form or Dire Bear Form your Stamina is increased by 16% and while in Cat Form your Strength is increased by 8%.",
+        "Increases your Intellect by 10%. In addition, while in Bear Form or Dire Bear Form your Stamina is increased by 20% and while in Cat Form your Strength is increased by 10%."
+      ],
+      "description": "Increases your Intellect by 10%. In addition, while in Bear Form or Dire Bear Form your Stamina is increased by 20% and while in Cat Form your Strength is increased by 10%.",
+      "x": 62.5,
+      "y": 7.142857142857142,
+      "iconName": "spell_holy_blessingofagility",
+      "icon": "/images/class-talents/spell_holy_blessingofagility.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Druid client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Druid resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "druid-807",
+      "name": "Feral Swiftness",
+      "branch": "feral",
+      "row": 2,
+      "column": 1,
+      "maxRank": 2,
+      "nodeId": 104943,
+      "spellId": 17002,
+      "rawPosX": 5020,
+      "rawPosY": 2730,
+      "sourceTalentId": 807,
+      "requiredTreePoints": 5,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases your movement speed while in Cat Form by 15%, and increases your chance to Dodge by 2%.",
+        "Increases your movement speed while in Cat Form by 30%, and increases your chance to Dodge by 4%."
+      ],
+      "description": "Increases your movement speed while in Cat Form by 30%, and increases your chance to Dodge by 4%.",
+      "x": 12.5,
+      "y": 21.428571428571427,
+      "iconName": "spell_nature_spiritwolf",
+      "icon": "/images/class-talents/spell_nature_spiritwolf.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Druid client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Druid resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "druid-799",
+      "name": "Feral Instinct",
+      "branch": "feral",
+      "row": 2,
+      "column": 2,
+      "maxRank": 3,
+      "nodeId": 104940,
+      "spellId": 16947,
+      "rawPosX": 5620,
+      "rawPosY": 2730,
+      "sourceTalentId": 799,
+      "requiredTreePoints": 5,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases damage done by your Swipe ability by 10% and reduces the chance enemies have to detect you while Prowling as if you were 1 level higher.",
+        "Increases damage done by your Swipe ability by 20% and reduces the chance enemies have to detect you while Prowling as if you were 2 levels higher.",
+        "Increases damage done by your Swipe ability by 30% and reduces the chance enemies have to detect you while Prowling as if you were 3 levels higher."
+      ],
+      "description": "Increases damage done by your Swipe ability by 30% and reduces the chance enemies have to detect you while Prowling as if you were 3 levels higher.",
+      "x": 37.5,
+      "y": 21.428571428571427,
+      "iconName": "ability_ambush",
+      "icon": "/images/class-talents/ability_ambush.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Druid client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Druid resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "druid-797",
+      "name": "Brutal Impact",
+      "branch": "feral",
+      "row": 2,
+      "column": 3,
+      "maxRank": 2,
+      "nodeId": 104941,
+      "spellId": 16940,
+      "rawPosX": 6220,
+      "rawPosY": 2730,
+      "sourceTalentId": 797,
+      "requiredTreePoints": 5,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases the stun duration of your Bash and Pounce abilities by 0.5 sec and reduces the cooldown of Bash by 15 sec.",
+        "Increases the stun duration of your Bash and Pounce abilities by 1 sec and reduces the cooldown of Bash by 30 sec."
+      ],
+      "description": "Increases the stun duration of your Bash and Pounce abilities by 1 sec and reduces the cooldown of Bash by 30 sec.",
+      "x": 62.5,
+      "y": 21.428571428571427,
+      "iconName": "ability_druid_bash",
+      "icon": "/images/class-talents/ability_druid_bash.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Druid client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Druid resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "druid-794",
+      "name": "Thick Hide",
+      "branch": "feral",
+      "row": 2,
+      "column": 4,
+      "maxRank": 3,
+      "nodeId": 104942,
+      "spellId": 16929,
+      "rawPosX": 6820,
+      "rawPosY": 2730,
+      "sourceTalentId": 794,
+      "requiredTreePoints": 5,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "While in Bear Form, Cat Form, Dire Bear Form, or Moonkin Form, you gain 1 additional base Armor per level and another 0.67 base Armor for each point of defense skill beyond five times your level. This amount can be further increased by multipliers from those forms.",
+        "While in Bear Form, Cat Form, Dire Bear Form, or Moonkin Form, you gain 2 additional base Armor per level and another 1.33 base Armor for each point of defense skill beyond five times your level. This amount can be further increased by multipliers from those forms.",
+        "While in Bear Form, Cat Form, Dire Bear Form, or Moonkin Form, you gain 3 additional base Armor per level and another 2.00 base Armor for each point of defense skill beyond five times your level. This amount can be further increased by multipliers from those forms."
+      ],
+      "description": "While in Bear Form, Cat Form, Dire Bear Form, or Moonkin Form, you gain 3 additional base Armor per level and another 2.00 base Armor for each point of defense skill beyond five times your level. This amount can be further increased by multipliers from those forms.",
+      "x": 87.5,
+      "y": 21.428571428571427,
+      "iconName": "inv_misc_pelt_bear_03",
+      "icon": "/images/class-talents/inv_misc_pelt_bear_03.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Druid client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Druid resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "druid-802",
+      "name": "Shredding Attacks",
+      "branch": "feral",
+      "row": 3,
+      "column": 1,
+      "maxRank": 3,
+      "nodeId": 104945,
+      "spellId": 16966,
+      "rawPosX": 5020,
+      "rawPosY": 3330,
+      "sourceTalentId": 802,
+      "requiredTreePoints": 10,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Reduces the Energy cost of your Shred ability by 6 and reduces the Rage cost of your Lacerate ability by 1.",
+        "Reduces the Energy cost of your Shred ability by 12 and reduces the Rage cost of your Lacerate ability by 2.",
+        "Reduces the Energy cost of your Shred ability by 18 and reduces the Rage cost of your Lacerate ability by 3."
+      ],
+      "description": "Reduces the Energy cost of your Shred ability by 18 and reduces the Rage cost of your Lacerate ability by 3.",
+      "x": 12.5,
+      "y": 35.714285714285715,
+      "iconName": "spell_shadow_vampiricaura",
+      "icon": "/images/class-talents/spell_shadow_vampiricaura.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Druid client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Druid resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "druid-805",
+      "name": "Savage Fury",
+      "branch": "feral",
+      "row": 3,
+      "column": 2,
+      "maxRank": 2,
+      "nodeId": 104948,
+      "spellId": 16998,
+      "rawPosX": 5620,
+      "rawPosY": 3330,
+      "sourceTalentId": 805,
+      "requiredTreePoints": 10,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases the damage caused by your Claw, Rake, Shred, Maul, and Swipe abilities by 5%.",
+        "Increases the damage caused by your Claw, Rake, Shred, Maul, and Swipe abilities by 10%."
+      ],
+      "description": "Increases the damage caused by your Claw, Rake, Shred, Maul, and Swipe abilities by 10%.",
+      "x": 37.5,
+      "y": 35.714285714285715,
+      "iconName": "ability_druid_ravage",
+      "icon": "/images/class-talents/ability_druid_ravage.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Druid client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Druid resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "druid-804",
+      "name": "Feral Charge",
+      "branch": "feral",
+      "row": 3,
+      "column": 3,
+      "maxRank": 1,
+      "nodeId": 104944,
+      "spellId": 1238122,
+      "rawPosX": 6220,
+      "rawPosY": 3330,
+      "sourceTalentId": 804,
+      "requiredTreePoints": 10,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Charge an enemy, immobilizing them and interrupting any spell they are casting for 4 sec.\n\nFeral Charge (Cat): 8-25 yd range, Instant, 30 sec cooldown, Requires Cat Form. Leap behind an enemy."
+      ],
+      "description": "Charge an enemy, immobilizing them and interrupting any spell they are casting for 4 sec.\n\nFeral Charge (Cat): 8-25 yd range, Instant, 30 sec cooldown, Requires Cat Form. Leap behind an enemy.",
+      "x": 62.5,
+      "y": 35.714285714285715,
+      "iconName": "ability_hunter_pet_bear",
+      "icon": "/images/class-talents/ability_hunter_pet_bear.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Druid client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Druid resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "druid-798",
+      "name": "Sharpened Claws",
+      "branch": "feral",
+      "row": 3,
+      "column": 4,
+      "maxRank": 2,
+      "nodeId": 104946,
+      "spellId": 16942,
+      "rawPosX": 6820,
+      "rawPosY": 3330,
+      "sourceTalentId": 798,
+      "requiredTreePoints": 10,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases your critical strike chance while in Bear Form, Dire Bear Form, or Cat Form by 3%.",
+        "Increases your critical strike chance while in Bear Form, Dire Bear Form, or Cat Form by 6%."
+      ],
+      "description": "Increases your critical strike chance while in Bear Form, Dire Bear Form, or Cat Form by 6%.",
+      "x": 87.5,
+      "y": 35.714285714285715,
+      "iconName": "inv_misc_monsterclaw_04",
+      "icon": "/images/class-talents/inv_misc_monsterclaw_04.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Druid client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Druid resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "druid-feral-shifting-power",
+      "name": "Shifting Power",
+      "branch": "feral",
+      "row": 4,
+      "column": 1,
+      "maxRank": 1,
+      "nodeId": 104951,
+      "spellId": 1322605,
+      "rawPosX": 5020,
+      "rawPosY": 3930,
+      "requiredTreePoints": 15,
+      "prerequisite": [
+        "druid-802"
+      ],
+      "rankDescriptions": [
+        "Instantly convert 55% of base Mana into 40 Energy. Shifting Power's cost is reduced by effects that reduce the cost of Shapeshifting."
+      ],
+      "description": "Instantly convert 55% of base Mana into 40 Energy. Shifting Power's cost is reduced by effects that reduce the cost of Shapeshifting.",
+      "x": 12.5,
+      "y": 50,
+      "iconName": "spell_druid_displacement",
+      "icon": "/images/class-talents/spell_druid_displacement.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Druid client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Druid resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "druid-feral-primal-bite",
+      "name": "Primal Bite",
+      "branch": "feral",
+      "row": 4,
+      "column": 2,
+      "maxRank": 1,
+      "nodeId": 104949,
+      "spellId": 407995,
+      "rawPosX": 5620,
+      "rawPosY": 3930,
+      "requiredTreePoints": 15,
+      "prerequisite": [
+        "druid-805"
+      ],
+      "rankDescriptions": [
+        "Bite the target, dealing 100% normal damage plus 26 and generating a high amount of threat."
+      ],
+      "description": "Bite the target, dealing 100% normal damage plus 26 and generating a high amount of threat.",
+      "x": 37.5,
+      "y": 50,
+      "iconName": "ability_racial_cannibalize",
+      "icon": "/images/class-talents/ability_racial_cannibalize.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Druid client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Druid resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "druid-803",
+      "name": "Predatory Strikes",
+      "branch": "feral",
+      "row": 4,
+      "column": 3,
+      "maxRank": 3,
+      "nodeId": 104952,
+      "spellId": 16972,
+      "rawPosX": 6220,
+      "rawPosY": 3930,
+      "sourceTalentId": 803,
+      "requiredTreePoints": 15,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases your melee Attack Power in Cat Form, Bear Form, and Dire Bear Form by 50% of your level.",
+        "Increases your melee Attack Power in Cat Form, Bear Form, and Dire Bear Form by 100% of your level.",
+        "Increases your melee Attack Power in Cat Form, Bear Form, and Dire Bear Form by 150% of your level."
+      ],
+      "description": "Increases your melee Attack Power in Cat Form, Bear Form, and Dire Bear Form by 150% of your level.",
+      "x": 62.5,
+      "y": 50,
+      "iconName": "ability_hunter_pet_cat",
+      "icon": "/images/class-talents/ability_hunter_pet_cat.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Druid client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Druid resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "druid-800",
+      "name": "Blood Frenzy",
+      "branch": "feral",
+      "row": 4,
+      "column": 4,
+      "maxRank": 2,
+      "nodeId": 104947,
+      "spellId": 16958,
+      "rawPosX": 6820,
+      "rawPosY": 3930,
+      "sourceTalentId": 800,
+      "requiredTreePoints": 15,
+      "prerequisite": [
+        "druid-798"
+      ],
+      "rankDescriptions": [
+        "Gives you a 50% chance to gain an additional 5 Rage any time you get a critical strike while in Bear Form or Dire Bear Form. In addition, your non-periodic critical strikes from Cat Form abilities that generate Combo Points have a 50% chance to add an additional Combo Point.",
+        "Gives you a 100% chance to gain an additional 5 Rage any time you get a critical strike while in Bear Form or Dire Bear Form. In addition, your non-periodic critical strikes from Cat Form abilities that generate Combo Points have a 100% chance to add an additional Combo Point."
+      ],
+      "description": "Gives you a 100% chance to gain an additional 5 Rage any time you get a critical strike while in Bear Form or Dire Bear Form. In addition, your non-periodic critical strikes from Cat Form abilities that generate Combo Points have a 100% chance to add an additional Combo Point.",
+      "x": 87.5,
+      "y": 50,
+      "iconName": "ability_ghoulfrenzy",
+      "icon": "/images/class-talents/ability_ghoulfrenzy.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Druid client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Druid resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "druid-feral-improved-shifting-power",
+      "name": "Improved Shifting Power",
+      "branch": "feral",
+      "row": 5,
+      "column": 1,
+      "maxRank": 2,
+      "nodeId": 113563,
+      "spellId": 1322670,
+      "rawPosX": 5020,
+      "rawPosY": 4530,
+      "requiredTreePoints": 20,
+      "prerequisite": [
+        "druid-feral-shifting-power"
+      ],
+      "rankDescriptions": [
+        "Reduces the cooldown of your Shifting Power spell by 4 sec.",
+        "Reduces the cooldown of your Shifting Power spell by 8 sec."
+      ],
+      "description": "Reduces the cooldown of your Shifting Power spell by 8 sec.",
+      "x": 12.5,
+      "y": 64.28571428571429,
+      "iconName": "ability_hunter_aspectmastery",
+      "icon": "/images/class-talents/ability_hunter_aspectmastery.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Druid client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Druid resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "druid-809",
+      "name": "Leader of the Pack",
+      "branch": "feral",
+      "row": 5,
+      "column": 2,
+      "maxRank": 1,
+      "nodeId": 104955,
+      "spellId": 17007,
+      "rawPosX": 5620,
+      "rawPosY": 4530,
+      "sourceTalentId": 809,
+      "requiredTreePoints": 20,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "While in Cat Form, Bear Form, or Dire Bear Form, the Leader of the Pack increases the critical strike chance of all party members within 45 yards by 3%, exclusive with Moonkin Aura."
+      ],
+      "description": "While in Cat Form, Bear Form, or Dire Bear Form, the Leader of the Pack increases the critical strike chance of all party members within 45 yards by 3%, exclusive with Moonkin Aura.",
+      "x": 37.5,
+      "y": 64.28571428571429,
+      "iconName": "spell_nature_unyeildingstamina",
+      "icon": "/images/class-talents/spell_nature_unyeildingstamina.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Druid client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Druid resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "druid-feral-natural-instinct",
+      "name": "Natural Instinct",
+      "branch": "feral",
+      "row": 5,
+      "column": 4,
+      "maxRank": 2,
+      "nodeId": 104950,
+      "spellId": 1223242,
+      "rawPosX": 6820,
+      "rawPosY": 4530,
+      "requiredTreePoints": 20,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases the critical strike damage bonus of your melee abilities by 10% and increases your spell healing by 12% of your Intellect.",
+        "Increases the critical strike damage bonus of your melee abilities by 20% and increases your spell healing by 25% of your Intellect."
+      ],
+      "description": "Increases the critical strike damage bonus of your melee abilities by 20% and increases your spell healing by 25% of your Intellect.",
+      "x": 87.5,
+      "y": 64.28571428571429,
+      "iconName": "ability_druid_predatoryinstincts",
+      "icon": "/images/class-talents/ability_druid_predatoryinstincts.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Druid client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Druid resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "druid-feral-natural-reaction",
+      "name": "Natural Reaction",
+      "branch": "feral",
+      "row": 6,
+      "column": 1,
+      "maxRank": 5,
+      "nodeId": 104954,
+      "spellId": 417051,
+      "rawPosX": 5020,
+      "rawPosY": 5130,
+      "requiredTreePoints": 25,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases your dodge chance by 1%, and gives you a 20% chance to gain 5 Rage each time you dodge.",
+        "Increases your dodge chance by 2%, and gives you a 40% chance to gain 5 Rage each time you dodge.",
+        "Increases your dodge chance by 3%, and gives you a 60% chance to gain 5 Rage each time you dodge.",
+        "Increases your dodge chance by 4%, and gives you a 80% chance to gain 5 Rage each time you dodge.",
+        "Increases your dodge chance by 5%, and gives you a 100% chance to gain 5 Rage each time you dodge."
+      ],
+      "description": "Increases your dodge chance by 5%, and gives you a 100% chance to gain 5 Rage each time you dodge.",
+      "x": 12.5,
+      "y": 78.57142857142857,
+      "iconName": "ability_bullrush",
+      "icon": "/images/class-talents/ability_bullrush.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Druid client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Druid resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "druid-feral-rend-and-tear",
+      "name": "Rend and Tear",
+      "branch": "feral",
+      "row": 6,
+      "column": 3,
+      "maxRank": 5,
+      "nodeId": 104953,
+      "spellId": 1223246,
+      "rawPosX": 6220,
+      "rawPosY": 5130,
+      "requiredTreePoints": 25,
+      "prerequisite": [
+        "druid-803"
+      ],
+      "rankDescriptions": [
+        "Increases damage done by your melee abilities on Bleeding targets by 2%.",
+        "Increases damage done by your melee abilities on Bleeding targets by 4%.",
+        "Increases damage done by your melee abilities on Bleeding targets by 6%.",
+        "Increases damage done by your melee abilities on Bleeding targets by 8%.",
+        "Increases damage done by your melee abilities on Bleeding targets by 10%."
+      ],
+      "description": "Increases damage done by your melee abilities on Bleeding targets by 10%.",
+      "x": 62.5,
+      "y": 78.57142857142857,
+      "iconName": "ability_druid_primalagression",
+      "icon": "/images/class-talents/ability_druid_primalagression.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Druid client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Druid resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "druid-feral-berserk",
+      "name": "Berserk",
+      "branch": "feral",
+      "row": 7,
+      "column": 2,
+      "maxRank": 1,
+      "nodeId": 104956,
+      "spellId": 417141,
+      "rawPosX": 5620,
+      "rawPosY": 5730,
+      "requiredTreePoints": 30,
+      "prerequisite": [
+        "druid-809"
+      ],
+      "rankDescriptions": [
+        "Causes your Primal Bite ability to strike up to 3 targets, removes its cooldown, and increases the critical strike chance of your Combo Point-generating abilities by 100%. Clears and grants immunity to Fear effects for the duration. Lasts 15 sec."
+      ],
+      "description": "Causes your Primal Bite ability to strike up to 3 targets, removes its cooldown, and increases the critical strike chance of your Combo Point-generating abilities by 100%. Clears and grants immunity to Fear effects for the duration. Lasts 15 sec.",
+      "x": 37.5,
+      "y": 92.85714285714286,
+      "iconName": "ability_druid_berserk",
+      "icon": "/images/class-talents/ability_druid_berserk.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Druid client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Druid resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "druid-823",
+      "name": "Nature's Focus",
+      "branch": "restoration",
+      "row": 1,
+      "column": 2,
+      "maxRank": 5,
+      "nodeId": 104957,
+      "spellId": 17063,
+      "rawPosX": 9680,
+      "rawPosY": 2130,
+      "sourceTalentId": 823,
+      "requiredTreePoints": 0,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Gives you a 14% chance to avoid interruption caused by damage while casting Arcane and Nature spells.",
+        "Gives you a 28% chance to avoid interruption caused by damage while casting Arcane and Nature spells.",
+        "Gives you a 42% chance to avoid interruption caused by damage while casting Arcane and Nature spells.",
+        "Gives you a 56% chance to avoid interruption caused by damage while casting Arcane and Nature spells.",
+        "Gives you a 70% chance to avoid interruption caused by damage while casting Arcane and Nature spells."
+      ],
+      "description": "Gives you a 70% chance to avoid interruption caused by damage while casting Arcane and Nature spells.",
+      "x": 37.5,
+      "y": 7.142857142857142,
+      "iconName": "spell_nature_healingwavegreater",
+      "icon": "/images/class-talents/spell_nature_healingwavegreater.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Druid client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Druid resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "druid-822",
+      "name": "Furor",
+      "branch": "restoration",
+      "row": 1,
+      "column": 3,
+      "maxRank": 5,
+      "nodeId": 104958,
+      "spellId": 17056,
+      "rawPosX": 10280,
+      "rawPosY": 2130,
+      "sourceTalentId": 822,
+      "requiredTreePoints": 0,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Gives you a 20% chance to gain 10 Rage when shapeshifting into Bear Form or Dire Bear Form. Shapeshifting into Cat Form restores 20% of the Energy you had when last in Cat Form, plus 2 Energy per sec spent outside Cat Form, up to 20 Energy.\n\nBear Form and Dire Bear Form forfeit this Energy and halt its restoration while active.",
+        "Gives you a 40% chance to gain 10 Rage when shapeshifting into Bear Form or Dire Bear Form. Shapeshifting into Cat Form restores 40% of the Energy you had when last in Cat Form, plus 4 Energy per sec spent outside Cat Form, up to 40 Energy.\n\nBear Form and Dire Bear Form forfeit this Energy and halt its restoration while active.",
+        "Gives you a 60% chance to gain 10 Rage when shapeshifting into Bear Form or Dire Bear Form. Shapeshifting into Cat Form restores 60% of the Energy you had when last in Cat Form, plus 6 Energy per sec spent outside Cat Form, up to 60 Energy.\n\nBear Form and Dire Bear Form forfeit this Energy and halt its restoration while active.",
+        "Gives you a 80% chance to gain 10 Rage when shapeshifting into Bear Form or Dire Bear Form. Shapeshifting into Cat Form restores 80% of the Energy you had when last in Cat Form, plus 8 Energy per sec spent outside Cat Form, up to 80 Energy.\n\nBear Form and Dire Bear Form forfeit this Energy and halt its restoration while active.",
+        "Gives you a 100% chance to gain 10 Rage when shapeshifting into Bear Form or Dire Bear Form. Shapeshifting into Cat Form restores 100% of the Energy you had when last in Cat Form, plus 10 Energy per sec spent outside Cat Form, up to 100 Energy.\n\nBear Form and Dire Bear Form forfeit this Energy and halt its restoration while active."
+      ],
+      "description": "Gives you a 100% chance to gain 10 Rage when shapeshifting into Bear Form or Dire Bear Form. Shapeshifting into Cat Form restores 100% of the Energy you had when last in Cat Form, plus 10 Energy per sec spent outside Cat Form, up to 100 Energy.\n\nBear Form and Dire Bear Form forfeit this Energy and halt its restoration while active.",
+      "x": 62.5,
+      "y": 7.142857142857142,
+      "iconName": "spell_holy_blessingofstamina",
+      "icon": "/images/class-talents/spell_holy_blessingofstamina.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Druid client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Druid resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "druid-824",
+      "name": "Naturalist",
+      "branch": "restoration",
+      "row": 2,
+      "column": 1,
+      "maxRank": 5,
+      "nodeId": 104922,
+      "spellId": 17069,
+      "rawPosX": 9080,
+      "rawPosY": 2730,
+      "sourceTalentId": 824,
+      "requiredTreePoints": 5,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Reduces the cast time of your Healing Touch spell by 0.1 sec and increases all damage you deal by 1%.",
+        "Reduces the cast time of your Healing Touch spell by 0.2 sec and increases all damage you deal by 2%.",
+        "Reduces the cast time of your Healing Touch spell by 0.3 sec and increases all damage you deal by 3%.",
+        "Reduces the cast time of your Healing Touch spell by 0.4 sec and increases all damage you deal by 4%.",
+        "Reduces the cast time of your Healing Touch spell by 0.5 sec and increases all damage you deal by 5%."
+      ],
+      "description": "Reduces the cast time of your Healing Touch spell by 0.5 sec and increases all damage you deal by 5%.",
+      "x": 12.5,
+      "y": 21.428571428571427,
+      "iconName": "spell_nature_healingtouch",
+      "icon": "/images/class-talents/spell_nature_healingtouch.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Druid client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Druid resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "druid-841",
+      "name": "Subtlety",
+      "branch": "restoration",
+      "row": 2,
+      "column": 2,
+      "maxRank": 3,
+      "nodeId": 104920,
+      "spellId": 17118,
+      "rawPosX": 9680,
+      "rawPosY": 2730,
+      "sourceTalentId": 841,
+      "requiredTreePoints": 5,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Reduces the threat generated by your Nature and Arcane spells by 10%.",
+        "Reduces the threat generated by your Nature and Arcane spells by 20%.",
+        "Reduces the threat generated by your Nature and Arcane spells by 30%."
+      ],
+      "description": "Reduces the threat generated by your Nature and Arcane spells by 30%.",
+      "x": 37.5,
+      "y": 21.428571428571427,
+      "iconName": "ability_eyeoftheowl",
+      "icon": "/images/class-talents/ability_eyeoftheowl.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Druid client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Druid resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "druid-781",
+      "name": "Natural Shapeshifter",
+      "branch": "restoration",
+      "row": 2,
+      "column": 3,
+      "maxRank": 3,
+      "nodeId": 104919,
+      "spellId": 16833,
+      "rawPosX": 10280,
+      "rawPosY": 2730,
+      "sourceTalentId": 781,
+      "requiredTreePoints": 5,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Reduces the mana cost of all shapeshifting by 10%.",
+        "Reduces the mana cost of all shapeshifting by 20%.",
+        "Reduces the mana cost of all shapeshifting by 30%."
+      ],
+      "description": "Reduces the mana cost of all shapeshifting by 30%.",
+      "x": 62.5,
+      "y": 21.428571428571427,
+      "iconName": "spell_nature_wispsplode",
+      "icon": "/images/class-talents/spell_nature_wispsplode.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Druid client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Druid resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "druid-829",
+      "name": "Reflection",
+      "branch": "restoration",
+      "row": 3,
+      "column": 2,
+      "maxRank": 3,
+      "nodeId": 104917,
+      "spellId": 17106,
+      "rawPosX": 9680,
+      "rawPosY": 3330,
+      "sourceTalentId": 829,
+      "requiredTreePoints": 10,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Allows 17% of your Mana regeneration to continue while casting.",
+        "Allows 33% of your Mana regeneration to continue while casting.",
+        "Allows 50% of your Mana regeneration to continue while casting."
+      ],
+      "description": "Allows 50% of your Mana regeneration to continue while casting.",
+      "x": 37.5,
+      "y": 35.714285714285715,
+      "iconName": "spell_frost_windwalkon",
+      "icon": "/images/class-talents/spell_frost_windwalkon.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Druid client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Druid resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "druid-828",
+      "name": "Gift of Nature",
+      "branch": "restoration",
+      "row": 3,
+      "column": 3,
+      "maxRank": 5,
+      "nodeId": 104916,
+      "spellId": 17104,
+      "rawPosX": 10280,
+      "rawPosY": 3330,
+      "sourceTalentId": 828,
+      "requiredTreePoints": 10,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases the effect of all your healing spells by 2%.",
+        "Increases the effect of all your healing spells by 4%.",
+        "Increases the effect of all your healing spells by 6%.",
+        "Increases the effect of all your healing spells by 8%.",
+        "Increases the effect of all your healing spells by 10%."
+      ],
+      "description": "Increases the effect of all your healing spells by 10%.",
+      "x": 62.5,
+      "y": 35.714285714285715,
+      "iconName": "spell_nature_protectionformnature",
+      "icon": "/images/class-talents/spell_nature_protectionformnature.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Druid client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Druid resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "druid-restoration-gift-of-the-earthmother",
+      "name": "Gift of the Earthmother",
+      "branch": "restoration",
+      "row": 3,
+      "column": 4,
+      "maxRank": 1,
+      "nodeId": 104918,
+      "spellId": 414673,
+      "rawPosX": 10880,
+      "rawPosY": 3330,
+      "requiredTreePoints": 10,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Reduces the global cooldown by 0.5 seconds on your Rejuvenation, Swiftmend, and Wild Growth spells."
+      ],
+      "description": "Reduces the global cooldown by 0.5 seconds on your Rejuvenation, Swiftmend, and Wild Growth spells.",
+      "x": 87.5,
+      "y": 35.714285714285715,
+      "iconName": "spell_nature_spiritarmor",
+      "icon": "/images/class-talents/spell_nature_spiritarmor.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Druid client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Druid resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "druid-843",
+      "name": "Tranquil Spirit",
+      "branch": "restoration",
+      "row": 4,
+      "column": 2,
+      "maxRank": 5,
+      "nodeId": 104915,
+      "spellId": 24968,
+      "rawPosX": 9680,
+      "rawPosY": 3930,
+      "sourceTalentId": 843,
+      "requiredTreePoints": 15,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Reduces the mana cost of your Healing Touch and Tranquility spells by 2%.",
+        "Reduces the mana cost of your Healing Touch and Tranquility spells by 4%.",
+        "Reduces the mana cost of your Healing Touch and Tranquility spells by 6%.",
+        "Reduces the mana cost of your Healing Touch and Tranquility spells by 8%.",
+        "Reduces the mana cost of your Healing Touch and Tranquility spells by 10%."
+      ],
+      "description": "Reduces the mana cost of your Healing Touch and Tranquility spells by 10%.",
+      "x": 37.5,
+      "y": 50,
+      "iconName": "spell_holy_elunesgrace",
+      "icon": "/images/class-talents/spell_holy_elunesgrace.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "same",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Druid client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Druid resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "druid-830",
+      "name": "Improved Rejuvenation",
+      "branch": "restoration",
+      "row": 4,
+      "column": 3,
+      "maxRank": 3,
+      "nodeId": 104914,
+      "spellId": 17111,
+      "rawPosX": 10280,
+      "rawPosY": 3930,
+      "sourceTalentId": 830,
+      "requiredTreePoints": 15,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases the effect of your Rejuvenation spell by 5%.",
+        "Increases the effect of your Rejuvenation spell by 10%.",
+        "Increases the effect of your Rejuvenation spell by 15%."
+      ],
+      "description": "Increases the effect of your Rejuvenation spell by 15%.",
+      "x": 62.5,
+      "y": 50,
+      "iconName": "spell_nature_rejuvenation",
+      "icon": "/images/class-talents/spell_nature_rejuvenation.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Druid client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Druid resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "druid-844",
+      "name": "Swiftmend",
+      "branch": "restoration",
+      "row": 4,
+      "column": 4,
+      "maxRank": 1,
+      "nodeId": 104912,
+      "spellId": 18562,
+      "rawPosX": 10880,
+      "rawPosY": 3930,
+      "sourceTalentId": 844,
+      "requiredTreePoints": 15,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Instantly heals a target with an active Rejuvenation or Regrowth effect for an amount equal to the full duration of the periodic effect of one of those spells."
+      ],
+      "description": "Instantly heals a target with an active Rejuvenation or Regrowth effect for an amount equal to the full duration of the periodic effect of one of those spells.",
+      "x": 87.5,
+      "y": 50,
+      "iconName": "inv_relics_idolofrejuvenation",
+      "icon": "/images/class-talents/inv_relics_idolofrejuvenation.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Druid client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Druid resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "druid-831",
+      "name": "Nature's Swiftness",
+      "branch": "restoration",
+      "row": 5,
+      "column": 1,
+      "maxRank": 1,
+      "nodeId": 104921,
+      "spellId": 17116,
+      "rawPosX": 9080,
+      "rawPosY": 4530,
+      "sourceTalentId": 831,
+      "requiredTreePoints": 20,
+      "prerequisite": [
+        "druid-824"
+      ],
+      "rankDescriptions": [
+        "When activated, your next Nature spell becomes an instant cast spell."
+      ],
+      "description": "When activated, your next Nature spell becomes an instant cast spell.",
+      "x": 12.5,
+      "y": 64.28571428571429,
+      "iconName": "spell_nature_ravenform",
+      "icon": "/images/class-talents/spell_nature_ravenform.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "same",
+      "complete": true,
+      "confirmedRanks": [
+        1
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Druid client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Druid resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "druid-restoration-living-spirit",
+      "name": "Living Spirit",
+      "branch": "restoration",
+      "row": 5,
+      "column": 2,
+      "maxRank": 3,
+      "nodeId": 104911,
+      "spellId": 1309631,
+      "rawPosX": 9680,
+      "rawPosY": 4530,
+      "requiredTreePoints": 20,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases your Spirit by 5%.",
+        "Increases your Spirit by 10%.",
+        "Increases your Spirit by 15%."
+      ],
+      "description": "Increases your Spirit by 15%.",
+      "x": 37.5,
+      "y": 64.28571428571429,
+      "iconName": "spell_nature_giftofthewaterspirit",
+      "icon": "/images/class-talents/spell_nature_giftofthewaterspirit.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Druid client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Druid resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "druid-842",
+      "name": "Improved Tranquility",
+      "branch": "restoration",
+      "row": 5,
+      "column": 4,
+      "maxRank": 2,
+      "nodeId": 104909,
+      "spellId": 17123,
+      "rawPosX": 10880,
+      "rawPosY": 4530,
+      "sourceTalentId": 842,
+      "requiredTreePoints": 20,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Reduces threat caused by Tranquility by 50% and its cooldown by 30%.",
+        "Reduces threat caused by Tranquility by 100% and its cooldown by 60%."
+      ],
+      "description": "Reduces threat caused by Tranquility by 100% and its cooldown by 60%.",
+      "x": 87.5,
+      "y": 64.28571428571429,
+      "iconName": "spell_nature_tranquility",
+      "icon": "/images/class-talents/spell_nature_tranquility.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Druid client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Druid resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "druid-825",
+      "name": "Improved Regrowth",
+      "branch": "restoration",
+      "row": 6,
+      "column": 3,
+      "maxRank": 5,
+      "nodeId": 104913,
+      "spellId": 17074,
+      "rawPosX": 10280,
+      "rawPosY": 5130,
+      "sourceTalentId": 825,
+      "requiredTreePoints": 25,
+      "prerequisite": [
+        "druid-830"
+      ],
+      "rankDescriptions": [
+        "Increases the critical effect chance of your Regrowth spell by 10%.",
+        "Increases the critical effect chance of your Regrowth spell by 20%.",
+        "Increases the critical effect chance of your Regrowth spell by 30%.",
+        "Increases the critical effect chance of your Regrowth spell by 40%.",
+        "Increases the critical effect chance of your Regrowth spell by 50%."
+      ],
+      "description": "Increases the critical effect chance of your Regrowth spell by 50%.",
+      "x": 62.5,
+      "y": 78.57142857142857,
+      "iconName": "spell_nature_resistnature",
+      "icon": "/images/class-talents/spell_nature_resistnature.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Druid client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Druid resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "druid-restoration-wild-growth",
+      "name": "Wild Growth",
+      "branch": "restoration",
+      "row": 7,
+      "column": 2,
+      "maxRank": 1,
+      "nodeId": 104910,
+      "spellId": 408120,
+      "rawPosX": 9680,
+      "rawPosY": 5730,
+      "requiredTreePoints": 30,
+      "prerequisite": [
+        "druid-restoration-living-spirit"
+      ],
+      "rankDescriptions": [
+        "Heals the target and their party for 336 over 7 sec. Party members must be within 43 yards of target. The amount healed is applied quickly at first, and slows down as Wild Growth reaches its full duration."
+      ],
+      "description": "Heals the target and their party for 336 over 7 sec. Party members must be within 43 yards of target. The amount healed is applied quickly at first, and slows down as Wild Growth reaches its full duration.",
+      "x": 37.5,
+      "y": 92.85714285714286,
+      "iconName": "ability_druid_flourish",
+      "icon": "/images/class-talents/ability_druid_flourish.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Druid client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Druid resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    }
+  ],
+  "rawClientNodeCount": 52,
+  "quarantinedClientNodes": [],
+  "activeMembershipVerification": "client_verified",
+  "quarantinedClientEdges": [],
+  "reviewedGridPositions": [],
+  "reviewedEdgeInterpretations": [
+    {
+      "edgeId": 124666,
+      "leftNodeId": 104928,
+      "rightNodeId": 104927,
+      "type": 0,
+      "prerequisite": false,
+      "reason": "Exact reverse Nature's Splendor to Nature's Majesty Type0 visual connection is not a spend requirement in the independently reviewed current licensed tree. Both raw endpoints/type are retained; no general Type0 interpretation is inferred.",
+      "sourceUrl": "https://talentsforever.com/data.json"
+    },
+    {
+      "edgeId": 124675,
+      "leftNodeId": 104927,
+      "rightNodeId": 104928,
+      "type": 3,
+      "prerequisite": true,
+      "reason": "Exact Nature's Majesty to Nature's Splendor Type3 connection matches the current licensed visible prerequisite chain. Direction is community_verified; client type semantics and required rank are not claimed independently verified.",
+      "sourceUrl": "https://talentsforever.com/data.json"
+    }
+  ]
+}

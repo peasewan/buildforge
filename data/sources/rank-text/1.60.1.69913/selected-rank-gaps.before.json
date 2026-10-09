@@ -1,0 +1,3039 @@
+{
+  "generatedAt": "2026-10-09T11:07:57.929Z",
+  "basedOnCommit": "3652d38",
+  "scope": "Published ClassDefinition pages only. Paladin uses a separate dataset validator and is outside this registry report.",
+  "summary": {
+    "publishedPages": 99,
+    "primaryBuildPages": 64,
+    "primaryPagesWithGaps": 45,
+    "allReferencedPagesWithGaps": 58
+  },
+  "distinctEndpoints": 46,
+  "rows": [
+    {
+      "classId": "mage",
+      "talentId": "mage-frost-ice-shards",
+      "name": "Ice Shards",
+      "branch": "frost",
+      "selectedRank": 4,
+      "maxRank": 5,
+      "nodeId": null,
+      "sourceTalentId": 73,
+      "spellId": null,
+      "spellIds": [],
+      "selectedLegacySpellId": null,
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "requiredTreePoints": "client_verified",
+        "rankDescriptions": "unknown",
+        "sourceTalentId": "client_verified",
+        "prerequisiteLink": "unknown",
+        "changeStatus": "unknown",
+        "iconName": "client_datamined"
+      },
+      "sources": [
+        {
+          "label": "ForeverDiff Mage talent calculator",
+          "type": "beta_client",
+          "url": "https://foreverdiff.com/talents/mage/calculator/"
+        },
+        {
+          "label": "Build 69913 Mage talent cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/mage/"
+        },
+        {
+          "label": "Build 69913 client Talent table",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent/csv?build=1.60.1.69913"
+        }
+      ],
+      "reason": "rank_text_missing",
+      "primaryPaths": [
+        "/wow-forever-mage-leveling-build",
+        "/wow-forever-frost-mage-leveling-build",
+        "/wow-forever-mage-dungeon-build"
+      ],
+      "relatedPaths": [
+        "/mage",
+        "/wow-forever-mage-builds",
+        "/wow-forever-mage-leveling-build",
+        "/wow-forever-frost-mage-build",
+        "/wow-forever-frost-mage-aoe-build",
+        "/wow-forever-mage-level-20-build"
+      ]
+    },
+    {
+      "classId": "mage",
+      "talentId": "mage-frost-improved-frost-nova",
+      "name": "Improved Frost Nova",
+      "branch": "frost",
+      "selectedRank": 2,
+      "maxRank": 2,
+      "nodeId": null,
+      "sourceTalentId": 62,
+      "spellId": null,
+      "spellIds": [],
+      "selectedLegacySpellId": null,
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "requiredTreePoints": "client_verified",
+        "rankDescriptions": "unknown",
+        "sourceTalentId": "client_verified",
+        "prerequisiteLink": "unknown",
+        "changeStatus": "unknown",
+        "iconName": "client_datamined"
+      },
+      "sources": [
+        {
+          "label": "ForeverDiff Mage talent calculator",
+          "type": "beta_client",
+          "url": "https://foreverdiff.com/talents/mage/calculator/"
+        },
+        {
+          "label": "Build 69913 Mage talent cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/mage/"
+        },
+        {
+          "label": "Build 69913 client Talent table",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent/csv?build=1.60.1.69913"
+        }
+      ],
+      "reason": "rank_text_missing",
+      "primaryPaths": [
+        "/wow-forever-mage-leveling-build",
+        "/wow-forever-frost-mage-leveling-build",
+        "/wow-forever-frost-mage-aoe-build"
+      ],
+      "relatedPaths": [
+        "/mage",
+        "/wow-forever-mage-builds",
+        "/wow-forever-mage-leveling-build",
+        "/wow-forever-frost-mage-build",
+        "/wow-forever-frost-mage-leveling-build",
+        "/wow-forever-mage-dungeon-build",
+        "/wow-forever-mage-level-20-build"
+      ]
+    },
+    {
+      "classId": "mage",
+      "talentId": "mage-arcane-arcane-focus",
+      "name": "Arcane Focus",
+      "branch": "arcane",
+      "selectedRank": 5,
+      "maxRank": 5,
+      "nodeId": null,
+      "sourceTalentId": 76,
+      "spellId": null,
+      "spellIds": [],
+      "selectedLegacySpellId": null,
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "requiredTreePoints": "client_verified",
+        "rankDescriptions": "unknown",
+        "sourceTalentId": "client_verified",
+        "prerequisiteLink": "unknown",
+        "changeStatus": "client_verified",
+        "iconName": "client_datamined"
+      },
+      "sources": [
+        {
+          "label": "ForeverDiff Mage talent calculator",
+          "type": "beta_client",
+          "url": "https://foreverdiff.com/talents/mage/calculator/"
+        },
+        {
+          "label": "Build 69913 Mage talent cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/mage/"
+        },
+        {
+          "label": "Build 69913 client Talent table",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent/csv?build=1.60.1.69913"
+        }
+      ],
+      "reason": "rank_text_missing",
+      "primaryPaths": [
+        "/wow-forever-arcane-mage-build",
+        "/wow-forever-arcane-mage-leveling-build"
+      ],
+      "relatedPaths": [
+        "/mage",
+        "/wow-forever-mage-builds",
+        "/wow-forever-arcane-mage-build",
+        "/wow-forever-arcane-mage-leveling-build",
+        "/wow-forever-mage-level-20-build"
+      ]
+    },
+    {
+      "classId": "mage",
+      "talentId": "mage-arcane-arcane-concentration",
+      "name": "Arcane Concentration",
+      "branch": "arcane",
+      "selectedRank": 1,
+      "maxRank": 5,
+      "nodeId": null,
+      "sourceTalentId": 75,
+      "spellId": null,
+      "spellIds": [],
+      "selectedLegacySpellId": null,
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "requiredTreePoints": "client_verified",
+        "rankDescriptions": "unknown",
+        "sourceTalentId": "client_verified",
+        "prerequisiteLink": "unknown",
+        "changeStatus": "unknown",
+        "iconName": "client_datamined"
+      },
+      "sources": [
+        {
+          "label": "ForeverDiff Mage talent calculator",
+          "type": "beta_client",
+          "url": "https://foreverdiff.com/talents/mage/calculator/"
+        },
+        {
+          "label": "Build 69913 Mage talent cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/mage/"
+        },
+        {
+          "label": "Build 69913 client Talent table",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent/csv?build=1.60.1.69913"
+        }
+      ],
+      "reason": "rank_text_missing",
+      "primaryPaths": [
+        "/wow-forever-arcane-mage-build"
+      ],
+      "relatedPaths": [
+        "/mage",
+        "/wow-forever-mage-builds",
+        "/wow-forever-arcane-mage-leveling-build",
+        "/wow-forever-mage-level-20-build"
+      ]
+    },
+    {
+      "classId": "mage",
+      "talentId": "mage-frost-ice-shards",
+      "name": "Ice Shards",
+      "branch": "frost",
+      "selectedRank": 5,
+      "maxRank": 5,
+      "nodeId": null,
+      "sourceTalentId": 73,
+      "spellId": null,
+      "spellIds": [],
+      "selectedLegacySpellId": null,
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "requiredTreePoints": "client_verified",
+        "rankDescriptions": "unknown",
+        "sourceTalentId": "client_verified",
+        "prerequisiteLink": "unknown",
+        "changeStatus": "unknown",
+        "iconName": "client_datamined"
+      },
+      "sources": [
+        {
+          "label": "ForeverDiff Mage talent calculator",
+          "type": "beta_client",
+          "url": "https://foreverdiff.com/talents/mage/calculator/"
+        },
+        {
+          "label": "Build 69913 Mage talent cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/mage/"
+        },
+        {
+          "label": "Build 69913 client Talent table",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent/csv?build=1.60.1.69913"
+        }
+      ],
+      "reason": "rank_text_missing",
+      "primaryPaths": [
+        "/wow-forever-frost-mage-build"
+      ],
+      "relatedPaths": [
+        "/wow-forever-mage-builds",
+        "/wow-forever-frost-mage-leveling-build",
+        "/wow-forever-frost-mage-aoe-build",
+        "/wow-forever-mage-dungeon-build",
+        "/wow-forever-mage-level-20-build"
+      ]
+    },
+    {
+      "classId": "mage",
+      "talentId": "mage-frost-ice-shards",
+      "name": "Ice Shards",
+      "branch": "frost",
+      "selectedRank": 3,
+      "maxRank": 5,
+      "nodeId": null,
+      "sourceTalentId": 73,
+      "spellId": null,
+      "spellIds": [],
+      "selectedLegacySpellId": null,
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "requiredTreePoints": "client_verified",
+        "rankDescriptions": "unknown",
+        "sourceTalentId": "client_verified",
+        "prerequisiteLink": "unknown",
+        "changeStatus": "unknown",
+        "iconName": "client_datamined"
+      },
+      "sources": [
+        {
+          "label": "ForeverDiff Mage talent calculator",
+          "type": "beta_client",
+          "url": "https://foreverdiff.com/talents/mage/calculator/"
+        },
+        {
+          "label": "Build 69913 Mage talent cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/mage/"
+        },
+        {
+          "label": "Build 69913 client Talent table",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent/csv?build=1.60.1.69913"
+        }
+      ],
+      "reason": "rank_text_missing",
+      "primaryPaths": [
+        "/wow-forever-frost-mage-aoe-build"
+      ],
+      "relatedPaths": [
+        "/wow-forever-mage-builds",
+        "/wow-forever-frost-mage-build",
+        "/wow-forever-frost-mage-leveling-build",
+        "/wow-forever-mage-dungeon-build"
+      ]
+    },
+    {
+      "classId": "mage",
+      "talentId": "mage-frost-improved-blizzard",
+      "name": "Improved Blizzard",
+      "branch": "frost",
+      "selectedRank": 1,
+      "maxRank": 3,
+      "nodeId": null,
+      "sourceTalentId": 63,
+      "spellId": null,
+      "spellIds": [],
+      "selectedLegacySpellId": null,
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "requiredTreePoints": "client_verified",
+        "rankDescriptions": "unknown",
+        "sourceTalentId": "client_verified",
+        "prerequisiteLink": "unknown",
+        "changeStatus": "client_verified",
+        "iconName": "client_datamined"
+      },
+      "sources": [
+        {
+          "label": "ForeverDiff Mage talent calculator",
+          "type": "beta_client",
+          "url": "https://foreverdiff.com/talents/mage/calculator/"
+        },
+        {
+          "label": "Build 69913 Mage talent cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/mage/"
+        },
+        {
+          "label": "Build 69913 client Talent table",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent/csv?build=1.60.1.69913"
+        }
+      ],
+      "reason": "rank_text_missing",
+      "primaryPaths": [
+        "/wow-forever-frost-mage-aoe-build"
+      ],
+      "relatedPaths": [
+        "/wow-forever-mage-builds",
+        "/wow-forever-frost-mage-build",
+        "/wow-forever-frost-mage-leveling-build",
+        "/wow-forever-mage-dungeon-build"
+      ]
+    },
+    {
+      "classId": "mage",
+      "talentId": "mage-arcane-arcane-concentration",
+      "name": "Arcane Concentration",
+      "branch": "arcane",
+      "selectedRank": 5,
+      "maxRank": 5,
+      "nodeId": null,
+      "sourceTalentId": 75,
+      "spellId": null,
+      "spellIds": [],
+      "selectedLegacySpellId": null,
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "requiredTreePoints": "client_verified",
+        "rankDescriptions": "unknown",
+        "sourceTalentId": "client_verified",
+        "prerequisiteLink": "unknown",
+        "changeStatus": "unknown",
+        "iconName": "client_datamined"
+      },
+      "sources": [
+        {
+          "label": "ForeverDiff Mage talent calculator",
+          "type": "beta_client",
+          "url": "https://foreverdiff.com/talents/mage/calculator/"
+        },
+        {
+          "label": "Build 69913 Mage talent cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/mage/"
+        },
+        {
+          "label": "Build 69913 client Talent table",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent/csv?build=1.60.1.69913"
+        }
+      ],
+      "reason": "rank_text_missing",
+      "primaryPaths": [
+        "/wow-forever-arcane-mage-leveling-build"
+      ],
+      "relatedPaths": [
+        "/wow-forever-arcane-mage-build"
+      ]
+    },
+    {
+      "classId": "mage",
+      "talentId": "mage-arcane-arcane-impact",
+      "name": "Arcane Impact",
+      "branch": "arcane",
+      "selectedRank": 1,
+      "maxRank": 3,
+      "nodeId": null,
+      "sourceTalentId": 81,
+      "spellId": null,
+      "spellIds": [],
+      "selectedLegacySpellId": null,
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "requiredTreePoints": "client_verified",
+        "rankDescriptions": "unknown",
+        "sourceTalentId": "client_verified",
+        "prerequisiteLink": "unknown",
+        "changeStatus": "unknown",
+        "iconName": "client_datamined"
+      },
+      "sources": [
+        {
+          "label": "ForeverDiff Mage talent calculator",
+          "type": "beta_client",
+          "url": "https://foreverdiff.com/talents/mage/calculator/"
+        },
+        {
+          "label": "Build 69913 Mage talent cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/mage/"
+        },
+        {
+          "label": "Build 69913 client Talent table",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent/csv?build=1.60.1.69913"
+        }
+      ],
+      "reason": "rank_text_missing",
+      "primaryPaths": [
+        "/wow-forever-arcane-mage-leveling-build"
+      ],
+      "relatedPaths": [
+        "/wow-forever-arcane-mage-build"
+      ]
+    },
+    {
+      "classId": "rogue",
+      "talentId": "rogue-270",
+      "name": "Malice",
+      "branch": "assassination",
+      "selectedRank": 5,
+      "maxRank": 5,
+      "nodeId": 270,
+      "sourceTalentId": 270,
+      "spellId": 14138,
+      "spellIds": [
+        14138,
+        14139,
+        14140,
+        14141,
+        14142
+      ],
+      "selectedLegacySpellId": 14142,
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB rogue client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/rogue/"
+        }
+      ],
+      "reason": "rank_text_missing",
+      "primaryPaths": [
+        "/wow-forever-assassination-rogue-build"
+      ],
+      "relatedPaths": [
+        "/wow-forever-rogue-builds",
+        "/wow-forever-rogue-leveling-build",
+        "/wow-forever-assassination-rogue-build",
+        "/wow-forever-rogue-pvp-build",
+        "/wow-forever-rogue-level-20-build",
+        "/wow-forever-combat-vs-assassination-rogue-leveling"
+      ],
+      "savedForeverDiffCandidate": {
+        "matchCount": 1,
+        "id": 270,
+        "maxRank": 5,
+        "selectedRankText": "Increases your critical strike chance with all attacks and Poisons by 5%.",
+        "rankTextCount": 5,
+        "exactNodeId": true,
+        "exactRankCap": true,
+        "notice": "Audit reference only. Rank text requires exact69913 client effect reconciliation before promotion."
+      }
+    },
+    {
+      "classId": "rogue",
+      "talentId": "rogue-273",
+      "name": "Ruthlessness",
+      "branch": "assassination",
+      "selectedRank": 3,
+      "maxRank": 3,
+      "nodeId": 273,
+      "sourceTalentId": 273,
+      "spellId": 14156,
+      "spellIds": [
+        14156,
+        14160,
+        14161
+      ],
+      "selectedLegacySpellId": 14161,
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB rogue client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/rogue/"
+        }
+      ],
+      "reason": "rank_text_missing",
+      "primaryPaths": [
+        "/wow-forever-assassination-rogue-build"
+      ],
+      "relatedPaths": [
+        "/wow-forever-rogue-builds",
+        "/wow-forever-rogue-leveling-build",
+        "/wow-forever-assassination-rogue-build",
+        "/wow-forever-rogue-pvp-build",
+        "/wow-forever-rogue-level-20-build",
+        "/wow-forever-combat-vs-assassination-rogue-leveling"
+      ],
+      "savedForeverDiffCandidate": {
+        "matchCount": 1,
+        "id": 273,
+        "maxRank": 3,
+        "selectedRankText": "Gives your finishing moves a 60% chance to add a Combo Point to your target.",
+        "rankTextCount": 3,
+        "exactNodeId": true,
+        "exactRankCap": true,
+        "notice": "Audit reference only. Rank text requires exact69913 client effect reconciliation before promotion."
+      }
+    },
+    {
+      "classId": "rogue",
+      "talentId": "rogue-277",
+      "name": "Improved Slice and Dice",
+      "branch": "assassination",
+      "selectedRank": 2,
+      "maxRank": 3,
+      "nodeId": 277,
+      "sourceTalentId": 277,
+      "spellId": 14165,
+      "spellIds": [
+        14165,
+        14166,
+        14167
+      ],
+      "selectedLegacySpellId": 14166,
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB rogue client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/rogue/"
+        }
+      ],
+      "reason": "rank_text_missing",
+      "primaryPaths": [
+        "/wow-forever-assassination-rogue-build"
+      ],
+      "relatedPaths": [
+        "/wow-forever-rogue-builds",
+        "/wow-forever-rogue-leveling-build",
+        "/wow-forever-assassination-rogue-build",
+        "/wow-forever-rogue-pvp-build",
+        "/wow-forever-rogue-level-20-build",
+        "/wow-forever-combat-vs-assassination-rogue-leveling"
+      ],
+      "savedForeverDiffCandidate": {
+        "matchCount": 1,
+        "id": 277,
+        "maxRank": 3,
+        "selectedRankText": "Increases the duration of your Slice and Dice ability by 30%.",
+        "rankTextCount": 3,
+        "exactNodeId": true,
+        "exactRankCap": true,
+        "notice": "Audit reference only. Rank text requires exact69913 client effect reconciliation before promotion."
+      }
+    },
+    {
+      "classId": "rogue",
+      "talentId": "rogue-281",
+      "name": "Relentless Strikes",
+      "branch": "assassination",
+      "selectedRank": 1,
+      "maxRank": 1,
+      "nodeId": 281,
+      "sourceTalentId": 281,
+      "spellId": 14179,
+      "spellIds": [
+        14179
+      ],
+      "selectedLegacySpellId": 14179,
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "unknown",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB rogue client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/rogue/"
+        }
+      ],
+      "reason": "rank_text_missing",
+      "primaryPaths": [
+        "/wow-forever-assassination-rogue-build"
+      ],
+      "relatedPaths": [
+        "/wow-forever-rogue-builds",
+        "/wow-forever-rogue-leveling-build",
+        "/wow-forever-assassination-rogue-build",
+        "/wow-forever-rogue-pvp-build",
+        "/wow-forever-rogue-level-20-build",
+        "/wow-forever-combat-vs-assassination-rogue-leveling"
+      ],
+      "savedForeverDiffCandidate": {
+        "matchCount": 1,
+        "id": 281,
+        "maxRank": 1,
+        "selectedRankText": "Your finishing moves have a 20% chance per Combo Point to restore 25 Energy.",
+        "rankTextCount": 1,
+        "exactNodeId": true,
+        "exactRankCap": true,
+        "notice": "Audit reference only. Rank text requires exact69913 client effect reconciliation before promotion."
+      }
+    },
+    {
+      "classId": "rogue",
+      "talentId": "rogue-201",
+      "name": "Improved Sinister Strike",
+      "branch": "combat",
+      "selectedRank": 2,
+      "maxRank": 2,
+      "nodeId": 201,
+      "sourceTalentId": 201,
+      "spellId": 13732,
+      "spellIds": [
+        13732,
+        13863
+      ],
+      "selectedLegacySpellId": 13863,
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB rogue client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/rogue/"
+        }
+      ],
+      "reason": "rank_text_missing",
+      "primaryPaths": [
+        "/wow-forever-rogue-leveling-build",
+        "/wow-forever-combat-rogue-build",
+        "/wow-forever-combat-vs-assassination-rogue-leveling",
+        "/wow-forever-rogue-dungeon-build"
+      ],
+      "relatedPaths": [
+        "/wow-forever-rogue-builds",
+        "/wow-forever-combat-rogue-build",
+        "/wow-forever-rogue-pvp-build",
+        "/wow-forever-rogue-level-20-build",
+        "/wow-forever-rogue-dungeon-build"
+      ],
+      "savedForeverDiffCandidate": {
+        "matchCount": 1,
+        "id": 201,
+        "maxRank": 2,
+        "selectedRankText": "Reduces the Energy cost of your Sinister Strike ability by 5.",
+        "rankTextCount": 2,
+        "exactNodeId": true,
+        "exactRankCap": true,
+        "notice": "Audit reference only. Rank text requires exact69913 client effect reconciliation before promotion."
+      }
+    },
+    {
+      "classId": "rogue",
+      "talentId": "rogue-186",
+      "name": "Lightning Reflexes",
+      "branch": "combat",
+      "selectedRank": 3,
+      "maxRank": 5,
+      "nodeId": 186,
+      "sourceTalentId": 186,
+      "spellId": 13712,
+      "spellIds": [
+        13712,
+        13788,
+        13789,
+        13790,
+        13791
+      ],
+      "selectedLegacySpellId": 13789,
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB rogue client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/rogue/"
+        }
+      ],
+      "reason": "rank_text_missing",
+      "primaryPaths": [
+        "/wow-forever-rogue-leveling-build",
+        "/wow-forever-combat-rogue-build",
+        "/wow-forever-combat-vs-assassination-rogue-leveling",
+        "/wow-forever-rogue-dungeon-build"
+      ],
+      "relatedPaths": [
+        "/wow-forever-rogue-builds",
+        "/wow-forever-combat-rogue-build",
+        "/wow-forever-rogue-pvp-build",
+        "/wow-forever-rogue-level-20-build",
+        "/wow-forever-rogue-dungeon-build"
+      ],
+      "savedForeverDiffCandidate": {
+        "matchCount": 1,
+        "id": 186,
+        "maxRank": 5,
+        "selectedRankText": "Increases your Dodge chance by 3%.",
+        "rankTextCount": 5,
+        "exactNodeId": true,
+        "exactRankCap": true,
+        "notice": "Audit reference only. Rank text requires exact69913 client effect reconciliation before promotion."
+      }
+    },
+    {
+      "classId": "rogue",
+      "talentId": "rogue-181",
+      "name": "Precision",
+      "branch": "combat",
+      "selectedRank": 5,
+      "maxRank": 5,
+      "nodeId": 181,
+      "sourceTalentId": 181,
+      "spellId": 13705,
+      "spellIds": [
+        13705,
+        13832,
+        13843,
+        13844,
+        13845
+      ],
+      "selectedLegacySpellId": 13845,
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB rogue client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/rogue/"
+        }
+      ],
+      "reason": "rank_text_missing",
+      "primaryPaths": [
+        "/wow-forever-rogue-leveling-build",
+        "/wow-forever-combat-rogue-build",
+        "/wow-forever-combat-vs-assassination-rogue-leveling",
+        "/wow-forever-rogue-dungeon-build"
+      ],
+      "relatedPaths": [
+        "/wow-forever-rogue-builds",
+        "/wow-forever-combat-rogue-build",
+        "/wow-forever-rogue-pvp-build",
+        "/wow-forever-rogue-level-20-build",
+        "/wow-forever-rogue-dungeon-build"
+      ],
+      "savedForeverDiffCandidate": {
+        "matchCount": 1,
+        "id": 181,
+        "maxRank": 3,
+        "selectedRankText": null,
+        "rankTextCount": 3,
+        "exactNodeId": true,
+        "exactRankCap": false,
+        "notice": "Audit reference only. Rank text requires exact69913 client effect reconciliation before promotion."
+      }
+    },
+    {
+      "classId": "rogue",
+      "talentId": "rogue-261",
+      "name": "Opportunity",
+      "branch": "subtlety",
+      "selectedRank": 5,
+      "maxRank": 5,
+      "nodeId": 261,
+      "sourceTalentId": 261,
+      "spellId": 14057,
+      "spellIds": [
+        14057,
+        14072,
+        14073,
+        14074,
+        14075
+      ],
+      "selectedLegacySpellId": 14075,
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB rogue client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/rogue/"
+        }
+      ],
+      "reason": "rank_text_missing",
+      "primaryPaths": [
+        "/wow-forever-subtlety-rogue-build",
+        "/wow-forever-rogue-pvp-build"
+      ],
+      "relatedPaths": [
+        "/wow-forever-rogue-builds",
+        "/wow-forever-rogue-leveling-build",
+        "/wow-forever-subtlety-rogue-build",
+        "/wow-forever-rogue-pvp-build",
+        "/wow-forever-rogue-level-20-build"
+      ],
+      "savedForeverDiffCandidate": {
+        "matchCount": 1,
+        "id": 261,
+        "maxRank": 2,
+        "selectedRankText": null,
+        "rankTextCount": 2,
+        "exactNodeId": true,
+        "exactRankCap": false,
+        "notice": "Audit reference only. Rank text requires exact69913 client effect reconciliation before promotion."
+      }
+    },
+    {
+      "classId": "rogue",
+      "talentId": "rogue-244",
+      "name": "Camouflage",
+      "branch": "subtlety",
+      "selectedRank": 5,
+      "maxRank": 5,
+      "nodeId": 244,
+      "sourceTalentId": 244,
+      "spellId": 13975,
+      "spellIds": [
+        13975,
+        14062,
+        14063,
+        14064,
+        14065
+      ],
+      "selectedLegacySpellId": 14065,
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB rogue client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/rogue/"
+        }
+      ],
+      "reason": "rank_text_missing",
+      "primaryPaths": [
+        "/wow-forever-subtlety-rogue-build",
+        "/wow-forever-rogue-pvp-build"
+      ],
+      "relatedPaths": [
+        "/wow-forever-rogue-builds",
+        "/wow-forever-rogue-leveling-build",
+        "/wow-forever-subtlety-rogue-build",
+        "/wow-forever-rogue-pvp-build",
+        "/wow-forever-rogue-level-20-build"
+      ],
+      "savedForeverDiffCandidate": {
+        "matchCount": 1,
+        "id": 244,
+        "maxRank": 5,
+        "selectedRankText": "Reduces your speed penalty from your Stealth ability by 15% and reduces its cooldown by 6 sec.",
+        "rankTextCount": 5,
+        "exactNodeId": true,
+        "exactRankCap": true,
+        "notice": "Audit reference only. Rank text requires exact69913 client effect reconciliation before promotion."
+      }
+    },
+    {
+      "classId": "priest",
+      "talentId": "priest-345",
+      "name": "Wand Specialization",
+      "branch": "discipline",
+      "selectedRank": 5,
+      "maxRank": 5,
+      "nodeId": 345,
+      "sourceTalentId": 345,
+      "spellId": 14524,
+      "spellIds": [
+        14524,
+        14525,
+        14526,
+        14527,
+        14528
+      ],
+      "selectedLegacySpellId": 14528,
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB priest client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/priest/"
+        }
+      ],
+      "reason": "rank_text_missing",
+      "primaryPaths": [
+        "/wow-forever-discipline-priest-build",
+        "/wow-forever-priest-pvp-build"
+      ],
+      "relatedPaths": [
+        "/wow-forever-priest-builds",
+        "/wow-forever-priest-leveling-build",
+        "/wow-forever-discipline-priest-build",
+        "/wow-forever-priest-pvp-build",
+        "/wow-forever-priest-level-20-build",
+        "/wow-forever-shadow-vs-discipline-priest-leveling"
+      ],
+      "savedForeverDiffCandidate": {
+        "matchCount": 1,
+        "id": 345,
+        "maxRank": 2,
+        "selectedRankText": null,
+        "rankTextCount": 2,
+        "exactNodeId": true,
+        "exactRankCap": false,
+        "notice": "Audit reference only. Rank text requires exact69913 client effect reconciliation before promotion."
+      }
+    },
+    {
+      "classId": "priest",
+      "talentId": "priest-343",
+      "name": "Improved Power Word: Shield",
+      "branch": "discipline",
+      "selectedRank": 3,
+      "maxRank": 3,
+      "nodeId": 343,
+      "sourceTalentId": 343,
+      "spellId": 14748,
+      "spellIds": [
+        14748,
+        14768,
+        14769
+      ],
+      "selectedLegacySpellId": 14769,
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB priest client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/priest/"
+        }
+      ],
+      "reason": "rank_text_missing",
+      "primaryPaths": [
+        "/wow-forever-discipline-priest-build",
+        "/wow-forever-priest-pvp-build"
+      ],
+      "relatedPaths": [
+        "/wow-forever-priest-builds",
+        "/wow-forever-priest-leveling-build",
+        "/wow-forever-discipline-priest-build",
+        "/wow-forever-priest-pvp-build",
+        "/wow-forever-priest-level-20-build",
+        "/wow-forever-shadow-vs-discipline-priest-leveling"
+      ],
+      "savedForeverDiffCandidate": {
+        "matchCount": 1,
+        "id": 343,
+        "maxRank": 3,
+        "selectedRankText": "Increases the damage absorbed by your Power Word: Shield by 20%.",
+        "rankTextCount": 3,
+        "exactNodeId": true,
+        "exactRankCap": true,
+        "notice": "Audit reference only. Rank text requires exact69913 client effect reconciliation before promotion."
+      }
+    },
+    {
+      "classId": "priest",
+      "talentId": "priest-410",
+      "name": "Twilight Focus",
+      "branch": "holy",
+      "selectedRank": 2,
+      "maxRank": 2,
+      "nodeId": 410,
+      "sourceTalentId": 410,
+      "spellId": 14913,
+      "spellIds": [
+        14913,
+        15012
+      ],
+      "selectedLegacySpellId": 15012,
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB priest client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/priest/"
+        }
+      ],
+      "reason": "rank_text_missing",
+      "primaryPaths": [
+        "/wow-forever-holy-priest-leveling-build",
+        "/wow-forever-holy-priest-dungeon-build"
+      ],
+      "relatedPaths": [
+        "/wow-forever-priest-builds",
+        "/wow-forever-priest-leveling-build",
+        "/wow-forever-holy-priest-leveling-build",
+        "/wow-forever-priest-pvp-build",
+        "/wow-forever-priest-level-20-build",
+        "/wow-forever-holy-priest-dungeon-build"
+      ],
+      "savedForeverDiffCandidate": {
+        "matchCount": 1,
+        "id": 410,
+        "maxRank": 3,
+        "selectedRankText": "Gives you a 47% chance to avoid interruption caused by damage while casting any spell.",
+        "rankTextCount": 3,
+        "exactNodeId": true,
+        "exactRankCap": false,
+        "notice": "Audit reference only. Rank text requires exact69913 client effect reconciliation before promotion."
+      }
+    },
+    {
+      "classId": "priest",
+      "talentId": "priest-406",
+      "name": "Improved Renew",
+      "branch": "holy",
+      "selectedRank": 3,
+      "maxRank": 3,
+      "nodeId": 406,
+      "sourceTalentId": 406,
+      "spellId": 14908,
+      "spellIds": [
+        14908,
+        15020,
+        17191
+      ],
+      "selectedLegacySpellId": 17191,
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB priest client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/priest/"
+        }
+      ],
+      "reason": "rank_text_missing",
+      "primaryPaths": [
+        "/wow-forever-holy-priest-leveling-build",
+        "/wow-forever-holy-priest-dungeon-build"
+      ],
+      "relatedPaths": [
+        "/wow-forever-priest-builds",
+        "/wow-forever-priest-leveling-build",
+        "/wow-forever-holy-priest-leveling-build",
+        "/wow-forever-priest-pvp-build",
+        "/wow-forever-priest-level-20-build",
+        "/wow-forever-holy-priest-dungeon-build"
+      ],
+      "savedForeverDiffCandidate": {
+        "matchCount": 1,
+        "id": 406,
+        "maxRank": 3,
+        "selectedRankText": "Increases the amount healed by your Renew spell by 15%.",
+        "rankTextCount": 3,
+        "exactNodeId": true,
+        "exactRankCap": true,
+        "notice": "Audit reference only. Rank text requires exact69913 client effect reconciliation before promotion."
+      }
+    },
+    {
+      "classId": "priest",
+      "talentId": "priest-1181",
+      "name": "Divine Fury",
+      "branch": "holy",
+      "selectedRank": 5,
+      "maxRank": 5,
+      "nodeId": 1181,
+      "sourceTalentId": 1181,
+      "spellId": 18530,
+      "spellIds": [
+        18530,
+        18531,
+        18533,
+        18534,
+        18535
+      ],
+      "selectedLegacySpellId": 18535,
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB priest client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/priest/"
+        }
+      ],
+      "reason": "rank_text_missing",
+      "primaryPaths": [
+        "/wow-forever-holy-priest-leveling-build",
+        "/wow-forever-holy-priest-dungeon-build"
+      ],
+      "relatedPaths": [
+        "/wow-forever-priest-builds",
+        "/wow-forever-priest-leveling-build",
+        "/wow-forever-holy-priest-leveling-build",
+        "/wow-forever-priest-pvp-build",
+        "/wow-forever-priest-level-20-build",
+        "/wow-forever-holy-priest-dungeon-build"
+      ],
+      "savedForeverDiffCandidate": {
+        "matchCount": 1,
+        "id": 1181,
+        "maxRank": 5,
+        "selectedRankText": "Reduces the casting time of your Smite, Holy Fire, Heal, and Greater Heal spells by 0.5 sec.",
+        "rankTextCount": 5,
+        "exactNodeId": true,
+        "exactRankCap": true,
+        "notice": "Audit reference only. Rank text requires exact69913 client effect reconciliation before promotion."
+      }
+    },
+    {
+      "classId": "priest",
+      "talentId": "priest-465",
+      "name": "Spirit Tap",
+      "branch": "shadow",
+      "selectedRank": 5,
+      "maxRank": 5,
+      "nodeId": 465,
+      "sourceTalentId": 465,
+      "spellId": 15270,
+      "spellIds": [
+        15270,
+        15335,
+        15336,
+        15337,
+        15338
+      ],
+      "selectedLegacySpellId": 15338,
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "unknown",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB priest client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/priest/"
+        }
+      ],
+      "reason": "rank_text_missing",
+      "primaryPaths": [
+        "/wow-forever-priest-leveling-build",
+        "/wow-forever-shadow-priest-build",
+        "/wow-forever-shadow-vs-discipline-priest-leveling"
+      ],
+      "relatedPaths": [
+        "/wow-forever-priest-builds",
+        "/wow-forever-shadow-priest-build",
+        "/wow-forever-priest-pvp-build",
+        "/wow-forever-priest-level-20-build"
+      ],
+      "savedForeverDiffCandidate": {
+        "matchCount": 1,
+        "id": 465,
+        "maxRank": 5,
+        "selectedRankText": "Gives you a 100% chance to gain a 100% bonus to your Spirit for 15 sec after killing a non-trivial target. For the duration, your Mana will regenerate at a 50% of normal rate while casting.",
+        "rankTextCount": 5,
+        "exactNodeId": true,
+        "exactRankCap": true,
+        "notice": "Audit reference only. Rank text requires exact69913 client effect reconciliation before promotion."
+      }
+    },
+    {
+      "classId": "priest",
+      "talentId": "priest-482",
+      "name": "Improved Shadow Word: Pain",
+      "branch": "shadow",
+      "selectedRank": 2,
+      "maxRank": 2,
+      "nodeId": 482,
+      "sourceTalentId": 482,
+      "spellId": 15275,
+      "spellIds": [
+        15275,
+        15317
+      ],
+      "selectedLegacySpellId": 15317,
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB priest client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/priest/"
+        }
+      ],
+      "reason": "rank_text_missing",
+      "primaryPaths": [
+        "/wow-forever-priest-leveling-build",
+        "/wow-forever-shadow-priest-build",
+        "/wow-forever-shadow-vs-discipline-priest-leveling"
+      ],
+      "relatedPaths": [
+        "/wow-forever-priest-builds",
+        "/wow-forever-shadow-priest-build",
+        "/wow-forever-priest-pvp-build",
+        "/wow-forever-priest-level-20-build"
+      ],
+      "savedForeverDiffCandidate": {
+        "matchCount": 1,
+        "id": 482,
+        "maxRank": 2,
+        "selectedRankText": "Increases the duration of your Shadow Word: Pain spell by 6 sec.",
+        "rankTextCount": 2,
+        "exactNodeId": true,
+        "exactRankCap": true,
+        "notice": "Audit reference only. Rank text requires exact69913 client effect reconciliation before promotion."
+      }
+    },
+    {
+      "classId": "priest",
+      "talentId": "priest-463",
+      "name": "Shadow Focus",
+      "branch": "shadow",
+      "selectedRank": 3,
+      "maxRank": 5,
+      "nodeId": 463,
+      "sourceTalentId": 463,
+      "spellId": 15260,
+      "spellIds": [
+        15260,
+        15327,
+        15328,
+        15329,
+        15330
+      ],
+      "selectedLegacySpellId": 15328,
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB priest client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/priest/"
+        }
+      ],
+      "reason": "rank_text_missing",
+      "primaryPaths": [
+        "/wow-forever-priest-leveling-build",
+        "/wow-forever-shadow-priest-build",
+        "/wow-forever-shadow-vs-discipline-priest-leveling"
+      ],
+      "relatedPaths": [
+        "/wow-forever-priest-builds",
+        "/wow-forever-shadow-priest-build",
+        "/wow-forever-priest-pvp-build",
+        "/wow-forever-priest-level-20-build"
+      ],
+      "savedForeverDiffCandidate": {
+        "matchCount": 1,
+        "id": 463,
+        "maxRank": 5,
+        "selectedRankText": "Improves your chance to hit with Shadow spells by 3%.",
+        "rankTextCount": 5,
+        "exactNodeId": true,
+        "exactRankCap": true,
+        "notice": "Audit reference only. Rank text requires exact69913 client effect reconciliation before promotion."
+      }
+    },
+    {
+      "classId": "druid",
+      "talentId": "druid-762",
+      "name": "Improved Wrath",
+      "branch": "balance",
+      "selectedRank": 5,
+      "maxRank": 5,
+      "nodeId": 762,
+      "sourceTalentId": 762,
+      "spellId": 16814,
+      "spellIds": [
+        16814,
+        16815,
+        16816,
+        16817,
+        16818
+      ],
+      "selectedLegacySpellId": 16818,
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB druid client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/druid/"
+        }
+      ],
+      "reason": "rank_text_missing",
+      "primaryPaths": [
+        "/wow-forever-balance-druid-build"
+      ],
+      "relatedPaths": [
+        "/wow-forever-druid-builds",
+        "/wow-forever-druid-leveling-build",
+        "/wow-forever-balance-druid-build",
+        "/wow-forever-druid-pvp-build",
+        "/wow-forever-druid-level-20-build",
+        "/wow-forever-balance-vs-feral-druid-leveling"
+      ],
+      "savedForeverDiffCandidate": {
+        "matchCount": 1,
+        "id": 762,
+        "maxRank": 5,
+        "selectedRankText": "Reduces the cast time of your Wrath spell by 0.5 sec and its Mana cost by 50%.",
+        "rankTextCount": 5,
+        "exactNodeId": true,
+        "exactRankCap": true,
+        "notice": "Audit reference only. Rank text requires exact69913 client effect reconciliation before promotion."
+      }
+    },
+    {
+      "classId": "druid",
+      "talentId": "druid-763",
+      "name": "Improved Moonfire",
+      "branch": "balance",
+      "selectedRank": 5,
+      "maxRank": 5,
+      "nodeId": 763,
+      "sourceTalentId": 763,
+      "spellId": 16821,
+      "spellIds": [
+        16821,
+        16822,
+        16823,
+        16824,
+        16825
+      ],
+      "selectedLegacySpellId": 16825,
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB druid client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/druid/"
+        }
+      ],
+      "reason": "rank_text_missing",
+      "primaryPaths": [
+        "/wow-forever-balance-druid-build"
+      ],
+      "relatedPaths": [
+        "/wow-forever-druid-builds",
+        "/wow-forever-druid-leveling-build",
+        "/wow-forever-balance-druid-build",
+        "/wow-forever-druid-pvp-build",
+        "/wow-forever-druid-level-20-build",
+        "/wow-forever-balance-vs-feral-druid-leveling"
+      ],
+      "savedForeverDiffCandidate": {
+        "matchCount": 1,
+        "id": 763,
+        "maxRank": 2,
+        "selectedRankText": null,
+        "rankTextCount": 2,
+        "exactNodeId": true,
+        "exactRankCap": false,
+        "notice": "Audit reference only. Rank text requires exact69913 client effect reconciliation before promotion."
+      }
+    },
+    {
+      "classId": "druid",
+      "talentId": "druid-796",
+      "name": "Ferocity",
+      "branch": "feral",
+      "selectedRank": 5,
+      "maxRank": 5,
+      "nodeId": 796,
+      "sourceTalentId": 796,
+      "spellId": 16934,
+      "spellIds": [
+        16934,
+        16935,
+        16936,
+        16937,
+        16938
+      ],
+      "selectedLegacySpellId": 16938,
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB druid client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/druid/"
+        }
+      ],
+      "reason": "rank_text_missing",
+      "primaryPaths": [
+        "/wow-forever-druid-leveling-build",
+        "/wow-forever-feral-druid-build",
+        "/wow-forever-druid-pvp-build",
+        "/wow-forever-feral-druid-tank-build",
+        "/wow-forever-balance-vs-feral-druid-leveling"
+      ],
+      "relatedPaths": [
+        "/wow-forever-druid-builds",
+        "/wow-forever-feral-druid-build",
+        "/wow-forever-druid-pvp-build",
+        "/wow-forever-druid-level-20-build",
+        "/wow-forever-feral-druid-tank-build"
+      ],
+      "savedForeverDiffCandidate": {
+        "matchCount": 0,
+        "id": null,
+        "maxRank": null,
+        "selectedRankText": null,
+        "rankTextCount": 0,
+        "exactNodeId": false,
+        "exactRankCap": false,
+        "notice": "Audit reference only. Rank text requires exact69913 client effect reconciliation before promotion."
+      }
+    },
+    {
+      "classId": "druid",
+      "talentId": "druid-799",
+      "name": "Feral Instinct",
+      "branch": "feral",
+      "selectedRank": 5,
+      "maxRank": 5,
+      "nodeId": 799,
+      "sourceTalentId": 799,
+      "spellId": 16947,
+      "spellIds": [
+        16947,
+        16948,
+        16949,
+        16950,
+        16951
+      ],
+      "selectedLegacySpellId": 16951,
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB druid client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/druid/"
+        }
+      ],
+      "reason": "rank_text_missing",
+      "primaryPaths": [
+        "/wow-forever-druid-leveling-build",
+        "/wow-forever-feral-druid-build",
+        "/wow-forever-druid-pvp-build",
+        "/wow-forever-feral-druid-tank-build",
+        "/wow-forever-balance-vs-feral-druid-leveling"
+      ],
+      "relatedPaths": [
+        "/wow-forever-druid-builds",
+        "/wow-forever-feral-druid-build",
+        "/wow-forever-druid-pvp-build",
+        "/wow-forever-druid-level-20-build",
+        "/wow-forever-feral-druid-tank-build"
+      ],
+      "savedForeverDiffCandidate": {
+        "matchCount": 0,
+        "id": null,
+        "maxRank": null,
+        "selectedRankText": null,
+        "rankTextCount": 0,
+        "exactNodeId": false,
+        "exactRankCap": false,
+        "notice": "Audit reference only. Rank text requires exact69913 client effect reconciliation before promotion."
+      }
+    },
+    {
+      "classId": "druid",
+      "talentId": "druid-824",
+      "name": "Naturalist",
+      "branch": "restoration",
+      "selectedRank": 5,
+      "maxRank": 5,
+      "nodeId": 824,
+      "sourceTalentId": 824,
+      "spellId": 17069,
+      "spellIds": [
+        17069,
+        17070,
+        17071,
+        17072,
+        17073
+      ],
+      "selectedLegacySpellId": 17073,
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB druid client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/druid/"
+        }
+      ],
+      "reason": "rank_text_missing",
+      "primaryPaths": [
+        "/wow-forever-restoration-druid-build",
+        "/wow-forever-restoration-druid-healing-build"
+      ],
+      "relatedPaths": [
+        "/wow-forever-druid-builds",
+        "/wow-forever-druid-leveling-build",
+        "/wow-forever-restoration-druid-build",
+        "/wow-forever-druid-pvp-build",
+        "/wow-forever-druid-level-20-build",
+        "/wow-forever-restoration-druid-healing-build"
+      ],
+      "savedForeverDiffCandidate": {
+        "matchCount": 1,
+        "id": 824,
+        "maxRank": 5,
+        "selectedRankText": "Reduces the cast time of your Healing Touch spell by 0.5 sec and increases all damage you deal by 5%.",
+        "rankTextCount": 5,
+        "exactNodeId": true,
+        "exactRankCap": true,
+        "notice": "Audit reference only. Rank text requires exact69913 client effect reconciliation before promotion."
+      }
+    },
+    {
+      "classId": "warlock",
+      "talentId": "warlock-1003",
+      "name": "Improved Corruption",
+      "branch": "affliction",
+      "selectedRank": 5,
+      "maxRank": 5,
+      "nodeId": 1003,
+      "sourceTalentId": 1003,
+      "spellId": 17810,
+      "spellIds": [
+        17810,
+        17811,
+        17812,
+        17813,
+        17814
+      ],
+      "selectedLegacySpellId": 17814,
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB warlock client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/warlock/"
+        }
+      ],
+      "reason": "rank_text_missing",
+      "primaryPaths": [
+        "/wow-forever-warlock-leveling-build",
+        "/wow-forever-affliction-warlock-build",
+        "/wow-forever-warlock-pvp-build",
+        "/wow-forever-affliction-vs-demonology-warlock-leveling"
+      ],
+      "relatedPaths": [
+        "/wow-forever-warlock-builds",
+        "/wow-forever-affliction-warlock-build",
+        "/wow-forever-warlock-pvp-build",
+        "/wow-forever-warlock-level-20-build"
+      ],
+      "savedForeverDiffCandidate": {
+        "matchCount": 1,
+        "id": 1003,
+        "maxRank": 5,
+        "selectedRankText": "Reduces the casting time of your Corruption spell by 2 sec and increases the damage it deals by 10%.",
+        "rankTextCount": 5,
+        "exactNodeId": true,
+        "exactRankCap": true,
+        "notice": "Audit reference only. Rank text requires exact69913 client effect reconciliation before promotion."
+      }
+    },
+    {
+      "classId": "warlock",
+      "talentId": "warlock-1007",
+      "name": "Improved Life Tap",
+      "branch": "affliction",
+      "selectedRank": 2,
+      "maxRank": 2,
+      "nodeId": 1007,
+      "sourceTalentId": 1007,
+      "spellId": 18182,
+      "spellIds": [
+        18182,
+        18183
+      ],
+      "selectedLegacySpellId": 18183,
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "unknown",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB warlock client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/warlock/"
+        }
+      ],
+      "reason": "rank_text_missing",
+      "primaryPaths": [
+        "/wow-forever-warlock-leveling-build",
+        "/wow-forever-affliction-warlock-build",
+        "/wow-forever-warlock-pvp-build",
+        "/wow-forever-affliction-vs-demonology-warlock-leveling"
+      ],
+      "relatedPaths": [
+        "/wow-forever-warlock-builds",
+        "/wow-forever-affliction-warlock-build",
+        "/wow-forever-warlock-pvp-build",
+        "/wow-forever-warlock-level-20-build"
+      ],
+      "savedForeverDiffCandidate": {
+        "matchCount": 1,
+        "id": 1007,
+        "maxRank": 2,
+        "selectedRankText": "Increases the amount of Mana awarded by your Life Tap spell by 20%.",
+        "rankTextCount": 2,
+        "exactNodeId": true,
+        "exactRankCap": true,
+        "notice": "Audit reference only. Rank text requires exact69913 client effect reconciliation before promotion."
+      }
+    },
+    {
+      "classId": "warlock",
+      "talentId": "warlock-1004",
+      "name": "Soul Siphon",
+      "branch": "affliction",
+      "selectedRank": 3,
+      "maxRank": 5,
+      "nodeId": 1004,
+      "sourceTalentId": 1004,
+      "spellId": 17804,
+      "spellIds": [
+        17804,
+        17805,
+        17806,
+        17807,
+        17808
+      ],
+      "selectedLegacySpellId": 17806,
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB warlock client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/warlock/"
+        }
+      ],
+      "reason": "rank_text_missing",
+      "primaryPaths": [
+        "/wow-forever-warlock-leveling-build",
+        "/wow-forever-affliction-warlock-build",
+        "/wow-forever-warlock-pvp-build",
+        "/wow-forever-affliction-vs-demonology-warlock-leveling"
+      ],
+      "relatedPaths": [
+        "/wow-forever-warlock-builds",
+        "/wow-forever-affliction-warlock-build",
+        "/wow-forever-warlock-pvp-build",
+        "/wow-forever-warlock-level-20-build"
+      ],
+      "savedForeverDiffCandidate": {
+        "matchCount": 1,
+        "id": 1004,
+        "maxRank": 3,
+        "selectedRankText": "Increases the damage done or health drained by your Drain Life, Drain Soul, and Wrack spells by 12% per each of your other Affliction effects active on the target, up to a maximum increase of 36%.",
+        "rankTextCount": 3,
+        "exactNodeId": true,
+        "exactRankCap": false,
+        "notice": "Audit reference only. Rank text requires exact69913 client effect reconciliation before promotion."
+      }
+    },
+    {
+      "classId": "warlock",
+      "talentId": "warlock-1223",
+      "name": "Demonic Embrace",
+      "branch": "demonology",
+      "selectedRank": 5,
+      "maxRank": 5,
+      "nodeId": 1223,
+      "sourceTalentId": 1223,
+      "spellId": 18697,
+      "spellIds": [
+        18697,
+        18698,
+        18699,
+        18700,
+        18701
+      ],
+      "selectedLegacySpellId": 18701,
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB warlock client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/warlock/"
+        }
+      ],
+      "reason": "rank_text_missing",
+      "primaryPaths": [
+        "/wow-forever-demonology-warlock-leveling-build",
+        "/wow-forever-warlock-pet-build"
+      ],
+      "relatedPaths": [
+        "/wow-forever-warlock-builds",
+        "/wow-forever-warlock-leveling-build",
+        "/wow-forever-demonology-warlock-leveling-build",
+        "/wow-forever-warlock-pvp-build",
+        "/wow-forever-warlock-level-20-build",
+        "/wow-forever-warlock-pet-build",
+        "/wow-forever-affliction-vs-demonology-warlock-leveling"
+      ],
+      "savedForeverDiffCandidate": {
+        "matchCount": 1,
+        "id": 1223,
+        "maxRank": 5,
+        "selectedRankText": "Increases your total Stamina by 15%.",
+        "rankTextCount": 5,
+        "exactNodeId": true,
+        "exactRankCap": true,
+        "notice": "Audit reference only. Rank text requires exact69913 client effect reconciliation before promotion."
+      }
+    },
+    {
+      "classId": "warlock",
+      "talentId": "warlock-1225",
+      "name": "Improved Voidwalker",
+      "branch": "demonology",
+      "selectedRank": 3,
+      "maxRank": 3,
+      "nodeId": 1225,
+      "sourceTalentId": 1225,
+      "spellId": 18705,
+      "spellIds": [
+        18705,
+        18706,
+        18707
+      ],
+      "selectedLegacySpellId": 18707,
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB warlock client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/warlock/"
+        }
+      ],
+      "reason": "rank_text_missing",
+      "primaryPaths": [
+        "/wow-forever-demonology-warlock-leveling-build",
+        "/wow-forever-warlock-pet-build"
+      ],
+      "relatedPaths": [
+        "/wow-forever-warlock-builds",
+        "/wow-forever-warlock-leveling-build",
+        "/wow-forever-demonology-warlock-leveling-build",
+        "/wow-forever-warlock-pvp-build",
+        "/wow-forever-warlock-level-20-build",
+        "/wow-forever-warlock-pet-build",
+        "/wow-forever-affliction-vs-demonology-warlock-leveling"
+      ],
+      "savedForeverDiffCandidate": {
+        "matchCount": 1,
+        "id": 1225,
+        "maxRank": 3,
+        "selectedRankText": "Increases the effectiveness of your Voidwalker's Torment, Consume Shadows, Sacrifice, and Suffering spells by 30%.",
+        "rankTextCount": 3,
+        "exactNodeId": true,
+        "exactRankCap": true,
+        "notice": "Audit reference only. Rank text requires exact69913 client effect reconciliation before promotion."
+      }
+    },
+    {
+      "classId": "warlock",
+      "talentId": "warlock-1242",
+      "name": "Fel Vitality",
+      "branch": "demonology",
+      "selectedRank": 2,
+      "maxRank": 5,
+      "nodeId": 1242,
+      "sourceTalentId": 1242,
+      "spellId": 18731,
+      "spellIds": [
+        18731,
+        18743,
+        18744,
+        18745,
+        18746
+      ],
+      "selectedLegacySpellId": 18743,
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB warlock client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/warlock/"
+        }
+      ],
+      "reason": "rank_text_missing",
+      "primaryPaths": [
+        "/wow-forever-demonology-warlock-leveling-build",
+        "/wow-forever-warlock-pet-build"
+      ],
+      "relatedPaths": [
+        "/wow-forever-warlock-builds",
+        "/wow-forever-warlock-leveling-build",
+        "/wow-forever-demonology-warlock-leveling-build",
+        "/wow-forever-warlock-pvp-build",
+        "/wow-forever-warlock-level-20-build",
+        "/wow-forever-warlock-pet-build",
+        "/wow-forever-affliction-vs-demonology-warlock-leveling"
+      ],
+      "savedForeverDiffCandidate": {
+        "matchCount": 1,
+        "id": 1242,
+        "maxRank": 3,
+        "selectedRankText": "Increases the maximum health and Mana of your Imp, Voidwalker, Succubus, Incubus, and Felhunter by 10%, and increases your maximum Mana by 10%.",
+        "rankTextCount": 3,
+        "exactNodeId": true,
+        "exactRankCap": false,
+        "notice": "Audit reference only. Rank text requires exact69913 client effect reconciliation before promotion."
+      }
+    },
+    {
+      "classId": "warlock",
+      "talentId": "warlock-944",
+      "name": "Improved Shadow Bolt",
+      "branch": "destruction",
+      "selectedRank": 5,
+      "maxRank": 5,
+      "nodeId": 944,
+      "sourceTalentId": 944,
+      "spellId": 17793,
+      "spellIds": [
+        17793,
+        17796,
+        17801,
+        17802,
+        17803
+      ],
+      "selectedLegacySpellId": 17803,
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "unknown",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB warlock client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/warlock/"
+        }
+      ],
+      "reason": "rank_text_missing",
+      "primaryPaths": [
+        "/wow-forever-destruction-warlock-build",
+        "/wow-forever-warlock-dungeon-build"
+      ],
+      "relatedPaths": [
+        "/wow-forever-warlock-builds",
+        "/wow-forever-warlock-leveling-build",
+        "/wow-forever-destruction-warlock-build",
+        "/wow-forever-warlock-pvp-build",
+        "/wow-forever-warlock-level-20-build",
+        "/wow-forever-warlock-dungeon-build"
+      ],
+      "savedForeverDiffCandidate": {
+        "matchCount": 1,
+        "id": 944,
+        "maxRank": 5,
+        "selectedRankText": "Your Shadow Bolt critical strikes increase Shadow damage taken by the target from your attacks by 20% for 12 sec.",
+        "rankTextCount": 5,
+        "exactNodeId": true,
+        "exactRankCap": true,
+        "notice": "Audit reference only. Rank text requires exact69913 client effect reconciliation before promotion."
+      }
+    },
+    {
+      "classId": "warlock",
+      "talentId": "warlock-943",
+      "name": "Bane",
+      "branch": "destruction",
+      "selectedRank": 5,
+      "maxRank": 5,
+      "nodeId": 943,
+      "sourceTalentId": 943,
+      "spellId": 17788,
+      "spellIds": [
+        17788,
+        17789,
+        17790,
+        17791,
+        17792
+      ],
+      "selectedLegacySpellId": 17792,
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB warlock client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/warlock/"
+        }
+      ],
+      "reason": "rank_text_missing",
+      "primaryPaths": [
+        "/wow-forever-destruction-warlock-build",
+        "/wow-forever-warlock-dungeon-build"
+      ],
+      "relatedPaths": [
+        "/wow-forever-warlock-builds",
+        "/wow-forever-warlock-leveling-build",
+        "/wow-forever-destruction-warlock-build",
+        "/wow-forever-warlock-pvp-build",
+        "/wow-forever-warlock-level-20-build",
+        "/wow-forever-warlock-dungeon-build"
+      ],
+      "savedForeverDiffCandidate": {
+        "matchCount": 1,
+        "id": 943,
+        "maxRank": 5,
+        "selectedRankText": "Reduces the casting time of your Shadow Bolt, Immolate, and Incinerate spells by 0.5 sec and your Soul Fire spell by 2 sec.",
+        "rankTextCount": 5,
+        "exactNodeId": true,
+        "exactRankCap": true,
+        "notice": "Audit reference only. Rank text requires exact69913 client effect reconciliation before promotion."
+      }
+    },
+    {
+      "classId": "shaman",
+      "talentId": "shaman-564",
+      "name": "Convection",
+      "branch": "elemental",
+      "selectedRank": 5,
+      "maxRank": 5,
+      "nodeId": 564,
+      "sourceTalentId": 564,
+      "spellId": 16039,
+      "spellIds": [
+        16039,
+        16109,
+        16110,
+        16111,
+        16112
+      ],
+      "selectedLegacySpellId": 16112,
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB shaman client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/shaman/"
+        }
+      ],
+      "reason": "rank_text_missing",
+      "primaryPaths": [
+        "/wow-forever-elemental-shaman-build",
+        "/wow-forever-shaman-pvp-build"
+      ],
+      "relatedPaths": [
+        "/wow-forever-shaman-builds",
+        "/wow-forever-shaman-leveling-build",
+        "/wow-forever-elemental-shaman-build",
+        "/wow-forever-shaman-pvp-build",
+        "/wow-forever-shaman-level-20-build",
+        "/wow-forever-elemental-vs-enhancement-shaman-leveling"
+      ],
+      "savedForeverDiffCandidate": {
+        "matchCount": 1,
+        "id": 564,
+        "maxRank": 5,
+        "selectedRankText": "Reduces the mana cost of your Shock, Lightning Bolt, Lava Burst, and Chain Lightning spells by 10%.",
+        "rankTextCount": 5,
+        "exactNodeId": true,
+        "exactRankCap": true,
+        "notice": "Audit reference only. Rank text requires exact69913 client effect reconciliation before promotion."
+      }
+    },
+    {
+      "classId": "shaman",
+      "talentId": "shaman-561",
+      "name": "Call of Flame",
+      "branch": "elemental",
+      "selectedRank": 3,
+      "maxRank": 3,
+      "nodeId": 561,
+      "sourceTalentId": 561,
+      "spellId": 16038,
+      "spellIds": [
+        16038,
+        16160,
+        16161
+      ],
+      "selectedLegacySpellId": 16161,
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB shaman client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/shaman/"
+        }
+      ],
+      "reason": "rank_text_missing",
+      "primaryPaths": [
+        "/wow-forever-elemental-shaman-build",
+        "/wow-forever-shaman-pvp-build"
+      ],
+      "relatedPaths": [
+        "/wow-forever-shaman-builds",
+        "/wow-forever-shaman-leveling-build",
+        "/wow-forever-elemental-shaman-build",
+        "/wow-forever-shaman-pvp-build",
+        "/wow-forever-shaman-level-20-build",
+        "/wow-forever-elemental-vs-enhancement-shaman-leveling"
+      ],
+      "savedForeverDiffCandidate": {
+        "matchCount": 1,
+        "id": 561,
+        "maxRank": 3,
+        "selectedRankText": "Increases the damage done by your Fire Totems and by your Flame Shock, Fire Nova, and Lava Burst spells by 15%.",
+        "rankTextCount": 3,
+        "exactNodeId": true,
+        "exactRankCap": true,
+        "notice": "Audit reference only. Rank text requires exact69913 client effect reconciliation before promotion."
+      }
+    },
+    {
+      "classId": "shaman",
+      "talentId": "shaman-1640",
+      "name": "Elemental Warding",
+      "branch": "elemental",
+      "selectedRank": 2,
+      "maxRank": 3,
+      "nodeId": 1640,
+      "sourceTalentId": 1640,
+      "spellId": 28996,
+      "spellIds": [
+        28996,
+        28997,
+        28998
+      ],
+      "selectedLegacySpellId": 28997,
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB shaman client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/shaman/"
+        }
+      ],
+      "reason": "rank_text_missing",
+      "primaryPaths": [
+        "/wow-forever-elemental-shaman-build",
+        "/wow-forever-shaman-pvp-build"
+      ],
+      "relatedPaths": [
+        "/wow-forever-shaman-builds",
+        "/wow-forever-shaman-leveling-build",
+        "/wow-forever-elemental-shaman-build",
+        "/wow-forever-shaman-pvp-build",
+        "/wow-forever-shaman-level-20-build",
+        "/wow-forever-elemental-vs-enhancement-shaman-leveling"
+      ],
+      "savedForeverDiffCandidate": {
+        "matchCount": 1,
+        "id": 1640,
+        "maxRank": 3,
+        "selectedRankText": "Reduces damage taken from Fire, Frost, and Nature effects by 7%.",
+        "rankTextCount": 3,
+        "exactNodeId": true,
+        "exactRankCap": true,
+        "notice": "Audit reference only. Rank text requires exact69913 client effect reconciliation before promotion."
+      }
+    },
+    {
+      "classId": "shaman",
+      "talentId": "shaman-614",
+      "name": "Ancestral Knowledge",
+      "branch": "enhancement",
+      "selectedRank": 5,
+      "maxRank": 5,
+      "nodeId": 614,
+      "sourceTalentId": 614,
+      "spellId": 17485,
+      "spellIds": [
+        17485,
+        17486,
+        17487,
+        17488,
+        17489
+      ],
+      "selectedLegacySpellId": 17489,
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB shaman client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/shaman/"
+        }
+      ],
+      "reason": "rank_text_missing",
+      "primaryPaths": [
+        "/wow-forever-shaman-leveling-build",
+        "/wow-forever-enhancement-shaman-build",
+        "/wow-forever-elemental-vs-enhancement-shaman-leveling"
+      ],
+      "relatedPaths": [
+        "/wow-forever-shaman-builds",
+        "/wow-forever-enhancement-shaman-build",
+        "/wow-forever-shaman-pvp-build",
+        "/wow-forever-shaman-level-20-build"
+      ],
+      "savedForeverDiffCandidate": {
+        "matchCount": 1,
+        "id": 614,
+        "maxRank": 5,
+        "selectedRankText": "Increases your Intellect by 10%.",
+        "rankTextCount": 5,
+        "exactNodeId": true,
+        "exactRankCap": true,
+        "notice": "Audit reference only. Rank text requires exact69913 client effect reconciliation before promotion."
+      }
+    },
+    {
+      "classId": "shaman",
+      "talentId": "shaman-613",
+      "name": "Thundering Strikes",
+      "branch": "enhancement",
+      "selectedRank": 5,
+      "maxRank": 5,
+      "nodeId": 613,
+      "sourceTalentId": 613,
+      "spellId": 16255,
+      "spellIds": [
+        16255,
+        16302,
+        16303,
+        16304,
+        16305
+      ],
+      "selectedLegacySpellId": 16305,
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB shaman client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/shaman/"
+        }
+      ],
+      "reason": "rank_text_missing",
+      "primaryPaths": [
+        "/wow-forever-shaman-leveling-build",
+        "/wow-forever-enhancement-shaman-build",
+        "/wow-forever-elemental-vs-enhancement-shaman-leveling"
+      ],
+      "relatedPaths": [
+        "/wow-forever-shaman-builds",
+        "/wow-forever-enhancement-shaman-build",
+        "/wow-forever-shaman-pvp-build",
+        "/wow-forever-shaman-level-20-build"
+      ],
+      "savedForeverDiffCandidate": {
+        "matchCount": 1,
+        "id": 613,
+        "maxRank": 5,
+        "selectedRankText": "Improves your chance to get a critical strike with all spells and attacks by 5%.",
+        "rankTextCount": 5,
+        "exactNodeId": true,
+        "exactRankCap": true,
+        "notice": "Audit reference only. Rank text requires exact69913 client effect reconciliation before promotion."
+      }
+    },
+    {
+      "classId": "shaman",
+      "talentId": "shaman-586",
+      "name": "Improved Healing Wave",
+      "branch": "restoration",
+      "selectedRank": 5,
+      "maxRank": 5,
+      "nodeId": 586,
+      "sourceTalentId": 586,
+      "spellId": 16182,
+      "spellIds": [
+        16182,
+        16226,
+        16227,
+        16228,
+        16229
+      ],
+      "selectedLegacySpellId": 16229,
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "unknown",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB shaman client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/shaman/"
+        }
+      ],
+      "reason": "rank_text_missing",
+      "primaryPaths": [
+        "/wow-forever-restoration-shaman-build",
+        "/wow-forever-shaman-totem-build",
+        "/wow-forever-restoration-shaman-healing-build"
+      ],
+      "relatedPaths": [
+        "/wow-forever-shaman-builds",
+        "/wow-forever-shaman-leveling-build",
+        "/wow-forever-restoration-shaman-build",
+        "/wow-forever-shaman-pvp-build",
+        "/wow-forever-shaman-level-20-build",
+        "/wow-forever-shaman-totem-build",
+        "/wow-forever-restoration-shaman-healing-build"
+      ],
+      "savedForeverDiffCandidate": {
+        "matchCount": 1,
+        "id": 586,
+        "maxRank": 5,
+        "selectedRankText": "Reduces the casting time of your Healing Wave spell by 0.5 sec.",
+        "rankTextCount": 5,
+        "exactNodeId": true,
+        "exactRankCap": true,
+        "notice": "Audit reference only. Rank text requires exact69913 client effect reconciliation before promotion."
+      }
+    },
+    {
+      "classId": "shaman",
+      "talentId": "shaman-595",
+      "name": "Totemic Focus",
+      "branch": "restoration",
+      "selectedRank": 5,
+      "maxRank": 5,
+      "nodeId": 595,
+      "sourceTalentId": 595,
+      "spellId": 16173,
+      "spellIds": [
+        16173,
+        16222,
+        16223,
+        16224,
+        16225
+      ],
+      "selectedLegacySpellId": 16225,
+      "sourceClientBuild": "1.60.1.69913",
+      "verifiedThroughBuild": "1.60.1.69913",
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "sourceTalentId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "client_datamined",
+        "iconName": "client_datamined",
+        "changeStatus": "unknown"
+      },
+      "sources": [
+        {
+          "label": "Wago Talent client table 1.60.1.69913",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/Talent?build=1.60.1.69913"
+        },
+        {
+          "label": "TheWoWDB shaman client cross-check",
+          "type": "beta_client_crosscheck",
+          "url": "https://thewowdb.com/wow-forever/talents/shaman/"
+        }
+      ],
+      "reason": "rank_text_missing",
+      "primaryPaths": [
+        "/wow-forever-restoration-shaman-build",
+        "/wow-forever-shaman-totem-build",
+        "/wow-forever-restoration-shaman-healing-build"
+      ],
+      "relatedPaths": [
+        "/wow-forever-shaman-builds",
+        "/wow-forever-shaman-leveling-build",
+        "/wow-forever-restoration-shaman-build",
+        "/wow-forever-shaman-pvp-build",
+        "/wow-forever-shaman-level-20-build",
+        "/wow-forever-shaman-totem-build",
+        "/wow-forever-restoration-shaman-healing-build"
+      ],
+      "savedForeverDiffCandidate": {
+        "matchCount": 1,
+        "id": 595,
+        "maxRank": 5,
+        "selectedRankText": "Reduces the Mana cost of your totems and any spells that summon or move them by 25%.",
+        "rankTextCount": 5,
+        "exactNodeId": true,
+        "exactRankCap": true,
+        "notice": "Audit reference only. Rank text requires exact69913 client effect reconciliation before promotion."
+      }
+    }
+  ]
+}

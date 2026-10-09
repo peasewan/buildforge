@@ -1,0 +1,1457 @@
+{
+  "schemaVersion": 1,
+  "classId": "mage",
+  "sourceClientBuild": "1.60.1.69913",
+  "reviewedAt": "2026-10-09",
+  "status": "client_verified",
+  "scope": "All ten talents selected by the existing nine Mage route allocations; every rank reviewed, including the four previously accepted talents. No change to allocations, coordinates, gates, prerequisites, published page membership, dataset version or other unknown ranks.",
+  "resolution": "Use only live Mage TraitTree1112 membership (SkillLine237). Effect curves have an explicit point for every rank and OperationType0. Render absolute effect magnitudes into the same-build spell template; convert specified milliseconds to seconds and linked Clearcasting effect tenths to percent. No interpolation, newer-build export, Classic rank spell fallback or SpellEffect maximum-value substitution. Normalize whitespace only.",
+  "limits": "This historical client-text review does not establish the latest Beta state, spell learning levels, server behavior, combat timing or best builds. Point gates and full-rank prerequisite semantics retain their existing evidence boundaries.",
+  "originalProductionSha256": "0d62a166380606746cac329e72a1c25ea4c4b1e0e6831fede3e5f87b190a7434",
+  "originalSnapshots": [
+    {
+      "path": "src/data/mage-source-foreverdiff-1.60.1.69913.json",
+      "sha256": "2deddaeabb18efa0ed1a64c3e13e773136fd566a66d0efbe9df236cd6669cbcf"
+    },
+    {
+      "path": "src/data/mage-source-thewowdb-1.60.1.69913.json",
+      "sha256": "2a935a341e76cda6bf6b24d989c590f0d5017c9ab81ec724c2dbe135d210148b"
+    },
+    {
+      "path": "src/data/mage-primary-client-1.60.1.69913.json",
+      "sha256": "b845aa1e86594862c6ff07b29002db14cd125c24b330311f3097c75462792760"
+    }
+  ],
+  "sources": [
+    {
+      "table": "TraitDefinition",
+      "url": "https://wago.tools/db2/TraitDefinition/csv?build=1.60.1.69913",
+      "clientBuild": "1.60.1.69913",
+      "fullDownloadSha256": "41ef26487af21af2082cf1174ad3a3c56e5003f8700d904c861f800bf87b2575",
+      "fullDownloadBytes": 14955,
+      "path": "data/sources/rank-text/1.60.1.69913/TraitDefinition.69913.csv"
+    },
+    {
+      "table": "TraitDefinitionEffectPoints",
+      "url": "https://wago.tools/db2/TraitDefinitionEffectPoints/csv?build=1.60.1.69913",
+      "clientBuild": "1.60.1.69913",
+      "fullDownloadSha256": "64105c2e36b1f4381ba4584d7924aacec9dd1fdfbdaac0089034f90fbb97e147",
+      "fullDownloadBytes": 14890,
+      "path": "data/sources/rank-text/1.60.1.69913/TraitDefinitionEffectPoints.69913.csv"
+    },
+    {
+      "table": "CurvePoint",
+      "url": "https://wago.tools/db2/CurvePoint/csv?build=1.60.1.69913",
+      "clientBuild": "1.60.1.69913",
+      "fullDownloadSha256": "6b6f53aaa7e27d29706a3411d651594eb7cfe05b3ec21360c7ec19d0c226ee04",
+      "fullDownloadBytes": 911767,
+      "path": "data/sources/rank-text/1.60.1.69913/CurvePoint.69913.csv"
+    },
+    {
+      "table": "TraitNode",
+      "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.69913",
+      "clientBuild": "1.60.1.69913",
+      "fullDownloadSha256": "bf782192555e1a3618b3bc36d5c3344cbb7040630af1619534ae63e6e004479c",
+      "fullDownloadBytes": 15776,
+      "path": "data/sources/rank-text/1.60.1.69913/TraitNode.69913.csv"
+    },
+    {
+      "table": "TraitNodeEntry",
+      "url": "https://wago.tools/db2/TraitNodeEntry/csv?build=1.60.1.69913",
+      "clientBuild": "1.60.1.69913",
+      "fullDownloadSha256": "2072534b68d4de57509f96eb2476aec373be07a3b4d8ffebfc80093f71605518",
+      "fullDownloadBytes": 13174,
+      "path": "data/sources/rank-text/1.60.1.69913/TraitNodeEntry.69913.csv"
+    },
+    {
+      "table": "TraitNodeXTraitNodeEntry",
+      "url": "https://wago.tools/db2/TraitNodeXTraitNodeEntry/csv?build=1.60.1.69913",
+      "clientBuild": "1.60.1.69913",
+      "fullDownloadSha256": "3d34473f8b5bf24b5599ab314e6fa4156f39a850682a74294e58c8b0eb65c1b0",
+      "fullDownloadBytes": 14096,
+      "path": "data/sources/rank-text/1.60.1.69913/TraitNodeXTraitNodeEntry.69913.csv"
+    },
+    {
+      "table": "SkillLineXTraitTree",
+      "url": "https://wago.tools/db2/SkillLineXTraitTree/csv?build=1.60.1.69913",
+      "clientBuild": "1.60.1.69913",
+      "fullDownloadSha256": "e6774240ba1fda84bef060fda0d0b23e42d5ae9b4d8ae3323f7ccb31f38c5760",
+      "fullDownloadBytes": 167,
+      "path": "data/sources/rank-text/1.60.1.69913/SkillLineXTraitTree.69913.csv"
+    },
+    {
+      "table": "SpellMisc",
+      "url": "https://wago.tools/db2/SpellMisc/csv?build=1.60.1.69913",
+      "clientBuild": "1.60.1.69913",
+      "fullDownloadSha256": "f6ed1f30f53e311b231b4ae007f8ca5f605e1ad6c960a70f3fce871fb87583bd",
+      "fullDownloadBytes": 3005647,
+      "path": "data/sources/rank-text/1.60.1.69913/SpellMisc.69913.csv"
+    },
+    {
+      "table": "SpellDuration",
+      "url": "https://wago.tools/db2/SpellDuration/csv?build=1.60.1.69913",
+      "clientBuild": "1.60.1.69913",
+      "fullDownloadSha256": "8a2d2a82c96d2a3dfa20883093cf9a1071abc8b26f9681da3500324e9560b31c",
+      "fullDownloadBytes": 2505,
+      "path": "data/sources/rank-text/1.60.1.69913/SpellDuration.69913.csv"
+    },
+    {
+      "table": "SpellName",
+      "url": "https://wago.tools/db2/SpellName/csv?build=1.60.1.69913",
+      "clientBuild": "1.60.1.69913",
+      "fullDownloadSha256": "ede393ee7dd2d8a7e9bacbf4f14a32a88ded7f67ba08b33d564e931a352773ab",
+      "fullDownloadBytes": 833945,
+      "path": "data/sources/rank-text/1.60.1.69913/SpellName.69913.csv"
+    },
+    {
+      "table": "Spell",
+      "url": "https://wago.tools/db2/Spell/csv?build=1.60.1.69913",
+      "clientBuild": "1.60.1.69913",
+      "fullDownloadSha256": "7c9acd23c5bc839cc2c66009b8ac3911f7091f795d1f9412254fe42730606007",
+      "fullDownloadBytes": 2187777,
+      "path": "data/sources/rank-text/1.60.1.69913/Spell.69913.csv"
+    },
+    {
+      "table": "SpellEffect",
+      "url": "https://wago.tools/db2/SpellEffect/csv?build=1.60.1.69913",
+      "clientBuild": "1.60.1.69913",
+      "fullDownloadSha256": "f08c0780f920f41f84b6d6d13ada78db59a4c5ae8ca369c8bee3ab7642af41c1",
+      "fullDownloadBytes": 3828322,
+      "path": "data/sources/rank-text/1.60.1.69913/SpellEffect.69913.csv"
+    }
+  ],
+  "records": [
+    {
+      "talentId": "mage-arcane-arcane-focus",
+      "name": "Arcane Focus",
+      "sourceTalentId": 76,
+      "nodeId": 105814,
+      "spellId": 11222,
+      "maxRank": 5,
+      "template": "Improves your chance to hit with Arcane spells by $s1%.",
+      "membership": {
+        "skillLine": {
+          "ID": "129",
+          "SkillLineID": "237",
+          "TraitTreeID": "1112",
+          "Variant": "0"
+        },
+        "node": {
+          "ID": "105814",
+          "TraitTreeID": "1112",
+          "PosX": "1620",
+          "PosY": "2130",
+          "Type": "0",
+          "Flags": "0",
+          "TraitSubTreeID": "0"
+        },
+        "nodeEntryLink": {
+          "ID": "128010",
+          "TraitNodeID": "105814",
+          "TraitNodeEntryID": "130543",
+          "_Index": "100"
+        },
+        "nodeEntry": {
+          "ID": "130543",
+          "TraitDefinitionID": "135344",
+          "MaxRanks": "5",
+          "NodeEntryType": "1",
+          "TraitSubTreeID": "0"
+        },
+        "definition": {
+          "OverrideName_lang": "",
+          "OverrideSubtext_lang": "",
+          "OverrideDescription_lang": "",
+          "ID": "135344",
+          "SpellID": "11222",
+          "OverrideIcon": "0",
+          "OverridesSpellID": "0",
+          "VisibleSpellID": "0"
+        },
+        "spellName": {
+          "ID": "11222",
+          "Name_lang": "Arcane Focus"
+        },
+        "spell": {
+          "ID": "11222",
+          "NameSubtext_lang": "",
+          "Description_lang": "Improves your chance to hit with Arcane spells by $s1%.",
+          "AuraDescription_lang": ""
+        }
+      },
+      "curves": [
+        {
+          "effectIndex": 0,
+          "sourceRow": {
+            "ID": "23471",
+            "TraitDefinitionID": "135344",
+            "EffectIndex": "0",
+            "OperationType": "0",
+            "CurveID": "83115"
+          },
+          "points": [
+            {
+              "Pos_0": "1",
+              "Pos_1": "1",
+              "PosPreSquish_0": "0",
+              "PosPreSquish_1": "0",
+              "ID": "241210",
+              "CurveID": "83115",
+              "OrderIndex": "0"
+            },
+            {
+              "Pos_0": "2",
+              "Pos_1": "2",
+              "PosPreSquish_0": "0",
+              "PosPreSquish_1": "0",
+              "ID": "241211",
+              "CurveID": "83115",
+              "OrderIndex": "1"
+            },
+            {
+              "Pos_0": "3",
+              "Pos_1": "3",
+              "PosPreSquish_0": "0",
+              "PosPreSquish_1": "0",
+              "ID": "241212",
+              "CurveID": "83115",
+              "OrderIndex": "2"
+            },
+            {
+              "Pos_0": "4",
+              "Pos_1": "4",
+              "PosPreSquish_0": "0",
+              "PosPreSquish_1": "0",
+              "ID": "241213",
+              "CurveID": "83115",
+              "OrderIndex": "3"
+            },
+            {
+              "Pos_0": "5",
+              "Pos_1": "5",
+              "PosPreSquish_0": "0",
+              "PosPreSquish_1": "0",
+              "ID": "241214",
+              "CurveID": "83115",
+              "OrderIndex": "4"
+            }
+          ]
+        }
+      ],
+      "linkedReferences": [],
+      "rankDescriptions": [
+        "Improves your chance to hit with Arcane spells by 1%.",
+        "Improves your chance to hit with Arcane spells by 2%.",
+        "Improves your chance to hit with Arcane spells by 3%.",
+        "Improves your chance to hit with Arcane spells by 4%.",
+        "Improves your chance to hit with Arcane spells by 5%."
+      ]
+    },
+    {
+      "talentId": "mage-arcane-improved-channeling",
+      "name": "Improved Channeling",
+      "sourceTalentId": 80,
+      "nodeId": 105813,
+      "spellId": 11237,
+      "maxRank": 5,
+      "template": "Gives you a $m1% chance to avoid interruption caused by damage while channeling Arcane Missiles and a $m2% chance while casting Arcane Blast.",
+      "membership": {
+        "skillLine": {
+          "ID": "129",
+          "SkillLineID": "237",
+          "TraitTreeID": "1112",
+          "Variant": "0"
+        },
+        "node": {
+          "ID": "105813",
+          "TraitTreeID": "1112",
+          "PosX": "2220",
+          "PosY": "2130",
+          "Type": "0",
+          "Flags": "0",
+          "TraitSubTreeID": "0"
+        },
+        "nodeEntryLink": {
+          "ID": "128009",
+          "TraitNodeID": "105813",
+          "TraitNodeEntryID": "130542",
+          "_Index": "100"
+        },
+        "nodeEntry": {
+          "ID": "130542",
+          "TraitDefinitionID": "135343",
+          "MaxRanks": "5",
+          "NodeEntryType": "1",
+          "TraitSubTreeID": "0"
+        },
+        "definition": {
+          "OverrideName_lang": "",
+          "OverrideSubtext_lang": "",
+          "OverrideDescription_lang": "",
+          "ID": "135343",
+          "SpellID": "11237",
+          "OverrideIcon": "0",
+          "OverridesSpellID": "0",
+          "VisibleSpellID": "0"
+        },
+        "spellName": {
+          "ID": "11237",
+          "Name_lang": "Improved Channeling"
+        },
+        "spell": {
+          "ID": "11237",
+          "NameSubtext_lang": "",
+          "Description_lang": "Gives you a $m1% chance to avoid interruption caused by damage while channeling Arcane Missiles and a $m2% chance while casting Arcane Blast.",
+          "AuraDescription_lang": ""
+        }
+      },
+      "curves": [
+        {
+          "effectIndex": 0,
+          "sourceRow": {
+            "ID": "23470",
+            "TraitDefinitionID": "135343",
+            "EffectIndex": "0",
+            "OperationType": "0",
+            "CurveID": "83114"
+          },
+          "points": [
+            {
+              "Pos_0": "1",
+              "Pos_1": "20",
+              "PosPreSquish_0": "0",
+              "PosPreSquish_1": "0",
+              "ID": "241205",
+              "CurveID": "83114",
+              "OrderIndex": "0"
+            },
+            {
+              "Pos_0": "2",
+              "Pos_1": "40",
+              "PosPreSquish_0": "0",
+              "PosPreSquish_1": "0",
+              "ID": "241206",
+              "CurveID": "83114",
+              "OrderIndex": "1"
+            },
+            {
+              "Pos_0": "3",
+              "Pos_1": "60",
+              "PosPreSquish_0": "0",
+              "PosPreSquish_1": "0",
+              "ID": "241207",
+              "CurveID": "83114",
+              "OrderIndex": "2"
+            },
+            {
+              "Pos_0": "4",
+              "Pos_1": "80",
+              "PosPreSquish_0": "0",
+              "PosPreSquish_1": "0",
+              "ID": "241208",
+              "CurveID": "83114",
+              "OrderIndex": "3"
+            },
+            {
+              "Pos_0": "5",
+              "Pos_1": "100",
+              "PosPreSquish_0": "0",
+              "PosPreSquish_1": "0",
+              "ID": "241209",
+              "CurveID": "83114",
+              "OrderIndex": "4"
+            }
+          ]
+        },
+        {
+          "effectIndex": 1,
+          "sourceRow": {
+            "ID": "23808",
+            "TraitDefinitionID": "135343",
+            "EffectIndex": "1",
+            "OperationType": "0",
+            "CurveID": "85472"
+          },
+          "points": [
+            {
+              "Pos_0": "1",
+              "Pos_1": "14",
+              "PosPreSquish_0": "0",
+              "PosPreSquish_1": "0",
+              "ID": "251993",
+              "CurveID": "85472",
+              "OrderIndex": "0"
+            },
+            {
+              "Pos_0": "2",
+              "Pos_1": "28",
+              "PosPreSquish_0": "0",
+              "PosPreSquish_1": "0",
+              "ID": "251994",
+              "CurveID": "85472",
+              "OrderIndex": "1"
+            },
+            {
+              "Pos_0": "3",
+              "Pos_1": "42",
+              "PosPreSquish_0": "0",
+              "PosPreSquish_1": "0",
+              "ID": "251995",
+              "CurveID": "85472",
+              "OrderIndex": "2"
+            },
+            {
+              "Pos_0": "4",
+              "Pos_1": "56",
+              "PosPreSquish_0": "0",
+              "PosPreSquish_1": "0",
+              "ID": "251996",
+              "CurveID": "85472",
+              "OrderIndex": "3"
+            },
+            {
+              "Pos_0": "5",
+              "Pos_1": "70",
+              "PosPreSquish_0": "0",
+              "PosPreSquish_1": "0",
+              "ID": "251997",
+              "CurveID": "85472",
+              "OrderIndex": "4"
+            }
+          ]
+        }
+      ],
+      "linkedReferences": [],
+      "rankDescriptions": [
+        "Gives you a 20% chance to avoid interruption caused by damage while channeling Arcane Missiles and a 14% chance while casting Arcane Blast.",
+        "Gives you a 40% chance to avoid interruption caused by damage while channeling Arcane Missiles and a 28% chance while casting Arcane Blast.",
+        "Gives you a 60% chance to avoid interruption caused by damage while channeling Arcane Missiles and a 42% chance while casting Arcane Blast.",
+        "Gives you a 80% chance to avoid interruption caused by damage while channeling Arcane Missiles and a 56% chance while casting Arcane Blast.",
+        "Gives you a 100% chance to avoid interruption caused by damage while channeling Arcane Missiles and a 70% chance while casting Arcane Blast."
+      ]
+    },
+    {
+      "talentId": "mage-arcane-arcane-concentration",
+      "name": "Arcane Concentration",
+      "sourceTalentId": 75,
+      "nodeId": 105810,
+      "spellId": 11213,
+      "maxRank": 5,
+      "template": "Gives you a $m1% chance of entering a Clearcasting state after any damage spell hits a target.  The Clearcasting state reduces the mana cost of your next damage spell by $/10;12536s1%.",
+      "membership": {
+        "skillLine": {
+          "ID": "129",
+          "SkillLineID": "237",
+          "TraitTreeID": "1112",
+          "Variant": "0"
+        },
+        "node": {
+          "ID": "105810",
+          "TraitTreeID": "1112",
+          "PosX": "2220",
+          "PosY": "2730",
+          "Type": "0",
+          "Flags": "0",
+          "TraitSubTreeID": "0"
+        },
+        "nodeEntryLink": {
+          "ID": "128006",
+          "TraitNodeID": "105810",
+          "TraitNodeEntryID": "130539",
+          "_Index": "100"
+        },
+        "nodeEntry": {
+          "ID": "130539",
+          "TraitDefinitionID": "135340",
+          "MaxRanks": "5",
+          "NodeEntryType": "1",
+          "TraitSubTreeID": "0"
+        },
+        "definition": {
+          "OverrideName_lang": "",
+          "OverrideSubtext_lang": "",
+          "OverrideDescription_lang": "",
+          "ID": "135340",
+          "SpellID": "11213",
+          "OverrideIcon": "0",
+          "OverridesSpellID": "0",
+          "VisibleSpellID": "0"
+        },
+        "spellName": {
+          "ID": "11213",
+          "Name_lang": "Arcane Concentration"
+        },
+        "spell": {
+          "ID": "11213",
+          "NameSubtext_lang": "",
+          "Description_lang": "Gives you a $m1% chance of entering a Clearcasting state after any damage spell hits a target.  The Clearcasting state reduces the mana cost of your next damage spell by $/10;12536s1%.",
+          "AuraDescription_lang": ""
+        }
+      },
+      "curves": [
+        {
+          "effectIndex": 0,
+          "sourceRow": {
+            "ID": "23465",
+            "TraitDefinitionID": "135340",
+            "EffectIndex": "0",
+            "OperationType": "0",
+            "CurveID": "83109"
+          },
+          "points": [
+            {
+              "Pos_0": "1",
+              "Pos_1": "2",
+              "PosPreSquish_0": "0",
+              "PosPreSquish_1": "0",
+              "ID": "241192",
+              "CurveID": "83109",
+              "OrderIndex": "0"
+            },
+            {
+              "Pos_0": "2",
+              "Pos_1": "4",
+              "PosPreSquish_0": "0",
+              "PosPreSquish_1": "0",
+              "ID": "241193",
+              "CurveID": "83109",
+              "OrderIndex": "1"
+            },
+            {
+              "Pos_0": "3",
+              "Pos_1": "6",
+              "PosPreSquish_0": "0",
+              "PosPreSquish_1": "0",
+              "ID": "241194",
+              "CurveID": "83109",
+              "OrderIndex": "2"
+            },
+            {
+              "Pos_0": "4",
+              "Pos_1": "8",
+              "PosPreSquish_0": "0",
+              "PosPreSquish_1": "0",
+              "ID": "241195",
+              "CurveID": "83109",
+              "OrderIndex": "3"
+            },
+            {
+              "Pos_0": "5",
+              "Pos_1": "10",
+              "PosPreSquish_0": "0",
+              "PosPreSquish_1": "0",
+              "ID": "241196",
+              "CurveID": "83109",
+              "OrderIndex": "4"
+            }
+          ]
+        }
+      ],
+      "linkedReferences": [
+        {
+          "kind": "spell_effect",
+          "spell": {
+            "ID": "12536",
+            "NameSubtext_lang": "",
+            "Description_lang": "",
+            "AuraDescription_lang": "Your next damage spell has its mana cost reduced by $/10;s1%."
+          },
+          "effect": {
+            "ID": "689319",
+            "EffectAura": "108",
+            "DifficultyID": "0",
+            "EffectIndex": "0",
+            "Effect": "6",
+            "EffectAmplitude": "0",
+            "EffectAttributes": "0",
+            "EffectAuraPeriod": "0",
+            "EffectBonusCoefficient": "0",
+            "EffectChainAmplitude": "1",
+            "EffectChainTargets": "0",
+            "EffectItemType": "0",
+            "EffectMechanic": "0",
+            "EffectPointsPerResource": "0",
+            "EffectPos_facing": "0",
+            "EffectRealPointsPerLevel": "0",
+            "EffectTriggerSpell": "0",
+            "BonusCoefficientFromAP": "0",
+            "PvpMultiplier": "1",
+            "Coefficient": "0",
+            "Variance": "0",
+            "ResourceCoefficient": "0",
+            "GroupSizeBasePointsCoefficient": "1",
+            "EffectBasePointsF": "-1000",
+            "ScalingClass": "0",
+            "Node__Field_12_0_0_63534_001": "0",
+            "EffectMiscValue_0": "14",
+            "EffectMiscValue_1": "0",
+            "EffectRadiusIndex_0": "0",
+            "EffectRadiusIndex_1": "0",
+            "EffectSpellClassMask_0": "549591799",
+            "EffectSpellClassMask_1": "167936",
+            "EffectSpellClassMask_2": "268697664",
+            "EffectSpellClassMask_3": "540672",
+            "ImplicitTarget_0": "1",
+            "ImplicitTarget_1": "0",
+            "SpellID": "12536"
+          },
+          "divisor": 10,
+          "resolvedValue": 100
+        }
+      ],
+      "rankDescriptions": [
+        "Gives you a 2% chance of entering a Clearcasting state after any damage spell hits a target. The Clearcasting state reduces the mana cost of your next damage spell by 100%.",
+        "Gives you a 4% chance of entering a Clearcasting state after any damage spell hits a target. The Clearcasting state reduces the mana cost of your next damage spell by 100%.",
+        "Gives you a 6% chance of entering a Clearcasting state after any damage spell hits a target. The Clearcasting state reduces the mana cost of your next damage spell by 100%.",
+        "Gives you a 8% chance of entering a Clearcasting state after any damage spell hits a target. The Clearcasting state reduces the mana cost of your next damage spell by 100%.",
+        "Gives you a 10% chance of entering a Clearcasting state after any damage spell hits a target. The Clearcasting state reduces the mana cost of your next damage spell by 100%."
+      ]
+    },
+    {
+      "talentId": "mage-arcane-arcane-impact",
+      "name": "Arcane Impact",
+      "sourceTalentId": 81,
+      "nodeId": 105807,
+      "spellId": 11242,
+      "maxRank": 3,
+      "template": "Increases the critical strike chance of your Arcane spells by $m1%.",
+      "membership": {
+        "skillLine": {
+          "ID": "129",
+          "SkillLineID": "237",
+          "TraitTreeID": "1112",
+          "Variant": "0"
+        },
+        "node": {
+          "ID": "105807",
+          "TraitTreeID": "1112",
+          "PosX": "1620",
+          "PosY": "3330",
+          "Type": "0",
+          "Flags": "0",
+          "TraitSubTreeID": "0"
+        },
+        "nodeEntryLink": {
+          "ID": "128003",
+          "TraitNodeID": "105807",
+          "TraitNodeEntryID": "130536",
+          "_Index": "100"
+        },
+        "nodeEntry": {
+          "ID": "130536",
+          "TraitDefinitionID": "135337",
+          "MaxRanks": "3",
+          "NodeEntryType": "1",
+          "TraitSubTreeID": "0"
+        },
+        "definition": {
+          "OverrideName_lang": "",
+          "OverrideSubtext_lang": "",
+          "OverrideDescription_lang": "",
+          "ID": "135337",
+          "SpellID": "11242",
+          "OverrideIcon": "0",
+          "OverridesSpellID": "0",
+          "VisibleSpellID": "0"
+        },
+        "spellName": {
+          "ID": "11242",
+          "Name_lang": "Arcane Impact"
+        },
+        "spell": {
+          "ID": "11242",
+          "NameSubtext_lang": "",
+          "Description_lang": "Increases the critical strike chance of your Arcane spells by $m1%.",
+          "AuraDescription_lang": ""
+        }
+      },
+      "curves": [
+        {
+          "effectIndex": 0,
+          "sourceRow": {
+            "ID": "23461",
+            "TraitDefinitionID": "135337",
+            "EffectIndex": "0",
+            "OperationType": "0",
+            "CurveID": "83105"
+          },
+          "points": [
+            {
+              "Pos_0": "1",
+              "Pos_1": "2",
+              "PosPreSquish_0": "0",
+              "PosPreSquish_1": "0",
+              "ID": "241183",
+              "CurveID": "83105",
+              "OrderIndex": "0"
+            },
+            {
+              "Pos_0": "2",
+              "Pos_1": "4",
+              "PosPreSquish_0": "0",
+              "PosPreSquish_1": "0",
+              "ID": "241184",
+              "CurveID": "83105",
+              "OrderIndex": "1"
+            },
+            {
+              "Pos_0": "3",
+              "Pos_1": "6",
+              "PosPreSquish_0": "0",
+              "PosPreSquish_1": "0",
+              "ID": "241185",
+              "CurveID": "83105",
+              "OrderIndex": "2"
+            }
+          ]
+        }
+      ],
+      "linkedReferences": [],
+      "rankDescriptions": [
+        "Increases the critical strike chance of your Arcane spells by 2%.",
+        "Increases the critical strike chance of your Arcane spells by 4%.",
+        "Increases the critical strike chance of your Arcane spells by 6%."
+      ]
+    },
+    {
+      "talentId": "mage-frost-frost-warding",
+      "name": "Frost Warding",
+      "sourceTalentId": 70,
+      "nodeId": 105780,
+      "spellId": 11189,
+      "maxRank": 2,
+      "template": "Increases the Armor and resistance given by your Frost Armor and Ice Armor spells by $s1%. In addition, gives your Frost Ward a $s2% chance to reflect Frost spells and effects while active.",
+      "membership": {
+        "skillLine": {
+          "ID": "129",
+          "SkillLineID": "237",
+          "TraitTreeID": "1112",
+          "Variant": "0"
+        },
+        "node": {
+          "ID": "105780",
+          "TraitTreeID": "1112",
+          "PosX": "9080",
+          "PosY": "2130",
+          "Type": "0",
+          "Flags": "0",
+          "TraitSubTreeID": "0"
+        },
+        "nodeEntryLink": {
+          "ID": "127976",
+          "TraitNodeID": "105780",
+          "TraitNodeEntryID": "130509",
+          "_Index": "100"
+        },
+        "nodeEntry": {
+          "ID": "130509",
+          "TraitDefinitionID": "135310",
+          "MaxRanks": "2",
+          "NodeEntryType": "1",
+          "TraitSubTreeID": "0"
+        },
+        "definition": {
+          "OverrideName_lang": "",
+          "OverrideSubtext_lang": "",
+          "OverrideDescription_lang": "",
+          "ID": "135310",
+          "SpellID": "11189",
+          "OverrideIcon": "0",
+          "OverridesSpellID": "0",
+          "VisibleSpellID": "0"
+        },
+        "spellName": {
+          "ID": "11189",
+          "Name_lang": "Frost Warding"
+        },
+        "spell": {
+          "ID": "11189",
+          "NameSubtext_lang": "",
+          "Description_lang": "Increases the Armor and resistance given by your Frost Armor and Ice Armor spells by $s1%. In addition, gives your Frost Ward a $s2% chance to reflect Frost spells and effects while active.",
+          "AuraDescription_lang": ""
+        }
+      },
+      "curves": [
+        {
+          "effectIndex": 0,
+          "sourceRow": {
+            "ID": "23436",
+            "TraitDefinitionID": "135310",
+            "EffectIndex": "0",
+            "OperationType": "0",
+            "CurveID": "83081"
+          },
+          "points": [
+            {
+              "Pos_0": "1",
+              "Pos_1": "15",
+              "PosPreSquish_0": "0",
+              "PosPreSquish_1": "0",
+              "ID": "241108",
+              "CurveID": "83081",
+              "OrderIndex": "0"
+            },
+            {
+              "Pos_0": "2",
+              "Pos_1": "30",
+              "PosPreSquish_0": "0",
+              "PosPreSquish_1": "0",
+              "ID": "241109",
+              "CurveID": "83081",
+              "OrderIndex": "1"
+            }
+          ]
+        },
+        {
+          "effectIndex": 1,
+          "sourceRow": {
+            "ID": "23437",
+            "TraitDefinitionID": "135310",
+            "EffectIndex": "1",
+            "OperationType": "0",
+            "CurveID": "83080"
+          },
+          "points": [
+            {
+              "Pos_0": "1",
+              "Pos_1": "10",
+              "PosPreSquish_0": "0",
+              "PosPreSquish_1": "0",
+              "ID": "241106",
+              "CurveID": "83080",
+              "OrderIndex": "0"
+            },
+            {
+              "Pos_0": "2",
+              "Pos_1": "20",
+              "PosPreSquish_0": "0",
+              "PosPreSquish_1": "0",
+              "ID": "241107",
+              "CurveID": "83080",
+              "OrderIndex": "1"
+            }
+          ]
+        }
+      ],
+      "linkedReferences": [],
+      "rankDescriptions": [
+        "Increases the Armor and resistance given by your Frost Armor and Ice Armor spells by 15%. In addition, gives your Frost Ward a 10% chance to reflect Frost spells and effects while active.",
+        "Increases the Armor and resistance given by your Frost Armor and Ice Armor spells by 30%. In addition, gives your Frost Ward a 20% chance to reflect Frost spells and effects while active."
+      ]
+    },
+    {
+      "talentId": "mage-frost-improved-frostbolt",
+      "name": "Improved Frostbolt",
+      "sourceTalentId": 37,
+      "nodeId": 105779,
+      "spellId": 11070,
+      "maxRank": 5,
+      "template": "Reduces the casting time of your Frostbolt spell by $/1000;S1 sec.",
+      "membership": {
+        "skillLine": {
+          "ID": "129",
+          "SkillLineID": "237",
+          "TraitTreeID": "1112",
+          "Variant": "0"
+        },
+        "node": {
+          "ID": "105779",
+          "TraitTreeID": "1112",
+          "PosX": "9680",
+          "PosY": "2130",
+          "Type": "0",
+          "Flags": "0",
+          "TraitSubTreeID": "0"
+        },
+        "nodeEntryLink": {
+          "ID": "127975",
+          "TraitNodeID": "105779",
+          "TraitNodeEntryID": "130508",
+          "_Index": "100"
+        },
+        "nodeEntry": {
+          "ID": "130508",
+          "TraitDefinitionID": "135309",
+          "MaxRanks": "5",
+          "NodeEntryType": "1",
+          "TraitSubTreeID": "0"
+        },
+        "definition": {
+          "OverrideName_lang": "",
+          "OverrideSubtext_lang": "",
+          "OverrideDescription_lang": "",
+          "ID": "135309",
+          "SpellID": "11070",
+          "OverrideIcon": "0",
+          "OverridesSpellID": "0",
+          "VisibleSpellID": "0"
+        },
+        "spellName": {
+          "ID": "11070",
+          "Name_lang": "Improved Frostbolt"
+        },
+        "spell": {
+          "ID": "11070",
+          "NameSubtext_lang": "",
+          "Description_lang": "Reduces the casting time of your Frostbolt spell by $/1000;S1 sec.",
+          "AuraDescription_lang": ""
+        }
+      },
+      "curves": [
+        {
+          "effectIndex": 0,
+          "sourceRow": {
+            "ID": "23435",
+            "TraitDefinitionID": "135309",
+            "EffectIndex": "0",
+            "OperationType": "0",
+            "CurveID": "83079"
+          },
+          "points": [
+            {
+              "Pos_0": "1",
+              "Pos_1": "-100",
+              "PosPreSquish_0": "0",
+              "PosPreSquish_1": "0",
+              "ID": "241101",
+              "CurveID": "83079",
+              "OrderIndex": "0"
+            },
+            {
+              "Pos_0": "2",
+              "Pos_1": "-200",
+              "PosPreSquish_0": "0",
+              "PosPreSquish_1": "0",
+              "ID": "241102",
+              "CurveID": "83079",
+              "OrderIndex": "1"
+            },
+            {
+              "Pos_0": "3",
+              "Pos_1": "-300",
+              "PosPreSquish_0": "0",
+              "PosPreSquish_1": "0",
+              "ID": "241103",
+              "CurveID": "83079",
+              "OrderIndex": "2"
+            },
+            {
+              "Pos_0": "4",
+              "Pos_1": "-400",
+              "PosPreSquish_0": "0",
+              "PosPreSquish_1": "0",
+              "ID": "241104",
+              "CurveID": "83079",
+              "OrderIndex": "3"
+            },
+            {
+              "Pos_0": "5",
+              "Pos_1": "-500",
+              "PosPreSquish_0": "0",
+              "PosPreSquish_1": "0",
+              "ID": "241105",
+              "CurveID": "83079",
+              "OrderIndex": "4"
+            }
+          ]
+        }
+      ],
+      "linkedReferences": [],
+      "rankDescriptions": [
+        "Reduces the casting time of your Frostbolt spell by 0.1 sec.",
+        "Reduces the casting time of your Frostbolt spell by 0.2 sec.",
+        "Reduces the casting time of your Frostbolt spell by 0.3 sec.",
+        "Reduces the casting time of your Frostbolt spell by 0.4 sec.",
+        "Reduces the casting time of your Frostbolt spell by 0.5 sec."
+      ]
+    },
+    {
+      "talentId": "mage-frost-ice-shards",
+      "name": "Ice Shards",
+      "sourceTalentId": 73,
+      "nodeId": 105777,
+      "spellId": 11207,
+      "maxRank": 5,
+      "template": "Increases the critical strike damage bonus of your Frost spells by $s1%.",
+      "membership": {
+        "skillLine": {
+          "ID": "129",
+          "SkillLineID": "237",
+          "TraitTreeID": "1112",
+          "Variant": "0"
+        },
+        "node": {
+          "ID": "105777",
+          "TraitTreeID": "1112",
+          "PosX": "9080",
+          "PosY": "2730",
+          "Type": "0",
+          "Flags": "0",
+          "TraitSubTreeID": "0"
+        },
+        "nodeEntryLink": {
+          "ID": "127973",
+          "TraitNodeID": "105777",
+          "TraitNodeEntryID": "130506",
+          "_Index": "100"
+        },
+        "nodeEntry": {
+          "ID": "130506",
+          "TraitDefinitionID": "135307",
+          "MaxRanks": "5",
+          "NodeEntryType": "1",
+          "TraitSubTreeID": "0"
+        },
+        "definition": {
+          "OverrideName_lang": "",
+          "OverrideSubtext_lang": "",
+          "OverrideDescription_lang": "",
+          "ID": "135307",
+          "SpellID": "11207",
+          "OverrideIcon": "0",
+          "OverridesSpellID": "0",
+          "VisibleSpellID": "0"
+        },
+        "spellName": {
+          "ID": "11207",
+          "Name_lang": "Ice Shards"
+        },
+        "spell": {
+          "ID": "11207",
+          "NameSubtext_lang": "",
+          "Description_lang": "Increases the critical strike damage bonus of your Frost spells by $s1%.",
+          "AuraDescription_lang": ""
+        }
+      },
+      "curves": [
+        {
+          "effectIndex": 0,
+          "sourceRow": {
+            "ID": "23433",
+            "TraitDefinitionID": "135307",
+            "EffectIndex": "0",
+            "OperationType": "0",
+            "CurveID": "83077"
+          },
+          "points": [
+            {
+              "Pos_0": "1",
+              "Pos_1": "20",
+              "PosPreSquish_0": "0",
+              "PosPreSquish_1": "0",
+              "ID": "241093",
+              "CurveID": "83077",
+              "OrderIndex": "0"
+            },
+            {
+              "Pos_0": "2",
+              "Pos_1": "40",
+              "PosPreSquish_0": "0",
+              "PosPreSquish_1": "0",
+              "ID": "241094",
+              "CurveID": "83077",
+              "OrderIndex": "1"
+            },
+            {
+              "Pos_0": "3",
+              "Pos_1": "60",
+              "PosPreSquish_0": "0",
+              "PosPreSquish_1": "0",
+              "ID": "241095",
+              "CurveID": "83077",
+              "OrderIndex": "2"
+            },
+            {
+              "Pos_0": "4",
+              "Pos_1": "80",
+              "PosPreSquish_0": "0",
+              "PosPreSquish_1": "0",
+              "ID": "241096",
+              "CurveID": "83077",
+              "OrderIndex": "3"
+            },
+            {
+              "Pos_0": "5",
+              "Pos_1": "100",
+              "PosPreSquish_0": "0",
+              "PosPreSquish_1": "0",
+              "ID": "241097",
+              "CurveID": "83077",
+              "OrderIndex": "4"
+            }
+          ]
+        }
+      ],
+      "linkedReferences": [],
+      "rankDescriptions": [
+        "Increases the critical strike damage bonus of your Frost spells by 20%.",
+        "Increases the critical strike damage bonus of your Frost spells by 40%.",
+        "Increases the critical strike damage bonus of your Frost spells by 60%.",
+        "Increases the critical strike damage bonus of your Frost spells by 80%.",
+        "Increases the critical strike damage bonus of your Frost spells by 100%."
+      ]
+    },
+    {
+      "talentId": "mage-frost-improved-frost-nova",
+      "name": "Improved Frost Nova",
+      "sourceTalentId": 62,
+      "nodeId": 105775,
+      "spellId": 11165,
+      "maxRank": 2,
+      "template": "Reduces the cooldown of your Frost Nova spell by $/1000;s1 sec.",
+      "membership": {
+        "skillLine": {
+          "ID": "129",
+          "SkillLineID": "237",
+          "TraitTreeID": "1112",
+          "Variant": "0"
+        },
+        "node": {
+          "ID": "105775",
+          "TraitTreeID": "1112",
+          "PosX": "10280",
+          "PosY": "2730",
+          "Type": "0",
+          "Flags": "0",
+          "TraitSubTreeID": "0"
+        },
+        "nodeEntryLink": {
+          "ID": "127971",
+          "TraitNodeID": "105775",
+          "TraitNodeEntryID": "130504",
+          "_Index": "100"
+        },
+        "nodeEntry": {
+          "ID": "130504",
+          "TraitDefinitionID": "135305",
+          "MaxRanks": "2",
+          "NodeEntryType": "1",
+          "TraitSubTreeID": "0"
+        },
+        "definition": {
+          "OverrideName_lang": "",
+          "OverrideSubtext_lang": "",
+          "OverrideDescription_lang": "",
+          "ID": "135305",
+          "SpellID": "11165",
+          "OverrideIcon": "0",
+          "OverridesSpellID": "0",
+          "VisibleSpellID": "0"
+        },
+        "spellName": {
+          "ID": "11165",
+          "Name_lang": "Improved Frost Nova"
+        },
+        "spell": {
+          "ID": "11165",
+          "NameSubtext_lang": "",
+          "Description_lang": "Reduces the cooldown of your Frost Nova spell by $/1000;s1 sec.",
+          "AuraDescription_lang": ""
+        }
+      },
+      "curves": [
+        {
+          "effectIndex": 0,
+          "sourceRow": {
+            "ID": "23430",
+            "TraitDefinitionID": "135305",
+            "EffectIndex": "0",
+            "OperationType": "0",
+            "CurveID": "83074"
+          },
+          "points": [
+            {
+              "Pos_0": "1",
+              "Pos_1": "-2000",
+              "PosPreSquish_0": "0",
+              "PosPreSquish_1": "0",
+              "ID": "241085",
+              "CurveID": "83074",
+              "OrderIndex": "0"
+            },
+            {
+              "Pos_0": "2",
+              "Pos_1": "-4000",
+              "PosPreSquish_0": "0",
+              "PosPreSquish_1": "0",
+              "ID": "241086",
+              "CurveID": "83074",
+              "OrderIndex": "1"
+            }
+          ]
+        }
+      ],
+      "linkedReferences": [],
+      "rankDescriptions": [
+        "Reduces the cooldown of your Frost Nova spell by 2 sec.",
+        "Reduces the cooldown of your Frost Nova spell by 4 sec."
+      ]
+    },
+    {
+      "talentId": "mage-frost-piercing-ice",
+      "name": "Piercing Ice",
+      "sourceTalentId": 61,
+      "nodeId": 105773,
+      "spellId": 11151,
+      "maxRank": 3,
+      "template": "Increases the damage done by your Frost spells by $s1%.",
+      "membership": {
+        "skillLine": {
+          "ID": "129",
+          "SkillLineID": "237",
+          "TraitTreeID": "1112",
+          "Variant": "0"
+        },
+        "node": {
+          "ID": "105773",
+          "TraitTreeID": "1112",
+          "PosX": "9080",
+          "PosY": "3330",
+          "Type": "0",
+          "Flags": "0",
+          "TraitSubTreeID": "0"
+        },
+        "nodeEntryLink": {
+          "ID": "127969",
+          "TraitNodeID": "105773",
+          "TraitNodeEntryID": "130502",
+          "_Index": "100"
+        },
+        "nodeEntry": {
+          "ID": "130502",
+          "TraitDefinitionID": "135303",
+          "MaxRanks": "3",
+          "NodeEntryType": "1",
+          "TraitSubTreeID": "0"
+        },
+        "definition": {
+          "OverrideName_lang": "",
+          "OverrideSubtext_lang": "",
+          "OverrideDescription_lang": "",
+          "ID": "135303",
+          "SpellID": "11151",
+          "OverrideIcon": "0",
+          "OverridesSpellID": "0",
+          "VisibleSpellID": "0"
+        },
+        "spellName": {
+          "ID": "11151",
+          "Name_lang": "Piercing Ice"
+        },
+        "spell": {
+          "ID": "11151",
+          "NameSubtext_lang": "",
+          "Description_lang": "Increases the damage done by your Frost spells by $s1%.",
+          "AuraDescription_lang": ""
+        }
+      },
+      "curves": [
+        {
+          "effectIndex": 0,
+          "sourceRow": {
+            "ID": "23428",
+            "TraitDefinitionID": "135303",
+            "EffectIndex": "0",
+            "OperationType": "0",
+            "CurveID": "83072"
+          },
+          "points": [
+            {
+              "Pos_0": "1",
+              "Pos_1": "2",
+              "PosPreSquish_0": "0",
+              "PosPreSquish_1": "0",
+              "ID": "241079",
+              "CurveID": "83072",
+              "OrderIndex": "0"
+            },
+            {
+              "Pos_0": "2",
+              "Pos_1": "4",
+              "PosPreSquish_0": "0",
+              "PosPreSquish_1": "0",
+              "ID": "241080",
+              "CurveID": "83072",
+              "OrderIndex": "1"
+            },
+            {
+              "Pos_0": "3",
+              "Pos_1": "6",
+              "PosPreSquish_0": "0",
+              "PosPreSquish_1": "0",
+              "ID": "241081",
+              "CurveID": "83072",
+              "OrderIndex": "2"
+            }
+          ]
+        }
+      ],
+      "linkedReferences": [],
+      "rankDescriptions": [
+        "Increases the damage done by your Frost spells by 2%.",
+        "Increases the damage done by your Frost spells by 4%.",
+        "Increases the damage done by your Frost spells by 6%."
+      ]
+    },
+    {
+      "talentId": "mage-frost-improved-blizzard",
+      "name": "Improved Blizzard",
+      "sourceTalentId": 63,
+      "nodeId": 105771,
+      "spellId": 11185,
+      "maxRank": 3,
+      "template": "Adds a Chill effect to your Blizzard spell. This effect lowers the target's movement speed by $m1% for $12484d.",
+      "membership": {
+        "skillLine": {
+          "ID": "129",
+          "SkillLineID": "237",
+          "TraitTreeID": "1112",
+          "Variant": "0"
+        },
+        "node": {
+          "ID": "105771",
+          "TraitTreeID": "1112",
+          "PosX": "10880",
+          "PosY": "3330",
+          "Type": "0",
+          "Flags": "0",
+          "TraitSubTreeID": "0"
+        },
+        "nodeEntryLink": {
+          "ID": "127967",
+          "TraitNodeID": "105771",
+          "TraitNodeEntryID": "130500",
+          "_Index": "100"
+        },
+        "nodeEntry": {
+          "ID": "130500",
+          "TraitDefinitionID": "135301",
+          "MaxRanks": "3",
+          "NodeEntryType": "1",
+          "TraitSubTreeID": "0"
+        },
+        "definition": {
+          "OverrideName_lang": "",
+          "OverrideSubtext_lang": "",
+          "OverrideDescription_lang": "",
+          "ID": "135301",
+          "SpellID": "11185",
+          "OverrideIcon": "0",
+          "OverridesSpellID": "0",
+          "VisibleSpellID": "0"
+        },
+        "spellName": {
+          "ID": "11185",
+          "Name_lang": "Improved Blizzard"
+        },
+        "spell": {
+          "ID": "11185",
+          "NameSubtext_lang": "",
+          "Description_lang": "Adds a Chill effect to your Blizzard spell. This effect lowers the target's movement speed by $m1% for $12484d.",
+          "AuraDescription_lang": ""
+        }
+      },
+      "curves": [
+        {
+          "effectIndex": 0,
+          "sourceRow": {
+            "ID": "23427",
+            "TraitDefinitionID": "135301",
+            "EffectIndex": "0",
+            "OperationType": "0",
+            "CurveID": "83071"
+          },
+          "points": [
+            {
+              "Pos_0": "1",
+              "Pos_1": "-15",
+              "PosPreSquish_0": "0",
+              "PosPreSquish_1": "0",
+              "ID": "241076",
+              "CurveID": "83071",
+              "OrderIndex": "0"
+            },
+            {
+              "Pos_0": "2",
+              "Pos_1": "-25",
+              "PosPreSquish_0": "0",
+              "PosPreSquish_1": "0",
+              "ID": "241077",
+              "CurveID": "83071",
+              "OrderIndex": "1"
+            },
+            {
+              "Pos_0": "3",
+              "Pos_1": "-40",
+              "PosPreSquish_0": "0",
+              "PosPreSquish_1": "0",
+              "ID": "241078",
+              "CurveID": "83071",
+              "OrderIndex": "2"
+            }
+          ]
+        }
+      ],
+      "linkedReferences": [
+        {
+          "kind": "duration",
+          "spell": {
+            "ID": "12484",
+            "NameSubtext_lang": "",
+            "Description_lang": "Chills the target for $d.",
+            "AuraDescription_lang": "Movement Slowed by $w1%."
+          },
+          "spellMisc": {
+            "ID": "324151",
+            "Attributes_0": "256",
+            "Attributes_1": "136",
+            "Attributes_2": "4",
+            "Attributes_3": "0",
+            "Attributes_4": "0",
+            "Attributes_5": "0",
+            "Attributes_6": "0",
+            "Attributes_7": "0",
+            "Attributes_8": "4096",
+            "Attributes_9": "0",
+            "Attributes_10": "0",
+            "Attributes_11": "0",
+            "Attributes_12": "0",
+            "Attributes_13": "128",
+            "Attributes_14": "0",
+            "Attributes_15": "8192",
+            "Attributes_16": "0",
+            "DifficultyID": "0",
+            "CastingTimeIndex": "1",
+            "DurationIndex": "65",
+            "PvPDurationIndex": "0",
+            "RangeIndex": "13",
+            "SchoolMask": "16",
+            "Speed": "0",
+            "LaunchDelay": "0",
+            "MinDuration": "0",
+            "SpellIconFileDataID": "135857",
+            "ActiveIconFileDataID": "0",
+            "ContentTuningID": "0",
+            "ShowFutureSpellPlayerConditionID": "0",
+            "SpellVisualScript": "0",
+            "ActiveSpellVisualScript": "0",
+            "SpellID": "12484"
+          },
+          "duration": {
+            "ID": "65",
+            "Duration": "1500",
+            "MaxDuration": "1500",
+            "DurationPerResource": "0"
+          },
+          "divisor": 1000,
+          "resolvedValue": 1.5
+        }
+      ],
+      "rankDescriptions": [
+        "Adds a Chill effect to your Blizzard spell. This effect lowers the target's movement speed by 15% for 1.5 sec.",
+        "Adds a Chill effect to your Blizzard spell. This effect lowers the target's movement speed by 25% for 1.5 sec.",
+        "Adds a Chill effect to your Blizzard spell. This effect lowers the target's movement speed by 40% for 1.5 sec."
+      ]
+    }
+  ]
+}

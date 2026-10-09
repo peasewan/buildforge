@@ -1,0 +1,3542 @@
+{
+  "classId": "shaman",
+  "build": "1.60.1.70291",
+  "clientBuild": "1.60.1.70291",
+  "sourceVersion": "wow_forever_beta_1.60.1.70291",
+  "generated": "2026-10-09",
+  "branches": [
+    "elemental",
+    "enhancement",
+    "restoration"
+  ],
+  "treeId": 1082,
+  "skillLineId": 373,
+  "basedOnBuild": "1.60.1.69913",
+  "sourceUrl": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291",
+  "resolvedRankSourceUrl": "https://talentsforever.com/data.json",
+  "resolvedRankSourceBuild": "1.60.1.70291",
+  "resolvedRankLicense": "CC-BY-4.0",
+  "resolvedRankLicenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "resolvedRankAdaptationNotice": "Rank descriptions and icon names adapted from Talents Forever for BuildForgeTools under CC BY 4.0. Structure is reconciled field by field from Wago DB2, with explicit community-reviewed exceptions for visible membership, display positions or connection roles where recorded; original raw records are preserved.",
+  "license": "Game client factual data; rank descriptions and icon names adapted under CC-BY-4.0",
+  "attribution": "Resolved rank text and icon names adapted from Talents Forever (talentsforever.com, CC-BY-4.0); client structure from Wago DB2 1.60.1.70291",
+  "verificationSummary": "1.60.1.70291 Shaman: 50 nodes and 148 complete rank descriptions; compared with 1.60.1.69913: 12 added, 8 removed, 22 moved, 5 rank-cap changes, 34 talents with rank-description changes, 6 prerequisite-link changes. Structural provenance is recorded per field: client identity, rank caps and exact raw geometry are client_verified; explicit reviewed exceptions and resolved text are community_verified; tier costs and prerequisite required ranks remain derived_assumption.",
+  "verificationSources": [
+    {
+      "label": "Wago DB2 — Shaman client structure 1.60.1.70291",
+      "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+    },
+    {
+      "label": "Talents Forever — Shaman resolved rank descriptions (CC BY 4.0)",
+      "url": "https://talentsforever.com/data.json"
+    }
+  ],
+  "sources": [
+    {
+      "label": "Wago DB2 — Shaman client structure 1.60.1.70291",
+      "type": "beta_client",
+      "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+    },
+    {
+      "label": "Talents Forever — Shaman resolved rank descriptions (CC BY 4.0)",
+      "type": "beta_client_crosscheck",
+      "url": "https://talentsforever.com/data.json"
+    }
+  ],
+  "ready": true,
+  "conflicts": [],
+  "talents": [
+    {
+      "id": "shaman-564",
+      "name": "Convection",
+      "branch": "elemental",
+      "row": 1,
+      "column": 2,
+      "maxRank": 5,
+      "nodeId": 104773,
+      "spellId": 16039,
+      "rawPosX": 1620,
+      "rawPosY": 2130,
+      "sourceTalentId": 564,
+      "requiredTreePoints": 0,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Reduces the mana cost of your Shock, Lightning Bolt, Lava Burst, and Chain Lightning spells by 2%.",
+        "Reduces the mana cost of your Shock, Lightning Bolt, Lava Burst, and Chain Lightning spells by 4%.",
+        "Reduces the mana cost of your Shock, Lightning Bolt, Lava Burst, and Chain Lightning spells by 6%.",
+        "Reduces the mana cost of your Shock, Lightning Bolt, Lava Burst, and Chain Lightning spells by 8%.",
+        "Reduces the mana cost of your Shock, Lightning Bolt, Lava Burst, and Chain Lightning spells by 10%."
+      ],
+      "description": "Reduces the mana cost of your Shock, Lightning Bolt, Lava Burst, and Chain Lightning spells by 10%.",
+      "x": 37.5,
+      "y": 7.142857142857142,
+      "iconName": "spell_nature_wispsplode",
+      "icon": "/images/class-talents/spell_nature_wispsplode.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Shaman client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Shaman resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "shaman-563",
+      "name": "Concussion",
+      "branch": "elemental",
+      "row": 1,
+      "column": 3,
+      "maxRank": 5,
+      "nodeId": 104772,
+      "spellId": 16035,
+      "rawPosX": 2220,
+      "rawPosY": 2130,
+      "sourceTalentId": 563,
+      "requiredTreePoints": 0,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases the damage done by your Lightning Bolt, Chain Lightning, and Earth Shock spells by 1%.",
+        "Increases the damage done by your Lightning Bolt, Chain Lightning, and Earth Shock spells by 2%.",
+        "Increases the damage done by your Lightning Bolt, Chain Lightning, and Earth Shock spells by 3%.",
+        "Increases the damage done by your Lightning Bolt, Chain Lightning, and Earth Shock spells by 4%.",
+        "Increases the damage done by your Lightning Bolt, Chain Lightning, and Earth Shock spells by 5%."
+      ],
+      "description": "Increases the damage done by your Lightning Bolt, Chain Lightning, and Earth Shock spells by 5%.",
+      "x": 62.5,
+      "y": 7.142857142857142,
+      "iconName": "spell_nature_earthshock",
+      "icon": "/images/class-talents/spell_nature_earthshock.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Shaman client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Shaman resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "shaman-1640",
+      "name": "Elemental Warding",
+      "branch": "elemental",
+      "row": 2,
+      "column": 1,
+      "maxRank": 3,
+      "nodeId": 104771,
+      "spellId": 28996,
+      "rawPosX": 1020,
+      "rawPosY": 2730,
+      "sourceTalentId": 1640,
+      "requiredTreePoints": 5,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Reduces damage taken from Fire, Frost, and Nature effects by 3%.",
+        "Reduces damage taken from Fire, Frost, and Nature effects by 7%.",
+        "Reduces damage taken from Fire, Frost, and Nature effects by 10%."
+      ],
+      "description": "Reduces damage taken from Fire, Frost, and Nature effects by 10%.",
+      "x": 12.5,
+      "y": 21.428571428571427,
+      "iconName": "spell_nature_spiritarmor",
+      "icon": "/images/class-talents/spell_nature_spiritarmor.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Shaman client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Shaman resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "shaman-575",
+      "name": "Reverberation",
+      "branch": "elemental",
+      "row": 2,
+      "column": 2,
+      "maxRank": 5,
+      "nodeId": 104767,
+      "spellId": 16040,
+      "rawPosX": 1620,
+      "rawPosY": 2730,
+      "sourceTalentId": 575,
+      "requiredTreePoints": 5,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Reduces the cooldown of your Shock spells by 0.2 sec.",
+        "Reduces the cooldown of your Shock spells by 0.4 sec.",
+        "Reduces the cooldown of your Shock spells by 0.6 sec.",
+        "Reduces the cooldown of your Shock spells by 0.8 sec.",
+        "Reduces the cooldown of your Shock spells by 1.0 sec."
+      ],
+      "description": "Reduces the cooldown of your Shock spells by 1.0 sec.",
+      "x": 37.5,
+      "y": 21.428571428571427,
+      "iconName": "spell_frost_frostward",
+      "icon": "/images/class-talents/spell_frost_frostward.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Shaman client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Shaman resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "shaman-561",
+      "name": "Call of Flame",
+      "branch": "elemental",
+      "row": 2,
+      "column": 3,
+      "maxRank": 3,
+      "nodeId": 104770,
+      "spellId": 16038,
+      "rawPosX": 2220,
+      "rawPosY": 2730,
+      "sourceTalentId": 561,
+      "requiredTreePoints": 5,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases the damage done by your Fire Totems and by your Flame Shock, Fire Nova, and Lava Burst spells by 5%.",
+        "Increases the damage done by your Fire Totems and by your Flame Shock, Fire Nova, and Lava Burst spells by 10%.",
+        "Increases the damage done by your Fire Totems and by your Flame Shock, Fire Nova, and Lava Burst spells by 15%."
+      ],
+      "description": "Increases the damage done by your Fire Totems and by your Flame Shock, Fire Nova, and Lava Burst spells by 15%.",
+      "x": 62.5,
+      "y": 21.428571428571427,
+      "iconName": "spell_fire_immolation",
+      "icon": "/images/class-talents/spell_fire_immolation.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Shaman client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Shaman resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "shaman-1645",
+      "name": "Elemental Devastation",
+      "branch": "elemental",
+      "row": 2,
+      "column": 4,
+      "maxRank": 3,
+      "nodeId": 104769,
+      "spellId": 30160,
+      "rawPosX": 2820,
+      "rawPosY": 2730,
+      "sourceTalentId": 1645,
+      "requiredTreePoints": 5,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Your offensive spell critical strikes will increase your chance to get a critical strike with melee attacks by 3% for 10 sec.",
+        "Your offensive spell critical strikes will increase your chance to get a critical strike with melee attacks by 6% for 10 sec.",
+        "Your offensive spell critical strikes will increase your chance to get a critical strike with melee attacks by 9% for 10 sec."
+      ],
+      "description": "Your offensive spell critical strikes will increase your chance to get a critical strike with melee attacks by 9% for 10 sec.",
+      "x": 87.5,
+      "y": 21.428571428571427,
+      "iconName": "spell_fire_elementaldevastation",
+      "icon": "/images/class-talents/spell_fire_elementaldevastation.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Shaman client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Shaman resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "shaman-574",
+      "name": "Elemental Focus",
+      "branch": "elemental",
+      "row": 3,
+      "column": 2,
+      "maxRank": 1,
+      "nodeId": 104768,
+      "spellId": 16164,
+      "rawPosX": 1620,
+      "rawPosY": 3330,
+      "sourceTalentId": 574,
+      "requiredTreePoints": 10,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Gives you a 10% chance to enter a Clearcasting state after casting any Fire, Frost, or Nature damage spell. The Clearcasting state reduces the mana cost of your next damage spell by 100%."
+      ],
+      "description": "Gives you a 10% chance to enter a Clearcasting state after casting any Fire, Frost, or Nature damage spell. The Clearcasting state reduces the mana cost of your next damage spell by 100%.",
+      "x": 37.5,
+      "y": 35.714285714285715,
+      "iconName": "spell_shadow_manaburn",
+      "icon": "/images/class-talents/spell_shadow_manaburn.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Shaman client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Shaman resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "shaman-721",
+      "name": "Elemental Alacrity",
+      "branch": "elemental",
+      "row": 3,
+      "column": 3,
+      "maxRank": 3,
+      "nodeId": 104765,
+      "spellId": 16578,
+      "rawPosX": 2220,
+      "rawPosY": 3330,
+      "sourceTalentId": 721,
+      "requiredTreePoints": 10,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Reduces the cast time of your Lightning Bolt, Chain Lightning, and Lava Burst spells by 0.17 sec.",
+        "Reduces the cast time of your Lightning Bolt, Chain Lightning, and Lava Burst spells by 0.33 sec.",
+        "Reduces the cast time of your Lightning Bolt, Chain Lightning, and Lava Burst spells by 0.50 sec."
+      ],
+      "description": "Reduces the cast time of your Lightning Bolt, Chain Lightning, and Lava Burst spells by 0.50 sec.",
+      "x": 62.5,
+      "y": 35.714285714285715,
+      "iconName": "spell_lightning_lightningbolt01",
+      "icon": "/images/class-talents/spell_lightning_lightningbolt01.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Shaman client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Shaman resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "shaman-567",
+      "name": "Improved Fire Nova",
+      "branch": "elemental",
+      "row": 4,
+      "column": 1,
+      "maxRank": 2,
+      "nodeId": 104764,
+      "spellId": 16086,
+      "rawPosX": 1020,
+      "rawPosY": 3930,
+      "sourceTalentId": 567,
+      "requiredTreePoints": 15,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases the damage done by your Fire Nova spell by 10% and reduces its cooldown by 2 sec.",
+        "Increases the damage done by your Fire Nova spell by 20% and reduces its cooldown by 4 sec."
+      ],
+      "description": "Increases the damage done by your Fire Nova spell by 20% and reduces its cooldown by 4 sec.",
+      "x": 12.5,
+      "y": 50,
+      "iconName": "spell_fire_sealoffire",
+      "icon": "/images/class-talents/spell_fire_sealoffire.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Shaman client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Shaman resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "shaman-1642",
+      "name": "Eye of the Storm",
+      "branch": "elemental",
+      "row": 4,
+      "column": 2,
+      "maxRank": 3,
+      "nodeId": 104763,
+      "spellId": 29062,
+      "rawPosX": 1620,
+      "rawPosY": 3930,
+      "sourceTalentId": 1642,
+      "requiredTreePoints": 15,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Reduces the pushback suffered from damaging attacks while casting Lightning Bolt, Chain Lightning, and Lava Burst by 23%.",
+        "Reduces the pushback suffered from damaging attacks while casting Lightning Bolt, Chain Lightning, and Lava Burst by 47%.",
+        "Reduces the pushback suffered from damaging attacks while casting Lightning Bolt, Chain Lightning, and Lava Burst by 70%."
+      ],
+      "description": "Reduces the pushback suffered from damaging attacks while casting Lightning Bolt, Chain Lightning, and Lava Burst by 70%.",
+      "x": 37.5,
+      "y": 50,
+      "iconName": "spell_nature_eyeofthestorm",
+      "icon": "/images/class-talents/spell_nature_eyeofthestorm.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Shaman client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Shaman resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "shaman-562",
+      "name": "Call of Thunder",
+      "branch": "elemental",
+      "row": 4,
+      "column": 3,
+      "maxRank": 1,
+      "nodeId": 104762,
+      "spellId": 16120,
+      "rawPosX": 2220,
+      "rawPosY": 3930,
+      "sourceTalentId": 562,
+      "requiredTreePoints": 15,
+      "prerequisite": [
+        "shaman-721"
+      ],
+      "rankDescriptions": [
+        "Increases the critical strike chance of your Lightning Bolt and Chain Lightning spells by 3%."
+      ],
+      "description": "Increases the critical strike chance of your Lightning Bolt and Chain Lightning spells by 3%.",
+      "x": 62.5,
+      "y": 50,
+      "iconName": "spell_nature_callstorm",
+      "icon": "/images/class-talents/spell_nature_callstorm.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Shaman client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Shaman resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "shaman-1641",
+      "name": "Elemental Reach",
+      "branch": "elemental",
+      "row": 5,
+      "column": 1,
+      "maxRank": 2,
+      "nodeId": 104761,
+      "spellId": 28999,
+      "rawPosX": 1020,
+      "rawPosY": 4530,
+      "sourceTalentId": 1641,
+      "requiredTreePoints": 20,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases the range of your Lightning Bolt, Chain Lightning, Fire Nova, and Lava Burst spells by 3 yards, and increases the range of your Flame Shock spell by 8 yards.",
+        "Increases the range of your Lightning Bolt, Chain Lightning, Fire Nova, and Lava Burst spells by 6 yards, and increases the range of your Flame Shock spell by 15 yards."
+      ],
+      "description": "Increases the range of your Lightning Bolt, Chain Lightning, Fire Nova, and Lava Burst spells by 6 yards, and increases the range of your Flame Shock spell by 15 yards.",
+      "x": 12.5,
+      "y": 64.28571428571429,
+      "iconName": "spell_nature_stormreach",
+      "icon": "/images/class-talents/spell_nature_stormreach.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Shaman client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Shaman resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "shaman-elemental-lightning-overload",
+      "name": "Lightning Overload",
+      "branch": "elemental",
+      "row": 5,
+      "column": 2,
+      "maxRank": 3,
+      "nodeId": 104759,
+      "spellId": 408438,
+      "rawPosX": 1620,
+      "rawPosY": 4530,
+      "requiredTreePoints": 20,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Gives your Lightning Bolt and Chain Lightning spells a 3% chance to cast a second, similar spell on the same target at no additional cost that causes half damage and no threat.",
+        "Gives your Lightning Bolt and Chain Lightning spells a 7% chance to cast a second, similar spell on the same target at no additional cost that causes half damage and no threat.",
+        "Gives your Lightning Bolt and Chain Lightning spells a 10% chance to cast a second, similar spell on the same target at no additional cost that causes half damage and no threat."
+      ],
+      "description": "Gives your Lightning Bolt and Chain Lightning spells a 10% chance to cast a second, similar spell on the same target at no additional cost that causes half damage and no threat.",
+      "x": 37.5,
+      "y": 64.28571428571429,
+      "iconName": "spell_nature_lightningoverload",
+      "icon": "/images/class-talents/spell_nature_lightningoverload.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Shaman client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Shaman resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "shaman-elemental-earthbound",
+      "name": "Earthbound",
+      "branch": "elemental",
+      "row": 5,
+      "column": 4,
+      "maxRank": 1,
+      "nodeId": 104760,
+      "spellId": 1222988,
+      "rawPosX": 2820,
+      "rawPosY": 4530,
+      "requiredTreePoints": 20,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Your Earthbind Totem Immobilizes nearby targets for 5 sec when cast."
+      ],
+      "description": "Your Earthbind Totem Immobilizes nearby targets for 5 sec when cast.",
+      "x": 87.5,
+      "y": 64.28571428571429,
+      "iconName": "spell_nature_stranglevines",
+      "icon": "/images/class-talents/spell_nature_stranglevines.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Shaman client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Shaman resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "shaman-565",
+      "name": "Elemental Fury",
+      "branch": "elemental",
+      "row": 6,
+      "column": 3,
+      "maxRank": 5,
+      "nodeId": 104766,
+      "spellId": 16089,
+      "rawPosX": 2220,
+      "rawPosY": 5130,
+      "sourceTalentId": 565,
+      "requiredTreePoints": 25,
+      "prerequisite": [
+        "shaman-562"
+      ],
+      "rankDescriptions": [
+        "Increases the critical strike damage bonus of your Searing and Magma Totems and your Fire, Frost, and Nature spells by 20%.",
+        "Increases the critical strike damage bonus of your Searing and Magma Totems and your Fire, Frost, and Nature spells by 40%.",
+        "Increases the critical strike damage bonus of your Searing and Magma Totems and your Fire, Frost, and Nature spells by 60%.",
+        "Increases the critical strike damage bonus of your Searing and Magma Totems and your Fire, Frost, and Nature spells by 80%.",
+        "Increases the critical strike damage bonus of your Searing and Magma Totems and your Fire, Frost, and Nature spells by 100%."
+      ],
+      "description": "Increases the critical strike damage bonus of your Searing and Magma Totems and your Fire, Frost, and Nature spells by 100%.",
+      "x": 62.5,
+      "y": 78.57142857142857,
+      "iconName": "spell_fire_volcano",
+      "icon": "/images/class-talents/spell_fire_volcano.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Shaman client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Shaman resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "shaman-elemental-lava-burst",
+      "name": "Lava Burst",
+      "branch": "elemental",
+      "row": 7,
+      "column": 2,
+      "maxRank": 1,
+      "nodeId": 104758,
+      "spellId": 408490,
+      "rawPosX": 1620,
+      "rawPosY": 5730,
+      "requiredTreePoints": 30,
+      "prerequisite": [
+        "shaman-elemental-lightning-overload"
+      ],
+      "rankDescriptions": [
+        "You hurl molten lava at the target, dealing 150 to 192 Fire damage. If your Flame Shock is on the target, Lava Burst deals 20% increased damage."
+      ],
+      "description": "You hurl molten lava at the target, dealing 150 to 192 Fire damage. If your Flame Shock is on the target, Lava Burst deals 20% increased damage.",
+      "x": 37.5,
+      "y": 92.85714285714286,
+      "iconName": "spell_shaman_lavaburst",
+      "icon": "/images/class-talents/spell_shaman_lavaburst.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Shaman client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Shaman resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "shaman-572",
+      "name": "Earth's Grasp",
+      "branch": "enhancement",
+      "row": 1,
+      "column": 1,
+      "maxRank": 2,
+      "nodeId": 104757,
+      "spellId": 16043,
+      "rawPosX": 5020,
+      "rawPosY": 2130,
+      "sourceTalentId": 572,
+      "requiredTreePoints": 0,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases the health of your Stoneclaw Totem by 25% and the radius of your Earthbind Totem by 10%.",
+        "Increases the health of your Stoneclaw Totem by 50% and the radius of your Earthbind Totem by 20%."
+      ],
+      "description": "Increases the health of your Stoneclaw Totem by 50% and the radius of your Earthbind Totem by 20%.",
+      "x": 12.5,
+      "y": 7.142857142857142,
+      "iconName": "spell_nature_stoneclawtotem",
+      "icon": "/images/class-talents/spell_nature_stoneclawtotem.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Shaman client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Shaman resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "shaman-613",
+      "name": "Thundering Strikes",
+      "branch": "enhancement",
+      "row": 1,
+      "column": 2,
+      "maxRank": 5,
+      "nodeId": 104753,
+      "spellId": 16255,
+      "rawPosX": 5620,
+      "rawPosY": 2130,
+      "sourceTalentId": 613,
+      "requiredTreePoints": 0,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Improves your chance to get a critical strike with all spells and attacks by 1%.",
+        "Improves your chance to get a critical strike with all spells and attacks by 2%.",
+        "Improves your chance to get a critical strike with all spells and attacks by 3%.",
+        "Improves your chance to get a critical strike with all spells and attacks by 4%.",
+        "Improves your chance to get a critical strike with all spells and attacks by 5%."
+      ],
+      "description": "Improves your chance to get a critical strike with all spells and attacks by 5%.",
+      "x": 37.5,
+      "y": 7.142857142857142,
+      "iconName": "ability_thunderbolt",
+      "icon": "/images/class-talents/ability_thunderbolt.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Shaman client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Shaman resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "shaman-614",
+      "name": "Ancestral Knowledge",
+      "branch": "enhancement",
+      "row": 1,
+      "column": 3,
+      "maxRank": 5,
+      "nodeId": 104756,
+      "spellId": 17485,
+      "rawPosX": 6220,
+      "rawPosY": 2130,
+      "sourceTalentId": 614,
+      "requiredTreePoints": 0,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases your Intellect by 2%.",
+        "Increases your Intellect by 4%.",
+        "Increases your Intellect by 6%.",
+        "Increases your Intellect by 8%.",
+        "Increases your Intellect by 10%."
+      ],
+      "description": "Increases your Intellect by 10%.",
+      "x": 62.5,
+      "y": 7.142857142857142,
+      "iconName": "spell_shadow_grimward",
+      "icon": "/images/class-talents/spell_shadow_grimward.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Shaman client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Shaman resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "shaman-609",
+      "name": "Guardian Totems",
+      "branch": "enhancement",
+      "row": 2,
+      "column": 1,
+      "maxRank": 2,
+      "nodeId": 104754,
+      "spellId": 16258,
+      "rawPosX": 5020,
+      "rawPosY": 2730,
+      "sourceTalentId": 609,
+      "requiredTreePoints": 5,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases the amount of damage reduced by your Stoneskin Totem and Windwall Totem by 10% and reduces the cooldown of your Grounding Totem by 1 sec.",
+        "Increases the amount of damage reduced by your Stoneskin Totem and Windwall Totem by 20% and reduces the cooldown of your Grounding Totem by 2 sec."
+      ],
+      "description": "Increases the amount of damage reduced by your Stoneskin Totem and Windwall Totem by 20% and reduces the cooldown of your Grounding Totem by 2 sec.",
+      "x": 12.5,
+      "y": 21.428571428571427,
+      "iconName": "spell_nature_stoneskintotem",
+      "icon": "/images/class-talents/spell_nature_stoneskintotem.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "same",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Shaman client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Shaman resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "shaman-enhancement-mental-dexterity",
+      "name": "Mental Dexterity",
+      "branch": "enhancement",
+      "row": 2,
+      "column": 2,
+      "maxRank": 3,
+      "nodeId": 104755,
+      "spellId": 415140,
+      "rawPosX": 5620,
+      "rawPosY": 2730,
+      "requiredTreePoints": 5,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases your Attack Power by an amount equal to 33% of your Intellect.",
+        "Increases your Attack Power by an amount equal to 67% of your Intellect.",
+        "Increases your Attack Power by an amount equal to 100% of your Intellect."
+      ],
+      "description": "Increases your Attack Power by an amount equal to 100% of your Intellect.",
+      "x": 37.5,
+      "y": 21.428571428571427,
+      "iconName": "spell_nature_mentalquickness",
+      "icon": "/images/class-talents/spell_nature_mentalquickness.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Shaman client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Shaman resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "shaman-605",
+      "name": "Improved Ghost Wolf",
+      "branch": "enhancement",
+      "row": 2,
+      "column": 3,
+      "maxRank": 2,
+      "nodeId": 104752,
+      "spellId": 16262,
+      "rawPosX": 6220,
+      "rawPosY": 2730,
+      "sourceTalentId": 605,
+      "requiredTreePoints": 5,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Reduces the cast time of your Ghost Wolf spell by 1.0 sec, and Ghost Wolf may be used indoors.",
+        "Reduces the cast time of your Ghost Wolf spell by 3.0 sec, and Ghost Wolf may be used indoors."
+      ],
+      "description": "Reduces the cast time of your Ghost Wolf spell by 3.0 sec, and Ghost Wolf may be used indoors.",
+      "x": 62.5,
+      "y": 21.428571428571427,
+      "iconName": "spell_nature_spiritwolf",
+      "icon": "/images/class-talents/spell_nature_spiritwolf.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Shaman client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Shaman resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "shaman-607",
+      "name": "Improved Lightning Shield",
+      "branch": "enhancement",
+      "row": 2,
+      "column": 4,
+      "maxRank": 3,
+      "nodeId": 104751,
+      "spellId": 16261,
+      "rawPosX": 6820,
+      "rawPosY": 2730,
+      "sourceTalentId": 607,
+      "requiredTreePoints": 5,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases the damage done by your Lightning Shield orbs by 5%.",
+        "Increases the damage done by your Lightning Shield orbs by 10%.",
+        "Increases the damage done by your Lightning Shield orbs by 15%."
+      ],
+      "description": "Increases the damage done by your Lightning Shield orbs by 15%.",
+      "x": 87.5,
+      "y": 21.428571428571427,
+      "iconName": "spell_nature_lightningshield",
+      "icon": "/images/class-talents/spell_nature_lightningshield.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "same",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Shaman client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Shaman resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "shaman-611",
+      "name": "Elemental Weapons",
+      "branch": "enhancement",
+      "row": 3,
+      "column": 1,
+      "maxRank": 3,
+      "nodeId": 104750,
+      "spellId": 16266,
+      "rawPosX": 5020,
+      "rawPosY": 3330,
+      "sourceTalentId": 611,
+      "requiredTreePoints": 10,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases the melee attack power bonus of your Rockbiter Weapon by 7%, your Windfury Weapon effect by 13% and increases the damage caused by your Flametongue Weapon and Frostbrand Weapon by 5%.",
+        "Increases the melee attack power bonus of your Rockbiter Weapon by 13%, your Windfury Weapon effect by 27% and increases the damage caused by your Flametongue Weapon and Frostbrand Weapon by 10%.",
+        "Increases the melee attack power bonus of your Rockbiter Weapon by 20%, your Windfury Weapon effect by 40% and increases the damage caused by your Flametongue Weapon and Frostbrand Weapon by 15%."
+      ],
+      "description": "Increases the melee attack power bonus of your Rockbiter Weapon by 20%, your Windfury Weapon effect by 40% and increases the damage caused by your Flametongue Weapon and Frostbrand Weapon by 15%.",
+      "x": 12.5,
+      "y": 35.714285714285715,
+      "iconName": "spell_fire_flametounge",
+      "icon": "/images/class-talents/spell_fire_flametounge.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Shaman client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Shaman resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "shaman-enhancement-shamanistic-focus",
+      "name": "Shamanistic Focus",
+      "branch": "enhancement",
+      "row": 3,
+      "column": 3,
+      "maxRank": 1,
+      "nodeId": 104749,
+      "spellId": 1223030,
+      "rawPosX": 6220,
+      "rawPosY": 3330,
+      "requiredTreePoints": 10,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Reduces the mana cost of your Shock and Lightning Shield spells by 45%."
+      ],
+      "description": "Reduces the mana cost of your Shock and Lightning Shield spells by 45%.",
+      "x": 62.5,
+      "y": 35.714285714285715,
+      "iconName": "spell_nature_elementalabsorption",
+      "icon": "/images/class-talents/spell_nature_elementalabsorption.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Shaman client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Shaman resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "shaman-601",
+      "name": "Anticipation",
+      "branch": "enhancement",
+      "row": 3,
+      "column": 4,
+      "maxRank": 3,
+      "nodeId": 104748,
+      "spellId": 16254,
+      "rawPosX": 6820,
+      "rawPosY": 3330,
+      "sourceTalentId": 601,
+      "requiredTreePoints": 10,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases your chance to dodge by an additional 2%.",
+        "Increases your chance to dodge by an additional 4%.",
+        "Increases your chance to dodge by an additional 6%."
+      ],
+      "description": "Increases your chance to dodge by an additional 6%.",
+      "x": 87.5,
+      "y": 35.714285714285715,
+      "iconName": "spell_nature_mirrorimage",
+      "icon": "/images/class-talents/spell_nature_mirrorimage.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Shaman client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Shaman resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "shaman-615",
+      "name": "Toughness",
+      "branch": "enhancement",
+      "row": 4,
+      "column": 1,
+      "maxRank": 5,
+      "nodeId": 104746,
+      "spellId": 16252,
+      "rawPosX": 5020,
+      "rawPosY": 3930,
+      "sourceTalentId": 615,
+      "requiredTreePoints": 15,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases your Stamina by 2%.",
+        "Increases your Stamina by 4%.",
+        "Increases your Stamina by 6%.",
+        "Increases your Stamina by 8%.",
+        "Increases your Stamina by 10%."
+      ],
+      "description": "Increases your Stamina by 10%.",
+      "x": 12.5,
+      "y": 50,
+      "iconName": "spell_holy_devotion",
+      "icon": "/images/class-talents/spell_holy_devotion.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Shaman client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Shaman resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "shaman-602",
+      "name": "Flurry",
+      "branch": "enhancement",
+      "row": 4,
+      "column": 2,
+      "maxRank": 5,
+      "nodeId": 104747,
+      "spellId": 16256,
+      "rawPosX": 5620,
+      "rawPosY": 3930,
+      "sourceTalentId": 602,
+      "requiredTreePoints": 15,
+      "prerequisite": [
+        "shaman-enhancement-mental-dexterity"
+      ],
+      "rankDescriptions": [
+        "Increases your attack speed by 5% for your next 3 swings after dealing a melee critical strike.",
+        "Increases your attack speed by 10% for your next 3 swings after dealing a melee critical strike.",
+        "Increases your attack speed by 15% for your next 3 swings after dealing a melee critical strike.",
+        "Increases your attack speed by 20% for your next 3 swings after dealing a melee critical strike.",
+        "Increases your attack speed by 25% for your next 3 swings after dealing a melee critical strike."
+      ],
+      "description": "Increases your attack speed by 25% for your next 3 swings after dealing a melee critical strike.",
+      "x": 37.5,
+      "y": 50,
+      "iconName": "ability_ghoulfrenzy",
+      "icon": "/images/class-talents/ability_ghoulfrenzy.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Shaman client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Shaman resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "shaman-901",
+      "name": "Stormstrike",
+      "branch": "enhancement",
+      "row": 4,
+      "column": 3,
+      "maxRank": 1,
+      "nodeId": 104743,
+      "spellId": 17364,
+      "rawPosX": 6220,
+      "rawPosY": 3930,
+      "sourceTalentId": 901,
+      "requiredTreePoints": 15,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Instantly strike for normal weapon damage and increase the damage you deal to the target with your next Lightning Bolt, Chain Lightning, or Earth Shock spell by 20% for 12 sec."
+      ],
+      "description": "Instantly strike for normal weapon damage and increase the damage you deal to the target with your next Lightning Bolt, Chain Lightning, or Earth Shock spell by 20% for 12 sec.",
+      "x": 62.5,
+      "y": 50,
+      "iconName": "ability_shaman_stormstrike",
+      "icon": "/images/class-talents/ability_shaman_stormstrike.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Shaman client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Shaman resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "shaman-616",
+      "name": "Spirit Weapons",
+      "branch": "enhancement",
+      "row": 5,
+      "column": 1,
+      "maxRank": 1,
+      "nodeId": 104745,
+      "spellId": 16268,
+      "rawPosX": 5020,
+      "rawPosY": 4530,
+      "sourceTalentId": 616,
+      "requiredTreePoints": 20,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Gives a chance to parry enemy melee attacks, reduces all threat generated by your attacks by 30% while Rockbiter Weapon is not active, and increases all threat generated by 30% while Rockbiter Weapon is active."
+      ],
+      "description": "Gives a chance to parry enemy melee attacks, reduces all threat generated by your attacks by 30% while Rockbiter Weapon is not active, and increases all threat generated by 30% while Rockbiter Weapon is active.",
+      "x": 12.5,
+      "y": 64.28571428571429,
+      "iconName": "ability_parry",
+      "icon": "/images/class-talents/ability_parry.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Shaman client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Shaman resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "shaman-enhancement-mental-quickness",
+      "name": "Mental Quickness",
+      "branch": "enhancement",
+      "row": 5,
+      "column": 2,
+      "maxRank": 2,
+      "nodeId": 104744,
+      "spellId": 30812,
+      "rawPosX": 5620,
+      "rawPosY": 4530,
+      "requiredTreePoints": 20,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases your spell damage and healing by up to 15% of your Intellect.",
+        "Increases your spell damage and healing by up to 30% of your Intellect."
+      ],
+      "description": "Increases your spell damage and healing by up to 30% of your Intellect.",
+      "x": 37.5,
+      "y": 64.28571428571429,
+      "iconName": "spell_nature_sleep",
+      "icon": "/images/class-talents/spell_nature_sleep.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Shaman client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Shaman resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "shaman-enhancement-improved-stormstrike",
+      "name": "Improved Stormstrike",
+      "branch": "enhancement",
+      "row": 5,
+      "column": 3,
+      "maxRank": 2,
+      "nodeId": 104742,
+      "spellId": 1223031,
+      "rawPosX": 6220,
+      "rawPosY": 4530,
+      "requiredTreePoints": 20,
+      "prerequisite": [
+        "shaman-901"
+      ],
+      "rankDescriptions": [
+        "When you Stormstrike, you have a 50% chance to gain 50% mana regeneration while casting spells for 15 sec, and Stormstrike's cooldown has a 50% chance to reset each time you Dodge or Parry.",
+        "When you Stormstrike, you have a 100% chance to gain 50% mana regeneration while casting spells for 15 sec, and Stormstrike's cooldown has a 100% chance to reset each time you Dodge or Parry."
+      ],
+      "description": "When you Stormstrike, you have a 100% chance to gain 50% mana regeneration while casting spells for 15 sec, and Stormstrike's cooldown has a 100% chance to reset each time you Dodge or Parry.",
+      "x": 62.5,
+      "y": 64.28571428571429,
+      "iconName": "spell_shaman_improvedstormstrike",
+      "icon": "/images/class-talents/spell_shaman_improvedstormstrike.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Shaman client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Shaman resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "shaman-enhancement-maelstrom-weapon",
+      "name": "Maelstrom Weapon",
+      "branch": "enhancement",
+      "row": 6,
+      "column": 3,
+      "maxRank": 5,
+      "nodeId": 104741,
+      "spellId": 408498,
+      "rawPosX": 6220,
+      "rawPosY": 5130,
+      "requiredTreePoints": 25,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "When you deal damage with a melee attack, you have a chance to reduce the cast time and Mana cost of your next Lightning Bolt spell by 4%. Stacks up to 5 times. Lasts 30 sec.",
+        "When you deal damage with a melee attack, you have a chance to reduce the cast time and Mana cost of your next Lightning Bolt spell by 8%. Stacks up to 5 times. Lasts 30 sec.",
+        "When you deal damage with a melee attack, you have a chance to reduce the cast time and Mana cost of your next Lightning Bolt spell by 12%. Stacks up to 5 times. Lasts 30 sec.",
+        "When you deal damage with a melee attack, you have a chance to reduce the cast time and Mana cost of your next Lightning Bolt spell by 16%. Stacks up to 5 times. Lasts 30 sec.",
+        "When you deal damage with a melee attack, you have a chance to reduce the cast time and Mana cost of your next Lightning Bolt spell by 20%. Stacks up to 5 times. Lasts 30 sec."
+      ],
+      "description": "When you deal damage with a melee attack, you have a chance to reduce the cast time and Mana cost of your next Lightning Bolt spell by 20%. Stacks up to 5 times. Lasts 30 sec.",
+      "x": 62.5,
+      "y": 78.57142857142857,
+      "iconName": "spell_shaman_maelstromweapon",
+      "icon": "/images/class-talents/spell_shaman_maelstromweapon.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Shaman client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Shaman resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "shaman-enhancement-rage-of-the-farseer",
+      "name": "Rage of the Farseer",
+      "branch": "enhancement",
+      "row": 7,
+      "column": 2,
+      "maxRank": 1,
+      "nodeId": 104740,
+      "spellId": 425336,
+      "rawPosX": 5620,
+      "rawPosY": 5730,
+      "requiredTreePoints": 30,
+      "prerequisite": [
+        "shaman-enhancement-mental-quickness"
+      ],
+      "rankDescriptions": [
+        "Increases your attack speed by 30% for 25 sec."
+      ],
+      "description": "Increases your attack speed by 30% for 25 sec.",
+      "x": 37.5,
+      "y": 92.85714285714286,
+      "iconName": "spell_nature_bloodlust",
+      "icon": "/images/class-talents/spell_nature_bloodlust.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Shaman client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Shaman resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "shaman-586",
+      "name": "Improved Healing Wave",
+      "branch": "restoration",
+      "row": 1,
+      "column": 2,
+      "maxRank": 5,
+      "nodeId": 104739,
+      "spellId": 16182,
+      "rawPosX": 9680,
+      "rawPosY": 2130,
+      "sourceTalentId": 586,
+      "requiredTreePoints": 0,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Reduces the casting time of your Healing Wave spell by 0.1 sec.",
+        "Reduces the casting time of your Healing Wave spell by 0.2 sec.",
+        "Reduces the casting time of your Healing Wave spell by 0.3 sec.",
+        "Reduces the casting time of your Healing Wave spell by 0.4 sec.",
+        "Reduces the casting time of your Healing Wave spell by 0.5 sec."
+      ],
+      "description": "Reduces the casting time of your Healing Wave spell by 0.5 sec.",
+      "x": 37.5,
+      "y": 7.142857142857142,
+      "iconName": "spell_nature_magicimmunity",
+      "icon": "/images/class-talents/spell_nature_magicimmunity.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "same",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Shaman client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Shaman resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "shaman-595",
+      "name": "Totemic Focus",
+      "branch": "restoration",
+      "row": 1,
+      "column": 3,
+      "maxRank": 5,
+      "nodeId": 104729,
+      "spellId": 16173,
+      "rawPosX": 10280,
+      "rawPosY": 2130,
+      "sourceTalentId": 595,
+      "requiredTreePoints": 0,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Reduces the Mana cost of your totems and any spells that summon or move them by 5%.",
+        "Reduces the Mana cost of your totems and any spells that summon or move them by 10%.",
+        "Reduces the Mana cost of your totems and any spells that summon or move them by 15%.",
+        "Reduces the Mana cost of your totems and any spells that summon or move them by 20%.",
+        "Reduces the Mana cost of your totems and any spells that summon or move them by 25%."
+      ],
+      "description": "Reduces the Mana cost of your totems and any spells that summon or move them by 25%.",
+      "x": 62.5,
+      "y": 7.142857142857142,
+      "iconName": "spell_nature_moonglow",
+      "icon": "/images/class-talents/spell_nature_moonglow.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Shaman client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Shaman resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "shaman-restoration-mindfulness",
+      "name": "Mindfulness",
+      "branch": "restoration",
+      "row": 2,
+      "column": 1,
+      "maxRank": 3,
+      "nodeId": 104734,
+      "spellId": 1223033,
+      "rawPosX": 9080,
+      "rawPosY": 2730,
+      "requiredTreePoints": 5,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Allows 17% of your Mana regeneration to continue while casting.",
+        "Allows 33% of your Mana regeneration to continue while casting.",
+        "Allows 50% of your Mana regeneration to continue while casting."
+      ],
+      "description": "Allows 50% of your Mana regeneration to continue while casting.",
+      "x": 12.5,
+      "y": 21.428571428571427,
+      "iconName": "spell_nature_sleep",
+      "icon": "/images/class-talents/spell_nature_sleep.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Shaman client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Shaman resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "shaman-1646",
+      "name": "Natural Grace",
+      "branch": "restoration",
+      "row": 2,
+      "column": 2,
+      "maxRank": 3,
+      "nodeId": 104736,
+      "spellId": 29187,
+      "rawPosX": 9680,
+      "rawPosY": 2730,
+      "sourceTalentId": 1646,
+      "requiredTreePoints": 5,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Reduces the threat generated by your spells by 5%.",
+        "Reduces the threat generated by your spells by 10%.",
+        "Reduces the threat generated by your spells by 15%."
+      ],
+      "description": "Reduces the threat generated by your spells by 15%.",
+      "x": 37.5,
+      "y": 21.428571428571427,
+      "iconName": "spell_nature_healingtouch",
+      "icon": "/images/class-talents/spell_nature_healingtouch.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Shaman client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Shaman resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "shaman-593",
+      "name": "Tidal Focus",
+      "branch": "restoration",
+      "row": 2,
+      "column": 3,
+      "maxRank": 5,
+      "nodeId": 104735,
+      "spellId": 16179,
+      "rawPosX": 10280,
+      "rawPosY": 2730,
+      "sourceTalentId": 593,
+      "requiredTreePoints": 5,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Reduces the Mana cost of your healing spells by 1% and improves your chance to hit by 1%.",
+        "Reduces the Mana cost of your healing spells by 2% and improves your chance to hit by 2%.",
+        "Reduces the Mana cost of your healing spells by 3% and improves your chance to hit by 3%.",
+        "Reduces the Mana cost of your healing spells by 4% and improves your chance to hit by 4%.",
+        "Reduces the Mana cost of your healing spells by 5% and improves your chance to hit by 5%."
+      ],
+      "description": "Reduces the Mana cost of your healing spells by 5% and improves your chance to hit by 5%.",
+      "x": 62.5,
+      "y": 21.428571428571427,
+      "iconName": "spell_frost_manarecharge",
+      "icon": "/images/class-talents/spell_frost_manarecharge.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Shaman client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Shaman resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "shaman-589",
+      "name": "Improved Reincarnation",
+      "branch": "restoration",
+      "row": 2,
+      "column": 4,
+      "maxRank": 2,
+      "nodeId": 104737,
+      "spellId": 16184,
+      "rawPosX": 10880,
+      "rawPosY": 2730,
+      "sourceTalentId": 589,
+      "requiredTreePoints": 5,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Reduces the cooldown of your Reincarnation spell by 10 min, increases your maximum health by 2%, and increases the amount of health and Mana you reincarnate with by an additional 10%.",
+        "Reduces the cooldown of your Reincarnation spell by 20 min, increases your maximum health by 4%, and increases the amount of health and Mana you reincarnate with by an additional 20%."
+      ],
+      "description": "Reduces the cooldown of your Reincarnation spell by 20 min, increases your maximum health by 4%, and increases the amount of health and Mana you reincarnate with by an additional 20%.",
+      "x": 87.5,
+      "y": 21.428571428571427,
+      "iconName": "spell_nature_reincarnation",
+      "icon": "/images/class-talents/spell_nature_reincarnation.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Shaman client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Shaman resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "shaman-581",
+      "name": "Ancestral Healing",
+      "branch": "restoration",
+      "row": 3,
+      "column": 1,
+      "maxRank": 3,
+      "nodeId": 104731,
+      "spellId": 16176,
+      "rawPosX": 9080,
+      "rawPosY": 3330,
+      "sourceTalentId": 581,
+      "requiredTreePoints": 10,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases your target's armor value by 8% for 15 sec after getting a critical effect from one of your healing spells.",
+        "Increases your target's armor value by 17% for 15 sec after getting a critical effect from one of your healing spells.",
+        "Increases your target's armor value by 25% for 15 sec after getting a critical effect from one of your healing spells."
+      ],
+      "description": "Increases your target's armor value by 25% for 15 sec after getting a critical effect from one of your healing spells.",
+      "x": 12.5,
+      "y": 35.714285714285715,
+      "iconName": "spell_nature_undyingstrength",
+      "icon": "/images/class-talents/spell_nature_undyingstrength.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Shaman client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Shaman resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "shaman-587",
+      "name": "Healing Focus",
+      "branch": "restoration",
+      "row": 3,
+      "column": 2,
+      "maxRank": 3,
+      "nodeId": 104733,
+      "spellId": 16181,
+      "rawPosX": 9680,
+      "rawPosY": 3330,
+      "sourceTalentId": 587,
+      "requiredTreePoints": 10,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Gives you a 23% chance to avoid interruption caused by damage while casting any healing spell.",
+        "Gives you a 47% chance to avoid interruption caused by damage while casting any healing spell.",
+        "Gives you a 70% chance to avoid interruption caused by damage while casting any healing spell."
+      ],
+      "description": "Gives you a 70% chance to avoid interruption caused by damage while casting any healing spell.",
+      "x": 37.5,
+      "y": 35.714285714285715,
+      "iconName": "spell_nature_healingwavelesser",
+      "icon": "/images/class-talents/spell_nature_healingwavelesser.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Shaman client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Shaman resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "shaman-restoration-water-shield",
+      "name": "Water Shield",
+      "branch": "restoration",
+      "row": 3,
+      "column": 3,
+      "maxRank": 1,
+      "nodeId": 104732,
+      "spellId": 408510,
+      "rawPosX": 10280,
+      "rawPosY": 3330,
+      "requiredTreePoints": 10,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "The caster is surrounded by 3 globes of water. When a spell, melee, or ranged attack hits the caster or when one of the caster's healing spells gets a critical result, 2% of maximum mana is restored to the caster, expending one water globe. Only one globe will activate every few seconds. Lasts 10 min.\n\nOnly one Elemental Shield can be active on the Shaman at any one time."
+      ],
+      "description": "The caster is surrounded by 3 globes of water. When a spell, melee, or ranged attack hits the caster or when one of the caster's healing spells gets a critical result, 2% of maximum mana is restored to the caster, expending one water globe. Only one globe will activate every few seconds. Lasts 10 min.\n\nOnly one Elemental Shield can be active on the Shaman at any one time.",
+      "x": 62.5,
+      "y": 35.714285714285715,
+      "iconName": "ability_shaman_watershield",
+      "icon": "/images/class-talents/ability_shaman_watershield.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Shaman client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Shaman resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "shaman-594",
+      "name": "Tidal Mastery",
+      "branch": "restoration",
+      "row": 4,
+      "column": 1,
+      "maxRank": 5,
+      "nodeId": 104738,
+      "spellId": 16194,
+      "rawPosX": 9080,
+      "rawPosY": 3930,
+      "sourceTalentId": 594,
+      "requiredTreePoints": 15,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases the critical effect chance of your healing spells by 1%.",
+        "Increases the critical effect chance of your healing spells by 2%.",
+        "Increases the critical effect chance of your healing spells by 3%.",
+        "Increases the critical effect chance of your healing spells by 4%.",
+        "Increases the critical effect chance of your healing spells by 5%."
+      ],
+      "description": "Increases the critical effect chance of your healing spells by 5%.",
+      "x": 12.5,
+      "y": 50,
+      "iconName": "spell_nature_tranquility",
+      "icon": "/images/class-talents/spell_nature_tranquility.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Shaman client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Shaman resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "shaman-588",
+      "name": "Restorative Totems",
+      "branch": "restoration",
+      "row": 4,
+      "column": 2,
+      "maxRank": 5,
+      "nodeId": 104730,
+      "spellId": 16187,
+      "rawPosX": 9680,
+      "rawPosY": 3930,
+      "sourceTalentId": 588,
+      "requiredTreePoints": 15,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases the effect of your Mana Spring Totem by 5% and increases the effect of your Healing Stream Totem by 10%.",
+        "Increases the effect of your Mana Spring Totem by 10% and increases the effect of your Healing Stream Totem by 20%.",
+        "Increases the effect of your Mana Spring Totem by 15% and increases the effect of your Healing Stream Totem by 30%.",
+        "Increases the effect of your Mana Spring Totem by 20% and increases the effect of your Healing Stream Totem by 40%.",
+        "Increases the effect of your Mana Spring Totem by 25% and increases the effect of your Healing Stream Totem by 50%."
+      ],
+      "description": "Increases the effect of your Mana Spring Totem by 25% and increases the effect of your Healing Stream Totem by 50%.",
+      "x": 37.5,
+      "y": 50,
+      "iconName": "spell_nature_manaregentotem",
+      "icon": "/images/class-talents/spell_nature_manaregentotem.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Shaman client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Shaman resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "shaman-590",
+      "name": "Mana Tide Totem",
+      "branch": "restoration",
+      "row": 4,
+      "column": 3,
+      "maxRank": 1,
+      "nodeId": 104728,
+      "spellId": 16190,
+      "rawPosX": 10280,
+      "rawPosY": 3930,
+      "sourceTalentId": 590,
+      "requiredTreePoints": 15,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Summons a Mana Tide Totem with 5 health at the feet of the caster for 12 sec that restores 88 mana every 3 seconds to group members within 30 yards."
+      ],
+      "description": "Summons a Mana Tide Totem with 5 health at the feet of the caster for 12 sec that restores 88 mana every 3 seconds to group members within 30 yards.",
+      "x": 62.5,
+      "y": 50,
+      "iconName": "spell_frost_summonwaterelemental",
+      "icon": "/images/class-talents/spell_frost_summonwaterelemental.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Shaman client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Shaman resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "shaman-1648",
+      "name": "Healing Way",
+      "branch": "restoration",
+      "row": 5,
+      "column": 2,
+      "maxRank": 3,
+      "nodeId": 104727,
+      "spellId": 29206,
+      "rawPosX": 9680,
+      "rawPosY": 4530,
+      "sourceTalentId": 1648,
+      "requiredTreePoints": 20,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases the amount healed by your Healing Wave spell by 8%.",
+        "Increases the amount healed by your Healing Wave spell by 17%.",
+        "Increases the amount healed by your Healing Wave spell by 25%."
+      ],
+      "description": "Increases the amount healed by your Healing Wave spell by 25%.",
+      "x": 37.5,
+      "y": 64.28571428571429,
+      "iconName": "spell_nature_healingway",
+      "icon": "/images/class-talents/spell_nature_healingway.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Shaman client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Shaman resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "shaman-591",
+      "name": "Nature's Swiftness",
+      "branch": "restoration",
+      "row": 5,
+      "column": 3,
+      "maxRank": 1,
+      "nodeId": 104726,
+      "spellId": 16188,
+      "rawPosX": 10280,
+      "rawPosY": 4530,
+      "sourceTalentId": 591,
+      "requiredTreePoints": 20,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "When activated, your next Nature spell with a casting time less than 10 sec. becomes an instant cast spell."
+      ],
+      "description": "When activated, your next Nature spell with a casting time less than 10 sec. becomes an instant cast spell.",
+      "x": 62.5,
+      "y": 64.28571428571429,
+      "iconName": "spell_nature_ravenform",
+      "icon": "/images/class-talents/spell_nature_ravenform.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "same",
+      "complete": true,
+      "confirmedRanks": [
+        1
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Shaman client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Shaman resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "shaman-592",
+      "name": "Purification",
+      "branch": "restoration",
+      "row": 6,
+      "column": 3,
+      "maxRank": 5,
+      "nodeId": 104725,
+      "spellId": 16178,
+      "rawPosX": 10280,
+      "rawPosY": 5130,
+      "sourceTalentId": 592,
+      "requiredTreePoints": 25,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases the effectiveness of your healing spells by 2%.",
+        "Increases the effectiveness of your healing spells by 4%.",
+        "Increases the effectiveness of your healing spells by 6%.",
+        "Increases the effectiveness of your healing spells by 8%.",
+        "Increases the effectiveness of your healing spells by 10%."
+      ],
+      "description": "Increases the effectiveness of your healing spells by 10%.",
+      "x": 62.5,
+      "y": 78.57142857142857,
+      "iconName": "spell_frost_wizardmark",
+      "icon": "/images/class-talents/spell_frost_wizardmark.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "same",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Shaman client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Shaman resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "shaman-restoration-riptide",
+      "name": "Riptide",
+      "branch": "restoration",
+      "row": 7,
+      "column": 2,
+      "maxRank": 1,
+      "nodeId": 104724,
+      "spellId": 408521,
+      "rawPosX": 9680,
+      "rawPosY": 5730,
+      "requiredTreePoints": 30,
+      "prerequisite": [
+        "shaman-1648"
+      ],
+      "rankDescriptions": [
+        "Heals a friendly target for 485 to 533, an additional 445 over 15 sec, and increases the effectiveness of your Chain Heal casts directly on that target by 25%."
+      ],
+      "description": "Heals a friendly target for 485 to 533, an additional 445 over 15 sec, and increases the effectiveness of your Chain Heal casts directly on that target by 25%.",
+      "x": 37.5,
+      "y": 92.85714285714286,
+      "iconName": "spell_nature_riptide",
+      "icon": "/images/class-talents/spell_nature_riptide.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Shaman client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Shaman resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    }
+  ],
+  "rawClientNodeCount": 50,
+  "quarantinedClientNodes": [],
+  "activeMembershipVerification": "client_verified",
+  "quarantinedClientEdges": [],
+  "reviewedGridPositions": [],
+  "reviewedEdgeInterpretations": []
+}

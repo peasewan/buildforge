@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { reconcileCurrentClassClient, validateCurrentClassCandidate } from './currentClassClientReconcile'
+import { CURRENT_CLASS_CONFIGS, reconcileCurrentClassClient, validateCurrentClassCandidate } from './currentClassClientReconcile'
 
 const tables = {
   SkillLineXTraitTree: 'ID,SkillLineID,TraitTreeID,Variant\n1,26,1117,0\n',
@@ -125,5 +125,69 @@ describe('current class client import publication boundary', () => {
     const { candidate, diff } = reconcileCurrentClassClient({ ...moved, reviewedIdentityMappings: [{ currentName: 'Alpha', currentBranch: 'arms', previousId: 'stable-alpha', expectedSpellId: 1001 }] })
     expect(candidate.talents[0].id).toBe('stable-alpha')
     expect(diff.moved).toEqual(expect.arrayContaining([expect.objectContaining({ id: 'stable-alpha' })]))
+  })
+})
+
+
+describe('current five-class import expansion', () => {
+  it('maps each class to its actual client SkillLine and semantic branches', () => {
+    expect(CURRENT_CLASS_CONFIGS).toMatchObject({
+      rogue: { skillLineId: 38, branches: ['assassination', 'combat', 'subtlety'] },
+      priest: { skillLineId: 613, branches: ['discipline', 'holy', 'shadow'] },
+      druid: { skillLineId: 574, branches: ['balance', 'feral', 'restoration'] },
+      warlock: { skillLineId: 354, branches: ['affliction', 'demonology', 'destruction'] },
+      shaman: { skillLineId: 373, branches: ['elemental', 'enhancement', 'restoration'] },
+    })
+  })
+  it('preserves malformed raw positions while explicitly reviewing display coordinates', () => {
+    const shifted = input()
+    shifted.tables.TraitNode = shifted.tables.TraitNode.replace('101,1117,1020,2130', '101,1117,1020,2120')
+    const reviewedGridPositions = [{ nodeId: 101, name: 'Alpha', spellId: 1001, posX: 1020, posY: 2120, branch: 'arms', row: 1, column: 1, reason: 'Exact licensed visible-tree cell independently reviewed against this raw identity.', sourceUrl: 'https://talentsforever.com/data.json' }]
+    const { candidate } = reconcileCurrentClassClient({ ...shifted, reviewedGridPositions })
+    expect(candidate.talents[0]).toMatchObject({ rawPosX: 1020, rawPosY: 2120, row: 1, column: 1, fieldEvidence: { row: 'community_verified', column: 'community_verified', rawPosX: 'client_verified', rawPosY: 'client_verified' } })
+    expect(validateCurrentClassCandidate(candidate, shifted.tables, [], [], reviewedGridPositions)).toEqual([])
+    expect(validateCurrentClassCandidate(candidate, shifted.tables)).toEqual(expect.arrayContaining([expect.stringMatching(/unapproved grid/i)]))
+    const wrong = structuredClone(reviewedGridPositions); wrong[0].posY = 2110
+    expect(() => reconcileCurrentClassClient({ ...shifted, reviewedGridPositions: wrong })).toThrow(/grid review identity/i)
+    const unused = input()
+    expect(() => reconcileCurrentClassClient({ ...unused, reviewedGridPositions })).toThrow(/grid review identity/i)
+    const falseProvenance = structuredClone(candidate); falseProvenance.talents[0].fieldEvidence.row = 'client_verified'
+    expect(validateCurrentClassCandidate(falseProvenance, shifted.tables, [], [], reviewedGridPositions)).toEqual(expect.arrayContaining([expect.stringMatching(/grid provenance/i)]))
+  })
+})
+
+
+describe('exact reviewed nonstandard edge roles', () => {
+  it('preserves exact raw types and marks community graph interpretations without broadening edge support', () => {
+    const typed = input()
+    typed.tables.TraitEdge = 'ID,VisualStyle,LeftTraitNodeID,RightTraitNodeID,Type\n11,0,102,101,0\n12,1,101,102,3\n'
+    expect(() => reconcileCurrentClassClient(typed)).toThrow(/unreviewed client edge/i)
+    const reviewedEdgeInterpretations = [
+      { edgeId: 11, leftNodeId: 102, rightNodeId: 101, type: 0, prerequisite: false, reason: 'Exact reverse visual connection independently reviewed.', sourceUrl: 'https://talentsforever.com/data.json' },
+      { edgeId: 12, leftNodeId: 101, rightNodeId: 102, type: 3, prerequisite: true, reason: 'Exact licensed visible prerequisite direction independently reviewed.', sourceUrl: 'https://talentsforever.com/data.json' },
+    ]
+    const { candidate } = reconcileCurrentClassClient({ ...typed, reviewedEdgeInterpretations })
+    expect(candidate.resolvedRankAdaptationNotice).toMatch(/explicit.*reviewed exceptions/i)
+    expect(candidate.verificationSummary).not.toContain('Structural facts are client_verified')
+    expect(candidate.talents[1].prerequisite).toEqual(['stable-alpha'])
+    expect(candidate.talents.slice(0, 2).map(talent => talent.fieldEvidence.prerequisiteLink)).toEqual(['community_verified', 'community_verified'])
+    expect(validateCurrentClassCandidate(candidate, typed.tables, [], [], [], reviewedEdgeInterpretations)).toEqual([])
+    expect(validateCurrentClassCandidate(candidate, typed.tables)).toEqual(expect.arrayContaining([expect.stringMatching(/unapproved edge interpretation/i)]))
+    const changed = structuredClone(reviewedEdgeInterpretations); changed[0].type = 3
+    expect(() => reconcileCurrentClassClient({ ...typed, reviewedEdgeInterpretations: changed })).toThrow(/edge interpretation identity/i)
+    const extra = [...reviewedEdgeInterpretations, { ...reviewedEdgeInterpretations[0], edgeId: 999 }]
+    expect(() => reconcileCurrentClassClient({ ...typed, reviewedEdgeInterpretations: extra })).toThrow(/interpretation absent/i)
+  })
+})
+
+
+describe('existing exact-grid candidate compatibility', () => {
+  it('retains validation of previously reviewed exact-grid candidates that predate raw coordinate display fields', () => {
+    const { candidate } = reconcileCurrentClassClient(input())
+    for (const talent of candidate.talents) {
+      delete talent.rawPosX; delete talent.rawPosY
+      delete talent.fieldEvidence.rawPosX; delete talent.fieldEvidence.rawPosY
+    }
+    expect(validateCurrentClassCandidate(candidate, input().tables)).toEqual([])
   })
 })

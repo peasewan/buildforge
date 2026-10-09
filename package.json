@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && tsc -p tsconfig.scripts.json && node --import tsx scripts/sync-class-static-pages.ts --check && node --import tsx scripts/content-audit.ts --check && vite build --configLoader runner && env TSX_TSCONFIG_PATH=tsconfig.scripts.json node --import tsx scripts/prerender-visual.ts && env TSX_TSCONFIG_PATH=tsconfig.scripts.json node --import tsx scripts/seo-validate.ts",
+    "build": "tsc -b && tsc -p tsconfig.scripts.json && node --import tsx scripts/sync-class-static-pages.ts --check && node --import tsx scripts/content-audit.ts --check && node --import tsx scripts/content-review.ts --require-rank-text && vite build --configLoader runner && env TSX_TSCONFIG_PATH=tsconfig.scripts.json node --import tsx scripts/prerender-visual.ts && env TSX_TSCONFIG_PATH=tsconfig.scripts.json node --import tsx scripts/seo-validate.ts",
     "classes:sync": "tsx scripts/sync-class-static-pages.ts",
     "typecheck": "tsc -b && tsc -p tsconfig.scripts.json",
     "test": "vitest run",

@@ -15,11 +15,13 @@
       "column": "client_verified",
       "maxRank": "client_verified",
       "requiredTreePoints": "client_verified",
-      "rankDescriptions": "unknown",
+      "rankDescriptions": "client_verified",
       "sourceTalentId": "client_verified",
       "prerequisiteLink": "unknown",
       "changeStatus": "client_verified",
-      "iconName": "client_datamined"
+      "iconName": "client_datamined",
+      "nodeId": "client_verified",
+      "spellId": "client_verified"
     },
     "verificationStatus": "client_verified",
     "sourceTalentId": 76,
@@ -41,7 +43,49 @@
         "label": "Build 69913 client Talent table",
         "type": "beta_client",
         "url": "https://wago.tools/db2/Talent/csv?build=1.60.1.69913"
+      },
+      {
+        "label": "Historical build 69913 client Spell table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/Spell/csv?build=1.60.1.69913"
+      },
+      {
+        "label": "Historical build 69913 client TraitDefinitionEffectPoints table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/TraitDefinitionEffectPoints/csv?build=1.60.1.69913"
+      },
+      {
+        "label": "Historical build 69913 client CurvePoint table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/CurvePoint/csv?build=1.60.1.69913"
+      },
+      {
+        "label": "Historical build 69913 client SpellEffect table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/SpellEffect/csv?build=1.60.1.69913"
+      },
+      {
+        "label": "Historical build 69913 client SpellMisc table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/SpellMisc/csv?build=1.60.1.69913"
+      },
+      {
+        "label": "Historical build 69913 client SpellDuration table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/SpellDuration/csv?build=1.60.1.69913"
       }
+    ],
+    "rankDescriptions": [
+      "Improves your chance to hit with Arcane spells by 1%.",
+      "Improves your chance to hit with Arcane spells by 2%.",
+      "Improves your chance to hit with Arcane spells by 3%.",
+      "Improves your chance to hit with Arcane spells by 4%.",
+      "Improves your chance to hit with Arcane spells by 5%."
+    ],
+    "nodeId": 105814,
+    "spellId": 11222,
+    "dataNotes": [
+      "Rank descriptions reviewed against the historical 1.60.1.69913 live Mage Trait tree, spell templates and explicit per-rank effect curves. This is a source correction for the 69913 snapshot, not a current-build or in-game performance claim."
     ]
   },
   {
@@ -60,11 +104,13 @@
       "column": "client_verified",
       "maxRank": "client_verified",
       "requiredTreePoints": "client_verified",
-      "rankDescriptions": "client_datamined",
+      "rankDescriptions": "client_verified",
       "sourceTalentId": "client_verified",
       "prerequisiteLink": "unknown",
       "changeStatus": "client_verified",
-      "iconName": "client_datamined"
+      "iconName": "client_datamined",
+      "nodeId": "client_verified",
+      "spellId": "client_verified"
     },
     "verificationStatus": "client_verified",
     "rankDescriptions": [
@@ -93,7 +139,42 @@
         "label": "Build 69913 client Talent table",
         "type": "beta_client",
         "url": "https://wago.tools/db2/Talent/csv?build=1.60.1.69913"
+      },
+      {
+        "label": "Historical build 69913 client Spell table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/Spell/csv?build=1.60.1.69913"
+      },
+      {
+        "label": "Historical build 69913 client TraitDefinitionEffectPoints table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/TraitDefinitionEffectPoints/csv?build=1.60.1.69913"
+      },
+      {
+        "label": "Historical build 69913 client CurvePoint table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/CurvePoint/csv?build=1.60.1.69913"
+      },
+      {
+        "label": "Historical build 69913 client SpellEffect table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/SpellEffect/csv?build=1.60.1.69913"
+      },
+      {
+        "label": "Historical build 69913 client SpellMisc table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/SpellMisc/csv?build=1.60.1.69913"
+      },
+      {
+        "label": "Historical build 69913 client SpellDuration table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/SpellDuration/csv?build=1.60.1.69913"
       }
+    ],
+    "nodeId": 105813,
+    "spellId": 11237,
+    "dataNotes": [
+      "Rank descriptions reviewed against the historical 1.60.1.69913 live Mage Trait tree, spell templates and explicit per-rank effect curves. This is a source correction for the 69913 snapshot, not a current-build or in-game performance claim."
     ]
   },
   {
@@ -112,11 +193,13 @@
       "column": "client_verified",
       "maxRank": "client_verified",
       "requiredTreePoints": "client_verified",
-      "rankDescriptions": "unknown",
+      "rankDescriptions": "client_verified",
       "sourceTalentId": "client_verified",
       "prerequisiteLink": "unknown",
       "changeStatus": "unknown",
-      "iconName": "client_datamined"
+      "iconName": "client_datamined",
+      "nodeId": "client_verified",
+      "spellId": "client_verified"
     },
     "verificationStatus": "client_verified",
     "sourceTalentId": 75,
@@ -138,7 +221,49 @@
         "label": "Build 69913 client Talent table",
         "type": "beta_client",
         "url": "https://wago.tools/db2/Talent/csv?build=1.60.1.69913"
+      },
+      {
+        "label": "Historical build 69913 client Spell table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/Spell/csv?build=1.60.1.69913"
+      },
+      {
+        "label": "Historical build 69913 client TraitDefinitionEffectPoints table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/TraitDefinitionEffectPoints/csv?build=1.60.1.69913"
+      },
+      {
+        "label": "Historical build 69913 client CurvePoint table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/CurvePoint/csv?build=1.60.1.69913"
+      },
+      {
+        "label": "Historical build 69913 client SpellEffect table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/SpellEffect/csv?build=1.60.1.69913"
+      },
+      {
+        "label": "Historical build 69913 client SpellMisc table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/SpellMisc/csv?build=1.60.1.69913"
+      },
+      {
+        "label": "Historical build 69913 client SpellDuration table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/SpellDuration/csv?build=1.60.1.69913"
       }
+    ],
+    "rankDescriptions": [
+      "Gives you a 2% chance of entering a Clearcasting state after any damage spell hits a target. The Clearcasting state reduces the mana cost of your next damage spell by 100%.",
+      "Gives you a 4% chance of entering a Clearcasting state after any damage spell hits a target. The Clearcasting state reduces the mana cost of your next damage spell by 100%.",
+      "Gives you a 6% chance of entering a Clearcasting state after any damage spell hits a target. The Clearcasting state reduces the mana cost of your next damage spell by 100%.",
+      "Gives you a 8% chance of entering a Clearcasting state after any damage spell hits a target. The Clearcasting state reduces the mana cost of your next damage spell by 100%.",
+      "Gives you a 10% chance of entering a Clearcasting state after any damage spell hits a target. The Clearcasting state reduces the mana cost of your next damage spell by 100%."
+    ],
+    "nodeId": 105810,
+    "spellId": 11213,
+    "dataNotes": [
+      "Rank descriptions reviewed against the historical 1.60.1.69913 live Mage Trait tree, spell templates and explicit per-rank effect curves. This is a source correction for the 69913 snapshot, not a current-build or in-game performance claim."
     ]
   },
   {
@@ -202,11 +327,13 @@
       "column": "client_verified",
       "maxRank": "client_verified",
       "requiredTreePoints": "client_verified",
-      "rankDescriptions": "unknown",
+      "rankDescriptions": "client_verified",
       "sourceTalentId": "client_verified",
       "prerequisiteLink": "unknown",
       "changeStatus": "unknown",
-      "iconName": "client_datamined"
+      "iconName": "client_datamined",
+      "nodeId": "client_verified",
+      "spellId": "client_verified"
     },
     "verificationStatus": "client_verified",
     "sourceTalentId": 81,
@@ -228,7 +355,47 @@
         "label": "Build 69913 client Talent table",
         "type": "beta_client",
         "url": "https://wago.tools/db2/Talent/csv?build=1.60.1.69913"
+      },
+      {
+        "label": "Historical build 69913 client Spell table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/Spell/csv?build=1.60.1.69913"
+      },
+      {
+        "label": "Historical build 69913 client TraitDefinitionEffectPoints table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/TraitDefinitionEffectPoints/csv?build=1.60.1.69913"
+      },
+      {
+        "label": "Historical build 69913 client CurvePoint table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/CurvePoint/csv?build=1.60.1.69913"
+      },
+      {
+        "label": "Historical build 69913 client SpellEffect table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/SpellEffect/csv?build=1.60.1.69913"
+      },
+      {
+        "label": "Historical build 69913 client SpellMisc table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/SpellMisc/csv?build=1.60.1.69913"
+      },
+      {
+        "label": "Historical build 69913 client SpellDuration table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/SpellDuration/csv?build=1.60.1.69913"
       }
+    ],
+    "rankDescriptions": [
+      "Increases the critical strike chance of your Arcane spells by 2%.",
+      "Increases the critical strike chance of your Arcane spells by 4%.",
+      "Increases the critical strike chance of your Arcane spells by 6%."
+    ],
+    "nodeId": 105807,
+    "spellId": 11242,
+    "dataNotes": [
+      "Rank descriptions reviewed against the historical 1.60.1.69913 live Mage Trait tree, spell templates and explicit per-rank effect curves. This is a source correction for the 69913 snapshot, not a current-build or in-game performance claim."
     ]
   },
   {
@@ -1042,11 +1209,13 @@
       "column": "client_verified",
       "maxRank": "client_verified",
       "requiredTreePoints": "client_verified",
-      "rankDescriptions": "client_datamined",
+      "rankDescriptions": "client_verified",
       "sourceTalentId": "client_verified",
       "prerequisiteLink": "unknown",
       "changeStatus": "unknown",
-      "iconName": "client_datamined"
+      "iconName": "client_datamined",
+      "nodeId": "client_verified",
+      "spellId": "client_verified"
     },
     "verificationStatus": "client_verified",
     "rankDescriptions": [
@@ -1072,7 +1241,42 @@
         "label": "Build 69913 client Talent table",
         "type": "beta_client",
         "url": "https://wago.tools/db2/Talent/csv?build=1.60.1.69913"
+      },
+      {
+        "label": "Historical build 69913 client Spell table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/Spell/csv?build=1.60.1.69913"
+      },
+      {
+        "label": "Historical build 69913 client TraitDefinitionEffectPoints table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/TraitDefinitionEffectPoints/csv?build=1.60.1.69913"
+      },
+      {
+        "label": "Historical build 69913 client CurvePoint table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/CurvePoint/csv?build=1.60.1.69913"
+      },
+      {
+        "label": "Historical build 69913 client SpellEffect table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/SpellEffect/csv?build=1.60.1.69913"
+      },
+      {
+        "label": "Historical build 69913 client SpellMisc table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/SpellMisc/csv?build=1.60.1.69913"
+      },
+      {
+        "label": "Historical build 69913 client SpellDuration table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/SpellDuration/csv?build=1.60.1.69913"
       }
+    ],
+    "nodeId": 105780,
+    "spellId": 11189,
+    "dataNotes": [
+      "Rank descriptions reviewed against the historical 1.60.1.69913 live Mage Trait tree, spell templates and explicit per-rank effect curves. This is a source correction for the 69913 snapshot, not a current-build or in-game performance claim."
     ]
   },
   {
@@ -1091,11 +1295,13 @@
       "column": "client_verified",
       "maxRank": "client_verified",
       "requiredTreePoints": "client_verified",
-      "rankDescriptions": "client_datamined",
+      "rankDescriptions": "client_verified",
       "sourceTalentId": "client_verified",
       "prerequisiteLink": "unknown",
       "changeStatus": "client_verified",
-      "iconName": "client_datamined"
+      "iconName": "client_datamined",
+      "nodeId": "client_verified",
+      "spellId": "client_verified"
     },
     "verificationStatus": "client_verified",
     "rankDescriptions": [
@@ -1124,7 +1330,42 @@
         "label": "Build 69913 client Talent table",
         "type": "beta_client",
         "url": "https://wago.tools/db2/Talent/csv?build=1.60.1.69913"
+      },
+      {
+        "label": "Historical build 69913 client Spell table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/Spell/csv?build=1.60.1.69913"
+      },
+      {
+        "label": "Historical build 69913 client TraitDefinitionEffectPoints table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/TraitDefinitionEffectPoints/csv?build=1.60.1.69913"
+      },
+      {
+        "label": "Historical build 69913 client CurvePoint table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/CurvePoint/csv?build=1.60.1.69913"
+      },
+      {
+        "label": "Historical build 69913 client SpellEffect table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/SpellEffect/csv?build=1.60.1.69913"
+      },
+      {
+        "label": "Historical build 69913 client SpellMisc table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/SpellMisc/csv?build=1.60.1.69913"
+      },
+      {
+        "label": "Historical build 69913 client SpellDuration table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/SpellDuration/csv?build=1.60.1.69913"
       }
+    ],
+    "nodeId": 105779,
+    "spellId": 11070,
+    "dataNotes": [
+      "Rank descriptions reviewed against the historical 1.60.1.69913 live Mage Trait tree, spell templates and explicit per-rank effect curves. This is a source correction for the 69913 snapshot, not a current-build or in-game performance claim."
     ]
   },
   {
@@ -1143,11 +1384,13 @@
       "column": "client_verified",
       "maxRank": "client_verified",
       "requiredTreePoints": "client_verified",
-      "rankDescriptions": "unknown",
+      "rankDescriptions": "client_verified",
       "sourceTalentId": "client_verified",
       "prerequisiteLink": "unknown",
       "changeStatus": "unknown",
-      "iconName": "client_datamined"
+      "iconName": "client_datamined",
+      "nodeId": "client_verified",
+      "spellId": "client_verified"
     },
     "verificationStatus": "client_verified",
     "sourceTalentId": 73,
@@ -1169,7 +1412,49 @@
         "label": "Build 69913 client Talent table",
         "type": "beta_client",
         "url": "https://wago.tools/db2/Talent/csv?build=1.60.1.69913"
+      },
+      {
+        "label": "Historical build 69913 client Spell table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/Spell/csv?build=1.60.1.69913"
+      },
+      {
+        "label": "Historical build 69913 client TraitDefinitionEffectPoints table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/TraitDefinitionEffectPoints/csv?build=1.60.1.69913"
+      },
+      {
+        "label": "Historical build 69913 client CurvePoint table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/CurvePoint/csv?build=1.60.1.69913"
+      },
+      {
+        "label": "Historical build 69913 client SpellEffect table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/SpellEffect/csv?build=1.60.1.69913"
+      },
+      {
+        "label": "Historical build 69913 client SpellMisc table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/SpellMisc/csv?build=1.60.1.69913"
+      },
+      {
+        "label": "Historical build 69913 client SpellDuration table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/SpellDuration/csv?build=1.60.1.69913"
       }
+    ],
+    "rankDescriptions": [
+      "Increases the critical strike damage bonus of your Frost spells by 20%.",
+      "Increases the critical strike damage bonus of your Frost spells by 40%.",
+      "Increases the critical strike damage bonus of your Frost spells by 60%.",
+      "Increases the critical strike damage bonus of your Frost spells by 80%.",
+      "Increases the critical strike damage bonus of your Frost spells by 100%."
+    ],
+    "nodeId": 105777,
+    "spellId": 11207,
+    "dataNotes": [
+      "Rank descriptions reviewed against the historical 1.60.1.69913 live Mage Trait tree, spell templates and explicit per-rank effect curves. This is a source correction for the 69913 snapshot, not a current-build or in-game performance claim."
     ]
   },
   {
@@ -1188,11 +1473,13 @@
       "column": "client_verified",
       "maxRank": "client_verified",
       "requiredTreePoints": "client_verified",
-      "rankDescriptions": "unknown",
+      "rankDescriptions": "client_verified",
       "sourceTalentId": "client_verified",
       "prerequisiteLink": "unknown",
       "changeStatus": "unknown",
-      "iconName": "client_datamined"
+      "iconName": "client_datamined",
+      "nodeId": "client_verified",
+      "spellId": "client_verified"
     },
     "verificationStatus": "client_verified",
     "sourceTalentId": 62,
@@ -1214,7 +1501,46 @@
         "label": "Build 69913 client Talent table",
         "type": "beta_client",
         "url": "https://wago.tools/db2/Talent/csv?build=1.60.1.69913"
+      },
+      {
+        "label": "Historical build 69913 client Spell table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/Spell/csv?build=1.60.1.69913"
+      },
+      {
+        "label": "Historical build 69913 client TraitDefinitionEffectPoints table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/TraitDefinitionEffectPoints/csv?build=1.60.1.69913"
+      },
+      {
+        "label": "Historical build 69913 client CurvePoint table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/CurvePoint/csv?build=1.60.1.69913"
+      },
+      {
+        "label": "Historical build 69913 client SpellEffect table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/SpellEffect/csv?build=1.60.1.69913"
+      },
+      {
+        "label": "Historical build 69913 client SpellMisc table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/SpellMisc/csv?build=1.60.1.69913"
+      },
+      {
+        "label": "Historical build 69913 client SpellDuration table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/SpellDuration/csv?build=1.60.1.69913"
       }
+    ],
+    "rankDescriptions": [
+      "Reduces the cooldown of your Frost Nova spell by 2 sec.",
+      "Reduces the cooldown of your Frost Nova spell by 4 sec."
+    ],
+    "nodeId": 105775,
+    "spellId": 11165,
+    "dataNotes": [
+      "Rank descriptions reviewed against the historical 1.60.1.69913 live Mage Trait tree, spell templates and explicit per-rank effect curves. This is a source correction for the 69913 snapshot, not a current-build or in-game performance claim."
     ]
   },
   {
@@ -1233,11 +1559,13 @@
       "column": "client_verified",
       "maxRank": "client_verified",
       "requiredTreePoints": "client_verified",
-      "rankDescriptions": "client_datamined",
+      "rankDescriptions": "client_verified",
       "sourceTalentId": "client_verified",
       "prerequisiteLink": "unknown",
       "changeStatus": "client_verified",
-      "iconName": "client_datamined"
+      "iconName": "client_datamined",
+      "nodeId": "client_verified",
+      "spellId": "client_verified"
     },
     "verificationStatus": "client_verified",
     "rankDescriptions": [
@@ -1264,7 +1592,42 @@
         "label": "Build 69913 client Talent table",
         "type": "beta_client",
         "url": "https://wago.tools/db2/Talent/csv?build=1.60.1.69913"
+      },
+      {
+        "label": "Historical build 69913 client Spell table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/Spell/csv?build=1.60.1.69913"
+      },
+      {
+        "label": "Historical build 69913 client TraitDefinitionEffectPoints table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/TraitDefinitionEffectPoints/csv?build=1.60.1.69913"
+      },
+      {
+        "label": "Historical build 69913 client CurvePoint table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/CurvePoint/csv?build=1.60.1.69913"
+      },
+      {
+        "label": "Historical build 69913 client SpellEffect table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/SpellEffect/csv?build=1.60.1.69913"
+      },
+      {
+        "label": "Historical build 69913 client SpellMisc table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/SpellMisc/csv?build=1.60.1.69913"
+      },
+      {
+        "label": "Historical build 69913 client SpellDuration table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/SpellDuration/csv?build=1.60.1.69913"
       }
+    ],
+    "nodeId": 105773,
+    "spellId": 11151,
+    "dataNotes": [
+      "Rank descriptions reviewed against the historical 1.60.1.69913 live Mage Trait tree, spell templates and explicit per-rank effect curves. This is a source correction for the 69913 snapshot, not a current-build or in-game performance claim."
     ]
   },
   {
@@ -1283,11 +1646,13 @@
       "column": "client_verified",
       "maxRank": "client_verified",
       "requiredTreePoints": "client_verified",
-      "rankDescriptions": "unknown",
+      "rankDescriptions": "client_verified",
       "sourceTalentId": "client_verified",
       "prerequisiteLink": "unknown",
       "changeStatus": "client_verified",
-      "iconName": "client_datamined"
+      "iconName": "client_datamined",
+      "nodeId": "client_verified",
+      "spellId": "client_verified"
     },
     "verificationStatus": "client_verified",
     "sourceTalentId": 63,
@@ -1309,7 +1674,47 @@
         "label": "Build 69913 client Talent table",
         "type": "beta_client",
         "url": "https://wago.tools/db2/Talent/csv?build=1.60.1.69913"
+      },
+      {
+        "label": "Historical build 69913 client Spell table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/Spell/csv?build=1.60.1.69913"
+      },
+      {
+        "label": "Historical build 69913 client TraitDefinitionEffectPoints table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/TraitDefinitionEffectPoints/csv?build=1.60.1.69913"
+      },
+      {
+        "label": "Historical build 69913 client CurvePoint table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/CurvePoint/csv?build=1.60.1.69913"
+      },
+      {
+        "label": "Historical build 69913 client SpellEffect table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/SpellEffect/csv?build=1.60.1.69913"
+      },
+      {
+        "label": "Historical build 69913 client SpellMisc table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/SpellMisc/csv?build=1.60.1.69913"
+      },
+      {
+        "label": "Historical build 69913 client SpellDuration table",
+        "type": "beta_client",
+        "url": "https://wago.tools/db2/SpellDuration/csv?build=1.60.1.69913"
       }
+    ],
+    "rankDescriptions": [
+      "Adds a Chill effect to your Blizzard spell. This effect lowers the target's movement speed by 15% for 1.5 sec.",
+      "Adds a Chill effect to your Blizzard spell. This effect lowers the target's movement speed by 25% for 1.5 sec.",
+      "Adds a Chill effect to your Blizzard spell. This effect lowers the target's movement speed by 40% for 1.5 sec."
+    ],
+    "nodeId": 105771,
+    "spellId": 11185,
+    "dataNotes": [
+      "Rank descriptions reviewed against the historical 1.60.1.69913 live Mage Trait tree, spell templates and explicit per-rank effect curves. This is a source correction for the 69913 snapshot, not a current-build or in-game performance claim."
     ]
   },
   {

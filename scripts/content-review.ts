@@ -8,7 +8,7 @@ export type RankEvidenceGap = {
   talentId: string
   talentName: string
   rank: number
-  reason: 'talent_missing' | 'rank_invalid' | 'rank_text_missing' | 'rank_evidence_unknown'
+  reason: 'talent_missing' | 'rank_invalid' | 'rank_text_missing' | 'rank_evidence_unknown' | 'rank_text_unresolved' | 'rank_source_mismatch'
 }
 export type BuildRankCoverage = { buildId: string; sourceBuild: string; selectedEndpoints: number; resolvedEndpoints: number; missing: RankEvidenceGap[] }
 export type PageRankCoverage = { primary: BuildRankCoverage | null; related: BuildRankCoverage[] }
@@ -22,6 +22,8 @@ function rankCoverageForBuild(def: ClassDefinition, build: ClassBuild): BuildRan
     if (!talent) missing.push({ ...base, reason: 'talent_missing' })
     else if (!Number.isInteger(rank) || rank > talent.maxRank) missing.push({ ...base, reason: 'rank_invalid' })
     else if (!talent.rankDescriptions?.[rank - 1]?.trim()) missing.push({ ...base, reason: 'rank_text_missing' })
+    else if (/\$[a-zA-Z0-9{]|\bX%|\bUnknown\b/.test(talent.rankDescriptions[rank - 1])) missing.push({ ...base, reason: 'rank_text_unresolved' })
+    else if (talent.sourceClientBuild !== build.verifiedThroughBuild || talent.verifiedThroughBuild !== build.verifiedThroughBuild) missing.push({ ...base, reason: 'rank_source_mismatch' })
     else if (!talent.fieldEvidence.rankDescriptions || talent.fieldEvidence.rankDescriptions === 'unknown') missing.push({ ...base, reason: 'rank_evidence_unknown' })
   }
   return { buildId: build.id, sourceBuild: build.verifiedThroughBuild, selectedEndpoints: selected.length, resolvedEndpoints: selected.length - missing.length, missing }

@@ -1,0 +1,1400 @@
+{
+  "from": "1.60.1.69913",
+  "to": "1.60.1.70291",
+  "summary": {
+    "added": 12,
+    "removed": 8,
+    "moved": 22,
+    "rank_changed": 5,
+    "tooltip_changed": 34,
+    "prerequisite_changed": 6,
+    "unchanged": 1
+  },
+  "added": [
+    {
+      "id": "shaman-elemental-lightning-overload",
+      "name": "Lightning Overload",
+      "nodeId": 104759
+    },
+    {
+      "id": "shaman-elemental-earthbound",
+      "name": "Earthbound",
+      "nodeId": 104760
+    },
+    {
+      "id": "shaman-elemental-lava-burst",
+      "name": "Lava Burst",
+      "nodeId": 104758
+    },
+    {
+      "id": "shaman-enhancement-mental-dexterity",
+      "name": "Mental Dexterity",
+      "nodeId": 104755
+    },
+    {
+      "id": "shaman-enhancement-shamanistic-focus",
+      "name": "Shamanistic Focus",
+      "nodeId": 104749
+    },
+    {
+      "id": "shaman-enhancement-mental-quickness",
+      "name": "Mental Quickness",
+      "nodeId": 104744
+    },
+    {
+      "id": "shaman-enhancement-improved-stormstrike",
+      "name": "Improved Stormstrike",
+      "nodeId": 104742
+    },
+    {
+      "id": "shaman-enhancement-maelstrom-weapon",
+      "name": "Maelstrom Weapon",
+      "nodeId": 104741
+    },
+    {
+      "id": "shaman-enhancement-rage-of-the-farseer",
+      "name": "Rage of the Farseer",
+      "nodeId": 104740
+    },
+    {
+      "id": "shaman-restoration-mindfulness",
+      "name": "Mindfulness",
+      "nodeId": 104734
+    },
+    {
+      "id": "shaman-restoration-water-shield",
+      "name": "Water Shield",
+      "nodeId": 104732
+    },
+    {
+      "id": "shaman-restoration-riptide",
+      "name": "Riptide",
+      "nodeId": 104724
+    }
+  ],
+  "removed": [
+    {
+      "id": "shaman-573",
+      "name": "Elemental Mastery",
+      "nodeId": 573
+    },
+    {
+      "id": "shaman-612",
+      "name": "Shield Specialization",
+      "nodeId": 612
+    },
+    {
+      "id": "shaman-610",
+      "name": "Enhancing Totems",
+      "nodeId": 610
+    },
+    {
+      "id": "shaman-617",
+      "name": "Two-Handed Axes and Maces",
+      "nodeId": 617
+    },
+    {
+      "id": "shaman-1647",
+      "name": "Improved Weapon Totems",
+      "nodeId": 1647
+    },
+    {
+      "id": "shaman-1643",
+      "name": "Weapon Mastery",
+      "nodeId": 1643
+    },
+    {
+      "id": "shaman-583",
+      "name": "Nature's Guidance",
+      "nodeId": 583
+    },
+    {
+      "id": "shaman-582",
+      "name": "Totemic Mastery",
+      "nodeId": 582
+    }
+  ],
+  "moved": [
+    {
+      "id": "shaman-1640",
+      "name": "Elemental Warding",
+      "nodeId": 104771,
+      "before": {
+        "branch": "elemental",
+        "row": 2,
+        "column": 2,
+        "requiredTreePoints": 5
+      },
+      "after": {
+        "branch": "elemental",
+        "row": 2,
+        "column": 1,
+        "requiredTreePoints": 5
+      }
+    },
+    {
+      "id": "shaman-575",
+      "name": "Reverberation",
+      "nodeId": 104767,
+      "before": {
+        "branch": "elemental",
+        "row": 3,
+        "column": 2,
+        "requiredTreePoints": 10
+      },
+      "after": {
+        "branch": "elemental",
+        "row": 2,
+        "column": 2,
+        "requiredTreePoints": 5
+      }
+    },
+    {
+      "id": "shaman-1645",
+      "name": "Elemental Devastation",
+      "nodeId": 104769,
+      "before": {
+        "branch": "elemental",
+        "row": 4,
+        "column": 4,
+        "requiredTreePoints": 15
+      },
+      "after": {
+        "branch": "elemental",
+        "row": 2,
+        "column": 4,
+        "requiredTreePoints": 5
+      }
+    },
+    {
+      "id": "shaman-574",
+      "name": "Elemental Focus",
+      "nodeId": 104768,
+      "before": {
+        "branch": "elemental",
+        "row": 3,
+        "column": 1,
+        "requiredTreePoints": 10
+      },
+      "after": {
+        "branch": "elemental",
+        "row": 3,
+        "column": 2,
+        "requiredTreePoints": 10
+      }
+    },
+    {
+      "id": "shaman-721",
+      "name": "Elemental Alacrity",
+      "nodeId": 104765,
+      "before": {
+        "branch": "elemental",
+        "row": 6,
+        "column": 3,
+        "requiredTreePoints": 25
+      },
+      "after": {
+        "branch": "elemental",
+        "row": 3,
+        "column": 3,
+        "requiredTreePoints": 10
+      }
+    },
+    {
+      "id": "shaman-562",
+      "name": "Call of Thunder",
+      "nodeId": 104762,
+      "before": {
+        "branch": "elemental",
+        "row": 3,
+        "column": 3,
+        "requiredTreePoints": 10
+      },
+      "after": {
+        "branch": "elemental",
+        "row": 4,
+        "column": 3,
+        "requiredTreePoints": 15
+      }
+    },
+    {
+      "id": "shaman-565",
+      "name": "Elemental Fury",
+      "nodeId": 104766,
+      "before": {
+        "branch": "elemental",
+        "row": 5,
+        "column": 2,
+        "requiredTreePoints": 20
+      },
+      "after": {
+        "branch": "elemental",
+        "row": 6,
+        "column": 3,
+        "requiredTreePoints": 25
+      }
+    },
+    {
+      "id": "shaman-572",
+      "name": "Earth's Grasp",
+      "nodeId": 104757,
+      "before": {
+        "branch": "elemental",
+        "row": 2,
+        "column": 1,
+        "requiredTreePoints": 5
+      },
+      "after": {
+        "branch": "enhancement",
+        "row": 1,
+        "column": 1,
+        "requiredTreePoints": 0
+      }
+    },
+    {
+      "id": "shaman-613",
+      "name": "Thundering Strikes",
+      "nodeId": 104753,
+      "before": {
+        "branch": "enhancement",
+        "row": 2,
+        "column": 2,
+        "requiredTreePoints": 5
+      },
+      "after": {
+        "branch": "enhancement",
+        "row": 1,
+        "column": 2,
+        "requiredTreePoints": 0
+      }
+    },
+    {
+      "id": "shaman-614",
+      "name": "Ancestral Knowledge",
+      "nodeId": 104756,
+      "before": {
+        "branch": "enhancement",
+        "row": 1,
+        "column": 2,
+        "requiredTreePoints": 0
+      },
+      "after": {
+        "branch": "enhancement",
+        "row": 1,
+        "column": 3,
+        "requiredTreePoints": 0
+      }
+    },
+    {
+      "id": "shaman-611",
+      "name": "Elemental Weapons",
+      "nodeId": 104750,
+      "before": {
+        "branch": "enhancement",
+        "row": 5,
+        "column": 2,
+        "requiredTreePoints": 20
+      },
+      "after": {
+        "branch": "enhancement",
+        "row": 3,
+        "column": 1,
+        "requiredTreePoints": 10
+      }
+    },
+    {
+      "id": "shaman-615",
+      "name": "Toughness",
+      "nodeId": 104746,
+      "before": {
+        "branch": "enhancement",
+        "row": 4,
+        "column": 3,
+        "requiredTreePoints": 15
+      },
+      "after": {
+        "branch": "enhancement",
+        "row": 4,
+        "column": 1,
+        "requiredTreePoints": 15
+      }
+    },
+    {
+      "id": "shaman-901",
+      "name": "Stormstrike",
+      "nodeId": 104743,
+      "before": {
+        "branch": "enhancement",
+        "row": 7,
+        "column": 2,
+        "requiredTreePoints": 30
+      },
+      "after": {
+        "branch": "enhancement",
+        "row": 4,
+        "column": 3,
+        "requiredTreePoints": 15
+      }
+    },
+    {
+      "id": "shaman-616",
+      "name": "Spirit Weapons",
+      "nodeId": 104745,
+      "before": {
+        "branch": "enhancement",
+        "row": 5,
+        "column": 3,
+        "requiredTreePoints": 20
+      },
+      "after": {
+        "branch": "enhancement",
+        "row": 5,
+        "column": 1,
+        "requiredTreePoints": 20
+      }
+    },
+    {
+      "id": "shaman-595",
+      "name": "Totemic Focus",
+      "nodeId": 104729,
+      "before": {
+        "branch": "restoration",
+        "row": 2,
+        "column": 3,
+        "requiredTreePoints": 5
+      },
+      "after": {
+        "branch": "restoration",
+        "row": 1,
+        "column": 3,
+        "requiredTreePoints": 0
+      }
+    },
+    {
+      "id": "shaman-1646",
+      "name": "Natural Grace",
+      "nodeId": 104736,
+      "before": {
+        "branch": "restoration",
+        "row": 3,
+        "column": 4,
+        "requiredTreePoints": 10
+      },
+      "after": {
+        "branch": "restoration",
+        "row": 2,
+        "column": 2,
+        "requiredTreePoints": 5
+      }
+    },
+    {
+      "id": "shaman-593",
+      "name": "Tidal Focus",
+      "nodeId": 104735,
+      "before": {
+        "branch": "restoration",
+        "row": 1,
+        "column": 3,
+        "requiredTreePoints": 0
+      },
+      "after": {
+        "branch": "restoration",
+        "row": 2,
+        "column": 3,
+        "requiredTreePoints": 5
+      }
+    },
+    {
+      "id": "shaman-589",
+      "name": "Improved Reincarnation",
+      "nodeId": 104737,
+      "before": {
+        "branch": "restoration",
+        "row": 2,
+        "column": 1,
+        "requiredTreePoints": 5
+      },
+      "after": {
+        "branch": "restoration",
+        "row": 2,
+        "column": 4,
+        "requiredTreePoints": 5
+      }
+    },
+    {
+      "id": "shaman-581",
+      "name": "Ancestral Healing",
+      "nodeId": 104731,
+      "before": {
+        "branch": "restoration",
+        "row": 2,
+        "column": 2,
+        "requiredTreePoints": 5
+      },
+      "after": {
+        "branch": "restoration",
+        "row": 3,
+        "column": 1,
+        "requiredTreePoints": 10
+      }
+    },
+    {
+      "id": "shaman-594",
+      "name": "Tidal Mastery",
+      "nodeId": 104738,
+      "before": {
+        "branch": "restoration",
+        "row": 4,
+        "column": 3,
+        "requiredTreePoints": 15
+      },
+      "after": {
+        "branch": "restoration",
+        "row": 4,
+        "column": 1,
+        "requiredTreePoints": 15
+      }
+    },
+    {
+      "id": "shaman-590",
+      "name": "Mana Tide Totem",
+      "nodeId": 104728,
+      "before": {
+        "branch": "restoration",
+        "row": 7,
+        "column": 2,
+        "requiredTreePoints": 30
+      },
+      "after": {
+        "branch": "restoration",
+        "row": 4,
+        "column": 3,
+        "requiredTreePoints": 15
+      }
+    },
+    {
+      "id": "shaman-1648",
+      "name": "Healing Way",
+      "nodeId": 104727,
+      "before": {
+        "branch": "restoration",
+        "row": 5,
+        "column": 1,
+        "requiredTreePoints": 20
+      },
+      "after": {
+        "branch": "restoration",
+        "row": 5,
+        "column": 2,
+        "requiredTreePoints": 20
+      }
+    }
+  ],
+  "rank_changed": [
+    {
+      "id": "shaman-721",
+      "name": "Elemental Alacrity",
+      "nodeId": 104765,
+      "before": 5,
+      "after": 3
+    },
+    {
+      "id": "shaman-562",
+      "name": "Call of Thunder",
+      "nodeId": 104762,
+      "before": 5,
+      "after": 1
+    },
+    {
+      "id": "shaman-565",
+      "name": "Elemental Fury",
+      "nodeId": 104766,
+      "before": 1,
+      "after": 5
+    },
+    {
+      "id": "shaman-601",
+      "name": "Anticipation",
+      "nodeId": 104748,
+      "before": 5,
+      "after": 3
+    },
+    {
+      "id": "shaman-587",
+      "name": "Healing Focus",
+      "nodeId": 104733,
+      "before": 5,
+      "after": 3
+    }
+  ],
+  "tooltip_changed": [
+    {
+      "id": "shaman-564",
+      "name": "Convection",
+      "nodeId": 104773,
+      "ranks": [
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Reduces the mana cost of your Shock, Lightning Bolt, Lava Burst, and Chain Lightning spells by 4%."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Reduces the mana cost of your Shock, Lightning Bolt, Lava Burst, and Chain Lightning spells by 6%."
+        },
+        {
+          "rank": 4,
+          "before": "",
+          "after": "Reduces the mana cost of your Shock, Lightning Bolt, Lava Burst, and Chain Lightning spells by 8%."
+        },
+        {
+          "rank": 5,
+          "before": "",
+          "after": "Reduces the mana cost of your Shock, Lightning Bolt, Lava Burst, and Chain Lightning spells by 10%."
+        }
+      ]
+    },
+    {
+      "id": "shaman-563",
+      "name": "Concussion",
+      "nodeId": 104772,
+      "ranks": [
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases the damage done by your Lightning Bolt, Chain Lightning, and Earth Shock spells by 2%."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Increases the damage done by your Lightning Bolt, Chain Lightning, and Earth Shock spells by 3%."
+        },
+        {
+          "rank": 4,
+          "before": "",
+          "after": "Increases the damage done by your Lightning Bolt, Chain Lightning, and Earth Shock spells by 4%."
+        },
+        {
+          "rank": 5,
+          "before": "",
+          "after": "Increases the damage done by your Lightning Bolt, Chain Lightning, and Earth Shock spells by 5%."
+        }
+      ]
+    },
+    {
+      "id": "shaman-1640",
+      "name": "Elemental Warding",
+      "nodeId": 104771,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Reduces damage taken from Fire, Frost, and Nature effects by 4%.",
+          "after": "Reduces damage taken from Fire, Frost, and Nature effects by 3%."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Reduces damage taken from Fire, Frost, and Nature effects by 7%."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Reduces damage taken from Fire, Frost, and Nature effects by 10%."
+        }
+      ]
+    },
+    {
+      "id": "shaman-575",
+      "name": "Reverberation",
+      "nodeId": 104767,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "",
+          "after": "Reduces the cooldown of your Shock spells by 0.2 sec."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Reduces the cooldown of your Shock spells by 0.4 sec."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Reduces the cooldown of your Shock spells by 0.6 sec."
+        },
+        {
+          "rank": 4,
+          "before": "",
+          "after": "Reduces the cooldown of your Shock spells by 0.8 sec."
+        },
+        {
+          "rank": 5,
+          "before": "",
+          "after": "Reduces the cooldown of your Shock spells by 1.0 sec."
+        }
+      ]
+    },
+    {
+      "id": "shaman-561",
+      "name": "Call of Flame",
+      "nodeId": 104770,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Increases the damage done by your Fire Totems and by your Flame Shock, Fire Nova, and Lava Burst spells by 15%.",
+          "after": "Increases the damage done by your Fire Totems and by your Flame Shock, Fire Nova, and Lava Burst spells by 5%."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases the damage done by your Fire Totems and by your Flame Shock, Fire Nova, and Lava Burst spells by 10%."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Increases the damage done by your Fire Totems and by your Flame Shock, Fire Nova, and Lava Burst spells by 15%."
+        }
+      ]
+    },
+    {
+      "id": "shaman-1645",
+      "name": "Elemental Devastation",
+      "nodeId": 104769,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "",
+          "after": "Your offensive spell critical strikes will increase your chance to get a critical strike with melee attacks by 3% for 10 sec."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Your offensive spell critical strikes will increase your chance to get a critical strike with melee attacks by 6% for 10 sec."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Your offensive spell critical strikes will increase your chance to get a critical strike with melee attacks by 9% for 10 sec."
+        }
+      ]
+    },
+    {
+      "id": "shaman-721",
+      "name": "Elemental Alacrity",
+      "nodeId": 104765,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "",
+          "after": "Reduces the cast time of your Lightning Bolt, Chain Lightning, and Lava Burst spells by 0.17 sec."
+        },
+        {
+          "rank": 2,
+          "before": "Reduces the cast time of your Lightning Bolt and Chain Lightning spells by 0.4 sec.",
+          "after": "Reduces the cast time of your Lightning Bolt, Chain Lightning, and Lava Burst spells by 0.33 sec."
+        },
+        {
+          "rank": 3,
+          "before": "Reduces the cast time of your Lightning Bolt and Chain Lightning spells by 0.6 sec.",
+          "after": "Reduces the cast time of your Lightning Bolt, Chain Lightning, and Lava Burst spells by 0.50 sec."
+        },
+        {
+          "rank": 4,
+          "before": "Reduces the cast time of your Lightning Bolt and Chain Lightning spells by 0.8 sec.",
+          "after": ""
+        },
+        {
+          "rank": 5,
+          "before": "Reduces the cast time of your Lightning Bolt and Chain Lightning spells by 1 sec.",
+          "after": ""
+        }
+      ]
+    },
+    {
+      "id": "shaman-567",
+      "name": "Improved Fire Nova",
+      "nodeId": 104764,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Increases the damage done by your Fire Nova spell by 20% and reduces its cooldown by 2 sec.",
+          "after": "Increases the damage done by your Fire Nova spell by 10% and reduces its cooldown by 2 sec."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases the damage done by your Fire Nova spell by 20% and reduces its cooldown by 4 sec."
+        }
+      ]
+    },
+    {
+      "id": "shaman-1642",
+      "name": "Eye of the Storm",
+      "nodeId": 104763,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Reduces the pushback suffered from damaging attacks while casting Lightning Bolt, Chain Lightning, and Lava Burst by 70%.",
+          "after": "Reduces the pushback suffered from damaging attacks while casting Lightning Bolt, Chain Lightning, and Lava Burst by 23%."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Reduces the pushback suffered from damaging attacks while casting Lightning Bolt, Chain Lightning, and Lava Burst by 47%."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Reduces the pushback suffered from damaging attacks while casting Lightning Bolt, Chain Lightning, and Lava Burst by 70%."
+        }
+      ]
+    },
+    {
+      "id": "shaman-562",
+      "name": "Call of Thunder",
+      "nodeId": 104762,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "",
+          "after": "Increases the critical strike chance of your Lightning Bolt and Chain Lightning spells by 3%."
+        },
+        {
+          "rank": 5,
+          "before": "Increases the critical strike chance of your Lightning Bolt and Chain Lightning spells by 3%.",
+          "after": ""
+        }
+      ]
+    },
+    {
+      "id": "shaman-1641",
+      "name": "Elemental Reach",
+      "nodeId": 104761,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Increases the range of your Lightning Bolt, Chain Lightning, Fire Nova, and Lava Burst spells by 6 yards, and increases the range of your Flame Shock spell by 15 yards.",
+          "after": "Increases the range of your Lightning Bolt, Chain Lightning, Fire Nova, and Lava Burst spells by 3 yards, and increases the range of your Flame Shock spell by 8 yards."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases the range of your Lightning Bolt, Chain Lightning, Fire Nova, and Lava Burst spells by 6 yards, and increases the range of your Flame Shock spell by 15 yards."
+        }
+      ]
+    },
+    {
+      "id": "shaman-565",
+      "name": "Elemental Fury",
+      "nodeId": 104766,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Increases the critical strike damage bonus of your Searing and Magma Totems and your Fire, Frost, and Nature spells by 100%.",
+          "after": "Increases the critical strike damage bonus of your Searing and Magma Totems and your Fire, Frost, and Nature spells by 20%."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases the critical strike damage bonus of your Searing and Magma Totems and your Fire, Frost, and Nature spells by 40%."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Increases the critical strike damage bonus of your Searing and Magma Totems and your Fire, Frost, and Nature spells by 60%."
+        },
+        {
+          "rank": 4,
+          "before": "",
+          "after": "Increases the critical strike damage bonus of your Searing and Magma Totems and your Fire, Frost, and Nature spells by 80%."
+        },
+        {
+          "rank": 5,
+          "before": "",
+          "after": "Increases the critical strike damage bonus of your Searing and Magma Totems and your Fire, Frost, and Nature spells by 100%."
+        }
+      ]
+    },
+    {
+      "id": "shaman-572",
+      "name": "Earth's Grasp",
+      "nodeId": 104757,
+      "ranks": [
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases the health of your Stoneclaw Totem by 50% and the radius of your Earthbind Totem by 20%."
+        }
+      ]
+    },
+    {
+      "id": "shaman-613",
+      "name": "Thundering Strikes",
+      "nodeId": 104753,
+      "ranks": [
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Improves your chance to get a critical strike with all spells and attacks by 2%."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Improves your chance to get a critical strike with all spells and attacks by 3%."
+        },
+        {
+          "rank": 4,
+          "before": "",
+          "after": "Improves your chance to get a critical strike with all spells and attacks by 4%."
+        },
+        {
+          "rank": 5,
+          "before": "",
+          "after": "Improves your chance to get a critical strike with all spells and attacks by 5%."
+        }
+      ]
+    },
+    {
+      "id": "shaman-614",
+      "name": "Ancestral Knowledge",
+      "nodeId": 104756,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Increases your Intellect by 10%.",
+          "after": "Increases your Intellect by 2%."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases your Intellect by 4%."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Increases your Intellect by 6%."
+        },
+        {
+          "rank": 4,
+          "before": "",
+          "after": "Increases your Intellect by 8%."
+        },
+        {
+          "rank": 5,
+          "before": "",
+          "after": "Increases your Intellect by 10%."
+        }
+      ]
+    },
+    {
+      "id": "shaman-609",
+      "name": "Guardian Totems",
+      "nodeId": 104754,
+      "ranks": [
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases the amount of damage reduced by your Stoneskin Totem and Windwall Totem by 20% and reduces the cooldown of your Grounding Totem by 2 sec."
+        }
+      ]
+    },
+    {
+      "id": "shaman-605",
+      "name": "Improved Ghost Wolf",
+      "nodeId": 104752,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Reduces the cast time of your Ghost Wolf spell by 3.1 sec, and Ghost Wolf may be used indoors.",
+          "after": "Reduces the cast time of your Ghost Wolf spell by 1.0 sec, and Ghost Wolf may be used indoors."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Reduces the cast time of your Ghost Wolf spell by 3.0 sec, and Ghost Wolf may be used indoors."
+        }
+      ]
+    },
+    {
+      "id": "shaman-607",
+      "name": "Improved Lightning Shield",
+      "nodeId": 104751,
+      "ranks": [
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases the damage done by your Lightning Shield orbs by 10%."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Increases the damage done by your Lightning Shield orbs by 15%."
+        }
+      ]
+    },
+    {
+      "id": "shaman-611",
+      "name": "Elemental Weapons",
+      "nodeId": 104750,
+      "ranks": [
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases the melee attack power bonus of your Rockbiter Weapon by 13%, your Windfury Weapon effect by 27% and increases the damage caused by your Flametongue Weapon and Frostbrand Weapon by 10%."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Increases the melee attack power bonus of your Rockbiter Weapon by 20%, your Windfury Weapon effect by 40% and increases the damage caused by your Flametongue Weapon and Frostbrand Weapon by 15%."
+        }
+      ]
+    },
+    {
+      "id": "shaman-601",
+      "name": "Anticipation",
+      "nodeId": 104748,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Increases your chance to dodge by an additional 1%.",
+          "after": "Increases your chance to dodge by an additional 2%."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases your chance to dodge by an additional 4%."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Increases your chance to dodge by an additional 6%."
+        }
+      ]
+    },
+    {
+      "id": "shaman-615",
+      "name": "Toughness",
+      "nodeId": 104746,
+      "ranks": [
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases your Stamina by 4%."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Increases your Stamina by 6%."
+        },
+        {
+          "rank": 4,
+          "before": "",
+          "after": "Increases your Stamina by 8%."
+        },
+        {
+          "rank": 5,
+          "before": "",
+          "after": "Increases your Stamina by 10%."
+        }
+      ]
+    },
+    {
+      "id": "shaman-602",
+      "name": "Flurry",
+      "nodeId": 104747,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "",
+          "after": "Increases your attack speed by 5% for your next 3 swings after dealing a melee critical strike."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases your attack speed by 10% for your next 3 swings after dealing a melee critical strike."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Increases your attack speed by 15% for your next 3 swings after dealing a melee critical strike."
+        },
+        {
+          "rank": 4,
+          "before": "",
+          "after": "Increases your attack speed by 20% for your next 3 swings after dealing a melee critical strike."
+        },
+        {
+          "rank": 5,
+          "before": "",
+          "after": "Increases your attack speed by 25% for your next 3 swings after dealing a melee critical strike."
+        }
+      ]
+    },
+    {
+      "id": "shaman-586",
+      "name": "Improved Healing Wave",
+      "nodeId": 104739,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "",
+          "after": "Reduces the casting time of your Healing Wave spell by 0.1 sec."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Reduces the casting time of your Healing Wave spell by 0.2 sec."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Reduces the casting time of your Healing Wave spell by 0.3 sec."
+        },
+        {
+          "rank": 4,
+          "before": "",
+          "after": "Reduces the casting time of your Healing Wave spell by 0.4 sec."
+        },
+        {
+          "rank": 5,
+          "before": "",
+          "after": "Reduces the casting time of your Healing Wave spell by 0.5 sec."
+        }
+      ]
+    },
+    {
+      "id": "shaman-595",
+      "name": "Totemic Focus",
+      "nodeId": 104729,
+      "ranks": [
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Reduces the Mana cost of your totems and any spells that summon or move them by 10%."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Reduces the Mana cost of your totems and any spells that summon or move them by 15%."
+        },
+        {
+          "rank": 4,
+          "before": "",
+          "after": "Reduces the Mana cost of your totems and any spells that summon or move them by 20%."
+        },
+        {
+          "rank": 5,
+          "before": "",
+          "after": "Reduces the Mana cost of your totems and any spells that summon or move them by 25%."
+        }
+      ]
+    },
+    {
+      "id": "shaman-1646",
+      "name": "Natural Grace",
+      "nodeId": 104736,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Reduces the threat generated by your spells by 30%.",
+          "after": "Reduces the threat generated by your spells by 5%."
+        },
+        {
+          "rank": 2,
+          "before": "Reduces the threat generated by your healing spells by 10%.",
+          "after": "Reduces the threat generated by your spells by 10%."
+        },
+        {
+          "rank": 3,
+          "before": "Reduces the threat generated by your healing spells by 15%.",
+          "after": "Reduces the threat generated by your spells by 15%."
+        }
+      ]
+    },
+    {
+      "id": "shaman-593",
+      "name": "Tidal Focus",
+      "nodeId": 104735,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Reduces the Mana cost of your healing spells by 5% and improves your chance to hit by 5%.",
+          "after": "Reduces the Mana cost of your healing spells by 1% and improves your chance to hit by 1%."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Reduces the Mana cost of your healing spells by 2% and improves your chance to hit by 2%."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Reduces the Mana cost of your healing spells by 3% and improves your chance to hit by 3%."
+        },
+        {
+          "rank": 4,
+          "before": "",
+          "after": "Reduces the Mana cost of your healing spells by 4% and improves your chance to hit by 4%."
+        },
+        {
+          "rank": 5,
+          "before": "",
+          "after": "Reduces the Mana cost of your healing spells by 5% and improves your chance to hit by 5%."
+        }
+      ]
+    },
+    {
+      "id": "shaman-589",
+      "name": "Improved Reincarnation",
+      "nodeId": 104737,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Reduces the cooldown of your Reincarnation spell by 10 min, increases your maximum health by 4%, and increases the amount of health and Mana you reincarnate with by an additional 10%.",
+          "after": "Reduces the cooldown of your Reincarnation spell by 10 min, increases your maximum health by 2%, and increases the amount of health and Mana you reincarnate with by an additional 10%."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Reduces the cooldown of your Reincarnation spell by 20 min, increases your maximum health by 4%, and increases the amount of health and Mana you reincarnate with by an additional 20%."
+        }
+      ]
+    },
+    {
+      "id": "shaman-581",
+      "name": "Ancestral Healing",
+      "nodeId": 104731,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "",
+          "after": "Increases your target's armor value by 8% for 15 sec after getting a critical effect from one of your healing spells."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases your target's armor value by 17% for 15 sec after getting a critical effect from one of your healing spells."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Increases your target's armor value by 25% for 15 sec after getting a critical effect from one of your healing spells."
+        }
+      ]
+    },
+    {
+      "id": "shaman-587",
+      "name": "Healing Focus",
+      "nodeId": 104733,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Gives you a 70% chance to avoid interruption caused by damage while casting any healing spell.",
+          "after": "Gives you a 23% chance to avoid interruption caused by damage while casting any healing spell."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Gives you a 47% chance to avoid interruption caused by damage while casting any healing spell."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Gives you a 70% chance to avoid interruption caused by damage while casting any healing spell."
+        }
+      ]
+    },
+    {
+      "id": "shaman-594",
+      "name": "Tidal Mastery",
+      "nodeId": 104738,
+      "ranks": [
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases the critical effect chance of your healing spells by 2%."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Increases the critical effect chance of your healing spells by 3%."
+        },
+        {
+          "rank": 4,
+          "before": "",
+          "after": "Increases the critical effect chance of your healing spells by 4%."
+        },
+        {
+          "rank": 5,
+          "before": "",
+          "after": "Increases the critical effect chance of your healing spells by 5%."
+        }
+      ]
+    },
+    {
+      "id": "shaman-588",
+      "name": "Restorative Totems",
+      "nodeId": 104730,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Increases the effect of your Mana Spring Totem by 5% and increases the effect of your Healing Stream Totem by 5%.",
+          "after": "Increases the effect of your Mana Spring Totem by 5% and increases the effect of your Healing Stream Totem by 10%."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases the effect of your Mana Spring Totem by 10% and increases the effect of your Healing Stream Totem by 20%."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Increases the effect of your Mana Spring Totem by 15% and increases the effect of your Healing Stream Totem by 30%."
+        },
+        {
+          "rank": 4,
+          "before": "",
+          "after": "Increases the effect of your Mana Spring Totem by 20% and increases the effect of your Healing Stream Totem by 40%."
+        },
+        {
+          "rank": 5,
+          "before": "",
+          "after": "Increases the effect of your Mana Spring Totem by 25% and increases the effect of your Healing Stream Totem by 50%."
+        }
+      ]
+    },
+    {
+      "id": "shaman-590",
+      "name": "Mana Tide Totem",
+      "nodeId": 104728,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Summons a Mana Tide Totem with 5 health at the feet of the caster for sec that restores 88 mana every 3 seconds to group members within 30 yards.",
+          "after": "Summons a Mana Tide Totem with 5 health at the feet of the caster for 12 sec that restores 88 mana every 3 seconds to group members within 30 yards."
+        }
+      ]
+    },
+    {
+      "id": "shaman-1648",
+      "name": "Healing Way",
+      "nodeId": 104727,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Increases the amount healed by your Healing Wave spell by 33%.",
+          "after": "Increases the amount healed by your Healing Wave spell by 8%."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases the amount healed by your Healing Wave spell by 17%."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Increases the amount healed by your Healing Wave spell by 25%."
+        }
+      ]
+    },
+    {
+      "id": "shaman-592",
+      "name": "Purification",
+      "nodeId": 104725,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Increases the effectiveness of your healing spells by 10%.",
+          "after": "Increases the effectiveness of your healing spells by 2%."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases the effectiveness of your healing spells by 4%."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Increases the effectiveness of your healing spells by 6%."
+        },
+        {
+          "rank": 4,
+          "before": "",
+          "after": "Increases the effectiveness of your healing spells by 8%."
+        },
+        {
+          "rank": 5,
+          "before": "",
+          "after": "Increases the effectiveness of your healing spells by 10%."
+        }
+      ]
+    }
+  ],
+  "prerequisite_changed": [
+    {
+      "id": "shaman-721",
+      "name": "Elemental Alacrity",
+      "nodeId": 104765,
+      "before": [
+        "shaman-562"
+      ],
+      "after": []
+    },
+    {
+      "id": "shaman-562",
+      "name": "Call of Thunder",
+      "nodeId": 104762,
+      "before": [],
+      "after": [
+        "shaman-721"
+      ]
+    },
+    {
+      "id": "shaman-565",
+      "name": "Elemental Fury",
+      "nodeId": 104766,
+      "before": [],
+      "after": [
+        "shaman-562"
+      ]
+    },
+    {
+      "id": "shaman-602",
+      "name": "Flurry",
+      "nodeId": 104747,
+      "before": [
+        "shaman-613"
+      ],
+      "after": [
+        "shaman-enhancement-mental-dexterity"
+      ]
+    },
+    {
+      "id": "shaman-901",
+      "name": "Stormstrike",
+      "nodeId": 104743,
+      "before": [
+        "shaman-611"
+      ],
+      "after": []
+    },
+    {
+      "id": "shaman-590",
+      "name": "Mana Tide Totem",
+      "nodeId": 104728,
+      "before": [
+        "shaman-588"
+      ],
+      "after": []
+    }
+  ],
+  "unchanged": [
+    {
+      "id": "shaman-591",
+      "name": "Nature's Swiftness",
+      "nodeId": 104726
+    }
+  ]
+}

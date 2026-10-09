@@ -6,11 +6,16 @@ export const CURRENT_CLASS_CLIENT_TABLES = [
 ] as const
 export type CurrentClassClientTable = typeof CURRENT_CLASS_CLIENT_TABLES[number]
 export type CurrentClassTables = Record<CurrentClassClientTable, string>
-export type CurrentClassId = 'hunter' | 'warrior'
+export type CurrentClassId = 'hunter' | 'warrior' | 'rogue' | 'priest' | 'druid' | 'warlock' | 'shaman'
 type Row = Record<string, string>
 export const CURRENT_CLASS_CONFIGS = {
   hunter: { name: 'Hunter', skillLineId: 50, branches: ['beast-mastery', 'marksmanship', 'survival'] },
   warrior: { name: 'Warrior', skillLineId: 26, branches: ['arms', 'fury', 'protection'] },
+  rogue: { name: 'Rogue', skillLineId: 38, branches: ['assassination', 'combat', 'subtlety'] },
+  priest: { name: 'Priest', skillLineId: 613, branches: ['discipline', 'holy', 'shadow'] },
+  druid: { name: 'Druid', skillLineId: 574, branches: ['balance', 'feral', 'restoration'] },
+  warlock: { name: 'Warlock', skillLineId: 354, branches: ['affliction', 'demonology', 'destruction'] },
+  shaman: { name: 'Shaman', skillLineId: 373, branches: ['elemental', 'enhancement', 'restoration'] },
 } as const
 interface LegacyTalent {
   id: string; name: string; branch: string; maxRank: number; row: number; column: number
@@ -18,7 +23,7 @@ interface LegacyTalent {
   nodeId?: number; spellId?: number; sourceTalentId?: number
 }
 export interface CurrentClassTalentRecord extends LegacyTalent {
-  nodeId: number; spellId: number; description: string; rankDescriptions: string[]
+  nodeId: number; spellId: number; rawPosX?: number; rawPosY?: number; description: string; rankDescriptions: string[]
   prerequisite: string[]; x: number; y: number; iconName: string; icon: string
   sourceClientBuild: string; verifiedThroughBuild: string; rankTextVerification: 'community_verified'
   verificationStatus: 'client_verified'; prerequisiteRuleStatus: 'derived_assumption' | 'not_applicable'
@@ -38,6 +43,8 @@ export interface CurrentClassSnapshot {
   rawClientNodeCount: number; quarantinedClientNodes: ReviewedClientQuarantine[]
   activeMembershipVerification: 'client_verified' | 'community_verified'
   quarantinedClientEdges: ReviewedClientEdgeQuarantine[]
+  reviewedGridPositions?: ReviewedClientGridPosition[]
+  reviewedEdgeInterpretations?: ReviewedClientEdgeInterpretation[]
 }
 interface ResolvedTalent {
   name: string; max: number; row: number; col: number; desc: string[]
@@ -50,7 +57,7 @@ interface ResolvedExport {
 }
 export interface ReviewedIdentityMapping {
   currentName: string; currentBranch: string; previousId: string; expectedSpellId: number
-  expectedPreviousSpellId?: number
+  expectedPreviousSpellId?: number; reason?: string; sourceUrl?: string
 }
 export interface ReviewedClientQuarantine {
   nodeId: number; name: string; spellId: number; posX: number; posY: number
@@ -59,10 +66,18 @@ export interface ReviewedClientQuarantine {
 export interface ReviewedClientEdgeQuarantine {
   edgeId: number; leftNodeId: number; rightNodeId: number; reason: string; sourceUrl: string
 }
+export interface ReviewedClientGridPosition {
+  nodeId: number; name: string; spellId: number; posX: number; posY: number
+  branch: string; row: number; column: number; reason: string; sourceUrl: string
+}
+export interface ReviewedClientEdgeInterpretation {
+  edgeId: number; leftNodeId: number; rightNodeId: number; type: number
+  prerequisite: boolean; reason: string; sourceUrl: string
+}
 export interface CurrentClassReconcileInput {
   classId: CurrentClassId; build: string; tables: CurrentClassTables
   baseline: { classId: string; clientBuild: string; branches: readonly string[]; talents: LegacyTalent[] }
-  resolved: ResolvedExport; reviewedIdentityMappings?: ReviewedIdentityMapping[]; reviewedQuarantines?: ReviewedClientQuarantine[]; reviewedEdgeQuarantines?: ReviewedClientEdgeQuarantine[]
+  resolved: ResolvedExport; reviewedIdentityMappings?: ReviewedIdentityMapping[]; reviewedQuarantines?: ReviewedClientQuarantine[]; reviewedEdgeQuarantines?: ReviewedClientEdgeQuarantine[]; reviewedGridPositions?: ReviewedClientGridPosition[]; reviewedEdgeInterpretations?: ReviewedClientEdgeInterpretation[]
 }
 type Identity = { id: string; name: string; nodeId?: number }
 export interface CurrentClassDiff {
@@ -101,8 +116,8 @@ function decodeGrid(x: number, y: number, branches: readonly string[]) {
   }
   return { branch: branches[branchIndex], row, column }
 }
-interface ClientRecord { nodeId: number; spellId: number; name: string; branch: string; row: number; column: number; maxRank: number; prerequisiteNodes: number[]; linkVerification: 'client_verified' | 'community_verified' }
-export function readCurrentClassClientStructure(classId: CurrentClassId, tables: CurrentClassTables, reviewedQuarantines: readonly ReviewedClientQuarantine[] = [], reviewedEdgeQuarantines: readonly ReviewedClientEdgeQuarantine[] = []) {
+interface ClientRecord { rawPosX: number; rawPosY: number; gridVerification: 'client_verified' | 'community_verified'; nodeId: number; spellId: number; name: string; branch: string; row: number; column: number; maxRank: number; prerequisiteNodes: number[]; linkVerification: 'client_verified' | 'community_verified' }
+export function readCurrentClassClientStructure(classId: CurrentClassId, tables: CurrentClassTables, reviewedQuarantines: readonly ReviewedClientQuarantine[] = [], reviewedEdgeQuarantines: readonly ReviewedClientEdgeQuarantine[] = [], reviewedGridPositions: readonly ReviewedClientGridPosition[] = [], reviewedEdgeInterpretations: readonly ReviewedClientEdgeInterpretation[] = []) {
   const config = CURRENT_CLASS_CONFIGS[classId]
   if (!config) throw new Error('Unsupported class')
   const csv = Object.fromEntries(CURRENT_CLASS_CLIENT_TABLES.map(table => [table, parseClientCsv(tables[table])])) as Record<CurrentClassClientTable, Row[]>
@@ -126,6 +141,9 @@ export function readCurrentClassClientStructure(classId: CurrentClassId, tables:
   const edgeQuarantines=new Map(reviewedEdgeQuarantines.map(edge=>[edge.edgeId,edge]))
   if(edgeQuarantines.size!==reviewedEdgeQuarantines.length) throw new Error('Duplicate reviewed edge quarantine')
   const consumedEdgeQuarantines=new Set<number>(), reconciledLinks=new Set<number>()
+  const edgeInterpretations = new Map(reviewedEdgeInterpretations.map(edge => [edge.edgeId, edge]))
+  if (edgeInterpretations.size !== reviewedEdgeInterpretations.length || reviewedEdgeInterpretations.some(edge => edgeQuarantines.has(edge.edgeId))) throw new Error('Duplicate/conflicting reviewed edge interpretation')
+  const consumedEdgeInterpretations = new Set<number>()
   const arrows = new Map<number, number[]>()
   for (const edge of csv.TraitEdge) {
     const left = integer(edge.LeftTraitNodeID, 'LeftTraitNodeID'), right = integer(edge.RightTraitNodeID, 'RightTraitNodeID')
@@ -135,15 +153,24 @@ export function readCurrentClassClientStructure(classId: CurrentClassId, tables:
       if (!csv.TraitEdge.some(other=>other.LeftTraitNodeID===edge.RightTraitNodeID && other.RightTraitNodeID===edge.LeftTraitNodeID && other.Type==='2')) throw new Error('Reviewed edge is not a reciprocal cycle '+edgeId)
       consumedEdgeQuarantines.add(edgeId); reconciledLinks.add(right); continue
     }
+    const interpretation = edgeInterpretations.get(edgeId)
+    if (interpretation) {
+      if (interpretation.leftNodeId !== left || interpretation.rightNodeId !== right || interpretation.type !== integer(edge.Type, 'TraitEdge.Type') || interpretation.type === 2 || !active.has(left) || !active.has(right) || typeof interpretation.prerequisite !== 'boolean' || !interpretation.reason.trim() || !interpretation.sourceUrl.startsWith('https://')) throw new Error('Edge interpretation identity mismatch ' + edgeId)
+      consumedEdgeInterpretations.add(edgeId); reconciledLinks.add(left); reconciledLinks.add(right)
+      if (!interpretation.prerequisite) continue
+    }
     if (!active.has(left) && !active.has(right)) continue
-    if (!active.has(left) || !active.has(right) || edge.Type !== '2') throw new Error('Unreviewed client edge ' + edge.ID)
+    if (!active.has(left) || !active.has(right) || (edge.Type !== '2' && !interpretation)) throw new Error('Unreviewed client edge ' + edge.ID)
     const parents = arrows.get(right) ?? []
     if (parents.includes(left)) throw new Error('Duplicate client edge ' + edge.ID)
     arrows.set(right, [...parents, left])
   }
+  if (consumedEdgeInterpretations.size !== edgeInterpretations.size) throw new Error('Reviewed edge interpretation absent from client')
   if (consumedEdgeQuarantines.size!==edgeQuarantines.size) throw new Error('Reviewed edge quarantine absent from client')
   const quarantines = new Map(reviewedQuarantines.map(item => [item.nodeId, item]))
   if (quarantines.size !== reviewedQuarantines.length || reviewedQuarantines.some(item => !active.has(item.nodeId) || !active.has(item.replacementNodeId) || !item.reason.trim() || !item.sourceUrl.startsWith('https://'))) throw new Error('Invalid reviewed quarantine reference')
+  const gridReviews = new Map(reviewedGridPositions.map(item => [item.nodeId, item]))
+  if (gridReviews.size !== reviewedGridPositions.length || reviewedGridPositions.some(item => !active.has(item.nodeId) || quarantines.has(item.nodeId) || !item.reason.trim() || !item.sourceUrl.startsWith('https://') || !(config.branches as readonly string[]).includes(item.branch) || !Number.isInteger(item.row) || !Number.isInteger(item.column) || item.row < 1 || item.row > 7 || item.column < 1 || item.column > 4)) throw new Error('Invalid reviewed grid reference')
   const records: ClientRecord[] = nodes.flatMap(node => {
     const nodeId = integer(node.ID, 'TraitNode.ID')
     if (node.Type !== '0' || node.TraitSubTreeID !== '0') throw new Error('Unsupported client node ' + nodeId)
@@ -164,9 +191,18 @@ export function readCurrentClassClientStructure(classId: CurrentClassId, tables:
       try { decodeGrid(posX,posY,config.branches) } catch { return [] }
       throw new Error('Quarantine must be an independently reviewed off-grid remnant '+nodeId)
     }
-    return [{ nodeId, spellId, name, maxRank, ...decodeGrid(posX, posY, config.branches), prerequisiteNodes: (arrows.get(nodeId) ?? []).sort((a,b) => a-b), linkVerification:reconciledLinks.has(nodeId)?'community_verified' as const:'client_verified' as const }]
+    const reviewedGrid = gridReviews.get(nodeId)
+    let grid: { branch: string; row: number; column: number }
+    if (reviewedGrid) {
+      if (reviewedGrid.name !== name || reviewedGrid.spellId !== spellId || reviewedGrid.posX !== posX || reviewedGrid.posY !== posY) throw new Error('Grid review identity mismatch ' + nodeId)
+      let exactGrid = false
+      try { decodeGrid(posX, posY, config.branches); exactGrid = true } catch { /* Exact reviewed exceptions retain malformed raw coordinates. */ }
+      if (exactGrid) throw new Error('Grid review must target a malformed raw position ' + nodeId)
+      grid = { branch: reviewedGrid.branch, row: reviewedGrid.row, column: reviewedGrid.column }
+    } else grid = decodeGrid(posX, posY, config.branches)
+    return [{ nodeId, spellId, rawPosX: posX, rawPosY: posY, name, maxRank, ...grid, gridVerification: reviewedGrid ? 'community_verified' as const : 'client_verified' as const, prerequisiteNodes: (arrows.get(nodeId) ?? []).sort((a,b) => a-b), linkVerification:reconciledLinks.has(nodeId)?'community_verified' as const:'client_verified' as const }]
   }).sort((a,b) => config.branches.indexOf(a.branch as never) - config.branches.indexOf(b.branch as never) || a.row-b.row || a.column-b.column)
-  return { treeId, skillLineId: config.skillLineId, records, rawClientNodeCount:nodes.length, quarantinedClientNodes:[...reviewedQuarantines],quarantinedClientEdges:[...reviewedEdgeQuarantines] }
+  return { treeId, skillLineId: config.skillLineId, records, rawClientNodeCount:nodes.length, quarantinedClientNodes:[...reviewedQuarantines],quarantinedClientEdges:[...reviewedEdgeQuarantines],reviewedGridPositions:[...reviewedGridPositions],reviewedEdgeInterpretations:[...reviewedEdgeInterpretations] }
 }
 const identity = (talent: LegacyTalent): Identity => ({ id: talent.id, name: talent.name, nodeId: talent.nodeId })
 const oldPrerequisites = (talent: LegacyTalent): string[] => (talent.prerequisite ?? []).map(prior => typeof prior === 'string' ? prior : (prior as { talentId: string }).talentId).sort()
@@ -196,10 +232,11 @@ export function reconcileCurrentClassClient(input: CurrentClassReconcileInput): 
   if (input.resolved.license!=='CC-BY-4.0' || !input.resolved.attribution.includes('talentsforever.com')) throw new Error('Resolved export lacks reviewed license/attribution')
   const config = CURRENT_CLASS_CONFIGS[input.classId], resolved = input.resolved.talents[config.name]
   if (!resolved?.source.includes('beta client') || resolved.source.match(/1\.60\.1\.\d+/)?.[0]!==input.build) throw new Error('Resolved source build mismatch')
-  const structure = readCurrentClassClientStructure(input.classId,input.tables,input.reviewedQuarantines,input.reviewedEdgeQuarantines)
+  const structure = readCurrentClassClientStructure(input.classId,input.tables,input.reviewedQuarantines,input.reviewedEdgeQuarantines,input.reviewedGridPositions,input.reviewedEdgeInterpretations)
   const rankRecords = new Map<string, ResolvedTalent>()
   for (const tree of resolved.trees) {
-    const branch = tree.name.toLowerCase().replaceAll(' ','-')
+    const sourceBranch = tree.name.toLowerCase().replaceAll(' ','-')
+    const branch = input.classId === 'druid' && sourceBranch === 'feral-combat' ? 'feral' : sourceBranch
     if (!(config.branches as readonly string[]).includes(branch)) throw new Error('Unrecognized resolved branch ' + branch)
     for (const talent of tree.talents) {
       const key = branch + ':' + talent.row + ':' + talent.col
@@ -240,14 +277,14 @@ export function reconcileCurrentClassClient(input: CurrentClassReconcileInput): 
     const changeStatus=tooltip.classic?.status==='new'?'new':tooltip.classic?.status==='same'?'same':tooltip.classic?.status?'changed':'unknown'
     return {
       id,name:record.name,branch:record.branch,row:record.row,column:record.column,maxRank:record.maxRank,
-      nodeId:record.nodeId,spellId:record.spellId,...(old?.sourceTalentId===undefined?{}:{sourceTalentId:old.sourceTalentId}),
+      nodeId:record.nodeId,spellId:record.spellId,rawPosX:record.rawPosX,rawPosY:record.rawPosY,...(old?.sourceTalentId===undefined?{}:{sourceTalentId:old.sourceTalentId}),
       requiredTreePoints:(record.row-1)*5,prerequisite:[],rankDescriptions:[...tooltip.desc],description:tooltip.desc[record.maxRank-1],
       x:((record.column-0.5)/4)*100,y:((record.row-0.5)/7)*100,iconName:tooltip.icon,
       icon:'/images/'+(input.classId==='warrior'?'warrior-talents':'class-talents')+'/'+tooltip.icon+'.jpg',
       sourceClientBuild:input.build,verifiedThroughBuild:input.build,verificationStatus:'client_verified',rankTextVerification:'community_verified',
       prerequisiteRuleStatus:record.prerequisiteNodes.length?'derived_assumption':'not_applicable',changeStatus,complete:true,confirmedRanks:[...tooltip.confirmed],
-      fieldEvidence:{name:'client_verified',branch:'client_verified',row:'client_verified',column:'client_verified',maxRank:'client_verified',nodeId:'client_verified',spellId:'client_verified',requiredTreePoints:'derived_assumption',prerequisiteLink:record.linkVerification,rankDescriptions:'community_verified',iconName:'community_verified',changeStatus:'community_verified'},
-      sources,dataNotes:[...(old?.sourceTalentId===undefined?[]:['Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.']),...(record.linkVerification==='community_verified'?['One exact reverse-cycle client connection was quarantined after comparison with the licensed visible tree; prerequisite direction is community reviewed, not client-only proof.']:[]),'Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.','Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank.'],
+      fieldEvidence:{name:'client_verified',branch:'client_verified',row:record.gridVerification,column:record.gridVerification,rawPosX:'client_verified',rawPosY:'client_verified',maxRank:'client_verified',nodeId:'client_verified',spellId:'client_verified',requiredTreePoints:'derived_assumption',prerequisiteLink:record.linkVerification,rankDescriptions:'community_verified',iconName:'community_verified',changeStatus:'community_verified'},
+      sources,dataNotes:[...(record.gridVerification==='community_verified'?['Display row and column are an exact community-reviewed interpretation of malformed raw coordinates; rawPosX/rawPosY preserve the independently verified client values.']:[]),...(old?.sourceTalentId===undefined?[]:['Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.']),...(record.linkVerification==='community_verified'?['An exact nonstandard client connection was reconciled after comparison with the licensed visible tree; prerequisite direction is community reviewed, not client-only proof.']:[]),'Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.','Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank.'],
     }
   })
   if (used.size!==rankRecords.size) throw new Error('Resolved export has talent absent from client tree')
@@ -265,26 +302,30 @@ export function reconcileCurrentClassClient(input: CurrentClassReconcileInput): 
     classId:input.classId,build:input.build,clientBuild:input.build,sourceVersion:'wow_forever_beta_'+input.build,generated:new Date().toISOString().slice(0,10),
     branches:[...config.branches],treeId:structure.treeId,skillLineId:structure.skillLineId,basedOnBuild:input.baseline.clientBuild,
     sourceUrl:sources[0].url,resolvedRankSourceUrl:sources[1].url,resolvedRankSourceBuild:input.build,resolvedRankLicense:'CC-BY-4.0',resolvedRankLicenseUrl:'https://creativecommons.org/licenses/by/4.0/',
-    resolvedRankAdaptationNotice:'Rank descriptions and icon names adapted from Talents Forever for BuildForgeTools under CC BY 4.0; client membership, identity, positions, rank caps and links independently reconciled from Wago DB2.',
+    resolvedRankAdaptationNotice:'Rank descriptions and icon names adapted from Talents Forever for BuildForgeTools under CC BY 4.0. Structure is reconciled field by field from Wago DB2, with explicit community-reviewed exceptions for visible membership, display positions or connection roles where recorded; original raw records are preserved.',
     license:'Game client factual data; rank descriptions and icon names adapted under CC-BY-4.0',attribution:'Resolved rank text and icon names adapted from Talents Forever (talentsforever.com, CC-BY-4.0); client structure from Wago DB2 '+input.build,
     verificationSummary:'',verificationSources:sources.map(source=>({label:source.label,url:source.url})),sources,ready:true,conflicts:[],talents,
-    rawClientNodeCount:structure.rawClientNodeCount,quarantinedClientNodes:structure.quarantinedClientNodes,activeMembershipVerification:structure.quarantinedClientNodes.length?'community_verified':'client_verified',quarantinedClientEdges:structure.quarantinedClientEdges,
+    rawClientNodeCount:structure.rawClientNodeCount,quarantinedClientNodes:structure.quarantinedClientNodes,activeMembershipVerification:structure.quarantinedClientNodes.length?'community_verified':'client_verified',quarantinedClientEdges:structure.quarantinedClientEdges,reviewedGridPositions:structure.reviewedGridPositions,reviewedEdgeInterpretations:structure.reviewedEdgeInterpretations,
   }
   const diff=diffClass(input.baseline,candidate)
-  candidate.verificationSummary=`${input.build} ${config.name}: ${talents.length} nodes and ${talents.reduce((sum,talent)=>sum+talent.maxRank,0)} complete rank descriptions; compared with ${input.baseline.clientBuild}: ${diff.summary.added} added, ${diff.summary.removed} removed, ${diff.summary.moved} moved, ${diff.summary.rank_changed} rank-cap changes, ${diff.summary.tooltip_changed} talents with rank-description changes, ${diff.summary.prerequisite_changed} prerequisite-link changes. Structural facts are client_verified; resolved text is community_verified; tier costs and prerequisite required ranks remain derived_assumption.`
+  candidate.verificationSummary=`${input.build} ${config.name}: ${talents.length} nodes and ${talents.reduce((sum,talent)=>sum+talent.maxRank,0)} complete rank descriptions; compared with ${input.baseline.clientBuild}: ${diff.summary.added} added, ${diff.summary.removed} removed, ${diff.summary.moved} moved, ${diff.summary.rank_changed} rank-cap changes, ${diff.summary.tooltip_changed} talents with rank-description changes, ${diff.summary.prerequisite_changed} prerequisite-link changes. Structural provenance is recorded per field: client identity, rank caps and exact raw geometry are client_verified; explicit reviewed exceptions and resolved text are community_verified; tier costs and prerequisite required ranks remain derived_assumption.`
   if (structure.quarantinedClientNodes.length) candidate.verificationSummary+=` Raw TraitTree contains ${structure.rawClientNodeCount} records; ${structure.quarantinedClientNodes.length} exact off-grid remnants are quarantined under an explicit source review, leaving ${talents.length} community-reconciled visible nodes. No invalid coordinates are corrected or promoted as client facts.`
   if (structure.quarantinedClientEdges.length) candidate.verificationSummary+=` ${structure.quarantinedClientEdges.length} exact reciprocal-cycle client connection is quarantined under community graph review; affected prerequisite direction is community_verified rather than client_verified.`
-  const errors=validateCurrentClassCandidate(candidate,input.tables,input.reviewedQuarantines,input.reviewedEdgeQuarantines)
+  if (structure.reviewedGridPositions.length) candidate.verificationSummary+=` ${structure.reviewedGridPositions.length} exact active nodes have malformed raw coordinates; licensed visible-tree cells are community_verified and original rawPosX/rawPosY are retained as client_verified.`
+  if (structure.reviewedEdgeInterpretations.length) candidate.verificationSummary+=` ${structure.reviewedEdgeInterpretations.length} exact nonstandard connection records have explicit community-reviewed roles; raw IDs, types and direction are retained without treating interpreted prerequisite direction as client-only proof.`
+  const errors=validateCurrentClassCandidate(candidate,input.tables,input.reviewedQuarantines,input.reviewedEdgeQuarantines,input.reviewedGridPositions,input.reviewedEdgeInterpretations)
   if (errors.length) throw new Error('Candidate validation failed: '+errors.join('; '))
   return {candidate,diff}
 }
 
 /** Re-reads raw membership and structure, never trusting the candidate's node list. */
-export function validateCurrentClassCandidate(candidate: CurrentClassSnapshot, tables: CurrentClassTables, reviewedQuarantines: readonly ReviewedClientQuarantine[] = [], reviewedEdgeQuarantines: readonly ReviewedClientEdgeQuarantine[] = []): string[] {
+export function validateCurrentClassCandidate(candidate: CurrentClassSnapshot, tables: CurrentClassTables, reviewedQuarantines: readonly ReviewedClientQuarantine[] = [], reviewedEdgeQuarantines: readonly ReviewedClientEdgeQuarantine[] = [], reviewedGridPositions: readonly ReviewedClientGridPosition[] = [], reviewedEdgeInterpretations: readonly ReviewedClientEdgeInterpretation[] = []): string[] {
   const errors: string[]=[]
   if (JSON.stringify(candidate.quarantinedClientNodes)!==JSON.stringify(reviewedQuarantines)) return ['Unapproved quarantine: saved candidate differs from independent source review']
   if (JSON.stringify(candidate.quarantinedClientEdges)!==JSON.stringify(reviewedEdgeQuarantines)) return ['Unapproved edge quarantine: saved candidate differs from independent source review']
-  const structure=readCurrentClassClientStructure(candidate.classId,tables,reviewedQuarantines,reviewedEdgeQuarantines), byNode=new Map(candidate.talents.map(talent=>[talent.nodeId,talent]))
+  if (JSON.stringify(candidate.reviewedGridPositions ?? [])!==JSON.stringify(reviewedGridPositions)) return ['Unapproved grid review: saved candidate differs from independent source review']
+  if (JSON.stringify(candidate.reviewedEdgeInterpretations ?? [])!==JSON.stringify(reviewedEdgeInterpretations)) return ['Unapproved edge interpretation: saved candidate differs from independent source review']
+  const structure=readCurrentClassClientStructure(candidate.classId,tables,reviewedQuarantines,reviewedEdgeQuarantines,reviewedGridPositions,reviewedEdgeInterpretations), byNode=new Map(candidate.talents.map(talent=>[talent.nodeId,talent]))
   if (candidate.sourceVersion!=='wow_forever_beta_'+candidate.clientBuild||candidate.build!==candidate.clientBuild||candidate.treeId!==structure.treeId||candidate.skillLineId!==structure.skillLineId) errors.push('Candidate version/tree mismatch')
   if (candidate.resolvedRankSourceBuild!==candidate.clientBuild||candidate.resolvedRankLicense!=='CC-BY-4.0'||candidate.resolvedRankLicenseUrl!=='https://creativecommons.org/licenses/by/4.0/'||!candidate.attribution.includes('Talents Forever')||!candidate.resolvedRankAdaptationNotice.includes('adapted')) errors.push('Missing rank attribution or source-build proof')
   if (!candidate.verificationSummary.includes(candidate.clientBuild)||candidate.sourceUrl!=='https://wago.tools/db2/TraitNode/csv?build='+candidate.clientBuild||candidate.resolvedRankSourceUrl!=='https://talentsforever.com/data.json') errors.push('Missing current verification sources')
@@ -295,6 +336,8 @@ export function validateCurrentClassCandidate(candidate: CurrentClassSnapshot, t
     const talent=byNode.get(record.nodeId)
     if (!talent) {errors.push('Missing client node '+record.nodeId);continue}
     if (['name','branch','row','column','maxRank','spellId'].some(key=>talent[key as keyof CurrentClassTalentRecord]!==record[key as keyof ClientRecord])) errors.push(talent.id+': client structure mismatch')
+    const hasRawPosition = talent.rawPosX !== undefined || talent.rawPosY !== undefined || record.gridVerification === 'community_verified'
+    if (talent.fieldEvidence.row !== record.gridVerification || talent.fieldEvidence.column !== record.gridVerification || (hasRawPosition && (talent.rawPosX !== record.rawPosX || talent.rawPosY !== record.rawPosY || talent.fieldEvidence.rawPosX !== 'client_verified' || talent.fieldEvidence.rawPosY !== 'client_verified'))) errors.push(talent.id+': invalid grid provenance')
     const expected=record.prerequisiteNodes.map(node=>byNode.get(node)?.id).sort()
     if (JSON.stringify(talent.prerequisite)!==JSON.stringify(expected)) errors.push(talent.id+': client prerequisite mismatch')
   }

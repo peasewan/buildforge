@@ -18,6 +18,10 @@ export const MAGE_SOURCES: ClassTalentSource[] = [
   { label: 'ForeverDiff Mage talent calculator', type: 'beta_client', url: 'https://foreverdiff.com/talents/mage/calculator/' },
   { label: 'Build 69913 Mage talent cross-check', type: 'beta_client_crosscheck', url: 'https://thewowdb.com/wow-forever/talents/mage/' },
   { label: 'Build 69913 client Talent table', type: 'beta_client', url: 'https://wago.tools/db2/Talent/csv?build=1.60.1.69913' },
+  ...(['Spell', 'TraitDefinitionEffectPoints', 'CurvePoint', 'SpellEffect', 'SpellMisc', 'SpellDuration'] as const).map(table => ({
+    label: `Historical build 69913 client ${table} table`, type: 'beta_client' as const,
+    url: `https://wago.tools/db2/${table}/csv?build=1.60.1.69913`,
+  })),
 ]
 
 const columnX: Record<number, number> = { 1: 12.5, 2: 37.5, 3: 62.5, 4: 87.5 }

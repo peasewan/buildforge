@@ -83,18 +83,18 @@ describe('ForgePilot explanation API', () => {
     const response = await handler.fetch(request({
       classId: 'druid',
       sourceDataVersion: 'unknown',
-      currentDataVersion: 'WoW Forever Beta 1.60.1.69913',
+      currentDataVersion: 'WoW Forever Beta 1.60.1.70291',
     }))
     expect(response.status).toBe(200)
     const body = await response.json()
     expect(body.status).toBe('needs_review')
     expect(body.explanation).toContain('unknown talent data version')
-    expect(body.explanation).toContain('cannot yet be determined')
+    expect(body.explanation).toContain('Historical saved allocations need a removed-talent and changed-link review')
   })
 
   it('accepts the published class calculator version label used by non-Paladin saved builds', async () => {
     vi.stubEnv('DEEPSEEK_API_KEY', '')
-    const classVersion = 'WoW Forever Beta 1.60.1.69913'
+    const classVersion = 'WoW Forever Beta 1.60.1.70291'
     const response = await handler.fetch(request({
       classId: 'druid',
       sourceDataVersion: classVersion,
@@ -107,6 +107,7 @@ describe('ForgePilot explanation API', () => {
   it.each([
     { classId: 'hunter', version: 'WoW Forever Beta 1.60.1.70291', nodes: 50, ranks: 148 },
     { classId: 'warrior', version: 'wow_forever_beta_1.60.1.70291', nodes: 52, ranks: 150 },
+    ...[{ classId: 'rogue', nodes: 53, ranks: 139 }, { classId: 'priest', nodes: 53, ranks: 148 }, { classId: 'druid', nodes: 52, ranks: 148 }, { classId: 'warlock', nodes: 52, ranks: 149 }, { classId: 'shaman', nodes: 50, ranks: 148 }].map(entry => ({ ...entry, version: 'WoW Forever Beta 1.60.1.70291' })),
   ])('reports reviewed current $classId structure separately from community rank text and derived rules', async ({ classId, version, nodes, ranks }) => {
     vi.stubEnv('DEEPSEEK_API_KEY', '')
     const response = await handler.fetch(request({ classId, sourceDataVersion: version, currentDataVersion: version }))
@@ -134,6 +135,7 @@ describe('ForgePilot explanation API', () => {
   it.each([
     { classId: 'hunter', version: 'WoW Forever Beta 1.60.1.70291', historical: 'WoW Forever Beta 1.60.1.69913' },
     { classId: 'warrior', version: 'wow_forever_beta_1.60.1.70291', historical: 'wow_forever_beta_1.60.1.69913' },
+    ...['rogue', 'priest', 'druid', 'warlock', 'shaman'].map(classId => ({ classId, version: 'WoW Forever Beta 1.60.1.70291', historical: 'WoW Forever Beta 1.60.1.69913' })),
   ])('preserves known 69913 and unknown $classId saves as needing review', async ({ classId, version, historical }) => {
     vi.stubEnv('DEEPSEEK_API_KEY', '')
     for (const sourceDataVersion of [historical, 'unknown']) {
@@ -332,4 +334,17 @@ describe('ForgePilot explanation API', () => {
     expect((await handler.fetch(request(body, undefined, '198.51.100.21'))).status).toBe(200)
     expect(upstream).toHaveBeenCalledTimes(1)
   })
+})
+
+
+it('can check published metadata without making a model request', async () => {
+  vi.stubEnv('DEEPSEEK_API_KEY', 'test-key')
+  const upstream = vi.fn()
+  vi.stubGlobal('fetch', upstream)
+  const req = request({ classId: 'druid', sourceDataVersion: 'WoW Forever Beta 1.60.1.70291', currentDataVersion: 'WoW Forever Beta 1.60.1.70291' })
+  req.headers.set('x-buildforge-explanation-mode', 'metadata-only')
+  const response = await handler.fetch(req)
+  expect(response.status).toBe(200)
+  expect(await response.json()).toMatchObject({ status: 'same_dataset', patchStatus: 'structure_reviewed', generatedBy: 'fallback' })
+  expect(upstream).not.toHaveBeenCalled()
 })

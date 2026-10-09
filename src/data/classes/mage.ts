@@ -141,7 +141,7 @@ const mageBuilds: ClassBuild[] = [
     shortTitle: 'Arcane Mage',
     role: 'Arcane single-target damage',
     playstyle: [
-      'Allocate five Arcane Focus points from the entry row; its rank effect text is unresolved',
+      'Allocate five Arcane Focus points; the historical rank text improves Arcane spell hit chance by 5%',
       'Inspect the published interruption-avoidance text for Improved Channeling',
       'Keep the single Arcane Concentration point in the saved allocation until you edit the planner',
     ],
@@ -170,7 +170,7 @@ const mageBuilds: ClassBuild[] = [
     role: 'Arcane solo leveling',
     playstyle: [
       'Allocate five Arcane Focus points before moving to the second row',
-      'Allocate five Arcane Concentration points and inspect the unresolved-effect notice',
+      'Allocate five Arcane Concentration points; the historical rank text gives a 10% Clearcasting chance',
       'Place the final point in Arcane Impact and compare this allocation with the Channeling preset',
     ],
     strengths: ['Five Arcane Focus, five Arcane Concentration and one Arcane Impact rank', 'Reproducible point order', 'Distinct from the Improved Channeling preset'],
@@ -379,7 +379,7 @@ const magePages: ClassPageDefinition[] = [
       {
         heading: 'Three specs in the Level 20 snapshot',
         paragraphs: [
-          'The Frost leveling starter allocates five Improved Frostbolt ranks, four Ice Shards ranks and two Improved Frost Nova ranks. Arcane is another eleven-point allocation with its own unresolved effect descriptions. Neither route has been extended and reviewed for Level 30.',
+          'The Frost leveling starter allocates five Improved Frostbolt ranks, four Ice Shards ranks and two Improved Frost Nova ranks. Arcane is another eleven-point allocation with rank effects reviewed against the same historical client build. Neither route has been extended and reviewed for Level 30.',
           ELEVEN_POINT_NOTE,
         ],
         bullets: [
@@ -479,7 +479,7 @@ const magePages: ClassPageDefinition[] = [
         ],
         bullets: [
           'Improved Frostbolt 5 — published cast-time reduction text',
-          'Ice Shards 4 — four allocated points; effect text remains unresolved',
+          'Ice Shards 4 — the historical rank text increases the critical strike damage bonus of Frost spells by 80%',
           'Improved Frost Nova 2 — two ranks in one talent node',
         ],
       },
@@ -544,7 +544,7 @@ const magePages: ClassPageDefinition[] = [
         heading: 'Key talents',
         bullets: [
           'Improved Frostbolt — five points with published cast-time reduction text',
-          'Ice Shards — five allocated ranks; resolved effect text remains unavailable',
+          'Ice Shards — five allocated ranks; the historical rank text increases the critical strike damage bonus of Frost spells by 100%',
           'Piercing Ice — the last point, and only after ten Frost points are down',
         ],
         paragraphs: [],
@@ -682,7 +682,7 @@ const magePages: ClassPageDefinition[] = [
       {
         heading: 'Compare the single-target allocation',
         paragraphs: [
-          'Compare the four Ice Shards ranks here with five in the single-target preset. Talent ranks remain selected until you edit or reset the planner. Ice Shards effect text is unresolved in this snapshot, so this page supports comparing allocations without prescribing its combat timing.',
+          'Compare the four Ice Shards ranks here with five in the single-target preset. Talent ranks remain selected until you edit or reset the planner. The reviewed 69913 text gives an 80% Frost critical strike damage bonus at rank four and 100% at rank five. This is the talent’s stated bonus, not a claim about total damage or a reason to save ranks for a combat moment.',
         ],
       },
       {
@@ -694,7 +694,7 @@ const magePages: ClassPageDefinition[] = [
       {
         heading: 'What the rank count establishes',
         paragraphs: [
-          'Improved Frost Nova has two allocated ranks here, both in the same node. Its resolved rank text is unavailable in this snapshot. A talent point count does not establish how many times a spell can be cast, a guaranteed root duration or a complete kiting kit.',
+          'Improved Frost Nova has two allocated ranks here, both in the same node. Its reviewed 69913 rank-two text reduces Frost Nova’s cooldown by 4 sec. A talent point count does not establish how many times a spell can be cast, a guaranteed root duration or a complete kiting kit.',
         ],
       },
     ],
@@ -753,7 +753,7 @@ const magePages: ClassPageDefinition[] = [
     intent: 'Arcane Leveling',
     title: 'WoW Forever Arcane Mage Leveling Build',
     h1: 'WoW Forever Arcane Mage Leveling Build',
-    description: 'The Arcane Mage Level 20 starter allocation: replay its eleven points, compare the Channeling variant and see which effect descriptions remain unresolved.',
+    description: 'The historical Arcane Mage Level 20 starter allocation: replay its eleven points, compare the Channeling variant and inspect reviewed 69913 rank effects.',
     eyebrow: 'Beta Spec Leveling',
     canonical: 'https://buildforgetools.com/wow-forever-arcane-mage-leveling-build',
     robots: 'index, follow',
@@ -770,7 +770,7 @@ const magePages: ClassPageDefinition[] = [
       {
         heading: 'Should you level as Arcane?',
         paragraphs: [
-          'This is an editorial alternative for comparing eleven-point allocations. Arcane Focus, Arcane Concentration and Arcane Impact have unresolved rank descriptions in the published snapshot, so this route does not establish mana savings, cast reliability or leveling speed. ' + ELEVEN_POINT_NOTE,
+          'This is an editorial alternative for comparing eleven-point allocations. The reviewed 69913 selected-rank text gives Arcane Focus a 5% Arcane spell hit benefit, Arcane Concentration a 10% Clearcasting chance and Arcane Impact a 2% Arcane spell critical strike benefit. Clearcasting reduces the mana cost of the next damage spell by 100% when it occurs; this allocation does not establish a guaranteed proc, cast reliability or leveling speed. ' + ELEVEN_POINT_NOTE,
         ],
       },
       {
@@ -797,7 +797,7 @@ const magePages: ClassPageDefinition[] = [
     intent: 'Frost AoE farming',
     title: 'WoW Forever Frost Mage AoE Build',
     h1: 'WoW Forever Frost Mage AoE Build',
-    description: 'Compare the Frost Mage eleven-point area preset with the single-target route, replay the three-point tradeoff and inspect unresolved effect and spell-learning details.',
+    description: 'Compare the historical Frost Mage eleven-point area preset with the single-target route, replay the three-point tradeoff and inspect reviewed rank effects and spell-learning limits.',
     eyebrow: 'Beta Area Route',
     canonical: 'https://buildforgetools.com/wow-forever-frost-mage-aoe-build',
     robots: 'index, follow',
@@ -827,7 +827,7 @@ const magePages: ClassPageDefinition[] = [
       {
         heading: 'Spells this route leans on',
         paragraphs: [
-          'This allocation selects Improved Frost Nova and Improved Blizzard; it does not verify when the underlying spells are learned. Both nodes have unresolved rank descriptions in this snapshot. Improved Frostbolt has published cast-time reduction text, but the talent catalogue is not a Mage spellbook or a verified combat rotation.',
+          'This allocation selects Improved Frost Nova and Improved Blizzard; it does not verify when the underlying spells are learned. The reviewed 69913 selected-rank text reduces Frost Nova’s cooldown by 4 sec and adds a Blizzard Chill that slows movement by 15% for 1.5 sec. Improved Frostbolt has published cast-time reduction text, but the talent catalogue is not a Mage spellbook or a verified combat rotation.',
         ],
       },
       {
@@ -909,7 +909,7 @@ const magePages: ClassPageDefinition[] = [
       {
         heading: 'Frost is the dungeon recommendation',
         paragraphs: [
-          'Frost Warding 2, Improved Frostbolt 5 and Ice Shards 4. Frost Warding and Improved Frostbolt have published rank text; Ice Shards effect text is unresolved. Compare the two Frost Warding ranks, five Improved Frostbolt ranks and four Ice Shards ranks with the area preset before changing the route. ' + ELEVEN_POINT_NOTE,
+          'Frost Warding 2, Improved Frostbolt 5 and Ice Shards 4. All three selected-rank effects are reviewed against 69913; Ice Shards rank four states an 80% increase to the critical strike damage bonus of Frost spells. Compare the two Frost Warding ranks, five Improved Frostbolt ranks and four Ice Shards ranks with the area preset before changing the route. ' + ELEVEN_POINT_NOTE,
         ],
       },
       {
@@ -1026,9 +1026,9 @@ const magePages: ClassPageDefinition[] = [
           label: 'Frost',
           values: [
             'Editorial eleven-point Frost allocation with published Frostbolt cast-time reduction text',
-            'The separate area preset allocates one Improved Blizzard point; its effect text remains unresolved',
+            'The separate area preset allocates one Improved Blizzard point; its historical rank text adds a 15% movement slow for 1.5 sec',
             'Two ranks in the same Improved Frost Nova node; spell timing is unverified',
-            'Improved Frostbolt 5, Ice Shards 4 and Improved Frost Nova 2; unresolved effect text is identified',
+            'Improved Frostbolt 5, Ice Shards 4 and Improved Frost Nova 2; selected effects reviewed against 69913',
             'Legal 11-point leveling route published',
           ],
         },

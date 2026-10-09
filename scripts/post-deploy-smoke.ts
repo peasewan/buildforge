@@ -6,17 +6,18 @@ import { createRequire } from 'node:module'
 import { resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { DATA_VERSION, removedPaladinTalents, talents } from '../src/data/talents'
-import { hunterClass } from '../src/data/classes/hunter'
-import { warriorClass } from '../src/data/classes/warrior'
-import type { ClassDefinition } from '../src/lib/classPage'
+import { PUBLISHED_CLASSES } from '../src/data/classes'
+import { validClassBuild, type ClassDefinition } from '../src/lib/classPage'
 import { classBuildPlannerHref } from '../src/lib/archivedClassBuild'
 import { protectionPlannerHref } from '../src/data/protectionCurrentRoute'
 import { BETA_PATCH_REVIEW } from '../src/data/betaPatchReview'
 
 const APEX = 'https://buildforgetools.com'
 const WWW = 'https://www.buildforgetools.com'
-const REQUIRED_PATHS = ['/paladin', '/wow-forever-paladin-talents', '/hunter', '/wow-forever-hunter-pvp-build', '/warrior', '/wow-forever-warrior-pvp-build', '/wow-forever-protection-paladin-leveling-build'] as const
-const CURRENT_CLASSES = [hunterClass, warriorClass]
+const CURRENT_CLASSES = PUBLISHED_CLASSES.filter(classDef => classDef.dataReview?.current && classDef.dataReview.ready && classDef.verifiedBuild === '1.60.1.70291')
+const REQUIRED_PATHS = ['/paladin', '/wow-forever-paladin-talents', '/wow-forever-protection-paladin-leveling-build',
+  ...CURRENT_CLASSES.flatMap(classDef => [classDef.plannerPath, ...classDef.pages.filter(page => page.kind === 'pvp' && !page.retiredTo).map(page => `/${page.slug}`)]),
+]
 const PALADIN_BUILD = DATA_VERSION.replace('wow_forever_beta_', '')
 const { JSDOM } = createRequire(import.meta.url)('jsdom') as {
   JSDOM: new (html: string, options?: { contentType?: string }) => { window: { document: Document; close(): void } }
@@ -148,6 +149,27 @@ function checkCurrentCalculator(doc: Document, classDef: ClassDefinition, label:
   if (!/Level 30/.test(activeMode) || !/21\s*points/.test(activeMode)) issues.push(`${label}: missing default Level 30 / 21-point planning mode`)
 }
 
+const normalizedText = (text: string | null | undefined) => (text ?? '').replace(/\s+/g, ' ').trim()
+
+/** The initial PvP condition renders real selected-rank records; query URLs are client initialized. */
+function checkClassRankEffects(doc: Document, classDef: ClassDefinition, issues: string[]) {
+  const page = classDef.pages.find(page => page.kind === 'pvp')
+  const build = classDef.builds.find(build => build.id === page?.primaryBuildId)
+  const ids = page?.roleDecision?.options[0]?.talentIds ?? Object.keys(build?.build ?? {}).filter(id => (build?.build[id] ?? 0) > 0)
+  const records = Array.from(doc.querySelectorAll('.rs-evidence li'))
+  if (!build || !ids.length || !ids.every(id => {
+    const talent = classDef.talents.find(talent => talent.id === id)
+    const rank = build.build[id] ?? 0
+    const effect = talent?.rankDescriptions?.[rank - 1]
+    return talent && effect?.trim() && talent.verifiedThroughBuild === classDef.verifiedBuild
+      && talent.fieldEvidence.rankDescriptions === 'community_verified'
+      && records.some(record => normalizedText(record.querySelector('strong')?.textContent) === `${talent.name} ${rank}/${talent.maxRank}`
+        && normalizedText(record.querySelector('p')?.textContent) === normalizedText(effect)
+        && record.textContent?.includes(`Client build ${talent.verifiedThroughBuild}`)
+        && record.textContent?.includes('Rank tooltip: Community verified'))
+  })) issues.push(`${classDef.name} PvP: missing reviewed selected-rank effects for client ${classDef.verifiedBuild}`)
+}
+
 async function checkClassDeepLink(fetchImpl: Fetcher, doc: Document, classDef: ClassDefinition, report: SmokeReport) {
   const page = classDef.pages.find(page => page.kind === 'pvp')
   const build = classDef.builds.find(build => build.id === page?.primaryBuildId)
@@ -156,7 +178,9 @@ async function checkClassDeepLink(fetchImpl: Fetcher, doc: Document, classDef: C
     && url.pathname === classDef.plannerPath && url.searchParams.get('level') === String(build!.level)
     && url.searchParams.get('dataset') === classDef.verifiedBuild && url.searchParams.get('build') === expected.searchParams.get('build')
     && !!url.searchParams.get('build') && url.hash === expected.hash)
-  if (!href || build?.level !== 30 || build.points !== 21) {
+  if (!href || !build || build.level !== 30 || build.points !== 21 || build.levelCap !== 21
+    || build.verifiedThroughBuild !== classDef.verifiedBuild
+    || !validClassBuild(classDef, build)) {
     report.issues.push(`${classDef.name} PvP: missing reviewed Level 30 current-dataset calculator link`)
     return
   }
@@ -186,7 +210,7 @@ async function checkExplainApi(fetchImpl: Fetcher, report: SmokeReport) {
   for (const { sourceUrl, ...input } of inputs) {
     const label = `ForgePilot ${input.classId} ${input.sourceDataVersion === input.currentDataVersion ? 'current' : 'historical'} explanation`
     const response = await request(fetchImpl, `${APEX}/api/forge-pilot-explain`, report.issues, label, {
-      method: 'POST', headers: { 'content-type': 'application/json', origin: APEX }, body: JSON.stringify(input),
+      method: 'POST', headers: { 'content-type': 'application/json', origin: APEX, 'x-buildforge-explanation-mode': 'metadata-only' }, body: JSON.stringify(input),
     })
     report.apiChecks++
     if (!response) continue
@@ -196,6 +220,7 @@ async function checkExplainApi(fetchImpl: Fetcher, report: SmokeReport) {
       const body = await response.json() as Record<string, unknown>
       const expectedStatus = input.sourceDataVersion === input.currentDataVersion ? 'same_dataset' : 'needs_review'
       if (body.status !== expectedStatus || body.patchStatus !== 'structure_reviewed' || body.sourceUrl !== sourceUrl
+        || body.generatedBy !== 'fallback'
         || typeof body.explanation !== 'string' || !body.explanation.trim() || !response.headers.get('cache-control')?.includes('no-store')) {
         report.issues.push(`${label}: incorrect reviewed-version response`)
       }
@@ -235,7 +260,10 @@ export async function checkProductionDeployment(fetchImpl: Fetcher = fetch): Pro
     const calculator = CURRENT_CLASSES.find(classDef => classDef.plannerPath === path)
     if (calculator) checkCurrentCalculator(page.doc, calculator, path, issues)
     const pvp = CURRENT_CLASSES.find(classDef => classDef.pages.some(candidate => candidate.kind === 'pvp' && `/${candidate.slug}` === path))
-    if (pvp) await checkClassDeepLink(fetchImpl, page.doc, pvp, report)
+    if (pvp) {
+      checkClassRankEffects(page.doc, pvp, issues)
+      await checkClassDeepLink(fetchImpl, page.doc, pvp, report)
+    }
     page.close()
   }
   await checkExplainApi(fetchImpl, report)

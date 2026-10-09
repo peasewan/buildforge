@@ -17,10 +17,11 @@ it('keeps announced patch version separate from imported data and historical dif
 
 
 import BetaPatchNotice from './BetaPatchNotice'
+import { PUBLISHED_CLASSES } from './data/classes'
 import { hunterClass } from './data/classes/hunter'
 import { warriorClass } from './data/classes/warrior'
 
-it.each([hunterClass, warriorClass])('shows the actual current $name review instead of the old pending banner', classDef => {
+it.each(PUBLISHED_CLASSES.filter(def => def.verifiedBuild === '1.60.1.70291'))('shows the actual current $name review instead of the old pending banner', classDef => {
   const html = renderToStaticMarkup(<BetaPatchNotice classId={classDef.id} expanded />)
   expect(html).toContain('Reviewed current Beta tree · client 1.60.1.70291')
   expect(html).toContain('Level 30')

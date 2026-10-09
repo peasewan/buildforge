@@ -39,7 +39,12 @@ describe('WoW Forever Mage talent data', () => {
       // The planner gates every spend on this field, so it must be dual-source verified like the
       // coordinates — `reconcileMageTalents` vetoes the node when the sources disagree on it.
       expect(talent.fieldEvidence.requiredTreePoints).toBe('client_verified')
-      expect(talent.sources).toHaveLength(3)
+      const curveReviewed = Boolean(talent.nodeId && talent.spellId)
+      expect(talent.sources).toHaveLength(curveReviewed ? 9 : 3)
+      if (curveReviewed) {
+        expect(talent.sources.map(source => source.url)).toContain('https://wago.tools/db2/TraitDefinitionEffectPoints/csv?build=1.60.1.69913')
+        expect(talent.sources.map(source => source.url)).toContain('https://wago.tools/db2/CurvePoint/csv?build=1.60.1.69913')
+      }
       expect(talent.verifiedThroughBuild).toBe('1.60.1.69913')
       if (talent.rankDescriptions) expect(talent.rankDescriptions).toHaveLength(talent.maxRank)
       if (talent.icon) expect(existsSync(join(process.cwd(), 'public', talent.icon))).toBe(true)

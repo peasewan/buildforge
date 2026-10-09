@@ -187,17 +187,18 @@ describe('Mage ClassDefinition — bounded talent guidance', () => {
     }
   })
 
-  it('keeps Ice Shards allocations separate from unsupported combat timing and effect text', () => {
+  it('keeps reviewed Ice Shards effects separate from unsupported combat timing', () => {
     const shards = mageTalents.find(talent => talent.name === 'Ice Shards')!
     expect(shards.maxRank).toBe(5)
-    expect(shards.fieldEvidence?.rankDescriptions).toBe('unknown')
-    expect(shards.rankDescriptions).toBeUndefined()
+    expect(shards.fieldEvidence?.rankDescriptions).toBe('client_verified')
+    expect(shards.rankDescriptions?.[3]).toBe('Increases the critical strike damage bonus of your Frost spells by 80%.')
+    expect(shards.rankDescriptions?.[4]).toBe('Increases the critical strike damage bonus of your Frost spells by 100%.')
     for (const text of guidance.filter(text => text.includes('Ice Shards'))) {
       expect(text).not.toMatch(/(?:hold|save)[^.]*Ice Shards|Ice Shards[^.]*\b(?:frozen|rooted)\b|frozen-target[^.]*Ice Shards/i)
     }
     const leveling = mageClass.pages.find(page => page.slug === 'wow-forever-frost-mage-leveling-build')!
     const copy = pageCopy(leveling).join(' ')
-    expect(copy).toContain('Ice Shards effect text is unresolved in this snapshot')
+    expect(copy).toContain('reviewed 69913 text gives an 80% Frost critical strike damage bonus at rank four and 100% at rank five')
     expect(copy).toContain('ranks remain selected until you edit or reset the planner')
     expect(buildById(leveling.primaryBuildId)?.build).toEqual({
       'mage-frost-improved-frostbolt': 5, 'mage-frost-ice-shards': 4, 'mage-frost-improved-frost-nova': 2,
@@ -228,10 +229,14 @@ describe('Mage ClassDefinition — bounded talent guidance', () => {
 
   it('bounds Arcane effect advice to the rank text actually available in this snapshot', () => {
     for (const name of ['Arcane Focus', 'Arcane Concentration', 'Arcane Impact']) {
-      expect(mageTalents.find(talent => talent.name === name)?.fieldEvidence?.rankDescriptions, name).toBe('unknown')
+      expect(mageTalents.find(talent => talent.name === name)?.fieldEvidence?.rankDescriptions, name).toBe('client_verified')
     }
     const arcane = mageClass.pages.find(page => page.slug === 'wow-forever-arcane-mage-leveling-build')!
-    expect(pageCopy(arcane).join(' ')).toContain('Arcane Focus, Arcane Concentration and Arcane Impact have unresolved rank descriptions')
+    const copy = pageCopy(arcane).join(' ')
+    expect(copy).toContain('Arcane Focus a 5% Arcane spell hit benefit')
+    expect(copy).toContain('Arcane Concentration a 10% Clearcasting chance')
+    expect(copy).toContain('Arcane Impact a 2% Arcane spell critical strike benefit')
+    expect(copy).toContain('does not establish a guaranteed proc')
     expect(buildById(arcane.primaryBuildId)?.build).toEqual({
       'mage-arcane-arcane-focus': 5, 'mage-arcane-arcane-concentration': 5, 'mage-arcane-arcane-impact': 1,
     })

@@ -50,6 +50,12 @@ function readStoredBuild<B extends string>(classDef: ClassDefinition<B>): { buil
   }
   const config = { ...classDef.plannerConfig, pointCap: pointCapFor(classDef, level) }
   if (params.has('build')) {
+    // Current generated links identify their dataset. A versionless legacy code can
+    // remain legal after an effect/cap change, so do not silently reinterpret it.
+    if (!params.has('dataset') && classDef.dataReview?.current) {
+      const archive = recoverHistoricalClassBuild(classDef, code ?? '', level)
+      if (archive) return { build: {}, level, archive, notice: 'This link has no dataset version. Its original ranks are preserved as a historical record; start a versioned current build when ready.' }
+    }
     const build = decodeValidatedPlannerBuild(code ?? '', classDef.talents, config)
     if (build && (!params.has('level') || requestedLevel(classDef, Number(params.get('level'))))) return { build, level }
     const archive = recoverHistoricalClassBuild(classDef, code ?? '', level)
@@ -108,11 +114,12 @@ function canvasHeightFor<B extends string>(classDef: ClassDefinition<B>): number
   return rows * CANVAS_ROW_HEIGHT
 }
 
-function TalentNode<B extends string>({ talent, build, classDef, config, onAdd, onRemove, onInspect }: {
+function TalentNode<B extends string>({ talent, build, classDef, config, readOnly, onAdd, onRemove, onInspect }: {
   talent: ClassTalent<B>
   build: PlannerBuild
   classDef: ClassDefinition<B>
   config: PlannerConfig<B>
+  readOnly?: boolean
   onAdd: () => void
   onRemove: () => void
   onInspect: () => void
@@ -121,14 +128,14 @@ function TalentNode<B extends string>({ talent, build, classDef, config, onAdd, 
   const reason = plannerLockReason(build, talent, classDef.talents, config)
   const officialNotice = officialTalentNotice(classDef.id, talent.name)
   const removed = officialNotice?.status === 'removed'
-  const available = !removed && canIncrementPlannerTalent(build, talent, classDef.talents, config)
+  const available = !readOnly && !removed && canIncrementPlannerTalent(build, talent, classDef.talents, config)
   return <article className={`class-talent ${rank ? 'selected' : ''} ${!available && !rank ? 'locked' : ''}`} data-testid="class-talent" id={talent.id} style={{ left: `${talent.x}%`, top: `${talent.y}%` }}>
     <button className="class-talent-main" type="button" aria-label={`Add rank to ${talent.name}`} disabled={!available} onClick={() => { onAdd(); onInspect() }}>
       {talent.icon ? <img src={talent.icon} alt="" /> : <span className="class-talent-glyph" aria-hidden="true">{talent.name.slice(0, 2)}</span>}
       {!available && !rank && <Lock className="node-lock" size={17} />}
       <span>{rank}/{talent.maxRank}</span>
     </button>
-    {rank > 0 && <button className="class-rank-minus" type="button" aria-label={`Remove rank from ${talent.name}`} onClick={() => { onRemove(); onInspect() }}><Minus size={14} /></button>}
+    {rank > 0 && <button className="class-rank-minus" type="button" aria-label={`Remove rank from ${talent.name}`} disabled={readOnly} onClick={() => { onRemove(); onInspect() }}><Minus size={14} /></button>}
     <button className="class-talent-name" type="button" onClick={onInspect}>{talent.name}</button>
     {removed ? <small>Removed after this client snapshot</small> : reason?.type === 'branch-points' && <small>{reason.required} points required</small>}
   </article>
@@ -193,9 +200,9 @@ export default function ClassCalculatorPage<B extends string>({ classDef }: { cl
     .map((page) => ({ href: `/${page.slug}`, label: page.h1 }))
     .concat([{ href: classDef.plannerPath, label: `${classDef.name} Talent Calculator` }])
 
-  const syncSharedRoute = (next: PlannerBuild, nextLevel: PlannerLevel) => {
+  const syncSharedRoute = (next: PlannerBuild, nextLevel: PlannerLevel, leaveArchive = false) => {
     const url = new URL(window.location.href)
-    if (archive || !url.searchParams.has('build')) return
+    if ((archive && !leaveArchive) || !url.searchParams.has('build')) return
     url.searchParams.set('build', encodePlannerBuild(next))
     url.searchParams.set('level', String(nextLevel))
     if (classDef.dataReview?.current) url.searchParams.set('dataset', classDef.verifiedBuild)
@@ -203,8 +210,10 @@ export default function ClassCalculatorPage<B extends string>({ classDef }: { cl
     window.history.replaceState(window.history.state, '', `${url.pathname}${url.search}${url.hash}`)
   }
 
-  const commit = (next: PlannerBuild, nextLevel: PlannerLevel = level) => {
-    syncSharedRoute(next, nextLevel)
+  const commit = (next: PlannerBuild, nextLevel: PlannerLevel = level, leaveArchive = false) => {
+    if (archive && !leaveArchive) return
+    if (leaveArchive) setArchive(undefined)
+    syncSharedRoute(next, nextLevel, leaveArchive)
     setBuild(next)
     setResetNotice(null)
     copyRequest.current += 1
@@ -218,6 +227,7 @@ export default function ClassCalculatorPage<B extends string>({ classDef }: { cl
   }
 
   const changeLevel = (nextLevel: PlannerLevel) => {
+    if (archive) return
     copyRequest.current += 1
     setCopied(false)
     setManualShareUrl(null)
@@ -240,7 +250,7 @@ export default function ClassCalculatorPage<B extends string>({ classDef }: { cl
   }
 
   const loadPreset = (preset: ClassBuild) => {
-    if (removedOfficialTalents(preset.build, classDef).length > 0) return
+    if (archive || removedOfficialTalents(preset.build, classDef).length > 0) return
     setLevel(preset.level)
     commit(preset.build, preset.level)
     setResetNotice(null)
@@ -315,7 +325,7 @@ export default function ClassCalculatorPage<B extends string>({ classDef }: { cl
       <div className="class-toolbar" ref={viewMarker}>
         <div><p className="class-kicker">Interactive talent trees</p><h2>Build Your {classDef.name}</h2></div>
         <div className="class-levels" aria-label="Planner level">
-          {classDef.plannerModes.map((mode) => <button className={level === mode.level ? 'active' : ''} type="button" key={mode.level} onClick={() => changeLevel(mode.level)}>{mode.label}<small>{mode.points} points</small></button>)}
+          {classDef.plannerModes.map((mode) => <button className={level === mode.level ? 'active' : ''} type="button" key={mode.level} disabled={Boolean(archive)} onClick={() => changeLevel(mode.level)}>{mode.label}<small>{mode.points} points</small></button>)}
         </div>
       </div>
 
@@ -326,7 +336,7 @@ export default function ClassCalculatorPage<B extends string>({ classDef }: { cl
         <ul>{archive.talents.map(talent => <li key={talent.id}>{talent.name} {archive.build[talent.id]}/{talent.maxRank}</li>)}</ul>
         <label>Original build code<input readOnly value={archive.code} onFocus={event => event.currentTarget.select()} /></label>
         <a href={`${classDef.plannerPath}?build=${encodeURIComponent(archive.code)}&level=${archive.level}&dataset=${archive.clientBuild}#class-calculator`}>Original historical build link</a>
-        <button type="button" onClick={() => { setArchive(undefined); startBlank(); history.replaceState(history.state, '', `${classDef.plannerPath}?build=&level=${level}#class-calculator`) }}>Start a new current build</button>
+        <button type="button" onClick={() => { commit({}, level, true); track('calculator_start_blank', { class: classDef.id, page_path: window.location.pathname, level }) }}>Start a new current build</button>
       </aside>}
       {resetNotice && <p className="class-reset-notice" role="status">{resetNotice}</p>}
 
@@ -337,7 +347,7 @@ export default function ClassCalculatorPage<B extends string>({ classDef }: { cl
         <span className="class-build-chip">Community / Editorial Build</span>
         {presets.map((preset) => {
           const archived = removedOfficialTalents(preset.build, classDef).length > 0
-          return <button type="button" key={preset.id} aria-label={`Load ${preset.shortTitle}`} disabled={archived} title={archived ? 'Historical allocation includes a talent removed in an official update' : undefined} onClick={() => loadPreset(preset)}>{preset.shortTitle}<small>{archived ? 'Historical · removed talent' : preset.allocation}</small></button>
+          return <button type="button" key={preset.id} aria-label={`Load ${preset.shortTitle}`} disabled={archived || Boolean(archive)} title={archived ? 'Historical allocation includes a talent removed in an official update' : undefined} onClick={() => loadPreset(preset)}>{preset.shortTitle}<small>{archived ? 'Historical · removed talent' : preset.allocation}</small></button>
         })}
       </div>
 
@@ -360,6 +370,7 @@ export default function ClassCalculatorPage<B extends string>({ classDef }: { cl
               build={build}
               classDef={classDef}
               config={config}
+              readOnly={Boolean(archive)}
               onInspect={() => setSelected(talent)}
               onAdd={() => {
                 const next = incrementPlannerTalent(build, talent, classDef.talents, config)
@@ -407,7 +418,7 @@ export default function ClassCalculatorPage<B extends string>({ classDef }: { cl
           <p>{classDef.branchNames[activeBranch]} {classDef.name} · Level {level}</p>
           {removedSelected.length > 0 && <p className="class-reset-notice" role="status">Historical allocation: {removedSelected.map((talent) => talent.name).join(', ')} {removedSelected.length === 1 ? 'was' : 'were'} removed after this 69913 snapshot. Remove those ranks before using the build as a live Beta plan.</p>}
           <div className="class-summary-actions">
-            <button type="button" onClick={startBlank}><RotateCcw size={15} /> Reset</button>
+            <button type="button" disabled={Boolean(archive)} onClick={startBlank}><RotateCcw size={15} /> Reset</button>
             <button type="button" aria-label="Copy build link" disabled={!points || removedSelected.length > 0} onClick={copyBuild}><Copy size={15} /> {copied ? 'Copied' : 'Copy build link'}</button>
           </div>
           {removedSelected.length === 0 && <ForgePilotPanel classId={classDef.id} className={classDef.name} dataVersion={classDef.dataVersion} level={level} pointCaps={Object.fromEntries(classDef.plannerModes.map((mode) => [mode.level, mode.points]))} points={points} buildCode={encodePlannerBuild(build)} defaultName={`${classDef.branchNames[activeBranch]} ${classDef.name} build`} talents={classDef.talents} config={classDef.plannerConfig} />}

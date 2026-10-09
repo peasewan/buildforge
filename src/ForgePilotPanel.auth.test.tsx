@@ -2,6 +2,7 @@ import { act, cleanup, fireEvent, render, screen, waitFor } from '@testing-libra
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import ForgePilotPanel from './ForgePilotPanel'
 import { BETA_SPEC_PATHS } from './data/betaSpecPaths'
+import { PUBLISHED_CLASSES } from './data/classes'
 import { hunterClass, HUNTER_HISTORICAL_DATA_VERSION, hunterHistoricalTalents } from './data/classes/hunter'
 import { warriorClass } from './data/classes/warrior'
 import { archivedWarriorTalents, WARRIOR_ARCHIVED_DATA_VERSION } from './data/warriorTalents'
@@ -230,7 +231,7 @@ describe('ForgePilot reviewed current class evidence', () => {
     />)
   }
 
-  it.each([hunterClass, warriorClass])('shows reviewed $name evidence and keeps historical saves under review when explanations are unavailable', async classDef => {
+  it.each(PUBLISHED_CLASSES.filter(def => def.verifiedBuild === '1.60.1.70291'))('shows reviewed $name evidence and keeps historical saves under review when explanations are unavailable', async classDef => {
     auth.userId = null
     vi.stubGlobal('fetch', vi.fn(async () => new Response(null, { status: 503 })))
     const historicalVersion = classDef.historicalSnapshots![0].dataVersion
@@ -259,6 +260,23 @@ describe('ForgePilot reviewed current class evidence', () => {
       expect(explanation.textContent).toContain('membership')
       expect(explanation.textContent).toContain('Intimidation')
     }
+  })
+
+  it.each(['1.60.1.70291', undefined])('imports a relative share with dataset %s without losing its original version or throwing', async dataset => {
+    auth.userId = null
+    vi.stubGlobal('fetch', vi.fn(async () => new Response(null, { status: 503 })))
+    const def = hunterClass
+    renderClassPanel(def)
+    openPanel()
+    const readyLink = screen.getByRole('link', { name: 'Reopen in Calculator' })
+    expect(new URL(readyLink.getAttribute('href')!, 'https://buildforgetools.com').searchParams.get('dataset')).toBe(def.verifiedBuild)
+    const source = `/hunter?build=invalid-but-preserved.1&level=20${dataset ? `&dataset=${dataset}` : ''}`
+    fireEvent.change(screen.getByLabelText('Import a BuildForge link'), { target: { value: source } })
+    fireEvent.click(screen.getByRole('button', { name: 'Import link for review' }))
+    expect(screen.getByRole('link', { name: 'Open original link for review' }).getAttribute('href')).toBe(source)
+    const stored = JSON.parse(localStorage.getItem(FORGE_PILOT_STORAGE_KEY)!) as { sourceUrl?: string; dataVersion: string }[]
+    expect(stored.find(record => record.sourceUrl === source)?.dataVersion).toBe('unknown')
+    expect(await screen.findByText(dataset ? /original dataset tag is preserved/ : /original link has no data-version tag/)).toBeTruthy()
   })
 
   it.each([

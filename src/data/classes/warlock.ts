@@ -1,4 +1,6 @@
-import dataset from '../expansion/warlock-1.60.1.69913.json'
-import { createExpansionClass } from '../expansion/createClass'
+import dataset from '../warlock-beta-1.60.1.70291.json'
+import historicalDataset from '../expansion/warlock-1.60.1.69913.json'
+import { createReviewedExpansionClass } from '../expansion/reviewedExpansionClass'
 import { expansionProfiles } from '../expansion/profiles'
-export const warlockClass = createExpansionClass(expansionProfiles.find((profile) => profile.id === 'warlock')!, dataset)
+import type { CurrentClassSnapshot } from '../../lib/currentClassClientReconcile'
+export const warlockClass = createReviewedExpansionClass(expansionProfiles.find(profile => profile.id === 'warlock')!, dataset as CurrentClassSnapshot, historicalDataset)

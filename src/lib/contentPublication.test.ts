@@ -22,7 +22,7 @@ describe('content publication contract', () => {
   })
   it('rejects a declared point count different from actual ranks', () => {
     const page = rogueClass.pages.find(p => p.kind === 'specBuild')!
-    const builds = rogueClass.builds.map(b => b.id === page.primaryBuildId ? {...b, points:21} : b)
+    const builds = rogueClass.builds.map(b => b.id === page.primaryBuildId ? {...b, points:b.points + 1} : b)
     expect(publishes({...rogueClass, builds}, page.slug)).toBe(false)
   })
   it('rejects unsupported levels and negative, fractional or unknown ranks', () => {
@@ -30,7 +30,7 @@ describe('content publication contract', () => {
     for (const rank of [-1, 0.5, NaN]) expect(isLegalAllocation({...route.build, unknown:rank}, rogueClass.talents, rogueClass.plannerConfig,11)).toBe(false)
     expect(isLegalAllocation({...route.build, unknown:0}, rogueClass.talents, rogueClass.plannerConfig,11)).toBe(false)
     const page = rogueClass.pages.find(p => p.primaryBuildId === route.id)!
-    expect(publishes({...rogueClass, builds:rogueClass.builds.map(b => b.id === route.id ? {...b, level:30} : b)}, page.slug)).toBe(false)
+    expect(publishes({...rogueClass, builds:rogueClass.builds.map(b => b.id === route.id ? {...b, level:b.level + 1} : b)}, page.slug)).toBe(false)
   })
   it('rejects role pages without actual sourced conditions or with unresolved talent references', () => {
     const page = rogueClass.pages.find(p => p.kind === 'pvp')!

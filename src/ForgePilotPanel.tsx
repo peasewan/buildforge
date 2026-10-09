@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { BookmarkPlus, RotateCcw, Trash2 } from 'lucide-react'
 import { ForgePilotAuthBoundary } from './ForgePilotAuth'
 import { useForgePilotAuth } from './ForgePilotAuthContext'
+import { PUBLISHED_CLASSES } from './data/classes'
 import { BETA_PATCH_REVIEW } from './data/betaPatchReview'
 import { createForgePilotSavedBuild, inspectForgePilotSavedBuild, type ForgePilotSavedBuild } from './lib/forgePilot'
 import { readForgePilotSavedBuilds, removeForgePilotSavedBuild, upsertForgePilotSavedBuild, type ForgePilotStorage } from './lib/forgePilotStorage'
@@ -23,6 +24,17 @@ interface ForgePilotPanelProps<B extends string> {
   config: PlannerConfig<B>
 }
 
+function sourceDataset(sourceUrl?: string): string | undefined {
+  if (!sourceUrl) return undefined
+  try {
+    const url = new URL(sourceUrl, 'https://buildforgetools.com')
+    if (url.protocol !== 'https:' || !['buildforgetools.com', 'www.buildforgetools.com'].includes(url.hostname)) return undefined
+    return url.searchParams.get('dataset') || undefined
+  } catch {
+    return undefined
+  }
+}
+
 function reopenHref(build: ForgePilotSavedBuild): string {
   const params = new URLSearchParams()
   if (build.classId === 'paladin') {
@@ -32,6 +44,9 @@ function reopenHref(build: ForgePilotSavedBuild): string {
   }
   params.set('build', build.originalCode)
   if (build.level !== null) params.set('level', String(build.level))
+  const dataset = build.dataVersion.match(/1\.60\.1\.\d+/)?.[0]
+    ?? sourceDataset(build.sourceUrl)
+  if (dataset) params.set('dataset', dataset)
   return `/${build.classId}?${params}#class-calculator`
 }
 
@@ -57,8 +72,7 @@ function newBuildId(): string {
 
 function ForgePilotPanelContent<B extends string>({ classId, className, dataVersion, level, pointCaps, points, buildCode, defaultName, talents, removedTalents, config }: ForgePilotPanelProps<B>) {
   const auth = useForgePilotAuth()
-  const reviewedCurrentClass = (classId === 'hunter' && dataVersion === 'WoW Forever Beta 1.60.1.70291')
-    || (classId === 'warrior' && dataVersion === 'wow_forever_beta_1.60.1.70291')
+  const reviewedCurrentClass = PUBLISHED_CLASSES.find(def => def.id === classId && def.dataVersion === dataVersion && def.verifiedBuild === '1.60.1.70291' && def.dataReview?.current && def.dataReview.ready)
   const cloudClient = useMemo(() => createForgePilotCloudClient(auth.getToken, fetch, auth.userId ?? undefined), [auth.getToken, auth.userId])
   const [initialStorage] = useState(() => typeof window === 'undefined' ? { ok: true as const, builds: [] as ForgePilotSavedBuild[] } : readForgePilotSavedBuilds(browserStorage()))
   const [name, setName] = useState(defaultName)
@@ -216,7 +230,9 @@ function ForgePilotPanelContent<B extends string>({ classId, className, dataVers
     if (!result.ok) { setMessage(storageMessage[result.error]); return }
     setLocalBuilds(result.builds)
     setImportInput('')
-    setMessage('Imported for review. The original link has no data-version tag, so no migration was attempted.')
+    setMessage(sourceDataset(created.build.sourceUrl)
+      ? 'Imported for review. The original dataset tag is preserved; its contents were not automatically verified or migrated.'
+      : 'Imported for review. The original link has no data-version tag, so no migration was attempted.')
     track('build_import', { class: classId, source_version: 'unknown' })
   }
 
@@ -295,7 +311,10 @@ function ForgePilotPanelContent<B extends string>({ classId, className, dataVers
       if (source === 'cloud' && (!owner || !isCurrentSession(owner, generation))) return
       const currentStructure = classId === 'hunter'
         ? "Client records support the visible tree; its membership and Intimidation's prerequisite direction have community evidence."
-        : 'The complete 52-node client structure has been reviewed.'
+        : classId === 'priest' ? 'Visible membership excludes one exact off-grid duplicate under community review.'
+          : classId === 'warlock' ? 'Two active grid positions have community evidence; the raw coordinates are preserved.'
+            : classId === 'druid' ? 'The Nature’s Majesty–Nature’s Splendor prerequisite direction has community evidence; the exact raw edge records are preserved.'
+              : 'The client structure has been reconciled with field-level evidence.'
       const fallback = reviewedCurrentClass
         ? `The current ${className} dataset is ${dataVersion}. ${currentStructure} Rank text is community evidence adapted from Talents Forever under CC BY 4.0. Exported effect values were resolved at Level 60 and are not rescaled to Level 30. Point budgets, tier costs and prerequisite-rank requirements remain planning assumptions. Historical saved allocations need review before reopening; this unavailable explanation service does not verify in-game compatibility.`
         : classId === 'paladin'

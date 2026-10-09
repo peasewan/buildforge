@@ -1,0 +1,3687 @@
+{
+  "classId": "warlock",
+  "build": "1.60.1.70291",
+  "clientBuild": "1.60.1.70291",
+  "sourceVersion": "wow_forever_beta_1.60.1.70291",
+  "generated": "2026-10-09",
+  "branches": [
+    "affliction",
+    "demonology",
+    "destruction"
+  ],
+  "treeId": 1116,
+  "skillLineId": 354,
+  "basedOnBuild": "1.60.1.69913",
+  "sourceUrl": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291",
+  "resolvedRankSourceUrl": "https://talentsforever.com/data.json",
+  "resolvedRankSourceBuild": "1.60.1.70291",
+  "resolvedRankLicense": "CC-BY-4.0",
+  "resolvedRankLicenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "resolvedRankAdaptationNotice": "Rank descriptions and icon names adapted from Talents Forever for BuildForgeTools under CC BY 4.0. Structure is reconciled field by field from Wago DB2, with explicit community-reviewed exceptions for visible membership, display positions or connection roles where recorded; original raw records are preserved.",
+  "license": "Game client factual data; rank descriptions and icon names adapted under CC-BY-4.0",
+  "attribution": "Resolved rank text and icon names adapted from Talents Forever (talentsforever.com, CC-BY-4.0); client structure from Wago DB2 1.60.1.70291",
+  "verificationSummary": "1.60.1.70291 Warlock: 52 nodes and 149 complete rank descriptions; compared with 1.60.1.69913: 19 added, 17 removed, 17 moved, 8 rank-cap changes, 28 talents with rank-description changes, 6 prerequisite-link changes. Structural provenance is recorded per field: client identity, rank caps and exact raw geometry are client_verified; explicit reviewed exceptions and resolved text are community_verified; tier costs and prerequisite required ranks remain derived_assumption. 2 exact active nodes have malformed raw coordinates; licensed visible-tree cells are community_verified and original rawPosX/rawPosY are retained as client_verified.",
+  "verificationSources": [
+    {
+      "label": "Wago DB2 — Warlock client structure 1.60.1.70291",
+      "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+    },
+    {
+      "label": "Talents Forever — Warlock resolved rank descriptions (CC BY 4.0)",
+      "url": "https://talentsforever.com/data.json"
+    }
+  ],
+  "sources": [
+    {
+      "label": "Wago DB2 — Warlock client structure 1.60.1.70291",
+      "type": "beta_client",
+      "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+    },
+    {
+      "label": "Talents Forever — Warlock resolved rank descriptions (CC BY 4.0)",
+      "type": "beta_client_crosscheck",
+      "url": "https://talentsforever.com/data.json"
+    }
+  ],
+  "ready": true,
+  "conflicts": [],
+  "talents": [
+    {
+      "id": "warlock-1007",
+      "name": "Improved Life Tap",
+      "branch": "affliction",
+      "row": 1,
+      "column": 1,
+      "maxRank": 2,
+      "nodeId": 105921,
+      "spellId": 18182,
+      "rawPosX": 1020,
+      "rawPosY": 2120,
+      "sourceTalentId": 1007,
+      "requiredTreePoints": 0,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases the amount of Mana awarded by your Life Tap spell by 10%.",
+        "Increases the amount of Mana awarded by your Life Tap spell by 20%."
+      ],
+      "description": "Increases the amount of Mana awarded by your Life Tap spell by 20%.",
+      "x": 12.5,
+      "y": 7.142857142857142,
+      "iconName": "spell_shadow_burningspirit",
+      "icon": "/images/class-talents/spell_shadow_burningspirit.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "community_verified",
+        "column": "community_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Warlock client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Warlock resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Display row and column are an exact community-reviewed interpretation of malformed raw coordinates; rawPosX/rawPosY preserve the independently verified client values.",
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "warlock-1005",
+      "name": "Suppression",
+      "branch": "affliction",
+      "row": 1,
+      "column": 2,
+      "maxRank": 5,
+      "nodeId": 105925,
+      "spellId": 18174,
+      "rawPosX": 1620,
+      "rawPosY": 2130,
+      "sourceTalentId": 1005,
+      "requiredTreePoints": 0,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Improves your chance to hit by 1% and reduces all threat you generate by 4%.",
+        "Improves your chance to hit by 2% and reduces all threat you generate by 8%.",
+        "Improves your chance to hit by 3% and reduces all threat you generate by 12%.",
+        "Improves your chance to hit by 4% and reduces all threat you generate by 16%.",
+        "Improves your chance to hit by 5% and reduces all threat you generate by 20%."
+      ],
+      "description": "Improves your chance to hit by 5% and reduces all threat you generate by 20%.",
+      "x": 37.5,
+      "y": 7.142857142857142,
+      "iconName": "spell_shadow_unsummonbuilding",
+      "icon": "/images/class-talents/spell_shadow_unsummonbuilding.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Warlock client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Warlock resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "warlock-1003",
+      "name": "Improved Corruption",
+      "branch": "affliction",
+      "row": 1,
+      "column": 3,
+      "maxRank": 5,
+      "nodeId": 105924,
+      "spellId": 17810,
+      "rawPosX": 2220,
+      "rawPosY": 2130,
+      "sourceTalentId": 1003,
+      "requiredTreePoints": 0,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Reduces the casting time of your Corruption spell by 0.4 sec and increases the damage it deals by 2%.",
+        "Reduces the casting time of your Corruption spell by 0.8 sec and increases the damage it deals by 4%.",
+        "Reduces the casting time of your Corruption spell by 1.2 sec and increases the damage it deals by 6%.",
+        "Reduces the casting time of your Corruption spell by 1.6 sec and increases the damage it deals by 8%.",
+        "Reduces the casting time of your Corruption spell by 2 sec and increases the damage it deals by 10%."
+      ],
+      "description": "Reduces the casting time of your Corruption spell by 2 sec and increases the damage it deals by 10%.",
+      "x": 62.5,
+      "y": 7.142857142857142,
+      "iconName": "spell_shadow_abominationexplosion",
+      "icon": "/images/class-talents/spell_shadow_abominationexplosion.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Warlock client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Warlock resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "warlock-affliction-malediction",
+      "name": "Malediction",
+      "branch": "affliction",
+      "row": 2,
+      "column": 1,
+      "maxRank": 5,
+      "nodeId": 105923,
+      "spellId": 1225177,
+      "rawPosX": 1020,
+      "rawPosY": 2730,
+      "requiredTreePoints": 5,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases all periodic damage done by your Warlock spells by 1%.",
+        "Increases all periodic damage done by your Warlock spells by 2%.",
+        "Increases all periodic damage done by your Warlock spells by 3%.",
+        "Increases all periodic damage done by your Warlock spells by 4%.",
+        "Increases all periodic damage done by your Warlock spells by 5%."
+      ],
+      "description": "Increases all periodic damage done by your Warlock spells by 5%.",
+      "x": 12.5,
+      "y": 21.428571428571427,
+      "iconName": "spell_shadow_curseofachimonde",
+      "icon": "/images/class-talents/spell_shadow_curseofachimonde.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Warlock client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Warlock resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "warlock-affliction-soul-harvest",
+      "name": "Soul Harvest",
+      "branch": "affliction",
+      "row": 2,
+      "column": 2,
+      "maxRank": 2,
+      "nodeId": 105922,
+      "spellId": 437032,
+      "rawPosX": 1620,
+      "rawPosY": 2730,
+      "requiredTreePoints": 5,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Killing a non-trivial target afflicted by your Drain Soul increases your Mana regeneration by 50% for 10 sec and allows 50% of normal Mana regeneration to continue while casting.",
+        "Killing a non-trivial target afflicted by your Drain Soul increases your Mana regeneration by 100% for 10 sec and allows 100% of normal Mana regeneration to continue while casting."
+      ],
+      "description": "Killing a non-trivial target afflicted by your Drain Soul increases your Mana regeneration by 100% for 10 sec and allows 100% of normal Mana regeneration to continue while casting.",
+      "x": 37.5,
+      "y": 21.428571428571427,
+      "iconName": "inv_elemental_primal_shadow",
+      "icon": "/images/class-talents/inv_elemental_primal_shadow.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Warlock client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Warlock resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "warlock-affliction-improved-drains",
+      "name": "Improved Drains",
+      "branch": "affliction",
+      "row": 2,
+      "column": 3,
+      "maxRank": 3,
+      "nodeId": 105920,
+      "spellId": 403511,
+      "rawPosX": 2220,
+      "rawPosY": 2730,
+      "requiredTreePoints": 5,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases health drained or damage done by your Drain Life, Drain Soul, and Wrack spells by 7%.",
+        "Increases health drained or damage done by your Drain Life, Drain Soul, and Wrack spells by 13%.",
+        "Increases health drained or damage done by your Drain Life, Drain Soul, and Wrack spells by 20%."
+      ],
+      "description": "Increases health drained or damage done by your Drain Life, Drain Soul, and Wrack spells by 20%.",
+      "x": 62.5,
+      "y": 21.428571428571427,
+      "iconName": "spell_shadow_haunting",
+      "icon": "/images/class-talents/spell_shadow_haunting.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Warlock client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Warlock resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "warlock-1284",
+      "name": "Improved Bane of Agony",
+      "branch": "affliction",
+      "row": 3,
+      "column": 1,
+      "maxRank": 2,
+      "nodeId": 105919,
+      "spellId": 18827,
+      "rawPosX": 1020,
+      "rawPosY": 3330,
+      "sourceTalentId": 1284,
+      "requiredTreePoints": 10,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases the damage done by your Bane of Agony by 5%.",
+        "Increases the damage done by your Bane of Agony by 10%."
+      ],
+      "description": "Increases the damage done by your Bane of Agony by 10%.",
+      "x": 12.5,
+      "y": 35.714285714285715,
+      "iconName": "spell_shadow_curseofsargeras",
+      "icon": "/images/class-talents/spell_shadow_curseofsargeras.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Warlock client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Warlock resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "warlock-1001",
+      "name": "Fel Concentration",
+      "branch": "affliction",
+      "row": 3,
+      "column": 2,
+      "maxRank": 3,
+      "nodeId": 105918,
+      "spellId": 17783,
+      "rawPosX": 1620,
+      "rawPosY": 3330,
+      "sourceTalentId": 1001,
+      "requiredTreePoints": 10,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Gives you a 23% chance to avoid interruption caused by damage while channeling or casting your Drain Life, Drain Mana, Drain Soul, or Wrack spells.",
+        "Gives you a 47% chance to avoid interruption caused by damage while channeling or casting your Drain Life, Drain Mana, Drain Soul, or Wrack spells.",
+        "Gives you a 70% chance to avoid interruption caused by damage while channeling or casting your Drain Life, Drain Mana, Drain Soul, or Wrack spells."
+      ],
+      "description": "Gives you a 70% chance to avoid interruption caused by damage while channeling or casting your Drain Life, Drain Mana, Drain Soul, or Wrack spells.",
+      "x": 37.5,
+      "y": 35.714285714285715,
+      "iconName": "spell_shadow_fingerofdeath",
+      "icon": "/images/class-talents/spell_shadow_fingerofdeath.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Warlock client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Warlock resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "warlock-1061",
+      "name": "Amplify Curse",
+      "branch": "affliction",
+      "row": 3,
+      "column": 3,
+      "maxRank": 1,
+      "nodeId": 105916,
+      "spellId": 18288,
+      "rawPosX": 2220,
+      "rawPosY": 3320,
+      "sourceTalentId": 1061,
+      "requiredTreePoints": 10,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases the effect of your next Curse of Weakness or Bane of Agony by 50%, or your next Curse of Exhaustion by 20%. Lasts 30 sec."
+      ],
+      "description": "Increases the effect of your next Curse of Weakness or Bane of Agony by 50%, or your next Curse of Exhaustion by 20%. Lasts 30 sec.",
+      "x": 62.5,
+      "y": 35.714285714285715,
+      "iconName": "spell_shadow_contagion",
+      "icon": "/images/class-talents/spell_shadow_contagion.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "community_verified",
+        "column": "community_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Warlock client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Warlock resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Display row and column are an exact community-reviewed interpretation of malformed raw coordinates; rawPosX/rawPosY preserve the independently verified client values.",
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "warlock-affliction-pandemic",
+      "name": "Pandemic",
+      "branch": "affliction",
+      "row": 3,
+      "column": 4,
+      "maxRank": 3,
+      "nodeId": 105917,
+      "spellId": 427712,
+      "rawPosX": 2820,
+      "rawPosY": 3330,
+      "requiredTreePoints": 10,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases the critical strike damage bonus of your Corruption, Bane of Agony, Bane of Doom, Drain Soul, Drain Life, Siphon Life, and Wrack spells by 33%.",
+        "Increases the critical strike damage bonus of your Corruption, Bane of Agony, Bane of Doom, Drain Soul, Drain Life, Siphon Life, and Wrack spells by 67%.",
+        "Increases the critical strike damage bonus of your Corruption, Bane of Agony, Bane of Doom, Drain Soul, Drain Life, Siphon Life, and Wrack spells by 100%."
+      ],
+      "description": "Increases the critical strike damage bonus of your Corruption, Bane of Agony, Bane of Doom, Drain Soul, Drain Life, Siphon Life, and Wrack spells by 100%.",
+      "x": 87.5,
+      "y": 35.714285714285715,
+      "iconName": "spell_shadow_unstableaffliction_2",
+      "icon": "/images/class-talents/spell_shadow_unstableaffliction_2.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Warlock client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Warlock resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "warlock-affliction-malevolence",
+      "name": "Malevolence",
+      "branch": "affliction",
+      "row": 4,
+      "column": 1,
+      "maxRank": 5,
+      "nodeId": 110876,
+      "spellId": 1310949,
+      "rawPosX": 1020,
+      "rawPosY": 3930,
+      "requiredTreePoints": 15,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases the critical effect chance of your Shadow spells by 1%.",
+        "Increases the critical effect chance of your Shadow spells by 2%.",
+        "Increases the critical effect chance of your Shadow spells by 3%.",
+        "Increases the critical effect chance of your Shadow spells by 4%.",
+        "Increases the critical effect chance of your Shadow spells by 5%."
+      ],
+      "description": "Increases the critical effect chance of your Shadow spells by 5%.",
+      "x": 12.5,
+      "y": 50,
+      "iconName": "spell_shadow_focusedpower",
+      "icon": "/images/class-talents/spell_shadow_focusedpower.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Warlock client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Warlock resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "warlock-1002",
+      "name": "Nightfall",
+      "branch": "affliction",
+      "row": 4,
+      "column": 2,
+      "maxRank": 2,
+      "nodeId": 105914,
+      "spellId": 18094,
+      "rawPosX": 1620,
+      "rawPosY": 3930,
+      "sourceTalentId": 1002,
+      "requiredTreePoints": 15,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Gives your Corruption, Drain Soul, Drain Life, and Wrack spells a 2% chance to cause you to enter a Shadow Trance after damaging the opponent. The Shadow Trance reduces the casting time of your next Shadow Bolt spell by 100%.",
+        "Gives your Corruption, Drain Soul, Drain Life, and Wrack spells a 4% chance to cause you to enter a Shadow Trance after damaging the opponent. The Shadow Trance reduces the casting time of your next Shadow Bolt spell by 100%."
+      ],
+      "description": "Gives your Corruption, Drain Soul, Drain Life, and Wrack spells a 4% chance to cause you to enter a Shadow Trance after damaging the opponent. The Shadow Trance reduces the casting time of your next Shadow Bolt spell by 100%.",
+      "x": 37.5,
+      "y": 50,
+      "iconName": "spell_shadow_twilight",
+      "icon": "/images/class-talents/spell_shadow_twilight.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Warlock client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Warlock resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "warlock-1081",
+      "name": "Curse of Exhaustion",
+      "branch": "affliction",
+      "row": 4,
+      "column": 3,
+      "maxRank": 1,
+      "nodeId": 105913,
+      "spellId": 18223,
+      "rawPosX": 2220,
+      "rawPosY": 3930,
+      "sourceTalentId": 1081,
+      "requiredTreePoints": 15,
+      "prerequisite": [
+        "warlock-1061"
+      ],
+      "rankDescriptions": [
+        "Reduces the target's movement speed by 30% for 12 sec. Only one Curse per Warlock can be active on any one target."
+      ],
+      "description": "Reduces the target's movement speed by 30% for 12 sec. Only one Curse per Warlock can be active on any one target.",
+      "x": 62.5,
+      "y": 50,
+      "iconName": "spell_shadow_grimward",
+      "icon": "/images/class-talents/spell_shadow_grimward.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Warlock client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Warlock resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "warlock-1041",
+      "name": "Siphon Life",
+      "branch": "affliction",
+      "row": 5,
+      "column": 2,
+      "maxRank": 1,
+      "nodeId": 105912,
+      "spellId": 18265,
+      "rawPosX": 1620,
+      "rawPosY": 4530,
+      "sourceTalentId": 1041,
+      "requiredTreePoints": 20,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Transfers 11 health from the target to the caster every 3 sec. Lasts 30 sec."
+      ],
+      "description": "Transfers 11 health from the target to the caster every 3 sec. Lasts 30 sec.",
+      "x": 37.5,
+      "y": 64.28571428571429,
+      "iconName": "spell_shadow_requiem",
+      "icon": "/images/class-talents/spell_shadow_requiem.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Warlock client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Warlock resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "warlock-1004",
+      "name": "Soul Siphon",
+      "branch": "affliction",
+      "row": 5,
+      "column": 3,
+      "maxRank": 3,
+      "nodeId": 105911,
+      "spellId": 17804,
+      "rawPosX": 2220,
+      "rawPosY": 4530,
+      "sourceTalentId": 1004,
+      "requiredTreePoints": 20,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases the damage done or health drained by your Drain Life, Drain Soul, and Wrack spells by 4% per each of your other Affliction effects active on the target, up to a maximum increase of 12%.",
+        "Increases the damage done or health drained by your Drain Life, Drain Soul, and Wrack spells by 8% per each of your other Affliction effects active on the target, up to a maximum increase of 24%.",
+        "Increases the damage done or health drained by your Drain Life, Drain Soul, and Wrack spells by 12% per each of your other Affliction effects active on the target, up to a maximum increase of 36%."
+      ],
+      "description": "Increases the damage done or health drained by your Drain Life, Drain Soul, and Wrack spells by 12% per each of your other Affliction effects active on the target, up to a maximum increase of 36%.",
+      "x": 62.5,
+      "y": 64.28571428571429,
+      "iconName": "spell_shadow_lifedrain02",
+      "icon": "/images/class-talents/spell_shadow_lifedrain02.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Warlock client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Warlock resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "warlock-1042",
+      "name": "Shadow Mastery",
+      "branch": "affliction",
+      "row": 6,
+      "column": 3,
+      "maxRank": 5,
+      "nodeId": 105910,
+      "spellId": 18271,
+      "rawPosX": 2220,
+      "rawPosY": 5130,
+      "sourceTalentId": 1042,
+      "requiredTreePoints": 25,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases the damage dealt or life drained by your Shadow spells by 1%.",
+        "Increases the damage dealt or life drained by your Shadow spells by 2%.",
+        "Increases the damage dealt or life drained by your Shadow spells by 3%.",
+        "Increases the damage dealt or life drained by your Shadow spells by 4%.",
+        "Increases the damage dealt or life drained by your Shadow spells by 5%."
+      ],
+      "description": "Increases the damage dealt or life drained by your Shadow spells by 5%.",
+      "x": 62.5,
+      "y": 78.57142857142857,
+      "iconName": "spell_shadow_shadetruesight",
+      "icon": "/images/class-talents/spell_shadow_shadetruesight.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Warlock client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Warlock resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "warlock-affliction-wrack",
+      "name": "Wrack",
+      "branch": "affliction",
+      "row": 7,
+      "column": 2,
+      "maxRank": 1,
+      "nodeId": 105909,
+      "spellId": 1316697,
+      "rawPosX": 1620,
+      "rawPosY": 5730,
+      "requiredTreePoints": 30,
+      "prerequisite": [
+        "warlock-1041"
+      ],
+      "rankDescriptions": [
+        "Tears the target apart from within, inflicting 36 Shadow damage every 1 sec and increasing the damage they take from your other Shadow damage over time effects by 10% for 6 sec."
+      ],
+      "description": "Tears the target apart from within, inflicting 36 Shadow damage every 1 sec and increasing the damage they take from your other Shadow damage over time effects by 10% for 6 sec.",
+      "x": 37.5,
+      "y": 92.85714285714286,
+      "iconName": "ability_deathknight_hemorrhagicfever",
+      "icon": "/images/class-talents/ability_deathknight_hemorrhagicfever.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Warlock client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Warlock resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "warlock-1224",
+      "name": "Improved Health Funnel",
+      "branch": "demonology",
+      "row": 1,
+      "column": 1,
+      "maxRank": 2,
+      "nodeId": 105905,
+      "spellId": 18703,
+      "rawPosX": 5020,
+      "rawPosY": 2130,
+      "sourceTalentId": 1224,
+      "requiredTreePoints": 0,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases the amount of health transferred by your Health Funnel spell by 20%, reduces its health cost by 15%, and reduces all threat your Health Funnel generates by 50%. Allows Health Funnel to be used regardless of your demon's health.",
+        "Increases the amount of health transferred by your Health Funnel spell by 40%, reduces its health cost by 30%, and reduces all threat your Health Funnel generates by 100%. Allows Health Funnel to be used regardless of your demon's health."
+      ],
+      "description": "Increases the amount of health transferred by your Health Funnel spell by 40%, reduces its health cost by 30%, and reduces all threat your Health Funnel generates by 100%. Allows Health Funnel to be used regardless of your demon's health.",
+      "x": 12.5,
+      "y": 7.142857142857142,
+      "iconName": "spell_shadow_lifedrain",
+      "icon": "/images/class-talents/spell_shadow_lifedrain.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Warlock client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Warlock resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "warlock-1222",
+      "name": "Improved Imp",
+      "branch": "demonology",
+      "row": 1,
+      "column": 2,
+      "maxRank": 3,
+      "nodeId": 105908,
+      "spellId": 18694,
+      "rawPosX": 5620,
+      "rawPosY": 2130,
+      "sourceTalentId": 1222,
+      "requiredTreePoints": 0,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases the damage of your Imp's Firebolt spell by 10% and the effect of its Fire Shield spell by 10%.",
+        "Increases the damage of your Imp's Firebolt spell by 20% and the effect of its Fire Shield spell by 20%.",
+        "Increases the damage of your Imp's Firebolt spell by 30% and the effect of its Fire Shield spell by 30%."
+      ],
+      "description": "Increases the damage of your Imp's Firebolt spell by 30% and the effect of its Fire Shield spell by 30%.",
+      "x": 37.5,
+      "y": 7.142857142857142,
+      "iconName": "spell_shadow_summonimp",
+      "icon": "/images/class-talents/spell_shadow_summonimp.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Warlock client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Warlock resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "warlock-1223",
+      "name": "Demonic Embrace",
+      "branch": "demonology",
+      "row": 1,
+      "column": 3,
+      "maxRank": 5,
+      "nodeId": 105907,
+      "spellId": 18697,
+      "rawPosX": 6220,
+      "rawPosY": 2130,
+      "sourceTalentId": 1223,
+      "requiredTreePoints": 0,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases your total Stamina by 3%.",
+        "Increases your total Stamina by 6%.",
+        "Increases your total Stamina by 9%.",
+        "Increases your total Stamina by 12%.",
+        "Increases your total Stamina by 15%."
+      ],
+      "description": "Increases your total Stamina by 15%.",
+      "x": 62.5,
+      "y": 7.142857142857142,
+      "iconName": "spell_shadow_metamorphosis",
+      "icon": "/images/class-talents/spell_shadow_metamorphosis.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Warlock client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Warlock resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "warlock-1262",
+      "name": "Unholy Power",
+      "branch": "demonology",
+      "row": 1,
+      "column": 4,
+      "maxRank": 5,
+      "nodeId": 105906,
+      "spellId": 18769,
+      "rawPosX": 6820,
+      "rawPosY": 2130,
+      "sourceTalentId": 1262,
+      "requiredTreePoints": 0,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases all damage done by your Imp, Voidwalker, Succubus, Incubus, and Felhunter pets by 2%.",
+        "Increases all damage done by your Imp, Voidwalker, Succubus, Incubus, and Felhunter pets by 4%.",
+        "Increases all damage done by your Imp, Voidwalker, Succubus, Incubus, and Felhunter pets by 6%.",
+        "Increases all damage done by your Imp, Voidwalker, Succubus, Incubus, and Felhunter pets by 8%.",
+        "Increases all damage done by your Imp, Voidwalker, Succubus, Incubus, and Felhunter pets by 10%."
+      ],
+      "description": "Increases all damage done by your Imp, Voidwalker, Succubus, Incubus, and Felhunter pets by 10%.",
+      "x": 87.5,
+      "y": 7.142857142857142,
+      "iconName": "spell_shadow_shadowworddominate",
+      "icon": "/images/class-talents/spell_shadow_shadowworddominate.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Warlock client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Warlock resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "warlock-demonology-demonic-aegis",
+      "name": "Demonic Aegis",
+      "branch": "demonology",
+      "row": 2,
+      "column": 1,
+      "maxRank": 2,
+      "nodeId": 105902,
+      "spellId": 1235316,
+      "rawPosX": 5020,
+      "rawPosY": 2730,
+      "requiredTreePoints": 5,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases the effectiveness of your Demon Skin and Demon Armor spells by 15%.",
+        "Increases the effectiveness of your Demon Skin and Demon Armor spells by 30%."
+      ],
+      "description": "Increases the effectiveness of your Demon Skin and Demon Armor spells by 30%.",
+      "x": 12.5,
+      "y": 21.428571428571427,
+      "iconName": "spell_shadow_ragingscream",
+      "icon": "/images/class-talents/spell_shadow_ragingscream.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Warlock client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Warlock resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "warlock-1225",
+      "name": "Improved Voidwalker",
+      "branch": "demonology",
+      "row": 2,
+      "column": 2,
+      "maxRank": 3,
+      "nodeId": 105904,
+      "spellId": 18705,
+      "rawPosX": 5620,
+      "rawPosY": 2730,
+      "sourceTalentId": 1225,
+      "requiredTreePoints": 5,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases the effectiveness of your Voidwalker's Torment, Consume Shadows, Sacrifice, and Suffering spells by 10%.",
+        "Increases the effectiveness of your Voidwalker's Torment, Consume Shadows, Sacrifice, and Suffering spells by 20%.",
+        "Increases the effectiveness of your Voidwalker's Torment, Consume Shadows, Sacrifice, and Suffering spells by 30%."
+      ],
+      "description": "Increases the effectiveness of your Voidwalker's Torment, Consume Shadows, Sacrifice, and Suffering spells by 30%.",
+      "x": 37.5,
+      "y": 21.428571428571427,
+      "iconName": "spell_shadow_summonvoidwalker",
+      "icon": "/images/class-talents/spell_shadow_summonvoidwalker.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "same",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Warlock client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Warlock resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "warlock-1242",
+      "name": "Fel Vitality",
+      "branch": "demonology",
+      "row": 2,
+      "column": 3,
+      "maxRank": 3,
+      "nodeId": 105903,
+      "spellId": 18731,
+      "rawPosX": 6220,
+      "rawPosY": 2730,
+      "sourceTalentId": 1242,
+      "requiredTreePoints": 5,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases the maximum health and Mana of your Imp, Voidwalker, Succubus, Incubus, and Felhunter by 5%, and increases your maximum Mana by 5%.",
+        "Increases the maximum health and Mana of your Imp, Voidwalker, Succubus, Incubus, and Felhunter by 10%, and increases your maximum Mana by 10%.",
+        "Increases the maximum health and Mana of your Imp, Voidwalker, Succubus, Incubus, and Felhunter by 15%, and increases your maximum Mana by 15%."
+      ],
+      "description": "Increases the maximum health and Mana of your Imp, Voidwalker, Succubus, Incubus, and Felhunter by 15%, and increases your maximum Mana by 15%.",
+      "x": 62.5,
+      "y": 21.428571428571427,
+      "iconName": "spell_shadow_demonictactics",
+      "icon": "/images/class-talents/spell_shadow_demonictactics.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Warlock client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Warlock resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "warlock-demonology-demonic-energies",
+      "name": "Demonic Energies",
+      "branch": "demonology",
+      "row": 2,
+      "column": 4,
+      "maxRank": 2,
+      "nodeId": 105899,
+      "spellId": 1225214,
+      "rawPosX": 6820,
+      "rawPosY": 2730,
+      "requiredTreePoints": 5,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "You heal your pet for 8% of all spell damage you deal. When you gain Mana from Life Tap, your summoned demon gains 50% of the Mana you gain.",
+        "You heal your pet for 15% of all spell damage you deal. When you gain Mana from Life Tap, your summoned demon gains 100% of the Mana you gain."
+      ],
+      "description": "You heal your pet for 15% of all spell damage you deal. When you gain Mana from Life Tap, your summoned demon gains 100% of the Mana you gain.",
+      "x": 87.5,
+      "y": 21.428571428571427,
+      "iconName": "spell_shadow_felmending",
+      "icon": "/images/class-talents/spell_shadow_felmending.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Warlock client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Warlock resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "warlock-1243",
+      "name": "Improved Sayaad",
+      "branch": "demonology",
+      "row": 3,
+      "column": 1,
+      "maxRank": 3,
+      "nodeId": 105901,
+      "spellId": 18754,
+      "rawPosX": 5020,
+      "rawPosY": 3330,
+      "sourceTalentId": 1243,
+      "requiredTreePoints": 10,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases the effect of your Succubus' and Incubus' Lash of Pain and Soothing Kiss spells by 10%, and increases the duration of your Succubus' and Incubus' Seduction and Lesser Invisibility spells by 10%.",
+        "Increases the effect of your Succubus' and Incubus' Lash of Pain and Soothing Kiss spells by 20%, and increases the duration of your Succubus' and Incubus' Seduction and Lesser Invisibility spells by 20%.",
+        "Increases the effect of your Succubus' and Incubus' Lash of Pain and Soothing Kiss spells by 30%, and increases the duration of your Succubus' and Incubus' Seduction and Lesser Invisibility spells by 30%."
+      ],
+      "description": "Increases the effect of your Succubus' and Incubus' Lash of Pain and Soothing Kiss spells by 30%, and increases the duration of your Succubus' and Incubus' Seduction and Lesser Invisibility spells by 30%.",
+      "x": 12.5,
+      "y": 35.714285714285715,
+      "iconName": "ability_warlock_randomizesuccubusincubus",
+      "icon": "/images/class-talents/ability_warlock_randomizesuccubusincubus.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "same",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Warlock client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Warlock resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "warlock-1281",
+      "name": "Demonic Sacrifice",
+      "branch": "demonology",
+      "row": 3,
+      "column": 2,
+      "maxRank": 1,
+      "nodeId": 105900,
+      "spellId": 18788,
+      "rawPosX": 5620,
+      "rawPosY": 3330,
+      "sourceTalentId": 1281,
+      "requiredTreePoints": 10,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "When activated, sacrifices your summoned Demon to enhance the opposing aspect of your power, granting you an effect that lasts 2 hrs. The effect is canceled if any Demon is summoned.\n\nImp: Increases your Shadow damage by 15%.\n\nVoidwalker: Restores 2% of your total Mana every 4 sec.\n\nSuccubus/Incubus: Increases your Fire damage by 15%.\n\nFelhunter: Restores 3% of your total Health every 4 sec."
+      ],
+      "description": "When activated, sacrifices your summoned Demon to enhance the opposing aspect of your power, granting you an effect that lasts 2 hrs. The effect is canceled if any Demon is summoned.\n\nImp: Increases your Shadow damage by 15%.\n\nVoidwalker: Restores 2% of your total Mana every 4 sec.\n\nSuccubus/Incubus: Increases your Fire damage by 15%.\n\nFelhunter: Restores 3% of your total Health every 4 sec.",
+      "x": 37.5,
+      "y": 35.714285714285715,
+      "iconName": "spell_shadow_psychicscream",
+      "icon": "/images/class-talents/spell_shadow_psychicscream.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Warlock client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Warlock resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "warlock-1227",
+      "name": "Master Summoner",
+      "branch": "demonology",
+      "row": 3,
+      "column": 3,
+      "maxRank": 2,
+      "nodeId": 105898,
+      "spellId": 18709,
+      "rawPosX": 6220,
+      "rawPosY": 3330,
+      "sourceTalentId": 1227,
+      "requiredTreePoints": 10,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Reduces the casting time of your Imp, Voidwalker, Succubus, Incubus, and Felhunter Summoning spells by 2 sec and the Mana cost by 20%.",
+        "Reduces the casting time of your Imp, Voidwalker, Succubus, Incubus, and Felhunter Summoning spells by 4 sec and the Mana cost by 40%."
+      ],
+      "description": "Reduces the casting time of your Imp, Voidwalker, Succubus, Incubus, and Felhunter Summoning spells by 4 sec and the Mana cost by 40%.",
+      "x": 62.5,
+      "y": 35.714285714285715,
+      "iconName": "spell_shadow_impphaseshift",
+      "icon": "/images/class-talents/spell_shadow_impphaseshift.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Warlock client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Warlock resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "warlock-demonology-decimation",
+      "name": "Decimation",
+      "branch": "demonology",
+      "row": 4,
+      "column": 1,
+      "maxRank": 2,
+      "nodeId": 105897,
+      "spellId": 440870,
+      "rawPosX": 5020,
+      "rawPosY": 3930,
+      "requiredTreePoints": 15,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Reduces the cooldown of your Soul Fire spell by 45%. When you cast Shadow Bolt or Searing Pain on an enemy below 35% health, they deal 3% increased damage, and for the next 10 sec your Soul Fire spell has its cast time reduced by 20% and costs no Soul Shards.",
+        "Reduces the cooldown of your Soul Fire spell by 90%. When you cast Shadow Bolt or Searing Pain on an enemy below 35% health, they deal 6% increased damage, and for the next 10 sec your Soul Fire spell has its cast time reduced by 40% and costs no Soul Shards."
+      ],
+      "description": "Reduces the cooldown of your Soul Fire spell by 90%. When you cast Shadow Bolt or Searing Pain on an enemy below 35% health, they deal 6% increased damage, and for the next 10 sec your Soul Fire spell has its cast time reduced by 40% and costs no Soul Shards.",
+      "x": 12.5,
+      "y": 50,
+      "iconName": "spell_fire_fireball02",
+      "icon": "/images/class-talents/spell_fire_fireball02.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Warlock client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Warlock resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "warlock-1226",
+      "name": "Fel Domination",
+      "branch": "demonology",
+      "row": 4,
+      "column": 3,
+      "maxRank": 1,
+      "nodeId": 105895,
+      "spellId": 18708,
+      "rawPosX": 6220,
+      "rawPosY": 3930,
+      "sourceTalentId": 1226,
+      "requiredTreePoints": 15,
+      "prerequisite": [
+        "warlock-1227"
+      ],
+      "rankDescriptions": [
+        "Your next Imp, Voidwalker, Succubus, Incubus, or Felhunter Summon spell has its casting time reduced by 5.5 sec and its Mana cost reduced by 50%."
+      ],
+      "description": "Your next Imp, Voidwalker, Succubus, Incubus, or Felhunter Summon spell has its casting time reduced by 5.5 sec and its Mana cost reduced by 50%.",
+      "x": 62.5,
+      "y": 50,
+      "iconName": "spell_nature_removecurse",
+      "icon": "/images/class-talents/spell_nature_removecurse.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Warlock client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Warlock resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "warlock-demonology-demonic-brand",
+      "name": "Demonic Brand",
+      "branch": "demonology",
+      "row": 4,
+      "column": 4,
+      "maxRank": 3,
+      "nodeId": 105896,
+      "spellId": 1293695,
+      "rawPosX": 6820,
+      "rawPosY": 3930,
+      "requiredTreePoints": 15,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Your Searing Pain generates 17% less threat and brands the target for 10 sec. Your pet's next 2 attacks against the target deal 65 to 68 Fire or Shadow damage based on the pet. If Shadow damage is dealt, it has high threat.",
+        "Your Searing Pain generates 33% less threat and brands the target for 10 sec. Your pet's next 4 attacks against the target deal 65 to 68 Fire or Shadow damage based on the pet. If Shadow damage is dealt, it has high threat.",
+        "Your Searing Pain generates 50% less threat and brands the target for 10 sec. Your pet's next 6 attacks against the target deal 65 to 68 Fire or Shadow damage based on the pet. If Shadow damage is dealt, it has high threat."
+      ],
+      "description": "Your Searing Pain generates 50% less threat and brands the target for 10 sec. Your pet's next 6 attacks against the target deal 65 to 68 Fire or Shadow damage based on the pet. If Shadow damage is dealt, it has high threat.",
+      "x": 87.5,
+      "y": 50,
+      "iconName": "ability_demonhunter_chaoticimprint_fire",
+      "icon": "/images/class-talents/ability_demonhunter_chaoticimprint_fire.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Warlock client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Warlock resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "warlock-demonology-improved-felhunter",
+      "name": "Improved Felhunter",
+      "branch": "demonology",
+      "row": 5,
+      "column": 1,
+      "maxRank": 3,
+      "nodeId": 105894,
+      "spellId": 1225217,
+      "rawPosX": 5020,
+      "rawPosY": 4530,
+      "requiredTreePoints": 20,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases the Attack Power reduction of your Felhunter's Tainted Blood, the healing of its Devour Magic, and the detection level of its Paranoia by 10%, and reduces the cooldown of its Spell Lock by 2 sec.",
+        "Increases the Attack Power reduction of your Felhunter's Tainted Blood, the healing of its Devour Magic, and the detection level of its Paranoia by 20%, and reduces the cooldown of its Spell Lock by 4 sec.",
+        "Increases the Attack Power reduction of your Felhunter's Tainted Blood, the healing of its Devour Magic, and the detection level of its Paranoia by 30%, and reduces the cooldown of its Spell Lock by 6 sec."
+      ],
+      "description": "Increases the Attack Power reduction of your Felhunter's Tainted Blood, the healing of its Devour Magic, and the detection level of its Paranoia by 30%, and reduces the cooldown of its Spell Lock by 6 sec.",
+      "x": 12.5,
+      "y": 64.28571428571429,
+      "iconName": "spell_shadow_summonfelhunter",
+      "icon": "/images/class-talents/spell_shadow_summonfelhunter.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Warlock client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Warlock resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "warlock-1282",
+      "name": "Soul Link",
+      "branch": "demonology",
+      "row": 5,
+      "column": 2,
+      "maxRank": 1,
+      "nodeId": 105892,
+      "spellId": 19028,
+      "rawPosX": 5620,
+      "rawPosY": 4530,
+      "sourceTalentId": 1282,
+      "requiredTreePoints": 20,
+      "prerequisite": [
+        "warlock-1281"
+      ],
+      "rankDescriptions": [
+        "When active, 30% of all damage taken by the caster is taken by your Imp, Voidwalker, Succubus, Incubus, or Felhunter Demon instead. In addition, both the Demon and the master will inflict 3% more damage. Lasts as long as the Demon is active."
+      ],
+      "description": "When active, 30% of all damage taken by the caster is taken by your Imp, Voidwalker, Succubus, Incubus, or Felhunter Demon instead. In addition, both the Demon and the master will inflict 3% more damage. Lasts as long as the Demon is active.",
+      "x": 37.5,
+      "y": 64.28571428571429,
+      "iconName": "spell_shadow_gathershadows",
+      "icon": "/images/class-talents/spell_shadow_gathershadows.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Warlock client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Warlock resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "warlock-demonology-demonic-knowledge",
+      "name": "Demonic Knowledge",
+      "branch": "demonology",
+      "row": 5,
+      "column": 3,
+      "maxRank": 3,
+      "nodeId": 105893,
+      "spellId": 412732,
+      "rawPosX": 6220,
+      "rawPosY": 4530,
+      "requiredTreePoints": 20,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases your spell damage and your Demon pet's spell damage by up to 33% of your level while you have a summoned Demon pet active.",
+        "Increases your spell damage and your Demon pet's spell damage by up to 67% of your level while you have a summoned Demon pet active.",
+        "Increases your spell damage and your Demon pet's spell damage by up to 100% of your level while you have a summoned Demon pet active."
+      ],
+      "description": "Increases your spell damage and your Demon pet's spell damage by up to 100% of your level while you have a summoned Demon pet active.",
+      "x": 62.5,
+      "y": 64.28571428571429,
+      "iconName": "spell_shadow_improvedvampiricembrace",
+      "icon": "/images/class-talents/spell_shadow_improvedvampiricembrace.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Warlock client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Warlock resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "warlock-1244",
+      "name": "Master Demonologist",
+      "branch": "demonology",
+      "row": 6,
+      "column": 3,
+      "maxRank": 5,
+      "nodeId": 105891,
+      "spellId": 23785,
+      "rawPosX": 6220,
+      "rawPosY": 5130,
+      "sourceTalentId": 1244,
+      "requiredTreePoints": 25,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Grants both the Warlock and the summoned demon an effect as long as that demon is active.\n\nImp - Increases Fire damage done by 2%.\n\nVoidwalker - Reduces Physical damage taken by 2%.\n\nSuccubus/Incubus - Increases Shadow damage done by 2%.\n\nFelhunter - Reduces Magic damage taken by 2%.",
+        "Grants both the Warlock and the summoned demon an effect as long as that demon is active.\n\nImp - Increases Fire damage done by 4%.\n\nVoidwalker - Reduces Physical damage taken by 4%.\n\nSuccubus/Incubus - Increases Shadow damage done by 4%.\n\nFelhunter - Reduces Magic damage taken by 4%.",
+        "Grants both the Warlock and the summoned demon an effect as long as that demon is active.\n\nImp - Increases Fire damage done by 6%.\n\nVoidwalker - Reduces Physical damage taken by 6%.\n\nSuccubus/Incubus - Increases Shadow damage done by 6%.\n\nFelhunter - Reduces Magic damage taken by 6%.",
+        "Grants both the Warlock and the summoned demon an effect as long as that demon is active.\n\nImp - Increases Fire damage done by 8%.\n\nVoidwalker - Reduces Physical damage taken by 8%.\n\nSuccubus/Incubus - Increases Shadow damage done by 8%.\n\nFelhunter - Reduces Magic damage taken by 8%.",
+        "Grants both the Warlock and the summoned demon an effect as long as that demon is active.\n\nImp - Increases Fire damage done by 10%.\n\nVoidwalker - Reduces Physical damage taken by 10%.\n\nSuccubus/Incubus - Increases Shadow damage done by 10%.\n\nFelhunter - Reduces Magic damage taken by 10%."
+      ],
+      "description": "Grants both the Warlock and the summoned demon an effect as long as that demon is active.\n\nImp - Increases Fire damage done by 10%.\n\nVoidwalker - Reduces Physical damage taken by 10%.\n\nSuccubus/Incubus - Increases Shadow damage done by 10%.\n\nFelhunter - Reduces Magic damage taken by 10%.",
+      "x": 62.5,
+      "y": 78.57142857142857,
+      "iconName": "spell_shadow_shadowpact",
+      "icon": "/images/class-talents/spell_shadow_shadowpact.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Warlock client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Warlock resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "warlock-demonology-demonic-pact",
+      "name": "Demonic Pact",
+      "branch": "demonology",
+      "row": 7,
+      "column": 2,
+      "maxRank": 1,
+      "nodeId": 105890,
+      "spellId": 425464,
+      "rawPosX": 5620,
+      "rawPosY": 5730,
+      "requiredTreePoints": 30,
+      "prerequisite": [
+        "warlock-1282"
+      ],
+      "rankDescriptions": [
+        "Your Demonic Sacrifice effect is no longer cancelled by summoning a different Demon pet. Resummoning the sacrificed pet will still cancel the effect."
+      ],
+      "description": "Your Demonic Sacrifice effect is no longer cancelled by summoning a different Demon pet. Resummoning the sacrificed pet will still cancel the effect.",
+      "x": 37.5,
+      "y": 92.85714285714286,
+      "iconName": "inv_ability_soulharvesterwarlock_demonicsoul",
+      "icon": "/images/class-talents/inv_ability_soulharvesterwarlock_demonicsoul.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Warlock client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Warlock resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "warlock-964",
+      "name": "Destructive Reach",
+      "branch": "destruction",
+      "row": 1,
+      "column": 1,
+      "maxRank": 2,
+      "nodeId": 105881,
+      "spellId": 17917,
+      "rawPosX": 9080,
+      "rawPosY": 2130,
+      "sourceTalentId": 964,
+      "requiredTreePoints": 0,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases the range of your damaging spells by 10%.",
+        "Increases the range of your damaging spells by 20%."
+      ],
+      "description": "Increases the range of your damaging spells by 20%.",
+      "x": 12.5,
+      "y": 7.142857142857142,
+      "iconName": "spell_shadow_corpseexplode",
+      "icon": "/images/class-talents/spell_shadow_corpseexplode.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Warlock client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Warlock resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "warlock-944",
+      "name": "Improved Shadow Bolt",
+      "branch": "destruction",
+      "row": 1,
+      "column": 2,
+      "maxRank": 5,
+      "nodeId": 105889,
+      "spellId": 17793,
+      "rawPosX": 9680,
+      "rawPosY": 2130,
+      "sourceTalentId": 944,
+      "requiredTreePoints": 0,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Your Shadow Bolt critical strikes increase Shadow damage taken by the target from your attacks by 4% for 12 sec.",
+        "Your Shadow Bolt critical strikes increase Shadow damage taken by the target from your attacks by 8% for 12 sec.",
+        "Your Shadow Bolt critical strikes increase Shadow damage taken by the target from your attacks by 12% for 12 sec.",
+        "Your Shadow Bolt critical strikes increase Shadow damage taken by the target from your attacks by 16% for 12 sec.",
+        "Your Shadow Bolt critical strikes increase Shadow damage taken by the target from your attacks by 20% for 12 sec."
+      ],
+      "description": "Your Shadow Bolt critical strikes increase Shadow damage taken by the target from your attacks by 20% for 12 sec.",
+      "x": 37.5,
+      "y": 7.142857142857142,
+      "iconName": "spell_shadow_shadowbolt",
+      "icon": "/images/class-talents/spell_shadow_shadowbolt.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Warlock client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Warlock resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "warlock-943",
+      "name": "Bane",
+      "branch": "destruction",
+      "row": 1,
+      "column": 3,
+      "maxRank": 5,
+      "nodeId": 105888,
+      "spellId": 17788,
+      "rawPosX": 10280,
+      "rawPosY": 2130,
+      "sourceTalentId": 943,
+      "requiredTreePoints": 0,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Reduces the casting time of your Shadow Bolt, Immolate, and Incinerate spells by 0.1 sec and your Soul Fire spell by 0.4 sec.",
+        "Reduces the casting time of your Shadow Bolt, Immolate, and Incinerate spells by 0.2 sec and your Soul Fire spell by 0.8 sec.",
+        "Reduces the casting time of your Shadow Bolt, Immolate, and Incinerate spells by 0.3 sec and your Soul Fire spell by 1.2 sec.",
+        "Reduces the casting time of your Shadow Bolt, Immolate, and Incinerate spells by 0.4 sec and your Soul Fire spell by 1.6 sec.",
+        "Reduces the casting time of your Shadow Bolt, Immolate, and Incinerate spells by 0.5 sec and your Soul Fire spell by 2 sec."
+      ],
+      "description": "Reduces the casting time of your Shadow Bolt, Immolate, and Incinerate spells by 0.5 sec and your Soul Fire spell by 2 sec.",
+      "x": 62.5,
+      "y": 7.142857142857142,
+      "iconName": "spell_shadow_deathpact",
+      "icon": "/images/class-talents/spell_shadow_deathpact.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Warlock client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Warlock resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "warlock-destruction-molten-skin",
+      "name": "Molten Skin",
+      "branch": "destruction",
+      "row": 2,
+      "column": 1,
+      "maxRank": 5,
+      "nodeId": 105885,
+      "spellId": 1225220,
+      "rawPosX": 9080,
+      "rawPosY": 2730,
+      "requiredTreePoints": 5,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Reduces all damage taken by 2%.",
+        "Reduces all damage taken by 4%.",
+        "Reduces all damage taken by 6%.",
+        "Reduces all damage taken by 8%.",
+        "Reduces all damage taken by 10%."
+      ],
+      "description": "Reduces all damage taken by 10%.",
+      "x": 12.5,
+      "y": 21.428571428571427,
+      "iconName": "ability_mage_moltenarmor",
+      "icon": "/images/class-talents/ability_mage_moltenarmor.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Warlock client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Warlock resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "warlock-941",
+      "name": "Cataclysm",
+      "branch": "destruction",
+      "row": 2,
+      "column": 2,
+      "maxRank": 3,
+      "nodeId": 105887,
+      "spellId": 17778,
+      "rawPosX": 9680,
+      "rawPosY": 2730,
+      "sourceTalentId": 941,
+      "requiredTreePoints": 5,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Reduces the Mana cost of your Destruction spells by 3%.",
+        "Reduces the Mana cost of your Destruction spells by 6%.",
+        "Reduces the Mana cost of your Destruction spells by 10%."
+      ],
+      "description": "Reduces the Mana cost of your Destruction spells by 10%.",
+      "x": 37.5,
+      "y": 21.428571428571427,
+      "iconName": "spell_fire_windsofwoe",
+      "icon": "/images/class-talents/spell_fire_windsofwoe.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Warlock client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Warlock resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "warlock-982",
+      "name": "Aftermath",
+      "branch": "destruction",
+      "row": 2,
+      "column": 3,
+      "maxRank": 5,
+      "nodeId": 105886,
+      "spellId": 18119,
+      "rawPosX": 10280,
+      "rawPosY": 2730,
+      "sourceTalentId": 982,
+      "requiredTreePoints": 5,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases the initial damage of your Immolate spell by 10% and your Conflagrate spell has a 20% chance to Daze the target, reducing the target's movement speed by 50% for 5 sec.",
+        "Increases the initial damage of your Immolate spell by 20% and your Conflagrate spell has a 40% chance to Daze the target, reducing the target's movement speed by 50% for 5 sec.",
+        "Increases the initial damage of your Immolate spell by 30% and your Conflagrate spell has a 60% chance to Daze the target, reducing the target's movement speed by 50% for 5 sec.",
+        "Increases the initial damage of your Immolate spell by 40% and your Conflagrate spell has a 80% chance to Daze the target, reducing the target's movement speed by 50% for 5 sec.",
+        "Increases the initial damage of your Immolate spell by 50% and your Conflagrate spell has a 100% chance to Daze the target, reducing the target's movement speed by 50% for 5 sec."
+      ],
+      "description": "Increases the initial damage of your Immolate spell by 50% and your Conflagrate spell has a 100% chance to Daze the target, reducing the target's movement speed by 50% for 5 sec.",
+      "x": 62.5,
+      "y": 21.428571428571427,
+      "iconName": "spell_fire_fire",
+      "icon": "/images/class-talents/spell_fire_fire.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Warlock client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Warlock resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "warlock-967",
+      "name": "Ruin",
+      "branch": "destruction",
+      "row": 3,
+      "column": 2,
+      "maxRank": 5,
+      "nodeId": 105883,
+      "spellId": 17959,
+      "rawPosX": 9680,
+      "rawPosY": 3330,
+      "sourceTalentId": 967,
+      "requiredTreePoints": 10,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases the critical strike damage bonus of your Destruction spells by 20%.",
+        "Increases the critical strike damage bonus of your Destruction spells by 40%.",
+        "Increases the critical strike damage bonus of your Destruction spells by 60%.",
+        "Increases the critical strike damage bonus of your Destruction spells by 80%.",
+        "Increases the critical strike damage bonus of your Destruction spells by 100%."
+      ],
+      "description": "Increases the critical strike damage bonus of your Destruction spells by 100%.",
+      "x": 37.5,
+      "y": 35.714285714285715,
+      "iconName": "spell_shadow_shadowwordpain",
+      "icon": "/images/class-talents/spell_shadow_shadowwordpain.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Warlock client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Warlock resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "warlock-963",
+      "name": "Shadowburn",
+      "branch": "destruction",
+      "row": 3,
+      "column": 3,
+      "maxRank": 1,
+      "nodeId": 105884,
+      "spellId": 17877,
+      "rawPosX": 10280,
+      "rawPosY": 3330,
+      "sourceTalentId": 963,
+      "requiredTreePoints": 10,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Instantly blasts the target for 65 to 73 Shadow damage. If a non-trivial target dies within 8 sec of being hit with Shadowburn, the caster gains a Soul Shard."
+      ],
+      "description": "Instantly blasts the target for 65 to 73 Shadow damage. If a non-trivial target dies within 8 sec of being hit with Shadowburn, the caster gains a Soul Shard.",
+      "x": 62.5,
+      "y": 35.714285714285715,
+      "iconName": "spell_shadow_scourgebuild",
+      "icon": "/images/class-talents/spell_shadow_scourgebuild.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Warlock client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Warlock resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "warlock-985",
+      "name": "Intensity",
+      "branch": "destruction",
+      "row": 4,
+      "column": 1,
+      "maxRank": 3,
+      "nodeId": 105882,
+      "spellId": 18135,
+      "rawPosX": 9080,
+      "rawPosY": 3930,
+      "sourceTalentId": 985,
+      "requiredTreePoints": 15,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Gives you a 23% chance to resist interruption caused by damage while casting or channeling any Destruction spell.",
+        "Gives you a 47% chance to resist interruption caused by damage while casting or channeling any Destruction spell.",
+        "Gives you a 70% chance to resist interruption caused by damage while casting or channeling any Destruction spell."
+      ],
+      "description": "Gives you a 70% chance to resist interruption caused by damage while casting or channeling any Destruction spell.",
+      "x": 12.5,
+      "y": 50,
+      "iconName": "spell_fire_lavaspawn",
+      "icon": "/images/class-talents/spell_fire_lavaspawn.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Warlock client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Warlock resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "warlock-965",
+      "name": "Agonizing Flames",
+      "branch": "destruction",
+      "row": 4,
+      "column": 2,
+      "maxRank": 3,
+      "nodeId": 105879,
+      "spellId": 17927,
+      "rawPosX": 9680,
+      "rawPosY": 3930,
+      "sourceTalentId": 965,
+      "requiredTreePoints": 15,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases the critical strike chance of your Searing Pain spell by 3% and the damage done by all your Destruction spells by 3%.",
+        "Increases the critical strike chance of your Searing Pain spell by 7% and the damage done by all your Destruction spells by 7%.",
+        "Increases the critical strike chance of your Searing Pain spell by 10% and the damage done by all your Destruction spells by 10%."
+      ],
+      "description": "Increases the critical strike chance of your Searing Pain spell by 10% and the damage done by all your Destruction spells by 10%.",
+      "x": 37.5,
+      "y": 50,
+      "iconName": "spell_fire_soulburn",
+      "icon": "/images/class-talents/spell_fire_soulburn.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Warlock client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Warlock resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "warlock-968",
+      "name": "Conflagrate",
+      "branch": "destruction",
+      "row": 4,
+      "column": 3,
+      "maxRank": 1,
+      "nodeId": 105880,
+      "spellId": 1293817,
+      "rawPosX": 10280,
+      "rawPosY": 3930,
+      "sourceTalentId": 968,
+      "requiredTreePoints": 15,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Ignites a target that is already afflicted by your Immolate spell, dealing 88 to 110 Fire damage and consuming your Immolate effect."
+      ],
+      "description": "Ignites a target that is already afflicted by your Immolate spell, dealing 88 to 110 Fire damage and consuming your Immolate effect.",
+      "x": 62.5,
+      "y": 50,
+      "iconName": "spell_fire_fireball",
+      "icon": "/images/class-talents/spell_fire_fireball.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Warlock client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Warlock resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "warlock-destruction-pyroclasm",
+      "name": "Pyroclasm",
+      "branch": "destruction",
+      "row": 5,
+      "column": 1,
+      "maxRank": 2,
+      "nodeId": 105878,
+      "spellId": 18073,
+      "rawPosX": 9080,
+      "rawPosY": 4530,
+      "requiredTreePoints": 20,
+      "prerequisite": [
+        "warlock-985"
+      ],
+      "rankDescriptions": [
+        "Gives your Soul Fire spell a 13% chance to Stun the target for 3 sec, and your Rain of Fire and Hellfire spells a 13% chance over their duration to Stun targets they damage for 3 sec.",
+        "Gives your Soul Fire spell a 26% chance to Stun the target for 3 sec, and your Rain of Fire and Hellfire spells a 26% chance over their duration to Stun targets they damage for 3 sec."
+      ],
+      "description": "Gives your Soul Fire spell a 26% chance to Stun the target for 3 sec, and your Rain of Fire and Hellfire spells a 26% chance over their duration to Stun targets they damage for 3 sec.",
+      "x": 12.5,
+      "y": 64.28571428571429,
+      "iconName": "spell_fire_volcano",
+      "icon": "/images/class-talents/spell_fire_volcano.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Warlock client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Warlock resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "warlock-destruction-bane-of-havoc",
+      "name": "Bane of Havoc",
+      "branch": "destruction",
+      "row": 5,
+      "column": 2,
+      "maxRank": 1,
+      "nodeId": 105876,
+      "spellId": 1225228,
+      "rawPosX": 9680,
+      "rawPosY": 4530,
+      "requiredTreePoints": 20,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Afflicts the target for 5 min, causing 15% of all damage done by the Warlock to other targets to also be dealt to the cursed target. Bane of Havoc is limited to 1 target, and only one Bane per Warlock can be active on any one target."
+      ],
+      "description": "Afflicts the target for 5 min, causing 15% of all damage done by the Warlock to other targets to also be dealt to the cursed target. Bane of Havoc is limited to 1 target, and only one Bane per Warlock can be active on any one target.",
+      "x": 37.5,
+      "y": 64.28571428571429,
+      "iconName": "ability_warlock_baneofhavoc",
+      "icon": "/images/class-talents/ability_warlock_baneofhavoc.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Warlock client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Warlock resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "warlock-destruction-fire-and-brimstone",
+      "name": "Fire and Brimstone",
+      "branch": "destruction",
+      "row": 5,
+      "column": 3,
+      "maxRank": 3,
+      "nodeId": 105877,
+      "spellId": 412751,
+      "rawPosX": 10280,
+      "rawPosY": 4530,
+      "requiredTreePoints": 20,
+      "prerequisite": [
+        "warlock-968"
+      ],
+      "rankDescriptions": [
+        "Increases the critical strike chance of your Conflagrate spell by 8%.",
+        "Increases the critical strike chance of your Conflagrate spell by 17%.",
+        "Increases the critical strike chance of your Conflagrate spell by 25%."
+      ],
+      "description": "Increases the critical strike chance of your Conflagrate spell by 25%.",
+      "x": 62.5,
+      "y": 64.28571428571429,
+      "iconName": "spell_fire_meteorstorm",
+      "icon": "/images/class-talents/spell_fire_meteorstorm.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Warlock client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Warlock resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "warlock-destruction-shadow-and-flame",
+      "name": "Shadow and Flame",
+      "branch": "destruction",
+      "row": 6,
+      "column": 3,
+      "maxRank": 5,
+      "nodeId": 105875,
+      "spellId": 426316,
+      "rawPosX": 10280,
+      "rawPosY": 5130,
+      "requiredTreePoints": 25,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Hitting an enemy with Conflagrate increases all Shadow damage you deal by 2% for 20 sec, and hitting an enemy with Shadowburn increases all Fire damage you deal by 2% for 20 sec. In addition, Conflagrate has a 20% chance not to consume Immolate, and Shadowburn has a 20% chance to instantly refund a Soul Shard.",
+        "Hitting an enemy with Conflagrate increases all Shadow damage you deal by 4% for 20 sec, and hitting an enemy with Shadowburn increases all Fire damage you deal by 4% for 20 sec. In addition, Conflagrate has a 40% chance not to consume Immolate, and Shadowburn has a 40% chance to instantly refund a Soul Shard.",
+        "Hitting an enemy with Conflagrate increases all Shadow damage you deal by 6% for 20 sec, and hitting an enemy with Shadowburn increases all Fire damage you deal by 6% for 20 sec. In addition, Conflagrate has a 60% chance not to consume Immolate, and Shadowburn has a 60% chance to instantly refund a Soul Shard.",
+        "Hitting an enemy with Conflagrate increases all Shadow damage you deal by 8% for 20 sec, and hitting an enemy with Shadowburn increases all Fire damage you deal by 8% for 20 sec. In addition, Conflagrate has a 80% chance not to consume Immolate, and Shadowburn has a 80% chance to instantly refund a Soul Shard.",
+        "Hitting an enemy with Conflagrate increases all Shadow damage you deal by 10% for 20 sec, and hitting an enemy with Shadowburn increases all Fire damage you deal by 10% for 20 sec. In addition, Conflagrate has a 100% chance not to consume Immolate, and Shadowburn has a 100% chance to instantly refund a Soul Shard."
+      ],
+      "description": "Hitting an enemy with Conflagrate increases all Shadow damage you deal by 10% for 20 sec, and hitting an enemy with Shadowburn increases all Fire damage you deal by 10% for 20 sec. In addition, Conflagrate has a 100% chance not to consume Immolate, and Shadowburn has a 100% chance to instantly refund a Soul Shard.",
+      "x": 62.5,
+      "y": 78.57142857142857,
+      "iconName": "spell_fire_playingwithfire",
+      "icon": "/images/class-talents/spell_fire_playingwithfire.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Warlock client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Warlock resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "warlock-destruction-incinerate",
+      "name": "Incinerate",
+      "branch": "destruction",
+      "row": 7,
+      "column": 2,
+      "maxRank": 1,
+      "nodeId": 105874,
+      "spellId": 412758,
+      "rawPosX": 9680,
+      "rawPosY": 5730,
+      "requiredTreePoints": 30,
+      "prerequisite": [
+        "warlock-destruction-bane-of-havoc"
+      ],
+      "rankDescriptions": [
+        "Deals 99 to 113 Fire damage to your target and an additional 25% damage if the target is afflicted by Immolate."
+      ],
+      "description": "Deals 99 to 113 Fire damage to your target and an additional 25% damage if the target is afflicted by Immolate.",
+      "x": 37.5,
+      "y": 92.85714285714286,
+      "iconName": "spell_fire_burnout",
+      "icon": "/images/class-talents/spell_fire_burnout.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "rawPosX": "client_verified",
+        "rawPosY": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Warlock client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Warlock resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    }
+  ],
+  "rawClientNodeCount": 52,
+  "quarantinedClientNodes": [],
+  "activeMembershipVerification": "client_verified",
+  "quarantinedClientEdges": [],
+  "reviewedGridPositions": [
+    {
+      "nodeId": 105916,
+      "name": "Amplify Curse",
+      "spellId": 18288,
+      "posX": 2220,
+      "posY": 3320,
+      "branch": "affliction",
+      "row": 3,
+      "column": 3,
+      "reason": "Current licensed visible tree explicitly places this exact named active Spell18288 at Affliction row3/column3. Raw y3320 is malformed and preserved; displayed row/column are community_verified rather than a corrected client coordinate.",
+      "sourceUrl": "https://talentsforever.com/data.json"
+    },
+    {
+      "nodeId": 105921,
+      "name": "Improved Life Tap",
+      "spellId": 18182,
+      "posX": 1020,
+      "posY": 2120,
+      "branch": "affliction",
+      "row": 1,
+      "column": 1,
+      "reason": "Current licensed visible tree explicitly places this exact named active Spell18182 at Affliction row1/column1. Raw y2120 is malformed and preserved; displayed row/column are community_verified rather than a corrected client coordinate.",
+      "sourceUrl": "https://talentsforever.com/data.json"
+    }
+  ],
+  "reviewedEdgeInterpretations": []
+}

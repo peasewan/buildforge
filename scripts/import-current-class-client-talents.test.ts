@@ -69,3 +69,29 @@ describe('current class import CLI write boundary', () => {
     } finally { rmSync(cwd, { recursive: true, force: true }) }
   })
 })
+
+
+describe('current five-class CLI source review', () => {
+  it.each([['hunter', 50, 148], ['rogue', 53, 139], ['priest', 53, 148], ['druid', 52, 148], ['warlock', 52, 149], ['shaman', 50, 148]])('imports complete %s using its own immutable baseline and actual class tree', (classId, nodes, ranks) => {
+    const cwd = mkdtempSync(resolve(tmpdir(), 'buildforge-five-class-import-'))
+    const archive = 'src/data/expansion/' + classId + '-1.60.1.69913.json'
+    const current = 'src/data/' + classId + '-beta-1.60.1.70291.json'
+    try {
+      mkdirSync(resolve(cwd, 'src/data/expansion'), { recursive: true })
+      copyFileSync(resolve(repo, archive), resolve(cwd, archive))
+      writeFileSync(resolve(cwd, current), 'reviewed production sentinel')
+      const before = readFileSync(resolve(cwd, archive), 'utf8')
+      const output = execFileSync(process.execPath, ['--import', loader, script, '--class', String(classId), ...args.slice(2)], { cwd, encoding: 'utf8', stdio: 'pipe' })
+      const summary = JSON.parse(output)
+      const payload = JSON.parse(readFileSync(summary.candidatePath, 'utf8'))
+      const manifest = JSON.parse(readFileSync(summary.manifestPath, 'utf8'))
+      expect(manifest.sourceVocabulary.reviewedPrerequisiteDirection).toBe(['hunter', 'druid'].includes(String(classId)) ? 'community_verified' : 'client_verified')
+      expect(payload.classId).toBe(classId)
+      expect(payload.talents).toHaveLength(Number(nodes))
+      expect(payload.talents.reduce((n: number, talent: { rankDescriptions: string[] }) => n + talent.rankDescriptions.length, 0)).toBe(Number(ranks))
+      expect(payload.talents.every((talent: { sourceClientBuild: string; fieldEvidence: { rankDescriptions: string } }) => talent.sourceClientBuild === '1.60.1.70291' && talent.fieldEvidence.rankDescriptions === 'community_verified')).toBe(true)
+      expect(readFileSync(resolve(cwd, archive), 'utf8')).toBe(before)
+      expect(readFileSync(resolve(cwd, current), 'utf8')).toBe('reviewed production sentinel')
+    } finally { rmSync(cwd, { recursive: true, force: true }) }
+  })
+})
