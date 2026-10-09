@@ -3,18 +3,21 @@ import { join } from 'node:path'
 import { describe, expect, it } from 'vitest'
 import { pageFromPublishedClasses, publishedClassPages, satisfiedRequirements, type ClassPageKind } from '../../lib/classPage'
 import { classPageRedirects } from '../../lib/classStaticPages'
+import { recoverHistoricalClassBuild } from '../../lib/classBuildRecovery'
+import { decodeValidatedPlannerBuild, encodePlannerBuild } from '../../lib/talentPlanner'
+import { progressionForBuild } from '../../experiences/buildExperience'
 import { renderClassPage } from '../../lib/prerender'
 import { pageForPath } from '../../lib/routes'
 import { warriorClass } from './warrior'
 import { PUBLISHED_CLASSES } from './index'
 
 const EXPECTED_PAGES: { slug: string; kind: ClassPageKind; title: string; h1: string }[] = [
-  { slug: 'warrior', kind: 'calculator', title: 'WoW Forever Warrior Talent Calculator | Beta Build 69913', h1: 'WoW Forever Warrior Talent Calculator' },
+  { slug: 'warrior', kind: 'calculator', title: 'WoW Forever Warrior Talent Calculator | Beta Build 70291', h1: 'WoW Forever Warrior Talent Calculator' },
   { slug: 'wow-forever-warrior-builds', kind: 'buildsHub', title: 'WoW Forever Warrior Builds & Talent Calculator | BuildForgeTools', h1: 'WoW Forever Warrior Builds' },
-  { slug: 'wow-forever-warrior-leveling-build', kind: 'leveling', title: 'WoW Forever Warrior Leveling Build | Level 20 Beta', h1: 'WoW Forever Warrior Leveling Build' },
-  { slug: 'wow-forever-arms-warrior-build', kind: 'specBuild', title: 'WoW Forever Arms Warrior Build | Level 20 Beta', h1: 'WoW Forever Arms Warrior Build' },
-  { slug: 'wow-forever-fury-warrior-build', kind: 'specBuild', title: 'WoW Forever Fury Warrior Build | Level 20 Beta', h1: 'WoW Forever Fury Warrior Build' },
-  { slug: 'wow-forever-protection-warrior-build', kind: 'specBuild', title: 'WoW Forever Protection Warrior Build | Level 20 Beta', h1: 'WoW Forever Protection Warrior Build' },
+  { slug: 'wow-forever-warrior-leveling-build', kind: 'leveling', title: 'WoW Forever Warrior Leveling Build | Level 30 Beta', h1: 'WoW Forever Warrior Leveling Build' },
+  { slug: 'wow-forever-arms-warrior-build', kind: 'specBuild', title: 'WoW Forever Arms Warrior Build | Level 30 Beta', h1: 'WoW Forever Arms Warrior Build' },
+  { slug: 'wow-forever-fury-warrior-build', kind: 'specBuild', title: 'WoW Forever Fury Warrior Build | Level 30 Beta', h1: 'WoW Forever Fury Warrior Build' },
+  { slug: 'wow-forever-protection-warrior-build', kind: 'specBuild', title: 'WoW Forever Protection Warrior Build | Level 30 Beta', h1: 'WoW Forever Protection Warrior Build' },
   { slug: 'wow-forever-warrior-talents', kind: 'talents', title: 'WoW Forever Warrior Talents & Talent Trees', h1: 'WoW Forever Warrior Talents & Talent Trees' },
   { slug: 'wow-forever-arms-warrior-leveling-build', kind: 'specLeveling', title: 'WoW Forever Arms Warrior Leveling Build', h1: 'WoW Forever Arms Warrior Leveling Build' },
   { slug: 'wow-forever-fury-warrior-leveling-build', kind: 'specLeveling', title: 'WoW Forever Fury Warrior Leveling Build', h1: 'WoW Forever Fury Warrior Leveling Build' },
@@ -35,6 +38,23 @@ const RETIRED_DUNGEON = 'wow-forever-warrior-dungeon-build'
 const withheldSlugs = new Set([WITHHELD_PVP, RETIRED_DUNGEON])
 
 describe('Warrior ClassDefinition', () => {
+  it('keeps the exact 69913 tree accessible for historical saved builds', () => {
+    const snapshot = warriorClass.historicalSnapshots?.find((item) => item.dataVersion === 'wow_forever_beta_1.60.1.69913')
+    expect(snapshot?.clientBuild).toBe('1.60.1.69913')
+    expect(snapshot?.storageKey).toBe('wow-forever-warrior-build')
+    expect(warriorClass.storageKey).toBe('buildforge-warrior-70291-v1')
+    expect(snapshot?.talents).toHaveLength(53)
+    expect(snapshot?.talents.find((talent) => talent.id === 'warrior-fury-boundless-rage')).toBeDefined()
+    expect(warriorClass.talents.find((talent) => talent.id === 'warrior-fury-boundless-rage')).toBeUndefined()
+    const oldAllocation = { 'warrior-fury-cruelty': 5, 'warrior-fury-unbridled-wrath': 5, 'warrior-fury-boundless-rage': 1 }
+    const code = encodePlannerBuild(oldAllocation)
+    expect(decodeValidatedPlannerBuild(code, warriorClass.talents, { ...warriorClass.plannerConfig, pointCap: 11 })).toBeNull()
+    const recovered = recoverHistoricalClassBuild(warriorClass, code, 20)
+    expect(recovered?.build).toEqual(oldAllocation)
+    expect(recovered?.code).toBe(code)
+    expect(recovered?.talents.find((talent) => talent.id === 'warrior-fury-boundless-rage')?.name).toBe('Boundless Rage')
+  })
+
   it('defines 20 Warrior records but publishes only the 18 with a distinct supported task', () => {
     expect(warriorClass.pages).toHaveLength(20)
     expect(warriorClass.pages.map((page) => page.slug).sort()).toEqual(EXPECTED_PAGES.map((page) => page.slug).sort())
@@ -70,35 +90,39 @@ describe('Warrior ClassDefinition', () => {
     ])
   })
 
-  it('publishes the Level 20 routes as 69913 starter snapshots under the official Level 30 cap', () => {
-    expect(warriorClass.beta).toMatchObject({ levelCap: 20, pointsAtCap: 11 })
-    expect(warriorClass.beta.phaseLabel).toMatch(/69913.*snapshot/i)
-    for (const build of warriorClass.builds) {
-      expect(build).toMatchObject({ level: 20, levelCap: 20, points: 11, verifiedThroughBuild: '1.60.1.69913' })
-      expect(build.phase).toMatch(/starter snapshot/i)
-      expect(build.sources.some((source) => source.url?.includes('us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes'))).toBe(true)
+  it('publishes executable Level 30 routes and preserves the distinct Level 20 snapshot page', () => {
+    expect(warriorClass.beta).toMatchObject({ levelCap: 30, pointsAtCap: 21 })
+    expect(warriorClass.verifiedBuild).toBe('1.60.1.70291')
+    const current = warriorClass.builds.filter((build) => build.level === 30)
+    const snapshots = warriorClass.builds.filter((build) => build.level === 20)
+    expect(current).toHaveLength(9)
+    expect(snapshots).toHaveLength(3)
+    for (const build of current) {
+      expect(build).toMatchObject({ level: 30, levelCap: 21, points: 21, verifiedThroughBuild: '1.60.1.70291' })
+      expect(progressionForBuild(warriorClass, build).steps).toHaveLength(21)
+      expect(progressionForBuild(warriorClass, build).error).toBeUndefined()
     }
-    for (const { page } of publishedClassPages([warriorClass])) {
-      const pageText = [page.description, page.eyebrow, ...page.sections.flatMap((section) => [section.heading, ...section.paragraphs]), ...page.faqs.map((faq) => faq.answer)].join(' ')
-      expect(pageText, page.slug).toMatch(/October 1.*Level 30/i)
-      expect(pageText, page.slug).toMatch(/11-point.*Level 20.*snapshot/i)
-      expect(pageText, page.slug).not.toMatch(/current[- ]cap|current .*Level 20 Beta cap/i)
+    for (const build of snapshots) {
+      expect(build).toMatchObject({ level: 20, levelCap: 11, points: 11 })
+      expect(progressionForBuild(warriorClass, build).steps).toHaveLength(11)
     }
+    const snapshotPage = pageFromPublishedClasses('/wow-forever-warrior-level-20-build', [warriorClass])!
+    expect(snapshotPage.relatedBuildIds).toHaveLength(3)
+    expect(snapshotPage.relatedBuildIds.every((id) => snapshots.some((build) => build.id === id))).toBe(true)
+    expect(publishedClassPages([warriorClass])).toHaveLength(18)
   })
 
-  it('gives Arms vs Fury readers a choice and separates October 1 announcements from imported talents', () => {
+  it('compares real current Arms and Fury routes using their selected talent differences', () => {
     const page = warriorClass.pages.find((candidate) => candidate.slug === 'wow-forever-arms-vs-fury-warrior-leveling')!
     const text = [page.description, ...page.sections.flatMap((section) => [section.heading, ...section.paragraphs]), ...page.faqs.map((faq) => faq.answer), ...page.comparison!.rows.flatMap((row) => [row.label, ...row.values])].join(' ')
-
-    expect(page.updatedAt).toBe('2026-10-02')
+    expect(page.updatedAt).toBe('2026-10-09')
     expect(page.comparison!.rows.length).toBeGreaterThanOrEqual(6)
     expect(text).toMatch(/Choose Arms/i)
     expect(text).toMatch(/Choose Fury/i)
-    expect(text).toMatch(/Lingering Rage/)
     expect(text).toMatch(/Furious Precision/)
-    expect(text).toMatch(/not.*imported.*69913|69913.*not.*client.verified/i)
-    expect(text).toMatch(/no.*reviewed.*Level 30.*allocation/i)
-    expect(renderClassPage(warriorClass, page)).toContain('Lingering Rage')
+    expect(text).toMatch(/21.point|21\/0\/0/)
+    expect(text).not.toMatch(/no.*reviewed.*Level 30.*allocation|not imported into the 69913|awaits review/i)
+    expect(renderClassPage(warriorClass, page)).toContain('Furious Precision')
   })
 
   it('publishes the Warrior PvP hub with its legal PvP primary route', () => {

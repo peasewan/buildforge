@@ -1,0 +1,1241 @@
+{
+  "from": "1.60.1.69913",
+  "to": "1.60.1.70291",
+  "summary": {
+    "added": 13,
+    "removed": 9,
+    "moved": 14,
+    "rank_changed": 4,
+    "tooltip_changed": 32,
+    "prerequisite_changed": 3,
+    "unchanged": 3
+  },
+  "added": [
+    {
+      "id": "hunter-beast-mastery-focused-fire",
+      "name": "Focused Fire",
+      "nodeId": 104975
+    },
+    {
+      "id": "hunter-beast-mastery-summon-hawk",
+      "name": "Summon Hawk",
+      "nodeId": 104966
+    },
+    {
+      "id": "hunter-marksmanship-careful-aim",
+      "name": "Careful Aim",
+      "nodeId": 105008
+    },
+    {
+      "id": "hunter-marksmanship-rapid-killing",
+      "name": "Rapid Killing",
+      "nodeId": 105005
+    },
+    {
+      "id": "hunter-marksmanship-lone-wolf",
+      "name": "Lone Wolf",
+      "nodeId": 105007
+    },
+    {
+      "id": "hunter-marksmanship-rapid-recuperation",
+      "name": "Rapid Recuperation",
+      "nodeId": 104999
+    },
+    {
+      "id": "hunter-marksmanship-sniper-shot",
+      "name": "Sniper Shot",
+      "nodeId": 104997
+    },
+    {
+      "id": "hunter-survival-predator-s-edge",
+      "name": "Predator's Edge",
+      "nodeId": 110861
+    },
+    {
+      "id": "hunter-survival-resourcefulness",
+      "name": "Resourcefulness",
+      "nodeId": 104983
+    },
+    {
+      "id": "hunter-survival-expose-prey",
+      "name": "Expose Prey",
+      "nodeId": 104985
+    },
+    {
+      "id": "hunter-survival-survivalist-s-discipline",
+      "name": "Survivalist's Discipline",
+      "nodeId": 110860
+    },
+    {
+      "id": "hunter-survival-strider-kick",
+      "name": "Strider Kick",
+      "nodeId": 104981
+    },
+    {
+      "id": "hunter-survival-lacerating-strikes",
+      "name": "Lacerating Strikes",
+      "nodeId": 104984
+    }
+  ],
+  "removed": [
+    {
+      "id": "hunter-1624",
+      "name": "Improved Eyes of the Beast",
+      "nodeId": 1624
+    },
+    {
+      "id": "hunter-1395",
+      "name": "Thick Hide",
+      "nodeId": 1395
+    },
+    {
+      "id": "hunter-1343",
+      "name": "Improved Hunter's Mark",
+      "nodeId": 1343
+    },
+    {
+      "id": "hunter-1345",
+      "name": "Aimed Shot",
+      "nodeId": 1345
+    },
+    {
+      "id": "hunter-1351",
+      "name": "Improved Scorpid Sting",
+      "nodeId": 1351
+    },
+    {
+      "id": "hunter-1301",
+      "name": "Humanoid Slaying",
+      "nodeId": 1301
+    },
+    {
+      "id": "hunter-1309",
+      "name": "Improved Feign Death",
+      "nodeId": 1309
+    },
+    {
+      "id": "hunter-1321",
+      "name": "Killer Instinct",
+      "nodeId": 1321
+    },
+    {
+      "id": "hunter-1325",
+      "name": "Wyvern Sting",
+      "nodeId": 1325
+    }
+  ],
+  "moved": [
+    {
+      "id": "hunter-1384",
+      "name": "Pathfinding",
+      "nodeId": 104973,
+      "before": {
+        "branch": "beast-mastery",
+        "row": 3,
+        "column": 1,
+        "requiredTreePoints": 10
+      },
+      "after": {
+        "branch": "beast-mastery",
+        "row": 2,
+        "column": 3,
+        "requiredTreePoints": 5
+      }
+    },
+    {
+      "id": "hunter-1385",
+      "name": "Improved Mend Pet",
+      "nodeId": 104968,
+      "before": {
+        "branch": "beast-mastery",
+        "row": 4,
+        "column": 2,
+        "requiredTreePoints": 15
+      },
+      "after": {
+        "branch": "beast-mastery",
+        "row": 4,
+        "column": 1,
+        "requiredTreePoints": 15
+      }
+    },
+    {
+      "id": "hunter-1352",
+      "name": "Hawk Eye",
+      "nodeId": 105013,
+      "before": {
+        "branch": "marksmanship",
+        "row": 3,
+        "column": 4,
+        "requiredTreePoints": 10
+      },
+      "after": {
+        "branch": "marksmanship",
+        "row": 1,
+        "column": 1,
+        "requiredTreePoints": 0
+      }
+    },
+    {
+      "id": "hunter-1344",
+      "name": "Lethal Attacks",
+      "nodeId": 105011,
+      "before": {
+        "branch": "marksmanship",
+        "row": 2,
+        "column": 3,
+        "requiredTreePoints": 5
+      },
+      "after": {
+        "branch": "marksmanship",
+        "row": 1,
+        "column": 3,
+        "requiredTreePoints": 0
+      }
+    },
+    {
+      "id": "hunter-1348",
+      "name": "Improved Stings",
+      "nodeId": 110870,
+      "before": {
+        "branch": "marksmanship",
+        "row": 4,
+        "column": 2,
+        "requiredTreePoints": 15
+      },
+      "after": {
+        "branch": "marksmanship",
+        "row": 2,
+        "column": 1,
+        "requiredTreePoints": 5
+      }
+    },
+    {
+      "id": "hunter-1342",
+      "name": "Efficiency",
+      "nodeId": 105009,
+      "before": {
+        "branch": "marksmanship",
+        "row": 1,
+        "column": 3,
+        "requiredTreePoints": 0
+      },
+      "after": {
+        "branch": "marksmanship",
+        "row": 2,
+        "column": 2,
+        "requiredTreePoints": 5
+      }
+    },
+    {
+      "id": "hunter-1361",
+      "name": "Trueshot Aura",
+      "nodeId": 105004,
+      "before": {
+        "branch": "marksmanship",
+        "row": 7,
+        "column": 2,
+        "requiredTreePoints": 30
+      },
+      "after": {
+        "branch": "marksmanship",
+        "row": 4,
+        "column": 2,
+        "requiredTreePoints": 15
+      }
+    },
+    {
+      "id": "hunter-1347",
+      "name": "Barrage",
+      "nodeId": 105001,
+      "before": {
+        "branch": "marksmanship",
+        "row": 5,
+        "column": 2,
+        "requiredTreePoints": 20
+      },
+      "after": {
+        "branch": "marksmanship",
+        "row": 5,
+        "column": 3,
+        "requiredTreePoints": 20
+      }
+    },
+    {
+      "id": "hunter-1353",
+      "name": "Scatter Shot",
+      "nodeId": 105000,
+      "before": {
+        "branch": "marksmanship",
+        "row": 5,
+        "column": 1,
+        "requiredTreePoints": 20
+      },
+      "after": {
+        "branch": "marksmanship",
+        "row": 5,
+        "column": 4,
+        "requiredTreePoints": 20
+      }
+    },
+    {
+      "id": "hunter-1623",
+      "name": "Improved Tracking",
+      "nodeId": 104996,
+      "before": {
+        "branch": "survival",
+        "row": 1,
+        "column": 1,
+        "requiredTreePoints": 0
+      },
+      "after": {
+        "branch": "survival",
+        "row": 1,
+        "column": 2,
+        "requiredTreePoints": 0
+      }
+    },
+    {
+      "id": "hunter-1622",
+      "name": "Survivalist",
+      "nodeId": 104992,
+      "before": {
+        "branch": "survival",
+        "row": 3,
+        "column": 2,
+        "requiredTreePoints": 10
+      },
+      "after": {
+        "branch": "survival",
+        "row": 2,
+        "column": 3,
+        "requiredTreePoints": 5
+      }
+    },
+    {
+      "id": "hunter-1305",
+      "name": "Improved Wing Clip",
+      "nodeId": 104990,
+      "before": {
+        "branch": "survival",
+        "row": 2,
+        "column": 3,
+        "requiredTreePoints": 5
+      },
+      "after": {
+        "branch": "survival",
+        "row": 2,
+        "column": 4,
+        "requiredTreePoints": 5
+      }
+    },
+    {
+      "id": "hunter-1310",
+      "name": "Surefooted",
+      "nodeId": 104987,
+      "before": {
+        "branch": "survival",
+        "row": 4,
+        "column": 2,
+        "requiredTreePoints": 15
+      },
+      "after": {
+        "branch": "survival",
+        "row": 3,
+        "column": 2,
+        "requiredTreePoints": 10
+      }
+    },
+    {
+      "id": "hunter-1312",
+      "name": "Counterattack",
+      "nodeId": 104989,
+      "before": {
+        "branch": "survival",
+        "row": 5,
+        "column": 3,
+        "requiredTreePoints": 20
+      },
+      "after": {
+        "branch": "survival",
+        "row": 4,
+        "column": 3,
+        "requiredTreePoints": 15
+      }
+    }
+  ],
+  "rank_changed": [
+    {
+      "id": "hunter-1381",
+      "name": "Improved Aspect of the Monkey",
+      "nodeId": 104974,
+      "before": 5,
+      "after": 3
+    },
+    {
+      "id": "hunter-1348",
+      "name": "Improved Stings",
+      "nodeId": 110870,
+      "before": 5,
+      "after": 3
+    },
+    {
+      "id": "hunter-1623",
+      "name": "Improved Tracking",
+      "nodeId": 104996,
+      "before": 3,
+      "after": 5
+    },
+    {
+      "id": "hunter-1305",
+      "name": "Improved Wing Clip",
+      "nodeId": 104990,
+      "before": 5,
+      "after": 3
+    }
+  ],
+  "tooltip_changed": [
+    {
+      "id": "hunter-1382",
+      "name": "Deadly Aspects",
+      "nodeId": 104960,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "While Aspect of the Hawk is active, Auto Shot has a 10% chance of increasing ranged attack speed by 30% for 12 sec. While Aspect of the Beast is active, all melee auto attacks have a 10% chance of increasing melee attack speed by 30% for 12 sec.",
+          "after": "While Aspect of the Hawk is active, Auto Shot has a 2% chance of increasing ranged attack speed by 30% for 12 sec. While Aspect of the Beast is active, all melee auto attacks have a 2% chance of increasing melee attack speed by 30% for 12 sec."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "While Aspect of the Hawk is active, Auto Shot has a 4% chance of increasing ranged attack speed by 30% for 12 sec. While Aspect of the Beast is active, all melee auto attacks have a 4% chance of increasing melee attack speed by 30% for 12 sec."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "While Aspect of the Hawk is active, Auto Shot has a 6% chance of increasing ranged attack speed by 30% for 12 sec. While Aspect of the Beast is active, all melee auto attacks have a 6% chance of increasing melee attack speed by 30% for 12 sec."
+        },
+        {
+          "rank": 4,
+          "before": "",
+          "after": "While Aspect of the Hawk is active, Auto Shot has a 8% chance of increasing ranged attack speed by 30% for 12 sec. While Aspect of the Beast is active, all melee auto attacks have a 8% chance of increasing melee attack speed by 30% for 12 sec."
+        },
+        {
+          "rank": 5,
+          "before": "",
+          "after": "While Aspect of the Hawk is active, Auto Shot has a 10% chance of increasing ranged attack speed by 30% for 12 sec. While Aspect of the Beast is active, all melee auto attacks have a 10% chance of increasing melee attack speed by 30% for 12 sec."
+        }
+      ]
+    },
+    {
+      "id": "hunter-1389",
+      "name": "Endurance Training",
+      "nodeId": 104976,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Increases the Health and Armor of your pets by 15%.",
+          "after": "Increases the Health and Armor of your pets by 3%."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases the Health and Armor of your pets by 6%."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Increases the Health and Armor of your pets by 9%."
+        },
+        {
+          "rank": 4,
+          "before": "",
+          "after": "Increases the Health and Armor of your pets by 12%."
+        },
+        {
+          "rank": 5,
+          "before": "",
+          "after": "Increases the Health and Armor of your pets by 15%."
+        }
+      ]
+    },
+    {
+      "id": "hunter-1381",
+      "name": "Improved Aspect of the Monkey",
+      "nodeId": 104974,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Increases the Dodge bonus of your Aspect of the Monkey by 4%. Additionally, your pet gains 50% of the effect of your Aspect of the Monkey ability.",
+          "after": "Increases the Dodge bonus of your Aspect of the Monkey by 2%. Additionally, your pet gains 50% of the effect of your Aspect of the Monkey ability."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases the Dodge bonus of your Aspect of the Monkey by 4%. Additionally, your pet gains 50% of the effect of your Aspect of the Monkey ability."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Increases the Dodge bonus of your Aspect of the Monkey by 6%. Additionally, your pet gains 50% of the effect of your Aspect of the Monkey ability."
+        }
+      ]
+    },
+    {
+      "id": "hunter-1384",
+      "name": "Pathfinding",
+      "nodeId": 104973,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Increases the speed bonus of your Aspect of the Cheetah and Aspect of the Pack by 6%.",
+          "after": "Increases the speed bonus of your Aspect of the Cheetah and Aspect of the Pack by 3%."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases the speed bonus of your Aspect of the Cheetah and Aspect of the Pack by 6%."
+        }
+      ]
+    },
+    {
+      "id": "hunter-1625",
+      "name": "Improved Revive Pet",
+      "nodeId": 104972,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Revive Pet's casting time is reduced by 6 sec, mana cost is reduced by 40%, and increases the health your pet returns with by an additional 30%.",
+          "after": "Revive Pet's casting time is reduced by 3 sec, mana cost is reduced by 20%, and increases the health your pet returns with by an additional 15%."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Revive Pet's casting time is reduced by 6 sec, mana cost is reduced by 40%, and increases the health your pet returns with by an additional 30%."
+        }
+      ]
+    },
+    {
+      "id": "hunter-1396",
+      "name": "Unleashed Fury",
+      "nodeId": 104969,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Increases the damage done by your pets and hawks by 20%.",
+          "after": "Increases the damage done by your pets and hawks by 3%."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases the damage done by your pets and hawks by 6%."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Increases the damage done by your pets and hawks by 9%."
+        },
+        {
+          "rank": 4,
+          "before": "",
+          "after": "Increases the damage done by your pets and hawks by 12%."
+        },
+        {
+          "rank": 5,
+          "before": "",
+          "after": "Increases the damage done by your pets and hawks by 15%."
+        }
+      ]
+    },
+    {
+      "id": "hunter-1385",
+      "name": "Improved Mend Pet",
+      "nodeId": 104968,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Gives your Mend Pet spell a 50% chance of cleansing 1 Curse, Disease, Magic, or Poison effect from your pet each time it heals and reduces the Mana cost by 20%.",
+          "after": "Gives your Mend Pet spell a 15% chance of cleansing 1 Curse, Disease, Magic, or Poison effect from your pet each time it heals and reduces the Mana cost by 10%."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Gives your Mend Pet spell a 50% chance of cleansing 1 Curse, Disease, Magic, or Poison effect from your pet each time it heals and reduces the Mana cost by 20%."
+        }
+      ]
+    },
+    {
+      "id": "hunter-1393",
+      "name": "Ferocity",
+      "nodeId": 104967,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Increases the critical strike chance of your pets and hawks by 16%.",
+          "after": "Increases the critical strike chance of your pets and hawks by 2%."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases the critical strike chance of your pets and hawks by 4%."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Increases the critical strike chance of your pets and hawks by 6%."
+        },
+        {
+          "rank": 4,
+          "before": "",
+          "after": "Increases the critical strike chance of your pets and hawks by 8%."
+        },
+        {
+          "rank": 5,
+          "before": "",
+          "after": "Increases the critical strike chance of your pets and hawks by 10%."
+        }
+      ]
+    },
+    {
+      "id": "hunter-1388",
+      "name": "Spirit Bond",
+      "nodeId": 104965,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "While your pet is active, you and your pet will regenerate 1% of total health every 5 sec.",
+          "after": "While your pet is active, you and your pet will regenerate 1% of total health every 10 sec."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "While your pet is active, you and your pet will regenerate 1% of total health every 5 sec."
+        }
+      ]
+    },
+    {
+      "id": "hunter-1390",
+      "name": "Bestial Discipline",
+      "nodeId": 104963,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Increases the Focus regeneration of your pets by 100% and allows 50% of your Mana regeneration to continue while casting.",
+          "after": "Increases the Focus regeneration of your pets by 10% and allows 25% of your Mana regeneration to continue while casting."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases the Focus regeneration of your pets by 20% and allows 50% of your Mana regeneration to continue while casting."
+        }
+      ]
+    },
+    {
+      "id": "hunter-1397",
+      "name": "Frenzy",
+      "nodeId": 104962,
+      "ranks": [
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Gives your pet a 40% chance to gain a 30% attack speed increase for 8 sec after dealing a critical strike."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Gives your pet a 60% chance to gain a 30% attack speed increase for 8 sec after dealing a critical strike."
+        },
+        {
+          "rank": 4,
+          "before": "",
+          "after": "Gives your pet a 80% chance to gain a 30% attack speed increase for 8 sec after dealing a critical strike."
+        },
+        {
+          "rank": 5,
+          "before": "",
+          "after": "Gives your pet a 100% chance to gain a 30% attack speed increase for 8 sec after dealing a critical strike."
+        }
+      ]
+    },
+    {
+      "id": "hunter-1352",
+      "name": "Hawk Eye",
+      "nodeId": 105013,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Increases the range of your ranged weapons by 6 yards.",
+          "after": "Increases the range of your ranged weapons by 2 yards."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases the range of your ranged weapons by 4 yards."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Increases the range of your ranged weapons by 6 yards."
+        }
+      ]
+    },
+    {
+      "id": "hunter-1341",
+      "name": "Improved Concussive Shot",
+      "nodeId": 105012,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "",
+          "after": "Gives your Concussive Shot a 4% chance to stun the target for 3 sec."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Gives your Concussive Shot a 8% chance to stun the target for 3 sec."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Gives your Concussive Shot a 12% chance to stun the target for 3 sec."
+        },
+        {
+          "rank": 4,
+          "before": "",
+          "after": "Gives your Concussive Shot a 16% chance to stun the target for 3 sec."
+        },
+        {
+          "rank": 5,
+          "before": "",
+          "after": "Gives your Concussive Shot a 20% chance to stun the target for 3 sec."
+        }
+      ]
+    },
+    {
+      "id": "hunter-1344",
+      "name": "Lethal Attacks",
+      "nodeId": 105011,
+      "ranks": [
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases your critical strike chance with all attacks by 2%."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Increases your critical strike chance with all attacks by 3%."
+        },
+        {
+          "rank": 4,
+          "before": "",
+          "after": "Increases your critical strike chance with all attacks by 4%."
+        },
+        {
+          "rank": 5,
+          "before": "",
+          "after": "Increases your critical strike chance with all attacks by 5%."
+        }
+      ]
+    },
+    {
+      "id": "hunter-1348",
+      "name": "Improved Stings",
+      "nodeId": 110870,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Increases the damage done by your Serpent Sting by 10%.",
+          "after": "Increases the damage of your Serpent Sting ability by 6%, reduces the cooldown of your Viper Sting ability by 2 sec, and increases the duration of your Scorpid Sting ability by 15 sec."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases the damage of your Serpent Sting ability by 13%, reduces the cooldown of your Viper Sting ability by 4 sec, and increases the duration of your Scorpid Sting ability by 30 sec."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Increases the damage of your Serpent Sting ability by 20%, reduces the cooldown of your Viper Sting ability by 6 sec, and increases the duration of your Scorpid Sting ability by 45 sec."
+        }
+      ]
+    },
+    {
+      "id": "hunter-1342",
+      "name": "Efficiency",
+      "nodeId": 105009,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Reduces the Mana cost of your Shots, Stings, and melee abilities by 15%.",
+          "after": "Reduces the Mana cost of your Shots, Stings, and melee abilities by 3%."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Reduces the Mana cost of your Shots, Stings, and melee abilities by 6%."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Reduces the Mana cost of your Shots, Stings, and melee abilities by 9%."
+        },
+        {
+          "rank": 4,
+          "before": "",
+          "after": "Reduces the Mana cost of your Shots, Stings, and melee abilities by 12%."
+        },
+        {
+          "rank": 5,
+          "before": "",
+          "after": "Reduces the Mana cost of your Shots, Stings, and melee abilities by 15%."
+        }
+      ]
+    },
+    {
+      "id": "hunter-1346",
+      "name": "Improved Arcane Shot",
+      "nodeId": 105006,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Reduces the cooldown of your Arcane Shot by 1.5 sec. Does not affect the cooldown of abilities which share a cooldown with Arcane Shot.",
+          "after": "Reduces the cooldown of your Arcane Shot by 0.3 sec. Does not affect the cooldown of abilities which share a cooldown with Arcane Shot."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Reduces the cooldown of your Arcane Shot by 0.6 sec. Does not affect the cooldown of abilities which share a cooldown with Arcane Shot."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Reduces the cooldown of your Arcane Shot by 0.9 sec. Does not affect the cooldown of abilities which share a cooldown with Arcane Shot."
+        },
+        {
+          "rank": 4,
+          "before": "",
+          "after": "Reduces the cooldown of your Arcane Shot by 1.2 sec. Does not affect the cooldown of abilities which share a cooldown with Arcane Shot."
+        },
+        {
+          "rank": 5,
+          "before": "",
+          "after": "Reduces the cooldown of your Arcane Shot by 1.5 sec. Does not affect the cooldown of abilities which share a cooldown with Arcane Shot."
+        }
+      ]
+    },
+    {
+      "id": "hunter-1361",
+      "name": "Trueshot Aura",
+      "nodeId": 105004,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Increases the Ranged Attack Power of party members within 45 yards by 50. Lasts 30 min.",
+          "after": "Increases the Ranged Attack Power of party members within 45 yds by 30."
+        }
+      ]
+    },
+    {
+      "id": "hunter-1349",
+      "name": "Mortal Shots",
+      "nodeId": 105002,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Increases the critical strike damage bonus on all ranged abilities by 30%.",
+          "after": "Increases the critical strike damage bonus on all ranged abilities by 6%."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases the critical strike damage bonus on all ranged abilities by 12%."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Increases the critical strike damage bonus on all ranged abilities by 18%."
+        },
+        {
+          "rank": 4,
+          "before": "",
+          "after": "Increases the critical strike damage bonus on all ranged abilities by 24%."
+        },
+        {
+          "rank": 5,
+          "before": "",
+          "after": "Increases the critical strike damage bonus on all ranged abilities by 30%."
+        }
+      ]
+    },
+    {
+      "id": "hunter-1347",
+      "name": "Barrage",
+      "nodeId": 105001,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Increases the damage done by your Multi-Shot, Aimed Shot, and Volley abilities by 15%.",
+          "after": "Increases the damage done by your Multi-Shot, Aimed Shot, and Volley abilities by 3%."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases the damage done by your Multi-Shot, Aimed Shot, and Volley abilities by 7%."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Increases the damage done by your Multi-Shot, Aimed Shot, and Volley abilities by 10%."
+        }
+      ]
+    },
+    {
+      "id": "hunter-1362",
+      "name": "Ranged Weapon Specialization",
+      "nodeId": 104998,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Increases the damage you deal with ranged weapons by 5%.",
+          "after": "Increases the damage you deal with ranged weapons by 1%."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases the damage you deal with ranged weapons by 2%."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Increases the damage you deal with ranged weapons by 3%."
+        },
+        {
+          "rank": 4,
+          "before": "",
+          "after": "Increases the damage you deal with ranged weapons by 4%."
+        },
+        {
+          "rank": 5,
+          "before": "",
+          "after": "Increases the damage you deal with ranged weapons by 5%."
+        }
+      ]
+    },
+    {
+      "id": "hunter-1623",
+      "name": "Improved Tracking",
+      "nodeId": 104996,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "While tracking Beasts, Demons, Dragonkin, Elementals, Giants, Humanoids, or Undead, all damage you deal to the tracked creature type is increased by 5%.",
+          "after": "While tracking Beasts, Demons, Dragonkin, Elementals, Giants, Humanoids, or Undead, all damage you deal to the tracked creature type is increased by 1%."
+        },
+        {
+          "rank": 2,
+          "before": "Increases all damage caused against Beasts, Giants and Dragonkin targets by 2% and increases critical damage caused against Beasts, Giants and Dragonkin targets by an additional 2%.",
+          "after": "While tracking Beasts, Demons, Dragonkin, Elementals, Giants, Humanoids, or Undead, all damage you deal to the tracked creature type is increased by 2%."
+        },
+        {
+          "rank": 3,
+          "before": "Increases all damage caused against Beasts, Giants and Dragonkin targets by 3% and increases critical damage caused against Beasts, Giants and Dragonkin targets by an additional 3%.",
+          "after": "While tracking Beasts, Demons, Dragonkin, Elementals, Giants, Humanoids, or Undead, all damage you deal to the tracked creature type is increased by 3%."
+        },
+        {
+          "rank": 4,
+          "before": "",
+          "after": "While tracking Beasts, Demons, Dragonkin, Elementals, Giants, Humanoids, or Undead, all damage you deal to the tracked creature type is increased by 4%."
+        },
+        {
+          "rank": 5,
+          "before": "",
+          "after": "While tracking Beasts, Demons, Dragonkin, Elementals, Giants, Humanoids, or Undead, all damage you deal to the tracked creature type is increased by 5%."
+        }
+      ]
+    },
+    {
+      "id": "hunter-1311",
+      "name": "Deflection",
+      "nodeId": 104995,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Increases your Parry chance by 5%.",
+          "after": "Increases your Parry chance by 1%."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases your Parry chance by 2%."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Increases your Parry chance by 3%."
+        },
+        {
+          "rank": 4,
+          "before": "",
+          "after": "Increases your Parry chance by 4%."
+        },
+        {
+          "rank": 5,
+          "before": "",
+          "after": "Increases your Parry chance by 5%."
+        }
+      ]
+    },
+    {
+      "id": "hunter-1304",
+      "name": "Entrapment",
+      "nodeId": 104994,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "When your traps are triggered, all affected targets are Entrapped, preventing them from moving for 5 sec.",
+          "after": "When your traps are triggered, all affected targets are Entrapped, preventing them from moving for 1 sec."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "When your traps are triggered, all affected targets are Entrapped, preventing them from moving for 2 sec."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "When your traps are triggered, all affected targets are Entrapped, preventing them from moving for 3 sec."
+        },
+        {
+          "rank": 4,
+          "before": "",
+          "after": "When your traps are triggered, all affected targets are Entrapped, preventing them from moving for 4 sec."
+        },
+        {
+          "rank": 5,
+          "before": "",
+          "after": "When your traps are triggered, all affected targets are Entrapped, preventing them from moving for 5 sec."
+        }
+      ]
+    },
+    {
+      "id": "hunter-1621",
+      "name": "Savage Strikes",
+      "nodeId": 104993,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Increases the critical strike chance of all your melee abilities by 20%.",
+          "after": "Increases the critical strike chance of all your melee abilities by 2%."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases the critical strike chance of all your melee abilities by 4%."
+        }
+      ]
+    },
+    {
+      "id": "hunter-1622",
+      "name": "Survivalist",
+      "nodeId": 104992,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Increases your total Health by 10%.",
+          "after": "Increases your total Health by 2%."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases your total Health by 4%."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Increases your total Health by 6%."
+        },
+        {
+          "rank": 4,
+          "before": "",
+          "after": "Increases your total Health by 8%."
+        },
+        {
+          "rank": 5,
+          "before": "",
+          "after": "Increases your total Health by 10%."
+        }
+      ]
+    },
+    {
+      "id": "hunter-1305",
+      "name": "Improved Wing Clip",
+      "nodeId": 104990,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Gives your Wing Clip ability a 20% chance to immobilize the target for 5 sec.",
+          "after": "Gives your Wing Clip ability a 7% chance to immobilize the target for 5 sec."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Gives your Wing Clip ability a 13% chance to immobilize the target for 5 sec."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Gives your Wing Clip ability a 20% chance to immobilize the target for 5 sec."
+        }
+      ]
+    },
+    {
+      "id": "hunter-1306",
+      "name": "Clever Traps",
+      "nodeId": 104991,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Increases the duration of Freezing and Frost trap effects by 30% and the damage of Immolation and Explosive trap effects by 30%.",
+          "after": "Increases the duration of Freezing and Frost trap effects by 15% and the damage of Immolation and Explosive trap effects by 15%."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases the duration of Freezing and Frost trap effects by 30% and the damage of Immolation and Explosive trap effects by 30%."
+        }
+      ]
+    },
+    {
+      "id": "hunter-1310",
+      "name": "Surefooted",
+      "nodeId": 104987,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Increases your hit chance by 3% and reduces the duration of movement impairing effects on you by 30%.",
+          "after": "Increases your hit chance by 1% and reduces the duration of movement impairing effects on you by 10%."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases your hit chance by 2% and reduces the duration of movement impairing effects on you by 20%."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Increases your hit chance by 3% and reduces the duration of movement impairing effects on you by 30%."
+        }
+      ]
+    },
+    {
+      "id": "hunter-1322",
+      "name": "Survival Tactics",
+      "nodeId": 104988,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Increases your chance to hit with your Trap and Feign Death abilities by 17%.",
+          "after": "Increases your chance to hit with your Trap and Feign Death abilities by 5%."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases your chance to hit with your Trap and Feign Death abilities by 10%."
+        }
+      ]
+    },
+    {
+      "id": "hunter-1312",
+      "name": "Counterattack",
+      "nodeId": 104989,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "A strike that becomes active after parrying an opponent's attack. This attack deals 50% weapon damage plus 26 and immobilizes the target for 5 sec. Counterattack cannot be blocked, dodged, or parried.",
+          "after": "A strike that becomes active after parrying an opponent's attack. This attack deals 50% weapon damage plus 13 and immobilizes the target for 5 sec. Counterattack cannot be blocked, dodged, or parried."
+        }
+      ]
+    },
+    {
+      "id": "hunter-1303",
+      "name": "Lightning Reflexes",
+      "nodeId": 110859,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Increases your Agility by 15%.",
+          "after": "Increases your Agility by 2%."
+        },
+        {
+          "rank": 2,
+          "before": "",
+          "after": "Increases your Agility by 4%."
+        },
+        {
+          "rank": 3,
+          "before": "",
+          "after": "Increases your Agility by 6%."
+        },
+        {
+          "rank": 4,
+          "before": "",
+          "after": "Increases your Agility by 8%."
+        },
+        {
+          "rank": 5,
+          "before": "",
+          "after": "Increases your Agility by 10%."
+        }
+      ]
+    }
+  ],
+  "prerequisite_changed": [
+    {
+      "id": "hunter-1387",
+      "name": "Intimidation",
+      "nodeId": 104964,
+      "before": [],
+      "after": [
+        "hunter-1391"
+      ]
+    },
+    {
+      "id": "hunter-1361",
+      "name": "Trueshot Aura",
+      "nodeId": 105004,
+      "before": [
+        "hunter-1347"
+      ],
+      "after": []
+    },
+    {
+      "id": "hunter-1349",
+      "name": "Mortal Shots",
+      "nodeId": 105002,
+      "before": [
+        "hunter-1344"
+      ],
+      "after": [
+        "hunter-marksmanship-careful-aim"
+      ]
+    }
+  ],
+  "unchanged": [
+    {
+      "id": "hunter-1391",
+      "name": "Bestial Swiftness",
+      "nodeId": 104970
+    },
+    {
+      "id": "hunter-1386",
+      "name": "Bestial Wrath",
+      "nodeId": 104961
+    },
+    {
+      "id": "hunter-1308",
+      "name": "Deterrence",
+      "nodeId": 104986
+    }
+  ]
+}

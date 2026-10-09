@@ -47,15 +47,15 @@ export function buildCatalogue(classes: ClassDefinition[] = PUBLISHED_CLASSES, i
   const routes: ToolRoute[] = classes.flatMap(def => {
     if (!paths.has(def.plannerPath)) return []
     return def.builds.flatMap(build => {
-      if (build.level !== 20 || !paths.has(build.href)) return []
+      if (!([20, 30].includes(build.level)) || !paths.has(build.href)) return []
       const progression = progressionForBuild(def, build)
-      if (progression.error || progression.steps.length !== 11) return []
+      if (progression.error || progression.steps.length < 11) return []
       const removedTalentNames = def.talents.filter(talent =>
         (build.build[talent.id] ?? 0) > 0 && officialTalentNotice(def.id, talent.name)?.status === 'removed',
       ).map(talent => talent.name)
       return [{ id: build.id, classId: def.id, className: def.name, spec: build.spec, specName: def.branchNames[build.spec], role: roleFor(def.id,build.spec,build.intent), style: styleFor(def.id,build.spec), activity: activityFor(build.intent), title: build.title, href: build.href, image: def.branchIcons?.[build.spec], version: build.verifiedThroughBuild,
         removedTalentNames,
-        steps: progression.steps.map(s => ({...s, name: def.talents.find(t => t.id === s.talentId)!.name})),
+        steps: progression.steps.slice(0, 11).map(s => ({...s, name: def.talents.find(t => t.id === s.talentId)!.name})),
         calculatorHref: (allocation: PlannerBuild) => removedTalentNames.length
           ? `${def.plannerPath}?build=#class-calculator`
           : `${classPlannerHref(def,encodePlannerBuild(allocation),20)}#class-calculator`,

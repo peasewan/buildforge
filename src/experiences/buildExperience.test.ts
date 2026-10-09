@@ -15,7 +15,7 @@ const fixture: ClassDefinition = {
   ],
 }
 const build: ClassBuild = {
-  ...warriorClass.builds[0], build: { root: 5, guard: 5, crown: 1 }, order: ['root', 'guard', 'crown'], pointOrder: undefined,
+  ...warriorClass.builds[0], level: 20, levelCap: 11, points: 11, build: { root: 5, guard: 5, crown: 1 }, order: ['root', 'guard', 'crown'], pointOrder: undefined,
 }
 
 describe('build progression', () => {
@@ -73,8 +73,10 @@ describe('build progression', () => {
     expect(result.steps).toEqual([])
   })
 
-  it('retains the original Warrior point sequences for every published variant', () => {
-    for (const variant of warriorClass.builds) {
+  it('retains the original Warrior opening sequences in the Level 20 comparison snapshots', () => {
+    const snapshots = warriorClass.builds.filter((variant) => variant.level === 20)
+    expect(snapshots).toHaveLength(3)
+    for (const variant of snapshots) {
       const preset = WARRIOR_LEVEL_20_BUILDS.find((candidate) => candidate.branch === variant.spec)!
       const result = progressionForBuild(warriorClass, variant)
       expect(result.orderStatus).toBe('editorial')
@@ -130,7 +132,7 @@ describe('editorial talent usage', () => {
     const page = { ...warriorClass.pages[0], slug: 'unavailable-route', primaryBuildId: unavailable.id, publishRequirements: ['legalBuild:missing' as const] }
     const classDef: ClassDefinition = { ...warriorClass, builds: [...warriorClass.builds, unlinked, unavailable], pages: [...warriorClass.pages, page] }
     const matches = buildsUsingTalent(classDef, root)
-    expect(matches.map((candidate) => candidate.id)).toEqual(['warrior-arms-build', 'warrior-arms-leveling', 'warrior-arms-pvp'])
+    expect(matches.map((candidate) => candidate.id)).toEqual(['warrior-arms-build', 'warrior-arms-leveling', 'warrior-arms-pvp', 'warrior-arms-level-20-snapshot'])
     expect(buildsUsingTalent(classDef, 'missing')).toEqual([])
   })
 })

@@ -89,7 +89,7 @@ export const OFFICIAL_OCTOBER_CHANGES = {
       'Fury Improved Cleave and Boundless Rage were removed. Lingering Rage was added in row 2, Furious Precision in row 3, and Gore Drinker in row 6.',
       'Fury Flurry now requires Death Wish rather than Enrage; Improved Berserker Rage moved to row 5 from row 6.',
       'Protection Toughness was removed. Iron Will moved from Fury row 2 to Protection row 1; Anticipation moved to row 2, Improved Bloodrage to row 1, Improved Revenge to row 2, Improved Disarm to row 3, and Improved Shield Bash to row 4.',
-      'Dual Wield Specialization no longer grants its off-hand Rage increase, and the October 2 follow-up removed its off-hand Hit bonus. Arms Spearing Strike no longer needs a two-handed weapon but does require Battle Stance.',
+      'The October 1 notes removed Dual Wield Specialization’s previous 20–100% off-hand Rage modifier; the October 2 follow-up removed its off-hand Hit bonus. Current rank text is separately community sourced. Arms Spearing Strike no longer needs a two-handed weapon but does require Battle Stance.',
       'Booming Voice, Unbridled Wrath, Blood Craze, Raging Blows, Unbridled Rage, and Bloodthirst also received Fury tuning in the official notes.',
     ],
   },

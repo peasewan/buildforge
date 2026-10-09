@@ -50,6 +50,45 @@ describe('ClassCalculatorPage renders any class from ClassDefinition', () => {
     HTMLElement.prototype.scrollIntoView = vi.fn()
   })
 
+  it('preserves a removed historical share without loading or overwriting its ranks', () => {
+    const old = { ...hunterClassFixture.talents[0], id: 'old-node', name: 'Earlier talent' }
+    const def = { ...hunterClassFixture, historicalSnapshots: [{clientBuild:'old-build',dataVersion:'old-version',talents:[old]}] }
+    history.replaceState({}, '', '/hunter?build=old-node.2&level=20')
+    render(<ClassCalculatorPage classDef={def} />)
+    const recovery = screen.getByRole('complementary', {name:'Historical build recovery'})
+    expect(recovery.textContent).toContain('Earlier talent 2/5')
+    expect(screen.getAllByText('0 / 11').length).toBeGreaterThan(0)
+    fireEvent.click(screen.getByRole('button', {name:/Add rank to Fixture Tracking/i}))
+    expect(location.search).toContain('old-node.2')
+    expect(within(recovery).getByRole('link').getAttribute('href')).toContain('dataset=old-build')
+    fireEvent.click(screen.getByRole('button', {name:'Start a new current build'}))
+    expect(screen.queryByRole('complementary', {name:'Historical build recovery'})).toBeNull()
+    expect(location.search).toContain('build=')
+    expect(location.search).not.toContain('old-node')
+  })
+
+  it('keeps the original local historical draft when its node is absent from the current tree', () => {
+    const old = { ...hunterClassFixture.talents[0], id: 'old-node', name:'Earlier talent' }
+    const raw = JSON.stringify({build:{'old-node':2},level:20})
+    localStorage.setItem('legacy-save-key', raw)
+    const def = { ...hunterClassFixture, historicalSnapshots:[{clientBuild:'old-build',dataVersion:'old-version',storageKey:'legacy-save-key',talents:[old]}] }
+    render(<ClassCalculatorPage classDef={def} />)
+    expect(screen.getByRole('complementary',{name:'Historical build recovery'}).textContent).toContain('Earlier talent 2/5')
+    expect(localStorage.getItem('legacy-save-key')).toBe(raw)
+  })
+
+  it('does not reinterpret an unknown explicitly versioned share as a current build', () => {
+    history.replaceState({}, '', '/hunter?build=bm-1.2&level=20&dataset=unavailable-version')
+    render(<ClassCalculatorPage classDef={hunterClassFixture} />)
+    expect(document.getElementById('bm-1')?.textContent).toContain('0/5')
+    expect(screen.getByRole('status').textContent).toContain('historical dataset is unavailable')
+    expect(location.search).toContain('dataset=unavailable-version')
+    fireEvent.click(screen.getByRole('button', {name:/Add rank to Fixture Tracking/i}))
+    expect(location.search).not.toContain('unavailable-version')
+    expect(location.search).toContain('build=bm-1.1')
+    expect(document.getElementById('bm-1')?.textContent).toContain('1/5')
+  })
+
   it('renders the Hunter fixture H1, every branch and every talent', () => {
     render(<ClassCalculatorPage classDef={hunterClassFixture} />)
     expect(screen.getByRole('heading', { level: 1, name: calculatorPage.h1 })).toBeTruthy()
@@ -66,10 +105,10 @@ describe('ClassCalculatorPage renders any class from ClassDefinition', () => {
     expect(screen.getByRole('region', { name: /Hunter October 1 official changes/i })).toBeTruthy()
   })
 
-  it('states when a real class only has a Level 20 snapshot mode and labels verification as historical', () => {
+  it('states the reviewed current Hunter source and usable Level 30 point budget', () => {
     const { container } = render(<ClassCalculatorPage classDef={hunterClass} />)
-    expect(container.querySelector('.class-beta-boundary')?.textContent).toMatch(/Level 30 planning mode is not available/i)
-    expect(container.querySelector('.class-evidence')?.textContent).toMatch(/69913 snapshot.*verified/i)
+    expect(container.querySelector('.class-beta-boundary')?.textContent).toMatch(/reviewed.*70291.*Level 30.*21 points/i)
+    expect(container.querySelector('.class-evidence')?.textContent).toMatch(/70291 snapshot.*verified/i)
     expect(container.querySelector('.class-evidence')?.textContent).not.toMatch(/Current Beta talent data.*verified/i)
   })
 

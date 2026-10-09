@@ -84,7 +84,7 @@ function RankList({
           return <li key={t.id} data-official-status={officialNotice?.status}>
             {t.icon && <img src={t.icon} alt="" loading="lazy" />}
             <span>{t.name}</span>
-            {officialNotice && (
+            {officialNotice && !def.dataReview?.current && (
               <>
                 <span className="verification-badge verification-needs_review">{officialNotice.status === 'removed' ? 'Removed in official update' : 'Changed in official update'}</span>
                 <a href={officialNotice.source} target="_blank" rel="noreferrer" title={officialNotice.message}>Official update</a>
@@ -347,7 +347,7 @@ function Progression({ classDef: def, page }: Props) {
       {page.kind === 'leveling' && (
         <section className="ix-route-choices" aria-label="Compare leveling routes">
           <h2>Compare {def.name} leveling starts</h2>
-          <p className="ix-note">These routes spend the same eleven-point starter budget. Choose by the role and talent sequence you want to test; no route is labeled fastest.</p>
+          <p className="ix-note">These routes spend the same {def.beta.pointsAtCap}-point starter budget. Choose by the role and talent sequence you want to test; no route is labeled fastest.</p>
           <div>
             {routes.filter((candidate) => candidate.intent === 'leveling').map((candidate) => {
               const candidateSteps = progressionForBuild(def, candidate).steps
@@ -406,8 +406,8 @@ function BuildWorkbench({ classDef: def, page }: Props) {
     build = builds.find((b) => b.id === page.primaryBuildId) ?? builds[0],
     alternatives = builds.filter((b) => b.id !== build?.id)
   const [otherId, setOther] = useState(
-    alternatives.find((other) => build && other.spec === build.spec && diffBuilds(def, build, other).length > 0)?.id
-      ?? alternatives.find((other) => build && diffBuilds(def, build, other).length > 0)?.id
+    alternatives.find((other) => build && other.level === build.level && other.points === build.points && other.spec === build.spec && diffBuilds(def, build, other).length > 0)?.id
+      ?? alternatives.find((other) => build && other.level === build.level && other.points === build.points && diffBuilds(def, build, other).length > 0)?.id
       ?? alternatives[0]?.id,
   )
   if (!build) return <p>No reviewed allocation is available for this page.</p>
@@ -479,11 +479,11 @@ function TalentRecord({
             {def.branchNames[t.branch]} · Tier {t.row} · {t.maxRank} ranks
           </small>
         </div>
-        {officialNotice
+        {officialNotice && !def.dataReview?.current
           ? <span className="verification-badge verification-needs_review">{officialNotice.status === 'removed' ? 'Removed in official update' : 'Changed in official update'}</span>
           : <VerificationBadge status={t.verificationStatus} />}
       </div>
-      {officialNotice && (
+      {officialNotice && !def.dataReview?.current && (
         <p className="ix-note" role="note">
           This is a 69913 historical record, not a verified current Beta node. {officialNotice.message}{' '}
           <a href={officialNotice.source} target="_blank" rel="noreferrer">Read the official update</a>.
@@ -503,6 +503,7 @@ function TalentRecord({
         {t.rankDescriptions?.[rank - 1]?.trim() ||
           'This rank’s tooltip is not available in the reviewed dataset.'}
       </p>
+      {def.dataReview?.current && <p className="ix-note">Rank tooltip: <VerificationBadge status={t.fieldEvidence.rankDescriptions === 'community_verified' ? 'community_verified' : t.verificationStatus} />{t.dataNotes?.map(note => <span key={note}> {note}</span>)}</p>}
       <div className="ix-record-facts">
         <span>{t.requiredTreePoints} earlier tree points</span>
         <span>Client {t.verifiedThroughBuild}</span>
@@ -588,7 +589,7 @@ function TalentReference({ classDef: def, page }: Props) {
         {talents.length} matching talents · positions and ranks carry field
         evidence; tooltip gaps stay visible.
       </p>
-      <p className="ix-note">No reviewed previous client-build snapshot is available for this catalog, so no talent change since a prior Beta build is claimed here. Official change notices on individual records are separate from a client-build diff.</p>
+      <p className="ix-note">{def.dataReview?.current ? `The reviewed 69913-to-${def.verifiedBuild} comparison identifies changed, added, moved and removed records. Rank text remains a community transcription; a difference is not a gameplay performance claim.` : 'No reviewed previous client-build snapshot is available for this catalog, so no talent change since a prior Beta build is claimed here. Official change notices on individual records are separate from a client-build diff.'}</p>
       {def.branches
         .filter(
           (b) => unallocatable.has(b) && (branch === 'all' || b === branch),
@@ -694,7 +695,7 @@ function CapBudgetBoundary({ def, build }: { def: ClassDefinition; build: ClassB
   const deficit = nextTierPoints - branchPoints
   return (
     <div className="ix-cap-boundary">
-      <p><b>{spent} of {def.beta.pointsAtCap} points spent</b> · {Math.max(0, def.beta.pointsAtCap - spent)} remaining in this snapshot.</p>
+      <p><b>{spent} of {build.points} points spent</b> · {Math.max(0, build.points - spent)} remaining in this snapshot.</p>
       {endpointTalent && endpoint && <p>Recorded endpoint: {endpointTalent.name} {endpoint.rank}/{endpointTalent.maxRank}</p>}
       <h3>Beyond this point budget</h3>
       {nextTier.length > 0 ? (
@@ -715,15 +716,15 @@ function CapSnapshot({ classDef: def, page }: Props) {
     routes = builds.length ? builds : all.filter((b) => b.intent === 'spec')
   return (
     <section className="ix-cap" data-surface="cap-snapshot">
-      <p className="ix-note">The live Beta cap is Level 30. The figures below describe an older Level 20, 11-point planning snapshot from client build {def.verifiedBuild}, not a complete current-cap build. <a href={OCTOBER_OFFICIAL_SOURCE} target="_blank" rel="noreferrer">Blizzard’s October 1 update</a></p>
+      <p className="ix-note">The live Beta cap is Level 30. {def.dataReview?.current ? 'The figures below are Level 20, eleven-point stages of the reviewed tree' : 'The figures below describe an older Level 20, 11-point planning snapshot'} from client build {def.verifiedBuild}, not a complete current-cap build. <a href={OCTOBER_OFFICIAL_SOURCE} target="_blank" rel="noreferrer">Blizzard’s October 1 update</a></p>
       <div className="ix-cap-stats">
         <div>
           <small>PLANNING LEVEL</small>
-          <strong>{def.beta.levelCap}</strong>
+          <strong>{routes[0]?.level ?? def.beta.levelCap}</strong>
         </div>
         <div>
           <small>POINT BUDGET</small>
-          <strong>{def.beta.pointsAtCap}</strong>
+          <strong>{routes[0]?.points ?? def.beta.pointsAtCap}</strong>
         </div>
         <div>
           <small>CLIENT SNAPSHOT</small>
@@ -731,7 +732,7 @@ function CapSnapshot({ classDef: def, page }: Props) {
         </div>
       </div>
       <p className="ix-note">
-        {def.dataReview
+        {def.dataReview && !def.dataReview.current
           ? 'Level and point budget are preview assumptions, not confirmation of the current live server cap.'
           : def.beta.phaseLabel +
             ' — follow the source notes for availability.'}

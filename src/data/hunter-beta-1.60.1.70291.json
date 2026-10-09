@@ -1,0 +1,3370 @@
+{
+  "classId": "hunter",
+  "build": "1.60.1.70291",
+  "clientBuild": "1.60.1.70291",
+  "sourceVersion": "wow_forever_beta_1.60.1.70291",
+  "generated": "2026-10-09",
+  "branches": [
+    "beast-mastery",
+    "marksmanship",
+    "survival"
+  ],
+  "treeId": 1091,
+  "skillLineId": 50,
+  "basedOnBuild": "1.60.1.69913",
+  "sourceUrl": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291",
+  "resolvedRankSourceUrl": "https://talentsforever.com/data.json",
+  "resolvedRankSourceBuild": "1.60.1.70291",
+  "resolvedRankLicense": "CC-BY-4.0",
+  "resolvedRankLicenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "resolvedRankAdaptationNotice": "Rank descriptions and icon names adapted from Talents Forever for BuildForgeTools under CC BY 4.0; client membership, identity, positions, rank caps and links independently reconciled from Wago DB2.",
+  "license": "Game client factual data; rank descriptions and icon names adapted under CC-BY-4.0",
+  "attribution": "Resolved rank text and icon names adapted from Talents Forever (talentsforever.com, CC-BY-4.0); client structure from Wago DB2 1.60.1.70291",
+  "verificationSummary": "1.60.1.70291 Hunter: 50 nodes and 148 complete rank descriptions; compared with 1.60.1.69913: 13 added, 9 removed, 14 moved, 4 rank-cap changes, 32 talents with rank-description changes, 3 prerequisite-link changes. Structural facts are client_verified; resolved text is community_verified; tier costs and prerequisite required ranks remain derived_assumption. Raw TraitTree contains 52 records; 2 exact off-grid remnants are quarantined under an explicit source review, leaving 50 community-reconciled visible nodes. No invalid coordinates are corrected or promoted as client facts. 1 exact reciprocal-cycle client connection is quarantined under community graph review; affected prerequisite direction is community_verified rather than client_verified.",
+  "verificationSources": [
+    {
+      "label": "Wago DB2 — Hunter client structure 1.60.1.70291",
+      "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+    },
+    {
+      "label": "Talents Forever — Hunter resolved rank descriptions (CC BY 4.0)",
+      "url": "https://talentsforever.com/data.json"
+    }
+  ],
+  "sources": [
+    {
+      "label": "Wago DB2 — Hunter client structure 1.60.1.70291",
+      "type": "beta_client",
+      "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+    },
+    {
+      "label": "Talents Forever — Hunter resolved rank descriptions (CC BY 4.0)",
+      "type": "beta_client_crosscheck",
+      "url": "https://talentsforever.com/data.json"
+    }
+  ],
+  "ready": true,
+  "conflicts": [],
+  "talents": [
+    {
+      "id": "hunter-1382",
+      "name": "Deadly Aspects",
+      "branch": "beast-mastery",
+      "row": 1,
+      "column": 2,
+      "maxRank": 5,
+      "nodeId": 104960,
+      "spellId": 19552,
+      "sourceTalentId": 1382,
+      "requiredTreePoints": 0,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "While Aspect of the Hawk is active, Auto Shot has a 2% chance of increasing ranged attack speed by 30% for 12 sec. While Aspect of the Beast is active, all melee auto attacks have a 2% chance of increasing melee attack speed by 30% for 12 sec.",
+        "While Aspect of the Hawk is active, Auto Shot has a 4% chance of increasing ranged attack speed by 30% for 12 sec. While Aspect of the Beast is active, all melee auto attacks have a 4% chance of increasing melee attack speed by 30% for 12 sec.",
+        "While Aspect of the Hawk is active, Auto Shot has a 6% chance of increasing ranged attack speed by 30% for 12 sec. While Aspect of the Beast is active, all melee auto attacks have a 6% chance of increasing melee attack speed by 30% for 12 sec.",
+        "While Aspect of the Hawk is active, Auto Shot has a 8% chance of increasing ranged attack speed by 30% for 12 sec. While Aspect of the Beast is active, all melee auto attacks have a 8% chance of increasing melee attack speed by 30% for 12 sec.",
+        "While Aspect of the Hawk is active, Auto Shot has a 10% chance of increasing ranged attack speed by 30% for 12 sec. While Aspect of the Beast is active, all melee auto attacks have a 10% chance of increasing melee attack speed by 30% for 12 sec."
+      ],
+      "description": "While Aspect of the Hawk is active, Auto Shot has a 10% chance of increasing ranged attack speed by 30% for 12 sec. While Aspect of the Beast is active, all melee auto attacks have a 10% chance of increasing melee attack speed by 30% for 12 sec.",
+      "x": 37.5,
+      "y": 7.142857142857142,
+      "iconName": "spell_nature_ravenform",
+      "icon": "/images/class-talents/spell_nature_ravenform.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Hunter client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Hunter resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "hunter-1389",
+      "name": "Endurance Training",
+      "branch": "beast-mastery",
+      "row": 1,
+      "column": 3,
+      "maxRank": 5,
+      "nodeId": 104976,
+      "spellId": 19583,
+      "sourceTalentId": 1389,
+      "requiredTreePoints": 0,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases the Health and Armor of your pets by 3%.",
+        "Increases the Health and Armor of your pets by 6%.",
+        "Increases the Health and Armor of your pets by 9%.",
+        "Increases the Health and Armor of your pets by 12%.",
+        "Increases the Health and Armor of your pets by 15%."
+      ],
+      "description": "Increases the Health and Armor of your pets by 15%.",
+      "x": 62.5,
+      "y": 7.142857142857142,
+      "iconName": "spell_nature_reincarnation",
+      "icon": "/images/class-talents/spell_nature_reincarnation.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Hunter client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Hunter resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "hunter-beast-mastery-focused-fire",
+      "name": "Focused Fire",
+      "branch": "beast-mastery",
+      "row": 2,
+      "column": 1,
+      "maxRank": 2,
+      "nodeId": 104975,
+      "spellId": 1223755,
+      "requiredTreePoints": 5,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases all damage you and your pet deal by 1% while your pet is active.",
+        "Increases all damage you and your pet deal by 2% while your pet is active."
+      ],
+      "description": "Increases all damage you and your pet deal by 2% while your pet is active.",
+      "x": 12.5,
+      "y": 21.428571428571427,
+      "iconName": "inv_weapon_crossbow_10",
+      "icon": "/images/class-talents/inv_weapon_crossbow_10.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Hunter client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Hunter resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "hunter-1381",
+      "name": "Improved Aspect of the Monkey",
+      "branch": "beast-mastery",
+      "row": 2,
+      "column": 2,
+      "maxRank": 3,
+      "nodeId": 104974,
+      "spellId": 19549,
+      "sourceTalentId": 1381,
+      "requiredTreePoints": 5,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases the Dodge bonus of your Aspect of the Monkey by 2%. Additionally, your pet gains 50% of the effect of your Aspect of the Monkey ability.",
+        "Increases the Dodge bonus of your Aspect of the Monkey by 4%. Additionally, your pet gains 50% of the effect of your Aspect of the Monkey ability.",
+        "Increases the Dodge bonus of your Aspect of the Monkey by 6%. Additionally, your pet gains 50% of the effect of your Aspect of the Monkey ability."
+      ],
+      "description": "Increases the Dodge bonus of your Aspect of the Monkey by 6%. Additionally, your pet gains 50% of the effect of your Aspect of the Monkey ability.",
+      "x": 37.5,
+      "y": 21.428571428571427,
+      "iconName": "ability_hunter_aspectofthemonkey",
+      "icon": "/images/class-talents/ability_hunter_aspectofthemonkey.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Hunter client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Hunter resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "hunter-1384",
+      "name": "Pathfinding",
+      "branch": "beast-mastery",
+      "row": 2,
+      "column": 3,
+      "maxRank": 2,
+      "nodeId": 104973,
+      "spellId": 19559,
+      "sourceTalentId": 1384,
+      "requiredTreePoints": 5,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases the speed bonus of your Aspect of the Cheetah and Aspect of the Pack by 3%.",
+        "Increases the speed bonus of your Aspect of the Cheetah and Aspect of the Pack by 6%."
+      ],
+      "description": "Increases the speed bonus of your Aspect of the Cheetah and Aspect of the Pack by 6%.",
+      "x": 62.5,
+      "y": 21.428571428571427,
+      "iconName": "ability_mount_jungletiger",
+      "icon": "/images/class-talents/ability_mount_jungletiger.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Hunter client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Hunter resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "hunter-1625",
+      "name": "Improved Revive Pet",
+      "branch": "beast-mastery",
+      "row": 2,
+      "column": 4,
+      "maxRank": 2,
+      "nodeId": 104972,
+      "spellId": 24443,
+      "sourceTalentId": 1625,
+      "requiredTreePoints": 5,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Revive Pet's casting time is reduced by 3 sec, mana cost is reduced by 20%, and increases the health your pet returns with by an additional 15%.",
+        "Revive Pet's casting time is reduced by 6 sec, mana cost is reduced by 40%, and increases the health your pet returns with by an additional 30%."
+      ],
+      "description": "Revive Pet's casting time is reduced by 6 sec, mana cost is reduced by 40%, and increases the health your pet returns with by an additional 30%.",
+      "x": 87.5,
+      "y": 21.428571428571427,
+      "iconName": "ability_hunter_beastsoothe",
+      "icon": "/images/class-talents/ability_hunter_beastsoothe.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "same",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Hunter client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Hunter resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "hunter-1391",
+      "name": "Bestial Swiftness",
+      "branch": "beast-mastery",
+      "row": 3,
+      "column": 2,
+      "maxRank": 1,
+      "nodeId": 104970,
+      "spellId": 19596,
+      "sourceTalentId": 1391,
+      "requiredTreePoints": 10,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases the movement speed of your pets by 30%."
+      ],
+      "description": "Increases the movement speed of your pets by 30%.",
+      "x": 37.5,
+      "y": 35.714285714285715,
+      "iconName": "ability_druid_dash",
+      "icon": "/images/class-talents/ability_druid_dash.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Hunter client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Hunter resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "hunter-1396",
+      "name": "Unleashed Fury",
+      "branch": "beast-mastery",
+      "row": 3,
+      "column": 3,
+      "maxRank": 5,
+      "nodeId": 104969,
+      "spellId": 19616,
+      "sourceTalentId": 1396,
+      "requiredTreePoints": 10,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases the damage done by your pets and hawks by 3%.",
+        "Increases the damage done by your pets and hawks by 6%.",
+        "Increases the damage done by your pets and hawks by 9%.",
+        "Increases the damage done by your pets and hawks by 12%.",
+        "Increases the damage done by your pets and hawks by 15%."
+      ],
+      "description": "Increases the damage done by your pets and hawks by 15%.",
+      "x": 62.5,
+      "y": 35.714285714285715,
+      "iconName": "ability_bullrush",
+      "icon": "/images/class-talents/ability_bullrush.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Hunter client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Hunter resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "hunter-1385",
+      "name": "Improved Mend Pet",
+      "branch": "beast-mastery",
+      "row": 4,
+      "column": 1,
+      "maxRank": 2,
+      "nodeId": 104968,
+      "spellId": 19572,
+      "sourceTalentId": 1385,
+      "requiredTreePoints": 15,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Gives your Mend Pet spell a 15% chance of cleansing 1 Curse, Disease, Magic, or Poison effect from your pet each time it heals and reduces the Mana cost by 10%.",
+        "Gives your Mend Pet spell a 50% chance of cleansing 1 Curse, Disease, Magic, or Poison effect from your pet each time it heals and reduces the Mana cost by 20%."
+      ],
+      "description": "Gives your Mend Pet spell a 50% chance of cleansing 1 Curse, Disease, Magic, or Poison effect from your pet each time it heals and reduces the Mana cost by 20%.",
+      "x": 12.5,
+      "y": 50,
+      "iconName": "ability_hunter_mendpet",
+      "icon": "/images/class-talents/ability_hunter_mendpet.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Hunter client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Hunter resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "hunter-1393",
+      "name": "Ferocity",
+      "branch": "beast-mastery",
+      "row": 4,
+      "column": 3,
+      "maxRank": 5,
+      "nodeId": 104967,
+      "spellId": 19598,
+      "sourceTalentId": 1393,
+      "requiredTreePoints": 15,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases the critical strike chance of your pets and hawks by 2%.",
+        "Increases the critical strike chance of your pets and hawks by 4%.",
+        "Increases the critical strike chance of your pets and hawks by 6%.",
+        "Increases the critical strike chance of your pets and hawks by 8%.",
+        "Increases the critical strike chance of your pets and hawks by 10%."
+      ],
+      "description": "Increases the critical strike chance of your pets and hawks by 10%.",
+      "x": 62.5,
+      "y": 50,
+      "iconName": "inv_misc_monsterclaw_04",
+      "icon": "/images/class-talents/inv_misc_monsterclaw_04.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Hunter client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Hunter resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "hunter-beast-mastery-summon-hawk",
+      "name": "Summon Hawk",
+      "branch": "beast-mastery",
+      "row": 4,
+      "column": 4,
+      "maxRank": 1,
+      "nodeId": 104966,
+      "spellId": 1293241,
+      "requiredTreePoints": 15,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Command a hawk to dive-bomb your targeted enemy, dealing 32 plus 5% of your Ranged Attack Power Physical damage and continuing its assault for 18 sec. Only 2 hawks can be active at once. Summon Hawk shares its cooldown with Arcane Shot."
+      ],
+      "description": "Command a hawk to dive-bomb your targeted enemy, dealing 32 plus 5% of your Ranged Attack Power Physical damage and continuing its assault for 18 sec. Only 2 hawks can be active at once. Summon Hawk shares its cooldown with Arcane Shot.",
+      "x": 87.5,
+      "y": 50,
+      "iconName": "ability_hunter_animalhandler",
+      "icon": "/images/class-talents/ability_hunter_animalhandler.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Hunter client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Hunter resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "hunter-1388",
+      "name": "Spirit Bond",
+      "branch": "beast-mastery",
+      "row": 5,
+      "column": 1,
+      "maxRank": 2,
+      "nodeId": 104965,
+      "spellId": 19578,
+      "sourceTalentId": 1388,
+      "requiredTreePoints": 20,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "While your pet is active, you and your pet will regenerate 1% of total health every 10 sec.",
+        "While your pet is active, you and your pet will regenerate 1% of total health every 5 sec."
+      ],
+      "description": "While your pet is active, you and your pet will regenerate 1% of total health every 5 sec.",
+      "x": 12.5,
+      "y": 64.28571428571429,
+      "iconName": "ability_druid_demoralizingroar",
+      "icon": "/images/class-talents/ability_druid_demoralizingroar.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Hunter client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Hunter resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "hunter-1387",
+      "name": "Intimidation",
+      "branch": "beast-mastery",
+      "row": 5,
+      "column": 2,
+      "maxRank": 1,
+      "nodeId": 104964,
+      "spellId": 19577,
+      "sourceTalentId": 1387,
+      "requiredTreePoints": 20,
+      "prerequisite": [
+        "hunter-1391"
+      ],
+      "rankDescriptions": [
+        "Command your pet to Stun the target for 3 sec on its next successful attack, which also gains 100% increased critical strike chance. Generates high threat."
+      ],
+      "description": "Command your pet to Stun the target for 3 sec on its next successful attack, which also gains 100% increased critical strike chance. Generates high threat.",
+      "x": 37.5,
+      "y": 64.28571428571429,
+      "iconName": "ability_devour",
+      "icon": "/images/class-talents/ability_devour.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "community_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Hunter client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Hunter resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "One exact reverse-cycle client connection was quarantined after comparison with the licensed visible tree; prerequisite direction is community reviewed, not client-only proof.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "hunter-1390",
+      "name": "Bestial Discipline",
+      "branch": "beast-mastery",
+      "row": 5,
+      "column": 4,
+      "maxRank": 2,
+      "nodeId": 104963,
+      "spellId": 19590,
+      "sourceTalentId": 1390,
+      "requiredTreePoints": 20,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases the Focus regeneration of your pets by 10% and allows 25% of your Mana regeneration to continue while casting.",
+        "Increases the Focus regeneration of your pets by 20% and allows 50% of your Mana regeneration to continue while casting."
+      ],
+      "description": "Increases the Focus regeneration of your pets by 20% and allows 50% of your Mana regeneration to continue while casting.",
+      "x": 87.5,
+      "y": 64.28571428571429,
+      "iconName": "spell_nature_abolishmagic",
+      "icon": "/images/class-talents/spell_nature_abolishmagic.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Hunter client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Hunter resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "hunter-1397",
+      "name": "Frenzy",
+      "branch": "beast-mastery",
+      "row": 6,
+      "column": 3,
+      "maxRank": 5,
+      "nodeId": 104962,
+      "spellId": 19621,
+      "sourceTalentId": 1397,
+      "requiredTreePoints": 25,
+      "prerequisite": [
+        "hunter-1393"
+      ],
+      "rankDescriptions": [
+        "Gives your pet a 20% chance to gain a 30% attack speed increase for 8 sec after dealing a critical strike.",
+        "Gives your pet a 40% chance to gain a 30% attack speed increase for 8 sec after dealing a critical strike.",
+        "Gives your pet a 60% chance to gain a 30% attack speed increase for 8 sec after dealing a critical strike.",
+        "Gives your pet a 80% chance to gain a 30% attack speed increase for 8 sec after dealing a critical strike.",
+        "Gives your pet a 100% chance to gain a 30% attack speed increase for 8 sec after dealing a critical strike."
+      ],
+      "description": "Gives your pet a 100% chance to gain a 30% attack speed increase for 8 sec after dealing a critical strike.",
+      "x": 62.5,
+      "y": 78.57142857142857,
+      "iconName": "inv_misc_monsterclaw_03",
+      "icon": "/images/class-talents/inv_misc_monsterclaw_03.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "same",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Hunter client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Hunter resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "hunter-1386",
+      "name": "Bestial Wrath",
+      "branch": "beast-mastery",
+      "row": 7,
+      "column": 2,
+      "maxRank": 1,
+      "nodeId": 104961,
+      "spellId": 19574,
+      "sourceTalentId": 1386,
+      "requiredTreePoints": 30,
+      "prerequisite": [
+        "hunter-1387"
+      ],
+      "rankDescriptions": [
+        "Send your pet into a rage causing 50% additional damage for 18 sec. While enraged, the beast does not feel pity or remorse or fear and it cannot be stopped unless killed."
+      ],
+      "description": "Send your pet into a rage causing 50% additional damage for 18 sec. While enraged, the beast does not feel pity or remorse or fear and it cannot be stopped unless killed.",
+      "x": 37.5,
+      "y": 92.85714285714286,
+      "iconName": "ability_druid_ferociousbite",
+      "icon": "/images/class-talents/ability_druid_ferociousbite.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "same",
+      "complete": true,
+      "confirmedRanks": [
+        1
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Hunter client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Hunter resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "hunter-1352",
+      "name": "Hawk Eye",
+      "branch": "marksmanship",
+      "row": 1,
+      "column": 1,
+      "maxRank": 3,
+      "nodeId": 105013,
+      "spellId": 19498,
+      "sourceTalentId": 1352,
+      "requiredTreePoints": 0,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases the range of your ranged weapons by 2 yards.",
+        "Increases the range of your ranged weapons by 4 yards.",
+        "Increases the range of your ranged weapons by 6 yards."
+      ],
+      "description": "Increases the range of your ranged weapons by 6 yards.",
+      "x": 12.5,
+      "y": 7.142857142857142,
+      "iconName": "ability_townwatch",
+      "icon": "/images/class-talents/ability_townwatch.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Hunter client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Hunter resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "hunter-1341",
+      "name": "Improved Concussive Shot",
+      "branch": "marksmanship",
+      "row": 1,
+      "column": 2,
+      "maxRank": 5,
+      "nodeId": 105012,
+      "spellId": 19407,
+      "sourceTalentId": 1341,
+      "requiredTreePoints": 0,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Gives your Concussive Shot a 4% chance to stun the target for 3 sec.",
+        "Gives your Concussive Shot a 8% chance to stun the target for 3 sec.",
+        "Gives your Concussive Shot a 12% chance to stun the target for 3 sec.",
+        "Gives your Concussive Shot a 16% chance to stun the target for 3 sec.",
+        "Gives your Concussive Shot a 20% chance to stun the target for 3 sec."
+      ],
+      "description": "Gives your Concussive Shot a 20% chance to stun the target for 3 sec.",
+      "x": 37.5,
+      "y": 7.142857142857142,
+      "iconName": "spell_frost_stun",
+      "icon": "/images/class-talents/spell_frost_stun.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "same",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Hunter client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Hunter resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "hunter-1344",
+      "name": "Lethal Attacks",
+      "branch": "marksmanship",
+      "row": 1,
+      "column": 3,
+      "maxRank": 5,
+      "nodeId": 105011,
+      "spellId": 19426,
+      "sourceTalentId": 1344,
+      "requiredTreePoints": 0,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases your critical strike chance with all attacks by 1%.",
+        "Increases your critical strike chance with all attacks by 2%.",
+        "Increases your critical strike chance with all attacks by 3%.",
+        "Increases your critical strike chance with all attacks by 4%.",
+        "Increases your critical strike chance with all attacks by 5%."
+      ],
+      "description": "Increases your critical strike chance with all attacks by 5%.",
+      "x": 62.5,
+      "y": 7.142857142857142,
+      "iconName": "ability_searingarrow",
+      "icon": "/images/class-talents/ability_searingarrow.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Hunter client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Hunter resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "hunter-1348",
+      "name": "Improved Stings",
+      "branch": "marksmanship",
+      "row": 2,
+      "column": 1,
+      "maxRank": 3,
+      "nodeId": 110870,
+      "spellId": 1310661,
+      "sourceTalentId": 1348,
+      "requiredTreePoints": 5,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases the damage of your Serpent Sting ability by 6%, reduces the cooldown of your Viper Sting ability by 2 sec, and increases the duration of your Scorpid Sting ability by 15 sec.",
+        "Increases the damage of your Serpent Sting ability by 13%, reduces the cooldown of your Viper Sting ability by 4 sec, and increases the duration of your Scorpid Sting ability by 30 sec.",
+        "Increases the damage of your Serpent Sting ability by 20%, reduces the cooldown of your Viper Sting ability by 6 sec, and increases the duration of your Scorpid Sting ability by 45 sec."
+      ],
+      "description": "Increases the damage of your Serpent Sting ability by 20%, reduces the cooldown of your Viper Sting ability by 6 sec, and increases the duration of your Scorpid Sting ability by 45 sec.",
+      "x": 12.5,
+      "y": 21.428571428571427,
+      "iconName": "ability_hunter_quickshot",
+      "icon": "/images/class-talents/ability_hunter_quickshot.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Hunter client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Hunter resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "hunter-1342",
+      "name": "Efficiency",
+      "branch": "marksmanship",
+      "row": 2,
+      "column": 2,
+      "maxRank": 5,
+      "nodeId": 105009,
+      "spellId": 19416,
+      "sourceTalentId": 1342,
+      "requiredTreePoints": 5,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Reduces the Mana cost of your Shots, Stings, and melee abilities by 3%.",
+        "Reduces the Mana cost of your Shots, Stings, and melee abilities by 6%.",
+        "Reduces the Mana cost of your Shots, Stings, and melee abilities by 9%.",
+        "Reduces the Mana cost of your Shots, Stings, and melee abilities by 12%.",
+        "Reduces the Mana cost of your Shots, Stings, and melee abilities by 15%."
+      ],
+      "description": "Reduces the Mana cost of your Shots, Stings, and melee abilities by 15%.",
+      "x": 37.5,
+      "y": 21.428571428571427,
+      "iconName": "spell_frost_wizardmark",
+      "icon": "/images/class-talents/spell_frost_wizardmark.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Hunter client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Hunter resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "hunter-marksmanship-careful-aim",
+      "name": "Careful Aim",
+      "branch": "marksmanship",
+      "row": 2,
+      "column": 3,
+      "maxRank": 5,
+      "nodeId": 105008,
+      "spellId": 1223984,
+      "requiredTreePoints": 5,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases your Attack Power by 20% of your Intellect.",
+        "Increases your Attack Power by 40% of your Intellect.",
+        "Increases your Attack Power by 60% of your Intellect.",
+        "Increases your Attack Power by 80% of your Intellect.",
+        "Increases your Attack Power by 100% of your Intellect."
+      ],
+      "description": "Increases your Attack Power by 100% of your Intellect.",
+      "x": 62.5,
+      "y": 21.428571428571427,
+      "iconName": "ability_hunter_zenarchery",
+      "icon": "/images/class-talents/ability_hunter_zenarchery.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Hunter client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Hunter resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "hunter-marksmanship-rapid-killing",
+      "name": "Rapid Killing",
+      "branch": "marksmanship",
+      "row": 3,
+      "column": 1,
+      "maxRank": 2,
+      "nodeId": 105005,
+      "spellId": 415405,
+      "requiredTreePoints": 10,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Reduces the cooldown on your Rapid Fire ability by 1 min. In addition, when you kill a non-trivial enemy or it dies while afflicted by your Serpent Sting, you gain Rapid Killing, increasing the damage of your next Shot ability within 20 sec by 10%.",
+        "Reduces the cooldown on your Rapid Fire ability by 2 min. In addition, when you kill a non-trivial enemy or it dies while afflicted by your Serpent Sting, you gain Rapid Killing, increasing the damage of your next Shot ability within 20 sec by 20%."
+      ],
+      "description": "Reduces the cooldown on your Rapid Fire ability by 2 min. In addition, when you kill a non-trivial enemy or it dies while afflicted by your Serpent Sting, you gain Rapid Killing, increasing the damage of your next Shot ability within 20 sec by 20%.",
+      "x": 12.5,
+      "y": 35.714285714285715,
+      "iconName": "ability_hunter_rapidkilling",
+      "icon": "/images/class-talents/ability_hunter_rapidkilling.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Hunter client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Hunter resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "hunter-1346",
+      "name": "Improved Arcane Shot",
+      "branch": "marksmanship",
+      "row": 3,
+      "column": 2,
+      "maxRank": 5,
+      "nodeId": 105006,
+      "spellId": 19454,
+      "sourceTalentId": 1346,
+      "requiredTreePoints": 10,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Reduces the cooldown of your Arcane Shot by 0.3 sec. Does not affect the cooldown of abilities which share a cooldown with Arcane Shot.",
+        "Reduces the cooldown of your Arcane Shot by 0.6 sec. Does not affect the cooldown of abilities which share a cooldown with Arcane Shot.",
+        "Reduces the cooldown of your Arcane Shot by 0.9 sec. Does not affect the cooldown of abilities which share a cooldown with Arcane Shot.",
+        "Reduces the cooldown of your Arcane Shot by 1.2 sec. Does not affect the cooldown of abilities which share a cooldown with Arcane Shot.",
+        "Reduces the cooldown of your Arcane Shot by 1.5 sec. Does not affect the cooldown of abilities which share a cooldown with Arcane Shot."
+      ],
+      "description": "Reduces the cooldown of your Arcane Shot by 1.5 sec. Does not affect the cooldown of abilities which share a cooldown with Arcane Shot.",
+      "x": 37.5,
+      "y": 35.714285714285715,
+      "iconName": "ability_impalingbolt",
+      "icon": "/images/class-talents/ability_impalingbolt.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Hunter client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Hunter resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "hunter-marksmanship-lone-wolf",
+      "name": "Lone Wolf",
+      "branch": "marksmanship",
+      "row": 3,
+      "column": 4,
+      "maxRank": 1,
+      "nodeId": 105007,
+      "spellId": 415370,
+      "requiredTreePoints": 10,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "You deal 20% increased damage with all attacks while you do not have an active pet."
+      ],
+      "description": "You deal 20% increased damage with all attacks while you do not have an active pet.",
+      "x": 87.5,
+      "y": 35.714285714285715,
+      "iconName": "ability_mount_whitedirewolf",
+      "icon": "/images/class-talents/ability_mount_whitedirewolf.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Hunter client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Hunter resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "hunter-1361",
+      "name": "Trueshot Aura",
+      "branch": "marksmanship",
+      "row": 4,
+      "column": 2,
+      "maxRank": 1,
+      "nodeId": 105004,
+      "spellId": 1299346,
+      "sourceTalentId": 1361,
+      "requiredTreePoints": 15,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases the Ranged Attack Power of party members within 45 yds by 30."
+      ],
+      "description": "Increases the Ranged Attack Power of party members within 45 yds by 30.",
+      "x": 37.5,
+      "y": 50,
+      "iconName": "ability_trueshot",
+      "icon": "/images/class-talents/ability_trueshot.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Hunter client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Hunter resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "hunter-1349",
+      "name": "Mortal Shots",
+      "branch": "marksmanship",
+      "row": 4,
+      "column": 3,
+      "maxRank": 5,
+      "nodeId": 105002,
+      "spellId": 19485,
+      "sourceTalentId": 1349,
+      "requiredTreePoints": 15,
+      "prerequisite": [
+        "hunter-marksmanship-careful-aim"
+      ],
+      "rankDescriptions": [
+        "Increases the critical strike damage bonus on all ranged abilities by 6%.",
+        "Increases the critical strike damage bonus on all ranged abilities by 12%.",
+        "Increases the critical strike damage bonus on all ranged abilities by 18%.",
+        "Increases the critical strike damage bonus on all ranged abilities by 24%.",
+        "Increases the critical strike damage bonus on all ranged abilities by 30%."
+      ],
+      "description": "Increases the critical strike damage bonus on all ranged abilities by 30%.",
+      "x": 62.5,
+      "y": 50,
+      "iconName": "ability_piercedamage",
+      "icon": "/images/class-talents/ability_piercedamage.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Hunter client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Hunter resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "hunter-marksmanship-rapid-recuperation",
+      "name": "Rapid Recuperation",
+      "branch": "marksmanship",
+      "row": 5,
+      "column": 1,
+      "maxRank": 2,
+      "nodeId": 104999,
+      "spellId": 1223987,
+      "requiredTreePoints": 20,
+      "prerequisite": [
+        "hunter-marksmanship-rapid-killing"
+      ],
+      "rankDescriptions": [
+        "Hitting a target with your Serpent Sting ability grants you 25% and consuming Rapid Killing grants you 50% of your Mana regeneration while casting for the next 15 sec.",
+        "Hitting a target with your Serpent Sting ability grants you 50% and consuming Rapid Killing grants you 100% of your Mana regeneration while casting for the next 15 sec."
+      ],
+      "description": "Hitting a target with your Serpent Sting ability grants you 50% and consuming Rapid Killing grants you 100% of your Mana regeneration while casting for the next 15 sec.",
+      "x": 12.5,
+      "y": 64.28571428571429,
+      "iconName": "ability_hunter_rapidregeneration",
+      "icon": "/images/class-talents/ability_hunter_rapidregeneration.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Hunter client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Hunter resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "hunter-1347",
+      "name": "Barrage",
+      "branch": "marksmanship",
+      "row": 5,
+      "column": 3,
+      "maxRank": 3,
+      "nodeId": 105001,
+      "spellId": 19461,
+      "sourceTalentId": 1347,
+      "requiredTreePoints": 20,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases the damage done by your Multi-Shot, Aimed Shot, and Volley abilities by 3%.",
+        "Increases the damage done by your Multi-Shot, Aimed Shot, and Volley abilities by 7%.",
+        "Increases the damage done by your Multi-Shot, Aimed Shot, and Volley abilities by 10%."
+      ],
+      "description": "Increases the damage done by your Multi-Shot, Aimed Shot, and Volley abilities by 10%.",
+      "x": 62.5,
+      "y": 64.28571428571429,
+      "iconName": "ability_upgrademoonglaive",
+      "icon": "/images/class-talents/ability_upgrademoonglaive.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Hunter client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Hunter resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "hunter-1353",
+      "name": "Scatter Shot",
+      "branch": "marksmanship",
+      "row": 5,
+      "column": 4,
+      "maxRank": 1,
+      "nodeId": 105000,
+      "spellId": 19503,
+      "sourceTalentId": 1353,
+      "requiredTreePoints": 20,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "A short-range shot that deals 50% weapon damage and disorients the target for 4 sec. Any damage caused will remove the effect. Turns off your attack when used."
+      ],
+      "description": "A short-range shot that deals 50% weapon damage and disorients the target for 4 sec. Any damage caused will remove the effect. Turns off your attack when used.",
+      "x": 87.5,
+      "y": 64.28571428571429,
+      "iconName": "ability_golemstormbolt",
+      "icon": "/images/class-talents/ability_golemstormbolt.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Hunter client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Hunter resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "hunter-1362",
+      "name": "Ranged Weapon Specialization",
+      "branch": "marksmanship",
+      "row": 6,
+      "column": 3,
+      "maxRank": 5,
+      "nodeId": 104998,
+      "spellId": 19507,
+      "sourceTalentId": 1362,
+      "requiredTreePoints": 25,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases the damage you deal with ranged weapons by 1%.",
+        "Increases the damage you deal with ranged weapons by 2%.",
+        "Increases the damage you deal with ranged weapons by 3%.",
+        "Increases the damage you deal with ranged weapons by 4%.",
+        "Increases the damage you deal with ranged weapons by 5%."
+      ],
+      "description": "Increases the damage you deal with ranged weapons by 5%.",
+      "x": 62.5,
+      "y": 78.57142857142857,
+      "iconName": "inv_weapon_rifle_06",
+      "icon": "/images/class-talents/inv_weapon_rifle_06.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "same",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Hunter client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Hunter resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "hunter-marksmanship-sniper-shot",
+      "name": "Sniper Shot",
+      "branch": "marksmanship",
+      "row": 7,
+      "column": 2,
+      "maxRank": 1,
+      "nodeId": 104997,
+      "spellId": 1310687,
+      "requiredTreePoints": 30,
+      "prerequisite": [
+        "hunter-1361"
+      ],
+      "rankDescriptions": [
+        "A long-range shot that deals ranged damage plus 160 and increases the range of your next 3 Shots by 10 yards for 10 sec."
+      ],
+      "description": "A long-range shot that deals ranged damage plus 160 and increases the range of your next 3 Shots by 10 yards for 10 sec.",
+      "x": 37.5,
+      "y": 92.85714285714286,
+      "iconName": "hunter_pvp_snipershot",
+      "icon": "/images/class-talents/hunter_pvp_snipershot.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Hunter client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Hunter resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "hunter-1623",
+      "name": "Improved Tracking",
+      "branch": "survival",
+      "row": 1,
+      "column": 2,
+      "maxRank": 5,
+      "nodeId": 104996,
+      "spellId": 24293,
+      "sourceTalentId": 1623,
+      "requiredTreePoints": 0,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "While tracking Beasts, Demons, Dragonkin, Elementals, Giants, Humanoids, or Undead, all damage you deal to the tracked creature type is increased by 1%.",
+        "While tracking Beasts, Demons, Dragonkin, Elementals, Giants, Humanoids, or Undead, all damage you deal to the tracked creature type is increased by 2%.",
+        "While tracking Beasts, Demons, Dragonkin, Elementals, Giants, Humanoids, or Undead, all damage you deal to the tracked creature type is increased by 3%.",
+        "While tracking Beasts, Demons, Dragonkin, Elementals, Giants, Humanoids, or Undead, all damage you deal to the tracked creature type is increased by 4%.",
+        "While tracking Beasts, Demons, Dragonkin, Elementals, Giants, Humanoids, or Undead, all damage you deal to the tracked creature type is increased by 5%."
+      ],
+      "description": "While tracking Beasts, Demons, Dragonkin, Elementals, Giants, Humanoids, or Undead, all damage you deal to the tracked creature type is increased by 5%.",
+      "x": 37.5,
+      "y": 7.142857142857142,
+      "iconName": "inv_misc_head_dragon_black",
+      "icon": "/images/class-talents/inv_misc_head_dragon_black.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Hunter client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Hunter resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "hunter-1311",
+      "name": "Deflection",
+      "branch": "survival",
+      "row": 1,
+      "column": 3,
+      "maxRank": 5,
+      "nodeId": 104995,
+      "spellId": 19295,
+      "sourceTalentId": 1311,
+      "requiredTreePoints": 0,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases your Parry chance by 1%.",
+        "Increases your Parry chance by 2%.",
+        "Increases your Parry chance by 3%.",
+        "Increases your Parry chance by 4%.",
+        "Increases your Parry chance by 5%."
+      ],
+      "description": "Increases your Parry chance by 5%.",
+      "x": 62.5,
+      "y": 7.142857142857142,
+      "iconName": "ability_parry",
+      "icon": "/images/class-talents/ability_parry.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "same",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Hunter client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Hunter resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "hunter-1304",
+      "name": "Entrapment",
+      "branch": "survival",
+      "row": 2,
+      "column": 1,
+      "maxRank": 5,
+      "nodeId": 104994,
+      "spellId": 19184,
+      "sourceTalentId": 1304,
+      "requiredTreePoints": 5,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "When your traps are triggered, all affected targets are Entrapped, preventing them from moving for 1 sec.",
+        "When your traps are triggered, all affected targets are Entrapped, preventing them from moving for 2 sec.",
+        "When your traps are triggered, all affected targets are Entrapped, preventing them from moving for 3 sec.",
+        "When your traps are triggered, all affected targets are Entrapped, preventing them from moving for 4 sec.",
+        "When your traps are triggered, all affected targets are Entrapped, preventing them from moving for 5 sec."
+      ],
+      "description": "When your traps are triggered, all affected targets are Entrapped, preventing them from moving for 5 sec.",
+      "x": 12.5,
+      "y": 21.428571428571427,
+      "iconName": "spell_nature_stranglevines",
+      "icon": "/images/class-talents/spell_nature_stranglevines.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Hunter client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Hunter resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "hunter-1621",
+      "name": "Savage Strikes",
+      "branch": "survival",
+      "row": 2,
+      "column": 2,
+      "maxRank": 2,
+      "nodeId": 104993,
+      "spellId": 19159,
+      "sourceTalentId": 1621,
+      "requiredTreePoints": 5,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases the critical strike chance of all your melee abilities by 2%.",
+        "Increases the critical strike chance of all your melee abilities by 4%."
+      ],
+      "description": "Increases the critical strike chance of all your melee abilities by 4%.",
+      "x": 37.5,
+      "y": 21.428571428571427,
+      "iconName": "ability_racial_bloodrage",
+      "icon": "/images/class-talents/ability_racial_bloodrage.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Hunter client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Hunter resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "hunter-1622",
+      "name": "Survivalist",
+      "branch": "survival",
+      "row": 2,
+      "column": 3,
+      "maxRank": 5,
+      "nodeId": 104992,
+      "spellId": 19255,
+      "sourceTalentId": 1622,
+      "requiredTreePoints": 5,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases your total Health by 2%.",
+        "Increases your total Health by 4%.",
+        "Increases your total Health by 6%.",
+        "Increases your total Health by 8%.",
+        "Increases your total Health by 10%."
+      ],
+      "description": "Increases your total Health by 10%.",
+      "x": 62.5,
+      "y": 21.428571428571427,
+      "iconName": "spell_shadow_twilight",
+      "icon": "/images/class-talents/spell_shadow_twilight.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Hunter client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Hunter resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "hunter-1305",
+      "name": "Improved Wing Clip",
+      "branch": "survival",
+      "row": 2,
+      "column": 4,
+      "maxRank": 3,
+      "nodeId": 104990,
+      "spellId": 19228,
+      "sourceTalentId": 1305,
+      "requiredTreePoints": 5,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Gives your Wing Clip ability a 7% chance to immobilize the target for 5 sec.",
+        "Gives your Wing Clip ability a 13% chance to immobilize the target for 5 sec.",
+        "Gives your Wing Clip ability a 20% chance to immobilize the target for 5 sec."
+      ],
+      "description": "Gives your Wing Clip ability a 20% chance to immobilize the target for 5 sec.",
+      "x": 87.5,
+      "y": 21.428571428571427,
+      "iconName": "ability_rogue_trip",
+      "icon": "/images/class-talents/ability_rogue_trip.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Hunter client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Hunter resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "hunter-1306",
+      "name": "Clever Traps",
+      "branch": "survival",
+      "row": 3,
+      "column": 1,
+      "maxRank": 2,
+      "nodeId": 104991,
+      "spellId": 19239,
+      "sourceTalentId": 1306,
+      "requiredTreePoints": 10,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases the duration of Freezing and Frost trap effects by 15% and the damage of Immolation and Explosive trap effects by 15%.",
+        "Increases the duration of Freezing and Frost trap effects by 30% and the damage of Immolation and Explosive trap effects by 30%."
+      ],
+      "description": "Increases the duration of Freezing and Frost trap effects by 30% and the damage of Immolation and Explosive trap effects by 30%.",
+      "x": 12.5,
+      "y": 35.714285714285715,
+      "iconName": "spell_nature_timestop",
+      "icon": "/images/class-talents/spell_nature_timestop.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "same",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Hunter client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Hunter resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "hunter-1310",
+      "name": "Surefooted",
+      "branch": "survival",
+      "row": 3,
+      "column": 2,
+      "maxRank": 3,
+      "nodeId": 104987,
+      "spellId": 19290,
+      "sourceTalentId": 1310,
+      "requiredTreePoints": 10,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases your hit chance by 1% and reduces the duration of movement impairing effects on you by 10%.",
+        "Increases your hit chance by 2% and reduces the duration of movement impairing effects on you by 20%.",
+        "Increases your hit chance by 3% and reduces the duration of movement impairing effects on you by 30%."
+      ],
+      "description": "Increases your hit chance by 3% and reduces the duration of movement impairing effects on you by 30%.",
+      "x": 37.5,
+      "y": 35.714285714285715,
+      "iconName": "ability_kick",
+      "icon": "/images/class-talents/ability_kick.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Hunter client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Hunter resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "hunter-1308",
+      "name": "Deterrence",
+      "branch": "survival",
+      "row": 3,
+      "column": 3,
+      "maxRank": 1,
+      "nodeId": 104986,
+      "spellId": 19263,
+      "sourceTalentId": 1308,
+      "requiredTreePoints": 10,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "When activated, increases your Dodge and Parry chance by 25% for 10 sec."
+      ],
+      "description": "When activated, increases your Dodge and Parry chance by 25% for 10 sec.",
+      "x": 62.5,
+      "y": 35.714285714285715,
+      "iconName": "ability_whirlwind",
+      "icon": "/images/class-talents/ability_whirlwind.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "same",
+      "complete": true,
+      "confirmedRanks": [
+        1
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Hunter client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Hunter resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "hunter-1322",
+      "name": "Survival Tactics",
+      "branch": "survival",
+      "row": 4,
+      "column": 1,
+      "maxRank": 2,
+      "nodeId": 104988,
+      "spellId": 19376,
+      "sourceTalentId": 1322,
+      "requiredTreePoints": 15,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases your chance to hit with your Trap and Feign Death abilities by 5%.",
+        "Increases your chance to hit with your Trap and Feign Death abilities by 10%."
+      ],
+      "description": "Increases your chance to hit with your Trap and Feign Death abilities by 10%.",
+      "x": 12.5,
+      "y": 50,
+      "iconName": "ability_ensnare",
+      "icon": "/images/class-talents/ability_ensnare.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Hunter client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Hunter resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "hunter-survival-predator-s-edge",
+      "name": "Predator's Edge",
+      "branch": "survival",
+      "row": 4,
+      "column": 2,
+      "maxRank": 5,
+      "nodeId": 110861,
+      "spellId": 1310627,
+      "requiredTreePoints": 15,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases your melee critical strike damage by 6% and your Off Hand weapon damage by 10%.",
+        "Increases your melee critical strike damage by 12% and your Off Hand weapon damage by 20%.",
+        "Increases your melee critical strike damage by 18% and your Off Hand weapon damage by 30%.",
+        "Increases your melee critical strike damage by 24% and your Off Hand weapon damage by 40%.",
+        "Increases your melee critical strike damage by 30% and your Off Hand weapon damage by 50%."
+      ],
+      "description": "Increases your melee critical strike damage by 30% and your Off Hand weapon damage by 50%.",
+      "x": 37.5,
+      "y": 50,
+      "iconName": "ability_dualwield",
+      "icon": "/images/class-talents/ability_dualwield.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Hunter client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Hunter resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "hunter-1312",
+      "name": "Counterattack",
+      "branch": "survival",
+      "row": 4,
+      "column": 3,
+      "maxRank": 1,
+      "nodeId": 104989,
+      "spellId": 19306,
+      "sourceTalentId": 1312,
+      "requiredTreePoints": 15,
+      "prerequisite": [
+        "hunter-1308"
+      ],
+      "rankDescriptions": [
+        "A strike that becomes active after parrying an opponent's attack. This attack deals 50% weapon damage plus 13 and immobilizes the target for 5 sec. Counterattack cannot be blocked, dodged, or parried."
+      ],
+      "description": "A strike that becomes active after parrying an opponent's attack. This attack deals 50% weapon damage plus 13 and immobilizes the target for 5 sec. Counterattack cannot be blocked, dodged, or parried.",
+      "x": 62.5,
+      "y": 50,
+      "iconName": "ability_warrior_challange",
+      "icon": "/images/class-talents/ability_warrior_challange.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Hunter client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Hunter resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "hunter-survival-resourcefulness",
+      "name": "Resourcefulness",
+      "branch": "survival",
+      "row": 5,
+      "column": 1,
+      "maxRank": 2,
+      "nodeId": 104983,
+      "spellId": 440529,
+      "requiredTreePoints": 20,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Reduces the mana cost of your Trap abilities and melee abilities by 30%. In addition, your critical strikes have a 30% chance to allow 50% of your Mana regeneration to continue while casting for 30 sec.",
+        "Reduces the mana cost of your Trap abilities and melee abilities by 60%. In addition, your critical strikes have a 60% chance to allow 50% of your Mana regeneration to continue while casting for 30 sec."
+      ],
+      "description": "Reduces the mana cost of your Trap abilities and melee abilities by 60%. In addition, your critical strikes have a 60% chance to allow 50% of your Mana regeneration to continue while casting for 30 sec.",
+      "x": 12.5,
+      "y": 64.28571428571429,
+      "iconName": "ability_hunter_resourcefulness",
+      "icon": "/images/class-talents/ability_hunter_resourcefulness.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Hunter client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Hunter resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "hunter-survival-expose-prey",
+      "name": "Expose Prey",
+      "branch": "survival",
+      "row": 5,
+      "column": 2,
+      "maxRank": 2,
+      "nodeId": 104985,
+      "spellId": 1310532,
+      "requiredTreePoints": 20,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Your attacks against targets with Hunter's Mark have a 5% chance to activate your Mongoose Bite for 10 sec.",
+        "Your attacks against targets with Hunter's Mark have a 10% chance to activate your Mongoose Bite for 10 sec."
+      ],
+      "description": "Your attacks against targets with Hunter's Mark have a 10% chance to activate your Mongoose Bite for 10 sec.",
+      "x": 37.5,
+      "y": 64.28571428571429,
+      "iconName": "ability_hunter_swiftstrike",
+      "icon": "/images/class-talents/ability_hunter_swiftstrike.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Hunter client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Hunter resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "hunter-survival-survivalist-s-discipline",
+      "name": "Survivalist's Discipline",
+      "branch": "survival",
+      "row": 5,
+      "column": 3,
+      "maxRank": 2,
+      "nodeId": 110860,
+      "spellId": 1310496,
+      "requiredTreePoints": 20,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Reduces the cooldown of your Trap and Deterrence abilities by 20%.",
+        "Reduces the cooldown of your Trap and Deterrence abilities by 40%."
+      ],
+      "description": "Reduces the cooldown of your Trap and Deterrence abilities by 40%.",
+      "x": 62.5,
+      "y": 64.28571428571429,
+      "iconName": "ability_hunter_mastertactitian",
+      "icon": "/images/class-talents/ability_hunter_mastertactitian.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Hunter client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Hunter resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "hunter-survival-strider-kick",
+      "name": "Strider Kick",
+      "branch": "survival",
+      "row": 5,
+      "column": 4,
+      "maxRank": 1,
+      "nodeId": 104981,
+      "spellId": 1317257,
+      "requiredTreePoints": 20,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "A powerful kick that deals 100% melee weapon damage and increases movement speed by 30% for 3 sec."
+      ],
+      "description": "A powerful kick that deals 100% melee weapon damage and increases movement speed by 30% for 3 sec.",
+      "x": 87.5,
+      "y": 64.28571428571429,
+      "iconName": "ability_hunter_pet_tallstrider",
+      "icon": "/images/class-talents/ability_hunter_pet_tallstrider.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Hunter client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Hunter resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "hunter-1303",
+      "name": "Lightning Reflexes",
+      "branch": "survival",
+      "row": 6,
+      "column": 3,
+      "maxRank": 5,
+      "nodeId": 110859,
+      "spellId": 19168,
+      "sourceTalentId": 1303,
+      "requiredTreePoints": 25,
+      "prerequisite": [],
+      "rankDescriptions": [
+        "Increases your Agility by 2%.",
+        "Increases your Agility by 4%.",
+        "Increases your Agility by 6%.",
+        "Increases your Agility by 8%.",
+        "Increases your Agility by 10%."
+      ],
+      "description": "Increases your Agility by 10%.",
+      "x": 62.5,
+      "y": 78.57142857142857,
+      "iconName": "spell_nature_invisibilty",
+      "icon": "/images/class-talents/spell_nature_invisibilty.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "not_applicable",
+      "changeStatus": "changed",
+      "complete": true,
+      "confirmedRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Hunter client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Hunter resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Legacy Talent-table ID retained from the historical snapshot for stable share identity; current structural identifiers are nodeId and spellId.",
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    },
+    {
+      "id": "hunter-survival-lacerating-strikes",
+      "name": "Lacerating Strikes",
+      "branch": "survival",
+      "row": 7,
+      "column": 2,
+      "maxRank": 1,
+      "nodeId": 104984,
+      "spellId": 1310533,
+      "requiredTreePoints": 30,
+      "prerequisite": [
+        "hunter-survival-expose-prey"
+      ],
+      "rankDescriptions": [
+        "Your Mongoose Bite also causes the target to Bleed for damage equal to 40% of the damage done by Mongoose Bite over 21 sec"
+      ],
+      "description": "Your Mongoose Bite also causes the target to Bleed for damage equal to 40% of the damage done by Mongoose Bite over 21 sec",
+      "x": 37.5,
+      "y": 92.85714285714286,
+      "iconName": "ability_gouge",
+      "icon": "/images/class-talents/ability_gouge.jpg",
+      "sourceClientBuild": "1.60.1.70291",
+      "verifiedThroughBuild": "1.60.1.70291",
+      "verificationStatus": "client_verified",
+      "rankTextVerification": "community_verified",
+      "prerequisiteRuleStatus": "derived_assumption",
+      "changeStatus": "new",
+      "complete": true,
+      "confirmedRanks": [
+        1
+      ],
+      "fieldEvidence": {
+        "name": "client_verified",
+        "branch": "client_verified",
+        "row": "client_verified",
+        "column": "client_verified",
+        "maxRank": "client_verified",
+        "nodeId": "client_verified",
+        "spellId": "client_verified",
+        "requiredTreePoints": "derived_assumption",
+        "prerequisiteLink": "client_verified",
+        "rankDescriptions": "community_verified",
+        "iconName": "community_verified",
+        "changeStatus": "community_verified"
+      },
+      "sources": [
+        {
+          "label": "Wago DB2 — Hunter client structure 1.60.1.70291",
+          "type": "beta_client",
+          "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291"
+        },
+        {
+          "label": "Talents Forever — Hunter resolved rank descriptions (CC BY 4.0)",
+          "type": "beta_client_crosscheck",
+          "url": "https://talentsforever.com/data.json"
+        }
+      ],
+      "dataNotes": [
+        "Resolved rank descriptions and icon names adapted from Talents Forever (CC BY 4.0); raw client structure independently reconciled.",
+        "Five points per tier and full-rank prerequisites are planning assumptions; client links do not prove the required rank."
+      ]
+    }
+  ],
+  "rawClientNodeCount": 52,
+  "quarantinedClientNodes": [
+    {
+      "nodeId": 104982,
+      "name": "Lightning Reflexes",
+      "spellId": 19168,
+      "posX": 102800,
+      "posY": 5740,
+      "replacementNodeId": 110859,
+      "reason": "Off-grid duplicate remnant: same name and SpellID as on-grid current node110859; current Talents Forever70291 visible-tree export uses Survival row6/column3. Raw coordinate typo is retained, never corrected.",
+      "sourceUrl": "https://talentsforever.com/data.json"
+    },
+    {
+      "nodeId": 105003,
+      "name": "Improved Serpent Sting",
+      "spellId": 19464,
+      "posX": 6820,
+      "posY": 39300,
+      "replacementNodeId": 110870,
+      "reason": "Off-grid former talent remnant. Blizzard Hunter Deep Dive explicitly states Improved Stings replaces/renames Improved Serpent Sting and moves to row2. Current node110870/Spell1310661 and licensed visible-tree export agree; raw obsolete record retained.",
+      "sourceUrl": "https://news.blizzard.com/en-us/article/24301515/world-of-warcraft-forever-class-deep-dives-hunter-and-druid"
+    }
+  ],
+  "activeMembershipVerification": "community_verified",
+  "quarantinedClientEdges": [
+    {
+      "edgeId": 124700,
+      "leftNodeId": 104961,
+      "rightNodeId": 104964,
+      "reason": "Raw reciprocal Bestial Wrath↔Intimidation Type2 links form an impossible spend graph. Exact BestialWrath→Intimidation connection excluded after current licensed visible-tree review and tier geometry; BestialSwiftness→Intimidation→BestialWrath remains. Affected direction is community_verified, not client-only proof.",
+      "sourceUrl": "https://talentsforever.com/data.json"
+    }
+  ]
+}

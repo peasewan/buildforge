@@ -43,16 +43,17 @@ describe('evidence-bounded planning tools', () => {
     }
     expect(buildCatalogue(PUBLISHED_CLASSES.map(c => ({...c, builds:[]})), false)).toEqual([])
   })
-  it('marks Hunter routes using removed talents as historical and opens a blank planner', () => {
+  it('keeps current Hunter routes editable and routes Warrior PvP through the updated tree', () => {
     const routes = buildCatalogue()
     const beastMastery = routes.find(route => route.id === 'hunter-beast-mastery-starter')!
     const marksmanship = routes.find(route => route.id === 'hunter-marksmanship-starter')!
     const survival = routes.find(route => route.id === 'hunter-survival-starter')!
 
-    expect(beastMastery.removedTalentNames).toEqual(['Thick Hide'])
-    expect(marksmanship.removedTalentNames).toEqual(['Aimed Shot'])
-    expect(beastMastery.calculatorHref(snapshotAtLevel(beastMastery, 15)!.allocation)).toBe('/hunter?build=#class-calculator')
-    expect(marksmanship.calculatorHref(snapshotAtLevel(marksmanship, 20)!.allocation)).toBe('/hunter?build=#class-calculator')
+    expect(beastMastery.removedTalentNames).toEqual([])
+    expect(marksmanship.removedTalentNames).toEqual([])
+    expect(beastMastery.calculatorHref(snapshotAtLevel(beastMastery, 15)!.allocation)).toMatch(/^\/hunter\?build=.+&level=20&dataset=1\.60\.1\.70291#class-calculator$/)
+    expect(marksmanship.calculatorHref(snapshotAtLevel(marksmanship, 20)!.allocation)).toMatch(/^\/hunter\?build=.+&level=20&dataset=1\.60\.1\.70291#class-calculator$/)
+    expect(pickSpecs({activity:'pvp',role:'damage',style:'melee'}).some(result => result.route.classId === 'warrior')).toBe(true)
     expect(survival.removedTalentNames).toEqual([])
     expect(survival.calculatorHref(snapshotAtLevel(survival, 20)!.allocation)).toMatch(/^\/hunter\?build=.+#class-calculator$/)
   })

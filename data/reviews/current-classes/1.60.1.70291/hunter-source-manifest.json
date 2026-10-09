@@ -1,0 +1,144 @@
+{
+  "classId": "hunter",
+  "build": "1.60.1.70291",
+  "sourceDate": "2026-10-08",
+  "acquiredAt": "2026-10-09T07:57:33.349Z",
+  "resolvedRankSourceUrl": "https://talentsforever.com/data.json",
+  "resolvedRankSourceBuild": "1.60.1.70291",
+  "resolvedRankLicense": "CC-BY-4.0",
+  "resolvedRankLicenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "resolvedRankAttribution": "Data from talentsforever.com (https://talentsforever.com)",
+  "resolvedRankExportSha256": "c72b0e1f9357260b63c5d5d738627c6984f28e8737a3e8d3888648c8c9e1518b",
+  "tableEvidence": [
+    {
+      "table": "SkillLineXTraitTree",
+      "url": "https://wago.tools/db2/SkillLineXTraitTree/csv?build=1.60.1.70291",
+      "path": "data/sources/current-classes/1.60.1.70291/SkillLineXTraitTree.70291.csv",
+      "bytes": 167,
+      "sha256": "e6774240ba1fda84bef060fda0d0b23e42d5ae9b4d8ae3323f7ccb31f38c5760"
+    },
+    {
+      "table": "TraitTree",
+      "url": "https://wago.tools/db2/TraitTree/csv?build=1.60.1.70291",
+      "path": "data/sources/current-classes/1.60.1.70291/TraitTree.70291.csv",
+      "bytes": 533,
+      "sha256": "6f63def42b6b42b7524e36aef48f7afd9a399b6968b5a979e8c3f349f163f3a6"
+    },
+    {
+      "table": "TraitNode",
+      "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291",
+      "path": "data/sources/current-classes/1.60.1.70291/TraitNode.70291.csv",
+      "bytes": 15718,
+      "sha256": "263f9df958e09d54cecd80170e1129a20c85bdd4c03cb430f56aea48f43414d3"
+    },
+    {
+      "table": "TraitNodeXTraitNodeEntry",
+      "url": "https://wago.tools/db2/TraitNodeXTraitNodeEntry/csv?build=1.60.1.70291",
+      "path": "data/sources/current-classes/1.60.1.70291/TraitNodeXTraitNodeEntry.70291.csv",
+      "bytes": 14046,
+      "sha256": "b0994f62801bd36d3af34c3ae1d9f7b3df32ffecb59f088c97ea78322723e963"
+    },
+    {
+      "table": "TraitNodeEntry",
+      "url": "https://wago.tools/db2/TraitNodeEntry/csv?build=1.60.1.70291",
+      "path": "data/sources/current-classes/1.60.1.70291/TraitNodeEntry.70291.csv",
+      "bytes": 13234,
+      "sha256": "7908703ec9ed154bbcb8ff49d380b0954557902032f5c724fca1907bc3d697e7"
+    },
+    {
+      "table": "TraitDefinition",
+      "url": "https://wago.tools/db2/TraitDefinition/csv?build=1.60.1.70291",
+      "path": "data/sources/current-classes/1.60.1.70291/TraitDefinition.70291.csv",
+      "bytes": 15004,
+      "sha256": "23f19d05c5d1c97ccb1ca537ea3d577588204cfc573ea8e9ade9e02d6a68c817"
+    },
+    {
+      "table": "SpellName",
+      "url": "https://wago.tools/db2/SpellName/csv?build=1.60.1.70291",
+      "path": "data/sources/current-classes/1.60.1.70291/SpellName.70291.csv",
+      "bytes": 835733,
+      "sha256": "3782df7b688cb698801eeb8ae26c93e59c4114042b7f981088ebf47770ed5745"
+    },
+    {
+      "table": "Spell",
+      "url": "https://wago.tools/db2/Spell/csv?build=1.60.1.70291",
+      "path": "data/sources/current-classes/1.60.1.70291/Spell.70291.csv",
+      "bytes": 2198235,
+      "sha256": "774f68fe73674d2daa939cda9d4421e71bb37b2a0962cb726520da1831c48f90"
+    },
+    {
+      "table": "TraitEdge",
+      "url": "https://wago.tools/db2/TraitEdge/csv?build=1.60.1.70291",
+      "path": "data/sources/current-classes/1.60.1.70291/TraitEdge.70291.csv",
+      "bytes": 2503,
+      "sha256": "bf3086595d7d2321f2f330d85057a028c2ba9bcfe28527ebdc314007da315d82"
+    },
+    {
+      "table": "TraitNodeGroupXTraitNode",
+      "url": "https://wago.tools/db2/TraitNodeGroupXTraitNode/csv?build=1.60.1.70291",
+      "path": "data/sources/current-classes/1.60.1.70291/TraitNodeGroupXTraitNode.70291.csv",
+      "bytes": 47857,
+      "sha256": "ba1b33592d1ab662a7f2cac34afede5dc411421ee0321c01c684d53e1fd10f43"
+    }
+  ],
+  "reviewedIdentityMappings": [
+    {
+      "currentName": "Trueshot Aura",
+      "currentBranch": "marksmanship",
+      "previousId": "hunter-1361",
+      "expectedPreviousSpellId": 19506,
+      "expectedSpellId": 1299346
+    },
+    {
+      "currentName": "Improved Stings",
+      "currentBranch": "marksmanship",
+      "previousId": "hunter-1348",
+      "expectedPreviousSpellId": 19464,
+      "expectedSpellId": 1310661
+    }
+  ],
+  "reviewedQuarantines": [
+    {
+      "nodeId": 104982,
+      "name": "Lightning Reflexes",
+      "spellId": 19168,
+      "posX": 102800,
+      "posY": 5740,
+      "replacementNodeId": 110859,
+      "reason": "Off-grid duplicate remnant: same name and SpellID as on-grid current node110859; current Talents Forever70291 visible-tree export uses Survival row6/column3. Raw coordinate typo is retained, never corrected.",
+      "sourceUrl": "https://talentsforever.com/data.json"
+    },
+    {
+      "nodeId": 105003,
+      "name": "Improved Serpent Sting",
+      "spellId": 19464,
+      "posX": 6820,
+      "posY": 39300,
+      "replacementNodeId": 110870,
+      "reason": "Off-grid former talent remnant. Blizzard Hunter Deep Dive explicitly states Improved Stings replaces/renames Improved Serpent Sting and moves to row2. Current node110870/Spell1310661 and licensed visible-tree export agree; raw obsolete record retained.",
+      "sourceUrl": "https://news.blizzard.com/en-us/article/24301515/world-of-warcraft-forever-class-deep-dives-hunter-and-druid"
+    }
+  ],
+  "reviewedEdgeQuarantines": [
+    {
+      "edgeId": 124700,
+      "leftNodeId": 104961,
+      "rightNodeId": 104964,
+      "reason": "Raw reciprocal Bestial Wrath↔Intimidation Type2 links form an impossible spend graph. Exact BestialWrath→Intimidation connection excluded after current licensed visible-tree review and tier geometry; BestialSwiftness→Intimidation→BestialWrath remains. Affected direction is community_verified, not client-only proof.",
+      "sourceUrl": "https://talentsforever.com/data.json"
+    }
+  ],
+  "rawClientNodeCount": 52,
+  "activeMembershipVerification": "community_verified",
+  "rawClientTreeId": 1091,
+  "activeNodes": 50,
+  "completeRankTexts": 148,
+  "sourceVocabulary": {
+    "structure": "client_verified",
+    "rankText": "community_verified",
+    "iconName": "community_verified",
+    "treePoints": "derived_assumption",
+    "prerequisiteRequiredRank": "derived_assumption"
+  },
+  "promotionStatus": "candidate_only"
+}

@@ -1,19 +1,31 @@
 import { BETA_PATCH_REVIEW } from '../src/data/betaPatchReview.js'
 import { isIP } from 'node:net'
 
-// The published class imports currently share this reviewed client baseline. Keep this
-// serverless route lightweight; a test checks the value against every published class.
-const CURRENT_DATA_VERSION = 'wow_forever_beta_1.60.1.69913'
-const PALADIN_DATA_VERSION = 'wow_forever_beta_1.60.1.70245'
-const CLASS_DATA_VERSION = 'WoW Forever Beta 1.60.1.69913'
-const KNOWN_SOURCE_VERSIONS = new Set([
-  CURRENT_DATA_VERSION,
-  PALADIN_DATA_VERSION,
-  CLASS_DATA_VERSION,
-  'wow_forever_beta_1.60.1.69893',
-  'wow_forever_beta_1.60.1.69876',
-  'unknown',
-])
+type ClassId = keyof typeof BETA_PATCH_REVIEW.notes
+
+// Keep serverless dependencies limited to the small reviewed-note dataset. The API
+// tests compare these exact labels with the published calculators. Histories are
+// class-specific; another class's reviewed version is not a valid migration source.
+const BASELINE_DATA_VERSION = 'wow_forever_beta_1.60.1.69913'
+const BASELINE_CLASS_LABEL = 'WoW Forever Beta 1.60.1.69913'
+const CLASS_VERSIONS: Record<ClassId, { current: string; historical: readonly string[] }> = {
+  paladin: {
+    current: 'wow_forever_beta_1.60.1.70245',
+    historical: [BASELINE_DATA_VERSION, BASELINE_CLASS_LABEL, 'wow_forever_beta_1.60.1.69893', 'wow_forever_beta_1.60.1.69876'],
+  },
+  hunter: { current: 'WoW Forever Beta 1.60.1.70291', historical: [BASELINE_CLASS_LABEL] },
+  warrior: { current: 'wow_forever_beta_1.60.1.70291', historical: [BASELINE_DATA_VERSION] },
+  mage: { current: BASELINE_DATA_VERSION, historical: [] },
+  druid: { current: BASELINE_CLASS_LABEL, historical: [] },
+  priest: { current: BASELINE_CLASS_LABEL, historical: [] },
+  rogue: { current: BASELINE_CLASS_LABEL, historical: [] },
+  shaman: { current: BASELINE_CLASS_LABEL, historical: [] },
+  warlock: { current: BASELINE_CLASS_LABEL, historical: [] },
+}
+const CURRENT_CLASS_SOURCE = 'https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291'
+const RANK_TEXT_SOURCE = 'https://talentsforever.com/data.json'
+const RANK_TEXT_LICENSE = 'https://creativecommons.org/licenses/by/4.0/'
+
 const responseHeaders = {
   'cache-control': 'no-store',
   'content-type': 'application/json; charset=utf-8',
@@ -80,12 +92,11 @@ function parseInput(raw: unknown): ExplainInput | null {
   const input = raw as Record<string, unknown>
   if (Object.keys(input).sort().join(',') !== 'classId,currentDataVersion,sourceDataVersion') return null
   if (typeof input.classId !== 'string' || !Object.hasOwn(BETA_PATCH_REVIEW.notes, input.classId)) return null
-  const publishedVersion = input.classId === 'paladin' ? PALADIN_DATA_VERSION : ['mage', 'warrior'].includes(input.classId)
-    ? CURRENT_DATA_VERSION
-    : CLASS_DATA_VERSION
-  if (input.currentDataVersion !== publishedVersion) return null
-  if (typeof input.sourceDataVersion !== 'string' || !KNOWN_SOURCE_VERSIONS.has(input.sourceDataVersion)) return null
-  if (input.classId !== 'paladin' && input.sourceDataVersion !== input.currentDataVersion && input.sourceDataVersion !== 'unknown') return null
+  const versions = CLASS_VERSIONS[input.classId as ClassId]
+  if (input.currentDataVersion !== versions.current) return null
+  if (typeof input.sourceDataVersion !== 'string') return null
+  if (input.sourceDataVersion !== versions.current && input.sourceDataVersion !== 'unknown'
+    && !versions.historical.includes(input.sourceDataVersion)) return null
   return input as unknown as ExplainInput
 }
 
@@ -97,6 +108,9 @@ function baselineExplanation(input: ExplainInput) {
     ? `This saved ${className} build uses the same ${currentBuild} talent dataset as the currently published calculator.`
     : `This saved ${className} build has an older or unknown talent data version, so it needs review against the currently published ${currentBuild} dataset.`
   if (input.classId === 'paladin') return `${versionStatement} Matching versions do not prove in-game compatibility. The complete 70245 structure was reviewed; rank descriptions have community evidence and prerequisite-rank rules remain assumptions. Historical saved allocations need a removed-talent review before reopening.`
+  const planningBoundary = 'Matching versions do not prove in-game compatibility. Point budgets, tier costs and prerequisite-rank rules are derived planning assumptions. Version metadata alone does not assess the saved allocation. Historical saved allocations need a removed-talent and changed-link review before reopening.'
+  if (input.classId === 'hunter') return `${versionStatement} The 50 visible nodes of the 70291 tree use client records with community-reviewed membership: two off-grid records are excluded, and Intimidation's prerequisite direction has community evidence. All 148 rank descriptions are adapted from Talents Forever under CC BY 4.0 with community evidence. ${planningBoundary}`
+  if (input.classId === 'warrior') return `${versionStatement} The complete 52-node 70291 client structure was reviewed. All 150 rank descriptions are adapted from Talents Forever under CC BY 4.0 with community evidence. ${planningBoundary}`
   return `${versionStatement} A matching data version does not establish whether a build is usable in game. The ${announcedBuild} client talent dataset is pending reconciliation; this saved build's impact from that patch cannot yet be determined.`
 }
 
@@ -182,15 +196,22 @@ export default {
     const base = baselineExplanation(input)
     const key = process.env.DEEPSEEK_API_KEY
     const selected = key ? await cachedReviewedFacts(input, key) : null
+    const currentClassReview = input.classId === 'hunter' || input.classId === 'warrior'
+    const noteLabel = currentClassReview ? 'Historical September 24 official' : 'Reviewed official'
     const note = selected?.length
-      ? ` Reviewed official ${input.classId} notes mention: ${selected.map((index) => BETA_PATCH_REVIEW.notes[input.classId][index]).join(' ')} These class-level notes do not prove that the saved allocation uses an affected talent.`
+      ? ` ${noteLabel} ${input.classId} notes mention: ${selected.map((index) => BETA_PATCH_REVIEW.notes[input.classId][index]).join(' ')} These class-level notes do not prove that the saved allocation uses an affected talent.`
       : ''
 
     return json({
       status: input.sourceDataVersion === input.currentDataVersion ? 'same_dataset' : 'needs_review',
-      patchStatus: input.classId === 'paladin' ? 'structure_reviewed' : BETA_PATCH_REVIEW.datasetStatus,
+      patchStatus: input.classId === 'paladin' || currentClassReview ? 'structure_reviewed' : BETA_PATCH_REVIEW.datasetStatus,
       explanation: base + note,
-      sourceUrl: BETA_PATCH_REVIEW.officialSource,
+      sourceUrl: currentClassReview ? CURRENT_CLASS_SOURCE : BETA_PATCH_REVIEW.officialSource,
+      ...(currentClassReview ? {
+        rankTextSourceUrl: RANK_TEXT_SOURCE,
+        rankTextLicenseUrl: RANK_TEXT_LICENSE,
+        ...(selected?.length ? { officialNotesSourceUrl: BETA_PATCH_REVIEW.officialSource } : {}),
+      } : {}),
       generatedBy: selected ? 'deepseek' : 'fallback',
     }, 200)
   },

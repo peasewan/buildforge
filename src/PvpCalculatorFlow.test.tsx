@@ -8,6 +8,7 @@ import { hunterClass } from './data/classes/hunter'
 import { warriorClass } from './data/classes/warrior'
 import { decodeBuild, incrementTalent, totalPoints, type Build } from './lib/build'
 import { talents } from './data/talents'
+import { decodeValidatedPlannerBuild, encodePlannerBuild, totalPlannerPoints } from './lib/talentPlanner'
 
 let copiedUrl = ''
 let refuseClipboard = false
@@ -111,11 +112,11 @@ describe('Published PvP route → adjust → share', () => {
 
   it('opens the production Hunter PvP allocation at its Survival tree', () => {
     enterHunterPvp()
-    expect(document.querySelector('.class-summary aside')?.textContent).toContain('0/0/11')
-    expect(document.querySelector('.class-summary aside')?.textContent).toContain('Level 20')
+    expect(document.querySelector('.class-summary aside')?.textContent).toContain('0/0/21')
+    expect(document.querySelector('.class-summary aside')?.textContent).toContain('Level 30')
     expect(scrollTargets).toContain('tree-survival')
     const selectedName = document.querySelector('.class-detail-title h3')?.textContent
-    expect(['Deflection', 'Entrapment', 'Savage Strikes', 'Deterrence']).toContain(selectedName)
+    expect(['Deflection', 'Entrapment', 'Deterrence', 'Clever Traps', 'Surefooted', 'Survival Tactics', 'Improved Wing Clip', 'Strider Kick']).toContain(selectedName)
   })
 
   it('opens a production Warrior PvP route at its allocated tree and detail', () => {
@@ -124,84 +125,109 @@ describe('Published PvP route → adjust → share', () => {
     const selectedName = document.querySelector('.class-detail-title h3')?.textContent
     const selectedTalent = warriorClass.talents.find(talent => talent.name === selectedName)
     expect(selectedTalent?.branch).toBe('arms')
-    expect(document.querySelector('.class-summary aside')?.textContent).toContain('11 / 11')
+    expect(document.querySelector('.class-summary aside')?.textContent).toContain('21 / 21')
+    expect(document.querySelector('.class-summary aside')?.textContent).toContain('Level 30')
   })
 
   it('honors an explicitly empty Warrior share over the recipient’s saved allocation', () => {
     const pvp = warriorClass.builds.find(build => build.id === 'warrior-arms-pvp')!
-    localStorage.setItem(warriorClass.storageKey, JSON.stringify({ build: pvp.build, level: 20 }))
-    history.replaceState({}, '', '/warrior?build=&level=20')
+    localStorage.setItem(warriorClass.storageKey, JSON.stringify({ build: pvp.build, level: 30 }))
+    history.replaceState({}, '', '/warrior?build=&level=30')
     render(<ClassCalculatorPage classDef={warriorClass} />)
     expect(document.querySelector('.class-summary aside')?.textContent).toContain('0/0/0')
-    expect(document.querySelector('.class-summary aside')?.textContent).toContain('0 / 11')
+    expect(document.querySelector('.class-summary aside')?.textContent).toContain('0 / 21')
   })
 
   it('honors an explicitly empty Hunter share over the recipient’s saved allocation', () => {
     const pvp = hunterClass.builds.find(build => build.id === 'hunter-pvp')!
-    localStorage.setItem(hunterClass.storageKey, JSON.stringify({ build: pvp.build, level: 20 }))
-    history.replaceState({}, '', '/hunter?build=&level=20')
+    localStorage.setItem(hunterClass.storageKey, JSON.stringify({ build: pvp.build, level: 30 }))
+    history.replaceState({}, '', '/hunter?build=&level=30')
     render(<ClassCalculatorPage classDef={hunterClass} />)
     expect(document.querySelector('.class-summary aside')?.textContent).toContain('0/0/0')
-    expect(document.querySelector('.class-summary aside')?.textContent).toContain('0 / 11')
+    expect(document.querySelector('.class-summary aside')?.textContent).toContain('0 / 21')
   })
 
   it('explains a filled Hunter route, then shares and restores a legal adjustment', async () => {
     enterHunterPvp()
     expect(document.querySelector('.class-full-route')?.textContent).toMatch(/remove.*rank.*add/i)
-    fireEvent.click(screen.getByRole('button', { name: 'Remove rank from Deterrence' }))
-    fireEvent.click(screen.getByRole('button', { name: 'Add rank to Improved Wing Clip' }))
+    const kick = hunterClass.talents.find(talent => talent.name === 'Strider Kick')!
+    const surefooted = hunterClass.talents.find(talent => talent.name === 'Surefooted')!
+    const adjusted = { ...hunterClass.builds.find(build => build.id === 'hunter-pvp')!.build }
+    delete adjusted[kick.id]
+    adjusted[surefooted.id] = 3
+    fireEvent.click(screen.getByRole('button', { name: 'Remove rank from Strider Kick' }))
+    expect(document.querySelector('.class-summary aside')?.textContent).toContain('20 / 21')
+    fireEvent.click(screen.getByRole('button', { name: 'Add rank to Surefooted' }))
+    expect(document.querySelector('.class-summary aside')?.textContent).toContain('21 / 21')
     fireEvent.click(screen.getByRole('button', { name: 'Copy build link' }))
     await waitFor(() => expect(copiedUrl).toContain('/hunter?build='))
     const url = new URL(copiedUrl)
-    expect(url.searchParams.get('level')).toBe('20')
+    expect(url.searchParams.get('level')).toBe('30')
+    expect(url.searchParams.get('build')).toBe(encodePlannerBuild(adjusted))
+    const decoded = decodeValidatedPlannerBuild(url.searchParams.get('build')!, hunterClass.talents, { ...hunterClass.plannerConfig, pointCap: 21 })
+    expect(decoded).toEqual(adjusted)
+    expect(totalPlannerPoints(decoded!)).toBe(21)
     expect(url.hash).toBe('#tree-survival')
     cleanup()
     localStorage.clear()
     history.replaceState({}, '', `${url.pathname}${url.search}${url.hash}`)
     render(<ClassCalculatorPage classDef={hunterClass} />)
-    expect(document.getElementById('hunter-1308')?.textContent).toContain('0/1')
-    expect(screen.getByRole('button', { name: 'Remove rank from Improved Wing Clip' })).toBeTruthy()
-    expect(document.querySelector('.class-summary aside')?.textContent).toContain('11 / 11')
+    expect(document.getElementById(kick.id)?.textContent).toContain('0/1')
+    expect(document.getElementById(surefooted.id)?.textContent).toContain('3/3')
+    expect(document.getElementById('hunter-1308')?.textContent).toContain('1/1')
+    expect(screen.getByRole('button', { name: 'Remove rank from Surefooted' })).toBeTruthy()
+    expect(document.querySelector('.class-summary aside')?.textContent).toContain('21 / 21')
   })
 
   it('offers a blank starting point beside a full Hunter tree and keeps it blank after refresh', () => {
     enterHunterPvp()
     const tree = document.getElementById('tree-survival')!
-    expect(within(tree).getByText(/uses all 11 points/i)).toBeTruthy()
+    expect(within(tree).getByText(/uses all 21 points/i)).toBeTruthy()
     fireEvent.click(within(tree).getByRole('button', { name: 'Start blank build' }))
-    expect(document.querySelector('.class-summary aside')?.textContent).toContain('0 / 11')
+    expect(document.querySelector('.class-summary aside')?.textContent).toContain('0 / 21')
     expect(new URLSearchParams(location.search).get('build')).toBe('')
     cleanup()
     render(<ClassCalculatorPage classDef={hunterClass} />)
-    expect(document.querySelector('.class-summary aside')?.textContent).toContain('0 / 11')
+    expect(document.querySelector('.class-summary aside')?.textContent).toContain('0 / 21')
   })
 
   it('keeps a shared Warrior route cleared after using the summary Reset and refreshing', () => {
     enterWarriorPvp()
     fireEvent.click(screen.getByRole('button', { name: 'Reset' }))
-    expect(document.querySelector('.class-summary aside')?.textContent).toContain('0 / 11')
+    expect(document.querySelector('.class-summary aside')?.textContent).toContain('0 / 21')
     expect(new URLSearchParams(location.search).get('build')).toBe('')
     cleanup()
     render(<ClassCalculatorPage classDef={warriorClass} />)
-    expect(document.querySelector('.class-summary aside')?.textContent).toContain('0 / 11')
+    expect(document.querySelector('.class-summary aside')?.textContent).toContain('0 / 21')
   })
 
   it('keeps edits to a shared Warrior route after refreshing', () => {
     enterWarriorPvp()
-    fireEvent.click(screen.getByRole('button', { name: 'Remove rank from Anger Management' }))
-    expect(document.querySelector('.class-summary aside')?.textContent).toContain('10 / 11')
+    const adjusted = { ...warriorClass.builds.find(build => build.id === 'warrior-arms-pvp')!.build }
+    delete adjusted['warrior-arms-sweeping-strikes']
+    fireEvent.click(screen.getByRole('button', { name: 'Remove rank from Sweeping Strikes' }))
+    expect(document.querySelector('.class-summary aside')?.textContent).toContain('20 / 21')
+    expect(new URLSearchParams(location.search).get('build')).toBe(encodePlannerBuild(adjusted))
+    expect(decodeValidatedPlannerBuild(encodePlannerBuild(adjusted), warriorClass.talents, { ...warriorClass.plannerConfig, pointCap: 21 })).toEqual(adjusted)
     cleanup()
+    localStorage.clear()
     render(<ClassCalculatorPage classDef={warriorClass} />)
-    expect(document.querySelector('.class-summary aside')?.textContent).toContain('10 / 11')
+    expect(document.querySelector('.class-summary aside')?.textContent).toContain('20 / 21')
+    expect(document.getElementById('warrior-arms-sweeping-strikes')?.textContent).toContain('0/1')
   })
 
-  it('keeps a new level mode on a shared Warrior route after refreshing', () => {
+  it('keeps a lower level mode and its required reset on a shared Warrior route after refreshing', () => {
     enterWarriorPvp()
-    fireEvent.click(screen.getByRole('button', { name: /Level 30/ }))
-    expect(document.querySelector('.class-summary aside')?.textContent).toContain('Level 30')
+    fireEvent.click(screen.getByRole('button', { name: /Level 20 comparison/ }))
+    expect(document.querySelector('.class-summary aside')?.textContent).toContain('Level 20')
+    expect(document.querySelector('.class-summary aside')?.textContent).toContain('0 / 11')
+    expect(new URLSearchParams(location.search).get('level')).toBe('20')
+    expect(new URLSearchParams(location.search).get('build')).toBe('')
     cleanup()
+    localStorage.clear()
     render(<ClassCalculatorPage classDef={warriorClass} />)
-    expect(document.querySelector('.class-summary aside')?.textContent).toContain('Level 30')
+    expect(document.querySelector('.class-summary aside')?.textContent).toContain('Level 20')
+    expect(document.querySelector('.class-summary aside')?.textContent).toContain('0 / 11')
   })
 
   it('restores an adjusted Paladin PvP starter and its tree from the copied URL', async () => {
@@ -258,11 +284,11 @@ describe('Published PvP route → adjust → share', () => {
     fireEvent.click(copy)
     await waitFor(() => expect(copy.textContent).toContain('Copied'))
     vi.spyOn(Storage.prototype, 'setItem').mockImplementation(() => { throw new Error('Storage blocked') })
-    fireEvent.click(screen.getByRole('button', { name: /Level 20 preview/ }))
+    fireEvent.click(screen.getByRole('button', { name: /Level 30/ }))
     expect(copy.textContent).toContain('Copy build link')
-    expect(document.querySelector('.class-summary aside')?.textContent).toContain('0/0/11')
-    fireEvent.click(screen.getByRole('button', { name: 'Remove rank from Deterrence' }))
-    expect(document.querySelector('.class-summary aside')?.textContent).toContain('10 / 11')
+    expect(document.querySelector('.class-summary aside')?.textContent).toContain('0/0/21')
+    fireEvent.click(screen.getByRole('button', { name: 'Remove rank from Strider Kick' }))
+    expect(document.querySelector('.class-summary aside')?.textContent).toContain('20 / 21')
   })
 
   it('clears an outdated manual Hunter link when the planner mode is selected', async () => {
@@ -270,7 +296,7 @@ describe('Published PvP route → adjust → share', () => {
     refuseClipboard = true
     fireEvent.click(screen.getByRole('button', { name: 'Copy build link' }))
     await screen.findByRole('textbox', { name: 'Build link for manual copy' })
-    fireEvent.click(screen.getByRole('button', { name: /Level 20 preview/ }))
+    fireEvent.click(screen.getByRole('button', { name: /Level 30/ }))
     expect(screen.queryByRole('textbox', { name: 'Build link for manual copy' })).toBeNull()
   })
 

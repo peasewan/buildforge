@@ -311,7 +311,7 @@ function renderClassOfficialUpdate(classDef: ClassDefinition): string {
   if ('additionalSource' in change) sources.push(link(change.additionalSource, 'October 2 Warrior follow-up'))
 
   return `<section aria-label="${escapeHtml(classDef.name)} official changes"><h2>${escapeHtml(classDef.name)} official changes</h2>
-    <p>The live Beta cap is Level 30. This page presents the older ${escapeHtml(classDef.verifiedBuild)} talent tree; Level 20 routes are 11-point starting snapshots, not reviewed Level 30 allocations. Later official changes have not been fully imported into this tree.</p>
+    <p>${classDef.dataReview?.current ? `Reviewed talent structure through ${escapeHtml(classDef.verifiedBuild)}. The current Beta cap is Level 30; ordinary editorial routes spend 21 points, and the retained Level 20 page uses separate 11-point stages. Licensed rank text is community verified, while point-order rules remain derived assumptions.` : `The live Beta cap is Level 30. This page presents the older ${escapeHtml(classDef.verifiedBuild)} talent tree; Level 20 routes are 11-point starting snapshots, not reviewed Level 30 allocations. Later official changes have not been fully imported into this tree.`}</p>
     <p>Official sources: ${sources.join(' · ')}.</p>
     <ul>${change.notes.map((note) => `<li>${escapeHtml(note)}</li>`).join('')}</ul>
   </section>`
@@ -334,10 +334,10 @@ export function renderClassPage<B extends string>(classDef: ClassDefinition<B>, 
   const relatedPages = page.relatedPages.filter((related) => isPublished(related.href))
   const archivedBuild = primaryBuild ? hasRemovedTalentInBuild(classDef, primaryBuild) : false
   const calculatorLink = primaryBuild
-    ? link(classBuildPlannerHref(classDef, primaryBuild), archivedBuild ? 'Open blank Calculator — historical route' : 'Inspect Level 20 snapshot in Calculator')
+    ? link(classBuildPlannerHref(classDef, primaryBuild), archivedBuild ? 'Open blank Calculator — historical route' : `Inspect Level ${primaryBuild.level} route in Calculator`)
     : link(classDef.plannerPath, `Open the ${classDef.name} Talent Calculator`)
   const buildEvidence = primaryBuild
-    ? `<p><strong>Build</strong>: Community / Editorial Level ${classDef.beta.levelCap} snapshot. The official Beta cap is now Level ${PALADIN_BETA_STATUS.levelCap} (${link(PALADIN_BETA_STATUS.levelCapSource, 'Blizzard October 1 notes')}). Allocations are editorial, never client facts.${archivedBuild ? ' This historical route includes an officially removed talent; the calculator opens blank.' : ''}</p>`
+    ? `<p><strong>Build</strong>: Community / Editorial Level ${primaryBuild.level} snapshot. The official Beta cap is now Level ${PALADIN_BETA_STATUS.levelCap} (${link(PALADIN_BETA_STATUS.levelCapSource, 'Blizzard October 1 notes')}). Allocations are editorial, never client facts.${archivedBuild ? ' This historical route includes an officially removed talent; the calculator opens blank.' : ''}</p>`
     : page.kind === 'specPvp'
       ? '<p><strong>Build status</strong>: Pending verification. This page does not publish an allocation until one has been reviewed.</p>'
       : '<p><strong>Build links</strong>: Editorial routes are labeled separately from client talent facts.</p>'
@@ -345,7 +345,7 @@ export function renderClassPage<B extends string>(classDef: ClassDefinition<B>, 
   const rankLabel = (talent: ClassTalent<B>) => `${talent.maxRank} rank${talent.maxRank === 1 ? '' : 's'}`
   const officialTalentLabel = (talent: ClassTalent<B>) => {
     const notice = officialTalentNotice(classDef.id, talent.name)
-    if (!notice) return ''
+    if (!notice || classDef.dataReview?.current) return ''
     return ` · <strong>69913 historical record — ${notice.status === 'removed' ? 'Removed' : 'Changed'} in official update.</strong> ${escapeHtml(notice.message)} ${link(notice.source, 'Official update')}`
   }
   const officialTalentAttribute = (talent: ClassTalent<B>) => {

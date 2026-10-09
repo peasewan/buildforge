@@ -1,7 +1,7 @@
 import type { ClassPageKind } from '../../lib/classPage'
 
 export interface SpecProfile {
-  id: string; name: string; role: string; route: [number, number][]
+  id: string; name: string; role: string; route: [number | string, number][]
   rationale: string; leveling: string; tradeoff: string; test: string
 }
 export interface ExtraProfile {

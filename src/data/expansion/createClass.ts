@@ -13,12 +13,24 @@ const UPDATED = '2026-09-22'
 const OFFICIAL_CAP_SOURCE = 'https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-1/2360696'
 const NOTICE = `Blizzard's October 1 Beta development notes raised the playable level cap to 30. These 11-point Level 20 routes are starter snapshots, not reviewed Level 30 allocations. Client-table positions, rank caps and spell IDs were checked against build 1.60.1.69913; the readable tables may retain legacy layout. Five points per tier, full-rank prerequisites and the Level 20 point budget are planning assumptions, not proof of final live Beta rules. Missing rank text stays unknown. Official cap source: ${OFFICIAL_CAP_SOURCE}`
 
-export function createExpansionClass(profile: ExpansionProfile, dataset: Dataset): ClassDefinition {
+export interface ExpansionClassOptions {
+  currentDataReview?: { ready: boolean; notice: string }
+  levelCap?: 20 | 30
+  level20Builds?: boolean
+  reviewedAt?: string
+}
+
+export function createExpansionClass(profile: ExpansionProfile, dataset: Dataset, options: ExpansionClassOptions = {}): ClassDefinition {
   const { id, name, specs } = profile
   const talents = dataset.talents as ClassTalent<string>[]
   const branches = specs.map((spec) => spec.id)
   if (dataset.classId !== id || dataset.branches.join() !== branches.join()) throw new Error(`Dataset identity mismatch: ${id}`)
-  const plannerConfig = { branches, pointCap: 11 }
+  const current = Boolean(options.currentDataReview)
+  const level = options.levelCap ?? 20
+  const budget = level - 9
+  const reviewedAt = options.reviewedAt ?? UPDATED
+  const notice = options.currentDataReview?.notice ?? NOTICE
+  const plannerConfig = { branches, pointCap: budget }
   const builds: ClassBuild[] = []
   const pages: ClassPageDefinition[] = []
   const href = (suffix: string) => `/wow-forever-${suffix}`
@@ -30,28 +42,29 @@ export function createExpansionClass(profile: ExpansionProfile, dataset: Dataset
     if (!found) throw new Error(`Unknown spec ${id}/${spec}`)
     return found
   }
-  const makeBuild = (spec: SpecProfile, key: string, intent: string, buildHref: string, title: string): string => {
+  const makeBuild = (spec: SpecProfile, key: string, intent: string, buildHref: string, title: string, buildLevel: 20 | 30 = level): string => {
+    const buildBudget = buildLevel - 9
     let allocation: PlannerBuild = {}
     const order: string[] = []
     for (const [sourceId, rank] of spec.route) {
-      const talent = talents.find((candidate) => candidate.sourceTalentId === sourceId)
+      const talent = talents.find((candidate) => typeof sourceId === 'string' ? candidate.id === sourceId : candidate.sourceTalentId === sourceId)
       if (!talent) throw new Error(`Missing route node ${id}/${sourceId}`)
-      for (let point = 0; point < rank; point++) {
+      for (let point = 0; point < rank && Object.values(allocation).reduce((sum, value) => sum + value, 0) < buildBudget; point++) {
         if (!canIncrementPlannerTalent(allocation, talent, talents, plannerConfig)) throw new Error(`Illegal route point ${id}/${sourceId}/${point + 1}`)
         allocation = incrementPlannerTalent(allocation, talent, talents, plannerConfig)
       }
-      order.push(talent.id)
+      if ((allocation[talent.id] ?? 0) > 0) order.push(talent.id)
     }
     const points = Object.values(allocation).reduce((sum, rank) => sum + rank, 0)
-    if (points !== 11) throw new Error(`${id}/${key}: expected eleven points`)
+    if (points !== buildBudget) throw new Error(`${id}/${key}: expected ${buildBudget} points`)
     const buildId = `${id}-${key}`
     builds.push({
-      id: buildId, spec: spec.id, intent, level: 20, levelCap: 11, phase: 'Level 20 client-table preview', points,
+      id: buildId, spec: spec.id, intent, level: buildLevel, levelCap: buildBudget, phase: current ? `Reviewed Beta · Level ${buildLevel}` : 'Level 20 client-table preview', points,
       allocation: branches.map((branch) => talents.filter((talent) => talent.branch === branch).reduce((sum, talent) => sum + (allocation[talent.id] ?? 0), 0)).join('/'),
       title, shortTitle: `${spec.name} ${name}`, role: spec.role,
       playstyle: [spec.rationale, spec.test], strengths: [spec.role], keyTalentIds: order.slice(-2), order, build: allocation,
-      evidence: 'derived_assumption', sources: [{ label: 'BuildForgeTools editorial Level 20 testing route', url: `https://buildforgetools.com${buildHref}` }, { label: 'Blizzard October 1 Beta development notes: Level 30 cap', url: OFFICIAL_CAP_SOURCE }],
-      verifiedThroughBuild: dataset.build, createdAt: UPDATED, updatedAt: UPDATED, href: buildHref,
+      evidence: 'derived_assumption', sources: [{ label: `BuildForgeTools editorial Level ${buildLevel} testing route`, url: `https://buildforgetools.com${buildHref}` }, { label: 'Blizzard October 1 Beta development notes: Level 30 cap', url: OFFICIAL_CAP_SOURCE }],
+      verifiedThroughBuild: dataset.build, createdAt: reviewedAt, updatedAt: reviewedAt, href: buildHref,
     })
     return buildId
   }
@@ -63,22 +76,25 @@ export function createExpansionClass(profile: ExpansionProfile, dataset: Dataset
     const h1 = `WoW Forever ${input.title}`
     pages.push({
       ...input, slug, intent: input.title, title: `${h1} | BuildForgeTools`, h1,
-      description: input.description, eyebrow: 'Build 69913 · Client-table preview', canonical: `https://buildforgetools.com/${slug}`,
-      robots: 'index, follow', ogImage: `/images/${id}/${id}-hero-v1.jpg`, updatedAt: input.updatedAt ?? UPDATED,
+      description: input.description, eyebrow: current ? `Build ${dataset.build.split('.').at(-1)} · Reviewed Beta snapshot` : 'Build 69913 · Client-table preview', canonical: `https://buildforgetools.com/${slug}`,
+      robots: 'index, follow', ogImage: `/images/${id}/${id}-hero-v1.jpg`, updatedAt: options.reviewedAt ?? input.updatedAt ?? UPDATED,
       relatedBuildIds: input.relatedBuildIds ?? [], relatedPages: [], faqs: [],
       publishRequirements: ['talentDataset', ...(input.kind === 'calculator' ? ['completeClassPlanner' as const] : []), ...(input.spec ? [`legalBuild:${input.spec}` as const] : [])],
     })
   }
-  const specBuilds = Object.fromEntries(specs.map((spec) => [spec.id, makeBuild(spec, `${spec.id}-starter`, 'spec', href(`${spec.id}-${id}-build`), `${spec.name} ${name} Build (Level 20)`)]))
+  const specBuilds = Object.fromEntries(specs.map((spec) => [spec.id, makeBuild(spec, `${spec.id}-starter`, 'spec', href(`${spec.id}-${id}-build`), `${spec.name} ${name} Build (Level ${level})`)]))
   const levelingBuilds = Object.fromEntries(specs.map((spec) => [spec.id, makeBuild(spec, `${spec.id}-leveling`, 'leveling', href(`${spec.id}-${id}-leveling-build`), `${spec.name} ${name} Leveling Build`)]))
   const pvpSpec = getSpec(profile.pvpSpec)
   const pvpBuild = makeBuild(pvpSpec, 'pvp', 'pvp', href(`${id}-pvp-build`), `${name} PvP Testing Build`)
   const defaultSpec = getSpec(profile.defaultSpec)
+  const capBuildIds = options.level20Builds
+    ? specs.map(spec => makeBuild(spec, `${spec.id}-level-20-snapshot`, 'snapshot', href(`${id}-level-20-build`), `${spec.name} ${name} Level 20 Snapshot`, 20))
+    : Object.values(specBuilds)
   const isArchived = (buildId: string) => {
     const build = builds.find((candidate) => candidate.id === buildId)
     return Boolean(build && hasRemovedTalentInBuild({ id, talents }, build))
   }
-  const hunterHistoricalHub = id === 'hunter'
+  const hunterHistoricalHub = id === 'hunter' && !current
   const commonLinks = [
     { href: `/${id}`, label: `${name} Talent Calculator` },
     { href: hub, label: `${name} Builds` }, { href: catalog, label: `${name} Talent Trees` },
@@ -89,13 +105,13 @@ export function createExpansionClass(profile: ExpansionProfile, dataset: Dataset
   add({ kind: 'talents', suffix: `${id}-talents`, title: `${name} Talents & Talent Trees`, description: `Review ${talents.length} ${name} client-table talents, rank caps, positions and evidence limits for build 69913.`, sections: [{ heading: 'What has been checked', paragraphs: [NOTICE, 'The imported records preserve the Talent ID and each rank spell ID. Tooltips are client transcriptions with visible gaps; an unavailable rank is not replaced with another rank or an older tooltip.'] }, { heading: 'Why change status can be unknown', paragraphs: ['This class import has no reviewed baseline diff. An unknown change label means no claim is made about whether the talent is new, changed or unchanged from Classic. A current snapshot alone cannot establish that comparison.'] }] })
   add({ kind: 'leveling', suffix: `${id}-leveling-build`, title: `${name} Leveling Build`, description: isArchived(levelingBuilds[profile.defaultSpec]) ? `Review a historical Level 10–20 ${name} starter route, compare ${specs.map((s) => s.name).join(', ')} and plan a fresh route with current talents.` : `Follow an editable Level 10–20 ${name} starter route, compare ${specs.map((s) => s.name).join(', ')} and keep recovery in your leveling test.`, primaryBuildId: levelingBuilds[profile.defaultSpec], relatedBuildIds: Object.values(levelingBuilds), sections: [{ heading: `Start with ${defaultSpec.name}`, paragraphs: [profile.leveling, defaultSpec.leveling] }, { heading: 'Levels 10, 15 and 20', paragraphs: [isArchived(levelingBuilds[profile.defaultSpec]) ? 'The planner assumes one talent point per level from Level 10. The ordered allocation below is a historical client-table record; it includes a talent Blizzard later removed. Review the rank order, then open a blank calculator and verify the live tree before spending points.' : 'The planner assumes one talent point per level from Level 10. Read the ordered allocation below as a sequence: first five points, the next five, then the final Level 20 point. Reset and follow the order to compare the early milestones.', 'These eleven-point routes stop at the initial Level 20 planning budget. The Beta now allows Level 30, but no Level 30 or Level 60 performance recommendation is inferred from these routes.'] }] })
   for (const spec of specs) {
-    const order = spec.route.map(([node, rank]) => `${talents.find((t) => t.sourceTalentId === node)!.name} ${rank}`).join(' → ')
+    const order = spec.route.map(([node, rank]) => `${talents.find((t) => typeof node === 'string' ? t.id === node : t.sourceTalentId === node)!.name} ${rank}`).join(' → ')
     const archivedSpec = isArchived(specBuilds[spec.id])
     add({ kind: 'specBuild', suffix: `${spec.id}-${id}-build`, title: `${spec.name} ${name} Build`, description: archivedSpec ? `Review a historical Level 20 ${spec.name} ${name} route for ${spec.role.toLowerCase()}, with readable ranks and a blank calculator entry.` : `Explore a Level 20 ${spec.name} ${name} route for ${spec.role.toLowerCase()}, with talent order, trade-offs and a calculator link.`, spec: spec.id, primaryBuildId: specBuilds[spec.id], relatedBuildIds: [levelingBuilds[spec.id]], sections: [{ heading: `Why these ${spec.name} talents`, paragraphs: [spec.rationale, spec.tradeoff] }, { heading: 'Exact point order', paragraphs: [order, archivedSpec ? 'Read these historical ranks without loading the old allocation. An officially removed talent appears in this route; start a blank calculator and check the current Beta tree before spending points.' : 'Load the allocation to inspect each selected talent. The order and spend are editorial; readable client fields do not prove that the route is optimal.'] }, { heading: 'How to evaluate this route', paragraphs: [spec.test, spec.id === profile.dungeonSpec ? profile.dungeon : spec.leveling] }] })
     add({ kind: 'specLeveling', suffix: `${spec.id}-${id}-leveling-build`, title: `${spec.name} ${name} Leveling Build`, description: archivedSpec ? `Review a historical step-by-step ${spec.name} ${name} leveling allocation from Level 10 to 20; start a blank calculator for current talents.` : `Use a step-by-step ${spec.name} ${name} leveling allocation from Level 10 to 20, with a clear point budget and recovery considerations.`, spec: spec.id, primaryBuildId: levelingBuilds[spec.id], relatedBuildIds: [specBuilds[spec.id]], sections: [{ heading: `Leveling with ${spec.name}`, paragraphs: [spec.leveling, spec.tradeoff] }, { heading: 'Level 10–20 progression', paragraphs: [order, archivedSpec ? 'This imported point order is retained as a historical reference. Because it contains an officially removed talent, do not follow it as a current Beta instruction; open the calculator blank and verify the live tree.' : 'Follow the allocation in order rather than buying the endpoint first. The table-based planner checks the earlier investment before allowing deeper nodes.'] }, { heading: 'Before switching routes', paragraphs: [spec.test, archivedSpec ? 'Compare the read-only reference with a fresh route built from current talents. Keep equipment, target level and recovery conditions in your notes.' : 'Save the baseline link and change only the variable you want to compare. Keep equipment, target level and recovery conditions in your notes so a talent change is not credited for an unrelated improvement.'] }] })
   }
   add({ kind: 'pvp', suffix: `${id}-pvp-build`, title: `${name} PvP Build`, description: profile.pvpDescription ?? `Test a Level 20 ${name} PvP allocation around ${pvpSpec.name}, with positioning trade-offs and an editable calculator route.`, updatedAt: profile.pvpUpdatedAt, surfaceDescription: profile.pvpArticle ? profile.pvp : undefined, primaryBuildId: pvpBuild, relatedBuildIds: [pvpBuild, ...Object.values(specBuilds)], sections: [{ heading: `${pvpSpec.name} as a PvP starting point`, paragraphs: [profile.pvpArticle ?? profile.pvp, pvpSpec.tradeoff] }, { heading: 'What to record after the encounter', paragraphs: ['Record whether the setup gave you useful actions, an escape or a support opportunity. Opponent level, equipment and group size can invalidate a damage-only comparison.', 'This route reuses an early specialization allocation. No duel results or player usage statistics have been claimed.'] }] })
-  add({ kind: 'levelCap', suffix: `${id}-level-20-build`, title: `${name} Level 20 Build`, description: `Compare all three eleven-point ${name} starter routes under the same Level 20 planning budget, with exact allocations and talent order.`, relatedBuildIds: Object.values(specBuilds), sections: [{ heading: 'The same budget, three choices', paragraphs: [hunterHistoricalHub ? `Compare ${specs.map((s) => s.name).join(', ')} historical Level 20 records at eleven points each. Routes with officially removed talents stay read-only; only unaffected routes can load into the calculator.` : `Compare ${specs.map((s) => s.name).join(', ')} without giving one route more points. Each example spends eleven points and can be opened in the calculator.`, NOTICE] }, { heading: 'What remains outside Level 20', paragraphs: ['A deep-tree talent cannot be made available merely by selecting a higher-level screenshot. These examples stop at eleven points; the current Level 30 cap does not validate a later allocation or progression unlock in this client-table preview.', profile.intro] }] })
+  add({ kind: 'levelCap', suffix: `${id}-level-20-build`, title: `${name} Level 20 Build`, description: `Compare all three eleven-point ${name} starter routes under the same Level 20 planning budget, with exact allocations and talent order.`, relatedBuildIds: capBuildIds, sections: [{ heading: 'The same budget, three choices', paragraphs: [hunterHistoricalHub ? `Compare ${specs.map((s) => s.name).join(', ')} historical Level 20 records at eleven points each. Routes with officially removed talents stay read-only; only unaffected routes can load into the calculator.` : `Compare ${specs.map((s) => s.name).join(', ')} without giving one route more points. Each example spends eleven points and can be opened in the calculator.`, NOTICE] }, { heading: 'What remains outside Level 20', paragraphs: ['A deep-tree talent cannot be made available merely by selecting a higher-level screenshot. These examples stop at eleven points; the current Level 30 cap does not validate a later allocation or progression unlock in this client-table preview.', profile.intro] }] })
   for (const extra of profile.extras) {
     const spec = getSpec(extra.spec)
     const comparison = extra.kind === 'comparison'
@@ -104,7 +120,7 @@ export function createExpansionClass(profile: ExpansionProfile, dataset: Dataset
         { label: 'Main trade-off', values: profile.comparison.map((branch) => getSpec(branch).tradeoff) },
         { label: 'What to measure', values: profile.comparison.map((branch) => getSpec(branch).test) },
       ] } : undefined
-    const buildId = extra.kind === 'comparison' ? levelingBuilds[spec.id] : makeBuild(spec, extra.suffix, extra.kind === 'specPvp' ? 'pvp' : extra.kind, href(extra.suffix), `${extra.title} (Level 20)`)
+    const buildId = extra.kind === 'comparison' ? levelingBuilds[spec.id] : makeBuild(spec, extra.suffix, extra.kind === 'specPvp' ? 'pvp' : extra.kind, href(extra.suffix), `${extra.title} (Level ${level})`)
     add({ kind: extra.kind, suffix: extra.suffix, title: extra.title, description: extra.lead, spec: extra.spec, primaryBuildId: buildId, relatedBuildIds: extra.kind === 'comparison' ? profile.comparison.map((branch) => levelingBuilds[branch]) : [specBuilds[spec.id], levelingBuilds[spec.id]], sections: extra.sections, comparison })
   }
   for (const page of pages) {
@@ -171,16 +187,43 @@ export function createExpansionClass(profile: ExpansionProfile, dataset: Dataset
     }
   }
 
+  if (current) {
+    for (const page of pages) {
+      const primary = builds.find(build => build.id === page.primaryBuildId)
+      const spec = getSpec(page.spec ?? primary?.spec ?? defaultSpec.id)
+      page.updatedAt = reviewedAt
+      page.description = page.kind === 'levelCap'
+        ? `Compare three current-tree Level 20 ${name} routes, with eleven points each, exact selected ranks and calculator links.`
+        : page.kind === 'calculator'
+          ? `Plan ${specs.map(spec => spec.name).join(', ')} talents with ${talents.length} reviewed Beta nodes, full rank descriptions and editable Level 30 builds.`
+          : page.kind === 'talents'
+            ? `Review ${talents.length} ${name} Beta talents, complete rank descriptions, positions and field-level sources for build ${dataset.build}.`
+            : page.kind === 'buildsHub'
+              ? `Choose Level 30 ${name} routes for leveling, PvP and group play. Compare exact 21-point allocations and edit them in the calculator.`
+              : `Explore a Level ${primary?.level ?? level} ${page.title.split(' | ')[0]} route with selected ranks, point-by-point progression and an editable calculator link.`
+      const taskSections = page.kind === 'levelCap'
+        ? [{ heading: 'Level 20 stages of the reviewed tree', paragraphs: ['Each route spends eleven points in the current reviewed tree. These are early stages, not the Level 30 endpoint. Choose the matching Level 20 calculator mode to inspect them.', notice] }]
+        : page.kind === 'calculator' || page.kind === 'talents'
+          ? [{ heading: 'Reviewed Beta data coverage', paragraphs: [profile.intro, notice] }]
+          : page.kind === 'buildsHub'
+            ? [{ heading: `Choose your ${name} route`, paragraphs: [profile.intro, 'The three specialization endpoints spend 21 points at Level 30. Their selected ranks and point order are editorial examples, separate from client-derived talent facts.', notice] }]
+            : [{ heading: `${spec.name}: selected talents and trade-offs`, paragraphs: [spec.rationale, spec.tradeoff, page.kind === 'leveling' || page.kind === 'specLeveling' ? spec.leveling : page.kind === 'pvp' ? profile.pvp : spec.test] }, { heading: 'Executable point order', paragraphs: ['Use the progression to inspect each point from Level 10 to 30. The calculator opens the exact allocation and level. These routes are examples for comparing choices, not a measured damage ranking.', notice] }]
+      if (page.kind === 'comparison') taskSections.unshift({ heading: 'Compare at the same level and budget', paragraphs: profile.comparison.map(branch => getSpec(branch).leveling) })
+      if (page.kind === 'pet' || page.kind === 'dungeon' || page.kind === 'comparison') taskSections.unshift(...(profile.extras.find(extra => extra.kind === page.kind)?.sections ?? []))
+      page.sections = taskSections
+    }
+  }
+
   assertUniquePageIntents(pages)
   return {
     contentPolicy: 'intent_tasks_v1',
     id, name, plannerPath: `/${id}`, ogImage: `/images/${id}/${id}-hero-v1.jpg`, branches,
     branchIcons: Object.fromEntries(branches.map((branch) => [branch, talents.find((t) => t.branch === branch && t.icon)?.icon])),
     branchNames: Object.fromEntries(specs.map((spec) => [spec.id, spec.name])), branchTaglines: Object.fromEntries(specs.map((spec) => [spec.id, spec.role])),
-    storageKey: `buildforge-${id}-69913-v1`, analyticsClass: id, dataVersion: `WoW Forever Beta ${dataset.build}`, verifiedBuild: dataset.build,
-    talentCount: talents.length, beta: { phaseLabel: 'Client-table preview · Level 20', levelCap: 20, pointsAtCap: 11 },
-    plannerModes: [{ level: 20, points: 11, label: 'Level 20 preview' }], talents, plannerConfig, builds, pages,
+    storageKey: `buildforge-${id}-${dataset.build.split('.').at(-1)}-v1`, analyticsClass: id, dataVersion: `WoW Forever Beta ${dataset.build}`, verifiedBuild: dataset.build,
+    talentCount: talents.length, beta: { phaseLabel: current ? `Reviewed Beta · Level ${level}` : 'Client-table preview · Level 20', levelCap: level, pointsAtCap: budget },
+    plannerModes: current ? [{ level: 30, points: 21, label: 'Level 30 Beta' }, { level: 20, points: 11, label: 'Level 20 snapshot' }] : [{ level: 20, points: 11, label: 'Level 20 preview' }], talents, plannerConfig, builds, pages,
     recommendedBuildIds: [specBuilds[profile.defaultSpec], ...Object.values(specBuilds).filter((buildId) => buildId !== specBuilds[profile.defaultSpec])],
-    sources: dataset.sources as ClassDefinition['sources'], dataReview: { ready: dataset.ready && dataset.conflicts.length === 0, notice: NOTICE },
+    sources: dataset.sources as ClassDefinition['sources'], dataReview: options.currentDataReview ? { ...options.currentDataReview, current: true } : { ready: dataset.ready && dataset.conflicts.length === 0, notice },
   }
 }

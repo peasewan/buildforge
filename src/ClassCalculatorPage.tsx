@@ -23,6 +23,7 @@ import { copyTextToClipboard } from './lib/clipboard'
 import { claimBuildCompletion, loadClaimedBuildCompletions, saveClaimedBuildCompletions } from './lib/buildCompletion'
 import { usePlannerView } from './lib/usePlannerView'
 import ForgePilotPanel from './ForgePilotPanel'
+import { recoverHistoricalClassBuild, recoverHistoricalStoredClassBuild, type HistoricalClassBuild } from './lib/classBuildRecovery'
 import OfficialClassChanges from './experiences/OfficialClassChanges'
 import { OCTOBER_OFFICIAL_SOURCE, officialTalentNotice } from './data/officialOctoberChanges'
 
@@ -38,20 +39,38 @@ function requestedLevel<B extends string>(classDef: ClassDefinition<B>, candidat
   return classDef.plannerModes.find((mode) => mode.level === candidate)?.level
 }
 
-function readStoredBuild<B extends string>(classDef: ClassDefinition<B>): { build: PlannerBuild; level: PlannerLevel; notice?: string } {
+function readStoredBuild<B extends string>(classDef: ClassDefinition<B>): { build: PlannerBuild; level: PlannerLevel; notice?: string; archive?: HistoricalClassBuild } {
   if (typeof window === 'undefined') return { build: {}, level: defaultLevel(classDef) }
   const params = new URLSearchParams(window.location.search)
   const level = requestedLevel(classDef, Number(params.get('level'))) ?? defaultLevel(classDef)
   const code = params.get('build')
+  if (code && params.has('dataset') && params.get('dataset') !== classDef.verifiedBuild) {
+    const archive = recoverHistoricalClassBuild(classDef, code, level, params.get('dataset') ?? undefined)
+    return {build:{}, level, archive, notice:archive ? 'This explicitly versioned historical build is preserved below.' : 'This versioned build is invalid or its historical dataset is unavailable. The original URL has been preserved; no ranks were transferred into the current tree.'}
+  }
   const config = { ...classDef.plannerConfig, pointCap: pointCapFor(classDef, level) }
   if (params.has('build')) {
     const build = decodeValidatedPlannerBuild(code ?? '', classDef.talents, config)
     if (build && (!params.has('level') || requestedLevel(classDef, Number(params.get('level'))))) return { build, level }
-    return { build: {}, level, notice: 'This shared build is invalid or outdated. Start a new build with the current talent rules.' }
+    const archive = recoverHistoricalClassBuild(classDef, code ?? '', level)
+    return { build: {}, level, archive, notice: archive ? 'Your original build is preserved below as a historical record. Its ranks were not transferred into the current tree.' : 'This shared build is invalid or outdated. Start a new build with the current talent rules.' }
   }
   try {
     const raw = localStorage.getItem(classDef.storageKey)
-    if (!raw) return { build: {}, level }
+    if (!raw) {
+      for (const snapshot of classDef.historicalSnapshots ?? []) {
+        if (!snapshot.storageKey) continue
+        const oldRaw = localStorage.getItem(snapshot.storageKey)
+        if (!oldRaw) continue
+        try {
+          const old = JSON.parse(oldRaw) as { build?: PlannerBuild; level?: PlannerLevel }
+          const oldLevel = requestedLevel(classDef, Number(old.level)) ?? 20
+          const archive = recoverHistoricalStoredClassBuild(classDef, old.build ?? {}, oldLevel)
+          if (archive) return { build: {}, level, archive, notice: 'Your earlier local build is preserved as a historical record below. Start a new current build when ready.' }
+        } catch { /* An unreadable old draft does not overwrite or delete it. */ }
+      }
+      return { build: {}, level }
+    }
     const stored = JSON.parse(raw) as { build?: PlannerBuild; level?: PlannerLevel }
     if (!stored || typeof stored !== 'object' || Array.isArray(stored) || (stored.level !== undefined && !requestedLevel(classDef, Number(stored.level)))) {
       localStorage.removeItem(classDef.storageKey)
@@ -60,6 +79,8 @@ function readStoredBuild<B extends string>(classDef: ClassDefinition<B>): { buil
     const storedLevel = requestedLevel(classDef, Number(stored.level)) ?? level
     const saved = stored.build ?? {}
     if (!isValidPlannerBuild(saved, classDef.talents, { ...classDef.plannerConfig, pointCap: pointCapFor(classDef, storedLevel) })) {
+      const archive = recoverHistoricalStoredClassBuild(classDef, saved, storedLevel)
+      if (archive) return {build:{},level,archive,notice:'Your saved ranks are preserved as a historical record; they were not partially loaded into the current tree.'}
       localStorage.removeItem(classDef.storageKey)
       return { build: {}, level, notice: 'Your saved build is invalid or outdated. Start a new build with the current talent rules.' }
     }
@@ -119,6 +140,7 @@ function TalentNode<B extends string>({ talent, build, classDef, config, onAdd, 
  */
 export default function ClassCalculatorPage<B extends string>({ classDef }: { classDef: ClassDefinition<B> }) {
   const [initial] = useState(() => readStoredBuild(classDef))
+  const [archive, setArchive] = useState(initial.archive)
   const [build, setBuild] = useState<PlannerBuild>(initial.build)
   const [level, setLevel] = useState<PlannerLevel>(initial.level)
   const [selected, setSelected] = useState<ClassTalent<B>>(() => {
@@ -173,9 +195,11 @@ export default function ClassCalculatorPage<B extends string>({ classDef }: { cl
 
   const syncSharedRoute = (next: PlannerBuild, nextLevel: PlannerLevel) => {
     const url = new URL(window.location.href)
-    if (!url.searchParams.has('build')) return
+    if (archive || !url.searchParams.has('build')) return
     url.searchParams.set('build', encodePlannerBuild(next))
     url.searchParams.set('level', String(nextLevel))
+    if (classDef.dataReview?.current) url.searchParams.set('dataset', classDef.verifiedBuild)
+    else url.searchParams.delete('dataset')
     window.history.replaceState(window.history.state, '', `${url.pathname}${url.search}${url.hash}`)
   }
 
@@ -252,7 +276,7 @@ export default function ClassCalculatorPage<B extends string>({ classDef }: { cl
     window.setTimeout(() => { if (request === copyRequest.current) setCopied(false) }, 1600)
   }
 
-  return <main className="class-page class-calculator-page" data-class={classDef.id} data-intent-calculator={experienceEnabled(classDef.plannerPath) ? "true" : undefined} data-client-preview={classDef.dataReview ? 'true' : undefined}>
+  return <main className="class-page class-calculator-page" data-class={classDef.id} data-intent-calculator={experienceEnabled(classDef.plannerPath) ? "true" : undefined} data-client-preview={classDef.dataReview && !classDef.dataReview.current ? 'true' : undefined}>
     <header className="class-nav shell">
       <a className="class-brand" href="/"><Swords /><span>BUILD<b>FORGE</b></span></a>
       <nav aria-label={`${classDef.name} pages`}>
@@ -267,7 +291,7 @@ export default function ClassCalculatorPage<B extends string>({ classDef }: { cl
           <p className="class-kicker">{classDef.beta.phaseLabel} · {classDef.talentCount} imported nodes</p>
           <h1>{calculatorPage?.h1 ?? `${classDef.name} Talent Calculator`}</h1>
           <p>{calculatorPage?.description ?? `Plan ${classDef.name} talents from versioned client data.`}</p>
-          <p className="class-beta-boundary">The live Beta cap is Level 30. This planner uses the older {classDef.verifiedBuild} client talent tree; its Level 20 presets are 11-point starting snapshots, not reviewed Level 30 builds. {classDef.plannerModes.some((mode) => mode.level === 30) ? 'The Level 30 point budget is experimental until the updated tree is reviewed. ' : 'A Level 30 planning mode is not available for this class until the updated tree is reviewed. '}<a href={OCTOBER_OFFICIAL_SOURCE} target="_blank" rel="noreferrer">Read Blizzard’s October 1 update</a>.</p>
+          <p className="class-beta-boundary">{classDef.dataReview?.current ? <>Reviewed talent structure through {classDef.verifiedBuild}. The current Beta cap is Level 30: ordinary routes spend 21 points, with a separate eleven-point Level 20 mode. Rank text is a licensed community transcription; selected point orders and prerequisite rank costs are derived planning assumptions. </> : <>The live Beta cap is Level 30. This planner uses the older {classDef.verifiedBuild} client talent tree; its Level 20 presets are 11-point starting snapshots, not reviewed Level 30 builds. {classDef.plannerModes.some((mode) => mode.level === 30) ? 'The Level 30 point budget is experimental until the updated tree is reviewed. ' : 'A Level 30 planning mode is not available for this class until the updated tree is reviewed. '}</>}<a href={OCTOBER_OFFICIAL_SOURCE} target="_blank" rel="noreferrer">Read Blizzard’s October 1 update</a>.</p>
           <div className="class-hero-actions">
             <a className="button class-primary" href="#class-calculator">Start building</a>
             {hubPage && <a className="button ghost" href={`/${hubPage.slug}`}>View {classDef.name} pages</a>}
@@ -295,7 +319,15 @@ export default function ClassCalculatorPage<B extends string>({ classDef }: { cl
         </div>
       </div>
 
-      {classDef.dataReview && <p className="class-reset-notice">Client-table preview. The 11-point Level 20 budget and tier unlocks are planning assumptions; the live Beta cap is Level 30. See data coverage below.</p>}
+      {classDef.dataReview && !classDef.dataReview.current && <p className="class-reset-notice">Client-table preview. The 11-point Level 20 budget and tier unlocks are planning assumptions; the live Beta cap is Level 30. See data coverage below.</p>}
+      {archive && <aside className="class-reset-notice" aria-label="Historical build recovery">
+        <h3>Preserved historical build · {archive.clientBuild}</h3>
+        <p>The original ranks remain readable. This archived allocation was not converted into current talents.</p>
+        <ul>{archive.talents.map(talent => <li key={talent.id}>{talent.name} {archive.build[talent.id]}/{talent.maxRank}</li>)}</ul>
+        <label>Original build code<input readOnly value={archive.code} onFocus={event => event.currentTarget.select()} /></label>
+        <a href={`${classDef.plannerPath}?build=${encodeURIComponent(archive.code)}&level=${archive.level}&dataset=${archive.clientBuild}#class-calculator`}>Original historical build link</a>
+        <button type="button" onClick={() => { setArchive(undefined); startBlank(); history.replaceState(history.state, '', `${classDef.plannerPath}?build=&level=${level}#class-calculator`) }}>Start a new current build</button>
+      </aside>}
       {resetNotice && <p className="class-reset-notice" role="status">{resetNotice}</p>}
 
       {removedSelected.length > 0 && <p className="class-reset-notice" role="status">This is a historical {classDef.verifiedBuild} allocation, not a current Beta build. {removedSelected.map((talent) => talent.name).join(', ')} {removedSelected.length === 1 ? 'was' : 'were'} removed by later official updates. Remove the outdated ranks before copying or saving this build.</p>}
@@ -358,15 +390,15 @@ export default function ClassCalculatorPage<B extends string>({ classDef }: { cl
           <div className="class-detail-title">
           <div><h3>{selected.name}</h3><span>{classDef.branchNames[selected.branch]} · Tier {selected.row} · {selected.maxRank} rank{selected.maxRank === 1 ? '' : 's'}</span></div>
           </div>
-          {selectedOfficialNotice && <p className="class-reset-notice" role="status">Official update after this 69913 import: {selectedOfficialNotice.message} The older node text below is retained for comparison. <a href={selectedOfficialNotice.source} target="_blank" rel="noreferrer">Read the Blizzard notes</a>.</p>}
+          {selectedOfficialNotice && !classDef.dataReview?.current && <p className="class-reset-notice" role="status">Official update after this 69913 import: {selectedOfficialNotice.message} The older node text below is retained for comparison. <a href={selectedOfficialNotice.source} target="_blank" rel="noreferrer">Read the Blizzard notes</a>.</p>}
           <p>{selected.rankDescriptions?.[Math.max(1, build[selected.id] ?? 0) - 1] || selected.description || selected.name}</p>
           {classDef.dataReview && <>
-            <p><small>Talent ID {selected.nodeId} · Rank spell IDs: {selected.spellIds?.join(', ')}</small></p>
-            <p className="class-talent-evidence"><span>Rank tooltip</span>{selected.rankDescriptions?.[Math.max(1, build[selected.id] ?? 0) - 1] ? <VerificationBadge status="client_datamined" /> : <small>Not available for this rank</small>}</p>
+            <p><small>{classDef.dataReview?.current ? 'Client TraitNode' : 'Talent ID'} {selected.nodeId} · {selected.spellIds?.length ? `Rank spell IDs: ${selected.spellIds.join(', ')}` : `Definition spell ID: ${selected.spellId}`}</small></p>
+            <p className="class-talent-evidence"><span>Rank tooltip</span>{selected.rankDescriptions?.[Math.max(1, build[selected.id] ?? 0) - 1] ? <VerificationBadge status={selected.fieldEvidence.rankDescriptions === 'community_verified' ? 'community_verified' : 'client_datamined'} /> : <small>Not available for this rank</small>}</p>
             {selected.dataNotes?.map((note) => <p key={note}><small>{note}</small></p>)}
             {selected.sources.map((source) => <a className="class-source-link" key={source.url} href={source.url} target="_blank" rel="noreferrer">{source.label}</a>)}
           </>}
-          <p className="class-talent-evidence"><span>Talent data</span><VerificationBadge status={selectedOfficialNotice ? 'needs_review' : selected.verificationStatus} /></p>
+          <p className="class-talent-evidence"><span>Talent data</span><VerificationBadge status={selectedOfficialNotice && !classDef.dataReview?.current ? 'needs_review' : selected.verificationStatus} /></p>
           <small>Client record {selected.sourceClientBuild}; verified through {selected.verifiedThroughBuild}.{selected.prerequisiteRuleStatus === 'derived_assumption' ? ' Prerequisite rank rules are derived assumptions.' : ''}</small>
         </article>
         <aside>
@@ -386,7 +418,7 @@ export default function ClassCalculatorPage<B extends string>({ classDef }: { cl
       </div>
     </section>
 
-    <div className="shell class-official-update"><OfficialClassChanges classId={classDef.id} /></div>
+    <div className="shell class-official-update"><OfficialClassChanges classId={classDef.id} reviewedBuild={classDef.dataReview?.current ? classDef.verifiedBuild : undefined} /></div>
     {classDef.dataReview && <section className="shell class-data-review"><h2>Data coverage and planning rules</h2><p>{classDef.dataReview.notice}</p><ul>{classDef.sources.map((source) => <li key={source.url}><a href={source.url} target="_blank" rel="noreferrer">{source.label}</a></li>)}</ul></section>}
 
     <section className="shell class-trust">

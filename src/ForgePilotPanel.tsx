@@ -57,6 +57,8 @@ function newBuildId(): string {
 
 function ForgePilotPanelContent<B extends string>({ classId, className, dataVersion, level, pointCaps, points, buildCode, defaultName, talents, removedTalents, config }: ForgePilotPanelProps<B>) {
   const auth = useForgePilotAuth()
+  const reviewedCurrentClass = (classId === 'hunter' && dataVersion === 'WoW Forever Beta 1.60.1.70291')
+    || (classId === 'warrior' && dataVersion === 'wow_forever_beta_1.60.1.70291')
   const cloudClient = useMemo(() => createForgePilotCloudClient(auth.getToken, fetch, auth.userId ?? undefined), [auth.getToken, auth.userId])
   const [initialStorage] = useState(() => typeof window === 'undefined' ? { ok: true as const, builds: [] as ForgePilotSavedBuild[] } : readForgePilotSavedBuilds(browserStorage()))
   const [name, setName] = useState(defaultName)
@@ -291,7 +293,15 @@ function ForgePilotPanelContent<B extends string>({ classId, className, dataVers
       track('build_patch_explain', { class: classId, source_version: saved.dataVersion })
     } catch {
       if (source === 'cloud' && (!owner || !isCurrentSession(owner, generation))) return
-      setExplanation({ key: `${source}:${saved.id}`, text: classId === 'paladin' ? `The current Paladin dataset is ${dataVersion}: reviewed 70245 structure with separate community rank text. Check the saved allocation for removed talents; this unavailable explanation service does not verify in-game compatibility.` : `The site's published talent data is ${dataVersion}. The ${BETA_PATCH_REVIEW.clientBuild} announcement is still pending dataset reconciliation, so this build cannot yet be checked against that client build.` })
+      const currentStructure = classId === 'hunter'
+        ? "Client records support the visible tree; its membership and Intimidation's prerequisite direction have community evidence."
+        : 'The complete 52-node client structure has been reviewed.'
+      const fallback = reviewedCurrentClass
+        ? `The current ${className} dataset is ${dataVersion}. ${currentStructure} Rank text is community evidence adapted from Talents Forever under CC BY 4.0. Exported effect values were resolved at Level 60 and are not rescaled to Level 30. Point budgets, tier costs and prerequisite-rank requirements remain planning assumptions. Historical saved allocations need review before reopening; this unavailable explanation service does not verify in-game compatibility.`
+        : classId === 'paladin'
+          ? `The current Paladin dataset is ${dataVersion}: reviewed 70245 structure with separate community rank text. Check the saved allocation for removed talents; this unavailable explanation service does not verify in-game compatibility.`
+          : `The site's published talent data is ${dataVersion}. The ${BETA_PATCH_REVIEW.clientBuild} announcement is still pending dataset reconciliation, so this build cannot yet be checked against that client build.`
+      setExplanation({ key: `${source}:${saved.id}`, text: fallback })
     } finally {
       if (source === 'local' || (owner && isCurrentSession(owner, generation))) setExplaining(false)
     }
@@ -332,7 +342,7 @@ function ForgePilotPanelContent<B extends string>({ classId, className, dataVers
           <button type="button" disabled={source === 'cloud' && cloudBusy} onClick={() => { if (removingKey === key) void remove(saved.id, source); else setRemovingKey(key) }}><Trash2 size={13} /> {removingKey === key ? 'Confirm remove' : 'Remove'}</button>
           <button type="button" disabled={explaining} onClick={() => void explain(saved, source)}>{explaining ? 'Checking…' : 'Explain patch status'}</button>
         </div>
-        {explanation?.key === key && <p role="status" className="forge-pilot-explanation">{explanation.text} {classId === 'paladin' && <><a href="https://wago.tools/db2/TraitNode/csv?build=1.60.1.70245" target="_blank" rel="noreferrer">Source: reviewed client structure</a>{' · '}</>}<a href={BETA_PATCH_REVIEW.officialSource} target="_blank" rel="noreferrer">Source: Blizzard Beta notes</a></p>}
+        {explanation?.key === key && <p role="status" className="forge-pilot-explanation">{explanation.text} {classId === 'paladin' && <><a href="https://wago.tools/db2/TraitNode/csv?build=1.60.1.70245" target="_blank" rel="noreferrer">Source: reviewed client structure</a>{' · '}</>}{reviewedCurrentClass && <><a href="https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291" target="_blank" rel="noreferrer">Source: reviewed client records</a>{' · '}<a href="https://talentsforever.com/data.json" target="_blank" rel="noreferrer">Source: community rank text</a>{' · '}<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noreferrer">Rank-text license: CC BY 4.0</a>{' · '}</>}<a href={BETA_PATCH_REVIEW.officialSource} target="_blank" rel="noreferrer">{reviewedCurrentClass ? 'Source: historical Blizzard Beta notes' : 'Source: Blizzard Beta notes'}</a></p>}
       </li>
     })}</ul>
 
@@ -354,7 +364,7 @@ function ForgePilotPanelContent<B extends string>({ classId, className, dataVers
         <input id={`forge-pilot-import-${classId}`} value={importInput} placeholder={`https://buildforgetools.com/${classId}`} onChange={(event) => setImportInput(event.target.value)} />
         <button type="button" onClick={importLink}>Import link for review</button>
       </div>
-      <p className="forge-pilot-freshness">Saved builds are checked against published {dataVersion} data. Client {BETA_PATCH_REVIEW.clientBuild} changes are awaiting reconciliation; this is not a live-game validity check.</p>
+      <p className="forge-pilot-freshness">Saved builds are checked against published {dataVersion} data. {reviewedCurrentClass ? <>Client records have been reviewed; resolved rank text{classId === 'hunter' ? ", visible membership and Intimidation's prerequisite direction" : ''} retain community evidence. Point budgets, tier costs and prerequisite-rank requirements remain planning assumptions; this is not a live-game validity check.</> : <>Client {BETA_PATCH_REVIEW.clientBuild} changes are awaiting reconciliation; this is not a live-game validity check.</>}</p>
       {message && <p role="status" className="forge-pilot-message">{message}</p>}
       <h3>Your {className} Builds</h3>
       <h4>On this device</h4>

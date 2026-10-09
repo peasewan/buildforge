@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-09T09:30:25.077358+00:00",
+  "status": "reviewed_for_production",
+  "classes": [
+    {
+      "classId": "hunter",
+      "clientBuild": "1.60.1.70291",
+      "payloadPath": "src/data/hunter-beta-1.60.1.70291.json",
+      "payloadSha256": "696197ccc907860b186042a68bfa6824d87964a2178633eeaee7d180425d1dd4",
+      "sourceManifestPath": "data/reviews/current-classes/1.60.1.70291/hunter-source-manifest.json",
+      "sourceManifestSha256": "0580b428a011953928815cc973170a40194fac45eeaaa1c3f19c1a1e6d495177",
+      "visibleNodes": 50,
+      "rankDescriptions": 148,
+      "sourceAcquisitionStatus": "candidate_only",
+      "reviewDecision": "promoted_after_manual_review",
+      "currentRouteBudget": {
+        "level": 30,
+        "points": 21
+      },
+      "retainedRouteBudget": {
+        "level": 20,
+        "points": 11
+      }
+    },
+    {
+      "classId": "warrior",
+      "clientBuild": "1.60.1.70291",
+      "payloadPath": "src/data/warrior-beta-1.60.1.70291.json",
+      "payloadSha256": "7aaaec9ad3cb74238ae7c81081ea6c34722a133d1b7aeef281828543fd1b78ed",
+      "sourceManifestPath": "data/reviews/current-classes/1.60.1.70291/warrior-source-manifest.json",
+      "sourceManifestSha256": "02dee8c4171ec69e7deada8f98117f18503104186e22a0abb9ad9617f2a4428f",
+      "visibleNodes": 52,
+      "rankDescriptions": 150,
+      "sourceAcquisitionStatus": "candidate_only",
+      "reviewDecision": "promoted_after_manual_review",
+      "currentRouteBudget": {
+        "level": 30,
+        "points": 21
+      },
+      "retainedRouteBudget": {
+        "level": 20,
+        "points": 11
+      }
+    }
+  ],
+  "evidence": [
+    "review.md",
+    "hunter-diff.json",
+    "warrior-diff.json"
+  ],
+  "acceptance": {
+    "tests": 1652,
+    "testFiles": 124,
+    "typecheck": "passed",
+    "build": "passed",
+    "seoIndexablePages": 140,
+    "sitemapEntries": 140,
+    "frozenPaladinPages": 22,
+    "seoErrors": 0,
+    "browser": [
+      "Hunter21pointguideCTA",
+      "refundStriderKick/addSurefooted",
+      "copyversionedbuildlinkandreload",
+      "WarriorLv30progressionendpointandcalculator",
+      "HunterLevel20elevenpointstages",
+      "WolfFuriousHowl18familylookup"
+    ]
+  },
+  "limits": [
+    "Resolved rank descriptions are community-verified Level60 transcriptions, not scaled performance calculations.",
+    "Hunter active membership and Intimidation prerequisite direction retain the reviewed community qualification.",
+    "Point-per-level timing, tier costs and prerequisite required ranks remain derived assumptions.",
+    "Other class datasets and the paused watcher are unchanged.",
+    "AdSense application and approval are not claimed."
+  ]
+}

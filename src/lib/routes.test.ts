@@ -20,12 +20,12 @@ const paladinPlannerFallback = {
 
 describe('public page routing', () => {
   it.each([
-    ['/warrior', 'class-calculator', 'WoW Forever Warrior Talent Calculator | Beta Build 69913'],
+    ['/warrior', 'class-calculator', 'WoW Forever Warrior Talent Calculator | Beta Build 70291'],
     ['/wow-forever-warrior-builds', 'class-document', 'WoW Forever Warrior Builds & Talent Calculator | BuildForgeTools'],
-    ['/wow-forever-warrior-leveling-build', 'class-document', 'WoW Forever Warrior Leveling Build | Level 20 Beta'],
-    ['/wow-forever-arms-warrior-build', 'class-document', 'WoW Forever Arms Warrior Build | Level 20 Beta'],
-    ['/wow-forever-fury-warrior-build', 'class-document', 'WoW Forever Fury Warrior Build | Level 20 Beta'],
-    ['/wow-forever-protection-warrior-build', 'class-document', 'WoW Forever Protection Warrior Build | Level 20 Beta'],
+    ['/wow-forever-warrior-leveling-build', 'class-document', 'WoW Forever Warrior Leveling Build | Level 30 Beta'],
+    ['/wow-forever-arms-warrior-build', 'class-document', 'WoW Forever Arms Warrior Build | Level 30 Beta'],
+    ['/wow-forever-fury-warrior-build', 'class-document', 'WoW Forever Fury Warrior Build | Level 30 Beta'],
+    ['/wow-forever-protection-warrior-build', 'class-document', 'WoW Forever Protection Warrior Build | Level 30 Beta'],
   ])('serves %s as an indexable Warrior page', (pathname, kind, title) => {
     expect(pageForPath(pathname)).toMatchObject({ kind, title, canonical: `https://buildforgetools.com${pathname}`, robots: 'index, follow' })
   })

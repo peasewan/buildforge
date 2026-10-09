@@ -1,6 +1,7 @@
 import { existsSync, readFileSync } from 'node:fs'
 import { describe, expect, it } from 'vitest'
 import { PUBLISHED_CLASSES } from './index'
+import { HUNTER_HISTORICAL_BUILD, hunterHistoricalTalents } from './hunter'
 import { isLegalAllocation, publishedClassPages, assertUniquePageIntents, classPlannerHref } from '../../lib/classPage'
 import { decodePlannerBuild, encodePlannerBuild, canIncrementPlannerTalent, incrementPlannerTalent, type PlannerBuild } from '../../lib/talentPlanner'
 import { importClientClass, parseClientCsv } from '../../lib/clientClassImport'
@@ -21,22 +22,25 @@ describe('six-class release', () => {
     expect(publishedClassPages(classes)).toHaveLength(70)
     expect(pages.filter(page => page.retiredTo)).toHaveLength(20)
   })
-  it('keeps the Hunter builds hub focused on read-only historical routes, without claiming old allocations can be edited', () => {
+  it('updates the reviewed Hunter hub to Level 30 routes while preserving the other five starter datasets', () => {
     const hunter = classes.find((candidate) => candidate.id === 'hunter')!
     const hub = hunter.pages.find((page) => page.kind === 'buildsHub')!
-    expect(hub.description).toContain('historical Level 20')
+    expect(hub.description).toContain('Level 30')
+    expect(hub.description).toContain('21-point')
     expect(hub.description).not.toContain('before editing the client-table planner')
-    expect(hub.sections.flatMap((section) => section.paragraphs).join(' ')).toContain('blank calculator')
+    expect(hub.sections.flatMap((section) => section.paragraphs).join(' ')).toContain('21 points at Level 30')
+    expect(hub.sections.flatMap((section) => section.paragraphs).join(' ')).not.toContain('open a blank calculator')
     const rogue = classes.find((candidate) => candidate.id === 'rogue')!
     expect(rogue.pages.find((page) => page.kind === 'buildsHub')?.description).toContain('Compare exact eleven-point allocations before editing')
   })
   for (const c of classes) {
-    it(`${c.name}: reproduces the checked-in dataset from archived primary and cross-check records`, () => {
-      const imported = importClientClass({ classId: c.id, classMask: masks[c.id], build: c.verifiedBuild, talents: csv('Talent'), tabs: csv('TalentTab'), spells: csv('SpellName'), crosscheck: JSON.parse(readFileSync(`${dir}/${c.id}-db.json`, 'utf8')) })
+    it(`${c.name}: preserves the checked-in 69913 snapshot from archived primary and cross-check records`, () => {
+      const imported = importClientClass({ classId: c.id, classMask: masks[c.id], build: c.id === 'hunter' ? HUNTER_HISTORICAL_BUILD : c.verifiedBuild, talents: csv('Talent'), tabs: csv('TalentTab'), spells: csv('SpellName'), crosscheck: JSON.parse(readFileSync(`${dir}/${c.id}-db.json`, 'utf8')) })
       expect(imported.ready).toBe(true)
-      expect(imported.talents).toEqual(c.talents)
+      const checkedTalents = c.id === 'hunter' ? hunterHistoricalTalents : c.talents
+      expect(imported.talents).toEqual(checkedTalents)
       expect(c.talentCount).toBe(c.talents.length)
-      for (const talent of c.talents) {
+      for (const talent of checkedTalents) {
         expect(talent.spellIds).toHaveLength(talent.maxRank)
         expect(talent.nodeId).toBe(talent.sourceTalentId)
         expect(talent.fieldEvidence.requiredTreePoints).toBe('derived_assumption')
@@ -54,11 +58,16 @@ describe('six-class release', () => {
           }
         }
         expect(allocation).toEqual(build.build)
-        expect(Object.values(allocation).reduce((a, b) => a + b, 0)).toBe(11)
-        expect(build.levelCap).toBe(11)
-        expect(isLegalAllocation(build.build, c.talents, c.plannerConfig, 11)).toBe(true)
+        const budget = c.id === 'hunter' ? build.level - 9 : 11
+        expect(Object.values(allocation).reduce((a, b) => a + b, 0)).toBe(budget)
+        expect(build.points).toBe(budget)
+        expect(build.levelCap).toBe(budget)
+        if (c.id !== 'hunter') expect(build.level).toBe(20)
+        expect(isLegalAllocation(build.build, c.talents, c.plannerConfig, budget)).toBe(true)
         expect(decodePlannerBuild(encodePlannerBuild(allocation), c.talents)).toEqual(allocation)
-        expect(classPlannerHref(c, encodePlannerBuild(allocation), 20)).toContain(`${c.plannerPath}?build=`)
+        const href = classPlannerHref(c, encodePlannerBuild(allocation), build.level)
+        expect(href).toContain(`${c.plannerPath}?build=`)
+        expect(href).toContain(`level=${build.level}`)
       }
     })
     it(`${c.name}: published pages contain actual builds/catalogue content, sources and working local assets`, () => {
@@ -70,7 +79,12 @@ describe('six-class release', () => {
         const html = renderClassPage(c, page)
         expect(html).toContain('<h1>')
         expect(html).toContain('planning assumptions')
-        expect(html).toContain('https://wago.tools/db2/Talent')
+        expect(html).toContain(c.id === 'hunter' ? 'https://wago.tools/db2/TraitNode' : 'https://wago.tools/db2/Talent')
+        if (c.id === 'hunter') {
+          expect(html).not.toContain('not reviewed Level 30 allocations')
+          expect(html).not.toContain('1.60.1.69913 client-table route')
+          expect(html).not.toContain('does not verify a Level 30 allocation')
+        }
         expect(html).toContain(c.plannerPath)
         for (const link of page.relatedPages) expect(slugs.has(link.href), link.href).toBe(true)
         if (page.primaryBuildId) {

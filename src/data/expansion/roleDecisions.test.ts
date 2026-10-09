@@ -1,16 +1,27 @@
 import { describe, expect, it } from 'vitest'
 import { PUBLISHED_CLASSES } from '../classes'
-import { isLegalAllocation } from '../../lib/classPage'
-import { expansionProfiles } from './profiles'
+import { isLegalAllocation, type ClassDefinition, type ClassPageDefinition } from '../../lib/classPage'
+import { buildHunterCurrentRoleDecision, createHunterCurrentProfile } from '../classes/hunterCurrentProfile'
+import historicalHunterDataset from './hunter-1.60.1.69913.json'
+import { createExpansionClass } from './createClass'
+import { expansionProfiles, type ExpansionProfile } from './profiles'
 import { buildRoleDecision } from './roleDecisions'
 
 const roleKinds = new Set(['pvp', 'specPvp', 'dungeon', 'specDungeon', 'tank', 'healing', 'pet', 'totem'])
 const classIds = ['rogue', 'priest', 'druid', 'warlock', 'hunter', 'shaman']
 const fixture = (id: string, kind: string) => {
   const definition = PUBLISHED_CLASSES.find((candidate) => candidate.id === id)!
-  const profile = expansionProfiles.find((candidate) => candidate.id === id)!
+  const profile = id === 'hunter' ? createHunterCurrentProfile(definition.talents) : expansionProfiles.find((candidate) => candidate.id === id)!
   const page = definition.pages.find((candidate) => candidate.kind === kind)!
   return { definition, profile, page }
+}
+
+const historicalHunterProfile = expansionProfiles.find(profile => profile.id === 'hunter')!
+const historicalHunterClass = createExpansionClass(historicalHunterProfile, historicalHunterDataset)
+function decisionFor(definition: ClassDefinition, profile: ExpansionProfile, page: ClassPageDefinition) {
+  return definition.id === 'hunter' && definition.dataReview?.current
+    ? buildHunterCurrentRoleDecision(definition, page)
+    : buildRoleDecision(profile, page, definition.talents, definition.builds)
 }
 
 describe('expansion role decisions', () => {
@@ -18,7 +29,7 @@ describe('expansion role decisions', () => {
     it(`${id}: changes the relevant selected talent records when the condition changes`, () => {
       const { definition, profile } = fixture(id, 'pvp')
       for (const page of definition.pages.filter((candidate) => roleKinds.has(candidate.kind))) {
-        const decision = buildRoleDecision(profile, page, definition.talents, definition.builds)
+        const decision = decisionFor(definition, profile, page)
         expect(decision, page.slug).toBeDefined()
         expect(decision!.question.trim().length).toBeGreaterThan(0)
         expect(decision!.options.length).toBeGreaterThanOrEqual(2)
@@ -89,12 +100,43 @@ describe('expansion role decisions', () => {
 
   it('retains official historical limits on Hunter pet and dungeon records', () => {
     for (const kind of ['pet', 'dungeon']) {
-      const { definition, profile, page } = fixture('hunter', kind)
+      const definition = historicalHunterClass
+      const profile = historicalHunterProfile
+      const page = definition.pages.find(page => page.kind === kind)!
       const decision = buildRoleDecision(profile, page, definition.talents, definition.builds)!
+      expect(definition.verifiedBuild).toBe('1.60.1.69913')
+      const primary = definition.builds.find(build => build.id === page.primaryBuildId)!
+      const historicalNode = definition.talents.find(talent => talent.name === (kind === 'pet' ? 'Thick Hide' : 'Aimed Shot'))!
+      expect(primary.build[historicalNode.id]).toBeGreaterThan(0)
       expect(decision.sources.some((source) => source.url === 'https://news.blizzard.com/en-us/article/24301515/world-of-warcraft-forever-class-deep-dives-hunter-and-druid')).toBe(true)
       expect(decision.options.map((option) => option.explanation).join(' ')).toMatch(/historical/)
       expect(decision.options.map((option) => option.explanation).join(' ')).toMatch(/blank calculator/)
     }
+  })
+
+  it('uses complete current Hunter conditions rather than removed-node historical packages', () => {
+    for (const kind of ['pvp', 'pet', 'dungeon']) {
+      const { definition, profile, page } = fixture('hunter', kind)
+      const decision = decisionFor(definition, profile, page)!
+      expect(definition.verifiedBuild).toBe('1.60.1.70291')
+      expect(profile.intro).toContain('21 points at Level 30')
+      expect(decision).toEqual(page.roleDecision)
+      expect(definition.builds.find(build => build.id === page.primaryBuildId)?.points).toBe(21)
+      const names = decision.options.flatMap(option => option.talentIds.map(id => definition.talents.find(talent => talent.id === id)!.name))
+      expect(names).not.toContain('Thick Hide')
+      expect(names).not.toContain('Aimed Shot')
+      expect(decision.options.map(option => option.explanation).join(' ')).not.toContain('blank calculator')
+      expect(decision.sources.some(source => source.url === 'https://talentsforever.com/data.json')).toBe(true)
+    }
+  })
+
+  it('retains the legacy Hunter PvP decision as an explicitly historical fixture', () => {
+    const page = historicalHunterClass.pages.find(page => page.kind === 'pvp')!
+    const decision = buildRoleDecision(historicalHunterProfile, page, historicalHunterClass.talents, historicalHunterClass.builds)!
+    expect(decision.options[0].talentIds).toEqual(['hunter-1311', 'hunter-1621', 'hunter-1308'])
+    expect(decision.options[1].talentIds).toEqual(['hunter-1304'])
+    expect(decision.options[0].explanation).toContain('after the 69913 snapshot')
+    expect(historicalHunterClass.builds.find(build => build.id === page.primaryBuildId)?.points).toBe(11)
   })
 
   it('does not claim a verified Shaman totem loadout from talent coverage', () => {
@@ -109,7 +151,7 @@ describe('expansion role decisions', () => {
     for (const profile of expansionProfiles) {
       const definition = PUBLISHED_CLASSES.find((candidate) => candidate.id === profile.id)!
       for (const page of definition.pages.filter((candidate) => !roleKinds.has(candidate.kind))) {
-        expect(buildRoleDecision(profile, page, definition.talents, definition.builds), page.slug).toBeUndefined()
+        expect(decisionFor(definition, profile.id === 'hunter' ? createHunterCurrentProfile(definition.talents) : profile, page), page.slug).toBeUndefined()
       }
     }
   })

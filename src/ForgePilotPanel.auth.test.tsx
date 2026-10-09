@@ -2,6 +2,12 @@ import { act, cleanup, fireEvent, render, screen, waitFor } from '@testing-libra
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import ForgePilotPanel from './ForgePilotPanel'
 import { BETA_SPEC_PATHS } from './data/betaSpecPaths'
+import { hunterClass, HUNTER_HISTORICAL_DATA_VERSION, hunterHistoricalTalents } from './data/classes/hunter'
+import { warriorClass } from './data/classes/warrior'
+import { archivedWarriorTalents, WARRIOR_ARCHIVED_DATA_VERSION } from './data/warriorTalents'
+import { BETA_PATCH_REVIEW } from './data/betaPatchReview'
+import { encodePlannerBuild } from './lib/talentPlanner'
+import type { ClassDefinition } from './lib/classPage'
 import { betaDataset } from './data/datasets'
 import { talents } from './data/talents'
 import { BRANCHES, encodeBuild } from './lib/build'
@@ -202,5 +208,82 @@ describe('ForgePilot account panel', () => {
     expect(screen.getByText('Holy Paladin build')).toBeTruthy()
     expect(localStorage.getItem(FORGE_PILOT_STORAGE_KEY)).toContain('Holy Paladin build')
     expect(fetcher).not.toHaveBeenCalled()
+  })
+})
+
+
+describe('ForgePilot reviewed current class evidence', () => {
+  function renderClassPanel(classDef: ClassDefinition, dataVersion = classDef.dataVersion, historical = false) {
+    const catalogue = historical ? classDef.historicalSnapshots![0].talents : classDef.talents
+    const starter = catalogue.find(talent => talent.requiredTreePoints === 0 && !talent.prerequisite?.length)!
+    const code = encodePlannerBuild({ [starter.id]: 1 })
+    const saved = createForgePilotSavedBuild({
+      id: 'evidence-build', name: 'Source review build', classId: classDef.id, dataVersion,
+      shareInput: code, level: historical ? 20 : 30, savedAt: '2026-10-09T00:00:00.000Z',
+    })
+    if (!saved.ok) throw new Error('Evidence fixture failed')
+    localStorage.setItem(FORGE_PILOT_STORAGE_KEY, JSON.stringify([saved.build]))
+    return render(<ForgePilotPanel
+      classId={classDef.id} className={classDef.name} dataVersion={classDef.dataVersion}
+      level={historical ? 20 : 30} pointCaps={{ 20: 11, 30: 21 }} points={1}
+      buildCode={code} defaultName="Source review build" talents={classDef.talents} config={classDef.plannerConfig}
+    />)
+  }
+
+  it.each([hunterClass, warriorClass])('shows reviewed $name evidence and keeps historical saves under review when explanations are unavailable', async classDef => {
+    auth.userId = null
+    vi.stubGlobal('fetch', vi.fn(async () => new Response(null, { status: 503 })))
+    const historicalVersion = classDef.historicalSnapshots![0].dataVersion
+    const view = renderClassPanel(classDef, historicalVersion, true)
+    openPanel()
+
+    const freshness = view.container.querySelector('.forge-pilot-freshness')!.textContent!
+    expect(freshness).toContain('70291')
+    expect(freshness).toContain('community')
+    expect(freshness).toContain('planning assumptions')
+    expect(freshness).not.toContain('awaiting reconciliation')
+    expect(screen.getByText('Version needs review before reopening')).toBeTruthy()
+    expect(screen.queryByRole('link', { name: 'Reopen in Calculator' })).toBeNull()
+
+    fireEvent.click(screen.getByRole('button', { name: 'Explain patch status' }))
+    const explanation = await screen.findByRole('status')
+    expect(explanation.textContent).toContain(classDef.dataVersion)
+    expect(explanation.textContent).toContain('Talents Forever')
+    expect(explanation.textContent).toContain('CC BY 4.0')
+    expect(explanation.textContent).toContain('does not verify in-game compatibility')
+    expect(explanation.textContent).not.toContain('pending dataset reconciliation')
+    expect(screen.getByRole('link', { name: 'Source: reviewed client records' }).getAttribute('href')).toBe('https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291')
+    expect(screen.getByRole('link', { name: 'Source: community rank text' }).getAttribute('href')).toBe('https://talentsforever.com/data.json')
+    expect(screen.getByRole('link', { name: 'Rank-text license: CC BY 4.0' }).getAttribute('href')).toBe('https://creativecommons.org/licenses/by/4.0/')
+    if (classDef.id === 'hunter') {
+      expect(explanation.textContent).toContain('membership')
+      expect(explanation.textContent).toContain('Intimidation')
+    }
+  })
+
+  it.each([
+    { ...hunterClass, dataVersion: HUNTER_HISTORICAL_DATA_VERSION, talents: hunterHistoricalTalents },
+    { ...warriorClass, dataVersion: WARRIOR_ARCHIVED_DATA_VERSION, talents: archivedWarriorTalents },
+  ])('keeps the pending-patch boundary for the older $name catalogue', async classDef => {
+    auth.userId = null
+    vi.stubGlobal('fetch', vi.fn(async () => new Response(null, { status: 503 })))
+    const view = renderClassPanel(classDef, classDef.dataVersion, true)
+    openPanel()
+    expect(view.container.querySelector('.forge-pilot-freshness')!.textContent).toContain(`Client ${BETA_PATCH_REVIEW.clientBuild} changes are awaiting reconciliation`)
+    fireEvent.click(screen.getByRole('button', { name: 'Explain patch status' }))
+    expect((await screen.findByRole('status')).textContent).toContain('pending dataset reconciliation')
+    expect(screen.queryByRole('link', { name: 'Source: reviewed client records' })).toBeNull()
+  })
+
+  it('preserves the separate Paladin fallback and its 70245 structure source', async () => {
+    auth.userId = null
+    localStorage.setItem(FORGE_PILOT_STORAGE_KEY, JSON.stringify([localBuild]))
+    vi.stubGlobal('fetch', vi.fn(async () => new Response(null, { status: 503 })))
+    renderPanel()
+    openPanel()
+    fireEvent.click(screen.getByRole('button', { name: 'Explain patch status' }))
+    expect((await screen.findByRole('status')).textContent).toContain('reviewed 70245 structure with separate community rank text')
+    expect(screen.getByRole('link', { name: 'Source: reviewed client structure' }).getAttribute('href')).toBe('https://wago.tools/db2/TraitNode/csv?build=1.60.1.70245')
+    expect(screen.queryByRole('link', { name: 'Source: reviewed client records' })).toBeNull()
   })
 })

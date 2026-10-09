@@ -182,11 +182,11 @@ function HunterPvpStartingPoints({ def, pvpBuild }: { def: ClassDefinition; pvpB
   return (
     <section className="rs-hunter-directions" aria-label="Hunter PvP starting points">
       <h2>Compare three Hunter starting directions</h2>
-      <p>At Level 20, only Survival has a published PvP testing route here. Beast Mastery and Marksmanship are general eleven-point starting routes, not tested PvP recommendations. Compare them under the same opponent, pet and equipment conditions.</p>
+      <p>At Level {def.beta.levelCap}, only Survival has a published PvP testing route here. Beast Mastery and Marksmanship are general {def.beta.pointsAtCap}-point starting routes, not tested PvP recommendations. Compare them under the same opponent, pet and equipment conditions.</p>
       <div className="rs-hunter-directions-grid">
         {choices.map((build) => <article key={build.id}>
           <h3>{def.branchNames[build.spec]}</h3>
-          <strong>{build.allocation} · 11 points</strong>
+          <strong>{build.allocation} · {build.points} points</strong>
           <p>{build.role}. {build.id === pvpBuild.id ? 'This is the current editorial PvP test route.' : 'This general route needs PvP testing before any performance claim.'}</p>
           <p>{testPrompts[build.spec]}</p>
           <a href={classBuildPlannerHref(def, build)} aria-label={hasRemovedTalentInBuild(def, build) ? `Open blank Hunter Calculator for archived ${def.branchNames[build.spec]} route` : `Try ${def.branchNames[build.spec]} points in Calculator`}>{hasRemovedTalentInBuild(def, build) ? 'Open blank calculator · archived route' : 'Try these points'} <ArrowRight size={14} aria-hidden="true" /></a>

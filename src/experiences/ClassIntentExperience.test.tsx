@@ -4,10 +4,14 @@ import { warriorClass } from '../data/classes/warrior'
 import { mageClass } from '../data/classes/mage'
 import { rogueClass } from '../data/classes/rogue'
 import { warlockClass } from '../data/classes/warlock'
-import { hunterClass } from '../data/classes/hunter'
+import { hunterClass, hunterHistoricalTalents } from '../data/classes/hunter'
+import historicalHunterDataset from '../data/expansion/hunter-1.60.1.69913.json'
+import { createExpansionClass } from '../data/expansion/createClass'
+import { expansionProfiles } from '../data/expansion/profiles'
+import { validClassBuild, type ClassBuild, type ClassDefinition } from '../lib/classPage'
 import { PUBLISHED_CLASSES } from '../data/classes'
 import { officialTalentNotice } from '../data/officialOctoberChanges'
-import { decodePlannerBuild } from '../lib/talentPlanner'
+import { decodePlannerBuild, decodeValidatedPlannerBuild } from '../lib/talentPlanner'
 import ClassIntentExperience from './ClassIntentExperience'
 import ClassExperiencePage from './ClassExperiencePage'
 import { readFileSync } from 'node:fs'
@@ -15,14 +19,27 @@ const baseStyles = readFileSync('src/styles.css', 'utf8')
 const experienceStyles = readFileSync('src/experiences/experience.css', 'utf8')
 afterEach(cleanup)
 const page = (slug: string) => warriorClass.pages.find((p) => p.slug === slug)!
+const historicalHunterClass = createExpansionClass(expansionProfiles.find(profile => profile.id === 'hunter')!, historicalHunterDataset)
+function historicalCatalog(def: ClassDefinition): ClassDefinition {
+  const snapshot = def.historicalSnapshots?.find(snapshot => snapshot.clientBuild === '1.60.1.69913')
+  return snapshot ? { ...def, verifiedBuild: snapshot.clientBuild, dataVersion: snapshot.dataVersion, talents: snapshot.talents, talentCount: snapshot.talents.length, dataReview: { ready: true, current: false, notice: 'Preserved 69913 historical catalog fixture.' } } : def
+}
+function expectCurrentRouteLink(anchor: HTMLElement, def: ClassDefinition, build: ClassBuild) {
+  const url = new URL(anchor.getAttribute('href')!, 'https://buildforgetools.com')
+  expect(url.pathname).toBe(def.plannerPath)
+  expect(url.searchParams.get('level')).toBe('30')
+  const allocation = decodeValidatedPlannerBuild(url.searchParams.get('build')!, def.talents, { ...def.plannerConfig, pointCap: 21 })
+  expect(allocation).toEqual(build.build)
+  expect(validClassBuild(def, { ...build, build: allocation! })).toBe(true)
+}
 it('opens the Hunter PvP build from a prominent hero calculator link', () => {
   const hunterPvp = hunterClass.pages.find((p) => p.slug === 'wow-forever-hunter-pvp-build')!
   const { container } = render(<ClassExperiencePage classDef={hunterClass} page={hunterPvp} />)
   const hero = container.querySelector('.ix-hero')!
-  const link = within(hero as HTMLElement).getByRole('link', { name: /Inspect Level 20 snapshot in Calculator/i })
+  const link = within(hero as HTMLElement).getByRole('link', { name: /Inspect Level 30 route in Calculator/i })
   const url = new URL(link.getAttribute('href')!, 'https://buildforgetools.com')
   expect(url.pathname).toBe('/hunter')
-  expect(url.searchParams.get('level')).toBe('20')
+  expect(url.searchParams.get('level')).toBe('30')
   expect(url.searchParams.get('build')).toContain('hunter-')
 })
 
@@ -34,18 +51,17 @@ it.each([
   'wow-forever-marksmanship-hunter-leveling-build',
   'wow-forever-hunter-pet-build',
   'wow-forever-hunter-dungeon-build',
-])('opens a blank calculator instead of an unshareable removed-talent route from %s', (slug) => {
-  const route = hunterClass.pages.find((candidate) => candidate.slug === slug)!
+])('loads the complete current primary allocation from %s', (slug) => {
+  const route = hunterClass.pages.find(candidate => candidate.slug === slug)!
   const { container } = render(<ClassExperiencePage classDef={hunterClass} page={route} />)
   const hero = container.querySelector('.ix-hero')!
-  const action = within(hero as HTMLElement).getByRole('link', { name: /Open blank Hunter Calculator/i })
-  expect(action.getAttribute('href')).toBe('/hunter?build=#class-calculator')
-  expect(hero.textContent).toMatch(/historical.*removed talent/i)
+  expectCurrentRouteLink(within(hero as HTMLElement).getByRole('link', { name: /Inspect Level 30 route in Calculator/i }), hunterClass, hunterClass.builds.find(build => build.id === route.primaryBuildId)!)
+  expect(hero.textContent).not.toMatch(/historical.*removed talent/i)
 })
 
-it('does not offer a prefilled primary or alternative link for archived Hunter allocations', () => {
-  const route = hunterClass.pages.find((candidate) => candidate.slug === 'wow-forever-beast-mastery-hunter-build')!
-  const { container } = render(<ClassIntentExperience classDef={hunterClass} page={route} />)
+it('keeps archived Hunter workbench allocations readable with blank primary and alternate calculator links', () => {
+  const route = historicalHunterClass.pages.find(candidate => candidate.slug === 'wow-forever-beast-mastery-hunter-build')!
+  const { container } = render(<ClassIntentExperience classDef={historicalHunterClass} page={route} />)
   const primary = container.querySelector('.ix-build-target .ix-action') as HTMLAnchorElement
   expect(primary.getAttribute('href')).toBe('/hunter?build=#class-calculator')
   expect(primary.textContent).toMatch(/archived route/i)
@@ -53,26 +69,59 @@ it('does not offer a prefilled primary or alternative link for archived Hunter a
   expect(alternative.getAttribute('href')).toBe('/hunter?build=#class-calculator')
 })
 
-it('describes the Hunter BM/MM comparison as read-only historical evidence', () => {
-  const route = hunterClass.pages.find((candidate) => candidate.slug === 'wow-forever-beast-mastery-vs-marksmanship-hunter-leveling')!
-  const { container } = render(<ClassExperiencePage classDef={hunterClass} page={route} />)
-  expect(container.textContent).toContain('Compare the read-only historical ranks here')
-  expect(container.textContent).not.toContain('Open both snapshots in the calculator')
+it('keeps the historical Hunter hero explicit and opens a blank calculator for its removed-node route', () => {
+  const route = historicalHunterClass.pages.find(candidate => candidate.slug === 'wow-forever-hunter-pet-build')!
+  const { container } = render(<ClassExperiencePage classDef={historicalHunterClass} page={route} />)
+  const hero = container.querySelector('.ix-hero')!
+  const action = within(hero as HTMLElement).getByRole('link', { name: /Open blank Hunter Calculator/i })
+  expect(action.getAttribute('href')).toBe('/hunter?build=#class-calculator')
+  expect(hero.textContent).toMatch(/historical.*removed talent/i)
 })
 
-it('never publishes a removed-node prefilled calculator link from any Hunter content page', () => {
-  const removedIds = hunterClass.talents
-    .filter((talent) => officialTalentNotice('hunter', talent.name)?.status === 'removed')
-    .map((talent) => talent.id)
-  for (const route of hunterClass.pages.filter((candidate) => candidate.kind !== 'calculator')) {
+it('opens distinct current Hunter primary and alternate allocations from the workbench', () => {
+  const route = hunterClass.pages.find(candidate => candidate.slug === 'wow-forever-beast-mastery-hunter-build')!
+  const { container } = render(<ClassIntentExperience classDef={hunterClass} page={route} />)
+  const primary = hunterClass.builds.find(build => build.id === route.primaryBuildId)!
+  expectCurrentRouteLink(container.querySelector('.ix-build-target .ix-action')!, hunterClass, primary)
+  const alternateId = (screen.getByLabelText('Alternative build') as HTMLSelectElement).value
+  const alternate = hunterClass.builds.find(build => build.id === alternateId)!
+  expect(alternate.build).not.toEqual(primary.build)
+  expectCurrentRouteLink(container.querySelector('.ix-panel:not(.ix-build-target) .ix-action')!, hunterClass, alternate)
+})
+
+it('describes the Hunter BM/MM comparison as executable current allocations', () => {
+  const route = hunterClass.pages.find(candidate => candidate.slug === 'wow-forever-beast-mastery-vs-marksmanship-hunter-leveling')!
+  const { container } = render(<ClassExperiencePage classDef={hunterClass} page={route} />)
+  expect(container.textContent).toContain('Both spend 21 points at Level 30')
+  expect(container.textContent).not.toContain('Compare the read-only historical ranks here')
+  const panels = container.querySelectorAll('.ix-comparison .ix-panel')
+  expect(panels).toHaveLength(2)
+  for (const panel of panels) {
+    const picker = panel.querySelector('select')!
+    expectCurrentRouteLink(panel.querySelector('.ix-action')!, hunterClass, hunterClass.builds.find(build => build.id === picker.value)!)
+  }
+})
+
+it('never publishes a removed-node or invalid prefilled link from any current Hunter content page', () => {
+  const removedIds = hunterHistoricalTalents.filter(talent => !hunterClass.talents.some(current => current.id === talent.id)).map(talent => talent.id)
+  expect(removedIds.sort()).toEqual(['hunter-1624', 'hunter-1395', 'hunter-1343', 'hunter-1345', 'hunter-1351', 'hunter-1301', 'hunter-1309', 'hunter-1321', 'hunter-1325'].sort())
+  let testedLinks = 0
+  for (const route of hunterClass.pages.filter(candidate => candidate.kind !== 'calculator' && !candidate.retiredTo)) {
     const { container, unmount } = render(<ClassExperiencePage classDef={hunterClass} page={route} />)
     for (const anchor of container.querySelectorAll<HTMLAnchorElement>('a[href^="/hunter?build="]')) {
       const url = new URL(anchor.getAttribute('href')!, 'https://buildforgetools.com')
-      const allocation = decodePlannerBuild(url.searchParams.get('build') ?? '', hunterClass.talents)
-      for (const id of removedIds) expect(allocation[id] ?? 0, `${route.slug}: ${anchor.getAttribute('href')} loads removed ${id}`).toBe(0)
+      const code = url.searchParams.get('build') ?? ''
+      if (!code) continue
+      testedLinks++
+      const level = Number(url.searchParams.get('level'))
+      expect([20, 30]).toContain(level)
+      const allocation = decodeValidatedPlannerBuild(code, hunterClass.talents, { ...hunterClass.plannerConfig, pointCap: level - 9 })
+      expect(allocation, `${route.slug}: ${anchor.getAttribute('href')}`).not.toBeNull()
+      for (const id of removedIds) expect(allocation?.[id] ?? 0, `${route.slug} loads removed ${id}`).toBe(0)
     }
     unmount()
   }
+  expect(testedLinks).toBeGreaterThan(20)
 })
 
 it('opens a blank calculator from a talent reference with no selected build', () => {
@@ -169,10 +218,11 @@ it('renders every legal editorial point-order step in the initial leveling page 
   )
   const route = within(fury.container).getByRole('list', { name: 'Full point-by-point route' })
   const steps = within(route).getAllByRole('listitem')
-  expect(steps).toHaveLength(11)
+  expect(steps).toHaveLength(21)
   expect(steps[0].textContent).toContain('Level 10')
   expect(steps[0].textContent).toContain('Cruelty')
-  expect(steps[10].textContent).toContain('Level 20')
+  expect(steps[20].textContent).toContain('Level 30')
+  expect(steps[20].textContent).toContain('Death Wish')
   expect(route.textContent).toContain('Unbridled Wrath')
   expect(fury.container.textContent).toContain('one point per level from 10')
   fury.unmount()
@@ -186,6 +236,7 @@ it('renders every legal editorial point-order step in the initial leveling page 
   const armsRoute = within(arms.container).getByRole('list', { name: 'Full point-by-point route' })
   expect(armsRoute.textContent).not.toContain('Unbridled Wrath')
   expect(armsRoute.textContent).toContain('Improved Rend')
+  expect(armsRoute.textContent).toContain('Sweeping Strikes')
 })
 
 it('puts each specialization route on the general Warrior leveling page before a route is selected', () => {
@@ -199,10 +250,12 @@ it('puts each specialization route on the general Warrior leveling page before a
   for (const spec of ['Arms', 'Fury', 'Protection']) {
     expect(within(choices).getByRole('heading', { name: `${spec} Warrior` })).toBeTruthy()
   }
-  expect(choices.textContent).toContain('Anger Management')
-  expect(choices.textContent).toContain('Piercing Howl')
-  expect(choices.textContent).toContain('Last Stand')
+  expect(choices.textContent).toContain('Sweeping Strikes')
+  expect(choices.textContent).toContain('Death Wish')
+  expect(choices.textContent).toContain('Concussion Blow')
   expect(within(choices).getAllByRole('link')).toHaveLength(3)
+  expect(choices.textContent).toContain('21')
+  expect(choices.textContent).not.toContain('same eleven-point starter budget')
 })
 
 it('shows a clearly modeled Talented timing comparison without adding unverified points', () => {
@@ -222,7 +275,10 @@ it('shows a clearly modeled Talented timing comparison without adding unverified
     .toBe('https://news.blizzard.com/en-us/article/24307383/get-to-know-the-world-of-warcraft-forever-legacy-system')
 
   fireEvent.change(screen.getByLabelText('Your level'), { target: { value: '20' } })
-  expect(screen.getByTestId('progression-current').textContent).toContain('11 points')
+  expect(screen.getByTestId('progression-current').textContent).toContain('16 points')
+  fireEvent.change(screen.getByLabelText('Your level'), { target: { value: '30' } })
+  expect(screen.getByTestId('progression-current').textContent).toContain('21 points')
+  expect(screen.getByTestId('progression-next').textContent).toContain('Published route complete')
   expect(screen.getByText(/does not model points beyond this published route/i)).toBeTruthy()
 })
 it('keeps the Frost AoE route available after switching to leveling and back', () => {
@@ -260,7 +316,7 @@ it('keeps the Frost AoE route available after switching to leveling and back', (
     '11 points',
   )
 })
-it('honestly reports identical baseline allocation for Arms PvP', () => {
+it('shows the deliberate rank trade from the current Arms baseline to its PvP route', () => {
   render(
     <ClassIntentExperience
       classDef={warriorClass}
@@ -268,7 +324,7 @@ it('honestly reports identical baseline allocation for Arms PvP', () => {
     />,
   )
   expect(
-    screen.getByText(/These routes use the same talent allocation/),
+    screen.getByText(/Ranks that differ from/),
   ).toBeTruthy()
 })
 it('searches talent names and displays only matching evidence records', () => {
@@ -383,7 +439,8 @@ it.each([
         page={page('wow-forever-arms-warrior-pvp-build')}
       />,
     )
-    expect(screen.getAllByText(expected)).toHaveLength(4)
+    const primary = def.builds.find(build => build.id === page('wow-forever-arms-warrior-pvp-build').primaryBuildId)!
+    expect(screen.getAllByText(expected)).toHaveLength(Object.keys(primary.build).length)
   },
 )
 
@@ -413,7 +470,7 @@ it('normalizes fractional levels to an existing step with an exact calculator al
     'https://buildforgetools.com',
   )
   expect(link.searchParams.get('build')).toBe('warrior-fury-cruelty.5')
-  expect(link.searchParams.get('level')).toBe('20')
+  expect(link.searchParams.get('level')).toBe('30')
 })
 
 it('shows unavailable Protection PvP allocation instead of borrowing another specialization', () => {
@@ -538,9 +595,11 @@ it('shows exact editorial talent use without presenting it as player popularity'
   expect(angerUsage?.textContent).toContain('Editorial examples, not player popularity')
   const armsRoute = angerUsage?.querySelector('a[href="/wow-forever-arms-warrior-build"]')?.closest('li')
   expect(armsRoute?.textContent).toContain('Rank 1/1')
-  expect(armsRoute?.textContent).toContain('Level 20')
-  expect(armsRoute?.textContent).toContain('Weapon damage and stance control')
-  expect(armsRoute?.textContent).toContain('Key talent in this editorial route')
+  expect(armsRoute?.textContent).toContain('Level 30')
+  expect(armsRoute?.textContent).toContain('Two-handed damage and stance control')
+  expect(armsRoute?.textContent).not.toContain('Key talent in this editorial route')
+  const endpoint = record('Sweeping Strikes')?.querySelector('[data-editorial-usage] a[href="/wow-forever-arms-warrior-build"]')?.closest('li')
+  expect(endpoint?.textContent).toContain('Key talent in this editorial route')
 
   const rendRoute = record('Improved Rend')?.querySelector('[data-editorial-usage] a[href="/wow-forever-arms-warrior-build"]')?.closest('li')
   expect(rendRoute?.textContent).toContain('Rank 3/3')
@@ -550,12 +609,24 @@ it('shows exact editorial talent use without presenting it as player popularity'
 it('does not present source change labels as a verified client-build diff', () => {
   const { container } = render(
     <ClassIntentExperience
-      classDef={warriorClass}
-      page={page('wow-forever-warrior-talents')}
+      classDef={mageClass}
+      page={mageClass.pages.find(candidate => candidate.kind === 'talents')!}
     />,
   )
   expect(container.querySelector('.ix-reference')?.textContent).toContain('No reviewed previous client-build snapshot')
   expect(container.querySelector('[data-testid="talent-record"] .ix-record-facts')?.textContent).not.toContain('Change:')
+})
+
+it.each([warriorClass, hunterClass])('shows the reviewed current history boundary and excludes removed records for %s', (def) => {
+  const catalog = def.pages.find(candidate => candidate.kind === 'talents')!
+  const { container } = render(<ClassIntentExperience classDef={def} page={catalog} />)
+  const reference = container.querySelector('.ix-reference')!
+  expect(reference.textContent).not.toContain('No reviewed previous client-build snapshot')
+  expect(def.historicalSnapshots?.[0]?.clientBuild).toBe('1.60.1.69913')
+  expect(def.talents.some(talent => talent.changeStatus !== 'unknown')).toBe(true)
+  const records = [...container.querySelectorAll('[data-testid="talent-record"]')]
+  expect(records).toHaveLength(def.talents.length)
+  expect(records.some(record => record.getAttribute('data-official-status') === 'removed')).toBe(false)
 })
 
 it.each([
@@ -566,7 +637,7 @@ it.each([
   [hunterClass, 'Thick Hide', 'removed'],
 ] as const)('flags %s %s as an official %s while retaining the 69913 record', (classDef, name, status) => {
   const catalog = classDef.pages.find((candidate) => candidate.kind === 'talents')!
-  const { container } = render(<ClassIntentExperience classDef={classDef} page={catalog} />)
+  const { container } = render(<ClassIntentExperience classDef={historicalCatalog(classDef)} page={catalog} />)
   const record = [...container.querySelectorAll('[data-testid="talent-record"]')]
     .find((candidate) => candidate.querySelector('h3')?.textContent === name)
   expect(record, `${name} must remain in the historical catalog`).toBeTruthy()
@@ -579,8 +650,8 @@ it.each([
 })
 
 it('labels officially removed Hunter nodes in the selected-rank comparison, not only in the talent catalog', () => {
-  const comparison = hunterClass.pages.find((candidate) => candidate.slug === 'wow-forever-beast-mastery-vs-marksmanship-hunter-leveling')!
-  const { container } = render(<ClassIntentExperience classDef={hunterClass} page={comparison} />)
+  const comparison = historicalHunterClass.pages.find((candidate) => candidate.slug === 'wow-forever-beast-mastery-vs-marksmanship-hunter-leveling')!
+  const { container } = render(<ClassIntentExperience classDef={historicalHunterClass} page={comparison} />)
   for (const name of ['Aimed Shot', 'Thick Hide']) {
     const row = [...container.querySelectorAll('.ix-ranks li')].find((candidate) => candidate.textContent?.includes(name))
     expect(row, `${name} should be visible in an editorial route`).toBeTruthy()

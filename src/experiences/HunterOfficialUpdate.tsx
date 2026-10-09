@@ -67,7 +67,7 @@ function PetFamilyLookup() {
   </div>
 }
 
-function UpdateBody({ kind }: { kind: UpdateKind }) {
+function UpdateBody({ kind, reviewedBuild }: { kind: UpdateKind; reviewedBuild?: string }) {
   if (kind === 'hub') return <div className="hunter-official-facts">
     <p><strong>Aimed Shot:</strong> Aimed Shot is now a baseline Hunter ability at level 20.</p>
     <p><strong>Traps:</strong> Hunter traps can be used in combat with a cooldown of 30 seconds.</p>
@@ -77,13 +77,13 @@ function UpdateBody({ kind }: { kind: UpdateKind }) {
     <p><strong>Beast Mastery:</strong> Summon Hawk is an announced 16-point milestone.</p>
     <p><strong>Marksmanship:</strong> Lone Wolf is an announced 11-point milestone for playing without an active pet.</p>
     <p><strong>Marksmanship:</strong> Trueshot Aura moves to the 21-point milestone.</p>
-    <p>The imported Level 20 comparison records show 11 points each, but both contain talents Blizzard later removed or made baseline. The blank calculator does not load these historical routes with removed talents. The live Beta cap is Level 30, and the September design note does not verify a Level 30 allocation in the imported tree.</p>
+    <p>{reviewedBuild ? <>The reviewed {reviewedBuild} routes compare 21-point Level 30 endpoints with an active pet. The separate Level 20 snapshots each spend eleven points; Aimed Shot is baseline and is not purchased as a talent.</> : <>The imported Level 20 comparison records show 11 points each, but both contain talents Blizzard later removed or made baseline. The blank calculator does not load these historical routes with removed talents. The live Beta cap is Level 30, and the September design note does not verify a Level 30 allocation in the imported tree.</>}</p>
   </div>
   if (kind === 'pvp') return <div className="hunter-official-facts">
     <p>Hunter traps can now be used in combat with a 30-second cooldown.</p>
     <p>Fire-based and Frost-based traps have separate cooldowns.</p>
-    <p>Blizzard's October 1 notes changed Survival Deflection to 1/2/3/4/5% Parry. The older 69913 tooltip must not be treated as current PvP tuning.</p>
-    <p>The official update raised the Level 30 cap; no 21-point Hunter PvP route has been reviewed here yet.</p>
+    <p>Blizzard's October 1 notes changed Survival Deflection to 1/2/3/4/5% Parry. {reviewedBuild ? `That value is present in the reviewed ${reviewedBuild} rank transcription.` : 'The older 69913 tooltip must not be treated as current PvP tuning.'}</p>
+    <p>{reviewedBuild ? `The reviewed ${reviewedBuild} Survival example spends 21 points at Level 30. Its allocation is editorial; legal selected ranks are not measured PvP performance.` : 'The official update raised the Level 30 cap; no 21-point Hunter PvP route has been reviewed here yet.'}</p>
     <p>Use these announced ability rules as questions to check in beta play; the PvP allocation below remains an editorial testing route.</p>
   </div>
   return <PetFamilyLookup />
@@ -96,13 +96,13 @@ const headings: Record<UpdateKind, string> = {
   pet: 'Find an announced pet family ability',
 }
 
-export default function HunterOfficialUpdate({ slug }: { slug: keyof typeof updateBySlug }) {
+export default function HunterOfficialUpdate({ slug, reviewedBuild }: { slug: keyof typeof updateBySlug; reviewedBuild?: string }) {
   const kind = updateBySlug[slug]
   return <section className="hunter-official" aria-label="Hunter official class deep dive">
     <div className="hunter-official-heading"><span>BLIZZARD DESIGN NOTE</span><VerificationBadge status="official" /></div>
     <h2>{headings[kind]}</h2>
     <p className="hunter-official-source">Published Sep 30, 2026 · <a href={SOURCE} target="_blank" rel="noreferrer">Blizzard class deep dive</a> · Updated Oct 1 · <a href={OCTOBER_SOURCE} target="_blank" rel="noreferrer">October 1 Beta notes</a></p>
-    <UpdateBody kind={kind} />
-    <p className="hunter-official-boundary">The live Beta cap is Level 30. Editable talent records still come from client build 1.60.1.69913; later official changes have not yet been reconciled against that import.</p>
+    <UpdateBody kind={kind} reviewedBuild={reviewedBuild} />
+    <p className="hunter-official-boundary">{reviewedBuild ? <>The live Beta cap is Level 30. Talent structure was reconciled through {reviewedBuild}; rank text is a licensed community transcription and point-order rules remain derived assumptions. Pet family abilities are sourced separately from Blizzard’s design note.</> : <>The live Beta cap is Level 30. Editable talent records still come from client build 1.60.1.69913; later official changes have not yet been reconciled against that import.</>}</p>
   </section>
 }

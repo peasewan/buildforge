@@ -133,7 +133,7 @@ function TalentCatalogue<B extends string>({ classDef, branchFilter }: { classDe
   const unallocatable = unallocatableBranches(classDef)
   return <section className="class-catalogue" data-testid="class-talent-catalogue">
     <h2>{classDef.name} talent catalogue</h2>
-    <p>Every node, grouped by branch and client change status through build {classDef.verifiedBuild}.</p>
+    <p>{classDef.dataReview?.current ? `Every node, grouped by branch and differences from the preserved 69913 client snapshot through ${classDef.verifiedBuild}.` : `Every node, grouped by branch and client change status through build ${classDef.verifiedBuild}.`}</p>
     {classDef.branches.filter((branch) => !branchFilter || branch === branchFilter).map((branch) => {
       const excluded = unallocatable.has(branch)
       return <div className="class-catalogue-branch" key={branch} data-branch={branch} data-excluded={excluded ? 'true' : undefined}>
@@ -148,7 +148,7 @@ function TalentCatalogue<B extends string>({ classDef, branchFilter }: { classDe
           const talents = classDef.talents.filter((talent) => talent.branch === branch && talent.changeStatus === status)
           if (talents.length === 0) return null
           return <div key={status}>
-            <h4>{label}</h4>
+            <h4>{classDef.dataReview?.current && status === 'same' ? 'Unchanged from 69913 snapshot' : classDef.dataReview?.current && status === 'new' ? 'Added since 69913 snapshot' : classDef.dataReview?.current && status === 'changed' ? 'Changed since 69913 snapshot' : label}</h4>
             <ul>{talents.map((talent) => <li key={talent.id} data-testid="class-talent-entry" data-talent-id={talent.id} data-excluded={excluded ? 'true' : undefined}>
               {talent.icon && <img className="class-talent-entry-icon" src={talent.icon} alt="" loading="lazy" />}
               <span>{talent.name}</span>

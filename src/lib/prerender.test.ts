@@ -10,10 +10,15 @@ import { paladinSpellbook } from '../data/paladinSpellbook'
 import { mageClass } from '../data/classes/mage'
 import { warriorClass } from '../data/classes/warrior'
 import { hunterClass } from '../data/classes/hunter'
+import historicalHunterDataset from '../data/expansion/hunter-1.60.1.69913.json'
+import { createExpansionClass } from '../data/expansion/createClass'
+import { expansionProfiles } from '../data/expansion/profiles'
 import { PUBLISHED_CLASSES } from '../data/classes'
 import { officialTalentNotice } from '../data/officialOctoberChanges'
 import { hunterClassFixture } from '../data/fixtures/hunterClass.fixture'
-import { publishRequirementsFor, publishedClassPages, satisfiedRequirements, type ClassPageDefinition } from './classPage'
+import { publishRequirementsFor, publishedClassPages, satisfiedRequirements, type ClassDefinition, type ClassPageDefinition } from './classPage'
+import { classBuildPlannerHref } from './archivedClassBuild'
+import { decodeValidatedPlannerBuild, totalPlannerPoints } from './talentPlanner'
 import { MAGE_BRANCHES } from '../data/mageTalents'
 import { escapeHtml } from './html'
 import { betaLevelingPlannerHref } from '../data/levelingBeta'
@@ -24,6 +29,25 @@ const publishedMagePages = (() => {
 })()
 
 const withheldMageSlugs = mageClass.pages.filter((page) => !publishedMagePages.includes(page)).map((page) => `/${page.slug}`)
+
+const historicalHunterClass = createExpansionClass(expansionProfiles.find(profile => profile.id === 'hunter')!, historicalHunterDataset)
+
+/** A read-only catalogue fixture uses the preserved snapshot rather than relabeling current records. */
+function historicalCatalogueFixture(classDef: ClassDefinition): ClassDefinition {
+  const snapshot = classDef.historicalSnapshots![0]
+  return {
+    ...classDef, talents: snapshot.talents, talentCount: snapshot.talents.length, builds: [],
+    sources: snapshot.talents[0].sources, plannerConfig: { ...classDef.plannerConfig, pointCap: 11 },
+    verifiedBuild: snapshot.clientBuild, dataVersion: snapshot.dataVersion,
+    beta: { phaseLabel: 'Historical Level 20 snapshot', levelCap: 20, pointsAtCap: 11 },
+    plannerModes: [{ level: 20, points: 11, label: 'Historical Level 20' }],
+    dataReview: { ready: true, notice: `Preserved ${snapshot.clientBuild} talent records for historical review.`, current: false },
+    pages: classDef.pages.filter(page => page.kind === 'calculator' || page.kind === 'talents').map(page => ({
+      ...page, description: `Historical ${classDef.name} talent records.`, sections: [], faqs: [],
+      primaryBuildId: undefined, relatedBuildIds: [], relatedPages: [],
+    })),
+  }
+}
 
 const classPageHtml = (page: ClassPageDefinition) => renderClassPage(mageClass, page)
 
@@ -49,16 +73,34 @@ const allPrerendered = () => [
 ] as const
 
 describe('prerender generation', () => {
-  it('marks every published class static page as an older Level 20 snapshot beneath the live Level 30 cap', () => {
+  it('uses current 70291 boundaries for Hunter and Warrior while keeping other classes as historical Level 20 snapshots', () => {
     const pages = publishedClassPages(PUBLISHED_CLASSES)
     expect(pages).toHaveLength(99)
     for (const { classDef, page } of pages) {
       const html = renderClassPage(classDef, page)
-      expect(html, page.slug).toContain('live Beta cap is Level 30')
-      expect(html, page.slug).toContain('older 1.60.1.69913 talent tree')
-      expect(html, page.slug).toContain('Level 20 routes are 11-point starting snapshots')
+      expect(html, page.slug).toContain(`<h1>${escapeHtml(page.h1)}</h1>`)
+      expect(html, page.slug).toContain(escapeHtml(page.description))
       expect(html, page.slug).toContain('2360696/1')
       expect(html, page.slug).toContain(`${classDef.name} official changes`)
+      if (classDef.id === 'hunter' || classDef.id === 'warrior') {
+        expect(classDef.dataReview?.current, classDef.id).toBe(true)
+        expect(classDef.verifiedBuild).toBe('1.60.1.70291')
+        expect(html, page.slug).toContain('Reviewed talent structure through 1.60.1.70291')
+        expect(html, page.slug).toContain('current Beta cap is Level 30')
+        expect(html, page.slug).toContain('ordinary editorial routes spend 21 points')
+        expect(html, page.slug).toContain('Level 20 page uses separate 11-point stages')
+        expect(html, page.slug).toContain('Licensed rank text is community verified')
+        expect(html, page.slug).toContain('point-order rules remain derived assumptions')
+        expect(html, page.slug).toContain('https://talentsforever.com/data.json')
+        expect(html, page.slug).toContain('https://creativecommons.org/licenses/by/4.0/')
+        expect(html, page.slug).not.toContain('older 1.60.1.69913 talent tree')
+        expect(html, page.slug).not.toContain('Later official changes have not been fully imported')
+      } else {
+        expect(classDef.dataReview?.current, classDef.id).not.toBe(true)
+        expect(html, page.slug).toContain('live Beta cap is Level 30')
+        expect(html, page.slug).toContain('older 1.60.1.69913 talent tree')
+        expect(html, page.slug).toContain('Level 20 routes are 11-point starting snapshots')
+      }
     }
   })
 
@@ -70,24 +112,42 @@ describe('prerender generation', () => {
     expect(html).toContain('100% extra Rage')
   })
 
-  it.each([
-    ['warrior', 'Toughness', 'removed'],
-    ['warrior', 'Improved Cleave', 'removed'],
-    ['mage', 'Improved Scorch', 'changed'],
-    ['hunter', 'Aimed Shot', 'removed'],
-    ['hunter', 'Thick Hide', 'removed'],
-  ] as const)('marks old %s %s as officially %s in static calculator and catalog records', (classId, name, status) => {
-    const classDef = PUBLISHED_CLASSES.find((candidate) => candidate.id === classId)!
-    const talent = classDef.talents.find((candidate) => candidate.name === name)!
-    expect(talent, `${classId} ${name} must remain as a historical record`).toBeTruthy()
+  it.each(([
+    [warriorClass, 'Toughness'],
+    [warriorClass, 'Improved Cleave'],
+    [hunterClass, 'Aimed Shot'],
+    [hunterClass, 'Thick Hide'],
+  ] as const).map(([classDef, name]) => ({ classDef, name, className: classDef.name })))('excludes removed $className $name nodes from current records and renders them only from the preserved archive', ({ classDef, name }) => {
+    expect(classDef.talents.some(talent => talent.name === name)).toBe(false)
+    const archive = historicalCatalogueFixture(classDef)
+    const talent = archive.talents.find(candidate => candidate.name === name)!
+    expect(talent, `${classDef.name} ${name} must remain in historicalSnapshots`).toBeTruthy()
+    expect(archive.verifiedBuild).toBe('1.60.1.69913')
     for (const kind of ['calculator', 'talents'] as const) {
-      const page = classDef.pages.find((candidate) => candidate.kind === kind)!
-      const html = renderClassPage(classDef, page)
+      const currentPage = classDef.pages.find(page => page.kind === kind)!
+      const currentHtml = renderClassPage(classDef, currentPage)
+      expect(currentHtml).not.toContain(`data-class-talent="${talent.id}"`)
+      const page = archive.pages.find(candidate => candidate.kind === kind)!
+      const html = renderClassPage(archive, page)
       const item = html.match(new RegExp(`<li data-class-talent="${talent.id}"[^>]*>.*?<\\/li>`, 's'))?.[0]
-      expect(item, `${kind} must include ${name}`).toBeTruthy()
-      expect(item).toContain(`data-official-status="${status}"`)
+      expect(item, `${kind} archive must include ${name}`).toBeTruthy()
+      expect(item).toContain('data-official-status="removed"')
       expect(item).toContain('69913 historical record')
-      expect(item).toContain(officialTalentNotice(classId, name)?.source)
+      expect(item).toContain(officialTalentNotice(classDef.id, name)?.source)
+      expect(item).not.toContain('Client verified')
+    }
+  })
+
+  it('keeps the officially changed Improved Scorch label on the historical Mage records', () => {
+    const talent = mageClass.talents.find(candidate => candidate.name === 'Improved Scorch')!
+    for (const kind of ['calculator', 'talents'] as const) {
+      const page = mageClass.pages.find(candidate => candidate.kind === kind)!
+      const html = renderClassPage(mageClass, page)
+      const item = html.match(new RegExp(`<li data-class-talent="${talent.id}"[^>]*>.*?<\\/li>`, 's'))?.[0]
+      expect(item, `${kind} must include Improved Scorch`).toBeTruthy()
+      expect(item).toContain('data-official-status="changed"')
+      expect(item).toContain('69913 historical record')
+      expect(item).toContain(officialTalentNotice('mage', 'Improved Scorch')?.source)
       expect(item).not.toContain('Client verified')
     }
   })
@@ -98,21 +158,28 @@ describe('prerender generation', () => {
     expect(html).not.toContain('to inspect the same allocation')
   })
 
-  it('prerenders all 53 Warrior talent records and the build cluster through the generic renderer', () => {
+  it('prerenders all 52 reviewed Warrior talent records and the build cluster through the generic renderer', () => {
     const calculator = warriorClass.pages.find((page) => page.kind === 'calculator')!
     const planner = renderClassPage(warriorClass, calculator)
-    expect(planner.match(/data-class-talent/g)).toHaveLength(53)
+    expect(planner.match(/data-class-talent/g)).toHaveLength(52)
+    for (const talent of warriorClass.talents) {
+      expect(planner).toContain(`data-class-talent="${talent.id}"`)
+      expect(planner).toContain(escapeHtml(talent.name))
+    }
+    expect(planner).toContain('Client build 1.60.1.70291')
     expect(planner).toContain('<h1>WoW Forever Warrior Talent Calculator</h1>')
     const hub = warriorClass.pages.find((page) => page.kind === 'buildsHub')!
     expect(renderClassPage(warriorClass, hub)).toContain('WoW Forever Warrior Builds')
     for (const page of warriorClass.pages.filter((candidate) => candidate.primaryBuildId)) {
       const html = renderClassPage(warriorClass, page)
       expect(html).toContain('Community / Editorial Build')
-      expect(html).toContain('href="/warrior?build=')
+      const build = warriorClass.builds.find(candidate => candidate.id === page.primaryBuildId)!
+      expect(html).toContain(`href="${escapeHtml(classBuildPlannerHref(warriorClass, build))}"`)
+      expect(html).toContain(`Inspect Level ${build.level} route in Calculator`)
     }
   })
 
-  it('keeps removed-talent Hunter routes as indexed historical records without prefilled calculator CTAs', () => {
+  it('renders the current Hunter routes with executable Level 30 links and no historical removed-node warnings', () => {
     const ids = [
       'hunter-beast-mastery-starter',
       'hunter-marksmanship-starter',
@@ -122,15 +189,44 @@ describe('prerender generation', () => {
       'hunter-hunter-dungeon-build',
     ]
     for (const id of ids) {
-      const build = hunterClass.builds.find((candidate) => candidate.id === id)!
-      const route = hunterClass.pages.find((candidate) => candidate.slug === build.href.slice(1))!
+      const build = hunterClass.builds.find(candidate => candidate.id === id)!
+      const route = hunterClass.pages.find(candidate => candidate.slug === build.href.slice(1))!
       const html = renderClassPage(hunterClass, route)
+      const href = classBuildPlannerHref(hunterClass, build)
+      const url = new URL(href, 'https://buildforgetools.com')
+      expect(build.level).toBe(30)
+      expect(build.points).toBe(21)
+      expect(url.searchParams.get('level')).toBe('30')
+      expect(url.searchParams.get('dataset')).toBe('1.60.1.70291')
+      const loaded = decodeValidatedPlannerBuild(url.searchParams.get('build')!, hunterClass.talents, { ...hunterClass.plannerConfig, pointCap: 21 })
+      expect(loaded).toEqual(build.build)
+      expect(totalPlannerPoints(loaded!)).toBe(21)
+      expect(html, route.slug).toContain(build.allocation)
+      expect(html, route.slug).toContain(`href="${escapeHtml(href)}"`)
+      expect(html, route.slug).toContain('Inspect Level 30 route in Calculator')
+      expect(html, route.slug).not.toContain('historical route includes an officially removed talent')
+      expect(html, route.slug).not.toContain('href="/hunter?build=#class-calculator"')
+    }
+  })
+
+  it('keeps old removed-node Hunter routes read-only when rendering the explicit 69913 fixture', () => {
+    expect(historicalHunterClass.verifiedBuild).toBe('1.60.1.69913')
+    expect(historicalHunterClass.talents).toEqual(hunterClass.historicalSnapshots![0].talents)
+    for (const id of [
+      'hunter-beast-mastery-starter', 'hunter-marksmanship-starter',
+      'hunter-beast-mastery-leveling', 'hunter-marksmanship-leveling',
+      'hunter-hunter-pet-build', 'hunter-hunter-dungeon-build',
+    ]) {
+      const build = historicalHunterClass.builds.find(candidate => candidate.id === id)!
+      const route = historicalHunterClass.pages.find(candidate => candidate.slug === build.href.slice(1))!
+      const html = renderClassPage(historicalHunterClass, route)
       expect(html, route.slug).toContain(build.allocation)
       expect(html, route.slug).toContain('historical route includes an officially removed talent')
       expect(html, route.slug).toContain('href="/hunter?build=#class-calculator"')
       expect(html, route.slug).not.toMatch(/href="\/hunter\?build=[^"#]/)
     }
   })
+
   it('prerenders every versioned Paladin spellbook entry for crawlers', () => {
     const html = renderSpellbookPrerender()
 
@@ -415,6 +511,6 @@ describe('class page prerender', () => {
     const html = renderClassPage(hunterClassFixture, page)
 
     expect(html).toContain(`href="${hunterClassFixture.plannerPath}?build=`)
-    expect(html).toMatch(/Inspect Level 20 snapshot in Calculator/i)
+    expect(html).toMatch(/Inspect Level 20 route in Calculator/i)
   })
 })

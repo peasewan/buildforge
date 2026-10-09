@@ -7,7 +7,8 @@ import { priestClass } from '../data/classes/priest'
 import { warlockClass } from '../data/classes/warlock'
 import { hunterClass } from '../data/classes/hunter'
 import { shamanClass } from '../data/classes/shaman'
-import type { ClassDefinition } from '../lib/classPage'
+import { validClassBuild, type ClassBuild, type ClassDefinition } from '../lib/classPage'
+import { decodeValidatedPlannerBuild } from '../lib/talentPlanner'
 import {
   DungeonPlanner,
   HealingPlanner,
@@ -23,6 +24,16 @@ function page(def: ClassDefinition, slug: string) {
   const result = def.pages.find((candidate) => candidate.slug === slug)
   if (!result) throw new Error(`Missing fixture page: ${slug}`)
   return result
+}
+
+function expectCurrentRouteLink(anchor: HTMLElement, def: ClassDefinition, build: ClassBuild) {
+  const url = new URL(anchor.getAttribute('href')!, 'https://buildforgetools.com')
+  expect(url.pathname).toBe(def.plannerPath)
+  expect(url.searchParams.get('level')).toBe('30')
+  const allocation = decodeValidatedPlannerBuild(url.searchParams.get('build')!, def.talents, { ...def.plannerConfig, pointCap: 21 })
+  expect(allocation).toEqual(build.build)
+  expect(validClassBuild(def, { ...build, build: allocation! })).toBe(true)
+  expect(Object.values(allocation!).reduce((sum, rank) => sum + rank, 0)).toBe(21)
 }
 
 function expectBuildBeforeGuidance(container: HTMLElement) {
@@ -53,7 +64,8 @@ it('offers a PvP encounter focus and preserves a legal editable route', () => {
   expect(screen.getByRole('button', { name: 'Recovery and exit' }).getAttribute('aria-pressed')).toBe('true')
   const link = screen.getByRole('link', { name: 'Edit in Calculator' })
   expect(new URL(link.getAttribute('href')!, 'https://buildforgetools.com').searchParams.get('build')).toContain('warrior-arms')
-  expect(screen.getByText(/same talent allocation/)).toBeTruthy()
+  expect(screen.getByText(/Ranks that differ from/)).toBeTruthy()
+  expectCurrentRouteLink(link, warriorClass, warriorClass.builds.find(build => build.id === 'warrior-arms-pvp')!)
 })
 
 it('shows both Warrior PvP starting routes on the general page before selecting either one', () => {
@@ -63,8 +75,10 @@ it('shows both Warrior PvP starting routes on the general page before selecting 
   const choices = within(container).getByRole('region', { name: 'Compare PvP routes' })
   expect(within(choices).getByRole('heading', { name: 'Arms Warrior' })).toBeTruthy()
   expect(within(choices).getByRole('heading', { name: 'Fury Warrior' })).toBeTruthy()
-  expect(choices.textContent).toContain('Anger Management')
+  expect(choices.textContent).toContain('Sweeping Strikes')
+  expect(choices.textContent).toContain('Spearing Strike')
   expect(choices.textContent).toContain('Piercing Howl')
+  expect(choices.textContent).toContain('Death Wish')
   expect(within(choices).getByRole('link', { name: 'Review Arms PvP route' }).getAttribute('href')).toBe('/wow-forever-arms-warrior-pvp-build')
   expect(within(choices).getByRole('link', { name: 'Review Fury PvP route' }).getAttribute('href')).toBe('/wow-forever-fury-warrior-pvp-build')
   const picker = screen.getByLabelText('PvP route') as HTMLSelectElement
@@ -96,50 +110,61 @@ it('shows the Hunter PvP build and calculator link before optional encounter pro
     />,
   )
   expectBuildBeforeGuidance(container)
-  expect(screen.getByText('0/0/11')).toBeTruthy()
+  expect(screen.getByText('0/0/21')).toBeTruthy()
   const link = screen.getByRole('link', { name: 'Edit in Calculator' })
   const url = new URL(link.getAttribute('href')!, 'https://buildforgetools.com')
   expect(url.pathname).toBe('/hunter')
-  expect(url.searchParams.get('level')).toBe('20')
+  expect(url.searchParams.get('level')).toBe('30')
   expect(url.searchParams.get('build')).toContain('hunter-')
+  expectCurrentRouteLink(link, hunterClass, hunterClass.builds.find(build => build.id === 'hunter-pvp')!)
   fireEvent.click(screen.getByRole('button', { name: 'Trap window preserves distance' }))
   expect(screen.getByRole('button', { name: 'Trap window preserves distance' }).getAttribute('aria-pressed')).toBe('true')
   expect(container.querySelector('.rs-evidence')?.textContent).toContain('Entrapment')
   expect(container.querySelector('.rs-evidence')?.textContent).not.toContain('Deterrence')
 })
 
-it('compares the three Hunter Level 20 directions without labeling ordinary routes as PvP-tested', () => {
+it('compares three executable Level 30 Hunter directions without labeling general routes as PvP-tested', () => {
   render(<PvpPlanner classDef={hunterClass} page={page(hunterClass, 'wow-forever-hunter-pvp-build')} />)
-  const choices = within(screen.getByRole('region', { name: 'Hunter PvP starting points' }))
-  for (const spec of ['Beast Mastery', 'Marksmanship', 'Survival']) {
-    expect(choices.getByRole('heading', { name: spec })).toBeTruthy()
+  const region = screen.getByRole('region', { name: 'Hunter PvP starting points' })
+  const choices = within(region)
+  for (const spec of hunterClass.branches) {
+    const name = hunterClass.branchNames[spec]
+    const card = choices.getByRole('heading', { name }).closest('article')!
+    const build = hunterClass.builds.find(build => build.spec === spec && build.intent === (spec === 'survival' ? 'pvp' : 'spec'))!
+    expect(card.querySelector('strong')?.textContent).toBe(`${build.allocation} · 21 points`)
+    expectCurrentRouteLink(within(card).getByRole('link', { name: `Try ${name} points in Calculator` }), hunterClass, build)
   }
   expect(choices.getByText(/only Survival has a published PvP testing route/i)).toBeTruthy()
   expect(choices.getByText(/pet uptime under opponent control/i)).toBeTruthy()
   expect(choices.getByText(/ranged attacks under pressure/i)).toBeTruthy()
   expect(choices.getByText(/escape after an opponent reaches melee range/i)).toBeTruthy()
-  const bm = choices.getByRole('link', { name: 'Open blank Hunter Calculator for archived Beast Mastery route' })
-  const bmUrl = new URL(bm.getAttribute('href')!, 'https://buildforgetools.com')
-  expect(bmUrl.pathname).toBe('/hunter')
-  expect(bmUrl.searchParams.has('build')).toBe(true)
-  expect(bmUrl.searchParams.get('build')).toBe('')
-  expect(bmUrl.hash).toBe('#class-calculator')
-  expect(bm.textContent).toMatch(/archived route/i)
+  expect(region.textContent).not.toContain('11 points')
   expect(choices.getByRole('link', { name: 'Hunter Pet Build' }).getAttribute('href')).toBe('/wow-forever-hunter-pet-build')
 })
 
 it.each([
-  [PetPlanner, 'wow-forever-hunter-pet-build', 'Thick Hide'],
-  [DungeonPlanner, 'wow-forever-hunter-dungeon-build', 'Aimed Shot'],
-] as const)('keeps %s as a historical route with a blank calculator CTA', (Planner, slug, removedTalent) => {
-  const { container } = render(<Planner classDef={hunterClass} page={page(hunterClass, slug)} />)
-  const action = container.querySelector('.rs-allocation .ix-action') as HTMLAnchorElement
-  expect(action.getAttribute('href')).toBe('/hunter?build=#class-calculator')
-  expect(action.textContent).toMatch(/archived route/i)
-  if (slug === 'wow-forever-hunter-dungeon-build') fireEvent.click(screen.getByRole('button', { name: 'Close-range or uncontrolled pulls' }))
-  const row = [...container.querySelectorAll('.rs-evidence li')].find((candidate) => candidate.textContent?.includes(removedTalent))
-  expect(row?.textContent).toContain('Removed in official update')
-  expect(row?.querySelector('a[href*="news.blizzard.com"]')).toBeTruthy()
+  [PetPlanner, 'wow-forever-hunter-pet-build', 'Bestial Swiftness', 'Thick Hide'],
+  [DungeonPlanner, 'wow-forever-hunter-dungeon-build', 'Trueshot Aura', 'Aimed Shot'],
+] as const)('loads the reviewed current route for %s and keeps removed nodes out of its rank inventory', (Planner, slug, selectedTalent, removedTalent) => {
+  const route = page(hunterClass, slug)
+  const { container } = render(<Planner classDef={hunterClass} page={route} />)
+  expectCurrentRouteLink(container.querySelector('.rs-allocation .ix-action')!, hunterClass, hunterClass.builds.find(build => build.id === route.primaryBuildId)!)
+  const evidence = container.querySelector('.rs-evidence')!
+  expect(evidence.textContent).toContain(selectedTalent)
+  expect(evidence.textContent).not.toContain(removedTalent)
+  expect(evidence.textContent).toContain('Client build 1.60.1.70291')
+  expect(evidence.textContent).toContain('Rank tooltip: Community verified')
+  if (slug === 'wow-forever-hunter-pet-build') {
+    fireEvent.click(screen.getByRole('button', { name: 'Active pet and hawk combat' }))
+    expect(evidence.textContent).toContain('Summon Hawk')
+    expect(evidence.textContent).toContain('Intimidation')
+    expect(evidence.textContent).not.toContain('Bestial Swiftness')
+  } else {
+    fireEvent.click(screen.getByRole('button', { name: 'Mana or movement limits pulls' }))
+    expect(evidence.textContent).toContain('Efficiency')
+    expect(evidence.textContent).not.toContain('Trueshot Aura')
+    expectCurrentRouteLink(screen.getByRole('link', { name: 'Compare Survival in Calculator' }), hunterClass, hunterClass.builds.find(build => build.spec === 'survival' && build.intent === 'spec')!)
+  }
 })
 
 it('connects Hunter leveling, comparison and pet decisions back to the PvP page', () => {

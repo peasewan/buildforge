@@ -31,7 +31,8 @@ it('shows a source-linked official design note only on the four reviewed Hunter 
     expect(note.getByRole('link', { name: /Blizzard class deep dive/i }).getAttribute('href')).toBe(SOURCE)
     expect(note.getByRole('link', { name: /October 1 Beta notes/i }).getAttribute('href')).toBe(OCTOBER_SOURCE)
     expect(note.getByText(/Sep 30, 2026/)).toBeTruthy()
-    expect(note.getByText(/1\.60\.1\.69913/)).toBeTruthy()
+    expect(note.getByText(/Talent structure was reconciled through/).textContent).toContain('1.60.1.70291')
+    expect(note.queryByText(/Editable talent records still come from client build/i)).toBeNull()
     cleanup()
   }
   for (const page of hunterClass.pages.filter((candidate) => !targetSlugs.includes(candidate.slug))) {
@@ -53,29 +54,32 @@ it('explains the three official Hunter baseline changes on the builds hub', () =
   expect(note.getByText(/no scaling formula/i)).toBeTruthy()
 })
 
-it('keeps the announced BM and MM milestones separate from the 69913 Level 20 calculator', () => {
+it('keeps announced BM and MM milestones separate from editable current routes and Level 20 stages', () => {
   renderHunter('wow-forever-beast-mastery-vs-marksmanship-hunter-leveling')
   const note = officialUpdate()
   expect(note.getByText(/Summon Hawk.*16-point/i)).toBeTruthy()
   expect(note.getByText(/Lone Wolf.*11-point/i)).toBeTruthy()
   expect(note.getByText(/Trueshot Aura.*21-point/i)).toBeTruthy()
-  expect(note.getByText(/Level 20.*11 points/i)).toBeTruthy()
-  expect(note.getByText(/does not verify a Level 30 allocation/i)).toBeTruthy()
+  expect(note.getByText(/Level 20.*eleven points/i)).toBeTruthy()
+  expect(note.getByText(/reviewed.*1\.60\.1\.70291.*21-point Level 30 endpoints/i)).toBeTruthy()
+  expect(note.queryByText(/does not verify a Level 30 allocation/i)).toBeNull()
   expect(note.queryByText(/calculator still loads a reviewed Level 20 plan/i)).toBeNull()
-  expect(note.getByText(/blank calculator.*historical.*removed/i)).toBeTruthy()
+  expect(note.queryByText(/blank calculator.*historical.*removed/i)).toBeNull()
 })
 
-it('labels the old Aimed Shot and Thick Hide route copy as a 69913 snapshot', () => {
+it('uses the current talent tree while retaining explicit historical context for replaced nodes', () => {
   renderHunter('wow-forever-beast-mastery-vs-marksmanship-hunter-leveling')
-  const comparison = within(screen.getByRole('heading', { name: 'Where the points go' }).closest('section')!)
-  expect(comparison.getByText(/1\.60\.1\.69913 client-table route/)).toBeTruthy()
-  expect(comparison.getByText(/Aimed Shot.*baseline at level 20/)).toBeTruthy()
+  const note = officialUpdate()
+  expect(note.getByText(/Aimed Shot is baseline and is not purchased as a talent/i)).toBeTruthy()
+  expect(document.body.textContent).toContain('Trueshot Aura')
+  expect(document.body.textContent).not.toContain('1.60.1.69913 client-table route')
   cleanup()
 
   renderHunter('wow-forever-hunter-pet-build')
   const petRoute = within(screen.getByRole('heading', { name: 'Evaluate the pet-supported loop' }).closest('section')!)
-  expect(petRoute.getByText(/1\.60\.1\.69913 client-table route/)).toBeTruthy()
-  expect(petRoute.getByText(/Thick Hide.*merged into Endurance Training/)).toBeTruthy()
+  expect(petRoute.getByText(/70291 route uses Endurance Training/)).toBeTruthy()
+  expect(petRoute.getByText(/old Thick Hide node is retained only in the historical dataset/)).toBeTruthy()
+  expect(hunterClass.talents.some(talent => talent.name === 'Thick Hide' || talent.name === 'Aimed Shot')).toBe(false)
 })
 
 it('states the official trap rules on Hunter PvP without a crit damage claim', () => {
@@ -84,15 +88,19 @@ it('states the official trap rules on Hunter PvP without a crit damage claim', (
   expect(note.getByText(/traps.*in combat.*30-second cooldown/i)).toBeTruthy()
   expect(note.getByText(/Fire.*Frost.*separate cooldowns/i)).toBeTruthy()
   expect(note.getByText(/Deflection.*1\/2\/3\/4\/5%/i)).toBeTruthy()
-  expect(note.getByText(/official.*Level 30 cap/i)).toBeTruthy()
+  expect(note.getByText(/reviewed.*Survival example spends 21 points at Level 30/i)).toBeTruthy()
+  expect(note.queryByText(/no 21-point Hunter PvP route has been reviewed/i)).toBeNull()
   expect(note.queryByText(/crit damage|critical damage/i)).toBeNull()
 })
 
-it('separates the live Level 30 cap from the reviewed Level 20 Hunter routes', () => {
+it('separates current Level 30 endpoints from eleven-point Level 20 stages', () => {
   renderHunter('wow-forever-beast-mastery-vs-marksmanship-hunter-leveling')
-  expect(document.body.textContent).toMatch(/Level 20 starting snapshot/i)
+  expect(document.body.textContent).toMatch(/21-point Level 30 endpoints/i)
+  expect(document.body.textContent).toMatch(/Level 20 snapshots each spend eleven points/i)
   expect(document.body.textContent).toMatch(/live Beta cap is Level 30/i)
-  expect(document.body.textContent).toMatch(/same pet.*ranged weapon.*target/i)
+  expect(document.body.textContent).toMatch(/same ranged weapon, pet and equipment/i)
+  expect(document.body.textContent).toMatch(/rank text is a licensed community transcription/i)
+  expect(document.body.textContent).toMatch(/point-order rules remain derived assumptions/i)
 })
 
 it('lets readers search and select all 18 official pet families without ranking them', () => {

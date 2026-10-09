@@ -53,8 +53,8 @@ export default function ClassExperiencePage({
   const slots: Record<Slot, ReactNode> = {
     intent: <ClassIntentExperience classDef={def} page={page} />,
     official: def.id === 'hunter' && isHunterOfficialUpdatePage(page.slug)
-      ? <HunterOfficialUpdate slug={page.slug} />
-      : <OfficialClassChanges classId={def.id} />,
+      ? <HunterOfficialUpdate slug={page.slug} reviewedBuild={def.dataReview?.current ? def.verifiedBuild : undefined} />
+      : <OfficialClassChanges classId={def.id} reviewedBuild={def.dataReview?.current ? def.verifiedBuild : undefined} />,
     signature: hasClassSignature(def, page) ? <ClassSignature classDef={def} page={page} /> : null,
     evidence: (
       <details className="ix-evidence">
@@ -138,11 +138,11 @@ export default function ClassExperiencePage({
           <p className="ix-eyebrow">{experienceLabel(page.kind)}</p>
           <h1>{page.h1}</h1>
           <p className="ix-dek">{page.description}</p>
-          {def.contentPolicy === 'intent_tasks_v1' && <p className="ix-note" role="note">Historical {def.verifiedBuild} talent snapshot · Level 20 reference. The live Beta cap is Level 30; a current 21-point allocation has not been verified for this class here. Use the source-linked ranks and progression as a historical comparison.</p>}
+          {def.contentPolicy === 'intent_tasks_v1' && !def.dataReview?.current && <p className="ix-note" role="note">Historical {def.verifiedBuild} talent snapshot · Level 20 reference. The live Beta cap is Level 30; a current 21-point allocation has not been verified for this class here. Use the source-linked ranks and progression as a historical comparison.</p>}
           {plannerPublished && (
             <div className="class-hero-actions">
               <a className="button class-primary" href={calculatorHref}>
-                {archivedBuild ? `Open blank ${def.name} Calculator` : primaryBuild ? 'Inspect Level 20 snapshot in Calculator' : `Open ${def.name} Calculator`}
+                {archivedBuild ? `Open blank ${def.name} Calculator` : primaryBuild ? `Inspect Level ${primaryBuild.level} route in Calculator` : `Open ${def.name} Calculator`}
                 <ArrowRight size={15} aria-hidden="true" />
               </a>
             </div>
@@ -150,9 +150,9 @@ export default function ClassExperiencePage({
           {archivedBuild && <p className="ix-note" role="note">This historical route includes an officially removed talent. Review the old ranks below, then start a blank calculator route.</p>}
           <div className="ix-meta">
             <span>
-              {def.dataReview ? 'CLIENT-TABLE PREVIEW' : def.beta.phaseLabel}
+              {def.dataReview && !def.dataReview.current ? 'CLIENT-TABLE PREVIEW' : def.beta.phaseLabel}
             </span>
-            {(def.dataReview ||
+            {((def.dataReview && !def.dataReview.current) ||
               !def.beta.phaseLabel.includes(def.verifiedBuild)) && (
               <span>Build {def.verifiedBuild}</span>
             )}

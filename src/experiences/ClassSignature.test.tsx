@@ -3,6 +3,10 @@ import { afterEach, expect, it } from 'vitest'
 import { PUBLISHED_CLASSES } from '../data/classes'
 import { hasRemovedTalentInBuild } from '../lib/archivedClassBuild'
 import { publishedClassPages } from '../lib/classPage'
+import { decodeValidatedPlannerBuild } from '../lib/talentPlanner'
+import historicalHunterDataset from '../data/expansion/hunter-1.60.1.69913.json'
+import { createExpansionClass } from '../data/expansion/createClass'
+import { expansionProfiles } from '../data/expansion/profiles'
 import ClassSignature, { hasClassSignature } from './ClassSignature'
 
 afterEach(cleanup)
@@ -64,8 +68,25 @@ for (const item of cases) {
   })
 }
 
-it('does not prefill the removed Thick Hide Hunter signature route', () => {
+it('prefills the complete current Hunter signature route without removed Thick Hide ranks', () => {
   const hunter = PUBLISHED_CLASSES.find((def) => def.id === 'hunter')!
+  const page = hunter.pages.find(candidate => candidate.kind === 'specBuild' && candidate.spec === 'beast-mastery')!
+  const build = hunter.builds.find(build => build.id === page.primaryBuildId)!
+  const { container } = render(<ClassSignature classDef={hunter} page={page} />)
+  const link = container.querySelector('.cs-outro a') as HTMLAnchorElement
+  const destination = new URL(link.getAttribute('href')!, 'https://buildforgetools.com')
+  expect(destination.pathname).toBe('/hunter')
+  expect(destination.searchParams.get('level')).toBe('30')
+  const allocation = decodeValidatedPlannerBuild(destination.searchParams.get('build')!, hunter.talents, { ...hunter.plannerConfig, pointCap: 21 })
+  expect(allocation).toEqual(build.build)
+  expect(Object.values(allocation!).reduce((sum, rank) => sum + rank, 0)).toBe(21)
+  expect(allocation?.['hunter-1395']).toBeUndefined()
+  expect(link.textContent).not.toContain('archived route')
+  expect(container.textContent).toContain('reviewed through 1.60.1.70291')
+})
+
+it('does not prefill removed Thick Hide ranks from an explicit historical Hunter signature fixture', () => {
+  const hunter = createExpansionClass(expansionProfiles.find(profile => profile.id === 'hunter')!, historicalHunterDataset)
   const page = hunter.pages.find((candidate) => candidate.kind === 'specBuild' && candidate.spec === 'beast-mastery')!
   const { container } = render(<ClassSignature classDef={hunter} page={page} />)
   const link = container.querySelector('.cs-outro a') as HTMLAnchorElement

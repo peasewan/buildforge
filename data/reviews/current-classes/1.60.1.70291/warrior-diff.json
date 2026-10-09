@@ -1,0 +1,627 @@
+{
+  "from": "1.60.1.69913",
+  "to": "1.60.1.70291",
+  "summary": {
+    "added": 3,
+    "removed": 4,
+    "moved": 11,
+    "rank_changed": 0,
+    "tooltip_changed": 10,
+    "prerequisite_changed": 4,
+    "unchanged": 26
+  },
+  "added": [
+    {
+      "id": "warrior-fury-lingering-rage",
+      "name": "Lingering Rage",
+      "nodeId": 110857
+    },
+    {
+      "id": "warrior-fury-furious-precision",
+      "name": "Furious Precision",
+      "nodeId": 105953
+    },
+    {
+      "id": "warrior-fury-gore-drinker",
+      "name": "Gore Drinker",
+      "nodeId": 113569
+    }
+  ],
+  "removed": [
+    {
+      "id": "warrior-fury-improved-cleave",
+      "name": "Improved Cleave"
+    },
+    {
+      "id": "warrior-fury-boundless-rage",
+      "name": "Boundless Rage"
+    },
+    {
+      "id": "warrior-fury-precision",
+      "name": "Precision"
+    },
+    {
+      "id": "warrior-protection-toughness",
+      "name": "Toughness"
+    }
+  ],
+  "moved": [
+    {
+      "id": "warrior-fury-improved-berserker-rage",
+      "name": "Improved Berserker Rage",
+      "nodeId": 105978,
+      "before": {
+        "branch": "fury",
+        "row": 6,
+        "column": 1,
+        "requiredTreePoints": 25
+      },
+      "after": {
+        "branch": "fury",
+        "row": 5,
+        "column": 1,
+        "requiredTreePoints": 20
+      }
+    },
+    {
+      "id": "warrior-fury-flurry",
+      "name": "Flurry",
+      "nodeId": 105928,
+      "before": {
+        "branch": "fury",
+        "row": 6,
+        "column": 3,
+        "requiredTreePoints": 25
+      },
+      "after": {
+        "branch": "fury",
+        "row": 6,
+        "column": 2,
+        "requiredTreePoints": 25
+      }
+    },
+    {
+      "id": "warrior-protection-improved-bloodrage",
+      "name": "Improved Bloodrage",
+      "nodeId": 105974,
+      "before": {
+        "branch": "protection",
+        "row": 2,
+        "column": 1,
+        "requiredTreePoints": 5
+      },
+      "after": {
+        "branch": "protection",
+        "row": 1,
+        "column": 1,
+        "requiredTreePoints": 0
+      }
+    },
+    {
+      "id": "warrior-fury-iron-will",
+      "name": "Iron Will",
+      "nodeId": 113570,
+      "before": {
+        "branch": "fury",
+        "row": 2,
+        "column": 2,
+        "requiredTreePoints": 5
+      },
+      "after": {
+        "branch": "protection",
+        "row": 1,
+        "column": 3,
+        "requiredTreePoints": 0
+      }
+    },
+    {
+      "id": "warrior-protection-anticipation",
+      "name": "Anticipation",
+      "nodeId": 105975,
+      "before": {
+        "branch": "protection",
+        "row": 1,
+        "column": 3,
+        "requiredTreePoints": 0
+      },
+      "after": {
+        "branch": "protection",
+        "row": 2,
+        "column": 1,
+        "requiredTreePoints": 5
+      }
+    },
+    {
+      "id": "warrior-protection-improved-revenge",
+      "name": "Improved Revenge",
+      "nodeId": 105969,
+      "before": {
+        "branch": "protection",
+        "row": 3,
+        "column": 3,
+        "requiredTreePoints": 10
+      },
+      "after": {
+        "branch": "protection",
+        "row": 2,
+        "column": 3,
+        "requiredTreePoints": 5
+      }
+    },
+    {
+      "id": "warrior-protection-improved-disarm",
+      "name": "Improved Disarm",
+      "nodeId": 105967,
+      "before": {
+        "branch": "protection",
+        "row": 4,
+        "column": 2,
+        "requiredTreePoints": 15
+      },
+      "after": {
+        "branch": "protection",
+        "row": 3,
+        "column": 3,
+        "requiredTreePoints": 10
+      }
+    },
+    {
+      "id": "warrior-protection-vanguard",
+      "name": "Vanguard",
+      "nodeId": 105966,
+      "before": {
+        "branch": "protection",
+        "row": 4,
+        "column": 3,
+        "requiredTreePoints": 15
+      },
+      "after": {
+        "branch": "protection",
+        "row": 4,
+        "column": 2,
+        "requiredTreePoints": 15
+      }
+    },
+    {
+      "id": "warrior-protection-improved-shield-bash",
+      "name": "Improved Shield Bash",
+      "nodeId": 105963,
+      "before": {
+        "branch": "protection",
+        "row": 5,
+        "column": 3,
+        "requiredTreePoints": 20
+      },
+      "after": {
+        "branch": "protection",
+        "row": 4,
+        "column": 3,
+        "requiredTreePoints": 15
+      }
+    },
+    {
+      "id": "warrior-protection-focused-rage",
+      "name": "Focused Rage",
+      "nodeId": 105961,
+      "before": {
+        "branch": "protection",
+        "row": 6,
+        "column": 3,
+        "requiredTreePoints": 25
+      },
+      "after": {
+        "branch": "protection",
+        "row": 5,
+        "column": 3,
+        "requiredTreePoints": 20
+      }
+    },
+    {
+      "id": "warrior-protection-bastion",
+      "name": "Bastion",
+      "nodeId": 105962,
+      "before": {
+        "branch": "protection",
+        "row": 5,
+        "column": 4,
+        "requiredTreePoints": 20
+      },
+      "after": {
+        "branch": "protection",
+        "row": 6,
+        "column": 3,
+        "requiredTreePoints": 25
+      }
+    }
+  ],
+  "rank_changed": [],
+  "tooltip_changed": [
+    {
+      "id": "warrior-arms-bloodthrill",
+      "name": "Bloodthrill",
+      "nodeId": 110524,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Your melee attacks against targets afflicted by your Rend have a 2% chance to activate your Overpower ability for 1 attack on your current target. Lasts 6 sec.",
+          "after": "Your Main Hand melee attacks against enemies afflicted by your Rend have a 4% chance to allow the use of your Overpower ability on the target. Lasts 6 sec."
+        },
+        {
+          "rank": 2,
+          "before": "Your melee attacks against targets afflicted by your Rend have a 4% chance to activate your Overpower ability for 1 attack on your current target. Lasts 6 sec.",
+          "after": "Your Main Hand melee attacks against enemies afflicted by your Rend have a 8% chance to allow the use of your Overpower ability on the target. Lasts 6 sec."
+        },
+        {
+          "rank": 3,
+          "before": "Your melee attacks against targets afflicted by your Rend have a 6% chance to activate your Overpower ability for 1 attack on your current target. Lasts 6 sec.",
+          "after": "Your Main Hand melee attacks against enemies afflicted by your Rend have a 12% chance to allow the use of your Overpower ability on the target. Lasts 6 sec."
+        },
+        {
+          "rank": 4,
+          "before": "Your melee attacks against targets afflicted by your Rend have a 8% chance to activate your Overpower ability for 1 attack on your current target. Lasts 6 sec.",
+          "after": "Your Main Hand melee attacks against enemies afflicted by your Rend have a 16% chance to allow the use of your Overpower ability on the target. Lasts 6 sec."
+        },
+        {
+          "rank": 5,
+          "before": "Your melee attacks against targets afflicted by your Rend have a 10% chance to activate your Overpower ability for 1 attack on your current target. Lasts 6 sec.",
+          "after": "Your Main Hand melee attacks against enemies afflicted by your Rend have a 20% chance to allow the use of your Overpower ability on the target. Lasts 6 sec."
+        }
+      ]
+    },
+    {
+      "id": "warrior-arms-improved-slam",
+      "name": "Improved Slam",
+      "nodeId": 110858,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Reduces the global cooldown and cast time of your Slam ability by 0.25 sec. In addition, Slam no longer interrupts your melee swing time.",
+          "after": "Reduces the global cooldown and cast time of your Slam ability by 0.25 sec. In addition, Slam no longer interrupts or delays your melee swing and Slam's cooldown is reduced by 3.0 sec."
+        },
+        {
+          "rank": 2,
+          "before": "Reduces the global cooldown and cast time of your Slam ability by 0.50 sec. In addition, Slam no longer interrupts your melee swing time.",
+          "after": "Reduces the global cooldown and cast time of your Slam ability by 0.50 sec. In addition, Slam no longer interrupts or delays your melee swing and Slam's cooldown is reduced by 3.0 sec."
+        }
+      ]
+    },
+    {
+      "id": "warrior-fury-booming-voice",
+      "name": "Booming Voice",
+      "nodeId": 105938,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Increases the radius of your Battle Shout and Demoralizing Shout abilities by 10%.",
+          "after": "Increases the area of effect of your Shouts by 10% and reduces their Rage cost by 5%."
+        },
+        {
+          "rank": 2,
+          "before": "Increases the radius of your Battle Shout and Demoralizing Shout abilities by 20%.",
+          "after": "Increases the area of effect of your Shouts by 20% and reduces their Rage cost by 10%."
+        },
+        {
+          "rank": 3,
+          "before": "Increases the radius of your Battle Shout and Demoralizing Shout abilities by 30%.",
+          "after": "Increases the area of effect of your Shouts by 30% and reduces their Rage cost by 15%."
+        },
+        {
+          "rank": 4,
+          "before": "Increases the radius of your Battle Shout and Demoralizing Shout abilities by 40%.",
+          "after": "Increases the area of effect of your Shouts by 40% and reduces their Rage cost by 20%."
+        },
+        {
+          "rank": 5,
+          "before": "Increases the radius of your Battle Shout and Demoralizing Shout abilities by 50%.",
+          "after": "Increases the area of effect of your Shouts by 50% and reduces their Rage cost by 25%."
+        }
+      ]
+    },
+    {
+      "id": "warrior-fury-unbridled-wrath",
+      "name": "Unbridled Wrath",
+      "nodeId": 105937,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Gives you a 12% chance to generate 1 additional Rage when you deal melee damage with a weapon. This effect is increased to 2 Rage for two-handed weapons.",
+          "after": "Gives you a 12% chance to generate 1 additional Rage when you deal melee damage with a weapon."
+        },
+        {
+          "rank": 2,
+          "before": "Gives you a 24% chance to generate 1 additional Rage when you deal melee damage with a weapon. This effect is increased to 2 Rage for two-handed weapons.",
+          "after": "Gives you a 24% chance to generate 1 additional Rage when you deal melee damage with a weapon."
+        },
+        {
+          "rank": 3,
+          "before": "Gives you a 36% chance to generate 1 additional Rage when you deal melee damage with a weapon. This effect is increased to 2 Rage for two-handed weapons.",
+          "after": "Gives you a 36% chance to generate 1 additional Rage when you deal melee damage with a weapon."
+        },
+        {
+          "rank": 4,
+          "before": "Gives you a 48% chance to generate 1 additional Rage when you deal melee damage with a weapon. This effect is increased to 2 Rage for two-handed weapons.",
+          "after": "Gives you a 48% chance to generate 1 additional Rage when you deal melee damage with a weapon."
+        },
+        {
+          "rank": 5,
+          "before": "Gives you a 60% chance to generate 1 additional Rage when you deal melee damage with a weapon. This effect is increased to 2 Rage for two-handed weapons.",
+          "after": "Gives you a 60% chance to generate 1 additional Rage when you deal melee damage with a weapon."
+        }
+      ]
+    },
+    {
+      "id": "warrior-fury-piercing-howl",
+      "name": "Piercing Howl",
+      "nodeId": 105935,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Causes all nearby enemies to be Dazed, reducing movement speed by 50% for 6 sec.",
+          "after": "Causes all enemies within 10 yds to be Dazed, reducing movement speed by 50% for 6 sec."
+        }
+      ]
+    },
+    {
+      "id": "warrior-fury-blood-craze",
+      "name": "Blood Craze",
+      "nodeId": 105934,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Regenerates 1% of your total Health over 6 sec after being the victim of a critical strike, dealing damage with Bloodthirst, or suffering more than 20% of your maximum Health from a single attack.",
+          "after": "Regenerates 1% of your total Health over 6 sec after being the victim of a critical strike or suffering more than 20% of your maximum Health from a single attack."
+        },
+        {
+          "rank": 2,
+          "before": "Regenerates 2% of your total Health over 6 sec after being the victim of a critical strike, dealing damage with Bloodthirst, or suffering more than 20% of your maximum Health from a single attack.",
+          "after": "Regenerates 2% of your total Health over 6 sec after being the victim of a critical strike or suffering more than 20% of your maximum Health from a single attack."
+        },
+        {
+          "rank": 3,
+          "before": "Regenerates 3% of your total Health over 6 sec after being the victim of a critical strike, dealing damage with Bloodthirst, or suffering more than 20% of your maximum Health from a single attack.",
+          "after": "Regenerates 3% of your total Health over 6 sec after being the victim of a critical strike or suffering more than 20% of your maximum Health from a single attack."
+        }
+      ]
+    },
+    {
+      "id": "warrior-fury-dual-wield-specialization",
+      "name": "Dual Wield Specialization",
+      "nodeId": 105933,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Increases your off-hand weapon damage by 5%, off-hand Rage generation by 20%, and chance to hit with off-hand attacks by 2%.",
+          "after": "Increases the damage done by your off-hand weapon by 5% and the Rage generated by your off-hand attacks by 10%."
+        },
+        {
+          "rank": 2,
+          "before": "Increases your off-hand weapon damage by 10%, off-hand Rage generation by 40%, and chance to hit with off-hand attacks by 4%.",
+          "after": "Increases the damage done by your off-hand weapon by 10% and the Rage generated by your off-hand attacks by 20%."
+        },
+        {
+          "rank": 3,
+          "before": "Increases your off-hand weapon damage by 15%, off-hand Rage generation by 60%, and chance to hit with off-hand attacks by 6%.",
+          "after": "Increases the damage done by your off-hand weapon by 15% and the Rage generated by your off-hand attacks by 30%."
+        },
+        {
+          "rank": 4,
+          "before": "Increases your off-hand weapon damage by 20%, off-hand Rage generation by 80%, and chance to hit with off-hand attacks by 8%.",
+          "after": "Increases the damage done by your off-hand weapon by 20% and the Rage generated by your off-hand attacks by 40%."
+        },
+        {
+          "rank": 5,
+          "before": "Increases your off-hand weapon damage by 25%, off-hand Rage generation by 100%, and chance to hit with off-hand attacks by 10%.",
+          "after": "Increases the damage done by your off-hand weapon by 25% and the Rage generated by your off-hand attacks by 50%."
+        }
+      ]
+    },
+    {
+      "id": "warrior-fury-raging-blows",
+      "name": "Raging Blows",
+      "nodeId": 105977,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Causes your Whirlwind to also strike with your off-hand weapon, and reduces the Rage cost of your Cleave ability by 2.",
+          "after": "Reduces the Rage cost of your Cleave and Whirlwind abilities by 3."
+        }
+      ]
+    },
+    {
+      "id": "warrior-fury-bloodthirst",
+      "name": "Bloodthirst",
+      "nodeId": 105930,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Instantly attack the target causing damage equal to 35% of your Attack Power plus 30 and increasing your movement speed by 10% for 10 sec.",
+          "after": "Instantly attack the target causing damage equal to 45% of your Attack Power plus 30 and increasing your movement speed by 10% for 10 sec."
+        }
+      ]
+    },
+    {
+      "id": "warrior-protection-shield-slam",
+      "name": "Shield Slam",
+      "nodeId": 105959,
+      "ranks": [
+        {
+          "rank": 1,
+          "before": "Slam the target with your shield, causing 430 damage, increased by your Block Value, and has a 50% chance of dispelling 1 magic effect on the target. Causes a very high amount of threat.",
+          "after": "Slam the target with your shield, causing 421 to 439 damage, increased by your Block Value, and has a 50% chance of dispelling 1 magic effect on the target. Causes a very high amount of threat."
+        }
+      ]
+    }
+  ],
+  "prerequisite_changed": [
+    {
+      "id": "warrior-arms-impale",
+      "name": "Impale",
+      "nodeId": 105947,
+      "before": [],
+      "after": [
+        "warrior-arms-deep-wounds"
+      ]
+    },
+    {
+      "id": "warrior-fury-flurry",
+      "name": "Flurry",
+      "nodeId": 105928,
+      "before": [
+        "warrior-fury-enrage"
+      ],
+      "after": [
+        "warrior-fury-death-wish"
+      ]
+    },
+    {
+      "id": "warrior-fury-bloodthirst",
+      "name": "Bloodthirst",
+      "nodeId": 105930,
+      "before": [
+        "warrior-fury-death-wish"
+      ],
+      "after": []
+    },
+    {
+      "id": "warrior-protection-last-stand",
+      "name": "Last Stand",
+      "nodeId": 105970,
+      "before": [
+        "warrior-protection-improved-bloodrage"
+      ],
+      "after": []
+    }
+  ],
+  "unchanged": [
+    {
+      "id": "warrior-arms-improved-heroic-strike",
+      "name": "Improved Heroic Strike",
+      "nodeId": 105958
+    },
+    {
+      "id": "warrior-arms-deflection",
+      "name": "Deflection",
+      "nodeId": 105957
+    },
+    {
+      "id": "warrior-arms-improved-rend",
+      "name": "Improved Rend",
+      "nodeId": 105956
+    },
+    {
+      "id": "warrior-arms-improved-charge",
+      "name": "Improved Charge",
+      "nodeId": 105955
+    },
+    {
+      "id": "warrior-arms-improved-tactical-mastery",
+      "name": "Improved Tactical Mastery",
+      "nodeId": 105954
+    },
+    {
+      "id": "warrior-arms-improved-overpower",
+      "name": "Improved Overpower",
+      "nodeId": 105952
+    },
+    {
+      "id": "warrior-arms-anger-management",
+      "name": "Anger Management",
+      "nodeId": 105951
+    },
+    {
+      "id": "warrior-arms-deep-wounds",
+      "name": "Deep Wounds",
+      "nodeId": 105950
+    },
+    {
+      "id": "warrior-arms-spearing-strike",
+      "name": "Spearing Strike",
+      "nodeId": 105949
+    },
+    {
+      "id": "warrior-arms-two-handed-weapon-specialization",
+      "name": "Two-Handed Weapon Specialization",
+      "nodeId": 105948
+    },
+    {
+      "id": "warrior-arms-sweeping-strikes",
+      "name": "Sweeping Strikes",
+      "nodeId": 105945
+    },
+    {
+      "id": "warrior-arms-weaponmaster",
+      "name": "Weaponmaster",
+      "nodeId": 105944
+    },
+    {
+      "id": "warrior-arms-improved-hamstring",
+      "name": "Improved Hamstring",
+      "nodeId": 105942
+    },
+    {
+      "id": "warrior-arms-mortal-strike",
+      "name": "Mortal Strike",
+      "nodeId": 105941
+    },
+    {
+      "id": "warrior-fury-cruelty",
+      "name": "Cruelty",
+      "nodeId": 105939
+    },
+    {
+      "id": "warrior-fury-enrage",
+      "name": "Enrage",
+      "nodeId": 105931
+    },
+    {
+      "id": "warrior-fury-improved-execute",
+      "name": "Improved Execute",
+      "nodeId": 105932
+    },
+    {
+      "id": "warrior-fury-death-wish",
+      "name": "Death Wish",
+      "nodeId": 105927
+    },
+    {
+      "id": "warrior-fury-improved-intercept",
+      "name": "Improved Intercept",
+      "nodeId": 105926
+    },
+    {
+      "id": "warrior-protection-shield-specialization",
+      "name": "Shield Specialization",
+      "nodeId": 105976
+    },
+    {
+      "id": "warrior-protection-improved-thunder-clap",
+      "name": "Improved Thunder Clap",
+      "nodeId": 105972
+    },
+    {
+      "id": "warrior-protection-master-of-defense",
+      "name": "Master of Defense",
+      "nodeId": 105971
+    },
+    {
+      "id": "warrior-protection-defiance",
+      "name": "Defiance",
+      "nodeId": 110856
+    },
+    {
+      "id": "warrior-protection-improved-sunder-armor",
+      "name": "Improved Sunder Armor",
+      "nodeId": 105968
+    },
+    {
+      "id": "warrior-protection-improved-shield-wall",
+      "name": "Improved Shield Wall",
+      "nodeId": 105964
+    },
+    {
+      "id": "warrior-protection-concussion-blow",
+      "name": "Concussion Blow",
+      "nodeId": 105965
+    }
+  ]
+}

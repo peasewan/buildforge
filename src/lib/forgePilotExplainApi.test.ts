@@ -81,7 +81,7 @@ describe('ForgePilot explanation API', () => {
   it('accepts an unknown legacy source version without guessing which patch changed it', async () => {
     vi.stubEnv('DEEPSEEK_API_KEY', '')
     const response = await handler.fetch(request({
-      classId: 'hunter',
+      classId: 'druid',
       sourceDataVersion: 'unknown',
       currentDataVersion: 'WoW Forever Beta 1.60.1.69913',
     }))
@@ -96,12 +96,93 @@ describe('ForgePilot explanation API', () => {
     vi.stubEnv('DEEPSEEK_API_KEY', '')
     const classVersion = 'WoW Forever Beta 1.60.1.69913'
     const response = await handler.fetch(request({
-      classId: 'hunter',
+      classId: 'druid',
       sourceDataVersion: classVersion,
       currentDataVersion: classVersion,
     }))
     expect(response.status).toBe(200)
     expect((await response.json()).status).toBe('same_dataset')
+  })
+
+  it.each([
+    { classId: 'hunter', version: 'WoW Forever Beta 1.60.1.70291', nodes: 50, ranks: 148 },
+    { classId: 'warrior', version: 'wow_forever_beta_1.60.1.70291', nodes: 52, ranks: 150 },
+  ])('reports reviewed current $classId structure separately from community rank text and derived rules', async ({ classId, version, nodes, ranks }) => {
+    vi.stubEnv('DEEPSEEK_API_KEY', '')
+    const response = await handler.fetch(request({ classId, sourceDataVersion: version, currentDataVersion: version }))
+    expect(response.status).toBe(200)
+    const body = await response.json()
+    expect(body).toMatchObject({
+      status: 'same_dataset', patchStatus: 'structure_reviewed', generatedBy: 'fallback',
+      sourceUrl: 'https://wago.tools/db2/TraitNode/csv?build=1.60.1.70291',
+      rankTextSourceUrl: 'https://talentsforever.com/data.json',
+      rankTextLicenseUrl: 'https://creativecommons.org/licenses/by/4.0/',
+    })
+    expect(body.explanation).toContain(String(nodes))
+    expect(body.explanation).toContain(String(ranks))
+    expect(body.explanation).toContain('community evidence')
+    expect(body.explanation).toContain('prerequisite-rank rules are derived planning assumptions')
+    expect(body.explanation).toContain('Matching versions do not prove in-game compatibility')
+    expect(body.explanation).not.toContain('70009 client talent dataset is pending')
+    if (classId === 'hunter') {
+      expect(body.explanation).toContain('community-reviewed membership')
+      expect(body.explanation).toContain('two off-grid records')
+      expect(body.explanation).toContain('Intimidation')
+    }
+  })
+
+  it.each([
+    { classId: 'hunter', version: 'WoW Forever Beta 1.60.1.70291', historical: 'WoW Forever Beta 1.60.1.69913' },
+    { classId: 'warrior', version: 'wow_forever_beta_1.60.1.70291', historical: 'wow_forever_beta_1.60.1.69913' },
+  ])('preserves known 69913 and unknown $classId saves as needing review', async ({ classId, version, historical }) => {
+    vi.stubEnv('DEEPSEEK_API_KEY', '')
+    for (const sourceDataVersion of [historical, 'unknown']) {
+      const response = await handler.fetch(request({ classId, sourceDataVersion, currentDataVersion: version }))
+      expect(response.status).toBe(200)
+      const body = await response.json()
+      expect(body.status).toBe('needs_review')
+      expect(body.explanation).toContain('review against the currently published 70291 dataset')
+      expect(body.explanation).toContain('Historical saved allocations need a removed-talent and changed-link review')
+      expect(body.explanation).not.toContain('allocation is invalid')
+    }
+  })
+
+  it('rejects unreviewed or cross-class source versions before requesting model facts', async () => {
+    vi.stubEnv('DEEPSEEK_API_KEY', 'test-key')
+    const upstream = vi.fn()
+    vi.stubGlobal('fetch', upstream)
+    for (const input of [
+      { classId: 'hunter', sourceDataVersion: 'wow_forever_beta_1.60.1.69913', currentDataVersion: 'WoW Forever Beta 1.60.1.70291' },
+      { classId: 'hunter', sourceDataVersion: 'WoW Forever Beta 1.60.1.70009', currentDataVersion: 'WoW Forever Beta 1.60.1.70291' },
+      { classId: 'hunter', sourceDataVersion: 'WoW Forever Beta 1.60.1.70245', currentDataVersion: 'WoW Forever Beta 1.60.1.70291' },
+      { classId: 'warrior', sourceDataVersion: 'WoW Forever Beta 1.60.1.69913', currentDataVersion: 'wow_forever_beta_1.60.1.70291' },
+      { classId: 'warrior', sourceDataVersion: 'wow_forever_beta_1.60.1.69893', currentDataVersion: 'wow_forever_beta_1.60.1.70291' },
+      { classId: 'paladin', sourceDataVersion: 'wow_forever_beta_1.60.1.70291', currentDataVersion },
+      { classId: 'druid', sourceDataVersion: 'WoW Forever Beta 1.60.1.70291', currentDataVersion: 'WoW Forever Beta 1.60.1.69913' },
+      { classId: 'warrior', sourceDataVersion: 'wow_forever_beta_1.60.1.69913', currentDataVersion: 'wow_forever_beta_1.60.1.69913' },
+      { classId: 'hunter', sourceDataVersion: 'WoW Forever Beta 1.60.1.69913', currentDataVersion: 'WoW Forever Beta 1.60.1.69913' },
+    ]) {
+      expect((await handler.fetch(request(input))).status, JSON.stringify(input)).toBe(400)
+    }
+    expect(upstream).not.toHaveBeenCalled()
+  })
+
+  it('dates selected historical Hunter notes rather than presenting them as the current 70291 review', async () => {
+    vi.stubEnv('DEEPSEEK_API_KEY', 'test-key')
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue(new Response(JSON.stringify({
+      choices: [{ finish_reason: 'stop', message: { content: '{"factIndexes":[0]}' } }],
+    }), { status: 200 })))
+    const response = await handler.fetch(request({
+      classId: 'hunter', sourceDataVersion: 'WoW Forever Beta 1.60.1.69913', currentDataVersion: 'WoW Forever Beta 1.60.1.70291',
+    }))
+    expect(response.status).toBe(200)
+    const body = await response.json()
+    expect(body.status).toBe('needs_review')
+    expect(body.generatedBy).toBe('deepseek')
+    expect(body.officialNotesSourceUrl).toBe('https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-september-24/2360696')
+    expect(body.explanation).toContain('Historical September 24 official hunter notes')
+    expect(body.explanation).toContain('Strider Kick grants 30% movement speed')
+    expect(body.explanation).toContain('do not prove that the saved allocation uses an affected talent')
   })
 
   it('rejects arbitrary prompt or facts and refuses to treat announced 70009 as a published dataset', async () => {

@@ -123,7 +123,12 @@ describe('ClassDocumentPage renders any class from ClassDefinition', () => {
 
     expect(container.querySelectorAll('.class-build-groups article')).toHaveLength(3)
     expect(container.querySelectorAll('.class-build-icon')).toHaveLength(3)
-    expect(screen.getByText('Arms Warrior Build (Level 20)')).toBeTruthy()
+    for (const id of page.relatedBuildIds) {
+      const build = warriorClass.builds.find(candidate => candidate.id === id)!
+      expect(build.level).toBe(20)
+      expect(build.points).toBe(11)
+      expect(screen.getByText(build.title)).toBeTruthy()
+    }
     expect(screen.queryByText('Arms Warrior PvP Build (Level 20)')).toBeNull()
   })
 

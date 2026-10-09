@@ -27,6 +27,8 @@ export type ClassPageKind =
   | 'totem'
 
 export type FieldEvidenceKey =
+  | 'nodeId'
+  | 'spellId'
   | 'name'
   | 'branch'
   | 'row'
@@ -176,7 +178,8 @@ export interface ClassDefinition<B extends string = string> {
   verifiedBuild: string
   talentCount: number
   contentPolicy?: 'intent_tasks_v1'
-  dataReview?: { ready: boolean; notice: string }
+  dataReview?: { ready: boolean; notice: string; current?: boolean }
+  historicalSnapshots?: { clientBuild: string; dataVersion: string; storageKey?: string; talents: ClassTalent<B>[] }[]
   beta: { phaseLabel: string; levelCap: number; pointsAtCap: number }
   plannerModes: { level: PlannerLevel; points: number; label: string }[]
   talents: ClassTalent<B>[]
@@ -341,8 +344,9 @@ export function publishedClassPages<B extends string>(classes: ClassDefinition<B
   })
 }
 
-export function classPlannerHref(classDef: Pick<ClassDefinition, 'plannerPath'>, buildCode: string, level: PlannerLevel): string {
+export function classPlannerHref(classDef: Pick<ClassDefinition, 'plannerPath'> & Partial<Pick<ClassDefinition, 'dataReview' | 'verifiedBuild'>>, buildCode: string, level: PlannerLevel): string {
   const params = new URLSearchParams({ build: buildCode, level: String(level) })
+  if (classDef.dataReview?.current && classDef.verifiedBuild) params.set('dataset', classDef.verifiedBuild)
   return `${classDef.plannerPath}?${params.toString()}`
 }
 
