@@ -17,7 +17,7 @@ const classLinks: FooterLink[] = publishedClassCatalogues().map(({ classDef, pag
 }))
 
 const defaultLinks: FooterLink[] = [
-  { href: '/emberville', label: 'Emberville Planner' },
+  { href: '/emberville', label: 'Emberville Notebook' },
   { href: '/warrior', label: 'Warrior Calculator' },
   { href: '/wow-forever-warrior-builds', label: 'Warrior Builds' },
   { href: '/wow-forever-paladin-builds', label: 'Paladin Builds' },

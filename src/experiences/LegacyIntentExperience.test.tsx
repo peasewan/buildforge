@@ -34,7 +34,9 @@ describe('Emberville and trust intent tasks', () => {
     fireEvent.change(screen.getByLabelText('Second direction'), { target: { value: 'Hybrid' } })
     expect(screen.getByRole('status').textContent).toContain('Same direction selected')
     expect(screen.getByText(/Exact class, weapon and skill combinations remain unknown/)).toBeTruthy()
-    expect(screen.getByRole('link', { name: 'Record this direction in the planner' }).getAttribute('href')).toBe('#planner')
+    expect(screen.getByText(/choose reviewed class and weapon records in the notebook/)).toBeTruthy()
+    expect(screen.queryByText(/records in the planner/)).toBeNull()
+    expect(screen.getByRole('link', { name: 'Record this direction in the notebook' }).getAttribute('href')).toBe('#planner')
   })
 
   it('switches class evidence between distinct supported systems', () => {
@@ -61,6 +63,8 @@ describe('Emberville and trust intent tasks', () => {
     const nav = within(task).getByRole('navigation', { name: 'Emberville planning tasks' })
     expect(within(nav).getByRole('link', { name: 'Compare two combat directions' }).getAttribute('href')).toBe('#direction-compare')
     expect(document.getElementById('direction-compare')).toBeTruthy()
+    expect(within(task).getByRole('link', { name: 'Record this direction in the notebook' }).getAttribute('href')).toBe('#planner')
+    expect(document.getElementById('planner')).not.toBeNull()
   })
 
   it('tailors report instructions and opens the existing private form', () => {

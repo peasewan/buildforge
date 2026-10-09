@@ -1,0 +1,35 @@
+{
+  "reason": "Owner-authorized October 9 AdSense content corrections. The only Paladin body change from verified commit a3c8ff7 is the shared footer link label Emberville Planner → Emberville Notebook at the same /emberville URL. Exact root replacement is checked against all 22 pre-change rendered pages; pages without this label remain unchanged. No Paladin title, H1, description, canonical, robots, structured data, links or content/data version changes are accepted by this amendment.",
+  "pages": {
+    "/paladin": {
+      "rootSha256": "2406cadd4490b4b5286e43fa08707f026d01a61139648cceccbdf732c9730242"
+    },
+    "/wow-forever-paladin-talents": {
+      "rootSha256": "6b6698f1034f434c64f1eee4ab88bd998467b549f0ba71c957fd6fa365fe75f3"
+    },
+    "/wow-forever-paladin-leveling-build": {
+      "rootSha256": "658f9a847c989bab2cbb42f1d078e186529a469b9c544e0f76349bd554426a60"
+    },
+    "/wow-forever-paladin-pvp-build": {
+      "rootSha256": "04eaf2cf3292bd14042961f5c3bfe96163db69a299a4e8726806409c9c9aae7e"
+    },
+    "/wow-forever-paladin-raid-build": {
+      "rootSha256": "e1298383870fbe2b4ab73785941b7c71401d4202b51fa0c6c0db29e494dd0e7c"
+    },
+    "/wow-forever-protection-paladin-dungeon-build": {
+      "rootSha256": "faa16bd13967b94cfb31aba5ec624524ff85caa9f217a241c822e8b52d7030e5"
+    },
+    "/wow-forever-protection-paladin-leveling-build": {
+      "rootSha256": "cd5e2c8e895aa612b7636d9b35199cafd240580025853fb4044c000494a68287"
+    },
+    "/wow-forever-protection-paladin-pvp-build": {
+      "rootSha256": "e8ef8ac4fd617f04d394ec56b0c92964ccaa0a06ffdde7f3097f26772a9eece0"
+    },
+    "/wow-forever-retribution-paladin-pvp-build": {
+      "rootSha256": "80d24746cc5449ec942c8f624ee75533747d89e0d910b15e451cbcbac837c712"
+    },
+    "/wow-forever-holy-paladin-pvp-build": {
+      "rootSha256": "91182d02acb56d7c682b2601d95374db116b5cebe23044c2f49fdd32d61f5e62"
+    }
+  }
+}

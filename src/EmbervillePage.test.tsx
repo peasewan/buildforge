@@ -7,17 +7,21 @@ describe('Emberville public pages', () => {
   afterEach(() => cleanup())
 
   it.each([
-    ['planner', 'Emberville Build Planner'], ['classes', 'Emberville Classes'], ['inheritance', 'Emberville Skill Inheritance Guide'],
+    ['planner', 'Emberville Preview Notebook'], ['classes', 'Emberville Classes'], ['inheritance', 'Emberville Skill Inheritance Guide'],
   ] as const)('renders %s with one clear H1 and sources', (id, heading) => {
     const { container } = render(<EmbervillePage pageId={id} />)
     expect(screen.getByRole('heading', { level: 1, name: heading })).toBeTruthy()
     expect(container.querySelectorAll('h1')).toHaveLength(1)
+    const sourceReview = container.querySelector('.ember-hero .ember-status')
+    expect(sourceReview?.textContent).toContain('Source reviewed Sep 27, 2026')
+    expect(sourceReview?.textContent).not.toContain('Updated')
+    expect(sourceReview?.textContent).not.toContain('Oct 9, 2026')
     expect(screen.getByRole('link', { name: 'Official Steam page' })).toBeTruthy()
     expect(container.textContent).not.toContain('Swordsman')
   })
 
   it.each([
-    ['planner', 'How planner data becomes available'],
+    ['planner', 'How notebook evidence is reviewed'],
     ['classes', 'Class, weapon, and progression data status'],
     ['inheritance', 'Future compatibility matrix'],
   ] as const)('renders unique %s editorial content', (id, heading) => {
@@ -30,7 +34,18 @@ describe('Emberville public pages', () => {
     expect(screen.getByRole('heading', { name: 'Explore a playstyle' })).toBeTruthy()
     expect(screen.getByRole('heading', { name: 'Hybrid direction' })).toBeTruthy()
     expect(screen.getByRole('heading', { name: 'Build planning principles' })).toBeTruthy()
-    expect(screen.getByRole('heading', { name: 'From direction to a testable build' })).toBeTruthy()
+    expect(screen.getByRole('heading', { name: 'Turn a direction into questions to test' })).toBeTruthy()
+  })
+
+  it('names the notebook in Emberville navigation without promising build validation', () => {
+    const { container } = render(<EmbervillePage pageId="planner" />)
+    const nav = screen.getByRole('navigation', { name: 'Emberville' })
+    expect(within(nav).getByRole('link', { name: 'Preview notebook' }).getAttribute('href')).toBe('/emberville')
+    expect(screen.getByRole('heading', { name: 'Keep a sourced planning notebook' })).toBeTruthy()
+    expect(container.textContent).not.toContain('Emberville Build Planner')
+    expect(container.textContent).toContain('cannot validate game builds or inheritance compatibility')
+    expect(container.querySelector('.ember-footer')?.textContent).toContain('Preview notes and source guides for Emberville.')
+    expect(container.querySelector('.ember-footer')?.textContent).not.toContain('skill calculators')
   })
 
   it('shows source-backed class records and explicit unknown compatibility', () => {

@@ -37,7 +37,7 @@ export interface EmbervilleEditorialSection {
 }
 
 export const EMBERVILLE_PAGES: EmbervillePageRecord[] = [
-  { id: 'planner', slug: 'emberville', title: 'Emberville Build Planner', metaTitle: 'Emberville Build Planner | BuildForgeTools', description: 'Plan an Emberville build direction around class, weapon, and skill inheritance systems using confirmed pre-Early Access information.', eyebrow: 'A world rebuilds in ash', heroImage: '/images/emberville/planner-hero.jpg' },
+  { id: 'planner', slug: 'emberville', title: 'Emberville Preview Notebook', metaTitle: 'Emberville Preview Notebook & Confirmed Mechanics | BuildForgeTools', description: 'Review confirmed Emberville mechanics, choose a combat direction, and save private notes in this browser. This preview notebook cannot validate game builds or inheritance compatibility.', eyebrow: 'A world rebuilds in ash', heroImage: '/images/emberville/planner-hero.jpg' },
   { id: 'classes', slug: 'emberville-classes', title: 'Emberville Classes', metaTitle: 'Emberville Classes | Confirmed Systems & Planning', description: 'Learn what is officially confirmed about Emberville classes, switching classes, weapons, and progression before Early Access.', eyebrow: 'Choose a foundation', heroImage: '/images/emberville/classes-hero.jpg' },
   { id: 'inheritance', slug: 'emberville-skill-inheritance', title: 'Emberville Skill Inheritance Guide', metaTitle: 'Emberville Skill Inheritance Guide | BuildForgeTools', description: 'Understand how confirmed active and passive skill inheritance can shape an Emberville build.', eyebrow: 'Different classes, brighter builds', heroImage: '/images/emberville/inheritance-hero.jpg' },
 ]
@@ -45,22 +45,22 @@ export const EMBERVILLE_PAGES: EmbervillePageRecord[] = [
 export const EMBERVILLE_EDITORIAL: Record<EmbervillePageId, EmbervilleEditorialSection[]> = {
   planner: [
     {
-      heading: 'What the preview planner can do today',
+      heading: 'What the preview notebook can do today',
       paragraphs: [
-        'The Emberville Build Planner starts with combat direction because melee, magic, and ranged combat are confirmed for Early Access. You can choose one of those directions, or keep a hybrid direction in view when thinking about class and skill inheritance. The build summary changes with your choice, while local notes let you record ideas without presenting them as verified game data.',
-        'Choose a confirmed system to investigate alongside your combat direction: class switching, weapon-bound combos, or active and passive skill inheritance. The planner turns these into a testable question and leaves space for your own notes. Reviewed class and weapon names can now be selected with source links. Observed skills retain separate name, effect, type, and inheritance evidence, so a known name does not turn an unconfirmed combination into a game fact.',
+        'The Emberville Preview Notebook starts with combat direction because melee, magic, and ranged combat are confirmed for Early Access. You can choose one of those directions, or keep a hybrid direction in view when thinking about class and skill inheritance. The notebook summary changes with your choice, while local notes let you record ideas without presenting them as verified game data.',
+        'Choose a confirmed system to investigate alongside your combat direction: class switching, weapon-bound combos, or active and passive skill inheritance. The notebook turns these into a question to investigate and leaves space for your own notes. Reviewed class and weapon names can now be selected with source links. Observed skills retain separate name, effect, type, and inheritance evidence, so a known name does not turn an unconfirmed combination into a game fact.',
       ],
     },
     {
-      heading: 'How planner data becomes available',
+      heading: 'How notebook evidence is reviewed',
       paragraphs: [
-        'Each dataset passes through three states: confirmed system, record in review, and planner-ready data. A confirmed system tells us that a mechanic exists. A record in review may have a visible name but still lack a stable identifier or complete rules. Planner-ready data requires enough evidence to support a repeatable choice in the tool.',
+        'The notebook distinguishes confirmed systems, reviewed names and observations, and unknown rules. A confirmed system tells us that a mechanic exists. A reviewed name can serve as a research reference while its unlock requirements, skill type, or compatibility remain unknown. Selecting a reference records your intention; it does not establish a playable combination.',
       ],
       bullets: [
-        'Class records need confirmed names and a clear role in the combat class system.',
-        'Weapon records need a verified category and its relationship to weapon-bound combos.',
-        'Skill records need stable names, types, and effects before they become selectable.',
-        'Inheritance choices need confirmed compatibility rules before the planner connects them.',
+        'Class entries retain their name sources while unknown roles and unlock requirements stay separate.',
+        'Weapon entries are sourced category examples; selecting one does not establish class compatibility.',
+        'Observed skill names and effects remain references while active or passive types are unknown.',
+        'Inheritance destinations, slots, costs, and compatibility remain unknown until supported by evidence.',
       ],
     },
     {
@@ -71,7 +71,7 @@ export const EMBERVILLE_EDITORIAL: Record<EmbervillePageId, EmbervilleEditorialS
       ],
     },
     {
-      heading: 'From direction to a testable build',
+      heading: 'Turn a direction into questions to test',
       paragraphs: [
         'Start with a combat direction, then use reviewed class and weapon names as tentative references. Weapon-bound combos make weapon choice part of the build structure, while the class system supplies a changing pool of abilities. Connect a particular class, weapon, or inherited skill only when compatibility is verified.',
         'The final step is testing. Emberville is entering Early Access, so balance, availability, and interactions can evolve with player feedback. A build should be treated as a versioned setup that can be revised when the game changes.',

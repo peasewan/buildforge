@@ -14,7 +14,9 @@ import { MAGE_BRANCHES, MAGE_DATA_VERSION, MAGE_PLANNER_CONFIG, MAGE_SOURCES, ma
  * not yet carry a reviewed Fire allocation, and no URL promises a preset it cannot deliver.
  */
 
-const MAGE_UPDATED = '2026-09-22'
+const MAGE_CREATED = '2026-09-22'
+// Editorial correction date; source client verification remains 69913.
+const MAGE_UPDATED = '2026-10-09'
 const BUILD_VERIFIED = '1.60.1.69913'
 const OFFICIAL_CAP_SOURCE = 'https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-1/2360696'
 const MAGE_HERO = '/images/mage/mage-hero-v1.webp'
@@ -55,18 +57,18 @@ const mageBuilds: ClassBuild[] = [
     shortTitle: 'Frost Mage',
     role: 'Frost single-target damage',
     playstyle: [
-      'Open with Frostbolt and keep the chill effect on the target while you build ranks',
-      'Hold Ice Shards for the moments the target is frozen or rooted',
-      'Frost Nova buys the cast time back when a pull goes wrong',
+      'Allocate five Improved Frostbolt ranks from the entry row',
+      'Allocate five Ice Shards ranks after the five-point Frost gate opens',
+      'Put the eleventh point into Piercing Ice and compare this preset with the leveling route',
     ],
-    strengths: ['Chill slows every approach', 'Frost Nova resets a bad pull', 'Damage holds up without gear'],
+    strengths: ['Complete 11-point allocation', 'Five Ice Shards ranks', 'Distinct from the leveling and area presets'],
     keyTalentIds: [T.improvedFrostbolt, T.iceShards, T.piercingIce],
     order: [T.improvedFrostbolt, T.iceShards, T.piercingIce],
     build: { [T.improvedFrostbolt]: 5, [T.iceShards]: 5, [T.piercingIce]: 1 },
     evidence: 'community_verified',
     sources: [{ label: 'BuildForgeTools Frost Mage route, Level 20 starter snapshot', url: 'https://buildforgetools.com/wow-forever-frost-mage-build' }],
     verifiedThroughBuild: BUILD_VERIFIED,
-    createdAt: MAGE_UPDATED,
+    createdAt: MAGE_CREATED,
     updatedAt: MAGE_UPDATED,
     href: '/wow-forever-frost-mage-build',
   },
@@ -83,18 +85,18 @@ const mageBuilds: ClassBuild[] = [
     shortTitle: 'Frost Leveling',
     role: 'Frost solo leveling',
     playstyle: [
-      'Pull at range with Frostbolt so the chill slow starts before the mob reaches you',
-      'Frost Nova when a second mob joins, then walk out of melee range and keep casting',
-      'Save Ice Shards ranks for frozen targets instead of spending them on the opener',
+      'Fill Improved Frostbolt with five points before allocating the second row',
+      'Allocate four Ice Shards ranks and two Improved Frost Nova ranks',
+      'Compare these fixed talent selections with the five-rank Ice Shards single-target preset',
     ],
-    strengths: ['Slows make solo pulls survivable', 'Two roots answer an add', 'No dependence on a group'],
+    strengths: ['Five Improved Frostbolt, four Ice Shards and two Improved Frost Nova ranks', 'Two points in one Improved Frost Nova node', 'Exact comparison with the single-target preset'],
     keyTalentIds: [T.improvedFrostbolt, T.iceShards, T.improvedFrostNova],
     order: [T.improvedFrostbolt, T.iceShards, T.improvedFrostNova],
     build: { [T.improvedFrostbolt]: 5, [T.iceShards]: 4, [T.improvedFrostNova]: 2 },
     evidence: 'community_verified',
     sources: [{ label: 'BuildForgeTools Frost Mage leveling route, Level 20 starter snapshot', url: 'https://buildforgetools.com/wow-forever-frost-mage-leveling-build' }],
     verifiedThroughBuild: BUILD_VERIFIED,
-    createdAt: MAGE_UPDATED,
+    createdAt: MAGE_CREATED,
     updatedAt: MAGE_UPDATED,
     href: '/wow-forever-frost-mage-leveling-build',
   },
@@ -111,18 +113,18 @@ const mageBuilds: ClassBuild[] = [
     shortTitle: 'Frost AoE',
     role: 'Frost area damage',
     playstyle: [
-      'Group the pull, then root it with Frost Nova before the area casts land',
-      'Spend the single Improved Blizzard rank on packs, never on one target',
-      'Ice Shards at three ranks carries the single-target damage this build gives up',
+      'Replay the five Improved Frostbolt and three Ice Shards points first',
+      'Allocate one fixed point to Improved Blizzard after ten Frost points',
+      'Compare the two Improved Frost Nova points with the alternative Ice Shards and Piercing Ice points',
     ],
-    strengths: ['Root plus area cast covers a pack', 'Only one rank is needed for the area tool', 'Kiting keeps the pack off you'],
+    strengths: ['Distinct 11-point area allocation', 'One point in the Improved Blizzard node', 'Three-point tradeoff against the single-target preset'],
     keyTalentIds: [T.improvedFrostbolt, T.iceShards, T.improvedFrostNova, T.improvedBlizzard],
     order: [T.improvedFrostbolt, T.iceShards, T.improvedFrostNova, T.improvedBlizzard],
     build: { [T.improvedFrostbolt]: 5, [T.iceShards]: 3, [T.improvedFrostNova]: 2, [T.improvedBlizzard]: 1 },
     evidence: 'derived_assumption',
     sources: [{ label: 'BuildForgeTools Frost Mage area route, Level 20 starter snapshot', url: 'https://buildforgetools.com/wow-forever-frost-mage-aoe-build' }],
     verifiedThroughBuild: BUILD_VERIFIED,
-    createdAt: MAGE_UPDATED,
+    createdAt: MAGE_CREATED,
     updatedAt: MAGE_UPDATED,
     href: '/wow-forever-frost-mage-aoe-build',
   },
@@ -139,18 +141,18 @@ const mageBuilds: ClassBuild[] = [
     shortTitle: 'Arcane Mage',
     role: 'Arcane single-target damage',
     playstyle: [
-      'Lean on Arcane Focus ranks so the early casts land through pushback',
-      'Improved Channeling keeps the channel from being interrupted mid-pull',
-      'Hold the single Arcane Concentration rank for the pulls that run long',
+      'Allocate five Arcane Focus points from the entry row; its rank effect text is unresolved',
+      'Inspect the published interruption-avoidance text for Improved Channeling',
+      'Keep the single Arcane Concentration point in the saved allocation until you edit the planner',
     ],
-    strengths: ['Pushback resistance on the opener', 'Channelled damage survives a hit', 'Mana lasts through a long pull'],
+    strengths: ['Two filled entry-row nodes', 'Published Improved Channeling rank text', 'One fixed Arcane Concentration point'],
     keyTalentIds: [T.arcaneFocus, T.improvedChanneling, T.arcaneConcentration],
     order: [T.arcaneFocus, T.improvedChanneling, T.arcaneConcentration],
     build: { [T.arcaneFocus]: 5, [T.improvedChanneling]: 5, [T.arcaneConcentration]: 1 },
     evidence: 'community_verified',
     sources: [{ label: 'BuildForgeTools Arcane Mage route, Level 20 starter snapshot', url: 'https://buildforgetools.com/wow-forever-arcane-mage-build' }],
     verifiedThroughBuild: BUILD_VERIFIED,
-    createdAt: MAGE_UPDATED,
+    createdAt: MAGE_CREATED,
     updatedAt: MAGE_UPDATED,
     href: '/wow-forever-arcane-mage-build',
   },
@@ -167,18 +169,18 @@ const mageBuilds: ClassBuild[] = [
     shortTitle: 'Arcane Leveling',
     role: 'Arcane solo leveling',
     playstyle: [
-      'Fight one mob at a time and let Arcane Concentration cover the mana cost',
-      'Use Arcane Focus ranks to keep casting while the mob is still walking in',
-      'Skip frost control entirely and accept a longer time to kill',
+      'Allocate five Arcane Focus points before moving to the second row',
+      'Allocate five Arcane Concentration points and inspect the unresolved-effect notice',
+      'Place the final point in Arcane Impact and compare this allocation with the Channeling preset',
     ],
-    strengths: ['Little downtime between pulls', 'Simple single-target loop', 'No control tools to manage'],
+    strengths: ['Five Arcane Focus, five Arcane Concentration and one Arcane Impact rank', 'Reproducible point order', 'Distinct from the Improved Channeling preset'],
     keyTalentIds: [T.arcaneFocus, T.arcaneConcentration, T.arcaneImpact],
     order: [T.arcaneFocus, T.arcaneConcentration, T.arcaneImpact],
     build: { [T.arcaneFocus]: 5, [T.arcaneConcentration]: 5, [T.arcaneImpact]: 1 },
     evidence: 'derived_assumption',
     sources: [{ label: 'BuildForgeTools Arcane Mage leveling route, Level 20 starter snapshot', url: 'https://buildforgetools.com/wow-forever-arcane-mage-leveling-build' }],
     verifiedThroughBuild: BUILD_VERIFIED,
-    createdAt: MAGE_UPDATED,
+    createdAt: MAGE_CREATED,
     updatedAt: MAGE_UPDATED,
     href: '/wow-forever-arcane-mage-leveling-build',
   },
@@ -196,18 +198,18 @@ const mageBuilds: ClassBuild[] = [
     shortTitle: 'Mage Leveling',
     role: 'Frost solo leveling, recommended for the class',
     playstyle: [
-      'Level as Frost: the slow and the two roots are what carry a solo player',
-      'Frost Nova then walk out of range whenever a pull turns into two mobs',
-      'Spend the last two points on Frost Nova ranks before touching anything deeper',
+      'Load the editorial Frost starter: five Improved Frostbolt, four Ice Shards and two Improved Frost Nova ranks',
+      'Compare its two Improved Frost Nova points with the single-target preset',
+      'Finish with two Improved Frost Nova ranks after the four Ice Shards ranks',
     ],
-    strengths: ['Chill slows every pull', 'Two roots answer adds', 'Works without a group or gear'],
+    strengths: ['Full eleven-point starter budget', 'Two allocated Improved Frost Nova ranks', 'Source limits shown beside the route'],
     keyTalentIds: [T.improvedFrostbolt, T.iceShards, T.improvedFrostNova],
     order: [T.improvedFrostbolt, T.iceShards, T.improvedFrostNova],
     build: { [T.improvedFrostbolt]: 5, [T.iceShards]: 4, [T.improvedFrostNova]: 2 },
     evidence: 'community_verified',
     sources: [{ label: 'BuildForgeTools Mage leveling recommendation, Level 20 starter snapshot', url: 'https://buildforgetools.com/wow-forever-mage-leveling-build' }],
     verifiedThroughBuild: BUILD_VERIFIED,
-    createdAt: MAGE_UPDATED,
+    createdAt: MAGE_CREATED,
     updatedAt: MAGE_UPDATED,
     href: '/wow-forever-mage-leveling-build',
   },
@@ -224,18 +226,18 @@ const mageBuilds: ClassBuild[] = [
     shortTitle: 'Dungeon Frost',
     role: 'Frost dungeon damage with control',
     playstyle: [
-      'Open the Frost Warding ranks first so early pulls cost less attention',
-      'Keep the chill slow on the target the group is killing, not on the stragglers',
-      'Frost Nova is the group control button; spend it when the tank is being chased',
+      'Allocate the two entry-row Frost Warding ranks first',
+      'Fill Improved Frostbolt with five points, then Ice Shards with four',
+      'Compare the two Frost Warding, five Improved Frostbolt and four Ice Shards ranks with the four-node area preset',
     ],
-    strengths: ['Control that helps the whole group', 'Damage that needs no setup', 'Frost Warding covers early pulls'],
+    strengths: ['Published Frost Warding effect text', 'Two Frost Warding, five Improved Frostbolt and four Ice Shards ranks', 'Distinct from the area preset'],
     keyTalentIds: [T.frostWarding, T.improvedFrostbolt, T.iceShards],
     order: [T.frostWarding, T.improvedFrostbolt, T.iceShards],
     build: { [T.frostWarding]: 2, [T.improvedFrostbolt]: 5, [T.iceShards]: 4 },
     evidence: 'derived_assumption',
     sources: [{ label: 'BuildForgeTools Mage dungeon route, Level 20 starter snapshot', url: 'https://buildforgetools.com/wow-forever-mage-dungeon-build' }],
     verifiedThroughBuild: BUILD_VERIFIED,
-    createdAt: MAGE_UPDATED,
+    createdAt: MAGE_CREATED,
     updatedAt: MAGE_UPDATED,
     href: '/wow-forever-mage-dungeon-build',
   },
@@ -252,18 +254,18 @@ const mageBuilds: ClassBuild[] = [
     shortTitle: 'Frost PvP',
     role: 'Frost player-versus-player damage and control',
     playstyle: [
-      'Max Frostbolt and Ice Shards: pressure is the point, control is what buys it',
-      'One Frost Nova rank is the escape, not the opener',
-      'Chill keeps a melee target reachable by your group',
+      'Allocate five Improved Frostbolt and five Ice Shards points',
+      'Place the eleventh point in Improved Frost Nova',
+      'Compare that single point with the Piercing Ice point in the single-target preset',
     ],
-    strengths: ['Slow keeps targets in range', 'Root breaks a melee push', 'Damage needs no setup'],
+    strengths: ['Full 11-point Frost allocation', 'One fixed Improved Frost Nova point', 'Exact comparison with the single-target preset'],
     keyTalentIds: [T.improvedFrostbolt, T.iceShards, T.improvedFrostNova],
     order: [T.improvedFrostbolt, T.iceShards, T.improvedFrostNova],
     build: { [T.improvedFrostbolt]: 5, [T.iceShards]: 5, [T.improvedFrostNova]: 1 },
     evidence: 'derived_assumption',
     sources: [{ label: 'BuildForgeTools Mage PvP routes, Level 20 starter snapshot', url: 'https://buildforgetools.com/wow-forever-mage-pvp-build' }],
     verifiedThroughBuild: BUILD_VERIFIED,
-    createdAt: MAGE_UPDATED,
+    createdAt: MAGE_CREATED,
     updatedAt: MAGE_UPDATED,
     href: '/wow-forever-mage-pvp-build',
   },
@@ -280,18 +282,18 @@ const mageBuilds: ClassBuild[] = [
     shortTitle: 'Arcane PvP',
     role: 'Arcane player-versus-player damage',
     playstyle: [
-      'Arcane Focus and Improved Channeling keep the damage coming under pressure',
-      'Three Arcane Concentration ranks stretch the mana bar through a long fight',
-      'No roots: this route trades control for raw channel uptime',
+      'Allocate five Arcane Focus points and three Improved Channeling points',
+      'Keep three Arcane Concentration points selected in the saved allocation',
+      'Compare these five Arcane Focus, three Improved Channeling and three Arcane Concentration ranks with the preset that fills Improved Channeling to five and leaves one Arcane Concentration rank',
     ],
-    strengths: ['Damage lands through pushback', 'Long fights stay affordable', 'Channels resist interruption'],
+    strengths: ['Full eleven-point Arcane allocation', 'Three fixed Arcane Concentration points', 'Published Improved Channeling effect text'],
     keyTalentIds: [T.arcaneFocus, T.improvedChanneling, T.arcaneConcentration],
     order: [T.arcaneFocus, T.improvedChanneling, T.arcaneConcentration],
     build: { [T.arcaneFocus]: 5, [T.improvedChanneling]: 3, [T.arcaneConcentration]: 3 },
     evidence: 'derived_assumption',
     sources: [{ label: 'BuildForgeTools Mage PvP routes, Level 20 starter snapshot', url: 'https://buildforgetools.com/wow-forever-mage-pvp-build' }],
     verifiedThroughBuild: BUILD_VERIFIED,
-    createdAt: MAGE_UPDATED,
+    createdAt: MAGE_CREATED,
     updatedAt: MAGE_UPDATED,
     href: '/wow-forever-mage-pvp-build',
   },
@@ -350,7 +352,7 @@ const magePages: ClassPageDefinition[] = [
     ],
     faqs: [
       { question: 'Can I spend points in the Fire tree?', answer: 'Yes. Improved Fireball is the client-resolved Fire entry node. Fire does not yet have a recommended preset, so create the allocation manually and copy the resulting build link.' },
-      { question: 'Which Mage tree should a new player plan first?', answer: 'Frost is this site’s reviewed Level 20 starting route because its slow and roots help a solo player. A Level 30 allocation has not been reviewed here.' },
+      { question: 'Which Mage tree should a new player plan first?', answer: 'Frost is this site’s editorial Level 20 starter: five Improved Frostbolt, four Ice Shards and two Improved Frost Nova points. Compare it with the other eleven-point presets; a Level 30 allocation has not been reviewed here.' },
     ],
   },
   {
@@ -377,7 +379,7 @@ const magePages: ClassPageDefinition[] = [
       {
         heading: 'Three specs in the Level 20 snapshot',
         paragraphs: [
-          'Frost is the reviewed Level 20 leveling start because its slow and roots help a solo player. Arcane is another 11-point starter route; its deeper nodes remain outside this allocation. Neither route has been extended and reviewed for Level 30.',
+          'The Frost leveling starter allocates five Improved Frostbolt ranks, four Ice Shards ranks and two Improved Frost Nova ranks. Arcane is another eleven-point allocation with its own unresolved effect descriptions. Neither route has been extended and reviewed for Level 30.',
           ELEVEN_POINT_NOTE,
         ],
         bullets: [
@@ -473,12 +475,12 @@ const magePages: ClassPageDefinition[] = [
       {
         heading: 'Community recommendation: level as Frost',
         paragraphs: [
-          'This is an editorial recommendation, not a client fact. Frost is recommended for leveling because the chill slow keeps a target at range and the Frost Nova root answers the second mob that always turns up. ' + ELEVEN_POINT_NOTE,
+          'This editorial Frost starter puts five points in Improved Frostbolt, four in Ice Shards and two in Improved Frost Nova. Compare those last six points with the single-target and area presets in the calculator. ' + ELEVEN_POINT_NOTE,
         ],
         bullets: [
-          'Improved Frostbolt 5 — the slower cast that everything else supports',
-          'Ice Shards 4 — the frozen-target damage',
-          'Improved Frost Nova 2 — the root that gets you out of a bad pull',
+          'Improved Frostbolt 5 — published cast-time reduction text',
+          'Ice Shards 4 — four allocated points; effect text remains unresolved',
+          'Improved Frost Nova 2 — two ranks in one talent node',
         ],
       },
       {
@@ -490,7 +492,7 @@ const magePages: ClassPageDefinition[] = [
       {
         heading: 'Frost, Fire and Arcane while leveling',
         paragraphs: [
-          'Frost trades a little time to kill for control: a slow, a root and an answer to adds. Arcane is the simpler loop — one target at a time with mana efficiency instead of control — and the Level 20 starter route spends 11 points. Fire is allocatable in the calculator, but its leveling preset remains under review and is not presented as a recommendation here.',
+          'The Frost leveling preset allocates five Improved Frostbolt ranks, four Ice Shards ranks and two Improved Frost Nova ranks. The Arcane leveling preset uses five Arcane Focus ranks, five Arcane Concentration ranks and one Arcane Impact rank. Both spend eleven points; no measured leveling-speed or mana-efficiency comparison is available. Fire can be planned manually, while its preset remains under review.',
         ],
       },
       {
@@ -501,7 +503,7 @@ const magePages: ClassPageDefinition[] = [
       },
     ],
     faqs: [
-      { question: 'Is Frost the best Mage leveling spec?', answer: 'It is the recommendation on this site, not a claim about the best. Frost is picked for control: a chill slow plus two roots is what keeps a solo player alive. Arcane can spend the same 11 points and is described above.' },
+      { question: 'Is Frost the best Mage leveling spec?', answer: 'It is an editorial starter choice on this site. The calculator can reproduce its eleven points, but that does not establish comparative leveling speed or survival. The Arcane alternative spends the same point budget.' },
       { question: 'Can I level as Fire right now?', answer: 'You can plan a Fire tree manually from Improved Fireball. BuildForgeTools does not yet publish a recommended Fire leveling preset.' },
     ],
   },
@@ -535,14 +537,14 @@ const magePages: ClassPageDefinition[] = [
       {
         heading: 'Talent order',
         paragraphs: [
-          'Improved Frostbolt first, all five ranks: it is the spell the whole build is built around and it sits on the entry row. Ice Shards next — at five Frost points the second row opens and Ice Shards becomes takeable. Piercing Ice last, at one rank, because it needs ten Frost points already spent before it can be taken.',
+          'Improved Frostbolt first, all five ranks: this entry-row talent has published Frostbolt cast-time reduction text. Ice Shards next — at five Frost points the second row opens and Ice Shards becomes takeable. Piercing Ice last, at one rank, because it needs ten Frost points already spent before it can be taken.',
         ],
       },
       {
         heading: 'Key talents',
         bullets: [
-          'Improved Frostbolt — the cast that carries the damage',
-          'Ice Shards — the frozen-target payoff',
+          'Improved Frostbolt — five points with published cast-time reduction text',
+          'Ice Shards — five allocated ranks; resolved effect text remains unavailable',
           'Piercing Ice — the last point, and only after ten Frost points are down',
         ],
         paragraphs: [],
@@ -556,7 +558,7 @@ const magePages: ClassPageDefinition[] = [
     ],
     faqs: [
       { question: 'Why only one rank of Piercing Ice?', answer: 'It sits behind a ten-point requirement, so with 11 points total only one rank is left over after Improved Frostbolt and Ice Shards are filled.' },
-      { question: 'Is this the Frost AoE build?', answer: 'No. The area route is a different allocation with Frost Nova and Improved Blizzard ranks; this one maxes single-target damage.' },
+      { question: 'Is this the Frost AoE build?', answer: 'The area preset is a different allocation: it replaces two Ice Shards points and one Piercing Ice point with two Improved Frost Nova points and one Improved Blizzard point. This is an allocation comparison, not a measured damage ranking.' },
     ],
   },
   {
@@ -656,7 +658,7 @@ const magePages: ClassPageDefinition[] = [
     intent: 'Frost Leveling',
     title: 'WoW Forever Frost Mage Leveling Build',
     h1: 'WoW Forever Frost Mage Leveling Build',
-    description: 'How to level as a Frost Mage at the Level 20 starter snapshot: the 11-point route, the spend order, single-target play, area pulls and how to kite with the tools the tree gives you.',
+    description: 'Compare the Frost Mage Level 20 starter allocation with the single-target and area presets, replay its eleven points and inspect the limits of the saved talent data.',
     eyebrow: 'Beta Spec Leveling',
     canonical: 'https://buildforgetools.com/wow-forever-frost-mage-leveling-build',
     robots: 'index, follow',
@@ -674,31 +676,31 @@ const magePages: ClassPageDefinition[] = [
       {
         heading: 'The 11-point route',
         paragraphs: [
-          'Improved Frostbolt 5, Ice Shards 4 and Improved Frost Nova 2. Five points into Improved Frostbolt open the second row, Ice Shards spends the middle of the build, and the last two points go into Frost Nova for the root. ' + ELEVEN_POINT_NOTE,
+          'Improved Frostbolt 5, Ice Shards 4 and Improved Frost Nova 2. Five points in Improved Frostbolt open the second row; four points then go in Ice Shards and the final two in Improved Frost Nova. ' + ELEVEN_POINT_NOTE,
         ],
       },
       {
-        heading: 'Single-target leveling',
+        heading: 'Compare the single-target allocation',
         paragraphs: [
-          'Open from maximum range so the chill slow is already on the mob when it starts moving. Keep Frostbolt as the default cast and let Ice Shards do its work when the target is frozen or rooted. Eating a pushback is cheaper than moving.',
+          'Compare the four Ice Shards ranks here with five in the single-target preset. Talent ranks remain selected until you edit or reset the planner. Ice Shards effect text is unresolved in this snapshot, so this page supports comparing allocations without prescribing its combat timing.',
         ],
       },
       {
-        heading: 'Area pulls',
+        heading: 'Compare the area allocation',
         paragraphs: [
-          'Frost Nova is the area button in this Level 20 route: root the pack, step out of melee range, and cast while it is held. A dedicated area allocation takes Improved Blizzard instead of maxing Ice Shards; that variant belongs to the Frost AoE build.',
+          'The area preset keeps five Improved Frostbolt points and two Improved Frost Nova points. It moves one of this route’s four Ice Shards points into Improved Blizzard. Load both presets to inspect that one-point tradeoff; the talent allocation does not establish spell-learning levels or a verified farming rotation.',
         ],
       },
       {
-        heading: 'Kiting',
+        heading: 'What the rank count establishes',
         paragraphs: [
-          'The chill slow plus the root is this route’s kiting kit. Pull with Frostbolt, let the mob walk to you, root it when it arrives, then walk away and cast again. This reviewed 11-point tree allocation contains no blink-style escape.',
+          'Improved Frost Nova has two allocated ranks here, both in the same node. Its resolved rank text is unavailable in this snapshot. A talent point count does not establish how many times a spell can be cast, a guaranteed root duration or a complete kiting kit.',
         ],
       },
     ],
     faqs: [
-      { question: 'Is Frost the right choice for a first Mage?', answer: 'This site recommends it for leveling because the control is unconditional: the slow and the roots work on every mob without gear or setup.' },
-      { question: 'Do I need Improved Blizzard to level as Frost?', answer: 'No. Improved Blizzard is for pulling groups; the leveling route spends those points on Frost Nova instead, and the Frost AoE build is where the area variant lives.' },
+      { question: 'Is Frost the right choice for a first Mage?', answer: 'This site publishes it as an editorial eleven-point starter. It has been replayed through the planner; target immunities, spell timing and in-game leveling performance have not been validated here.' },
+      { question: 'Do I need Improved Blizzard to level as Frost?', answer: 'This leveling preset has no Improved Blizzard point. The area preset moves one Ice Shards point into that node while retaining the same two Improved Frost Nova points; use the calculator to compare them.' },
     ],
   },
   {
@@ -751,7 +753,7 @@ const magePages: ClassPageDefinition[] = [
     intent: 'Arcane Leveling',
     title: 'WoW Forever Arcane Mage Leveling Build',
     h1: 'WoW Forever Arcane Mage Leveling Build',
-    description: 'Leveling as an Arcane Mage at the Level 20 starter snapshot: the 11-point route, why its mana tools matter while solo, and how far into the tree 11 points actually reach.',
+    description: 'The Arcane Mage Level 20 starter allocation: replay its eleven points, compare the Channeling variant and see which effect descriptions remain unresolved.',
     eyebrow: 'Beta Spec Leveling',
     canonical: 'https://buildforgetools.com/wow-forever-arcane-mage-leveling-build',
     robots: 'index, follow',
@@ -768,7 +770,7 @@ const magePages: ClassPageDefinition[] = [
       {
         heading: 'Should you level as Arcane?',
         paragraphs: [
-          'It is a reasonable alternative to Frost, not the recommendation. Arcane trades Frost’s slow and roots for mana efficiency and channel uptime, which means less downtime between pulls but no answer when a second mob arrives. ' + ELEVEN_POINT_NOTE,
+          'This is an editorial alternative for comparing eleven-point allocations. Arcane Focus, Arcane Concentration and Arcane Impact have unresolved rank descriptions in the published snapshot, so this route does not establish mana savings, cast reliability or leveling speed. ' + ELEVEN_POINT_NOTE,
         ],
       },
       {
@@ -785,7 +787,7 @@ const magePages: ClassPageDefinition[] = [
       },
     ],
     faqs: [
-      { question: 'Is Arcane a good leveling choice?', answer: 'It is a legal alternative with a simpler loop. Frost is still the recommendation, because control is what saves a solo player when a pull goes wrong.' },
+      { question: 'Is Arcane a good leveling choice?', answer: 'It is a planner-legal editorial alternative. Compare its five Arcane Focus ranks, five Arcane Concentration ranks and one Arcane Impact rank with the Arcane Channeling preset; neither legal ranks nor an eleven-point total prove in-game leveling performance.' },
       { question: 'How deep can 11 Arcane points go?', answer: 'As far as the third row in this route. Arcane Impact requires ten Arcane points, leaving one rank for the eleventh point.' },
     ],
   },
@@ -795,7 +797,7 @@ const magePages: ClassPageDefinition[] = [
     intent: 'Frost AoE farming',
     title: 'WoW Forever Frost Mage AoE Build',
     h1: 'WoW Forever Frost Mage AoE Build',
-    description: 'The Frost Mage area allocation for the Level 20 starter snapshot: root the pack, cast the area damage, and the spell list and farming loop that go with it.',
+    description: 'Compare the Frost Mage eleven-point area preset with the single-target route, replay the three-point tradeoff and inspect unresolved effect and spell-learning details.',
     eyebrow: 'Beta Area Route',
     canonical: 'https://buildforgetools.com/wow-forever-frost-mage-aoe-build',
     robots: 'index, follow',
@@ -819,25 +821,25 @@ const magePages: ClassPageDefinition[] = [
       {
         heading: 'Spend order',
         paragraphs: [
-          'Improved Frostbolt first — five points, and enough to open the second row. Ice Shards to three ranks next. Frost Nova ranks after that, and Improved Blizzard last: it needs ten Frost points spent before the tree will let you take it, which is exactly what the first three steps provide.',
+          'Improved Frostbolt first — five points, and enough to open the second row. Ice Shards to three ranks next. Improved Frost Nova ranks after that, and Improved Blizzard last: it needs ten Frost points spent before the tree will let you take it, which is exactly what the first three steps provide.',
         ],
       },
       {
         heading: 'Spells this route leans on',
         paragraphs: [
-          'The tree supplies Frost Nova and Improved Blizzard, and Improved Frostbolt carries the filler damage between area casts. Anything beyond the published nodes — a conjured consumable, a summoned pet, a defensive cooldown from outside the tree — would be a planning assumption, not a talent, and is not presented as a rank anywhere on this page.',
+          'This allocation selects Improved Frost Nova and Improved Blizzard; it does not verify when the underlying spells are learned. Both nodes have unresolved rank descriptions in this snapshot. Improved Frostbolt has published cast-time reduction text, but the talent catalogue is not a Mage spellbook or a verified combat rotation.',
         ],
       },
       {
-        heading: 'Farming loop (planning assumption)',
+        heading: 'Replay the area tradeoff',
         paragraphs: [
-          'This loop is a derived assumption about play, not a verified fact: gather the pack, root it with Frost Nova, step out of melee range, and cast area damage while the root holds, refreshing the root when it breaks instead of standing in the middle of the pack. Treat the loop as something to test in game rather than a guaranteed route.',
+          'Load the area preset, then compare it with the single-target preset. The first eight points match. The final three change from two Ice Shards points and one Piercing Ice point to two Improved Frost Nova points and one Improved Blizzard point. Copy the resulting allocation only after checking that the calculator still shows eleven points.',
         ],
       },
     ],
     faqs: [
-      { question: 'Why does this build not max Ice Shards?', answer: 'Because the root and the area cast are what the area route is for. Both builds spend their first eight points the same way; the single-target build puts the last three into two more Ice Shards ranks and one Piercing Ice rank, while this one puts them into two ranks of Improved Frost Nova and one of Improved Blizzard.' },
-      { question: 'Is the farming loop verified?', answer: 'No. It is a stated planning assumption. Only the talent names and ranks come from client-reviewed records.' },
+      { question: 'Why does this build not max Ice Shards?', answer: 'It is an editorial three-point tradeoff. Both builds spend their first eight points the same way; this preset uses the final three for two Improved Frost Nova ranks and one Improved Blizzard rank instead of the single-target preset’s two additional Ice Shards ranks and one Piercing Ice rank.' },
+      { question: 'Does the allocation verify a farming rotation?', answer: 'No. The planner verifies its selected ranks and point order. The saved talent dataset does not establish spell-learning levels, target immunities or a farming rotation.' },
     ],
   },
   {
@@ -907,13 +909,13 @@ const magePages: ClassPageDefinition[] = [
       {
         heading: 'Frost is the dungeon recommendation',
         paragraphs: [
-          'Frost Warding 2, Improved Frostbolt 5 and Ice Shards 4. The build opens on the Warding ranks so the early pulls cost less attention, then fills the entry damage node and the frozen-target payoff. ' + ELEVEN_POINT_NOTE,
+          'Frost Warding 2, Improved Frostbolt 5 and Ice Shards 4. Frost Warding and Improved Frostbolt have published rank text; Ice Shards effect text is unresolved. Compare the two Frost Warding ranks, five Improved Frostbolt ranks and four Ice Shards ranks with the area preset before changing the route. ' + ELEVEN_POINT_NOTE,
         ],
       },
       {
         heading: 'Utility and control first',
         paragraphs: [
-          'A dungeon group wants the Mage to keep a target where it can be hit and to stop the pull that is running at the healer. Frost supplies both: the chill slow on the kill target, and Frost Nova as the group control button. The area route is the alternative when the group is pulling packs rather than singletons.',
+          'The dungeon preset spends two points in Frost Warding, five in Improved Frostbolt and four in Ice Shards. The area preset drops Frost Warding and one Ice Shards point to allocate two Improved Frost Nova points and one Improved Blizzard point. This comparison identifies the selected talents; it does not verify spell availability or group-control performance.',
         ],
       },
       {
@@ -930,7 +932,7 @@ const magePages: ClassPageDefinition[] = [
       },
     ],
     faqs: [
-      { question: 'Why does the dungeon build start with Frost Warding?', answer: 'It is an entry-row node, so it can be spent immediately, and it covers the early pulls while the damage nodes are still being filled.' },
+      { question: 'Why does the dungeon build start with Frost Warding?', answer: 'It is an entry-row node with published armor, resistance and Frost Ward reflection text. The editorial order allocates its two points first; that does not guarantee protection against every dungeon pull.' },
       { question: 'Is there a fire dungeon alternative?', answer: 'No reviewed Fire dungeon preset is published yet, so only the Frost route is presented.' },
     ],
   },
@@ -1023,20 +1025,20 @@ const magePages: ClassPageDefinition[] = [
         {
           label: 'Frost',
           values: [
-            'Ranged caster that slows the target and keeps it out of melee',
-            'Root the pack with Frost Nova, then cast area damage',
-            'Two roots and a slow answer the second mob',
-            'Chill slow, Frost Nova root, frozen-target Ice Shards payoff',
+            'Editorial eleven-point Frost allocation with published Frostbolt cast-time reduction text',
+            'The separate area preset allocates one Improved Blizzard point; its effect text remains unresolved',
+            'Two ranks in the same Improved Frost Nova node; spell timing is unverified',
+            'Improved Frostbolt 5, Ice Shards 4 and Improved Frost Nova 2; unresolved effect text is identified',
             'Legal 11-point leveling route published',
           ],
         },
         {
           label: 'Fire',
           values: [
-            'Ranged caster built around fire damage and its ignite effects',
-            'Packs have to be gathered by hand without a root of its own',
-            'No slow and no root in the published nodes',
-            'Improved Fireball entry, Ignite effects and deeper fire damage ranks',
+            'A reviewed eleven-point Fire preset is not yet published',
+            'Blast Wave needs 20 Fire points, beyond this eleven-point starter comparison',
+            'Safety and control of a Fire starter have not been reviewed here',
+            'Improved Fireball entry node; several resolved Fire rank descriptions remain unavailable',
             'Planner-legal; reviewed Level 20 preset still pending',
           ],
         },

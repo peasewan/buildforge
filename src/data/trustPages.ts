@@ -41,12 +41,12 @@ export const TRUST_PAGES: TrustPageConfig[] = [
         heading: 'Current Games',
         paragraphs: [
           'WoW Forever tools cover Paladin, Warrior, Mage, Hunter, Rogue, Priest, Warlock, Shaman, and Druid. Published calculators and build pages let players inspect talent ranks, follow point-by-point progression, compare example allocations, and open supported setups in a calculator. Available tools differ by class. Publication gates check each page’s declared data dependencies, and known source conflicts or missing recommendations remain visible.',
-          'Emberville is represented by a pre-Early Access build planner, build-direction hub, class-system overview, and skill-inheritance guide. Confirmed systems are available now; exact class, weapon, skill, and compatibility records remain locked until reliable source data supports them.',
+          'Emberville has a pre-Early Access preview notebook for recording a combat direction, reviewed class and weapon references, and private notes. Its class-system and skill-inheritance source guides separate confirmed systems and observed records from unknown unlock rules, skill types, and compatibility. The notebook does not validate builds or inheritance compatibility, and observed skills with unconfirmed types cannot be selected as inherited active or passive skills.',
         ],
         links: [
           { href: '/wow-forever-classes', label: 'Explore WoW Forever tools' },
           { href: '/wow-forever-builds', label: 'Find builds by playstyle' },
-          { href: '/emberville', label: 'Explore the Emberville planner' },
+          { href: '/emberville', label: 'Explore the Emberville Preview Notebook' },
         ],
       },
       {
@@ -109,7 +109,7 @@ export const TRUST_PAGES: TrustPageConfig[] = [
         paragraphs: ['Before reporting missing information, check the relevant planner and data-status sections. They show which records are available, which are preview-only, and which details are still waiting for verification.'],
         links: [
           { href: '/wow-forever-classes', label: 'Find a WoW Forever class calculator' },
-          { href: '/emberville', label: 'Open the Emberville Build Planner' },
+          { href: '/emberville', label: 'Open the Emberville Preview Notebook' },
           { href: '/wow-forever-paladin-beta-talent-changes', label: 'Check the Beta data tracker' },
         ],
       },
@@ -139,7 +139,7 @@ export const TRUST_PAGES: TrustPageConfig[] = [
       {
         heading: 'Planner Storage and Share Links',
         paragraphs: [
-          'Build planners may store recent selections or notes in local browser storage so work can be restored on a later visit. WoW Forever stores a recent talent allocation and any ForgePilot saves kept on this device; the Emberville preview planner can store build notes. This local information remains on the device and can be removed through the tool or by clearing browser storage.',
+          'Build planners may store recent selections or notes in local browser storage so work can be restored on a later visit. WoW Forever stores a recent talent allocation and any ForgePilot saves kept on this device; the Emberville preview notebook can store research choices and private notes. This local information remains on the device and can be removed through the tool or by clearing browser storage.',
           'An optional ForgePilot account lets signed-in players save named WoW Forever builds across devices. For those cloud saves, BuildForgeTools stores the build name, class, original talent allocation, data version, level, source link when present, and save time in private Vercel Blob storage under the account identifier supplied by Clerk. Local builds are uploaded only when the player explicitly chooses cloud save or imports them. Signing out does not delete local or cloud records. Players can delete cloud builds in ForgePilot and can use the Feedback form to request account and associated data deletion.',
           'When a tool supports copied build links, selected game identifiers and ranks may be encoded in the URL. A share link does not require an account and is not intended to contain a name, email address, or other personal information. Anyone who receives the URL can open the shared setup, so do not include sensitive information in notes or links shared elsewhere.',
           'After a WoW Forever build link is successfully copied, BuildForgeTools stores the normalized talent allocation, point total, dominant specialization, an anonymous per-session identifier, and submission time in private storage. Repeated copies of the same build in the same browser session on the same day overwrite the same record. These records are collected to measure shared build patterns and are not displayed as popularity statistics until the sample is large enough to be meaningful.',

@@ -25,7 +25,8 @@
     "emberville:validate": "node --import tsx scripts/emberville-data.ts --validate src/data/emberville-preview-2026-09-27.json",
     "emberville:query": "node --import tsx scripts/emberville-data.ts --query src/data/emberville-preview-2026-09-27.json",
     "emberville:diff": "node --import tsx scripts/emberville-data.ts --diff",
-    "emberville:import": "node --import tsx scripts/emberville-data.ts --import"
+    "emberville:import": "node --import tsx scripts/emberville-data.ts --import",
+    "content:review": "node --import tsx scripts/content-review.ts --require-rank-text"
   },
   "dependencies": {
     "@clerk/backend": "^3.20.1",

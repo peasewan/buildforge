@@ -165,6 +165,79 @@ describe('Mage ClassDefinition — pages', () => {
   })
 })
 
+describe('Mage ClassDefinition — bounded talent guidance', () => {
+  const pageCopy = (page: (typeof mageClass.pages)[number]) => [
+    page.description,
+    ...page.sections.flatMap(section => [section.heading, ...section.paragraphs, ...(section.bullets ?? [])]),
+    ...page.faqs.flatMap(faq => [faq.question, faq.answer]),
+    ...(page.comparison?.rows.flatMap(row => [row.label, ...row.values]) ?? []),
+  ]
+  const guidance = [
+    ...mageClass.pages.flatMap(pageCopy),
+    ...mageClass.builds.flatMap(build => [...build.playstyle, ...build.strengths]),
+  ]
+
+  it('reserves slash triplets in guidance for reviewed branch-point allocations', () => {
+    const branchAllocations = new Set(mageClass.builds.map(build => build.allocation))
+    expect(branchAllocations).toEqual(new Set(['0/0/11', '11/0/0']))
+    for (const text of guidance) {
+      for (const triple of text.match(/\b\d+\/\d+\/\d+\b/g) ?? []) {
+        expect(branchAllocations.has(triple), `ambiguous rank list ${triple}: ${text}`).toBe(true)
+      }
+    }
+  })
+
+  it('keeps Ice Shards allocations separate from unsupported combat timing and effect text', () => {
+    const shards = mageTalents.find(talent => talent.name === 'Ice Shards')!
+    expect(shards.maxRank).toBe(5)
+    expect(shards.fieldEvidence?.rankDescriptions).toBe('unknown')
+    expect(shards.rankDescriptions).toBeUndefined()
+    for (const text of guidance.filter(text => text.includes('Ice Shards'))) {
+      expect(text).not.toMatch(/(?:hold|save)[^.]*Ice Shards|Ice Shards[^.]*\b(?:frozen|rooted)\b|frozen-target[^.]*Ice Shards/i)
+    }
+    const leveling = mageClass.pages.find(page => page.slug === 'wow-forever-frost-mage-leveling-build')!
+    const copy = pageCopy(leveling).join(' ')
+    expect(copy).toContain('Ice Shards effect text is unresolved in this snapshot')
+    expect(copy).toContain('ranks remain selected until you edit or reset the planner')
+    expect(buildById(leveling.primaryBuildId)?.build).toEqual({
+      'mage-frost-improved-frostbolt': 5, 'mage-frost-ice-shards': 4, 'mage-frost-improved-frost-nova': 2,
+    })
+  })
+
+  it('does not treat passive rank allocations as consumable spells or extra root charges', () => {
+    for (const text of guidance) {
+      expect(text).not.toMatch(/hold[^.]*Arcane Concentration rank|spend[^.]*Improved Blizzard rank[^.]*packs|\btwo roots\b/i)
+    }
+    const arcane = buildById('mage-arcane-build')!
+    expect(arcane.playstyle.filter(text => text.includes('Arcane Focus')).join(' ')).not.toMatch(/pushback|interrupted|interruption/i)
+    const area = mageClass.pages.find(page => page.slug === 'wow-forever-frost-mage-aoe-build')!
+    expect(pageCopy(area).join(' ')).toContain('does not verify when the underlying spells are learned')
+  })
+
+  it('keeps the Fire comparison within the eleven-point start rather than denying deeper control nodes', () => {
+    const blastWave = mageTalents.find(talent => talent.name === 'Blast Wave')!
+    expect(blastWave.requiredTreePoints).toBe(20)
+    expect(blastWave.rankDescriptions?.join(' ')).toMatch(/reduced movement speed/i)
+    const comparison = mageClass.pages.find(page => page.slug === 'wow-forever-frost-vs-fire-mage-leveling')!
+    const fire = comparison.comparison?.rows.find(row => row.label === 'Fire')
+    expect(fire).toBeDefined()
+    const fireCopy = fire?.values.join(' ') ?? ''
+    expect(fireCopy).not.toContain('No slow and no root in the published nodes')
+    expect(fireCopy).toContain('Blast Wave needs 20 Fire points')
+  })
+
+  it('bounds Arcane effect advice to the rank text actually available in this snapshot', () => {
+    for (const name of ['Arcane Focus', 'Arcane Concentration', 'Arcane Impact']) {
+      expect(mageTalents.find(talent => talent.name === name)?.fieldEvidence?.rankDescriptions, name).toBe('unknown')
+    }
+    const arcane = mageClass.pages.find(page => page.slug === 'wow-forever-arcane-mage-leveling-build')!
+    expect(pageCopy(arcane).join(' ')).toContain('Arcane Focus, Arcane Concentration and Arcane Impact have unresolved rank descriptions')
+    expect(buildById(arcane.primaryBuildId)?.build).toEqual({
+      'mage-arcane-arcane-focus': 5, 'mage-arcane-arcane-concentration': 5, 'mage-arcane-arcane-impact': 1,
+    })
+  })
+})
+
 describe('Mage ClassDefinition — data-gated publishing', () => {
   it('satisfies the complete planner while Fire build pages still wait for an allocation', () => {
     expect([...satisfiedRequirements(mageClass)].sort()).toEqual(['completeClassPlanner', 'legalBuild:arcane', 'legalBuild:frost', 'level20Builds', 'talentDataset'])

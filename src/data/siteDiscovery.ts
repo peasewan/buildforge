@@ -3,7 +3,7 @@ import { publishedClassPages } from '../lib/classStaticPages'
 import type { ClassDefinition, ClassPageKind } from '../lib/classPage'
 
 export const DISCOVERY_PAGES = [
-  { id: 'home', path: '/', title: 'BuildForgeTools | WoW Forever & Emberville Build Planners', h1: 'Choose your game. Make your build.', description: 'Explore WoW Forever talent calculators, editorial build routes and source-linked talent data, or explore the Emberville planner preview and core mechanics references.' },
+  { id: 'home', path: '/', title: 'BuildForgeTools | WoW Forever Tools & Emberville Preview Notebook', h1: 'Choose your game. Make your build.', description: 'Explore WoW Forever talent calculators, editorial routes and source-linked data, or use the Emberville preview notebook to record ideas beside confirmed mechanics.' },
   { id: 'classes', path: '/wow-forever-classes', title: 'WoW Forever Classes & Talent Calculators | BuildForgeTools', h1: 'WoW Forever classes', description: 'Find published calculators, build routes, talent references and leveling pages for all nine WoW Forever classes.' },
   { id: 'builds', path: '/wow-forever-builds', title: 'WoW Forever Builds by Playstyle | BuildForgeTools', h1: 'WoW Forever builds', description: 'Browse published WoW Forever leveling, PvP, dungeon and planning-cap routes across classes. Compare editorial allocations and edit your own build.' },
   { id: 'dungeon-finder', path: '/wow-forever-dungeon-build-finder', title: 'WoW Forever Dungeon Build Finder | BuildForgeTools', h1: 'WoW Forever Dungeon Build Finder', description: 'Choose Hall of Thanes or Ruins of Lordaeron, a party role and your level. Compare published starting routes and edit a talent snapshot in the calculator.' },

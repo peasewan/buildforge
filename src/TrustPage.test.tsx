@@ -1,4 +1,4 @@
-import { cleanup, render, screen } from '@testing-library/react'
+import { cleanup, render, screen, within } from '@testing-library/react'
 import { afterEach, describe, expect, it } from 'vitest'
 import TrustPage from './TrustPage'
 
@@ -27,8 +27,37 @@ describe('site trust pages', () => {
 
     expect(screen.getByRole('heading', { level: 2, name: 'Current Games' })).toBeTruthy()
     expect(screen.getByRole('link', { name: 'Explore WoW Forever tools' }).getAttribute('href')).toBe('/wow-forever-classes')
-    expect(screen.getByRole('link', { name: 'Explore the Emberville planner' }).getAttribute('href')).toBe('/emberville')
+    expect(screen.getByRole('link', { name: 'Explore the Emberville Preview Notebook' }).getAttribute('href')).toBe('/emberville')
     expect(screen.getByText(/tools and reproducible build data/)).toBeTruthy()
+  })
+
+  it('describes the actual Emberville notebook and source guides without promising validated builds', () => {
+    render(<TrustPage pageId="about" />)
+
+    const section = screen.getByRole('heading', { level: 2, name: 'Current Games' }).closest('section')!
+    expect(section.textContent).toContain('preview notebook')
+    expect(section.textContent).toContain('private notes')
+    expect(section.textContent).toContain('class-system and skill-inheritance source guides')
+    expect(section.textContent).toContain('does not validate builds or inheritance compatibility')
+    expect(section.textContent).not.toContain('build-direction hub')
+    expect(section.textContent).not.toContain('records remain locked')
+    expect(within(section).getByRole('link', { name: 'Explore the Emberville Preview Notebook' }).getAttribute('href')).toBe('/emberville')
+  })
+
+  it('routes Emberville feedback readers to the preview notebook', () => {
+    render(<TrustPage pageId="contact" />)
+
+    expect(screen.getByRole('link', { name: 'Open the Emberville Preview Notebook' }).getAttribute('href')).toBe('/emberville')
+    expect(screen.queryByRole('link', { name: 'Open the Emberville Build Planner' })).toBeNull()
+  })
+
+  it('discloses locally stored Emberville research choices and notes', () => {
+    render(<TrustPage pageId="privacy" />)
+
+    const storage = screen.getByRole('heading', { level: 2, name: 'Planner Storage and Share Links' }).closest('section')!
+    expect(storage.textContent).toContain('the Emberville preview notebook can store research choices and private notes')
+    expect(storage.textContent).toContain('remains on the device')
+    expect(storage.textContent).toContain('clearing browser storage')
   })
 
   it('asks for game-neutral correction evidence', () => {

@@ -51,10 +51,13 @@ describe('discovery rendering and artifacts', () => {
       expect(card.querySelector('a[href]')).not.toBeNull()
     }
   })
-  it('dates the edited discovery pages while retaining the classes date', () => {
+  it('dates the renamed home and Emberville notebook without redating unchanged guides', () => {
     const sitemap = new DOMParser().parseFromString(readFileSync('public/sitemap.xml', 'utf8'), 'application/xml')
     const date = (path: string) => [...sitemap.querySelectorAll('url')].find(url => url.querySelector('loc')?.textContent === `https://buildforgetools.com${path}`)?.querySelector('lastmod')?.textContent
-    expect(date('/')).toBe('2026-10-05')
+    expect(date('/')).toBe('2026-10-09')
+    expect(date('/emberville')).toBe('2026-10-09')
+    expect(date('/emberville-classes')).toBe('2026-09-23')
+    expect(date('/emberville-skill-inheritance')).toBe('2026-09-23')
     expect(date('/wow-forever-builds')).toBe('2026-09-25')
     expect(date('/wow-forever-classes')).toBe('2026-10-04')
   })
