@@ -1,0 +1,2 @@
+# Immutable raw downloads retain exact bytes (including CRs inside quoted CSV fields).
+data/sources/rank-text/**/*.csv -text -whitespace
