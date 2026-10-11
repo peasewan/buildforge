@@ -40,7 +40,7 @@
       "id": "protection-talents",
       "heading": "What the 31 Protection Points Include",
       "paragraphs": [
-        "The defensive path begins with five ranks each in Toughness and Redoubt. Precision, Guardian’s Favor, and Anticipation complete the opening 20 points. Improved Righteous Fury, Shield Specialization, and Sacred Duty then develop threat, blocking, and stamina-related choices from the imported 69913 Beta tree. One rank in One-Handed Weapon Specialization helps open the final tier alongside Templar’s Bulwark.",
+        "The defensive path begins with five ranks each in Toughness and Redoubt. Precision, Guardian’s Favor, and Anticipation complete the opening 20 points. Improved Righteous Fury, Shield Specialization, and Sacred Duty then develop defensive, blocking, and stamina-related choices from the archived 69913 Beta tree. One rank in One-Handed Weapon Specialization helps open the final tier alongside Templar’s Bulwark.",
         "Holy Shield is the deepest selected Protection talent in this historical example. The calculator enforces both its 30-point tree requirement and the Templar’s Bulwark prerequisite, so the capstone cannot remain selected if an edit makes the path invalid. Blizzard's October 1 update changed Redoubt and Holy Shield; the imported 69913 tooltips do not incorporate that tuning. Each node carries its client build source so readers can see exactly which older version the planner represents."
       ]
     },
@@ -65,7 +65,7 @@
       "heading": "Protection Paladin Talent Overview",
       "paragraphs": [
         "Protection Paladin talents shape the defensive core of this WoW Forever tank reference. The early Protection rows establish armor, blocking, accuracy, and baseline survivability before later choices add threat support and stronger shield interaction. In this historical 20/31/0 example, Toughness and Redoubt form the opening foundation, while Precision, Guardian’s Favor, and Anticipation complete the points needed to reach the middle of the tree. These talents make the old route easy to inspect, but their exact in-game values should be checked against current WoW Forever tooltips.",
-        "The middle and lower rows connect that foundation to the dungeon build identity. Improved Righteous Fury represents threat-focused planning, Shield Specialization supports blocking, and Sacred Duty adds another defensive choice before the path reaches Templar’s Bulwark and Holy Shield. The Talent Calculator enforces the visible tree-point requirements and prerequisites, so removing a required rank also removes deeper selections that can no longer remain active. This lets players test alternate Protection Paladin talents without producing an invalid shared setup.",
+        "The middle and lower rows connect that foundation to the dungeon build identity. Improved Righteous Fury reduces damage taken while Righteous Fury is active; it is not a verified threat multiplier. Shield Specialization supports blocking, and Sacred Duty adds another defensive choice before the path reaches Templar’s Bulwark and Holy Shield. The Talent Calculator enforces the visible tree-point requirements and prerequisites, so removing a required rank also removes deeper selections that can no longer remain active. This lets players test alternate Protection Paladin talents without producing an invalid shared setup.",
         "A Protection Paladin dungeon build may prioritize different utility or support choices as encounters, party needs, and verified talent data become clearer. This page therefore preserves one historical full tank allocation rather than a current or fixed best build. Open a blank Talent Calculator to test early Protection and Holy choices within the live cap. A new configuration can be copied as a share link while the community continues to verify the WoW Forever Protection tree."
       ]
     },
@@ -74,7 +74,7 @@
       "heading": "Using This Build for Solo Leveling",
       "paragraphs": [
         "This 20/31/0 allocation is a historical 51-point planning reference, not a playable Level 30 leveling build. Toughness and Redoubt show one older defensive opening, but the full route exceeds the normal Level 30 point budget modeled by the site. Blizzard also changed Redoubt on October 1, so its imported 69913 rank text is not current tuning.",
-        "For current Protection leveling, use the separate 0/11/0 Level 20 and 0/21/0 Level 30 editorial routes linked below. Their selected nodes were checked against the 70170 Trait tables, but the point order is not performance-tested and the calculator's complete tree remains the older 69913 import. The 51-point allocation on this page remains a longer-term historical reference."
+        "For current Protection leveling, use the separate 0/11/0 Level 20 and 0/21/0 Level 30 editorial routes linked below. Their selected nodes were checked against the 70170 Trait tables; the point order is not performance-tested. The current calculator uses the reviewed 70245 structure and community-resolved rank text, while this full allocation remains the 69913 archive. The 51-point allocation on this page remains a longer-term historical reference."
       ]
     }
   ]

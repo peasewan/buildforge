@@ -41,3 +41,24 @@ describe('Level 30 Paladin build decisions', () => {
     expect(answer.textContent).toMatch(/not.*measured/i)
   })
 })
+
+
+describe('Protection weapon and threat evidence', () => {
+  it('separates the dated official threat fix from the weapon-speed community question', () => {
+    render(<PaladinBuildDecisions branch="protection" />)
+    const official = screen.getByRole('region', { name: 'October 8 Protection gameplay changes' })
+    expect(official.textContent).toMatch(/Mana restoration.*no longer generates threat/i)
+    expect(official.textContent).toMatch(/1\.5 seconds/i)
+    expect(official.querySelector('a[href$="/2360696/5"]')).toBeTruthy()
+    const comparison = screen.getByRole('table', { name: 'Protection weapon-speed comparison checklist' })
+    expect(comparison.textContent).toMatch(/Faster weapon/)
+    expect(comparison.textContent).toMatch(/Slower weapon/)
+    expect(screen.getByRole('link', { name: 'Read the October 10 player discussion' }).getAttribute('href')).toContain('/2378322')
+    expect(document.querySelector('#beta-build-decisions')?.textContent).toMatch(/not a verified best-weapon recommendation/i)
+  })
+  it.each(['holy', 'retribution'] as const)('does not add Protection-only advice to %s', branch => {
+    render(<PaladinBuildDecisions branch={branch} />)
+    expect(screen.queryByRole('region', { name: 'October 8 Protection gameplay changes' })).toBeNull()
+    expect(screen.queryByRole('table', { name: 'Protection weapon-speed comparison checklist' })).toBeNull()
+  })
+})

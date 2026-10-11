@@ -3,6 +3,7 @@ import { compareDungeonXp, type DungeonXpMeasurement } from './lib/dungeonXp'
 import { track } from './lib/analytics'
 import type { RunPrepFaction } from './data/runPrep'
 import type { ToolRole } from './data/planningTools'
+import { OCTOBER_8_GAMEPLAY_SOURCE } from './data/october8Gameplay'
 const fields: Array<{key:keyof DungeonXpMeasurement;label:string;min:number}> = [
   {key:'firstRunXp',label:'First-run total XP',min:0}, {key:'repeatRunXp',label:'Repeat-run total XP',min:0},
   {key:'waitMinutes',label:'Group wait (minutes)',min:0}, {key:'travelMinutes',label:'Round-trip travel (minutes)',min:0},
@@ -33,6 +34,12 @@ export default function DungeonXpCompare({dungeonName, level, role, faction}: Du
   return <section className="pt-evidence dungeon-xp" id="xp-compare" aria-labelledby="xp-heading">
     <p className="pt-kicker">MEASURE YOUR OWN RUNS</p><h2 id="xp-heading">Dungeon leveling XP comparison</h2><p className="xp-context">{dungeonName} · Level {level} · {role === 'damage' ? 'DPS' : role === 'heal' ? 'Heal' : 'Tank'} · {faction === 'all' ? 'All factions' : faction === 'alliance' ? 'Alliance' : 'Horde'}</p><p>Compare your first run, a repeat run and questing using measured XP and time. Include all kill and quest XP in each total once. First-run quests are not automatically added to a repeat run.</p>
     <p>Use measurements from the same character level, rest state and party conditions. Tank / healer / DPS affects your observed wait and clear time; no role bonus, repeat penalty or high-level party formula is assumed.</p>
+    <section aria-labelledby="dungeon-oct8-heading">
+      <h3 id="dungeon-oct8-heading">October 8 dungeon XP changes</h3>
+      <p>Blizzard increased dungeon creature-kill XP by approximately 20% and corrected the mixed-level penalty to use each player’s level. A vastly overleveled party member can still cause no XP from affected kills.</p>
+      <p>Measure fresh runs after the patch. Do not multiply an observed total by 1.2: it already includes live rewards, and quest XP is not the stated creature-kill change. Record party levels, rested XP and which quests you completed. Four XP-bar segments from one reported run do not establish a general XP/hour rate.</p>
+      <p><a href={OCTOBER_8_GAMEPLAY_SOURCE.url} target="_blank" rel="noreferrer">{OCTOBER_8_GAMEPLAY_SOURCE.label}</a></p>
+    </section>
     <form onSubmit={event=>{event.preventDefault();setSubmitted(true);if(compareDungeonXp(numbers))track('dungeon_xp_compare',{input_source:isSample ? 'illustrative' : 'user_measurement'})}}>
       <div className="xp-fields">{fields.map(({key,label,min})=><label key={key} htmlFor={`xp-${key}`}>{label}<input id={`xp-${key}`} type="number" inputMode="decimal" min={min} step="any" required value={values[key]} onChange={event=>{setValues({...values,[key]:event.target.value});setSubmitted(false)}}/></label>)}</div>
       <p>Both dungeon scenarios use the same timing assumptions you enter. Change the times and compare again if your repeat run is faster. Questing time must also include travel, downtime and turn-ins, without overlapping minutes.</p>

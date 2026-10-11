@@ -45,7 +45,7 @@ export const PALADIN_BETA_SNAPSHOT = {
     },
     {
       title: "Seal of Fury",
-      detail: "The Protection seal favors fast weapons, grants small absorb shields, and lets Judgment taunt.",
+      detail: "Seal of Fury supports the Protection toolkit; weapon-speed and threat comparisons need separate gameplay evidence.",
     },
     {
       title: "Consecration",
