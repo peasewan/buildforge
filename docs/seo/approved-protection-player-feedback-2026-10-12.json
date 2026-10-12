@@ -1,0 +1,9 @@
+{
+  "reason": "October 12 source review adds the October 11 Protection Paladin player feedback as a qualified weapon-speed, absorb, caster-pull and gear comparison on the existing build page. Only the Protection body and one source link change. Player observations are not promoted to verified mechanics; the October 8 official changes and reviewed 70245 talent payload stay separate. URL, title, H1, description, canonical, robots, head signature and sitemap date remain frozen.",
+  "pages": {
+    "/wow-forever-protection-paladin-build": {
+      "rootSha256": "bb9bb5c4cacafca03b170c90b53bcfd579407d9a76a11d40f05e5b908a5922ba",
+      "linksSha256": "5f35ecef33d247e808bd98404c029532f36aadd4f187eaa4ca7ce82708e13e74"
+    }
+  }
+}

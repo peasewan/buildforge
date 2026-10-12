@@ -41,16 +41,23 @@ function ProtectionGameplayReview() {
     <section aria-labelledby="protection-weapon-heading">
       <h3 id="protection-weapon-heading">Fast or slow weapon for Protection Paladin?</h3>
       <p>Players are comparing Holy Strike hit size with mana sustain. This is a community question, not a verified best-weapon recommendation. Holy Strike’s cooldown change was announced September 24; it is not a new October 8 change.</p>
+      <p>October 11 player feedback raises a sharper tradeoff: its author suspects frequent swings favor Seal of Fury, while Reckoning’s extra attacks may make individual slower hits more valuable. That is one Level 30 Beta player’s interpretation, not a measured weapon-speed breakpoint. The official October 8 notes also limit Reckoning triggers to once every 1.5 seconds.</p>
       <div className="decision-table-scroll"><table className="decision-table">
         <caption>Protection weapon-speed comparison checklist</caption>
         <thead><tr><th scope="col">Weapon choice</th><th scope="col">What to measure</th><th scope="col">What to check</th></tr></thead>
         <tbody>
-          <tr><th scope="row">Faster weapon</th><td>Landed swings, absorb-shield consumption and net mana over the same time window.</td><td>Does more frequent swinging actually improve your observed sustain? Do not assume mana on every hit.</td></tr>
-          <tr><th scope="row">Slower weapon</th><td>Holy Strike hit size, misses, total damage and mana spent over that window.</td><td>Does a larger observed hit compensate for the other changes? One large hit does not establish higher sustained threat.</td></tr>
+          <tr><th scope="row">Faster weapon</th><td>Landed swings, fully consumed Seal of Fury shields and net mana over the same time window.</td><td>Does more frequent swinging improve observed sustain? The reviewed Improved Seal of Fury text requires its shield to be fully absorbed; it does not promise mana on every hit.</td></tr>
+          <tr><th scope="row">Slower weapon</th><td>Holy Strike hit size, actual Reckoning extra attacks, misses, total damage and mana spent over that window.</td><td>Do larger hits offset fewer swings after the official 1.5-second Reckoning trigger limit? One large hit does not establish higher sustained threat.</td></tr>
         </tbody>
       </table></div>
-      <p>For a useful comparison, keep your character level, ability ranks, talents, buffs, Seal, Righteous Fury and encounter consistent. Record each weapon’s DPS, stats and enchant; those differences can confound a speed comparison. Compare several pulls rather than one crit. Use combat-log observations; this page does not model proc rules or exact TPS.</p>
-      <p><a href="https://us.forums.blizzard.com/en/wow/t/prot-paladin-holy-strike-weapon-speed/2378322" target="_blank" rel="noreferrer">Read the October 10 player discussion</a> · <a href={protectionPlannerHref(30)}>Edit the same Level 30 route</a></p>
+      <h4>Conditions that can change the result</h4>
+      <ul>
+        <li><strong>External absorb shields:</strong> The October 11 player reports losing mana when another shield takes damage first. The reviewed talent text confirms the full-absorption condition, but this page has not verified absorb ordering in live Beta combat. Record which shield breaks and whether mana returns.</li>
+        <li><strong>Caster-heavy pulls:</strong> The player argues that enemies casting instead of making melee attacks could reduce block-dependent damage and mana. This is a concern to test, not a verified result. Compare melee and caster packs separately before attributing a threat change to weapon speed.</li>
+        <li><strong>Strength versus Spell Power:</strong> The same feedback notes that weapons and gear vary in DPS and both stats. Record weapon damage, speed, Strength, Spell Power and enchants; a faster-versus-slower comparison cannot isolate speed when these change together.</li>
+      </ul>
+      <p>For a useful comparison, keep your character level, ability ranks, talents, buffs, Seal, Righteous Fury and encounter consistent. The linked 0/21/0 route does not select Reckoning; to measure its extra attacks, move its 21st point from Improved Righteous Fury to Reckoning first, then hold that allocation constant for both weapons. Compare several pulls rather than one critical hit, and log mana changes and threat losses. This page does not model proc rules or exact TPS.</p>
+      <p><a href="https://us.forums.blizzard.com/en/wow/t/prot-paladin-holy-strike-weapon-speed/2378322" target="_blank" rel="noreferrer">Read the October 10 player discussion</a> · <a href="https://us.forums.blizzard.com/en/wow/t/constructive-prot-paladin-feedback-10112026/2379265" target="_blank" rel="noreferrer">Read the October 11 player feedback</a> · <a href={protectionPlannerHref(30)}>Edit the same Level 30 route</a></p>
     </section>
   </>
 }

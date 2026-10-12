@@ -1,4 +1,5 @@
 import protectionGameplayAmendments from '../docs/seo/approved-protection-gameplay-2026-10-11.json'
+import protectionPlayerFeedbackAmendments from '../docs/seo/approved-protection-player-feedback-2026-10-12.json'
 import notebookFooterAmendments from '../docs/seo/approved-emberville-notebook-footer-2026-10-09.json'
 import paladin70245Amendments from '../docs/seo/approved-paladin-70245-remediation-2026-10-09.json'
 import calculatorEntryAmendments from '../docs/seo/approved-calculator-entry-2026-10-06.json'
@@ -74,7 +75,9 @@ const frozenPages = baseline.pages.map(page => {
   const notebookFooter = notebookFooterAmendments.pages[page.path as keyof typeof notebookFooterAmendments.pages]
   const withNotebook = notebookFooter ? { ...withPromotion, ...notebookFooter } : withPromotion
   const gameplay = protectionGameplayAmendments.pages[page.path as keyof typeof protectionGameplayAmendments.pages]
-  return gameplay ? { ...withNotebook, ...gameplay } : withNotebook
+  const withGameplay = gameplay ? { ...withNotebook, ...gameplay } : withNotebook
+  const playerFeedback = protectionPlayerFeedbackAmendments.pages[page.path as keyof typeof protectionPlayerFeedbackAmendments.pages]
+  return playerFeedback ? { ...withGameplay, ...playerFeedback } : withGameplay
 })
 import vercel from '../vercel.json'
 import { collectSeoRedirects, parseSitemap, validateSeo, type Requirement } from './seo/validate'
