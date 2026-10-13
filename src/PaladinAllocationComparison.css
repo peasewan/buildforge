@@ -1,0 +1,25 @@
+.paladin-allocation-comparison { margin: 32px 0; padding: 28px; border: 1px solid #d9a44140; border-radius: 16px; background: #10141bcc; }
+.paladin-allocation-comparison h2, .paladin-allocation-comparison h3 { color: #ffe8a3; }
+.paladin-allocation-comparison p { color: #b5bdcb; line-height: 1.65; }
+.paladin-ret-reference { display: flex; align-items: center; gap: 24px; padding: 20px; border: 1px solid #d9a44140; border-radius: 12px; }
+.paladin-ret-reference > div { flex: 1; }
+.paladin-ret-reference > div > span { color: #d9a441; font-size: .8rem; }
+.paladin-allocation-comparison .button { font-size: .85rem; padding: 12px 16px; }
+.paladin-allocation-comparison .button:disabled { opacity: .5; cursor: not-allowed; }
+.paladin-allocation-comparison a { color: #ffe8a3; text-decoration: underline; text-underline-offset: 3px; }
+.paladin-comparison-actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 20px 0; }
+.paladin-comparison-summary { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.paladin-comparison-summary article { padding: 18px; background: #090b10; border: 1px solid #202633; border-radius: 10px; }
+.paladin-comparison-summary strong { color: #ffe8a3; font-size: 1.4rem; }
+.paladin-comparison-table-scroll { max-width: 100%; overflow-x: auto; }
+.paladin-comparison-table-scroll table { width: 100%; min-width: 600px; border-collapse: collapse; text-align: left; }
+.paladin-comparison-table-scroll caption { padding: 12px 0; color: #ffe8a3; text-align: left; }
+.paladin-comparison-table-scroll th, .paladin-comparison-table-scroll td { padding: 14px; border-bottom: 1px solid #202633; vertical-align: top; }
+.paladin-comparison-table-scroll th[scope="row"] { min-width: 160px; color: #ffe8a3; }
+.paladin-comparison-table-scroll th img { width: 32px; height: 32px; border-radius: 6px; margin-bottom: 6px; }
+.paladin-comparison-table-scroll small { display: block; font-weight: 400; margin-top: 6px; color: #b5bdcb; }
+@media (max-width: 700px) {
+  .paladin-allocation-comparison { padding: 16px; }
+  .paladin-ret-reference { flex-direction: column; align-items: stretch; }
+  .paladin-comparison-summary { grid-template-columns: 1fr; }
+}

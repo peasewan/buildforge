@@ -20,6 +20,8 @@ import VerificationBadge from './VerificationBadge'
 import ForgePilotPanel from './ForgePilotPanel'
 import PaladinRankAttribution from './PaladinRankAttribution'
 import { inspectPaladinBuildArchive } from './lib/paladinBuildArchive'
+import PaladinAllocationComparison from './PaladinAllocationComparison'
+import { createPaladinSnapshot, paladinSnapshotHref, type PaladinSnapshot } from './lib/paladinComparison'
 
 const branchIcons: Record<Branch, string> = {
   holy: '/images/icons/holy-strike.png',
@@ -38,7 +40,7 @@ const OFFICIAL_OCTOBER_TALENT_NOTES: Record<string, string> = {
   'Champion of the Light': 'Blizzard changed the Intellect-to-Spell-Damage ratio to 20/40/60% on October 1 and corrected a Healing tooltip error. The rank text below is from the older 69913 client snapshot.',
 }
 
-function initialPlannerState(): { build: Build; restored: boolean; forgePilotLevel: number | null; notice?: string; archive?: NonNullable<ReturnType<typeof inspectPaladinBuildArchive>> } {
+function initialPlannerState(): { build: Build; restored: boolean; forgePilotLevel: number | null; notice?: string; preserveDraft?: boolean; archive?: NonNullable<ReturnType<typeof inspectPaladinBuildArchive>> } {
   if (typeof window === 'undefined') return { build: {}, restored: false, forgePilotLevel: null }
   const params = new URLSearchParams(window.location.search)
   const shared = params.get('id')
@@ -46,6 +48,7 @@ function initialPlannerState(): { build: Build; restored: boolean; forgePilotLev
   if (params.has('id')) {
     const archive = inspectPaladinBuildArchive(shared ?? '')
     if (archive) return { build: {}, restored: false, forgePilotLevel: null, archive, notice: 'This shared allocation contains talents removed from the reviewed 70245 tree. Its original ranks are preserved below; no part was imported into the current calculator.' }
+    if (params.has('dataset') && params.get('dataset') !== betaDataset.sourceVersion) return { build: {}, restored: false, forgePilotLevel: null, preserveDraft: true, notice: 'This share uses a different talent dataset. Review the original version before starting a current build; no ranks were imported.' }
     const build = decodeValidatedPlannerBuild(shared ?? '', talents, config)
     if (!build) return { build: {}, restored: false, forgePilotLevel: null, notice: 'This shared build is invalid or outdated. Start a new build with the current talent rules.' }
     const requestedLevel = Number(params.get('level'))
@@ -197,14 +200,14 @@ export default function App() {
   const currentBranch = dominantBranch(build, talents, branch)
 
   useEffect(() => {
-    if (initialPlanner.archive && restoreNotice) return
+    if ((initialPlanner.archive || initialPlanner.preserveDraft) && restoreNotice) return
     try {
       localStorage.setItem('wow-forever-paladin-build', encodeBuild(build))
       localStorage.setItem(LEVEL_STORAGE_KEY, String(planningLevel))
     } catch {
       // The calculator remains editable when browser storage is unavailable.
     }
-  }, [build, planningLevel, initialPlanner.archive, restoreNotice])
+  }, [build, planningLevel, initialPlanner.archive, initialPlanner.preserveDraft, restoreNotice])
 
   useEffect(() => {
     if (window.location.hash === '#calculator') {
@@ -218,6 +221,8 @@ export default function App() {
     const url = new URL(window.location.href)
     if (url.searchParams.has('id')) {
       url.searchParams.set('id', encodeBuild(next))
+      url.searchParams.set('dataset', betaDataset.sourceVersion)
+      url.searchParams.set('level', String(planningLevel))
       window.history.replaceState(window.history.state, '', `${url.pathname}${url.search}${url.hash}`)
     }
     copyRequest.current += 1
@@ -248,7 +253,9 @@ export default function App() {
   const copyBuild = async () => {
     const pagePath = window.location.pathname
     const code = encodeBuild(build)
-    const path = `/build?id=${code}${planningLevel <= 30 ? `&level=${planningLevel}` : ''}#calculator`
+    const snapshot = createPaladinSnapshot(build, planningLevel)
+    if (!snapshot) return
+    const path = paladinSnapshotHref(snapshot)
     const shareUrl = `${window.location.origin}${path}`
     const request = ++copyRequest.current
     const didCopy = await copyTextToClipboard(shareUrl)
@@ -286,6 +293,18 @@ export default function App() {
       })
     }
     replaceBuild(nextBuild)
+  }
+
+  const loadComparison = (snapshot: PaladinSnapshot, source: 'community_reference' | 'saved_comparison') => {
+    const valid = createPaladinSnapshot(snapshot.build, snapshot.level)
+    if (!valid || snapshot.dataset !== betaDataset.sourceVersion) return
+    replaceBuild(valid.build)
+    setForgePilotLevel(valid.level)
+    setBranch(dominantBranch(valid.build, talents, branch))
+    setShowSavedBuild(false)
+    window.history.replaceState({}, '', paladinSnapshotHref(valid))
+    track('build_reference_load', { class: 'paladin', source, level: valid.level, points: totalPoints(valid.build), dataset: valid.dataset })
+    calculatorRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
 
   const loadBetaPath = (nextBranch: Branch) => {
@@ -402,7 +421,7 @@ export default function App() {
             <div className="planner-grid">
               <div className="tree-card">
                 <div className="panel-heading"><div><span>{branchNames[branch]} Specialization</span><h3>{branchTaglines[branch]}</h3></div><div className="legend"><i className="dot available" /> Available <i className="dot chosen" /> Selected</div></div>
-                {points === pointCap && <div className="pvp-full-route"><p className="pvp-edit-notice" role="status">{planningLevel === 60 ? 'This historical 51-point reference is full.' : `All ${pointCap} points at Level ${planningLevel} are spent.`} Remove a rank with the minus button before adding a different talent, or start a blank build at the same level.</p><button type="button" className="button secondary" onClick={startNewBuild}>Start blank build</button></div>}
+                {points === pointCap && <div className="pvp-full-route"><p className="pvp-edit-notice" role="status">{planningLevel === 60 ? 'This Level 60 planning reference is full.' : `All ${pointCap} points at Level ${planningLevel} are spent.`} Remove a rank with the minus button before adding a different talent, or start a blank build at the same level.</p><button type="button" className="button secondary" onClick={startNewBuild}>Start blank build</button></div>}
                 <TalentTree branch={branch} build={build} pointCap={pointCap} onAdd={addTalent} onRemove={(talent) => replaceBuild(decrementTalent(build, talent, talents))} />
                 <p className="tree-hint">Click a talent to add a rank. Use the small minus button to remove one.</p>
                 <a className="pvp-review-link" href="#paladin-build-summary">Review &amp; share this build →</a>
@@ -415,9 +434,9 @@ export default function App() {
                   if (!PALADIN_POINT_CAPS[level] || points>PALADIN_POINT_CAPS[level]) return
                   setForgePilotLevel(level)
                   copyRequest.current+=1;setCopied(false);setManualShareUrl(null)
-                  const url=new URL(window.location.href);url.searchParams.set('id',encodeBuild(build));url.searchParams.set('level',String(level))
+                  const url=new URL(window.location.href);url.searchParams.set('id',encodeBuild(build));url.searchParams.set('level',String(level));url.searchParams.set('dataset',betaDataset.sourceVersion)
                   window.history.replaceState({},'',`/build${url.search}#calculator`)
-                }}>{Object.entries(PALADIN_POINT_CAPS).map(([level,cap])=><option key={level} value={level} disabled={points>cap}>Level {level} · {cap} points{level==='60' ? ' (historical reference)' : ''}</option>)}</select></label>
+                }}>{Object.entries(PALADIN_POINT_CAPS).map(([level,cap])=><option key={level} value={level} disabled={points>cap}>Level {level} · {cap} points{level==='60' ? ' (planning reference)' : ''}</option>)}</select></label>
                 <div className="points-orb"><strong>{points}</strong><span>/ {pointCap}</span><small>{planningLevel<=30 ? `Level ${planningLevel} point budget` : 'Long-term reference budget'}</small></div>
                 <p className="share-note">Choose Level 30 to enforce a 21-point budget, or another level to edit a partial route. The reviewed 70245 structure and community-resolved rank text are separate evidence; point budgets do not verify performance.</p>
                 <div className="current-build"><span>Planner allocation</span><strong>{branchNames[currentBranch]} Paladin</strong><small>{planningLevel<=30 ? `${pointCap-points} points remaining at Level ${planningLevel}` : points === 51 ? '51-point reference complete' : `${51 - points} reference points remaining`}</small></div>
@@ -425,10 +444,12 @@ export default function App() {
                 <button className="copy-button" disabled={!points} onClick={copyBuild}>{copied ? <Check size={17} /> : <Clipboard size={17} />}{copied ? 'Link copied' : 'Copy Build Link'}</button>
                 <ForgePilotPanel classId="paladin" className="Paladin" dataVersion={betaDataset.sourceVersion} level={forgePilotLevel} pointCaps={PALADIN_POINT_CAPS} points={points} buildCode={encodeBuild(build)} defaultName={`${branchNames[currentBranch]} Paladin build`} talents={talents} removedTalents={removedPaladinTalents} config={{ branches: BRANCHES, pointCap }} />
                 <p className="share-note">Creates a link that opens this exact setup.</p>
+                {!(initialPlanner.archive && restoreNotice) && <a className="pvp-review-link" href="#paladin-build-comparison">Compare builds or load the Ret reference →</a>}
                 {manualShareUrl && <div className="pvp-manual-share"><p role="status">Clipboard access was unavailable. Select and copy this link manually.</p><label htmlFor="paladin-manual-share">Build link for manual copy</label><input id="paladin-manual-share" readOnly value={manualShareUrl} onFocus={(event) => event.currentTarget.select()} /></div>}
               </aside>
             </div>
           </div>
+          {!(initialPlanner.archive && restoreNotice) && <PaladinAllocationComparison build={build} level={planningLevel} onLoad={loadComparison} />}
           <section className="popular-builds" aria-label="Community Paladin build examples">
             <div className="popular-builds-heading"><div><span>Published planning examples</span><h2>Community Build Examples</h2></div><p>Review historical 51-point references, then start a blank planner route for the live Level 30 cap.</p></div>
             <div className="popular-build-grid">{EXAMPLE_BUILDS.map((example, index) => (

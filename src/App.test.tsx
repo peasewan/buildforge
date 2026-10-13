@@ -142,7 +142,11 @@ describe('Paladin talent calculator page', () => {
       fireEvent.click(screen.getByRole('button', { name: 'Load Holy Level 20 build' }))
       fireEvent.click(screen.getByRole('button', { name: 'Copy Build Link' }))
       await waitFor(() => expect(writeText).toHaveBeenCalledTimes(1))
-      expect(String(writeText.mock.calls[0]?.[0])).toMatch(/\/build\?id=.+&level=20#calculator$/)
+      const copiedUrl = new URL(String(writeText.mock.calls[0]?.[0]))
+      expect(copiedUrl.pathname).toBe('/build')
+      expect(copiedUrl.searchParams.get('level')).toBe('20')
+      expect(copiedUrl.searchParams.get('dataset')).toBe('wow_forever_beta_1.60.1.70245')
+      expect(copiedUrl.hash).toBe('#calculator')
       expect(gtag).toHaveBeenCalledWith('event', 'build_copy', expect.objectContaining({ level: 20, point_cap: 11, points: 11 }))
     } finally {
       if (oldClipboard) Object.defineProperty(navigator, 'clipboard', oldClipboard)

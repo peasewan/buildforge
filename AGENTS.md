@@ -162,3 +162,11 @@ Use the same daily comparison fields so decisions are based on trends rather tha
 - The older 69893 Seal of Fury spellbook entry has trainer metadata, not a complete effect tooltip or threat coefficient. Do not present it as precise current threat evidence. Preserve Paladin’s reviewed 70245 dataset and its source dates; gameplay notes do not promote a new client tree.
 - `/wow-forever-dungeon-build-finder#xp-compare` already compares measured first/repeat-run and questing XP/hour plus break-even wait. October 8’s approximately 20% change applies to dungeon creature-kill rewards, not all quest/run totals. Never multiply live measured XP by 1.2 or infer a role bonus / repeat penalty. The extremely overleveled-member no-XP rule remains separate from the mixed-level fix.
 - This release only amends the Protection body/link fingerprint. Existing page inventory, URLs, titles, H1s, descriptions, canonicals, robots and sitemap dates remain stable. No additional AdSense review or watcher restart is included.
+
+
+## Paladin reference and comparison (October 13)
+
+- The Calculator embeds `PaladinAllocationComparison`: A is a separately saved local snapshot; B is the editable draft. Standard Level 10–30 budgets and Level 60 / 51-point reference remain distinct. Legacy bonuses are not modeled.
+- `paladinRetReference.ts` holds the source-linked Mobalytics 13/0/38 numerical allocation reviewed October 13 and replayed against current 70245 rules. It is a community reference, not a measured best build or an imported client fact. Preserve historical 69913 examples separately.
+- New copied comparison/current links retain level and dataset. Cross-version links are rejected; original removed-node archive handling and versionless compatibility remain. `/build` is still noindex. Snapshot A is validated against current version/rules on return; invalid/stale storage is not silently migrated.
+- Saving/restoring/loading references never counts as manual build completion. Rank differences show exact selected-rank text plus community-source attribution; no simulated DPS/mana efficiency or actual dual-spec access is claimed. See `docs/data/paladin-comparison.md`.

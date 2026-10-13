@@ -1,0 +1,9 @@
+{
+  "reason": "Owner authorized the 51-point reference and A/B comparison on October 13. Only the /paladin calculator body and links change: sourced community 13/0/38 reference, local snapshots, exact selected-rank differences and versioned shares. Existing titles, H1s, descriptions, canonicals, robots, head signatures and sitemap inventory/dates remain frozen. No production talent data or Legacy bonus rules change.",
+  "pages": {
+    "/paladin": {
+      "rootSha256": "bdca6d7ff80429d03220580653771b2f2b9758d9d84cdaf1eda856fcb3cba034",
+      "linksSha256": "2c934d9a8bd6d10124de9f10915a2acd3e81e20e39bf99fe52eb0e5e47a942aa"
+    }
+  }
+}
