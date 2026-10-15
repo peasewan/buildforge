@@ -1,4 +1,5 @@
 import paladinComparisonAmendments from '../docs/seo/approved-paladin-comparison-2026-10-13.json'
+import octoberEventsAmendments from '../docs/seo/approved-october-events-2026-10-15.json'
 import protectionGameplayAmendments from '../docs/seo/approved-protection-gameplay-2026-10-11.json'
 import protectionPlayerFeedbackAmendments from '../docs/seo/approved-protection-player-feedback-2026-10-12.json'
 import notebookFooterAmendments from '../docs/seo/approved-emberville-notebook-footer-2026-10-09.json'
@@ -80,7 +81,9 @@ const frozenPages = baseline.pages.map(page => {
   const playerFeedback = protectionPlayerFeedbackAmendments.pages[page.path as keyof typeof protectionPlayerFeedbackAmendments.pages]
   const withFeedback = playerFeedback ? { ...withGameplay, ...playerFeedback } : withGameplay
   const comparison = paladinComparisonAmendments.pages[page.path as keyof typeof paladinComparisonAmendments.pages]
-  return comparison ? { ...withFeedback, ...comparison } : withFeedback
+  const withComparison = comparison ? { ...withFeedback, ...comparison } : withFeedback
+  const events = octoberEventsAmendments.pages[page.path as keyof typeof octoberEventsAmendments.pages]
+  return events ? { ...withComparison, ...events } : withComparison
 })
 import vercel from '../vercel.json'
 import { collectSeoRedirects, parseSitemap, validateSeo, type Requirement } from './seo/validate'
@@ -117,6 +120,7 @@ for (const { classDef, page } of published) requirements[`/${page.slug}`] = {
   unavailableText: unavailable[page.kind],
 }
 requirements['/wow-forever-paladin-build-comparator'] = { selector: '[data-surface="paladin-build-comparator"]' }
+requirements['/wow-forever-stress-test'] = { selector: '.forever-event-page' }
 requirements['/invokyr'] = { selector: '[data-surface="invokyr-home"]' }
 requirements['/invokyr-multiplayer'] = { selector: '[data-surface="invokyr-multiplayer"]' }
 requirements['/songs-of-glimmerwick'] = { selector: '[data-surface="glimmerwick-garden"]' }
@@ -135,7 +139,7 @@ for (const file of files) {
 }
 const redirects = collectSeoRedirects(vercel.redirects)
 const report = validateSeo({ origin: 'https://buildforgetools.com', pages, sitemap: parseSitemap(readFileSync(resolve(dist, 'sitemap.xml'), 'utf8')),
-  expectedPaths: ['/invokyr', '/invokyr-multiplayer', '/wow-forever-paladin-build-comparator', '/nivalis-nights-profit-calculator', '/songs-of-glimmerwick', '/songs-of-glimmerwick-first-days', '/songs-of-glimmerwick-spellcasting', '/songs-of-glimmerwick-garden-well', ...baseline.pages.map(p => p.path), ...classPaths, ...DISCOVERY_PAGES.map(p => p.path), ...TRUST_PAGES.map(p => `/${p.slug}`), ...EMBERVILLE_PAGES.map(p => `/${p.slug}`)],
+  expectedPaths: ['/wow-forever-stress-test', '/invokyr', '/invokyr-multiplayer', '/wow-forever-paladin-build-comparator', '/nivalis-nights-profit-calculator', '/songs-of-glimmerwick', '/songs-of-glimmerwick-first-days', '/songs-of-glimmerwick-spellcasting', '/songs-of-glimmerwick-garden-well', ...baseline.pages.map(p => p.path), ...classPaths, ...DISCOVERY_PAGES.map(p => p.path), ...TRUST_PAGES.map(p => `/${p.slug}`), ...EMBERVILLE_PAGES.map(p => `/${p.slug}`)],
   withheldPaths: PUBLISHED_CLASSES.flatMap(c => c.pages.map(p => `/${p.slug}`)).filter(p => !classPaths.includes(p)),
   redirects, aliases: { '/build': '/paladin' }, requirements, frozen: frozenPages,
 })

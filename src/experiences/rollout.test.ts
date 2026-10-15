@@ -13,14 +13,14 @@ const paths = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) => new URL
 const consolidatedRedirects = classPageRedirects().filter((redirect) => !redirect.source.endsWith('/index.html'))
 const retiredPaths = ['/wow-forever-protection-warrior-pvp-build', '/emberville-builds', ...consolidatedRedirects.map((redirect) => redirect.source)]
 const disabledHistoricalPaths = ['/wow-forever-protection-warrior-pvp-build', '/emberville-builds', '/wow-forever-warrior-dungeon-build']
-const independentToolPaths = ['/invokyr', '/invokyr-multiplayer', '/wow-forever-paladin-build-comparator', '/songs-of-glimmerwick', '/songs-of-glimmerwick-first-days', '/songs-of-glimmerwick-spellcasting', '/songs-of-glimmerwick-garden-well', '/nivalis-nights-profit-calculator']
+const independentToolPaths = ['/wow-forever-stress-test', '/invokyr', '/invokyr-multiplayer', '/wow-forever-paladin-build-comparator', '/songs-of-glimmerwick', '/songs-of-glimmerwick-first-days', '/songs-of-glimmerwick-spellcasting', '/songs-of-glimmerwick-garden-well', '/nivalis-nights-profit-calculator']
 // Independent of the ledger's editable class/status fields: these paths are frozen by the scope amendment.
 const protectedPaths = paths.filter((path) => path.includes('paladin') && !independentToolPaths.includes(path))
 
 describe('intent rollout scope', () => {
   it('retains the historical rollout ledger while withholding an unfinished build page and consolidating reviewed entries', () => {
     const discoveryPaths = ['/', '/wow-forever-classes', '/wow-forever-builds', '/wow-forever-dungeon-build-finder', '/wow-forever-class-picker']
-    expect(paths).toHaveLength(140)
+    expect(paths).toHaveLength(141)
     expect(new Set(paths).size).toBe(paths.length)
     expect(consolidatedRedirects).toHaveLength(21)
     expect(new Set(retiredPaths).size).toBe(23)

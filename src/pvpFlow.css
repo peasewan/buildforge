@@ -9,6 +9,13 @@
 .pvp-starting-grid ol { padding-left: 20px; color: #d3d9e3; line-height: 1.8; }
 .pvp-starting-grid small { display: block; margin-top: 14px; }
 .pvp-starting-grid small a, .pvp-review-link { color: #ffe8a3; }
+#forever-open ul { padding-left: 22px; color: #b7becb; line-height: 1.7; }
+#forever-open li + li { margin-top: 9px; }
+#forever-open details { margin: 22px 0 16px; }
+#forever-open summary { color: #ffe8a3; cursor: pointer; line-height: 1.7; }
+#forever-open details p { padding-left: 18px; }
+#forever-open > h3 { margin-top: 30px; color: #ffe8a3; font-family: Georgia, serif; }
+#forever-open a:not(.button) { color: #ffe8a3; }
 .pvp-edit-notice { margin: 0 0 20px; padding: 12px; border: 1px solid rgba(217,164,65,.28); border-radius: 8px; color: #ffe8a3; font-size: 12px; line-height: 1.6; }
 .pvp-review-link { display: inline-block; margin-top: 12px; font-size: 12px; }
 #paladin-build-summary { scroll-margin-top: 24px; }

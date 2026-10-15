@@ -12,7 +12,7 @@ import { NIVALIS_PAGE } from '../data/nivalis'
 import { GLIMMERWICK_LAUNCH_PAGES, type GlimmerwickLaunchPageId } from '../data/glimmerwickLaunchPages'
 
 export interface PageDefinition {
-  kind: 'invokyr' | 'paladin-comparison' | 'discovery' | 'planner' | 'guide' | 'build-guide' | 'build-landing' | 'build-hub' | 'spec-hub' | 'spec-talents' | 'spellbook' | 'beta-changes' | 'trust' | 'emberville' | 'glimmerwick' | 'glimmerwick-launch' | 'nivalis' | 'class-calculator' | 'class-document'
+  kind: 'stress-test' | 'invokyr' | 'paladin-comparison' | 'discovery' | 'planner' | 'guide' | 'build-guide' | 'build-landing' | 'build-hub' | 'spec-hub' | 'spec-talents' | 'spellbook' | 'beta-changes' | 'trust' | 'emberville' | 'glimmerwick' | 'glimmerwick-launch' | 'nivalis' | 'class-calculator' | 'class-document'
   invokyrPageId?: InvokyrPageId
   title: string
   description: string
@@ -115,6 +115,13 @@ const glimmerwickPage: PageDefinition = {
 
 export function pageForPath(pathname: string, search = ''): PageDefinition {
   const normalized = pathname.replace(/\/+$/, '') || '/'
+  if (normalized === '/wow-forever-stress-test') return {
+    kind: 'stress-test',
+    title: 'WoW Forever Stress Test: October 19 Status | BuildForgeTools',
+    description: 'Check the reported October 19 WoW Forever stress test date, what Blizzard has confirmed, download notes, access unknowns, and build preparation tools.',
+    canonical: 'https://buildforgetools.com/wow-forever-stress-test',
+    robots: 'index, follow',
+  }
   const invokyr = INVOKYR_PAGES.find(page => page.path === normalized)
   if (invokyr) return { kind: 'invokyr', invokyrPageId: invokyr.id, title: invokyr.title, description: invokyr.description, canonical: `https://buildforgetools.com${invokyr.path}`, robots: 'index, follow' }
   if (normalized === '/nivalis-nights-profit-calculator') return { kind: 'nivalis', title: NIVALIS_PAGE.title, description: NIVALIS_PAGE.description, canonical: NIVALIS_PAGE.canonical, robots: 'index, follow' }

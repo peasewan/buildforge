@@ -19,6 +19,10 @@ const paladinPlannerFallback = {
 }
 
 describe('public page routing', () => {
+  it('gives the stress-test status page its own canonical without changing calculator metadata', () => {
+    expect(pageForPath('/wow-forever-stress-test/')).toMatchObject({ kind: 'stress-test', canonical: 'https://buildforgetools.com/wow-forever-stress-test', robots: 'index, follow' })
+    expect(pageForPath('/paladin')).toEqual(paladinPlannerFallback)
+  })
   it.each([
     ['/warrior', 'class-calculator', 'WoW Forever Warrior Talent Calculator | Beta Build 70291'],
     ['/wow-forever-warrior-builds', 'class-document', 'WoW Forever Warrior Builds & Talent Calculator | BuildForgeTools'],

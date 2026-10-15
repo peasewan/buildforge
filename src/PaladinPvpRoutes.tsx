@@ -1,7 +1,6 @@
 import { BETA_SPEC_PATHS, betaSpecPlannerHref } from './data/betaSpecPaths'
 import { PALADIN_BETA_SNAPSHOT } from './data/betaSnapshot'
-import { BETA_PATCH_REVIEW } from './data/betaPatchReview'
-import { branchNames, talents } from './data/talents'
+import { branchNames, DATA_VERSION, talents } from './data/talents'
 import OfficialBuildChangeSummary from './OfficialBuildChangeSummary'
 import { track } from './lib/analytics'
 
@@ -10,11 +9,13 @@ export default function PaladinPvpRoutes() {
   return <section id="pvp-starting-routes" className="shell pvp-starting-routes" aria-label="Paladin PvP starting routes">
     <header><div className="eyebrow">Editorial planning examples</div><h2>Choose a starting route, then adjust for PvP</h2>
       <p>These 11-point Level 20 examples are starting snapshots under the official Level {PALADIN_BETA_SNAPSHOT.phase.levelCap} cap. They are not tested PvP recommendations or complete Level 30 builds.</p>
-      <p>Imported talent dataset: {PALADIN_BETA_SNAPSHOT.clientBuild}. The newer {BETA_PATCH_REVIEW.clientBuild} update is awaiting reconciliation; review changed talents before using any historical setup.</p>
+      <p>These starting snapshots use the reviewed {PALADIN_BETA_SNAPSHOT.clientBuild} structure and separately sourced community rank text. Their Level 20 budget is intentional; use the Level 30 examples below for a 21-point plan.</p>
       <p>Each Level 20 snapshot opens with its 11-point budget already spent. Remove a rank before adding a different talent, or start a blank build at the same level.</p>
     </header>
     <div className="pvp-starting-grid">{(['retribution', 'holy'] as const).map(branch => {
       const path = BETA_SPEC_PATHS[branch]
+      const planner = new URL(betaSpecPlannerHref(branch), 'https://buildforgetools.com')
+      planner.searchParams.set('dataset', DATA_VERSION)
       return <article key={branch}>
         <span>Editorial · Level {path.current.level} · {path.current.points} points</span>
         <h3>{branchNames[branch]} {branch === 'holy' ? 'support' : 'damage'} starting route</h3>
@@ -22,10 +23,10 @@ export default function PaladinPvpRoutes() {
         <p>{branch === 'holy' ? 'Start from the published healing path and review its support choices for your matchup.' : 'Start from the published damage path and review its pressure and utility choices for your matchup.'}</p>
         <ol>{path.current.steps.map(step => <li key={step.talent}>{step.talent}</li>)}</ol>
         <OfficialBuildChangeSummary className="paladin" buildVersion={PALADIN_BETA_SNAPSHOT.clientBuild} contextLabel={`${branchNames[branch]} Level 20 starting route`} selectedTalents={talents.filter(talent => (path.current.build[talent.id] ?? 0) > 0).map(talent => ({ name: talent.name, rank: path.current.build[talent.id] ?? 0 }))} />
-        <a className="button primary" href={betaSpecPlannerHref(branch)} onClick={() => track('build_landing_cta_click', { page_id: 'pvp', placement: 'editorial-route', branch })}>Load {branchNames[branch]} route →</a>
+        <a className="button primary" href={`${planner.pathname}${planner.search}${planner.hash}`} onClick={() => track('build_landing_cta_click', { page_id: 'pvp', placement: 'editorial-route', branch })}>Load {branchNames[branch]} route →</a>
         <small>Adapted from <a href={path.recommendationSource.href} target="_blank" rel="noreferrer">{path.recommendationSource.label}</a>; a guide recommendation, not a client fact.</small>
       </article>
     })}</div>
-    <p>Protection is omitted from these starters until the removed Improved Holy Strike talent is reconciled. The existing specialist pages remain available as historical references.</p>
+    <p>For a current defensive starting point, review the <a href="/wow-forever-protection-paladin-leveling-build">Protection Level 20 and Level 30 routes</a>. Their dungeon and leveling allocation is not a tested PvP recommendation.</p>
   </section>
 }

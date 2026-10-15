@@ -305,12 +305,14 @@ describe('Published PvP route → adjust → share', () => {
     const section = screen.getByRole('region', { name: 'Paladin PvP starting routes' })
     expect(section.textContent).toContain('Editorial')
     expect(section.textContent).toContain('1.60.1.70245')
-    expect(section.textContent).toContain('70009')
+    expect(section.textContent).toContain('separately sourced community rank text')
+    expect(section.textContent).not.toContain('awaiting reconciliation')
     expect(within(section).queryByRole('link', { name: /Load Protection/ })).toBeNull()
     const links = within(section).getAllByRole('link', { name: /Load.*route/ })
     expect(links).toHaveLength(2)
     for (const link of links) {
       const href = new URL(link.getAttribute('href')!, location.origin)
+      expect(href.searchParams.get('dataset')).toBe('wow_forever_beta_1.60.1.70245')
       const target = decodeBuild(href.searchParams.get('id')!, talents)
       expect(totalPoints(target)).toBe(11)
       let built: Build = {}

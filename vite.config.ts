@@ -85,6 +85,7 @@ export default defineConfig(({ mode }) => ({
         retributionTalents: resolve(import.meta.dirname, 'wow-forever-retribution-paladin-talents/index.html'),
         paladinComparator: resolve(import.meta.dirname, 'wow-forever-paladin-build-comparator/index.html'),
         betaChanges: resolve(import.meta.dirname, 'wow-forever-paladin-beta-talent-changes/index.html'),
+        stressTest: resolve(import.meta.dirname, 'wow-forever-stress-test/index.html'),
         paladinAbilities: resolve(import.meta.dirname, 'wow-forever-paladin-abilities/index.html'),
         about: resolve(import.meta.dirname, 'about/index.html'),
         contact: resolve(import.meta.dirname, 'contact/index.html'),

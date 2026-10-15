@@ -10,6 +10,7 @@ import BetaLevelingSnapshot from './BetaLevelingSnapshot'
 import PaladinLevelingChecklist from './PaladinLevelingChecklist'
 import { betaLevelingPlannerHref } from './data/levelingBeta'
 import PaladinPvpRoutes from './PaladinPvpRoutes'
+import PaladinTournamentPrep from './PaladinTournamentPrep'
 import OfficialBuildChangeSummary from './OfficialBuildChangeSummary'
 import { PALADIN_BETA_SNAPSHOT } from './data/betaSnapshot'
 import { talents } from './data/talents'
@@ -131,6 +132,7 @@ export default function BuildLandingPage({ pageId }: { pageId: BuildLandingPageI
 
       <BetaDataStatus />
       {pageId === 'pvp' && <PaladinPvpRoutes />}
+      {pageId === 'pvp' && <PaladinTournamentPrep />}
       {(pageId === 'leveling' || pageId === 'protection-leveling') && <BetaLevelingSnapshot pageId={pageId} />}
       {currentReview && <div className="shell"><OfficialBuildChangeSummary className="paladin" buildVersion={PALADIN_BETA_SNAPSHOT.clientBuild} contextLabel={`${pageId === 'leveling' ? 'Retribution' : 'Protection'} Level 30 leveling route`} selectedTalents={selectedTalentsIn(currentReview)} /></div>}
       {historicalReview && <div className="shell"><OfficialBuildChangeSummary className="paladin" buildVersion="1.60.1.69913" contextLabel="Historical 51-point PvP example" selectedTalents={selectedTalentsIn(historicalReview.build)} /></div>}

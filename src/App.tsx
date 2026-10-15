@@ -5,6 +5,7 @@ import { BUILD_LANDING_PAGES } from './data/buildLandingPages'
 import BuildCard from './BuildCard'
 import { PALADIN_BETA_SNAPSHOT } from './data/betaSnapshot'
 import { PALADIN_BETA_STATUS } from './data/betaStatus'
+import { OCTOBER_8_GAMEPLAY_SOURCE } from './data/october8Gameplay'
 import { BETA_SPEC_PATHS } from './data/betaSpecPaths'
 import { branchNames, branchTaglines, DATA_SOURCES, historicalTalents, removedPaladinTalents, talentEvidenceLabel, talents, type Talent } from './data/talents'
 import { betaDataset } from './data/datasets'
@@ -137,6 +138,7 @@ export function TalentTree({ branch, build, onAdd, onRemove, readOnly = false, p
               <strong>{talent.name}</strong>
               {readOnly && OFFICIAL_OCTOBER_TALENT_NOTES[talent.name] && <span className="talent-october-notice">{OFFICIAL_OCTOBER_TALENT_NOTES[talent.name]} <a href={PALADIN_BETA_STATUS.levelCapSource} target="_blank" rel="noreferrer">Official update</a></span>}
               <span>{rankDescription}</span>
+              {!readOnly && talent.id === 'reckoning' && <span className="talent-october-notice">Official gameplay note · October 8, 2026: Reckoning can trigger at most once every 1.5 seconds. This later server note is separate from the preserved rank text. <a href={OCTOBER_8_GAMEPLAY_SOURCE.url} target="_blank" rel="noreferrer">{OCTOBER_8_GAMEPLAY_SOURCE.label}</a></span>}
               {lockReason && <span className="talent-lock-message" role={feedbackTalentId === talent.id ? 'status' : undefined}>{lockMessage(lockReason)}</span>}
               <em>
                 <span>{talentEvidenceLabel(talent)}</span>

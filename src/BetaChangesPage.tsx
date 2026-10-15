@@ -39,6 +39,7 @@ export default function BetaChangesPage() {
           <p>Track official Paladin Beta updates alongside the last fully imported client tree, including the October 1 Level 30 cap and historical build diffs.</p>
           <p className="beta-phase-label">October 1 update — Level 30 cap</p>
           <a className="button primary" href="/paladin#calculator" onClick={() => track("beta_cta_click", { placement: "hero" })}>Open Paladin Calculator</a>
+          <p className="beta-footnote"><a href="/wow-forever-stress-test">October 19 stress test status and preparation</a>: reported launcher date; exact hours and access rules are unconfirmed in our October 15 review.</p>
         </div>
         <aside className="beta-status-card" aria-label="Beta data status">
           <span>PALADIN BETA DATA</span>

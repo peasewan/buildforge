@@ -170,3 +170,10 @@ Use the same daily comparison fields so decisions are based on trends rather tha
 - `paladinRetReference.ts` holds the source-linked Mobalytics 13/0/38 numerical allocation reviewed October 13 and replayed against current 70245 rules. It is a community reference, not a measured best build or an imported client fact. Preserve historical 69913 examples separately.
 - New copied comparison/current links retain level and dataset. Cross-version links are rejected; original removed-node archive handling and versionless compatibility remain. `/build` is still noindex. Snapshot A is validated against current version/rules on return; invalid/stale storage is not silently migrated.
 - Saving/restoring/loading references never counts as manual build completion. Rank differences show exact selected-rank text plus community-source attribution; no simulated DPS/mana efficiency or actual dual-spec access is claimed. See `docs/data/paladin-comparison.md`.
+
+## Dated events and Paladin review (October 15)
+
+- `/wow-forever-stress-test` distinguishes the reported October 19 Battle.net listing from Blizzard's separately announced Server Slam plan. Hours, eligibility and stress-test level cap are unconfirmed in the October 15 source review. Do not invent a countdown or treat a normal user's official-forum post as a Blizzard announcement.
+- `/wow-forever-paladin-pvp-build#forever-open` links the current Raider.IO organizer rules. Registration closed October 2; the Level 30 / 21-point examples model standard progression, not Legacy bonuses or equipment compliance. Quest/dungeon reward ilvl45 and profession-item skill226 restrictions have narrower scopes than blanket gear or character-skill caps.
+- Paladin remains on reviewed `70245`. `data/reviews/1.60.1.70338/paladin-review.json` records incomplete source acquisition, not a zero-change diff. The current Reckoning tooltip separately displays the October 8 official 1.5-second trigger note without replacing preserved rank text.
+- This release adds one event-status URL (141 sitemap entries). Existing ranking metadata remains stable; no AdSense submission or watcher restart is included.

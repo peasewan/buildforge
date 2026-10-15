@@ -1,0 +1,13 @@
+{
+  "reason": "October 15 bounded event update: a contextual reported-stress-test link on the Beta changes page, and a dated organizer-rule checklist plus current versioned routes on the existing Paladin PvP page. Only these two body/link fingerprints are amended. Existing titles, H1s, descriptions, canonical/robots tags, head fingerprints and sitemap dates remain unchanged. One independently sourced stress-test status page is added; no talent dataset is promoted.",
+  "pages": {
+    "/wow-forever-paladin-beta-talent-changes": {
+      "rootSha256": "637e9dc8ed6c2d44291ec9f51e16055d8be37859364d0dd0a0632a4b2de7f67b",
+      "linksSha256": "6af776cb80ad7e3467b9b35d8658b6a04af253e0db3f34fa996013e6cddd3d09"
+    },
+    "/wow-forever-paladin-pvp-build": {
+      "rootSha256": "b4ab8913b6ea91cbc17fbdf99fe6ca1018a9b0fd008e191077767136c6a16f3b",
+      "linksSha256": "5ea17b90f07444b00b0aa349ab195d00a683974afa13ec5141d5f8faf44e3046"
+    }
+  }
+}

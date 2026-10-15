@@ -1,0 +1,22 @@
+{
+  "reviewedOn": "2026-10-15",
+  "candidateBuild": "1.60.1.70338",
+  "productionBuild": "1.60.1.70245",
+  "status": "acquisition_incomplete",
+  "promoted": false,
+  "exactDiff": null,
+  "findings": [
+    "The competitor's 70338 label is not an acquired Paladin dataset.",
+    "Exact Wago 70338 TraitNode CSV acquisition was unsuccessful during this review. A complete same-build structural and per-rank candidate was not obtained.",
+    "Talents Forever's October 14 export labels Paladin 70291, not 70338. It cannot establish that 70338 is verified or unchanged.",
+    "Keep the reviewed 70245 tree and separately attributed community rank text. The October 8 official Reckoning trigger-limit note is exposed separately in the calculator tooltip.",
+    "Current 21-point Level 30 budgets, versioned sharing and historical removed-node recovery were checked with targeted regressions. No production talent payload was modified."
+  ],
+  "references": [
+    "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70338",
+    "https://talentsforever.com/data.json",
+    "https://elitistgaming.com/guides/wow-forever-talents/paladin",
+    "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-8/2360696/5",
+    "https://us.forums.blizzard.com/en/wow/t/beta-maintenance-october-14/2382032/1"
+  ]
+}

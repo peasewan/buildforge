@@ -1,0 +1,47 @@
+.forever-event-page .beta-hero { align-items: start; }
+.forever-event-page .beta-hero-copy .forever-event-lead { color: #ebd6a3; font-size: 18px; line-height: 1.7; }
+.forever-event-page .beta-hero-copy .forever-event-review { color: #939ba8; font-size: 12px; line-height: 1.7; margin-top: -10px; }
+.forever-event-official > span { display: flex; align-items: center; gap: 7px; color: #9fd5b0; }
+.forever-event-official p { color: #abb0b9; font-size: 13px; line-height: 1.8; margin: 0 0 16px; }
+.forever-event-content { max-width: 980px; padding-bottom: 90px; }
+.forever-event-section { margin-bottom: 64px; scroll-margin-top: 28px; }
+.forever-event-section h2 { margin: 12px 0 20px; color: #eee5d2; font: 600 clamp(25px, 3vw, 35px)/1.3 Cinzel, serif; }
+.forever-event-section h3 { margin: 28px 0 12px; color: #dfd1b1; font: 600 18px/1.4 Cinzel, serif; }
+.forever-event-section p, .forever-event-steps { color: #a8aeb8; font-size: 14px; line-height: 1.85; }
+.forever-event-section p { margin: 0 0 18px; }
+.forever-event-section .forever-event-note { margin-top: 18px; padding-left: 16px; border-left: 2px solid #806a38; color: #c1b596; font-size: 12px; }
+.forever-event-table-wrap { overflow-x: auto; border: 1px solid rgba(217,164,65,.25); border-radius: 10px; background: linear-gradient(145deg, #12161e, #0c0f14); }
+.forever-event-page table { width: 100%; border-collapse: collapse; text-align: left; }
+.forever-event-page th, .forever-event-page td { padding: 18px 20px; vertical-align: top; }
+.forever-event-page thead { background: rgba(217,164,65,.07); }
+.forever-event-page thead th { color: #cbb77f; font-size: 11px; font-weight: 600; letter-spacing: .07em; text-transform: uppercase; }
+.forever-event-page tbody th { width: 24%; min-width: 130px; color: #e0d4b9; font-size: 13px; font-weight: 500; }
+.forever-event-page td { color: #a3abb6; font-size: 13px; line-height: 1.7; }
+.forever-event-page td strong { color: #d7c295; font-weight: 500; }
+.forever-event-page tbody tr + tr { border-top: 1px solid rgba(255,255,255,.07); }
+.forever-event-steps { padding-left: 23px; }
+.forever-event-steps li { padding: 5px 0 5px 8px; }
+.forever-event-steps li::marker { color: #d9b45d; font-weight: 600; }
+.forever-event-preparation { padding: 28px; border: 1px solid rgba(217,164,65,.25); border-radius: 12px; background: radial-gradient(circle at 0 0, rgba(217,164,65,.09), transparent 55%), #0d1117; }
+.forever-event-preparation nav { display: grid; margin-top: 24px; }
+.forever-event-preparation nav a { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 18px 0; border-top: 1px solid rgba(255,255,255,.08); color: #e2cd92; font-size: 14px; }
+.forever-event-preparation small { display: block; color: #929ba8; font-size: 12px; line-height: 1.6; margin-top: 6px; }
+.forever-event-preparation nav a:hover { color: #ffe7a7; }
+.forever-event-sources ul { list-style: none; margin: 0; padding: 0; }
+.forever-event-sources li { display: grid; grid-template-columns: 75px 1fr; gap: 18px; padding: 20px 0; border-top: 1px solid rgba(255,255,255,.07); }
+.forever-event-sources li > span { color: #ad965a; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; padding-top: 3px; }
+.forever-event-sources a { color: #dfcd9b; font-size: 13px; line-height: 1.7; }
+.forever-event-sources a svg { display: inline; vertical-align: middle; margin-left: 5px; }
+.forever-event-sources li p { color: #8f98a5; font-size: 12px; line-height: 1.75; margin: 8px 0 0; }
+.forever-event-page a:focus-visible { outline: 2px solid #e2c774; outline-offset: 5px; }
+@media (max-width: 600px) {
+  .forever-event-page .beta-hero { padding-bottom: 48px; }
+  .forever-event-page .beta-hero-copy .forever-event-lead { font-size: 16px; }
+  .forever-event-section { margin-bottom: 46px; }
+  .forever-event-section p, .forever-event-steps { font-size: 13px; }
+  .forever-event-page th, .forever-event-page td { padding: 15px 12px; }
+  .forever-event-page tbody th { min-width: 105px; font-size: 12px; }
+  .forever-event-page td { font-size: 12px; }
+  .forever-event-preparation { padding: 23px 18px; }
+  .forever-event-sources li { grid-template-columns: 1fr; gap: 8px; }
+}
