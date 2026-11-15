@@ -56,7 +56,9 @@ describe('discovery rendering and artifacts', () => {
   it('dates the renamed home and Emberville notebook without redating unchanged guides', () => {
     const sitemap = new DOMParser().parseFromString(readFileSync('public/sitemap.xml', 'utf8'), 'application/xml')
     const date = (path: string) => [...sitemap.querySelectorAll('url')].find(url => url.querySelector('loc')?.textContent === `https://buildforgetools.com${path}`)?.querySelector('lastmod')?.textContent
-    expect(date('/')).toBe('2026-10-09')
+    for (const path of ['/', '/wow-forever-class-picker', '/wow-forever-mage-builds', '/wow-forever-hunter-builds', '/wow-forever-paladin-builds']) {
+      expect(date(path)).toBe('2026-11-15')
+    }
     expect(date('/emberville')).toBe('2026-10-09')
     expect(date('/emberville-classes')).toBe('2026-09-23')
     expect(date('/emberville-skill-inheritance')).toBeUndefined()
