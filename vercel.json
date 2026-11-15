@@ -1,6 +1,11 @@
 {
   "redirects": [
     {
+      "source": "/roblox/the-forge/frost-star/index.html",
+      "destination": "/roblox/the-forge/frost-star",
+      "permanent": true
+    },
+    {
       "source": "/songs-of-glimmerwick-first-days",
       "destination": "/songs-of-glimmerwick",
       "statusCode": 301
@@ -846,6 +851,7 @@
   ],
   "rewrites": [
     { "source": "/wow-forever-respec-cost-calculator", "destination": "/wow-forever-respec-cost-calculator/index.html" },
+    { "source": "/roblox/the-forge/frost-star", "destination": "/roblox/the-forge/frost-star/index.html" },
     { "source": "/poe-atlas-tree-compare", "destination": "/poe-atlas-tree-compare/index.html" },
     { "source": "/wow-forever-stress-test", "destination": "/api/retired-page" },
     { "source": "/wow-forever-stress-test/index.html", "destination": "/api/retired-page" },

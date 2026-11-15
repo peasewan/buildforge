@@ -1,4 +1,5 @@
 import { resolvePageHref } from './lib/pageRetirement'
+import FrostStarPage from './FrostStarPage'
 import InvokyrPage from './InvokyrPage'
 import TalentEconomyPage from './TalentEconomyPage'
 import PaladinBuildComparator from './PaladinBuildComparator'
@@ -27,6 +28,7 @@ import { pageForPath } from './lib/routes'
 
 function routeElement(pathname: string) {
   const route = pageForPath(pathname)
+  if (route.kind === 'frost-star') return <FrostStarPage />
   if (route.kind === 'talent-economy') return <TalentEconomyPage />
   if (route.kind === 'retired') return <main className="shell"><h1>This page has been retired</h1><p>This resource is no longer maintained.</p><a href="/">Browse current tools</a></main>
   if (route.kind === 'invokyr') return <InvokyrPage pageId={route.invokyrPageId!} />

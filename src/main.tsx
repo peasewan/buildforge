@@ -49,3 +49,4 @@ import './paladin-archive.css'
 import './invokyr.css'
 
 import './TalentEconomyPage.css'
+import './FrostStarPage.css'

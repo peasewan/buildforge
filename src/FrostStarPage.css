@@ -1,0 +1,25 @@
+.fs-page { color-scheme: dark; }
+.fs-page .sd-intro { max-width: 850px; }
+.fs-page .sd-kicker { text-transform: uppercase; }
+.fs-panel {
+  max-width: 850px;
+  padding: clamp(18px, 3vw, 32px);
+  margin-bottom: 18px;
+  border: 1px solid #ffffff20;
+  border-radius: 12px;
+  background: #14171b;
+}
+.fs-panel h2 { margin: 0 0 12px; font-size: clamp(21px, 3vw, 28px); line-height: 1.2; }
+.fs-panel p, .fs-panel li { color: #b6bec8; line-height: 1.65; font-size: 15px; }
+.fs-panel p:last-child, .fs-panel ul:last-child { margin-bottom: 0; }
+.fs-panel a { color: #edc77f; text-decoration: underline; }
+.fs-panel table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.fs-panel caption { color: #bbc1c8; font-size: 14px; text-align: left; margin-bottom: 14px; }
+.fs-panel td, .fs-panel th { text-align: left; padding: 12px 8px; border-bottom: 1px solid #ffffff20; }
+.fs-panel thead th { color: #d6b77a; font-size: 13px; }
+.fs-fields { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 16px; }
+.fs-fields label { font-size: 14px; font-weight: 650; }
+.fs-fields input, .fs-fields select { display: block; width: 100%; margin-top: 7px; padding: 11px; background: #0c0f14; border: 1px solid #565c65; border-radius: 5px; color: inherit; font: inherit; }
+.fs-panel .fs-result { color: #efdbb5; background: #201e1a; border-left: 3px solid #cda86c; padding: 12px 16px; }
+.fs-page :focus-visible { outline: 3px solid #edc77f; outline-offset: 3px; }
+@media (max-width: 500px) { .fs-fields { grid-template-columns: 1fr; } }
