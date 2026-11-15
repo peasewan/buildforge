@@ -1,3 +1,6 @@
+import { priestLevelingComparisonSlug } from '../data/classes/priest'
+import BetaPatchNotice from '../BetaPatchNotice'
+import PriestLevelingChoice from './PriestLevelingChoice'
 import LaunchBuildGuide from '../LaunchBuildGuide'
 import type { CSSProperties, ReactNode } from 'react'
 import { ArrowRight, Swords } from 'lucide-react'
@@ -37,6 +40,7 @@ export default function ClassExperiencePage({
   classDef: ClassDefinition
   page: ClassPageDefinition
 }) {
+  const priestComparison = page.slug === priestLevelingComparisonSlug
   const launchClass = page.kind === 'buildsHub' && (def.id === 'hunter' || def.id === 'mage') ? def.id : undefined
   const published = publishedClassPages([def]).map(({ page }) => page),
     paths = new Set(published.map((p) => `/${p.slug}`))
@@ -141,7 +145,8 @@ export default function ClassExperiencePage({
           <h1>{page.h1}</h1>
           <p className="ix-dek">{launchClass ? `Choose a ${def.name} allocation for leveling, dungeons, area damage or PvP. Inspect its ranks and open the filled launch tree.` : page.description}</p>
           {def.contentPolicy === 'intent_tasks_v1' && !def.dataReview?.current && <p className="ix-note" role="note">Historical {def.verifiedBuild} talent snapshot · Level 20 reference. The live Beta cap is Level 30; a current 21-point allocation has not been verified for this class here. Use the source-linked ranks and progression as a historical comparison.</p>}
-          {plannerPublished && (
+          {priestComparison && <a className="button class-primary" href="#leveling-choice">Compare solo and dungeon leveling <ArrowRight size={15} aria-hidden="true" /></a>}
+          {plannerPublished && !priestComparison && (
             <div className="class-hero-actions">
               <a className="button class-primary" href={launchClass ? '#launch-builds' : calculatorHref}>
                 {launchClass ? `Choose a launch build` : archivedBuild ? `Open blank ${def.name} Calculator` : primaryBuild ? `Inspect Level ${primaryBuild.level} route in Calculator` : `Open ${def.name} Calculator`}
@@ -152,9 +157,9 @@ export default function ClassExperiencePage({
           {archivedBuild && <p className="ix-note" role="note">This historical route includes an officially removed talent. Review the old ranks below, then start a blank calculator route.</p>}
           <div className="ix-meta">
             <span>
-              {launchClass ? 'Launch builds and Beta archive' : def.dataReview && !def.dataReview.current ? 'CLIENT-TABLE PREVIEW' : def.beta.phaseLabel}
+              {priestComparison ? 'Launch leveling guide' : launchClass ? 'Launch builds and Beta archive' : def.dataReview && !def.dataReview.current ? 'CLIENT-TABLE PREVIEW' : def.beta.phaseLabel}
             </span>
-            {((def.dataReview && !def.dataReview.current) ||
+            {!priestComparison && ((def.dataReview && !def.dataReview.current) ||
               !def.beta.phaseLabel.includes(def.verifiedBuild)) && (
               <span>{launchClass ? 'Archived Beta build' : 'Build'} {def.verifiedBuild}</span>
             )}
@@ -163,6 +168,14 @@ export default function ClassExperiencePage({
         </div>
       </section>
       <div className="shell ix-body">
+        {priestComparison && <>
+          <PriestLevelingChoice />
+          <header className="ix-panel"><h2>October Beta builds at level 30</h2>
+            <p>The point orders and patch notes below use Beta client {def.verifiedBuild}. Use them to inspect the two 21-point examples. The launch talent milestones are covered above.</p>
+            <a href={calculatorHref}>Inspect the archived Priest allocation</a>
+          </header>
+          <BetaPatchNotice classId={def.id} />
+        </>}
         {launchClass && <><LaunchBuildGuide id={launchClass} /><header className="ix-panel"><h2>Beta archive and local calculator</h2><p>The following tools and field notes preserve the pre-launch {def.verifiedBuild} tree. Their level caps and ability comparisons describe the October Beta.</p></header></>}
         {supportOrder(page.kind).map((slot) => slots[slot] ? (
           <div className={`ix-slot ix-slot--${slot}`} data-composition-slot={slot} key={slot}>{slots[slot]}</div>

@@ -1,3 +1,4 @@
+import { priestLevelingComparisonSlug } from './data/classes/priest'
 import { resolvePageHref } from './lib/pageRetirement'
 import ArrowBudgetPage from './ArrowBudgetPage'
 import StandOutPage from './StandOutPage'
@@ -76,5 +77,5 @@ export default function AppRoute({ pathname }: { pathname: string }) {
   const route = pageForPath(pathname)
   const classPage = publishedClassPage(pathname)
   const classId = classPage?.classDef.id ?? (pathname === '/paladin' || pathname === '/build' || pathname.includes('paladin') ? 'paladin' : undefined)
-  return <>{classId && <BetaPatchNotice classId={classId} />}{routeElement(pathname)}<FeedbackWidget inline={gameToolPages.some(page => page.kind === route.kind) || route.kind === 'throwing-disc' || route.kind === 'glimmerwick-launch' || route.kind === 'invokyr'} /></>
+  return <>{classId && classPage?.page.slug !== priestLevelingComparisonSlug && <BetaPatchNotice classId={classId} />}{routeElement(pathname)}<FeedbackWidget inline={gameToolPages.some(page => page.kind === route.kind) || route.kind === 'throwing-disc' || route.kind === 'glimmerwick-launch' || route.kind === 'invokyr'} /></>
 }
