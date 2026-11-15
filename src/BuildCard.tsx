@@ -1,3 +1,4 @@
+import { resolvePageHref } from './lib/pageRetirement'
 import { ArrowRight, Heart, Route, Shield, Sparkles, Swords } from 'lucide-react'
 
 export type BuildCardIcon = 'holy' | 'protection' | 'retribution' | 'leveling' | 'pvp' | 'raid'
@@ -31,7 +32,7 @@ export default function BuildCard({ eyebrow, title, description, role, focus, hr
       <h3>{title}</h3>
       {description && <p>{description}</p>}
       {(role || focus) && <dl>{role && <div><dt>Role</dt><dd>{role}</dd></div>}{focus && <div><dt>Focus</dt><dd>{focus}</dd></div>}</dl>}
-      <a href={href} onClick={onOpen}>{compact ? 'View Build' : 'Open Build'} <ArrowRight size={15} /></a>
+      <a href={resolvePageHref(href)} onClick={onOpen}>{compact ? 'View Build' : 'Open Build'} <ArrowRight size={15} /></a>
     </article>
   )
 }

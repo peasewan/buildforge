@@ -36,7 +36,7 @@ describe('Mage selected-rank review for the historical 69913 snapshot', () => {
 
   it('completes exact primary and related rank endpoints without advancing the Mage build version', () => {
     const report = reviewPublishedRankEvidence([mageClass])
-    expect(report.classes[0].primaryBuildPages).toBe(7)
+    expect(report.classes[0].primaryBuildPages).toBe(3)
     expect(report.classes[0].primaryPagesWithGaps).toBe(0)
     expect(report.classes[0].allReferencedPagesWithGaps).toBe(0)
     expect(MAGE_DATA_VERSION).toBe('wow_forever_beta_1.60.1.69913')

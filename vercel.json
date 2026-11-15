@@ -1,6 +1,56 @@
 {
   "redirects": [
     {
+      "source": "/songs-of-glimmerwick-first-days",
+      "destination": "/songs-of-glimmerwick",
+      "statusCode": 301
+    },
+    {
+      "source": "/songs-of-glimmerwick-first-days/index.html",
+      "destination": "/songs-of-glimmerwick",
+      "statusCode": 301
+    },
+    {
+      "source": "/songs-of-glimmerwick-spellcasting",
+      "destination": "/songs-of-glimmerwick",
+      "statusCode": 301
+    },
+    {
+      "source": "/songs-of-glimmerwick-spellcasting/index.html",
+      "destination": "/songs-of-glimmerwick",
+      "statusCode": 301
+    },
+    {
+      "source": "/emberville-skill-inheritance",
+      "destination": "/emberville",
+      "statusCode": 301
+    },
+    {
+      "source": "/emberville-skill-inheritance/index.html",
+      "destination": "/emberville",
+      "statusCode": 301
+    },
+    {
+      "source": "/wow-forever-protection-paladin-dungeon-build",
+      "destination": "/wow-forever-protection-paladin-build",
+      "statusCode": 301
+    },
+    {
+      "source": "/wow-forever-protection-paladin-dungeon-build/index.html",
+      "destination": "/wow-forever-protection-paladin-build",
+      "statusCode": 301
+    },
+    {
+      "source": "/wow-forever-retribution-paladin-builds",
+      "destination": "/wow-forever-retribution-paladin-build",
+      "statusCode": 301
+    },
+    {
+      "source": "/wow-forever-retribution-paladin-builds/index.html",
+      "destination": "/wow-forever-retribution-paladin-build",
+      "statusCode": 301
+    },
+    {
       "source": "/",
       "has": [
         {
@@ -58,6 +108,116 @@
       "statusCode": 301
     },
     {
+      "source": "/wow-forever-mage-leveling-build",
+      "destination": "/wow-forever-mage-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-mage-leveling-build/index.html",
+      "destination": "/wow-forever-mage-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-arcane-mage-build",
+      "destination": "/wow-forever-mage-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-arcane-mage-build/index.html",
+      "destination": "/wow-forever-mage-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-frost-mage-leveling-build",
+      "destination": "/wow-forever-mage-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-frost-mage-leveling-build/index.html",
+      "destination": "/wow-forever-mage-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-arcane-mage-leveling-build",
+      "destination": "/wow-forever-mage-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-arcane-mage-leveling-build/index.html",
+      "destination": "/wow-forever-mage-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-mage-level-20-build",
+      "destination": "/wow-forever-mage-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-mage-level-20-build/index.html",
+      "destination": "/wow-forever-mage-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-warrior-leveling-build",
+      "destination": "/wow-forever-warrior-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-warrior-leveling-build/index.html",
+      "destination": "/wow-forever-warrior-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-arms-warrior-build",
+      "destination": "/wow-forever-warrior-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-arms-warrior-build/index.html",
+      "destination": "/wow-forever-warrior-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-fury-warrior-build",
+      "destination": "/wow-forever-warrior-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-fury-warrior-build/index.html",
+      "destination": "/wow-forever-warrior-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-protection-warrior-build",
+      "destination": "/wow-forever-warrior-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-protection-warrior-build/index.html",
+      "destination": "/wow-forever-warrior-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-arms-warrior-leveling-build",
+      "destination": "/wow-forever-warrior-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-arms-warrior-leveling-build/index.html",
+      "destination": "/wow-forever-warrior-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-protection-warrior-leveling-build",
+      "destination": "/wow-forever-warrior-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-protection-warrior-leveling-build/index.html",
+      "destination": "/wow-forever-warrior-builds",
+      "permanent": true
+    },
+    {
       "source": "/wow-forever-warrior-dungeon-build",
       "destination": "/wow-forever-protection-warrior-dungeon-build",
       "permanent": true
@@ -68,33 +228,123 @@
       "permanent": true
     },
     {
+      "source": "/wow-forever-warrior-level-20-build",
+      "destination": "/wow-forever-warrior-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-warrior-level-20-build/index.html",
+      "destination": "/wow-forever-warrior-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-arms-warrior-talents",
+      "destination": "/warrior",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-arms-warrior-talents/index.html",
+      "destination": "/warrior",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-protection-warrior-talents",
+      "destination": "/warrior",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-protection-warrior-talents/index.html",
+      "destination": "/warrior",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-rogue-talents",
+      "destination": "/rogue",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-rogue-talents/index.html",
+      "destination": "/rogue",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-rogue-leveling-build",
+      "destination": "/wow-forever-rogue-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-rogue-leveling-build/index.html",
+      "destination": "/wow-forever-rogue-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-assassination-rogue-build",
+      "destination": "/wow-forever-rogue-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-assassination-rogue-build/index.html",
+      "destination": "/wow-forever-rogue-builds",
+      "permanent": true
+    },
+    {
       "source": "/wow-forever-assassination-rogue-leveling-build",
-      "destination": "/wow-forever-assassination-rogue-build",
+      "destination": "/wow-forever-rogue-builds",
       "permanent": true
     },
     {
       "source": "/wow-forever-assassination-rogue-leveling-build/index.html",
-      "destination": "/wow-forever-assassination-rogue-build",
+      "destination": "/wow-forever-rogue-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-combat-rogue-build",
+      "destination": "/wow-forever-rogue-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-combat-rogue-build/index.html",
+      "destination": "/wow-forever-rogue-builds",
       "permanent": true
     },
     {
       "source": "/wow-forever-combat-rogue-leveling-build",
-      "destination": "/wow-forever-combat-rogue-build",
+      "destination": "/wow-forever-rogue-builds",
       "permanent": true
     },
     {
       "source": "/wow-forever-combat-rogue-leveling-build/index.html",
-      "destination": "/wow-forever-combat-rogue-build",
+      "destination": "/wow-forever-rogue-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-subtlety-rogue-build",
+      "destination": "/wow-forever-rogue-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-subtlety-rogue-build/index.html",
+      "destination": "/wow-forever-rogue-builds",
       "permanent": true
     },
     {
       "source": "/wow-forever-subtlety-rogue-leveling-build",
-      "destination": "/wow-forever-subtlety-rogue-build",
+      "destination": "/wow-forever-rogue-builds",
       "permanent": true
     },
     {
       "source": "/wow-forever-subtlety-rogue-leveling-build/index.html",
-      "destination": "/wow-forever-subtlety-rogue-build",
+      "destination": "/wow-forever-rogue-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-rogue-level-20-build",
+      "destination": "/wow-forever-rogue-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-rogue-level-20-build/index.html",
+      "destination": "/wow-forever-rogue-builds",
       "permanent": true
     },
     {
@@ -108,13 +358,53 @@
       "permanent": true
     },
     {
+      "source": "/wow-forever-rogue-dungeon-build",
+      "destination": "/wow-forever-rogue-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-rogue-dungeon-build/index.html",
+      "destination": "/wow-forever-rogue-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-priest-talents",
+      "destination": "/priest",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-priest-talents/index.html",
+      "destination": "/priest",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-priest-leveling-build",
+      "destination": "/wow-forever-priest-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-priest-leveling-build/index.html",
+      "destination": "/wow-forever-priest-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-discipline-priest-build",
+      "destination": "/wow-forever-priest-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-discipline-priest-build/index.html",
+      "destination": "/wow-forever-priest-builds",
+      "permanent": true
+    },
+    {
       "source": "/wow-forever-discipline-priest-leveling-build",
-      "destination": "/wow-forever-discipline-priest-build",
+      "destination": "/wow-forever-priest-builds",
       "permanent": true
     },
     {
       "source": "/wow-forever-discipline-priest-leveling-build/index.html",
-      "destination": "/wow-forever-discipline-priest-build",
+      "destination": "/wow-forever-priest-builds",
       "permanent": true
     },
     {
@@ -138,6 +428,16 @@
       "permanent": true
     },
     {
+      "source": "/wow-forever-priest-level-20-build",
+      "destination": "/wow-forever-priest-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-priest-level-20-build/index.html",
+      "destination": "/wow-forever-priest-builds",
+      "permanent": true
+    },
+    {
       "source": "/wow-forever-priest-healing-build",
       "destination": "/wow-forever-holy-priest-dungeon-build",
       "permanent": true
@@ -148,43 +448,153 @@
       "permanent": true
     },
     {
+      "source": "/wow-forever-druid-talents",
+      "destination": "/druid",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-druid-talents/index.html",
+      "destination": "/druid",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-druid-leveling-build",
+      "destination": "/wow-forever-druid-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-druid-leveling-build/index.html",
+      "destination": "/wow-forever-druid-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-balance-druid-build",
+      "destination": "/wow-forever-druid-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-balance-druid-build/index.html",
+      "destination": "/wow-forever-druid-builds",
+      "permanent": true
+    },
+    {
       "source": "/wow-forever-balance-druid-leveling-build",
-      "destination": "/wow-forever-balance-druid-build",
+      "destination": "/wow-forever-druid-builds",
       "permanent": true
     },
     {
       "source": "/wow-forever-balance-druid-leveling-build/index.html",
-      "destination": "/wow-forever-balance-druid-build",
+      "destination": "/wow-forever-druid-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-feral-druid-build",
+      "destination": "/wow-forever-druid-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-feral-druid-build/index.html",
+      "destination": "/wow-forever-druid-builds",
       "permanent": true
     },
     {
       "source": "/wow-forever-feral-druid-leveling-build",
-      "destination": "/wow-forever-feral-druid-build",
+      "destination": "/wow-forever-druid-builds",
       "permanent": true
     },
     {
       "source": "/wow-forever-feral-druid-leveling-build/index.html",
-      "destination": "/wow-forever-feral-druid-build",
+      "destination": "/wow-forever-druid-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-restoration-druid-build",
+      "destination": "/wow-forever-druid-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-restoration-druid-build/index.html",
+      "destination": "/wow-forever-druid-builds",
       "permanent": true
     },
     {
       "source": "/wow-forever-restoration-druid-leveling-build",
-      "destination": "/wow-forever-restoration-druid-build",
+      "destination": "/wow-forever-druid-builds",
       "permanent": true
     },
     {
       "source": "/wow-forever-restoration-druid-leveling-build/index.html",
-      "destination": "/wow-forever-restoration-druid-build",
+      "destination": "/wow-forever-druid-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-druid-level-20-build",
+      "destination": "/wow-forever-druid-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-druid-level-20-build/index.html",
+      "destination": "/wow-forever-druid-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-feral-druid-tank-build",
+      "destination": "/wow-forever-druid-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-feral-druid-tank-build/index.html",
+      "destination": "/wow-forever-druid-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-restoration-druid-healing-build",
+      "destination": "/wow-forever-druid-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-restoration-druid-healing-build/index.html",
+      "destination": "/wow-forever-druid-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-warlock-talents",
+      "destination": "/warlock",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-warlock-talents/index.html",
+      "destination": "/warlock",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-warlock-leveling-build",
+      "destination": "/wow-forever-warlock-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-warlock-leveling-build/index.html",
+      "destination": "/wow-forever-warlock-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-affliction-warlock-build",
+      "destination": "/wow-forever-warlock-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-affliction-warlock-build/index.html",
+      "destination": "/wow-forever-warlock-builds",
       "permanent": true
     },
     {
       "source": "/wow-forever-affliction-warlock-leveling-build",
-      "destination": "/wow-forever-affliction-warlock-build",
+      "destination": "/wow-forever-warlock-builds",
       "permanent": true
     },
     {
       "source": "/wow-forever-affliction-warlock-leveling-build/index.html",
-      "destination": "/wow-forever-affliction-warlock-build",
+      "destination": "/wow-forever-warlock-builds",
       "permanent": true
     },
     {
@@ -198,63 +608,183 @@
       "permanent": true
     },
     {
+      "source": "/wow-forever-destruction-warlock-build",
+      "destination": "/wow-forever-warlock-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-destruction-warlock-build/index.html",
+      "destination": "/wow-forever-warlock-builds",
+      "permanent": true
+    },
+    {
       "source": "/wow-forever-destruction-warlock-leveling-build",
-      "destination": "/wow-forever-destruction-warlock-build",
+      "destination": "/wow-forever-warlock-builds",
       "permanent": true
     },
     {
       "source": "/wow-forever-destruction-warlock-leveling-build/index.html",
-      "destination": "/wow-forever-destruction-warlock-build",
+      "destination": "/wow-forever-warlock-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-warlock-level-20-build",
+      "destination": "/wow-forever-warlock-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-warlock-level-20-build/index.html",
+      "destination": "/wow-forever-warlock-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-warlock-dungeon-build",
+      "destination": "/wow-forever-warlock-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-warlock-dungeon-build/index.html",
+      "destination": "/wow-forever-warlock-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-hunter-talents",
+      "destination": "/hunter",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-hunter-talents/index.html",
+      "destination": "/hunter",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-hunter-leveling-build",
+      "destination": "/wow-forever-hunter-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-hunter-leveling-build/index.html",
+      "destination": "/wow-forever-hunter-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-beast-mastery-hunter-build",
+      "destination": "/wow-forever-hunter-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-beast-mastery-hunter-build/index.html",
+      "destination": "/wow-forever-hunter-builds",
       "permanent": true
     },
     {
       "source": "/wow-forever-beast-mastery-hunter-leveling-build",
-      "destination": "/wow-forever-beast-mastery-hunter-build",
+      "destination": "/wow-forever-hunter-builds",
       "permanent": true
     },
     {
       "source": "/wow-forever-beast-mastery-hunter-leveling-build/index.html",
-      "destination": "/wow-forever-beast-mastery-hunter-build",
+      "destination": "/wow-forever-hunter-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-marksmanship-hunter-build",
+      "destination": "/wow-forever-hunter-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-marksmanship-hunter-build/index.html",
+      "destination": "/wow-forever-hunter-builds",
       "permanent": true
     },
     {
       "source": "/wow-forever-marksmanship-hunter-leveling-build",
-      "destination": "/wow-forever-marksmanship-hunter-build",
+      "destination": "/wow-forever-hunter-builds",
       "permanent": true
     },
     {
       "source": "/wow-forever-marksmanship-hunter-leveling-build/index.html",
-      "destination": "/wow-forever-marksmanship-hunter-build",
+      "destination": "/wow-forever-hunter-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-survival-hunter-build",
+      "destination": "/wow-forever-hunter-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-survival-hunter-build/index.html",
+      "destination": "/wow-forever-hunter-builds",
       "permanent": true
     },
     {
       "source": "/wow-forever-survival-hunter-leveling-build",
-      "destination": "/wow-forever-survival-hunter-build",
+      "destination": "/wow-forever-hunter-builds",
       "permanent": true
     },
     {
       "source": "/wow-forever-survival-hunter-leveling-build/index.html",
-      "destination": "/wow-forever-survival-hunter-build",
+      "destination": "/wow-forever-hunter-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-shaman-talents",
+      "destination": "/shaman",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-shaman-talents/index.html",
+      "destination": "/shaman",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-shaman-leveling-build",
+      "destination": "/wow-forever-shaman-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-shaman-leveling-build/index.html",
+      "destination": "/wow-forever-shaman-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-elemental-shaman-build",
+      "destination": "/wow-forever-shaman-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-elemental-shaman-build/index.html",
+      "destination": "/wow-forever-shaman-builds",
       "permanent": true
     },
     {
       "source": "/wow-forever-elemental-shaman-leveling-build",
-      "destination": "/wow-forever-elemental-shaman-build",
+      "destination": "/wow-forever-shaman-builds",
       "permanent": true
     },
     {
       "source": "/wow-forever-elemental-shaman-leveling-build/index.html",
-      "destination": "/wow-forever-elemental-shaman-build",
+      "destination": "/wow-forever-shaman-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-enhancement-shaman-build",
+      "destination": "/wow-forever-shaman-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-enhancement-shaman-build/index.html",
+      "destination": "/wow-forever-shaman-builds",
       "permanent": true
     },
     {
       "source": "/wow-forever-enhancement-shaman-leveling-build",
-      "destination": "/wow-forever-enhancement-shaman-build",
+      "destination": "/wow-forever-shaman-builds",
       "permanent": true
     },
     {
       "source": "/wow-forever-enhancement-shaman-leveling-build/index.html",
-      "destination": "/wow-forever-enhancement-shaman-build",
+      "destination": "/wow-forever-shaman-builds",
       "permanent": true
     },
     {
@@ -265,6 +795,26 @@
     {
       "source": "/wow-forever-restoration-shaman-leveling-build/index.html",
       "destination": "/wow-forever-restoration-shaman-build",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-shaman-level-20-build",
+      "destination": "/wow-forever-shaman-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-shaman-level-20-build/index.html",
+      "destination": "/wow-forever-shaman-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-restoration-shaman-healing-build",
+      "destination": "/wow-forever-shaman-builds",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-restoration-shaman-healing-build/index.html",
+      "destination": "/wow-forever-shaman-builds",
       "permanent": true
     }
   ],
@@ -295,6 +845,12 @@
     }
   ],
   "rewrites": [
+    { "source": "/wow-forever-stress-test", "destination": "/api/retired-page" },
+    { "source": "/wow-forever-stress-test/index.html", "destination": "/api/retired-page" },
+    { "source": "/nivalis-nights-profit-calculator", "destination": "/api/retired-page" },
+    { "source": "/nivalis-nights-profit-calculator/index.html", "destination": "/api/retired-page" },
+    { "source": "/wow-forever-paladin-abilities", "destination": "/api/retired-page" },
+    { "source": "/wow-forever-paladin-abilities/index.html", "destination": "/api/retired-page" },
     { "source": "/invokyr-multiplayer", "destination": "/invokyr-multiplayer/index.html" },
     { "source": "/invokyr", "destination": "/invokyr/index.html" },
     { "source": "/wow-forever-dungeon-build-finder", "destination": "/wow-forever-dungeon-build-finder/index.html" },
@@ -302,13 +858,9 @@
     { "source": "/wow-forever-classes", "destination": "/wow-forever-classes/index.html" },
     { "source": "/wow-forever-builds", "destination": "/wow-forever-builds/index.html" },
     { "source": "/songs-of-glimmerwick", "destination": "/songs-of-glimmerwick/index.html" },
-    { "source": "/songs-of-glimmerwick-first-days", "destination": "/songs-of-glimmerwick-first-days/index.html" },
-    { "source": "/songs-of-glimmerwick-spellcasting", "destination": "/songs-of-glimmerwick-spellcasting/index.html" },
     { "source": "/songs-of-glimmerwick-garden-well", "destination": "/songs-of-glimmerwick-garden-well/index.html" },
-    { "source": "/nivalis-nights-profit-calculator", "destination": "/nivalis-nights-profit-calculator/index.html" },
     { "source": "/emberville", "destination": "/emberville/index.html" },
     { "source": "/emberville-classes", "destination": "/emberville-classes/index.html" },
-    { "source": "/emberville-skill-inheritance", "destination": "/emberville-skill-inheritance/index.html" },
     { "source": "/wow-forever-paladin-build-comparator", "destination": "/wow-forever-paladin-build-comparator/index.html" },
     { "source": "/paladin", "destination": "/paladin/index.html" },
     { "source": "/build", "destination": "/paladin/index.html" },
@@ -319,103 +871,55 @@
     { "source": "/wow-forever-paladin-leveling-build", "destination": "/wow-forever-paladin-leveling-build/index.html" },
     { "source": "/wow-forever-paladin-pvp-build", "destination": "/wow-forever-paladin-pvp-build/index.html" },
     { "source": "/wow-forever-paladin-raid-build", "destination": "/wow-forever-paladin-raid-build/index.html" },
-    { "source": "/wow-forever-protection-paladin-dungeon-build", "destination": "/wow-forever-protection-paladin-dungeon-build/index.html" },
     { "source": "/wow-forever-protection-paladin-leveling-build", "destination": "/wow-forever-protection-paladin-leveling-build/index.html" },
     { "source": "/wow-forever-protection-paladin-pvp-build", "destination": "/wow-forever-protection-paladin-pvp-build/index.html" },
     { "source": "/wow-forever-retribution-paladin-pvp-build", "destination": "/wow-forever-retribution-paladin-pvp-build/index.html" },
     { "source": "/wow-forever-holy-paladin-pvp-build", "destination": "/wow-forever-holy-paladin-pvp-build/index.html" },
     { "source": "/wow-forever-paladin-builds", "destination": "/wow-forever-paladin-builds/index.html" },
     { "source": "/wow-forever-protection-paladin-builds", "destination": "/wow-forever-protection-paladin-builds/index.html" },
-    { "source": "/wow-forever-retribution-paladin-builds", "destination": "/wow-forever-retribution-paladin-builds/index.html" },
     { "source": "/wow-forever-protection-paladin-talents", "destination": "/wow-forever-protection-paladin-talents/index.html" },
     { "source": "/wow-forever-holy-paladin-talents", "destination": "/wow-forever-holy-paladin-talents/index.html" },
     { "source": "/wow-forever-retribution-paladin-talents", "destination": "/wow-forever-retribution-paladin-talents/index.html" },
     { "source": "/wow-forever-paladin-beta-talent-changes", "destination": "/wow-forever-paladin-beta-talent-changes/index.html" },
-    { "source": "/wow-forever-stress-test", "destination": "/wow-forever-stress-test/index.html" },
-    { "source": "/wow-forever-paladin-abilities", "destination": "/wow-forever-paladin-abilities/index.html" },
     { "source": "/wow-forever-paladin-talents", "destination": "/wow-forever-paladin-talents/index.html" },
     { "source": "/mage", "destination": "/mage/index.html" },
     { "source": "/wow-forever-mage-builds", "destination": "/wow-forever-mage-builds/index.html" },
     { "source": "/wow-forever-mage-talents", "destination": "/wow-forever-mage-talents/index.html" },
-    { "source": "/wow-forever-mage-leveling-build", "destination": "/wow-forever-mage-leveling-build/index.html" },
     { "source": "/wow-forever-frost-mage-build", "destination": "/wow-forever-frost-mage-build/index.html" },
-    { "source": "/wow-forever-arcane-mage-build", "destination": "/wow-forever-arcane-mage-build/index.html" },
-    { "source": "/wow-forever-frost-mage-leveling-build", "destination": "/wow-forever-frost-mage-leveling-build/index.html" },
-    { "source": "/wow-forever-arcane-mage-leveling-build", "destination": "/wow-forever-arcane-mage-leveling-build/index.html" },
     { "source": "/wow-forever-frost-mage-aoe-build", "destination": "/wow-forever-frost-mage-aoe-build/index.html" },
     { "source": "/wow-forever-mage-dungeon-build", "destination": "/wow-forever-mage-dungeon-build/index.html" },
-    { "source": "/wow-forever-mage-level-20-build", "destination": "/wow-forever-mage-level-20-build/index.html" },
     { "source": "/warrior", "destination": "/warrior/index.html" },
     { "source": "/wow-forever-warrior-builds", "destination": "/wow-forever-warrior-builds/index.html" },
-    { "source": "/wow-forever-warrior-leveling-build", "destination": "/wow-forever-warrior-leveling-build/index.html" },
-    { "source": "/wow-forever-arms-warrior-build", "destination": "/wow-forever-arms-warrior-build/index.html" },
-    { "source": "/wow-forever-fury-warrior-build", "destination": "/wow-forever-fury-warrior-build/index.html" },
-    { "source": "/wow-forever-protection-warrior-build", "destination": "/wow-forever-protection-warrior-build/index.html" },
     { "source": "/wow-forever-warrior-talents", "destination": "/wow-forever-warrior-talents/index.html" },
-    { "source": "/wow-forever-arms-warrior-leveling-build", "destination": "/wow-forever-arms-warrior-leveling-build/index.html" },
     { "source": "/wow-forever-fury-warrior-leveling-build", "destination": "/wow-forever-fury-warrior-leveling-build/index.html" },
-    { "source": "/wow-forever-protection-warrior-leveling-build", "destination": "/wow-forever-protection-warrior-leveling-build/index.html" },
     { "source": "/wow-forever-warrior-pvp-build", "destination": "/wow-forever-warrior-pvp-build/index.html" },
     { "source": "/wow-forever-arms-warrior-pvp-build", "destination": "/wow-forever-arms-warrior-pvp-build/index.html" },
     { "source": "/wow-forever-fury-warrior-pvp-build", "destination": "/wow-forever-fury-warrior-pvp-build/index.html" },
     { "source": "/wow-forever-protection-warrior-dungeon-build", "destination": "/wow-forever-protection-warrior-dungeon-build/index.html" },
-    { "source": "/wow-forever-warrior-level-20-build", "destination": "/wow-forever-warrior-level-20-build/index.html" },
     { "source": "/wow-forever-arms-vs-fury-warrior-leveling", "destination": "/wow-forever-arms-vs-fury-warrior-leveling/index.html" },
-    { "source": "/wow-forever-arms-warrior-talents", "destination": "/wow-forever-arms-warrior-talents/index.html" },
-    { "source": "/wow-forever-protection-warrior-talents", "destination": "/wow-forever-protection-warrior-talents/index.html" },
     { "source": "/rogue", "destination": "/rogue/index.html" },
     { "source": "/wow-forever-rogue-builds", "destination": "/wow-forever-rogue-builds/index.html" },
-    { "source": "/wow-forever-rogue-talents", "destination": "/wow-forever-rogue-talents/index.html" },
-    { "source": "/wow-forever-rogue-leveling-build", "destination": "/wow-forever-rogue-leveling-build/index.html" },
-    { "source": "/wow-forever-assassination-rogue-build", "destination": "/wow-forever-assassination-rogue-build/index.html" },
-    { "source": "/wow-forever-combat-rogue-build", "destination": "/wow-forever-combat-rogue-build/index.html" },
-    { "source": "/wow-forever-subtlety-rogue-build", "destination": "/wow-forever-subtlety-rogue-build/index.html" },
     { "source": "/wow-forever-rogue-pvp-build", "destination": "/wow-forever-rogue-pvp-build/index.html" },
-    { "source": "/wow-forever-rogue-level-20-build", "destination": "/wow-forever-rogue-level-20-build/index.html" },
     { "source": "/wow-forever-combat-vs-assassination-rogue-leveling", "destination": "/wow-forever-combat-vs-assassination-rogue-leveling/index.html" },
-    { "source": "/wow-forever-rogue-dungeon-build", "destination": "/wow-forever-rogue-dungeon-build/index.html" },
     { "source": "/priest", "destination": "/priest/index.html" },
     { "source": "/wow-forever-priest-builds", "destination": "/wow-forever-priest-builds/index.html" },
-    { "source": "/wow-forever-priest-talents", "destination": "/wow-forever-priest-talents/index.html" },
-    { "source": "/wow-forever-priest-leveling-build", "destination": "/wow-forever-priest-leveling-build/index.html" },
-    { "source": "/wow-forever-discipline-priest-build", "destination": "/wow-forever-discipline-priest-build/index.html" },
     { "source": "/wow-forever-holy-priest-leveling-build", "destination": "/wow-forever-holy-priest-leveling-build/index.html" },
     { "source": "/wow-forever-shadow-priest-build", "destination": "/wow-forever-shadow-priest-build/index.html" },
     { "source": "/wow-forever-priest-pvp-build", "destination": "/wow-forever-priest-pvp-build/index.html" },
-    { "source": "/wow-forever-priest-level-20-build", "destination": "/wow-forever-priest-level-20-build/index.html" },
     { "source": "/wow-forever-holy-priest-dungeon-build", "destination": "/wow-forever-holy-priest-dungeon-build/index.html" },
     { "source": "/wow-forever-shadow-vs-discipline-priest-leveling", "destination": "/wow-forever-shadow-vs-discipline-priest-leveling/index.html" },
     { "source": "/druid", "destination": "/druid/index.html" },
     { "source": "/wow-forever-druid-builds", "destination": "/wow-forever-druid-builds/index.html" },
-    { "source": "/wow-forever-druid-talents", "destination": "/wow-forever-druid-talents/index.html" },
-    { "source": "/wow-forever-druid-leveling-build", "destination": "/wow-forever-druid-leveling-build/index.html" },
-    { "source": "/wow-forever-balance-druid-build", "destination": "/wow-forever-balance-druid-build/index.html" },
-    { "source": "/wow-forever-feral-druid-build", "destination": "/wow-forever-feral-druid-build/index.html" },
-    { "source": "/wow-forever-restoration-druid-build", "destination": "/wow-forever-restoration-druid-build/index.html" },
     { "source": "/wow-forever-druid-pvp-build", "destination": "/wow-forever-druid-pvp-build/index.html" },
-    { "source": "/wow-forever-druid-level-20-build", "destination": "/wow-forever-druid-level-20-build/index.html" },
-    { "source": "/wow-forever-feral-druid-tank-build", "destination": "/wow-forever-feral-druid-tank-build/index.html" },
-    { "source": "/wow-forever-restoration-druid-healing-build", "destination": "/wow-forever-restoration-druid-healing-build/index.html" },
     { "source": "/wow-forever-balance-vs-feral-druid-leveling", "destination": "/wow-forever-balance-vs-feral-druid-leveling/index.html" },
     { "source": "/warlock", "destination": "/warlock/index.html" },
     { "source": "/wow-forever-warlock-builds", "destination": "/wow-forever-warlock-builds/index.html" },
-    { "source": "/wow-forever-warlock-talents", "destination": "/wow-forever-warlock-talents/index.html" },
-    { "source": "/wow-forever-warlock-leveling-build", "destination": "/wow-forever-warlock-leveling-build/index.html" },
-    { "source": "/wow-forever-affliction-warlock-build", "destination": "/wow-forever-affliction-warlock-build/index.html" },
     { "source": "/wow-forever-demonology-warlock-leveling-build", "destination": "/wow-forever-demonology-warlock-leveling-build/index.html" },
-    { "source": "/wow-forever-destruction-warlock-build", "destination": "/wow-forever-destruction-warlock-build/index.html" },
     { "source": "/wow-forever-warlock-pvp-build", "destination": "/wow-forever-warlock-pvp-build/index.html" },
-    { "source": "/wow-forever-warlock-level-20-build", "destination": "/wow-forever-warlock-level-20-build/index.html" },
     { "source": "/wow-forever-warlock-pet-build", "destination": "/wow-forever-warlock-pet-build/index.html" },
     { "source": "/wow-forever-affliction-vs-demonology-warlock-leveling", "destination": "/wow-forever-affliction-vs-demonology-warlock-leveling/index.html" },
-    { "source": "/wow-forever-warlock-dungeon-build", "destination": "/wow-forever-warlock-dungeon-build/index.html" },
     { "source": "/hunter", "destination": "/hunter/index.html" },
     { "source": "/wow-forever-hunter-builds", "destination": "/wow-forever-hunter-builds/index.html" },
-    { "source": "/wow-forever-hunter-talents", "destination": "/wow-forever-hunter-talents/index.html" },
-    { "source": "/wow-forever-hunter-leveling-build", "destination": "/wow-forever-hunter-leveling-build/index.html" },
-    { "source": "/wow-forever-beast-mastery-hunter-build", "destination": "/wow-forever-beast-mastery-hunter-build/index.html" },
-    { "source": "/wow-forever-marksmanship-hunter-build", "destination": "/wow-forever-marksmanship-hunter-build/index.html" },
-    { "source": "/wow-forever-survival-hunter-build", "destination": "/wow-forever-survival-hunter-build/index.html" },
     { "source": "/wow-forever-hunter-pvp-build", "destination": "/wow-forever-hunter-pvp-build/index.html" },
     { "source": "/wow-forever-hunter-level-20-build", "destination": "/wow-forever-hunter-level-20-build/index.html" },
     { "source": "/wow-forever-hunter-pet-build", "destination": "/wow-forever-hunter-pet-build/index.html" },
@@ -423,15 +927,9 @@
     { "source": "/wow-forever-hunter-dungeon-build", "destination": "/wow-forever-hunter-dungeon-build/index.html" },
     { "source": "/shaman", "destination": "/shaman/index.html" },
     { "source": "/wow-forever-shaman-builds", "destination": "/wow-forever-shaman-builds/index.html" },
-    { "source": "/wow-forever-shaman-talents", "destination": "/wow-forever-shaman-talents/index.html" },
-    { "source": "/wow-forever-shaman-leveling-build", "destination": "/wow-forever-shaman-leveling-build/index.html" },
-    { "source": "/wow-forever-elemental-shaman-build", "destination": "/wow-forever-elemental-shaman-build/index.html" },
-    { "source": "/wow-forever-enhancement-shaman-build", "destination": "/wow-forever-enhancement-shaman-build/index.html" },
     { "source": "/wow-forever-restoration-shaman-build", "destination": "/wow-forever-restoration-shaman-build/index.html" },
     { "source": "/wow-forever-shaman-pvp-build", "destination": "/wow-forever-shaman-pvp-build/index.html" },
-    { "source": "/wow-forever-shaman-level-20-build", "destination": "/wow-forever-shaman-level-20-build/index.html" },
     { "source": "/wow-forever-shaman-totem-build", "destination": "/wow-forever-shaman-totem-build/index.html" },
-    { "source": "/wow-forever-elemental-vs-enhancement-shaman-leveling", "destination": "/wow-forever-elemental-vs-enhancement-shaman-leveling/index.html" },
-    { "source": "/wow-forever-restoration-shaman-healing-build", "destination": "/wow-forever-restoration-shaman-healing-build/index.html" }
+    { "source": "/wow-forever-elemental-vs-enhancement-shaman-leveling", "destination": "/wow-forever-elemental-vs-enhancement-shaman-leveling/index.html" }
   ]
 }

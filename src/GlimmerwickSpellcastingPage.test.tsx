@@ -34,8 +34,8 @@ describe('Songs of Glimmerwick spellcasting help', () => {
   it('keeps the page distinct from a fabricated song database and links related tools', () => {
     const { container } = render(<GlimmerwickSpellcastingPage />)
     expect(container.querySelector('[data-surface="glimmerwick-spellcasting"]')).toBeTruthy()
-    expect(screen.getAllByRole('link', { name: /Garden Planner/i }).some(link => link.getAttribute('href') === '/songs-of-glimmerwick')).toBe(true)
-    expect(screen.getAllByRole('link', { name: /First Days/i }).some(link => link.getAttribute('href') === '/songs-of-glimmerwick-first-days')).toBe(true)
+    expect(screen.getAllByRole('link', { name: /Garden Planner/i }).some(link => link.getAttribute('href') === '/songs-of-glimmerwick#garden-planner')).toBe(true)
+    expect(screen.getAllByRole('link', { name: /First Days/i }).some(link => link.getAttribute('href') === '/songs-of-glimmerwick#first-days')).toBe(true)
     expect(screen.getByText(/not a complete song catalog/i)).toBeTruthy()
   })
 })

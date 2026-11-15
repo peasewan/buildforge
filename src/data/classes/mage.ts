@@ -1,3 +1,4 @@
+import { applyClassConsolidations } from '../../lib/classConsolidations'
 import type { ClassBuild, ClassDefinition, ClassPageDefinition } from '../../lib/classPage'
 import { MAGE_BRANCHES, MAGE_DATA_VERSION, MAGE_PLANNER_CONFIG, MAGE_SOURCES, mageBranchNames, mageBranchTaglines, mageTalents, type MageBranch } from '../mageTalents'
 
@@ -1047,7 +1048,7 @@ const magePages: ClassPageDefinition[] = [
   },
 ]
 
-export const mageClass: ClassDefinition<MageBranch> = {
+export const mageClass: ClassDefinition<MageBranch> = applyClassConsolidations({
   id: 'mage',
   name: 'Mage',
   plannerPath: '/mage',
@@ -1080,4 +1081,4 @@ export const mageClass: ClassDefinition<MageBranch> = {
   // Frost leveling first: the class-level recommendation the calculator loads by default.
   recommendedBuildIds: ['mage-leveling', 'mage-frost-build', 'mage-arcane-build'],
   sources: MAGE_SOURCES,
-}
+})

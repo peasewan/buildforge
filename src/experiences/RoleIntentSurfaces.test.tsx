@@ -217,7 +217,7 @@ it('connects Hunter leveling, comparison and pet decisions back to the PvP page'
   for (const slug of ['wow-forever-hunter-leveling-build', 'wow-forever-beast-mastery-vs-marksmanship-hunter-leveling', 'wow-forever-hunter-pet-build']) {
     expect(page(hunterClass, slug).relatedPages.some((link) => link.href === pvp)).toBe(true)
   }
-  expect(page(hunterClass, 'wow-forever-hunter-pvp-build').relatedPages.some((link) => link.href === '/wow-forever-beast-mastery-hunter-build')).toBe(true)
+  expect(page(hunterClass, 'wow-forever-hunter-pvp-build').relatedPages.some((link) => link.href === '/wow-forever-hunter-builds')).toBe(true)
 })
 
 it('keeps a PvP page with no legal allocation explicit and unlinked', () => {

@@ -155,7 +155,7 @@ describe('Paladin talent calculator page', () => {
     }
   })
 
-  it('links the four content-focused build pages', () => {
+  it('links maintained build pages while omitting the consolidated dungeon entry', () => {
     render(<App />)
 
     expect(screen.getByRole('heading', { level: 2, name: 'Explore Paladin Builds' })).toBeTruthy()
@@ -163,10 +163,10 @@ describe('Paladin talent calculator page', () => {
       '/wow-forever-paladin-leveling-build',
       '/wow-forever-paladin-pvp-build',
       '/wow-forever-paladin-raid-build',
-      '/wow-forever-protection-paladin-dungeon-build',
     ]) {
       expect(document.querySelector(`a[href="${href}"]`)).toBeTruthy()
     }
+    expect(document.querySelector('a[href="/wow-forever-protection-paladin-dungeon-build"]')).toBeNull()
     expect(document.querySelector('a[href="/wow-forever-paladin-builds"]')).toBeTruthy()
   })
 

@@ -6,6 +6,7 @@ import { SPEC_BUILDS_HUBS, specHubHrefs } from '../data/specBuildsHubs'
 import { SPEC_TALENTS_PAGES } from '../data/specTalentsPages'
 import { publishedClassPages as gatedPages } from './classPage'
 import { pageForPath } from './routes'
+import { isRemovedPage, resolvePageHref } from './pageRetirement'
 
 const ORIGIN = 'https://buildforgetools.com'
 
@@ -48,17 +49,22 @@ const allDeclaredHrefs = () => collectHrefs([
 ])
 
 describe('internal link integrity', () => {
-  it('resolves every declared internal href to its own page', () => {
+  it('resolves declared navigation to its retained canonical or explicitly retired state', () => {
     for (const href of allDeclaredHrefs()) {
       // Same-page anchors are always valid; there is no route to resolve.
       if (href.startsWith('#')) continue
 
-      const { pathname } = new URL(href, ORIGIN)
+      const { pathname } = new URL(resolvePageHref(href), ORIGIN)
+
+      if (isRemovedPage(href)) {
+        expect(pageForPath(pathname).kind, `${href} must remain retired`).toBe('retired')
+        continue
+      }
 
       // /build is a noindex deep link that deliberately serves the planner.
       if (pathname === '/build') continue
 
-      expect(pageForPath(pathname).canonical, `${href} does not resolve to a page of its own`).toBe(`${ORIGIN}${pathname}`)
+      expect(pageForPath(pathname).canonical, `${href} does not resolve to its retained page`).toBe(`${ORIGIN}${pathname}`)
     }
   })
 
@@ -70,18 +76,23 @@ describe('internal link integrity', () => {
     }
   })
 
-  it('resolves every link a published class page declares to its own canonical', () => {
+  it('resolves every retained link a published class page declares to its final canonical', () => {
     const hrefs = declaredClassHrefs()
 
     expect(hrefs.length).toBeGreaterThan(0)
     for (const { slug, href } of hrefs) {
-      const { pathname } = new URL(href, ORIGIN)
+      const { pathname } = new URL(resolvePageHref(href), ORIGIN)
 
-      expect(pageForPath(pathname).canonical, `${slug} links ${href}, which does not resolve to its own page`).toBe(`${ORIGIN}${pathname}`)
+      if (isRemovedPage(href)) {
+        expect(pageForPath(pathname).kind, `${slug} declares retired ${href}`).toBe('retired')
+        continue
+      }
+
+      expect(pageForPath(pathname).canonical, `${slug} links ${href}, which does not resolve to its retained page`).toBe(`${ORIGIN}${pathname}`)
     }
   })
 
-  it('never links a class page the publish gate withholds', () => {
+  it('never resolves retained class navigation to a page the publish gate withholds', () => {
     const published = new Set(publishedClassPages.map(({ page }) => `/${page.slug}`))
     const withheld = new Set(
       PUBLISHED_CLASSES.flatMap((classDef) => classDef.pages.map((page) => `/${page.slug}`)).filter((path) => !published.has(path)),
@@ -89,7 +100,8 @@ describe('internal link integrity', () => {
 
     expect(withheld.size).toBeGreaterThan(0)
     for (const { slug, href } of declaredClassHrefs()) {
-      const { pathname } = new URL(href, ORIGIN)
+      if (isRemovedPage(href)) continue
+      const { pathname } = new URL(resolvePageHref(href), ORIGIN)
 
       expect(withheld.has(pathname), `${slug} links withheld ${pathname}`).toBe(false)
     }

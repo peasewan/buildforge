@@ -6,6 +6,7 @@ import { track } from './lib/analytics'
 import SiteFooter from './SiteFooter'
 import BetaDataStatus from './BetaDataStatus'
 import { betaLevelingPlannerHref, betaLevelingSnapshot } from './data/levelingBeta'
+import { resolvePageHref } from './lib/pageRetirement'
 
 const specIcons: Record<Branch, React.ReactNode> = {
   holy: <Heart size={15} />,
@@ -67,7 +68,7 @@ export default function SpecBuildsHub({ spec }: { spec: Branch }) {
         <article>
           <div className="spec-feature-icon">{heroIcons[spec]}</div>
           <dl><div><dt>Role</dt><dd>{hub.featured.role}</dd></div><div><dt>Playstyle</dt><dd>{hub.featured.playstyle}</dd></div><div><dt>Status</dt><dd>{hub.featured.status}</dd></div></dl>
-          <a href={hub.featured.href} className="button primary" onClick={link('featured')(hub.featured.href)}>View Build <ArrowRight size={16} /></a>
+          <a href={resolvePageHref(hub.featured.href)} className="button primary" onClick={link('featured')(hub.featured.href)}>View Build <ArrowRight size={16} /></a>
         </article>
       </section>
 

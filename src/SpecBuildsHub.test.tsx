@@ -1,10 +1,22 @@
-import { cleanup, fireEvent, render, screen } from '@testing-library/react'
+import { cleanup, fireEvent, render, screen, within } from '@testing-library/react'
 import { afterEach, describe, expect, it } from 'vitest'
 import SpecBuildsHub from './SpecBuildsHub'
 import { SPEC_BUILDS_HUBS } from './data/specBuildsHubs'
 import { betaLevelingPlannerHref } from './data/levelingBeta'
+import { resolvePageHref } from './lib/pageRetirement'
 
-afterEach(cleanup)
+afterEach(() => { cleanup(); window.gtag = undefined })
+
+function buildTypeLink(title: string) {
+  const grid = document.querySelector('.spec-type-grid') as HTMLElement
+  const link = within(grid).getByRole('heading', { name: title }).closest('.build-card')?.querySelector('a')
+  expect(link, title).toBeTruthy()
+  return link!
+}
+function clickWithoutNavigation(link: HTMLElement) {
+  link.addEventListener('click', event => event.preventDefault(), { once: true })
+  fireEvent.click(link)
+}
 
 describe('specialization builds hub', () => {
   it.each(SPEC_BUILDS_HUBS.map((hub) => [hub.spec, hub.title] as const))(
@@ -22,7 +34,7 @@ describe('specialization builds hub', () => {
         for (const copy of [build.title, build.eyebrow]) {
           const promised = copy.match(/\b(Holy|Protection|Retribution)\b/)?.[1].toLowerCase()
 
-          if (promised) expect(build.href, `"${copy}" promises ${promised}`).toContain(`-${promised}-`)
+          if (promised) expect(resolvePageHref(build.href), `"${copy}" promises ${promised}`).toContain(`-${promised}-`)
         }
       }
     }
@@ -36,15 +48,20 @@ describe('specialization builds hub', () => {
       render(<SpecBuildsHub spec={hub.spec} />)
 
       for (const build of hub.buildTypes) {
-        for (const anchor of document.querySelectorAll(`a[href="${build.href}"]`)) fireEvent.click(anchor)
-      }
-
-      for (const build of hub.buildTypes) {
-        const placements = events.filter((entry) => entry.destination === build.href).map((entry) => entry.placement)
-
-        expect(placements, `${build.href} should report its own id`).toContain(`type-${build.id}`)
+        const anchor = buildTypeLink(build.title)
+        expect(anchor.getAttribute('href')).toBe(resolvePageHref(build.href))
+        clickWithoutNavigation(anchor)
+        expect(events.filter(entry => entry.placement === `type-${build.id}`), build.id).toEqual([
+          { spec: hub.spec, placement: `type-${build.id}`, destination: build.href },
+        ])
       }
     }
+  })
+
+  it('sends the featured Protection build directly to its retained page', () => {
+    render(<SpecBuildsHub spec="protection" />)
+    const feature = document.querySelector('#featured-build') as HTMLElement
+    expect(within(feature).getByRole('link', { name: /View Build/ }).getAttribute('href')).toBe('/wow-forever-protection-paladin-build')
   })
 
   it('keeps the event name per specialization so existing history stays continuous', () => {
@@ -52,7 +69,10 @@ describe('specialization builds hub', () => {
     window.gtag = (command: string, ...args: unknown[]) => { events.push(args[0] as string) }
     render(<SpecBuildsHub spec="protection" />)
 
-    fireEvent.click(document.querySelector('a[href="/wow-forever-protection-paladin-dungeon-build"]')!)
+    const dungeon = SPEC_BUILDS_HUBS.find(hub => hub.spec === 'protection')!.buildTypes.find(build => build.href === '/wow-forever-protection-paladin-dungeon-build')!
+    const link = buildTypeLink(dungeon.title)
+    expect(link.getAttribute('href')).toBe('/wow-forever-protection-paladin-build')
+    clickWithoutNavigation(link)
 
     expect(events).toContain('protection_hub_click')
   })

@@ -7,8 +7,8 @@ import { pageForPath } from './routes'
 /**
  * What a withheld Mage path actually returns. `pageForPath` ends on the Paladin planner, so a
  * withheld Mage slug is not "unmatched" — it serves the Paladin calculator, canonical and all.
- * Pinning the whole definition is the point: `/mage` is withheld precisely because a Mage link
- * there would land on the Paladin planner.
+ * Pinning the whole definition makes an unsupported Mage slug distinguishable from a published
+ * Mage page or one of the explicitly consolidated entries.
  */
 const paladinPlannerFallback = {
   kind: 'planner',
@@ -19,17 +19,14 @@ const paladinPlannerFallback = {
 }
 
 describe('public page routing', () => {
-  it('gives the stress-test status page its own canonical without changing calculator metadata', () => {
-    expect(pageForPath('/wow-forever-stress-test/')).toMatchObject({ kind: 'stress-test', canonical: 'https://buildforgetools.com/wow-forever-stress-test', robots: 'index, follow' })
+  it('marks the obsolete stress-test page noindex without changing calculator metadata', () => {
+    expect(pageForPath('/wow-forever-stress-test/')).toMatchObject({ kind: 'retired', canonical: 'https://buildforgetools.com/wow-forever-stress-test', robots: 'noindex, follow' })
     expect(pageForPath('/paladin')).toEqual(paladinPlannerFallback)
   })
   it.each([
     ['/warrior', 'class-calculator', 'WoW Forever Warrior Talent Calculator | Beta Build 70291'],
     ['/wow-forever-warrior-builds', 'class-document', 'WoW Forever Warrior Builds & Talent Calculator | BuildForgeTools'],
-    ['/wow-forever-warrior-leveling-build', 'class-document', 'WoW Forever Warrior Leveling Build | Level 30 Beta'],
-    ['/wow-forever-arms-warrior-build', 'class-document', 'WoW Forever Arms Warrior Build | Level 30 Beta'],
-    ['/wow-forever-fury-warrior-build', 'class-document', 'WoW Forever Fury Warrior Build | Level 30 Beta'],
-    ['/wow-forever-protection-warrior-build', 'class-document', 'WoW Forever Protection Warrior Build | Level 30 Beta'],
+    ['/wow-forever-fury-warrior-leveling-build', 'class-document', 'WoW Forever Fury Warrior Leveling Build'],
   ])('serves %s as an indexable Warrior page', (pathname, kind, title) => {
     expect(pageForPath(pathname)).toMatchObject({ kind, title, canonical: `https://buildforgetools.com${pathname}`, robots: 'index, follow' })
   })
@@ -37,7 +34,6 @@ describe('public page routing', () => {
   it.each([
     ['/emberville', 'planner', 'Emberville Preview Notebook & Confirmed Mechanics | BuildForgeTools'],
     ['/emberville-classes', 'classes', 'Emberville Classes | Confirmed Systems & Planning'],
-    ['/emberville-skill-inheritance', 'inheritance', 'Emberville Skill Inheritance Guide | BuildForgeTools'],
   ])('serves %s as an indexable Emberville page', (pathname, embervillePageId, title) => {
     expect(pageForPath(pathname)).toMatchObject({ kind: 'emberville', embervillePageId, title, canonical: `https://buildforgetools.com${pathname}`, robots: 'index, follow' })
   })
@@ -89,7 +85,6 @@ describe('public page routing', () => {
     ['/wow-forever-paladin-leveling-build/', 'leveling', 'WoW Forever Paladin Leveling Build | BuildForgeTools'],
     ['/wow-forever-paladin-pvp-build/', 'pvp', 'WoW Forever Paladin PvP Build | BuildForgeTools'],
     ['/wow-forever-paladin-raid-build/', 'raid', 'WoW Forever Paladin Raid Build | BuildForgeTools'],
-    ['/wow-forever-protection-paladin-dungeon-build/', 'protection-dungeon', 'WoW Forever Protection Paladin Dungeon Tank Build | BuildForgeTools'],
     ['/wow-forever-protection-paladin-pvp-build/', 'protection-pvp', 'WoW Forever Protection Paladin PvP Build | BuildForgeTools'],
     ['/wow-forever-protection-paladin-leveling-build/', 'protection-leveling', 'WoW Forever Protection Paladin Leveling Build | BuildForgeTools'],
     ['/wow-forever-retribution-paladin-pvp-build/', 'retribution-pvp', 'WoW Forever Retribution Paladin PvP Build | BuildForgeTools'],
@@ -114,13 +109,11 @@ describe('public page routing', () => {
     })
   })
 
-  it('serves the Paladin abilities spellbook as an indexable data page', () => {
-    expect(pageForPath('/wow-forever-paladin-abilities/')).toEqual({
-      kind: 'spellbook',
-      title: 'WoW Forever Paladin Abilities & Spellbook | BuildForgeTools',
-      description: 'Browse 45 WoW Forever Paladin abilities, skills, and spells by specialization and trainer level, with Beta client build provenance and change labels.',
+  it('marks the incomplete public Paladin spellbook as retired rather than indexing its fixture', () => {
+    expect(pageForPath('/wow-forever-paladin-abilities/')).toMatchObject({
+      kind: 'retired',
       canonical: 'https://buildforgetools.com/wow-forever-paladin-abilities',
-      robots: 'index, follow',
+      robots: 'noindex, follow',
     })
   })
 
@@ -144,12 +137,12 @@ describe('public page routing', () => {
     })
   })
 
-  it('serves the Retribution hub as its own specialization page', () => {
+  it('resolves the consolidated Retribution hub to the retained build page metadata', () => {
     expect(pageForPath('/wow-forever-retribution-paladin-builds/')).toMatchObject({
-      kind: 'spec-hub',
-      spec: 'retribution',
-      title: 'WoW Forever Retribution Paladin Builds | Damage Talent Planner',
-      canonical: 'https://buildforgetools.com/wow-forever-retribution-paladin-builds',
+      kind: 'build-guide',
+      buildId: 'retribution-judgment-0-20-31',
+      title: 'WoW Forever Retribution Paladin Build | BuildForgeTools',
+      canonical: 'https://buildforgetools.com/wow-forever-retribution-paladin-build',
       robots: 'index, follow',
     })
   })
@@ -187,14 +180,9 @@ describe('published class pages', () => {
   it.each([
     ['/wow-forever-mage-builds', 'WoW Forever Mage Builds | Talent Calculator'],
     ['/wow-forever-mage-talents', 'WoW Forever Mage Talents & Talent Trees'],
-    ['/wow-forever-mage-leveling-build', 'WoW Forever Mage Leveling Build | Level 20 Beta'],
     ['/wow-forever-frost-mage-build', 'WoW Forever Frost Mage Build | Level 20 Beta'],
-    ['/wow-forever-frost-mage-leveling-build', 'WoW Forever Frost Mage Leveling Build'],
     ['/wow-forever-frost-mage-aoe-build', 'WoW Forever Frost Mage AoE Build'],
-    ['/wow-forever-arcane-mage-build', 'WoW Forever Arcane Mage Build | Level 20 Beta'],
-    ['/wow-forever-arcane-mage-leveling-build', 'WoW Forever Arcane Mage Leveling Build'],
     ['/wow-forever-mage-dungeon-build', 'WoW Forever Mage Dungeon Build'],
-    ['/wow-forever-mage-level-20-build', 'WoW Forever Mage Level 20 Build'],
   ])('serves %s as the Mage class page the gate publishes', (pathname, title) => {
     const expected = {
       kind: 'class-document',
@@ -228,8 +216,7 @@ describe('published class pages', () => {
     ['/wow-forever-frost-vs-fire-mage-leveling', 'wow-forever-frost-vs-fire-mage-leveling'],
   ])('withholds %s and falls through to the Paladin planner', (pathname, slug) => {
     // The definition exists in the class package — the path is withheld by the requirement gate,
-    // not by the page being absent. `/mage` in particular must never resolve to a Mage calculator,
-    // because the CTA that would link it has to point somewhere real.
+    // not by the page being absent. A published CTA must not send players to this fallback.
     expect(mageClass.pages.some((page) => page.slug === slug)).toBe(true)
     expect(pageForPath(pathname)).toEqual(paladinPlannerFallback)
   })
@@ -237,14 +224,18 @@ describe('published class pages', () => {
   it('serves every page the publish gate publishes, and nothing the gate withholds', () => {
     const satisfied = satisfiedRequirements(mageClass)
     const isPublished = (page: (typeof mageClass.pages)[number]) =>
-      publishRequirementsFor(page).every((requirement) => satisfied.has(requirement))
+      !page.retiredTo && publishRequirementsFor(page).every((requirement) => satisfied.has(requirement))
     const pages = mageClass.pages.map((page) => ({ page, published: isPublished(page) }))
 
-    expect(pages.filter((entry) => entry.published)).toHaveLength(11)
-    expect(pages.filter((entry) => !entry.published)).toHaveLength(4)
+    expect(pages.filter((entry) => entry.published)).toHaveLength(6)
+    expect(pages.filter((entry) => entry.page.retiredTo)).toHaveLength(5)
+    expect(pages.filter((entry) => !entry.published && !entry.page.retiredTo)).toHaveLength(4)
     for (const { page, published } of pages) {
       const served = pageForPath(`/${page.slug}`)
-      if (published) {
+      if (page.retiredTo) {
+        expect(served, page.slug).toMatchObject({ classId: 'mage', canonical: `https://buildforgetools.com${page.retiredTo}`, robots: 'index, follow' })
+        expect(served, page.slug).toEqual(pageForPath(page.retiredTo))
+      } else if (published) {
         expect(served, page.slug).toMatchObject({
           kind: page.kind === 'calculator' ? 'class-calculator' : 'class-document',
           classId: 'mage',

@@ -1,3 +1,4 @@
+import { isRetiredPage } from '../src/lib/pageRetirement'
 import { readFile, writeFile } from 'node:fs/promises'
 import { BUILD_LANDING_PAGES } from '../src/data/buildLandingPages'
 import { SPEC_BUILDS_HUBS } from '../src/data/specBuildsHubs'
@@ -22,7 +23,7 @@ const targets: { filename: string; render: () => string }[] = [
   ...TRUST_PAGES.map((page) => ({ filename: page.slug, render: () => renderTrustPrerender(page.id) })),
 ]
 
-for (const { filename, render } of targets) {
+for (const { filename, render } of targets.filter(target => !isRetiredPage(`/${target.filename}`))) {
   const outputPath = new URL(`../dist/${filename}/index.html`, import.meta.url)
   const template = await readFile(outputPath, 'utf8')
 

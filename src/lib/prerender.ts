@@ -1,3 +1,4 @@
+import { isRemovedPage, resolvePageHref } from './pageRetirement'
 import { paladinLevelingHref } from '../data/paladinLevelingProgression'
 import { createElement } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
@@ -28,10 +29,10 @@ import { paladinSpellbook } from '../data/paladinSpellbook'
 import { OCTOBER_OFFICIAL_SOURCE, OFFICIAL_OCTOBER_CHANGES, officialTalentNotice, type OfficialOctoberClassId } from '../data/officialOctoberChanges'
 import type { SpellChange } from '../data/spellbook'
 
-const link = (href: string, label: string) => `<a href="${escapeHtml(href)}">${escapeHtml(label)}</a>`
+const link = (href: string, label: string) => isRemovedPage(href) ? '' : `<a href="${escapeHtml(resolvePageHref(href))}">${escapeHtml(label)}</a>`
 
 const linkList = (links: { href: string; label: string }[]) =>
-  `<ul>${links.map(({ href, label }) => `<li>${link(href, label)}</li>`).join('')}</ul>`
+  `<ul>${links.filter(item => !isRemovedPage(item.href)).map(({ href, label }) => `<li>${link(href, label)}</li>`).join('')}</ul>`
 
 const spellChangeLabels: Record<SpellChange, string> = {
   same: 'Carried forward',
@@ -311,7 +312,7 @@ function renderClassOfficialUpdate(classDef: ClassDefinition): string {
   if ('additionalSource' in change) sources.push(link(change.additionalSource, 'October 2 Warrior follow-up'))
 
   return `<section aria-label="${escapeHtml(classDef.name)} official changes"><h2>${escapeHtml(classDef.name)} official changes</h2>
-    <p>${classDef.dataReview?.current ? `Reviewed talent structure through ${escapeHtml(classDef.verifiedBuild)}. The current Beta cap is Level 30; ordinary editorial routes spend 21 points, and the retained Level 20 page uses separate 11-point stages. Licensed rank text is community verified, while point-order rules remain derived assumptions.` : `The live Beta cap is Level 30. This page presents the older ${escapeHtml(classDef.verifiedBuild)} talent tree; Level 20 routes are 11-point starting snapshots, not reviewed Level 30 allocations. Later official changes have not been fully imported into this tree.`}</p>
+    <p>${classDef.dataReview?.current ? `Reviewed talent structure through ${escapeHtml(classDef.verifiedBuild)}. The current Beta cap is Level 30; ordinary editorial routes spend 21 points, and the Level 20 snapshots use separate 11-point stages. Licensed rank text is community verified, while point-order rules remain derived assumptions.` : `The live Beta cap is Level 30. This page presents the older ${escapeHtml(classDef.verifiedBuild)} talent tree; Level 20 routes are 11-point starting snapshots, not reviewed Level 30 allocations. Later official changes have not been fully imported into this tree.`}</p>
     <p>Official sources: ${sources.join(' · ')}.</p>
     <ul>${change.notes.map((note) => `<li>${escapeHtml(note)}</li>`).join('')}</ul>
   </section>`

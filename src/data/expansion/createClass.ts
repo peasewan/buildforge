@@ -1,3 +1,4 @@
+import { applyClassConsolidations } from '../../lib/classConsolidations'
 import { assertUniquePageIntents, type ClassBuild, type ClassDefinition, type ClassPageDefinition, type ClassPageKind, type ClassTalent } from '../../lib/classPage'
 import { canIncrementPlannerTalent, incrementPlannerTalent, type PlannerBuild } from '../../lib/talentPlanner'
 import type { ExpansionProfile, SpecProfile } from './profiles'
@@ -215,7 +216,7 @@ export function createExpansionClass(profile: ExpansionProfile, dataset: Dataset
   }
 
   assertUniquePageIntents(pages)
-  return {
+  return applyClassConsolidations({
     contentPolicy: 'intent_tasks_v1',
     id, name, plannerPath: `/${id}`, ogImage: `/images/${id}/${id}-hero-v1.jpg`, branches,
     branchIcons: Object.fromEntries(branches.map((branch) => [branch, talents.find((t) => t.branch === branch && t.icon)?.icon])),
@@ -225,5 +226,5 @@ export function createExpansionClass(profile: ExpansionProfile, dataset: Dataset
     plannerModes: current ? [{ level: 30, points: 21, label: 'Level 30 Beta' }, { level: 20, points: 11, label: 'Level 20 snapshot' }] : [{ level: 20, points: 11, label: 'Level 20 preview' }], talents, plannerConfig, builds, pages,
     recommendedBuildIds: [specBuilds[profile.defaultSpec], ...Object.values(specBuilds).filter((buildId) => buildId !== specBuilds[profile.defaultSpec])],
     sources: dataset.sources as ClassDefinition['sources'], dataReview: options.currentDataReview ? { ...options.currentDataReview, current: true } : { ready: dataset.ready && dataset.conflicts.length === 0, notice },
-  }
+  })
 }

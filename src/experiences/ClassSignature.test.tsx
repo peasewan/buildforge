@@ -1,3 +1,5 @@
+import { PAGE_CONSOLIDATIONS } from '../data/pageConsolidations'
+import { consolidatedClassTasks } from '../lib/classConsolidations'
 import { cleanup, render, screen } from '@testing-library/react'
 import { afterEach, expect, it } from 'vitest'
 import { PUBLISHED_CLASSES } from '../data/classes'
@@ -27,19 +29,20 @@ for (const item of cases) {
     const classDef = PUBLISHED_CLASSES.find((def) => def.id === item.id)!
     const pages = publishedClassPages([classDef]).map(({ page }) => page)
     const featurePage = classDef.pages.find((page) => page.kind === item.feature)!
-    const retiredFeatureTo = 'retiredFeatureTo' in item ? item.retiredFeatureTo : undefined
+    const retiredFeatureTo = PAGE_CONSOLIDATIONS[`/${featurePage.slug}`] ?? ('retiredFeatureTo' in item ? item.retiredFeatureTo : undefined)
     expect(featurePage.retiredTo).toBe(retiredFeatureTo)
     if (retiredFeatureTo) {
       expect(pages).not.toContain(featurePage)
       expect(pages.some((page) => `/${page.slug}` === retiredFeatureTo)).toBe(true)
     }
-    const entryPages = [
-      pages.find((page) => page.kind === 'buildsHub'),
-      pages.find((page) => page.kind === 'leveling'),
-      ...(retiredFeatureTo ? [] : [pages.find((page) => page.kind === item.feature)]),
-      pages.find((page) => page.kind === 'specBuild' && page.spec === item.core),
-    ]
-    expect(entryPages.every(Boolean)).toBe(true)
+    const hub = pages.find(page => page.kind === 'buildsHub')!
+    expect(hub).toBeDefined()
+    const sourceEntries = classDef.pages.filter(page => page.kind === 'leveling' || (page.kind === 'specBuild' && page.spec === item.core))
+    for (const source of sourceEntries.filter(page => page.retiredTo === `/${hub.slug}`)) {
+      expect(consolidatedClassTasks(classDef, hub)).toContain(source)
+    }
+    const entryPages = pages.filter(page => page.kind === 'buildsHub' || page.kind === 'leveling'
+      || page.kind === item.feature || (page.kind === 'specBuild' && page.spec === item.core))
     const routeCopy: string[] = []
     for (const page of entryPages) {
       expect(hasClassSignature(classDef, page!)).toBe(true)
@@ -64,7 +67,7 @@ for (const item of cases) {
       expect(screen.getByText(/Editorial test prompt/i)).toBeTruthy()
       unmount()
     }
-    expect(new Set(routeCopy).size).toBe(retiredFeatureTo ? 3 : 4)
+    expect(new Set(routeCopy).size).toBe(entryPages.length)
   })
 }
 

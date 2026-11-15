@@ -3,8 +3,9 @@ import { afterEach, describe, expect, it } from 'vitest'
 import PaladinBuildsHub from './PaladinBuildsHub'
 import { HUB_BUILD_HREFS, HUB_PLAYSTYLE_SECTIONS, HUB_SPECIALIZATIONS } from './data/paladinBuildsHub'
 import { SPEC_BUILDS_HUBS } from './data/specBuildsHubs'
+import { resolvePageHref } from './lib/pageRetirement'
 
-afterEach(cleanup)
+afterEach(() => { cleanup(); window.gtag = undefined })
 
 function captureTrackedEvents() {
   const events: { event: string; params: Record<string, unknown> }[] = []
@@ -12,8 +13,14 @@ function captureTrackedEvents() {
   return events
 }
 
-const clickAll = (hrefs: string[]) => {
-  for (const href of hrefs) fireEvent.click(document.querySelector(`a[href="${href}"]`)!)
+const clickWithoutNavigation = (link: HTMLElement) => {
+  link.addEventListener('click', event => event.preventDefault(), { once: true })
+  fireEvent.click(link)
+}
+const buildLink = (title: string) => {
+  const link = screen.getByRole('heading', { name: title }).closest('.build-card')?.querySelector('a')
+  expect(link, title).toBeTruthy()
+  return link!
 }
 
 describe('Paladin builds hub', () => {
@@ -21,14 +28,15 @@ describe('Paladin builds hub', () => {
     render(<PaladinBuildsHub />)
 
     expect(screen.getByRole('heading', { level: 1, name: 'WoW Forever Paladin Builds & Talent Calculator' })).toBeTruthy()
-    for (const spec of HUB_SPECIALIZATIONS) expect(document.querySelector(`a[href="${spec.href}"]`)).toBeTruthy()
+    for (const spec of HUB_SPECIALIZATIONS) expect(screen.getByRole('heading', { name: spec.name }).closest('a')?.getAttribute('href')).toBe(resolvePageHref(spec.href))
     expect(document.querySelector('a[href="/paladin"]')).toBeTruthy()
   })
 
   it('links every build its own data declares', () => {
     render(<PaladinBuildsHub />)
 
-    for (const href of HUB_BUILD_HREFS) expect(document.querySelector(`a[href="${href}"]`)).toBeTruthy()
+    for (const href of HUB_BUILD_HREFS) expect(document.querySelector(`a[href="${resolvePageHref(href)}"]`)).toBeTruthy()
+    expect(document.querySelector('a[href="/wow-forever-paladin-abilities"]')).toBeNull()
   })
 
   it('shows the current Beta build status without changing the hub title', () => {
@@ -66,11 +74,12 @@ describe('Paladin builds hub', () => {
     expect(link?.closest('.build-card')?.textContent).toMatch(/Crusade.*absent/i)
   })
 
-  it('sends a specialization card to its hub whenever that specialization has one', () => {
+  it('sends a specialization card to its retained hub or consolidated build destination', () => {
+    render(<PaladinBuildsHub />)
     for (const spec of HUB_SPECIALIZATIONS) {
       const hub = SPEC_BUILDS_HUBS.find((candidate) => candidate.spec === spec.id)
 
-      if (hub) expect(spec.href, `${spec.id} has a hub but its card points elsewhere`).toBe(`/${hub.slug}`)
+      if (hub) expect(screen.getByRole('heading', { name: spec.name }).closest('a')?.getAttribute('href')).toBe(resolvePageHref(`/${hub.slug}`))
     }
   })
 
@@ -78,7 +87,7 @@ describe('Paladin builds hub', () => {
     for (const build of HUB_PLAYSTYLE_SECTIONS.flatMap((section) => section.builds)) {
       const promised = build.title.match(/\b(Holy|Protection|Retribution)\b/)?.[1].toLowerCase()
 
-      if (promised) expect(build.href, `"${build.title}" promises ${promised}`).toContain(`-${promised}-`)
+      if (promised) expect(resolvePageHref(build.href), `"${build.title}" promises ${promised}`).toContain(`-${promised}-`)
     }
   })
 
@@ -87,12 +96,13 @@ describe('Paladin builds hub', () => {
     const builds = HUB_PLAYSTYLE_SECTIONS.flatMap((section) => section.builds)
     render(<PaladinBuildsHub />)
 
-    clickAll(builds.map((build) => build.href))
-
     for (const build of builds) {
-      const click = events.find((entry) => entry.params.destination === build.href)
-
-      expect(click?.params.placement, `${build.href} should report its own id`).toBe(build.id)
+      const link = buildLink(build.title)
+      expect(link.getAttribute('href')).toBe(resolvePageHref(build.href))
+      clickWithoutNavigation(link)
+      expect(events.filter(entry => entry.params.placement === build.id), build.id).toEqual([
+        { event: 'paladin_hub_click', params: { placement: build.id, destination: build.href } },
+      ])
     }
   })
 
@@ -100,12 +110,13 @@ describe('Paladin builds hub', () => {
     const events = captureTrackedEvents()
     render(<PaladinBuildsHub />)
 
-    clickAll(HUB_SPECIALIZATIONS.map((spec) => spec.href))
-
     for (const spec of HUB_SPECIALIZATIONS) {
-      const click = events.find((entry) => entry.params.destination === spec.href)
-
-      expect(click?.params.placement).toBe(`spec-${spec.id}`)
+      const link = screen.getByRole('heading', { name: spec.name }).closest('a')!
+      expect(link.getAttribute('href')).toBe(resolvePageHref(spec.href))
+      clickWithoutNavigation(link)
+      expect(events.filter(entry => entry.params.placement === `spec-${spec.id}`)).toEqual([
+        { event: 'paladin_hub_click', params: { placement: `spec-${spec.id}`, destination: spec.href } },
+      ])
     }
   })
 
@@ -113,7 +124,7 @@ describe('Paladin builds hub', () => {
     const events = captureTrackedEvents()
     render(<PaladinBuildsHub />)
 
-    clickAll(HUB_PLAYSTYLE_SECTIONS.flatMap((section) => section.builds.map((build) => build.href)))
+    for (const build of HUB_PLAYSTYLE_SECTIONS.flatMap(section => section.builds)) clickWithoutNavigation(buildLink(build.title))
 
     for (const entry of events) {
       expect(String(entry.params.placement)).not.toMatch(/paladin leveling build|dungeon tank build/i)

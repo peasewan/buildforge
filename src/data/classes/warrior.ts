@@ -1,3 +1,4 @@
+import { applyClassConsolidations } from '../../lib/classConsolidations'
 import type { ClassBuild, ClassDefinition, ClassPageDefinition, ClassPageKind, PublishRequirement } from '../../lib/classPage'
 import { WARRIOR_LEVEL_20_BUILDS, WARRIOR_LEVEL_30_BUILDS, WARRIOR_PVP_LEVEL_30_BUILDS, type WarriorPreset } from '../warriorBuilds'
 import {
@@ -31,7 +32,7 @@ const WARRIOR_BRANCH_ICONS: Record<WarriorBranch, string> = {
   fury: '/images/warrior-talents/spell_nature_bloodlust.jpg',
   protection: '/images/warrior-talents/inv_shield_06.jpg',
 }
-const CAP_NOTE = "Blizzard raised the playable Beta cap to Level 30 on October 1. The current 21-point routes use the reviewed 1.60.1.70291 Warrior tree; the Level 20 page preserves the earlier 11-point opening allocations."
+const CAP_NOTE = "Blizzard raised the playable Beta cap to Level 30 on October 1. The current 21-point routes use the reviewed 1.60.1.70291 Warrior tree; the Level 20 snapshot task preserves the earlier 11-point opening allocations."
 const EVIDENCE_NOTE = 'Client build 1.60.1.70291 verifies all 52 talent identities, rank caps, positions and prerequisite links. All 150 resolved rank descriptions are adapted from Talents Forever under CC BY 4.0 and labelled community-verified. Exported effect values are tooltip transcriptions resolved at Level 60; the planner does not rescale them to Level 30 or simulate damage. Change labels compare the preserved 69913 import. Point-per-level, tier spending and required prerequisite ranks remain derived planning rules. Build allocations and playstyle notes are editorial tests, not official best builds.'
 
 const [armsPreset, furyPreset, protectionPreset] = WARRIOR_LEVEL_30_BUILDS
@@ -313,7 +314,7 @@ const warriorPages: ClassPageDefinition[] = [
     faqs: [
       { question: 'Is Arms or Fury faster to level?', answer: 'No universal speed ranking is verified. Both published allocations spend all 21 Level 30 points legally. Compare weapon quality, target choice and downtime at equal levels before choosing.' },
       { question: 'Does this Fury route require dual wielding?', answer: 'Its eight off-hand talent points need off-hand attacks to supply their stated benefit. That condition belongs to this allocation, not every Fury route. Unbridled Wrath no longer has the earlier extra two-handed Rage clause in the current resolved text.' },
-      { question: 'Can I still inspect the Level 20 opening?', answer: 'Yes. The Level 20 page preserves the original three eleven-point allocations, and the current routes provide replayable progression through Level 30. Versioned older saved builds retain the separate historical dataset.' },
+      { question: 'Can I still inspect the Level 20 opening?', answer: 'Yes. The Level 20 snapshot task preserves the original three eleven-point allocations, and the current routes provide replayable progression through Level 30. Versioned older saved builds retain the separate historical dataset.' },
     ],
     publishRequirements: ['legalBuild:arms', 'legalBuild:fury'],
   }),
@@ -335,7 +336,7 @@ const warriorPages: ClassPageDefinition[] = [
   }),
 ]
 
-export const warriorClass: ClassDefinition<WarriorBranch> = {
+export const warriorClass: ClassDefinition<WarriorBranch> = applyClassConsolidations({
   id: 'warrior',
   name: 'Warrior',
   plannerPath: '/warrior',
@@ -363,4 +364,4 @@ export const warriorClass: ClassDefinition<WarriorBranch> = {
   pages: warriorPages,
   recommendedBuildIds: ['warrior-arms-leveling', 'warrior-fury-build', 'warrior-protection-build'],
   sources: WARRIOR_SOURCES,
-}
+})

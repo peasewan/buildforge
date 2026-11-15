@@ -1,3 +1,5 @@
+import { PAGE_CONSOLIDATIONS } from '../pageConsolidations'
+import { consolidatedClassTasks } from '../../lib/classConsolidations'
 import { describe, expect, it } from 'vitest'
 import rogue from '../rogue-beta-1.60.1.70291.json'
 import priest from '../priest-beta-1.60.1.70291.json'
@@ -74,11 +76,16 @@ describe('reviewed five-class 70291 editorial profiles', () => {
       }
     })
 
-    it(`${dataset.classId}: every retained role changes selected source evidence and only offers a legal matching-budget alternative`, () => {
+    it(`${dataset.classId}: every retained or consolidated role changes selected source evidence and only offers a legal matching-budget alternative`, () => {
       const { def } = fixture(dataset)
-      const pages = def.pages.filter(page => roleKinds.has(page.kind) && !page.retiredTo)
+      const pages = def.pages.filter(page => roleKinds.has(page.kind)
+        && (!page.retiredTo || Object.hasOwn(PAGE_CONSOLIDATIONS, `/${page.slug}`)))
       expect(pages.length).toBeGreaterThanOrEqual(2)
       for (const page of pages) {
+        if (page.retiredTo) {
+          const destination = def.pages.find(candidate => `/${candidate.slug}` === page.retiredTo)!
+          expect(consolidatedClassTasks(def, destination), page.slug).toContain(page)
+        }
         expect(contentTaskIssues(def, page), page.slug).toEqual([])
         const decision = page.roleDecision!
         const primary = def.builds.find(build => build.id === page.primaryBuildId)!

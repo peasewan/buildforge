@@ -177,3 +177,13 @@ Use the same daily comparison fields so decisions are based on trends rather tha
 - `/wow-forever-paladin-pvp-build#forever-open` links the current Raider.IO organizer rules. Registration closed October 2; the Level 30 / 21-point examples model standard progression, not Legacy bonuses or equipment compliance. Quest/dungeon reward ilvl45 and profession-item skill226 restrictions have narrower scopes than blanket gear or character-skill caps.
 - Paladin remains on reviewed `70245`. `data/reviews/1.60.1.70338/paladin-review.json` records incomplete source acquisition, not a zero-change diff. The current Reckoning tooltip separately displays the October 8 official 1.5-second trigger note without replacing preserved rank text.
 - This release adds one event-status URL (141 sitemap entries). Existing ranking metadata remains stable; no AdSense submission or watcher restart is included.
+
+
+## Traffic-protected publication cleanup (November 15)
+
+- Current publication inventory is **83 indexable URLs**, including 49 framework pages. Historical 141/140/150 counts elsewhere describe earlier releases. The owner explicitly authorized this retirement; retained titles/H1s/canonicals stay stable.
+- `src/data/pageConsolidations.ts` is the reviewed 55-entry consolidation map plus 3 gone screens. Decisions required zero GA4 pageviews during 2026-10-18..2026-11-14, zero GSC clicks since 2026-09-13 through final 2026-11-12, and redundant or obsolete/incomplete content. Detailed analytics stay in private local audit files, never browser data or the public repository.
+- Framework source records, allocations and exact rank evidence remain available through retained hub task selectors. Do not republish their retired standalone shells. Preserve final current-evidence enrichment for approved merged role tasks, even when their standalone pages are retired; complete selected-rank evidence is still required.
+- The two Glimmerwick help tools are embedded at `/songs-of-glimmerwick#first-days` and `#spellcasting`. Emberville inheritance is at `/emberville#skill-inheritance`; Protection dungeon reasoning is at `/wow-forever-protection-paladin-build#dungeon-tanking`; Ret hub content lives on its retained build page.
+- The obsolete stress-test, incomplete Nivalis placeholder, and old Paladin ability catalogue return 410 through `api/retired-page.ts`, without advertising. Do not redirect these unrelated screens to the homepage or let the generic Paladin fallback serve them as 200.
+- Keep existing stable shares, snapshots, data APIs, privacy/contact/about and analytics semantics. Run build/content checks, `smoke:production` and `smoke:pruning` before declaring a release healthy. No AdSense approval is implied by passing checks.

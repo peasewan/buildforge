@@ -1,3 +1,4 @@
+import { isRemovedPage, resolvePageHref } from './lib/pageRetirement'
 import { publishedClassCatalogues } from './lib/classStaticPages'
 
 export interface FooterLink {
@@ -13,7 +14,7 @@ export interface FooterLink {
  */
 const classLinks: FooterLink[] = publishedClassCatalogues().map(({ classDef, page }) => ({
   href: `/${page.slug}`,
-  label: `${classDef.name} Talents`,
+  label: `${classDef.name} ${page.kind === 'calculator' ? 'Calculator' : page.kind === 'buildsHub' ? 'Builds' : 'Talents'}`,
 }))
 
 const defaultLinks: FooterLink[] = [
@@ -33,7 +34,7 @@ const defaultLinks: FooterLink[] = [
  * own class's links and never has to know about any other class.
  */
 export default function SiteFooter({ links = defaultLinks, classLinks = [], discovery = false }: { discovery?: boolean; links?: FooterLink[]; classLinks?: FooterLink[] }) {
-  const items = [...(discovery ? [{ href: '/', label: 'Home' }, { href: '/wow-forever-classes', label: 'WoW Classes' }, { href: '/wow-forever-builds', label: 'WoW Builds' }] : []), ...classLinks, ...links].filter((item, index, all) => all.findIndex((candidate) => candidate.href === item.href) === index)
+  const items = [...(discovery ? [{ href: '/', label: 'Home' }, { href: '/wow-forever-classes', label: 'WoW Classes' }, { href: '/wow-forever-builds', label: 'WoW Builds' }] : []), ...classLinks, ...links].filter(item => !isRemovedPage(item.href)).map(item => ({ ...item, href: resolvePageHref(item.href) })).filter((item, index, all) => all.findIndex((candidate) => candidate.href === item.href) === index)
   return (
     <footer>
       <div className="shell">

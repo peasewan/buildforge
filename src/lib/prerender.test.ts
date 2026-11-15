@@ -16,17 +16,15 @@ import { expansionProfiles } from '../data/expansion/profiles'
 import { PUBLISHED_CLASSES } from '../data/classes'
 import { officialTalentNotice } from '../data/officialOctoberChanges'
 import { hunterClassFixture } from '../data/fixtures/hunterClass.fixture'
-import { publishRequirementsFor, publishedClassPages, satisfiedRequirements, type ClassDefinition, type ClassPageDefinition } from './classPage'
+import { publishedClassPages, satisfiedRequirements, type ClassDefinition, type ClassPageDefinition } from './classPage'
 import { classBuildPlannerHref } from './archivedClassBuild'
 import { decodeValidatedPlannerBuild, totalPlannerPoints } from './talentPlanner'
 import { MAGE_BRANCHES } from '../data/mageTalents'
 import { escapeHtml } from './html'
 import { betaLevelingPlannerHref } from '../data/levelingBeta'
+import { isRemovedPage, resolvePageHref } from './pageRetirement'
 
-const publishedMagePages = (() => {
-  const satisfied = satisfiedRequirements(mageClass)
-  return mageClass.pages.filter((page) => publishRequirementsFor(page).every((requirement) => satisfied.has(requirement)))
-})()
+const publishedMagePages = publishedClassPages([mageClass]).map(({ page }) => page)
 
 const withheldMageSlugs = mageClass.pages.filter((page) => !publishedMagePages.includes(page)).map((page) => `/${page.slug}`)
 
@@ -72,10 +70,21 @@ const allPrerendered = () => [
   ...TRUST_PAGES.map((page) => [page.slug, renderTrustPrerender(page.id)] as const),
 ] as const
 
+function expectRetainedNavigation(html: string, href: string, context = 'prerender') {
+  const originalLink = `href="${escapeHtml(href)}"`
+  if (isRemovedPage(href)) {
+    expect(html, `${context} links removed ${href}`).not.toContain(originalLink)
+    return
+  }
+  const retained = resolvePageHref(href)
+  expect(html, `${context} omits retained destination for ${href}`).toContain(`href="${escapeHtml(retained)}"`)
+  if (retained !== href) expect(html, `${context} still links retired ${href}`).not.toContain(originalLink)
+}
+
 describe('prerender generation', () => {
   it('uses reviewed 70291 boundaries for current classes while retaining historical Mage scope', () => {
     const pages = publishedClassPages(PUBLISHED_CLASSES)
-    expect(pages).toHaveLength(99)
+    expect(pages).toHaveLength(49)
     for (const { classDef, page } of pages) {
       const html = renderClassPage(classDef, page)
       expect(html, page.slug).toContain(`<h1>${escapeHtml(page.h1)}</h1>`)
@@ -88,7 +97,7 @@ describe('prerender generation', () => {
         expect(html, page.slug).toContain('Reviewed talent structure through 1.60.1.70291')
         expect(html, page.slug).toContain('current Beta cap is Level 30')
         expect(html, page.slug).toContain('ordinary editorial routes spend 21 points')
-        expect(html, page.slug).toContain('Level 20 page uses separate 11-point stages')
+        expect(html, page.slug).toContain('Level 20 snapshots use separate 11-point stages')
         expect(html, page.slug).toContain('Licensed rank text is community verified')
         expect(html, page.slug).toContain('point-order rules remain derived assumptions')
         expect(html, page.slug).toContain('https://talentsforever.com/data.json')
@@ -190,7 +199,8 @@ describe('prerender generation', () => {
     ]
     for (const id of ids) {
       const build = hunterClass.builds.find(candidate => candidate.id === id)!
-      const route = hunterClass.pages.find(candidate => candidate.slug === build.href.slice(1))!
+      // The original task now renders within a retained hub; href identifies the entry, not the task.
+      const route = hunterClass.pages.find(candidate => candidate.primaryBuildId === build.id)!
       const html = renderClassPage(hunterClass, route)
       const href = classBuildPlannerHref(hunterClass, build)
       const url = new URL(href, 'https://buildforgetools.com')
@@ -218,7 +228,7 @@ describe('prerender generation', () => {
       'hunter-hunter-pet-build', 'hunter-hunter-dungeon-build',
     ]) {
       const build = historicalHunterClass.builds.find(candidate => candidate.id === id)!
-      const route = historicalHunterClass.pages.find(candidate => candidate.slug === build.href.slice(1))!
+      const route = historicalHunterClass.pages.find(candidate => candidate.primaryBuildId === build.id)!
       const html = renderClassPage(historicalHunterClass, route)
       expect(html, route.slug).toContain(build.allocation)
       expect(html, route.slug).toContain('historical route includes an officially removed talent')
@@ -314,20 +324,24 @@ describe('prerender generation', () => {
     expect(html).not.toContain('improved_holy_strike.2')
   })
 
-  it('links every build the hub data declares', () => {
+  it('links every retained destination the hub data declares', () => {
     const html = renderHubPrerender()
 
-    for (const href of HUB_BUILD_HREFS) expect(html).toContain(`href="${href}"`)
+    for (const href of HUB_BUILD_HREFS) expectRetainedNavigation(html, href)
   })
 
-  it('links the versioned Paladin spellbook from the crawlable hub', () => {
-    expect(renderHubPrerender()).toContain('href="/wow-forever-paladin-abilities"')
+  it('omits the retired Paladin spellbook from the crawlable hub and keeps maintained references', () => {
+    const html = renderHubPrerender()
+    expect(html).not.toContain('href="/wow-forever-paladin-abilities"')
+    expect(html).not.toContain('Browse 45 WoW Forever Paladin abilities')
+    expect(html).toContain('href="/wow-forever-paladin-talents"')
+    expect(html).toContain('href="/wow-forever-paladin-beta-talent-changes"')
   })
 
-  it.each(SPEC_BUILDS_HUBS.map((hub) => [hub.spec, hub] as const))('links every build the %s hub data declares', (_spec, hub) => {
+  it.each(SPEC_BUILDS_HUBS.map((hub) => [hub.spec, hub] as const))('links every retained destination the %s hub data declares', (_spec, hub) => {
     const html = renderSpecHubPrerender(hub.spec)
 
-    for (const href of specHubHrefs(hub)) expect(html).toContain(`href="${href}"`)
+    for (const href of specHubHrefs(hub)) expectRetainedNavigation(html, href, `${hub.spec} hub`)
   })
 
   it('renders the Protection Beta route with current-cap planner links for crawlers', () => {
@@ -358,11 +372,11 @@ describe('prerender generation', () => {
 
   it('links each spec talent page the hub already points readers at', () => {
     for (const hub of SPEC_BUILDS_HUBS) {
-      for (const item of hub.talents) expect(renderSpecHubPrerender(hub.spec)).toContain(`href="${item.href}"`)
+      for (const item of hub.talents) expectRetainedNavigation(renderSpecHubPrerender(hub.spec), item.href, `${hub.spec} talent links`)
     }
   })
 
-  it('carries every link its configuration declares', () => {
+  it('carries the retained destination for every navigation link its configuration declares', () => {
     for (const page of BUILD_LANDING_PAGES) {
       const html = renderLandingPrerender(page.id)
       const declared = page.sections.flatMap((section) => {
@@ -371,7 +385,7 @@ describe('prerender generation', () => {
         return []
       })
 
-      for (const href of declared) expect(html, `${page.slug} does not link ${href}`).toContain(`href="${href}"`)
+      for (const href of declared) expectRetainedNavigation(html, href, page.slug)
     }
   })
 
@@ -411,8 +425,8 @@ describe('prerender generation', () => {
 
 describe('class page prerender', () => {
   it('prerenders one class page per published page, and only published ones', () => {
-    expect(publishedMagePages).toHaveLength(11)
-    expect(withheldMageSlugs).toHaveLength(4)
+    expect(publishedMagePages).toHaveLength(6)
+    expect(withheldMageSlugs).toHaveLength(9)
 
     for (const page of mageClass.pages) {
       // Every definition renders — the gate decides what ships, not the renderer.

@@ -1,3 +1,4 @@
+import { applyClassConsolidations } from './lib/classConsolidations'
 import { readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { cleanup, fireEvent, render, screen, within } from '@testing-library/react'
@@ -348,7 +349,8 @@ describe('ClassCalculatorPage renders any class from ClassDefinition', () => {
     expect(source).not.toContain("'/paladin'")
     expect(source).not.toContain("'/warrior'")
 
-    const { container } = render(<ClassCalculatorPage classDef={hunterClassFixture} />)
+    const consolidated = applyClassConsolidations(hunterClassFixture)
+    const { container } = render(<ClassCalculatorPage classDef={consolidated} />)
     const footer = container.querySelector('footer')!
     expect(within(footer).getByRole('link', { name: `${hunterClassFixture.name} Talent Calculator` }).getAttribute('href'))
       .toBe(hunterClassFixture.plannerPath)

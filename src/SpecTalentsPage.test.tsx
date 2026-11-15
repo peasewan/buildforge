@@ -3,6 +3,7 @@ import { afterEach, describe, expect, it } from 'vitest'
 import SpecTalentsPage from './SpecTalentsPage'
 import { SPEC_TALENTS_PAGES } from './data/specTalentsPages'
 import { branchNames } from './data/talents'
+import { resolvePageHref } from './lib/pageRetirement'
 
 afterEach(cleanup)
 
@@ -40,12 +41,13 @@ describe('specialization talent guide', () => {
     expect(preview.querySelectorAll('button')).toHaveLength(0)
   })
 
-  it('links each guide to the hub its configuration names', () => {
+  it('links each guide to the retained destination for the hub its configuration names', () => {
     for (const page of SPEC_TALENTS_PAGES) {
       cleanup()
       render(<SpecTalentsPage spec={page.spec} />)
 
-      expect(document.querySelector(`a[href="${page.hub.href}"]`)).toBeTruthy()
+      expect(document.querySelector(`a[href="${resolvePageHref(page.hub.href)}"]`)).toBeTruthy()
+      if (resolvePageHref(page.hub.href) !== page.hub.href) expect(document.querySelector(`a[href="${page.hub.href}"]`)).toBeNull()
     }
   })
 

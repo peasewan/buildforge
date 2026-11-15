@@ -74,14 +74,15 @@ describe('generated class-page artifacts', () => {
   })
 
   it('publishes data-ready class pages and withholds unfinished build promises', () => {
-    expect(published).toHaveLength(99)
+    expect(published).toHaveLength(49)
     const retired = PUBLISHED_CLASSES.flatMap((def) => def.pages.filter((page) => page.retiredTo))
-    expect(retired).toHaveLength(21)
+    expect(retired).toHaveLength(71)
+    const paths = classPagePaths()
     for (const page of retired) {
-      expect(classPagePaths()).not.toContain(`/${page.slug}`)
-      expect(classPagePaths()).toContain(page.retiredTo)
+      expect(paths).not.toContain(`/${page.slug}`)
+      expect(paths).toContain(page.retiredTo)
     }
-    expect(withheldSlugs).toHaveLength(4)
+    expect(withheldSlugs).toHaveLength(9)
     expect(classPagePaths()).toEqual(publishedSlugs.map((slug) => `/${slug}`))
     for (const slug of withheldSlugs) expect(classPagePaths()).not.toContain(`/${slug}`)
     expect(classPagePaths()).not.toContain(`/${unfinishedWarriorSlug}`)
@@ -253,12 +254,15 @@ describe('generated class-page artifacts', () => {
       { source: '/emberville-builds/index.html', destination: '/emberville', statusCode: 301 },
     ]
     const generatedRedirects = classPageRedirects()
-    expect(generatedRedirects).toHaveLength(42)
-    expect(committedVercel.redirects).toEqual([...manualRedirects, ...generatedRedirects])
+    expect(generatedRedirects).toHaveLength(142)
+    for (const redirect of manualRedirects) expect(committedVercel.redirects).toContainEqual(redirect)
+    const generatedSources = new Set(generatedRedirects.map(redirect => redirect.source))
+    expect(committedVercel.redirects.filter(redirect => generatedSources.has(redirect.source))).toEqual(generatedRedirects)
     expect(new Set(committedVercel.redirects.map((redirect) => redirect.source)).size).toBe(committedVercel.redirects.length)
+    const paths = classPagePaths()
     for (const redirect of generatedRedirects) {
       expect(committedVercel.rewrites.some((rewrite) => rewrite.source === redirect.source), redirect.source).toBe(false)
-      expect(classPagePaths(), redirect.source).toContain(redirect.destination)
+      expect(paths, redirect.source).toContain(redirect.destination)
     }
     expect(committedVercel.headers).toContainEqual({
       source: '/build',
@@ -271,7 +275,8 @@ describe('generated class-page artifacts', () => {
     expect(committedVercel.rewrites.some(({ source }) => source === '/emberville-builds')).toBe(false)
     expect(committedSitemap).not.toContain('<loc>https://buildforgetools.com/emberville-builds</loc>')
     expect(committedSitemap).toContain('<loc>https://buildforgetools.com/emberville-classes</loc>')
-    expect(committedSitemap).toContain('<loc>https://buildforgetools.com/emberville-skill-inheritance</loc>')
+    expect(committedSitemap).not.toContain('<loc>https://buildforgetools.com/emberville-skill-inheritance</loc>')
+    expect(committedVercel.redirects).toContainEqual({ source: '/emberville-skill-inheritance', destination: '/emberville', statusCode: 301 })
   })
 
   it('permanently routes the retired Warrior dungeon hub to the published Protection route', () => {

@@ -40,7 +40,6 @@ import './glimmerwick-well.css'
 import './planning-tools.css'
 import './run-prep-board.css'
 import './paladin-leveling-checklist.css'
-import './nivalis.css'
 import './pvpFlow.css'
 import './forgePilot.css'
 
@@ -48,4 +47,3 @@ import './paladin-decisions.css'
 import './paladin-archive.css'
 
 import './invokyr.css'
-import './forever-events.css'

@@ -1,0 +1,81 @@
+{
+  "reason": "Owner requested a site-wide traffic-protected consolidation. Fifty-five entry URLs merge into relevant retained tools, and three obsolete/incomplete resources return 410. Surviving Paladin metadata, H1s, canonicals and historical source datasets remain frozen. Only body/link fingerprints change for active navigation cleanup and the preserved merged tasks. The original baseline is not regenerated; retired identities are explicitly excluded by the reviewed retirement manifest.",
+  "pages": {
+    "/paladin": {
+      "rootSha256": "25f0cae131057e79ec9cf0754d357e1caa0641697eed1ad2a5658922e5f2da94",
+      "linksSha256": "2a7055f84c2c8bb9913fc9ce890c3ceb3dd665f1a99f3b3c223311bb631d902d"
+    },
+    "/wow-forever-paladin-builds": {
+      "rootSha256": "d930d7ae9be45ccfb1601f6a2ca84cf10773237ab49ae021b2a67944d0e76800",
+      "linksSha256": "89c77401f1e461f2e2dc8d5e0b2e5493f4ee6b6dbe95ab162360101d304b35e6"
+    },
+    "/wow-forever-paladin-talents": {
+      "rootSha256": "d2db4b310ec36b316c184b70845e5c1bf593f7ee58d7a39c701453edd0f993c2",
+      "linksSha256": "9fca303d9699739184f882310388932b9865958a45b536a89e228d58324938e6"
+    },
+    "/wow-forever-paladin-build": {
+      "rootSha256": "4cc4c54cf4c5b4471e0dd533b2360ff22365c632038cb4bd7d1d8dce4d8a209a",
+      "linksSha256": "ad10f91944af53b38f2b3dc88d1739b0a62c21ce8294c54117671b48c47f8ebd"
+    },
+    "/wow-forever-protection-paladin-build": {
+      "rootSha256": "8f047b219228db58aa8332fac282869c9417cf62b21f7b0d779dbf53efb03b11",
+      "linksSha256": "2783161eba808c1912f97791113c0e2adc5c8383516053c9daca411ceac0977b"
+    },
+    "/wow-forever-retribution-paladin-build": {
+      "rootSha256": "96e13d233bfbbed9644b91756bde83aae6108267b7c75f74d3590882426c2268",
+      "linksSha256": "2795493105c4c8fd51fb1eb4c44dd420278819c43e53f35c7499db5506d97495"
+    },
+    "/wow-forever-retribution-paladin-leveling-build": {
+      "rootSha256": "722e5586e670a5a0ff1498de61b7596dda31e029aa9ff9152eda80e66e0508cb",
+      "linksSha256": "2d70179eec8161970d8f1a3ed81c703b1489b753ffecd44f78646bc3a5227f70"
+    },
+    "/wow-forever-paladin-leveling-build": {
+      "rootSha256": "cb3fce6891f11458e1ab375ec2822d138247316943f3b690ea22015116d57f47",
+      "linksSha256": "6837df407b85bdc8ba946c547a03ae20017af731dd14706c7e908933bd3dfae2"
+    },
+    "/wow-forever-paladin-pvp-build": {
+      "rootSha256": "c52114a113eca82ff358e29239b7c898f18f1fa6803958a31bc92c28c4edd058",
+      "linksSha256": "d08f6d46688ecbbd28101793f62bea5cb39153cdc30e4fcad5c9f586d3be0087"
+    },
+    "/wow-forever-paladin-raid-build": {
+      "rootSha256": "6b6f2ab0d62db77ac14ebb739c551ef92fcf17a7d2b283f71eda358e1f08218f",
+      "linksSha256": "77fdd4a7535b370c267137e9695236a7824499a7fee3bb7df061d77eb1766947"
+    },
+    "/wow-forever-protection-paladin-builds": {
+      "rootSha256": "717a2921c35f8509697c9e585ca8064f000025135c2c4df54db08cb14f3b4d74",
+      "linksSha256": "5ba221e5fbd97f4cae4623b90753138e5317552e14077e47ca35c52103f984fe"
+    },
+    "/wow-forever-protection-paladin-leveling-build": {
+      "rootSha256": "70c785203288449fbe607821d091e847ffac685df2a58c4d842d7a65db359fe6",
+      "linksSha256": "1803ea3f647347d723099325d869fc2ac6f5c90907d3fae82ca2ea89db3812b1"
+    },
+    "/wow-forever-protection-paladin-pvp-build": {
+      "rootSha256": "06d50733156e622ee310c9e6fea463f5690050209589fbed61cba08571c07e90",
+      "linksSha256": "eb8603e7aca4bd1144b1cd2add3e459f5f12fe3f78a97953c960d2b05a1c37a1"
+    },
+    "/wow-forever-retribution-paladin-pvp-build": {
+      "rootSha256": "b6d1724531a2623c2d25e1794570bc75f3d38ef00f69d5d2f59e3a2bbc346a8a",
+      "linksSha256": "4d4a31634707cce85d2a0499f8384303da62f763ad86f131b2f9b5139fe60b08"
+    },
+    "/wow-forever-holy-paladin-pvp-build": {
+      "rootSha256": "899338fb6b21a584c7cdb818d6fa8ba4da60021bdc2c77207c8b110c782b787a",
+      "linksSha256": "515abb09d4abedded4068b91b4526fa28732232084bcc6473ae978c9f8fd858d"
+    },
+    "/wow-forever-holy-paladin-talents": {
+      "rootSha256": "ebae79b93cf4090184f9317081fd2f6337b48cc683f70abd583e7ad78a11b5dc",
+      "linksSha256": "54ecb4fd4404e43a4d552de0941859782f4d19cb544fb7a6ee42784fb7090f57"
+    },
+    "/wow-forever-retribution-paladin-talents": {
+      "rootSha256": "61aae57a0e15f2398a3ffe636d1cc2b10ea82d388fe10ab34dab3970d35de522",
+      "linksSha256": "0149a2136c2fb22392f94a49cff005fc19794910eda21ad3ce88c7ab69b840d0"
+    },
+    "/wow-forever-protection-paladin-talents": {
+      "rootSha256": "802dbc0872c2dc3d3c3774c4e64adce2c3eb293f2285d7390cd6f698d0682efc",
+      "linksSha256": "8f819c26aefd7abe23f644fb280a04410bc59b2700218e49c6954c0a14e807d9"
+    },
+    "/wow-forever-paladin-beta-talent-changes": {
+      "rootSha256": "d371fd24edf2154cb91bb8d2edc233c77f496d56c16d235def7257686930208f",
+      "linksSha256": "1e42e0a000e12640a62e662b578299ffeef7558c686cd06bfed4d613ad0c25e6"
+    }
+  }
+}

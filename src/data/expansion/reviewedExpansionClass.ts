@@ -1,3 +1,4 @@
+import { PAGE_CONSOLIDATIONS } from '../pageConsolidations'
 import type { ClassDefinition, ClassTalent } from '../../lib/classPage'
 import type { CurrentClassSnapshot } from '../../lib/currentClassClientReconcile'
 import type { ExpansionProfile } from './profiles'
@@ -31,7 +32,7 @@ export function createReviewedExpansionClass(profile: ExpansionProfile, snapshot
   const grid = talents.filter(talent => talent.fieldEvidence.row === 'community_verified' || talent.fieldEvidence.column === 'community_verified').length
     ? ' Two active Warlock positions use explicitly reviewed row/column mappings; the original raw coordinates are preserved and those mapped positions have community evidence.' : ''
   const links = profile.id === 'druid' ? ' The Nature’s Majesty–Nature’s Splendor prerequisite direction is community-reviewed against two exact raw edges; both original edge records are preserved.' : ''
-  const notice = `Reviewed ${profile.name} snapshot: ${talents.length} visible nodes from Wago client build ${snapshot.clientBuild}, reconciled against Talents Forever. All ${rankCount} rank descriptions are adapted from Talents Forever (CC BY 4.0, https://talentsforever.com), with community verification.${quarantine}${grid}${links} The export resolves tooltip values at Level 60; it does not rescale them to the selected level or simulate damage. Level 30 examples spend 21 points; the existing Level 20 page uses eleven-point stages of this reviewed tree. One point per level from 10, five points per tier, full-rank prerequisites and the editorial point order remain derived planning assumptions. Original 69913 saves remain historical records and are not partially migrated into a changed allocation.`
+  const notice = `Reviewed ${profile.name} snapshot: ${talents.length} visible nodes from Wago client build ${snapshot.clientBuild}, reconciled against Talents Forever. All ${rankCount} rank descriptions are adapted from Talents Forever (CC BY 4.0, https://talentsforever.com), with community verification.${quarantine}${grid}${links} The export resolves tooltip values at Level 60; it does not rescale them to the selected level or simulate damage. Level 30 examples spend 21 points; the Level 20 snapshots use eleven-point stages of this reviewed tree. One point per level from 10, five points per tier, full-rank prerequisites and the editorial point order remain derived planning assumptions. Original 69913 saves remain historical records and are not partially migrated into a changed allocation.`
   const reviewedProfile = buildReviewed70291Profile(profile, talents)
   const def = createExpansionClass(reviewedProfile, { ...snapshot, talents }, {
     currentDataReview: { ready: snapshot.ready && snapshot.conflicts.length === 0, notice },
@@ -39,7 +40,7 @@ export function createReviewedExpansionClass(profile: ExpansionProfile, snapshot
   })
   def.sources = [...def.sources, { label: 'Creative Commons Attribution 4.0 · rank-text license', type: 'beta_client_crosscheck', url: snapshot.resolvedRankLicenseUrl }]
   def.historicalSnapshots = [{ clientBuild: historical.build, dataVersion: `WoW Forever Beta ${historical.build}`, storageKey: `buildforge-${profile.id}-${historical.build.split('.').at(-1)}-v1`, talents: historicalTalents }]
-  for (const page of def.pages.filter(page => !page.retiredTo)) {
+  for (const page of def.pages.filter(page => (!page.retiredTo || Object.hasOwn(PAGE_CONSOLIDATIONS, `/${page.slug}`)))) {
     page.roleDecision = buildReviewed70291RoleDecision(def, page)
     if (page.kind === 'pvp' && reviewedProfile.pvpDescription) page.description = reviewedProfile.pvpDescription
   }

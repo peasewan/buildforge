@@ -37,6 +37,25 @@ describe('Emberville public pages', () => {
     expect(screen.getByRole('heading', { name: 'Turn a direction into questions to test' })).toBeTruthy()
   })
 
+  it('keeps the inheritance reference beside saved notebook research after consolidation', () => {
+    const { container } = render(<EmbervillePage pageId="planner" />)
+
+    const inheritance = container.querySelector('#skill-inheritance')
+    expect(inheritance).toBeTruthy()
+    expect(within(inheritance as HTMLElement).getByRole('heading', { name: 'How skill inheritance shapes a build' })).toBeTruthy()
+    expect(screen.getByRole('table', { name: /Preview inheritance compatibility/ })).toBeTruthy()
+    expect(screen.getAllByRole('cell', { name: 'Needs verification' })).toHaveLength(4)
+    expect(screen.getByRole('heading', { name: 'Active inheritance slots' }).parentElement?.textContent).toContain('Unknown')
+    expect(screen.getByRole('heading', { name: 'Passive inheritance slots' }).parentElement?.textContent).toContain('Unknown')
+    const reference = screen.getByRole('region', { name: 'Inheritance evidence and open questions' })
+    expect(within(reference).getByRole('heading', { name: 'Focus Strike' }).parentElement?.textContent).toContain('Inheritance eligibility: Not verified')
+
+    const notes = screen.getByPlaceholderText(/Record playstyle ideas/)
+    fireEvent.change(notes, { target: { value: 'Verify Focus Strike eligibility before using it' } })
+    fireEvent.click(screen.getByRole('button', { name: 'Save draft' }))
+    expect(localStorage.getItem('emberville-build-notes')).toBe('Verify Focus Strike eligibility before using it')
+  })
+
   it('names the notebook in Emberville navigation without promising build validation', () => {
     const { container } = render(<EmbervillePage pageId="planner" />)
     const nav = screen.getByRole('navigation', { name: 'Emberville' })

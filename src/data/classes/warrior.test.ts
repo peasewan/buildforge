@@ -1,3 +1,5 @@
+import { PAGE_CONSOLIDATIONS } from '../pageConsolidations'
+import { consolidatedClassTasks } from '../../lib/classConsolidations'
 import { existsSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { describe, expect, it } from 'vitest'
@@ -35,7 +37,7 @@ const EXPECTED_PAGES: { slug: string; kind: ClassPageKind; title: string; h1: st
 ]
 const WITHHELD_PVP = 'wow-forever-protection-warrior-pvp-build'
 const RETIRED_DUNGEON = 'wow-forever-warrior-dungeon-build'
-const withheldSlugs = new Set([WITHHELD_PVP, RETIRED_DUNGEON])
+const withheldSlugs = new Set([WITHHELD_PVP, RETIRED_DUNGEON, ...EXPECTED_PAGES.filter(page => Object.hasOwn(PAGE_CONSOLIDATIONS, `/${page.slug}`)).map(page => page.slug)])
 
 describe('Warrior ClassDefinition', () => {
   it('keeps the exact 69913 tree accessible for historical saved builds', () => {
@@ -55,7 +57,7 @@ describe('Warrior ClassDefinition', () => {
     expect(recovered?.talents.find((talent) => talent.id === 'warrior-fury-boundless-rage')?.name).toBe('Boundless Rage')
   })
 
-  it('defines 20 Warrior records but publishes only the 18 with a distinct supported task', () => {
+  it('defines 20 Warrior task records while publishing nine retained entries', () => {
     expect(warriorClass.pages).toHaveLength(20)
     expect(warriorClass.pages.map((page) => page.slug).sort()).toEqual(EXPECTED_PAGES.map((page) => page.slug).sort())
     expect(publishedClassPages([warriorClass]).map(({ page }) => page.slug).sort()).toEqual(EXPECTED_PAGES.filter((page) => !withheldSlugs.has(page.slug)).map((page) => page.slug).sort())
@@ -90,7 +92,7 @@ describe('Warrior ClassDefinition', () => {
     ])
   })
 
-  it('publishes executable Level 30 routes and preserves the distinct Level 20 snapshot page', () => {
+  it('preserves executable Level 30 routes and the consolidated Level 20 snapshot task', () => {
     expect(warriorClass.beta).toMatchObject({ levelCap: 30, pointsAtCap: 21 })
     expect(warriorClass.verifiedBuild).toBe('1.60.1.70291')
     const current = warriorClass.builds.filter((build) => build.level === 30)
@@ -106,10 +108,13 @@ describe('Warrior ClassDefinition', () => {
       expect(build).toMatchObject({ level: 20, levelCap: 11, points: 11 })
       expect(progressionForBuild(warriorClass, build).steps).toHaveLength(11)
     }
-    const snapshotPage = pageFromPublishedClasses('/wow-forever-warrior-level-20-build', [warriorClass])!
+    const snapshotPage = warriorClass.pages.find(page => page.slug === 'wow-forever-warrior-level-20-build')!
+    const hub = pageFromPublishedClasses('/wow-forever-warrior-builds', [warriorClass])!
+    expect(pageFromPublishedClasses('/wow-forever-warrior-level-20-build', [warriorClass])).toBeUndefined()
+    expect(consolidatedClassTasks(warriorClass, hub)).toContain(snapshotPage)
     expect(snapshotPage.relatedBuildIds).toHaveLength(3)
     expect(snapshotPage.relatedBuildIds.every((id) => snapshots.some((build) => build.id === id))).toBe(true)
-    expect(publishedClassPages([warriorClass])).toHaveLength(18)
+    expect(publishedClassPages([warriorClass])).toHaveLength(9)
   })
 
   it('compares real current Arms and Fury routes using their selected talent differences', () => {
@@ -155,14 +160,16 @@ describe('Warrior ClassDefinition', () => {
     expect(destinationText).toMatch(/Protection.*tank/i)
     expect(destinationText).toMatch(/Arms.*Fury.*damage/i)
     expect(destination.relatedPages).toEqual(expect.arrayContaining([
-      { href: '/wow-forever-arms-warrior-build', label: expect.stringContaining('Arms') },
-      { href: '/wow-forever-fury-warrior-build', label: expect.stringContaining('Fury') },
+      { href: '/wow-forever-warrior-builds', label: expect.stringContaining('Arms') },
     ]))
+    const hub = warriorClass.pages.find(page => page.kind === 'buildsHub')!
+    expect(consolidatedClassTasks(warriorClass, hub).map(page => page.primaryBuildId)).toEqual(expect.arrayContaining(['warrior-arms-build', 'warrior-fury-build']))
     expect(existsSync(join(process.cwd(), RETIRED_DUNGEON))).toBe(false)
-    expect(classPageRedirects([warriorClass])).toEqual([
+    expect(classPageRedirects([warriorClass])).toHaveLength(20)
+    expect(classPageRedirects([warriorClass])).toEqual(expect.arrayContaining([
       { source: '/wow-forever-warrior-dungeon-build', destination: '/wow-forever-protection-warrior-dungeon-build', permanent: true },
       { source: '/wow-forever-warrior-dungeon-build/index.html', destination: '/wow-forever-protection-warrior-dungeon-build', permanent: true },
-    ])
+    ]))
     const config = JSON.parse(readFileSync(join(process.cwd(), 'vercel.json'), 'utf8')) as { redirects: { source: string; destination: string; statusCode?: number; permanent?: boolean }[] }
     const redirect = config.redirects.find(({ source }) => source === `/${RETIRED_DUNGEON}`)
     expect(redirect?.destination).toBe('/wow-forever-protection-warrior-dungeon-build')

@@ -16,7 +16,7 @@ describe('Glimmerwick first-days checklist', () => {
     expect(screen.getAllByText('Newt’s Eye Potion Supply')).toHaveLength(2)
     expect(screen.getByText('Swish & Stitch Clothier')).toBeTruthy()
     expect(screen.getByText('Practical Practice')).toBeTruthy()
-    expect(screen.getByRole('link', { name: /Open Garden Planner/ }).getAttribute('href')).toBe('/songs-of-glimmerwick')
+    expect(screen.getByRole('link', { name: /Open Garden Planner/ }).getAttribute('href')).toBe('/songs-of-glimmerwick#garden-planner')
     expect(screen.getByRole('link', { name: 'Into Indie Games walkthrough' }).getAttribute('href')).toBe('https://intoindiegames.com/walkthroughs/songs-of-glimmerwick-prologue-walkthrough/')
     expect(container.textContent).not.toContain('Drop Basil Seeds into the well')
   })
@@ -76,7 +76,7 @@ describe('first-days next step', () => {
     }
     expect(within(next).getByText(/9 of 9 milestones/)).toBeTruthy()
     expect(within(next).queryByRole('link', { name: /Go to next step/ })).toBeNull()
-    expect(within(next).getByRole('link', { name: /Plan your garden/ }).getAttribute('href')).toBe('/songs-of-glimmerwick')
+    expect(within(next).getByRole('link', { name: /Plan your garden/ }).getAttribute('href')).toBe('/songs-of-glimmerwick#garden-planner')
     fireEvent.click(screen.getByRole('button', { name: 'Clear checklist' }))
     expect(within(next).getByRole('link', { name: /Go to next step/ }).getAttribute('href')).toBe('#step-flute')
   })

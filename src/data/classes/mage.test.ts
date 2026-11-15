@@ -43,7 +43,7 @@ const SPEC_PAGES: { slug: string; kind: ClassPageKind; intent: string; title: st
 ]
 
 /** Pages whose current data requirements are satisfied. */
-const PUBLISHED_SLUGS = [
+const DATA_READY_SLUGS = [
   'mage',
   'wow-forever-mage-builds',
   'wow-forever-mage-talents',
@@ -55,6 +55,11 @@ const PUBLISHED_SLUGS = [
   'wow-forever-mage-leveling-build',
   'wow-forever-mage-dungeon-build',
   'wow-forever-mage-level-20-build',
+]
+
+const PUBLISHED_SLUGS = [
+  'mage', 'wow-forever-mage-builds', 'wow-forever-mage-talents',
+  'wow-forever-frost-mage-build', 'wow-forever-frost-mage-aoe-build', 'wow-forever-mage-dungeon-build',
 ]
 
 /** Pages that still require a reviewed Fire allocation. */
@@ -248,11 +253,11 @@ describe('Mage ClassDefinition — data-gated publishing', () => {
     expect([...satisfiedRequirements(mageClass)].sort()).toEqual(['completeClassPlanner', 'legalBuild:arcane', 'legalBuild:frost', 'level20Builds', 'talentDataset'])
   })
 
-  it('publishes the eleven data-ready URLs and withholds the four requiring a Fire build', () => {
+  it('keeps eleven data-ready task records and four requiring a Fire build', () => {
     const published = mageClass.pages.filter((page) => meetsAllRequirements(page.slug)).map((page) => page.slug)
     const withheld = mageClass.pages.filter((page) => !meetsAllRequirements(page.slug)).map((page) => page.slug)
 
-    expect(published.sort()).toEqual([...PUBLISHED_SLUGS].sort())
+    expect(published.sort()).toEqual([...DATA_READY_SLUGS].sort())
     expect(withheld.sort()).toEqual(Object.keys(WITHHELD).sort())
     expect(published).toHaveLength(11)
     expect(withheld).toHaveLength(4)
@@ -274,13 +279,18 @@ describe('Mage ClassDefinition — data-gated publishing', () => {
     }
   })
 
-  it('serves the eleven slugs through the requirement-gated lookup and none of the four', () => {
+  it('serves six retained entries while keeping unmet and consolidated tasks out of publication', () => {
     for (const slug of PUBLISHED_SLUGS) {
       expect(pageFromPublishedClasses(slug, PUBLISHED_CLASSES)?.slug, `${slug} should resolve`).toBe(slug)
       expect(pageFromPublishedClasses(`/${slug}`, PUBLISHED_CLASSES)?.slug, `/${slug} should resolve`).toBe(slug)
     }
-    for (const slug of Object.keys(WITHHELD)) {
+    const retiredSlugs = DATA_READY_SLUGS.filter(slug => !PUBLISHED_SLUGS.includes(slug))
+    expect(retiredSlugs).toHaveLength(5)
+    for (const slug of [...Object.keys(WITHHELD), ...retiredSlugs]) {
       expect(pageFromPublishedClasses(slug, PUBLISHED_CLASSES), `${slug} should stay unpublished`).toBeUndefined()
+    }
+    for (const slug of retiredSlugs) {
+      expect(mageClass.pages.find(page => page.slug === slug)?.retiredTo).toBe('/wow-forever-mage-builds')
     }
   })
 

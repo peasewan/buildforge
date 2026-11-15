@@ -34,17 +34,19 @@ const ROUTES = {
 
 const sourceLink = (href: string, label: string) => <a href={href} target="_blank" rel="noreferrer">{label} <ArrowRight size={14} aria-hidden="true" /></a>
 
-export default function GlimmerwickSpellcastingPage() {
+export function GlimmerwickSpellcastingTool({ embedded = false }: { embedded?: boolean }) {
   const [route, setRoute] = useState<Route>('cast')
   const chosen = ROUTES[route]
+  const Content = embedded ? 'div' : 'main'
 
   return <div className="gs-site">
-    <header className="gs-header"><a className="gs-brand" href="/">BuildForge<span>Tools</span></a><nav aria-label="Glimmerwick navigation"><a href="/songs-of-glimmerwick">Garden Planner</a><a href="/songs-of-glimmerwick-first-days">First Days</a><a href="/">All tools</a></nav></header>
-    <main data-surface="glimmerwick-spellcasting">
-      <section className="gs-hero" aria-labelledby="gs-title">
+    {!embedded && <header className="gs-header"><a className="gs-brand" href="/">BuildForge<span>Tools</span></a><nav aria-label="Glimmerwick navigation"><a href="/songs-of-glimmerwick#garden-planner">Garden Planner</a><a href="/songs-of-glimmerwick#first-days">First Days</a><a href="/">All tools</a></nav></header>}
+    <Content data-surface="glimmerwick-spellcasting">
+      {embedded && <section className="gs-section-head" aria-labelledby="gs-title"><p className="gs-kicker">A LITTLE MAGIC, AT YOUR PACE</p><h2 id="gs-title">Spellcasting Basics</h2><p>Help for short songs, optional practice and Song of Tilling. Release notes reviewed Oct 7, 2026; release 1.03 and earlier Demo evidence remain labelled separately.</p></section>}
+      {!embedded && <section className="gs-hero" aria-labelledby="gs-title">
         <div className="gs-hero-copy"><p className="gs-kicker"><Music2 size={16} aria-hidden="true" /> A LITTLE MAGIC, AT YOUR PACE</p><h1 id="gs-title">Songs of Glimmerwick <span>Spellcasting Guide</span></h1><p className="gs-lede">Songs are spells in Glimmerwick. Find help for short songs, practice options and Song of Tilling. Release 1.03 explains why some spells have no practice version; earlier Demo notes distinguish casting from earning stars.</p><div className="gs-meta"><span>Released Sep 30, 2026</span><span>Release notes reviewed Oct 7, 2026</span><span>Release 1.03 + version-labelled Demo references</span></div><a className="gs-primary" href="#spellcasting-help">Find casting help <ArrowRight size={16} aria-hidden="true" /></a></div>
         <div className="gs-hero-art" aria-hidden="true"><div className="gs-art-orbit gs-art-orbit-outer"/><div className="gs-art-orbit gs-art-orbit-inner"/><div className="gs-art-center"><Music2 size={66}/></div><span className="gs-art-note gs-art-note-a">♪</span><span className="gs-art-note gs-art-note-b">♫</span><span className="gs-art-note gs-art-note-c">♪</span><div className="gs-art-caption">A song can be a spell<br/>without a perfect score.</div></div>
-      </section>
+      </section>}
 
       <GlimmerwickHelp kind="spellcasting" />
 
@@ -61,7 +63,11 @@ export default function GlimmerwickSpellcastingPage() {
 
       <section className="gs-faq" aria-labelledby="gs-faq-title"><p className="gs-kicker">QUICK QUESTIONS</p><h2 id="gs-faq-title">Before you play another song</h2><details><summary>Do I have to earn a star before a spell works?</summary><p>Demo 0.466 says no stars are required to cast. For a specific song, check what the released game says about learning and selecting it; we do not document every unlock here.</p></details><details><summary>Is Song of Tilling the only song?</summary><p>No. The developer calls it the first song, while the official Steam page describes songs for gardening and exploration. We do not have a reviewed launch catalog.</p></details><details><summary>Can I skip the music minigame?</summary><p>In Demo 0.484 the developer says players can largely skip it. That describes the performance challenge, not every lesson or story step; this guide does not promise a quest skip.</p></details></section>
 
-      <section className="gs-related" aria-labelledby="gs-related-title"><div><p className="gs-kicker">KEEP EXPLORING</p><h2 id="gs-related-title">Your next Glimmerwick stop</h2></div><div className="gs-related-links"><a href="/songs-of-glimmerwick"><Leaf size={19} aria-hidden="true"/><span><strong>Garden Planner</strong><small>Track planting and harvest observations.</small></span><ArrowRight size={17} aria-hidden="true"/></a><a href="/songs-of-glimmerwick-first-days"><BookOpen size={19} aria-hidden="true"/><span><strong>First Days</strong><small>Find your footing at the academy.</small></span><ArrowRight size={17} aria-hidden="true"/></a></div></section>
-    </main><footer className="gs-footer"><div><a className="gs-brand" href="/">BuildForge<span>Tools</span></a><p>An independent player resource. Not affiliated with Eastshade Studios.</p></div><nav aria-label="Site information"><a href="/about">About</a><a href="/contact">Contact</a><a href="/privacy">Privacy</a></nav></footer>
+      <section className="gs-related" aria-labelledby="gs-related-title"><div><p className="gs-kicker">KEEP EXPLORING</p><h2 id="gs-related-title">Your next Glimmerwick stop</h2></div><div className="gs-related-links"><a href="/songs-of-glimmerwick#garden-planner"><Leaf size={19} aria-hidden="true"/><span><strong>Garden Planner</strong><small>Track planting and harvest observations.</small></span><ArrowRight size={17} aria-hidden="true"/></a><a href="/songs-of-glimmerwick#first-days"><BookOpen size={19} aria-hidden="true"/><span><strong>First Days</strong><small>Find your footing at the academy.</small></span><ArrowRight size={17} aria-hidden="true"/></a></div></section>
+    </Content>{!embedded && <footer className="gs-footer"><div><a className="gs-brand" href="/">BuildForge<span>Tools</span></a><p>An independent player resource. Not affiliated with Eastshade Studios.</p></div><nav aria-label="Site information"><a href="/about">About</a><a href="/contact">Contact</a><a href="/privacy">Privacy</a></nav></footer>}
   </div>
+}
+
+export default function GlimmerwickSpellcastingPage() {
+  return <GlimmerwickSpellcastingTool />
 }

@@ -1,6 +1,7 @@
 import { fireEvent, render, screen, cleanup } from '@testing-library/react'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import NivalisPage from './NivalisPage'
+import AppRoute from './AppRoute'
 import { pageForPath } from './lib/routes'
 import { readFileSync } from 'node:fs'
 import { track } from './lib/analytics'
@@ -12,15 +13,14 @@ function fillScenario() {
   for (const [label, value] of [['Selling price per unit', '12'], ['Variable cost per unit', '5'], ['Units sold per period', '40'], ['Fixed costs per period', '100'], ['Operating hours per period', '4'], ['Initial investment', '500']]) fireEvent.change(screen.getByLabelText(label), { target: { value } })
   fireEvent.click(screen.getByRole('button', { name: 'Calculate profit' }))
 }
-describe('Nivalis user-input planning tool', () => {
-  it('exposes the clean route and one working indexable page', () => {
-    expect(pageForPath('/nivalis-nights-profit-calculator/')).toMatchObject({ kind: 'nivalis', canonical: 'https://buildforgetools.com/nivalis-nights-profit-calculator', robots: 'index, follow' })
-    const template = readFileSync('nivalis-nights-profit-calculator/index.html', 'utf8')
-    expect(template).toContain('Nivalis Nights Business Profit Calculator | BuildForgeTools')
-    render(<NivalisPage />)
+describe('Nivalis retirement and preserved local planning helper', () => {
+  it('serves honest retired metadata and a removal screen instead of the unpublished profit helper', () => {
+    expect(pageForPath('/nivalis-nights-profit-calculator/')).toMatchObject({ kind: 'retired', canonical: 'https://buildforgetools.com/nivalis-nights-profit-calculator', robots: 'noindex, follow' })
+    render(<AppRoute pathname="/nivalis-nights-profit-calculator" />)
     expect(screen.getAllByRole('heading', { level: 1 })).toHaveLength(1)
-    expect(screen.getByRole('heading', { level: 1 }).textContent).toBe('Nivalis Nights Business Profit Calculator')
-    expect(screen.getByText(/No verified recipe prices/)).toBeTruthy()
+    expect(screen.getByRole('heading', { level: 1 }).textContent).toBe('This page has been retired')
+    expect(screen.queryByLabelText('Business name')).toBeNull()
+    expect(screen.getByRole('link', { name: 'Browse current tools' }).getAttribute('href')).toBe('/')
   })
   it('calculates a player-observed business, restores it and keeps names out of analytics', () => {
     const view = render(<NivalisPage />)
@@ -81,14 +81,17 @@ describe('Nivalis user-input planning tool', () => {
     expect(screen.queryByTestId('net-profit')).toBeNull()
     expect(JSON.parse(localStorage.getItem('nivalis-profit-plan')!).scenarios).toEqual([])
   })
-  it('publishes consistent metadata, routing, sitemap and a homepage entrance', () => {
-    const doc = new DOMParser().parseFromString(readFileSync('nivalis-nights-profit-calculator/index.html', 'utf8'), 'text/html')
+  it('routes deployment requests to the 410 handler and removes public discovery and sitemap entries', () => {
     const page = pageForPath('/nivalis-nights-profit-calculator', '?utm_source=search')
-    expect(doc.title).toBe(page.title)
-    expect(doc.querySelector('meta[name="description"]')?.getAttribute('content')).toBe(page.description)
-    expect(doc.querySelector('link[rel="canonical"]')?.getAttribute('href')).toBe(page.canonical)
-    expect(JSON.parse(readFileSync('vercel.json', 'utf8')).rewrites).toContainEqual({ source: '/nivalis-nights-profit-calculator', destination: '/nivalis-nights-profit-calculator/index.html' })
-    expect(readFileSync('public/sitemap.xml', 'utf8').split(page.canonical)).toHaveLength(2)
-    expect(readFileSync('src/SiteDiscoveryPage.tsx', 'utf8')).toContain('href="/nivalis-nights-profit-calculator"')
+    expect(page).toMatchObject({ kind: 'retired', robots: 'noindex, follow' })
+    const config = JSON.parse(readFileSync('vercel.json', 'utf8'))
+    for (const source of ['/nivalis-nights-profit-calculator', '/nivalis-nights-profit-calculator/index.html']) {
+      expect(config.rewrites).toContainEqual({ source, destination: '/api/retired-page' })
+      expect(config.redirects.some((redirect: { source: string }) => redirect.source === source)).toBe(false)
+    }
+    const sitemap = new DOMParser().parseFromString(readFileSync('public/sitemap.xml', 'utf8'), 'application/xml')
+    expect([...sitemap.querySelectorAll('loc')].map(loc => loc.textContent)).not.toContain(page.canonical)
+    const view = render(<AppRoute pathname="/" />)
+    expect(view.container.querySelector('a[href="/nivalis-nights-profit-calculator"]')).toBeNull()
   })
 })

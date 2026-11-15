@@ -12,7 +12,7 @@ function addPlanting() {
 }
 
 describe('Glimmerwick garden tool', () => {
-  beforeEach(() => { localStorage.clear(); window.gtag = vi.fn() })
+  beforeEach(() => { localStorage.clear(); window.gtag = vi.fn(); history.replaceState({}, '', '/songs-of-glimmerwick') })
   afterEach(() => { cleanup(); vi.restoreAllMocks() })
 
   it('renders a usable tool and clearly separates observed input from game facts', () => {
@@ -22,6 +22,50 @@ describe('Glimmerwick garden tool', () => {
     expect(container.querySelector('[data-surface="glimmerwick-garden"]')).toBeTruthy()
     expect(screen.getByRole('link', { name: 'Official Steam page' })).toBeTruthy()
     expect(screen.getByText(/Growth times come from your observations/)).toBeTruthy()
+  })
+
+  it('keeps the checklist and spellcasting helpers usable on the garden page without duplicate page shells', () => {
+    const { container } = render(<GlimmerwickPage />)
+    addPlanting()
+    fireEvent.click(screen.getByText('First Days Checklist', { selector: 'summary' }))
+    fireEvent.click(screen.getByRole('checkbox', { name: 'Collected Robe' }))
+    expect(screen.getByText('1 of 5 supplies ready')).toBeTruthy()
+    expect(screen.getByRole('link', { name: 'Into Indie Games walkthrough' })).toBeTruthy()
+    expect(screen.getByText(/not an official item database/)).toBeTruthy()
+
+    fireEvent.click(screen.getByText('Spellcasting Basics', { selector: 'summary' }))
+    expect(screen.queryByRole('checkbox', { name: 'Collected Robe' })).toBeNull()
+    expect(container.querySelectorAll('#spellcasting-help')).toHaveLength(1)
+    fireEvent.click(screen.getByRole('button', { name: 'I cannot earn stars' }))
+    const result = screen.getByRole('region', { name: 'Spellcasting help result' })
+    expect(within(result).getByText(/Demo evidence, not a fresh test/)).toBeTruthy()
+    expect(within(result).getByRole('link', { name: /Demo update 0.466/ })).toBeTruthy()
+    fireEvent.click(screen.getByRole('button', { name: 'Practice first' }))
+    expect(within(screen.getByRole('region', { name: 'Your spellcasting route' })).getByText(/practice rooms in the music classroom/)).toBeTruthy()
+
+    fireEvent.click(screen.getByText('First Days Checklist', { selector: 'summary' }))
+    expect((screen.getByRole('checkbox', { name: 'Collected Robe' }) as HTMLInputElement).checked).toBe(true)
+    expect(screen.queryByRole('region', { name: 'Spellcasting help result' })).toBeNull()
+    expect(screen.getByRole('table', { name: 'Your harvest schedule' }).textContent).toContain('My herb')
+    expect(container.querySelectorAll('h1')).toHaveLength(1)
+    expect(container.querySelectorAll('main')).toHaveLength(1)
+    expect(container.querySelectorAll('footer')).toHaveLength(1)
+    expect(container.querySelectorAll('.gw-header, .gs-header')).toHaveLength(1)
+    const hrefs = [...container.querySelectorAll('a[href]')].map(link => link.getAttribute('href'))
+    expect(hrefs.some(href => href?.startsWith('/songs-of-glimmerwick-first-days'))).toBe(false)
+    expect(hrefs.some(href => href?.startsWith('/songs-of-glimmerwick-spellcasting'))).toBe(false)
+    expect(hrefs).toContain('/songs-of-glimmerwick-garden-well')
+  })
+
+  it('opens the matching helper for direct anchors and subsequent hash navigation', () => {
+    history.replaceState({}, '', '/songs-of-glimmerwick#spellcasting')
+    render(<GlimmerwickPage />)
+    expect(screen.getByRole('button', { name: 'No practice version' })).toBeTruthy()
+    expect(screen.queryByRole('checkbox', { name: 'Collected Flute' })).toBeNull()
+    history.replaceState({}, '', '/songs-of-glimmerwick#first-days')
+    fireEvent(window, new HashChangeEvent('hashchange'))
+    expect(screen.getByRole('checkbox', { name: 'Collected Flute' })).toBeTruthy()
+    expect(screen.queryByRole('button', { name: 'No practice version' })).toBeNull()
   })
 
   it('adds, persists, edits and removes a planting without sending its text to analytics', () => {

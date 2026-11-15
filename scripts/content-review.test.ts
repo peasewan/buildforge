@@ -1,12 +1,16 @@
+import { publishedClassPages } from '../src/lib/classPage'
 import { describe, expect, it } from 'vitest'
 import { PUBLISHED_CLASSES } from '../src/data/classes'
 import { warriorClass } from '../src/data/classes/warrior'
 import { rankCoverageForPage, reviewPublishedRankEvidence } from './content-review'
 
 function fixture() {
-  const build = warriorClass.builds.find(candidate => Object.keys(candidate.build).length > 1)!
-  const page = warriorClass.pages.find(candidate => candidate.primaryBuildId === build.id && !candidate.retiredTo)!
-  return { def: structuredClone(warriorClass), page: structuredClone(page), build: structuredClone(build) }
+  const def = structuredClone(warriorClass)
+  const page = def.pages.find(candidate => candidate.primaryBuildId && !candidate.retiredTo)!
+  const build = def.builds.find(candidate => candidate.id === page.primaryBuildId)!
+  expect(publishedClassPages([def]).some(candidate => candidate.page === page)).toBe(true)
+  expect(Object.keys(build.build).length).toBeGreaterThan(1)
+  return { def, page, build }
 }
 
 describe('published selected-rank evidence review', () => {
@@ -87,5 +91,5 @@ it('rejects unresolved macros and version relabeling even with nonempty rank tex
 
 it('keeps all actual published primary and related selected ranks complete', () => {
   const report = reviewPublishedRankEvidence(PUBLISHED_CLASSES)
-  expect(report.summary).toMatchObject({ publishedPages: 99, primaryBuildPages: 64, primaryPagesWithGaps: 0, allReferencedPagesWithGaps: 0 })
+  expect(report.summary).toMatchObject({ publishedPages: 49, primaryBuildPages: 29, primaryPagesWithGaps: 0, allReferencedPagesWithGaps: 0 })
 })

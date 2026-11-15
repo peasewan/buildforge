@@ -5,6 +5,8 @@ import AppRoute from './AppRoute'
 import { DISCOVERY_PAGES } from './data/siteDiscovery'
 import { PUBLISHED_CLASSES } from './data/classes'
 import { pageForPath } from './lib/routes'
+import { publishedClassPages } from './lib/classPage'
+import { PAGE_CONSOLIDATIONS, REMOVED_PAGE_PATHS } from './data/pageConsolidations'
 
 describe('discovery rendering and artifacts', () => {
   it('links directly to the Paladin calculator and builds from the first WoW card', () => {
@@ -57,7 +59,7 @@ describe('discovery rendering and artifacts', () => {
     expect(date('/')).toBe('2026-10-09')
     expect(date('/emberville')).toBe('2026-10-09')
     expect(date('/emberville-classes')).toBe('2026-09-23')
-    expect(date('/emberville-skill-inheritance')).toBe('2026-09-23')
+    expect(date('/emberville-skill-inheritance')).toBeUndefined()
     expect(date('/wow-forever-builds')).toBe('2026-09-25')
     expect(date('/wow-forever-classes')).toBe('2026-10-04')
   })
@@ -72,6 +74,11 @@ describe('discovery rendering and artifacts', () => {
     expect(doc.querySelectorAll('h1')).toHaveLength(1)
     expect(doc.querySelector('h1')?.textContent).toBe(page.h1)
     for (const link of doc.querySelectorAll('a[href^="#"]')) expect(doc.getElementById(link.getAttribute('href')!.slice(1))).not.toBeNull()
+    for (const link of doc.querySelectorAll('a[href^="/"]')) {
+      const path = new URL(link.getAttribute('href')!, 'https://buildforgetools.com').pathname
+      expect(Object.keys(PAGE_CONSOLIDATIONS), `${page.path} links to ${path}`).not.toContain(path)
+      expect(REMOVED_PAGE_PATHS, `${page.path} links to ${path}`).not.toContain(path)
+    }
   })
   it('has no unconditional root redirect and ships both directory rewrites', () => {
     const config = JSON.parse(readFileSync('vercel.json', 'utf8'))
@@ -83,8 +90,11 @@ describe('discovery rendering and artifacts', () => {
     const html = renderToStaticMarkup(<AppRoute pathname={`/${hub.slug}`} />)
     expect(html.indexOf('Choose a specialization')).toBeLessThan(html.indexOf('Find a route'))
     expect(html.indexOf('Choose a playstyle')).toBeLessThan(html.indexOf('Find a route'))
-    for (const p of def.pages) {
-      if (pageForPath(`/${p.slug}`).classId !== def.id) continue
+    const activePages = publishedClassPages([def]).map(({ page }) => page)
+    expect(activePages.filter(page => page.kind === 'calculator')).toHaveLength(1)
+    expect(activePages.filter(page => page.kind === 'buildsHub')).toHaveLength(1)
+    for (const p of activePages) {
+      expect(pageForPath(`/${p.slug}`)).toMatchObject({ classId: def.id, classPageSlug: p.slug })
       const doc = new DOMParser().parseFromString(renderToStaticMarkup(<AppRoute pathname={`/${p.slug}`} />), 'text/html')
       expect(doc.querySelector('a[href="/wow-forever-classes"]')).not.toBeNull()
       expect(doc.querySelector('a[href="/wow-forever-builds"]')).not.toBeNull()

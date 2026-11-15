@@ -13,7 +13,8 @@ import type {
   ClassPageDefinition,
   ClassTalent,
 } from '../lib/classPage'
-import { publishedClassPages, unallocatableBranches } from '../lib/classPage'
+import { allocationSignature, publishedClassPages, unallocatableBranches } from '../lib/classPage'
+import { consolidatedClassTasks } from '../lib/classConsolidations'
 import { classBuildPlannerHref, hasRemovedTalentInBuild } from '../lib/archivedClassBuild'
 import {
   totalPlannerPoints,
@@ -630,7 +631,75 @@ function TalentReference({ classDef: def, page }: Props) {
     </section>
   )
 }
-function Hub({ classDef: def }: Props) {
+type ConsolidatedTask = { page: ClassPageDefinition; sources: ClassPageDefinition[] }
+
+function consolidatedTaskChoices(def: ClassDefinition, page: ClassPageDefinition): ConsolidatedTask[] {
+  const choices = new Map<string, ConsolidatedTask>()
+  const buildSignature = (id: string) => {
+    const build = def.builds.find(candidate => candidate.id === id)
+    return build ? JSON.stringify([build.level, build.points, build.verifiedThroughBuild, allocationSignature(build.build), build.pointOrder ?? build.order]) : id
+  }
+  for (const source of consolidatedClassTasks(def, page)) {
+    if (!source.primaryBuildId && !source.relatedBuildIds.length) continue
+    const signature = JSON.stringify([
+      source.kind,
+      source.primaryBuildId ? buildSignature(source.primaryBuildId) : undefined,
+      [...new Set(source.relatedBuildIds.map(buildSignature))].sort(),
+      source.roleDecision,
+    ])
+    const existing = choices.get(signature)
+    if (existing) existing.sources.push(source)
+    else choices.set(signature, { page: source, sources: [source] })
+  }
+  return [...choices.values()]
+}
+
+/** Keep the original interactive task available without giving it another entry URL. */
+export function ConsolidatedTaskSelector({ classDef: def, page }: Props) {
+  const choices = consolidatedTaskChoices(def, page)
+  const [slug, setSlug] = useState(choices[0]?.page.slug)
+  const selected = choices.find(choice => choice.page.slug === slug) ?? choices[0]
+  if (!selected) return null
+  const roleKinds = new Set(['pvp', 'specPvp', 'dungeon', 'specDungeon', 'tank', 'healing', 'pet', 'totem'])
+  const seen = new Set(selected.sources.flatMap(source => roleKinds.has(source.kind)
+    ? [source.surfaceDescription, source.sections[0]?.paragraphs[0]].filter((text): text is string => Boolean(text))
+    : []))
+  const unique = (text: string) => {
+    if (seen.has(text)) return false
+    seen.add(text)
+    return true
+  }
+  const notes = selected.sources.flatMap(source => source.sections).map(section => ({
+    ...section,
+    paragraphs: section.paragraphs.filter(unique),
+    bullets: section.bullets?.filter(unique),
+  })).filter(section => section.paragraphs.length || section.bullets?.length)
+  return (
+    <section className="ix-consolidated-tasks" aria-label="Build planning tasks" id="class-build-tasks">
+      <div className="ix-panel">
+        <h2>Choose a planning task</h2>
+        <label className="ix-field">
+          Planning task
+          <select value={selected.page.slug} onChange={event => setSlug(event.target.value)}>
+            {choices.map(choice => <option key={choice.page.slug} value={choice.page.slug}>{choice.page.h1.replace('WoW Forever ', '')}</option>)}
+          </select>
+        </label>
+        <p className="ix-note">Inspect an editorial allocation, compare its recorded ranks, or follow its point order before editing in the calculator.</p>
+      </div>
+      <ClassIntentExperience key={selected.page.slug} classDef={def} page={selected.page} />
+      {notes.length > 0 && <details className="ix-evidence" key={`notes-${selected.page.slug}`}>
+        <summary>Task notes and planning limits</summary>
+        {notes.map((section, index) => <section key={`${section.heading}-${index}`}>
+          <h3>{section.heading}</h3>
+          {section.paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}
+          {section.bullets?.length ? <ul>{section.bullets.map(bullet => <li key={bullet}>{bullet}</li>)}</ul> : null}
+        </section>)}
+      </details>}
+    </section>
+  )
+}
+
+function Hub({ classDef: def, page }: Props) {
   const [query, setQuery] = useState(''),
     pages = publishedClassPages([def])
       .map(({ page }) => page)
@@ -640,12 +709,14 @@ function Hub({ classDef: def }: Props) {
     )
   return (
     <section className="ix-hub" data-surface="build-discovery">
+      <ConsolidatedTaskSelector classDef={def} page={page} />
       <div className="ix-hub-discovery">
         <h2>Choose a specialization</h2>
         <div className="ix-hub-specs">{def.branches.map(branch => {
           const routes = pages.filter(p => p.spec === branch)
           const example = availableBuilds(def).find(b => b.spec === branch && b.intent === 'spec')
-          return <article className="ix-hub-spec" key={branch}><h3>{def.branchIcons?.[branch] && <img src={def.branchIcons[branch]} alt="" />}{def.branchNames[branch]}</h3><p>{def.branchTaglines[branch]}</p>{example && <p><strong>{example.allocation}</strong> · {totalPlannerPoints(example.build)} points · Editorial allocation</p>}<nav aria-label={`${def.branchNames[branch]} routes`}>{routes.length ? routes.map(p => <a key={p.slug} href={`/${p.slug}`}>{experienceLabel(p.kind)}</a>) : <span>No specialization route published yet.</span>}</nav></article>
+          const consolidated = consolidatedClassTasks(def, page).some(source => source.spec === branch && (source.primaryBuildId || source.relatedBuildIds.length))
+          return <article className="ix-hub-spec" key={branch}><h3>{def.branchIcons?.[branch] && <img src={def.branchIcons[branch]} alt="" />}{def.branchNames[branch]}</h3><p>{def.branchTaglines[branch]}</p>{example && <p><strong>{example.allocation}</strong> · {totalPlannerPoints(example.build)} points · Editorial allocation</p>}<nav aria-label={`${def.branchNames[branch]} routes`}>{routes.length ? routes.map(p => <a key={p.slug} href={`/${p.slug}`}>{experienceLabel(p.kind)}</a>) : consolidated ? <a href="#class-build-tasks">Review planning tasks above</a> : <span>No specialization route published yet.</span>}</nav></article>
         })}</div>
         <h2>Choose a playstyle</h2>
         <div className="ix-hub-intents">{discoveryGroups([def], false).filter(g => g.links.length).map(g => <section key={g.id}><h3>{g.label}</h3><p>{g.description}</p><nav aria-label={`${g.label} routes`}>{g.links.map(l => <a href={l.href} key={l.href}>{l.label}</a>)}</nav></section>)}</div>

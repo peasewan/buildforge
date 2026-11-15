@@ -107,7 +107,7 @@ export const SPEC_BUILDS_HUBS: SpecBuildsHubConfig[] = [
     },
     buildTypes: [
       { id: 'damage-build', eyebrow: 'Damage Build', title: 'Retribution Paladin Build 0/20/31', description: 'Historical 69913 allocation with 20 Protection points; Crusade is absent from the reviewed current tree.', href: '/wow-forever-retribution-paladin-build', icon: 'retribution' },
-      { id: 'leveling', eyebrow: 'Leveling', title: 'Retribution Paladin Leveling Build', description: 'Historical 20/0/31 route with Holy support; its Crusade ranks await review.', href: '/wow-forever-retribution-paladin-leveling-build', icon: 'leveling' },
+      { id: 'leveling', eyebrow: 'Leveling', title: 'Retribution Paladin Leveling Build', description: 'Historical 20/0/31 route with Holy support; Crusade is absent from the reviewed 70245 tree.', href: '/wow-forever-retribution-paladin-leveling-build', icon: 'leveling' },
       { id: 'pvp', eyebrow: 'PvP', title: 'Retribution Paladin PvP Build', description: 'A burst-oriented setup built around short damage windows and utility.', href: '/wow-forever-retribution-paladin-pvp-build', icon: 'pvp' },
     ],
     editorialSections: [

@@ -1,3 +1,4 @@
+import { resolvePageHref } from './lib/pageRetirement'
 import { ArrowRight, Calculator, Heart, Shield, Swords } from 'lucide-react'
 import { TalentTree } from './App'
 import { exampleBuildById, isHistoricalExample } from './data/builds'
@@ -32,7 +33,7 @@ export default function SpecTalentsPage({ spec }: { spec: Branch }) {
     <main className="spec-talents-page">
       <header className="guide-nav shell">
         <a className="brand" href="/paladin"><img src="/images/icons/paladin-shield.png" alt="" /><span>BUILD</span><b>FORGE</b></a>
-        <nav aria-label={`${page.title} navigation`}>{page.nav.map((item) => <a href={item.href} key={item.href}>{item.label}</a>)}</nav>
+        <nav aria-label={`${page.title} navigation`}>{page.nav.map((item) => <a href={resolvePageHref(item.href)} key={item.href}>{item.label}</a>)}</nav>
         <a className="button primary" href={plannerHref} onClick={cta('header')}>{isHistorical ? 'Open Blank Planner' : 'Open Planner'}</a>
       </header>
 

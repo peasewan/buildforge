@@ -4,7 +4,7 @@ import { Check, Copy, Lock, Minus, RotateCcw, Shield, Sparkles, Swords } from 'l
 import SiteFooter from './SiteFooter'
 import VerificationBadge from './VerificationBadge'
 import type { ClassBuild, ClassDefinition, ClassTalent, PlannerLevel } from './lib/classPage'
-import { classPlannerHref } from './lib/classPage'
+import { classPlannerHref, publishedClassPages } from './lib/classPage'
 import type { PlannerBuild, PlannerConfig } from './lib/talentPlanner'
 import {
   canIncrementPlannerTalent,
@@ -175,10 +175,11 @@ export default function ClassCalculatorPage<B extends string>({ classDef }: { cl
   const selectedOfficialNotice = officialTalentNotice(classDef.id, selected.name)
   const removedSelected = removedOfficialTalents(build, classDef)
   const activeBranch = dominantPlannerBranch(build, classDef.talents, classDef.branches, classDef.branches[0])
-  const calculatorPage = classDef.pages.find((page) => page.kind === 'calculator')
+  const publishedPages = publishedClassPages([classDef]).map(({ page }) => page)
+  const calculatorPage = publishedPages.find((page) => page.kind === 'calculator')
   const heroImage = calculatorPage?.ogImage ?? classDef.ogImage
   const heroStyle = heroImage ? ({ '--class-hero-image': `url("${heroImage}")` } as CSSProperties) : undefined
-  const hubPage = classDef.pages.find((page) => page.kind === 'buildsHub') ?? classDef.pages.find((page) => page.kind === 'talents')
+  const hubPage = publishedPages.find((page) => page.kind === 'buildsHub') ?? publishedPages.find((page) => page.kind === 'talents')
   const presets = classDef.recommendedBuildIds
     .map((id) => classDef.builds.find((candidate) => candidate.id === id))
     .filter((candidate): candidate is ClassBuild => Boolean(candidate))
@@ -195,7 +196,7 @@ export default function ClassCalculatorPage<B extends string>({ classDef }: { cl
   }, [classDef, initial])
   // Only this class's own links: the site-wide class list lives in SiteFooter, which prepends
   // these to it. Nothing here may name another class.
-  const footerLinks = classDef.pages
+  const footerLinks = publishedPages
     .filter((page) => page.kind === 'buildsHub' || page.kind === 'talents' || page.kind === 'leveling' || page.kind === 'dungeon')
     .map((page) => ({ href: `/${page.slug}`, label: page.h1 }))
     .concat([{ href: classDef.plannerPath, label: `${classDef.name} Talent Calculator` }])

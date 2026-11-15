@@ -1,3 +1,6 @@
+import pruningAmendments from '../docs/seo/approved-adsense-pruning-2026-11-15.json'
+import { isRetiredPage } from '../src/lib/pageRetirement'
+import { REMOVED_PAGE_PATHS } from '../src/data/pageConsolidations'
 import paladinComparisonAmendments from '../docs/seo/approved-paladin-comparison-2026-10-13.json'
 import octoberEventsAmendments from '../docs/seo/approved-october-events-2026-10-15.json'
 import protectionGameplayAmendments from '../docs/seo/approved-protection-gameplay-2026-10-11.json'
@@ -33,7 +36,7 @@ import levelingToolsAmendments from '../docs/seo/approved-leveling-tools-2026-10
 import searchRecoveryDatesAmendments from '../docs/seo/approved-search-recovery-dates-2026-10-04.json'
 import searchRecoveryContentAmendments from '../docs/seo/approved-search-recovery-content-2026-10-05.json'
 // Explicitly reviewed annotations scope body and sitemap revisions; only named descriptions and head fingerprints can change.
-const frozenPages = baseline.pages.map(page => {
+const frozenPages = baseline.pages.filter(page => !isRetiredPage(page.path)).map(page => {
   const archiveAmendment = protectionArchiveAmendments.pages[page.path as keyof typeof protectionArchiveAmendments.pages]
   const amendment = archiveAmendment
     ?? retentionAmendments.pages[page.path as keyof typeof retentionAmendments.pages]
@@ -83,7 +86,9 @@ const frozenPages = baseline.pages.map(page => {
   const comparison = paladinComparisonAmendments.pages[page.path as keyof typeof paladinComparisonAmendments.pages]
   const withComparison = comparison ? { ...withFeedback, ...comparison } : withFeedback
   const events = octoberEventsAmendments.pages[page.path as keyof typeof octoberEventsAmendments.pages]
-  return events ? { ...withComparison, ...events } : withComparison
+  const withEvents = events ? { ...withComparison, ...events } : withComparison
+  const pruning = pruningAmendments.pages[page.path as keyof typeof pruningAmendments.pages]
+  return pruning ? { ...withEvents, ...pruning } : withEvents
 })
 import vercel from '../vercel.json'
 import { collectSeoRedirects, parseSitemap, validateSeo, type Requirement } from './seo/validate'
@@ -139,9 +144,9 @@ for (const file of files) {
 }
 const redirects = collectSeoRedirects(vercel.redirects)
 const report = validateSeo({ origin: 'https://buildforgetools.com', pages, sitemap: parseSitemap(readFileSync(resolve(dist, 'sitemap.xml'), 'utf8')),
-  expectedPaths: ['/wow-forever-stress-test', '/invokyr', '/invokyr-multiplayer', '/wow-forever-paladin-build-comparator', '/nivalis-nights-profit-calculator', '/songs-of-glimmerwick', '/songs-of-glimmerwick-first-days', '/songs-of-glimmerwick-spellcasting', '/songs-of-glimmerwick-garden-well', ...baseline.pages.map(p => p.path), ...classPaths, ...DISCOVERY_PAGES.map(p => p.path), ...TRUST_PAGES.map(p => `/${p.slug}`), ...EMBERVILLE_PAGES.map(p => `/${p.slug}`)],
+  expectedPaths: ['/wow-forever-stress-test', '/invokyr', '/invokyr-multiplayer', '/wow-forever-paladin-build-comparator', '/nivalis-nights-profit-calculator', '/songs-of-glimmerwick', '/songs-of-glimmerwick-first-days', '/songs-of-glimmerwick-spellcasting', '/songs-of-glimmerwick-garden-well', ...baseline.pages.map(p => p.path), ...classPaths, ...DISCOVERY_PAGES.map(p => p.path), ...TRUST_PAGES.map(p => `/${p.slug}`), ...EMBERVILLE_PAGES.map(p => `/${p.slug}`)].filter(path => !isRetiredPage(path)),
   withheldPaths: PUBLISHED_CLASSES.flatMap(c => c.pages.map(p => `/${p.slug}`)).filter(p => !classPaths.includes(p)),
-  redirects, aliases: { '/build': '/paladin' }, requirements, frozen: frozenPages,
+  gonePaths: REMOVED_PAGE_PATHS, redirects, aliases: { '/build': '/paladin' }, requirements, frozen: frozenPages,
 })
 const output = resolve(dist, 'seo-report.json')
 writeFileSync(output, `${JSON.stringify({ generatedAt: new Date().toISOString(), baselineCommit: baseline.commit, ...report }, null, 2)}\n`)

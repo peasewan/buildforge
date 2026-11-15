@@ -14,6 +14,7 @@ import BetaLevelingSnapshot from './BetaLevelingSnapshot'
 import PaladinBuildDecisions from './PaladinBuildDecisions'
 import BetaSpecPath from './BetaSpecPath'
 import OfficialBuildChangeSummary from './OfficialBuildChangeSummary'
+import { specBuildsHubBySpec } from './data/specBuildsHubs'
 
 const branches: Branch[] = ['holy', 'protection', 'retribution']
 
@@ -46,6 +47,33 @@ const calculatorCta: Record<string, { prompt: string; anchor: string }> = {
 
 function OpenBuildLink({ build, href, placement, children }: { build: ExampleBuild; href: string; placement: string; children: React.ReactNode }) {
   return <a className="button primary" href={href} onClick={() => track('build_page_open_planner', { build_id: build.id, placement })}>{children}</a>
+}
+
+function ProtectionDungeonPlanning() {
+  return <section id="dungeon-tanking" aria-label="Dungeon tank planning">
+    <h2>Planning a Protection dungeon pull</h2>
+    <p>A dungeon tank needs a repeatable pull opening, a way to hold enemy attention while the party deals damage, and a response when an extra pack joins. The historical 20/31/0 reference shows the tank role, but its 51 points cannot fit a Level 30 character.</p>
+    <ol>
+      <li><p><strong>Survivability:</strong> Review the defensive choices available within your point budget before adding deeper utility. Keep the encounter, gear and party in view when comparing mitigation.</p></li>
+      <li><p><strong>Threat generation:</strong> Plan an opening and record the Seal, Righteous Fury state, ability order, misses and target changes when a pull loses threat. Selected talents alone do not verify a live threat multiplier.</p></li>
+      <li><p><strong>Group utility:</strong> Decide which support response to keep available for an extra pack or a teammate in trouble. Check that choice against the party and current Beta behavior.</p></li>
+    </ol>
+    <p>Use the <a href="/wow-forever-protection-paladin-leveling-build">editable Level 20 and Level 30 Protection routes</a> to plan within the current cap. Confirm threat, mitigation and utility effects in the current client before treating an experiment as the standard setup for a dungeon. The gameplay sources and testing limits above remain separate from this archived allocation.</p>
+  </section>
+}
+
+function RetributionBuildRoutes() {
+  const hub = specBuildsHubBySpec('retribution')
+  return <section className="protection-build-more" id="retribution-routes" aria-label="Retribution build routes">
+    <h2>Continue with Retribution</h2>
+    <p>Compare the historical 0/20/31 example’s Protection support with the 20/0/31 leveling example’s Holy support. Both are 51-point 69913 allocations, and their Crusade node is absent from the reviewed 70245 tree. Their branch choices explain different planning aims; they do not establish a current damage or leveling winner.</p>
+    {hub.buildTypes.filter(route => route.href !== hub.featured.href).map(route => <div key={route.id}>
+      <a href={route.href}>{route.title} <ArrowRight size={15} /></a>
+      <p>{route.description}</p>
+    </div>)}
+    <p>The PvP page discusses burst windows and utility with a historical preview, rather than a verified complete PvP allocation. Use the leveling page for the separate editable current-cap progression.</p>
+    <div className="protection-next-links">{hub.talents.map(link => <a key={link.href} href={link.href}>{link.label} <ArrowRight size={15} /></a>)}<a href="/paladin#calculator">Start a new Retribution route <ArrowRight size={15} /></a></div>
+  </section>
 }
 
 export default function BuildPage({ buildId = HOLY_HEALING_BUILD.id }: { buildId?: ExampleBuildId }) {
@@ -114,7 +142,8 @@ export default function BuildPage({ buildId = HOLY_HEALING_BUILD.id }: { buildId
 
       <article className="build-copy shell">
         {buildContent.sections.map((section) => <section id={section.id} key={section.id}><h2>{section.heading}</h2>{section.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</section>)}
-        {isProtection && <section className="protection-build-more" aria-label="Continue with Protection"><h2>Continue with Protection</h2><p>Compare this historical 51-point example with the editable Level 20 and Level 30 Protection leveling routes, a dungeon setup, or the talent reference.</p><div className="protection-next-links"><a href="/wow-forever-protection-paladin-dungeon-build">Dungeon Tank Build <ArrowRight size={15} /></a><a href="/wow-forever-protection-paladin-leveling-build">Protection Leveling Routes <ArrowRight size={15} /></a><a href="/wow-forever-protection-paladin-talents">Protection Talents <ArrowRight size={15} /></a><a href="/paladin#calculator">Open Talent Calculator <ArrowRight size={15} /></a></div><a className="protection-hub-link" href="/wow-forever-protection-paladin-builds">Browse the Protection Builds Hub <ArrowRight size={15} /></a></section>}
+        {isProtection && <><ProtectionDungeonPlanning /><section className="protection-build-more" aria-label="Continue with Protection"><h2>Continue with Protection</h2><p>Compare this historical 51-point example with the editable Level 20 and Level 30 Protection leveling routes, the dungeon pull checklist, or the talent reference.</p><div className="protection-next-links"><a href="#dungeon-tanking">Dungeon Tank Planning <ArrowRight size={15} /></a><a href="/wow-forever-protection-paladin-leveling-build">Protection Leveling Routes <ArrowRight size={15} /></a><a href="/wow-forever-protection-paladin-talents">Protection Talents <ArrowRight size={15} /></a><a href="/paladin#calculator">Open Talent Calculator <ArrowRight size={15} /></a></div><a className="protection-hub-link" href="/wow-forever-protection-paladin-builds">Browse the Protection Builds Hub <ArrowRight size={15} /></a></section></>}
+        {build.id === 'retribution-judgment-0-20-31' && <RetributionBuildRoutes />}
         <aside className="guide-note"><strong>Historical community build example</strong><p>{underReview ? 'This selected allocation comes from the 1.60.1.69913 client snapshot. The reviewed 70245 client tree confirms Crusade is absent; no official removal note is claimed. The example is retained for comparison and withheld from current calculator presets.' : 'The 51-point allocation exceeds the live Level 30 Beta cap. Its talent tree and tooltips use client build 1.60.1.69913 and may not reflect later official tuning; inspect it as a long-term reference, not a current recommendation.'}</p></aside>
         <div className="guide-final-cta"><img src="/images/icons/paladin-shield.png" alt="" /><div><span>Ready to plan a current route?</span><h2>Start from a blank Paladin tree.</h2></div><OpenBuildLink build={build} href={plannerHref} placement="footer">Open Calculator <ArrowRight size={15} /></OpenBuildLink></div>
         <p className="build-calc-anchor">{calculatorCta[build.id].prompt} <a href="/paladin#calculator">{calculatorCta[build.id].anchor} <ArrowRight size={14} /></a></p>

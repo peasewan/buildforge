@@ -1,3 +1,4 @@
+import { isRetiredPage } from './lib/pageRetirement'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Check, ChevronDown, Clipboard, LockKeyhole, Minus, RotateCcw, Sparkles, UsersRound } from 'lucide-react'
 import { EXAMPLE_BUILDS } from './data/builds'
@@ -330,7 +331,7 @@ export default function App() {
     <main>
       <header className="nav shell">
         <a className="brand" href="/paladin#top"><img src="/images/icons/paladin-shield.png" alt="" /><span>BUILD</span><b>FORGE</b></a>
-        <nav aria-label="Primary navigation"><a href="/paladin#calculator">Talent Calculator</a><a href="/wow-forever-paladin-build">Paladin Build</a><a href="/wow-forever-paladin-talents">Paladin Talents</a><a href="/wow-forever-paladin-abilities">Abilities</a></nav>
+        <nav aria-label="Primary navigation"><a href="/paladin#calculator">Talent Calculator</a><a href="/wow-forever-paladin-build">Paladin Build</a><a href="/wow-forever-paladin-talents">Paladin Talents</a></nav>
         <button className="nav-cta" onClick={() => openTool(undefined, 'navigation')}>Open Planner</button>
       </header>
 
@@ -373,7 +374,7 @@ export default function App() {
             <div className="data-card-title">Talent Data</div>
             <p className="data-card-line"><span>✓</span> {talents.length} current nodes from client 70245; the two removed 69913 records remain in the historical index — {DATA_SOURCES.join(', ')}</p>
             <p className="data-card-progress">All three Paladin trees include client-verified coordinates, prerequisite links and rank caps, with community-verified text for every rank. Required prerequisite ranks are not present in the client tables, so the planner labels its Classic max-rank fallback as an assumption.</p>
-            <p className="data-card-progress">{betaDataset.label} · <a href="/wow-forever-paladin-beta-talent-changes">Review Beta changes</a> · <a href="/wow-forever-paladin-abilities">Browse 45 Paladin abilities</a></p>
+            <p className="data-card-progress">{betaDataset.label} · <a href="/wow-forever-paladin-beta-talent-changes">Review Beta changes</a></p>
           <PaladinRankAttribution /></div>
           <p className="spec-cta">Choose your specialization:</p>
           <div className="spec-choices">
@@ -465,7 +466,7 @@ export default function App() {
           </section>
           <section className="build-topic-section" aria-label="Explore Paladin builds">
             <div className="popular-builds-heading"><div><span>More ways to play</span><h2>Explore Paladin Builds</h2></div><p>Plan around leveling, PvP, raids, or Protection dungeon tanking.</p></div>
-            <div className="build-topic-grid">{BUILD_LANDING_PAGES.map((page) => <BuildCard compact key={page.id} eyebrow={page.eyebrow} title={page.title.replace('WoW Forever ', '')} description={page.subtitle} href={`/${page.slug}`} icon={page.icon} />)}</div>
+            <div className="build-topic-grid">{BUILD_LANDING_PAGES.filter(page => !isRetiredPage(`/${page.slug}`)).map((page) => <BuildCard compact key={page.id} eyebrow={page.eyebrow} title={page.title.replace('WoW Forever ', '')} description={page.subtitle} href={`/${page.slug}`} icon={page.icon} />)}</div>
             <a className="topic-hub-link" href="/wow-forever-paladin-builds">Browse all Paladin builds <ChevronDown size={15} /></a>
           </section>
         </div>

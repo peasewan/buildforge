@@ -18,12 +18,13 @@ describe('site footer entries', () => {
       ['Paladin Builds', '/wow-forever-paladin-builds'],
       ['Talent Calculator', '/paladin'],
       ['Paladin Talents', '/wow-forever-paladin-talents'],
-      ['Paladin Abilities', '/wow-forever-paladin-abilities'],
     ]) {
       expect(resources.getByRole('link', { name: label }).getAttribute('href')).toBe(href)
     }
+    expect(resources.queryByRole('link', { name: 'Paladin Abilities' })).toBeNull()
     for (const { classDef, page } of publishedClassCatalogues()) {
-      expect(resources.getByRole('link', { name: `${classDef.name} Talents` }).getAttribute('href')).toBe(`/${page.slug}`)
+      const label = `${classDef.name} ${page.kind === 'buildsHub' ? 'Builds' : 'Talents'}`
+      expect(resources.getByRole('link', { name: label }).getAttribute('href')).toBe(`/${page.slug}`)
     }
     expect(screen.getByRole('link', { name: 'About' }).getAttribute('href')).toBe('/about')
     expect(screen.getByRole('link', { name: 'Contact' }).getAttribute('href')).toBe('/contact')

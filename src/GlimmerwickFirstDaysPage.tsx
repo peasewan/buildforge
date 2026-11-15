@@ -34,7 +34,7 @@ function initialProgress() {
   catch { return { checked: [] as string[], storageAvailable: false } }
 }
 
-export default function GlimmerwickFirstDaysPage() {
+export function GlimmerwickFirstDaysTool({ embedded = false }: { embedded?: boolean }) {
   const [{ checked, storageAvailable }, setProgress] = useState(initialProgress)
 
   function updateProgress(next: string[]) {
@@ -50,17 +50,20 @@ export default function GlimmerwickFirstDaysPage() {
   const milestones = [...supplies, ...nextSteps]
   const nextStep = milestones.find(item => !checked.includes(item.id))
   const supplyCount = supplies.filter(item => checked.includes(item.id)).length
+  const Content = embedded ? 'div' : 'main'
+  const gardenHref = '/songs-of-glimmerwick#garden-planner'
 
-  return <div className="glimmerwick-site gw-first-days">
-    <header className="gw-header"><a className="gw-brand" href="/">BuildForge<span>Tools</span></a><nav aria-label="Glimmerwick tools"><a href="/songs-of-glimmerwick">Garden Planner</a><a href="#enrollment">Supply checklist</a><a href="/">All game tools <ArrowRight size={14} /></a></nav></header>
-    <main>
-      <section className="gw-hero gw-fd-hero" aria-labelledby="gw-fd-title">
+  return <div className={embedded ? 'gw-first-days' : 'glimmerwick-site gw-first-days'}>
+    {!embedded && <header className="gw-header"><a className="gw-brand" href="/">BuildForge<span>Tools</span></a><nav aria-label="Glimmerwick tools"><a href={gardenHref}>Garden Planner</a><a href="#enrollment">Supply checklist</a><a href="/">All game tools <ArrowRight size={14} /></a></nav></header>}
+    <Content>
+      {embedded && <section className="gw-fd-section" aria-labelledby="gw-fd-title"><p className="gw-eyebrow">YOUR FIRST DAYS AT THE ETCHERY</p><h2 id="gw-fd-title">First Days Checklist</h2><p>Track school supplies and early campus steps. Walkthroughs reviewed Oct 1, 2026; these personal checkmarks do not read your game save.</p></section>}
+      {!embedded && <section className="gw-hero gw-fd-hero" aria-labelledby="gw-fd-title">
         <div className="gw-hero-copy"><p className="gw-eyebrow"><Music2 size={15} /> YOUR FIRST DAYS AT THE ETCHERY</p><h1 id="gw-fd-title">Songs of Glimmerwick <span>First Days Checklist</span></h1><p>Gather your school supplies without wandering back and forth across Wisk. Check off each item, then follow the first steps toward the university garden and music class.</p><div className="gw-hero-meta"><span>Released Sep 30, 2026</span><span>Walkthroughs reviewed Oct 1, 2026</span></div><a className="gw-button" href="#enrollment">Start the checklist <ArrowRight size={16} /></a></div>
         <div className="gw-fd-art" aria-hidden="true"><span className="gw-fd-art-stamp">THE ETCHERY</span><BookOpen size={74} strokeWidth={1.2} /><span className="gw-fd-art-line">Admission field notes</span><div className="gw-fd-art-list">{supplies.map(item => <div key={item.id}><span className={checked.includes(item.id) ? 'is-done' : ''}>{checked.includes(item.id) ? <Check size={14} /> : null}</span>{item.name}</div>)}</div><span className="gw-fd-art-bottom">WISK · GARDEN · CLASSROOM</span></div>
-      </section>
+      </section>}
       <section className="gw-fd-resume" aria-label="Continue your first days" aria-live="polite">
         <div><p className="gw-eyebrow">{checked.length ? 'PICK UP WHERE YOU LEFT OFF' : 'YOUR FIRST ROUTE'}</p><h2>{checked.length} of 9 milestones checked</h2><p>{nextStep ? <>Next on your checklist: <strong>{nextStep.name}</strong>. {nextStep.detail}</> : 'Your opening checklist is complete. Keep a garden notebook or check how a spell works as you explore.'}</p><p className="gw-field-help">{storageAvailable ? 'Progress stays in this browser. These are personal checkmarks, not your game-save status.' : 'Storage is unavailable. Your checks work here but will not survive a reload.'}</p></div>
-        {nextStep ? <a className="gw-button" href={`#step-${nextStep.id}`}>Go to next step <ArrowRight size={16}/></a> : <a className="gw-button" href="/songs-of-glimmerwick">Plan your garden <ArrowRight size={16}/></a>}
+        {nextStep ? <a className="gw-button" href={`#step-${nextStep.id}`}>Go to next step <ArrowRight size={16}/></a> : <a className="gw-button" href={gardenHref}>Plan your garden <ArrowRight size={16}/></a>}
       </section>
       <section className="gw-fd-section" id="enrollment" aria-labelledby="gw-fd-supply-title" data-surface="glimmerwick-first-days">
         <div className="gw-section-heading"><div><p className="gw-eyebrow">01 / ENROLLMENT</p><h2 id="gw-fd-supply-title">Five things to collect</h2></div><span className="gw-fd-progress">{supplyCount} of 5 supplies ready</span></div>
@@ -72,12 +75,16 @@ export default function GlimmerwickFirstDaysPage() {
         <div className="gw-section-heading"><div><p className="gw-eyebrow">02 / AFTER ENROLLMENT</p><h2 id="gw-fd-path-title">Where the first week leads</h2></div><ClipboardCheck size={28} /></div>
         <p className="gw-tool-intro">These are early milestones, not a timed speedrun. Read new mail and check your in-game calendar when a class or gathering is mentioned. The checklist is personal; ticking an item does not mean BuildForgeTools has read your game save.</p>
         <div className="gw-fd-steps">{nextSteps.map((step, index) => <label id={`step-${step.id}`} key={step.id} className="gw-fd-step"><input type="checkbox" checked={checked.includes(step.id)} aria-label={'Done ' + step.name} onChange={() => toggle(step.id)} /><span className="gw-fd-step-num">{index + 1}</span><span><strong>{step.name}</strong><small>{step.detail}</small></span></label>)}</div>
-        <div className="gw-fd-garden-link"><Leaf size={28} /><div><h3>Making room for your garden?</h3><p>The Garden Planner lets you record crops and observed harvest days. It leaves unverified prices, growth durations and seasons blank.</p></div><a href="/songs-of-glimmerwick">Open Garden Planner <ArrowRight size={16} /></a></div>
+        <div className="gw-fd-garden-link"><Leaf size={28} /><div><h3>Making room for your garden?</h3><p>The Garden Planner lets you record crops and observed harvest days. It leaves unverified prices, growth durations and seasons blank.</p></div><a href={gardenHref}>Open Garden Planner <ArrowRight size={16} /></a></div>
       </section>
-      <section className="gw-fd-section gw-fd-quick-links" aria-label="Help with your next task"><h2>Stuck between milestones?</h2><a href="/songs-of-glimmerwick-spellcasting#spellcasting-help">Short song or practice problem →</a><a href="/songs-of-glimmerwick-garden-well#garden-well-help">Missing watering can or unsure what to sell →</a></section>
+      <section className="gw-fd-section gw-fd-quick-links" aria-label="Help with your next task"><h2>Stuck between milestones?</h2><a href="/songs-of-glimmerwick#spellcasting">Short song or practice problem →</a><a href="/songs-of-glimmerwick-garden-well#garden-well-help">Missing watering can or unsure what to sell →</a></section>
       <section className="gw-fd-section gw-fd-source" aria-labelledby="gw-fd-source-title"><div className="gw-section-heading"><div><p className="gw-eyebrow">SOURCE NOTES</p><h2 id="gw-fd-source-title">What this checklist is based on</h2></div></div><p>These locations and opening milestones are reported in two published launch playthroughs, not an official item database. The game’s <a href="https://store.steampowered.com/app/1706510/Songs_of_Glimmerwick/" target="_blank" rel="noreferrer">Steam description</a> confirms the September 30 release, classes, quests, music-based spells and university garden, but does not list the five enrollment shops. Game updates can change steps, so follow the current quest journal if it differs.</p><div className="gw-fd-source-links"><a href="https://intoindiegames.com/walkthroughs/songs-of-glimmerwick-prologue-walkthrough/" target="_blank" rel="noreferrer">Into Indie Games walkthrough <ArrowRight size={15} /></a><a href="https://9puz.com/6174-songs-of-glimmerwick-first-days/" target="_blank" rel="noreferrer">9Puz first-days walkthrough <ArrowRight size={15} /></a></div></section>
       <section className="gw-faq gw-fd-faq" aria-labelledby="gw-fd-faq-title"><p className="gw-eyebrow">QUICK ANSWERS</p><h2 id="gw-fd-faq-title">First-days questions</h2><details><summary>Why can’t I collect my flute on the first visit?</summary><p>Bristlecone starts making it after your first conversation. The launch walkthroughs have you collect the other school supplies in Wisk, then return to the workshop for the flute. Check your Back to School quest objective if it has not changed yet.</p></details><details><summary>Do I need to perfect the music mini-game to cast spells?</summary><p>In the <a href="https://steamcommunity.com/app/1706510/allnews/" target="_blank" rel="noreferrer">developer’s Demo updates</a>, stars were not required to cast a song and the rhythm mini-game could be skipped. We have not independently retested every spell in the release version; follow the prompts you see in your game.</p></details><details><summary>Does this checklist sync with my game?</summary><p>No. Checks are stored only in this browser and do not access your game save or sync between devices. Clearing browser storage removes the saved list.</p></details></section>
-    </main>
-    <footer className="gw-footer"><div><a className="gw-brand" href="/">BuildForge<span>Tools</span></a><p>An independent, community-made planning tool. Not affiliated with Eastshade Studios.</p></div><nav aria-label="Site information"><a href="/songs-of-glimmerwick">Garden Planner</a><a href="/about">About</a><a href="/contact">Contact</a><a href="/privacy">Privacy</a></nav></footer>
+    </Content>
+    {!embedded && <footer className="gw-footer"><div><a className="gw-brand" href="/">BuildForge<span>Tools</span></a><p>An independent, community-made planning tool. Not affiliated with Eastshade Studios.</p></div><nav aria-label="Site information"><a href={gardenHref}>Garden Planner</a><a href="/about">About</a><a href="/contact">Contact</a><a href="/privacy">Privacy</a></nav></footer>}
   </div>
+}
+
+export default function GlimmerwickFirstDaysPage() {
+  return <GlimmerwickFirstDaysTool />
 }

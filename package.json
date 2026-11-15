@@ -26,7 +26,8 @@
     "emberville:query": "node --import tsx scripts/emberville-data.ts --query src/data/emberville-preview-2026-09-27.json",
     "emberville:diff": "node --import tsx scripts/emberville-data.ts --diff",
     "emberville:import": "node --import tsx scripts/emberville-data.ts --import",
-    "content:review": "node --import tsx scripts/content-review.ts --require-rank-text"
+    "content:review": "node --import tsx scripts/content-review.ts --require-rank-text",
+    "smoke:pruning": "node --import tsx scripts/pruning-smoke.ts"
   },
   "dependencies": {
     "@clerk/backend": "^3.20.1",

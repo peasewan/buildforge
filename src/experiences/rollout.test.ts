@@ -6,33 +6,40 @@ import { describe, expect, it } from 'vitest'
 import ledger from '../../docs/intent-page-rollout.json'
 import { EXPERIENCE_PATHS, experienceEnabled } from './rollout'
 import { classPageRedirects } from '../lib/classStaticPages'
+import { PAGE_CONSOLIDATIONS, REMOVED_PAGE_PATHS } from '../data/pageConsolidations'
 import { calculatorLinkIssues, comparePageHtml, partitionAssetIssues } from '../../scripts/check-intent-rollout'
 
 const sitemap = readFileSync(new URL('../../public/sitemap.xml', import.meta.url), 'utf8')
 const paths = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) => new URL(match[1]).pathname)
 const consolidatedRedirects = classPageRedirects().filter((redirect) => !redirect.source.endsWith('/index.html'))
-const retiredPaths = ['/wow-forever-protection-warrior-pvp-build', '/emberville-builds', ...consolidatedRedirects.map((redirect) => redirect.source)]
+const ledgerPaths = ledger.pages.map(page => page.path)
+const explicitRetiredPaths = [...Object.keys(PAGE_CONSOLIDATIONS), ...REMOVED_PAGE_PATHS]
+const retiredPaths = [...new Set(['/wow-forever-protection-warrior-pvp-build', '/emberville-builds', ...consolidatedRedirects.map((redirect) => redirect.source), ...explicitRetiredPaths])].filter(path => ledgerPaths.includes(path))
 const disabledHistoricalPaths = ['/wow-forever-protection-warrior-pvp-build', '/emberville-builds', '/wow-forever-warrior-dungeon-build']
-const independentToolPaths = ['/wow-forever-stress-test', '/invokyr', '/invokyr-multiplayer', '/wow-forever-paladin-build-comparator', '/songs-of-glimmerwick', '/songs-of-glimmerwick-first-days', '/songs-of-glimmerwick-spellcasting', '/songs-of-glimmerwick-garden-well', '/nivalis-nights-profit-calculator']
+const historicalIndependentToolPaths = ['/wow-forever-stress-test', '/invokyr', '/invokyr-multiplayer', '/wow-forever-paladin-build-comparator', '/songs-of-glimmerwick', '/songs-of-glimmerwick-first-days', '/songs-of-glimmerwick-spellcasting', '/songs-of-glimmerwick-garden-well', '/nivalis-nights-profit-calculator']
+const independentToolPaths = historicalIndependentToolPaths.filter(path => !explicitRetiredPaths.includes(path))
 // Independent of the ledger's editable class/status fields: these paths are frozen by the scope amendment.
-const protectedPaths = paths.filter((path) => path.includes('paladin') && !independentToolPaths.includes(path))
+const protectedPaths = ledgerPaths.filter((path) => path.includes('paladin') && !historicalIndependentToolPaths.includes(path))
 
 describe('intent rollout scope', () => {
   it('retains the historical rollout ledger while withholding an unfinished build page and consolidating reviewed entries', () => {
     const discoveryPaths = ['/', '/wow-forever-classes', '/wow-forever-builds', '/wow-forever-dungeon-build-finder', '/wow-forever-class-picker']
-    expect(paths).toHaveLength(141)
+    expect(paths).toHaveLength(83)
     expect(new Set(paths).size).toBe(paths.length)
-    expect(consolidatedRedirects).toHaveLength(21)
-    expect(new Set(retiredPaths).size).toBe(23)
+    expect(consolidatedRedirects).toHaveLength(71)
+    expect(new Set(retiredPaths).size).toBe(77)
     expect(paths.filter(path => discoveryPaths.includes(path)).sort()).toEqual([...discoveryPaths].sort())
     expect(new Set(ledger.pages.map((page) => page.path)).size).toBe(150)
     expect(ledger.pages.map((page) => page.path).sort()).toEqual([...paths.filter(path => !discoveryPaths.includes(path) && !independentToolPaths.includes(path)), ...retiredPaths].sort())
     for (const path of retiredPaths) expect(paths).not.toContain(path)
     for (const path of independentToolPaths) {
       expect(paths).toContain(path)
+    }
+    for (const path of historicalIndependentToolPaths) {
       expect(ledger.pages.map(page => page.path)).not.toContain(path)
       expect(EXPERIENCE_PATHS).not.toContain(path)
     }
+    for (const path of explicitRetiredPaths) expect(paths).not.toContain(path)
     expect(ledger.total).toBe(150)
     expect(ledger.activeTotal).toBe(128)
     expect(ledger.protectedTotal).toBe(22)
@@ -40,6 +47,7 @@ describe('intent rollout scope', () => {
 
   it('never enables one of the 22 protected Paladin paths, including slash variants', () => {
     expect(protectedPaths).toHaveLength(22)
+    expect(protectedPaths.filter(path => !explicitRetiredPaths.includes(path))).toHaveLength(19)
     for (const path of protectedPaths) {
       expect(experienceEnabled(path), path).toBe(false)
       expect(experienceEnabled(`${path}/`), path).toBe(false)
@@ -62,6 +70,7 @@ describe('intent rollout scope', () => {
     for (const path of EXPERIENCE_PATHS) {
       if (!paths.includes(path)) {
         const redirect = consolidatedRedirects.find((candidate) => candidate.source === path)
+          ?? (PAGE_CONSOLIDATIONS[path] ? { destination: PAGE_CONSOLIDATIONS[path], permanent: true } : undefined)
         expect(redirect, path).toBeDefined()
         expect(redirect?.permanent, path).toBe(true)
         expect(paths, path).toContain(redirect?.destination)

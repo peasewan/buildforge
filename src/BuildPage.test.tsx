@@ -1,4 +1,4 @@
-import { cleanup, render, screen } from '@testing-library/react'
+import { cleanup, render, screen, within } from '@testing-library/react'
 import { afterEach, describe, expect, it } from 'vitest'
 import BuildPage from './BuildPage'
 
@@ -45,7 +45,7 @@ describe('Holy healing build page', () => {
 
     const nextSteps = screen.getByRole('region', { name: 'Continue with Protection' })
     for (const href of [
-      '/wow-forever-protection-paladin-dungeon-build',
+      '#dungeon-tanking',
       '/wow-forever-protection-paladin-leveling-build',
       '/wow-forever-protection-paladin-talents',
       '/paladin#calculator',
@@ -53,6 +53,34 @@ describe('Holy healing build page', () => {
       expect(nextSteps.querySelector(`a[href="${href}"]`)).toBeTruthy()
     }
     expect(nextSteps.textContent).toContain('editable Level 20 and Level 30')
+  })
+
+  it('keeps dungeon pull planning on the retained Protection build', () => {
+    const { container } = render(<BuildPage buildId="protection-shield-20-31-0" />)
+
+    const dungeon = screen.getByRole('region', { name: 'Dungeon tank planning' })
+    expect(dungeon.id).toBe('dungeon-tanking')
+    expect(within(dungeon).getAllByRole('listitem')).toHaveLength(3)
+    expect(dungeon.textContent).toMatch(/51 points.*Level 30/)
+    expect(dungeon.querySelector('a[href="/wow-forever-protection-paladin-leveling-build"]')).toBeTruthy()
+    expect(container.querySelector('.protection-build-more a[href="/wow-forever-protection-paladin-dungeon-build"]')).toBeNull()
+  })
+
+  it('preserves the retired Ret hub navigation on its retained historical build', () => {
+    render(<BuildPage buildId="retribution-judgment-0-20-31" />)
+
+    const routes = screen.getByRole('region', { name: 'Retribution build routes' })
+    for (const href of [
+      '/wow-forever-retribution-paladin-leveling-build',
+      '/wow-forever-retribution-paladin-pvp-build',
+      '/wow-forever-retribution-paladin-talents',
+      '/paladin#calculator',
+    ]) {
+      expect(routes.querySelector(`a[href="${href}"]`)).toBeTruthy()
+    }
+    expect(routes.querySelector('a[href="/wow-forever-retribution-paladin-build"]')).toBeNull()
+    expect(routes.textContent).toMatch(/0\/20\/31.*20\/0\/31/)
+    expect(routes.textContent).toMatch(/Crusade.*absent.*70245/)
   })
 
   it('labels the full Protection allocation as a historical example', () => {

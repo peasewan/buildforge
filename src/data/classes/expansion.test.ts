@@ -19,8 +19,8 @@ describe('six-class release', () => {
     const pages = classes.flatMap((c) => c.pages)
     expect(pages).toHaveLength(90)
     assertUniquePageIntents(pages)
-    expect(publishedClassPages(classes)).toHaveLength(70)
-    expect(pages.filter(page => page.retiredTo)).toHaveLength(20)
+    expect(publishedClassPages(classes)).toHaveLength(34)
+    expect(pages.filter(page => page.retiredTo)).toHaveLength(56)
   })
   it('updates all reviewed expansion hubs to Level 30 while retaining source archives', () => {
     const hunter = classes.find((candidate) => candidate.id === 'hunter')!

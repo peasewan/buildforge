@@ -1,3 +1,4 @@
+import { resolvePageHref } from './lib/pageRetirement'
 import type { CSSProperties, ReactNode } from 'react'
 import { ArrowRight, Heart, Route, Shield, Sparkles, Swords, UsersRound } from 'lucide-react'
 import { TalentTree } from './App'
@@ -28,7 +29,7 @@ const icons: Record<LandingIcon, ReactNode> = {
 }
 
 function TrackedLink({ href, pageId, placement, className, children }: { href: string; pageId: string; placement: string; className?: string; children: ReactNode }) {
-  return <a href={href} className={className} onClick={() => track('build_landing_cta_click', { page_id: pageId, placement })}>{children}</a>
+  return <a href={resolvePageHref(href)} className={className} onClick={() => track('build_landing_cta_click', { page_id: pageId, placement })}>{children}</a>
 }
 
 function selectedTalentsIn(build: Build) {

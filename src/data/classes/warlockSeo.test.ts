@@ -1,3 +1,4 @@
+import { consolidatedClassTasks } from '../../lib/classConsolidations'
 import { readFileSync } from 'node:fs'
 import { describe, expect, it } from 'vitest'
 import { PUBLISHED_CLASSES } from './index'
@@ -59,6 +60,12 @@ describe('Warlock PvP SEO pilot', () => {
     expect(withClassPageSitemapBlock(sitemap)).toBe(sitemap)
     const document = new DOMParser().parseFromString(`<urlset>${classPageSitemapBlock()}</urlset>`, 'application/xml')
     for (const rolePage of rolePages) {
+      if (rolePage.retiredTo) {
+        const destination = warlockClass.pages.find(candidate => `/${candidate.slug}` === rolePage.retiredTo)!
+        expect(consolidatedClassTasks(warlockClass, destination)).toContain(rolePage)
+        expect(sitemap).not.toContain(`<loc>${rolePage.canonical}</loc>`)
+        continue
+      }
       const row = [...document.querySelectorAll('url')]
         .find((candidate) => candidate.querySelector('loc')?.textContent === rolePage.canonical)
       expect(row?.querySelector('lastmod')?.textContent, rolePage.slug).toBe('2026-10-09')

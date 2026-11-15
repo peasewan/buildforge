@@ -9,7 +9,7 @@ export interface Requirement { selector: string; hub?: string; kind?: string; in
 export interface SeoInput {
   origin: string; pages: Record<string, string>; sitemap: { url: string; lastmod: string }[]
   expectedPaths: string[]; withheldPaths: string[]; redirects: Record<string, string>; aliases: Record<string, string>
-  requirements: Record<string, Requirement>; frozen: FrozenPage[]
+  requirements: Record<string, Requirement>; frozen: FrozenPage[]; gonePaths?: string[]
 }
 interface SeoRedirectRule { source: string; destination: string; permanent?: boolean; statusCode?: number; has?: unknown }
 export function collectSeoRedirects(rules: readonly SeoRedirectRule[]): Record<string, string> {
@@ -63,6 +63,7 @@ export function validateSeo(input: SeoInput) {
       sitemap.set(url.pathname, row.lastmod)
     } catch { errors.push(`invalid sitemap URL: ${row.url}`) }
   }
+  for (const path of input.gonePaths ?? []) if (pages.has(path) || sitemap.has(path) || input.redirects[path]) errors.push(`removed page leaked into published artifacts: ${path}`)
   const expected = new Set(input.expectedPaths)
   for (const path of expected) {
     if (!pages.has(path)) errors.push(`missing rendered page: ${path}`)

@@ -1,3 +1,4 @@
+import { consolidatedClassTasks } from '../lib/classConsolidations'
 import { cleanup, fireEvent, render, screen, within } from '@testing-library/react'
 import { afterEach, expect, it } from 'vitest'
 import { warriorClass } from '../data/classes/warrior'
@@ -107,12 +108,16 @@ it('describes the Hunter BM/MM comparison as executable current allocations', ()
   }
 })
 
-it('never publishes a removed-node or invalid prefilled link from any current Hunter content page', () => {
+it('never exposes a removed-node or invalid prefilled link from retained Hunter pages or their consolidated tasks', () => {
   const removedIds = hunterHistoricalTalents.filter(talent => !hunterClass.talents.some(current => current.id === talent.id)).map(talent => talent.id)
   expect(removedIds.sort()).toEqual(['hunter-1624', 'hunter-1395', 'hunter-1343', 'hunter-1345', 'hunter-1351', 'hunter-1301', 'hunter-1309', 'hunter-1321', 'hunter-1325'].sort())
   let testedLinks = 0
-  for (const route of hunterClass.pages.filter(candidate => candidate.kind !== 'calculator' && !candidate.retiredTo)) {
-    const { container, unmount } = render(<ClassExperiencePage classDef={hunterClass} page={route} />)
+  const retained = hunterClass.pages.filter(candidate => candidate.kind !== 'calculator' && !candidate.retiredTo)
+  const routes = [...new Set([...retained, ...retained.flatMap(page => consolidatedClassTasks(hunterClass, page))])]
+  for (const route of routes) {
+    const { container, unmount } = render(route.retiredTo
+      ? <ClassIntentExperience classDef={hunterClass} page={route} />
+      : <ClassExperiencePage classDef={hunterClass} page={route} />)
     for (const anchor of container.querySelectorAll<HTMLAnchorElement>('a[href^="/hunter?build="]')) {
       const url = new URL(anchor.getAttribute('href')!, 'https://buildforgetools.com')
       const code = url.searchParams.get('build') ?? ''
@@ -629,15 +634,18 @@ it('shows exact editorial talent use without presenting it as player popularity'
   expect(angerUsage).toBeTruthy()
   expect(angerUsage?.closest('details')).toBeNull()
   expect(angerUsage?.textContent).toContain('Editorial examples, not player popularity')
-  const armsRoute = angerUsage?.querySelector('a[href="/wow-forever-arms-warrior-build"]')?.closest('li')
+  const armsEntry = (record: Element | null | undefined) => [...(record?.querySelectorAll('li') ?? [])]
+    .find(item => item.querySelector('a')?.textContent === 'Arms Warrior Build (Level 30)')
+  const armsRoute = armsEntry(angerUsage)
+  expect(armsRoute?.querySelector('a')?.getAttribute('href')).toBe('/wow-forever-warrior-builds')
   expect(armsRoute?.textContent).toContain('Rank 1/1')
   expect(armsRoute?.textContent).toContain('Level 30')
   expect(armsRoute?.textContent).toContain('Two-handed damage and stance control')
   expect(armsRoute?.textContent).not.toContain('Key talent in this editorial route')
-  const endpoint = record('Sweeping Strikes')?.querySelector('[data-editorial-usage] a[href="/wow-forever-arms-warrior-build"]')?.closest('li')
+  const endpoint = armsEntry(record('Sweeping Strikes')?.querySelector('[data-editorial-usage]'))
   expect(endpoint?.textContent).toContain('Key talent in this editorial route')
 
-  const rendRoute = record('Improved Rend')?.querySelector('[data-editorial-usage] a[href="/wow-forever-arms-warrior-build"]')?.closest('li')
+  const rendRoute = armsEntry(record('Improved Rend')?.querySelector('[data-editorial-usage]'))
   expect(rendRoute?.textContent).toContain('Rank 3/3')
   expect(rendRoute?.textContent).not.toContain('Key talent in this editorial route')
 })

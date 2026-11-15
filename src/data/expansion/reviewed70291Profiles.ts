@@ -192,7 +192,7 @@ export function buildReviewed70291Profile(profile: ExpansionProfile, talents: Cl
   })
   return {
     ...profile, specs, extras,
-    intro: `Compare ${specs.map(candidate => candidate.name).join(', ')} using the reviewed ${BUILD} talent snapshot. Each full editorial route spends 21 points at Level 30; the retained Level 20 page compares eleven-point stages of the same current tree. Rank effects and the chosen point order are separate evidence; no simulation establishes a best route.`,
+    intro: `Compare ${specs.map(candidate => candidate.name).join(', ')} using the reviewed ${BUILD} talent snapshot. Each full editorial route spends 21 points at Level 30; the Level 20 snapshot task compares eleven-point stages of the same current tree. Rank effects and the chosen point order are separate evidence; no simulation establishes a best route.`,
     leveling: copy.leveling, pvp: copy.pvp, dungeon: copy.dungeon,
     pvpDescription: profile.id === 'warlock'
       ? 'WoW Forever Warlock PvP build: compare a Level 30 Beta Affliction route and its Level 20 starter, with exact talent effects, pet control and a planner.'

@@ -1,3 +1,4 @@
+import { applyClassConsolidations } from './lib/classConsolidations'
 import { existsSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { cleanup, fireEvent, render, screen, within } from '@testing-library/react'
@@ -186,7 +187,9 @@ describe('ClassDocumentPage renders any class from ClassDefinition', () => {
     expect(source).not.toContain("'/paladin'")
     expect(source).not.toContain("'/warrior'")
 
-    const { container } = render(<ClassDocumentPage classDef={hunterClassFixture} page={pageOfKind('specBuild')} />)
+    const consolidated = applyClassConsolidations(hunterClassFixture)
+    const retainedPage = consolidated.pages.find(page => page.kind === 'levelCap')!
+    const { container } = render(<ClassDocumentPage classDef={consolidated} page={retainedPage} />)
     const footer = container.querySelector('footer')!
     expect(within(footer).getByRole('link', { name: `${hunterClassFixture.name} Talent Calculator` }).getAttribute('href'))
       .toBe(hunterClassFixture.plannerPath)
@@ -240,13 +243,13 @@ describe('ClassDocumentPage renders any class from ClassDefinition', () => {
     const pages = publishedClassPages([mageClass]).map(({ page }) => page)
 
     expect(satisfied.has('completeClassPlanner')).toBe(true)
-    expect(pages).toHaveLength(11)
+    expect(pages).toHaveLength(6)
     for (const page of pages) {
       const { container } = render(<ClassDocumentPage classDef={mageClass} page={page} />)
       const hrefs = [...container.querySelectorAll('a')].map((anchor) => anchor.getAttribute('href') ?? '')
 
       expect(hrefs.some((href) => href === mageClass.plannerPath || href.startsWith(`${mageClass.plannerPath}?`)), page.slug).toBe(true)
-      for (const withheld of mageClass.pages.filter((candidate) => !publishRequirementsFor(candidate).every((requirement) => satisfied.has(requirement)))) {
+      for (const withheld of mageClass.pages.filter((candidate) => candidate.retiredTo || !publishRequirementsFor(candidate).every((requirement) => satisfied.has(requirement)))) {
         expect(hrefs.filter((href) => href.split('?')[0] === `/${withheld.slug}`), `${page.slug} -> ${withheld.slug}`).toEqual([])
       }
       cleanup()

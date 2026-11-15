@@ -88,7 +88,7 @@ export default function EmbervillePlanner({ data = EMBERVILLE_CATALOG }: { data?
       {hasSelectableSkills ? <>{skillSection('active')}{skillSection('passive')}</> : <p className="ember-empty" role="note"><CircleHelp size={18} />No reviewed active or passive skills can be selected yet. Save research notes while skill types and inheritance rules remain unverified.</p>}
       {data.skills.some(skill => skill.type.value === null) && <details className="ember-pending-skills"><summary>Observed skills awaiting classification ({data.skills.filter(skill => skill.type.value === null).length})</summary>{data.skills.filter(skill => skill.type.value === null).map(skill => <article key={skill.id}><h4>{skill.name.value}</h4><p>{skill.effect.value}</p><EmbervilleFactEvidence fact={skill.effect} data={data} /><p>Active / passive type and inheritance eligibility are not verified, so this skill cannot be added to a setup yet.</p></article>)}</details>}
       <fieldset><legend>Mechanic to test</legend><div className="experiment-grid">{experiments.map(([id, label]) => <button type="button" className={draft.experiment === id ? 'selected' : ''} aria-pressed={draft.experiment === id} key={id} onClick={() => { update({ experiment: id }); track('emberville_mechanic_select', { mechanic: id }) }}>{label}</button>)}</div></fieldset>
-      <a className="ember-inline-link" href="/emberville-skill-inheritance">Review the confirmed inheritance system</a>
+      <a className="ember-inline-link" href="/emberville#skill-inheritance">Review the confirmed inheritance system</a>
     </div>
     <aside className="ember-panel planner-summary">
       <p className="ember-kicker">NOTEBOOK SUMMARY</p><h3>{selected[1]} direction</h3><p>{selected[2]}</p>

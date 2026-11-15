@@ -151,8 +151,8 @@ describe('reviewed current Hunter data and routes', () => {
 
   it('preserves every page URL, title, H1 and reviewed consolidation while making active tasks publishable', () => {
     expect(hunterClass.pages.map(page => ({ slug: page.slug, title: page.title, h1: page.h1, canonical: page.canonical, retiredTo: page.retiredTo }))).toEqual(oldClass.pages.map(page => ({ slug: page.slug, title: page.title, h1: page.h1, canonical: page.canonical, retiredTo: page.retiredTo })))
-    expect(hunterClass.pages.filter(page => page.retiredTo)).toHaveLength(3)
-    expect(publishedClassPages([hunterClass])).toHaveLength(12)
+    expect(hunterClass.pages.filter(page => page.retiredTo)).toHaveLength(8)
+    expect(publishedClassPages([hunterClass])).toHaveLength(7)
     expect(hunterClass.pages.find(page => page.kind === 'buildsHub')?.description).toContain('Level 30')
     expect(hunterClass.pages.find(page => page.kind === 'pet')?.retiredTo).toBeUndefined()
   })
