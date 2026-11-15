@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react'
+import { ArrowDown, ArrowUpRight, Calculator, Compass, Gem, Layers3, Mountain } from 'lucide-react'
 import DiscoveryHeader from './DiscoveryHeader'
 import SiteFooter from './SiteFooter'
 import { frostStar } from './data/frostStar'
@@ -17,17 +18,20 @@ function RollEstimate() {
     track('frost_star_odds_used')
     used.current = true
   }
-  return <section className="fs-panel" aria-labelledby="roll-title">
-    <h2 id="roll-title">What are my odds after several rolls?</h2>
-    <p>Choose one wave and enter the number of reward rolls at that wave. The estimate assumes independent rolls at the published rate.</p>
+  return <section className="fs-calculator fs-card" id="odds" aria-labelledby="roll-title">
+    <h2 id="roll-title"><Calculator aria-hidden="true" />Drop chance calculator</h2>
+    <p>Choose a wave and the number of eligible reward rolls.</p>
     <div className="fs-fields">
       <label>Reward wave<select value={wave} onChange={event => { setWave(Number(event.target.value)); recordUse() }}>
         {frostStar.waves.map(row => <option key={row.wave} value={row.wave}>Wave {row.wave}</option>)}
       </select></label>
-      <label>Number of reward rolls<input type="number" min="1" max="1000" step="1" value={rolls} aria-invalid={!valid} aria-describedby="roll-result" onChange={event => { setRolls(event.target.value); if (event.target.validity.valid && event.target.value !== '') recordUse() }} /></label>
+      <label>Reward rolls<input type="number" min="1" max="1000" step="1" value={rolls} aria-invalid={!valid} aria-describedby="roll-result" onChange={event => { setRolls(event.target.value); if (event.target.validity.valid && event.target.value !== '') recordUse() }} /></label>
     </div>
-    <p className="fs-result" id="roll-result" role="status">{valid ? <><strong>{chance >= 99.95 ? '>99.9' : chance.toFixed(1)}%</strong> chance of at least one Frost Star in {count} wave {wave} {count === 1 ? 'roll' : 'rolls'}.</> : 'Enter a whole number from 1 to 1,000 rolls.'}</p>
-    <p>A run may contain more than one wave. Count a roll only when the game awards an eligible reward. This estimate treats each selected wave separately.</p>
+    <div className="fs-result" id="roll-result" role="status">{valid ? <>
+      <strong>{chance >= 99.95 ? '>99.9' : chance.toFixed(1)}<small>%</small></strong>
+      <span>chance of at least one Frost Star in {count} wave {wave} {count === 1 ? 'roll' : 'rolls'}</span>
+    </> : <span>Enter a whole number from 1 to 1,000 rolls.</span>}</div>
+    <p className="fs-note">Assumes independent rolls at the listed rate. Count each eligible reward at the selected wave.</p>
   </section>
 }
 
@@ -35,30 +39,44 @@ export default function FrostStarPage() {
   return <div className="site-discovery fs-page">
     <DiscoveryHeader />
     <main className="sd-main">
-      <div className="sd-intro">
-        <p className="sd-kicker">Roblox · The Forge</p>
-        <h1>How to get Frost Star in The Forge</h1>
-        <p>Look for Frost Star in the <strong>Tower of Hell raid, Tier 15</strong>. The community ore table lists this exotic ore in the reward pools for waves 9 and 10.</p>
+      <header className="fs-hero">
+        <img className="fs-art" src="/images/the-forge/frost-star.webp" alt="" fetchPriority="high" />
+        <div className="fs-hero-copy">
+          <p className="sd-kicker">Roblox <span>/</span> The Forge</p>
+          <h1><span className="fs-sr">How to get </span>Frost Star<span className="fs-sr"> in The Forge</span></h1>
+          <p className="fs-lead">Hunt this exotic ore in the Tower of Hell. See which Tier 15 waves can drop it and estimate your chances across repeated rolls.</p>
+          <a className="fs-jump" href="#rates">View drop rates <ArrowDown size={16} aria-hidden="true" /></a>
+        </div>
+      </header>
+      <div className="fs-facts">
+        <div><Mountain aria-hidden="true" /><dl><dt>Raid</dt><dd>Tower of Hell</dd></dl></div>
+        <div><Layers3 aria-hidden="true" /><dl><dt>Difficulty</dt><dd>Tier 15</dd></dl></div>
+        <div><Gem aria-hidden="true" /><dl><dt>Ore rarity</dt><dd>Exotic</dd></dl></div>
       </div>
-      <section className="fs-panel" aria-labelledby="rates-title">
-        <h2 id="rates-title">Tier 15 drop rates</h2>
-        <table><caption>Reported chance per eligible reward roll</caption>
-          <thead><tr><th scope="col">Wave</th><th scope="col">Listed odds</th><th scope="col">Chance</th></tr></thead>
-          <tbody>{frostStar.waves.map(({ wave, denominator }) => <tr key={wave}><th scope="row">Wave {wave}</th><td>1 in {denominator}</td><td>{100 / denominator}%</td></tr>)}</tbody>
-        </table>
-        <p>These figures come from Bloxron’s November 10 ore table for the version 1.10 raid expansion. Check the loot preview on the raid difficulty screen before starting a run. <a href={frostStar.oreTable}>View the ore table</a></p>
-      </section>
-      <section className="fs-panel" aria-labelledby="farm-title">
-        <h2 id="farm-title">Should I stop at wave 9?</h2>
-        <p>Wave 10 has the higher listed chance per roll. To decide whether staying saves time, check when your run pays out. We could not verify whether leaving after wave 9 keeps its reward, whether both waves pay on a full clear, or how the loot multiplier applies to Frost Star.</p>
-        <p>Before repeating a route, compare the loot preview with your end-of-run rewards. Record which wave you finished, how long the run took and how much ore you received. A larger stack and a higher drop chance affect farming differently.</p>
-      </section>
-      <RollEstimate />
-      <section className="fs-panel" aria-labelledby="sources-title">
-        <h2 id="sources-title">Sources and version</h2>
-        <p>Reviewed <time dateTime="2026-11-15">November 15, 2026</time>. The figures above are community-reported. The developer’s game listing identifies The Forge as a beta. Players describe finding loot odds next to the difficulty selector.</p>
-        <ul><li><a href={frostStar.game}>The Forge on Roblox</a></li><li><a href={frostStar.oreTable}>Bloxron’s Frost Star and raid ore tables</a></li><li><a href={frostStar.playerDiscussion}>Player discussion of raid rewards and the loot preview</a></li></ul>
-      </section>
+      <div className="fs-workbench">
+        <section className="fs-card fs-rates" id="rates" aria-labelledby="rates-title">
+          <h2 id="rates-title"><Gem aria-hidden="true" />Tier 15 drop rates</h2>
+          <table><caption>Community-reported odds per eligible reward roll.</caption>
+            <thead><tr><th scope="col">Wave</th><th scope="col">Listed odds</th><th scope="col">Chance</th></tr></thead>
+            <tbody>{frostStar.waves.map(({ wave, denominator }) => <tr key={wave}><th scope="row">Wave {wave}</th><td>1 in {denominator}</td><td>{100 / denominator}%</td></tr>)}</tbody>
+          </table>
+          <p className="fs-note">Bloxron lists both waves in its November 10 ore table for the version 1.10 raid expansion. Check the loot preview on the difficulty screen before starting.</p>
+          <a className="fs-text-link" href={frostStar.oreTable}>View the ore table <ArrowUpRight aria-hidden="true" size={15} /></a>
+        </section>
+        <RollEstimate />
+      </div>
+      <div className="fs-reading">
+        <section aria-labelledby="farm-title">
+          <h2 id="farm-title"><Compass aria-hidden="true" />Should I stop at wave 9?</h2>
+          <p>Wave 10 has the higher listed chance per roll. Whether it saves time depends on when your run pays out. We could not verify whether leaving after wave 9 keeps its reward, whether a full clear pays both waves, or how the loot multiplier applies to Frost Star.</p>
+          <p>Compare the raid preview with your end-of-run rewards. Record the last wave, elapsed time and ore received. A larger stack and a higher drop chance affect farming differently.</p>
+        </section>
+        <section aria-labelledby="sources-title" className="fs-sources">
+          <h2 id="sources-title">Sources and version</h2>
+          <p>Community rates reviewed <time dateTime="2026-11-15">November 15, 2026</time>. The developer lists the game as a beta.</p>
+          <ul>{[[frostStar.game, 'The Forge on Roblox'], [frostStar.oreTable, 'Bloxron raid ore tables'], [frostStar.playerDiscussion, 'Player discussion of the loot preview']].map(([href, label]) => <li key={href}><a href={href}>{label}<ArrowUpRight size={15} aria-hidden="true" /></a></li>)}</ul>
+        </section>
+      </div>
     </main>
     <SiteFooter discovery links={[]} />
   </div>
