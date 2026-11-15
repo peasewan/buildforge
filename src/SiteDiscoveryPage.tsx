@@ -1,3 +1,4 @@
+import DiscoveryHeader from './DiscoveryHeader'
 import { ArrowRight, BookOpen, Compass, Layers, ShieldCheck, Sprout } from 'lucide-react'
 import SiteFooter from './SiteFooter'
 import { DISCOVERY_PAGES, discoveryClasses, discoveryGroups, type DiscoveryId } from './data/siteDiscovery'
@@ -44,7 +45,7 @@ function ClassCards() {
 export default function SiteDiscoveryPage({ pageId }: { pageId: DiscoveryId }) {
   const page = DISCOVERY_PAGES.find(p => p.id === pageId)!
   return <div className="site-discovery" data-experience-kind={`discovery-${pageId}`}>
-    <header className="sd-header"><a className="sd-brand" href="/"><img src="/images/icons/paladin-shield.png" alt="" />BUILD<b>FORGE</b><small>TOOLS</small></a><nav aria-label="Site discovery"><a href="/wow-forever-classes" aria-current={pageId === 'classes' ? 'page' : undefined}>WoW classes</a><a href="/wow-forever-builds" aria-current={pageId === 'builds' ? 'page' : undefined}>WoW builds</a><a href="/emberville">Emberville</a></nav></header>
+    <DiscoveryHeader pageId={pageId} />
     <main className="sd-main"><div className="sd-intro"><p className="sd-kicker">{pageId === 'home' ? 'THE BUILD PLANNING WORKBENCH' : 'WORLD OF WARCRAFT FOREVER'}</p><h1>{page.h1}</h1><p>{pageId === 'home' ? 'Talent calculators, editable routes and source-linked references. Pick a tool and start planning.' : page.description}</p></div>
       {pageId === 'home' ? <>
         <section className="sd-games" aria-label="Choose a game"><article className="sd-game sd-wow"><img className="sd-game-art" src="/images/hero/hero-paladin.webp" alt="" /><div className="sd-game-content"><p className="sd-kicker">TALENTS · BUILDS · PROGRESSION</p><h2>WoW Forever</h2><p>Explore nine classes. Inspect the talent evidence, follow an editorial route, then make the allocation yours.</p><nav className="sd-paladin-feature" aria-label="Featured Paladin tools"><span>Start with Paladin</span><a href="/paladin">WoW Forever Paladin Talent Calculator <ArrowRight size={15} /></a><a href="/wow-forever-paladin-talents">Paladin Talent Trees <ArrowRight size={15} /></a><a href="/wow-forever-paladin-builds">Paladin Builds <ArrowRight size={15} /></a></nav><a className="sd-primary" href="/wow-forever-classes">Choose your class <ArrowRight size={17} /></a><a className="sd-secondary" href="/wow-forever-builds">Browse builds by playstyle <ArrowRight size={15} /></a></div><nav className="sd-quick" aria-label="Class calculators">{classes.flatMap(c => c.links.filter(l => l.label === 'Calculator').map(l => <a href={l.href} key={l.href}>{c.name}</a>))}</nav></article>

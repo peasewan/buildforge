@@ -27,6 +27,15 @@ export default defineConfig(({ mode }) => ({
   },
   plugins: [
     {
+      name: 'atlas-dev-chrome',
+      apply: 'serve',
+      transformIndexHtml: async (html, ctx) => {
+        if (!html.includes('<!--ATLAS_HEADER-->') || !ctx.server) return html
+        const { renderAtlasChrome } = await ctx.server.ssrLoadModule('/src/atlasChrome.tsx')
+        return renderAtlasChrome(html)
+      },
+    },
+    {
       name: 'production-only-analytics',
       enforce: 'pre',
       transformIndexHtml: transformAnalyticsHtml,

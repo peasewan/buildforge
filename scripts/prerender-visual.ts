@@ -1,6 +1,7 @@
 import { readdir, readFile, writeFile } from 'node:fs/promises'
 import { createElement } from 'react'
 import { renderToString } from 'react-dom/server'
+import { renderAtlasChrome } from '../src/atlasChrome'
 import AppRoute from '../src/AppRoute'
 
 // Run directly after Vite: every shell still contains an empty root / content marker.
@@ -10,8 +11,10 @@ const files = (await readdir(dist, { recursive: true })).filter((file) => file.e
 for (const file of files) {
   const output = new URL(file, dist)
   const shell = await readFile(output, 'utf8')
-  // The Atlas entry ships its complete HTML and progressively enhances it without React.
-  if (file === 'poe-atlas-tree-compare/index.html' && shell.includes('<h1>Atlas tree comparison</h1>')) continue
+  if (file === 'poe-atlas-tree-compare/index.html') {
+    await writeFile(output, renderAtlasChrome(shell))
+    continue
+  }
   const root = /<div id="root">\s*(?:<!--[\s\S]*?-->\s*)?<\/div>/
   if (!root.test(shell)) throw new Error(`Expected an unrendered root in ${file}`)
   const pathname = file === 'index.html' ? '/' : `/${file.replace(/\/index\.html$/, '')}`
