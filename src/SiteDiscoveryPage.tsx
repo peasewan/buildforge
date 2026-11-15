@@ -69,6 +69,15 @@ export default function SiteDiscoveryPage({ pageId }: { pageId: DiscoveryId }) {
         </article>
         <article className="sd-game sd-invokyr"><div className="sd-game-content"><p className="sd-kicker">CO-OP CHECKER · DEMO ENDING</p><h2>Invokyr</h2><p>Check your group size against the Demo or announced Early Access rules. Read a source-linked Demo ending answer with a spoiler warning and step check.</p><a className="sd-primary" href="/invokyr">Open Invokyr Companion <ArrowRight size={17}/></a></div><nav className="sd-quick" aria-label="Invokyr tools"><a href="/invokyr-multiplayer">Co-op Checker</a><a href="/invokyr#ending">Demo Ending Troubleshooter</a></nav></article>
         <article className="sd-game sd-ember"><img className="sd-game-art" src="/images/emberville/planner-hero.jpg" alt="" /><div className="sd-game-content"><p className="sd-kicker">PREVIEW NOTEBOOK · SOURCED MECHANICS</p><h2>Emberville</h2><p>Review confirmed mechanics and save a combat direction, class and weapon ideas, and private notes. This preview cannot validate builds or inherited skill combinations.</p><a className="sd-primary" href="/emberville">Open preview notebook <ArrowRight size={17} /></a><a className="sd-secondary" href="/emberville#build-directions">Read build mechanics <ArrowRight size={15} /></a></div><nav className="sd-quick" aria-label="Emberville references"><a href="/emberville-classes">Classes</a><a href="/emberville#skill-inheritance">Skill inheritance</a></nav></article></section>
+        <section className="sd-game-guides" aria-labelledby="sd-game-guides">
+          <div className="sd-focused-heading"><h2 id="sd-game-guides">More game tools</h2></div>
+          <div className="sd-focused-grid">{[
+            ['/roblox/stand-out/stand-picker', 'Stand Out', 'Check how to get a Stand and compare two movesets.'],
+            ['/fortnite/treasure-hours', 'Fortnite Treasure Hours', 'Find the event window in your time zone.'],
+            ['/minecraft/dungeons-2-crossplay', 'Minecraft Dungeons II', 'Check your co-op setup and resolve connection problems.'],
+            ['/wow-forever-steam-deck', 'WoW Forever on Steam Deck', 'Set up your controls and plan class bindings.'],
+          ].map(([href, title, detail]) => <article key={href}><h3><a href={href}>{title} <ArrowRight size={15} aria-hidden="true" /></a></h3><p>{detail}</p></article>)}</div>
+        </section>
         <section className="sd-focused-routes" aria-labelledby="sd-focused-routes-title">
           <div className="sd-focused-heading"><div><p className="sd-kicker">START WITH A SPECIFIC QUESTION</p><h2 id="sd-focused-routes-title">Focused WoW planning routes</h2></div><p>These are editable starting points, not performance rankings. Each route labels its client snapshot and later Beta limits.</p></div>
           <div className="sd-focused-grid">{focusedRoutes.map(route => <article key={route.href}><h3>{route.title}</h3><p className="sd-focused-question">{route.question}</p><p>{route.detail}</p><a href={route.href}>Explore route <ArrowRight size={15} aria-hidden="true" /></a></article>)}</div>

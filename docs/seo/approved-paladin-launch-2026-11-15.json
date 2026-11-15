@@ -1,0 +1,9 @@
+{
+  "reason": "The owner requested launch build updates on the existing Paladin hub. This revision covers the hub body and its four launch preset links.",
+  "pages": {
+    "/wow-forever-paladin-builds": {
+      "rootSha256": "cd6128092416e7dba1e631a8e29b9816863b5f4841cc703ec4412fc9674f696a",
+      "linksSha256": "ad80039b54a2440a004d61188d11f46701060790a7810bfcd99a310e7f2ade9c"
+    }
+  }
+}

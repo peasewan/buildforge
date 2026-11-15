@@ -1,3 +1,4 @@
+import LaunchBuildGuide from '../LaunchBuildGuide'
 import type { CSSProperties, ReactNode } from 'react'
 import { ArrowRight, Swords } from 'lucide-react'
 import type { ClassDefinition, ClassPageDefinition } from '../lib/classPage'
@@ -36,6 +37,7 @@ export default function ClassExperiencePage({
   classDef: ClassDefinition
   page: ClassPageDefinition
 }) {
+  const launchClass = page.kind === 'buildsHub' && (def.id === 'hunter' || def.id === 'mage') ? def.id : undefined
   const published = publishedClassPages([def]).map(({ page }) => page),
     paths = new Set(published.map((p) => `/${p.slug}`))
   const plannerPublished = published.some((p) => p.kind === 'calculator')
@@ -137,12 +139,12 @@ export default function ClassExperiencePage({
           </nav>
           <p className="ix-eyebrow">{experienceLabel(page.kind)}</p>
           <h1>{page.h1}</h1>
-          <p className="ix-dek">{page.description}</p>
+          <p className="ix-dek">{launchClass ? `Choose a ${def.name} allocation for leveling, dungeons, area damage or PvP. Inspect its ranks and open the filled launch tree.` : page.description}</p>
           {def.contentPolicy === 'intent_tasks_v1' && !def.dataReview?.current && <p className="ix-note" role="note">Historical {def.verifiedBuild} talent snapshot · Level 20 reference. The live Beta cap is Level 30; a current 21-point allocation has not been verified for this class here. Use the source-linked ranks and progression as a historical comparison.</p>}
           {plannerPublished && (
             <div className="class-hero-actions">
-              <a className="button class-primary" href={calculatorHref}>
-                {archivedBuild ? `Open blank ${def.name} Calculator` : primaryBuild ? `Inspect Level ${primaryBuild.level} route in Calculator` : `Open ${def.name} Calculator`}
+              <a className="button class-primary" href={launchClass ? '#launch-builds' : calculatorHref}>
+                {launchClass ? `Choose a launch build` : archivedBuild ? `Open blank ${def.name} Calculator` : primaryBuild ? `Inspect Level ${primaryBuild.level} route in Calculator` : `Open ${def.name} Calculator`}
                 <ArrowRight size={15} aria-hidden="true" />
               </a>
             </div>
@@ -150,17 +152,18 @@ export default function ClassExperiencePage({
           {archivedBuild && <p className="ix-note" role="note">This historical route includes an officially removed talent. Review the old ranks below, then start a blank calculator route.</p>}
           <div className="ix-meta">
             <span>
-              {def.dataReview && !def.dataReview.current ? 'CLIENT-TABLE PREVIEW' : def.beta.phaseLabel}
+              {launchClass ? 'Launch builds and Beta archive' : def.dataReview && !def.dataReview.current ? 'CLIENT-TABLE PREVIEW' : def.beta.phaseLabel}
             </span>
             {((def.dataReview && !def.dataReview.current) ||
               !def.beta.phaseLabel.includes(def.verifiedBuild)) && (
-              <span>Build {def.verifiedBuild}</span>
+              <span>{launchClass ? 'Archived Beta build' : 'Build'} {def.verifiedBuild}</span>
             )}
-            <span>Reviewed {page.updatedAt}</span>
+            <span>Reviewed {launchClass ? '2026-11-15' : page.updatedAt}</span>
           </div>
         </div>
       </section>
       <div className="shell ix-body">
+        {launchClass && <><LaunchBuildGuide id={launchClass} /><header className="ix-panel"><h2>Beta archive and local calculator</h2><p>The following tools and field notes preserve the pre-launch {def.verifiedBuild} tree. Their level caps and ability comparisons describe the October Beta.</p></header></>}
         {supportOrder(page.kind).map((slot) => slots[slot] ? (
           <div className={`ix-slot ix-slot--${slot}`} data-composition-slot={slot} key={slot}>{slots[slot]}</div>
         ) : null)}

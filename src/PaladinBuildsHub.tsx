@@ -1,3 +1,4 @@
+import LaunchBuildGuide from './LaunchBuildGuide'
 import { resolvePageHref } from './lib/pageRetirement'
 import { ArrowRight, Calculator, Shield, Sparkles, Swords } from 'lucide-react'
 import BuildCard from './BuildCard'
@@ -36,6 +37,7 @@ export default function PaladinBuildsHub() {
         </div>
       </section>
 
+      <LaunchBuildGuide id="paladin" />
       <BetaDataStatus />
       <section className="shell build-decisions"><h2>Compare before choosing a build</h2><p>Replay Ret or Holy Shock planning examples from Level 10 to 30. Check why Twist of Light exceeds the imported 21-point budget, then edit the exact allocation.</p><a className="button primary" href="/wow-forever-paladin-build-comparator">Compare Paladin routes</a> <a className="text-link" href="/wow-forever-paladin-beta-talent-changes#build-impact">See which builds select changed talents →</a></section>
 
@@ -56,7 +58,7 @@ export default function PaladinBuildsHub() {
         <HubLink href="/paladin#calculator" placement="calculator-cta" className="button primary"><Calculator size={18} /> Open WoW Forever Paladin Talent Calculator</HubLink>
       </section>
 
-      <section className="hub-data shell"><div><div className="eyebrow">About Our Data</div><h2>Transparent Beta Data</h2></div><div><p>BuildForgeTools uses reviewed client build 1.60.1.70245 for 50 Paladin talent identities, positions, rank caps and prerequisite links. Resolved rank text is adapted from the Talents Forever 70170 export under CC BY 4.0 with community verification; the 52-node 69913 archive remains readable. Because the client does not state how many prerequisite ranks are required, the planner currently applies the Classic max-rank rule and labels it as an assumption.</p><p>Build recommendations remain community planning references and may change as players test the Beta. The underlying talent data and its sources are reviewed separately.</p><a href={HUB_TALENTS.href}>{HUB_TALENTS.label} <ArrowRight size={15} /></a><br /><HubLink href="/wow-forever-paladin-beta-talent-changes" placement="beta-tracker">Review Paladin Beta talent changes <ArrowRight size={15} /></HubLink></div></section>
+      <section className="hub-data shell"><div><div className="eyebrow">About Our Data</div><h2>Transparent Beta Data</h2></div><div><p>BuildForgeTools uses reviewed client build 1.60.1.70245 for 50 Paladin talent identities, positions, rank caps and prerequisite links. Resolved rank text is adapted from the Talents Forever 70170 export under CC BY 4.0 with community verification; the 52-node 69913 archive remains readable. Because the client does not state how many prerequisite ranks are required, the planner currently applies the Classic max-rank rule and labels it as an assumption.</p><p>The Beta allocations preserve choices made before launch. The launch builds above use the November tree. The underlying talent data and its sources are reviewed separately.</p><a href={HUB_TALENTS.href}>{HUB_TALENTS.label} <ArrowRight size={15} /></a><br /><HubLink href="/wow-forever-paladin-beta-talent-changes" placement="beta-tracker">Review Paladin Beta talent changes <ArrowRight size={15} /></HubLink></div></section>
 
       <SiteFooter links={[{ href: '/paladin', label: 'Talent Calculator' }, { href: '/wow-forever-paladin-talents', label: 'Paladin Talents' }, { href: '/wow-forever-paladin-abilities', label: 'Paladin Abilities' }, { href: '/wow-forever-protection-paladin-build', label: 'Protection Build' }]} />
     </main>

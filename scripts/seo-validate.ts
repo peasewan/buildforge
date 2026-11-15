@@ -1,3 +1,4 @@
+import paladinLaunch from '../docs/seo/approved-paladin-launch-2026-11-15.json'
 import pruningAmendments from '../docs/seo/approved-adsense-pruning-2026-11-15.json'
 import { isRetiredPage } from '../src/lib/pageRetirement'
 import { REMOVED_PAGE_PATHS } from '../src/data/pageConsolidations'
@@ -88,7 +89,9 @@ const frozenPages = baseline.pages.filter(page => !isRetiredPage(page.path)).map
   const events = octoberEventsAmendments.pages[page.path as keyof typeof octoberEventsAmendments.pages]
   const withEvents = events ? { ...withComparison, ...events } : withComparison
   const pruning = pruningAmendments.pages[page.path as keyof typeof pruningAmendments.pages]
-  return pruning ? { ...withEvents, ...pruning } : withEvents
+  const withPruning = pruning ? { ...withEvents, ...pruning } : withEvents
+  const launch = paladinLaunch.pages[page.path as keyof typeof paladinLaunch.pages]
+  return launch ? { ...withPruning, ...launch } : withPruning
 })
 import vercel from '../vercel.json'
 import { collectSeoRedirects, parseSitemap, validateSeo, type Requirement } from './seo/validate'
@@ -145,7 +148,7 @@ for (const file of files) {
 }
 const redirects = collectSeoRedirects(vercel.redirects)
 const report = validateSeo({ origin: 'https://buildforgetools.com', pages, sitemap: parseSitemap(readFileSync(resolve(dist, 'sitemap.xml'), 'utf8')),
-  expectedPaths: ['/minecraft/throwing-disc', '/roblox/the-forge/frost-star', '/poe-atlas-tree-compare', '/wow-forever-respec-cost-calculator', '/wow-forever-stress-test', '/invokyr', '/invokyr-multiplayer', '/wow-forever-paladin-build-comparator', '/nivalis-nights-profit-calculator', '/songs-of-glimmerwick', '/songs-of-glimmerwick-first-days', '/songs-of-glimmerwick-spellcasting', '/songs-of-glimmerwick-garden-well', ...baseline.pages.map(p => p.path), ...classPaths, ...DISCOVERY_PAGES.map(p => p.path), ...TRUST_PAGES.map(p => `/${p.slug}`), ...EMBERVILLE_PAGES.map(p => `/${p.slug}`)].filter(path => !isRetiredPage(path)),
+  expectedPaths: ['/roblox/stand-out/stand-picker', '/fortnite/treasure-hours', '/minecraft/dungeons-2-crossplay', '/wow-forever-steam-deck', '/minecraft/throwing-disc', '/roblox/the-forge/frost-star', '/poe-atlas-tree-compare', '/wow-forever-respec-cost-calculator', '/wow-forever-stress-test', '/invokyr', '/invokyr-multiplayer', '/wow-forever-paladin-build-comparator', '/nivalis-nights-profit-calculator', '/songs-of-glimmerwick', '/songs-of-glimmerwick-first-days', '/songs-of-glimmerwick-spellcasting', '/songs-of-glimmerwick-garden-well', ...baseline.pages.map(p => p.path), ...classPaths, ...DISCOVERY_PAGES.map(p => p.path), ...TRUST_PAGES.map(p => `/${p.slug}`), ...EMBERVILLE_PAGES.map(p => `/${p.slug}`)].filter(path => !isRetiredPage(path)),
   withheldPaths: PUBLISHED_CLASSES.flatMap(c => c.pages.map(p => `/${p.slug}`)).filter(p => !classPaths.includes(p)),
   gonePaths: REMOVED_PAGE_PATHS, redirects, aliases: { '/build': '/paladin' }, requirements, frozen: frozenPages,
 })

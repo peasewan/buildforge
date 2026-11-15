@@ -1,0 +1,35 @@
+.dungeons-crossplay .sd-intro { max-width: 820px; }
+.dungeons-crossplay .dc-tool { display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; border: 1px solid #40463f; border-radius: 12px; background: #151a1c; }
+.dungeons-crossplay .dc-input, .dungeons-crossplay .dc-result { padding: clamp(19px, 3.2vw, 40px); min-width: 0; }
+.dungeons-crossplay .dc-result { background: #1c2826; border-left: 1px solid #3c4c47; }
+.dungeons-crossplay .dc-warning { background: #2c251d; }
+.dungeons-crossplay h2 { margin: 0 0 16px; font-size: clamp(22px, 2.4vw, 30px); line-height: 1.2; letter-spacing: -.6px; }
+.dungeons-crossplay .dc-input label, .dungeons-crossplay legend { display: block; font-size: 13px; font-weight: 650; color: #d6d5cb; }
+.dungeons-crossplay fieldset { border: 0; padding: 0; margin: 20px 0; }
+.dungeons-crossplay .dc-modes { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.dungeons-crossplay .dc-modes button { display: inline-flex; align-items: center; gap: 6px; border: 1px solid #505650; background: #131718; color: #d1d4cc; font: inherit; font-size: 13px; padding: 10px; border-radius: 5px; cursor: pointer; min-height: 42px; }
+.dungeons-crossplay .dc-modes [aria-pressed=true] { background: #e1bf84; color: #191c16; border-color: #e1bf84; }
+.dungeons-crossplay .dc-fields { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 0 14px; }
+.dungeons-crossplay select { color-scheme: dark; display: block; width: 100%; margin: 7px 0 17px; min-height: 44px; padding: 8px; background: #0d1113; color: #e8e6de; border: 1px solid #46504b; border-radius: 5px; font: inherit; font-size: 14px; }
+.dungeons-crossplay .dc-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 18px; color: #c6d9b6; font-size: 13px; }
+.dungeons-crossplay .dc-pair { color: #dbbf8d; font-size: 14px; margin: -5px 0 18px; }
+.dungeons-crossplay .dc-result ol { padding-left: 1.35em; margin: 0; }
+.dungeons-crossplay .dc-result li, .dungeons-crossplay .dc-notes p { font-size: 15px; line-height: 1.65; color: #c9d0ca; }
+.dungeons-crossplay .dc-result li + li { margin-top: 12px; }
+.dungeons-crossplay .dc-result li::marker { color: #e0c698; }
+.dungeons-crossplay .dc-notes { margin-top: 34px; max-width: 78ch; }
+.dungeons-crossplay .dc-notes p { margin: 12px 0; }
+.dungeons-crossplay .dc-sources { display: flex; flex-wrap: wrap; gap: 10px 24px; margin-top: 22px; border-top: 1px solid #343b37; padding-top: 18px; color: #aab7aa; font-size: 13px; }
+.dungeons-crossplay .dc-notes a, .dungeons-crossplay .dc-sources a { color: #e1c085; text-decoration: underline; text-underline-offset: .18em; }
+.dungeons-crossplay :focus-visible { outline: 3px solid #e9c482; outline-offset: 3px; }
+@media(max-width:780px) { .dungeons-crossplay .dc-tool { grid-template-columns: 1fr; } .dungeons-crossplay .dc-result { border-left: 0; border-top: 1px solid #3c4c47; } }
+@media(max-width:500px) { .dungeons-crossplay .dc-fields { grid-template-columns: 1fr; } }
+.dungeons-crossplay .dc-hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(250px, 380px); gap: clamp(22px, 4vw, 64px); align-items: center; padding: 30px 0; }
+.dungeons-crossplay .dc-hero .sd-intro { padding: 0; }
+.dungeons-crossplay .dc-hero figure { margin: 0; }
+.dungeons-crossplay .dc-hero img { display: block; width: 100%; height: auto; border-radius: 6px; }
+.dungeons-crossplay .dc-hero figcaption { font-size: 11px; margin-top: 6px; color: #a5b2b3; }
+.dungeons-crossplay .dc-hero figcaption a { text-decoration: underline; }
+@media(max-width:720px) { .dungeons-crossplay .dc-hero { display: block; } .dungeons-crossplay .dc-hero figure { display: none; } }
+.dungeons-crossplay .dc-store-links { display: flex; gap: 6px 16px; flex-wrap: wrap; margin-top: 18px; }
+.dungeons-crossplay .dc-store-links a { color: #dfc387; font-size: 12px; text-decoration: underline; }

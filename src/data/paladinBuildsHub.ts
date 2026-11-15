@@ -29,7 +29,7 @@ export interface HubPlaystyleSection {
 
 export const HUB_TITLE = 'WoW Forever Paladin Builds & Talent Calculator'
 
-export const HUB_INTRO = 'All Paladin builds for WoW Forever.'
+export const HUB_INTRO = 'Paladin builds for leveling, dungeon tanking, area damage and PvP healing.'
 export const HUB_INTRO_SUB = 'Choose your playstyle, then customize a talent setup.'
 
 export const HUB_SPECIALIZATIONS: HubSpecialization[] = [
@@ -42,8 +42,8 @@ export const HUB_PLAYSTYLE_SECTIONS: HubPlaystyleSection[] = [
   {
     id: 'leveling',
     eyebrow: 'Leveling Builds',
-    heading: 'Plan Leveling Through the Live Level 30 Beta',
-    intro: 'Compare early solo paths now; deeper 51-point examples remain historical long-term references.',
+    heading: 'Leveling paths from the Level 30 Beta',
+    intro: 'These local planner routes preserve the October tree. The launch selector above opens builds in the November tree.',
     builds: [
       { id: 'paladin-leveling', title: 'Paladin Leveling Build', description: 'A flexible solo path from level 10 onward, focused on steady progression and survivability.', href: '/wow-forever-paladin-leveling-build', icon: 'leveling' },
       { id: 'protection-leveling', title: 'Protection Paladin Leveling Build', description: 'Editable 0/11/0 Level 20 and 0/21/0 Level 30 editorial routes, with source-checked Protection nodes.', href: '/wow-forever-protection-paladin-leveling-build', icon: 'protection' },
@@ -56,8 +56,8 @@ export const HUB_PLAYSTYLE_SECTIONS: HubPlaystyleSection[] = [
     heading: 'Group Content Builds',
     intro: 'Tank, healing, and damage setups for dungeons and raids.',
     builds: [
-      { id: 'protection-dungeon-tank', title: 'Protection Paladin Dungeon Tank Build', description: 'A historical 51-point tank reference; start a new route for the live Level 30 cap.', href: '/wow-forever-protection-paladin-dungeon-build', icon: 'protection' },
-      { id: 'protection-shield', title: 'Protection Paladin Shield Build', description: 'A historical 20/31/0 Protection allocation that exceeds the current Beta cap.', href: '/wow-forever-protection-paladin-build', icon: 'protection' },
+      { id: 'protection-dungeon-tank', title: 'Protection Paladin Dungeon Tank Build', description: 'A historical 51-point tank reference; see the launch Protection route above for a level 60 tank.', href: '/wow-forever-protection-paladin-dungeon-build', icon: 'protection' },
+      { id: 'protection-shield', title: 'Protection Paladin Shield Build', description: 'A historical 20/31/0 Protection allocation that exceeded the October Beta cap.', href: '/wow-forever-protection-paladin-build', icon: 'protection' },
       { id: 'paladin-raid', title: 'Paladin Raid Build', description: 'Raid-oriented paths for healing, tanking, and damage support.', href: '/wow-forever-paladin-raid-build', icon: 'raid' },
     ],
   },

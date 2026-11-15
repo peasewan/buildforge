@@ -1,4 +1,8 @@
 import { resolvePageHref } from './lib/pageRetirement'
+import StandOutPage from './StandOutPage'
+import TreasureHoursPage from './TreasureHoursPage'
+import DungeonsCrossplayPage from './DungeonsCrossplayPage'
+import SteamDeckPage from './SteamDeckPage'
 import ThrowingDiscPage from './ThrowingDiscPage'
 import FrostStarPage from './FrostStarPage'
 import InvokyrPage from './InvokyrPage'
@@ -25,10 +29,15 @@ import ClassCalculatorPage from './ClassCalculatorPage'
 import ClassDocumentPage from './ClassDocumentPage'
 import EmbervillePage from './EmbervillePage'
 import { publishedClassPage } from './lib/classStaticPages'
+import { gameToolPages } from './data/gameToolPages'
 import { pageForPath } from './lib/routes'
 
 function routeElement(pathname: string) {
   const route = pageForPath(pathname)
+  if (route.kind === 'stand-out') return <StandOutPage />
+  if (route.kind === 'treasure-hours') return <TreasureHoursPage />
+  if (route.kind === 'dungeons-crossplay') return <DungeonsCrossplayPage />
+  if (route.kind === 'steam-deck') return <SteamDeckPage />
   if (route.kind === 'throwing-disc') return <ThrowingDiscPage />
   if (route.kind === 'frost-star') return <FrostStarPage />
   if (route.kind === 'talent-economy') return <TalentEconomyPage />
@@ -65,5 +74,5 @@ export default function AppRoute({ pathname }: { pathname: string }) {
   const route = pageForPath(pathname)
   const classPage = publishedClassPage(pathname)
   const classId = classPage?.classDef.id ?? (pathname === '/paladin' || pathname === '/build' || pathname.includes('paladin') ? 'paladin' : undefined)
-  return <>{classId && <BetaPatchNotice classId={classId} />}{routeElement(pathname)}<FeedbackWidget inline={route.kind === 'throwing-disc' || route.kind === 'glimmerwick-launch' || route.kind === 'invokyr'} /></>
+  return <>{classId && <BetaPatchNotice classId={classId} />}{routeElement(pathname)}<FeedbackWidget inline={gameToolPages.some(page => page.kind === route.kind) || route.kind === 'throwing-disc' || route.kind === 'glimmerwick-launch' || route.kind === 'invokyr'} /></>
 }

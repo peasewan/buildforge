@@ -1,4 +1,5 @@
 import { isRemovedPage, resolvePageHref } from './pageRetirement'
+import { gameToolPages, type GameToolKind } from '../data/gameToolPages'
 import { throwingDisc } from '../data/throwingDisc'
 import { frostStar } from '../data/frostStar'
 import { TALENT_ECONOMY_PAGE } from '../data/talentEconomy'
@@ -16,7 +17,7 @@ import { NIVALIS_PAGE } from '../data/nivalis'
 import { GLIMMERWICK_LAUNCH_PAGES, type GlimmerwickLaunchPageId } from '../data/glimmerwickLaunchPages'
 
 export interface PageDefinition {
-  kind: 'throwing-disc' | 'frost-star' | 'talent-economy' | 'retired' | 'stress-test' | 'invokyr' | 'paladin-comparison' | 'discovery' | 'planner' | 'guide' | 'build-guide' | 'build-landing' | 'build-hub' | 'spec-hub' | 'spec-talents' | 'spellbook' | 'beta-changes' | 'trust' | 'emberville' | 'glimmerwick' | 'glimmerwick-launch' | 'nivalis' | 'class-calculator' | 'class-document'
+  kind: GameToolKind | 'throwing-disc' | 'frost-star' | 'talent-economy' | 'retired' | 'stress-test' | 'invokyr' | 'paladin-comparison' | 'discovery' | 'planner' | 'guide' | 'build-guide' | 'build-landing' | 'build-hub' | 'spec-hub' | 'spec-talents' | 'spellbook' | 'beta-changes' | 'trust' | 'emberville' | 'glimmerwick' | 'glimmerwick-launch' | 'nivalis' | 'class-calculator' | 'class-document'
   invokyrPageId?: InvokyrPageId
   title: string
   description: string
@@ -122,6 +123,8 @@ export function pageForPath(pathname: string, search = ''): PageDefinition {
   if (isRemovedPage(normalized)) return { kind: 'retired', title: 'Page retired | BuildForgeTools', description: 'This resource is no longer maintained.', canonical: `https://buildforgetools.com${normalized}`, robots: 'noindex, follow' }
   const retained = resolvePageHref(normalized)
   if (retained !== normalized) return pageForPath(retained, search)
+  const gameTool = gameToolPages.find(page => normalized === page.path || normalized === page.path + '/index.html')
+  if (gameTool) return { ...gameTool, canonical: `https://buildforgetools.com${gameTool.path}`, robots: 'index, follow' }
   if (normalized === throwingDisc.path || normalized === throwingDisc.path + '/index.html') return {
     kind: 'throwing-disc',
     title: throwingDisc.title,

@@ -37,3 +37,8 @@
   .atlas-panel .cols { grid-template-columns: 1fr; }
   .atlas-panel .filters label { width: 100%; }
 }
+.atlas-import { display: flex; align-items: center; gap: 10px; margin: 6px 0 18px; }
+.atlas-import input { margin: 0; min-width: 0; }
+.atlas-import button { white-space: nowrap; }
+.atlas-panel #lost-links h3 { font-size: 16px; margin: 16px 0 10px; }
+.atlas-panel #lost-links ul { padding-left: 1.5rem; color: #c3c9d1; line-height: 1.6; }

@@ -1,0 +1,19 @@
+.field-guide .sd-main { padding-top:28px; }.field-guide { --field-accent:#ddbe86;--field-border:#393d42; }
+.field-intro { padding:clamp(20px,3.6vw,48px);background:linear-gradient(112deg,#252334,#151b23);border:1px solid var(--field-border);border-radius:12px; }
+.deck-page .field-intro { background:linear-gradient(112deg,#2c2820,#141a20); }
+.field-guide h1 { margin:8px 0 12px;font:650 clamp(38px,5.2vw,68px)/1.06 Cinzel,Georgia,serif;letter-spacing:-.035em; }
+.field-intro p:not(.sd-kicker),.field-reading p,.field-tool p,.deck-steps li { color:#c6c9cc;line-height:1.65;max-width:77ch; }
+.field-tool { margin-top:20px;padding:clamp(18px,2.75vw,34px);background:#15191f;border:1px solid var(--field-border);border-radius:9px;min-width:0; }
+.field-guide h2 { margin:0 0 14px;font-size:clamp(22px,2.7vw,34px); }.field-toolhead,.deck-bindings div { display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap; }
+.field-tool label { display:block;font-size:14px;color:#d6d6d1;font-weight:650; }
+.field-tool select { display:block;background:#20252c;color:#f0eade;border:1px solid #747777;border-radius:5px;padding:9px 12px;min-height:44px;font:inherit;max-width:100%;margin:5px 0; }
+.field-highlight { padding:16px 20px;background:#252735;border-left:3px solid #b79bd1;margin:16px 0; }.field-highlight strong{color:#e1cbef}.field-highlight p{font-size:clamp(21px,3vw,32px);margin:4px 0;color:#fff4e0}.field-highlight small { color:#d2ccd6; }
+.field-tool table {width:100%;border-collapse:collapse;text-align:left;font-size:14px}.field-tool td,.field-tool th {padding:11px 8px;border-bottom:1px solid #373941;overflow-wrap:anywhere}.field-tool caption{text-align:left;padding:10px 0;color:#cbc4bb}
+.field-reading {border-top:1px solid var(--field-border);padding:24px 0 0;margin:26px 0}.field-guide main a{color:#e4bf83;text-decoration:underline;text-underline-offset:3px}.field-guide :focus-visible{outline:3px solid #efc88e;outline-offset:3px}
+.field-columns {display:grid;grid-template-columns:1.1fr 1fr;gap:18px}.deck-steps{padding-left:1.4em}.deck-steps li{padding-left:4px;margin-bottom:14px}.deck-steps strong{color:#f0eadf}.deck-bindings{margin:14px 0}.deck-bindings div{border-bottom:1px solid #3c3f44;padding:8px 0}.deck-bindings dd{margin:0}.deck-bindings kbd{display:inline-block;padding:2px 9px;border:1px solid #827553;border-radius:4px;color:#efcf91}.field-reading summary{cursor:pointer;padding:10px 0;font-weight:650}.field-reading details>p{margin:0 0 12px}.field-reading details{border-bottom:1px solid #373c42}
+@media(max-width:720px){.field-columns{grid-template-columns:1fr;gap:0}.field-tool td,.field-tool th{padding:8px 4px}.field-tool table{font-size:13px}}
+.field-intro{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:clamp(18px,3vw,40px)}
+.field-intro figure{margin:0}.field-intro img{display:block;width:100%;height:auto;border-radius:6px}.field-intro figcaption{font-size:12px;color:#c7c4bd;margin-top:6px}
+.sd-game-guides{margin-top:30px;padding-top:24px;border-top:1px solid #ffffff20}.sd-game-guides .sd-focused-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.sd-game-guides article{min-height:auto}.sd-game-guides h3 a{font-size:17px;padding:0}
+@media(max-width:800px){.field-intro{grid-template-columns:1fr}.sd-game-guides .sd-focused-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:500px){.sd-game-guides .sd-focused-grid{grid-template-columns:1fr}}

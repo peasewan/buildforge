@@ -1,6 +1,26 @@
 {
   "redirects": [
     {
+      "source": "/roblox/stand-out/stand-picker/index.html",
+      "destination": "/roblox/stand-out/stand-picker",
+      "permanent": true
+    },
+    {
+      "source": "/fortnite/treasure-hours/index.html",
+      "destination": "/fortnite/treasure-hours",
+      "permanent": true
+    },
+    {
+      "source": "/minecraft/dungeons-2-crossplay/index.html",
+      "destination": "/minecraft/dungeons-2-crossplay",
+      "permanent": true
+    },
+    {
+      "source": "/wow-forever-steam-deck/index.html",
+      "destination": "/wow-forever-steam-deck",
+      "permanent": true
+    },
+    {
       "source": "/minecraft/throwing-disc/index.html",
       "destination": "/minecraft/throwing-disc",
       "permanent": true
@@ -855,6 +875,10 @@
     }
   ],
   "rewrites": [
+    { "source": "/roblox/stand-out/stand-picker", "destination": "/roblox/stand-out/stand-picker/index.html" },
+    { "source": "/fortnite/treasure-hours", "destination": "/fortnite/treasure-hours/index.html" },
+    { "source": "/minecraft/dungeons-2-crossplay", "destination": "/minecraft/dungeons-2-crossplay/index.html" },
+    { "source": "/wow-forever-steam-deck", "destination": "/wow-forever-steam-deck/index.html" },
     { "source": "/minecraft/throwing-disc", "destination": "/minecraft/throwing-disc/index.html" },
     { "source": "/wow-forever-respec-cost-calculator", "destination": "/wow-forever-respec-cost-calculator/index.html" },
     { "source": "/roblox/the-forge/frost-star", "destination": "/roblox/the-forge/frost-star/index.html" },

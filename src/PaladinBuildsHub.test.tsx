@@ -28,7 +28,7 @@ describe('Paladin builds hub', () => {
     render(<PaladinBuildsHub />)
 
     expect(screen.getByRole('heading', { level: 1, name: 'WoW Forever Paladin Builds & Talent Calculator' })).toBeTruthy()
-    for (const spec of HUB_SPECIALIZATIONS) expect(screen.getByRole('heading', { name: spec.name }).closest('a')?.getAttribute('href')).toBe(resolvePageHref(spec.href))
+    for (const spec of HUB_SPECIALIZATIONS) expect(screen.getByRole('heading', { level: 3, name: spec.name }).closest('a')?.getAttribute('href')).toBe(resolvePageHref(spec.href))
     expect(document.querySelector('a[href="/paladin"]')).toBeTruthy()
   })
 
@@ -79,7 +79,7 @@ describe('Paladin builds hub', () => {
     for (const spec of HUB_SPECIALIZATIONS) {
       const hub = SPEC_BUILDS_HUBS.find((candidate) => candidate.spec === spec.id)
 
-      if (hub) expect(screen.getByRole('heading', { name: spec.name }).closest('a')?.getAttribute('href')).toBe(resolvePageHref(`/${hub.slug}`))
+      if (hub) expect(screen.getByRole('heading', { level: 3, name: spec.name }).closest('a')?.getAttribute('href')).toBe(resolvePageHref(`/${hub.slug}`))
     }
   })
 
@@ -111,7 +111,7 @@ describe('Paladin builds hub', () => {
     render(<PaladinBuildsHub />)
 
     for (const spec of HUB_SPECIALIZATIONS) {
-      const link = screen.getByRole('heading', { name: spec.name }).closest('a')!
+      const link = screen.getByRole('heading', { level: 3, name: spec.name }).closest('a')!
       expect(link.getAttribute('href')).toBe(resolvePageHref(spec.href))
       clickWithoutNavigation(link)
       expect(events.filter(entry => entry.params.placement === `spec-${spec.id}`)).toEqual([

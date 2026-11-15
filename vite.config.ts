@@ -65,6 +65,10 @@ export default defineConfig(({ mode }) => ({
   build: {
     rollupOptions: {
       input: {
+        standOutPage: resolve(import.meta.dirname, 'roblox/stand-out/stand-picker/index.html'),
+        treasureHoursPage: resolve(import.meta.dirname, 'fortnite/treasure-hours/index.html'),
+        dungeonsCrossplayPage: resolve(import.meta.dirname, 'minecraft/dungeons-2-crossplay/index.html'),
+        steamDeckPage: resolve(import.meta.dirname, 'wow-forever-steam-deck/index.html'),
         throwingDisc: resolve(import.meta.dirname, 'minecraft/throwing-disc/index.html'),
         frostStar: resolve(import.meta.dirname, 'roblox/the-forge/frost-star/index.html'),
         poeAtlasCompare: resolve(import.meta.dirname, 'poe-atlas-tree-compare/index.html'),

@@ -1,0 +1,23 @@
+.stand-page .sd-main { padding-top: 26px; }
+.stand-hero { display:grid;grid-template-columns:1fr 1.08fr;align-items:center;gap:26px;background:linear-gradient(110deg,#242031,#171820);border:1px solid #484052;border-radius:12px;padding:clamp(20px,3vw,38px); }
+.stand-hero h1 { margin:8px 0 12px;font:650 clamp(44px,5.5vw,76px)/1.06 Cinzel,Georgia,serif;color:#f5eddd; }
+.stand-hero p:not(.sd-kicker), .stand-reading p { max-width:74ch;line-height:1.65;color:#c4c2ca; }
+.stand-hero img { width:100%;height:auto;display:block;border-radius:6px; }
+.stand-page h2 { margin:0 0 16px;font-size:clamp(23px,3vw,34px); }
+.stand-compare { margin:32px 0;scroll-margin-top:16px; }
+.stand-compare fieldset { display:flex;flex-wrap:wrap;gap:10px 20px;border:0;margin:0 0 18px;padding:0; }
+.stand-compare legend,.stand-card label { font-size:14px;font-weight:650;color:#ded7dd; }
+.stand-compare legend { margin:0 0 8px; }
+.stand-compare fieldset label { display:inline-flex;align-items:center;gap:7px;min-height:38px;cursor:pointer; }
+.stand-compare input { accent-color:#dbb778; }
+.stand-pair { display:grid;grid-template-columns:1fr 1fr;gap:18px; }
+.stand-card { min-width:0;background:#17171d;border:1px solid #3d3845;border-radius:9px;padding:clamp(18px,2.5vw,30px); }
+.stand-card select { display:block;width:100%;color:#f4efe4;background:#24232a;font:inherit;font-size:17px;margin:7px 0;padding:10px;border:1px solid #77717e;border-radius:4px;min-height:44px; }
+.stand-meta { margin:8px 0 18px;color:#e7bc80;font-size:14px; }.stand-meta span { padding:0 4px; }
+.stand-route { border-left:3px solid #a08bb9;padding-left:13px;margin:16px 0 24px; }
+.stand-card h3 { margin:0 0 6px;font:650 18px/1.35 Inter,Arial,sans-serif; }
+.stand-route p { color:#c9c3cd;line-height:1.6;margin:0; }
+.stand-moves { margin:0 0 18px; }.stand-moves div { display:flex;align-items:baseline;justify-content:space-between;gap:14px;padding:10px 0;border-bottom:1px solid #38353e; }.stand-moves dt {overflow-wrap:anywhere;}.stand-moves dd { margin:0;color:#ddceeb;white-space:nowrap;font-variant-numeric:tabular-nums; }
+.stand-card a,.stand-reading a { color:#e4bf83;text-decoration:underline;text-underline-offset:3px; }
+.stand-reading { border-top:1px solid #38353e;padding-top:24px; }.stand-page :focus-visible { outline:3px solid #f0c781;outline-offset:3px; }
+@media(max-width:720px){.stand-hero,.stand-pair{grid-template-columns:1fr}.stand-pair{gap:12px}.stand-compare fieldset{gap:0 16px}.stand-moves dd{white-space:normal}}
