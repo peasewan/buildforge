@@ -59,6 +59,14 @@ export default function SiteDiscoveryPage({ pageId }: { pageId: DiscoveryId }) {
             <a className="sd-primary" href="/roblox/the-forge/frost-star">Frost Star farming guide <ArrowRight size={17} /></a>
           </div>
         </article>
+        <article className="sd-game">
+          <img className="sd-game-art" loading="lazy" src="/images/minecraft/throwing-disc.webp" alt="" />
+          <div className="sd-game-content">
+            <p className="sd-kicker">MINECRAFT · WEAPON GUIDE</p><h2>Minecraft</h2>
+            <p>Check when the throwing disc comes to Java and Bedrock, which materials Mojang showed and how a throw returns.</p>
+            <a className="sd-primary" href="/minecraft/throwing-disc">Throwing disc guide <ArrowRight size={17} /></a>
+          </div>
+        </article>
         <article className="sd-game sd-invokyr"><div className="sd-game-content"><p className="sd-kicker">CO-OP CHECKER · DEMO ENDING</p><h2>Invokyr</h2><p>Check your group size against the Demo or announced Early Access rules. Read a source-linked Demo ending answer with a spoiler warning and step check.</p><a className="sd-primary" href="/invokyr">Open Invokyr Companion <ArrowRight size={17}/></a></div><nav className="sd-quick" aria-label="Invokyr tools"><a href="/invokyr-multiplayer">Co-op Checker</a><a href="/invokyr#ending">Demo Ending Troubleshooter</a></nav></article>
         <article className="sd-game sd-ember"><img className="sd-game-art" src="/images/emberville/planner-hero.jpg" alt="" /><div className="sd-game-content"><p className="sd-kicker">PREVIEW NOTEBOOK · SOURCED MECHANICS</p><h2>Emberville</h2><p>Review confirmed mechanics and save a combat direction, class and weapon ideas, and private notes. This preview cannot validate builds or inherited skill combinations.</p><a className="sd-primary" href="/emberville">Open preview notebook <ArrowRight size={17} /></a><a className="sd-secondary" href="/emberville#build-directions">Read build mechanics <ArrowRight size={15} /></a></div><nav className="sd-quick" aria-label="Emberville references"><a href="/emberville-classes">Classes</a><a href="/emberville#skill-inheritance">Skill inheritance</a></nav></article></section>
         <section className="sd-focused-routes" aria-labelledby="sd-focused-routes-title">

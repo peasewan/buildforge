@@ -65,6 +65,7 @@ export default defineConfig(({ mode }) => ({
   build: {
     rollupOptions: {
       input: {
+        throwingDisc: resolve(import.meta.dirname, 'minecraft/throwing-disc/index.html'),
         frostStar: resolve(import.meta.dirname, 'roblox/the-forge/frost-star/index.html'),
         poeAtlasCompare: resolve(import.meta.dirname, 'poe-atlas-tree-compare/index.html'),
         invokyrHome: resolve(import.meta.dirname, 'invokyr/index.html'),

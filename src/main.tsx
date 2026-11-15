@@ -50,3 +50,4 @@ import './invokyr.css'
 
 import './TalentEconomyPage.css'
 import './FrostStarPage.css'
+import './ThrowingDiscPage.css'

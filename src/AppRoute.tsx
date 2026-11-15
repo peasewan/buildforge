@@ -1,4 +1,5 @@
 import { resolvePageHref } from './lib/pageRetirement'
+import ThrowingDiscPage from './ThrowingDiscPage'
 import FrostStarPage from './FrostStarPage'
 import InvokyrPage from './InvokyrPage'
 import TalentEconomyPage from './TalentEconomyPage'
@@ -28,6 +29,7 @@ import { pageForPath } from './lib/routes'
 
 function routeElement(pathname: string) {
   const route = pageForPath(pathname)
+  if (route.kind === 'throwing-disc') return <ThrowingDiscPage />
   if (route.kind === 'frost-star') return <FrostStarPage />
   if (route.kind === 'talent-economy') return <TalentEconomyPage />
   if (route.kind === 'retired') return <main className="shell"><h1>This page has been retired</h1><p>This resource is no longer maintained.</p><a href="/">Browse current tools</a></main>
@@ -63,5 +65,5 @@ export default function AppRoute({ pathname }: { pathname: string }) {
   const route = pageForPath(pathname)
   const classPage = publishedClassPage(pathname)
   const classId = classPage?.classDef.id ?? (pathname === '/paladin' || pathname === '/build' || pathname.includes('paladin') ? 'paladin' : undefined)
-  return <>{classId && <BetaPatchNotice classId={classId} />}{routeElement(pathname)}<FeedbackWidget inline={route.kind === 'glimmerwick-launch' || route.kind === 'invokyr'} /></>
+  return <>{classId && <BetaPatchNotice classId={classId} />}{routeElement(pathname)}<FeedbackWidget inline={route.kind === 'throwing-disc' || route.kind === 'glimmerwick-launch' || route.kind === 'invokyr'} /></>
 }

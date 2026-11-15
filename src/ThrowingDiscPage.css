@@ -1,0 +1,46 @@
+.disc-page { --disc-line: #35413d; --disc-ink: #f0ece3; --disc-muted: #bcc5bd; --disc-gold: #ebc789; }
+.disc-page .sd-main { padding-top: 28px; }
+.disc-page :focus-visible { outline: 3px solid var(--disc-gold); outline-offset: 4px; }
+.disc-page h1, .disc-page h2 { color: var(--disc-ink); margin: 0; }
+.disc-page h2 { font-size: clamp(22px, 2.6vw, 32px); line-height: 1.2; }
+.disc-page p { line-height: 1.6; }
+.disc-hero { display: grid; grid-template-columns: 1fr 1.12fr; align-items: center; gap: clamp(18px, 3vw, 44px); padding: clamp(21px, 3.5vw, 44px); border: 1px solid var(--disc-line); background: linear-gradient(110deg, #19241f, #141a18 62%, #121714); border-radius: 12px; }
+.disc-intro .sd-kicker { margin: 0 0 12px; }
+.disc-intro h1 { font: 650 clamp(40px, 4.1vw, 58px)/1.03 Cinzel, Georgia, serif; letter-spacing: -.045em; }
+.disc-intro > p:not(.sd-kicker) { color: #d0d7ce; max-width: 44ch; font-size: 16px; margin: 15px 0 20px; }
+.disc-page .disc-jump { display: inline-flex; align-items: center; gap: 18px; min-height: 44px; padding: 10px 16px; border-radius: 5px; background: var(--disc-gold); color: #262115; font-weight: 700; font-size: 14px; }
+.disc-page .disc-jump:hover { background: #ffe0a8; }
+.disc-hero figure { margin: 0; }
+.disc-hero img { display: block; width: 100%; height: auto; border-radius: 6px; border: 1px solid #536053; }
+.disc-hero figcaption { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2px 12px; margin-top: 8px; color: #bdc6bc; font-size: 12px; }
+.disc-status { margin: 32px 0 22px; scroll-margin-top: 16px; }
+.disc-section-title { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 5px 18px; }
+.disc-section-title p, .disc-source time { margin: 0; font-size: 13px; color: var(--disc-muted); }
+.disc-status table { width: 100%; border-collapse: collapse; margin-top: 16px; text-align: left; font-size: 15px; }
+.disc-status th, .disc-status td { padding: 15px clamp(8px, 2vw, 24px); border-bottom: 1px solid var(--disc-line); }
+.disc-status thead { background: #19221e; color: #c8ccbe; font-size: 13px; }
+.disc-status tbody { background: #121715; color: var(--disc-ink); }
+.disc-status tbody th { color: #d9e7d8; }
+.disc-status > p, .disc-card p, .disc-moves dd { color: var(--disc-muted); font-size: 15px; }
+.disc-status > p { max-width: 86ch; margin: 12px 0 0; }
+.disc-status p a, .disc-source a { color: var(--disc-gold); text-decoration: underline; text-underline-offset: 3px; }
+.disc-page a svg { vertical-align: text-bottom; }
+.disc-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.disc-card { border: 1px solid var(--disc-line); background: #121715; border-radius: 9px; padding: clamp(19px, 2.5vw, 32px); }
+.disc-materials { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; padding: 0; margin: 20px 0; }
+.disc-materials li { display: inline-flex; align-items: center; gap: 9px; padding: 7px 10px; border: 1px solid #3b453e; border-radius: 4px; font-size: 13px; }
+.disc-materials i { width: 10px; height: 10px; transform: rotate(45deg); box-shadow: inset -2px -2px #0003; }
+.disc-materials .copper { background: #cb865b; }.disc-materials .iron { background: #d1d1cf; }.disc-materials .gold { background: #e8c358; }.disc-materials .diamond { background: #5ad8c7; }.disc-materials .netherite { background: #988b95; }
+.disc-card .disc-note { border-top: 1px solid var(--disc-line); padding-top: 14px; margin: 0; }
+.disc-moves { display: grid; gap: 14px; margin: 16px 0 0; }
+.disc-moves dt { display: flex; align-items: center; gap: 10px; font-weight: 700; }
+.disc-moves svg { width: 19px; height: 19px; color: #a1c5ab; }
+.disc-moves dd { margin: 4px 0 0 29px; line-height: 1.5; }
+.disc-source { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 18px; border-top: 1px solid var(--disc-line); padding-top: 18px; margin-top: 24px; font-size: 14px; }
+@media (max-width: 760px) {
+  .disc-hero, .disc-columns { grid-template-columns: 1fr; }
+  .disc-section-title { align-items: start; }
+  .disc-status table { font-size: 14px; }
+  .disc-status th, .disc-status td { padding: 12px 8px; }
+  .disc-source { align-items: start; }
+}

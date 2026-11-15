@@ -1,6 +1,11 @@
 {
   "redirects": [
     {
+      "source": "/minecraft/throwing-disc/index.html",
+      "destination": "/minecraft/throwing-disc",
+      "permanent": true
+    },
+    {
       "source": "/roblox/the-forge/frost-star/index.html",
       "destination": "/roblox/the-forge/frost-star",
       "permanent": true
@@ -850,6 +855,7 @@
     }
   ],
   "rewrites": [
+    { "source": "/minecraft/throwing-disc", "destination": "/minecraft/throwing-disc/index.html" },
     { "source": "/wow-forever-respec-cost-calculator", "destination": "/wow-forever-respec-cost-calculator/index.html" },
     { "source": "/roblox/the-forge/frost-star", "destination": "/roblox/the-forge/frost-star/index.html" },
     { "source": "/poe-atlas-tree-compare", "destination": "/poe-atlas-tree-compare/index.html" },
