@@ -1,0 +1,92 @@
+.talent-economy-page { min-height: 100vh; background: radial-gradient(ellipse at 80% 0, #b7862c12, transparent 38%), #090c10; color: #e8e5de; }
+.te-shell { width: min(1240px, calc(100% - 64px)); margin-inline: auto; }
+.te-header { min-height: 82px; display: flex; align-items: center; justify-content: space-between; gap: 24px; border-bottom: 1px solid #d9a44124; }
+.te-brand { display: inline-flex; align-items: center; gap: 7px; font: 700 17px Georgia, serif; letter-spacing: 2px; }
+.te-brand svg, .te-brand b { color: #d9a441; }
+.te-header nav { display: flex; flex-wrap: wrap; gap: 24px; color: #b3b6bd; font-size: 13px; }
+.te-header nav a, .te-calculator-cta a, .te-hero-link { display: inline-flex; align-items: center; gap: 8px; }
+.te-hero { display: grid; grid-template-columns: minmax(0, 1fr) 270px; align-items: center; gap: 70px; padding: 65px 0 54px; }
+.te-kicker { margin: 0 0 12px; color: #d1ac60; font-size: 10px; font-weight: 700; letter-spacing: .16em; line-height: 1.5; }
+.te-hero h1 { margin: 0; max-width: 830px; color: #f0e6ce; font: 600 clamp(34px, 4.4vw, 57px)/1.12 Georgia, serif; letter-spacing: -.03em; }
+.te-lead { max-width: 650px; margin: 23px 0 14px; color: #b2b6be; font-size: 17px; line-height: 1.75; }
+.te-review { color: #8d949f; font-size: 11px; line-height: 1.6; }
+.te-hero-link { margin-top: 22px; color: #e3bd6b; font-size: 13px; }
+.te-hero-note { padding: 25px; border: 1px solid #d9a44136; border-radius: 12px; background: linear-gradient(135deg, #d9a4410c, #12171c); }
+.te-hero-note > svg { color: #d9ad58; margin-bottom: 22px; }
+.te-hero-note > span { display: block; color: #a89c83; font-size: 9px; letter-spacing: .13em; }
+.te-hero-note > strong { display: block; margin: 12px 0; color: #edd5a1; font: 500 30px Georgia, serif; }
+.te-hero-note p { color: #c0c1c3; font-size: 13px; line-height: 1.65; }
+.te-hero-note small { display: block; color: #8d949f; font-size: 11px; line-height: 1.6; }
+.te-workspace { display: grid; grid-template-columns: minmax(280px, .78fr) minmax(0, 1.25fr); gap: 24px; align-items: start; scroll-margin-top: 24px; }
+.te-input-panel, .te-result-panel { min-width: 0; padding: 28px; border: 1px solid #ffffff17; border-radius: 12px; background: linear-gradient(145deg, #171d25, #0e131a); }
+.te-result-panel { border-color: #d9a44130; }
+.talent-economy-page h2 { margin: 0 0 14px; color: #eee4ce; font: 500 clamp(23px, 2.4vw, 29px)/1.25 Georgia, serif; }
+.te-input-panel > p:not(.te-kicker), .te-section-heading > p:not(.te-kicker) { margin: 0 0 20px; color: #a5acb6; font-size: 13px; line-height: 1.75; }
+.te-mode { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; min-width: 0; padding: 0; margin: 25px 0 22px; border: 0; }
+.te-mode legend { margin-bottom: 11px; color: #c0c5cd; font-size: 12px; line-height: 1.6; }
+.te-mode label { display: flex; align-items: center; gap: 9px; padding: 12px 9px; border: 1px solid #ffffff20; border-radius: 7px; font-size: 12px; cursor: pointer; }
+.te-mode label:has(input:checked) { border-color: #d9a44191; color: #eed294; background: #d9a4410c; }
+.te-mode input { width: 14px; height: 14px; margin: 0; accent-color: #d9a441; flex: 0 0 auto; }
+.te-field { min-width: 0; margin-bottom: 20px; }
+.te-field label { display: block; color: #d4d7dc; margin-bottom: 9px; font-size: 12px; font-weight: 600; line-height: 1.5; }
+.te-field > input, .te-field > textarea { width: 100%; min-height: 44px; padding: 11px 12px; border: 1px solid #ffffff2b; border-radius: 6px; background: #090e14; color: #f0e7d1; font: 400 16px/1.5 Inter, sans-serif; }
+.te-field > textarea { resize: vertical; }
+.te-field p { margin: 8px 0 0; color: #979faa; font-size: 11px; line-height: 1.65; }
+.te-field-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.te-text-button { display: inline-flex; align-items: center; justify-content: flex-start; gap: 7px; min-height: 44px; padding: 8px 0; border: 0; background: transparent; color: #d4b365; font-size: 12px; cursor: pointer; }
+.te-notice { display: flex; gap: 11px; align-items: flex-start; padding: 14px; margin: 18px 0; border: 1px solid #d9a44145; border-radius: 7px; background: #d9a44109; color: #c2bda9; font-size: 12px; line-height: 1.7; }
+.te-notice > svg { flex: 0 0 auto; color: #d8b565; margin-top: 1px; }
+.te-notice strong { color: #e3cca0; }
+.te-totals { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 24px; }
+.te-totals article { padding: 17px; border: 1px solid #ffffff12; border-radius: 8px; background: #ffffff03; }
+.te-totals article > span { display: block; color: #b7bcc5; font-size: 11px; }
+.te-totals article > output { display: block; margin: 12px 0 9px; color: #edcf8b; font: 500 clamp(23px, 2.7vw, 33px)/1.25 Georgia, serif; overflow-wrap: anywhere; }
+.te-totals small, .te-totals p { display: block; margin: 0; color: #a0a6af; font-size: 11px; line-height: 1.6; }
+.te-totals p { margin-bottom: 8px; color: #d5c19a; }
+.te-bars { display: grid; gap: 10px; padding: 22px 0; }
+.te-bars > div { display: grid; grid-template-columns: 65px 1fr; align-items: center; gap: 13px; }
+.te-bars span { color: #929ba8; font-size: 10px; }
+.te-bars i { display: block; height: 8px; border-radius: 3px; background: #7d8797; max-width: 100%; }
+.te-bars > div:last-child i { background: #d2aa57; }
+.te-outcome-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 17px; padding: 22px 0; border-bottom: 1px solid #ffffff12; }
+.te-outcome-grid h3 { margin: 0 0 12px; color: #c3c9d0; font-size: 12px; font-weight: 500; }
+.te-outcome-grid output { display: block; color: #ece4d1; font-size: 17px; line-height: 1.5; }
+.te-outcome-grid p { margin: 10px 0 0; color: #9ba4b0; font-size: 11px; line-height: 1.7; }
+.te-saving-positive output { color: #9bd7af; }
+.te-table-scroll { max-width: 100%; max-height: 420px; overflow: auto; margin-top: 20px; }
+.te-table-scroll table { width: 100%; min-width: 390px; border-collapse: collapse; color: #b8bfc9; font-size: 12px; }
+.te-table-scroll caption { text-align: left; color: #b6bdc8; padding-bottom: 15px; font-size: 11px; line-height: 1.5; }
+.te-table-scroll th, .te-table-scroll td { text-align: right; padding: 12px 9px; border-bottom: 1px solid #ffffff0c; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.te-table-scroll th:first-child { text-align: left; }
+.te-table-scroll thead th { color: #8e98a6; font-size: 10px; font-weight: 500; }
+.te-table-scroll tbody th { font-weight: 400; color: #8e98a6; }
+.te-table-scroll td:last-child { color: #d1b779; }
+.te-result-limit, .te-empty { color: #9aa3af; font-size: 11px; line-height: 1.8; margin: 20px 0 0; }
+.te-error { padding: 12px; color: #d0b88e; }
+.te-error > svg { margin-bottom: 15px; }
+.te-error p { color: #c6b9a3; font-size: 13px; line-height: 1.75; }
+.te-sources { margin-top: 80px; scroll-margin-top: 24px; }
+.te-section-heading { max-width: 760px; }
+.te-source-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 19px; margin-top: 26px; }
+.te-source-grid article { padding: 23px; border-top: 1px solid #d9a44140; background: #ffffff02; }
+.te-source-grid h3 { margin: 17px 0 13px; color: #d9c494; font-size: 13px; line-height: 1.7; }
+.te-source-grid h3 svg { display: inline; vertical-align: middle; }
+.te-source-grid p { margin: 0; color: #a4abb5; font-size: 12px; line-height: 1.85; }
+.te-faq { max-width: 880px; margin: 76px auto 0; scroll-margin-top: 24px; }
+.te-faq h2 { margin-bottom: 27px; }
+.te-faq details { border-top: 1px solid #ffffff17; }
+.te-faq details:last-child { border-bottom: 1px solid #ffffff17; }
+.te-faq summary { min-height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 17px 0; list-style: none; color: #d3d5d9; font-size: 14px; line-height: 1.6; cursor: pointer; }
+.te-faq summary::-webkit-details-marker { display: none; }
+.te-faq summary svg { flex: 0 0 auto; color: #ad9257; }
+.te-faq details[open] summary { color: #e0bf7c; }
+.te-faq details p { padding: 0 26px 22px 0; margin: 0; color: #a4adb9; font-size: 13px; line-height: 1.9; }
+.te-calculator-cta { display: grid; grid-template-columns: 35px 1fr auto; gap: 23px; align-items: center; margin: 75px 0 80px; padding: 28px; border: 1px solid #d9a4413d; border-radius: 10px; background: #d9a44107; }
+.te-calculator-cta > svg { color: #d2ae61; }
+.te-calculator-cta h2 { margin-bottom: 9px; font-size: 23px; }
+.te-calculator-cta p { margin: 0; color: #a6abb4; font-size: 12px; line-height: 1.7; }
+.te-calculator-cta a { color: #dfbf7c; font-size: 12px; line-height: 1.5; }
+.talent-economy-page :is(a, button, input, textarea, summary, [tabindex]):focus-visible { outline: 2px solid #edc971; outline-offset: 4px; }
+@media (max-width: 1000px) { .te-hero { gap: 35px; grid-template-columns: minmax(0, 1fr) 225px; }.te-workspace { grid-template-columns: minmax(260px, .85fr) minmax(0, 1fr); }.te-input-panel, .te-result-panel { padding: 21px; }.te-totals { grid-template-columns: 1fr; }.te-outcome-grid { grid-template-columns: 1fr; }.te-calculator-cta { grid-template-columns: 35px 1fr; }.te-calculator-cta a { grid-column: 2; } }
+@media (max-width: 720px) { .te-shell { width: calc(100% - 36px); }.te-header { min-height: 76px; gap: 14px; }.te-brand { font-size: 13px; letter-spacing: 1px; gap: 4px; }.te-brand svg { width: 19px; }.te-header nav { gap: 14px; font-size: 11px; }.te-header nav a:last-child { display: none; }.te-hero { grid-template-columns: 1fr; gap: 27px; padding: 40px 0 32px; }.te-hero h1 { max-width: 550px; font-size: clamp(33px, 7vw, 45px); }.te-lead { font-size: 15px; margin-top: 19px; }.te-hero-note { padding: 19px; display: grid; grid-template-columns: 35px 1fr; column-gap: 15px; align-items: center; }.te-hero-note > svg { grid-row: 1 / 3; margin: 0; }.te-hero-note > strong { font-size: 24px; margin: 7px 0; }.te-hero-note p, .te-hero-note small { grid-column: 2; margin: 4px 0 0; }.te-workspace { grid-template-columns: 1fr; gap: 19px; }.te-input-panel, .te-result-panel { padding: 22px 19px; }.te-totals, .te-outcome-grid { grid-template-columns: 1fr 1fr; }.te-totals article { padding: 13px; }.te-totals article > output { font-size: 26px; }.te-source-grid { grid-template-columns: 1fr; gap: 13px; }.te-source-grid article { padding: 20px; }.te-sources { margin-top: 52px; }.te-faq { margin-top: 48px; }.te-faq summary { font-size: 13px; }.te-calculator-cta { padding: 22px 19px; margin: 46px 0 55px; gap: 17px; }.te-calculator-cta h2 { font-size: 21px; } }
+@media (max-width: 390px) { .te-totals, .te-outcome-grid { grid-template-columns: 1fr; }.te-mode label { font-size: 11px; padding-inline: 8px; }.te-field-pair { gap: 12px; } }

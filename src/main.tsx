@@ -47,3 +47,5 @@ import './paladin-decisions.css'
 import './paladin-archive.css'
 
 import './invokyr.css'
+
+import './TalentEconomyPage.css'

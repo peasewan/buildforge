@@ -1,4 +1,5 @@
 import { isRemovedPage, resolvePageHref } from './pageRetirement'
+import { TALENT_ECONOMY_PAGE } from '../data/talentEconomy'
 import { INVOKYR_PAGES, type InvokyrPageId } from '../data/invokyr'
 import { DISCOVERY_PAGES, type DiscoveryId } from '../data/siteDiscovery'
 import type { ExampleBuildId } from '../data/builds'
@@ -13,7 +14,7 @@ import { NIVALIS_PAGE } from '../data/nivalis'
 import { GLIMMERWICK_LAUNCH_PAGES, type GlimmerwickLaunchPageId } from '../data/glimmerwickLaunchPages'
 
 export interface PageDefinition {
-  kind: 'retired' | 'stress-test' | 'invokyr' | 'paladin-comparison' | 'discovery' | 'planner' | 'guide' | 'build-guide' | 'build-landing' | 'build-hub' | 'spec-hub' | 'spec-talents' | 'spellbook' | 'beta-changes' | 'trust' | 'emberville' | 'glimmerwick' | 'glimmerwick-launch' | 'nivalis' | 'class-calculator' | 'class-document'
+  kind: 'talent-economy' | 'retired' | 'stress-test' | 'invokyr' | 'paladin-comparison' | 'discovery' | 'planner' | 'guide' | 'build-guide' | 'build-landing' | 'build-hub' | 'spec-hub' | 'spec-talents' | 'spellbook' | 'beta-changes' | 'trust' | 'emberville' | 'glimmerwick' | 'glimmerwick-launch' | 'nivalis' | 'class-calculator' | 'class-document'
   invokyrPageId?: InvokyrPageId
   title: string
   description: string
@@ -119,6 +120,7 @@ export function pageForPath(pathname: string, search = ''): PageDefinition {
   if (isRemovedPage(normalized)) return { kind: 'retired', title: 'Page retired | BuildForgeTools', description: 'This resource is no longer maintained.', canonical: `https://buildforgetools.com${normalized}`, robots: 'noindex, follow' }
   const retained = resolvePageHref(normalized)
   if (retained !== normalized) return pageForPath(retained, search)
+  if (normalized === TALENT_ECONOMY_PAGE.path) return { kind: 'talent-economy', title: TALENT_ECONOMY_PAGE.title, description: TALENT_ECONOMY_PAGE.description, canonical: `https://buildforgetools.com${TALENT_ECONOMY_PAGE.path}`, robots: 'index, follow' }
   if (normalized === '/wow-forever-stress-test') return {
     kind: 'stress-test',
     title: 'WoW Forever Stress Test: October 19 Status | BuildForgeTools',

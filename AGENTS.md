@@ -181,7 +181,7 @@ Use the same daily comparison fields so decisions are based on trends rather tha
 
 ## Traffic-protected publication cleanup (November 15)
 
-- Current publication inventory is **83 indexable URLs**, including 49 framework pages. Historical 141/140/150 counts elsewhere describe earlier releases. The owner explicitly authorized this retirement; retained titles/H1s/canonicals stay stable.
+- The traffic-cleanup release has **83 indexable URLs**, including 49 framework pages; the independent Atlas and Talent Economy additions below advance the inventory to 85. Historical 141/140/150 counts elsewhere describe earlier releases. The owner explicitly authorized this retirement; retained titles/H1s/canonicals stay stable.
 - `src/data/pageConsolidations.ts` is the reviewed 55-entry consolidation map plus 3 gone screens. Decisions required zero GA4 pageviews during 2026-10-18..2026-11-14, zero GSC clicks since 2026-09-13 through final 2026-11-12, and redundant or obsolete/incomplete content. Detailed analytics stay in private local audit files, never browser data or the public repository.
 - Framework source records, allocations and exact rank evidence remain available through retained hub task selectors. Do not republish their retired standalone shells. Preserve final current-evidence enrichment for approved merged role tasks, even when their standalone pages are retired; complete selected-rank evidence is still required.
 - The two Glimmerwick help tools are embedded at `/songs-of-glimmerwick#first-days` and `#spellcasting`. Emberville inheritance is at `/emberville#skill-inheritance`; Protection dungeon reasoning is at `/wow-forever-protection-paladin-build#dungeon-tanking`; Ret hub content lives on its retained build page.
@@ -191,3 +191,11 @@ Use the same daily comparison fields so decisions are based on trends rather tha
 ## PoE Atlas comparison (November 15)
 
 - The separate /poe-atlas-tree-compare tool brings the indexable inventory to 84. It compares GGG standard Atlas exports 3.29.1 and 3.30.0 by skill ID, excluding mastery decorations. Effect text and neighboring IDs are compared; reachability and refund costs are not inferred. Regenerate with scripts/generate-atlas-comparison.py and the two tagged data.json files.
+
+
+## Talent Economy tool (November 15)
+
+- `/wow-forever-respec-cost-calculator` is one indexable tool covering respec cost, talent reset cost and dual spec cost. Current inventory is 85 URLs; the 55 consolidations and 3 gone screens from the cleanup remain retired.
+- `src/lib/talentEconomy.ts` compares user-entered budgets using integer copper. Fixed-quote mode is a constant-price scenario, not a forecast of the live fee ladder. Per-reset mode only sums supplied prices; missing future quotes remain unknown. A break-even is the first cumulative crossing within the available sequence, not a guarantee against later price changes.
+- The source review distinguishes Blizzard's major-city trainer/Level 40 dual-spec announcement from November 11 player-reported 1/5/10g reset fees and 50g dual unlock. Reported prices are editable budget assumptions (`derived_assumption`), not an official or client-verified price table. Historical September Beta 1-silver/hour rules do not become live defaults. Do not invent the full ladder, caps, discounts or decay schedule from Classic rules.
+- Comparing two saved game setups does not make later edits to either setup free. Editable dual-side per-change fees are budget assumptions. This tool neither unlocks dual spec in game nor changes Calculator Reset/A-B semantics or talent datasets, and cost calculations must not emit `build_complete`.

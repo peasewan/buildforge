@@ -71,6 +71,7 @@ export default defineConfig(({ mode }) => ({
         main: resolve(import.meta.dirname, 'index.html'),
         dungeonFinder: resolve(import.meta.dirname, 'wow-forever-dungeon-build-finder/index.html'),
         classPicker: resolve(import.meta.dirname, 'wow-forever-class-picker/index.html'),
+        talentEconomy: resolve(import.meta.dirname, 'wow-forever-respec-cost-calculator/index.html'),
         wowClasses: resolve(import.meta.dirname, 'wow-forever-classes/index.html'),
         wowBuilds: resolve(import.meta.dirname, 'wow-forever-builds/index.html'),
         paladin: resolve(import.meta.dirname, 'paladin/index.html'),
