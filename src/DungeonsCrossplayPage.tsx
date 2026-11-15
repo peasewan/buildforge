@@ -97,7 +97,9 @@ export default function DungeonsCrossplayPage() {
           {eligible && online && <div className="dc-store-links">{[...new Set(devices)].filter(p => storeLinks[p]).map(p => <a key={p} href={storeLinks[p]}>{p} requirements</a>)}</div>}
         </section>
       </div>
-      <section className="dc-notes"><h2>When only one friend can’t join</h2>
+      <section className="dc-notes"><h2>Can three people on one console play with a friend on PC?</h2><p>Yes. Three local heroes and one remote hero fill the four-player party. Set the checker to Couch + online, choose three players on the host device and one remote player. Everyone joining the online party needs an Online Hero.</p>
+        <p>Two players on separate consoles can instead choose Online and join with the host’s code. If everyone is in the same room on a single console, choose Couch co-op and connect a controller for each extra player.</p>
+        <h2>When only one friend can’t join</h2>
         <p>Have the affected player try a fresh code before everyone changes settings. If another friend can join the same party, compare the affected player’s game version, hero type and multiplayer permissions with the working setup. <a href={guide}>Minecraft’s multiplayer help</a></p>
         <p>Updates can arrive on different platforms at different times. Look for your device in the release notes when an update is missing from its store. <a href={patches}>Dungeons II changelogs</a></p>
       </section>

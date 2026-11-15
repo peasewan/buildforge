@@ -26,6 +26,11 @@ export default function RacialComparison({className, setClassName, activity}:{cl
       {r.name.endsWith('Skyborne') && <p><small>Requires the Skyborne race unlock from an optional digital pack. <a href={raceSources.access}>Blizzard access details</a>.</small></p>}
       <strong>{activityLabel}</strong><p>{r.uses[activity]} {r.pairing?.[className]}</p>
     </article>)}</div>
+    <details><summary>See every race and class combination</summary>
+      <table className="wow-route-table"><caption>WoW Forever launch character creation</caption><thead><tr><th scope="col">Class</th><th scope="col">Alliance</th><th scope="col">Horde</th></tr></thead>
+      <tbody>{raceClasses.map(name => <tr key={name}><th scope="row">{name}</th>{(['Alliance', 'Horde'] as const).map(side => <td key={side}>{raceChoices.filter(r => r.faction === side && r.classes.includes(name)).map(r => r.name).join(', ')}</td>)}</tr>)}</tbody></table>
+      <p>Choose your class above to compare individual racial abilities. Skyborne options require the corresponding unlock.</p>
+    </details>
     <p><small>Selected racials and editorial use cases. <a href={raceSources.matrix}>Blizzard race and class tables</a> · <a href={raceSources.tooltips}>November 14 client tooltips</a> · <a href={raceSources.guide}>Method’s November 5 guide</a>.</small></p>
   </section>
 }

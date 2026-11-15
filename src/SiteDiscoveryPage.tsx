@@ -73,6 +73,7 @@ export default function SiteDiscoveryPage({ pageId }: { pageId: DiscoveryId }) {
           <div className="sd-focused-heading"><h2 id="sd-game-guides">More game tools</h2></div>
           <div className="sd-focused-grid">{[
             ['/roblox/stand-out/stand-picker', 'Stand Out', 'Check how to get a Stand and compare two movesets.'],
+            ['/roblox/stand-out/arrow-calculator', 'Stand Out arrow calculator', 'Compare the odds for Lucky and Bizarre Arrows with your crafting or token budget.'],
             ['/fortnite/treasure-hours', 'Fortnite Treasure Hours', 'Find the event window in your time zone.'],
             ['/minecraft/dungeons-2-crossplay', 'Minecraft Dungeons II', 'Check your co-op setup and resolve connection problems.'],
             ['/wow-forever-steam-deck', 'WoW Forever on Steam Deck', 'Set up your controls and plan class bindings.'],

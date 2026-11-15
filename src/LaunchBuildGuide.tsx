@@ -18,6 +18,15 @@ export default function LaunchBuildGuide({id}:{id:LaunchClass}) {
       <p><a href={build.href} className="button primary">Edit allocated build on Forever XP ↗</a></p>
       <small>Allocation and playstyle are editorial choices. <a href={route.source}>{route.credit}</a>.</small>
     </article>
+    <details className="wow-build-options"><summary>Compare all four launch builds</summary>
+      <table className="wow-route-table"><caption>Level, purpose and complete talent allocation</caption><thead><tr><th scope="col">Build</th><th scope="col">Level</th><th scope="col">When to use it</th></tr></thead>
+      <tbody>{(Object.keys(buildActivities) as Array<keyof typeof buildActivities>).map(key => {
+        const option = launchChoices[id][key]
+        const allocation = launchAllocation(id, key)
+        return <tr key={key}><th scope="row"><a href={allocation.href}>{buildActivities[key]} · {option.name}</a></th><td>{allocation.level}</td><td>{option.choice}</td></tr>
+      })}</tbody></table>
+      <p>Changing roles regularly? <a href="/wow-forever-respec-cost-calculator">Compare respec fees with dual spec</a>. For handheld play, <a href="/wow-forever-steam-deck">plan your controller bindings</a>.</p>
+    </details>
     <aside><strong>Live combat changes</strong><p>{launchEvidence[id]} <a href={launchHotfixes}>Blizzard hotfixes through November 13</a>.</p></aside>
   </section>
 }

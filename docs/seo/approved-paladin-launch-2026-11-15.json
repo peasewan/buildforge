@@ -1,9 +1,10 @@
 {
-  "reason": "The owner requested launch build updates on the existing Paladin hub. This revision covers the hub body and its four launch preset links.",
+  "reason": "The owner requested deeper launch guides and SEO improvements. The Paladin hub now includes the four directly linked launch allocations in its rendered comparison, related planning tools and the date of this substantive revision.",
   "pages": {
     "/wow-forever-paladin-builds": {
-      "rootSha256": "cd6128092416e7dba1e631a8e29b9816863b5f4841cc703ec4412fc9674f696a",
-      "linksSha256": "ad80039b54a2440a004d61188d11f46701060790a7810bfcd99a310e7f2ade9c"
+      "rootSha256": "6cdc41383656beffb5f04b18eb2ba574b554cbed4a8a904f171765b25d479078",
+      "linksSha256": "e227783eff99e6124dc67eebe89173a59861725732303dcf3bf68af22ae0f7a9",
+      "lastmod": "2026-11-15"
     }
   }
 }

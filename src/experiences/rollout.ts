@@ -131,5 +131,9 @@ export const experienceEnabled = (pathname: string): boolean => enabled.has(path
 
 // Date of this UI release; data verification dates remain unchanged.
 export const EXPERIENCE_RELEASE_DATE = '2026-09-23'
-export const experienceLastmod = (pathname: string, previous: string): string =>
-  experienceEnabled(pathname) && previous < EXPERIENCE_RELEASE_DATE ? EXPERIENCE_RELEASE_DATE : previous
+const launchComparisonHubs = new Set(['/wow-forever-hunter-builds', '/wow-forever-mage-builds'])
+export function experienceLastmod(pathname: string, previous: string): string {
+  if (!experienceEnabled(pathname)) return previous
+  const release = launchComparisonHubs.has(pathname) ? '2026-11-15' : EXPERIENCE_RELEASE_DATE
+  return previous < release ? release : previous
+}

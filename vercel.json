@@ -1,6 +1,11 @@
 {
   "redirects": [
     {
+      "source": "/roblox/stand-out/arrow-calculator/index.html",
+      "destination": "/roblox/stand-out/arrow-calculator",
+      "permanent": true
+    },
+    {
       "source": "/roblox/stand-out/stand-picker/index.html",
       "destination": "/roblox/stand-out/stand-picker",
       "permanent": true
@@ -875,6 +880,7 @@
     }
   ],
   "rewrites": [
+    { "source": "/roblox/stand-out/arrow-calculator", "destination": "/roblox/stand-out/arrow-calculator/index.html" },
     { "source": "/roblox/stand-out/stand-picker", "destination": "/roblox/stand-out/stand-picker/index.html" },
     { "source": "/fortnite/treasure-hours", "destination": "/fortnite/treasure-hours/index.html" },
     { "source": "/minecraft/dungeons-2-crossplay", "destination": "/minecraft/dungeons-2-crossplay/index.html" },

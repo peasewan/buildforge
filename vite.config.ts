@@ -65,6 +65,7 @@ export default defineConfig(({ mode }) => ({
   build: {
     rollupOptions: {
       input: {
+        arrowBudgetPage: resolve(import.meta.dirname, 'roblox/stand-out/arrow-calculator/index.html'),
         standOutPage: resolve(import.meta.dirname, 'roblox/stand-out/stand-picker/index.html'),
         treasureHoursPage: resolve(import.meta.dirname, 'fortnite/treasure-hours/index.html'),
         dungeonsCrossplayPage: resolve(import.meta.dirname, 'minecraft/dungeons-2-crossplay/index.html'),

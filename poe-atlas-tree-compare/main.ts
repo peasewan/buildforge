@@ -76,6 +76,11 @@ el('import-form').onsubmit = event => {
     el('import-status').textContent = (error as Error).message
   }
 }
+el('race-example').onclick = () => {
+  urlInput.value = 'https://www.pathofexile.com/fullscreen-atlas-skill-tree/AAAABgAAGdSHYCGDlGa1AM6dXlrO6o23zHUnK9fJJ52HxtDjcKueUYKu57V9c6UXy4dUxjP-yUOpAAA='
+  el<HTMLFormElement>('import-form').requestSubmit()
+  urlInput.focus()
+}
 urlInput.oninput = () => { el('import-status').textContent = '' }
 el('check').onclick=check;ids.oninput=()=>{el('lost-links').replaceChildren();el('import-status').textContent='';el('summary').textContent='Check allocation to update results.';el('selection').replaceChildren()}
 el('example').onclick=()=>{el('import-status').textContent='';ids.value=['Changed','Removed','Retained'].map(s=>s==='Changed'?'2378':nodes.find(n=>n.state===s)!.id).join(', ');check()}

@@ -1,4 +1,8 @@
 export const gameToolPages = [
+  { kind: 'arrow-budget', path: '/roblox/stand-out/arrow-calculator',
+    title: 'Stand Out Arrow Calculator: Lucky vs Bizarre Odds | BuildForgeTools',
+    description: 'Compare Lucky and Bizarre Arrow drop rates in Stand Out. Enter your Mysterious Arrow or Train Token budget to see rolls, leftovers and rarity odds.',
+  },
   {
     kind: 'stand-out', path: '/roblox/stand-out/stand-picker',
     title: 'Stand Out Stand Picker: Compare Moves & Arrow Routes | BuildForgeTools',

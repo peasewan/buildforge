@@ -69,6 +69,10 @@ export default function FrostStarPage() {
         <section aria-labelledby="farm-title">
           <h2 id="farm-title"><Compass aria-hidden="true" />Should I stop at wave 9?</h2>
           <p>Wave 10 has the higher listed chance per roll. Whether it saves time depends on when your run pays out. We could not verify whether leaving after wave 9 keeps its reward, whether a full clear pays both waves, or how the loot multiplier applies to Frost Star.</p>
+          <h3>How many rolls for a 50% or 90% chance?</h3>
+          <table><caption>Eligible rolls at the same wave, assuming independent rewards</caption><thead><tr><th scope="col">Target chance</th>{frostStar.waves.map(w => <th scope="col" key={w.wave}>Wave {w.wave}</th>)}</tr></thead>
+          <tbody>{[0.5, 0.9].map(target => <tr key={target}><th scope="row">{target * 100}%</th>{frostStar.waves.map(w => <td key={w.wave}>{Math.ceil(Math.log1p(-target) / Math.log1p(-1 / w.denominator))} rolls</td>)}</tr>)}</tbody></table>
+          <p>At the 50% mark, roughly half of players would still have no drop under this model. Count rewards actually received when comparing your own runs.</p>
           <p>Compare the raid preview with your end-of-run rewards. Record the last wave, elapsed time and ore received. A larger stack and a higher drop chance affect farming differently.</p>
         </section>
         <section aria-labelledby="sources-title" className="fs-sources">
