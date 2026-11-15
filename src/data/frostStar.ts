@@ -8,5 +8,6 @@ export const frostStar = {
   ],
   oreTable: 'https://bloxron.com/the-forge/ores',
   game: 'https://www.roblox.com/games/76558904092080/The-Forge',
-  playerDiscussion: 'https://www.reddit.com/r/TheForgeRoblox/comments/1xu828o/finally_beat_t10_solo_tho_why_didnt_i_get_the_2/',
+  raidVictory: 'https://www.reddit.com/r/TheForgeRoblox/comments/1xrgigl/t15_btw/',
+  raidShopNotes: 'https://rocodes.gg/codes/the-forge#:~:text=Weekly%20Ore%20Cards',
 } as const

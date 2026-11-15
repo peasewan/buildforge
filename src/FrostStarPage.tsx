@@ -44,7 +44,7 @@ export default function FrostStarPage() {
         <div className="fs-hero-copy">
           <p className="sd-kicker">Roblox <span>/</span> The Forge</p>
           <h1><span className="fs-sr">How to get </span>Frost Star<span className="fs-sr"> in The Forge</span></h1>
-          <p className="fs-lead">Hunt this exotic ore in the Tower of Hell. See which Tier 15 waves can drop it and estimate your chances across repeated rolls.</p>
+          <p className="fs-lead">Hunt this exotic ore in Tier 15 of the Tower of Hell, or check your weekly Gold Ore Cards at the Island 4 Raid Trader.</p>
           <a className="fs-jump" href="#rates">View drop rates <ArrowDown size={16} aria-hidden="true" /></a>
         </div>
       </header>
@@ -68,17 +68,23 @@ export default function FrostStarPage() {
       <div className="fs-reading">
         <section aria-labelledby="farm-title">
           <h2 id="farm-title"><Compass aria-hidden="true" />Should I stop at wave 9?</h2>
-          <p>Wave 10 has the higher listed chance per roll. Whether it saves time depends on when your run pays out. We could not verify whether leaving after wave 9 keeps its reward, whether a full clear pays both waves, or how the loot multiplier applies to Frost Star.</p>
+          <p>If your group can finish wave 10, continue to the victory screen. The ore table lists Frost Star at wave 9, but we found no Tier 15 test showing that a player who voluntarily leaves after that wave keeps the reward. A <a href={frostStar.raidVictory}>player’s Tier 15 victory report</a> shows the end-of-run loot. The report does not identify the wave behind each drop.</p>
+          <h3>When would stopping early save time?</h3>
+          <p>Suppose each route pays exactly one eligible roll at its final wave and your group reliably completes both. The listed rates are 0.8% and 1%, so wave 10 can take 25% longer for the same expected number of successful rolls per hour. If a wave 9 cycle takes 8 minutes including re-entry, the break-even time for a full cycle is 10 minutes.</p>
+          <p>Only use that comparison once you know your early exit pays out. Whether a full clear rolls both waves independently is still unverified. We count eligible rolls individually in the calculator above.</p>
           <h3>How many rolls for a 50% or 90% chance?</h3>
           <table><caption>Eligible rolls at the same wave, assuming independent rewards</caption><thead><tr><th scope="col">Target chance</th>{frostStar.waves.map(w => <th scope="col" key={w.wave}>Wave {w.wave}</th>)}</tr></thead>
           <tbody>{[0.5, 0.9].map(target => <tr key={target}><th scope="row">{target * 100}%</th>{frostStar.waves.map(w => <td key={w.wave}>{Math.ceil(Math.log1p(-target) / Math.log1p(-1 / w.denominator))} rolls</td>)}</tr>)}</tbody></table>
           <p>At the 50% mark, roughly half of players would still have no drop under this model. Count rewards actually received when comparing your own runs.</p>
-          <p>Compare the raid preview with your end-of-run rewards. Record the last wave, elapsed time and ore received. A larger stack and a higher drop chance affect farming differently.</p>
+
         </section>
-        <section aria-labelledby="sources-title" className="fs-sources">
+        <section aria-labelledby="raid-shop" className="fs-sources">
+          <h2 id="raid-shop">Can I get Frost Star before clearing Tier 15?</h2>
+          <p>Check the Raid Trader on Island 4. The November 14 update lists Frost Star among the ores on weekly Gold Ore Cards. Clearing Tier 11 through Tier 15 awards Gold Raid Shards, so a group farming a lower tier in that range can still use the shop.</p>
+          <p>Reveal your three personal Gold cards and check the ore on each one. If Frost Star appears, you can buy it. One weekly reroll costs 30 Gold Shards and gives another chance to see it. The notes give no per-ore card odds. <a href={frostStar.raidShopNotes}>Read the November 14 Raid Shop notes</a>.</p>
           <h2 id="sources-title">Sources and version</h2>
           <p>Community rates reviewed <time dateTime="2026-11-15">November 15, 2026</time>. The developer lists the game as a beta.</p>
-          <ul>{[[frostStar.game, 'The Forge on Roblox'], [frostStar.oreTable, 'Bloxron raid ore tables'], [frostStar.playerDiscussion, 'Player discussion of the loot preview']].map(([href, label]) => <li key={href}><a href={href}>{label}<ArrowUpRight size={15} aria-hidden="true" /></a></li>)}</ul>
+          <ul>{[[frostStar.game, 'The Forge on Roblox'], [frostStar.oreTable, 'Bloxron raid ore tables'], [frostStar.raidVictory, 'Tier 15 player victory report'], [frostStar.raidShopNotes, 'November 14 patch notes reproduced by RoCodes']].map(([href, label]) => <li key={href}><a href={href}>{label}<ArrowUpRight size={15} aria-hidden="true" /></a></li>)}</ul>
         </section>
       </div>
     </main>
