@@ -845,6 +845,7 @@
     }
   ],
   "rewrites": [
+    { "source": "/poe-atlas-tree-compare", "destination": "/poe-atlas-tree-compare/index.html" },
     { "source": "/wow-forever-stress-test", "destination": "/api/retired-page" },
     { "source": "/wow-forever-stress-test/index.html", "destination": "/api/retired-page" },
     { "source": "/nivalis-nights-profit-calculator", "destination": "/api/retired-page" },

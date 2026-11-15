@@ -16,6 +16,6 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src"],
+  "include": ["src", "poe-atlas-tree-compare/main.ts"],
   "exclude": ["src/**/*.test.ts", "src/**/*.test.tsx"]
 }

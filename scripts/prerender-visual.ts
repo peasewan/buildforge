@@ -10,6 +10,8 @@ const files = (await readdir(dist, { recursive: true })).filter((file) => file.e
 for (const file of files) {
   const output = new URL(file, dist)
   const shell = await readFile(output, 'utf8')
+  // The Atlas entry ships its complete HTML and progressively enhances it without React.
+  if (file === 'poe-atlas-tree-compare/index.html' && shell.includes('<h1>Atlas tree comparison</h1>')) continue
   const root = /<div id="root">\s*(?:<!--[\s\S]*?-->\s*)?<\/div>/
   if (!root.test(shell)) throw new Error(`Expected an unrendered root in ${file}`)
   const pathname = file === 'index.html' ? '/' : `/${file.replace(/\/index\.html$/, '')}`

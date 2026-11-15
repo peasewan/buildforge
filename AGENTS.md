@@ -187,3 +187,7 @@ Use the same daily comparison fields so decisions are based on trends rather tha
 - The two Glimmerwick help tools are embedded at `/songs-of-glimmerwick#first-days` and `#spellcasting`. Emberville inheritance is at `/emberville#skill-inheritance`; Protection dungeon reasoning is at `/wow-forever-protection-paladin-build#dungeon-tanking`; Ret hub content lives on its retained build page.
 - The obsolete stress-test, incomplete Nivalis placeholder, and old Paladin ability catalogue return 410 through `api/retired-page.ts`, without advertising. Do not redirect these unrelated screens to the homepage or let the generic Paladin fallback serve them as 200.
 - Keep existing stable shares, snapshots, data APIs, privacy/contact/about and analytics semantics. Run build/content checks, `smoke:production` and `smoke:pruning` before declaring a release healthy. No AdSense approval is implied by passing checks.
+
+## PoE Atlas comparison (November 15)
+
+- The separate /poe-atlas-tree-compare tool brings the indexable inventory to 84. It compares GGG standard Atlas exports 3.29.1 and 3.30.0 by skill ID, excluding mastery decorations. Effect text and neighboring IDs are compared; reachability and refund costs are not inferred. Regenerate with scripts/generate-atlas-comparison.py and the two tagged data.json files.

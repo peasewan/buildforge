@@ -144,7 +144,7 @@ for (const file of files) {
 }
 const redirects = collectSeoRedirects(vercel.redirects)
 const report = validateSeo({ origin: 'https://buildforgetools.com', pages, sitemap: parseSitemap(readFileSync(resolve(dist, 'sitemap.xml'), 'utf8')),
-  expectedPaths: ['/wow-forever-stress-test', '/invokyr', '/invokyr-multiplayer', '/wow-forever-paladin-build-comparator', '/nivalis-nights-profit-calculator', '/songs-of-glimmerwick', '/songs-of-glimmerwick-first-days', '/songs-of-glimmerwick-spellcasting', '/songs-of-glimmerwick-garden-well', ...baseline.pages.map(p => p.path), ...classPaths, ...DISCOVERY_PAGES.map(p => p.path), ...TRUST_PAGES.map(p => `/${p.slug}`), ...EMBERVILLE_PAGES.map(p => `/${p.slug}`)].filter(path => !isRetiredPage(path)),
+  expectedPaths: ['/poe-atlas-tree-compare', '/wow-forever-stress-test', '/invokyr', '/invokyr-multiplayer', '/wow-forever-paladin-build-comparator', '/nivalis-nights-profit-calculator', '/songs-of-glimmerwick', '/songs-of-glimmerwick-first-days', '/songs-of-glimmerwick-spellcasting', '/songs-of-glimmerwick-garden-well', ...baseline.pages.map(p => p.path), ...classPaths, ...DISCOVERY_PAGES.map(p => p.path), ...TRUST_PAGES.map(p => `/${p.slug}`), ...EMBERVILLE_PAGES.map(p => `/${p.slug}`)].filter(path => !isRetiredPage(path)),
   withheldPaths: PUBLISHED_CLASSES.flatMap(c => c.pages.map(p => `/${p.slug}`)).filter(p => !classPaths.includes(p)),
   gonePaths: REMOVED_PAGE_PATHS, redirects, aliases: { '/build': '/paladin' }, requirements, frozen: frozenPages,
 })
