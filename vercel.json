@@ -1,6 +1,11 @@
 {
   "redirects": [
     {
+      "source": "/roblox/stand-out/arrow-crafting/index.html",
+      "destination": "/roblox/stand-out/arrow-crafting",
+      "permanent": true
+    },
+    {
       "source": "/roblox/stand-out/arrow-calculator/index.html",
       "destination": "/roblox/stand-out/arrow-calculator",
       "permanent": true
@@ -880,6 +885,7 @@
     }
   ],
   "rewrites": [
+    { "source": "/roblox/stand-out/arrow-crafting", "destination": "/roblox/stand-out/arrow-crafting/index.html" },
     { "source": "/roblox/stand-out/arrow-calculator", "destination": "/roblox/stand-out/arrow-calculator/index.html" },
     { "source": "/roblox/stand-out/stand-picker", "destination": "/roblox/stand-out/stand-picker/index.html" },
     { "source": "/fortnite/treasure-hours", "destination": "/fortnite/treasure-hours/index.html" },

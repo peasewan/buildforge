@@ -1,5 +1,6 @@
 import { priestLevelingComparisonSlug } from './data/classes/priest'
 import { resolvePageHref } from './lib/pageRetirement'
+import ArrowCraftingPage from './ArrowCraftingPage'
 import ArrowBudgetPage from './ArrowBudgetPage'
 import StandOutPage from './StandOutPage'
 import TreasureHoursPage from './TreasureHoursPage'
@@ -36,6 +37,7 @@ import { pageForPath } from './lib/routes'
 
 function routeElement(pathname: string) {
   const route = pageForPath(pathname)
+  if (route.kind === 'arrow-crafting') return <ArrowCraftingPage />
   if (route.kind === 'arrow-budget') return <ArrowBudgetPage />
   if (route.kind === 'stand-out') return <StandOutPage />
   if (route.kind === 'treasure-hours') return <TreasureHoursPage />

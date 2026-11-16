@@ -1,4 +1,8 @@
 export const gameToolPages = [
+  { kind: 'arrow-crafting', path: '/roblox/stand-out/arrow-crafting',
+    title: 'Stand Out Arrow Crafting Planner: Recipes & Materials | BuildForgeTools',
+    description: 'Plan Lucky, Bizarre and Mysterious Arrow crafts in Roblox Stand Out. Enter your inventory to calculate missing Arrow Parts, Steel Ingots and Wood.',
+  },
   { kind: 'arrow-budget', path: '/roblox/stand-out/arrow-calculator',
     title: 'Stand Out Arrow Calculator: Lucky vs Bizarre Odds | BuildForgeTools',
     description: 'Compare Lucky and Bizarre Arrow drop rates in Stand Out. Enter your Mysterious Arrow or Train Token budget to see rolls, leftovers and rarity odds.',
