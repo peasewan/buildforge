@@ -3,6 +3,8 @@ import { paladinLevelingHref } from '../data/paladinLevelingProgression'
 import { createElement } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import PaladinLevelingTimeline from '../PaladinLevelingTimeline'
+import HistoricalRetLevelingReference from '../HistoricalRetLevelingReference'
+import PaladinBuildDecisions from '../PaladinBuildDecisions'
 import ProtectionRouteEvidence from '../ProtectionRouteEvidence'
 import BetaDataStatus from '../BetaDataStatus'
 import PaladinRankAttribution from '../PaladinRankAttribution'
@@ -210,7 +212,9 @@ export function renderLandingPrerender(pageId: BuildLandingPageId): string {
   </article>
   ${renderBetaStatusPrerender()}
   ${levelingSnapshot}
+  ${pageId === 'leveling' ? renderToStaticMarkup(createElement(PaladinBuildDecisions, { branch: 'retribution' })) : ''}
   ${sections}
+  ${pageId === 'leveling' ? renderToStaticMarkup(createElement(HistoricalRetLevelingReference)) : ''}
   ${linkList(pageFooterLinks)}
 </main>`
 }

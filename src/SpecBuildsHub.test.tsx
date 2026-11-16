@@ -34,7 +34,8 @@ describe('specialization builds hub', () => {
         for (const copy of [build.title, build.eyebrow]) {
           const promised = copy.match(/\b(Holy|Protection|Retribution)\b/)?.[1].toLowerCase()
 
-          if (promised) expect(resolvePageHref(build.href), `"${copy}" promises ${promised}`).toContain(`-${promised}-`)
+          if (promised && !(hub.spec === 'retribution' && build.id === 'leveling')) expect(resolvePageHref(build.href), `"${copy}" promises ${promised}`).toContain(`-${promised}-`)
+          if (hub.spec === 'retribution' && build.id === 'leveling') expect(resolvePageHref(build.href)).toBe('/wow-forever-paladin-leveling-build#ret-history')
         }
       }
     }
@@ -88,7 +89,7 @@ describe('specialization builds hub', () => {
   it('puts the editable Protection route before the historical featured build', () => {
     render(<SpecBuildsHub spec="protection" />)
 
-    const route = screen.getByRole('region', { name: 'Current Beta Protection starting route' })
+    const route = screen.getByRole('region', { name: 'Reviewed Beta Protection starting route' })
     expect(route.textContent).toContain('Level 20')
     expect(route.textContent).toContain('0/11/0')
     expect(route.textContent).toContain('0/21/0')
@@ -100,12 +101,14 @@ describe('specialization builds hub', () => {
     expect(document.querySelector('#featured-build')?.textContent).toContain('Historical 51-point reference')
   })
 
-  it('advertises the reviewed-node Protection route without an archived label', () => {
+  it('labels the reviewed-node Protection route as a dated snapshot rather than launch guidance', () => {
     render(<SpecBuildsHub spec="protection" />)
 
     const links = document.querySelectorAll('a[href="/wow-forever-protection-paladin-leveling-build"]')
     expect(links.length).toBeGreaterThan(0)
-    for (const link of links) expect(link.closest('article, .spec-beta-start')?.textContent).not.toMatch(/archived/i)
+    const card = [...links].find(link => link.closest('.build-card'))?.closest('.build-card')
+    expect(card?.textContent).toContain('archived October')
+    expect(document.body.textContent).not.toContain('For the active Beta')
   })
 
   it('does not add the Protection starting route to Retribution', () => {

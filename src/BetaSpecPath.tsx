@@ -17,7 +17,7 @@ export default function BetaSpecPath({ branch }: { branch: Branch }) {
       <header>
         <div><Route size={18} /><span>{archived ? 'Archived Beta talent path' : 'Beta talent starting path'}</span></div>
         <h2>{path.title}</h2>
-        <p>{archived ? path.archiveNotice : branch === 'protection' ? 'An editorial 11-point Level 20 route using Protection nodes checked against the 70170 Beta Trait tables. Standard progression excludes Legacy: Talented; the official Beta cap is Level 30.' : 'An 11-point Level 20 starting route from the imported client tree. The official Beta cap is now Level 30.'}</p>
+        <p>{archived ? path.archiveNotice : branch === 'protection' ? 'An editorial 11-point Level 20 route using Protection nodes checked against the 70170 Beta Trait tables. Standard progression excludes Legacy: Talented; the October Beta cap was Level 30.' : 'An 11-point Level 20 starting route from the imported client tree. The October Beta cap was Level 30; this is not launch guidance.'}</p>
       </header>
 
       <div className="beta-spec-best-for" aria-label="Best for">
@@ -37,8 +37,8 @@ export default function BetaSpecPath({ branch }: { branch: Branch }) {
           <a href={betaSpecPlannerHref(branch)}>{archived ? 'Open Calculator without this route' : `Load Level ${path.current.level} path`} <ArrowRight size={14} /></a>
         </article>
         <article>
-          <div><span>Official Level 30 cap</span><VerificationBadge status="official" /></div>
-          <strong>Official cap: Level {path.next.level}</strong>
+          <div><span>October Beta level cap</span><VerificationBadge status="official" /></div>
+          <strong>October Beta cap: Level {path.next.level}</strong>
           <b>{path.next.allocation ?? 'No reviewed allocation'}</b>
           <p>{path.next.note}</p>
           <small>A {path.next.points}-point budget follows standard one-point-per-level planning without Legacy: Talented; it is not a measured best build.</small>

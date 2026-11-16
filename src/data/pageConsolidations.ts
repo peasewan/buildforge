@@ -55,7 +55,8 @@ export const PAGE_CONSOLIDATIONS: Record<string, string> = {
   "/songs-of-glimmerwick-spellcasting": "/songs-of-glimmerwick",
   "/emberville-skill-inheritance": "/emberville",
   "/wow-forever-protection-paladin-dungeon-build": "/wow-forever-protection-paladin-build",
-  "/wow-forever-retribution-paladin-builds": "/wow-forever-retribution-paladin-build"
+  "/wow-forever-retribution-paladin-builds": "/wow-forever-retribution-paladin-build",
+  "/wow-forever-retribution-paladin-leveling-build": "/wow-forever-paladin-leveling-build"
 }
 
 /** Obsolete or incomplete screens without a maintained equivalent. */

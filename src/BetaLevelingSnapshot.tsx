@@ -21,7 +21,7 @@ export default function BetaLevelingSnapshot({ pageId }: { pageId: BetaLevelingP
       <header>
         <div><Route size={18} /><span>{archived ? 'Archived Beta leveling snapshot' : 'Beta leveling snapshot'}</span></div>
         <h2>{snapshot.title}</h2>
-        <p>{archived ? snapshot.archiveNotice : 'Follow a reviewed-node, editorial Protection point order from Level 10 to the current Level 30 Beta cap. Standard progression excludes Legacy: Talented.'}</p>
+        <p>{archived ? snapshot.archiveNotice : 'Follow a reviewed-node, editorial Protection point order from Level 10 to the October Level 30 Beta cap. Standard progression excludes Legacy: Talented.'}</p>
       </header>
       <div className="beta-leveling-grid">
         <article>

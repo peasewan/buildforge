@@ -32,7 +32,7 @@ const retributionSnapshot = {
     points: PALADIN_BETA_SNAPSHOT.phase.routeSnapshotLevelCap - 9,
     allocation: '0/0/11',
     build: retributionCurrent,
-    note: 'This reviewed Level 20 starting route spends 11 points into Benediction, Conviction, then Seal of Command. It is a partial allocation at the current Level 30 cap.',
+    note: 'This reviewed Level 20 starting route spends 11 points into Benediction, Conviction, then Seal of Command. It is a partial allocation at the dated Level 30 Beta cap.',
   },
   next: {
     level: PALADIN_BETA_SNAPSHOT.phase.levelCap,

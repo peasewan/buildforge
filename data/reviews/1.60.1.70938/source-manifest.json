@@ -1,0 +1,203 @@
+{
+  "reviewedOn": "2026-11-16",
+  "candidateBuild": "1.60.1.70938",
+  "resolvedTextSourceBuild": "1.60.1.70755",
+  "rawFilesCommitted": false,
+  "rawAcquisition": "All 20 public CSV responses were acquired; original bytes remain in a temporary audit directory. Reacquire from these version-specific URLs and verify SHA-256 before reuse.",
+  "tables": [
+    {
+      "table": "SkillLineXTraitTree",
+      "build": "70755",
+      "status": "ok",
+      "bytes": 167,
+      "sha256": "e6774240ba1fda84bef060fda0d0b23e42d5ae9b4d8ae3323f7ccb31f38c5760",
+      "url": "https://wago.tools/db2/SkillLineXTraitTree/csv?build=1.60.1.70755"
+    },
+    {
+      "table": "Spell",
+      "build": "70755",
+      "status": "ok",
+      "bytes": 2219866,
+      "sha256": "6305a313e7dddb481982b34bcabbbcf17d2afc0579c5e492f85fa2cb919ec86e",
+      "url": "https://wago.tools/db2/Spell/csv?build=1.60.1.70755"
+    },
+    {
+      "table": "SpellAuraOptions",
+      "build": "70755",
+      "status": "ok",
+      "bytes": 402708,
+      "sha256": "15fe336196d5f1fc6354f9d75bfec062481cdc9cfc63a3016eb0a9c879173c1e",
+      "url": "https://wago.tools/db2/SpellAuraOptions/csv?build=1.60.1.70755"
+    },
+    {
+      "table": "SpellEffect",
+      "build": "70755",
+      "status": "ok",
+      "bytes": 3871850,
+      "sha256": "ad022c86368a1e850be3c960cf39b92847aeefe51760a95c4da3eea53ea55291",
+      "url": "https://wago.tools/db2/SpellEffect/csv?build=1.60.1.70755"
+    },
+    {
+      "table": "SpellName",
+      "build": "70755",
+      "status": "ok",
+      "bytes": 840644,
+      "sha256": "0a7dd2a3ee0be5b00e0ae91abf93d73fafa4c4c5be4fdc39245ca0227c0a4480",
+      "url": "https://wago.tools/db2/SpellName/csv?build=1.60.1.70755"
+    },
+    {
+      "table": "TraitDefinition",
+      "build": "70755",
+      "status": "ok",
+      "bytes": 15103,
+      "sha256": "42ca30d251b054b095487c9bbdd3db968a6f3e2547c28db5d8b6e41d0ae4d98b",
+      "url": "https://wago.tools/db2/TraitDefinition/csv?build=1.60.1.70755"
+    },
+    {
+      "table": "TraitEdge",
+      "build": "70755",
+      "status": "ok",
+      "bytes": 2528,
+      "sha256": "81dbb7ec3094ce888ef39999b5269df6cb8006b3e9f4c90990bdcdff3c25b4f0",
+      "url": "https://wago.tools/db2/TraitEdge/csv?build=1.60.1.70755"
+    },
+    {
+      "table": "TraitNode",
+      "build": "70755",
+      "status": "ok",
+      "bytes": 15686,
+      "sha256": "1a9289bcb0babea3a5ed4be71d818019c9fc0ff327a95573dd8896070856b8d0",
+      "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70755"
+    },
+    {
+      "table": "TraitNodeEntry",
+      "build": "70755",
+      "status": "ok",
+      "bytes": 13294,
+      "sha256": "052f8d708a2a95afcba3c1ac6d972d33a73b971913fedf3641f27b3537cbe7ac",
+      "url": "https://wago.tools/db2/TraitNodeEntry/csv?build=1.60.1.70755"
+    },
+    {
+      "table": "TraitNodeXTraitNodeEntry",
+      "build": "70755",
+      "status": "ok",
+      "bytes": 14021,
+      "sha256": "cf672d42bfda5f5a51ae09f1642b131322e1ef5be273d7bf0191d9280205826b",
+      "url": "https://wago.tools/db2/TraitNodeXTraitNodeEntry/csv?build=1.60.1.70755"
+    },
+    {
+      "table": "SkillLineXTraitTree",
+      "build": "70938",
+      "status": "ok",
+      "bytes": 167,
+      "sha256": "e6774240ba1fda84bef060fda0d0b23e42d5ae9b4d8ae3323f7ccb31f38c5760",
+      "url": "https://wago.tools/db2/SkillLineXTraitTree/csv?build=1.60.1.70938"
+    },
+    {
+      "table": "Spell",
+      "build": "70938",
+      "status": "ok",
+      "bytes": 2246473,
+      "sha256": "d81a61397d9ecbc467a77767c4a3c231e9041ed08005c1716cdba6d3fe320ab5",
+      "url": "https://wago.tools/db2/Spell/csv?build=1.60.1.70938"
+    },
+    {
+      "table": "SpellAuraOptions",
+      "build": "70938",
+      "status": "ok",
+      "bytes": 403210,
+      "sha256": "12b6f72942f6dadc164eb775feeee5cab9bd3156f9d1cb82e3c865e984c7a28a",
+      "url": "https://wago.tools/db2/SpellAuraOptions/csv?build=1.60.1.70938"
+    },
+    {
+      "table": "SpellEffect",
+      "build": "70938",
+      "status": "ok",
+      "bytes": 3925743,
+      "sha256": "f419db3f95ef93b2cf052d9c3996ec355df60846f1fa24c671822aacfa8f59a3",
+      "url": "https://wago.tools/db2/SpellEffect/csv?build=1.60.1.70938"
+    },
+    {
+      "table": "SpellName",
+      "build": "70938",
+      "status": "ok",
+      "bytes": 851160,
+      "sha256": "bd8dc963dd691c69aff531464636e7b5a944efeedb773895e7b2c4a0fb7c38b4",
+      "url": "https://wago.tools/db2/SpellName/csv?build=1.60.1.70938"
+    },
+    {
+      "table": "TraitDefinition",
+      "build": "70938",
+      "status": "ok",
+      "bytes": 15176,
+      "sha256": "4c29bf0710067d94d87051dfa216ac1dbc96b7651043ce171d787012d92daea7",
+      "url": "https://wago.tools/db2/TraitDefinition/csv?build=1.60.1.70938"
+    },
+    {
+      "table": "TraitEdge",
+      "build": "70938",
+      "status": "ok",
+      "bytes": 2528,
+      "sha256": "f9ca4c42cfa671c7e8b7bb80f12854a1a62a8a78d86e18b4205b3015219c2d85",
+      "url": "https://wago.tools/db2/TraitEdge/csv?build=1.60.1.70938"
+    },
+    {
+      "table": "TraitNode",
+      "build": "70938",
+      "status": "ok",
+      "bytes": 15742,
+      "sha256": "f7f37eead7e7641cdbecdb1c548276ae1e5c1776eb5ad0539b88770a78979d44",
+      "url": "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70938"
+    },
+    {
+      "table": "TraitNodeEntry",
+      "build": "70938",
+      "status": "ok",
+      "bytes": 13369,
+      "sha256": "dccff303039c45dc3355d8d525a664db2a87de9a17bbec133f5859755e9152b0",
+      "url": "https://wago.tools/db2/TraitNodeEntry/csv?build=1.60.1.70938"
+    },
+    {
+      "table": "TraitNodeXTraitNodeEntry",
+      "build": "70938",
+      "status": "ok",
+      "bytes": 14071,
+      "sha256": "7e9fb84e1256434748b1763365ea7498e0d6dd4871f789ad2a1c39925c071492",
+      "url": "https://wago.tools/db2/TraitNodeXTraitNodeEntry/csv?build=1.60.1.70938"
+    }
+  ],
+  "licensedRankExport": {
+    "url": "https://talentsforever.com/data.json",
+    "generated": "2026-11-13",
+    "license": "CC-BY-4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "attribution": "Data from talentsforever.com (https://talentsforever.com)",
+    "sha256": "b1e2e64dff800da1fc06002129baed13247e82423486ac5c5e52464c7f8264d6",
+    "bytes": 1756156,
+    "paladinSourceStatement": "Talent trees and every rank's text from the WoW Forever beta client, build 1.60.1.70755. Some Paladin numbers follow Blizzard's development notes of 2 Nov 2026, ahead of any game data. The Paladin trees carry the server's hotfixes of 3 Nov 2026 over that build, read from the beta's hotfix cache and cross-checked with Blizzard's notes or Wowhead's tooltips; those are not in the client's files.",
+    "paladinNodeCount": 51,
+    "paladinResolvedRankCount": 139
+  },
+  "independentCommunityStructureCrosscheck": {
+    "url": "https://www.forever-xp.com/talents/paladin/",
+    "htmlSha256": "4ed74db5c59ca3606149704323287fdfd0a5e84c50b13f6265336e96bc4b0dcc",
+    "htmlBytes": 36771,
+    "embeddedElement": "script#talent-data",
+    "use": "Names, node IDs, ranks and grid crosscheck only; no Forever XP rank text is republished as a production source."
+  },
+  "baseline": {
+    "path": "src/data/paladin-beta-1.60.1.70245.json",
+    "sha256": "d0cadb7ed2bb523d85acd83654dae997eb427fea9b2688cb7af7cd616b59be1b",
+    "nodeCount": 50
+  },
+  "reviewArtifacts": [
+    {
+      "file": "paladin-structural-diff.json",
+      "sha256": "ac88e985a53af5a7cfa27d02f2acfeabd6a40059a1c1f654baa709cc412c0da8"
+    },
+    {
+      "file": "paladin-structure.json",
+      "sha256": "5d33c2ecd4ef667634c7ce3275b547fbe97a1ee58f1eb598211935e3358462cd"
+    }
+  ]
+}

@@ -1,0 +1,688 @@
+{
+  "from": "1.60.1.70245",
+  "to": "1.60.1.70938",
+  "reviewedOn": "2026-11-16",
+  "status": "structural_review_only_not_promoted",
+  "basis": "Retained talents match exact name and SpellID, with raw-node reuse recorded separately. Added/removed are semantic memberships, not just raw node presence. New talent links are retained in paladin-structure.json; prerequisite_changed compares retained talents only.",
+  "summary": {
+    "added": 6,
+    "removed": 5,
+    "moved": 26,
+    "rank_changed": 8,
+    "prerequisite_changed": 4,
+    "tooltip_changed": null
+  },
+  "added": [
+    {
+      "name": "Oath of Light",
+      "nodeId": 105330,
+      "spellId": 1328548
+    },
+    {
+      "name": "Stoicism",
+      "nodeId": 105639,
+      "spellId": 1328546
+    },
+    {
+      "name": "Unsealed Wrath",
+      "nodeId": 105692,
+      "spellId": 1310735
+    },
+    {
+      "name": "Shieldsworn",
+      "nodeId": 110875,
+      "spellId": 1328544
+    },
+    {
+      "name": "Turn Evil",
+      "nodeId": 113629,
+      "spellId": 1328370
+    },
+    {
+      "name": "Boundless Light",
+      "nodeId": 113631,
+      "spellId": 1328550
+    }
+  ],
+  "removed": [
+    {
+      "name": "Voice of Truth",
+      "id": "voice_of_truth",
+      "nodeId": 105330,
+      "spellId": 1310897
+    },
+    {
+      "name": "Improved Seal of Fury",
+      "id": "improved_seal_of_fury",
+      "nodeId": 110875,
+      "spellId": 1314103
+    },
+    {
+      "name": "One-Handed Weapon Specialization",
+      "id": "one_handed_weapon_specialization",
+      "nodeId": 105629,
+      "spellId": 20196
+    },
+    {
+      "name": "Instrument of Law",
+      "id": "instrument_of_law",
+      "nodeId": 110880,
+      "spellId": 1311085
+    },
+    {
+      "name": "Twist of Light",
+      "id": "twist_of_light",
+      "nodeId": 105692,
+      "spellId": 1310735
+    }
+  ],
+  "moved": [
+    {
+      "name": "Divine Precision",
+      "nodeId": 105324,
+      "spellId": 1310904,
+      "before": {
+        "branch": "holy",
+        "row": 4,
+        "column": 0,
+        "requiredTreePoints": 20
+      },
+      "after": {
+        "branch": "holy",
+        "row": 3,
+        "column": 0,
+        "requiredTreePoints": 15
+      }
+    },
+    {
+      "name": "Divine Favor",
+      "nodeId": 105325,
+      "spellId": 20216,
+      "before": {
+        "branch": "holy",
+        "row": 3,
+        "column": 2,
+        "requiredTreePoints": 15
+      },
+      "after": {
+        "branch": "holy",
+        "row": 2,
+        "column": 0,
+        "requiredTreePoints": 10
+      }
+    },
+    {
+      "name": "Purifying Power",
+      "nodeId": 105327,
+      "spellId": 429144,
+      "before": {
+        "branch": "holy",
+        "row": 2,
+        "column": 2,
+        "requiredTreePoints": 10
+      },
+      "after": {
+        "branch": "holy",
+        "row": 1,
+        "column": 3,
+        "requiredTreePoints": 5
+      }
+    },
+    {
+      "name": "Illumination",
+      "nodeId": 105329,
+      "spellId": 20210,
+      "before": {
+        "branch": "holy",
+        "row": 3,
+        "column": 1,
+        "requiredTreePoints": 15
+      },
+      "after": {
+        "branch": "holy",
+        "row": 2,
+        "column": 1,
+        "requiredTreePoints": 10
+      }
+    },
+    {
+      "name": "Unyielding Faith",
+      "nodeId": 105331,
+      "spellId": 9453,
+      "before": {
+        "branch": "holy",
+        "row": 1,
+        "column": 3,
+        "requiredTreePoints": 5
+      },
+      "after": {
+        "branch": "retribution",
+        "row": 2,
+        "column": 1,
+        "requiredTreePoints": 10
+      }
+    },
+    {
+      "name": "Divine Intellect",
+      "nodeId": 105332,
+      "spellId": 20257,
+      "before": {
+        "branch": "holy",
+        "row": 0,
+        "column": 2,
+        "requiredTreePoints": 0
+      },
+      "after": {
+        "branch": "protection",
+        "row": 0,
+        "column": 1,
+        "requiredTreePoints": 0
+      }
+    },
+    {
+      "name": "Spiritual Focus",
+      "nodeId": 105335,
+      "spellId": 20205,
+      "before": {
+        "branch": "holy",
+        "row": 1,
+        "column": 1,
+        "requiredTreePoints": 5
+      },
+      "after": {
+        "branch": "holy",
+        "row": 0,
+        "column": 1,
+        "requiredTreePoints": 0
+      }
+    },
+    {
+      "name": "Templar's Bulwark",
+      "nodeId": 105625,
+      "spellId": 1311015,
+      "before": {
+        "branch": "protection",
+        "row": 4,
+        "column": 1,
+        "requiredTreePoints": 20
+      },
+      "after": {
+        "branch": "protection",
+        "row": 2,
+        "column": 0,
+        "requiredTreePoints": 10
+      }
+    },
+    {
+      "name": "Holy Shield",
+      "nodeId": 105628,
+      "spellId": 20925,
+      "before": {
+        "branch": "protection",
+        "row": 6,
+        "column": 1,
+        "requiredTreePoints": 30
+      },
+      "after": {
+        "branch": "protection",
+        "row": 4,
+        "column": 1,
+        "requiredTreePoints": 20
+      }
+    },
+    {
+      "name": "Toughness",
+      "nodeId": 105630,
+      "spellId": 20143,
+      "before": {
+        "branch": "protection",
+        "row": 0,
+        "column": 1,
+        "requiredTreePoints": 0
+      },
+      "after": {
+        "branch": "protection",
+        "row": 2,
+        "column": 3,
+        "requiredTreePoints": 10
+      }
+    },
+    {
+      "name": "Sacred Duty",
+      "nodeId": 105632,
+      "spellId": 1224697,
+      "before": {
+        "branch": "protection",
+        "row": 2,
+        "column": 3,
+        "requiredTreePoints": 10
+      },
+      "after": {
+        "branch": "protection",
+        "row": 1,
+        "column": 3,
+        "requiredTreePoints": 5
+      }
+    },
+    {
+      "name": "Improved Hammer of Justice",
+      "nodeId": 105633,
+      "spellId": 20487,
+      "before": {
+        "branch": "protection",
+        "row": 3,
+        "column": 2,
+        "requiredTreePoints": 15
+      },
+      "after": {
+        "branch": "protection",
+        "row": 2,
+        "column": 1,
+        "requiredTreePoints": 10
+      }
+    },
+    {
+      "name": "Improved Righteous Fury",
+      "nodeId": 105634,
+      "spellId": 20468,
+      "before": {
+        "branch": "protection",
+        "row": 2,
+        "column": 1,
+        "requiredTreePoints": 10
+      },
+      "after": {
+        "branch": "protection",
+        "row": 3,
+        "column": 1,
+        "requiredTreePoints": 15
+      }
+    },
+    {
+      "name": "Anticipation",
+      "nodeId": 105636,
+      "spellId": 20096,
+      "before": {
+        "branch": "protection",
+        "row": 1,
+        "column": 3,
+        "requiredTreePoints": 5
+      },
+      "after": {
+        "branch": "protection",
+        "row": 3,
+        "column": 2,
+        "requiredTreePoints": 15
+      }
+    },
+    {
+      "name": "Vengeance",
+      "nodeId": 105693,
+      "spellId": 20049,
+      "before": {
+        "branch": "retribution",
+        "row": 4,
+        "column": 1,
+        "requiredTreePoints": 20
+      },
+      "after": {
+        "branch": "retribution",
+        "row": 4,
+        "column": 2,
+        "requiredTreePoints": 20
+      }
+    },
+    {
+      "name": "Repentance",
+      "nodeId": 105694,
+      "spellId": 20066,
+      "before": {
+        "branch": "retribution",
+        "row": 4,
+        "column": 2,
+        "requiredTreePoints": 20
+      },
+      "after": {
+        "branch": "retribution",
+        "row": 4,
+        "column": 1,
+        "requiredTreePoints": 20
+      }
+    },
+    {
+      "name": "Two-Handed Weapon Specialization",
+      "nodeId": 105697,
+      "spellId": 20111,
+      "before": {
+        "branch": "retribution",
+        "row": 4,
+        "column": 0,
+        "requiredTreePoints": 20
+      },
+      "after": {
+        "branch": "retribution",
+        "row": 3,
+        "column": 3,
+        "requiredTreePoints": 15
+      }
+    },
+    {
+      "name": "Sacred Arbiter",
+      "nodeId": 105700,
+      "spellId": 1311087,
+      "before": {
+        "branch": "retribution",
+        "row": 3,
+        "column": 2,
+        "requiredTreePoints": 15
+      },
+      "after": {
+        "branch": "retribution",
+        "row": 3,
+        "column": 1,
+        "requiredTreePoints": 15
+      }
+    },
+    {
+      "name": "Sanctified Judgement",
+      "nodeId": 105701,
+      "spellId": 1311074,
+      "before": {
+        "branch": "retribution",
+        "row": 2,
+        "column": 1,
+        "requiredTreePoints": 10
+      },
+      "after": {
+        "branch": "retribution",
+        "row": 1,
+        "column": 2,
+        "requiredTreePoints": 5
+      }
+    },
+    {
+      "name": "Conviction",
+      "nodeId": 105703,
+      "spellId": 20117,
+      "before": {
+        "branch": "retribution",
+        "row": 1,
+        "column": 2,
+        "requiredTreePoints": 5
+      },
+      "after": {
+        "branch": "retribution",
+        "row": 1,
+        "column": 1,
+        "requiredTreePoints": 5
+      }
+    },
+    {
+      "name": "Holy Conduit",
+      "nodeId": 105704,
+      "spellId": 1237268,
+      "before": {
+        "branch": "retribution",
+        "row": 1,
+        "column": 1,
+        "requiredTreePoints": 5
+      },
+      "after": {
+        "branch": "holy",
+        "row": 2,
+        "column": 2,
+        "requiredTreePoints": 10
+      }
+    },
+    {
+      "name": "Reverence",
+      "nodeId": 110871,
+      "spellId": 1310899,
+      "before": {
+        "branch": "holy",
+        "row": 2,
+        "column": 1,
+        "requiredTreePoints": 10
+      },
+      "after": {
+        "branch": "holy",
+        "row": 1,
+        "column": 1,
+        "requiredTreePoints": 5
+      }
+    },
+    {
+      "name": "Consecrated Ground",
+      "nodeId": 110872,
+      "spellId": 1310905,
+      "before": {
+        "branch": "holy",
+        "row": 4,
+        "column": 2,
+        "requiredTreePoints": 20
+      },
+      "after": {
+        "branch": "holy",
+        "row": 4,
+        "column": 0,
+        "requiredTreePoints": 20
+      }
+    },
+    {
+      "name": "Infusion of Light",
+      "nodeId": 110873,
+      "spellId": 426065,
+      "before": {
+        "branch": "holy",
+        "row": 3,
+        "column": 0,
+        "requiredTreePoints": 15
+      },
+      "after": {
+        "branch": "holy",
+        "row": 3,
+        "column": 1,
+        "requiredTreePoints": 15
+      }
+    },
+    {
+      "name": "Champion of the Light",
+      "nodeId": 110882,
+      "spellId": 1311084,
+      "before": {
+        "branch": "retribution",
+        "row": 5,
+        "column": 1,
+        "requiredTreePoints": 25
+      },
+      "after": {
+        "branch": "retribution",
+        "row": 5,
+        "column": 2,
+        "requiredTreePoints": 25
+      }
+    },
+    {
+      "name": "Divine Strength",
+      "nodeId": 113630,
+      "spellId": 20262,
+      "before": {
+        "branch": "holy",
+        "row": 0,
+        "column": 1,
+        "requiredTreePoints": 0
+      },
+      "after": {
+        "branch": "holy",
+        "row": 0,
+        "column": 2,
+        "requiredTreePoints": 0
+      }
+    }
+  ],
+  "rank_changed": [
+    {
+      "name": "Divine Precision",
+      "nodeId": 105324,
+      "spellId": 1310904,
+      "before": 3,
+      "after": 2
+    },
+    {
+      "name": "Improved Seals",
+      "nodeId": 105334,
+      "spellId": 20224,
+      "before": 3,
+      "after": 5
+    },
+    {
+      "name": "Spiritual Focus",
+      "nodeId": 105335,
+      "spellId": 20205,
+      "before": 2,
+      "after": 5
+    },
+    {
+      "name": "Conviction",
+      "nodeId": 105703,
+      "spellId": 20117,
+      "before": 5,
+      "after": 3
+    },
+    {
+      "name": "Reverence",
+      "nodeId": 110871,
+      "spellId": 1310899,
+      "before": 3,
+      "after": 2
+    },
+    {
+      "name": "Shield Specialization",
+      "nodeId": 110874,
+      "spellId": 20150,
+      "before": 3,
+      "after": 2
+    },
+    {
+      "name": "Iron Creed",
+      "nodeId": 110879,
+      "spellId": 1311034,
+      "before": 5,
+      "after": 3
+    },
+    {
+      "name": "Champion of the Light",
+      "nodeId": 110882,
+      "spellId": 1311084,
+      "before": 3,
+      "after": 5
+    }
+  ],
+  "prerequisite_changed": [
+    {
+      "name": "Divine Precision",
+      "nodeId": 105324,
+      "spellId": 1310904,
+      "before": [
+        "Holy Shock"
+      ],
+      "after": []
+    },
+    {
+      "name": "Holy Shield",
+      "nodeId": 105628,
+      "spellId": 20925,
+      "before": [
+        "Templar's Bulwark"
+      ],
+      "after": []
+    },
+    {
+      "name": "Vengeance",
+      "nodeId": 105693,
+      "spellId": 20049,
+      "before": [
+        "Sanctified Judgement"
+      ],
+      "after": [
+        "Seal of Command"
+      ]
+    },
+    {
+      "name": "Swift Judgement",
+      "nodeId": 110878,
+      "spellId": 1310994,
+      "before": [
+        "Improved Seal of Fury"
+      ],
+      "after": [
+        "Templar's Bulwark"
+      ]
+    }
+  ],
+  "tooltip_changed": {
+    "status": "not_completed",
+    "changes": null,
+    "reason": "The 70938 client tables differ from the licensed 70755 export source, and per-rank/hotfix dependencies have not been fully reconciled. No exact tooltip diff or zero-change claim is made."
+  },
+  "rawNodeIdentityConflicts": [
+    {
+      "nodeId": 105330,
+      "before": {
+        "name": "Voice of Truth",
+        "spellId": 1310897
+      },
+      "after": {
+        "name": "Oath of Light",
+        "nodeId": 105330,
+        "spellId": 1328548
+      }
+    },
+    {
+      "nodeId": 105639,
+      "before": {
+        "name": "Divine Strength",
+        "spellId": 20262
+      },
+      "after": {
+        "name": "Stoicism",
+        "nodeId": 105639,
+        "spellId": 1328546
+      }
+    },
+    {
+      "nodeId": 105692,
+      "before": {
+        "name": "Twist of Light",
+        "spellId": 1310735
+      },
+      "after": {
+        "name": "Unsealed Wrath",
+        "nodeId": 105692,
+        "spellId": 1310735
+      }
+    },
+    {
+      "nodeId": 110875,
+      "before": {
+        "name": "Improved Seal of Fury",
+        "spellId": 1314103
+      },
+      "after": {
+        "name": "Shieldsworn",
+        "nodeId": 110875,
+        "spellId": 1328544
+      }
+    }
+  ],
+  "pendingEdgeInterpretations": [
+    {
+      "ID": "136771",
+      "VisualStyle": "1",
+      "LeftTraitNodeID": "105323",
+      "RightTraitNodeID": "113631",
+      "Type": "3"
+    }
+  ],
+  "tierPointRequirements": "Display rows retain the existing five-points-per-tier derived assumption; raw coordinates do not prove point timing."
+}

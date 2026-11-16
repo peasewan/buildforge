@@ -1,0 +1,890 @@
+{
+  "candidateBuild": "1.60.1.70938",
+  "scope": "Review evidence only; not a calculator dataset",
+  "treeId": 1100,
+  "skillLineId": 184,
+  "rawCoordinateVerification": "client_verified",
+  "displayGridCrosscheckVerification": "community_verified",
+  "nodeCount": 51,
+  "talents": [
+    {
+      "nodeId": 105320,
+      "spellId": 1310911,
+      "name": "Light's Vigil",
+      "maxRank": 1,
+      "rawCoordinates": {
+        "PosX": 1620,
+        "PosY": 5730
+      },
+      "displayGrid": {
+        "branch": "holy",
+        "row": 6,
+        "column": 1
+      },
+      "rawSpellDescription": "Applies Light's Vigil to a friendly target for $1310909d. The caster's next Holy Shock on the target incurs no cooldown and heals the target and their party for $1310912s1. Only one Vigil per Paladin may be active in each party."
+    },
+    {
+      "nodeId": 105321,
+      "spellId": 5923,
+      "name": "Holy Power",
+      "maxRank": 5,
+      "rawCoordinates": {
+        "PosX": 2220,
+        "PosY": 5130
+      },
+      "displayGrid": {
+        "branch": "holy",
+        "row": 5,
+        "column": 2
+      },
+      "rawSpellDescription": "Increases the critical strike healing bonus of your Holy spells by $s1%."
+    },
+    {
+      "nodeId": 105323,
+      "spellId": 1311606,
+      "name": "Holy Shock",
+      "maxRank": 1,
+      "rawCoordinates": {
+        "PosX": 1620,
+        "PosY": 4530
+      },
+      "displayGrid": {
+        "branch": "holy",
+        "row": 4,
+        "column": 1
+      },
+      "rawSpellDescription": "Blasts the target with Holy energy, causing $1311604s1 Holy damage to an enemy, or $1311605s1 healing to an ally."
+    },
+    {
+      "nodeId": 105324,
+      "spellId": 1310904,
+      "name": "Divine Precision",
+      "maxRank": 2,
+      "rawCoordinates": {
+        "PosX": 1020,
+        "PosY": 3930
+      },
+      "displayGrid": {
+        "branch": "holy",
+        "row": 3,
+        "column": 0
+      },
+      "rawSpellDescription": "Improves your chance to hit with Holy spells by $s1%, and reduces the duration of Silence effects on you by $s2%."
+    },
+    {
+      "nodeId": 105325,
+      "spellId": 20216,
+      "name": "Divine Favor",
+      "maxRank": 1,
+      "rawCoordinates": {
+        "PosX": 1020,
+        "PosY": 3330
+      },
+      "displayGrid": {
+        "branch": "holy",
+        "row": 2,
+        "column": 0
+      },
+      "rawSpellDescription": "When activated, gives your next Flash of Light, Holy Light, or Holy Shock spell a $s1% critical effect chance."
+    },
+    {
+      "nodeId": 105327,
+      "spellId": 429144,
+      "name": "Purifying Power",
+      "maxRank": 2,
+      "rawCoordinates": {
+        "PosX": 2820,
+        "PosY": 2730
+      },
+      "displayGrid": {
+        "branch": "holy",
+        "row": 1,
+        "column": 3
+      },
+      "rawSpellDescription": "Reduces the mana cost of your Cleanse and Purify spells by $m1% and reduces the cooldown of your Exorcism and Holy Wrath spells by $m2%."
+    },
+    {
+      "nodeId": 105329,
+      "spellId": 20210,
+      "name": "Illumination",
+      "maxRank": 5,
+      "rawCoordinates": {
+        "PosX": 1620,
+        "PosY": 3330
+      },
+      "displayGrid": {
+        "branch": "holy",
+        "row": 2,
+        "column": 1
+      },
+      "rawSpellDescription": "After getting a critical effect from your Flash of Light, Holy Light, Light's Vigil, or Holy Shock heal spell you have a $m1% chance to gain Mana equal to $m3% of the base cost of the spell."
+    },
+    {
+      "nodeId": 105330,
+      "spellId": 1328548,
+      "name": "Oath of Light",
+      "maxRank": 1,
+      "rawCoordinates": {
+        "PosX": 2220,
+        "PosY": 3930
+      },
+      "displayGrid": {
+        "branch": "holy",
+        "row": 3,
+        "column": 2
+      },
+      "rawSpellDescription": "Swear an Oath to protect target ally for $d, increasing the healing of your Holy Light on them by up to $s1, your Flash of Light by up to $s2, and your Holy Shock by up to $s3. Only one Oath of Light may be sworn by the Paladin at any one time."
+    },
+    {
+      "nodeId": 105331,
+      "spellId": 9453,
+      "name": "Unyielding Faith",
+      "maxRank": 2,
+      "rawCoordinates": {
+        "PosX": 9680,
+        "PosY": 3330
+      },
+      "displayGrid": {
+        "branch": "retribution",
+        "row": 2,
+        "column": 1
+      },
+      "rawSpellDescription": "Reduces the duration of Fear and Disorient effects on you by $s1%."
+    },
+    {
+      "nodeId": 105332,
+      "spellId": 20257,
+      "name": "Divine Intellect",
+      "maxRank": 5,
+      "rawCoordinates": {
+        "PosX": 5620,
+        "PosY": 2130
+      },
+      "displayGrid": {
+        "branch": "protection",
+        "row": 0,
+        "column": 1
+      },
+      "rawSpellDescription": "Increases your total Intellect by $s1%."
+    },
+    {
+      "nodeId": 105333,
+      "spellId": 20237,
+      "name": "Healing Light",
+      "maxRank": 3,
+      "rawCoordinates": {
+        "PosX": 1020,
+        "PosY": 2730
+      },
+      "displayGrid": {
+        "branch": "holy",
+        "row": 1,
+        "column": 0
+      },
+      "rawSpellDescription": "Increases the amount healed by your Holy Light, Flash of Light, and Holy Shock spells by $s1%."
+    },
+    {
+      "nodeId": 105334,
+      "spellId": 20224,
+      "name": "Improved Seals",
+      "maxRank": 5,
+      "rawCoordinates": {
+        "PosX": 2220,
+        "PosY": 2730
+      },
+      "displayGrid": {
+        "branch": "holy",
+        "row": 1,
+        "column": 2
+      },
+      "rawSpellDescription": "Increases the damage done by your Seals and Judgements by $s1%."
+    },
+    {
+      "nodeId": 105335,
+      "spellId": 20205,
+      "name": "Spiritual Focus",
+      "maxRank": 5,
+      "rawCoordinates": {
+        "PosX": 1620,
+        "PosY": 2130
+      },
+      "displayGrid": {
+        "branch": "holy",
+        "row": 0,
+        "column": 1
+      },
+      "rawSpellDescription": "Gives your Flash of Light, Holy Light, and Light's Vigil spells a $s1% chance to not lose casting time when you take damage."
+    },
+    {
+      "nodeId": 105625,
+      "spellId": 1311015,
+      "name": "Templar's Bulwark",
+      "maxRank": 1,
+      "rawCoordinates": {
+        "PosX": 5020,
+        "PosY": 3330
+      },
+      "displayGrid": {
+        "branch": "protection",
+        "row": 2,
+        "column": 0
+      },
+      "rawSpellDescription": "When activated, this ability grants you an absorb shield equal to $s1% of your maximum health for $d. Applies Forbearance for $25771d. Cannot be cast while Forbearance is active."
+    },
+    {
+      "nodeId": 105626,
+      "spellId": 20127,
+      "name": "Redoubt",
+      "maxRank": 5,
+      "rawCoordinates": {
+        "PosX": 6220,
+        "PosY": 2130
+      },
+      "displayGrid": {
+        "branch": "protection",
+        "row": 0,
+        "column": 2
+      },
+      "rawSpellDescription": "Damaging melee attacks against you have a $h% chance to increase your chance to block by $m1%.  Lasts $20128d or $20128n blocks."
+    },
+    {
+      "nodeId": 105627,
+      "spellId": 20177,
+      "name": "Reckoning",
+      "maxRank": 5,
+      "rawCoordinates": {
+        "PosX": 6220,
+        "PosY": 4530
+      },
+      "displayGrid": {
+        "branch": "protection",
+        "row": 4,
+        "column": 2
+      },
+      "rawSpellDescription": "Gives you a $m1% chance after Blocking and a ${$m1*2.5}% chance after receiving a non-periodic critical strike to gain an extra attack. Stores up to $1326084u extra attacks. Cannot occur from Blocks more than once every ${$proccooldown}.1 sec."
+    },
+    {
+      "nodeId": 105628,
+      "spellId": 20925,
+      "name": "Holy Shield",
+      "maxRank": 1,
+      "rawCoordinates": {
+        "PosX": 5620,
+        "PosY": 4530
+      },
+      "displayGrid": {
+        "branch": "protection",
+        "row": 4,
+        "column": 1
+      },
+      "rawSpellDescription": "Increases chance to block by $s1% for $d, and deals $s2 Holy damage for each attack blocked while active.  Damage caused by Holy Shield causes 20% additional threat. Each block expends a charge. $n charges."
+    },
+    {
+      "nodeId": 105630,
+      "spellId": 20143,
+      "name": "Toughness",
+      "maxRank": 5,
+      "rawCoordinates": {
+        "PosX": 6820,
+        "PosY": 3330
+      },
+      "displayGrid": {
+        "branch": "protection",
+        "row": 2,
+        "column": 3
+      },
+      "rawSpellDescription": "Increases your armor value from items by $s1%."
+    },
+    {
+      "nodeId": 105632,
+      "spellId": 1224697,
+      "name": "Sacred Duty",
+      "maxRank": 2,
+      "rawCoordinates": {
+        "PosX": 6820,
+        "PosY": 2730
+      },
+      "displayGrid": {
+        "branch": "protection",
+        "row": 1,
+        "column": 3
+      },
+      "rawSpellDescription": "Reduces the cooldown of your Divine Shield, Divine Protection, and Templar's Bulwark spells by ${$m2/-1000} sec, and reduces the duration of Forbearance by ${$m1/-1000} sec."
+    },
+    {
+      "nodeId": 105633,
+      "spellId": 20487,
+      "name": "Improved Hammer of Justice",
+      "maxRank": 3,
+      "rawCoordinates": {
+        "PosX": 5620,
+        "PosY": 3330
+      },
+      "displayGrid": {
+        "branch": "protection",
+        "row": 2,
+        "column": 1
+      },
+      "rawSpellDescription": "Decreases the cooldown of your Hammer of Justice spell by $/1000;s1 sec."
+    },
+    {
+      "nodeId": 105634,
+      "spellId": 20468,
+      "name": "Improved Righteous Fury",
+      "maxRank": 3,
+      "rawCoordinates": {
+        "PosX": 5620,
+        "PosY": 3930
+      },
+      "displayGrid": {
+        "branch": "protection",
+        "row": 3,
+        "column": 1
+      },
+      "rawSpellDescription": "While Righteous Fury is active, all damage taken is reduced by $m1%."
+    },
+    {
+      "nodeId": 105636,
+      "spellId": 20096,
+      "name": "Anticipation",
+      "maxRank": 5,
+      "rawCoordinates": {
+        "PosX": 6220,
+        "PosY": 3930
+      },
+      "displayGrid": {
+        "branch": "protection",
+        "row": 3,
+        "column": 2
+      },
+      "rawSpellDescription": "Increases your Defense Skill by $m1."
+    },
+    {
+      "nodeId": 105637,
+      "spellId": 20174,
+      "name": "Guardian's Favor",
+      "maxRank": 2,
+      "rawCoordinates": {
+        "PosX": 5620,
+        "PosY": 2730
+      },
+      "displayGrid": {
+        "branch": "protection",
+        "row": 1,
+        "column": 1
+      },
+      "rawSpellDescription": "Reduces the cooldown of your Blessing of Protection by $/60000;s1 min and increases the duration of your Blessing of Freedom by $/1000;s2 sec."
+    },
+    {
+      "nodeId": 105638,
+      "spellId": 20189,
+      "name": "Precision",
+      "maxRank": 3,
+      "rawCoordinates": {
+        "PosX": 5020,
+        "PosY": 2730
+      },
+      "displayGrid": {
+        "branch": "protection",
+        "row": 1,
+        "column": 0
+      },
+      "rawSpellDescription": "Improves your chance to hit by $s1%."
+    },
+    {
+      "nodeId": 105639,
+      "spellId": 1328546,
+      "name": "Stoicism",
+      "maxRank": 2,
+      "rawCoordinates": {
+        "PosX": 5020,
+        "PosY": 4530
+      },
+      "displayGrid": {
+        "branch": "protection",
+        "row": 4,
+        "column": 0
+      },
+      "rawSpellDescription": "Reduces the duration of Stun and Charm effects on you by $s1%."
+    },
+    {
+      "nodeId": 105692,
+      "spellId": 1310735,
+      "name": "Unsealed Wrath",
+      "maxRank": 1,
+      "rawCoordinates": {
+        "PosX": 9680,
+        "PosY": 5730
+      },
+      "displayGrid": {
+        "branch": "retribution",
+        "row": 6,
+        "column": 1
+      },
+      "rawSpellDescription": "Your melee attacks store a copy of your active Seal for $1311701d, stacking up to $1311701u times. Landing an attack with a different Seal consumes all stacks, giving the stored Seal its normal chance to activate once per stack."
+    },
+    {
+      "nodeId": 105693,
+      "spellId": 20049,
+      "name": "Vengeance",
+      "maxRank": 3,
+      "rawCoordinates": {
+        "PosX": 10280,
+        "PosY": 4530
+      },
+      "displayGrid": {
+        "branch": "retribution",
+        "row": 4,
+        "column": 2
+      },
+      "rawSpellDescription": "Increases your Physical and Holy damage dealt by $s1% for $20050d after landing a non-periodic critical strike.  Stacks up to $20050u times."
+    },
+    {
+      "nodeId": 105694,
+      "spellId": 20066,
+      "name": "Repentance",
+      "maxRank": 1,
+      "rawCoordinates": {
+        "PosX": 9680,
+        "PosY": 4530
+      },
+      "displayGrid": {
+        "branch": "retribution",
+        "row": 4,
+        "column": 1
+      },
+      "rawSpellDescription": "Puts the enemy target in a state of meditation, incapacitating them for up to $d. Any damage caused will awaken the target. Only works against Humanoids."
+    },
+    {
+      "nodeId": 105696,
+      "spellId": 20375,
+      "name": "Seal of Command",
+      "maxRank": 1,
+      "rawCoordinates": {
+        "PosX": 10280,
+        "PosY": 3330
+      },
+      "displayGrid": {
+        "branch": "retribution",
+        "row": 2,
+        "column": 2
+      },
+      "rawSpellDescription": "Gives the Paladin a chance to deal additional Holy damage equal to $20424s1% of normal weapon damage.  Only one Seal can be active on the Paladin at any one time.  Lasts $d.\n\nUnleashing this Seal's energy will judge an enemy, instantly causing $/2;20467s1 Holy damage, $20467s1 if the target is stunned or incapacitated."
+    },
+    {
+      "nodeId": 105697,
+      "spellId": 20111,
+      "name": "Two-Handed Weapon Specialization",
+      "maxRank": 3,
+      "rawCoordinates": {
+        "PosX": 10880,
+        "PosY": 3930
+      },
+      "displayGrid": {
+        "branch": "retribution",
+        "row": 3,
+        "column": 3
+      },
+      "rawSpellDescription": "Increases the Physical and Holy damage you deal by $s1%, and reduces all threat you generate by $m2% while a two-handed melee weapon is equipped."
+    },
+    {
+      "nodeId": 105698,
+      "spellId": 9799,
+      "name": "Eye for an Eye",
+      "maxRank": 2,
+      "rawCoordinates": {
+        "PosX": 9080,
+        "PosY": 3930
+      },
+      "displayGrid": {
+        "branch": "retribution",
+        "row": 3,
+        "column": 0
+      },
+      "rawSpellDescription": "All critical strikes against you cause $s1% of the damage taken to the attacker as well. The damage caused by Eye for an Eye will not exceed 50% of the Paladin's total health."
+    },
+    {
+      "nodeId": 105699,
+      "spellId": 26022,
+      "name": "Pursuit of Justice",
+      "maxRank": 2,
+      "rawCoordinates": {
+        "PosX": 10880,
+        "PosY": 3330
+      },
+      "displayGrid": {
+        "branch": "retribution",
+        "row": 2,
+        "column": 3
+      },
+      "rawSpellDescription": "Increases movement speed and mounted movement speed by $s1%.  This does not stack with other movement speed increasing effects."
+    },
+    {
+      "nodeId": 105700,
+      "spellId": 1311087,
+      "name": "Sacred Arbiter",
+      "maxRank": 1,
+      "rawCoordinates": {
+        "PosX": 9680,
+        "PosY": 3930
+      },
+      "displayGrid": {
+        "branch": "retribution",
+        "row": 3,
+        "column": 1
+      },
+      "rawSpellDescription": "Increases the damage of your Holy Strike ability by $m1% and causes it to refresh all Judgement effects on the target."
+    },
+    {
+      "nodeId": 105701,
+      "spellId": 1311074,
+      "name": "Sanctified Judgement",
+      "maxRank": 3,
+      "rawCoordinates": {
+        "PosX": 10280,
+        "PosY": 2730
+      },
+      "displayGrid": {
+        "branch": "retribution",
+        "row": 1,
+        "column": 2
+      },
+      "rawSpellDescription": "Gives your Judgement ability a $m1% chance to return $m2% of the Mana cost of the judged seal."
+    },
+    {
+      "nodeId": 105702,
+      "spellId": 9452,
+      "name": "Vindication",
+      "maxRank": 3,
+      "rawCoordinates": {
+        "PosX": 9080,
+        "PosY": 3330
+      },
+      "displayGrid": {
+        "branch": "retribution",
+        "row": 2,
+        "column": 0
+      },
+      "rawSpellDescription": "Gives your damaging melee attacks a chance to reduce the target's Attack Power by ${$m1/-3*$440667m1} for $440667d."
+    },
+    {
+      "nodeId": 105703,
+      "spellId": 20117,
+      "name": "Conviction",
+      "maxRank": 3,
+      "rawCoordinates": {
+        "PosX": 9680,
+        "PosY": 2730
+      },
+      "displayGrid": {
+        "branch": "retribution",
+        "row": 1,
+        "column": 1
+      },
+      "rawSpellDescription": "Improves your chance to get a critical strike with all spells and attacks by $m1%."
+    },
+    {
+      "nodeId": 105704,
+      "spellId": 1237268,
+      "name": "Holy Conduit",
+      "maxRank": 2,
+      "rawCoordinates": {
+        "PosX": 2220,
+        "PosY": 3330
+      },
+      "displayGrid": {
+        "branch": "holy",
+        "row": 2,
+        "column": 2
+      },
+      "rawSpellDescription": "Reduces the mana cost of your Consecration, Holy Wrath, Exorcism, and Hammer of Wrath spells by $m1%."
+    },
+    {
+      "nodeId": 105705,
+      "spellId": 25956,
+      "name": "Improved Judgement",
+      "maxRank": 2,
+      "rawCoordinates": {
+        "PosX": 9080,
+        "PosY": 2730
+      },
+      "displayGrid": {
+        "branch": "retribution",
+        "row": 1,
+        "column": 0
+      },
+      "rawSpellDescription": "Decreases the cooldown of your Judgement ability by $/1000;s1 sec."
+    },
+    {
+      "nodeId": 105706,
+      "spellId": 20101,
+      "name": "Benediction",
+      "maxRank": 5,
+      "rawCoordinates": {
+        "PosX": 10280,
+        "PosY": 2130
+      },
+      "displayGrid": {
+        "branch": "retribution",
+        "row": 0,
+        "column": 2
+      },
+      "rawSpellDescription": "Reduces the Mana cost of all instant cast spells and abilities by $m1%."
+    },
+    {
+      "nodeId": 105707,
+      "spellId": 20060,
+      "name": "Deflection",
+      "maxRank": 5,
+      "rawCoordinates": {
+        "PosX": 9680,
+        "PosY": 2130
+      },
+      "displayGrid": {
+        "branch": "retribution",
+        "row": 0,
+        "column": 1
+      },
+      "rawSpellDescription": "Increases your Parry chance by $s1%."
+    },
+    {
+      "nodeId": 110871,
+      "spellId": 1310899,
+      "name": "Reverence",
+      "maxRank": 2,
+      "rawCoordinates": {
+        "PosX": 1620,
+        "PosY": 2730
+      },
+      "displayGrid": {
+        "branch": "holy",
+        "row": 1,
+        "column": 1
+      },
+      "rawSpellDescription": "Allows $s1% of your Mana regeneration to continue while casting."
+    },
+    {
+      "nodeId": 110872,
+      "spellId": 1310905,
+      "name": "Consecrated Ground",
+      "maxRank": 2,
+      "rawCoordinates": {
+        "PosX": 1020,
+        "PosY": 4530
+      },
+      "displayGrid": {
+        "branch": "holy",
+        "row": 4,
+        "column": 0
+      },
+      "rawSpellDescription": "Gives your Holy spells $m1% increased damage against the first $20924s3 enemies that enter your Consecration."
+    },
+    {
+      "nodeId": 110873,
+      "spellId": 426065,
+      "name": "Infusion of Light",
+      "maxRank": 2,
+      "rawCoordinates": {
+        "PosX": 1620,
+        "PosY": 3930
+      },
+      "displayGrid": {
+        "branch": "holy",
+        "row": 3,
+        "column": 1
+      },
+      "rawSpellDescription": "Your Holy Shock and Flash of Light critical hits reduce the cast time of your next Holy Light cast within $437063d by ${$m1/-1000}.1 sec."
+    },
+    {
+      "nodeId": 110874,
+      "spellId": 20150,
+      "name": "Shield Specialization",
+      "maxRank": 2,
+      "rawCoordinates": {
+        "PosX": 6220,
+        "PosY": 3330
+      },
+      "displayGrid": {
+        "branch": "protection",
+        "row": 2,
+        "column": 2
+      },
+      "rawSpellDescription": "Increases the amount of damage absorbed by your shield by $m1%, and gives your blocks a $m2% chance to restore $1310925m1% of your maximum Mana.  May only occur once every $proccooldown sec."
+    },
+    {
+      "nodeId": 110875,
+      "spellId": 1328544,
+      "name": "Shieldsworn",
+      "maxRank": 1,
+      "rawCoordinates": {
+        "PosX": 5620,
+        "PosY": 5730
+      },
+      "displayGrid": {
+        "branch": "protection",
+        "row": 6,
+        "column": 1
+      },
+      "rawSpellDescription": "Reduces the cooldown of your Holy Strike ability by ${$m1/-1000} sec. Additionally, Holy Strike now strikes with your shield, triggering your active Holy Shield and Shield Specialization talents without consuming their charges or triggering their cooldowns, and allowing you to Block spells for $1328551d."
+    },
+    {
+      "nodeId": 110878,
+      "spellId": 1310994,
+      "name": "Swift Judgement",
+      "maxRank": 1,
+      "rawCoordinates": {
+        "PosX": 5020,
+        "PosY": 3930
+      },
+      "displayGrid": {
+        "branch": "protection",
+        "row": 3,
+        "column": 0
+      },
+      "rawSpellDescription": "Unleash the energy of a Seal spell upon an enemy. Does not consume the Seal. Refer to individual Seals for Judgement effect. Does not share a cooldown with your Judgement ability."
+    },
+    {
+      "nodeId": 110879,
+      "spellId": 1311034,
+      "name": "Iron Creed",
+      "maxRank": 3,
+      "rawCoordinates": {
+        "PosX": 6220,
+        "PosY": 5130
+      },
+      "displayGrid": {
+        "branch": "protection",
+        "row": 5,
+        "column": 2
+      },
+      "rawSpellDescription": "Increases the threat generated by your Holy Strike ability by $m1%. While Righteous Fury is active, Holy Strike also reduces your damage taken by $m2% for $1311033d."
+    },
+    {
+      "nodeId": 110882,
+      "spellId": 1311084,
+      "name": "Champion of the Light",
+      "maxRank": 5,
+      "rawCoordinates": {
+        "PosX": 10280,
+        "PosY": 5130
+      },
+      "displayGrid": {
+        "branch": "retribution",
+        "row": 5,
+        "column": 2
+      },
+      "rawSpellDescription": "Increases your spell damage by up to $m1% of your Intellect, and reduces the cast time of your Hammer of Wrath by ${$m2/-1000}.1 sec."
+    },
+    {
+      "nodeId": 113629,
+      "spellId": 1328370,
+      "name": "Turn Evil",
+      "maxRank": 2,
+      "rawCoordinates": {
+        "PosX": 9080,
+        "PosY": 4530
+      },
+      "displayGrid": {
+        "branch": "retribution",
+        "row": 4,
+        "column": 0
+      },
+      "rawSpellDescription": "Reduces the cast time of your Turn Undead spell by ${$s1/-1000}.1 sec, its cooldown by ${$s2/-1000} sec, and allows it to affect Demons."
+    },
+    {
+      "nodeId": 113630,
+      "spellId": 20262,
+      "name": "Divine Strength",
+      "maxRank": 5,
+      "rawCoordinates": {
+        "PosX": 2220,
+        "PosY": 2130
+      },
+      "displayGrid": {
+        "branch": "holy",
+        "row": 0,
+        "column": 2
+      },
+      "rawSpellDescription": "Increases your Strength by $s1%."
+    },
+    {
+      "nodeId": 113631,
+      "spellId": 1328550,
+      "name": "Boundless Light",
+      "maxRank": 2,
+      "rawCoordinates": {
+        "PosX": 2220,
+        "PosY": 4530
+      },
+      "displayGrid": {
+        "branch": "holy",
+        "row": 4,
+        "column": 2
+      },
+      "rawSpellDescription": "Increases the critical strike chance of your Holy Shock spell by $s1% when cast on allies not affected by your Oath of Light."
+    }
+  ],
+  "rawEdges": [
+    {
+      "ID": "132632",
+      "VisualStyle": "1",
+      "LeftTraitNodeID": "110871",
+      "RightTraitNodeID": "105329",
+      "Type": "2"
+    },
+    {
+      "ID": "132634",
+      "VisualStyle": "1",
+      "LeftTraitNodeID": "105626",
+      "RightTraitNodeID": "110874",
+      "Type": "2"
+    },
+    {
+      "ID": "136766",
+      "VisualStyle": "1",
+      "LeftTraitNodeID": "105696",
+      "RightTraitNodeID": "105693",
+      "Type": "2"
+    },
+    {
+      "ID": "136767",
+      "VisualStyle": "1",
+      "LeftTraitNodeID": "105694",
+      "RightTraitNodeID": "105692",
+      "Type": "2"
+    },
+    {
+      "ID": "136768",
+      "VisualStyle": "1",
+      "LeftTraitNodeID": "105628",
+      "RightTraitNodeID": "110875",
+      "Type": "2"
+    },
+    {
+      "ID": "136769",
+      "VisualStyle": "1",
+      "LeftTraitNodeID": "105625",
+      "RightTraitNodeID": "110878",
+      "Type": "2"
+    },
+    {
+      "ID": "136770",
+      "VisualStyle": "1",
+      "LeftTraitNodeID": "105323",
+      "RightTraitNodeID": "105320",
+      "Type": "2"
+    },
+    {
+      "ID": "136771",
+      "VisualStyle": "1",
+      "LeftTraitNodeID": "105323",
+      "RightTraitNodeID": "113631",
+      "Type": "3"
+    }
+  ],
+  "uninterpretedEdgeIds": [
+    136771
+  ],
+  "pointTimingVerification": "derived_assumption",
+  "fullRankPrerequisiteVerification": "derived_assumption"
+}

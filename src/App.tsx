@@ -1,7 +1,7 @@
 import { isRetiredPage } from './lib/pageRetirement'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Check, ChevronDown, Clipboard, LockKeyhole, Minus, RotateCcw, Sparkles, UsersRound } from 'lucide-react'
-import { EXAMPLE_BUILDS } from './data/builds'
+import { EXAMPLE_BUILDS, exampleReferenceHref } from './data/builds'
 import { BUILD_LANDING_PAGES } from './data/buildLandingPages'
 import BuildCard from './BuildCard'
 import { PALADIN_BETA_SNAPSHOT } from './data/betaSnapshot'
@@ -165,7 +165,7 @@ export function TalentTree({ branch, build, onAdd, onRemove, readOnly = false, p
               <div className="talent-builds">
                 <b>Builds using this talent</b>
                 {matchingBuilds.length ? matchingBuilds.map((example) => (
-                  <a key={example.id} href={`/${example.slug}`} aria-label={`Open build example ${example.allocation}`} onClick={() => track('talent_build_click', { talent_id: talent.id, build_id: example.id })}>
+                  <a key={example.id} href={exampleReferenceHref(example)} aria-label={`Open build example ${example.allocation}`} onClick={() => track('talent_build_click', { talent_id: talent.id, build_id: example.id })}>
                     {example.name} <small>{example.allocation}{'reviewStatus' in example && example.reviewStatus === 'under_review' ? ' · Historical removal' : ''}</small>
                   </a>
                 )) : <span>No published example yet</span>}
@@ -344,7 +344,7 @@ export default function App() {
             <div className="eyebrow"><Sparkles size={14} /> Paladin Talent Tool</div>
             <h1>WoW Forever<br /><span>Paladin Talent</span><br />Calculator</h1>
             <p className="lead">Build Paladin talent trees for Holy, Protection, and Retribution.</p>
-            <p className="hero-disclaimer">Live Beta cap: Level 30. This planner can also inspect long-term 51-point references using the reviewed {PALADIN_BETA_SNAPSHOT.clientBuild} client structure; resolved rank text has separate community evidence.</p>
+            <p className="hero-disclaimer">Archived Beta tree, not launch data. This planner uses the reviewed {PALADIN_BETA_SNAPSHOT.clientBuild} client structure with Level 10–30 and Level 60 budgets; resolved rank text has separate community evidence. Launch references are linked below.</p>
             <p className="hero-actions-copy">Preview talents. <span /> Create builds. <span /> Share your setup.</p>
             <div className="button-row"><button className="button primary" onClick={() => openTool()}>Open Talent Calculator</button><button className="button secondary" onClick={() => openTool('holy')}>View Talents <ChevronDown size={16} /></button></div>
           </div>
@@ -360,7 +360,7 @@ export default function App() {
               </div>
             ))}</div>
             <div className="hud-status"><i /> {points ? 'Build in progress' : 'Ready to build'}</div>
-            <div className="hud-perks"><span>3 Talent Trees</span><span>Live cap: Level 30</span><span>Shareable Builds</span></div>
+            <div className="hud-perks"><span>3 Talent Trees</span><span>Beta snapshot budgets</span><span>Shareable Builds</span></div>
           </aside>
         </div>
       </section>
@@ -372,7 +372,7 @@ export default function App() {
           <h2>WoW Forever Paladin Talents</h2>
           <div className="data-card" role="note">
             <div className="data-card-title">Talent Data</div>
-            <p className="data-card-line"><span>✓</span> {talents.length} current nodes from client 70245; the two removed 69913 records remain in the historical index — {DATA_SOURCES.join(', ')}</p>
+            <p className="data-card-line"><span>✓</span> {talents.length} nodes in the client 70245 snapshot; the two removed 69913 records remain in the historical index — {DATA_SOURCES.join(', ')}</p>
             <p className="data-card-progress">All three Paladin trees include client-verified coordinates, prerequisite links and rank caps, with community-verified text for every rank. Required prerequisite ranks are not present in the client tables, so the planner labels its Classic max-rank fallback as an assumption.</p>
             <p className="data-card-progress">{betaDataset.label} · <a href="/wow-forever-paladin-beta-talent-changes">Review Beta changes</a></p>
           <PaladinRankAttribution /></div>
@@ -391,9 +391,9 @@ export default function App() {
 
       <section className="planner-section" id="planner">
         <div className="shell">
-          <div className="section-heading centered"><div className="eyebrow">Interactive Build Planner</div><h2>WoW Forever Paladin Talent Tree</h2><p>Choose Holy, Protection, or Retribution. The live Beta cap is Level 30; the 51-point canvas is a long-term reference using the reviewed 70245 structure.</p></div>
+          <div className="section-heading centered"><div className="eyebrow">Interactive Build Planner</div><h2>WoW Forever Paladin Talent Tree</h2><p>Choose Holy, Protection, or Retribution. This editable tree preserves Beta build 70245. Level 30 gives a 21-point snapshot budget; Level 60 gives a 51-point reference. These budgets do not verify the launch tree.</p></div>
           <section className="current-cap-builds" aria-label="Level 20 Beta starting builds">
-            <div className="popular-builds-heading"><div><span>Starting routes and historical references</span><h2>Level 20 Beta Starting Builds</h2></div><p>Load an 11-point starting snapshot for the Level 30 Beta. Protection also has a 21-point Level 30 extension reviewed at the node level; the full calculator now uses reviewed 70245 structure with separately sourced rank text.</p></div>
+            <div className="popular-builds-heading"><div><span>Starting routes and historical references</span><h2>Level 20 Beta Starting Builds</h2></div><p>Load an 11-point starting snapshot from the archived Level 30 Beta. Protection also has a 21-point Level 30 extension reviewed at the node level; the full calculator now uses reviewed 70245 structure with separately sourced rank text.</p></div>
             <div className="current-cap-build-grid">
               {BRANCHES.map((item) => {
                 const path = BETA_SPEC_PATHS[item]
@@ -454,13 +454,13 @@ export default function App() {
           </div>
           {!(initialPlanner.archive && restoreNotice) && <PaladinAllocationComparison build={build} level={planningLevel} onLoad={loadComparison} />}
           <section className="popular-builds" aria-label="Community Paladin build examples">
-            <div className="popular-builds-heading"><div><span>Published planning examples</span><h2>Community Build Examples</h2></div><p>Review historical 51-point references, then start a blank planner route for the live Level 30 cap.</p></div>
+            <div className="popular-builds-heading"><div><span>Published planning examples</span><h2>Community Build Examples</h2></div><p>Review historical 51-point references, then start a blank route in the archived Beta tree.</p></div>
             <div className="popular-build-grid">{EXAMPLE_BUILDS.map((example, index) => (
               <article className="example-build-card" key={example.id}>
                 <div className="example-build-icon"><img src={index === 0 ? branchIcons.holy : index === 1 ? branchIcons.protection : branchIcons.retribution} alt="" /></div>
-                <div><span>Historical 51-point reference</span><h3><a href={`/${example.slug}`}>{example.name}</a></h3><p>{example.description}</p></div>
+                <div><span>Historical 51-point reference</span><h3><a href={exampleReferenceHref(example)}>{example.name}</a></h3><p>{example.description}</p></div>
                 <strong>{example.allocation}<small>Holy / Protection / Retribution</small></strong>
-                <a className="example-build-review" href={`/${example.slug}`}>Review historical build</a>
+                <a className="example-build-review" href={exampleReferenceHref(example)}>Review historical build</a>
               </article>
             ))}</div>
           </section>
@@ -476,7 +476,7 @@ export default function App() {
 
       <section className="benefits shell" id="about"><div className="section-heading centered"><div className="eyebrow">Built by BuildForge</div><h2>One Place to Plan, Refine, and Share</h2></div><div className="benefit-grid"><article><img src="/images/icons/shield.png" alt="" /><span>01</span><h3>Plan Your Build</h3><p>Try different talent paths before committing.</p></article><article><img src="/images/icons/hammer.png" alt="" /><span>02</span><h3>Share Builds</h3><p>Create and share your Paladin setup.</p></article><article><img src="/images/icons/paladin-shield.png" alt="" /><span>03</span><h3>Community Driven</h3><p>Improve talent data together.</p></article></div></section>
 
-      <section className="seo-section"><div className="shell seo-grid"><div><div className="eyebrow">The tool, explained</div><h2>WoW Forever Talents Calculator</h2></div><div className="seo-copy"><p>The <strong>wow forever paladin talent calculator</strong> is a focused planning space for players who want to explore a Paladin setup before they commit points in game. Start by choosing Holy, Protection, or Retribution, then select any available talent node. Each click adds one rank, updates the total immediately, and unlocks deeper rows when the branch has enough points. Selected talents are kept in the summary beside the tree, so the shape of the build stays easy to read while you experiment.</p><p>This first release is designed around the simple actions players repeat most: opening the tree, testing a path, changing a few ranks, and sending the result to someone else. The point counter enforces the selected level budget: 21 points at the live Level 30 cap, or 51 in historical reference mode. Community allocations and the underlying client snapshot are reviewed separately. If a later talent depends on an earlier one, the interface keeps that dependency visible and prevents an invalid allocation. Removing a required rank also clears talents that can no longer stay active, keeping every shared setup consistent.</p><p>When your <strong>wow forever paladin build</strong> is ready, the Copy Build Link button turns the selected ranks into a compact URL. Anyone opening that link sees the same choices without creating an account. The current build is also stored in the browser as you work, making it easier to return and continue after closing the page. Reset clears the planner when you want to start a completely different idea.</p><p>The planner starts from an imported client snapshot of WoW Forever Beta build 1.60.1.70245 for all 50 current Paladin talents, including positions, rank limits, prerequisite links and icons. Every rank tooltip is adapted from the community-resolved 70170 export with its evidence and license shown. The September 24 official update removed Improved Holy Strike, and the 70245 client tree also omits Crusade. Both remain readable in the historical index and old shared allocations, and cannot receive points in a new build. The client tables do not state how many ranks a prerequisite requires, so the planner applies the Classic max-rank rule and labels that rule as an assumption. BuildForgeTools keeps later official notices separate from a fully imported and reviewed client dataset.</p><p>The goal of this tool is to make <strong>wow forever talents</strong> quick to inspect and easy to discuss. The talent data reflects the reviewed 70245 structure, community-resolved rank text and official tuning; historical examples stay visible for comparison but are not loaded as current recommendations. Use the planner to compare paths, preserve an idea, or give another player a precise starting point for testing.</p></div></div></section>
+      <section className="seo-section"><div className="shell seo-grid"><div><div className="eyebrow">The tool, explained</div><h2>WoW Forever Talents Calculator</h2></div><div className="seo-copy"><p>The <strong>wow forever paladin talent calculator</strong> is a focused planning space for players who want to explore a Paladin setup before they commit points in game. Start by choosing Holy, Protection, or Retribution, then select any available talent node. Each click adds one rank, updates the total immediately, and unlocks deeper rows when the branch has enough points. Selected talents are kept in the summary beside the tree, so the shape of the build stays easy to read while you experiment.</p><p>This first release is designed around the simple actions players repeat most: opening the tree, testing a path, changing a few ranks, and sending the result to someone else. The point counter enforces the selected level budget: 21 points at Level 30 in this snapshot, or 51 in historical reference mode. Community allocations and the underlying client snapshot are reviewed separately. If a later talent depends on an earlier one, the interface keeps that dependency visible and prevents an invalid allocation. Removing a required rank also clears talents that can no longer stay active, keeping every shared setup consistent.</p><p>When your <strong>wow forever paladin build</strong> is ready, the Copy Build Link button turns the selected ranks into a compact URL. Anyone opening that link sees the same choices without creating an account. The current build is also stored in the browser as you work, making it easier to return and continue after closing the page. Reset clears the planner when you want to start a completely different idea.</p><p>The planner starts from an imported client snapshot of WoW Forever Beta build 1.60.1.70245 for the 50 Paladin talents in that snapshot, including positions, rank limits, prerequisite links and icons. Every rank tooltip is adapted from the community-resolved 70170 export with its evidence and license shown. The September 24 official update removed Improved Holy Strike, and the 70245 client tree also omits Crusade. Both remain readable in the historical index and old shared allocations, and cannot receive points in a new build. The client tables do not state how many ranks a prerequisite requires, so the planner applies the Classic max-rank rule and labels that rule as an assumption. BuildForgeTools keeps later official notices separate from a fully imported and reviewed client dataset.</p><p>The goal of this tool is to make <strong>wow forever talents</strong> quick to inspect and easy to discuss. The talent data reflects the reviewed 70245 structure, community-resolved rank text and official tuning; historical examples stay visible for comparison but are not loaded as current recommendations. Use the planner to compare paths, preserve an idea, or give another player a precise starting point for testing.</p></div></div></section>
 
       <section className="seo-continuation" aria-label="More about the BuildForge talent calculator"><div className="shell"><p>BuildForge keeps every action visible and reversible. A locked node shows that the current branch needs more points or a completed prerequisite. An illuminated node shows a rank already chosen. The summary lists those choices by specialization and lets you remove a rank without hunting for its position in the tree. Because the URL contains only talent identifiers and ranks, it stays compact enough to paste into a chat, forum, or build discussion.</p><p>The planning loop remains open without registration and saves the latest local setup automatically. An optional ForgePilot account adds cloud saves for players who want their named builds on another device. Players can test a Holy core with Protection support, compare a Retribution route, or clear everything and begin again. The structure is ready for new class trees later, while the Paladin calculator remains a clear standalone page for search visitors who want to build immediately.</p></div></section>
 

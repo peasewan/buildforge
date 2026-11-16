@@ -67,7 +67,7 @@ describe('public page routing', () => {
       kind: 'build-guide',
       buildId: 'holy-healing-31-20-0',
       title: 'WoW Forever Paladin Build – Holy Healing 31/20/0 | BuildForgeTools',
-      description: 'Inspect a historical 31/20/0 Holy Paladin healing reference, then start a new build for the live Level 30 Beta cap.',
+      description: 'Inspect a historical 31/20/0 Holy Paladin healing reference, then start a new build for the dated October Level 30 Beta cap.',
       canonical: 'https://buildforgetools.com/wow-forever-paladin-build',
       robots: 'index, follow',
     })
@@ -76,9 +76,12 @@ describe('public page routing', () => {
   it.each([
     ['/wow-forever-protection-paladin-build/', 'protection-shield-20-31-0', 'WoW Forever Protection Paladin Build | BuildForgeTools'],
     ['/wow-forever-retribution-paladin-build/', 'retribution-judgment-0-20-31', 'WoW Forever Retribution Paladin Build | BuildForgeTools'],
-    ['/wow-forever-retribution-paladin-leveling-build/', 'retribution-leveling-20-0-31', 'WoW Forever Retribution Paladin Leveling Build | BuildForgeTools'],
   ])('serves %s as an indexable example build', (pathname, buildId, title) => {
     expect(pageForPath(pathname)).toMatchObject({ kind: 'build-guide', buildId, title })
+  })
+
+  it('resolves the duplicate Ret leveling entry to the retained class leveling tool', () => {
+    expect(pageForPath('/wow-forever-retribution-paladin-leveling-build/')).toEqual(pageForPath('/wow-forever-paladin-leveling-build'))
   })
 
   it.each([

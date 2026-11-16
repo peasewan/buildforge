@@ -9,6 +9,7 @@ import { EMBERVILLE_PAGES } from '../data/emberville'
 import { isRetiredPage, resolvePageHref } from './pageRetirement'
 
 const manualConsolidations = [
+  ['/wow-forever-retribution-paladin-leveling-build', '/wow-forever-paladin-leveling-build'],
   ['/emberville-skill-inheritance', '/emberville'],
   ['/wow-forever-protection-paladin-dungeon-build', '/wow-forever-protection-paladin-build'],
   ['/wow-forever-retribution-paladin-builds', '/wow-forever-retribution-paladin-build'],

@@ -8,7 +8,7 @@ import { track } from './lib/analytics'
 export default function PaladinPvpRoutes() {
   return <section id="pvp-starting-routes" className="shell pvp-starting-routes" aria-label="Paladin PvP starting routes">
     <header><div className="eyebrow">Editorial planning examples</div><h2>Choose a starting route, then adjust for PvP</h2>
-      <p>These 11-point Level 20 examples are starting snapshots under the official Level {PALADIN_BETA_SNAPSHOT.phase.levelCap} cap. They are not tested PvP recommendations or complete Level 30 builds.</p>
+      <p>These 11-point Level 20 examples are starting snapshots under the dated October Beta Level {PALADIN_BETA_SNAPSHOT.phase.levelCap} cap. They are not tested PvP recommendations or complete Level 30 builds.</p>
       <p>These starting snapshots use the reviewed {PALADIN_BETA_SNAPSHOT.clientBuild} structure and separately sourced community rank text. Their Level 20 budget is intentional; use the Level 30 examples below for a 21-point plan.</p>
       <p>Each Level 20 snapshot opens with its 11-point budget already spent. Remove a rank before adding a different talent, or start a blank build at the same level.</p>
     </header>

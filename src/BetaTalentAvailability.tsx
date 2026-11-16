@@ -8,7 +8,7 @@ export default function BetaTalentAvailability({ branch }: { branch: Branch }) {
   return (
     <section className="beta-availability shell" aria-label="Beta level-range check">
       <div>
-        <span>Beta level-range check</span>
+        <span>October Beta snapshot · level-range check</span>
         <strong>Level cap {levelCap}</strong>
         <small>Up to {availablePoints} points under the leveling assumption</small>
       </div>
@@ -20,7 +20,7 @@ export default function BetaTalentAvailability({ branch }: { branch: Branch }) {
         </div>
         <b>{available ? <Check size={14} /> : <LockKeyhole size={14} />}{available ? 'Within level range' : 'Above level range'}</b>
       </article>
-      <p>Level 30 is official. The point budget assumes one point per level from 10; talent structure comes from the reviewed 70245 client tree. Full-rank prerequisite rules remain derived assumptions, and the level-range check does not establish build performance.</p>
+      <p>Level 30 was the official October 1 Beta cap, not a current launch limit. The point budget assumes one point per level from 10; talent structure comes from the reviewed 70245 client tree. Full-rank prerequisite rules remain derived assumptions, and the level-range check does not establish build performance.</p>
     </section>
   )
 }

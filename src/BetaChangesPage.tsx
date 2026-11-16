@@ -1,3 +1,4 @@
+import BetaDataStatus from './BetaDataStatus'
 import PaladinPatchImpact from './PaladinPatchImpact'
 import BetaPatchNotice from './BetaPatchNotice'
 import { Calculator } from "lucide-react";
@@ -48,17 +49,18 @@ export default function BetaChangesPage() {
             <div><dt>Previous build</dt><dd>1.60.1.69913</dd></div>
             <div><dt>Tree-ready talents</dt><dd>{betaDataset.talents.length} / {betaDataset.talents.length}</dd></div>
             <div><dt>New in Forever</dt><dd>{snapshot.counts.paladinNewTalents}</dd></div>
-            <div><dt>Current level cap</dt><dd>{snapshot.phase.levelCap}</dd></div>
+            <div><dt>October Beta cap</dt><dd>{snapshot.phase.levelCap}</dd></div>
             <div><dt>Last full client import</dt><dd>Oct 7, 2026</dd></div>
           </dl>
         </aside>
       </section>
 
+      <BetaDataStatus />
       <section className="beta-diff shell">
         <PaladinPatchImpact />
         <section className="beta-detail-block">
           <h2>October 1 Beta update · Level 30</h2>
-          <p>Blizzard says players can now level to 30. The same official update announces these Paladin tuning changes:</p>
+          <p>On October 1, Blizzard announced that Beta players could level to 30. The same official update announces these Paladin tuning changes:</p>
           <ul>
             <li>Redoubt: Block chance now 4/8/12/16/20% (was 6/12/18/24/30%).</li>
             <li>Holy Shield: Block chance now 30% (was 20%).</li>
@@ -84,7 +86,7 @@ export default function BetaChangesPage() {
         </section>
 
         <section className="beta-detail-block beta-phase-block">
-          <div><div className="eyebrow">Live Test Phase</div><h2>October 1 Beta — Level 30</h2><p>The official level cap is now 30. Level 20 routes remain useful checkpoints. Follow the 21-point Protection editorial route or the Ret community timeline, and use the comparator to inspect Holy Shock planning limits. The complete 70245 structure is now reconciled; route effectiveness and every rendered rank value remain separate evidence.</p></div>
+          <div><div className="eyebrow">Historical Test Phase</div><h2>October 1 Beta — Level 30</h2><p>The October 1 Beta update raised its cap to 30; this is a dated phase, not today’s live cap. Level 20 routes remain useful checkpoints. Follow the 21-point Protection editorial route or the Ret community timeline, and use the comparator to inspect Holy Shock planning limits. The complete 70245 structure is now reconciled; route effectiveness and every rendered rank value remain separate evidence.</p></div>
           <a href="/wow-forever-paladin-build-comparator">Compare Level 30 routes</a> · <a href="/wow-forever-protection-paladin-leveling-build">Protection progression</a> · <a href={snapshot.phase.officialSource} target="_blank" rel="noreferrer">Read the official Level 30 update</a>
         </section>
 

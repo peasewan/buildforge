@@ -1,5 +1,5 @@
 import DiscoveryHeader from './DiscoveryHeader'
-import { ArrowRight, BookOpen, Compass, Layers, ShieldCheck, Sprout } from 'lucide-react'
+import { ArrowRight, BookOpen, Calculator, Compass, Layers, ShieldCheck, Sprout } from 'lucide-react'
 import SiteFooter from './SiteFooter'
 import { DISCOVERY_PAGES, discoveryClasses, discoveryGroups, type DiscoveryId } from './data/siteDiscovery'
 
@@ -7,24 +7,36 @@ const classes = discoveryClasses()
 const groups = discoveryGroups()
 const focusedRoutes = [
   {
-    title: 'Warlock PvP builds',
-    question: 'Which starting route fits the encounter?',
-    detail: 'Compare published PvP allocations, set an encounter focus, and edit the points yourself.',
-    href: '/wow-forever-warlock-pvp-build',
-  },
-  {
-    title: 'Frost Mage AoE build',
-    question: 'What does an early AoE route spend?',
-    detail: 'Inspect the Level 20 starter snapshot and its pull checklist before adapting it to the live Level 30 cap.',
-    href: '/wow-forever-frost-mage-aoe-build',
+    title: 'Arms vs Fury Warrior',
+    question: 'Which leveling route fits your session?',
+    detail: 'Compare the selected talents, point order and weapon trade-offs before editing either example.',
+    href: '/wow-forever-arms-vs-fury-warrior-leveling',
   },
   {
     title: 'Elemental vs Enhancement Shaman',
     question: 'Casting or weapon-focused leveling?',
-    detail: 'Compare two eleven-point examples with their gear, movement, and recovery trade-offs in view.',
+    detail: 'Review two talent allocations while keeping equipment, movement and mana recovery in the comparison.',
     href: '/wow-forever-elemental-vs-enhancement-shaman-leveling',
   },
+  {
+    title: 'Balance vs Feral Druid',
+    question: 'Ranged casting or form-based melee?',
+    detail: 'Check the selected effects in each route and account for recovery and form-switching choices.',
+    href: '/wow-forever-balance-vs-feral-druid-leveling',
+  },
+  {
+    title: 'Paladin PvP builds',
+    question: 'Which tools fit your PvP role?',
+    detail: 'Review Holy, Protection and Retribution choices, then open a published allocation in the calculator.',
+    href: '/wow-forever-paladin-pvp-build',
+  },
 ] as const
+function FocusedWowRoutes() {
+  return <section className="sd-focused-routes" aria-labelledby="sd-focused-routes-title">
+    <div className="sd-focused-heading"><div><p className="sd-kicker">COMPARE A ROUTE OR PREPARE FOR PVP</p><h2 id="sd-focused-routes-title">Focused WoW planning routes</h2></div><p>These are editable published examples, not performance rankings. Each page states its dataset and point budget.</p></div>
+    <div className="sd-focused-grid">{focusedRoutes.map(route => <article key={route.href}><h3>{route.title}</h3><p className="sd-focused-question">{route.question}</p><p>{route.detail}</p><a href={route.href}>Explore route <ArrowRight size={15} aria-hidden="true" /></a></article>)}</div>
+  </section>
+}
 const classStartingPoints: Record<string, string> = {
   paladin: 'Compare Holy, Protection and Retribution. The Paladin leveling route now has a point-by-point Level 10–30 timeline; its talent tooltips still identify the older imported client snapshot.',
   warrior: 'Compare Arms, Fury and Protection paths for leveling, damage or tanking. Start with a published route, then inspect every rank in the editable calculator.',
@@ -46,8 +58,9 @@ export default function SiteDiscoveryPage({ pageId }: { pageId: DiscoveryId }) {
   const page = DISCOVERY_PAGES.find(p => p.id === pageId)!
   return <div className="site-discovery" data-experience-kind={`discovery-${pageId}`}>
     <DiscoveryHeader pageId={pageId} />
-    <main className="sd-main"><div className="sd-intro"><p className="sd-kicker">{pageId === 'home' ? 'THE BUILD PLANNING WORKBENCH' : 'WORLD OF WARCRAFT FOREVER'}</p><h1>{page.h1}</h1><p>{pageId === 'home' ? 'Talent calculators, editable routes and source-linked references. Pick a tool and start planning.' : page.description}</p></div>
+    <main className="sd-main"><div className="sd-intro"><p className="sd-kicker">{pageId === 'home' ? 'THE BUILD PLANNING WORKBENCH' : 'WORLD OF WARCRAFT FOREVER'}</p><h1>{page.h1}</h1><p>{pageId === 'home' ? 'Talent calculators, editable routes and source-linked references. Pick a tool and start planning.' : page.description}</p>{pageId === 'home' && <nav className="sd-calculator-shortcuts" aria-label="WoW calculator shortcuts"><a className="sd-primary" href="/paladin#calculator"><Calculator size={17} aria-hidden="true" />Open Paladin calculator</a><a className="sd-secondary" href="/wow-forever-classes">All class calculators <ArrowRight size={15} aria-hidden="true" /></a></nav>}</div>
       {pageId === 'home' ? <>
+        <FocusedWowRoutes />
         <section className="sd-games" aria-label="Choose a game"><article className="sd-game sd-wow"><img className="sd-game-art" src="/images/hero/hero-paladin.webp" alt="" /><div className="sd-game-content"><p className="sd-kicker">TALENTS · BUILDS · PROGRESSION</p><h2>WoW Forever</h2><p>Explore nine classes. Inspect the talent evidence, follow an editorial route, then make the allocation yours.</p><nav className="sd-paladin-feature" aria-label="Featured Paladin tools"><span>Start with Paladin</span><a href="/paladin">WoW Forever Paladin Talent Calculator <ArrowRight size={15} /></a><a href="/wow-forever-paladin-talents">Paladin Talent Trees <ArrowRight size={15} /></a><a href="/wow-forever-paladin-builds">Paladin Builds <ArrowRight size={15} /></a></nav><a className="sd-primary" href="/wow-forever-classes">Choose your class <ArrowRight size={17} /></a><a className="sd-secondary" href="/wow-forever-builds">Browse builds by playstyle <ArrowRight size={15} /></a></div><nav className="sd-quick" aria-label="Class calculators">{classes.flatMap(c => c.links.filter(l => l.label === 'Calculator').map(l => <a href={l.href} key={l.href}>{c.name}</a>))}</nav></article>
         <article className="sd-game sd-glimmerwick"><div className="sd-garden-art" aria-hidden="true"><Sprout size={112} strokeWidth={1} /></div><div className="sd-game-content"><p className="sd-kicker">GARDEN PLANNER · YOUR OBSERVATIONS</p><h2>Songs of Glimmerwick</h2><p>Plan planting days with your own crop timings. Estimate harvests, keep garden notes, and export your plan. No unverified crop values are filled in.</p><a className="sd-primary" href="/songs-of-glimmerwick">Open the garden planner <ArrowRight size={17} /></a></div><nav className="sd-quick" aria-label="Songs of Glimmerwick guides and tools"><a href="/songs-of-glimmerwick#first-days">First Days Checklist</a><a href="/songs-of-glimmerwick#spellcasting">Spellcasting Basics</a><a href="/songs-of-glimmerwick-garden-well">Garden Well Sell Planner</a></nav></article>
         <article className="sd-game"><div className="sd-game-content"><p className="sd-kicker">ATLAS PASSIVES · PATCH COMPARISON</p><h2>Path of Exile</h2><p>Compare your old Atlas passives with the 3.30 tree. Review changed effects and missing connections before reallocating points.</p><a className="sd-primary" href="/poe-atlas-tree-compare">Compare Atlas trees</a></div></article>
@@ -80,14 +93,10 @@ export default function SiteDiscoveryPage({ pageId }: { pageId: DiscoveryId }) {
             ['/wow-forever-steam-deck', 'WoW Forever on Steam Deck', 'Set up your controls and plan class bindings.'],
           ].map(([href, title, detail]) => <article key={href}><h3><a href={href}>{title} <ArrowRight size={15} aria-hidden="true" /></a></h3><p>{detail}</p></article>)}</div>
         </section>
-        <section className="sd-focused-routes" aria-labelledby="sd-focused-routes-title">
-          <div className="sd-focused-heading"><div><p className="sd-kicker">START WITH A SPECIFIC QUESTION</p><h2 id="sd-focused-routes-title">Focused WoW planning routes</h2></div><p>These are editable starting points, not performance rankings. Each route labels its client snapshot and later Beta limits.</p></div>
-          <div className="sd-focused-grid">{focusedRoutes.map(route => <article key={route.href}><h3>{route.title}</h3><p className="sd-focused-question">{route.question}</p><p>{route.detail}</p><a href={route.href}>Explore route <ArrowRight size={15} aria-hidden="true" /></a></article>)}</div>
-        </section>
         <section className="sd-tool-strip" aria-label="How to use BuildForgeTools">{[{ icon: Compass, title: 'Choose a starting point', text: 'Find a class or browse leveling, PvP and group-role routes.', href: '/wow-forever-builds', label: 'Browse routes' }, { icon: Layers, title: 'Make the points yours', text: 'Open published allocations in the calculator, adjust talents and share your setup.', href: '/wow-forever-classes', label: 'Find a calculator' }, { icon: ShieldCheck, title: 'Check the evidence', text: 'Client records and editorial choices stay distinct. Source limits remain visible.', href: '/about', label: 'About the project' }].map(({ icon: Icon, ...item }) => <article key={item.title}><Icon size={23} /><h2>{item.title}</h2><p>{item.text}</p><a href={item.href}>{item.label}<ArrowRight size={14} /></a></article>)}</section>
-      </> : pageId === 'classes' ? <><section className="sd-class-orientation" aria-labelledby="sd-class-orientation-title"><div><p className="sd-kicker">CHOOSE A STARTING POINT</p><h2 id="sd-class-orientation-title">Find the right route for your next build</h2><p>Each class card opens an editable talent calculator, a build hub, a talent reference and a leveling route where those pages have been published. Choose a specialization first, then compare the route with the talent evidence and change the points yourself.</p><p>Some published class examples are Level 20 snapshots from an older client dataset. Their point budgets describe those examples, not the current Beta level cap. Check each page’s source and status before using a route in game. Paladin has a separate reviewed Level 10–30 community timeline.</p></div><nav aria-label="Browse by goal"><a href="/wow-forever-builds#leveling">Leveling routes <ArrowRight size={15}/></a><a href="/wow-forever-builds#pvp">PvP builds <ArrowRight size={15}/></a><a href="/wow-forever-builds#dungeon">Dungeon roles <ArrowRight size={15}/></a><a href="/wow-forever-paladin-leveling-build">Paladin Level 10–30 <ArrowRight size={15}/></a></nav></section><div className="sd-section-bar"><span>{String(classes.length).padStart(2, '0')} CLASSES</span><a href="/wow-forever-builds">Prefer to start with a playstyle? <ArrowRight size={15} /></a></div><ClassCards /></> : <><aside className="sd-paladin-hub"><div><p className="sd-kicker">FEATURED CLASS</p><h2>Start with Paladin builds</h2><p>Explore Holy, Protection, and Retribution routes, then edit an allocation in the talent calculator.</p></div><a href="/wow-forever-paladin-builds">Browse WoW Forever Paladin Builds <ArrowRight size={17} /></a></aside><nav className="sd-intent-nav" aria-label="Build intents">{groups.map(g => <a href={`#${g.id}`} key={g.id}>{g.label}<ArrowRight size={14} /></a>)}</nav><div className="sd-build-groups">{groups.map((g, i) => <section className="sd-build-group" id={g.id} key={g.id}><div className="sd-group-heading"><span>0{i + 1}</span><div><h2>{g.label}</h2><p>{g.description}</p></div></div><div className="sd-build-classes">{g.classGroups.map(c => <article className="sd-build-class" key={c.id}><h3>{c.name}</h3><div className="sd-build-links">{c.links.map(l => <a href={l.href} key={l.href}>{l.label}<ArrowRight size={15} /></a>)}</div></article>)}</div></section>)}</div></>}
+      </> : pageId === 'classes' ? <><section className="sd-class-orientation" aria-labelledby="sd-class-orientation-title"><div><p className="sd-kicker">CHOOSE A STARTING POINT</p><h2 id="sd-class-orientation-title">Find the right route for your next build</h2><p>Each class card opens an editable talent calculator, a build hub, a talent reference and a leveling route where those pages have been published. Choose a specialization first, then compare the route with the talent evidence and change the points yourself.</p><p>Some published class examples are Level 20 snapshots from an older client dataset. Their point budgets describe those examples, not the current live level cap. Check each page’s source and status before using a route in game. Paladin has a separate Level 10–30 Beta timeline and clearly marked launch references.</p></div><nav aria-label="Browse by goal"><a href="/wow-forever-builds#leveling">Leveling routes <ArrowRight size={15}/></a><a href="/wow-forever-builds#pvp">PvP builds <ArrowRight size={15}/></a><a href="/wow-forever-builds#dungeon">Dungeon roles <ArrowRight size={15}/></a><a href="/wow-forever-paladin-leveling-build">Paladin Level 10–30 <ArrowRight size={15}/></a></nav></section><div className="sd-section-bar"><span>{String(classes.length).padStart(2, '0')} CLASSES</span><a href="/wow-forever-builds">Prefer to start with a playstyle? <ArrowRight size={15} /></a></div><ClassCards /></> : <><aside className="sd-paladin-hub"><div><p className="sd-kicker">FEATURED CLASS</p><h2>Start with Paladin builds</h2><p>Explore launch references for Holy, Protection and Retribution, or edit a separately labelled Beta snapshot in the calculator.</p></div><a href="/wow-forever-paladin-builds">Browse WoW Forever Paladin Builds <ArrowRight size={17} /></a></aside><FocusedWowRoutes /><nav className="sd-intent-nav" aria-label="Build intents">{groups.map(g => <a href={`#${g.id}`} key={g.id}>{g.label}<ArrowRight size={14} /></a>)}</nav><div className="sd-build-groups">{groups.map((g, i) => <section className="sd-build-group" id={g.id} key={g.id}><div className="sd-group-heading"><span>0{i + 1}</span><div><h2>{g.label}</h2><p>{g.description}</p></div></div><div className="sd-build-classes">{g.classGroups.map(c => <article className="sd-build-class" key={c.id}><h3>{c.name}</h3><div className="sd-build-links">{c.links.map(l => <a href={l.href} key={l.href}>{l.label}<ArrowRight size={15} /></a>)}</div></article>)}</div></section>)}</div></>}
       <nav className="sd-new-tools" aria-label="Interactive planning tools"><a href="/wow-forever-respec-cost-calculator">Respec &amp; dual spec cost calculator <ArrowRight size={17}/></a><a href="/wow-forever-dungeon-build-finder">Find a dungeon build <ArrowRight size={17}/></a><a href="/wow-forever-class-picker">Match your class and playstyle <ArrowRight size={17}/></a></nav>
-      <aside className="sd-source-note"><BookOpen size={21} /><p><strong>A planning tool, with evidence in view.</strong> WoW routes use published datasets and editorial allocations. Planning caps are dataset assumptions, and build examples are not popularity or performance rankings.</p></aside>
+      <aside className="sd-source-note"><BookOpen size={21} /><p><strong>A planning tool, with evidence in view.</strong> WoW calculators preserve dated Beta datasets; launch references are labelled separately. Routes use editorial allocations. Planning caps are dataset assumptions, and build examples are not popularity or performance rankings.</p></aside>
     </main><SiteFooter discovery />
   </div>
 }

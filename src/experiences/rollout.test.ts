@@ -24,10 +24,10 @@ const protectedPaths = ledgerPaths.filter((path) => path.includes('paladin') && 
 describe('intent rollout scope', () => {
   it('retains the historical rollout ledger while withholding an unfinished build page and consolidating reviewed entries', () => {
     const discoveryPaths = ['/', '/wow-forever-classes', '/wow-forever-builds', '/wow-forever-dungeon-build-finder', '/wow-forever-class-picker']
-    expect(paths).toHaveLength(94)
+    expect(paths).toHaveLength(93)
     expect(new Set(paths).size).toBe(paths.length)
     expect(consolidatedRedirects).toHaveLength(71)
-    expect(new Set(retiredPaths).size).toBe(77)
+    expect(new Set(retiredPaths).size).toBe(78)
     expect(paths.filter(path => discoveryPaths.includes(path)).sort()).toEqual([...discoveryPaths].sort())
     expect(new Set(ledger.pages.map((page) => page.path)).size).toBe(150)
     expect(ledger.pages.map((page) => page.path).sort()).toEqual([...paths.filter(path => !discoveryPaths.includes(path) && !independentToolPaths.includes(path)), ...retiredPaths].sort())
@@ -47,7 +47,7 @@ describe('intent rollout scope', () => {
 
   it('never enables one of the 22 protected Paladin paths, including slash variants', () => {
     expect(protectedPaths).toHaveLength(22)
-    expect(protectedPaths.filter(path => !explicitRetiredPaths.includes(path))).toHaveLength(19)
+    expect(protectedPaths.filter(path => !explicitRetiredPaths.includes(path))).toHaveLength(18)
     for (const path of protectedPaths) {
       expect(experienceEnabled(path), path).toBe(false)
       expect(experienceEnabled(`${path}/`), path).toBe(false)

@@ -1,3 +1,4 @@
+import { resolvePageHref } from '../lib/pageRetirement'
 import { dominantBranch, encodeBuild, totalPoints, type Branch, type Build } from '../lib/build'
 import { historicalTalents as talents } from './talents'
 
@@ -12,7 +13,7 @@ export interface ExampleBuild {
   reviewStatus?: 'under_review'
 }
 
-/** The published 51-point examples exceed the live Level 30 Beta, even when used only as references. */
+/** The published 51-point examples exceed the archived Level 30 Beta, even when used only as references. */
 export function isHistoricalExample(build: ExampleBuild): boolean {
   return build.reviewStatus === 'under_review' || totalPoints(build.build) > 30
 }
@@ -155,4 +156,11 @@ export function examplePlannerHref(example: ExampleBuild): string {
  */
 export function specializationOfBuild(example: ExampleBuild): Branch {
   return dominantBranch(example.build, talents, 'holy')
+}
+
+/** Public location of an example; retired entry slugs remain its original source identity. */
+export function exampleReferenceHref(build: ExampleBuild): string {
+  return build.id === 'retribution-leveling-20-0-31'
+    ? '/wow-forever-paladin-leveling-build#ret-history'
+    : resolvePageHref(`/${build.slug}`)
 }

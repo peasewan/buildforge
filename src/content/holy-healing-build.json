@@ -1,7 +1,7 @@
 {
   "eyebrow": "Community Build Example",
   "title": "WoW Forever Paladin Build – Holy Healing 31/20/0",
-  "dek": "Inspect a historical 51-point WoW Forever Holy Paladin healing reference, then start a new calculator route for the live Level 30 Beta cap.",
+  "dek": "Inspect a historical 51-point WoW Forever Holy Paladin healing reference, then start a new calculator route for the dated October Level 30 Beta cap.",
   "updated": "September 20, 2026",
   "spec": "Holy",
   "heroHeading": "WoW Forever Holy Paladin Build (31/20/0)",
@@ -31,8 +31,8 @@
       "id": "build-overview",
       "heading": "WoW Forever Holy Paladin Build Overview",
       "paragraphs": [
-        "This historical WoW Forever Holy Paladin example spends 31 points in Holy and 20 points in Protection, with no points in Retribution. It uses talent data from Beta client build 1.60.1.69913. The allocation reaches Holy Shock and Light’s Vigil in the Holy tree, then uses the remaining points on early Protection talents. The 51-point reference exceeds the live Level 30 Beta budget; it is for exploring the tree, not a current healing recommendation.",
-        "The 31/20/0 summary and individual ranks below document the historical 51-point setup. Because it exceeds the live Beta cap, the primary calculator action starts a blank tree instead of loading the old allocation. A new legal experiment can be copied as a shareable BuildForge link. No account is required."
+        "This historical WoW Forever Holy Paladin example spends 31 points in Holy and 20 points in Protection, with no points in Retribution. It uses talent data from Beta client build 1.60.1.69913. The allocation reaches Holy Shock and Light’s Vigil in the Holy tree, then uses the remaining points on early Protection talents. The 51-point reference exceeds the dated October Level 30 Beta budget; it is for exploring the tree, not a current healing recommendation.",
+        "The 31/20/0 summary and individual ranks below document the historical 51-point setup. Because it exceeds the dated Beta cap, the primary calculator action starts a blank tree instead of loading the old allocation. A new legal experiment can be copied as a shareable BuildForge link. No account is required."
       ]
     },
     {
@@ -56,14 +56,14 @@
       "heading": "Holy Healing for Raids and Group Content",
       "paragraphs": [
         "This 31/20/0 Holy build is organized around raid healing and group support. The deep Holy path reaches Holy Shock and Light's Vigil, which are useful tools for steady group healing, while Illumination and Purifying Power support efficient mana use. The 20 Protection points add a small defensive base that helps a healer survive focused attention in dungeons and raids.",
-        "Group composition, encounter design, and current talent tuning will determine which Holy and Protection points to spend in a live Level 30 route. Start a blank calculator tree, compare legal early choices, and share the new setup with a group before a session. The historical ranks shown here come from Beta client build 1.60.1.69913 and are not a current recommendation."
+        "Group composition, encounter design, and current talent tuning will determine which Holy and Protection points to spend in a Level 30 Beta snapshot route. Start a blank calculator tree, compare legal early choices, and share the new setup with a group before a session. The historical ranks shown here come from Beta client build 1.60.1.69913 and are not a current recommendation."
       ]
     },
     {
       "id": "edit-and-share",
       "heading": "Edit and Share This WoW Forever Paladin Build",
       "paragraphs": [
-        "The selected talents on this page preserve the old Holy and Protection ranks for inspection. Open Calculator starts a blank route for a current-cap experiment. Its summary lists your newly chosen ranks, and removing a prerequisite also clears dependent selections under the imported planner rules. The 51-point historical total is not the live Beta budget.",
+        "The selected talents on this page preserve the old Holy and Protection ranks for inspection. Open Calculator starts a blank route for a Beta snapshot experiment. Its summary lists your newly chosen ranks, and removing a prerequisite also clears dependent selections under the imported planner rules. The 51-point historical total is not the live Beta budget.",
         "When a current allocation is ready, Copy Build Link creates a compact URL containing its selected talent identifiers and ranks. Anyone opening that link sees the same experiment and can continue editing it. Keep that share link distinct from this older 31/20/0 reference while the talent system is still being documented."
       ]
     }

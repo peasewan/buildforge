@@ -1,3 +1,4 @@
+import paladinScope from '../docs/seo/approved-paladin-scope-and-leveling-2026-11-16.json'
 import paladinLaunch from '../docs/seo/approved-paladin-launch-2026-11-15.json'
 import pruningAmendments from '../docs/seo/approved-adsense-pruning-2026-11-15.json'
 import { isRetiredPage } from '../src/lib/pageRetirement'
@@ -91,7 +92,9 @@ const frozenPages = baseline.pages.filter(page => !isRetiredPage(page.path)).map
   const pruning = pruningAmendments.pages[page.path as keyof typeof pruningAmendments.pages]
   const withPruning = pruning ? { ...withEvents, ...pruning } : withEvents
   const launch = paladinLaunch.pages[page.path as keyof typeof paladinLaunch.pages]
-  return launch ? { ...withPruning, ...launch } : withPruning
+  const withLaunch = launch ? { ...withPruning, ...launch } : withPruning
+  const scope = paladinScope.pages[page.path as keyof typeof paladinScope.pages]
+  return scope ? { ...withLaunch, ...scope } : withLaunch
 })
 import vercel from '../vercel.json'
 import { collectSeoRedirects, parseSitemap, validateSeo, type Requirement } from './seo/validate'

@@ -27,7 +27,7 @@ describe('Paladin talents guide', () => {
     expect(document.querySelector('[data-talent-id="improved_holy_strike"]')?.textContent).toContain('Removed Sep 24')
     expect(document.querySelector('[data-talent-id="crusade"]')?.textContent).toContain('Client-confirmed removal')
     expect(document.querySelector('[data-talent-id="holy_shield"]')?.textContent).toContain('Oct 1 tuning')
-    expect(screen.getByText(/Rows requiring 25 or 30 points in one tree are beyond the current 21-point budget/)).toBeTruthy()
+    expect(screen.getByText(/Rows requiring 25 or 30 points in one tree exceed that snapshot budget/)).toBeTruthy()
     expect(document.querySelector('a[href="/wow-forever-paladin-beta-talent-changes"]')).toBeTruthy()
   })
 })

@@ -1,7 +1,7 @@
 {
   "eyebrow": "Community Build Example",
   "title": "WoW Forever Protection Paladin Build – Shield 20/31/0",
-  "dek": "Inspect a historical 51-point WoW Forever Protection Paladin example, then start a new defensive route for the live Level 30 Beta cap.",
+  "dek": "Inspect a historical 51-point WoW Forever Protection Paladin example, then start a new defensive route for the dated October Level 30 Beta cap.",
   "updated": "September 20, 2026",
   "spec": "Protection",
   "heroHeading": "WoW Forever Protection Paladin Build (20/31/0)",
@@ -32,8 +32,8 @@
       "id": "build-overview",
       "heading": "WoW Forever Protection Paladin Build Overview",
       "paragraphs": [
-        "This historical WoW Forever Protection Paladin example spends 31 points in Protection and 20 points in Holy, with no points in Retribution. The Protection path reaches Holy Shield and includes the shield, armor, threat, and defensive talents visible in the Beta client build 1.60.1.69913. The Holy points fill accessible opening rows to create a complete 51-point reference. It exceeds the current Level 30 Beta point budget and is not a playable tank recommendation today.",
-        "The public page preserves every rank of the historical 20/31/0 setup for comparison. The primary calculator button starts blank because 51 points exceed the live Level 30 cap; it does not load this old allocation as a playable tank route. Players can choose an early current-cap path, check the latest client, and copy a separate share link without an account."
+        "This historical WoW Forever Protection Paladin example spends 31 points in Protection and 20 points in Holy, with no points in Retribution. The Protection path reaches Holy Shield and includes the shield, armor, threat, and defensive talents visible in the Beta client build 1.60.1.69913. The Holy points fill accessible opening rows to create a complete 51-point reference. It exceeded the October Level 30 Beta point budget and remains a historical reference, not a verified launch tank allocation.",
+        "The public page preserves every rank of the historical 20/31/0 setup for comparison. The primary calculator button starts blank because 51 points exceed the October Level 30 Beta cap; it does not load this old allocation as a playable tank route. Players can choose an early Beta snapshot path, check the latest client, and copy a separate share link without an account."
       ]
     },
     {
@@ -56,8 +56,8 @@
       "id": "edit-and-share",
       "heading": "Edit and Share This Protection Paladin Build",
       "paragraphs": [
-        "The selected talents panel on this page lists the historical 20/31/0 split. Open Calculator starts a blank Protection route rather than importing all 51 points into the live Level 30 planning flow. As you choose new ranks, the branch counters update; removing a prerequisite also clears any dependent node under the imported planner rules.",
-        "Copy Build Link turns a new current-cap experiment into a compact URL. Another player can open that URL, review exactly the same chosen ranks, and continue changing the plan. Keep that link separate from this historical example while the Beta continues to evolve and the later official tuning is reconciled."
+        "The selected talents panel on this page lists the historical 20/31/0 split. Open Calculator starts a blank Protection route rather than importing all 51 points into the archived Level 30 planning flow. As you choose new ranks, the branch counters update; removing a prerequisite also clears any dependent node under the imported planner rules.",
+        "Copy Build Link turns a new Beta snapshot experiment into a compact URL. Another player can open that URL, review exactly the same chosen ranks, and continue changing the plan. Keep that link separate from this historical example while launch data is reviewed separately and the later official tuning is reconciled."
       ]
     },
     {
@@ -66,7 +66,7 @@
       "paragraphs": [
         "Protection Paladin talents shape the defensive core of this WoW Forever tank reference. The early Protection rows establish armor, blocking, accuracy, and baseline survivability before later choices add threat support and stronger shield interaction. In this historical 20/31/0 example, Toughness and Redoubt form the opening foundation, while Precision, Guardian’s Favor, and Anticipation complete the points needed to reach the middle of the tree. These talents make the old route easy to inspect, but their exact in-game values should be checked against current WoW Forever tooltips.",
         "The middle and lower rows connect that foundation to the dungeon build identity. Improved Righteous Fury reduces damage taken while Righteous Fury is active; it is not a verified threat multiplier. Shield Specialization supports blocking, and Sacred Duty adds another defensive choice before the path reaches Templar’s Bulwark and Holy Shield. The Talent Calculator enforces the visible tree-point requirements and prerequisites, so removing a required rank also removes deeper selections that can no longer remain active. This lets players test alternate Protection Paladin talents without producing an invalid shared setup.",
-        "A Protection Paladin dungeon build may prioritize different utility or support choices as encounters, party needs, and verified talent data become clearer. This page therefore preserves one historical full tank allocation rather than a current or fixed best build. Open a blank Talent Calculator to test early Protection and Holy choices within the live cap. A new configuration can be copied as a share link while the community continues to verify the WoW Forever Protection tree."
+        "A Protection Paladin dungeon build may prioritize different utility or support choices as encounters, party needs, and verified talent data become clearer. This page therefore preserves one historical full tank allocation rather than a current or fixed best build. Open a blank Talent Calculator to test early Protection and Holy choices within the imported Beta budget. A new configuration can be copied as a share link while the community continues to verify the WoW Forever Protection tree."
       ]
     },
     {
@@ -74,7 +74,7 @@
       "heading": "Using This Build for Solo Leveling",
       "paragraphs": [
         "This 20/31/0 allocation is a historical 51-point planning reference, not a playable Level 30 leveling build. Toughness and Redoubt show one older defensive opening, but the full route exceeds the normal Level 30 point budget modeled by the site. Blizzard also changed Redoubt on October 1, so its imported 69913 rank text is not current tuning.",
-        "For current Protection leveling, use the separate 0/11/0 Level 20 and 0/21/0 Level 30 editorial routes linked below. Their selected nodes were checked against the 70170 Trait tables; the point order is not performance-tested. The current calculator uses the reviewed 70245 structure and community-resolved rank text, while this full allocation remains the 69913 archive. The 51-point allocation on this page remains a longer-term historical reference."
+        "For the archived Protection leveling example, use the separate 0/11/0 Level 20 and 0/21/0 Level 30 editorial routes linked below. Their selected nodes were checked against the 70170 Trait tables; the point order is not performance-tested. The current calculator uses the reviewed 70245 structure and community-resolved rank text, while this full allocation remains the 69913 archive. The 51-point allocation on this page remains a longer-term historical reference."
       ]
     }
   ]

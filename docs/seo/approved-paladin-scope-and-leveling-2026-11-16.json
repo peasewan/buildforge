@@ -1,0 +1,83 @@
+{
+  "reason": "The owner approved the November 16 scoped remediation: clearly distinguish the retained 70245 Beta snapshot from separately sourced launch references; preserve Ret Leveling history and anchors on its retained general leveling page; clarify Protection page purposes. Only three obsolete live-cap descriptions are corrected. Original titles, H1s, canonicals, robots, and sitemap dates remain frozen.",
+  "pages": {
+    "/paladin": {
+      "rootSha256": "71e0e8582372fd9e8f679afa59b7815eab4b494ebd1b01774a63031a3682e997",
+      "linksSha256": "306379d3da531fed33a8f29acc7c9b3612e585b6d27da64730779c170376418c"
+    },
+    "/wow-forever-paladin-builds": {
+      "rootSha256": "16530d66152ab4c9254da97a4596d7983aa970671604bbd5e3f7a7f7d34cffdd",
+      "linksSha256": "f8b239c29d078789426318142ae04571173bea60b116c147d87cb942d35339d2"
+    },
+    "/wow-forever-paladin-talents": {
+      "rootSha256": "e3782dbf977246674f7b461eaddab01f5d68956434fa12a348ece4572d9fb142",
+      "linksSha256": "ed17995267b8ce5ae768fb5647abd084078657ed5a6d8cd107c2a3b0e7a7ef5d"
+    },
+    "/wow-forever-paladin-build": {
+      "rootSha256": "ab1a6d4764b0ac15812425cc23454244a5d01ffe313665380dedb4f5eee67479",
+      "linksSha256": "15be4549f193965bcab850f6437e0c7997bc15e6c876acb15d398c1610b01c7d",
+      "description": "Inspect a historical 31/20/0 Holy Paladin healing reference, then start a new build for the dated October Level 30 Beta cap.",
+      "headSeoSha256": "4341593337950362c26aec7d02d9a251689f840e207b9d634390805d76d2b138"
+    },
+    "/wow-forever-protection-paladin-build": {
+      "rootSha256": "1ecdca3518dab25a386667da334adc42d78626bc66df94187751c9396bf62c1c",
+      "linksSha256": "918bcd55c055e308199762c449c73eb4ef2bdbaf048972fd8cc646cf7a81eecf"
+    },
+    "/wow-forever-retribution-paladin-build": {
+      "rootSha256": "d20839fbfe4ecfe4a2ee399910a1a041412428a6f51aa395a13818c08c07f8c3",
+      "linksSha256": "1592ef2062d43410f8b780d5ba625ade614dc18361a2ed4969d358fe58162cda"
+    },
+    "/wow-forever-paladin-leveling-build": {
+      "rootSha256": "34e36a67bd5a04d30f656ca69af91714db58b81af8fd45415031132db8dd48ca",
+      "linksSha256": "796c6e7e2d7c9a4681ad9e104473b29475efee3108cb0f9465e3a99fd14a583c"
+    },
+    "/wow-forever-paladin-pvp-build": {
+      "rootSha256": "fe800d056c3dee073a5df63d5d985df1e17802dd9fb2a9aad36acabe0439c352",
+      "linksSha256": "99831d028842d3f40c3db504be79b09cb43363071d67bc4e86598e5f874d740b"
+    },
+    "/wow-forever-paladin-raid-build": {
+      "rootSha256": "2f1b85459d80139df6e187ce30dffac2fd749c18bd6f79ccbe99eb5198c433f3",
+      "linksSha256": "b8f1d8bb17af3b99de157e1615d9c880e23384f7e06ebd3bc51fe4cde29d56b4",
+      "description": "Explore Holy, Protection, and Retribution raid roles. Compare historical 51-point references separately from the archived Level 30 Beta planner.",
+      "headSeoSha256": "33c49912d4c72b0ef05207389581c5db0554db7dc1feafa4ca045d8111faf2be"
+    },
+    "/wow-forever-protection-paladin-builds": {
+      "rootSha256": "091597c71f5592f26ed6c43cd1ce3f16fb35f832f2e43c1be21572ddda6fb4ba",
+      "linksSha256": "53ecfed51e8fc868af09e94770388a0f63611d04d65857e1c4a00fc2e5afbd1f"
+    },
+    "/wow-forever-protection-paladin-leveling-build": {
+      "rootSha256": "4afad5b172b77c08bdcdb7d2a52b57ad93d643aa960ee55b536f7efd7a68f9ac",
+      "linksSha256": "ed2204345a696446db6cd5e8fab95feea0175494c15c9858d7f60a6bb4a6a6ed"
+    },
+    "/wow-forever-protection-paladin-pvp-build": {
+      "rootSha256": "0c7418c2d76d21bc373090f163b66a46671087d5dc42905d45a38ad14fb401c8",
+      "linksSha256": "af6d5698f99167b509d31a32886a494031e5c0a29bb78826d23b17f2a8d3a376"
+    },
+    "/wow-forever-retribution-paladin-pvp-build": {
+      "rootSha256": "ce2dc5289a51203f276d09e34e4483959af40225d967dabf3d7fee373485e6db",
+      "linksSha256": "f31ab2e043defbcdbe1caa747d3dc5d497677ba1c5f5070c66d8e0760266a97e"
+    },
+    "/wow-forever-holy-paladin-pvp-build": {
+      "rootSha256": "b9a527f2e41b63807415e662a2af8889026a5099e412fdb71a170945b71ecc91",
+      "linksSha256": "90931f6352dffac0fcaffd31c4ccd8da38c8fe833d34e77e68f4bcfecc0e27eb",
+      "description": "Plan Holy Paladin PvP for the archived Level 30 Beta. Inspect the historical 31/20/0 healing reference, then start a blank Beta snapshot route.",
+      "headSeoSha256": "158abe6e7a4a9e4a6a4b698586cfc96945e8beca6dd4277f85c8daf834906d49"
+    },
+    "/wow-forever-holy-paladin-talents": {
+      "rootSha256": "9d134d6dfa82d8ccd4587fbad905c315c0ec3c645022801cc3f7d11f608f326f",
+      "linksSha256": "93fe399af77204bbcb7de343d2289741fe43ae7339f04e7285183166327c3500"
+    },
+    "/wow-forever-retribution-paladin-talents": {
+      "rootSha256": "1bd7fffa21f17b7ad4f5bdf91605ca389fbda9e81e4c0e2ff4a5971b515b1d8e",
+      "linksSha256": "18dc73db57d9538c09f96b69ce49211ccd15aadf92ee7a08090d51a783c81a70"
+    },
+    "/wow-forever-protection-paladin-talents": {
+      "rootSha256": "bf06fe70e74e420dae5174a1078cef10f4dba7a9c63dc7523c85e0d1aa5e2fca",
+      "linksSha256": "b3b63544b6047954f6bbfa70383a847e2a387fb3beff24bafb7b93b1cc9c184f"
+    },
+    "/wow-forever-paladin-beta-talent-changes": {
+      "rootSha256": "bc4a5af440caaec56e8a71ecefaf1ad9d008a8e8b1cb1ebb9d6afe0a2f081f49",
+      "linksSha256": "256cbec9ed52e9cb7d74a5e42fa5c2ef102fb99a640f33988830c74528d86461"
+    }
+  }
+}

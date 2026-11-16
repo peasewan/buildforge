@@ -1,4 +1,4 @@
-import { EXAMPLE_BUILDS } from './builds'
+import { EXAMPLE_BUILDS, exampleReferenceHref } from './builds'
 import { PROTECTION_LEVEL_30 } from './protectionCurrentRoute'
 import { PALADIN_LEVELING_STEPS } from './paladinLevelingProgression'
 import { HOLY_SHOCK_POINT_STEPS, PALADIN_COMPARATOR_PATH } from './paladinDecisionTools'
@@ -8,9 +8,9 @@ import type { Build } from '../lib/build'
 
 export const IMPACT_ROUTES: Array<{ id: string; title: string; href: string; build: Build; historical: boolean }> = [
   { id: 'prot-30', title: 'Protection Level 30 editorial route', href: '/wow-forever-protection-paladin-leveling-build', build: PROTECTION_LEVEL_30, historical: false },
-  { id: 'ret-30', title: 'Ret Level 30 community route', href: '/wow-forever-retribution-paladin-leveling-build', build: PALADIN_LEVELING_STEPS.at(-1)!.build, historical: false },
+  { id: 'ret-30', title: 'Ret Level 30 community route', href: '/wow-forever-paladin-leveling-build', build: PALADIN_LEVELING_STEPS.at(-1)!.build, historical: false },
   { id: 'holy-shock-example', title: 'Holy Shock 69913 planning example', href: PALADIN_COMPARATOR_PATH, build: HOLY_SHOCK_POINT_STEPS.at(-1)!.build, historical: true },
-  ...EXAMPLE_BUILDS.map(build => ({ id: build.id, title: build.name, href: `/${build.slug}`, build: build.build, historical: true })),
+  ...EXAMPLE_BUILDS.map(build => ({ id: build.id, title: build.name, href: exampleReferenceHref(build), build: build.build, historical: true })),
 ]
 export const PALADIN_IMPACT_CHANGES = [
   { id: 'redoubt', date: '2026-10-01', summary: 'Block chance changed from 6/12/18/24/30% to 4/8/12/16/20%.', impact: 'Review the old tooltip when judging block coverage. Membership below does not quantify survivability loss.', source: PALADIN_BETA_SNAPSHOT.phase.officialSource },

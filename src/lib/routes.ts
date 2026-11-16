@@ -54,7 +54,7 @@ const holyHealingBuildPage: PageDefinition = {
   kind: 'build-guide',
   buildId: 'holy-healing-31-20-0',
   title: 'WoW Forever Paladin Build – Holy Healing 31/20/0 | BuildForgeTools',
-  description: 'Inspect a historical 31/20/0 Holy Paladin healing reference, then start a new build for the live Level 30 Beta cap.',
+  description: 'Inspect a historical 31/20/0 Holy Paladin healing reference, then start a new build for the dated October Level 30 Beta cap.',
   canonical: 'https://buildforgetools.com/wow-forever-paladin-build',
   robots: 'index, follow',
 }
@@ -74,15 +74,6 @@ const retributionBuildPage: PageDefinition = {
   title: 'WoW Forever Retribution Paladin Build | BuildForgeTools',
   description: 'Compare Level 30 Ret, Holy Shock and Twist of Light point requirements. Follow an editable leveling route, review Beta changes and inspect the historical build.',
   canonical: 'https://buildforgetools.com/wow-forever-retribution-paladin-build',
-  robots: 'index, follow',
-}
-
-const retributionLevelingBuildPage: PageDefinition = {
-  kind: 'build-guide',
-  buildId: 'retribution-leveling-20-0-31',
-  title: 'WoW Forever Retribution Paladin Leveling Build | BuildForgeTools',
-  description: 'Follow a WoW Forever Ret Paladin Level 10–30 talent timeline, see your next point and load the allocation. Includes source limits and a historical build reference.',
-  canonical: 'https://buildforgetools.com/wow-forever-retribution-paladin-leveling-build',
   robots: 'index, follow',
 }
 
@@ -206,7 +197,6 @@ export function pageForPath(pathname: string, search = ''): PageDefinition {
   if (normalized === '/wow-forever-paladin-build') return holyHealingBuildPage
   if (normalized === '/wow-forever-protection-paladin-build') return protectionBuildPage
   if (normalized === '/wow-forever-retribution-paladin-build') return retributionBuildPage
-  if (normalized === '/wow-forever-retribution-paladin-leveling-build') return retributionLevelingBuildPage
   // Last, so a class page can never shadow a Paladin or Emberville route. The lookup is
   // the requirement gate: a page whose requirements its class does not meet is skipped exactly as
   // if it were not defined, and the path falls through to the Paladin planner below.

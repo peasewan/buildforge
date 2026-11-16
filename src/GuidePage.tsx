@@ -31,7 +31,7 @@ function TalentIndex() {
     <section id="talent-index" className="guide-talent-index" aria-labelledby="talent-index-heading">
       <div className="eyebrow">{talents.length} current talents · 2 historical removals · Holy / Protection / Retribution</div>
       <h2 id="talent-index-heading">Paladin talent tree index</h2>
-      <p>This index shows names, tree rows, and rank caps from the last fully imported WoW Forever Beta client build {importedBuild}. The 50 current nodes are structurally checked; two removed rows preserve the 52-node historical index. This is not a recommended point order. The live Level 30 Beta grants 21 talent points. Rows requiring 25 or 30 points in one tree are beyond the current 21-point budget.</p>
+      <p>This index shows names, tree rows, and rank caps from the last fully imported WoW Forever Beta client build {importedBuild}. The 50 nodes in that snapshot are structurally checked; two removed rows preserve the 52-node historical index. This is not a recommended point order. The October 1 Beta cap was Level 30, with a 21-point planning budget. Rows requiring 25 or 30 points in one tree exceed that snapshot budget. Launch changes have not been imported here.</p>
       <nav className="guide-index-jump" aria-label="Jump to Paladin talent tree">
         {branches.map((branch) => <a key={branch} href={`#${branch}-talent-index`}>{branchNames[branch]} <ArrowRight size={14} /></a>)}
       </nav>
@@ -123,7 +123,7 @@ export default function GuidePage() {
             </Fragment>
           ))}
           <aside className="guide-note"><strong>Beta talent data</strong><p>Talent positions, rank caps and prerequisite links use reviewed client build 1.60.1.70245. Rank descriptions are adapted from the Talents Forever 70170 export under CC BY 4.0 with community verification. The client does not specify the required prerequisite rank, so the planner currently applies the Classic rule that the prerequisite must be maxed. Build recommendations remain community planning examples.</p></aside>
-          <div className="guide-final-cta"><img src="/images/icons/paladin-shield.png" alt="" /><div><span>Ready to test a build?</span><h2>Plan a Level 30 Beta route or inspect a long-term 51-point reference.</h2></div><a className="button primary" href="/paladin#calculator" onClick={() => track('guide_cta_click', { placement: 'footer' })}>Create your WoW Forever Paladin build <ArrowRight size={15} /></a></div>
+          <div className="guide-final-cta"><img src="/images/icons/paladin-shield.png" alt="" /><div><span>Ready to test a build?</span><h2>Inspect a dated Beta route or read the separately sourced launch references.</h2></div><a className="button primary" href="/paladin#calculator" onClick={() => track('guide_cta_click', { placement: 'footer' })}>Create your WoW Forever Paladin build <ArrowRight size={15} /></a></div>
         </article>
       </div>
 

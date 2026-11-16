@@ -71,7 +71,7 @@ describe('Holy healing build page', () => {
 
     const routes = screen.getByRole('region', { name: 'Retribution build routes' })
     for (const href of [
-      '/wow-forever-retribution-paladin-leveling-build',
+      '/wow-forever-paladin-leveling-build#ret-history',
       '/wow-forever-retribution-paladin-pvp-build',
       '/wow-forever-retribution-paladin-talents',
       '/paladin#calculator',
@@ -159,7 +159,7 @@ describe('Holy healing build page', () => {
 
     const path = screen.getByRole('region', { name: 'Beta talent starting path' })
     expect(path.querySelector('.beta-leveling-grid article:first-child > div > span')?.textContent).toBe('Level 20 starting route')
-    expect(path.textContent).toContain('Official cap: Level 30')
+    expect(path.textContent).toContain('October Beta cap: Level 30')
     expect(document.querySelector('.build-hero-copy small')?.textContent).toBe(`Historical allocation reviewed ${buildId === 'retribution-judgment-0-20-31' ? 'September 29' : 'September 20'}, 2026 · Page updated October 5, 2026`)
   })
 
@@ -168,7 +168,7 @@ describe('Holy healing build page', () => {
 
     const path = screen.getByRole('region', { name: 'Beta talent starting path' })
     expect(path.textContent).toContain('0/0/11')
-    expect(path.textContent).toContain('Official Level 30 cap')
+    expect(path.textContent).toContain('October Beta level cap')
     expect(path.textContent).toContain('0/0/21')
     expect(screen.getByRole('link', { name: 'Load Level 30 Ret route' }).getAttribute('href')).toContain('&level=30#calculator')
     expect(path.textContent).not.toContain('2/0/19')
@@ -194,7 +194,7 @@ describe('Holy healing build page', () => {
     const snapshot = screen.getByRole('region', { name: 'Beta leveling snapshot' })
     expect(snapshot.textContent).toContain('Level 30 · 21 points')
     expect(snapshot.textContent).toContain('0/0/21')
-    expect(snapshot.textContent).toContain('Current Beta cap reached')
+    expect(snapshot.textContent).toContain('End of the reviewed Beta route')
     expect(snapshot.textContent).toContain('not an official or simulated best build')
     expect(snapshot.textContent).not.toContain('No reviewed allocation')
     expect(snapshot.textContent).toContain('Community recommendation')

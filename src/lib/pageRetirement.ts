@@ -13,7 +13,7 @@ export function resolvePageHref(href: string): string {
     path = PAGE_CONSOLIDATIONS[path]
     changed = true
   }
-  return changed ? `${path}${url.search}` : href
+  return changed ? `${path}${url.search}${url.hash}` : href
 }
 
 export function isRemovedPage(href: string): boolean {

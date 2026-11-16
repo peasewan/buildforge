@@ -68,7 +68,7 @@ describe('specialization talent guide', () => {
 
       expect(screen.getByText('Historical 51-point reference')).toBeTruthy()
       expect(screen.getByText(allocation)).toBeTruthy()
-      expect(document.body.textContent).toMatch(/live Beta cap is Level 30/i)
+      expect(document.body.textContent).toMatch(/October Beta cap was Level 30/i)
       expect(screen.queryByRole('link', { name: /Build this setup/i })).toBeNull()
       expect(document.querySelectorAll('a[href="/build?id=#calculator"]').length).toBeGreaterThanOrEqual(3)
     },

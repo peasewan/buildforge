@@ -42,7 +42,7 @@ export default function PaladinAllocationComparison({ build, level, onLoad }: {
     <div className="popular-builds-heading"><div><span>Save a baseline · compare your edits</span><h2>Compare Two Paladin Builds</h2></div><p>Save your current choices as A, then edit the talent tree to create B. Your saved A stays separate from the editable draft.</p></div>
     <article className="paladin-ret-reference">
       <div><span>Community reference · reviewed {RET_TWIST_REFERENCE.reviewedAt}</span><h3>{RET_TWIST_REFERENCE.name} · {RET_TWIST_REFERENCE.allocation}</h3>
-        <p>Level 60 planning with 51 points, replayed against reviewed 70245 rules. This is a sourced allocation, not an official or measured best build. It exceeds the live Level 30 / 21-point budget.</p>
+        <p>Level 60 planning with 51 points, replayed against reviewed 70245 rules. This is a sourced allocation, not an official or measured best build. It exceeds the dated Level 30 Beta / 21-point budget and is not launch-verified.</p>
         <a href={RET_TWIST_REFERENCE.source.url} target="_blank" rel="noreferrer">{RET_TWIST_REFERENCE.source.label}</a>
       </div><button type="button" className="button secondary" onClick={() => {
         const reference = createPaladinSnapshot(RET_TWIST_REFERENCE.build, RET_TWIST_REFERENCE.level)

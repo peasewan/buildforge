@@ -30,21 +30,45 @@ describe('discovery rendering and artifacts', () => {
   it('links to distinct published planning routes from the home page', () => {
     const doc = new DOMParser().parseFromString(renderToStaticMarkup(<AppRoute pathname="/" />), 'text/html')
     const section = doc.querySelector('.sd-focused-routes')
-    expect(section?.querySelectorAll('article')).toHaveLength(3)
+    expect(section?.querySelectorAll('article')).toHaveLength(4)
     for (const path of [
-      '/wow-forever-warlock-pvp-build',
-      '/wow-forever-frost-mage-aoe-build',
+      '/wow-forever-arms-vs-fury-warrior-leveling',
       '/wow-forever-elemental-vs-enhancement-shaman-leveling',
+      '/wow-forever-balance-vs-feral-druid-leveling',
+      '/wow-forever-paladin-pvp-build',
     ]) {
       expect(section?.querySelector(`a[href="${path}"]`)).not.toBeNull()
       expect(pageForPath(path).canonical).toBe(`https://buildforgetools.com${path}`)
     }
     expect(section?.textContent).toContain('not performance rankings')
   })
+  it('offers direct calculator choices before the home game directory', () => {
+    const doc = new DOMParser().parseFromString(renderToStaticMarkup(<AppRoute pathname="/" />), 'text/html')
+    const shortcuts = doc.querySelector('nav[aria-label="WoW calculator shortcuts"]')
+    const games = doc.querySelector('.sd-games')!
+    expect(shortcuts).not.toBeNull()
+    expect(shortcuts?.querySelector('a[href="/paladin#calculator"]')?.textContent).toContain('Paladin calculator')
+    expect(shortcuts?.querySelector('a[href="/wow-forever-classes"]')?.textContent).toContain('All class calculators')
+    expect(shortcuts!.compareDocumentPosition(games) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
+    expect(doc.querySelector('.sd-focused-routes')!.compareDocumentPosition(games) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
+  })
+  it('exposes comparisons and Paladin PvP before the full build directory', () => {
+    const doc = new DOMParser().parseFromString(renderToStaticMarkup(<AppRoute pathname="/wow-forever-builds" />), 'text/html')
+    const section = doc.querySelector('.sd-focused-routes')
+    expect(section?.querySelectorAll('article')).toHaveLength(4)
+    for (const path of [
+      '/wow-forever-arms-vs-fury-warrior-leveling',
+      '/wow-forever-elemental-vs-enhancement-shaman-leveling',
+      '/wow-forever-balance-vs-feral-druid-leveling',
+      '/wow-forever-paladin-pvp-build',
+    ]) expect(section?.querySelector(`a[href="${path}"]`)).not.toBeNull()
+    expect(section!.compareDocumentPosition(doc.querySelector('.sd-intent-nav')!) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
+    expect(section?.textContent).toContain('not performance rankings')
+  })
   it('helps visitors choose a class and labels older Level 20 examples accurately', () => {
     const doc = new DOMParser().parseFromString(renderToStaticMarkup(<AppRoute pathname="/wow-forever-classes" />), 'text/html')
     const guide = doc.querySelector('.sd-class-orientation')
-    expect(guide?.textContent).toContain('not the current Beta level cap')
+    expect(guide?.textContent).toContain('not the current live level cap')
     expect(guide?.querySelector('a[href="/wow-forever-builds#pvp"]')).not.toBeNull()
     expect(guide?.querySelector('a[href="/wow-forever-paladin-leveling-build"]')).not.toBeNull()
     expect(doc.querySelectorAll('.sd-class-card')).toHaveLength(9)

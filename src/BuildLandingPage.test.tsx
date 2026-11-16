@@ -38,7 +38,7 @@ describe('Build landing page template', () => {
     expect(screen.getByRole('heading', { level: 1, name: 'WoW Forever Paladin Leveling Build' })).toBeTruthy()
     expect(screen.getByText('New Players')).toBeTruthy()
     expect(screen.getByRole('heading', { level: 2, name: 'Recommended Leveling Path' })).toBeTruthy()
-    expect(screen.getByText(/October 1 Beta update · Official level cap 30/)).toBeTruthy()
+    expect(screen.getByText(/October 1 Beta cap: Level 30/)).toBeTruthy()
     expect(document.querySelector('a[href="/wow-forever-paladin-builds"]')).toBeTruthy()
     const snapshot = screen.getByRole('region', { name: 'Beta leveling snapshot' })
     expect(snapshot.textContent).toContain('Level 30 · 21 points')

@@ -191,7 +191,7 @@ describe('Paladin talent calculator page', () => {
     const retributionDetail = document.querySelector('#tip-twist_of_light')
     expect(retributionDetail?.querySelectorAll('.talent-builds a')).toHaveLength(2)
     expect(retributionDetail?.querySelector('a[href="/wow-forever-retribution-paladin-build"]')).toBeTruthy()
-    expect(retributionDetail?.querySelector('a[href="/wow-forever-retribution-paladin-leveling-build"]')).toBeTruthy()
+    expect(retributionDetail?.querySelector('a[href="/wow-forever-paladin-leveling-build#ret-history"]')).toBeTruthy()
 
     fireEvent.click(screen.getByRole('tab', { name: /Protection/ }))
     const protectionDetail = document.querySelector('#tip-improved_seal_of_fury')
@@ -299,7 +299,7 @@ describe('Paladin talent calculator page', () => {
     expect(screen.getByText('Beta build 1.60.1.70245')).toBeTruthy()
     expect(screen.getByText('70245 structure reviewed October 7, 2026')).toBeTruthy()
     expect(screen.getByText('14 talents with 32 changed rank strings since 69913 in that comparison')).toBeTruthy()
-    expect(screen.getByText(/October 1 Beta update · Official level cap 30/)).toBeTruthy()
+    expect(screen.getByText(/October 1 Beta cap: Level 30/)).toBeTruthy()
     const status = screen.getByRole('region', { name: 'WoW Forever Beta data status' })
     expect(status.textContent).toContain('Level 20 routes are 11-point starting snapshots')
     expect(status.querySelector('a[href*="2360696"]')).toBeTruthy()

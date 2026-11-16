@@ -68,7 +68,7 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
         intro: 'Use these milestones as a simple framework while you learn the class. The exact order can change as the WoW Forever talent data is verified.',
         items: [
           { title: 'Level 10–20', body: 'Focus on early survivability and efficient solo play. Reliable opening talents make ordinary fights more forgiving and reduce time spent recovering.' },
-          { title: 'Level 20–30', body: 'The live Beta currently reaches Level 30. Compare damage, durability, and support as you spend the next points; the reviewed 70245 structure uses community-resolved rank text, with in-game performance still unverified.' },
+          { title: 'Level 20–30', body: 'The October Beta snapshot reached Level 30. Compare damage, durability, and support as you spend the next points; the reviewed 70245 structure uses community-resolved rank text, with in-game performance still unverified.' },
           { title: 'Beyond Level 30', body: 'Treat deeper 51-point allocations as long-term historical references. Revisit them only when later levels and updated talent data are available.' },
         ],
       },
@@ -91,17 +91,17 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
       {
         kind: 'copy',
         title: 'Choose a Leveling Direction',
-        intro: 'The class-wide page helps you choose a route before it sends you to a complete specialization example.',
+        intro: 'Use the Retribution timeline on this page for the exact October Level 10–30 snapshots, or choose the separate Protection route for a different point order.',
         paragraphs: [
-          'The Retribution leveling page includes a community Level 10–30 point-by-point timeline alongside a separate historical 51-point allocation. Use the timeline for an exact level snapshot and the next suggested talent. The later example selects Crusade and is withheld from current presets because Crusade is absent from the reviewed 70245 tree. Protection now has a separate BuildForgeTools editorial Level 20 and Level 30 route based on selected nodes checked in the 70170 client Trait tables. The older Protection route that spent points in removed Improved Holy Strike remains historical; its 51-point Shield example is not a current-level preset.',
-          'There is no dedicated Holy leveling allocation on the site yet. A player who wants to level through healing or group support should start with an empty calculator, choose the talents that solve the current leveling problem, and save milestone links instead of treating the 31/20/0 Holy healing build as a proven leveling route. The related pages below make the available evidence clear before you commit to one specialization.',
+          'This page includes the community Retribution Level 10–30 point-by-point timeline alongside a separate historical 51-point allocation below. Use the timeline for an exact level snapshot and the next suggested talent. The later example selects Crusade and is withheld from current presets because Crusade is absent from the reviewed 70245 tree. Protection now has a separate BuildForgeTools editorial Level 20 and Level 30 route based on selected nodes checked in the 70170 client Trait tables. The older Protection route that spent points in removed Improved Holy Strike remains historical; its 51-point Shield example is not a current-level preset.',
+          'There is no dedicated Holy leveling allocation on the site yet. A player who wants to level through healing or group support should start with an empty calculator, choose the talents that solve the current leveling problem, and save milestone links instead of treating the 31/20/0 Holy healing build as a proven leveling route. The related routes and historical reference below keep those evidence limits visible before you choose a specialization.',
         ],
       },
       {
         kind: 'copy',
         title: 'Turn an End-State Build into a Leveling Plan',
         paragraphs: [
-          'A historical 51-point build can show a possible long-term direction, while live Level 30 leveling requires a shorter order. Begin with the talents available at the current level and ask what slows progress now: long recovery, fragile pulls, inconsistent damage, or the need to tank group content. Spend toward that immediate need while keeping deeper tree thresholds and prerequisites visible. Do not assume the old final allocation is playable or unchanged after later Beta tuning.',
+          'A historical 51-point build records an earlier planning direction, while the separate October Level 30 snapshot uses a shorter order. Begin with the talents available at the current level and ask what slows progress now: long recovery, fragile pulls, inconsistent damage, or the need to tank group content. Spend toward that immediate need while keeping deeper tree thresholds and prerequisites visible. Neither dated route verifies a launch allocation; inspect current game data before following its ranks.',
           'Keep separate share links for a Level 20 starting snapshot, a Level 30 Beta experiment, and future level 40 or 51-point planning references. This makes the progression reviewable and avoids rebuilding the plan from memory. WoW Forever beta data can change ranks, tooltips, prerequisites, or coordinates, so confirm important talents in the current client and revisit the Beta tracker before following an older saved route exactly.',
         ],
       },
@@ -110,7 +110,7 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
         title: 'Related Leveling Builds',
         items: [
           { title: 'Protection Paladin Leveling Build', body: 'Editable 0/11/0 and 0/21/0 Beta routes built from source-checked Protection nodes.', href: '/wow-forever-protection-paladin-leveling-build' },
-          { title: 'Retribution Paladin Leveling Build', body: 'The damage-focused solo route through the same levels.', href: '/wow-forever-retribution-paladin-leveling-build' },
+          { title: 'Historical Retribution Leveling Reference', body: 'Compare the archived 20/0/31 ranks with the separate timeline above; the old Crusade allocation is not loaded into the planner.', href: '#ret-history' },
           { title: 'All Paladin Builds', body: 'Every leveling, PvE, and PvP route in one place.', href: '/wow-forever-paladin-builds' },
         ],
       },
@@ -158,10 +158,10 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
       {
         kind: 'copy',
         title: 'Choose a PvP Role at Level 30',
-        intro: 'The live WoW Forever Beta cap is Level 30. Start with a role and a testable question before changing talent points.',
+        intro: 'The October 1 Beta cap was Level 30; launch references are separate from these snapshot routes. Start with a role and a testable question before changing talent points.',
         paragraphs: [
           'Retribution is the pressure choice: can you reach a target, create a damage window, and still have an answer when the opponent turns on you? Holy is the support choice: can you keep an ally in range and complete useful casts under pressure? Protection is the objective choice: can defensive and utility tools help the group hold a position? Those jobs call for different builds even when each player is a Paladin.',
-          'The linked 11-point Level 20 starting snapshots are useful for inspecting early talents, but they are not reviewed 21-point Level 30 PvP recommendations. The 51-point examples are historical long-term references and cannot fit the current cap. Blizzard\'s October 1 notes also changed Protection Redoubt and Holy Shield and Retribution Champion of the Light; those official changes still need reconciliation with the older imported calculator data.',
+          'The linked 11-point Level 20 starting snapshots are useful for inspecting early talents, but they are not reviewed 21-point Level 30 PvP recommendations. The 51-point examples are historical long-term references and cannot fit the October Beta budget. Blizzard\'s October 1 notes also changed Protection Redoubt and Holy Shield and Retribution Champion of the Light; those official changes still need reconciliation with the older imported calculator data.',
         ],
       },
       {
@@ -206,7 +206,7 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
     slug: 'wow-forever-paladin-raid-build',
     title: 'WoW Forever Paladin Raid Build',
     metaTitle: 'WoW Forever Paladin Raid Build | BuildForgeTools',
-    description: 'Explore Holy, Protection, and Retribution raid roles. Compare historical 51-point references separately from the live Level 30 Beta planner.',
+    description: 'Explore Holy, Protection, and Retribution raid roles. Compare historical 51-point references separately from the archived Level 30 Beta planner.',
     subtitle: 'Explore raid-oriented Paladin talent paths for group content.',
     eyebrow: 'Paladin Raid Build',
     heroImage: '/images/hero/paladin-raid.webp',
@@ -249,7 +249,7 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
         title: 'Use Published Builds as Role References',
         intro: 'Three historical 51-point examples provide planning references, not current Level 30 raid allocations.',
         paragraphs: [
-          'The Holy 31/20/0 page lists every selected rank in a healing-oriented historical reference. Protection has a separate 20/31/0 Shield example for a defensive group role. Retribution retains a historical 0/20/31 Judgment allocation for comparison; its Crusade ranks refer to a node absent from the reviewed 70245 tree. All three exceed the live Level 30 cap, so their current-plan buttons start a blank calculator rather than loading those 51 points.',
+          'The Holy 31/20/0 page lists every selected rank in a healing-oriented historical reference. Protection has a separate 20/31/0 Shield example for a defensive group role. Retribution retains a historical 0/20/31 Judgment allocation for comparison; its Crusade ranks refer to a node absent from the reviewed 70245 tree. All three exceed the October Level 30 Beta cap, so their current-plan buttons start a blank calculator rather than loading those 51 points.',
           'These examples are not encounter-tested raid standards or currently playable complete Beta builds. The imported 69913 dataset and later official changes are shown separately. Treat the full allocations as historical references, check the talents relevant to your group in the current client, and plan within the level currently available.',
         ],
       },
@@ -279,8 +279,8 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
     slug: 'wow-forever-protection-paladin-dungeon-build',
     title: 'WoW Forever Protection Paladin Dungeon Tank Build',
     metaTitle: 'WoW Forever Protection Paladin Dungeon Tank Build | BuildForgeTools',
-    description: 'Inspect a historical 20/31/0 Protection Paladin dungeon tank reference, then start a new build within the live Level 30 Beta cap.',
-    subtitle: 'Inspect a historical 20/31/0 tank reference, then plan for the live Level 30 Beta.',
+    description: 'Inspect a historical 20/31/0 Protection Paladin dungeon tank reference, then start a new build within the dated October Level 30 Beta cap.',
+    subtitle: 'Inspect a historical 20/31/0 tank reference, then plan for the archived Level 30 Beta.',
     eyebrow: 'Protection Dungeon Build',
     heroImage: '/images/hero/protection-dungeon.webp',
     heroPosition: '68% center',
@@ -294,7 +294,7 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
       {
         kind: 'cards',
         title: 'Why This Tank Build',
-        intro: 'This historical 51-point Protection allocation cannot be played under the live Level 30 Beta cap, but it keeps the three jobs of a tank visible.',
+        intro: 'This historical 51-point Protection allocation cannot be played under the dated October Level 30 Beta cap, but it keeps the three jobs of a tank visible.',
         items: [
           { title: 'Survivability', body: 'Increase defensive capability and create a steadier base for dungeon encounters.', icon: 'shield' },
           { title: 'Threat Generation', body: 'Plan talents that help maintain enemy attention while the party deals damage.', icon: 'sword' },
@@ -304,7 +304,7 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
       {
         kind: 'talent-preview',
         title: 'Protection Beta Talent Tree',
-        intro: 'Inspect the selected Protection branch below. These highlighted nodes come from the historical 20/31/0 shield reference; start a blank calculator route to build for the current cap.',
+        intro: 'Inspect the selected Protection branch below. These highlighted nodes come from the historical 20/31/0 shield reference; start a blank calculator route to build for the October Beta budget.',
         buildId: 'protection-shield-20-31-0',
       },
       {
@@ -318,8 +318,8 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
         title: 'Protection Paladin Tank Build for Dungeons',
         intro: 'The same tank intent appears in searches as Protection Paladin, Prot Paladin, and Pally tank build; the page keeps those variants attached to one useful setup.',
         paragraphs: [
-          'A Protection Paladin dungeon build has to do more than survive. It needs a repeatable way to open a pull, hold enemy attention while the party commits damage, and keep an emergency response available when an extra pack joins. The historical 20/31/0 reference illustrates those questions, but its 51 points cannot fit a live Level 30 character.',
-          'Dungeon composition and current Beta behavior still decide whether an individual rank is useful. Start a blank current-cap route rather than copying this historical tree. Confirm threat, mitigation, and utility effects in the current client before presenting any experiment as the standard Protection setup for a particular dungeon.',
+          'A Protection Paladin dungeon build has to do more than survive. It needs a repeatable way to open a pull, hold enemy attention while the party commits damage, and keep an emergency response available when an extra pack joins. The historical 20/31/0 reference illustrates those questions, but its 51 points cannot fit a Level 30 character in that Beta snapshot.',
+          'Dungeon composition and current Beta behavior still decide whether an individual rank is useful. Start a blank Beta snapshot route rather than copying this historical tree. Confirm threat, mitigation, and utility effects in the current client before presenting any experiment as the standard Protection setup for a particular dungeon.',
         ],
       },
       {
@@ -344,7 +344,7 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
     title: 'WoW Forever Protection Paladin Leveling Build',
     metaTitle: 'WoW Forever Protection Paladin Leveling Build | BuildForgeTools',
     description: 'Plan a WoW Forever Protection Paladin leveling build with source-checked 11-point Level 20 and 21-point Level 30 Beta routes, then edit either setup.',
-    subtitle: 'Follow an editable Protection route through the current Level 30 Beta cap.',
+    subtitle: 'Follow an editable Protection route through the October Level 30 Beta cap.',
     eyebrow: 'Protection Beta Leveling Build',
     heroImage: '/images/hero/paladin-leveling.webp',
     heroPosition: '68% center',
@@ -387,7 +387,7 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
         kind: 'related',
         title: 'Related Protection Builds',
         items: [
-          { title: 'Protection Dungeon Tank Build', body: 'A separate historical 51-point group-content example; compare it with the current-cap route here.', href: '/wow-forever-protection-paladin-dungeon-build' },
+          { title: 'Protection Dungeon Tank Build', body: 'A separate historical 51-point group-content example; compare it with the Beta snapshot route here.', href: '/wow-forever-protection-paladin-dungeon-build' },
           { title: 'Protection Paladin Builds Hub', body: 'Compare every Protection route and talent page.', href: '/wow-forever-protection-paladin-builds' },
           { title: 'Paladin Leveling Build', body: 'The class-wide leveling path when you have not picked a specialization.', href: '/wow-forever-paladin-leveling-build' },
         ],
@@ -426,7 +426,7 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
       {
         kind: 'talent-preview',
         title: 'Protection Beta Talent Tree',
-        intro: 'The 20/31/0 shield allocation below is a historical 51-point defensive reference. It exceeds the live Level 30 cap; start a blank current-cap route for PvP.',
+        intro: 'The 20/31/0 shield allocation below is a historical 51-point defensive reference. It exceeds the October Level 30 Beta cap; start a blank Beta snapshot route for PvP.',
         buildId: 'protection-shield-20-31-0',
       },
       {
@@ -434,7 +434,7 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
         title: 'What the 20/31/0 PvP Reference Represents',
         intro: 'The selected ranks are exact; their competitive interpretation remains an editable community hypothesis.',
         paragraphs: [
-          'The historical reference commits 31 points to Protection and uses 20 Holy points as support. BuildForgeTools can show its 69913-era selected ranks and total point count, but the 51-point allocation exceeds the live Level 30 cap and later official tuning remains under review. It is a record of defensive goals, not a reproducible current PvP starter.',
+          'The historical reference commits 31 points to Protection and uses 20 Holy points as support. BuildForgeTools can show its 69913-era selected ranks and total point count, but the 51-point allocation exceeds the October Level 30 Beta cap and later official tuning remains under review. It is a record of defensive goals, not a reproducible current PvP starter.',
           'The allocation has not been proven as an optimal arena or battleground build. A defensive tree can still fail if it lacks the control, mobility, or team utility required by a specific objective. Use the preview to identify the fixed Protection core, then save separate links for each experiment instead of silently changing the reference.',
         ],
       },
@@ -443,7 +443,7 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
         title: 'Adapt Protection to the PvP Objective',
         paragraphs: [
           'Flag defense, node control, small-group fights, and open battleground pressure ask different things from a Protection Paladin. Decide whether the build must hold ground, peel for a teammate, interrupt a healer, or simply survive focused damage. Review the Holy support points after choosing that job, because utility that matters in one role may do little in another.',
-          'Start a new share link for a route that fits the live cap and record which talent changed the outcome in actual play. Match evidence should remain separate from client facts: the older data records a tooltip or prerequisite at import time, while repeated play is needed before calling a rank competitively strong. Report conflicts through the feedback form so the tree and the editorial recommendation can be reviewed independently.',
+          'Start a new share link for a route that fits the imported Beta budget and record which talent changed the outcome in actual play. Match evidence should remain separate from client facts: the older data records a tooltip or prerequisite at import time, while repeated play is needed before calling a rank competitively strong. Report conflicts through the feedback form so the tree and the editorial recommendation can be reviewed independently.',
         ],
       },
       {
@@ -528,7 +528,7 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
           { title: 'Paladin PvP Build', body: 'The class-wide PvP overview covering every specialization.', href: '/wow-forever-paladin-pvp-build' },
           { title: 'Protection Paladin PvP Build', body: 'The defensive alternative for objectives and team utility.', href: '/wow-forever-protection-paladin-pvp-build' },
           { title: 'Holy Paladin PvP Build', body: 'The support-oriented alternative for PvP.', href: '/wow-forever-holy-paladin-pvp-build' },
-          { title: 'Retribution Leveling Build', body: 'The PvE route for the same specialization.', href: '/wow-forever-retribution-paladin-leveling-build' },
+          { title: 'Retribution Leveling Timeline', body: 'Replay the dated PvE route on the retained Paladin leveling page.', href: '/wow-forever-paladin-leveling-build' },
         ],
       },
     ],
@@ -540,7 +540,7 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
     slug: 'wow-forever-holy-paladin-pvp-build',
     title: 'WoW Forever Holy Paladin PvP Build',
     metaTitle: 'WoW Forever Holy Paladin PvP Build | BuildForgeTools',
-    description: 'Plan Holy Paladin PvP for the live Level 30 Beta. Inspect the historical 31/20/0 healing reference, then start a blank current-cap route.',
+    description: 'Plan Holy Paladin PvP for the archived Level 30 Beta. Inspect the historical 31/20/0 healing reference, then start a blank Beta snapshot route.',
     subtitle: 'A support-oriented Holy Paladin setup for WoW Forever PvP.',
     eyebrow: 'Holy PvP Build',
     heroImage: '/images/hero/hero-paladin.webp',
@@ -560,14 +560,14 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
         intro: 'A Holy Paladin in PvP is usually keeping someone else alive under pressure, so the priorities differ from a raid healing setup even though the tree is similar.',
         items: [
           { title: 'Keeping Teammates Up', body: 'Healing throughput matters less than reaching the right target through crowd control and pressure.', icon: 'heart' },
-          { title: 'Staying Alive Yourself', body: 'A support build that dies first helps nobody. The historical Protection support points show one future direction, not a current-cap allocation.', icon: 'shield' },
+          { title: 'Staying Alive Yourself', body: 'A support build that dies first helps nobody. The historical Protection support points show one future direction, not a Beta snapshot allocation.', icon: 'shield' },
           { title: 'Positioning', body: 'Where you stand decides whether you can heal through an enemy push or get separated from your group.', icon: 'route' },
         ],
       },
       {
         kind: 'bullets',
         title: 'Planning a Holy PvP Setup',
-        intro: 'This page describes a direction rather than a verified PvP allocation. The 31/20/0 healing build is a historical 51-point reference and cannot fit the current Level 30 cap.',
+        intro: 'This page describes a direction rather than a verified PvP allocation. The 31/20/0 healing build is a historical 51-point reference and cannot fit the October Level 30 Beta cap.',
         items: [
           'Treat the 31/20/0 healing allocation as a historical reference, not a current PvP starter.',
           'Decide early whether you are the primary healer or a support hybrid, because it changes how many points you can spare.',
@@ -580,8 +580,8 @@ export const BUILD_LANDING_PAGES: BuildLandingPageConfig[] = [
         title: 'How the 31/20/0 Reference Changes in PvP',
         intro: 'The published allocation supplies a concrete healing tree, while PvP changes the questions used to evaluate it.',
         paragraphs: [
-          'The 31/20/0 Holy healing build records a historical 51-point allocation with 31 Holy and 20 Protection points. Its full page lists every selected rank and explains the healing-oriented structure, but those points exceed the live Level 30 cap and its 69913 tree predates later official tuning. Positioning, interruption pressure, target access, and personal survival can change the value of a rank even when the older talent name is unchanged.',
-          'Start a blank current-cap planner route, identify the Holy talents required for the support role, and then review which early Protection tools are actually available. Save a separate share link for each experiment instead of silently treating the published 51-point reference as a playable preset.',
+          'The 31/20/0 Holy healing build records a historical 51-point allocation with 31 Holy and 20 Protection points. Its full page lists every selected rank and explains the healing-oriented structure, but those points exceed the October Level 30 Beta cap and its 69913 tree predates later official tuning. Positioning, interruption pressure, target access, and personal survival can change the value of a rank even when the older talent name is unchanged.',
+          'Start a blank Beta snapshot planner route, identify the Holy talents required for the support role, and then review which early Protection tools are actually available. Save a separate share link for each experiment instead of silently treating the published 51-point reference as a playable preset.',
         ],
       },
       {

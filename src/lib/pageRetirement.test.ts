@@ -5,11 +5,11 @@ import { isRemovedPage, resolvePageHref } from './pageRetirement'
 import { pageForPath } from './routes'
 
 describe('reviewed retirement contracts', () => {
-  it('removes 58 old publication shells while retaining real destination pages', () => {
-    expect(Object.keys(PAGE_CONSOLIDATIONS)).toHaveLength(55)
+  it('removes 59 old publication shells while retaining real destination pages', () => {
+    expect(Object.keys(PAGE_CONSOLIDATIONS)).toHaveLength(56)
     expect(REMOVED_PAGE_PATHS).toHaveLength(3)
     const sitemap = readFileSync('public/sitemap.xml', 'utf8')
-    expect(sitemap.match(/<loc>/g)).toHaveLength(94)
+    expect(sitemap.match(/<loc>/g)).toHaveLength(93)
     expect(sitemap).toContain('<loc>https://buildforgetools.com/wow-forever-respec-cost-calculator</loc>')
     for (const path of [...Object.keys(PAGE_CONSOLIDATIONS), ...REMOVED_PAGE_PATHS]) {
       expect(existsSync(`.${path}/index.html`), path).toBe(false)

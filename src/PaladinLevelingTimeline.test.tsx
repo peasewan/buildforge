@@ -5,7 +5,7 @@ afterEach(cleanup)
 it('moves snapshots, next talent and the link together without spending future points', () => {
   render(<PaladinLevelingTimeline/>)
   expect(screen.getByRole('link',{name:'Edit Level 30 in Calculator'}).getAttribute('href')).toContain('&level=30#calculator')
-  expect(screen.getByText('Current Beta cap reached')).toBeTruthy()
+  expect(screen.getByText('End of the reviewed Beta route')).toBeTruthy()
   fireEvent.click(screen.getByRole('button',{name:'Level 20'}))
   expect(screen.getByText('Next talent · Level 21')).toBeTruthy()
   expect(screen.getByRole('link',{name:'Edit Level 20 in Calculator'}).getAttribute('href')).toContain('pursuit_of_justice.1')

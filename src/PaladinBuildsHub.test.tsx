@@ -69,7 +69,7 @@ describe('Paladin builds hub', () => {
   it('labels the Ret 51-point leveling example as historical before readers open it', () => {
     render(<PaladinBuildsHub />)
 
-    const link = document.querySelector('a[href="/wow-forever-retribution-paladin-leveling-build"]')
+    const link = document.querySelector('a[href="/wow-forever-paladin-leveling-build#ret-history"]')
     expect(link?.closest('.build-card')?.textContent).toMatch(/historical/i)
     expect(link?.closest('.build-card')?.textContent).toMatch(/Crusade.*absent/i)
   })
@@ -87,7 +87,8 @@ describe('Paladin builds hub', () => {
     for (const build of HUB_PLAYSTYLE_SECTIONS.flatMap((section) => section.builds)) {
       const promised = build.title.match(/\b(Holy|Protection|Retribution)\b/)?.[1].toLowerCase()
 
-      if (promised) expect(resolvePageHref(build.href), `"${build.title}" promises ${promised}`).toContain(`-${promised}-`)
+      if (promised && build.id !== 'retribution-leveling') expect(resolvePageHref(build.href), `"${build.title}" promises ${promised}`).toContain(`-${promised}-`)
+      if (build.id === 'retribution-leveling') expect(resolvePageHref(build.href)).toBe('/wow-forever-paladin-leveling-build#ret-history')
     }
   })
 

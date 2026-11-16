@@ -48,7 +48,7 @@ export default function SpecBuildsHub({ spec }: { spec: Branch }) {
 
       <BetaDataStatus />
 
-      {betaStart && <section className="spec-beta-start shell" aria-label={betaStart.status === 'archived' ? 'Archived Beta Protection starting route' : 'Current Beta Protection starting route'}>
+      {betaStart && <section className="spec-beta-start shell" aria-label={betaStart.status === 'archived' ? 'Archived Beta Protection starting route' : 'Reviewed Beta Protection starting route'}>
         <div>
           <div className="eyebrow">{betaStart.status === 'archived' ? 'Archived Beta Start · Under Review' : 'Level 20 Snapshot · Editorial route'}</div>
           <h2>{betaStart.status === 'archived' ? `Review the former Level ${betaStart.current.level} Protection route` : `Start with the Level ${betaStart.current.level} Protection route`}</h2>
@@ -86,7 +86,7 @@ export default function SpecBuildsHub({ spec }: { spec: Branch }) {
         <a href="/paladin#calculator" className="button primary" onClick={link('calculator')('/paladin#calculator')}><Calculator size={18} /> Open Paladin Talent Calculator</a>
       </section>
 
-      <section className="hub-data shell" id="talents"><div><div className="eyebrow">{spec.charAt(0).toUpperCase() + spec.slice(1)} Talent Tree</div><h2>{spec.charAt(0).toUpperCase() + spec.slice(1)} Paladin Talents</h2></div>{hub.talents.map((item) => <div key={item.href}><p>Explore {spec} talent choices, key talents, and recommended paths before committing to a build.</p><p>The dedicated talent page preserves its historical 69913 preview, labels official and client-confirmed removals, and connects reviewed routes to the current 70245 calculator.</p><a href={item.href} onClick={link('talents')(item.href)}>{item.label} <ArrowRight size={15} /></a></div>)}</section>
+      <section className="hub-data shell" id="talents"><div><div className="eyebrow">{spec.charAt(0).toUpperCase() + spec.slice(1)} Talent Tree</div><h2>{spec.charAt(0).toUpperCase() + spec.slice(1)} Paladin Talents</h2></div>{hub.talents.map((item) => <div key={item.href}><p>Explore {spec} talent choices, key talents, and recommended paths before committing to a build.</p><p>The dedicated talent page preserves its historical 69913 preview, labels official and client-confirmed removals, and connects reviewed routes to the 70245 snapshot calculator.</p><a href={item.href} onClick={link('talents')(item.href)}>{item.label} <ArrowRight size={15} /></a></div>)}</section>
 
       <section className="hub-resources shell"><div className="eyebrow">Keep Exploring</div><h2>More Paladin Builds</h2><nav>{hub.related.map((item) => <a href={item.href} key={item.href} onClick={link('related')(item.href)}><span>{item.label}</span><ArrowRight size={17} /></a>)}</nav></section>
 

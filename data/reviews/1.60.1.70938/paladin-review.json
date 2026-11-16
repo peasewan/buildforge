@@ -1,0 +1,135 @@
+{
+  "reviewedOn": "2026-11-16",
+  "candidateBuild": "1.60.1.70938",
+  "productionBuild": "1.60.1.70245",
+  "status": "not_promoted",
+  "promotionStatus": "not_promoted",
+  "promoted": false,
+  "candidateValidated": false,
+  "exactTooltipDiff": null,
+  "findings": [
+    "All ten required Wago tables were acquired for both 70938 and the licensed export source build 70755. Global table bytes differ; the existing cross-build equivalence gate rejects this input.",
+    "Paladin SkillLine184 maps to TraitTree1100. The candidate has 51 unique talents, 17 per branch, and 8 raw links. Names, raw node IDs, rank caps and reviewed display coordinates agree with the separate Forever XP community tree. The licensed Talents Forever export agrees on names, rank caps and grid positions.",
+    "70755 to 70938 Paladin membership, positions, rank caps and raw edges are unchanged in the downloaded tables. The direct Paladin spell records change the Two-Handed Weapon Specialization wording to include Holy damage; one direct SpellEffect record also changes. This is a bounded record comparison, not a complete dependency/hotfix or per-rank equality claim.",
+    "The licensed export identifies its Paladin source as 70755 plus November2 announced values and November3 server hotfixes. It is not a pure70938 resolved-rank export. The community declaration and license are preserved in source-manifest.json.",
+    "The current importer also rejects unreviewed edge Type3, new stable identities and changed names/spell IDs. These are required review gates, not errors to bypass.",
+    "Four old raw node IDs now carry different named semantics, including Twist of Light to Unsealed Wrath using the same spell ID. Existing shares and saved routes must never be silently reinterpreted by raw ID.",
+    "No production dataset, route allocation, share decoder, title, canonical, sitemap or watcher state was changed by this review."
+  ],
+  "structuralDiffFile": "paladin-structural-diff.json",
+  "structureEvidenceFile": "paladin-structure.json",
+  "sourceManifestFile": "source-manifest.json",
+  "nodeCount": 51,
+  "nodesPerBranch": {
+    "holy": 17,
+    "protection": 17,
+    "retribution": 17
+  },
+  "structuralSummary": {
+    "added": 6,
+    "removed": 5,
+    "moved": 26,
+    "rank_changed": 8,
+    "prerequisite_changed": 4,
+    "tooltip_changed": null
+  },
+  "verification": {
+    "rawStructure": "client_verified",
+    "communityGridAndRankText": "community_verified",
+    "officialAnnouncements": "official",
+    "pointTimingAndRequiredPrerequisiteRanks": "derived_assumption"
+  },
+  "unresolvedPrerequisiteEdge": {
+    "edgeId": 136771,
+    "fromNodeId": 105323,
+    "fromName": "Holy Shock",
+    "toNodeId": 113631,
+    "toName": "Boundless Light",
+    "type": 3,
+    "communitySourcesAgreeOnLink": true,
+    "runtimeInterpretationReviewed": false,
+    "requiredRankVerification": "derived_assumption"
+  },
+  "rankTextConflicts": [
+    {
+      "talent": "Illumination",
+      "ranks": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "licensedExportRefundPercent": [
+        50,
+        50,
+        50,
+        50
+      ],
+      "foreverXpExportRefundPercent": [
+        100,
+        150,
+        200,
+        250
+      ],
+      "status": "unresolved_source_conflict",
+      "action": "Do not adopt the independent export as resolved-rank authority."
+    },
+    {
+      "talent": "Oath of Light",
+      "issue": "The independent export includes zero-valued healing placeholders; reference-level resolution has not been audited.",
+      "status": "unresolved_reference_scaling"
+    },
+    {
+      "talent": "Vindication",
+      "licensedExportLevel60AttackPowerReduction": [
+        68,
+        136,
+        204
+      ],
+      "foreverXpExportAttackPowerReduction": [
+        2,
+        4,
+        6
+      ],
+      "status": "unresolved_reference_scaling",
+      "action": "Retain distinct reference-level context; do not treat base client numbers as resolved Level60 values."
+    }
+  ],
+  "importerRejectionVerification": {
+    "command": "tsx scripts/import-paladin-client.ts --build 1.60.1.70938 --client-dir <downloaded-tables> --resolved-export <licensed-export>",
+    "exitCode": 1,
+    "expectedFailure": "Client tables differ between resolved export and target build: TraitNode",
+    "rejectionMatched": true,
+    "baselineUnchanged": true,
+    "candidateWritten": false,
+    "reviewDirectoryWritten": false,
+    "testLocation": "isolated temporary mirror; repository files not executed as write targets"
+  },
+  "nextPromotionRequirements": [
+    "Acquire or implement a reviewed per-Paladin dependency closure comparison without relaxing the existing global-byte guard in this release.",
+    "Resolve and verify every target rank, including announced/server-hotfixed values and reference-level scaling.",
+    "Review new identities, reused raw nodes/spell IDs, the Type3 prerequisite edge and exact stable ID mappings.",
+    "Archive70245 reads/shares; explicitly version new/current links and preserve original saved ranks on incompatible reopens.",
+    "Replay every affected editorial allocation and progression against target caps, positions and prerequisites before it can open in a current calculator.",
+    "Run candidate validators, exact rank-level diff, share/history regressions, content gates, typecheck, lint and production build before a separate reviewed promotion."
+  ],
+  "references": [
+    "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70938",
+    "https://wago.tools/db2/TraitNode/csv?build=1.60.1.70755",
+    "https://talentsforever.com/data.json",
+    "https://www.forever-xp.com/talents/paladin/",
+    "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-november-2/2360696/9",
+    "https://news.blizzard.com/en-us/article/24315281/wow-forever-hotfixes-november-13-2026",
+    "https://news.blizzard.com/en-us/article/24315820/world-of-warcraft-forever-now-live",
+    "https://news.blizzard.com/en-us/article/24302093/carve-a-new-path-with-world-of-warcraft-forever"
+  ],
+  "officialLiveContext": {
+    "verification": "official",
+    "sourceUrl": "https://news.blizzard.com/en-us/article/24315820/world-of-warcraft-forever-now-live",
+    "globalLaunchDate": "2026-11-04",
+    "globalLaunchTime": "23:00 UTC",
+    "levelCap": 60,
+    "note": "This establishes live launch context, not the correctness of a candidate client tree or the legacy calculator budgets.",
+    "launchAnnouncementUrl": "https://news.blizzard.com/en-us/article/24302093/carve-a-new-path-with-world-of-warcraft-forever"
+  }
+}
