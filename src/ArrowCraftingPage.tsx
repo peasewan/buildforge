@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import DiscoveryHeader from './DiscoveryHeader'
 import SiteFooter from './SiteFooter'
-import { useArrowFirstAdjustment } from './lib/useArrowFirstAdjustment'
+import { useFirstToolAdjustment } from './lib/useFirstToolAdjustment'
 
 const recipes = { Mysterious: 1, Lucky: 3, Bizarre: 9 }
 const materials = [
@@ -15,7 +15,7 @@ export default function ArrowCraftingPage() {
   const [quantity, setQuantity] = useState('1')
   const [owned, setOwned] = useState('0')
   const [stock, setStock] = useState(['0', '0', '0'])
-  const record = useArrowFirstAdjustment('stand_out_crafting_used')
+  const record = useFirstToolAdjustment('stand_out_crafting_used')
   const needs = Math.max(0, Number(quantity) * recipes[target] - Number(owned))
   function valid(value: string, min: number) {
     return value.trim() !== '' && Number.isInteger(Number(value)) && Number(value) >= min && Number(value) <= 10000

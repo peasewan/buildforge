@@ -17,14 +17,14 @@ const explicitRetiredPaths = [...Object.keys(PAGE_CONSOLIDATIONS), ...REMOVED_PA
 const retiredPaths = [...new Set(['/wow-forever-protection-warrior-pvp-build', '/emberville-builds', ...consolidatedRedirects.map((redirect) => redirect.source), ...explicitRetiredPaths])].filter(path => ledgerPaths.includes(path))
 const disabledHistoricalPaths = ['/wow-forever-protection-warrior-pvp-build', '/emberville-builds', '/wow-forever-warrior-dungeon-build']
 const historicalIndependentToolPaths = ['/wow-forever-stress-test', '/invokyr', '/invokyr-multiplayer', '/wow-forever-paladin-build-comparator', '/songs-of-glimmerwick', '/songs-of-glimmerwick-first-days', '/songs-of-glimmerwick-spellcasting', '/songs-of-glimmerwick-garden-well', '/nivalis-nights-profit-calculator']
-const independentToolPaths = ['/roblox/stand-out/arrow-crafting', '/roblox/stand-out/arrow-calculator', '/roblox/stand-out/stand-picker', '/fortnite/treasure-hours', '/minecraft/dungeons-2-crossplay', '/wow-forever-steam-deck', '/minecraft/throwing-disc', '/roblox/the-forge/frost-star', '/poe-atlas-tree-compare', '/wow-forever-respec-cost-calculator', ...historicalIndependentToolPaths].filter(path => !explicitRetiredPaths.includes(path))
+const independentToolPaths = ['/roblox/blox-fruits/superhuman-requirements', '/roblox/stand-out/arrow-crafting', '/roblox/stand-out/arrow-calculator', '/roblox/stand-out/stand-picker', '/fortnite/treasure-hours', '/minecraft/dungeons-2-crossplay', '/wow-forever-steam-deck', '/minecraft/throwing-disc', '/roblox/the-forge/frost-star', '/poe-atlas-tree-compare', '/wow-forever-respec-cost-calculator', ...historicalIndependentToolPaths].filter(path => !explicitRetiredPaths.includes(path))
 // Independent of the ledger's editable class/status fields: these paths are frozen by the scope amendment.
 const protectedPaths = ledgerPaths.filter((path) => path.includes('paladin') && !historicalIndependentToolPaths.includes(path))
 
 describe('intent rollout scope', () => {
   it('retains the historical rollout ledger while withholding an unfinished build page and consolidating reviewed entries', () => {
     const discoveryPaths = ['/', '/wow-forever-classes', '/wow-forever-builds', '/wow-forever-dungeon-build-finder', '/wow-forever-class-picker']
-    expect(paths).toHaveLength(93)
+    expect(paths).toHaveLength(94)
     expect(new Set(paths).size).toBe(paths.length)
     expect(consolidatedRedirects).toHaveLength(71)
     expect(new Set(retiredPaths).size).toBe(77)

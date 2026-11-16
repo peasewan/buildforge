@@ -65,6 +65,7 @@ export default defineConfig(({ mode }) => ({
   build: {
     rollupOptions: {
       input: {
+        superhumanPage: resolve(import.meta.dirname, 'roblox/blox-fruits/superhuman-requirements/index.html'),
         arrowCraftingPage: resolve(import.meta.dirname, 'roblox/stand-out/arrow-crafting/index.html'),
         arrowBudgetPage: resolve(import.meta.dirname, 'roblox/stand-out/arrow-calculator/index.html'),
         standOutPage: resolve(import.meta.dirname, 'roblox/stand-out/stand-picker/index.html'),

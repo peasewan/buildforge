@@ -1,6 +1,11 @@
 {
   "redirects": [
     {
+      "source": "/roblox/blox-fruits/superhuman-requirements/index.html",
+      "destination": "/roblox/blox-fruits/superhuman-requirements",
+      "permanent": true
+    },
+    {
       "source": "/roblox/stand-out/arrow-crafting/index.html",
       "destination": "/roblox/stand-out/arrow-crafting",
       "permanent": true
@@ -885,6 +890,7 @@
     }
   ],
   "rewrites": [
+    { "source": "/roblox/blox-fruits/superhuman-requirements", "destination": "/roblox/blox-fruits/superhuman-requirements/index.html" },
     { "source": "/roblox/stand-out/arrow-crafting", "destination": "/roblox/stand-out/arrow-crafting/index.html" },
     { "source": "/roblox/stand-out/arrow-calculator", "destination": "/roblox/stand-out/arrow-calculator/index.html" },
     { "source": "/roblox/stand-out/stand-picker", "destination": "/roblox/stand-out/stand-picker/index.html" },

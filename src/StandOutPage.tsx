@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { ArrowDown, ArrowUpRight } from 'lucide-react'
+import StandVerdict from './StandVerdict'
 import DiscoveryHeader from './DiscoveryHeader'
 import SiteFooter from './SiteFooter'
 import { acquisition, stands, type Stand, type StoryStage } from './data/standOut'
@@ -20,11 +21,16 @@ export default function StandOutPage() {
   const [right, setRight] = useState('rolling-stones')
   const [stage, setStage] = useState<StoryStage>('story')
   const pick = (id: string) => stands.find(stand => stand.id === id)!
+  function selectLeft(id: string) {
+    if (id === right) setRight(left)
+    setLeft(id)
+  }
   return <div className="site-discovery stand-page"><DiscoveryHeader /><main className="sd-main">
-    <header className="stand-hero"><div><p className="sd-kicker">ROBLOX / STAND OUT</p><h1>Stand Out stand picker</h1><p>Before you spend an arrow, check whether your target can roll at your stage of the story. Compare two Stands from the 48 documented profiles below.</p><a href="#compare" className="sd-primary">Compare Stands <ArrowDown size={16} /></a></div>
+    <header className="stand-hero"><div><p className="sd-kicker">ROBLOX / STAND OUT</p><h1>Stand Out stand picker</h1><p>Decide whether to keep your roll for duels, raids or gathering. Compare moves and check which arrows can get your next Stand.</p><a href="#keep-or-reroll" className="sd-primary">Check my roll <ArrowDown size={16} /></a></div>
       <img src="/images/stand-out/cover.webp" width="768" height="432" alt="Stand Out game artwork featuring a player and a purple Stand." fetchPriority="high" /></header>
+    <StandVerdict stand={pick(left)} stage={stage} select={selectLeft} />
     <section id="compare" className="stand-compare"><h2>Which Stand can I get?</h2><fieldset><legend>Your story progress</legend>{([['story','Playing the story'],['override','Story pool override on'],['complete','Story complete']] as const).map(([value,text])=><label key={value}><input type="radio" name="stage" checked={stage===value} onChange={()=>setStage(value)} />{text}</label>)}</fieldset>
-      <div className="stand-pair"><StandCard label="First Stand" stand={pick(left)} stage={stage} onChange={id=>{if(id===right)setRight(left);setLeft(id)}}/><StandCard label="Compare with" stand={pick(right)} stage={stage} onChange={id=>{if(id===left)setLeft(right);setRight(id)}}/></div></section>
+      <div className="stand-pair"><StandCard label="First Stand" stand={pick(left)} stage={stage} onChange={selectLeft}/><StandCard label="Compare with" stand={pick(right)} stage={stage} onChange={id=>{if(id===left)setLeft(right);setRight(id)}}/></div></section>
     <section className="stand-reading"><h2>Which Stands need a quest or evolution?</h2>
     <dl className="stand-exceptions">{['hermit-purple','jojosapiens','star-platinum-the-world','the-world-alternative-universe'].map(id => {
       const stand = pick(id)

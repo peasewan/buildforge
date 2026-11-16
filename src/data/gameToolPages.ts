@@ -1,4 +1,8 @@
 export const gameToolPages = [
+  { kind: 'superhuman', path: '/roblox/blox-fruits/superhuman-requirements',
+    title: 'Blox Fruits Superhuman Requirements & Mastery Checker | BuildForgeTools',
+    description: 'Check your four fighting style mastery levels, money and sea to see what you still need for Superhuman and where to find the Martial Arts Master.',
+  },
   { kind: 'arrow-crafting', path: '/roblox/stand-out/arrow-crafting',
     title: 'Stand Out Arrow Crafting Planner: Recipes & Materials | BuildForgeTools',
     description: 'Plan Lucky, Bizarre and Mysterious Arrow crafts in Roblox Stand Out. Enter your inventory to calculate missing Arrow Parts, Steel Ingots and Wood.',
@@ -9,8 +13,8 @@ export const gameToolPages = [
   },
   {
     kind: 'stand-out', path: '/roblox/stand-out/stand-picker',
-    title: 'Stand Out Stand Picker: Compare Moves & Arrow Routes | BuildForgeTools',
-    description: 'Choose a Stand in Roblox Stand Out. Check story restrictions, arrows and evolution routes, then compare moves and cooldowns side by side.',
+    title: 'Stand Out Tier List & Stand Picker: Keep or Reroll? | BuildForgeTools',
+    description: 'Check a Stand Out roll for PvP, raids or farming. Get a keep, store or reroll recommendation, compare moves and find an alternative acquisition route.',
   },
   {
     kind: 'treasure-hours', path: '/fortnite/treasure-hours',

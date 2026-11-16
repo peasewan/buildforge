@@ -34,3 +34,14 @@
 .stand-exceptions div { padding:16px;border:1px solid #48404c;border-radius:8px }
 .stand-exceptions dt { margin-bottom:6px;font-weight:700;color:#eddbb7 }
 .stand-exceptions dd { margin:0;line-height:1.6;color:#c8c4cc }
+
+.stand-role-list {margin:1rem 0;border-block:1px solid #48404c;padding:1rem 0}
+.stand-role-list summary {cursor:pointer;font-weight:650}
+.stand-source {font-size:.9rem;color:#c8c4cc}
+.stand-source a {color:#e4bf83}
+.superhuman-intro {border-left:4px solid #dbb778;padding:12px clamp(20px,4vw,48px);background:linear-gradient(100deg,#28241d,transparent)}
+.superhuman-intro h1 {font:650 clamp(2.25rem,5vw,4.5rem)/1.08 Cinzel,Georgia,serif;margin:.2em 0}
+.superhuman-intro p {max-width:70ch;line-height:1.6}
+.superhuman-result ul {list-style:none;padding:0}
+.superhuman-result li {display:flex;justify-content:space-between;gap:1em;border-bottom:1px solid #48404c;padding:.65em 0}
+.superhuman-result strong {color:#eddbb7;text-align:right}

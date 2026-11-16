@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useArrowFirstAdjustment } from './lib/useArrowFirstAdjustment'
+import { useFirstToolAdjustment } from './lib/useFirstToolAdjustment'
 import DiscoveryHeader from './DiscoveryHeader'
 import SiteFooter from './SiteFooter'
 
@@ -18,7 +18,7 @@ export default function ArrowBudgetPage() {
   const [currency, setCurrency] = useState<'craft' | 'shop'>('craft')
   const [budget, setBudget] = useState('9')
   const [tier, setTier] = useState<Tier>('Pinnacle')
-  const record = useArrowFirstAdjustment('stand_out_arrow_used')
+  const record = useFirstToolAdjustment('stand_out_arrow_used')
   const amount = Number(budget)
   const valid = budget.trim() !== '' && Number.isInteger(amount) && amount >= 0 && amount <= 10000
   const unit = currency === 'craft' ? 'Mysterious Arrows' : 'Train Tokens'
@@ -35,6 +35,7 @@ export default function ArrowBudgetPage() {
         const chance = 100 * (1 - (1 - rate / 100) ** rolls)
         return <article className="stand-card" key={arrow.name}><h3>{arrow.name} Arrow</h3><p className="arrow-chance">{formatChance(chance)}</p><p>Chance of at least one {tier} in {rolls} {rolls === 1 ? 'roll' : 'rolls'}.</p><p>{cost} {unit} each · {amount % cost} left.</p>{rolls === 0 && <p>You need {cost - amount} more for the first roll.</p>}{rate === 0 && <p>This arrow excludes {tier} Stands.</p>}</article>
       })}</div> : <p>Enter a whole budget from 0 to 10,000.</p>}</div>
+      <p><a className="sd-primary" href="/roblox/stand-out/stand-picker#keep-or-reroll">Already rolled? Check whether to keep your Stand</a></p>
     </section><section className="stand-reading"><h2>What nine Mysterious Arrows buy</h2><p>You can craft three Lucky Arrows or one Bizarre Arrow. For a Pinnacle, three independent Lucky rolls give about 4.43% versus 4.40% for one Bizarre. For an Epic, only the Lucky can hit that tier. In the Train Shop the costs change: 33 tokens buy one Bizarre, but only one Lucky with 16 tokens left.</p>
     <p>Short on Mysterious Arrows? <a href="/roblox/stand-out/arrow-crafting">Calculate the crafting materials you still need</a>.</p>
     <h2>Drop rates per arrow</h2><table><caption>Published rarity percentages, rounded as listed</caption><thead><tr><th>Rarity</th>{arrows.map(a => <th key={a.name}>{a.name}</th>)}</tr></thead><tbody>{tiers.map(t => <tr key={t}><th scope="row">{t}</th>{arrows.map(a => <td key={a.name}>{a.rates[t]}%</td>)}</tr>)}</tbody></table>
