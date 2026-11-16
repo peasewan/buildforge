@@ -1,7 +1,7 @@
 export const gameToolPages = [
   { kind: 'superhuman', path: '/roblox/blox-fruits/superhuman-requirements',
-    title: 'Blox Fruits Superhuman Requirements & Mastery Checker | BuildForgeTools',
-    description: 'Check your four fighting style mastery levels, money and sea to see what you still need for Superhuman and where to find the Martial Arts Master.',
+    title: 'Blox Fruits Superhuman Requirements, Cost & Trainer Location',
+    description: 'Superhuman costs $3,000,000 and requires 300 mastery each in Dark Step, Electric, Water Kung Fu and Dragon Breath. Check your progress and find the trainer.',
   },
   { kind: 'arrow-crafting', path: '/roblox/stand-out/arrow-crafting',
     title: 'Stand Out Arrow Crafting Planner: Recipes & Materials | BuildForgeTools',
@@ -13,8 +13,8 @@ export const gameToolPages = [
   },
   {
     kind: 'stand-out', path: '/roblox/stand-out/stand-picker',
-    title: 'Stand Out Tier List & Stand Picker: Keep or Reroll? | BuildForgeTools',
-    description: 'Check a Stand Out roll for PvP, raids or farming. Get a keep, store or reroll recommendation, compare moves and find an alternative acquisition route.',
+    title: 'Stand Out Tier List: Best Stands for PvP, Raids & Farming',
+    description: 'See which Roblox Stand Out Stands to keep for duels, raids and item farming. Check your roll, compare moves and find a route to your next Stand.',
   },
   {
     kind: 'treasure-hours', path: '/fortnite/treasure-hours',

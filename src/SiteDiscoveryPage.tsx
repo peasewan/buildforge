@@ -72,8 +72,8 @@ export default function SiteDiscoveryPage({ pageId }: { pageId: DiscoveryId }) {
         <section className="sd-game-guides" aria-labelledby="sd-game-guides">
           <div className="sd-focused-heading"><h2 id="sd-game-guides">More game tools</h2></div>
           <div className="sd-focused-grid">{[
-            ['/roblox/blox-fruits/superhuman-requirements', 'Blox Fruits Superhuman', 'Check your mastery, money and trainer location.'],
-            ['/roblox/stand-out/stand-picker', 'Stand Out', 'Check how to get a Stand and compare two movesets.'],
+            ['/roblox/blox-fruits/superhuman-requirements', 'Blox Fruits Superhuman requirements', 'Check four mastery levels, the lesson fee and where to find the trainer.'],
+            ['/roblox/stand-out/stand-picker', 'Stand Out tier list', 'Find picks for PvP, raids and farming, then check whether to keep your roll.'],
             ['/roblox/stand-out/arrow-calculator', 'Stand Out arrow calculator', 'Compare the odds for Lucky and Bizarre Arrows with your crafting or token budget.'],
             ['/fortnite/treasure-hours', 'Fortnite Treasure Hours', 'Find the event window in your time zone.'],
             ['/minecraft/dungeons-2-crossplay', 'Minecraft Dungeons II', 'Check your co-op setup and resolve connection problems.'],
