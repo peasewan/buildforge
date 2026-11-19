@@ -208,3 +208,10 @@ Use the same daily comparison fields so decisions are based on trends rather tha
 - Candidate **70938** is reviewed but **not promoted**. See `data/reviews/1.60.1.70938/paladin-review.json` and its exact structural diff/source manifest: 51 nodes; 6 added, 5 removed, 26 moved, 8 changed rank caps, 4 changed retained prerequisite links. `tooltip_changed: null` explicitly means incomplete rank-level review, never zero changes.
 - The licensed resolved export identifies 70755 plus November 2/3 announced/server changes; target/source tables differ, so the existing importer correctly refuses promotion. Four raw node IDs are semantically reused and a Type3 edge needs interpretation. A future importer/promotion must review the per-Paladin dependency closure, every rank and reference level, stable identities, old 70245 shares and all affected routes. Do not copy unresolved or contradictory Forever XP rank values or bypass the byte-equality gate.
 - Homepage and WoW Builds expose existing comparison/PvP tools and direct calculator choices more clearly, preserving other games and metadata. No new indexable route, watcher restart, AdSense application or approval is included.
+
+
+## Stand Out Wiki hub (November 19)
+
+- The owner authorized `/roblox/stand-out` as an independent wiki hub, bringing the indexable inventory to 94. Existing Stand Out calculator metadata and behavior remain unchanged; the homepage and three tools link to the hub.
+- The 48-record roster, selected moves and acquisition rules remain the November 15 community snapshot; crafting references remain November 16. November 19 is the hub publication date, not a new verification date for all game data. Keep missing cooldowns unlisted and removed/story/quest/evolution restrictions visible.
+- The directory renders all records in initial HTML, then filters by name and rarity on the client. Do not replace it with a JavaScript-only fetch or present rarity as measured combat strength.

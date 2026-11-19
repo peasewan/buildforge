@@ -1,3 +1,4 @@
+import './StandOutWikiPage.css'
 import './PaladinAllocationComparison.css'
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'

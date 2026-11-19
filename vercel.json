@@ -1,6 +1,11 @@
 {
   "redirects": [
     {
+      "source": "/roblox/stand-out/index.html",
+      "destination": "/roblox/stand-out",
+      "permanent": true
+    },
+    {
       "source": "/wow-forever-retribution-paladin-leveling-build",
       "destination": "/wow-forever-paladin-leveling-build",
       "statusCode": 301
@@ -900,6 +905,7 @@
     }
   ],
   "rewrites": [
+    { "source": "/roblox/stand-out", "destination": "/roblox/stand-out/index.html" },
     { "source": "/roblox/blox-fruits/superhuman-requirements", "destination": "/roblox/blox-fruits/superhuman-requirements/index.html" },
     { "source": "/roblox/stand-out/arrow-crafting", "destination": "/roblox/stand-out/arrow-crafting/index.html" },
     { "source": "/roblox/stand-out/arrow-calculator", "destination": "/roblox/stand-out/arrow-calculator/index.html" },

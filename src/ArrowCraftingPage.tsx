@@ -22,6 +22,7 @@ export default function ArrowCraftingPage() {
   }
   const ready = valid(quantity, 1) && valid(owned, 0) && stock.every(value => valid(value, 0))
   return <div className="site-discovery stand-page arrow-page"><DiscoveryHeader /><main className="sd-main">
+    <nav aria-label="Stand Out reference"><a href="/roblox/stand-out" className="stand-wiki-back">← Stand Out Wiki: Stands, arrows &amp; materials</a></nav>
     <header className="stand-hero"><div><p className="sd-kicker">Roblox / Stand Out</p>
       <h1>Stand Out arrow crafting planner</h1>
       <p>Work out how many Arrow Parts, Steel Ingots and Wood to bring to Big Chop’s workbench for your next Lucky or Bizarre Arrow.</p></div>

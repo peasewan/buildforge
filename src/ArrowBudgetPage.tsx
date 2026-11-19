@@ -23,6 +23,7 @@ export default function ArrowBudgetPage() {
   const valid = budget.trim() !== '' && Number.isInteger(amount) && amount >= 0 && amount <= 10000
   const unit = currency === 'craft' ? 'Mysterious Arrows' : 'Train Tokens'
   return <div className="site-discovery stand-page arrow-page"><DiscoveryHeader /><main className="sd-main">
+    <nav aria-label="Stand Out reference"><a href="/roblox/stand-out" className="stand-wiki-back">← Stand Out Wiki: Stands, arrows &amp; materials</a></nav>
     <header className="stand-hero"><div><p className="sd-kicker">Roblox / Stand Out</p><h1>Lucky vs Bizarre Arrows</h1><p>Which arrow gives your budget a better chance at the rarity you want? Compare crafting with Mysterious Arrows or buying from the Train Shop.</p></div><img src="/images/stand-out/cover.webp" width="768" height="432" alt="Stand Out on Roblox" /></header>
     <section className="stand-compare"><h2>Compare your arrow budget</h2><div className="arrow-inputs stand-card">
       <label>Pay with<select value={currency} onChange={e => { setCurrency(e.target.value as typeof currency); record('currency') }}><option value="craft">Mysterious Arrows</option><option value="shop">Train Tokens</option></select></label>

@@ -1,4 +1,8 @@
 export const gameToolPages = [
+  { kind: 'stand-out-wiki', path: '/roblox/stand-out',
+    title: 'Stand Out Roblox Wiki: Stands, Arrows & Crafting | BuildForgeTools',
+    description: 'Browse 48 Stand Out records with selected moves and acquisition routes. Find arrow recipes, compare rarity odds and plan crafting materials with free tools.',
+  },
   { kind: 'superhuman', path: '/roblox/blox-fruits/superhuman-requirements',
     title: 'Blox Fruits Superhuman Requirements, Cost & Trainer Location',
     description: 'Superhuman costs $3,000,000 and requires 300 mastery each in Dark Step, Electric, Water Kung Fu and Dragon Breath. Check your progress and find the trainer.',

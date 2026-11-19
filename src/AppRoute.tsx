@@ -4,6 +4,7 @@ import SuperhumanPage from './SuperhumanPage'
 import ArrowCraftingPage from './ArrowCraftingPage'
 import ArrowBudgetPage from './ArrowBudgetPage'
 import StandOutPage from './StandOutPage'
+import StandOutWikiPage from './StandOutWikiPage'
 import TreasureHoursPage from './TreasureHoursPage'
 import DungeonsCrossplayPage from './DungeonsCrossplayPage'
 import SteamDeckPage from './SteamDeckPage'
@@ -41,6 +42,7 @@ function routeElement(pathname: string) {
   if (route.kind === 'superhuman') return <SuperhumanPage />
   if (route.kind === 'arrow-crafting') return <ArrowCraftingPage />
   if (route.kind === 'arrow-budget') return <ArrowBudgetPage />
+  if (route.kind === 'stand-out-wiki') return <StandOutWikiPage />
   if (route.kind === 'stand-out') return <StandOutPage />
   if (route.kind === 'treasure-hours') return <TreasureHoursPage />
   if (route.kind === 'dungeons-crossplay') return <DungeonsCrossplayPage />
