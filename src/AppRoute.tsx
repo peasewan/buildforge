@@ -1,5 +1,6 @@
 import { priestLevelingComparisonSlug } from './data/classes/priest'
 import { resolvePageHref } from './lib/pageRetirement'
+import TH19WarBasePage from './TH19WarBasePage'
 import SuperhumanPage from './SuperhumanPage'
 import ArrowCraftingPage from './ArrowCraftingPage'
 import ArrowBudgetPage from './ArrowBudgetPage'
@@ -39,6 +40,7 @@ import { pageForPath } from './lib/routes'
 
 function routeElement(pathname: string) {
   const route = pageForPath(pathname)
+  if (route.kind === 'th19-war-base') return <TH19WarBasePage />
   if (route.kind === 'superhuman') return <SuperhumanPage />
   if (route.kind === 'arrow-crafting') return <ArrowCraftingPage />
   if (route.kind === 'arrow-budget') return <ArrowBudgetPage />

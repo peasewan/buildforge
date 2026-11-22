@@ -65,6 +65,7 @@ export default defineConfig(({ mode }) => ({
   build: {
     rollupOptions: {
       input: {
+        th19WarBase: resolve(import.meta.dirname, 'clash-of-clans/th19-war-base/index.html'),
         superhumanPage: resolve(import.meta.dirname, 'roblox/blox-fruits/superhuman-requirements/index.html'),
         arrowCraftingPage: resolve(import.meta.dirname, 'roblox/stand-out/arrow-crafting/index.html'),
         arrowBudgetPage: resolve(import.meta.dirname, 'roblox/stand-out/arrow-calculator/index.html'),

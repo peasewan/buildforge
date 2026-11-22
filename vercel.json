@@ -1,6 +1,11 @@
 {
   "redirects": [
     {
+      "source": "/clash-of-clans/th19-war-base/index.html",
+      "destination": "/clash-of-clans/th19-war-base",
+      "permanent": true
+    },
+    {
       "source": "/roblox/stand-out/index.html",
       "destination": "/roblox/stand-out",
       "permanent": true
@@ -905,6 +910,7 @@
     }
   ],
   "rewrites": [
+    { "source": "/clash-of-clans/th19-war-base", "destination": "/clash-of-clans/th19-war-base/index.html" },
     { "source": "/roblox/stand-out", "destination": "/roblox/stand-out/index.html" },
     { "source": "/roblox/blox-fruits/superhuman-requirements", "destination": "/roblox/blox-fruits/superhuman-requirements/index.html" },
     { "source": "/roblox/stand-out/arrow-crafting", "destination": "/roblox/stand-out/arrow-crafting/index.html" },

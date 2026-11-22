@@ -1,4 +1,8 @@
 export const gameToolPages = [
+  { kind: 'th19-war-base', path: '/clash-of-clans/th19-war-base',
+    title: 'TH19 War Bases with Copy Links | BuildForgeTools',
+    description: 'Compare Clash of Clans TH19 war bases for Clan War and CWL. Check layout sources, open in-game copy links, and see which defenders Town Hall 19 unlocks.',
+  },
   { kind: 'stand-out-wiki', path: '/roblox/stand-out',
     title: 'Stand Out Roblox Wiki: Stands, Arrows & Crafting | BuildForgeTools',
     description: 'Browse 48 Stand Out records with selected moves and acquisition routes. Find arrow recipes, compare rarity odds and plan crafting materials with free tools.',

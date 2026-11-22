@@ -85,6 +85,7 @@ export default function SiteDiscoveryPage({ pageId }: { pageId: DiscoveryId }) {
         <section className="sd-game-guides" aria-labelledby="sd-game-guides">
           <div className="sd-focused-heading"><h2 id="sd-game-guides">More game tools</h2></div>
           <div className="sd-focused-grid">{[
+            ['/clash-of-clans/th19-war-base', 'Clash of Clans TH19 war bases', 'Compare Clan War and CWL layouts, check defender unlocks and open in-game copy links.'],
             ['/roblox/blox-fruits/superhuman-requirements', 'Blox Fruits Superhuman requirements', 'Check four mastery levels, the lesson fee and where to find the trainer.'],
             ['/roblox/stand-out', 'Stand Out Roblox Wiki', 'Browse Stand records, moves and acquisition routes, then plan your next roll.'],
             ['/roblox/stand-out/stand-picker', 'Stand Out tier list', 'Find picks for PvP, raids and farming, then check whether to keep your roll.'],
