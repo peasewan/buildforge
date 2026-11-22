@@ -10,6 +10,7 @@ const arrows = [
 type Tier = keyof (typeof arrows)[number]['rates']
 const tiers: Tier[] = ['Epic', 'Legendary', 'Mythic', 'Pinnacle']
 const source = 'https://standout.wiki/arrows/'
+const craftingPath = '/roblox/stand-out/arrow-crafting'
 function formatChance(percent: number) {
   return percent > 99.995 ? '>99.99%' : percent.toFixed(2) + '%'
 }
@@ -24,7 +25,11 @@ export default function ArrowBudgetPage() {
   const unit = currency === 'craft' ? 'Mysterious Arrows' : 'Train Tokens'
   return <div className="site-discovery stand-page arrow-page"><DiscoveryHeader /><main className="sd-main">
     <nav aria-label="Stand Out reference"><a href="/roblox/stand-out" className="stand-wiki-back">← Stand Out Wiki: Stands, arrows &amp; materials</a></nav>
-    <header className="stand-hero"><div><p className="sd-kicker">Roblox / Stand Out</p><h1>Lucky vs Bizarre Arrows</h1><p>Which arrow gives your budget a better chance at the rarity you want? Compare crafting with Mysterious Arrows or buying from the Train Shop.</p></div><img src="/images/stand-out/cover.webp" width="768" height="432" alt="Stand Out on Roblox" /></header>
+    <header className="stand-hero"><div><p className="sd-kicker">Roblox / Stand Out</p><h1>Lucky vs Bizarre Arrows</h1><p>Which arrow gives your budget a better chance at the rarity you want? Compare crafting with Mysterious Arrows or buying from the Train Shop.</p>
+      <nav className="arrow-jump-links" aria-label="Crafting shortcuts">
+        <a href={`${craftingPath}#bizarre-arrow-recipe`}>Bizarre Arrow recipe</a>
+        <a href={`${craftingPath}#arrow-workbench`}>Find the workbench</a>
+      </nav></div><img src="/images/stand-out/cover.webp" width="768" height="432" alt="Stand Out on Roblox" /></header>
     <section className="stand-compare"><h2>Compare your arrow budget</h2><div className="arrow-inputs stand-card">
       <label>Pay with<select value={currency} onChange={e => { setCurrency(e.target.value as typeof currency); record('currency') }}><option value="craft">Mysterious Arrows</option><option value="shop">Train Tokens</option></select></label>
       <label>{unit} available<input type="number" min="0" max="10000" step="1" value={budget} onChange={e => { const value = e.target.value; setBudget(value); if (value.trim() && Number.isInteger(Number(value)) && Number(value) >= 0 && Number(value) <= 10000) record('budget') }} aria-invalid={!valid}/></label>
@@ -38,7 +43,7 @@ export default function ArrowBudgetPage() {
       })}</div> : <p>Enter a whole budget from 0 to 10,000.</p>}</div>
       <p><a className="sd-primary" href="/roblox/stand-out/stand-picker#keep-or-reroll">Already rolled? Check whether to keep your Stand</a></p>
     </section><section className="stand-reading"><h2>What nine Mysterious Arrows buy</h2><p>You can craft three Lucky Arrows or one Bizarre Arrow. For a Pinnacle, three independent Lucky rolls give about 4.43% versus 4.40% for one Bizarre. For an Epic, only the Lucky can hit that tier. In the Train Shop the costs change: 33 tokens buy one Bizarre, but only one Lucky with 16 tokens left.</p>
-    <p>Short on Mysterious Arrows? <a href="/roblox/stand-out/arrow-crafting">Calculate the crafting materials you still need</a>.</p>
+    <p>Short on Mysterious Arrows? <a href={`${craftingPath}#crafting-planner`}>Calculate the crafting materials you still need</a>.</p>
     <h2>Drop rates per arrow</h2><table><caption>Published rarity percentages, rounded as listed</caption><thead><tr><th>Rarity</th>{arrows.map(a => <th key={a.name}>{a.name}</th>)}</tr></thead><tbody>{tiers.map(t => <tr key={t}><th scope="row">{t}</th>{arrows.map(a => <td key={a.name}>{a.rates[t]}%</td>)}</tr>)}</tbody></table>
     <p>The estimate assumes independent attempts at the listed rate. It compares spending your budget on one arrow type at a time. Specific Stand odds depend on the eligible pool. Regular Mysterious Arrows have no published rarity table.</p>
     <p>For a particular Stand, check whether it needs a focus arrow, quest or evolution in the <a href="/roblox/stand-out/stand-picker">Stand picker and acquisition guide</a>.</p><p>Rates and prices checked November 15, 2026 against the <a href={source}>community transcription of in-game arrow listings</a>.</p></section>
