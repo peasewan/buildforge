@@ -1,6 +1,11 @@
 {
   "redirects": [
     {
+      "source": "/roblox/dandys-world/lab-cards/index.html",
+      "destination": "/roblox/dandys-world/lab-cards",
+      "permanent": true
+    },
+    {
       "source": "/clash-of-clans/th19-war-base/index.html",
       "destination": "/clash-of-clans/th19-war-base",
       "permanent": true
@@ -910,6 +915,7 @@
     }
   ],
   "rewrites": [
+    { "source": "/roblox/dandys-world/lab-cards", "destination": "/roblox/dandys-world/lab-cards/index.html" },
     { "source": "/clash-of-clans/th19-war-base", "destination": "/clash-of-clans/th19-war-base/index.html" },
     { "source": "/roblox/stand-out", "destination": "/roblox/stand-out/index.html" },
     { "source": "/roblox/blox-fruits/superhuman-requirements", "destination": "/roblox/blox-fruits/superhuman-requirements/index.html" },

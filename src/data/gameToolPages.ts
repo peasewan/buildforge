@@ -1,4 +1,8 @@
 export const gameToolPages = [
+  { kind: 'dandy-lab-cards', path: '/roblox/dandys-world/lab-cards',
+    title: "Dandy's World Lab Cards & Ambrosia Calculator | BuildForgeTools",
+    description: "Browse Dandy's World Lab Cards and compare their costs and effects. Calculate how much Ambrosia you need for your next card or unlock goal.",
+  },
   { kind: 'th19-war-base', path: '/clash-of-clans/th19-war-base',
     title: 'TH19 War Bases with Copy Links | BuildForgeTools',
     description: 'Compare Clash of Clans TH19 war bases for Clan War and CWL. Check layout sources, open in-game copy links, and see which defenders Town Hall 19 unlocks.',

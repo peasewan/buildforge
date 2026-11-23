@@ -19,6 +19,19 @@ const paladinPlannerFallback = {
 }
 
 describe('public page routing', () => {
+  it('uses one canonical URL for the Dandy’s World Lab Cards tool and its aliases', () => {
+    const path = '/roblox/dandys-world/lab-cards'
+    const page = pageForPath(path)
+    expect(page).toMatchObject({
+      kind: 'dandy-lab-cards',
+      title: "Dandy's World Lab Cards & Ambrosia Calculator | BuildForgeTools",
+      canonical: `https://buildforgetools.com${path}`,
+      robots: 'index, follow',
+    })
+    expect(pageForPath(`${path}/`)).toEqual(page)
+    expect(pageForPath(`${path}/index.html`)).toEqual(page)
+  })
+
   it('marks the obsolete stress-test page noindex without changing calculator metadata', () => {
     expect(pageForPath('/wow-forever-stress-test/')).toMatchObject({ kind: 'retired', canonical: 'https://buildforgetools.com/wow-forever-stress-test', robots: 'noindex, follow' })
     expect(pageForPath('/paladin')).toEqual(paladinPlannerFallback)
