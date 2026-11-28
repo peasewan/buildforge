@@ -93,6 +93,7 @@ export default function SiteDiscoveryPage({ pageId }: { pageId: DiscoveryId }) {
             ['/roblox/stand-out/arrow-calculator', 'Stand Out arrow calculator', 'Compare the odds for Lucky and Bizarre Arrows with your crafting or token budget.'],
             ['/fortnite/treasure-hours', 'Fortnite Treasure Hours', 'Find the event window in your time zone.'],
             ['/minecraft/dungeons-2-crossplay', 'Minecraft Dungeons II', 'Check your co-op setup and resolve connection problems.'],
+            ['https://terrariacrossplay.com/#checker', 'Terraria crossplay checker', 'Check whether PC, console and mobile players can share a world over LAN or through a dedicated server.'],
             ['/wow-forever-steam-deck', 'WoW Forever on Steam Deck', 'Set up your controls and plan class bindings.'],
           ].map(([href, title, detail]) => <article key={href}><h3><a href={href}>{title} <ArrowRight size={15} aria-hidden="true" /></a></h3><p>{detail}</p></article>)}</div>
         </section>
